@@ -31,13 +31,13 @@ struct UObject_GetObjectProvider_Params
 // Function Core.Object.GetEdition
 struct UObject_GetEdition_Params
 {
-	TEnumAsByte<enum class EEdition>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EEdition>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Core.Object.IsEdition
 struct UObject_IsEdition_Params
 {
-	TEnumAsByte<enum class EEdition>                   Edition;                                                  // (CPF_Parm)
+	TEnumAsByte<EEdition>                              Edition;                                                  // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -699,7 +699,7 @@ struct UObject_GetFuncName_Params
 struct UObject_DebugBreak_Params
 {
 	int                                                UserFlags;                                                // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EDebugBreakType>            DebuggerType;                                             // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EDebugBreakType>                       DebuggerType;                                             // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Core.Object.GetScriptTrace
@@ -1092,7 +1092,7 @@ struct UObject_QuatProduct_Params
 struct UObject_MatrixGetAxis_Params
 {
 	struct FMatrix                                     TM;                                                       // (CPF_Parm)
-	TEnumAsByte<enum class EAxis>                      Axis;                                                     // (CPF_Parm)
+	TEnumAsByte<EAxis>                                 Axis;                                                     // (CPF_Parm)
 	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 

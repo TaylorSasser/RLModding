@@ -96,9 +96,9 @@ class UObjectProvider* UObject::STATIC_GetObjectProvider()
 // Function Core.Object.GetEdition
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EEdition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EEdition>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EEdition> UObject::STATIC_GetEdition()
+TEnumAsByte<EEdition> UObject::STATIC_GetEdition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEdition");
 
@@ -118,10 +118,10 @@ TEnumAsByte<enum class EEdition> UObject::STATIC_GetEdition()
 // Function Core.Object.IsEdition
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EEdition> Edition                        (CPF_Parm)
+// TEnumAsByte<EEdition>          Edition                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UObject::STATIC_IsEdition(TEnumAsByte<enum class EEdition> Edition)
+bool UObject::STATIC_IsEdition(TEnumAsByte<EEdition> Edition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsEdition");
 
@@ -2331,9 +2331,9 @@ struct FName UObject::STATIC_GetFuncName()
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // int                            UserFlags                      (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EDebugBreakType> DebuggerType                   (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EDebugBreakType>   DebuggerType                   (CPF_OptionalParm, CPF_Parm)
 
-void UObject::STATIC_DebugBreak(int UserFlags, TEnumAsByte<enum class EDebugBreakType> DebuggerType)
+void UObject::STATIC_DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DebugBreak");
 
@@ -3610,10 +3610,10 @@ struct FQuat UObject::STATIC_QuatProduct(const struct FQuat& A, const struct FQu
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
 // struct FMatrix                 TM                             (CPF_Parm)
-// TEnumAsByte<enum class EAxis>  Axis                           (CPF_Parm)
+// TEnumAsByte<EAxis>             Axis                           (CPF_Parm)
 // struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FVector UObject::STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<enum class EAxis> Axis)
+struct FVector UObject::STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxis> Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetAxis");
 

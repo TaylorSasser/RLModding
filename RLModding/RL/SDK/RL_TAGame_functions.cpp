@@ -85,10 +85,10 @@ void U_Types_TA::STATIC_InitColorSet(class UCarColorSet_TA* Set, TArray<struct F
 // Function TAGame._Types_TA.ProductQualityToString
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProductQuality> Quality                        (CPF_Parm)
+// TEnumAsByte<EProductQuality>   Quality                        (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString U_Types_TA::STATIC_ProductQualityToString(TEnumAsByte<enum class EProductQuality> Quality)
+struct FString U_Types_TA::STATIC_ProductQualityToString(TEnumAsByte<EProductQuality> Quality)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame._Types_TA.ProductQualityToString");
 
@@ -2263,9 +2263,9 @@ void ARBActor_TA::OnRigidBodyCollision(const struct FAccumulatedRigidBodyCollisi
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FVector                 Torque                         (CPF_Parm)
-// TEnumAsByte<enum class EForceMode> ForceMode                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EForceMode>        ForceMode                      (CPF_OptionalParm, CPF_Parm)
 
-void ARBActor_TA::AddTorque(const struct FVector& Torque, TEnumAsByte<enum class EForceMode> ForceMode)
+void ARBActor_TA::AddTorque(const struct FVector& Torque, TEnumAsByte<EForceMode> ForceMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RBActor_TA.AddTorque");
 
@@ -2286,9 +2286,9 @@ void ARBActor_TA::AddTorque(const struct FVector& Torque, TEnumAsByte<enum class
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FVector                 Force                          (CPF_Parm)
-// TEnumAsByte<enum class EForceMode> ForceMode                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EForceMode>        ForceMode                      (CPF_OptionalParm, CPF_Parm)
 
-void ARBActor_TA::AddForce(const struct FVector& Force, TEnumAsByte<enum class EForceMode> ForceMode)
+void ARBActor_TA::AddForce(const struct FVector& Force, TEnumAsByte<EForceMode> ForceMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RBActor_TA.AddForce");
 
@@ -3195,9 +3195,9 @@ void ABall_TA::Launch(const struct FVector& LaunchPosition, const struct FVector
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_OptionalParm, CPF_Parm)
 
-void ABall_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.OnCarTouch");
 
@@ -3239,9 +3239,9 @@ void ABall_TA::AttachToCar(class ACar_TA* HitCar)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
 // struct FVector                 HitLocation                    (CPF_Parm)
 // struct FVector                 HitNormal                      (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_OptionalParm, CPF_Parm)
 
-void ABall_TA::RecordCarHit(class ACar_TA* HitCar, const struct FVector& HitLocation, const struct FVector& HitNormal, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_TA::RecordCarHit(class ACar_TA* HitCar, const struct FVector& HitLocation, const struct FVector& HitNormal, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.RecordCarHit");
 
@@ -3835,9 +3835,9 @@ void ABall_TA::EventHitWorld(class ABall_TA* Ball, const struct FVector& HitLoc,
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ABall_TA::EventCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_TA::EventCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.EventCarTouch");
 
@@ -5302,10 +5302,10 @@ void UBTComponent::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Function TAGame.BTComponent.GetStatusColor
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> Status                         (CPF_Parm)
+// TEnumAsByte<EBTStatus>         Status                         (CPF_Parm)
 // struct FColor                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FColor UBTComponent::GetStatusColor(TEnumAsByte<enum class EBTStatus> Status)
+struct FColor UBTComponent::GetStatusColor(TEnumAsByte<EBTStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTComponent.GetStatusColor");
 
@@ -5642,11 +5642,11 @@ void UBTNode::SetStatusString(const struct FString& msg)
 // Function TAGame.BTCondition.ShouldProcessTeam
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EAITeam> CheckTeam                      (CPF_Parm)
+// TEnumAsByte<EAITeam>           CheckTeam                      (CPF_Parm)
 // int                            ActorTeam                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UBTCondition::ShouldProcessTeam(TEnumAsByte<enum class EAITeam> CheckTeam, int ActorTeam)
+bool UBTCondition::ShouldProcessTeam(TEnumAsByte<EAITeam> CheckTeam, int ActorTeam)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTCondition.ShouldProcessTeam");
 
@@ -5667,11 +5667,11 @@ bool UBTCondition::ShouldProcessTeam(TEnumAsByte<enum class EAITeam> CheckTeam, 
 // Function TAGame.BTCondition.ShouldProcessActor
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EAITeam> CheckTeam                      (CPF_Parm)
+// TEnumAsByte<EAITeam>           CheckTeam                      (CPF_Parm)
 // class AActor*                  CheckActor                     (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UBTCondition::ShouldProcessActor(TEnumAsByte<enum class EAITeam> CheckTeam, class AActor* CheckActor)
+bool UBTCondition::ShouldProcessActor(TEnumAsByte<EAITeam> CheckTeam, class AActor* CheckActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTCondition.ShouldProcessActor");
 
@@ -5791,9 +5791,9 @@ float UBTAction::GetRunningTime()
 // Function TAGame.BTAction.OnExecute
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction::OnExecute()
+TEnumAsByte<EBTStatus> UBTAction::OnExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction.OnExecute");
 
@@ -5829,9 +5829,9 @@ void UBTAction::OnStarted()
 // Function TAGame.BTAction.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction::OnStart()
+TEnumAsByte<EBTStatus> UBTAction::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction.OnStart");
 
@@ -5867,9 +5867,9 @@ void UBTAction::OnInit()
 // Function TAGame.BTAction_Target.OnTargetExecute
 // (FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Target::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_Target::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Target.OnTargetExecute");
 
@@ -5888,9 +5888,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_Target::OnTargetExecute()
 // Function TAGame.BTAction_Target.OnExecute
 // (FUNC_Native, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Target::OnExecute()
+TEnumAsByte<EBTStatus> UBTAction_Target::OnExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Target.OnExecute");
 
@@ -8977,10 +8977,10 @@ bool UGameData_TA::STATIC_CanProductBeInSlot(class UProduct_TA* Product, class U
 // Function TAGame.GameData_TA.GetProductDB
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EEdition> Edition                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EEdition>          Edition                        (CPF_OptionalParm, CPF_Parm)
 // class UProductDatabase_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UProductDatabase_TA* UGameData_TA::STATIC_GetProductDB(TEnumAsByte<enum class EEdition> Edition)
+class UProductDatabase_TA* UGameData_TA::STATIC_GetProductDB(TEnumAsByte<EEdition> Edition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameData_TA.GetProductDB");
 
@@ -9228,11 +9228,11 @@ bool AGameEvent_TA::AllowSplitScreenPlayer()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // class ATeamInfo*               Team                           (CPF_Parm)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
 
-void AGameEvent_TA::AddPlayerChatMessage(const struct FUniqueNetId& PlayerID, TEnumAsByte<enum class EChatChannel> ChatChannel, class ATeamInfo* Team, const struct FString& Message)
+void AGameEvent_TA::AddPlayerChatMessage(const struct FUniqueNetId& PlayerID, TEnumAsByte<EChatChannel> ChatChannel, class ATeamInfo* Team, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TA.AddPlayerChatMessage");
 
@@ -12543,9 +12543,9 @@ void UGFxEngine_TA::OnGameSessionEnded()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FName                   StateName                      (CPF_Parm)
-// TEnumAsByte<enum class ESoundStatePriority> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESoundStatePriority> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESoundStatePriority> UGFxEngine_TA::GetSoundStatePriority(const struct FName& StateName)
+TEnumAsByte<ESoundStatePriority> UGFxEngine_TA::GetSoundStatePriority(const struct FName& StateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxEngine_TA.GetSoundStatePriority");
 
@@ -13361,9 +13361,9 @@ void ULocalPlayer_TA::OnLoginCancelled()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void ULocalPlayer_TA::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void ULocalPlayer_TA::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LocalPlayer_TA.OnLoginFailed");
 
@@ -13580,9 +13580,9 @@ void ULocalPlayer_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
 // class UGameViewportClient*     InViewportClient               (CPF_Parm)
-// TEnumAsByte<enum class ESplitScreenPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESplitScreenPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESplitScreenPosition> ULocalPlayer_TA::GetSplitScreenPosition(class UGameViewportClient* InViewportClient)
+TEnumAsByte<ESplitScreenPosition> ULocalPlayer_TA::GetSplitScreenPosition(class UGameViewportClient* InViewportClient)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LocalPlayer_TA.GetSplitScreenPosition");
 
@@ -15697,9 +15697,9 @@ void UOnlineProduct_TA::GetPaintedColorAttribute(struct FString* ProductPaintCol
 // Function TAGame.OnlineProduct_TA.GetQuality
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProductQuality> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EProductQuality>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EProductQuality> UOnlineProduct_TA::GetQuality()
+TEnumAsByte<EProductQuality> UOnlineProduct_TA::GetQuality()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProduct_TA.GetQuality");
 
@@ -16362,10 +16362,10 @@ struct FRotator APlayerControllerBase_TA::GetSpectatorViewRotationDeltaRotation(
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bIsLocalPlayer                 (CPF_Parm)
-// TEnumAsByte<enum class EPartyChatCommands> PartyChatCommand               (CPF_Parm)
+// TEnumAsByte<EPartyChatCommands> PartyChatCommand               (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APlayerControllerBase_TA::PartyLobbyMessage_TA(const struct FUniqueNetId& InSenderId, const struct FString& PlayerName, const struct FString& Message, bool bIsLocalPlayer, TEnumAsByte<enum class EPartyChatCommands> PartyChatCommand)
+bool APlayerControllerBase_TA::PartyLobbyMessage_TA(const struct FUniqueNetId& InSenderId, const struct FString& PlayerName, const struct FString& Message, bool bIsLocalPlayer, TEnumAsByte<EPartyChatCommands> PartyChatCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.PartyLobbyMessage_TA");
 
@@ -16390,10 +16390,10 @@ bool APlayerControllerBase_TA::PartyLobbyMessage_TA(const struct FUniqueNetId& I
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void APlayerControllerBase_TA::Say_TA(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void APlayerControllerBase_TA::Say_TA(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.Say_TA");
 
@@ -16414,10 +16414,10 @@ void APlayerControllerBase_TA::Say_TA(const struct FString& Message, TEnumAsByte
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_HasOptionalParms, FUNC_Public, FUNC_NetServer)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void APlayerControllerBase_TA::ServerSay_TA(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void APlayerControllerBase_TA::ServerSay_TA(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.ServerSay_TA");
 
@@ -17178,11 +17178,11 @@ void APlayerController_TA::GetHearSoundTransform(struct FVector* OutLocation, st
 // Function TAGame.PlayerController_TA.ServerReportPlayer
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
 // Parameters:
-// TEnumAsByte<enum class EReportPlayerReason> Reason                         (CPF_Parm)
+// TEnumAsByte<EReportPlayerReason> Reason                         (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 
-void APlayerController_TA::ServerReportPlayer(TEnumAsByte<enum class EReportPlayerReason> Reason, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
+void APlayerController_TA::ServerReportPlayer(TEnumAsByte<EReportPlayerReason> Reason, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerReportPlayer");
 
@@ -17308,11 +17308,11 @@ void APlayerController_TA::ServerRequestSplitscreenJoin(const struct FUniqueNetI
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
 // struct FString                 PendingURL                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bIsSeamlessTravel              (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APlayerController_TA::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel)
+bool APlayerController_TA::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.PreClientTravel");
 
@@ -17431,12 +17431,12 @@ bool APlayerController_TA::ShouldBeMuted(class APlayerController_TA* Other)
 // Function TAGame.PlayerController_TA.IsCommunicationFiltered
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EVoiceFilter> Filter                         (CPF_Parm)
+// TEnumAsByte<EVoiceFilter>      Filter                         (CPF_Parm)
 // class APlayerController_TA*    Other                          (CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APlayerController_TA::IsCommunicationFiltered(TEnumAsByte<enum class EVoiceFilter> Filter, class APlayerController_TA* Other, bool bPreset)
+bool APlayerController_TA::IsCommunicationFiltered(TEnumAsByte<EVoiceFilter> Filter, class APlayerController_TA* Other, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.IsCommunicationFiltered");
 
@@ -17581,9 +17581,9 @@ struct FString APlayerController_TA::GetDebugMutePlayerName(const struct FUnique
 // Function TAGame.PlayerController_TA.ServerSetChatFilter
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
 // Parameters:
-// TEnumAsByte<enum class EVoiceFilter> InVoiceFilter                  (CPF_Parm)
+// TEnumAsByte<EVoiceFilter>      InVoiceFilter                  (CPF_Parm)
 
-void APlayerController_TA::ServerSetChatFilter(TEnumAsByte<enum class EVoiceFilter> InVoiceFilter)
+void APlayerController_TA::ServerSetChatFilter(TEnumAsByte<EVoiceFilter> InVoiceFilter)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerSetChatFilter");
 
@@ -17601,9 +17601,9 @@ void APlayerController_TA::ServerSetChatFilter(TEnumAsByte<enum class EVoiceFilt
 // Function TAGame.PlayerController_TA.ServerSetVoiceFilter
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
 // Parameters:
-// TEnumAsByte<enum class EVoiceFilter> InVoiceFilter                  (CPF_Parm)
+// TEnumAsByte<EVoiceFilter>      InVoiceFilter                  (CPF_Parm)
 
-void APlayerController_TA::ServerSetVoiceFilter(TEnumAsByte<enum class EVoiceFilter> InVoiceFilter)
+void APlayerController_TA::ServerSetVoiceFilter(TEnumAsByte<EVoiceFilter> InVoiceFilter)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerSetVoiceFilter");
 
@@ -17720,10 +17720,10 @@ void APlayerController_TA::ClientNotifyChatDisabled(float Time)
 // Parameters:
 // class APlayerReplicationInfo*  InPRI                          (CPF_Parm)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_Parm)
 
-void APlayerController_TA::ChatMessage_TA(class APlayerReplicationInfo* InPRI, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void APlayerController_TA::ChatMessage_TA(class APlayerReplicationInfo* InPRI, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ChatMessage_TA");
 
@@ -17745,10 +17745,10 @@ void APlayerController_TA::ChatMessage_TA(class APlayerReplicationInfo* InPRI, c
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_HasOptionalParms, FUNC_Public, FUNC_NetServer)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController_TA::ServerSay_TA(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void APlayerController_TA::ServerSay_TA(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerSay_TA");
 
@@ -17769,10 +17769,10 @@ void APlayerController_TA::ServerSay_TA(const struct FString& Message, TEnumAsBy
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController_TA::Say_TA(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void APlayerController_TA::Say_TA(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.Say_TA");
 
@@ -19887,10 +19887,10 @@ struct FString UProductAsset_Skin_TA::CheckCanSave()
 // Function TAGame.ProductAsset_Wheel_TA.GetMeshBoxExtent
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EWheelPosition> WheelPos                       (CPF_Parm)
+// TEnumAsByte<EWheelPosition>    WheelPos                       (CPF_Parm)
 // struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FVector UProductAsset_Wheel_TA::GetMeshBoxExtent(TEnumAsByte<enum class EWheelPosition> WheelPos)
+struct FVector UProductAsset_Wheel_TA::GetMeshBoxExtent(TEnumAsByte<EWheelPosition> WheelPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAsset_Wheel_TA.GetMeshBoxExtent");
 
@@ -20492,10 +20492,10 @@ void UProductAttribute_Painted_TA::STATIC_ApplyToBoost(class UProductAttribute_P
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
-// TEnumAsByte<enum class EPaintAttributeType> PaintType                      (CPF_Parm)
+// TEnumAsByte<EPaintAttributeType> PaintType                      (CPF_Parm)
 // struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FLinearColor UProductAttribute_Painted_TA::STATIC_GetPaintColor(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, TEnumAsByte<enum class EPaintAttributeType> PaintType)
+struct FLinearColor UProductAttribute_Painted_TA::STATIC_GetPaintColor(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, TEnumAsByte<EPaintAttributeType> PaintType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.GetPaintColor");
 
@@ -20808,10 +20808,10 @@ bool UProductDatabase_TA::STATIC_ContainsOnlineProducts()
 // Function TAGame.ProductDatabase_TA.StaticIsOnlineQuality
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProductQuality> Quality                        (CPF_Parm)
+// TEnumAsByte<EProductQuality>   Quality                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UProductDatabase_TA::STATIC_StaticIsOnlineQuality(TEnumAsByte<enum class EProductQuality> Quality)
+bool UProductDatabase_TA::STATIC_StaticIsOnlineQuality(TEnumAsByte<EProductQuality> Quality)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductDatabase_TA.StaticIsOnlineQuality");
 
@@ -20831,10 +20831,10 @@ bool UProductDatabase_TA::STATIC_StaticIsOnlineQuality(TEnumAsByte<enum class EP
 // Function TAGame.ProductDatabase_TA.IsOnlineUnlock
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EUnlockMethod> UnlockMethod                   (CPF_Parm)
+// TEnumAsByte<EUnlockMethod>     UnlockMethod                   (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UProductDatabase_TA::STATIC_IsOnlineUnlock(TEnumAsByte<enum class EUnlockMethod> UnlockMethod)
+bool UProductDatabase_TA::STATIC_IsOnlineUnlock(TEnumAsByte<EUnlockMethod> UnlockMethod)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductDatabase_TA.IsOnlineUnlock");
 
@@ -21352,9 +21352,9 @@ int UProductDatabase_TA::GetProductID(const struct FName& ProductName)
 // (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FProductFilter          Filter                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EProductFilterLogLevel> LogLevel                       (CPF_Parm)
+// TEnumAsByte<EProductFilterLogLevel> LogLevel                       (CPF_Parm)
 
-void UProductFilter_TA::STATIC_AddLogLevel(TEnumAsByte<enum class EProductFilterLogLevel> LogLevel, struct FProductFilter* Filter)
+void UProductFilter_TA::STATIC_AddLogLevel(TEnumAsByte<EProductFilterLogLevel> LogLevel, struct FProductFilter* Filter)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductFilter_TA.AddLogLevel");
 
@@ -21719,10 +21719,10 @@ void UProductLoader_TA::EventAllProductsLoaded(class UProductLoader_TA* Loader)
 // Function TAGame.ProductPaint_TA.GetPaintColorByType
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPaintAttributeType> PaintType                      (CPF_Parm)
+// TEnumAsByte<EPaintAttributeType> PaintType                      (CPF_Parm)
 // struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FLinearColor UProductPaint_TA::GetPaintColorByType(TEnumAsByte<enum class EPaintAttributeType> PaintType)
+struct FLinearColor UProductPaint_TA::GetPaintColorByType(TEnumAsByte<EPaintAttributeType> PaintType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductPaint_TA.GetPaintColorByType");
 
@@ -21829,9 +21829,9 @@ struct FString UProduct_TA::GetDisplayLabelSlot()
 // Function TAGame.Product_TA.GetQuality
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProductQuality> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EProductQuality>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EProductQuality> UProduct_TA::GetQuality()
+TEnumAsByte<EProductQuality> UProduct_TA::GetQuality()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Product_TA.GetQuality");
 
@@ -22023,9 +22023,9 @@ class UProductAttribute_TA* UProduct_TA::GetAttribute(class UClass* AttributeCla
 // Function TAGame.Product_TA.GetPlatforms
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TArray<TEnumAsByte<enum class EConsoleType>> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<TEnumAsByte<EConsoleType>> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-TArray<TEnumAsByte<enum class EConsoleType>> UProduct_TA::GetPlatforms()
+TArray<TEnumAsByte<EConsoleType>> UProduct_TA::GetPlatforms()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Product_TA.GetPlatforms");
 
@@ -22194,9 +22194,9 @@ void UProductThumbnail_TA::ResetRenderCount()
 // Parameters:
 // class UProductAsset_TA*        Asset                          (CPF_Parm)
 // class UOnlineProduct_TA*       OnlineProduct                  (CPF_Parm)
-// TEnumAsByte<enum class EProductThumbnailSize> Size                           (CPF_Parm)
+// TEnumAsByte<EProductThumbnailSize> Size                           (CPF_Parm)
 
-void UProductThumbnailQueue_TA::CancelRenderThumbnail(class UProductAsset_TA* Asset, class UOnlineProduct_TA* OnlineProduct, TEnumAsByte<enum class EProductThumbnailSize> Size)
+void UProductThumbnailQueue_TA::CancelRenderThumbnail(class UProductAsset_TA* Asset, class UOnlineProduct_TA* OnlineProduct, TEnumAsByte<EProductThumbnailSize> Size)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductThumbnailQueue_TA.CancelRenderThumbnail");
 
@@ -22240,10 +22240,10 @@ void UProductThumbnailQueue_TA::CancelRenderThumbnails(class UObject* Listener)
 // Parameters:
 // class UProductAsset_TA*        Asset                          (CPF_Parm)
 // class UOnlineProduct_TA*       OnlineProduct                  (CPF_Parm)
-// TEnumAsByte<enum class EProductThumbnailSize> Size                           (CPF_Parm)
+// TEnumAsByte<EProductThumbnailSize> Size                           (CPF_Parm)
 // struct FScriptDelegate         OnRendered                     (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 
-void UProductThumbnailQueue_TA::RenderThumbnail(class UProductAsset_TA* Asset, class UOnlineProduct_TA* OnlineProduct, TEnumAsByte<enum class EProductThumbnailSize> Size, const struct FScriptDelegate& OnRendered)
+void UProductThumbnailQueue_TA::RenderThumbnail(class UProductAsset_TA* Asset, class UOnlineProduct_TA* OnlineProduct, TEnumAsByte<EProductThumbnailSize> Size, const struct FScriptDelegate& OnRendered)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductThumbnailQueue_TA.RenderThumbnail");
 
@@ -22477,9 +22477,9 @@ void ABall_Breakout_TA::OnRigidBodyCollision(const struct FAccumulatedRigidBodyC
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_OptionalParm, CPF_Parm)
 
-void ABall_Breakout_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_Breakout_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_Breakout_TA.OnCarTouch");
 
@@ -23010,9 +23010,9 @@ void AVehicle_TA::HandleLocalPlayerJoin(class ULocalPlayer* NewPlayer)
 // (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // bool                           bIsLocal                       (CPF_Parm)
-// TEnumAsByte<enum class ESplitScreenPosition> SplitScreenPosition            (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ESplitScreenPosition> SplitScreenPosition            (CPF_OptionalParm, CPF_Parm)
 
-void AVehicle_TA::InitAudioSettings(bool bIsLocal, TEnumAsByte<enum class ESplitScreenPosition> SplitScreenPosition)
+void AVehicle_TA::InitAudioSettings(bool bIsLocal, TEnumAsByte<ESplitScreenPosition> SplitScreenPosition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Vehicle_TA.InitAudioSettings");
 
@@ -24750,10 +24750,10 @@ void USaveObjectManager_TA::SetNewFileSaveCount(int Count)
 // Function TAGame.SaveObjectManager_TA.HandleSaveResult
 // (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class ESaveGameResult> Result                         (CPF_Parm)
+// TEnumAsByte<ESaveGameResult>   Result                         (CPF_Parm)
 // struct FSaveObjectResult       StructInitializer__s_327729354958C1690060BB8C078C5770 (CPF_Const, CPF_OutParm)
 
-void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<enum class ESaveGameResult> Result, struct FSaveObjectResult* StructInitializer__s_327729354958C1690060BB8C078C5770)
+void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<ESaveGameResult> Result, struct FSaveObjectResult* StructInitializer__s_327729354958C1690060BB8C078C5770)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.HandleSaveResult");
 
@@ -24774,10 +24774,10 @@ void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<enum class ESaveGameRes
 // Function TAGame.SaveObjectManager_TA.GetSaveError
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class ESaveGameResult> Result                         (CPF_Parm)
+// TEnumAsByte<ESaveGameResult>   Result                         (CPF_Parm)
 // class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UError_X* USaveObjectManager_TA::GetSaveError(TEnumAsByte<enum class ESaveGameResult> Result)
+class UError_X* USaveObjectManager_TA::GetSaveError(TEnumAsByte<ESaveGameResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.GetSaveError");
 
@@ -24797,10 +24797,10 @@ class UError_X* USaveObjectManager_TA::GetSaveError(TEnumAsByte<enum class ESave
 // Function TAGame.SaveObjectManager_TA.GetLoadError
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EBasicLoadResult> InResult                       (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  InResult                       (CPF_Parm)
 // class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UError_X* USaveObjectManager_TA::GetLoadError(TEnumAsByte<enum class EBasicLoadResult> InResult)
+class UError_X* USaveObjectManager_TA::GetLoadError(TEnumAsByte<EBasicLoadResult> InResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.GetLoadError");
 
@@ -25139,9 +25139,9 @@ void USaveObjectManager_TA::LoadGameDataAsync(int ControllerIndex, class UObject
 // int                            Version                        (CPF_Parm)
 // struct FString                 PathName                       (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bExactFileMatch                (CPF_Parm)
-// TEnumAsByte<enum class EBasicLoadResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBasicLoadResult>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBasicLoadResult> USaveObjectManager_TA::LoadGameData(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
+TEnumAsByte<EBasicLoadResult> USaveObjectManager_TA::LoadGameData(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.LoadGameData");
 
@@ -25211,9 +25211,9 @@ bool USaveObjectManager_TA::IsSaving()
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // int                            ControllerIndex                (CPF_Parm)
-// TEnumAsByte<enum class ESaveGameResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESaveGameResult>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::UpdateSaveResult(int ControllerIndex)
+TEnumAsByte<ESaveGameResult> USaveObjectManager_TA::UpdateSaveResult(int ControllerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.UpdateSaveResult");
 
@@ -25239,9 +25239,9 @@ TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::UpdateSaveResult(
 // int                            Version                        (CPF_Parm)
 // struct FString                 PathName                       (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bExactFileMatch                (CPF_Parm)
-// TEnumAsByte<enum class ESaveGameResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESaveGameResult>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::SaveGameDataAsync(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
+TEnumAsByte<ESaveGameResult> USaveObjectManager_TA::SaveGameDataAsync(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.SaveGameDataAsync");
 
@@ -25271,9 +25271,9 @@ TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::SaveGameDataAsync
 // int                            Version                        (CPF_Parm)
 // struct FString                 PathName                       (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bExactFileMatch                (CPF_Parm)
-// TEnumAsByte<enum class ESaveGameResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESaveGameResult>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::SaveGameData(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
+TEnumAsByte<ESaveGameResult> USaveObjectManager_TA::SaveGameData(int ControllerIndex, class UObject* RootObj, int Version, const struct FString& PathName, bool bExactFileMatch)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.SaveGameData");
 
@@ -25299,9 +25299,9 @@ TEnumAsByte<enum class ESaveGameResult> USaveObjectManager_TA::SaveGameData(int 
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // TArray<struct FString>         Files                          (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 
-void USaveObjectManager_TA::OnFilesListed(TArray<struct FString> Files, TEnumAsByte<enum class EBasicLoadResult> Result)
+void USaveObjectManager_TA::OnFilesListed(TArray<struct FString> Files, TEnumAsByte<EBasicLoadResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.OnFilesListed");
 
@@ -26494,13 +26494,13 @@ void UCarMeshComponentBase_TA::SetTeamPaint(const struct FLoadoutTeamPaint& Pain
 // Function TAGame.CarMeshComponentBase_TA.CreateWheelMesh
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults, FUNC_K2Call)
 // Parameters:
-// TEnumAsByte<enum class EWheelPosition> WheelPos                       (CPF_Parm)
+// TEnumAsByte<EWheelPosition>    WheelPos                       (CPF_Parm)
 // float                          WheelRadius                    (CPF_Parm)
 // float                          WheelWidth                     (CPF_Parm)
 // float                          WheelOffset                    (CPF_Parm)
 // struct FName                   BoneName                       (CPF_Parm)
 
-void UCarMeshComponentBase_TA::CreateWheelMesh(TEnumAsByte<enum class EWheelPosition> WheelPos, float WheelRadius, float WheelWidth, float WheelOffset, const struct FName& BoneName)
+void UCarMeshComponentBase_TA::CreateWheelMesh(TEnumAsByte<EWheelPosition> WheelPos, float WheelRadius, float WheelWidth, float WheelOffset, const struct FName& BoneName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarMeshComponentBase_TA.CreateWheelMesh");
 
@@ -29028,9 +29028,9 @@ void AVoteActor_TA::CheckFinished()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class APRI_TA*                 PRI                            (CPF_Parm)
-// TEnumAsByte<enum class EVoteStatus> Status                         (CPF_Parm)
+// TEnumAsByte<EVoteStatus>       Status                         (CPF_Parm)
 
-void AVoteActor_TA::SetVoteStatus(class APRI_TA* PRI, TEnumAsByte<enum class EVoteStatus> Status)
+void AVoteActor_TA::SetVoteStatus(class APRI_TA* PRI, TEnumAsByte<EVoteStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VoteActor_TA.SetVoteStatus");
 
@@ -29604,9 +29604,9 @@ void APRI_TA::Destroyed()
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
 // Parameters:
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 
-void APRI_TA::ClientUnlockAchievement(int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType)
+void APRI_TA::ClientUnlockAchievement(int AchievementId, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.ClientUnlockAchievement");
 
@@ -30061,9 +30061,9 @@ void APRI_TA::SetWaitingPlayer(bool B)
 // Function TAGame.PRI_TA.SetPawnType
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPawnType> NewPawnType                    (CPF_Parm)
+// TEnumAsByte<EPawnType>         NewPawnType                    (CPF_Parm)
 
-void APRI_TA::SetPawnType(TEnumAsByte<enum class EPawnType> NewPawnType)
+void APRI_TA::SetPawnType(TEnumAsByte<EPawnType> NewPawnType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.SetPawnType");
 
@@ -30181,9 +30181,9 @@ void APRI_TA::ServerChangeTeam(int TeamNum)
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
 // Parameters:
 // class AVoteActor_TA*           VoteActor                      (CPF_Parm)
-// TEnumAsByte<enum class EVoteStatus> NewVote                        (CPF_Parm)
+// TEnumAsByte<EVoteStatus>       NewVote                        (CPF_Parm)
 
-void APRI_TA::ServerSetVoteStatus(class AVoteActor_TA* VoteActor, TEnumAsByte<enum class EVoteStatus> NewVote)
+void APRI_TA::ServerSetVoteStatus(class AVoteActor_TA* VoteActor, TEnumAsByte<EVoteStatus> NewVote)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.ServerSetVoteStatus");
 
@@ -32006,9 +32006,9 @@ void APRI_TA::ReplicatedEvent(const struct FName& VarName)
 // Parameters:
 // class APRI_TA*                 PRI                            (CPF_Parm)
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 
-void APRI_TA::EventServerUnlockedAchievement(class APRI_TA* PRI, int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType)
+void APRI_TA::EventServerUnlockedAchievement(class APRI_TA* PRI, int AchievementId, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.EventServerUnlockedAchievement");
 
@@ -34359,12 +34359,12 @@ bool UAchievementManager_TA::PlayerIsOnATeam()
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UAchievementManager_TA::NotifyKeyInput(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UAchievementManager_TA::NotifyKeyInput(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.NotifyKeyInput");
 
@@ -36162,10 +36162,10 @@ void UAchievementManager_TA::IncrementStat(int AchievementId, int Progress)
 // Function TAGame.AchievementManager_TA.AchievementTypeExistsOnPlatform
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UAchievementManager_TA::AchievementTypeExistsOnPlatform(TEnumAsByte<enum class EAchievementType> AchievementType)
+bool UAchievementManager_TA::AchievementTypeExistsOnPlatform(TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.AchievementTypeExistsOnPlatform");
 
@@ -36185,10 +36185,10 @@ bool UAchievementManager_TA::AchievementTypeExistsOnPlatform(TEnumAsByte<enum cl
 // Function TAGame.AchievementManager_TA.GetAchievementTypeMax
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UAchievementManager_TA::GetAchievementTypeMax(TEnumAsByte<enum class EAchievementType> AchievementType)
+int UAchievementManager_TA::GetAchievementTypeMax(TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetAchievementTypeMax");
 
@@ -36209,10 +36209,10 @@ int UAchievementManager_TA::GetAchievementTypeMax(TEnumAsByte<enum class EAchiev
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // int                            InAchievementID                (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_OptionalParm, CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UAchievementManager_TA::GetAchievementIconID(int InAchievementID, TEnumAsByte<enum class EAchievementType> AchievementType)
+int UAchievementManager_TA::GetAchievementIconID(int InAchievementID, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetAchievementIconID");
 
@@ -36234,10 +36234,10 @@ int UAchievementManager_TA::GetAchievementIconID(int InAchievementID, TEnumAsByt
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
 // Parameters:
 // int                            InAchievementID                (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_OptionalParm, CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UAchievementManager_TA::GetActualAchievementID(int InAchievementID, TEnumAsByte<enum class EAchievementType> AchievementType)
+int UAchievementManager_TA::GetActualAchievementID(int InAchievementID, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetActualAchievementID");
 
@@ -36282,10 +36282,10 @@ bool UAchievementManager_TA::HasUnlockAuthority(const struct FAchievementInfo& A
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
 // Parameters:
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_OptionalParm, CPF_Parm)
 // struct FAchievementInfo        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FAchievementInfo UAchievementManager_TA::GetAchievementInfo(int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType)
+struct FAchievementInfo UAchievementManager_TA::GetAchievementInfo(int AchievementId, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetAchievementInfo");
 
@@ -36307,11 +36307,11 @@ struct FAchievementInfo UAchievementManager_TA::GetAchievementInfo(int Achieveme
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_OptionalParm, CPF_Parm)
 // bool                           bIgnoreAuthority               (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UAchievementManager_TA::IsUnlocked(int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType, bool bIgnoreAuthority)
+bool UAchievementManager_TA::IsUnlocked(int AchievementId, TEnumAsByte<EAchievementType> AchievementType, bool bIgnoreAuthority)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.IsUnlocked");
 
@@ -36334,10 +36334,10 @@ bool UAchievementManager_TA::IsUnlocked(int AchievementId, TEnumAsByte<enum clas
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 // bool                           bUnlocked                      (CPF_Parm)
 
-void UAchievementManager_TA::SetAchievementUnlocked(int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType, bool bUnlocked)
+void UAchievementManager_TA::SetAchievementUnlocked(int AchievementId, TEnumAsByte<EAchievementType> AchievementType, bool bUnlocked)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.SetAchievementUnlocked");
 
@@ -36358,10 +36358,10 @@ void UAchievementManager_TA::SetAchievementUnlocked(int AchievementId, TEnumAsBy
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
 // Parameters:
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_OptionalParm, CPF_Parm)
 // bool                           bIgnoreAuthority               (CPF_OptionalParm, CPF_Parm)
 
-void UAchievementManager_TA::UnlockAchievement(int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType, bool bIgnoreAuthority)
+void UAchievementManager_TA::UnlockAchievement(int AchievementId, TEnumAsByte<EAchievementType> AchievementType, bool bIgnoreAuthority)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.UnlockAchievement");
 
@@ -36383,9 +36383,9 @@ void UAchievementManager_TA::UnlockAchievement(int AchievementId, TEnumAsByte<en
 // Parameters:
 // class APRI_TA*                 PRI                            (CPF_Parm)
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 
-void UAchievementManager_TA::HandleServerUnlockedAchievement(class APRI_TA* PRI, int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType)
+void UAchievementManager_TA::HandleServerUnlockedAchievement(class APRI_TA* PRI, int AchievementId, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleServerUnlockedAchievement");
 
@@ -36407,9 +36407,9 @@ void UAchievementManager_TA::HandleServerUnlockedAchievement(class APRI_TA* PRI,
 // Parameters:
 // class UAchievementManager_TA*  Manager                        (CPF_Parm)
 // int                            AchievementId                  (CPF_Parm)
-// TEnumAsByte<enum class EAchievementType> AchievementType                (CPF_Parm)
+// TEnumAsByte<EAchievementType>  AchievementType                (CPF_Parm)
 
-void UAchievementManager_TA::EventAchievementUnlocked(class UAchievementManager_TA* Manager, int AchievementId, TEnumAsByte<enum class EAchievementType> AchievementType)
+void UAchievementManager_TA::EventAchievementUnlocked(class UAchievementManager_TA* Manager, int AchievementId, TEnumAsByte<EAchievementType> AchievementType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.EventAchievementUnlocked");
 
@@ -42640,9 +42640,9 @@ void UProfile_TA::SetCrossPlayDisabled(bool bDisabled)
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FCustomMatchSettings    Settings                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ECustomMatchSettingsType> Type                           (CPF_Parm)
+// TEnumAsByte<ECustomMatchSettingsType> Type                           (CPF_Parm)
 
-void UProfile_TA::SetCustomMatchSettings(const struct FCustomMatchSettings& Settings, TEnumAsByte<enum class ECustomMatchSettingsType> Type)
+void UProfile_TA::SetCustomMatchSettings(const struct FCustomMatchSettings& Settings, TEnumAsByte<ECustomMatchSettingsType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.SetCustomMatchSettings");
 
@@ -42661,10 +42661,10 @@ void UProfile_TA::SetCustomMatchSettings(const struct FCustomMatchSettings& Sett
 // Function TAGame.Profile_TA.GetCustomMatchSettings
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class ECustomMatchSettingsType> Type                           (CPF_Parm)
+// TEnumAsByte<ECustomMatchSettingsType> Type                           (CPF_Parm)
 // struct FCustomMatchSettings    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FCustomMatchSettings UProfile_TA::GetCustomMatchSettings(TEnumAsByte<enum class ECustomMatchSettingsType> Type)
+struct FCustomMatchSettings UProfile_TA::GetCustomMatchSettings(TEnumAsByte<ECustomMatchSettingsType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.GetCustomMatchSettings");
 
@@ -42684,10 +42684,10 @@ struct FCustomMatchSettings UProfile_TA::GetCustomMatchSettings(TEnumAsByte<enum
 // Function TAGame.Profile_TA.GetGameTags
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECustomMatchSettingsType> Type                           (CPF_Parm)
+// TEnumAsByte<ECustomMatchSettingsType> Type                           (CPF_Parm)
 // class UGameTags_TA*            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UGameTags_TA* UProfile_TA::GetGameTags(TEnumAsByte<enum class ECustomMatchSettingsType> Type)
+class UGameTags_TA* UProfile_TA::GetGameTags(TEnumAsByte<ECustomMatchSettingsType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.GetGameTags");
 
@@ -42922,11 +42922,11 @@ int UProfile_TA::GetProductStatValue(int ProductID)
 // Function TAGame.Profile_TA.GetStatValue
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETAStatType> StatType                       (CPF_Parm)
+// TEnumAsByte<ETAStatType>       StatType                       (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UProfile_TA::GetStatValue(TEnumAsByte<enum class ETAStatType> StatType, const struct FName& Id)
+int UProfile_TA::GetStatValue(TEnumAsByte<ETAStatType> StatType, const struct FName& Id)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.GetStatValue");
 
@@ -42947,11 +42947,11 @@ int UProfile_TA::GetStatValue(TEnumAsByte<enum class ETAStatType> StatType, cons
 // Function TAGame.Profile_TA.IncrementStatValue
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETAStatType> StatType                       (CPF_Parm)
+// TEnumAsByte<ETAStatType>       StatType                       (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
 // int                            Amount                         (CPF_OptionalParm, CPF_Parm)
 
-void UProfile_TA::IncrementStatValue(TEnumAsByte<enum class ETAStatType> StatType, const struct FName& Id, int Amount)
+void UProfile_TA::IncrementStatValue(TEnumAsByte<ETAStatType> StatType, const struct FName& Id, int Amount)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.IncrementStatValue");
 
@@ -42971,11 +42971,11 @@ void UProfile_TA::IncrementStatValue(TEnumAsByte<enum class ETAStatType> StatTyp
 // Function TAGame.Profile_TA.SetStatValue
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETAStatType> StatType                       (CPF_Parm)
+// TEnumAsByte<ETAStatType>       StatType                       (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
 // int                            Value                          (CPF_Parm)
 
-void UProfile_TA::SetStatValue(TEnumAsByte<enum class ETAStatType> StatType, const struct FName& Id, int Value)
+void UProfile_TA::SetStatValue(TEnumAsByte<ETAStatType> StatType, const struct FName& Id, int Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.SetStatValue");
 
@@ -46262,9 +46262,9 @@ void USaveData_TA::SetSafeZone(float Value)
 // Function TAGame.SaveData_TA.SetOutputType
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EAkOutputType> Value                          (CPF_Parm)
+// TEnumAsByte<EAkOutputType>     Value                          (CPF_Parm)
 
-void USaveData_TA::SetOutputType(TEnumAsByte<enum class EAkOutputType> Value)
+void USaveData_TA::SetOutputType(TEnumAsByte<EAkOutputType> Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.SetOutputType");
 
@@ -46282,9 +46282,9 @@ void USaveData_TA::SetOutputType(TEnumAsByte<enum class EAkOutputType> Value)
 // Function TAGame.SaveData_TA.SetControllerSoundMode
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EControllerSoundMode> NewValue                       (CPF_Parm)
+// TEnumAsByte<EControllerSoundMode> NewValue                       (CPF_Parm)
 
-void USaveData_TA::SetControllerSoundMode(TEnumAsByte<enum class EControllerSoundMode> NewValue)
+void USaveData_TA::SetControllerSoundMode(TEnumAsByte<EControllerSoundMode> NewValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.SetControllerSoundMode");
 
@@ -47418,9 +47418,9 @@ struct FVector AGameEvent_Tutorial_TA::GetBallInitialVelocity(const struct FVect
 // Function TAGame.GameEvent_Tutorial_TA.GetTrainingType
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ETrainingType>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ETrainingType> AGameEvent_Tutorial_TA::GetTrainingType()
+TEnumAsByte<ETrainingType> AGameEvent_Tutorial_TA::GetTrainingType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_TA.GetTrainingType");
 
@@ -50592,10 +50592,10 @@ void UActivityFeedManager_TA::Init(class APlayerControllerBase_TA* InPC)
 // Function TAGame.ActivityFeedManager_TA.PostActivtyFeedSingleString
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EActivityFeedType> ActivityFeedID                 (CPF_Parm)
+// TEnumAsByte<EActivityFeedType> ActivityFeedID                 (CPF_Parm)
 // struct FString                 ReplaceString                  (CPF_Parm, CPF_NeedCtorLink)
 
-void UActivityFeedManager_TA::PostActivtyFeedSingleString(TEnumAsByte<enum class EActivityFeedType> ActivityFeedID, const struct FString& ReplaceString)
+void UActivityFeedManager_TA::PostActivtyFeedSingleString(TEnumAsByte<EActivityFeedType> ActivityFeedID, const struct FString& ReplaceString)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ActivityFeedManager_TA.PostActivtyFeedSingleString");
 
@@ -50614,10 +50614,10 @@ void UActivityFeedManager_TA::PostActivtyFeedSingleString(TEnumAsByte<enum class
 // Function TAGame.ActivityFeedManager_TA.PostActivityFeedMessage
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EActivityFeedType> ActivityFeedID                 (CPF_Parm)
+// TEnumAsByte<EActivityFeedType> ActivityFeedID                 (CPF_Parm)
 // TArray<struct FString>         StringReplaceList              (CPF_Parm, CPF_NeedCtorLink)
 
-void UActivityFeedManager_TA::PostActivityFeedMessage(TEnumAsByte<enum class EActivityFeedType> ActivityFeedID, TArray<struct FString> StringReplaceList)
+void UActivityFeedManager_TA::PostActivityFeedMessage(TEnumAsByte<EActivityFeedType> ActivityFeedID, TArray<struct FString> StringReplaceList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ActivityFeedManager_TA.PostActivityFeedMessage");
 
@@ -52963,9 +52963,9 @@ bool UBTAction_MoveTo::HasPassedTarget()
 // Function TAGame.BTAction_MoveTo.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_MoveTo::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_MoveTo::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_MoveTo.OnTargetExecute");
 
@@ -52984,9 +52984,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_MoveTo::OnTargetExecute()
 // Function TAGame.BTAction_MoveTo.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_MoveTo::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_MoveTo::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_MoveTo.OnStart");
 
@@ -53046,9 +53046,9 @@ void UBTMoveModifier::AdjustDestination(const struct FVector& Goal, struct FVect
 // Function TAGame.BTAction_BlockGoal.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_BlockGoal::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_BlockGoal::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_BlockGoal.OnTargetExecute");
 
@@ -53130,9 +53130,9 @@ struct FVector UBTAction_HitBall::GetLeadDestination()
 // Function TAGame.BTAction_HitBall.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_HitBall::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_HitBall::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_HitBall.OnTargetExecute");
 
@@ -53226,9 +53226,9 @@ void UBTAction_CatchBall::DriveTo(const struct FVector& Destination)
 // Function TAGame.BTAction_CatchBall.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_CatchBall::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_CatchBall::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_CatchBall.OnTargetExecute");
 
@@ -53326,9 +53326,9 @@ void UBTAction_Jump::GotoJumpState(const struct FName& StateName)
 // Function TAGame.BTAction_Jump.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Jump::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_Jump::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Jump.OnStart");
 
@@ -53424,9 +53424,9 @@ struct FVector UBTAction_DodgeHit::GetDodgeVelocity(const struct FVector& DodgeI
 // Function TAGame.BTAction_DodgeHit.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_DodgeHit::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_DodgeHit::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_DodgeHit.OnStart");
 
@@ -53466,9 +53466,9 @@ float UBTAction_DodgeHit::GetImpactTime()
 // Function TAGame.BTAction_Face.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Face::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_Face::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Face.OnTargetExecute");
 
@@ -53507,9 +53507,9 @@ void UBTAction_Face::SetMovingForward(bool bForward)
 // Function TAGame.BTAction_Face.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Face::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_Face::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Face.OnStart");
 
@@ -53528,9 +53528,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_Face::OnStart()
 // Function TAGame.BTAction_Input.OnExecute
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Input::OnExecute()
+TEnumAsByte<EBTStatus> UBTAction_Input::OnExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Input.OnExecute");
 
@@ -53549,9 +53549,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_Input::OnExecute()
 // Function TAGame.BTAction_PowerSlide.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_PowerSlide::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_PowerSlide::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_PowerSlide.OnTargetExecute");
 
@@ -53570,9 +53570,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_PowerSlide::OnTargetExecute()
 // Function TAGame.BTAction_PowerSlide.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_PowerSlide::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_PowerSlide::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_PowerSlide.OnStart");
 
@@ -53591,9 +53591,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_PowerSlide::OnStart()
 // Function TAGame.BTAction_Stop.OnExecute
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Stop::OnExecute()
+TEnumAsByte<EBTStatus> UBTAction_Stop::OnExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Stop.OnExecute");
 
@@ -53612,9 +53612,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_Stop::OnExecute()
 // Function TAGame.BTAction_Stop.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Stop::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_Stop::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Stop.OnStart");
 
@@ -53660,9 +53660,9 @@ bool UBTAction_Test::GetAimDir(const struct FVector& Destination, struct FVector
 // Function TAGame.BTAction_Test.OnTargetExecute
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Test::OnTargetExecute()
+TEnumAsByte<EBTStatus> UBTAction_Test::OnTargetExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Test.OnTargetExecute");
 
@@ -53681,9 +53681,9 @@ TEnumAsByte<enum class EBTStatus> UBTAction_Test::OnTargetExecute()
 // Function TAGame.BTAction_Test.OnStart
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_Test::OnStart()
+TEnumAsByte<EBTStatus> UBTAction_Test::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_Test.OnStart");
 
@@ -53723,9 +53723,9 @@ struct FVector UBTAction_Test::GetRandomFieldLocation()
 // Function TAGame.BTAction_WiggleTires.OnExecute
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EBTStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBTStatus>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBTStatus> UBTAction_WiggleTires::OnExecute()
+TEnumAsByte<EBTStatus> UBTAction_WiggleTires::OnExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTAction_WiggleTires.OnExecute");
 
@@ -54567,9 +54567,9 @@ bool UBTC_TimeSinceBallHit::GetResult()
 // Parameters:
 // class ABall_TA*                InBall                         (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UBTC_TimeSinceBallHit::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UBTC_TimeSinceBallHit::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.BTC_TimeSinceBallHit.HandleCarTouch");
 
@@ -56619,12 +56619,12 @@ bool UGameViewportClient_TA::HandleSplitScreenJoinAsync(int ControllerId)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGameViewportClient_TA::HandleKeyPress(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UGameViewportClient_TA::HandleKeyPress(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameViewportClient_TA.HandleKeyPress");
 
@@ -56925,11 +56925,11 @@ void UGameViewportClient_TA::DrawTransition(class UCanvas* Canvas)
 // Function TAGame.GameViewportClient_TA.NotifyConnectionError
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProgressMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<EProgressMessageType> MessageType                    (CPF_Parm)
 // struct FString                 Message                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 
-void UGameViewportClient_TA::NotifyConnectionError(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
+void UGameViewportClient_TA::NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameViewportClient_TA.NotifyConnectionError");
 
@@ -58488,9 +58488,9 @@ struct FName AGameInfo_GFxMenu_TA::SwapPremiumCarTo(class UDLCPack_TA* DLCPack, 
 // Function TAGame.GameInfo_GFxMenu_TA.TriggerUIStateChangeEvents
 // (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
 // Parameters:
-// TEnumAsByte<enum class EUIMenuState> UIState                        (CPF_Parm)
+// TEnumAsByte<EUIMenuState>      UIState                        (CPF_Parm)
 
-void AGameInfo_GFxMenu_TA::TriggerUIStateChangeEvents(TEnumAsByte<enum class EUIMenuState> UIState)
+void AGameInfo_GFxMenu_TA::TriggerUIStateChangeEvents(TEnumAsByte<EUIMenuState> UIState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.TriggerUIStateChangeEvents");
 
@@ -58509,9 +58509,9 @@ void AGameInfo_GFxMenu_TA::TriggerUIStateChangeEvents(TEnumAsByte<enum class EUI
 // (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
 // Parameters:
 // class ULocalPlayer_TA*         Player                         (CPF_Parm)
-// TEnumAsByte<enum class EUIMenuState> UIState                        (CPF_Parm)
+// TEnumAsByte<EUIMenuState>      UIState                        (CPF_Parm)
 
-void AGameInfo_GFxMenu_TA::SetUIState(class ULocalPlayer_TA* Player, TEnumAsByte<enum class EUIMenuState> UIState)
+void AGameInfo_GFxMenu_TA::SetUIState(class ULocalPlayer_TA* Player, TEnumAsByte<EUIMenuState> UIState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.SetUIState");
 
@@ -65384,9 +65384,9 @@ void ACrowdActor_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ACrowdActor_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ACrowdActor_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CrowdActor_TA.HandleCarTouch");
 
@@ -66191,9 +66191,9 @@ void AStatFactory_TA::OnGoalScored(class AGameEvent_Soccar_TA* InGameEvent, clas
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void AStatFactory_TA::OnCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void AStatFactory_TA::OnCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.StatFactory_TA.OnCarTouch");
 
@@ -68890,12 +68890,12 @@ void UDebugHelpMenu_TA::ExecuteItem(int CatIdx, int ItemIdx)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UDebugHelpMenu_TA::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UDebugHelpMenu_TA::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.DebugHelpMenu_TA.HandleInputKey");
 
@@ -70451,12 +70451,12 @@ void AHUDBase_TA::ReceiveMessage(class UMessage_TA* Message, const struct FStrin
 // int                            Team                           (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bLocalPlayer                   (CPF_Parm)
 // bool                           bTransient                     (CPF_OptionalParm, CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void AHUDBase_TA::AddChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bLocalPlayer, bool bTransient, bool bPreset)
+void AHUDBase_TA::AddChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bLocalPlayer, bool bTransient, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.HUDBase_TA.AddChatMessage");
 
@@ -70502,11 +70502,11 @@ void AHUDBase_TA::OnChatMessage(const struct FChatMessage& NewMsg)
 // Parameters:
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // class APlayerReplicationInfo*  SenderPRI                      (CPF_Parm)
-// TEnumAsByte<enum class EPartyChatCommands> PartyChatCommand               (CPF_Parm)
+// TEnumAsByte<EPartyChatCommands> PartyChatCommand               (CPF_Parm)
 
-void AHUDBase_TA::LobbyMessage_TA(const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, class APlayerReplicationInfo* SenderPRI, TEnumAsByte<enum class EPartyChatCommands> PartyChatCommand)
+void AHUDBase_TA::LobbyMessage_TA(const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, class APlayerReplicationInfo* SenderPRI, TEnumAsByte<EPartyChatCommands> PartyChatCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.HUDBase_TA.LobbyMessage_TA");
 
@@ -70530,10 +70530,10 @@ void AHUDBase_TA::LobbyMessage_TA(const struct FString& PlayerName, const struct
 // Parameters:
 // class APlayerReplicationInfo*  PRI                            (CPF_Parm)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bPreset                        (CPF_Parm)
 
-void AHUDBase_TA::Message_TA(class APlayerReplicationInfo* PRI, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bPreset)
+void AHUDBase_TA::Message_TA(class APlayerReplicationInfo* PRI, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.HUDBase_TA.Message_TA");
 
@@ -73272,10 +73272,10 @@ class URPC_MatchComplete_TA* URPC_MatchComplete_TA::SetMatchData(TArray<struct F
 // Function TAGame.RPC_MatchComplete_TA.SetGameVersion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EGameVersion> InGameVersion                  (CPF_Parm)
+// TEnumAsByte<EGameVersion>      InGameVersion                  (CPF_Parm)
 // class URPC_MatchComplete_TA*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class URPC_MatchComplete_TA* URPC_MatchComplete_TA::SetGameVersion(TEnumAsByte<enum class EGameVersion> InGameVersion)
+class URPC_MatchComplete_TA* URPC_MatchComplete_TA::SetGameVersion(TEnumAsByte<EGameVersion> InGameVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_MatchComplete_TA.SetGameVersion");
 
@@ -74191,9 +74191,9 @@ void UTutorial_TA::MultipleChoice_Button0(class UGFxModal_X* Modal)
 // Function TAGame.Tutorial_TA.ForceActivateOutput
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETutorialOutput> Output                         (CPF_Parm)
+// TEnumAsByte<ETutorialOutput>   Output                         (CPF_Parm)
 
-void UTutorial_TA::ForceActivateOutput(TEnumAsByte<enum class ETutorialOutput> Output)
+void UTutorial_TA::ForceActivateOutput(TEnumAsByte<ETutorialOutput> Output)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.ForceActivateOutput");
 
@@ -74270,9 +74270,9 @@ void UTutorial_TA::HandleBallDestroyed(class APawn_X* Pawn)
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UTutorial_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UTutorial_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.HandleCarTouch");
 
@@ -74821,12 +74821,12 @@ void UTutorial_TA::OnActionKeyPressed(const struct FName& ActionName)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UTutorial_TA::NotifyKeyInput(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UTutorial_TA::NotifyKeyInput(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.NotifyKeyInput");
 
@@ -74951,10 +74951,10 @@ void UTutorial_TA::SetIgnoredInput(bool bClearPreviousActions)
 // Function TAGame.Tutorial_TA.SetAllDriving
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPlayerDriveType> PlayerDriveType                (CPF_Parm)
+// TEnumAsByte<EPlayerDriveType>  PlayerDriveType                (CPF_Parm)
 // bool                           bDriving                       (CPF_Parm)
 
-void UTutorial_TA::SetAllDriving(TEnumAsByte<enum class EPlayerDriveType> PlayerDriveType, bool bDriving)
+void UTutorial_TA::SetAllDriving(TEnumAsByte<EPlayerDriveType> PlayerDriveType, bool bDriving)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.SetAllDriving");
 
@@ -79017,10 +79017,10 @@ void UGFxData_Chat_TA::ClearChat()
 // int                            Team                           (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bLocalPlayer                   (CPF_Parm)
 
-void UGFxData_Chat_TA::OnChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bLocalPlayer)
+void UGFxData_Chat_TA::OnChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bLocalPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.OnChatMessage");
 
@@ -79045,12 +79045,12 @@ void UGFxData_Chat_TA::OnChatMessage(int Team, const struct FString& PlayerName,
 // int                            Team                           (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 // bool                           bLocalPlayer                   (CPF_Parm)
 // bool                           bTransient                     (CPF_OptionalParm, CPF_Parm)
 // bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Chat_TA::AddChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel, bool bLocalPlayer, bool bTransient, bool bPreset)
+void UGFxData_Chat_TA::AddChatMessage(int Team, const struct FString& PlayerName, const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bLocalPlayer, bool bTransient, bool bPreset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.AddChatMessage");
 
@@ -79075,9 +79075,9 @@ void UGFxData_Chat_TA::AddChatMessage(int Team, const struct FString& PlayerName
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 
-void UGFxData_Chat_TA::DispatchChatMessage(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel)
+void UGFxData_Chat_TA::DispatchChatMessage(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.DispatchChatMessage");
 
@@ -79205,9 +79205,9 @@ void UGFxData_Chat_TA::SendGlobalChatMessage(const struct FString& Message, bool
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EChatChannel> ChatChannel                    (CPF_Parm)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
 
-void UGFxData_Chat_TA::SendChatChannelMessage(const struct FString& Message, TEnumAsByte<enum class EChatChannel> ChatChannel)
+void UGFxData_Chat_TA::SendChatChannelMessage(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.SendChatChannelMessage");
 
@@ -79248,9 +79248,9 @@ void UGFxData_Chat_TA::SendChatMessage(const struct FString& Message, bool bTeam
 // Function TAGame.GFxData_Chat_TA.GetChatFilter
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EVoiceFilter> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EVoiceFilter>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EVoiceFilter> UGFxData_Chat_TA::GetChatFilter()
+TEnumAsByte<EVoiceFilter> UGFxData_Chat_TA::GetChatFilter()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.GetChatFilter");
 
@@ -79747,11 +79747,11 @@ void UGFxData_Controls_TA::HandleActiveBindingsChanged(class UProfile_TA* InProf
 // (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms, FUNC_HasDefaults)
 // Parameters:
 // struct FName                   Action                         (CPF_Parm)
-// TEnumAsByte<enum class ERemappable> RemappableType                 (CPF_Parm)
+// TEnumAsByte<ERemappable>       RemappableType                 (CPF_Parm)
 // TArray<struct FPlayerBinding>  Bindings                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxData_Controls_TA::IsRemappableType(const struct FName& Action, TEnumAsByte<enum class ERemappable> RemappableType, TArray<struct FPlayerBinding>* Bindings)
+bool UGFxData_Controls_TA::IsRemappableType(const struct FName& Action, TEnumAsByte<ERemappable> RemappableType, TArray<struct FPlayerBinding>* Bindings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.IsRemappableType");
 
@@ -79944,10 +79944,10 @@ void UGFxData_Controls_TA::InvertAxis(const struct FName& Axis)
 // Parameters:
 // struct FName                   Action                         (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EAxisSign> AxisSign                       (CPF_Parm)
+// TEnumAsByte<EAxisSign>         AxisSign                       (CPF_Parm)
 // TArray<struct FPlayerBinding>  OutBindings                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_Controls_TA::RemoveBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<enum class EAxisSign> AxisSign, TArray<struct FPlayerBinding>* OutBindings)
+void UGFxData_Controls_TA::RemoveBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<EAxisSign> AxisSign, TArray<struct FPlayerBinding>* OutBindings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.RemoveBinding");
 
@@ -79972,11 +79972,11 @@ void UGFxData_Controls_TA::RemoveBinding(const struct FName& Action, const struc
 // Parameters:
 // struct FName                   Action                         (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EAxisSign> AxisSign                       (CPF_Parm)
+// TEnumAsByte<EAxisSign>         AxisSign                       (CPF_Parm)
 // TArray<struct FPlayerBinding>  DefaultBindings                (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FPlayerBinding>  OutBindings                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_Controls_TA::SetSingleBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<enum class EAxisSign> AxisSign, TArray<struct FPlayerBinding> DefaultBindings, TArray<struct FPlayerBinding>* OutBindings)
+void UGFxData_Controls_TA::SetSingleBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<EAxisSign> AxisSign, TArray<struct FPlayerBinding> DefaultBindings, TArray<struct FPlayerBinding>* OutBindings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.SetSingleBinding");
 
@@ -80002,11 +80002,11 @@ void UGFxData_Controls_TA::SetSingleBinding(const struct FName& Action, const st
 // Parameters:
 // struct FName                   Action                         (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EAxisSign> AxisSign                       (CPF_Parm)
+// TEnumAsByte<EAxisSign>         AxisSign                       (CPF_Parm)
 // TArray<struct FPlayerBinding>  DefaultBindings                (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FPlayerBinding>  OutBindings                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_Controls_TA::SetBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<enum class EAxisSign> AxisSign, TArray<struct FPlayerBinding> DefaultBindings, TArray<struct FPlayerBinding>* OutBindings)
+void UGFxData_Controls_TA::SetBinding(const struct FName& Action, const struct FName& Key, TEnumAsByte<EAxisSign> AxisSign, TArray<struct FPlayerBinding> DefaultBindings, TArray<struct FPlayerBinding>* OutBindings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.SetBinding");
 
@@ -80032,9 +80032,9 @@ void UGFxData_Controls_TA::SetBinding(const struct FName& Action, const struct F
 // Parameters:
 // struct FName                   Key                            (CPF_Parm)
 // bool                           bGamepad                       (CPF_Parm)
-// TEnumAsByte<enum class EAxisSign> AxisSign                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAxisSign>         AxisSign                       (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Controls_TA::SetCurrentBinding(const struct FName& Key, bool bGamepad, TEnumAsByte<enum class EAxisSign> AxisSign)
+void UGFxData_Controls_TA::SetCurrentBinding(const struct FName& Key, bool bGamepad, TEnumAsByte<EAxisSign> AxisSign)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.SetCurrentBinding");
 
@@ -80087,12 +80087,12 @@ bool UGFxData_Controls_TA::HandleBindingInputAxis(int ControllerId, const struct
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxData_Controls_TA::HandleBindingInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UGFxData_Controls_TA::HandleBindingInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.HandleBindingInputKey");
 
@@ -80221,10 +80221,10 @@ struct FString UGFxData_Controls_TA::LocalizeKeyInternal(const struct FName& Key
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EAxisSign> AxisSign                       (CPF_Parm)
+// TEnumAsByte<EAxisSign>         AxisSign                       (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UGFxData_Controls_TA::LocalizeKey(const struct FName& Key, TEnumAsByte<enum class EAxisSign> AxisSign)
+struct FString UGFxData_Controls_TA::LocalizeKey(const struct FName& Key, TEnumAsByte<EAxisSign> AxisSign)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.LocalizeKey");
 
@@ -81713,9 +81713,9 @@ struct FString UGFxData_Products_TA::GetProductLongLabel(int InProductID)
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // int                            InProductID                    (CPF_Parm)
-// TEnumAsByte<enum class EProductQuality> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EProductQuality>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EProductQuality> UGFxData_Products_TA::GetProductQuality(int InProductID)
+TEnumAsByte<EProductQuality> UGFxData_Products_TA::GetProductQuality(int InProductID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.GetProductQuality");
 
@@ -82027,10 +82027,10 @@ void UGFxData_Products_TA::HandleProductLoaded(const struct FAssetLoadResult& Re
 // Function TAGame.GFxData_Products_TA.LoadProduct
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize                  (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EProductThumbnailSize> ThumbnailSize                  (CPF_OptionalParm, CPF_Parm)
 // int                            ViewId                         (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Products_TA::LoadProduct(TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize, int ViewId)
+void UGFxData_Products_TA::LoadProduct(TEnumAsByte<EProductThumbnailSize> ThumbnailSize, int ViewId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.LoadProduct");
 
@@ -82049,9 +82049,9 @@ void UGFxData_Products_TA::LoadProduct(TEnumAsByte<enum class EProductThumbnailS
 // Function TAGame.GFxData_Products_TA.OnClearViewedProduct
 // (FUNC_Defined, FUNC_Public, FUNC_K2Pure)
 // Parameters:
-// TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize                  (CPF_Parm)
+// TEnumAsByte<EProductThumbnailSize> ThumbnailSize                  (CPF_Parm)
 
-void UGFxData_Products_TA::OnClearViewedProduct(TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize)
+void UGFxData_Products_TA::OnClearViewedProduct(TEnumAsByte<EProductThumbnailSize> ThumbnailSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.OnClearViewedProduct");
 
@@ -82155,9 +82155,9 @@ void UGFxData_Products_TA::ClearReferencedProducts(int ViewId)
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // int                            ViewId                         (CPF_Parm)
-// TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize                  (CPF_Parm)
+// TEnumAsByte<EProductThumbnailSize> ThumbnailSize                  (CPF_Parm)
 
-void UGFxData_Products_TA::SetViewProducts(int ViewId, TEnumAsByte<enum class EProductThumbnailSize> ThumbnailSize)
+void UGFxData_Products_TA::SetViewProducts(int ViewId, TEnumAsByte<EProductThumbnailSize> ThumbnailSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.SetViewProducts");
 
@@ -84314,9 +84314,9 @@ void UGFxData_Map_TA::OnShellSet()
 // Function TAGame.GFxData_OnlineMatch_TA.GetStatusOwnerValue
 // (FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class SearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class SearchStatusOwner> UGFxData_OnlineMatch_TA::GetStatusOwnerValue()
+TEnumAsByte<ESearchStatusOwner> UGFxData_OnlineMatch_TA::GetStatusOwnerValue()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_OnlineMatch_TA.GetStatusOwnerValue");
 
@@ -84741,9 +84741,9 @@ void UGFxData_OnlineMatchStatus_TA::OnSearchError(const struct FString& Message)
 // (FUNC_Defined, FUNC_Protected, FUNC_K2Pure)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class SearchMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<ESearchMessageType> MessageType                    (CPF_Parm)
 
-void UGFxData_OnlineMatchStatus_TA::OnSearchMessage(const struct FString& Message, TEnumAsByte<enum class SearchMessageType> MessageType)
+void UGFxData_OnlineMatchStatus_TA::OnSearchMessage(const struct FString& Message, TEnumAsByte<ESearchMessageType> MessageType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_OnlineMatchStatus_TA.OnSearchMessage");
 
@@ -85061,9 +85061,9 @@ void UGFxData_OnlineMatchStatus_TA::HandlePartySearchStatus(class UOnlineGamePar
 // Function TAGame.GFxData_OnlineMatchStatus_TA.SetStatusOwner
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class SearchStatusOwner> NewOwner                       (CPF_Parm)
+// TEnumAsByte<ESearchStatusOwner> NewOwner                       (CPF_Parm)
 
-void UGFxData_OnlineMatchStatus_TA::SetStatusOwner(TEnumAsByte<enum class SearchStatusOwner> NewOwner)
+void UGFxData_OnlineMatchStatus_TA::SetStatusOwner(TEnumAsByte<ESearchStatusOwner> NewOwner)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_OnlineMatchStatus_TA.SetStatusOwner");
 
@@ -85291,9 +85291,9 @@ void UGFxData_Matchmaking_TA::HandleDisableCrossPlayChange(class UOnlineGamePart
 // Function TAGame.GFxData_Matchmaking_TA.GetStatusOwnerValue
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class SearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class SearchStatusOwner> UGFxData_Matchmaking_TA::GetStatusOwnerValue()
+TEnumAsByte<ESearchStatusOwner> UGFxData_Matchmaking_TA::GetStatusOwnerValue()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.GetStatusOwnerValue");
 
@@ -87474,9 +87474,9 @@ void UGFxData_PlayerRecord_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Function TAGame.GFxData_PlayerRecord_TA.Report
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class EReportPlayerReason> Reason                         (CPF_Parm)
+// TEnumAsByte<EReportPlayerReason> Reason                         (CPF_Parm)
 
-void UGFxData_PlayerRecord_TA::Report(TEnumAsByte<enum class EReportPlayerReason> Reason)
+void UGFxData_PlayerRecord_TA::Report(TEnumAsByte<EReportPlayerReason> Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_PlayerRecord_TA.Report");
 
@@ -88193,10 +88193,10 @@ void UGFxData_PRI_TA::SetPRI(class APRI_TA* InPRI)
 // Function TAGame.GFxData_PRI_TA.GetReservationStatusString
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EReservationStatus> Status                         (CPF_Parm)
+// TEnumAsByte<EReservationStatus> Status                         (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UGFxData_PRI_TA::GetReservationStatusString(TEnumAsByte<enum class EReservationStatus> Status)
+struct FString UGFxData_PRI_TA::GetReservationStatusString(TEnumAsByte<EReservationStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_PRI_TA.GetReservationStatusString");
 
@@ -88277,9 +88277,9 @@ void UGFxData_PrivateMatch_TA::SetError(const struct FString& msg)
 // Function TAGame.GFxData_PrivateMatch_TA.GetStatusOwnerValue
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class SearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESearchStatusOwner> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class SearchStatusOwner> UGFxData_PrivateMatch_TA::GetStatusOwnerValue()
+TEnumAsByte<ESearchStatusOwner> UGFxData_PrivateMatch_TA::GetStatusOwnerValue()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_PrivateMatch_TA.GetStatusOwnerValue");
 
@@ -91768,14 +91768,14 @@ void UGFxData_UserSetting_TA::SetScalarLimits(const struct FProfileSliderLimits&
 // Function TAGame.GFxData_UserSetting_TA.Init
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EUserSettingType> inType                         (CPF_Parm)
+// TEnumAsByte<EUserSettingType>  inType                         (CPF_Parm)
 // struct FName                   InGroup                        (CPF_Parm)
 // struct FName                   InID                           (CPF_Parm)
 // struct FString                 InDefaultValue                 (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bInUserSetting                 (CPF_OptionalParm, CPF_Parm)
 // bool                           bInEnabled                     (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_UserSetting_TA::Init(TEnumAsByte<enum class EUserSettingType> inType, const struct FName& InGroup, const struct FName& InID, const struct FString& InDefaultValue, bool bInUserSetting, bool bInEnabled)
+void UGFxData_UserSetting_TA::Init(TEnumAsByte<EUserSettingType> inType, const struct FName& InGroup, const struct FName& InID, const struct FString& InDefaultValue, bool bInUserSetting, bool bInEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_UserSetting_TA.Init");
 
@@ -96227,9 +96227,9 @@ void UPostProcessManager_TA::ApplyPostProcessTypeOverride()
 // Function TAGame.PostProcessManager_TA.SetAAType
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPostProcessAAType> NewType                        (CPF_Parm)
+// TEnumAsByte<EPostProcessAAType> NewType                        (CPF_Parm)
 
-void UPostProcessManager_TA::SetAAType(TEnumAsByte<enum class EPostProcessAAType> NewType)
+void UPostProcessManager_TA::SetAAType(TEnumAsByte<EPostProcessAAType> NewType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PostProcessManager_TA.SetAAType");
 
@@ -96544,9 +96544,9 @@ void UGFxData_StartMenu_TA::HandleLoginCancelled()
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // unsigned char                  PlayerNum                      (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void UGFxData_StartMenu_TA::HandlePrimaryPlayerLoginFailed(unsigned char PlayerNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void UGFxData_StartMenu_TA::HandlePrimaryPlayerLoginFailed(unsigned char PlayerNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_StartMenu_TA.HandlePrimaryPlayerLoginFailed");
 
@@ -96849,10 +96849,10 @@ void UGFxData_Training_TA::HandleBoostMeterChanged(class AGameEvent_Tutorial_TA*
 // Function TAGame.GFxData_Training_TA.ParseDifficulty
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EDifficulty> InDifficulty                   (CPF_Parm)
+// TEnumAsByte<EDifficulty>       InDifficulty                   (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UGFxData_Training_TA::ParseDifficulty(TEnumAsByte<enum class EDifficulty> InDifficulty)
+struct FString UGFxData_Training_TA::ParseDifficulty(TEnumAsByte<EDifficulty> InDifficulty)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.ParseDifficulty");
 
@@ -96872,10 +96872,10 @@ struct FString UGFxData_Training_TA::ParseDifficulty(TEnumAsByte<enum class EDif
 // Function TAGame.GFxData_Training_TA.ParseTutorialName
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingType> inType                         (CPF_Parm)
+// TEnumAsByte<ETrainingType>     inType                         (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UGFxData_Training_TA::ParseTutorialName(TEnumAsByte<enum class ETrainingType> inType)
+struct FString UGFxData_Training_TA::ParseTutorialName(TEnumAsByte<ETrainingType> inType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.ParseTutorialName");
 
@@ -97607,11 +97607,11 @@ class AActor* AGameEvent_GameEditor_TA::FindActorByName(const struct FName& acto
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class APlayerController_TA*    PC                             (CPF_Parm)
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_Parm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_Parm)
 // struct U_Types_TA_FActorHistory RestoreHistory                 (CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AGameEvent_GameEditor_TA::RestoreFromHistory(class APlayerController_TA* PC, TEnumAsByte<enum class EHistoryType> HistoryType, const struct U_Types_TA_FActorHistory& RestoreHistory)
+bool AGameEvent_GameEditor_TA::RestoreFromHistory(class APlayerController_TA* PC, TEnumAsByte<EHistoryType> HistoryType, const struct U_Types_TA_FActorHistory& RestoreHistory)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.RestoreFromHistory");
 
@@ -97633,10 +97633,10 @@ bool AGameEvent_GameEditor_TA::RestoreFromHistory(class APlayerController_TA* PC
 // Function TAGame.GameEvent_GameEditor_TA.GetOtherHistoryType
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_Parm)
-// TEnumAsByte<enum class EHistoryType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_Parm)
+// TEnumAsByte<EHistoryType>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EHistoryType> AGameEvent_GameEditor_TA::GetOtherHistoryType(TEnumAsByte<enum class EHistoryType> HistoryType)
+TEnumAsByte<EHistoryType> AGameEvent_GameEditor_TA::GetOtherHistoryType(TEnumAsByte<EHistoryType> HistoryType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.GetOtherHistoryType");
 
@@ -97726,11 +97726,11 @@ bool AGameEvent_GameEditor_TA::HistoriesAreEqual(const TScriptInterface<class UI
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // TScriptInterface<class UInterface_GameEditor_TA> EditorActor                    (CPF_Parm)
-// TEnumAsByte<enum class EHistory> HistoryEditType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EHistory>          HistoryEditType                (CPF_OptionalParm, CPF_Parm)
 // bool                           bClearRedoHistory              (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AGameEvent_GameEditor_TA::AddUndoHistory(const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<enum class EHistory> HistoryEditType, bool bClearRedoHistory)
+bool AGameEvent_GameEditor_TA::AddUndoHistory(const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<EHistory> HistoryEditType, bool bClearRedoHistory)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.AddUndoHistory");
 
@@ -97752,13 +97752,13 @@ bool AGameEvent_GameEditor_TA::AddUndoHistory(const TScriptInterface<class UInte
 // Function TAGame.GameEvent_GameEditor_TA.AddHistory
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_Parm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_Parm)
 // TScriptInterface<class UInterface_GameEditor_TA> EditorActor                    (CPF_Parm)
-// TEnumAsByte<enum class EHistory> HistoryEditType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EHistory>          HistoryEditType                (CPF_OptionalParm, CPF_Parm)
 // bool                           bClearRedoHistory              (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AGameEvent_GameEditor_TA::AddHistory(TEnumAsByte<enum class EHistoryType> HistoryType, const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<enum class EHistory> HistoryEditType, bool bClearRedoHistory)
+bool AGameEvent_GameEditor_TA::AddHistory(TEnumAsByte<EHistoryType> HistoryType, const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<EHistory> HistoryEditType, bool bClearRedoHistory)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.AddHistory");
 
@@ -97782,10 +97782,10 @@ bool AGameEvent_GameEditor_TA::AddHistory(TEnumAsByte<enum class EHistoryType> H
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // TScriptInterface<class UInterface_GameEditor_TA> EditorActor                    (CPF_Parm)
-// TEnumAsByte<enum class EHistory> HistoryEditType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EHistory>          HistoryEditType                (CPF_OptionalParm, CPF_Parm)
 // struct U_Types_TA_FActorHistory ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct U_Types_TA_FActorHistory AGameEvent_GameEditor_TA::MakeHistory(const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<enum class EHistory> HistoryEditType)
+struct U_Types_TA_FActorHistory AGameEvent_GameEditor_TA::MakeHistory(const TScriptInterface<class UInterface_GameEditor_TA>& EditorActor, TEnumAsByte<EHistory> HistoryEditType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.MakeHistory");
 
@@ -97842,10 +97842,10 @@ void AGameEvent_GameEditor_TA::ClearAllHistory()
 // Parameters:
 // struct FString                 SerializedData                 (CPF_Parm, CPF_NeedCtorLink)
 // class UClass*                  ClassType                      (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_OptionalParm, CPF_Parm)
 // class AActor*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class AActor* AGameEvent_GameEditor_TA::DeserializeAndSpawn(const struct FString& SerializedData, class UClass* ClassType, TEnumAsByte<enum class EHistoryType> HistoryType)
+class AActor* AGameEvent_GameEditor_TA::DeserializeAndSpawn(const struct FString& SerializedData, class UClass* ClassType, TEnumAsByte<EHistoryType> HistoryType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.DeserializeAndSpawn");
 
@@ -97868,10 +97868,10 @@ class AActor* AGameEvent_GameEditor_TA::DeserializeAndSpawn(const struct FString
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class AActor*                  A                              (CPF_Parm)
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_Parm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AGameEvent_GameEditor_TA::DestroyActor(class AActor* A, TEnumAsByte<enum class EHistoryType> HistoryType)
+bool AGameEvent_GameEditor_TA::DestroyActor(class AActor* A, TEnumAsByte<EHistoryType> HistoryType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.DestroyActor");
 
@@ -98095,9 +98095,9 @@ void AGameEvent_GameEditor_TA::ResetSpawnLocations()
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // class AActor*                  SpawnedActor                   (CPF_Parm)
-// TEnumAsByte<enum class EHistoryType> HistoryType                    (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EHistoryType>      HistoryType                    (CPF_OptionalParm, CPF_Parm)
 
-void AGameEvent_GameEditor_TA::OnSpawnedArchetype(class AActor* SpawnedActor, TEnumAsByte<enum class EHistoryType> HistoryType)
+void AGameEvent_GameEditor_TA::OnSpawnedArchetype(class AActor* SpawnedActor, TEnumAsByte<EHistoryType> HistoryType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_GameEditor_TA.OnSpawnedArchetype");
 
@@ -98532,9 +98532,9 @@ int AGameEvent_TrainingEditor_TA::GetTotalRounds()
 // Function TAGame.GameEvent_TrainingEditor_TA.GetDifficulty
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EDifficulty> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EDifficulty>       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EDifficulty> AGameEvent_TrainingEditor_TA::GetDifficulty()
+TEnumAsByte<EDifficulty> AGameEvent_TrainingEditor_TA::GetDifficulty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TrainingEditor_TA.GetDifficulty");
 
@@ -98553,9 +98553,9 @@ TEnumAsByte<enum class EDifficulty> AGameEvent_TrainingEditor_TA::GetDifficulty(
 // Function TAGame.GameEvent_TrainingEditor_TA.GetTrainingType
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ETrainingType>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ETrainingType> AGameEvent_TrainingEditor_TA::GetTrainingType()
+TEnumAsByte<ETrainingType> AGameEvent_TrainingEditor_TA::GetTrainingType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TrainingEditor_TA.GetTrainingType");
 
@@ -98671,11 +98671,11 @@ void AGameEvent_TrainingEditor_TA::DuplicateRound(int Index)
 // (FUNC_Public)
 // Parameters:
 // struct FString                 NewName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETrainingType> NewType                        (CPF_Parm)
-// TEnumAsByte<enum class EDifficulty> NewDifficulty                  (CPF_Parm)
+// TEnumAsByte<ETrainingType>     NewType                        (CPF_Parm)
+// TEnumAsByte<EDifficulty>       NewDifficulty                  (CPF_Parm)
 // TArray<int>                    NewTags                        (CPF_Parm, CPF_NeedCtorLink)
 
-void AGameEvent_TrainingEditor_TA::SetMetaData(const struct FString& NewName, TEnumAsByte<enum class ETrainingType> NewType, TEnumAsByte<enum class EDifficulty> NewDifficulty, TArray<int> NewTags)
+void AGameEvent_TrainingEditor_TA::SetMetaData(const struct FString& NewName, TEnumAsByte<ETrainingType> NewType, TEnumAsByte<EDifficulty> NewDifficulty, TArray<int> NewTags)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TrainingEditor_TA.SetMetaData");
 
@@ -99448,9 +99448,9 @@ void AGameEvent_TrainingEditor_TA::EndPlayTest()
 // Function TAGame.GameEvent_TrainingEditor_TA.StartPlayTest
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPlayTestType> InPlayTestType                 (CPF_Parm)
+// TEnumAsByte<EPlayTestType>     InPlayTestType                 (CPF_Parm)
 
-void AGameEvent_TrainingEditor_TA::StartPlayTest(TEnumAsByte<enum class EPlayTestType> InPlayTestType)
+void AGameEvent_TrainingEditor_TA::StartPlayTest(TEnumAsByte<EPlayTestType> InPlayTestType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TrainingEditor_TA.StartPlayTest");
 
@@ -99739,9 +99739,9 @@ void AGameEvent_TrainingEditor_TA::EventRoundTimeChanged(class AGameEvent_Traini
 // Function TAGame.GFxData_Vote_TA.SetVoteStatus
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EVoteStatus> Status                         (CPF_Parm)
+// TEnumAsByte<EVoteStatus>       Status                         (CPF_Parm)
 
-void UGFxData_Vote_TA::SetVoteStatus(TEnumAsByte<enum class EVoteStatus> Status)
+void UGFxData_Vote_TA::SetVoteStatus(TEnumAsByte<EVoteStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Vote_TA.SetVoteStatus");
 
@@ -99930,10 +99930,10 @@ void ULoadingScreen_TA::HandlePreLoadMap(const struct FString& MapName)
 // struct FString                 ProtipMessage                  (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 OpenDelimiter                  (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 CloseDelimiter                 (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EInputPlatformType> InputType                      (CPF_Parm)
+// TEnumAsByte<EInputPlatformType> InputType                      (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString ULoadingScreen_TA::GetProtipMessageWithIcons(const struct FString& ProtipMessage, const struct FString& OpenDelimiter, const struct FString& CloseDelimiter, TEnumAsByte<enum class EInputPlatformType> InputType)
+struct FString ULoadingScreen_TA::GetProtipMessageWithIcons(const struct FString& ProtipMessage, const struct FString& OpenDelimiter, const struct FString& CloseDelimiter, TEnumAsByte<EInputPlatformType> InputType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadingScreen_TA.GetProtipMessageWithIcons");
 
@@ -99956,9 +99956,9 @@ struct FString ULoadingScreen_TA::GetProtipMessageWithIcons(const struct FString
 // Function TAGame.LoadingScreen_TA.GetProtipInputType
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EInputPlatformType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EInputPlatformType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EInputPlatformType> ULoadingScreen_TA::GetProtipInputType()
+TEnumAsByte<EInputPlatformType> ULoadingScreen_TA::GetProtipInputType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadingScreen_TA.GetProtipInputType");
 
@@ -105333,12 +105333,12 @@ void UPlayerInputSequence_TA::ResetSequence()
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UPlayerInputSequence_TA::HandleFinalInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UPlayerInputSequence_TA::HandleFinalInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInputSequence_TA.HandleFinalInputKey");
 
@@ -105364,12 +105364,12 @@ bool UPlayerInputSequence_TA::HandleFinalInputKey(int ControllerId, const struct
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UPlayerInputSequence_TA::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UPlayerInputSequence_TA::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInputSequence_TA.HandleInputKey");
 
@@ -108064,9 +108064,9 @@ bool ABall_GameEditor_TA::IsRoundActive()
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_OptionalParm, CPF_Parm)
 
-void ABall_GameEditor_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_GameEditor_TA::OnCarTouch(class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_GameEditor_TA.OnCarTouch");
 
@@ -108232,9 +108232,9 @@ void ABall_GameEditor_TA::AddVelocityStartRotation(const struct FRotator& Amount
 // class ACar_TA*                 HitCar                         (CPF_Parm)
 // struct FVector                 HitLocation                    (CPF_Parm)
 // struct FVector                 HitNormal                      (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_OptionalParm, CPF_Parm)
 
-void ABall_GameEditor_TA::RecordCarHit(class ACar_TA* HitCar, const struct FVector& HitLocation, const struct FVector& HitNormal, TEnumAsByte<enum class EBallHitType> HitType)
+void ABall_GameEditor_TA::RecordCarHit(class ACar_TA* HitCar, const struct FVector& HitLocation, const struct FVector& HitNormal, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_GameEditor_TA.RecordCarHit");
 
@@ -111812,9 +111812,9 @@ void UTutorial_Dodge_TA::HandleHitGoal(class ABall_TA* Ball, class UGoal_TA* Goa
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UTutorial_Dodge_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UTutorial_Dodge_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_Dodge_TA.HandleCarTouch");
 
@@ -112791,10 +112791,10 @@ void USave_TA::Init()
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class ULocalPlayer_TA*         Player                         (CPF_Parm)
-// TEnumAsByte<enum class ETrainingSaveType> InSaveType                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> InSaveType                     (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString USaveData_GameEditor_Training_TA::GetTrainingFullPath(class ULocalPlayer_TA* Player, TEnumAsByte<enum class ETrainingSaveType> InSaveType)
+struct FString USaveData_GameEditor_Training_TA::GetTrainingFullPath(class ULocalPlayer_TA* Player, TEnumAsByte<ETrainingSaveType> InSaveType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingFullPath");
 
@@ -112815,10 +112815,10 @@ struct FString USaveData_GameEditor_Training_TA::GetTrainingFullPath(class ULoca
 // Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingPath
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingSaveType> InSaveType                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> InSaveType                     (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString USaveData_GameEditor_Training_TA::GetTrainingPath(TEnumAsByte<enum class ETrainingSaveType> InSaveType)
+struct FString USaveData_GameEditor_Training_TA::GetTrainingPath(TEnumAsByte<ETrainingSaveType> InSaveType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingPath");
 
@@ -112838,10 +112838,10 @@ struct FString USaveData_GameEditor_Training_TA::GetTrainingPath(TEnumAsByte<enu
 // Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingFolder
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingSaveType> InSaveType                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> InSaveType                     (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString USaveData_GameEditor_Training_TA::GetTrainingFolder(TEnumAsByte<enum class ETrainingSaveType> InSaveType)
+struct FString USaveData_GameEditor_Training_TA::GetTrainingFolder(TEnumAsByte<ETrainingSaveType> InSaveType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingFolder");
 
@@ -112863,9 +112863,9 @@ struct FString USaveData_GameEditor_Training_TA::GetTrainingFolder(TEnumAsByte<e
 // Parameters:
 // bool                           bOwned                         (CPF_Parm)
 // bool                           bFavorited                     (CPF_Parm)
-// TEnumAsByte<enum class ETrainingSaveType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ETrainingSaveType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ETrainingSaveType> USaveData_GameEditor_Training_TA::STATIC_GetTrainingSaveType(bool bOwned, bool bFavorited)
+TEnumAsByte<ETrainingSaveType> USaveData_GameEditor_Training_TA::STATIC_GetTrainingSaveType(bool bOwned, bool bFavorited)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingSaveType");
 
@@ -113229,10 +113229,10 @@ void URPC_ProductsTradeIn_TA::OnComplete()
 // Function TAGame.RPC_ProductsTradeIn_TA.SetGameVersion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EGameVersion> InGameVersion                  (CPF_Parm)
+// TEnumAsByte<EGameVersion>      InGameVersion                  (CPF_Parm)
 // class URPC_ProductsTradeIn_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class URPC_ProductsTradeIn_TA* URPC_ProductsTradeIn_TA::SetGameVersion(TEnumAsByte<enum class EGameVersion> InGameVersion)
+class URPC_ProductsTradeIn_TA* URPC_ProductsTradeIn_TA::SetGameVersion(TEnumAsByte<EGameVersion> InGameVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradeIn_TA.SetGameVersion");
 
@@ -117041,9 +117041,9 @@ void UGameEvent_Soccar_SubRules_500_TA::OnTick(float DeltaTime)
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UGameEvent_Soccar_SubRules_500_TA::Handle500CarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UGameEvent_Soccar_SubRules_500_TA::Handle500CarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_SubRules_500_TA.Handle500CarTouch");
 
@@ -117263,9 +117263,9 @@ void UGameEvent_Soccar_SubRules_500_TA::Init()
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UGameEvent_Soccar_SubRules_Football_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UGameEvent_Soccar_SubRules_Football_TA::HandleCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_SubRules_Football_TA.HandleCarTouch");
 
@@ -117912,9 +117912,9 @@ void UGameEvent_Soccar_SubRules_TreasureHunt_TA::UpdateDistances()
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UGameEvent_Soccar_SubRules_TreasureHunt_TA::HandleTreasureHuntCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UGameEvent_Soccar_SubRules_TreasureHunt_TA::HandleTreasureHuntCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_SubRules_TreasureHunt_TA.HandleTreasureHuntCarTouch");
 
@@ -118287,9 +118287,9 @@ void UGameEvent_Soccar_SubRules_TurnBased_TA::HandleTurnBasedGroundTouch(class A
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 HitCar                         (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void UGameEvent_Soccar_SubRules_TurnBased_TA::HandleTurnBasedCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<enum class EBallHitType> HitType)
+void UGameEvent_Soccar_SubRules_TurnBased_TA::HandleTurnBasedCarTouch(class ABall_TA* Ball, class ACar_TA* HitCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_SubRules_TurnBased_TA.HandleTurnBasedCarTouch");
 
@@ -119900,9 +119900,9 @@ void UGFxData_CustomTeams_TA::SetTeamName(int Team, const struct FString& TeamNa
 // Function TAGame.GFxData_CustomTeams_TA.SetSettingsType
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class ECustomMatchSettingsType> Type                           (CPF_Parm)
+// TEnumAsByte<ECustomMatchSettingsType> Type                           (CPF_Parm)
 
-void UGFxData_CustomTeams_TA::SetSettingsType(TEnumAsByte<enum class ECustomMatchSettingsType> Type)
+void UGFxData_CustomTeams_TA::SetSettingsType(TEnumAsByte<ECustomMatchSettingsType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_CustomTeams_TA.SetSettingsType");
 
@@ -121201,9 +121201,9 @@ void UGFxData_MapPrefs_TA::SavePrefs(const struct FPlaylistMapPrefs& Prefs)
 // Parameters:
 // struct FName                   PlaylistId                     (CPF_Parm)
 // struct FName                   MapID                          (CPF_Parm)
-// TEnumAsByte<enum class EMapPrefType> Preference                     (CPF_Parm)
+// TEnumAsByte<EMapPrefType>      Preference                     (CPF_Parm)
 
-void UGFxData_MapPrefs_TA::SetMapPreference(const struct FName& PlaylistId, const struct FName& MapID, TEnumAsByte<enum class EMapPrefType> Preference)
+void UGFxData_MapPrefs_TA::SetMapPreference(const struct FName& PlaylistId, const struct FName& MapID, TEnumAsByte<EMapPrefType> Preference)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapPrefs_TA.SetMapPreference");
 
@@ -121991,9 +121991,9 @@ struct FString UGFxData_Mutators_TA::GetGameTag(const struct FString& Key)
 // Function TAGame.GFxData_Mutators_TA.InitMutators
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class ECustomMatchSettingsType> InSettingsType                 (CPF_Parm)
+// TEnumAsByte<ECustomMatchSettingsType> InSettingsType                 (CPF_Parm)
 
-void UGFxData_Mutators_TA::InitMutators(TEnumAsByte<enum class ECustomMatchSettingsType> InSettingsType)
+void UGFxData_Mutators_TA::InitMutators(TEnumAsByte<ECustomMatchSettingsType> InSettingsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Mutators_TA.InitMutators");
 
@@ -122070,9 +122070,9 @@ class UProfile_TA* UGFxData_PremiumGarage_TA::GetProfile()
 // Function TAGame.GFxData_ProductFilter_TA.PopFilterType
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class EProductFilterType> Type                           (CPF_Parm)
+// TEnumAsByte<EProductFilterType> Type                           (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::PopFilterType(TEnumAsByte<enum class EProductFilterType> Type)
+void UGFxData_ProductFilter_TA::PopFilterType(TEnumAsByte<EProductFilterType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.PopFilterType");
 
@@ -122090,9 +122090,9 @@ void UGFxData_ProductFilter_TA::PopFilterType(TEnumAsByte<enum class EProductFil
 // Function TAGame.GFxData_ProductFilter_TA.PushFilterType
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class EProductFilterType> Type                           (CPF_Parm)
+// TEnumAsByte<EProductFilterType> Type                           (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::PushFilterType(TEnumAsByte<enum class EProductFilterType> Type)
+void UGFxData_ProductFilter_TA::PushFilterType(TEnumAsByte<EProductFilterType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.PushFilterType");
 
@@ -122110,9 +122110,9 @@ void UGFxData_ProductFilter_TA::PushFilterType(TEnumAsByte<enum class EProductFi
 // Function TAGame.GFxData_ProductFilter_TA.UpdateFromType
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EProductFilterType> Type                           (CPF_Parm)
+// TEnumAsByte<EProductFilterType> Type                           (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::UpdateFromType(TEnumAsByte<enum class EProductFilterType> Type)
+void UGFxData_ProductFilter_TA::UpdateFromType(TEnumAsByte<EProductFilterType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.UpdateFromType");
 
@@ -122131,9 +122131,9 @@ void UGFxData_ProductFilter_TA::UpdateFromType(TEnumAsByte<enum class EProductFi
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
 // Parameters:
 // struct FProductFilter          OutFilter                      (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EProductFilterType> Type                           (CPF_Parm)
+// TEnumAsByte<EProductFilterType> Type                           (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::ApplyKeyTradeRestrictionOption(TEnumAsByte<enum class EProductFilterType> Type, struct FProductFilter* OutFilter)
+void UGFxData_ProductFilter_TA::ApplyKeyTradeRestrictionOption(TEnumAsByte<EProductFilterType> Type, struct FProductFilter* OutFilter)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.ApplyKeyTradeRestrictionOption");
 
@@ -122178,9 +122178,9 @@ void UGFxData_ProductFilter_TA::ApplyContainerNotificationOption(struct FProduct
 // Parameters:
 // int                            Row                            (CPF_Parm)
 // bool                           bSelected                      (CPF_Parm)
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::SetSeriesIDSelected(int Row, bool bSelected, TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::SetSeriesIDSelected(int Row, bool bSelected, TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.SetSeriesIDSelected");
 
@@ -122202,9 +122202,9 @@ void UGFxData_ProductFilter_TA::SetSeriesIDSelected(int Row, bool bSelected, TEn
 // Parameters:
 // int                            Row                            (CPF_Parm)
 // bool                           bSelected                      (CPF_Parm)
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::SetAttributeSelected(int Row, bool bSelected, TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::SetAttributeSelected(int Row, bool bSelected, TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.SetAttributeSelected");
 
@@ -122226,9 +122226,9 @@ void UGFxData_ProductFilter_TA::SetAttributeSelected(int Row, bool bSelected, TE
 // Parameters:
 // int                            Row                            (CPF_Parm)
 // bool                           bSelected                      (CPF_Parm)
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::SetQualitySelected(int Row, bool bSelected, TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::SetQualitySelected(int Row, bool bSelected, TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.SetQualitySelected");
 
@@ -122250,9 +122250,9 @@ void UGFxData_ProductFilter_TA::SetQualitySelected(int Row, bool bSelected, TEnu
 // Parameters:
 // int                            Row                            (CPF_Parm)
 // bool                           bSelected                      (CPF_Parm)
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::SetSlotSelected(int Row, bool bSelected, TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::SetSlotSelected(int Row, bool bSelected, TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.SetSlotSelected");
 
@@ -122273,9 +122273,9 @@ void UGFxData_ProductFilter_TA::SetSlotSelected(int Row, bool bSelected, TEnumAs
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // struct FString                 NewLabel                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::SetLabel(const struct FString& NewLabel, TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::SetLabel(const struct FString& NewLabel, TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.SetLabel");
 
@@ -122294,9 +122294,9 @@ void UGFxData_ProductFilter_TA::SetLabel(const struct FString& NewLabel, TEnumAs
 // Function TAGame.GFxData_ProductFilter_TA.FilterProducts
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
-// TEnumAsByte<enum class EProductFilterType> FilterType                     (CPF_Parm)
+// TEnumAsByte<EProductFilterType> FilterType                     (CPF_Parm)
 
-void UGFxData_ProductFilter_TA::FilterProducts(TEnumAsByte<enum class EProductFilterType> FilterType)
+void UGFxData_ProductFilter_TA::FilterProducts(TEnumAsByte<EProductFilterType> FilterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductFilter_TA.FilterProducts");
 
@@ -123265,9 +123265,9 @@ void UGFxData_TrainingMode_TA::HandleUnpublish(class URPC_TrainingEditor_DeleteT
 // Function TAGame.GFxData_TrainingMode_TA.OnDelete
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETrainingSaveType> CurrentTab                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> CurrentTab                     (CPF_Parm)
 
-void UGFxData_TrainingMode_TA::OnDelete(TEnumAsByte<enum class ETrainingSaveType> CurrentTab)
+void UGFxData_TrainingMode_TA::OnDelete(TEnumAsByte<ETrainingSaveType> CurrentTab)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingMode_TA.OnDelete");
 
@@ -123671,10 +123671,10 @@ void UGFxData_TrainingMode_TA::HandleSaveResult(const struct FSaveObjectResult& 
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class UError_X*                Error                          (CPF_Parm)
-// TEnumAsByte<enum class ESaveGameResult> SaveResult                     (CPF_Parm)
+// TEnumAsByte<ESaveGameResult>   SaveResult                     (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxData_TrainingMode_TA::NotifySaveErrors(class UError_X* Error, TEnumAsByte<enum class ESaveGameResult> SaveResult)
+bool UGFxData_TrainingMode_TA::NotifySaveErrors(class UError_X* Error, TEnumAsByte<ESaveGameResult> SaveResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingMode_TA.NotifySaveErrors");
 
@@ -124040,9 +124040,9 @@ struct FString UGFxData_TrainingModeBrowser_TA::GetDownloadedFilename()
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // int                            RowIndex                       (CPF_Parm)
-// TEnumAsByte<enum class ETrainingSaveType> CurrentTab                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> CurrentTab                     (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::DeleteTrainingMode(int RowIndex, TEnumAsByte<enum class ETrainingSaveType> CurrentTab)
+void UGFxData_TrainingModeBrowser_TA::DeleteTrainingMode(int RowIndex, TEnumAsByte<ETrainingSaveType> CurrentTab)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.DeleteTrainingMode");
 
@@ -124062,9 +124062,9 @@ void UGFxData_TrainingModeBrowser_TA::DeleteTrainingMode(int RowIndex, TEnumAsBy
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class UGFxData_TrainingMode_TA* TrainingMode                   (CPF_Parm)
-// TEnumAsByte<enum class ETrainingSaveType> CurrentTab                     (CPF_Parm)
+// TEnumAsByte<ETrainingSaveType> CurrentTab                     (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::DeleteTrainingModeData(class UGFxData_TrainingMode_TA* TrainingMode, TEnumAsByte<enum class ETrainingSaveType> CurrentTab)
+void UGFxData_TrainingModeBrowser_TA::DeleteTrainingModeData(class UGFxData_TrainingMode_TA* TrainingMode, TEnumAsByte<ETrainingSaveType> CurrentTab)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.DeleteTrainingModeData");
 
@@ -124123,9 +124123,9 @@ void UGFxData_TrainingModeBrowser_TA::SetTrainingFiles(TArray<struct FString> Fi
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // TArray<struct FString>         Files                          (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::HandleHeaders(TArray<struct FString> Files, TEnumAsByte<enum class EBasicLoadResult> Result)
+void UGFxData_TrainingModeBrowser_TA::HandleHeaders(TArray<struct FString> Files, TEnumAsByte<EBasicLoadResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleHeaders");
 
@@ -124318,10 +124318,10 @@ void UGFxData_TrainingModeBrowser_TA::OnSearchCodeResults(bool bSuccess)
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // TArray<struct FString>         LocalFiles                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 // bool                           bFeaturedOnly                  (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::HandleOnlineHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<enum class EBasicLoadResult> Result, bool bFeaturedOnly)
+void UGFxData_TrainingModeBrowser_TA::HandleOnlineHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<EBasicLoadResult> Result, bool bFeaturedOnly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleOnlineHeaders");
 
@@ -124342,9 +124342,9 @@ void UGFxData_TrainingModeBrowser_TA::HandleOnlineHeaders(TArray<struct FString>
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // TArray<struct FString>         LocalFiles                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::HandleLoadFeaturedHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<enum class EBasicLoadResult> Result)
+void UGFxData_TrainingModeBrowser_TA::HandleLoadFeaturedHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<EBasicLoadResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleLoadFeaturedHeaders");
 
@@ -124364,9 +124364,9 @@ void UGFxData_TrainingModeBrowser_TA::HandleLoadFeaturedHeaders(TArray<struct FS
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // TArray<struct FString>         LocalFiles                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::HandleLoadAllPublicHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<enum class EBasicLoadResult> Result)
+void UGFxData_TrainingModeBrowser_TA::HandleLoadAllPublicHeaders(TArray<struct FString> LocalFiles, TEnumAsByte<EBasicLoadResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleLoadAllPublicHeaders");
 
@@ -124716,12 +124716,12 @@ void UGFxData_TrainingModeBrowser_TA::HandleLocalTrainingModeSaved(class UGFxDat
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // struct FString                 NewName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETrainingType> NewType                        (CPF_Parm)
-// TEnumAsByte<enum class EDifficulty> NewDifficulty                  (CPF_Parm)
+// TEnumAsByte<ETrainingType>     NewType                        (CPF_Parm)
+// TEnumAsByte<EDifficulty>       NewDifficulty                  (CPF_Parm)
 // struct FName                   MapName                        (CPF_Parm)
 // TArray<int>                    Tags                           (CPF_Parm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeBrowser_TA::CreateNew(const struct FString& NewName, TEnumAsByte<enum class ETrainingType> NewType, TEnumAsByte<enum class EDifficulty> NewDifficulty, const struct FName& MapName, TArray<int> Tags)
+void UGFxData_TrainingModeBrowser_TA::CreateNew(const struct FString& NewName, TEnumAsByte<ETrainingType> NewType, TEnumAsByte<EDifficulty> NewDifficulty, const struct FName& MapName, TArray<int> Tags)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.CreateNew");
 
@@ -124826,10 +124826,10 @@ void UGFxData_TrainingModeBrowser_TA::NotifyWhenFavoritesLoaded(const struct FSc
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // TArray<struct FString>         Files                          (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EBasicLoadResult> Result                         (CPF_Parm)
+// TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
 // struct FFavoritedFileMetaData  StructInitializer__s_A77E7F66489416A4903ED0B846182119 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeBrowser_TA::HandleFavorites(TArray<struct FString> Files, TEnumAsByte<enum class EBasicLoadResult> Result, struct FFavoritedFileMetaData* StructInitializer__s_A77E7F66489416A4903ED0B846182119)
+void UGFxData_TrainingModeBrowser_TA::HandleFavorites(TArray<struct FString> Files, TEnumAsByte<EBasicLoadResult> Result, struct FFavoritedFileMetaData* StructInitializer__s_A77E7F66489416A4903ED0B846182119)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleFavorites");
 
@@ -125404,11 +125404,11 @@ void UGFxData_TrainingModeEditor_TA::SetActiveRound(int NewRound)
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // struct FString                 NewName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETrainingType> NewType                        (CPF_Parm)
-// TEnumAsByte<enum class EDifficulty> NewDifficulty                  (CPF_Parm)
+// TEnumAsByte<ETrainingType>     NewType                        (CPF_Parm)
+// TEnumAsByte<EDifficulty>       NewDifficulty                  (CPF_Parm)
 // TArray<int>                    NewTags                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeEditor_TA::SetMetaData(const struct FString& NewName, TEnumAsByte<enum class ETrainingType> NewType, TEnumAsByte<enum class EDifficulty> NewDifficulty, TArray<int> NewTags)
+void UGFxData_TrainingModeEditor_TA::SetMetaData(const struct FString& NewName, TEnumAsByte<ETrainingType> NewType, TEnumAsByte<EDifficulty> NewDifficulty, TArray<int> NewTags)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeEditor_TA.SetMetaData");
 
@@ -126643,10 +126643,10 @@ void URPC_ProductsDebugAddPainted_TA::OnSuccess()
 // Function TAGame.RPC_ProductsDebugAddPainted_TA.SetGameVersion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EGameVersion> InGameVersion                  (CPF_Parm)
+// TEnumAsByte<EGameVersion>      InGameVersion                  (CPF_Parm)
 // class URPC_ProductsDebugAddPainted_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class URPC_ProductsDebugAddPainted_TA* URPC_ProductsDebugAddPainted_TA::SetGameVersion(TEnumAsByte<enum class EGameVersion> InGameVersion)
+class URPC_ProductsDebugAddPainted_TA* URPC_ProductsDebugAddPainted_TA::SetGameVersion(TEnumAsByte<EGameVersion> InGameVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsDebugAddPainted_TA.SetGameVersion");
 
@@ -126792,10 +126792,10 @@ void URPC_ProductsDebugAddRandom_TA::OnSuccess()
 // Function TAGame.RPC_ProductsDebugAddRandom_TA.SetGameVersion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EGameVersion> InGameVersion                  (CPF_Parm)
+// TEnumAsByte<EGameVersion>      InGameVersion                  (CPF_Parm)
 // class URPC_ProductsDebugAddRandom_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class URPC_ProductsDebugAddRandom_TA* URPC_ProductsDebugAddRandom_TA::SetGameVersion(TEnumAsByte<enum class EGameVersion> InGameVersion)
+class URPC_ProductsDebugAddRandom_TA* URPC_ProductsDebugAddRandom_TA::SetGameVersion(TEnumAsByte<EGameVersion> InGameVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsDebugAddRandom_TA.SetGameVersion");
 
@@ -127453,9 +127453,9 @@ void ASpecialAttachment_TA::OnRigidBodyCollision(const struct FAccumulatedRigidB
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
 // class ACar_TA*                 InCar                          (CPF_Parm)
-// TEnumAsByte<enum class EProductAttachmentSocket> InSocket                       (CPF_Parm)
+// TEnumAsByte<EProductAttachmentSocket> InSocket                       (CPF_Parm)
 
-void ASpecialAttachment_TA::AttachToCar(class ACar_TA* InCar, TEnumAsByte<enum class EProductAttachmentSocket> InSocket)
+void ASpecialAttachment_TA::AttachToCar(class ACar_TA* InCar, TEnumAsByte<EProductAttachmentSocket> InSocket)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SpecialAttachment_TA.AttachToCar");
 
@@ -127544,9 +127544,9 @@ void ASpecialPickup_Spring_TA::PickupEnd()
 // Parameters:
 // class ABall_TA*                Ball                           (CPF_Parm)
 // class ACar_TA*                 OtherCar                       (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ASpecialPickup_Spring_TA::HandleCarTouchedBall(class ABall_TA* Ball, class ACar_TA* OtherCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ASpecialPickup_Spring_TA::HandleCarTouchedBall(class ABall_TA* Ball, class ACar_TA* OtherCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SpecialPickup_Spring_TA.HandleCarTouchedBall");
 
@@ -127860,9 +127860,9 @@ void ASpecialPickup_BallFreeze_TA::HandleBallExploded(class ABall_TA* InBall)
 // Parameters:
 // class ABall_TA*                InBall                         (CPF_Parm)
 // class ACar_TA*                 InCar                          (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ASpecialPickup_BallFreeze_TA::HandleBallHit(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ASpecialPickup_BallFreeze_TA::HandleBallHit(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SpecialPickup_BallFreeze_TA.HandleBallHit");
 
@@ -128282,9 +128282,9 @@ void ASpecialPickup_BallVelcro_TA::HandleCollision(class ARBActor_TA* RBActor, c
 // Parameters:
 // class ABall_TA*                InBall                         (CPF_Parm)
 // class ACar_TA*                 InCar                          (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ASpecialPickup_BallVelcro_TA::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ASpecialPickup_BallVelcro_TA::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SpecialPickup_BallVelcro_TA.HandleCarTouch");
 
@@ -128473,9 +128473,9 @@ void ASpecialPickup_BallVelcro_TA::ReplicatedEvent(const struct FName& EventName
 // Parameters:
 // class ABall_TA*                InBall                         (CPF_Parm)
 // class ACar_TA*                 InCar                          (CPF_Parm)
-// TEnumAsByte<enum class EBallHitType> HitType                        (CPF_Parm)
+// TEnumAsByte<EBallHitType>      HitType                        (CPF_Parm)
 
-void ASpecialPickup_Basketball_TA::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<enum class EBallHitType> HitType)
+void ASpecialPickup_Basketball_TA::HandleCarTouch(class ABall_TA* InBall, class ACar_TA* InCar, TEnumAsByte<EBallHitType> HitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SpecialPickup_Basketball_TA.HandleCarTouch");
 

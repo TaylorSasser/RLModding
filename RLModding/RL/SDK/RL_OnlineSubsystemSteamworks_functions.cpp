@@ -1589,9 +1589,9 @@ bool UOnlineGameInterfaceSteamworks_PsyNet::UpdateOnlineGame(const struct FName&
 // Parameters:
 // struct FUniqueNetId            JoinablePlayerID               (CPF_Parm)
 // struct FString                 ServerAddress                  (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ELobbyVisibility> Visibility                     (CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Visibility                     (CPF_Parm)
 
-void UOnlineGameInterfaceSteamworks_PsyNet::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<enum class ELobbyVisibility> Visibility)
+void UOnlineGameInterfaceSteamworks_PsyNet::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<ELobbyVisibility> Visibility)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation");
 
@@ -1614,10 +1614,10 @@ void UOnlineGameInterfaceSteamworks_PsyNet::SetFriendJoinLocation(const struct F
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceSteamworks::KickPlayer(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
+bool UOnlineLobbyInterfaceSteamworks::KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineLobbyInterfaceSteamworks.KickPlayer");
 
@@ -1785,10 +1785,10 @@ bool UOnlineLobbyInterfaceSteamworks::SetLobbyLock(bool bLocked, struct FUniqueL
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyVisibility> Type                           (CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Type                           (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceSteamworks::SetLobbyType(TEnumAsByte<enum class ELobbyVisibility> Type, struct FUniqueLobbyId* LobbyId)
+bool UOnlineLobbyInterfaceSteamworks::SetLobbyType(TEnumAsByte<ELobbyVisibility> Type, struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineLobbyInterfaceSteamworks.SetLobbyType");
 
@@ -2123,10 +2123,10 @@ bool UOnlineLobbyInterfaceSteamworks::UpdateFoundLobbies(const struct FUniqueLob
 // TArray<struct FLobbyFilter>    Filters                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FLobbySortFilter> SortFilters                    (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            MinSlots                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ELobbyDistance> Distance                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyDistance>    Distance                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceSteamworks::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<enum class ELobbyDistance> Distance)
+bool UOnlineLobbyInterfaceSteamworks::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineLobbyInterfaceSteamworks.FindLobbies");
 
@@ -2153,11 +2153,11 @@ bool UOnlineLobbyInterfaceSteamworks::FindLobbies(int MaxResults, TArray<struct 
 // Parameters:
 // int                            LocalPlayerNum                 (CPF_Parm)
 // int                            MaxPlayers                     (CPF_Parm)
-// TEnumAsByte<enum class ELobbyVisibility> Type                           (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Type                           (CPF_OptionalParm, CPF_Parm)
 // TArray<struct FLobbyMetaData>  InitialSettings                (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceSteamworks::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<enum class ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
+bool UOnlineLobbyInterfaceSteamworks::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineLobbyInterfaceSteamworks.CreateLobby");
 
@@ -3409,9 +3409,9 @@ void UOnlineSubsystemSteamworks::OpenStoreForDLC(unsigned char LocalUserNum, con
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EPS4ErrorDialog>   ErrorCode                      (CPF_Parm)
 
-void UOnlineSubsystemSteamworks::OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode)
+void UOnlineSubsystemSteamworks::OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<EPS4ErrorDialog> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenErrorDialog");
 
@@ -3431,11 +3431,11 @@ void UOnlineSubsystemSteamworks::OpenErrorDialog(unsigned char LocalUserNum, TEn
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EPS4DisplayMode> DisplayMode                    (CPF_Parm)
+// TEnumAsByte<EPS4DisplayMode>   DisplayMode                    (CPF_Parm)
 // TArray<struct FString>         Targets                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            ServiceLabel                   (CPF_OptionalParm, CPF_Parm)
 
-void UOnlineSubsystemSteamworks::OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
+void UOnlineSubsystemSteamworks::OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenPS4DisplayMode");
 
@@ -4605,11 +4605,11 @@ bool UOnlineSubsystemSteamworks::DisplayAchievementProgress(int AchievementId, i
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 LeaderboardName                (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ELeaderboardSortType> SortType                       (CPF_Parm)
-// TEnumAsByte<enum class ELeaderboardFormat> DisplayFormat                  (CPF_Parm)
+// TEnumAsByte<ELeaderboardSortType> SortType                       (CPF_Parm)
+// TEnumAsByte<ELeaderboardFormat> DisplayFormat                  (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CreateLeaderboard(const struct FString& LeaderboardName, TEnumAsByte<enum class ELeaderboardSortType> SortType, TEnumAsByte<enum class ELeaderboardFormat> DisplayFormat)
+bool UOnlineSubsystemSteamworks::CreateLeaderboard(const struct FString& LeaderboardName, TEnumAsByte<ELeaderboardSortType> SortType, TEnumAsByte<ELeaderboardFormat> DisplayFormat)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CreateLeaderboard");
 
@@ -4962,10 +4962,10 @@ bool UOnlineSubsystemSteamworks::GetNumberOfCurrentPlayers()
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
-// TEnumAsByte<enum class AvatarSize> Size                           (CPF_Parm)
+// TEnumAsByte<EAvatarSize>       Size                           (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineSubsystemSteamworks::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class AvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
+void UOnlineSubsystemSteamworks::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EAvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ReadOnlineAvatar");
 
@@ -5021,9 +5021,9 @@ bool UOnlineSubsystemSteamworks::ShowCustomPlayersUI(unsigned char LocalUserNum,
 // unsigned char                  LocalUserNum                   (CPF_Parm)
 // TArray<struct FAchievementDetails> Achievements                   (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            TitleId                        (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetAchievements");
 
@@ -6773,9 +6773,9 @@ void UOnlineSubsystemSteamworks::SetOnlineStatus(unsigned char LocalUserNum, int
 // (FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetTitleFileState");
 
@@ -6987,9 +6987,9 @@ int UOnlineSubsystemSteamworks::GetLocale()
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNATType
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENATType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENATType>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENATType> UOnlineSubsystemSteamworks::GetNATType()
+TEnumAsByte<ENATType> UOnlineSubsystemSteamworks::GetNATType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNATType");
 
@@ -7049,9 +7049,9 @@ void UOnlineSubsystemSteamworks::AddConnectionStatusChangeDelegate(const struct 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnConnectionStatusChange
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
 
-void UOnlineSubsystemSteamworks::OnConnectionStatusChange(TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus)
+void UOnlineSubsystemSteamworks::OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnConnectionStatusChange");
 
@@ -7069,9 +7069,9 @@ void UOnlineSubsystemSteamworks::OnConnectionStatusChange(TEnumAsByte<enum class
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetCurrentConnectionStatus
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineServerConnectionStatus> UOnlineSubsystemSteamworks::GetCurrentConnectionStatus()
+TEnumAsByte<EOnlineServerConnectionStatus> UOnlineSubsystemSteamworks::GetCurrentConnectionStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetCurrentConnectionStatus");
 
@@ -7295,9 +7295,9 @@ void UOnlineSubsystemSteamworks::OnControllerChange(int ControllerId, bool bIsCo
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetNetworkNotificationPosition
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENetworkNotificationPosition> NewPos                         (CPF_Parm)
+// TEnumAsByte<ENetworkNotificationPosition> NewPos                         (CPF_Parm)
 
-void UOnlineSubsystemSteamworks::SetNetworkNotificationPosition(TEnumAsByte<enum class ENetworkNotificationPosition> NewPos)
+void UOnlineSubsystemSteamworks::SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetNetworkNotificationPosition");
 
@@ -7316,9 +7316,9 @@ void UOnlineSubsystemSteamworks::SetNetworkNotificationPosition(TEnumAsByte<enum
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNetworkNotificationPosition
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENetworkNotificationPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENetworkNotificationPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENetworkNotificationPosition> UOnlineSubsystemSteamworks::GetNetworkNotificationPosition()
+TEnumAsByte<ENetworkNotificationPosition> UOnlineSubsystemSteamworks::GetNetworkNotificationPosition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNetworkNotificationPosition");
 
@@ -8390,9 +8390,9 @@ bool UOnlineSubsystemSteamworks::RegisterLocalTalker(unsigned char LocalUserNum)
 // TArray<struct FOnlineFriend>   Friends                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            Count                          (CPF_OptionalParm, CPF_Parm)
 // int                            StartingAt                     (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemSteamworks::GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetFriendsList");
 
@@ -9187,10 +9187,10 @@ void UOnlineSubsystemSteamworks::AddLoginStatusChangeDelegate(const struct FScri
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLoginStatusChange
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class ELoginStatus> NewStatus                      (CPF_Parm)
+// TEnumAsByte<ELoginStatus>      NewStatus                      (CPF_Parm)
 // struct FUniqueNetId            NewId                          (CPF_Parm)
 
-void UOnlineSubsystemSteamworks::OnLoginStatusChange(TEnumAsByte<enum class ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
+void UOnlineSubsystemSteamworks::OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLoginStatusChange");
 
@@ -9426,12 +9426,12 @@ bool UOnlineSubsystemSteamworks::IsFriend(unsigned char LocalUserNum, const stru
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanUploadFitnessData");
 
@@ -9457,12 +9457,12 @@ bool UOnlineSubsystemSteamworks::CanUploadFitnessData(unsigned char LocalUserNum
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanShareKinectContent");
 
@@ -9488,12 +9488,12 @@ bool UOnlineSubsystemSteamworks::CanShareKinectContent(unsigned char LocalUserNu
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanShareWithSocialNetwork");
 
@@ -9519,12 +9519,12 @@ bool UOnlineSubsystemSteamworks::CanShareWithSocialNetwork(unsigned char LocalUs
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanBrowseInternet");
 
@@ -9550,12 +9550,12 @@ bool UOnlineSubsystemSteamworks::CanBrowseInternet(unsigned char LocalUserNum, b
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanAccessPremiumVideoContent");
 
@@ -9581,12 +9581,12 @@ bool UOnlineSubsystemSteamworks::CanAccessPremiumVideoContent(unsigned char Loca
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanAccessPremiumContent");
 
@@ -9612,12 +9612,12 @@ bool UOnlineSubsystemSteamworks::CanAccessPremiumContent(unsigned char LocalUser
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanUseCloudStorage");
 
@@ -9643,12 +9643,12 @@ bool UOnlineSubsystemSteamworks::CanUseCloudStorage(unsigned char LocalUserNum, 
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanRecordDVRClips");
 
@@ -9674,12 +9674,12 @@ bool UOnlineSubsystemSteamworks::CanRecordDVRClips(unsigned char LocalUserNum, b
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanShowPresenceInformation");
 
@@ -9705,12 +9705,12 @@ bool UOnlineSubsystemSteamworks::CanShowPresenceInformation(unsigned char LocalU
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanViewPlayerProfiles");
 
@@ -9736,12 +9736,12 @@ bool UOnlineSubsystemSteamworks::CanViewPlayerProfiles(unsigned char LocalUserNu
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanPurchaseContent");
 
@@ -9767,12 +9767,12 @@ bool UOnlineSubsystemSteamworks::CanPurchaseContent(unsigned char LocalUserNum, 
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanDownloadUserContent");
 
@@ -9798,12 +9798,12 @@ bool UOnlineSubsystemSteamworks::CanDownloadUserContent(unsigned char LocalUserN
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanShareUserCreatedContent");
 
@@ -9829,12 +9829,12 @@ bool UOnlineSubsystemSteamworks::CanShareUserCreatedContent(unsigned char LocalU
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicateVoice");
 
@@ -9860,12 +9860,12 @@ bool UOnlineSubsystemSteamworks::CanCommunicateVoice(unsigned char LocalUserNum,
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicateVideo");
 
@@ -9891,12 +9891,12 @@ bool UOnlineSubsystemSteamworks::CanCommunicateVideo(unsigned char LocalUserNum,
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicateText");
 
@@ -9922,10 +9922,10 @@ bool UOnlineSubsystemSteamworks::CanCommunicateText(unsigned char LocalUserNum, 
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class ECommunicationMethod> CommMethod                     (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ECommunicationMethod> CommMethod                     (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlineSubsystemSteamworks::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<enum class ECommunicationMethod> CommMethod)
+TEnumAsByte<EFeaturePrivilegeLevel> UOnlineSubsystemSteamworks::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<ECommunicationMethod> CommMethod)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicate");
 
@@ -9948,12 +9948,12 @@ TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlineSubsystemSteamworks::CanCo
 // (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemSteamworks::CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanPlayOnline");
 
@@ -10076,9 +10076,9 @@ bool UOnlineSubsystemSteamworks::IsGuestLogin(unsigned char LocalUserNum)
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class ELoginStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ELoginStatus>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ELoginStatus> UOnlineSubsystemSteamworks::GetLoginStatus(unsigned char LocalUserNum)
+TEnumAsByte<ELoginStatus> UOnlineSubsystemSteamworks::GetLoginStatus(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetLoginStatus");
 
@@ -10231,9 +10231,9 @@ void UOnlineSubsystemSteamworks::AddLoginFailedDelegate(unsigned char LocalUserN
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void UOnlineSubsystemSteamworks::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void UOnlineSubsystemSteamworks::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLoginFailed");
 

@@ -382,7 +382,7 @@ struct UOnlineEventsInterfaceMcp_UploadPlayerData_Params
 struct UOnlineNewsInterfaceMcp_GetNews_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -402,14 +402,14 @@ struct UOnlineNewsInterfaceMcp_AddReadNewsCompletedDelegate_Params
 struct UOnlineNewsInterfaceMcp_OnReadNewsCompleted_Params
 {
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 };
 
 // Function IpDrv.OnlineNewsInterfaceMcp.ReadNews
 struct UOnlineNewsInterfaceMcp_ReadNews_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -462,7 +462,7 @@ struct UOnlineTitleFileDownloadBase_ClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadBase_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents
@@ -489,7 +489,7 @@ struct UOnlineTitleFileDownloadBase_AddReadTitleFileCompleteDelegate_Params
 struct UOnlineTitleFileDownloadBase_ReadTitleFile_Params
 {
 	struct FString                                     FileToRead;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineFileType>            FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EOnlineFileType>                       FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -517,7 +517,7 @@ struct UOnlineTitleFileDownloadMcp_ClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadMcp_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents
@@ -532,7 +532,7 @@ struct UOnlineTitleFileDownloadMcp_GetTitleFileContents_Params
 struct UOnlineTitleFileDownloadMcp_ReadTitleFile_Params
 {
 	struct FString                                     FileToRead;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineFileType>            FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EOnlineFileType>                       FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -574,7 +574,7 @@ struct UOnlineTitleFileDownloadWeb_ClearDownloadedFiles_Params
 struct UOnlineTitleFileDownloadWeb_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileContents
@@ -604,14 +604,14 @@ struct UOnlineTitleFileDownloadWeb_OnFileDownloadComplete_Params
 struct UOnlineTitleFileDownloadWeb_ReadTitleFile_Params
 {
 	struct FString                                     FileToRead;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineFileType>            FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EOnlineFileType>                       FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.UncompressTitleFileContents
 struct UOnlineTitleFileDownloadWeb_UncompressTitleFileContents_Params
 {
-	TEnumAsByte<enum class EMcpFileCompressionType>    FileCompressionType;                                      // (CPF_Parm)
+	TEnumAsByte<EMcpFileCompressionType>               FileCompressionType;                                      // (CPF_Parm)
 	TArray<unsigned char>                              CompressedFileContents;                                   // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	TArray<unsigned char>                              UncompressedFileContents;                                 // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -662,7 +662,7 @@ struct UTitleFileDownloadCache_GetTitleFileHash_Params
 struct UTitleFileDownloadCache_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileContents
@@ -935,7 +935,7 @@ struct UMcpMessageManager_FinishedAsyncUncompression_Params
 struct UMcpMessageManager_StartAsyncUncompression_Params
 {
 	struct FString                                     MessageId;                                                // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType;                                   // (CPF_Parm)
+	TEnumAsByte<EMcpMessageCompressionType>            MessageCompressionType;                                   // (CPF_Parm)
 	TArray<unsigned char>                              MessageContent;                                           // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -943,7 +943,7 @@ struct UMcpMessageManager_StartAsyncUncompression_Params
 // Function IpDrv.McpMessageManager.StartAsyncCompression
 struct UMcpMessageManager_StartAsyncCompression_Params
 {
-	TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType;                                   // (CPF_Parm)
+	TEnumAsByte<EMcpMessageCompressionType>            MessageCompressionType;                                   // (CPF_Parm)
 	TArray<unsigned char>                              MessageContent;                                           // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	class UHttpRequestInterface*                       Request;                                                  // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -1202,27 +1202,27 @@ struct UMeshBeaconClient_OnTravelRequestReceived_Params
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestResults
 struct UMeshBeaconClient_OnReceivedBandwidthTestResults_Params
 {
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult;                                               // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestResult>        TestResult;                                               // (CPF_Parm)
 	struct FConnectionBandwidthStats                   BandwidthStats;                                           // (CPF_Const, CPF_Parm, CPF_OutParm)
 };
 
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestRequest
 struct UMeshBeaconClient_OnReceivedBandwidthTestRequest_Params
 {
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
 };
 
 // Function IpDrv.MeshBeaconClient.OnConnectionRequestResult
 struct UMeshBeaconClient_OnConnectionRequestResult_Params
 {
-	TEnumAsByte<enum class EMeshBeaconConnectionResult> ConnectionResult;                                         // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconConnectionResult>           ConnectionResult;                                         // (CPF_Parm)
 };
 
 // Function IpDrv.MeshBeaconClient.BeginBandwidthTest
 struct UMeshBeaconClient_BeginBandwidthTest_Params
 {
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
 	int                                                TestBufferSize;                                           // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1297,8 +1297,8 @@ struct UMeshBeaconHost_SetPendingPlayerConnections_Params
 struct UMeshBeaconHost_OnFinishedBandwidthTest_Params
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult;                                               // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestResult>        TestResult;                                               // (CPF_Parm)
 	struct FConnectionBandwidthStats                   BandwidthStats;                                           // (CPF_Const, CPF_Parm, CPF_OutParm)
 };
 
@@ -1306,7 +1306,7 @@ struct UMeshBeaconHost_OnFinishedBandwidthTest_Params
 struct UMeshBeaconHost_OnStartedBandwidthTest_Params
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
 };
 
 // Function IpDrv.MeshBeaconHost.OnReceivedClientConnectionRequest
@@ -1347,7 +1347,7 @@ struct UMeshBeaconHost_HasInProgressBandwidthTest_Params
 struct UMeshBeaconHost_RequestClientBandwidthTest_Params
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // (CPF_Parm)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // (CPF_Parm)
 	int                                                TestBufferSize;                                           // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1883,7 +1883,7 @@ struct UOnlineGameInterfaceImpl_SetFriendJoinLocation_Params
 {
 	struct FUniqueNetId                                JoinablePlayerID;                                         // (CPF_Parm)
 	struct FString                                     ServerAddress;                                            // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELobbyVisibility>           Visibility;                                               // (CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Visibility;                                               // (CPF_Parm)
 };
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearReportMatchmakingInfoDelegate
@@ -2503,7 +2503,7 @@ struct UOnlineLobbyInterfaceImpl_KickPlayer_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -2526,7 +2526,7 @@ struct UOnlineLobbyInterfaceImpl_ShowInviteUI_Params
 struct UOnlineLobbyInterfaceImpl_TriggerLobbyDestroyedDelegates_Params
 {
 	int                                                LobbyIndex;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyDestroyedDelegate
@@ -2545,7 +2545,7 @@ struct UOnlineLobbyInterfaceImpl_AddLobbyDestroyedDelegate_Params
 struct UOnlineLobbyInterfaceImpl_OnLobbyDestroyed_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 };
 
 // Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyInviteDelegate
@@ -2900,7 +2900,7 @@ struct UOnlineLobbyInterfaceImpl_FindLobbies_Params
 	TArray<struct FLobbyFilter>                        Filters;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FLobbySortFilter>                    SortFilters;                                              // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                MinSlots;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ELobbyDistance>             Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyDistance>                        Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -2929,7 +2929,7 @@ struct UOnlineLobbyInterfaceImpl_CreateLobby_Params
 {
 	int                                                LocalPlayerNum;                                           // (CPF_Parm)
 	int                                                MaxPlayers;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ELobbyVisibility>           Type;                                                     // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Type;                                                     // (CPF_OptionalParm, CPF_Parm)
 	TArray<struct FLobbyMetaData>                      InitialSettings;                                          // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -3220,7 +3220,7 @@ struct UPartyBeaconClient_OnReservationCountUpdated_Params
 // Function IpDrv.PartyBeaconClient.OnReservationRequestComplete
 struct UPartyBeaconClient_OnReservationRequestComplete_Params
 {
-	TEnumAsByte<enum class EPartyReservationResult>    ReservationResult;                                        // (CPF_Parm)
+	TEnumAsByte<EPartyReservationResult>               ReservationResult;                                        // (CPF_Parm)
 };
 
 // Function IpDrv.PartyBeaconHost.GetMaxAvailableTeamSize
@@ -3327,7 +3327,7 @@ struct UPartyBeaconHost_UpdatePartyReservationEntry_Params
 {
 	struct FUniqueNetId                                PartyLeader;                                              // (CPF_Parm)
 	TArray<struct FPlayerReservation>                  PlayerMembers;                                            // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPartyReservationResult>    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EPartyReservationResult>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.AddPartyReservationEntry
@@ -3337,7 +3337,7 @@ struct UPartyBeaconHost_AddPartyReservationEntry_Params
 	TArray<struct FPlayerReservation>                  PlayerMembers;                                            // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	int                                                TeamNum;                                                  // (CPF_Parm)
 	bool                                               bIsHost;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EPartyReservationResult>    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EPartyReservationResult>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function IpDrv.PartyBeaconHost.InitHostBeacon
@@ -4209,7 +4209,7 @@ struct UMcpGroupsManager_CacheGroupMember_Params
 {
 	struct FString                                     MemberId;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpGroupAcceptState>       AcceptState;                                              // (CPF_Parm)
+	TEnumAsByte<EMcpGroupAcceptState>                  AcceptState;                                              // (CPF_Parm)
 };
 
 // Function IpDrv.McpGroupsManager.CacheGroup

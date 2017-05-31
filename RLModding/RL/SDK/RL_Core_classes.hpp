@@ -9,196 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Constants
-//---------------------------------------------------------------------------
-
-#define CONST_UpVector                                           Vect(0,0,1)
-#define CONST_RightVector                                        Vect(0,1,0)
-#define CONST_ForwardVector                                      Vect(1,0,0)
-#define CONST_AspectRatio5x4                                     1.25
-#define CONST_RadToDeg                                           57.295779513082321600
-#define CONST_InvAspectRatio16x9                                 0.56249
-#define CONST_InvAspectRatio5x4                                  0.8
-#define CONST_AspectRatio16x9                                    1.77778
-#define CONST_InvAspectRatio4x3                                  0.75
-#define CONST_AspectRatio4x3                                     1.33333
-#define CONST_INDEX_NONE                                         -1
-#define CONST_UnrRotToDeg                                        0.00549316540360483
-#define CONST_DegToUnrRot                                        182.0444
-#define CONST_RadToUnrRot                                        10430.3783504704527
-#define CONST_UnrRotToRad                                        0.00009587379924285
-#define CONST_DegToRad                                           0.017453292519943296
-#define CONST_Pi                                                 3.1415926535897932
-#define CONST_MaxInt                                             0x7fffffff
-
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum Core.Object.EEdition
-enum class EEdition
-{
-	Edition_Default                = 0,
-	Edition_Penguin                = 1,
-	Edition_MAX                    = 2
-};
-
-
-// Enum Core.Object.EDebugBreakType
-enum class EDebugBreakType
-{
-	DEBUGGER_NativeOnly            = 0,
-	DEBUGGER_ScriptOnly            = 1,
-	DEBUGGER_Both                  = 2,
-	DEBUGGER_MAX                   = 3
-};
-
-
-// Enum Core.Object.EAspectRatioAxisConstraint
-enum class EAspectRatioAxisConstraint
-{
-	AspectRatio_MaintainYFOV       = 0,
-	AspectRatio_MaintainXFOV       = 1,
-	AspectRatio_MajorAxisFOV       = 2,
-	AspectRatio_MAX                = 3
-};
-
-
-// Enum Core.Object.EAutomatedRunResult
-enum class EAutomatedRunResult
-{
-	ARR_Unknown                    = 0,
-	ARR_OOM                        = 1,
-	ARR_Passed                     = 2,
-	ARR_MAX                        = 3
-};
-
-
-// Enum Core.Object.EInterpCurveMode
-enum class EInterpCurveMode
-{
-	CIM_Linear                     = 0,
-	CIM_CurveAuto                  = 1,
-	CIM_Constant                   = 2,
-	CIM_CurveUser                  = 3,
-	CIM_CurveBreak                 = 4,
-	CIM_CurveAutoClamped           = 5,
-	CIM_MAX                        = 6
-};
-
-
-// Enum Core.Object.EInterpMethodType
-enum class EInterpMethodType
-{
-	IMT_UseFixedTangentEvalAndNewAutoTangents = 0,
-	IMT_UseFixedTangentEval        = 1,
-	IMT_UseBrokenTangentEval       = 2,
-	IMT_MAX                        = 3
-};
-
-
-// Enum Core.Object.EAxis
-enum class EAxis
-{
-	AXIS_NONE                      = 0,
-	AXIS_X                         = 1,
-	AXIS_Y                         = 2,
-	AXIS_BLANK                     = 3,
-	AXIS_Z                         = 4,
-	AXIS_MAX                       = 5
-};
-
-
-// Enum Core.Object.ETickingGroup
-enum class ETickingGroup
-{
-	TG_PreAsyncWork                = 0,
-	TG_DuringAsyncWork             = 1,
-	TG_PostAsyncWork               = 2,
-	TG_PostUpdateWork              = 3,
-	TG_EffectsUpdateWork           = 4,
-	TG_MAX                         = 5
-};
-
-
-// Enum Core.Object.EInputEvent
-enum class EInputEvent
-{
-	IE_Pressed                     = 0,
-	IE_Released                    = 1,
-	IE_Repeat                      = 2,
-	IE_DoubleClick                 = 3,
-	IE_Axis                        = 4,
-	IE_MAX                         = 5
-};
-
-
-// Enum Core.Object.AlphaBlendType
-enum class AlphaBlendType
-{
-	ABT_Linear                     = 0,
-	ABT_Cubic                      = 1,
-	ABT_Sinusoidal                 = 2,
-	ABT_EaseInOutExponent2         = 3,
-	ABT_EaseInOutExponent3         = 4,
-	ABT_EaseInOutExponent4         = 5,
-	ABT_EaseInOutExponent5         = 6,
-	ABT_MAX                        = 7
-};
-
-
-// Enum Core.DistributionVector.EDistributionVectorLockFlags
-enum class EDistributionVectorLockFlags
-{
-	EDVLF_None                     = 0,
-	EDVLF_XY                       = 1,
-	EDVLF_XZ                       = 2,
-	EDVLF_YZ                       = 3,
-	EDVLF_XYZ                      = 4,
-	EDVLF_MAX                      = 5
-};
-
-
-// Enum Core.DistributionVector.EDistributionVectorMirrorFlags
-enum class EDistributionVectorMirrorFlags
-{
-	EDVMF_Same                     = 0,
-	EDVMF_Different                = 1,
-	EDVMF_Mirror                   = 2,
-	EDVMF_MAX                      = 3
-};
-
-
-// Enum Core.GameVersion.EGameVersion
-enum class EGameVersion
-{
-	GameVersion_Launch             = 0,
-	GameVersion_SupersonicFury     = 1,
-	GameVersion                    = 2,
-	GameVersion_Revenge            = 3,
-	GameVersion_GrayCar            = 4,
-	GameVersion01                  = 5,
-	GameVersion02                  = 6,
-	GameVersion_Wasteland          = 7,
-	GameVersion_Update8            = 8,
-	GameVersion_DarkCar            = 9,
-	GameVersion_Update9            = 10,
-	GameVersion_Update10           = 11,
-	GameVersion_NeoTokyo           = 12,
-	GameVersion_Retail             = 13,
-	GameVersion_Update11           = 14,
-	GameVersion_Update12           = 15,
-	GameVersion_Update13           = 16,
-	GameVersion_Update14           = 17,
-	GameVersion_Update15           = 18,
-	GameVersion_Update16           = 19,
-	GameVersion_Unreleased         = 20,
-	GameVersion_MAX                = 21
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -280,8 +90,8 @@ public:
 
 	struct FString STATIC_PadString(const struct FString& Str, int Characters);
 	class UObjectProvider* STATIC_GetObjectProvider();
-	TEnumAsByte<enum class EEdition> STATIC_GetEdition();
-	bool STATIC_IsEdition(TEnumAsByte<enum class EEdition> Edition);
+	TEnumAsByte<EEdition> STATIC_GetEdition();
+	bool STATIC_IsEdition(TEnumAsByte<EEdition> Edition);
 	void SetRooted(bool bRooted);
 	void STATIC_ProfNodeEvent(const struct FString& EventName);
 	void STATIC_ProfNodeSetDepthThreshold(int Depth);
@@ -372,7 +182,7 @@ public:
 	bool STATIC_IsUTracing();
 	void STATIC_SetUTracing(bool bShouldUTrace);
 	struct FName STATIC_GetFuncName();
-	void STATIC_DebugBreak(int UserFlags, TEnumAsByte<enum class EDebugBreakType> DebuggerType);
+	void STATIC_DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerType);
 	struct FString STATIC_GetScriptTrace();
 	void STATIC_ScriptTrace();
 	struct FString STATIC_ParseLocalizedPropertyPath(const struct FString& PathName);
@@ -422,7 +232,7 @@ public:
 	struct FQuat STATIC_QuatInvert(const struct FQuat& A);
 	float STATIC_QuatDot(const struct FQuat& A, const struct FQuat& B);
 	struct FQuat STATIC_QuatProduct(const struct FQuat& A, const struct FQuat& B);
-	struct FVector STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<enum class EAxis> Axis);
+	struct FVector STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxis> Axis);
 	struct FVector STATIC_MatrixGetOrigin(const struct FMatrix& TM);
 	struct FRotator STATIC_MatrixGetRotator(const struct FMatrix& TM);
 	struct FMatrix STATIC_MakeRotationMatrix(const struct FRotator& Rotation);

@@ -26,8 +26,8 @@ namespace Utils {
 
 	template<typename T> 
 	T* EditParams(void* oldParam,void* newParam) {
-		T* oldParams = reinterpret_cast<T*>(OldParams);
-		T* newParams = reinterpret_cast<T*>(NewParams);
+		T* oldParams = reinterpret_cast<T*>(oldParam);
+		T* newParams = reinterpret_cast<T*>(newParam);
 		memcpy(oldParams,newParams,sizeof(T));
 		delete oldParams;
 		return newParams;

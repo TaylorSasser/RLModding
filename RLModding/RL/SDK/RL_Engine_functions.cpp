@@ -93,10 +93,10 @@ class AActor* AActor::SpawnInstance(class AActor* SpawnOwner, const struct FName
 // Function Engine.Actor.GetActorMetrics
 // (FUNC_Simulated, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EActorMetricsType> MetricsType                    (CPF_Parm)
+// TEnumAsByte<EActorMetricsType> MetricsType                    (CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int AActor::GetActorMetrics(TEnumAsByte<enum class EActorMetricsType> MetricsType)
+int AActor::GetActorMetrics(TEnumAsByte<EActorMetricsType> MetricsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.GetActorMetrics");
 
@@ -5042,9 +5042,9 @@ void AActor::SetTickIsDisabled(bool bInDisabled)
 // Function Engine.Actor.SetTickGroup
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETickingGroup> NewTickGroup                   (CPF_Parm)
+// TEnumAsByte<ETickingGroup>     NewTickGroup                   (CPF_Parm)
 
-void AActor::SetTickGroup(TEnumAsByte<enum class ETickingGroup> NewTickGroup)
+void AActor::SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.SetTickGroup");
 
@@ -5172,9 +5172,9 @@ void AActor::Clock(float* Time)
 // Function Engine.Actor.SetPhysics
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPhysics> newPhysics                     (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
 
-void AActor::SetPhysics(TEnumAsByte<enum class EPhysics> newPhysics)
+void AActor::SetPhysics(TEnumAsByte<EPhysics> newPhysics)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.SetPhysics");
 
@@ -6146,9 +6146,9 @@ void AActor::SetZone(bool bForceRefresh)
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // float                          Amount                         (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class EMoveDir> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EMoveDir>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EMoveDir> AActor::MovingWhichWay(float* Amount)
+TEnumAsByte<EMoveDir> AActor::MovingWhichWay(float* Amount)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.MovingWhichWay");
 
@@ -6285,9 +6285,9 @@ void AActor::SetDrawScale(float NewScale)
 // Function Engine.Actor.SetCollisionType
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECollisionType> NewCollisionType               (CPF_Parm)
+// TEnumAsByte<ECollisionType>    NewCollisionType               (CPF_Parm)
 
-void AActor::SetCollisionType(TEnumAsByte<enum class ECollisionType> NewCollisionType)
+void AActor::SetCollisionType(TEnumAsByte<ECollisionType> NewCollisionType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.SetCollisionType");
 
@@ -6568,10 +6568,10 @@ void AWorldInfo::ToggleHostMigration(bool bEnabled)
 // Function Engine.WorldInfo.NotifyHostMigrationStateChanged
 // (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EHostMigrationProgress> NewState                       (CPF_Parm)
-// TEnumAsByte<enum class EHostMigrationProgress> OldState                       (CPF_Parm)
+// TEnumAsByte<EHostMigrationProgress> NewState                       (CPF_Parm)
+// TEnumAsByte<EHostMigrationProgress> OldState                       (CPF_Parm)
 
-void AWorldInfo::NotifyHostMigrationStateChanged(TEnumAsByte<enum class EHostMigrationProgress> NewState, TEnumAsByte<enum class EHostMigrationProgress> OldState)
+void AWorldInfo::NotifyHostMigrationStateChanged(TEnumAsByte<EHostMigrationProgress> NewState, TEnumAsByte<EHostMigrationProgress> OldState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.WorldInfo.NotifyHostMigrationStateChanged");
 
@@ -6815,9 +6815,9 @@ bool AWorldInfo::IsRecordingDemo()
 // Function Engine.WorldInfo.GetDetailMode
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EDetailMode> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EDetailMode>       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EDetailMode> AWorldInfo::GetDetailMode()
+TEnumAsByte<EDetailMode> AWorldInfo::GetDetailMode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.WorldInfo.GetDetailMode");
 
@@ -7532,10 +7532,10 @@ bool AWorldInfo::STATIC_IsWithGFx()
 // Function Engine.WorldInfo.IsConsoleBuild
 // (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EConsoleType> ConsoleType                    (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EConsoleType>      ConsoleType                    (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AWorldInfo::STATIC_IsConsoleBuild(TEnumAsByte<enum class EConsoleType> ConsoleType)
+bool AWorldInfo::STATIC_IsConsoleBuild(TEnumAsByte<EConsoleType> ConsoleType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.WorldInfo.IsConsoleBuild");
 
@@ -8489,9 +8489,9 @@ void UEngine::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Function Engine.Engine.GetGameVersion
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EGameVersion> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EGameVersion>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EGameVersion> UEngine::STATIC_GetGameVersion()
+TEnumAsByte<EGameVersion> UEngine::STATIC_GetGameVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Engine.GetGameVersion");
 
@@ -8675,9 +8675,9 @@ bool UEngine::STATIC_LaunchURL(const struct FString& URL)
 // struct FString                 PathName                       (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bIsSaveGame                    (CPF_Parm)
 // int                            Version                        (CPF_Parm)
-// TEnumAsByte<enum class EBasicLoadResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBasicLoadResult>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBasicLoadResult> UEngine::STATIC_BasicLoadObject(class UObject* Obj, const struct FString& PathName, bool bIsSaveGame, int Version)
+TEnumAsByte<EBasicLoadResult> UEngine::STATIC_BasicLoadObject(class UObject* Obj, const struct FString& PathName, bool bIsSaveGame, int Version)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Engine.BasicLoadObject");
 
@@ -13235,9 +13235,9 @@ void AAutoTestManager::DoTravelTheWorld()
 // Function Engine.AutoTestManager.EndSentinelRun
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EAutomatedRunResult> RunResult                      (CPF_Parm)
+// TEnumAsByte<EAutomatedRunResult> RunResult                      (CPF_Parm)
 
-void AAutoTestManager::EndSentinelRun(TEnumAsByte<enum class EAutomatedRunResult> RunResult)
+void AAutoTestManager::EndSentinelRun(TEnumAsByte<EAutomatedRunResult> RunResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AutoTestManager.EndSentinelRun");
 
@@ -13489,13 +13489,13 @@ void AFileWriter::CloseFile()
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 InFilename                     (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class FWFileType> InFileType                     (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EFWFileType>       InFileType                     (CPF_OptionalParm, CPF_Parm)
 // struct FString                 InExtension                    (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           bUnique                        (CPF_OptionalParm, CPF_Parm)
 // bool                           bIncludeTimeStamp              (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool AFileWriter::OpenFile(const struct FString& InFilename, TEnumAsByte<enum class FWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp)
+bool AFileWriter::OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.FileWriter.OpenFile");
 
@@ -13656,9 +13656,9 @@ void AGameInfo::OnDestroyOnlineGameComplete(const struct FName& SessionName, boo
 // Function Engine.GameInfo.StandbyCheatDetected
 // (FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EStandbyType> StandbyType                    (CPF_Parm)
+// TEnumAsByte<EStandbyType>      StandbyType                    (CPF_Parm)
 
-void AGameInfo::StandbyCheatDetected(TEnumAsByte<enum class EStandbyType> StandbyType)
+void AGameInfo::StandbyCheatDetected(TEnumAsByte<EStandbyType> StandbyType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.StandbyCheatDetected");
 
@@ -14002,9 +14002,9 @@ void AGameInfo::OnLoginChange(unsigned char LocalUserNum)
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void AGameInfo::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void AGameInfo::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.OnLoginFailed");
 
@@ -17874,11 +17874,11 @@ void APotentialClimbWatcher::Tick(float DeltaTime)
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // class APawn*                   P                              (CPF_Parm)
-// TEnumAsByte<enum class ERouteDirection> RouteDirection                 (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERouteDirection>   RouteDirection                 (CPF_OptionalParm, CPF_Parm)
 // float                          DistFudgeFactor                (CPF_OptionalParm, CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int ARoute::MoveOntoRoutePath(class APawn* P, TEnumAsByte<enum class ERouteDirection> RouteDirection, float DistFudgeFactor)
+int ARoute::MoveOntoRoutePath(class APawn* P, TEnumAsByte<ERouteDirection> RouteDirection, float DistFudgeFactor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Route.MoveOntoRoutePath");
 
@@ -17902,12 +17902,12 @@ int ARoute::MoveOntoRoutePath(class APawn* P, TEnumAsByte<enum class ERouteDirec
 // (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            Idx                            (CPF_Parm)
-// TEnumAsByte<enum class ERouteDirection> RouteDirection                 (CPF_Parm)
+// TEnumAsByte<ERouteDirection>   RouteDirection                 (CPF_Parm)
 // unsigned char                  out_bComplete                  (CPF_Parm, CPF_OutParm)
 // unsigned char                  out_bReverse                   (CPF_Parm, CPF_OutParm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int ARoute::ResolveRouteIndex(int Idx, TEnumAsByte<enum class ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse)
+int ARoute::ResolveRouteIndex(int Idx, TEnumAsByte<ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Route.ResolveRouteIndex");
 
@@ -21015,9 +21015,9 @@ struct FString ACoverLink::GetDebugAbbrev()
 // (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
 // Parameters:
 // int                            SlotIdx                        (CPF_Parm)
-// TEnumAsByte<enum class ECoverLocationDescription> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ECoverLocationDescription> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ECoverLocationDescription> ACoverLink::GetLocationDescription(int SlotIdx)
+TEnumAsByte<ECoverLocationDescription> ACoverLink::GetLocationDescription(int SlotIdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.GetLocationDescription");
 
@@ -21385,9 +21385,9 @@ void ACoverLink::SetDisabled(bool bNewDisabled)
 // (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            SlotIdx                        (CPF_Parm)
-// TArray<TEnumAsByte<enum class ECoverAction>> Actions                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<TEnumAsByte<ECoverAction>> Actions                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void ACoverLink::GetSlotActions(int SlotIdx, TArray<TEnumAsByte<enum class ECoverAction>>* Actions)
+void ACoverLink::GetSlotActions(int SlotIdx, TArray<TEnumAsByte<ECoverAction>>* Actions)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.GetSlotActions");
 
@@ -21439,13 +21439,13 @@ bool ACoverLink::HasFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, b
 // Parameters:
 // int                            SlotIdx                        (CPF_Parm)
 // struct FCoverInfo              ChkCover                       (CPF_Parm)
-// TEnumAsByte<enum class ECoverAction> ChkAction                      (CPF_Parm)
-// TEnumAsByte<enum class ECoverType> ChkType                        (CPF_Parm)
+// TEnumAsByte<ECoverAction>      ChkAction                      (CPF_Parm)
+// TEnumAsByte<ECoverType>        ChkType                        (CPF_Parm)
 // int                            out_FireLinkIdx                (CPF_Parm, CPF_OutParm)
 // TArray<int>                    out_Items                      (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool ACoverLink::GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<enum class ECoverAction> ChkAction, TEnumAsByte<enum class ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items)
+bool ACoverLink::GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<ECoverAction> ChkAction, TEnumAsByte<ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.GetFireLinkTo");
 
@@ -21873,11 +21873,11 @@ bool ACoverLink::IsExposedTo(int SlotIdx, const struct FCoverInfo& ChkSlot, floa
 // (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // int                            SlotIdx                        (CPF_Parm)
-// TEnumAsByte<enum class ECoverType> Type                           (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ECoverAction> Action                         (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECoverType>        Type                           (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECoverAction>      Action                         (CPF_OptionalParm, CPF_Parm)
 // struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FVector ACoverLink::GetSlotViewPoint(int SlotIdx, TEnumAsByte<enum class ECoverType> Type, TEnumAsByte<enum class ECoverAction> Action)
+struct FVector ACoverLink::GetSlotViewPoint(int SlotIdx, TEnumAsByte<ECoverType> Type, TEnumAsByte<ECoverAction> Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.GetSlotViewPoint");
 
@@ -21953,12 +21953,12 @@ struct FVector ACoverLink::GetSlotLocation(int SlotIdx, bool bForceUseOffset)
 // (FUNC_Simulated, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  PackedByte                     (CPF_Const, CPF_Parm)
-// TEnumAsByte<enum class ECoverType> SrcType                        (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ECoverAction> SrcAction                      (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ECoverType> DestType                       (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ECoverAction> DestAction                     (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<ECoverType>        SrcType                        (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<ECoverAction>      SrcAction                      (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<ECoverType>        DestType                       (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<ECoverAction>      DestAction                     (CPF_Parm, CPF_OutParm)
 
-void ACoverLink::STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, TEnumAsByte<enum class ECoverType>* SrcType, TEnumAsByte<enum class ECoverAction>* SrcAction, TEnumAsByte<enum class ECoverType>* DestType, TEnumAsByte<enum class ECoverAction>* DestAction)
+void ACoverLink::STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, TEnumAsByte<ECoverType>* SrcType, TEnumAsByte<ECoverAction>* SrcAction, TEnumAsByte<ECoverType>* DestType, TEnumAsByte<ECoverAction>* DestAction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.UnPackFireLinkInteractionInfo");
 
@@ -21986,13 +21986,13 @@ void ACoverLink::STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, 
 // Function Engine.CoverLink.PackFireLinkInteractionInfo
 // (FUNC_Simulated, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECoverType> SrcType                        (CPF_Parm)
-// TEnumAsByte<enum class ECoverAction> SrcAction                      (CPF_Parm)
-// TEnumAsByte<enum class ECoverType> DestType                       (CPF_Parm)
-// TEnumAsByte<enum class ECoverAction> DestAction                     (CPF_Parm)
+// TEnumAsByte<ECoverType>        SrcType                        (CPF_Parm)
+// TEnumAsByte<ECoverAction>      SrcAction                      (CPF_Parm)
+// TEnumAsByte<ECoverType>        DestType                       (CPF_Parm)
+// TEnumAsByte<ECoverAction>      DestAction                     (CPF_Parm)
 // unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-unsigned char ACoverLink::STATIC_PackFireLinkInteractionInfo(TEnumAsByte<enum class ECoverType> SrcType, TEnumAsByte<enum class ECoverAction> SrcAction, TEnumAsByte<enum class ECoverType> DestType, TEnumAsByte<enum class ECoverAction> DestAction)
+unsigned char ACoverLink::STATIC_PackFireLinkInteractionInfo(TEnumAsByte<ECoverType> SrcType, TEnumAsByte<ECoverAction> SrcAction, TEnumAsByte<ECoverType> DestType, TEnumAsByte<ECoverAction> DestAction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.PackFireLinkInteractionInfo");
 
@@ -22019,10 +22019,10 @@ unsigned char ACoverLink::STATIC_PackFireLinkInteractionInfo(TEnumAsByte<enum cl
 // int                            SlotIdx                        (CPF_Parm)
 // int                            FireLinkIdx                    (CPF_Parm)
 // struct FCoverInfo              out_Info                       (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class EFireLinkID> ArrayID                        (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EFireLinkID>       ArrayID                        (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool ACoverLink::GetFireLinkTargetCoverInfo(int SlotIdx, int FireLinkIdx, TEnumAsByte<enum class EFireLinkID> ArrayID, struct FCoverInfo* out_Info)
+bool ACoverLink::GetFireLinkTargetCoverInfo(int SlotIdx, int FireLinkIdx, TEnumAsByte<EFireLinkID> ArrayID, struct FCoverInfo* out_Info)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverLink.GetFireLinkTargetCoverInfo");
 
@@ -24325,9 +24325,9 @@ void UActorComponent::SetComponentRBFixed(bool bFixed)
 // Function Engine.ActorComponent.SetTickGroup
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETickingGroup> NewTickGroup                   (CPF_Parm)
+// TEnumAsByte<ETickingGroup>     NewTickGroup                   (CPF_Parm)
 
-void UActorComponent::SetTickGroup(TEnumAsByte<enum class ETickingGroup> NewTickGroup)
+void UActorComponent::SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.ActorComponent.SetTickGroup");
 
@@ -24689,9 +24689,9 @@ void UPrimitiveComponent::SetCastShadow(bool bNewCastShadow, bool bNewCastDynami
 // class UPrimitiveComponent*     OtherComponent                 (CPF_Parm, CPF_OutParm, CPF_EditInline)
 // struct FVector                 PointOnComponentA              (CPF_Parm, CPF_OutParm)
 // struct FVector                 PointOnComponentB              (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class GJKResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EGJKResult>        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class GJKResult> UPrimitiveComponent::ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB)
+TEnumAsByte<EGJKResult> UPrimitiveComponent::ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.ClosestPointOnComponentToComponent");
 
@@ -24722,9 +24722,9 @@ TEnumAsByte<enum class GJKResult> UPrimitiveComponent::ClosestPointOnComponentTo
 // struct FVector                 Extent                         (CPF_Parm, CPF_OutParm)
 // struct FVector                 OutPointA                      (CPF_Parm, CPF_OutParm)
 // struct FVector                 OutPointB                      (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class GJKResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EGJKResult>        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class GJKResult> UPrimitiveComponent::ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB)
+TEnumAsByte<EGJKResult> UPrimitiveComponent::ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.ClosestPointOnComponentToPoint");
 
@@ -24955,9 +24955,9 @@ void UPrimitiveComponent::SetTraceBlocking(bool NewBlockZeroExtent, bool NewBloc
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // bool                           bNewUseViewOwnerDepthPriorityGroup (CPF_Parm)
-// TEnumAsByte<enum class ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup (CPF_Parm)
+// TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup (CPF_Parm)
 
-void UPrimitiveComponent::SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<enum class ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup)
+void UPrimitiveComponent::SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.SetViewOwnerDepthPriorityGroup");
 
@@ -24977,9 +24977,9 @@ void UPrimitiveComponent::SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDe
 // Function Engine.PrimitiveComponent.SetDepthPriorityGroup
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ESceneDepthPriorityGroup> NewDepthPriorityGroup          (CPF_Parm)
+// TEnumAsByte<ESceneDepthPriorityGroup> NewDepthPriorityGroup          (CPF_Parm)
 
-void UPrimitiveComponent::SetDepthPriorityGroup(TEnumAsByte<enum class ESceneDepthPriorityGroup> NewDepthPriorityGroup)
+void UPrimitiveComponent::SetDepthPriorityGroup(TEnumAsByte<ESceneDepthPriorityGroup> NewDepthPriorityGroup)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.SetDepthPriorityGroup");
 
@@ -25309,9 +25309,9 @@ void UPrimitiveComponent::SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCo
 // Function Engine.PrimitiveComponent.SetRBChannel
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERBCollisionChannel> Channel                        (CPF_Parm)
+// TEnumAsByte<ERBCollisionChannel> Channel                        (CPF_Parm)
 
-void UPrimitiveComponent::SetRBChannel(TEnumAsByte<enum class ERBCollisionChannel> Channel)
+void UPrimitiveComponent::SetRBChannel(TEnumAsByte<ERBCollisionChannel> Channel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.SetRBChannel");
 
@@ -25351,10 +25351,10 @@ void UPrimitiveComponent::SetRBCollisionChannels(const struct FRBCollisionChanne
 // Function Engine.PrimitiveComponent.SetRBCollidesWithChannel
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERBCollisionChannel> Channel                        (CPF_Parm)
+// TEnumAsByte<ERBCollisionChannel> Channel                        (CPF_Parm)
 // bool                           bNewCollides                   (CPF_Parm)
 
-void UPrimitiveComponent::SetRBCollidesWithChannel(TEnumAsByte<enum class ERBCollisionChannel> Channel, bool bNewCollides)
+void UPrimitiveComponent::SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, bool bNewCollides)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.SetRBCollidesWithChannel");
 
@@ -25578,9 +25578,9 @@ void UPrimitiveComponent::SetRBLinearVelocity(const struct FVector& NewVel, bool
 // Parameters:
 // struct FVector                 Torque                         (CPF_Parm)
 // struct FName                   BoneName                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EForceMode> ForceMode                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EForceMode>        ForceMode                      (CPF_OptionalParm, CPF_Parm)
 
-void UPrimitiveComponent::AddTorque(const struct FVector& Torque, const struct FName& BoneName, TEnumAsByte<enum class EForceMode> ForceMode)
+void UPrimitiveComponent::AddTorque(const struct FVector& Torque, const struct FName& BoneName, TEnumAsByte<EForceMode> ForceMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.AddTorque");
 
@@ -25604,9 +25604,9 @@ void UPrimitiveComponent::AddTorque(const struct FVector& Torque, const struct F
 // struct FVector                 Origin                         (CPF_Parm)
 // float                          Radius                         (CPF_Parm)
 // float                          Strength                       (CPF_Parm)
-// TEnumAsByte<enum class ERadialImpulseFalloff> Falloff                        (CPF_Parm)
+// TEnumAsByte<ERadialImpulseFalloff> Falloff                        (CPF_Parm)
 
-void UPrimitiveComponent::AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<enum class ERadialImpulseFalloff> Falloff)
+void UPrimitiveComponent::AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.AddRadialForce");
 
@@ -25655,9 +25655,9 @@ float UPrimitiveComponent::GetMass(const struct FName& BoneName)
 // struct FVector                 Force                          (CPF_Parm)
 // struct FVector                 Position                       (CPF_OptionalParm, CPF_Parm)
 // struct FName                   BoneName                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EForceMode> ForceMode                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EForceMode>        ForceMode                      (CPF_OptionalParm, CPF_Parm)
 
-void UPrimitiveComponent::AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName, TEnumAsByte<enum class EForceMode> ForceMode)
+void UPrimitiveComponent::AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName, TEnumAsByte<EForceMode> ForceMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.AddForce");
 
@@ -25682,10 +25682,10 @@ void UPrimitiveComponent::AddForce(const struct FVector& Force, const struct FVe
 // struct FVector                 Origin                         (CPF_Parm)
 // float                          Radius                         (CPF_Parm)
 // float                          Strength                       (CPF_Parm)
-// TEnumAsByte<enum class ERadialImpulseFalloff> Falloff                        (CPF_Parm)
+// TEnumAsByte<ERadialImpulseFalloff> Falloff                        (CPF_Parm)
 // bool                           bVelChange                     (CPF_OptionalParm, CPF_Parm)
 
-void UPrimitiveComponent::AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<enum class ERadialImpulseFalloff> Falloff, bool bVelChange)
+void UPrimitiveComponent::AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff, bool bVelChange)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PrimitiveComponent.AddRadialImpulse");
 
@@ -26678,9 +26678,9 @@ void UCanvas::DrawRect(float RectX, float RectY, class UTexture* Tex)
 // int                            X                              (CPF_Parm)
 // int                            Y                              (CPF_Parm)
 // struct FLinearColor            PixelColor                     (CPF_Parm)
-// TEnumAsByte<enum class EBlendMode> BlendMode                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBlendMode>        BlendMode                      (CPF_OptionalParm, CPF_Parm)
 
-void UCanvas::DrawPixel(int X, int Y, const struct FLinearColor& PixelColor, TEnumAsByte<enum class EBlendMode> BlendMode)
+void UCanvas::DrawPixel(int X, int Y, const struct FLinearColor& PixelColor, TEnumAsByte<EBlendMode> BlendMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.DrawPixel");
 
@@ -26792,9 +26792,9 @@ struct FCanvasIcon UCanvas::MakeIcon(class UTexture* Texture, float U, float V, 
 // float                          V                              (CPF_Parm)
 // float                          UL                             (CPF_Parm)
 // float                          VL                             (CPF_Parm)
-// TEnumAsByte<enum class ECanvasBlendMode> Blend                          (CPF_Parm)
+// TEnumAsByte<ECanvasBlendMode>  Blend                          (CPF_Parm)
 
-void UCanvas::DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<enum class ECanvasBlendMode> Blend)
+void UCanvas::DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<ECanvasBlendMode> Blend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.DrawBlendedTile");
 
@@ -27311,9 +27311,9 @@ void UCanvas::DrawTileStretched(class UTexture* Tex, float XL, float YL, float U
 // float                          UL                             (CPF_Parm)
 // float                          VL                             (CPF_Parm)
 // struct FLinearColor            LColor                         (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EBlendMode> Blend                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBlendMode>        Blend                          (CPF_OptionalParm, CPF_Parm)
 
-void UCanvas::DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<enum class EBlendMode> Blend)
+void UCanvas::DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<EBlendMode> Blend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.DrawTimer");
 
@@ -27457,9 +27457,9 @@ void UCanvas::DrawMaterialTile(class UMaterialInterface* Mat, float XL, float YL
 // Parameters:
 // int                            Num                            (CPF_Parm)
 // class UTexture*                Tex                            (CPF_Parm)
-// TEnumAsByte<enum class EBlendMode> Blend                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBlendMode>        Blend                          (CPF_OptionalParm, CPF_Parm)
 
-void UCanvas::PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<enum class EBlendMode> Blend)
+void UCanvas::PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<EBlendMode> Blend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.PreOptimizeDrawTiles");
 
@@ -27489,9 +27489,9 @@ void UCanvas::PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<enu
 // float                          VL                             (CPF_Parm)
 // struct FLinearColor            LColor                         (CPF_OptionalParm, CPF_Parm)
 // bool                           ClipTile                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EBlendMode> Blend                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EBlendMode>        Blend                          (CPF_OptionalParm, CPF_Parm)
 
-void UCanvas::DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<enum class EBlendMode> Blend)
+void UCanvas::DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<EBlendMode> Blend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Canvas.DrawTile");
 
@@ -30748,10 +30748,10 @@ void APlayerController::ClientStopCameraAnim(class UCameraAnim* AnimToStop, bool
 // float                          BlendOutTime                   (CPF_OptionalParm, CPF_Parm)
 // bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
 // bool                           bRandomStartTime               (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ECameraAnimPlaySpace> Space                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> Space                          (CPF_OptionalParm, CPF_Parm)
 // struct FRotator                CustomPlaySpace                (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController::ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<enum class ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace)
+void APlayerController::ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientPlayCameraAnim");
 
@@ -30820,10 +30820,10 @@ void APlayerController::ClientStopCameraShake(class UCameraShake* Shake)
 // class UCameraShake*            Shake                          (CPF_Parm)
 // float                          Scale                          (CPF_OptionalParm, CPF_Parm)
 // bool                           bTryForceFeedback              (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
 // struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController::ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
+void APlayerController::ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientPlayCameraShake");
 
@@ -31124,9 +31124,9 @@ void APlayerController::ClientSetForceMipLevelsToBeResident(class UMaterialInter
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
 // Parameters:
 // class UTextureMovie*           MovieTexture                   (CPF_Parm)
-// TEnumAsByte<enum class EMovieControlType> Mode                           (CPF_Parm)
+// TEnumAsByte<EMovieControlType> Mode                           (CPF_Parm)
 
-void APlayerController::ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<enum class EMovieControlType> Mode)
+void APlayerController::ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<EMovieControlType> Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientControlMovieTexture");
 
@@ -33770,11 +33770,11 @@ void APlayerController::ClientSetViewTarget(class AActor* A, const struct FViewT
 // Parameters:
 // class AActor*                  NewViewTarget                  (CPF_Parm)
 // float                          BlendTime                      (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EViewTargetBlendFunction> BlendFunc                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EViewTargetBlendFunction> BlendFunc                      (CPF_OptionalParm, CPF_Parm)
 // float                          BlendExp                       (CPF_OptionalParm, CPF_Parm)
 // bool                           bLockOutgoing                  (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController::SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<enum class EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing)
+void APlayerController::SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.SetViewTargetWithBlend");
 
@@ -34270,12 +34270,12 @@ void APlayerController::Restart(bool bVehicleTransition)
 // Function Engine.PlayerController.ClientSetProgressMessage
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public, FUNC_NetClient)
 // Parameters:
-// TEnumAsByte<enum class EProgressMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<EProgressMessageType> MessageType                    (CPF_Parm)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           bIgnoreFutureNetworkMessages   (CPF_OptionalParm, CPF_Parm)
 
-void APlayerController::ClientSetProgressMessage(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages)
+void APlayerController::ClientSetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientSetProgressMessage");
 
@@ -34852,10 +34852,10 @@ void APlayerController::HandleWalking()
 // Parameters:
 // float                          DeltaTime                      (CPF_Parm)
 // struct FVector                 newAccel                       (CPF_Parm)
-// TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove                (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
 // struct FRotator                DeltaRot                       (CPF_Parm)
 
-void APlayerController::ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+void APlayerController::ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ReplicateMove");
 
@@ -34996,7 +34996,7 @@ void APlayerController::UpdateStateFromAdjustment(const struct FName& NewState)
 // Parameters:
 // float                          TimeStamp                      (CPF_Parm)
 // struct FName                   NewState                       (CPF_Parm)
-// TEnumAsByte<enum class EPhysics> newPhysics                     (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
 // float                          NewLocX                        (CPF_Parm)
 // float                          NewLocY                        (CPF_Parm)
 // float                          NewLocZ                        (CPF_Parm)
@@ -35008,7 +35008,7 @@ void APlayerController::UpdateStateFromAdjustment(const struct FName& NewState)
 // float                          NewFloorY                      (CPF_Parm)
 // float                          NewFloorZ                      (CPF_Parm)
 
-void APlayerController::LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ)
+void APlayerController::LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.LongClientAdjustPosition");
 
@@ -35081,7 +35081,7 @@ void APlayerController::UpdatePing(float TimeStamp)
 // Parameters:
 // float                          TimeStamp                      (CPF_Parm)
 // struct FName                   NewState                       (CPF_Parm)
-// TEnumAsByte<enum class EPhysics> newPhysics                     (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
 // float                          NewLocX                        (CPF_Parm)
 // float                          NewLocY                        (CPF_Parm)
 // float                          NewLocZ                        (CPF_Parm)
@@ -35090,7 +35090,7 @@ void APlayerController::UpdatePing(float TimeStamp)
 // float                          NewVelZ                        (CPF_Parm)
 // class AActor*                  NewBase                        (CPF_Parm)
 
-void APlayerController::ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase)
+void APlayerController::ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientAdjustPosition");
 
@@ -35159,13 +35159,13 @@ void APlayerController::ClientCapBandwidth(int Cap)
 // Parameters:
 // float                          TimeStamp                      (CPF_Parm)
 // struct FName                   NewState                       (CPF_Parm)
-// TEnumAsByte<enum class EPhysics> newPhysics                     (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
 // float                          NewLocX                        (CPF_Parm)
 // float                          NewLocY                        (CPF_Parm)
 // float                          NewLocZ                        (CPF_Parm)
 // class AActor*                  NewBase                        (CPF_Parm)
 
-void APlayerController::ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase)
+void APlayerController::ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ShortClientAdjustPosition");
 
@@ -35245,10 +35245,10 @@ void APlayerController::MoveAutonomous(float DeltaTime, unsigned char Compressed
 // Parameters:
 // float                          DeltaTime                      (CPF_Parm)
 // struct FVector                 newAccel                       (CPF_Parm)
-// TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove                (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
 // struct FRotator                DeltaRot                       (CPF_Parm)
 
-void APlayerController::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+void APlayerController::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ProcessMove");
 
@@ -35503,11 +35503,11 @@ void APlayerController::Camera(const struct FName& NewMode)
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
 // struct FString                 PendingURL                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bIsSeamlessTravel              (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APlayerController::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel)
+bool APlayerController::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PreClientTravel");
 
@@ -37517,9 +37517,9 @@ void APlayerController::RemovePeer(const struct FUniqueNetId& PeerNetId)
 // (FUNC_Event, FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PeerNetId                      (CPF_Parm)
-// TEnumAsByte<enum class ENATType> NatType                        (CPF_Parm)
+// TEnumAsByte<ENATType>          NatType                        (CPF_Parm)
 
-void APlayerController::AddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<enum class ENATType> NatType)
+void APlayerController::AddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<ENATType> NatType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.AddPeer");
 
@@ -38018,11 +38018,11 @@ void APlayerController::UpdateURL(const struct FString& NewOption, const struct 
 // (FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public, FUNC_NetClient)
 // Parameters:
 // struct FString                 URL                            (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bSeamless                      (CPF_OptionalParm, CPF_Parm)
 // struct FGuid                   MapPackageGuid                 (CPF_OptionalParm, CPF_Parm, CPF_AlwaysInit)
 
-void APlayerController::ClientTravel(const struct FString& URL, TEnumAsByte<enum class ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid)
+void APlayerController::ClientTravel(const struct FString& URL, TEnumAsByte<ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.ClientTravel");
 
@@ -39971,11 +39971,11 @@ void UCheatManager::FXPlay(class UClass* aClass, const struct FString& FXAnimPat
 // Parameters:
 // int                            SaveSlot                       (CPF_Parm)
 // struct FString                 KeyName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPlatformInterfaceDataType> Type                           (CPF_Parm)
+// TEnumAsByte<EPlatformInterfaceDataType> Type                           (CPF_Parm)
 // struct FPlatformInterfaceDelegateResult Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCloudSaveSystem::GetKeyValue(int SaveSlot, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
+bool UCloudSaveSystem::GetKeyValue(int SaveSlot, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudSaveSystem.GetKeyValue");
 
@@ -40296,11 +40296,11 @@ void UCloudSaveSystem::Init(const TScriptInterface<class UCloudSaveSystemKVSInte
 // Parameters:
 // class UClass*                  ObjectClass                    (CPF_Parm)
 // TArray<unsigned char>          Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class SaveDataVersionSupport> VersionSupport                 (CPF_Parm)
+// TEnumAsByte<ESaveDataVersionSupport> VersionSupport                 (CPF_Parm)
 // int                            DataVersion                    (CPF_Parm)
 // class UObject*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UObject* UCloudSaveSystem::DeserializeObject(class UClass* ObjectClass, TEnumAsByte<enum class SaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data)
+class UObject* UCloudSaveSystem::DeserializeObject(class UClass* ObjectClass, TEnumAsByte<ESaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudSaveSystem.DeserializeObject");
 
@@ -46875,10 +46875,10 @@ bool UOnlinePlayerStorage::STATIC_GetProfileSettingMappingIds(int ProfileId, TAr
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            ProfileId                      (CPF_Parm)
-// TEnumAsByte<enum class EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerStorage::GetProfileSettingMappingType(int ProfileId, TEnumAsByte<enum class EPropertyValueMappingType>* OutType)
+bool UOnlinePlayerStorage::GetProfileSettingMappingType(int ProfileId, TEnumAsByte<EPropertyValueMappingType>* OutType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerStorage.GetProfileSettingMappingType");
 
@@ -48095,10 +48095,10 @@ void UOnlineStatsWrite::OnStatsWriteComplete()
 // (FUNC_Public)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystem::ShowRestrictionMessage(int ControllerId, TEnumAsByte<enum class EFeaturePrivilege> Privilege)
+bool UOnlineSubsystem::ShowRestrictionMessage(int ControllerId, TEnumAsByte<EFeaturePrivilege> Privilege)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ShowRestrictionMessage");
 
@@ -48626,9 +48626,9 @@ void UOnlineSubsystem::PrintDebugInfo(class UDebugDrawer* Drawer)
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
 // struct FString                 PlatformName                   (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class OnlinePlatform> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlinePlatform>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class OnlinePlatform> UOnlineSubsystem::STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName)
+TEnumAsByte<EOnlinePlatform> UOnlineSubsystem::STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetOnlinePlatformFromName");
 
@@ -48648,10 +48648,10 @@ TEnumAsByte<enum class OnlinePlatform> UOnlineSubsystem::STATIC_GetOnlinePlatfor
 // Function Engine.OnlineSubsystem.GetPlatformName
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> PlatformType                   (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   PlatformType                   (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UOnlineSubsystem::STATIC_GetPlatformName(TEnumAsByte<enum class OnlinePlatform> PlatformType)
+struct FString UOnlineSubsystem::STATIC_GetPlatformName(TEnumAsByte<EOnlinePlatform> PlatformType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlatformName");
 
@@ -48714,10 +48714,10 @@ void UOnlineSubsystem::SetPlayedWith(const struct FUniqueNetId& PlayerNetId)
 // (FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
-// TEnumAsByte<enum class AvatarSize> Size                           (CPF_Parm)
+// TEnumAsByte<EAvatarSize>       Size                           (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineSubsystem::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class AvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
+void UOnlineSubsystem::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EAvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ReadOnlineAvatar");
 
@@ -49648,10 +49648,10 @@ TArray<unsigned char> UOnlineSubsystem::STATIC_DecodeBase64(const struct FString
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
 // struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineSubsystem::GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback)
+void UOnlineSubsystem::GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel");
 
@@ -49672,10 +49672,10 @@ void UOnlineSubsystem::GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnu
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilege> Privilege                      (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> Level                          (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> Level                          (CPF_Parm)
 
-void UOnlineSubsystem::FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, TEnumAsByte<enum class EFeaturePrivilegeLevel> Level)
+void UOnlineSubsystem::FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated");
 
@@ -50973,9 +50973,9 @@ struct FString USavedMove::GetDebugString()
 // Parameters:
 // unsigned char                  Flags                          (CPF_Parm)
 // class APlayerController*       PC                             (CPF_Parm)
-// TEnumAsByte<enum class EDoubleClickDir> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EDoubleClickDir>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EDoubleClickDir> USavedMove::STATIC_SetFlags(unsigned char Flags, class APlayerController* PC)
+TEnumAsByte<EDoubleClickDir> USavedMove::STATIC_SetFlags(unsigned char Flags, class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SavedMove.SetFlags");
 
@@ -51060,9 +51060,9 @@ void USavedMove::PrepMoveFor(class APawn* P)
 // class APlayerController*       P                              (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // struct FVector                 newAccel                       (CPF_Parm)
-// TEnumAsByte<enum class EDoubleClickDir> InDoubleClick                  (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   InDoubleClick                  (CPF_Parm)
 
-void USavedMove::SetMoveFor(class APlayerController* P, float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> InDoubleClick)
+void USavedMove::SetMoveFor(class APlayerController* P, float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> InDoubleClick)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SavedMove.SetMoveFor");
 
@@ -51436,11 +51436,11 @@ void UGameViewportClient::SetProgressTime(float T)
 // Function Engine.GameViewportClient.NotifyConnectionError
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProgressMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<EProgressMessageType> MessageType                    (CPF_Parm)
 // struct FString                 Message                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 
-void UGameViewportClient::NotifyConnectionError(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
+void UGameViewportClient::NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameViewportClient.NotifyConnectionError");
 
@@ -51460,12 +51460,12 @@ void UGameViewportClient::NotifyConnectionError(TEnumAsByte<enum class EProgress
 // Function Engine.GameViewportClient.SetProgressMessage
 // (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProgressMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<EProgressMessageType> MessageType                    (CPF_Parm)
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           bIgnoreFutureNetworkMessages   (CPF_OptionalParm, CPF_Parm)
 
-void UGameViewportClient::SetProgressMessage(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages)
+void UGameViewportClient::SetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameViewportClient.SetProgressMessage");
 
@@ -51972,9 +51972,9 @@ void UGameViewportClient::UpdateActiveSplitscreenType()
 // Function Engine.GameViewportClient.GetSplitscreenConfiguration
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ESplitScreenType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESplitScreenType>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESplitScreenType> UGameViewportClient::GetSplitscreenConfiguration()
+TEnumAsByte<ESplitScreenType> UGameViewportClient::GetSplitscreenConfiguration()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameViewportClient.GetSplitscreenConfiguration");
 
@@ -51993,9 +51993,9 @@ TEnumAsByte<enum class ESplitScreenType> UGameViewportClient::GetSplitscreenConf
 // Function Engine.GameViewportClient.SetSplitscreenConfiguration
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ESplitScreenType> SplitType                      (CPF_Parm)
+// TEnumAsByte<ESplitScreenType>  SplitType                      (CPF_Parm)
 
-void UGameViewportClient::SetSplitscreenConfiguration(TEnumAsByte<enum class ESplitScreenType> SplitType)
+void UGameViewportClient::SetSplitscreenConfiguration(TEnumAsByte<ESplitScreenType> SplitType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameViewportClient.SetSplitscreenConfiguration");
 
@@ -52544,12 +52544,12 @@ bool UGameViewportClient::HandleInputAxis(int ControllerId, const struct FName& 
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGameViewportClient::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UGameViewportClient::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameViewportClient.HandleInputKey");
 
@@ -52828,10 +52828,10 @@ bool USettings::GetPropertyRange(int PropertyId, float* OutMinValue, float* OutM
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            PropertyId                     (CPF_Parm)
-// TEnumAsByte<enum class EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool USettings::GetPropertyMappingType(int PropertyId, TEnumAsByte<enum class EPropertyValueMappingType>* OutType)
+bool USettings::GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyMappingType");
 
@@ -52954,9 +52954,9 @@ void USettings::UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLo
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // int                            PropertyId                     (CPF_Parm)
-// TEnumAsByte<enum class ESettingsDataType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ESettingsDataType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ESettingsDataType> USettings::GetPropertyType(int PropertyId)
+TEnumAsByte<ESettingsDataType> USettings::GetPropertyType(int PropertyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyType");
 
@@ -54552,9 +54552,9 @@ bool UParticleSystem::SetLODDistance(int LODLevelIndex, float InDistance)
 // Function Engine.ParticleSystem.SetCurrentLODMethod
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ParticleSystemLODMethod> InMethod                       (CPF_Parm)
+// TEnumAsByte<EParticleSystemLODMethod> InMethod                       (CPF_Parm)
 
-void UParticleSystem::SetCurrentLODMethod(TEnumAsByte<enum class ParticleSystemLODMethod> InMethod)
+void UParticleSystem::SetCurrentLODMethod(TEnumAsByte<EParticleSystemLODMethod> InMethod)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.ParticleSystem.SetCurrentLODMethod");
 
@@ -54619,9 +54619,9 @@ int UParticleSystem::GetLODLevelCount()
 // Function Engine.ParticleSystem.GetCurrentLODMethod
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ParticleSystemLODMethod> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EParticleSystemLODMethod> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ParticleSystemLODMethod> UParticleSystem::GetCurrentLODMethod()
+TEnumAsByte<EParticleSystemLODMethod> UParticleSystem::GetCurrentLODMethod()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.ParticleSystem.GetCurrentLODMethod");
 
@@ -54643,10 +54643,10 @@ TEnumAsByte<enum class ParticleSystemLODMethod> UParticleSystem::GetCurrentLODMe
 // Parameters:
 // int                            InSizeX                        (CPF_Parm)
 // int                            InSizeY                        (CPF_Parm)
-// TEnumAsByte<enum class EPixelFormat> InFormat                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EPixelFormat>      InFormat                       (CPF_OptionalParm, CPF_Parm)
 // class UTexture2D*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UTexture2D* UTexture2D::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat)
+class UTexture2D* UTexture2D::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Texture2D.Create");
 
@@ -54920,9 +54920,9 @@ class UUIInteraction* UUIRoot::STATIC_GetCurrentUIController()
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // class ULocalPlayer*            OwningPlayer                   (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EInputPlatformType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EInputPlatformType> UUIRoot::STATIC_GetInputPlatformType(class ULocalPlayer* OwningPlayer)
+TEnumAsByte<EInputPlatformType> UUIRoot::STATIC_GetInputPlatformType(class ULocalPlayer* OwningPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIRoot.GetInputPlatformType");
 
@@ -55154,12 +55154,12 @@ bool UInteraction::OnReceivedNativeInputAxis(int ControllerId, const struct FNam
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UInteraction::OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UInteraction::OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Interaction.OnReceivedNativeInputKey");
 
@@ -55200,9 +55200,9 @@ void UUIInteraction::NotifyGameSessionEnded()
 // Function Engine.UIInteraction.GetNATType
 // (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENATType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENATType>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENATType> UUIInteraction::STATIC_GetNATType()
+TEnumAsByte<ENATType> UUIInteraction::STATIC_GetNATType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIInteraction.GetNATType");
 
@@ -55357,9 +55357,9 @@ bool UUIInteraction::STATIC_HasLinkConnection()
 // Function Engine.UIInteraction.GetLowestLoginStatusOfControllers
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ELoginStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ELoginStatus>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ELoginStatus> UUIInteraction::GetLowestLoginStatusOfControllers()
+TEnumAsByte<ELoginStatus> UUIInteraction::GetLowestLoginStatusOfControllers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIInteraction.GetLowestLoginStatusOfControllers");
 
@@ -55379,9 +55379,9 @@ TEnumAsByte<enum class ELoginStatus> UUIInteraction::GetLowestLoginStatusOfContr
 // (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Static, FUNC_Public)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
-// TEnumAsByte<enum class ELoginStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ELoginStatus>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ELoginStatus> UUIInteraction::STATIC_GetLoginStatus(int ControllerId)
+TEnumAsByte<ELoginStatus> UUIInteraction::STATIC_GetLoginStatus(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIInteraction.GetLoginStatus");
 
@@ -56912,9 +56912,9 @@ void UNavigationHandle::STATIC_GetAllPolyCentersWithinBounds(const struct FVecto
 // Function Engine.NavigationHandle.GetCurrentEdgeType
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENavMeshEdgeType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENavMeshEdgeType>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENavMeshEdgeType> UNavigationHandle::GetCurrentEdgeType()
+TEnumAsByte<ENavMeshEdgeType> UNavigationHandle::GetCurrentEdgeType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.NavigationHandle.GetCurrentEdgeType");
 
@@ -57987,12 +57987,12 @@ void UNavMeshPath_MinDistBetweenSpecsOfType::Recycle()
 // Parameters:
 // class UNavigationHandle*       NavHandle                      (CPF_Parm)
 // float                          InMinDist                      (CPF_Parm)
-// TEnumAsByte<enum class ENavMeshEdgeType> InEdgeType                     (CPF_Parm)
+// TEnumAsByte<ENavMeshEdgeType>  InEdgeType                     (CPF_Parm)
 // struct FVector                 LastLocation                   (CPF_OptionalParm, CPF_Parm)
 // float                          InPenalty                      (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UNavMeshPath_MinDistBetweenSpecsOfType::STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<enum class ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty)
+bool UNavMeshPath_MinDistBetweenSpecsOfType::STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.NavMeshPath_MinDistBetweenSpecsOfType.EnforceMinDist");
 
@@ -60734,11 +60734,11 @@ void UAnimNodeCrossfader::PlayOneShotAnim(const struct FName& AnimSeqName, float
 // Function Engine.AnimNodePlayCustomAnim.SetRootBoneAxisOption
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootBoneAxis> AxisX                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisY                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisZ                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisX                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisY                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisZ                          (CPF_OptionalParm, CPF_Parm)
 
-void UAnimNodePlayCustomAnim::SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ)
+void UAnimNodePlayCustomAnim::SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimNodePlayCustomAnim.SetRootBoneAxisOption");
 
@@ -60974,11 +60974,11 @@ void UAnimNodeSlot::TickChildWeights(float DeltaSeconds)
 // Function Engine.AnimNodeSlot.SetRootBoneRotationOption
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootRotationOption> AxisX                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootRotationOption> AxisY                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootRotationOption> AxisZ                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisX                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisY                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisZ                          (CPF_OptionalParm, CPF_Parm)
 
-void UAnimNodeSlot::SetRootBoneRotationOption(TEnumAsByte<enum class ERootRotationOption> AxisX, TEnumAsByte<enum class ERootRotationOption> AxisY, TEnumAsByte<enum class ERootRotationOption> AxisZ)
+void UAnimNodeSlot::SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimNodeSlot.SetRootBoneRotationOption");
 
@@ -60999,11 +60999,11 @@ void UAnimNodeSlot::SetRootBoneRotationOption(TEnumAsByte<enum class ERootRotati
 // Function Engine.AnimNodeSlot.SetRootBoneAxisOption
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootBoneAxis> AxisX                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisY                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisZ                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisX                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisY                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisZ                          (CPF_OptionalParm, CPF_Parm)
 
-void UAnimNodeSlot::SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ)
+void UAnimNodeSlot::SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimNodeSlot.SetRootBoneAxisOption");
 
@@ -61654,11 +61654,11 @@ class USkelControlBase* UAnimTree::FindSkelControl(const struct FName& InControl
 // Function Engine.AnimNodeSequence.SetRootBoneRotationOption
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootRotationOption> AxisX                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootRotationOption> AxisY                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootRotationOption> AxisZ                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisX                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisY                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootRotationOption> AxisZ                          (CPF_OptionalParm, CPF_Parm)
 
-void UAnimNodeSequence::SetRootBoneRotationOption(TEnumAsByte<enum class ERootRotationOption> AxisX, TEnumAsByte<enum class ERootRotationOption> AxisY, TEnumAsByte<enum class ERootRotationOption> AxisZ)
+void UAnimNodeSequence::SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimNodeSequence.SetRootBoneRotationOption");
 
@@ -61679,11 +61679,11 @@ void UAnimNodeSequence::SetRootBoneRotationOption(TEnumAsByte<enum class ERootRo
 // Function Engine.AnimNodeSequence.SetRootBoneAxisOption
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootBoneAxis> AxisX                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisY                          (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ERootBoneAxis> AxisZ                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisX                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisY                          (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     AxisZ                          (CPF_OptionalParm, CPF_Parm)
 
-void UAnimNodeSequence::SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ)
+void UAnimNodeSequence::SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimNodeSequence.SetRootBoneAxisOption");
 
@@ -65638,9 +65638,9 @@ void UParticleSystemComponent::ClearAllParameters()
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FName                   ParameterName                  (CPF_Parm)
-// TEnumAsByte<enum class EParticleSysParamType> ParameterType                  (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EParticleSysParamType> ParameterType                  (CPF_OptionalParm, CPF_Parm)
 
-void UParticleSystemComponent::ClearParameter(const struct FName& ParameterName, TEnumAsByte<enum class EParticleSysParamType> ParameterType)
+void UParticleSystemComponent::ClearParameter(const struct FName& ParameterName, TEnumAsByte<EParticleSysParamType> ParameterType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.ParticleSystemComponent.ClearParameter");
 
@@ -71086,7 +71086,7 @@ void APawn::SetBaseEyeheight()
 // Function Engine.Pawn.SpecialMoveThruEdge
 // (FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENavMeshEdgeType> EdgeType                       (CPF_Parm)
+// TEnumAsByte<ENavMeshEdgeType>  EdgeType                       (CPF_Parm)
 // int                            Dir                            (CPF_Parm)
 // struct FVector                 MoveStart                      (CPF_Parm)
 // struct FVector                 MoveDest                       (CPF_Parm)
@@ -71095,7 +71095,7 @@ void APawn::SetBaseEyeheight()
 // class UNavigationHandle*       NavHandle                      (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APawn::SpecialMoveThruEdge(TEnumAsByte<enum class ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle)
+bool APawn::SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpecialMoveThruEdge");
 
@@ -74842,10 +74842,10 @@ void UPhysicalMaterial::FindFractureSounds(class USoundCue** OutSoundExplosion, 
 // Function Engine.PhysicalMaterial.FindPhysEffectInfo
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPhysEffectType> Type                           (CPF_Parm)
+// TEnumAsByte<EPhysEffectType>   Type                           (CPF_Parm)
 // struct FPhysEffectInfo         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FPhysEffectInfo UPhysicalMaterial::FindPhysEffectInfo(TEnumAsByte<enum class EPhysEffectType> Type)
+struct FPhysEffectInfo UPhysicalMaterial::FindPhysEffectInfo(TEnumAsByte<EPhysEffectType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PhysicalMaterial.FindPhysEffectInfo");
 
@@ -79974,10 +79974,10 @@ void UInput::ResetInput()
 // (FUNC_Public)
 // Parameters:
 // struct FString                 PendingURL                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bIsSeamlessTravel              (CPF_Parm)
 
-void UPlayerInput::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel)
+void UPlayerInput::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerInput.PreClientTravel");
 
@@ -80135,9 +80135,9 @@ void UPlayerInput::ProcessInputMatching(float DeltaTime)
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // float                          DeltaTime                      (CPF_Parm)
-// TEnumAsByte<enum class EDoubleClickDir> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EDoubleClickDir>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EDoubleClickDir> UPlayerInput::CheckForDoubleClickMove(float DeltaTime)
+TEnumAsByte<EDoubleClickDir> UPlayerInput::CheckForDoubleClickMove(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerInput.CheckForDoubleClickMove");
 
@@ -82938,10 +82938,10 @@ bool UUIDataStore_OnlineGameSettings::CreateGame(unsigned char ControllerIndex)
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FName                   DesiredAlias                   (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> DesiredPlatform                (CPF_Parm)
+// TEnumAsByte<EInputPlatformType> DesiredPlatform                (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIDataStore_InputAlias::HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> DesiredPlatform)
+bool UUIDataStore_InputAlias::HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> DesiredPlatform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.HasAliasMappingForPlatform");
 
@@ -82989,10 +82989,10 @@ int UUIDataStore_InputAlias::FindInputAliasIndex(const struct FName& DesiredAlia
 // Parameters:
 // struct FRawInputKeyEventData   out_InputKeyData               (CPF_Parm, CPF_OutParm)
 // int                            AliasIndex                     (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIDataStore_InputAlias::GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData)
+bool UUIDataStore_InputAlias::GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasInputKeyDataByIndex");
 
@@ -83019,10 +83019,10 @@ bool UUIDataStore_InputAlias::GetAliasInputKeyDataByIndex(int AliasIndex, TEnumA
 // Parameters:
 // struct FRawInputKeyEventData   out_InputKeyData               (CPF_Parm, CPF_OutParm)
 // struct FName                   DesiredAlias                   (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIDataStore_InputAlias::GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData)
+bool UUIDataStore_InputAlias::GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasInputKeyData");
 
@@ -83048,10 +83048,10 @@ bool UUIDataStore_InputAlias::GetAliasInputKeyData(const struct FName& DesiredAl
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // int                            AliasIndex                     (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FName UUIDataStore_InputAlias::GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform)
+struct FName UUIDataStore_InputAlias::GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasInputKeyNameByIndex");
 
@@ -83074,10 +83074,10 @@ struct FName UUIDataStore_InputAlias::GetAliasInputKeyNameByIndex(int AliasIndex
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FName                   DesiredAlias                   (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FName UUIDataStore_InputAlias::GetAliasInputKeyName(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform)
+struct FName UUIDataStore_InputAlias::GetAliasInputKeyName(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasInputKeyName");
 
@@ -83100,10 +83100,10 @@ struct FName UUIDataStore_InputAlias::GetAliasInputKeyName(const struct FName& D
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // int                            AliasIndex                     (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UUIDataStore_InputAlias::GetAliasFontMarkupByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform)
+struct FString UUIDataStore_InputAlias::GetAliasFontMarkupByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasFontMarkupByIndex");
 
@@ -83126,10 +83126,10 @@ struct FString UUIDataStore_InputAlias::GetAliasFontMarkupByIndex(int AliasIndex
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FName                   DesiredAlias                   (CPF_Parm)
-// TEnumAsByte<enum class EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EInputPlatformType> OverridePlatform               (CPF_OptionalParm, CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UUIDataStore_InputAlias::GetAliasFontMarkup(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform)
+struct FString UUIDataStore_InputAlias::GetAliasFontMarkup(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.UIDataStore_InputAlias.GetAliasFontMarkup");
 
@@ -83397,10 +83397,10 @@ void UGameUISceneClient::NotifyGameSessionEnded()
 // Parameters:
 // class APlayerController*       TravellingPlayer               (CPF_Parm)
 // struct FString                 TravelURL                      (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bIsSeamlessTravel              (CPF_Parm)
 
-void UGameUISceneClient::NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel)
+void UGameUISceneClient::NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameUISceneClient.NotifyClientTravel");
 
@@ -83483,9 +83483,9 @@ void UGameUISceneClient::RequestInputProcessingUpdate()
 // Function Engine.GameUISceneClient.GetCurrentNetMode
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENetMode> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENetMode>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENetMode> UGameUISceneClient::STATIC_GetCurrentNetMode()
+TEnumAsByte<ENetMode> UGameUISceneClient::STATIC_GetCurrentNetMode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameUISceneClient.GetCurrentNetMode");
 
@@ -83732,10 +83732,10 @@ void UFluidSurfaceComponent::ApplyForce(const struct FVector& WorldPos, float St
 // Function Engine.SpeedTreeComponent.SetMaterial
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ESpeedTreeMeshType> MeshType                       (CPF_Parm)
+// TEnumAsByte<ESpeedTreeMeshType> MeshType                       (CPF_Parm)
 // class UMaterialInterface*      Material                       (CPF_Parm)
 
-void USpeedTreeComponent::SetMaterial(TEnumAsByte<enum class ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material)
+void USpeedTreeComponent::SetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SpeedTreeComponent.SetMaterial");
 
@@ -83755,10 +83755,10 @@ void USpeedTreeComponent::SetMaterial(TEnumAsByte<enum class ESpeedTreeMeshType>
 // Function Engine.SpeedTreeComponent.GetMaterial
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ESpeedTreeMeshType> MeshType                       (CPF_Parm)
+// TEnumAsByte<ESpeedTreeMeshType> MeshType                       (CPF_Parm)
 // class UMaterialInterface*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UMaterialInterface* USpeedTreeComponent::GetMaterial(TEnumAsByte<enum class ESpeedTreeMeshType> MeshType)
+class UMaterialInterface* USpeedTreeComponent::GetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SpeedTreeComponent.GetMaterial");
 
@@ -84248,11 +84248,11 @@ bool UTexture2DComposite::SourceTexturesFullyStreamedIn()
 // Parameters:
 // int                            InSizeX                        (CPF_Parm)
 // int                            InSizeY                        (CPF_Parm)
-// TEnumAsByte<enum class EPixelFormat> InFormat                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EPixelFormat>      InFormat                       (CPF_OptionalParm, CPF_Parm)
 // bool                           InIsResolveTarget              (CPF_OptionalParm, CPF_Parm)
 // class UTexture2DDynamic*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UTexture2DDynamic* UTexture2DDynamic::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, bool InIsResolveTarget)
+class UTexture2DDynamic* UTexture2DDynamic::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Texture2DDynamic.Create");
 
@@ -84353,10 +84353,10 @@ void UTexture2DDynamic::UpdateMip(int MipIdx, TArray<unsigned char>* MipData)
 // Parameters:
 // int                            InSizeX                        (CPF_Parm)
 // int                            InSizeY                        (CPF_Parm)
-// TEnumAsByte<enum class EPixelFormat> InFormat                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EPixelFormat>      InFormat                       (CPF_OptionalParm, CPF_Parm)
 // bool                           InIsResolveTarget              (CPF_OptionalParm, CPF_Parm)
 
-void UTexture2DDynamic::Init(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, bool InIsResolveTarget)
+void UTexture2DDynamic::Init(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Texture2DDynamic.Init");
 
@@ -84434,12 +84434,12 @@ void UTextureMovie::Play()
 // Parameters:
 // int                            InSizeX                        (CPF_Parm)
 // int                            InSizeY                        (CPF_Parm)
-// TEnumAsByte<enum class EPixelFormat> InFormat                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EPixelFormat>      InFormat                       (CPF_OptionalParm, CPF_Parm)
 // struct FLinearColor            InClearColor                   (CPF_OptionalParm, CPF_Parm)
 // bool                           bOnlyRenderOnce                (CPF_OptionalParm, CPF_Parm)
 // class UTextureRenderTarget2D*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UTextureRenderTarget2D* UTextureRenderTarget2D::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce)
+class UTextureRenderTarget2D* UTextureRenderTarget2D::STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.TextureRenderTarget2D.Create");
 
@@ -85464,9 +85464,9 @@ void USkeletalMeshComponent::UnHideBoneByName(const struct FName& BoneName)
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FName                   BoneName                       (CPF_Parm)
-// TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption                 (CPF_Parm)
+// TEnumAsByte<EPhysBodyOp>       PhysBodyOption                 (CPF_Parm)
 
-void USkeletalMeshComponent::HideBoneByName(const struct FName& BoneName, TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption)
+void USkeletalMeshComponent::HideBoneByName(const struct FName& BoneName, TEnumAsByte<EPhysBodyOp> PhysBodyOption)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SkeletalMeshComponent.HideBoneByName");
 
@@ -85532,9 +85532,9 @@ void USkeletalMeshComponent::UnHideBone(int BoneIndex)
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // int                            BoneIndex                      (CPF_Parm)
-// TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption                 (CPF_Parm)
+// TEnumAsByte<EPhysBodyOp>       PhysBodyOption                 (CPF_Parm)
 
-void USkeletalMeshComponent::HideBone(int BoneIndex, TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption)
+void USkeletalMeshComponent::HideBone(int BoneIndex, TEnumAsByte<EPhysBodyOp> PhysBodyOption)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SkeletalMeshComponent.HideBone");
 
@@ -85555,13 +85555,13 @@ void USkeletalMeshComponent::HideBone(int BoneIndex, TEnumAsByte<enum class EPhy
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 RegName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EFaceFXRegOp> RegOp                          (CPF_Parm)
+// TEnumAsByte<EFaceFXRegOp>      RegOp                          (CPF_Parm)
 // float                          FirstValue                     (CPF_Parm)
 // float                          FirstInterpDuration            (CPF_Parm)
 // float                          NextValue                      (CPF_Parm)
 // float                          NextInterpDuration             (CPF_Parm)
 
-void USkeletalMeshComponent::SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<enum class EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration)
+void USkeletalMeshComponent::SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SkeletalMeshComponent.SetFaceFXRegisterEx");
 
@@ -85587,10 +85587,10 @@ void USkeletalMeshComponent::SetFaceFXRegisterEx(const struct FString& RegName, 
 // Parameters:
 // struct FString                 RegName                        (CPF_Parm, CPF_NeedCtorLink)
 // float                          RegVal                         (CPF_Parm)
-// TEnumAsByte<enum class EFaceFXRegOp> RegOp                          (CPF_Parm)
+// TEnumAsByte<EFaceFXRegOp>      RegOp                          (CPF_Parm)
 // float                          InterpDuration                 (CPF_OptionalParm, CPF_Parm)
 
-void USkeletalMeshComponent::SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<enum class EFaceFXRegOp> RegOp, float InterpDuration)
+void USkeletalMeshComponent::SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<EFaceFXRegOp> RegOp, float InterpDuration)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SkeletalMeshComponent.SetFaceFXRegister");
 
@@ -86246,10 +86246,10 @@ void USkeletalMeshComponent::TransformToBoneSpace(const struct FName& BoneName, 
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FName                   BoneName                       (CPF_Parm)
-// TEnumAsByte<enum class EAxis>  Axis                           (CPF_Parm)
+// TEnumAsByte<EAxis>             Axis                           (CPF_Parm)
 // struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FVector USkeletalMeshComponent::GetBoneAxis(const struct FName& BoneName, TEnumAsByte<enum class EAxis> Axis)
+struct FVector USkeletalMeshComponent::GetBoneAxis(const struct FName& BoneName, TEnumAsByte<EAxis> Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SkeletalMeshComponent.GetBoneAxis");
 
@@ -88531,10 +88531,10 @@ void USplineComponent::UpdateSplineCurviness()
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // int                            TopLevelScopeIndex             (CPF_Parm)
-// TEnumAsByte<enum class EScopeEdge> Edge                           (CPF_Parm)
+// TEnumAsByte<EScopeEdge>        Edge                           (CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int AProcBuilding::FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<enum class EScopeEdge> Edge)
+int AProcBuilding::FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<EScopeEdge> Edge)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.ProcBuilding.FindEdgeForTopLevelScope");
 
@@ -89880,10 +89880,10 @@ void ACamera::StopCameraShake(class UCameraShake* Shake)
 // Parameters:
 // class UCameraShake*            Shake                          (CPF_Parm)
 // float                          Scale                          (CPF_Parm)
-// TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
 // struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
 
-void ACamera::PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
+void ACamera::PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayCameraShake");
 
@@ -90500,10 +90500,10 @@ void ACameraActor::GetCameraView(float DeltaTime, struct FTPOV* OutPOV)
 // Function Engine.CameraAnimInst.SetPlaySpace
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECameraAnimPlaySpace> NewSpace                       (CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> NewSpace                       (CPF_Parm)
 // struct FRotator                UserPlaySpace                  (CPF_OptionalParm, CPF_Parm)
 
-void UCameraAnimInst::SetPlaySpace(TEnumAsByte<enum class ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace)
+void UCameraAnimInst::SetPlaySpace(TEnumAsByte<ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CameraAnimInst.SetPlaySpace");
 
@@ -90975,10 +90975,10 @@ void UCameraModifier_CameraShake::RemoveCameraShake(class UCameraShake* Shake)
 // Parameters:
 // class UCameraShake*            NewShake                       (CPF_Parm)
 // float                          Scale                          (CPF_Parm)
-// TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
 // struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
 
-void UCameraModifier_CameraShake::AddCameraShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
+void UCameraModifier_CameraShake::AddCameraShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CameraModifier_CameraShake.AddCameraShake");
 
@@ -91001,11 +91001,11 @@ void UCameraModifier_CameraShake::AddCameraShake(class UCameraShake* NewShake, f
 // Parameters:
 // class UCameraShake*            NewShake                       (CPF_Parm)
 // float                          Scale                          (CPF_Parm)
-// TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace                      (CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_Parm)
 // struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
 // struct FCameraShakeInstance    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FCameraShakeInstance UCameraModifier_CameraShake::InitializeShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
+struct FCameraShakeInstance UCameraModifier_CameraShake::InitializeShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CameraModifier_CameraShake.InitializeShake");
 
@@ -92812,11 +92812,11 @@ bool UCloudStorageBase::WriteKeyValue(const struct FString& KeyName, struct FPla
 // (FUNC_Native, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 KeyName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPlatformInterfaceDataType> Type                           (CPF_Parm)
+// TEnumAsByte<EPlatformInterfaceDataType> Type                           (CPF_Parm)
 // struct FPlatformInterfaceDelegateResult Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCloudStorageBase::ReadKeyValueFromLocalStore(const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
+bool UCloudStorageBase::ReadKeyValueFromLocalStore(const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudStorageBase.ReadKeyValueFromLocalStore");
 
@@ -92842,11 +92842,11 @@ bool UCloudStorageBase::ReadKeyValueFromLocalStore(const struct FString& KeyName
 // (FUNC_Native, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 KeyName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPlatformInterfaceDataType> Type                           (CPF_Parm)
+// TEnumAsByte<EPlatformInterfaceDataType> Type                           (CPF_Parm)
 // struct FPlatformInterfaceDelegateResult Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCloudStorageBase::ReadKeyValue(const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
+bool UCloudStorageBase::ReadKeyValue(const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudStorageBase.ReadKeyValue");
 
@@ -93208,11 +93208,11 @@ void UInGameAdManager::Init()
 // Parameters:
 // struct FString                 URL                            (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FString>         ParamKeysAndValues             (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETwitterRequestMethod> RequestMethod                  (CPF_Parm)
+// TEnumAsByte<ETwitterRequestMethod> RequestMethod                  (CPF_Parm)
 // int                            AccountIndex                   (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UTwitterIntegrationBase::TwitterRequest(const struct FString& URL, TArray<struct FString> ParamKeysAndValues, TEnumAsByte<enum class ETwitterRequestMethod> RequestMethod, int AccountIndex)
+bool UTwitterIntegrationBase::TwitterRequest(const struct FString& URL, TArray<struct FString> ParamKeysAndValues, TEnumAsByte<ETwitterRequestMethod> RequestMethod, int AccountIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.TwitterIntegrationBase.TwitterRequest");
 
@@ -93932,9 +93932,9 @@ void UOnlinePlayerInterface::AddReadPlayerCountryDelegate(unsigned char LocalUse
 // unsigned char                  LocalUserNum                   (CPF_Parm)
 // TArray<struct FAchievementDetails> Achievements                   (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            TitleId                        (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlinePlayerInterface::GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlinePlayerInterface::GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.GetAchievements");
 
@@ -94932,9 +94932,9 @@ void UOnlinePlayerInterface::SetOnlineStatus(unsigned char LocalUserNum, int Sta
 // TArray<struct FOnlineFriend>   Friends                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            Count                          (CPF_OptionalParm, CPF_Parm)
 // int                            StartingAt                     (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlinePlayerInterface::GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlinePlayerInterface::GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.GetFriendsList");
 
@@ -95725,10 +95725,10 @@ void UOnlinePlayerInterface::AddLoginStatusChangeDelegate(const struct FScriptDe
 // Function Engine.OnlinePlayerInterface.OnLoginStatusChange
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class ELoginStatus> NewStatus                      (CPF_Parm)
+// TEnumAsByte<ELoginStatus>      NewStatus                      (CPF_Parm)
 // struct FUniqueNetId            NewId                          (CPF_Parm)
 
-void UOnlinePlayerInterface::OnLoginStatusChange(TEnumAsByte<enum class ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
+void UOnlinePlayerInterface::OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.OnLoginStatusChange");
 
@@ -95985,10 +95985,10 @@ bool UOnlinePlayerInterface::IsFriend(unsigned char LocalUserNum, const struct F
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class ECommunicationMethod> CommMethod                     (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ECommunicationMethod> CommMethod                     (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayerInterface::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<enum class ECommunicationMethod> CommMethod)
+TEnumAsByte<EFeaturePrivilegeLevel> UOnlinePlayerInterface::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<ECommunicationMethod> CommMethod)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanCommunicate");
 
@@ -96010,12 +96010,12 @@ TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayerInterface::CanCommun
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanDownloadUserContent");
 
@@ -96041,12 +96041,12 @@ bool UOnlinePlayerInterface::CanDownloadUserContent(unsigned char LocalUserNum, 
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanUploadFitnessData");
 
@@ -96072,12 +96072,12 @@ bool UOnlinePlayerInterface::CanUploadFitnessData(unsigned char LocalUserNum, bo
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanShareKinectContent");
 
@@ -96103,12 +96103,12 @@ bool UOnlinePlayerInterface::CanShareKinectContent(unsigned char LocalUserNum, b
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanShareWithSocialNetwork");
 
@@ -96134,12 +96134,12 @@ bool UOnlinePlayerInterface::CanShareWithSocialNetwork(unsigned char LocalUserNu
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanBrowseInternet");
 
@@ -96165,12 +96165,12 @@ bool UOnlinePlayerInterface::CanBrowseInternet(unsigned char LocalUserNum, bool 
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanAccessPremiumVideoContent");
 
@@ -96196,12 +96196,12 @@ bool UOnlinePlayerInterface::CanAccessPremiumVideoContent(unsigned char LocalUse
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanAccessPremiumContent");
 
@@ -96227,12 +96227,12 @@ bool UOnlinePlayerInterface::CanAccessPremiumContent(unsigned char LocalUserNum,
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanUseCloudStorage");
 
@@ -96258,12 +96258,12 @@ bool UOnlinePlayerInterface::CanUseCloudStorage(unsigned char LocalUserNum, bool
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanRecordDVRClips");
 
@@ -96289,12 +96289,12 @@ bool UOnlinePlayerInterface::CanRecordDVRClips(unsigned char LocalUserNum, bool 
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanShowPresenceInformation");
 
@@ -96320,12 +96320,12 @@ bool UOnlinePlayerInterface::CanShowPresenceInformation(unsigned char LocalUserN
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanViewPlayerProfiles");
 
@@ -96351,12 +96351,12 @@ bool UOnlinePlayerInterface::CanViewPlayerProfiles(unsigned char LocalUserNum, b
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanPurchaseContent");
 
@@ -96382,12 +96382,12 @@ bool UOnlinePlayerInterface::CanPurchaseContent(unsigned char LocalUserNum, bool
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanShareUserCreatedContent");
 
@@ -96413,12 +96413,12 @@ bool UOnlinePlayerInterface::CanShareUserCreatedContent(unsigned char LocalUserN
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanCommunicateVoice");
 
@@ -96444,12 +96444,12 @@ bool UOnlinePlayerInterface::CanCommunicateVoice(unsigned char LocalUserNum, boo
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanCommunicateVideo");
 
@@ -96475,12 +96475,12 @@ bool UOnlinePlayerInterface::CanCommunicateVideo(unsigned char LocalUserNum, boo
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanCommunicateText");
 
@@ -96506,12 +96506,12 @@ bool UOnlinePlayerInterface::CanCommunicateText(unsigned char LocalUserNum, bool
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (CPF_Parm, CPF_OutParm)
 // bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // struct FString                 Reason                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterface::CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlinePlayerInterface::CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.CanPlayOnline");
 
@@ -96633,9 +96633,9 @@ bool UOnlinePlayerInterface::GetUniquePlayerId(unsigned char LocalUserNum, struc
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class ELoginStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ELoginStatus>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ELoginStatus> UOnlinePlayerInterface::GetLoginStatus(unsigned char LocalUserNum)
+TEnumAsByte<ELoginStatus> UOnlinePlayerInterface::GetLoginStatus(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.GetLoginStatus");
 
@@ -96787,9 +96787,9 @@ void UOnlinePlayerInterface::AddLoginFailedDelegate(unsigned char LocalUserNum, 
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void UOnlinePlayerInterface::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void UOnlinePlayerInterface::OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterface.OnLoginFailed");
 
@@ -99213,9 +99213,9 @@ struct FString UOnlineTitleFileCacheInterface::GetTitleFileHash(const struct FSt
 // (FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileCacheInterface::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileCacheInterface::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineTitleFileCacheInterface.GetTitleFileState");
 
@@ -99564,9 +99564,9 @@ bool UOnlineTitleFileInterface::ClearDownloadedFiles()
 // (FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileInterface::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileInterface::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineTitleFileInterface.GetTitleFileState");
 
@@ -99654,10 +99654,10 @@ void UOnlineTitleFileInterface::AddReadTitleFileCompleteDelegate(const struct FS
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 FileToRead                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineFileType> FileType                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EOnlineFileType>   FileType                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineTitleFileInterface::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType)
+bool UOnlineTitleFileInterface::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineTitleFileInterface.ReadTitleFile");
 
@@ -100126,10 +100126,10 @@ bool UOnlinePartyChatInterface::SendPartyGameInvites(unsigned char LocalUserNum)
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UOnlineNewsInterface::GetNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+struct FString UOnlineNewsInterface::GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineNewsInterface.GetNews");
 
@@ -100191,9 +100191,9 @@ void UOnlineNewsInterface::AddReadNewsCompletedDelegate(const struct FScriptDele
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // bool                           bWasSuccessful                 (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 
-void UOnlineNewsInterface::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+void UOnlineNewsInterface::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineNewsInterface.OnReadNewsCompleted");
 
@@ -100213,10 +100213,10 @@ void UOnlineNewsInterface::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineNewsInterface::ReadNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+bool UOnlineNewsInterface::ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineNewsInterface.ReadNews");
 
@@ -101943,10 +101943,10 @@ bool UOnlineContentInterface::ReadCrossTitleSaveGameData(unsigned char LocalUser
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // struct FScriptDelegate         ReadContentCompleteDelegate    (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineContentInterface::ClearReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
+void UOnlineContentInterface::ClearReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ClearReadCrossTitleContentCompleteDelegate");
 
@@ -101967,10 +101967,10 @@ void UOnlineContentInterface::ClearReadCrossTitleContentCompleteDelegate(unsigne
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // struct FScriptDelegate         ReadContentCompleteDelegate    (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineContentInterface::AddReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
+void UOnlineContentInterface::AddReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.AddReadCrossTitleContentCompleteDelegate");
 
@@ -102011,11 +102011,11 @@ void UOnlineContentInterface::OnReadCrossTitleContentComplete(bool bWasSuccessfu
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // TArray<struct FOnlineCrossTitleContent> ContentList                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineContentInterface::GetCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, TArray<struct FOnlineCrossTitleContent>* ContentList)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineContentInterface::GetCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, TArray<struct FOnlineCrossTitleContent>* ContentList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.GetCrossTitleContentList");
 
@@ -102040,9 +102040,9 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineContentInterface::Get
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 
-void UOnlineContentInterface::ClearCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType)
+void UOnlineContentInterface::ClearCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ClearCrossTitleContentList");
 
@@ -102062,12 +102062,12 @@ void UOnlineContentInterface::ClearCrossTitleContentList(unsigned char LocalUser
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // int                            TitleId                        (CPF_OptionalParm, CPF_Parm)
 // int                            DeviceID                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineContentInterface::ReadCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, int TitleId, int DeviceID)
+bool UOnlineContentInterface::ReadCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, int TitleId, int DeviceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ReadCrossTitleContentList");
 
@@ -102091,11 +102091,11 @@ bool UOnlineContentInterface::ReadCrossTitleContentList(unsigned char LocalUserN
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // TArray<struct FOnlineContent>  ContentList                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineContentInterface::GetContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, TArray<struct FOnlineContent>* ContentList)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineContentInterface::GetContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, TArray<struct FOnlineContent>* ContentList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.GetContentList");
 
@@ -102120,9 +102120,9 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineContentInterface::Get
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 
-void UOnlineContentInterface::ClearContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType)
+void UOnlineContentInterface::ClearContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ClearContentList");
 
@@ -102142,11 +102142,11 @@ void UOnlineContentInterface::ClearContentList(unsigned char LocalUserNum, TEnum
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // int                            DeviceID                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineContentInterface::ReadContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, int DeviceID)
+bool UOnlineContentInterface::ReadContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, int DeviceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ReadContentList");
 
@@ -102169,10 +102169,10 @@ bool UOnlineContentInterface::ReadContentList(unsigned char LocalUserNum, TEnumA
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // struct FScriptDelegate         ReadContentCompleteDelegate    (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineContentInterface::ClearReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
+void UOnlineContentInterface::ClearReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.ClearReadContentComplete");
 
@@ -102193,10 +102193,10 @@ void UOnlineContentInterface::ClearReadContentComplete(unsigned char LocalUserNu
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineContentType> ContentType                    (CPF_Parm)
+// TEnumAsByte<EOnlineContentType> ContentType                    (CPF_Parm)
 // struct FScriptDelegate         ReadContentCompleteDelegate    (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineContentInterface::AddReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
+void UOnlineContentInterface::AddReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineContentInterface.AddReadContentComplete");
 
@@ -102500,10 +102500,10 @@ void UOnlineLobbyInterface::AddLocalPartyMemberToSession(struct FUniqueNetId* Ne
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterface::KickPlayer(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
+bool UOnlineLobbyInterface::KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineLobbyInterface.KickPlayer");
 
@@ -102569,9 +102569,9 @@ void UOnlineLobbyInterface::AddLobbyDestroyedDelegate(const struct FScriptDelega
 // (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 
-void UOnlineLobbyInterface::OnLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
+void UOnlineLobbyInterface::OnLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineLobbyInterface.OnLobbyDestroyed");
 
@@ -103627,10 +103627,10 @@ bool UOnlineLobbyInterface::UpdateFoundLobbies(const struct FUniqueLobbyId& Lobb
 // TArray<struct FLobbyFilter>    Filters                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FLobbySortFilter> SortFilters                    (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            MinSlots                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ELobbyDistance> Distance                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyDistance>    Distance                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterface::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<enum class ELobbyDistance> Distance)
+bool UOnlineLobbyInterface::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineLobbyInterface.FindLobbies");
 
@@ -103722,11 +103722,11 @@ void UOnlineLobbyInterface::OnCreateLobbyComplete(bool bWasSuccessful, const str
 // Parameters:
 // int                            LocalPlayerNum                 (CPF_Parm)
 // int                            MaxPlayers                     (CPF_Parm)
-// TEnumAsByte<enum class ELobbyVisibility> Type                           (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Type                           (CPF_OptionalParm, CPF_Parm)
 // TArray<struct FLobbyMetaData>  InitialSettings                (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterface::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<enum class ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
+bool UOnlineLobbyInterface::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineLobbyInterface.CreateLobby");
 
@@ -105609,9 +105609,9 @@ bool UOnlineGameInterface::CreateOnlineGame(unsigned char HostingPlayerNum, cons
 // Parameters:
 // struct FUniqueNetId            JoinablePlayerID               (CPF_Parm)
 // struct FString                 ServerAddress                  (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ELobbyVisibility> Visibility                     (CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Visibility                     (CPF_Parm)
 
-void UOnlineGameInterface::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<enum class ELobbyVisibility> Visibility)
+void UOnlineGameInterface::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<ELobbyVisibility> Visibility)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineGameInterface.SetFriendJoinLocation");
 
@@ -106186,9 +106186,9 @@ void UOnlineSystemInterface::OnStorageDeviceChange()
 // Function Engine.OnlineSystemInterface.GetNATType
 // (FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENATType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENATType>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENATType> UOnlineSystemInterface::GetNATType()
+TEnumAsByte<ENATType> UOnlineSystemInterface::GetNATType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.GetNATType");
 
@@ -106247,9 +106247,9 @@ void UOnlineSystemInterface::AddConnectionStatusChangeDelegate(const struct FScr
 // Function Engine.OnlineSystemInterface.OnConnectionStatusChange
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
 
-void UOnlineSystemInterface::OnConnectionStatusChange(TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus)
+void UOnlineSystemInterface::OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.OnConnectionStatusChange");
 
@@ -106267,9 +106267,9 @@ void UOnlineSystemInterface::OnConnectionStatusChange(TEnumAsByte<enum class EOn
 // Function Engine.OnlineSystemInterface.GetCurrentConnectionStatus
 // (FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineServerConnectionStatus> UOnlineSystemInterface::GetCurrentConnectionStatus()
+TEnumAsByte<EOnlineServerConnectionStatus> UOnlineSystemInterface::GetCurrentConnectionStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.GetCurrentConnectionStatus");
 
@@ -106371,9 +106371,9 @@ void UOnlineSystemInterface::OpenStoreForDLC(unsigned char LocalUserNum, const s
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EPS4ErrorDialog>   ErrorCode                      (CPF_Parm)
 
-void UOnlineSystemInterface::OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode)
+void UOnlineSystemInterface::OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<EPS4ErrorDialog> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.OpenErrorDialog");
 
@@ -106393,11 +106393,11 @@ void UOnlineSystemInterface::OpenErrorDialog(unsigned char LocalUserNum, TEnumAs
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EPS4DisplayMode> DisplayMode                    (CPF_Parm)
+// TEnumAsByte<EPS4DisplayMode>   DisplayMode                    (CPF_Parm)
 // TArray<struct FString>         Targets                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            ServiceLabel                   (CPF_OptionalParm, CPF_Parm)
 
-void UOnlineSystemInterface::OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
+void UOnlineSystemInterface::OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.OpenPS4DisplayMode");
 
@@ -106665,9 +106665,9 @@ void UOnlineSystemInterface::OnControllerChange(int ControllerId, bool bIsConnec
 // Function Engine.OnlineSystemInterface.SetNetworkNotificationPosition
 // (FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENetworkNotificationPosition> NewPos                         (CPF_Parm)
+// TEnumAsByte<ENetworkNotificationPosition> NewPos                         (CPF_Parm)
 
-void UOnlineSystemInterface::SetNetworkNotificationPosition(TEnumAsByte<enum class ENetworkNotificationPosition> NewPos)
+void UOnlineSystemInterface::SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.SetNetworkNotificationPosition");
 
@@ -106685,9 +106685,9 @@ void UOnlineSystemInterface::SetNetworkNotificationPosition(TEnumAsByte<enum cla
 // Function Engine.OnlineSystemInterface.GetNetworkNotificationPosition
 // (FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ENetworkNotificationPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<ENetworkNotificationPosition> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class ENetworkNotificationPosition> UOnlineSystemInterface::GetNetworkNotificationPosition()
+TEnumAsByte<ENetworkNotificationPosition> UOnlineSystemInterface::GetNetworkNotificationPosition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSystemInterface.GetNetworkNotificationPosition");
 
@@ -106945,9 +106945,9 @@ bool UOnlineMarketplaceInterface::ConsumeInventoryItem(unsigned char LocalUserNu
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 
-void UOnlineMarketplaceInterface::ResetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType)
+void UOnlineMarketplaceInterface::ResetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.ResetInventoryItems");
 
@@ -106967,11 +106967,11 @@ void UOnlineMarketplaceInterface::ResetInventoryItems(unsigned char LocalUserNum
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 // TArray<struct FMarketplaceInventoryItem> InventoryItems                 (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineMarketplaceInterface::GetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType, TArray<struct FMarketplaceInventoryItem>* InventoryItems)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineMarketplaceInterface::GetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType, TArray<struct FMarketplaceInventoryItem>* InventoryItems)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.GetInventoryItems");
 
@@ -107039,9 +107039,9 @@ void UOnlineMarketplaceInterface::AddReadInventoryItemsCompleteDelegate(unsigned
 // Function Engine.OnlineMarketplaceInterface.OnReadInventoryItemsComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 
-void UOnlineMarketplaceInterface::OnReadInventoryItemsComplete(TEnumAsByte<enum class EMediaItemType> MediaType)
+void UOnlineMarketplaceInterface::OnReadInventoryItemsComplete(TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.OnReadInventoryItemsComplete");
 
@@ -107060,10 +107060,10 @@ void UOnlineMarketplaceInterface::OnReadInventoryItemsComplete(TEnumAsByte<enum 
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineMarketplaceInterface::ReadInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType)
+bool UOnlineMarketplaceInterface::ReadInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.ReadInventoryItems");
 
@@ -107128,9 +107128,9 @@ void UOnlineMarketplaceInterface::AddReadAdditionalProductDetailsCompleteDelegat
 // Function Engine.OnlineMarketplaceInterface.OnReadAdditionalProductDetailsComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 
-void UOnlineMarketplaceInterface::OnReadAdditionalProductDetailsComplete(TEnumAsByte<enum class EMediaItemType> MediaType)
+void UOnlineMarketplaceInterface::OnReadAdditionalProductDetailsComplete(TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.OnReadAdditionalProductDetailsComplete");
 
@@ -107149,10 +107149,10 @@ void UOnlineMarketplaceInterface::OnReadAdditionalProductDetailsComplete(TEnumAs
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineMarketplaceInterface::ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType)
+bool UOnlineMarketplaceInterface::ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.ReadAdditionalDetailsForProducts");
 
@@ -107174,9 +107174,9 @@ bool UOnlineMarketplaceInterface::ReadAdditionalDetailsForProducts(unsigned char
 // (FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 
-void UOnlineMarketplaceInterface::ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType)
+void UOnlineMarketplaceInterface::ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.ResetAvailableProducts");
 
@@ -107196,11 +107196,11 @@ void UOnlineMarketplaceInterface::ResetAvailableProducts(unsigned char LocalUser
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 // TArray<struct FMarketplaceProductDetails> AvailableProducts              (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineMarketplaceInterface::GetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType, TArray<struct FMarketplaceProductDetails>* AvailableProducts)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineMarketplaceInterface::GetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType, TArray<struct FMarketplaceProductDetails>* AvailableProducts)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.GetAvailableProducts");
 
@@ -107268,9 +107268,9 @@ void UOnlineMarketplaceInterface::AddReadAvailableProductsCompleteDelegate(unsig
 // Function Engine.OnlineMarketplaceInterface.OnReadAvailableProductsComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EMediaItemType> MediaType                      (CPF_Parm)
+// TEnumAsByte<EMediaItemType>    MediaType                      (CPF_Parm)
 
-void UOnlineMarketplaceInterface::OnReadAvailableProductsComplete(TEnumAsByte<enum class EMediaItemType> MediaType)
+void UOnlineMarketplaceInterface::OnReadAvailableProductsComplete(TEnumAsByte<EMediaItemType> MediaType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.OnReadAvailableProductsComplete");
 
@@ -107290,12 +107290,12 @@ void UOnlineMarketplaceInterface::OnReadAvailableProductsComplete(TEnumAsByte<en
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
 // struct FString                 ParentId                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EMediaItemType> ParentMediaType                (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EMediaItemType> ChildMediaType                 (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ECatalogSortOrder> SortOrder                      (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EMediaItemType>    ParentMediaType                (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EMediaItemType>    ChildMediaType                 (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ECatalogSortOrder> SortOrder                      (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineMarketplaceInterface::ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<enum class EMediaItemType> ParentMediaType, TEnumAsByte<enum class EMediaItemType> ChildMediaType, TEnumAsByte<enum class ECatalogSortOrder> SortOrder)
+bool UOnlineMarketplaceInterface::ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<EMediaItemType> ParentMediaType, TEnumAsByte<EMediaItemType> ChildMediaType, TEnumAsByte<ECatalogSortOrder> SortOrder)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineMarketplaceInterface.ReadAvailableProducts");
 
@@ -108406,9 +108406,9 @@ void UOnlineAccountInterface::AddCreateOnlineAccountCompletedDelegate(const stru
 // Function Engine.OnlineAccountInterface.OnCreateOnlineAccountCompleted
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EOnlineAccountCreateStatus> ErrorStatus                    (CPF_Parm)
+// TEnumAsByte<EOnlineAccountCreateStatus> ErrorStatus                    (CPF_Parm)
 
-void UOnlineAccountInterface::OnCreateOnlineAccountCompleted(TEnumAsByte<enum class EOnlineAccountCreateStatus> ErrorStatus)
+void UOnlineAccountInterface::OnCreateOnlineAccountCompleted(TEnumAsByte<EOnlineAccountCreateStatus> ErrorStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineAccountInterface.OnCreateOnlineAccountCompleted");
 
@@ -109740,9 +109740,9 @@ void ACoverReplicator::ServerSendManualCoverTypeSlots(int Index)
 // Parameters:
 // class ACoverLink*              Link                           (CPF_Parm)
 // TArray<int>                    SlotIndices                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ECoverType> NewCoverType                   (CPF_Parm)
+// TEnumAsByte<ECoverType>        NewCoverType                   (CPF_Parm)
 
-void ACoverReplicator::NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<enum class ECoverType> NewCoverType, TArray<int>* SlotIndices)
+void ACoverReplicator::NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<ECoverType> NewCoverType, TArray<int>* SlotIndices)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CoverReplicator.NotifySetManualCoverTypeForSlots");
 
@@ -110530,11 +110530,11 @@ bool UCloudSaveSystemKVSInterface::WriteKeyValue(int SaveSlotIndex, const struct
 // Parameters:
 // int                            SaveSlotIndex                  (CPF_Parm)
 // struct FString                 KeyName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPlatformInterfaceDataType> Type                           (CPF_Parm)
+// TEnumAsByte<EPlatformInterfaceDataType> Type                           (CPF_Parm)
 // struct FPlatformInterfaceDelegateResult Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCloudSaveSystemKVSInterface::ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
+bool UCloudSaveSystemKVSInterface::ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudSaveSystemKVSInterface.ReadKeyValue");
 
@@ -110776,11 +110776,11 @@ bool UCloudStorageBaseCloudSaveSystemKVS::WriteKeyValue(int SaveSlotIndex, const
 // Parameters:
 // int                            SaveSlotIndex                  (CPF_Parm)
 // struct FString                 KeyName                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPlatformInterfaceDataType> Type                           (CPF_Parm)
+// TEnumAsByte<EPlatformInterfaceDataType> Type                           (CPF_Parm)
 // struct FPlatformInterfaceDelegateResult Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCloudStorageBaseCloudSaveSystemKVS::ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
+bool UCloudStorageBaseCloudSaveSystemKVS::ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.CloudStorageBaseCloudSaveSystemKVS.ReadKeyValue");
 

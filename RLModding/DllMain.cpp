@@ -8,7 +8,6 @@
 
 
 void TestFunction(SDK::UObject** object,SDK::UFunction* func, void* params, bool isCallFunc);
-void ObjectTest();
 LogManager logManager;
 
 HANDLE MainThread;
@@ -35,9 +34,6 @@ void onAttach(HMODULE hModule) {
 
 void TestFunction(SDK::UObject** object,SDK::UFunction* func, void* params, bool isCallFunc) {
 
-	if (GetAsyncKeyState(VK_NUMPAD5)) {
-		auto CustomParams = new SDK::UGFxData_Settings_TA_SetCrossPlay_Params;
-		CustomParams->Value = false;
-		Utils::EditParams<SDK::UGFxData_Settings_TA_SetCrossPlay_Params>(CustomParams,params);
+	if (func->
 	}
 }

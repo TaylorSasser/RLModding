@@ -9,6 +9,67 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks.ESteamMatchmakingType
+enum class ESteamMatchmakingType
+{
+	SMT_Invalid                    = 0,
+	SMT_LAN                        = 1,
+	SMT_Internet                   = 2,
+	SMT_MAX                        = 3
+};
+
+
+// Enum OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ELeaderboardSortType
+enum class ELeaderboardSortType
+{
+	LST_Ascending                  = 0,
+	LST_Descending                 = 1,
+	LST_MAX                        = 2
+};
+
+
+// Enum OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ELeaderboardRequestType
+enum class ELeaderboardRequestType
+{
+	LRT_Global                     = 0,
+	LRT_Player                     = 1,
+	LRT_Friends                    = 2,
+	LRT_MAX                        = 3
+};
+
+
+// Enum OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ELeaderboardFormat
+enum class ELeaderboardFormat
+{
+	LF_Number                      = 0,
+	LF_Seconds                     = 1,
+	LF_Milliseconds                = 2,
+	LF_MAX                         = 3
+};
+
+
+// Enum OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ELeaderboardUpdateType
+enum class ELeaderboardUpdateType
+{
+	LUT_KeepBest                   = 0,
+	LUT_Force                      = 1,
+	LUT_MAX                        = 2
+};
+
+
+// Enum OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.EMuteType
+enum class EMuteType
+{
+	MUTE_None                      = 0,
+	MUTE_AllButFriends             = 1,
+	MUTE_All                       = 2,
+	MUTE_MAX                       = 3
+};
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -61,8 +122,7 @@ struct FMatchmakingQueryState
 	TArray<struct FServerQueryToRulesResponseMapping>  QueryToRulesResponseMap;                                  // 0x0004(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FServerQueryToPingResponseMapping>   QueryToPingResponseMap;                                   // 0x0010(0x000C) (CPF_NeedCtorLink)
 	struct FPointer                                    ServerListResponse;                                       // 0x001C(0x0004) (CPF_Native)
-	TEnumAsByte<enum class ESteamMatchmakingType>      CurrentMatchmakingType;                                   // 0x0020(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
+	TEnumAsByte<ESteamMatchmakingType>                 CurrentMatchmakingType;                                   // 0x0020(0x0001)
 	struct FPointer                                    CurrentMatchmakingQuery;                                  // 0x0024(0x0004) (CPF_Native)
 	TArray<struct FClientFilterORClause>               ActiveClientsideFilters;                                  // 0x0028(0x000C) (CPF_Native, CPF_Transient)
 	TArray<class UOnlineGameSettings*>                 PendingRulesSearchSettings;                               // 0x0034(0x000C) (CPF_NeedCtorLink)
@@ -76,8 +136,7 @@ struct FMatchmakingQueryState
 struct FFilterKeyToSteamKeyMapping
 {
 	int                                                KeyId;                                                    // 0x0000(0x0004)
-	TEnumAsByte<enum class EOnlineGameSearchEntryType> KeyType;                                                  // 0x0004(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	TEnumAsByte<EOnlineGameSearchEntryType>            KeyType;                                                  // 0x0004(0x0001)
 	struct FString                                     RawKey;                                                   // 0x0008(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     SteamKey;                                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bReverseFilter : 1;                                       // 0x0020(0x0004)
@@ -88,7 +147,7 @@ struct FFilterKeyToSteamKeyMapping
 // 0x0001 (0x0035 - 0x0034)
 struct FLocalTalkerSteam : public FLocalTalker
 {
-	TEnumAsByte<enum class EMuteType>                  MuteType;                                                 // 0x0034(0x0001)
+	TEnumAsByte<EMuteType>                             MuteType;                                                 // 0x0034(0x0001)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.PlayerStat
@@ -210,12 +269,10 @@ struct FLeaderboardHandle
 struct FLeaderboardTemplate
 {
 	struct FString                                     LeaderboardName;                                          // 0x0000(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELeaderboardUpdateType>     UpdateType;                                               // 0x000C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
+	TEnumAsByte<ELeaderboardUpdateType>                UpdateType;                                               // 0x000C(0x0001)
 	int                                                LeaderboardSize;                                          // 0x0010(0x0004) (CPF_Const)
-	TEnumAsByte<enum class ELeaderboardSortType>       SortType;                                                 // 0x0014(0x0001) (CPF_Const)
-	TEnumAsByte<enum class ELeaderboardFormat>         DisplayFormat;                                            // 0x0015(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData01[0x2];                                       // 0x0016(0x0002) MISSED OFFSET
+	TEnumAsByte<ELeaderboardSortType>                  SortType;                                                 // 0x0014(0x0001) (CPF_Const)
+	TEnumAsByte<ELeaderboardFormat>                    DisplayFormat;                                            // 0x0015(0x0001) (CPF_Const)
 	struct FLeaderboardHandle                          LeaderboardRef;                                           // 0x0018(0x0008) (CPF_Const)
 	unsigned long                                      bLeaderboardInitializing : 1;                             // 0x0020(0x0004) (CPF_Const)
 	unsigned long                                      bLeaderboardInitiated : 1;                                // 0x0020(0x0004) (CPF_Const)
@@ -227,7 +284,6 @@ struct FDeferredLeaderboardRead
 {
 	struct FString                                     LeaderboardName;                                          // 0x0000(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      RequestType;                                              // 0x000C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
 	int                                                Start;                                                    // 0x0010(0x0004)
 	int                                                End;                                                      // 0x0014(0x0004)
 	TArray<struct FUniqueNetId>                        PlayerList;                                               // 0x0018(0x000C) (CPF_NeedCtorLink)

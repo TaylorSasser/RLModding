@@ -41,7 +41,7 @@ struct UGFxInteraction_DebugInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_Parm)
 };
@@ -441,7 +441,7 @@ struct UGFxMoviePlayer_FilterButtonInput_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       ButtonName;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                InputEvent;                                               // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           InputEvent;                                               // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -509,13 +509,13 @@ struct UGFxMoviePlayer_GetVisibleFrameRect_Params
 // Function GFxUI.GFxMoviePlayer.SetAlignment
 struct UGFxMoviePlayer_SetAlignment_Params
 {
-	TEnumAsByte<enum class GFxAlign>                   A;                                                        // (CPF_Parm)
+	TEnumAsByte<EGFxAlign>                             A;                                                        // (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetViewScaleMode
 struct UGFxMoviePlayer_SetViewScaleMode_Params
 {
-	TEnumAsByte<enum class GFxScaleMode>               SM;                                                       // (CPF_Parm)
+	TEnumAsByte<EGFxScaleMode>                         SM;                                                       // (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetViewport
@@ -556,7 +556,7 @@ struct UGFxMoviePlayer_SetExternalInterface_Params
 // Function GFxUI.GFxMoviePlayer.SetTimingMode
 struct UGFxMoviePlayer_SetTimingMode_Params
 {
-	TEnumAsByte<enum class GFxTimingMode>              Mode;                                                     // (CPF_Parm)
+	TEnumAsByte<EGFxTimingMode>                        Mode;                                                     // (CPF_Parm)
 };
 
 // Function GFxUI.GFxMoviePlayer.SetMovieInfo

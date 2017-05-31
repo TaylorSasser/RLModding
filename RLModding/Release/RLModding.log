@@ -1,0 +1,19 @@
+﻿  Core.cpp
+  DllMain.cpp
+c:\users\taylor\documents\visual studio 2017\projects\rlmodding\rlmodding\ObjectInitializer.h(12): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.14393.0\ucrt\string.h(129): note: see declaration of 'strcpy'
+  DllMain.cpp(30): note: see reference to function template instantiation 'T *ConstructUObject<SDK::UObject>(std::string)' being compiled
+          with
+          [
+              T=SDK::UObject
+          ]
+  HookManager.cpp
+  Utils.cpp
+  Generating code
+  3 of 1233 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    25 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+detours.lib(detours.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(detours.obj)' or at 'C:\Users\Taylor\Documents\Visual Studio 2017\Projects\RLModding\Release\detours.pdb'; linking object as if no debug info
+detours.lib(disasm.obj) : warning LNK4099: PDB 'detours.pdb' was not found with 'detours.lib(disasm.obj)' or at 'C:\Users\Taylor\Documents\Visual Studio 2017\Projects\RLModding\Release\detours.pdb'; linking object as if no debug info
+  RLModding.vcxproj -> C:\Users\Taylor\Documents\Visual Studio 2017\Projects\RLModding\Release\RLModding.dll

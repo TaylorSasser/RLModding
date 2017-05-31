@@ -6957,11 +6957,11 @@ void UGameViewportClient_X::SetHardwareMouseCursorVisibility(bool bIsVisible)
 // Function ProjectX.GameViewportClient_X.NotifyConnectionError
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EProgressMessageType> MessageType                    (CPF_Parm)
+// TEnumAsByte<EProgressMessageType> MessageType                    (CPF_Parm)
 // struct FString                 Message                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 
-void UGameViewportClient_X::NotifyConnectionError(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
+void UGameViewportClient_X::NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.NotifyConnectionError");
 
@@ -9582,10 +9582,10 @@ void ULanBeacon_X::Stop()
 // Function ProjectX.LanBeacon_X.Start
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ELanBeaconState> InitialState                   (CPF_Parm)
+// TEnumAsByte<ELanBeaconState>   InitialState                   (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool ULanBeacon_X::Start(TEnumAsByte<enum class ELanBeaconState> InitialState)
+bool ULanBeacon_X::Start(TEnumAsByte<ELanBeaconState> InitialState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanBeacon_X.Start");
 
@@ -9971,10 +9971,10 @@ void UMatchmakingReporter::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Function ProjectX.MatchmakingReporter.GetMatchmakingStateName
 // (FUNC_Final, FUNC_Native, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EMatchmakingState> InState                        (CPF_Const, CPF_Parm)
+// TEnumAsByte<EMatchmakingState> InState                        (CPF_Const, CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UMatchmakingReporter::GetMatchmakingStateName(TEnumAsByte<enum class EMatchmakingState> InState)
+struct FString UMatchmakingReporter::GetMatchmakingStateName(TEnumAsByte<EMatchmakingState> InState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.GetMatchmakingStateName");
 
@@ -9996,9 +9996,9 @@ struct FString UMatchmakingReporter::GetMatchmakingStateName(TEnumAsByte<enum cl
 // (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Info                           (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EMatchmakingInfoSeverity> Severity                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EMatchmakingInfoSeverity> Severity                       (CPF_OptionalParm, CPF_Parm)
 
-void UMatchmakingReporter::AddInfo(const struct FString& Info, TEnumAsByte<enum class EMatchmakingInfoSeverity> Severity)
+void UMatchmakingReporter::AddInfo(const struct FString& Info, TEnumAsByte<EMatchmakingInfoSeverity> Severity)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.AddInfo");
 
@@ -10018,9 +10018,9 @@ void UMatchmakingReporter::AddInfo(const struct FString& Info, TEnumAsByte<enum 
 // Function ProjectX.MatchmakingReporter.SetMatchmakingState
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EMatchmakingState> InState                        (CPF_Const, CPF_Parm)
+// TEnumAsByte<EMatchmakingState> InState                        (CPF_Const, CPF_Parm)
 
-void UMatchmakingReporter::SetMatchmakingState(TEnumAsByte<enum class EMatchmakingState> InState)
+void UMatchmakingReporter::SetMatchmakingState(TEnumAsByte<EMatchmakingState> InState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.SetMatchmakingState");
 
@@ -10792,11 +10792,11 @@ void UOnlineConfig_X::Apply()
 // Function ProjectX.CrossplayConfig_X.PlatformsShareGroup
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> Platform1                      (CPF_Parm)
-// TEnumAsByte<enum class OnlinePlatform> Platform2                      (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform1                      (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform2                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UCrossplayConfig_X::PlatformsShareGroup(TEnumAsByte<enum class OnlinePlatform> Platform1, TEnumAsByte<enum class OnlinePlatform> Platform2)
+bool UCrossplayConfig_X::PlatformsShareGroup(TEnumAsByte<EOnlinePlatform> Platform1, TEnumAsByte<EOnlinePlatform> Platform2)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CrossplayConfig_X.PlatformsShareGroup");
 
@@ -13043,9 +13043,9 @@ void UPsyNet_X::HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
 // Function ProjectX.PsyNet_X.GetDevEnvironment
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EDatabaseEnvironment> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EDatabaseEnvironment> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EDatabaseEnvironment> UPsyNet_X::GetDevEnvironment()
+TEnumAsByte<EDatabaseEnvironment> UPsyNet_X::GetDevEnvironment()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.GetDevEnvironment");
 
@@ -13797,9 +13797,9 @@ void USaveGame_X::OnLoaded()
 // Parameters:
 // bool                           bMustExist                     (CPF_OptionalParm, CPF_Parm)
 // bool                           bIgnoreErrors                  (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EBasicLoadResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EBasicLoadResult>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EBasicLoadResult> USaveGame_X::Load(bool bMustExist, bool bIgnoreErrors)
+TEnumAsByte<EBasicLoadResult> USaveGame_X::Load(bool bMustExist, bool bIgnoreErrors)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.Load");
 
@@ -14999,11 +14999,11 @@ class AWorldInfo* UOnline_X::GetWorldInfo()
 // Function ProjectX.Online_X.CreateUniqueNetID
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> Platform                       (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform                       (CPF_Parm)
 // struct FString                 PlatformName                   (CPF_Parm, CPF_NeedCtorLink)
 // struct FUniqueNetId            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FUniqueNetId UOnline_X::STATIC_CreateUniqueNetID(TEnumAsByte<enum class OnlinePlatform> Platform, const struct FString& PlatformName)
+struct FUniqueNetId UOnline_X::STATIC_CreateUniqueNetID(TEnumAsByte<EOnlinePlatform> Platform, const struct FString& PlatformName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.CreateUniqueNetID");
 
@@ -15527,9 +15527,9 @@ void UOnlineGame_Base_X::HandleInternetConnectionChanged(bool bConnected)
 // Function ProjectX.OnlineGame_Base_X.HandleConnectionStatusChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus               (CPF_Parm)
 
-void UOnlineGame_Base_X::HandleConnectionStatusChanged(TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus)
+void UOnlineGame_Base_X::HandleConnectionStatusChanged(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.HandleConnectionStatusChanged");
 
@@ -16205,9 +16205,9 @@ void UOnlineGame_X::SetPlayedWith(const struct FUniqueNetId& PlayerID)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class AvatarSize> Size                           (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EAvatarSize>       Size                           (CPF_OptionalParm, CPF_Parm)
 
-void UOnlineGame_X::GetPlayerAvatar(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, TEnumAsByte<enum class AvatarSize> Size)
+void UOnlineGame_X::GetPlayerAvatar(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, TEnumAsByte<EAvatarSize> Size)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetPlayerAvatar");
 
@@ -18289,10 +18289,10 @@ struct FString UOnlineGameReservations_X::GetPlayersPlatformsString()
 // Function ProjectX.OnlineGameReservations_X.GetPlatformsString
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// TArray<TEnumAsByte<enum class OnlinePlatform>> Platforms                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<TEnumAsByte<EOnlinePlatform>> Platforms                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UOnlineGameReservations_X::GetPlatformsString(TArray<TEnumAsByte<enum class OnlinePlatform>>* Platforms)
+struct FString UOnlineGameReservations_X::GetPlatformsString(TArray<TEnumAsByte<EOnlinePlatform>>* Platforms)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlatformsString");
 
@@ -18314,9 +18314,9 @@ struct FString UOnlineGameReservations_X::GetPlatformsString(TArray<TEnumAsByte<
 // Function ProjectX.OnlineGameReservations_X.GetPlayerPlatforms
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TArray<TEnumAsByte<enum class OnlinePlatform>> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<TEnumAsByte<EOnlinePlatform>> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-TArray<TEnumAsByte<enum class OnlinePlatform>> UOnlineGameReservations_X::GetPlayerPlatforms()
+TArray<TEnumAsByte<EOnlinePlatform>> UOnlineGameReservations_X::GetPlayerPlatforms()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlayerPlatforms");
 
@@ -18335,11 +18335,11 @@ TArray<TEnumAsByte<enum class OnlinePlatform>> UOnlineGameReservations_X::GetPla
 // Function ProjectX.OnlineGameReservations_X.CanPlayTogether
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> Platform1                      (CPF_Parm)
-// TEnumAsByte<enum class OnlinePlatform> Platform2                      (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform1                      (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform2                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGameReservations_X::CanPlayTogether(TEnumAsByte<enum class OnlinePlatform> Platform1, TEnumAsByte<enum class OnlinePlatform> Platform2)
+bool UOnlineGameReservations_X::CanPlayTogether(TEnumAsByte<EOnlinePlatform> Platform1, TEnumAsByte<EOnlinePlatform> Platform2)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanPlayTogether");
 
@@ -18383,9 +18383,9 @@ bool UOnlineGameReservations_X::CanAcceptReservationsForPlatform(class UAddReser
 // Function ProjectX.OnlineGameReservations_X.GetExclusivePlatform
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlinePlatform>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class OnlinePlatform> UOnlineGameReservations_X::GetExclusivePlatform()
+TEnumAsByte<EOnlinePlatform> UOnlineGameReservations_X::GetExclusivePlatform()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetExclusivePlatform");
 
@@ -18623,10 +18623,10 @@ void UOnlineGameReservations_X::RemoveReservationIndex(int Index)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FUniqueNetId            PartyID                        (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EReservationStatus> Status                         (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EReservationStatus> Status                         (CPF_OptionalParm, CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<enum class EReservationStatus> Status)
+int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<EReservationStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AddSpecialReservation");
 
@@ -19311,10 +19311,10 @@ bool UOnlineGameReservations_X::IsCheatingSplitscreen(const struct FUniqueNetId&
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FUniqueNetId            PartyID                        (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class EReservationStatus> Status                         (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EReservationStatus> Status                         (CPF_OptionalParm, CPF_Parm)
 // struct FReservationData        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FReservationData UOnlineGameReservations_X::CreateReservationData(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<enum class EReservationStatus> Status)
+struct FReservationData UOnlineGameReservations_X::CreateReservationData(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<EReservationStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CreateReservationData");
 
@@ -20094,9 +20094,9 @@ void UOnlinePlayer_X::OnExit()
 // Function ProjectX.OnlinePlayer_X.CanPlayOnline
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayer_X::CanPlayOnline()
+TEnumAsByte<EFeaturePrivilegeLevel> UOnlinePlayer_X::CanPlayOnline()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.CanPlayOnline");
 
@@ -20157,9 +20157,9 @@ void UOnlinePlayer_X::GetPlayerCountry(const struct FScriptDelegate& Handler)
 // Function ProjectX.OnlinePlayer_X.CanCommunicateText
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayer_X::CanCommunicateText()
+TEnumAsByte<EFeaturePrivilegeLevel> UOnlinePlayer_X::CanCommunicateText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.CanCommunicateText");
 
@@ -20178,9 +20178,9 @@ TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayer_X::CanCommunicateTe
 // Function ProjectX.OnlinePlayer_X.OpenErrorDialog
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EPS4ErrorDialog>   ErrorCode                      (CPF_Parm)
 
-void UOnlinePlayer_X::OpenErrorDialog(TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode)
+void UOnlinePlayer_X::OpenErrorDialog(TEnumAsByte<EPS4ErrorDialog> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OpenErrorDialog");
 
@@ -20198,11 +20198,11 @@ void UOnlinePlayer_X::OpenErrorDialog(TEnumAsByte<enum class EPS4ErrorDialog> Er
 // Function ProjectX.OnlinePlayer_X.OpenPS4DisplayMode
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPS4DisplayMode> DisplayMode                    (CPF_Parm)
+// TEnumAsByte<EPS4DisplayMode>   DisplayMode                    (CPF_Parm)
 // TArray<struct FString>         Targets                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            ServiceLabel                   (CPF_OptionalParm, CPF_Parm)
 
-void UOnlinePlayer_X::OpenPS4DisplayMode(TEnumAsByte<enum class EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
+void UOnlinePlayer_X::OpenPS4DisplayMode(TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OpenPS4DisplayMode");
 
@@ -20466,10 +20466,10 @@ void UOnlinePlayer_X::HandleControllerChange(int InControllerID, bool bIsConnect
 // Function ProjectX.OnlinePlayer_X.HandleUserLoginStatusChange
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class ELoginStatus> NewStatus                      (CPF_Parm)
+// TEnumAsByte<ELoginStatus>      NewStatus                      (CPF_Parm)
 // struct FUniqueNetId            NewId                          (CPF_Parm)
 
-void UOnlinePlayer_X::HandleUserLoginStatusChange(TEnumAsByte<enum class ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
+void UOnlinePlayer_X::HandleUserLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleUserLoginStatusChange");
 
@@ -20552,9 +20552,9 @@ void UOnlinePlayer_X::HandleLoginChanged(unsigned char PlayerNum)
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // unsigned char                  PlayerNum                      (CPF_Parm)
-// TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
+// TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (CPF_Parm)
 
-void UOnlinePlayer_X::HandleLoginFailed(unsigned char PlayerNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode)
+void UOnlinePlayer_X::HandleLoginFailed(unsigned char PlayerNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleLoginFailed");
 
@@ -21027,9 +21027,9 @@ bool UOnlinePlayerAuthentication_X::RequestAuthorizationCode()
 // Function ProjectX.OnlinePlayerAuthentication_X.AuthenticationError
 // (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EAuthResult> AuthResult                     (CPF_Parm)
+// TEnumAsByte<EAuthResult>       AuthResult                     (CPF_Parm)
 
-void UOnlinePlayerAuthentication_X::AuthenticationError(TEnumAsByte<enum class EAuthResult> AuthResult)
+void UOnlinePlayerAuthentication_X::AuthenticationError(TEnumAsByte<EAuthResult> AuthResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.AuthenticationError");
 
@@ -22646,11 +22646,11 @@ void UUIWidget_X::Destroy()
 // Function ProjectX.UIWidget_X.GetDockPosition
 // (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
 // Parameters:
-// TEnumAsByte<enum class EDockPoint> DockPoint                      (CPF_Parm)
+// TEnumAsByte<EDockPoint>        DockPoint                      (CPF_Parm)
 // struct FVector2D               OutPivotPosition               (CPF_Parm, CPF_OutParm)
 // struct FVector2D               OutRelativePosition            (CPF_Parm, CPF_OutParm)
 
-void UUIWidget_X::GetDockPosition(TEnumAsByte<enum class EDockPoint> DockPoint, struct FVector2D* OutPivotPosition, struct FVector2D* OutRelativePosition)
+void UUIWidget_X::GetDockPosition(TEnumAsByte<EDockPoint> DockPoint, struct FVector2D* OutPivotPosition, struct FVector2D* OutRelativePosition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetDockPosition");
 
@@ -23470,9 +23470,9 @@ void UUIWidget_X::SetRelativeSize(float NewX, float NewY)
 // Function ProjectX.UIWidget_X.SetDock
 // (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EDockPoint> NewDock                        (CPF_Parm)
+// TEnumAsByte<EDockPoint>        NewDock                        (CPF_Parm)
 
-void UUIWidget_X::SetDock(TEnumAsByte<enum class EDockPoint> NewDock)
+void UUIWidget_X::SetDock(TEnumAsByte<EDockPoint> NewDock)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetDock");
 
@@ -23652,9 +23652,9 @@ void UUIWidget_X::OnVisibilityChanged()
 // Function ProjectX.UIWidget_X.SetVisibility
 // (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EWidgetVisibility> NewVisibility                  (CPF_Parm)
+// TEnumAsByte<EWidgetVisibility> NewVisibility                  (CPF_Parm)
 
-void UUIWidget_X::SetVisibility(TEnumAsByte<enum class EWidgetVisibility> NewVisibility)
+void UUIWidget_X::SetVisibility(TEnumAsByte<EWidgetVisibility> NewVisibility)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetVisibility");
 
@@ -23692,9 +23692,9 @@ void UUIWidget_X::SetHidden(bool bNewHidden)
 // Function ProjectX.UIWidget_X.SetFocusType
 // (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EWidgetFocusType> NewFocusType                   (CPF_Parm)
+// TEnumAsByte<EWidgetFocusType>  NewFocusType                   (CPF_Parm)
 
-void UUIWidget_X::SetFocusType(TEnumAsByte<enum class EWidgetFocusType> NewFocusType)
+void UUIWidget_X::SetFocusType(TEnumAsByte<EWidgetFocusType> NewFocusType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetFocusType");
 
@@ -25539,10 +25539,10 @@ void UTcpConnection::EventConnected(class UTcpConnection* Connection)
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            OutControllerID                (CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class EFeaturePrivilege> OutFailedPrivilege             (CPF_Parm, CPF_OutParm)
+// TEnumAsByte<EFeaturePrivilege> OutFailedPrivilege             (CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UPrivilegeCheck_X::HasFeatureRestriction(int* OutControllerID, TEnumAsByte<enum class EFeaturePrivilege>* OutFailedPrivilege)
+bool UPrivilegeCheck_X::HasFeatureRestriction(int* OutControllerID, TEnumAsByte<EFeaturePrivilege>* OutFailedPrivilege)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.HasFeatureRestriction");
 
@@ -25601,10 +25601,10 @@ void UPrivilegeCheck_X::Fail()
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilege> Privilege                      (CPF_Parm)
-// TEnumAsByte<enum class EFeaturePrivilegeLevel> Level                          (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> Level                          (CPF_Parm)
 
-void UPrivilegeCheck_X::HandlePrivilege(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, TEnumAsByte<enum class EFeaturePrivilegeLevel> Level)
+void UPrivilegeCheck_X::HandlePrivilege(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.HandlePrivilege");
 
@@ -25675,10 +25675,10 @@ void UPrivilegeCheck_X::CheckInternet()
 // Function ProjectX.PrivilegeCheck_X.RequirePrivilege
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
 // class UPrivilegeCheck_X*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UPrivilegeCheck_X* UPrivilegeCheck_X::RequirePrivilege(TEnumAsByte<enum class EFeaturePrivilege> Privilege)
+class UPrivilegeCheck_X* UPrivilegeCheck_X::RequirePrivilege(TEnumAsByte<EFeaturePrivilege> Privilege)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.RequirePrivilege");
 
@@ -26516,9 +26516,9 @@ bool UOnlineGameParty_X::IsProcessing()
 // Function ProjectX.OnlineGameParty_X.SetProcessingStatus
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class PartyProcessingStatus> Status                         (CPF_Parm)
+// TEnumAsByte<EPartyProcessingStatus> Status                         (CPF_Parm)
 
-void UOnlineGameParty_X::SetProcessingStatus(TEnumAsByte<enum class PartyProcessingStatus> Status)
+void UOnlineGameParty_X::SetProcessingStatus(TEnumAsByte<EPartyProcessingStatus> Status)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetProcessingStatus");
 
@@ -27917,9 +27917,9 @@ void UOnlineGameParty_X::HandleKickMessage(class UOnlineMessageComponent_X* Comp
 // (FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 
-void UOnlineGameParty_X::HandleLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
+void UOnlineGameParty_X::HandleLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLobbyDestroyed");
 
@@ -28544,10 +28544,10 @@ bool UOnlineGameParty_X::IsPlayerInParty(struct FUniqueNetId* PlayerID)
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGameParty_X::KickPlayer(const struct FUniqueNetId& PlayerID, TEnumAsByte<enum class ELobbyKickReason> Reason)
+bool UOnlineGameParty_X::KickPlayer(const struct FUniqueNetId& PlayerID, TEnumAsByte<ELobbyKickReason> Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.KickPlayer");
 
@@ -32060,10 +32060,10 @@ void UCustomAnimComponent_X::Cleanup()
 // Function ProjectX.CustomAnimComponent_X.SetRootBoneRotationAxis
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootRotationOption> Axis                           (CPF_Parm)
+// TEnumAsByte<ERootRotationOption> Axis                           (CPF_Parm)
 // class UCustomAnimComponent_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneRotationAxis(TEnumAsByte<enum class ERootRotationOption> Axis)
+class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneRotationAxis(TEnumAsByte<ERootRotationOption> Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootBoneRotationAxis");
 
@@ -32083,10 +32083,10 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneRotationAxis(TE
 // Function ProjectX.CustomAnimComponent_X.SetRootBoneAxis
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootBoneAxis> Axis                           (CPF_Parm)
+// TEnumAsByte<ERootBoneAxis>     Axis                           (CPF_Parm)
 // class UCustomAnimComponent_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneAxis(TEnumAsByte<enum class ERootBoneAxis> Axis)
+class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneAxis(TEnumAsByte<ERootBoneAxis> Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootBoneAxis");
 
@@ -32106,10 +32106,10 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneAxis(TEnumAsByt
 // Function ProjectX.CustomAnimComponent_X.SetRootMotionRotation
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootMotionRotationMode> Mode                           (CPF_Parm)
+// TEnumAsByte<ERootMotionRotationMode> Mode                           (CPF_Parm)
 // class UCustomAnimComponent_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotionRotation(TEnumAsByte<enum class ERootMotionRotationMode> Mode)
+class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotionRotation(TEnumAsByte<ERootMotionRotationMode> Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootMotionRotation");
 
@@ -32129,10 +32129,10 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotionRotation(TEnu
 // Function ProjectX.CustomAnimComponent_X.SetRootMotion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ERootMotionMode> Mode                           (CPF_Parm)
+// TEnumAsByte<ERootMotionMode>   Mode                           (CPF_Parm)
 // class UCustomAnimComponent_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotion(TEnumAsByte<enum class ERootMotionMode> Mode)
+class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotion(TEnumAsByte<ERootMotionMode> Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootMotion");
 
@@ -35950,9 +35950,9 @@ void UMaterialEffect_X::UpdateFade(float Alpha)
 // Function ProjectX.MaterialEffect_X.SetStage
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// TEnumAsByte<enum class EMaterialEffectStage> NewStage                       (CPF_Parm)
+// TEnumAsByte<EMaterialEffectStage> NewStage                       (CPF_Parm)
 
-void UMaterialEffect_X::SetStage(TEnumAsByte<enum class EMaterialEffectStage> NewStage)
+void UMaterialEffect_X::SetStage(TEnumAsByte<EMaterialEffectStage> NewStage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.SetStage");
 
@@ -40402,10 +40402,10 @@ void UOnlineGameDedicatedServerRegistration_X::UpdateCustomGame()
 // Function ProjectX.OnlineGameDedicatedServerRegistration_X.GetExclusivePlatformString
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class OnlinePlatform> Platform                       (CPF_Parm)
+// TEnumAsByte<EOnlinePlatform>   Platform                       (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UOnlineGameDedicatedServerRegistration_X::GetExclusivePlatformString(TEnumAsByte<enum class OnlinePlatform> Platform)
+struct FString UOnlineGameDedicatedServerRegistration_X::GetExclusivePlatformString(TEnumAsByte<EOnlinePlatform> Platform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.GetExclusivePlatformString");
 
@@ -40907,9 +40907,9 @@ void UClanforgeReservation_X::Send(const struct FString& URL)
 // Function ProjectX.ClanforgeReservation_X.SetReserveState
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TEnumAsByte<enum class EReserveState> NewState                       (CPF_Parm)
+// TEnumAsByte<EReserveState>     NewState                       (CPF_Parm)
 
-void UClanforgeReservation_X::SetReserveState(TEnumAsByte<enum class EReserveState> NewState)
+void UClanforgeReservation_X::SetReserveState(TEnumAsByte<EReserveState> NewState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.SetReserveState");
 
@@ -41784,10 +41784,10 @@ class UReservationsReadyMessage_X* UReservationsReadyMessage_X::SetServerAddress
 // Function ProjectX.ReservationsPasswordMessage_X.SetReason
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EPasswordFailureReason> InReason                       (CPF_Parm)
+// TEnumAsByte<EPasswordFailureReason> InReason                       (CPF_Parm)
 // class UReservationsPasswordMessage_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UReservationsPasswordMessage_X* UReservationsPasswordMessage_X::SetReason(TEnumAsByte<enum class EPasswordFailureReason> InReason)
+class UReservationsPasswordMessage_X* UReservationsPasswordMessage_X::SetReason(TEnumAsByte<EPasswordFailureReason> InReason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsPasswordMessage_X.SetReason");
 
@@ -43337,10 +43337,10 @@ class UPartyMessage_SearchStatus_X* UPartyMessage_SearchStatus_X::SetSearchState
 // Function ProjectX.PartyMessage_Kick_X.SetReason
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ELobbyKickReason> InKickReason                   (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  InKickReason                   (CPF_Parm)
 // class UPartyMessage_Kick_X*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UPartyMessage_Kick_X* UPartyMessage_Kick_X::SetReason(TEnumAsByte<enum class ELobbyKickReason> InKickReason)
+class UPartyMessage_Kick_X* UPartyMessage_Kick_X::SetReason(TEnumAsByte<ELobbyKickReason> InKickReason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_Kick_X.SetReason");
 
@@ -47065,9 +47065,9 @@ void UUISceneManager_X::MoveCursor_Mobile(const struct FVector2D& NewPosition)
 // Function ProjectX.UISceneManager_X.HandleMobileTouch
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 
-void UUISceneManager_X::HandleMobileTouch(TEnumAsByte<enum class ETouchType> EventType)
+void UUISceneManager_X::HandleMobileTouch(TEnumAsByte<ETouchType> EventType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleMobileTouch");
 
@@ -47118,12 +47118,12 @@ bool UUISceneManager_X::HandleInputAxis(int ControllerId, const struct FName& Ke
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUISceneManager_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UUISceneManager_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleInputKey");
 
@@ -47733,9 +47733,9 @@ bool UUISceneClient_X::GetHoverWidget(const struct FVector& ScreenPosition, clas
 // Function ProjectX.UISceneClient_X.SetNavigationMode
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EUINavigationMode> NewNavMode                     (CPF_Parm)
+// TEnumAsByte<EUINavigationMode> NewNavMode                     (CPF_Parm)
 
-void UUISceneClient_X::SetNavigationMode(TEnumAsByte<enum class EUINavigationMode> NewNavMode)
+void UUISceneClient_X::SetNavigationMode(TEnumAsByte<EUINavigationMode> NewNavMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetNavigationMode");
 
@@ -48521,12 +48521,12 @@ bool UUIInteraction_X::HandleInputAxis(int ControllerId, const struct FName& Key
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIInteraction_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad)
+bool UUIInteraction_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.HandleInputKey");
 
@@ -49082,12 +49082,12 @@ bool UUIWidget_InputText_X::HandleInputChar(int ControllerId, const struct FStri
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIWidget_InputText_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad)
+bool UUIWidget_InputText_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleInputKey");
 
@@ -49112,10 +49112,10 @@ bool UUIWidget_InputText_X::HandleInputKey(int ControllerId, const struct FName&
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UUIWidget_InputText_X::ProcessControlKey(const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event)
+bool UUIWidget_InputText_X::ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.ProcessControlKey");
 

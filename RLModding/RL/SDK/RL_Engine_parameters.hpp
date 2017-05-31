@@ -41,7 +41,7 @@ struct AActor_SpawnInstance_Params
 // Function Engine.Actor.GetActorMetrics
 struct AActor_GetActorMetrics_Params
 {
-	TEnumAsByte<enum class EActorMetricsType>          MetricsType;                                              // (CPF_Parm)
+	TEnumAsByte<EActorMetricsType>                     MetricsType;                                              // (CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -1576,7 +1576,7 @@ struct AActor_SetTickIsDisabled_Params
 // Function Engine.Actor.SetTickGroup
 struct AActor_SetTickGroup_Params
 {
-	TEnumAsByte<enum class ETickingGroup>              NewTickGroup;                                             // (CPF_Parm)
+	TEnumAsByte<ETickingGroup>                         NewTickGroup;                                             // (CPF_Parm)
 };
 
 // Function Engine.Actor.ReattachComponent
@@ -1612,7 +1612,7 @@ struct AActor_Clock_Params
 // Function Engine.Actor.SetPhysics
 struct AActor_SetPhysics_Params
 {
-	TEnumAsByte<enum class EPhysics>                   newPhysics;                                               // (CPF_Parm)
+	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
 };
 
 // Function Engine.Actor.SetOnlyOwnerSee
@@ -1916,7 +1916,7 @@ struct AActor_SetZone_Params
 struct AActor_MovingWhichWay_Params
 {
 	float                                              Amount;                                                   // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class EMoveDir>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EMoveDir>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Actor.SetRotation
@@ -1955,7 +1955,7 @@ struct AActor_SetDrawScale_Params
 // Function Engine.Actor.SetCollisionType
 struct AActor_SetCollisionType_Params
 {
-	TEnumAsByte<enum class ECollisionType>             NewCollisionType;                                         // (CPF_Parm)
+	TEnumAsByte<ECollisionType>                        NewCollisionType;                                         // (CPF_Parm)
 };
 
 // Function Engine.Actor.SetCollisionSize
@@ -2039,8 +2039,8 @@ struct AWorldInfo_ToggleHostMigration_Params
 // Function Engine.WorldInfo.NotifyHostMigrationStateChanged
 struct AWorldInfo_NotifyHostMigrationStateChanged_Params
 {
-	TEnumAsByte<enum class EHostMigrationProgress>     NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EHostMigrationProgress>     OldState;                                                 // (CPF_Parm)
+	TEnumAsByte<EHostMigrationProgress>                NewState;                                                 // (CPF_Parm)
+	TEnumAsByte<EHostMigrationProgress>                OldState;                                                 // (CPF_Parm)
 };
 
 // Function Engine.WorldInfo.BeginHostMigration
@@ -2108,7 +2108,7 @@ struct AWorldInfo_IsRecordingDemo_Params
 // Function Engine.WorldInfo.GetDetailMode
 struct AWorldInfo_GetDetailMode_Params
 {
-	TEnumAsByte<enum class EDetailMode>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EDetailMode>                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.WorldInfo.GetMapName
@@ -2314,7 +2314,7 @@ struct AWorldInfo_IsWithGFx_Params
 // Function Engine.WorldInfo.IsConsoleBuild
 struct AWorldInfo_IsConsoleBuild_Params
 {
-	TEnumAsByte<enum class EConsoleType>               ConsoleType;                                              // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EConsoleType>                          ConsoleType;                                              // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -2588,7 +2588,7 @@ struct UEngine_PrintDebugInfo_Params
 // Function Engine.Engine.GetGameVersion
 struct UEngine_GetGameVersion_Params
 {
-	TEnumAsByte<enum class EGameVersion>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EGameVersion>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Engine.GetFeatureSystem
@@ -2644,7 +2644,7 @@ struct UEngine_BasicLoadObject_Params
 	struct FString                                     PathName;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bIsSaveGame;                                              // (CPF_Parm)
 	int                                                Version;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EBasicLoadResult>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBasicLoadResult>                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Engine.BasicSaveObject
@@ -4011,7 +4011,7 @@ struct AAutoTestManager_DoTravelTheWorld_Params
 // Function Engine.AutoTestManager.EndSentinelRun
 struct AAutoTestManager_EndSentinelRun_Params
 {
-	TEnumAsByte<enum class EAutomatedRunResult>        RunResult;                                                // (CPF_Parm)
+	TEnumAsByte<EAutomatedRunResult>                   RunResult;                                                // (CPF_Parm)
 };
 
 // Function Engine.AutoTestManager.AddSentinelPerTimePeriodStats
@@ -4086,7 +4086,7 @@ struct AFileWriter_CloseFile_Params
 struct AFileWriter_OpenFile_Params
 {
 	struct FString                                     InFilename;                                               // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class FWFileType>                 InFileType;                                               // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EFWFileType>                           InFileType;                                               // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     InExtension;                                              // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bUnique;                                                  // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bIncludeTimeStamp;                                        // (CPF_OptionalParm, CPF_Parm)
@@ -4138,7 +4138,7 @@ struct AGameInfo_OnDestroyOnlineGameComplete_Params
 // Function Engine.GameInfo.StandbyCheatDetected
 struct AGameInfo_StandbyCheatDetected_Params
 {
-	TEnumAsByte<enum class EStandbyType>               StandbyType;                                              // (CPF_Parm)
+	TEnumAsByte<EStandbyType>                          StandbyType;                                              // (CPF_Parm)
 };
 
 // Function Engine.GameInfo.EnableStandbyCheatDetection
@@ -4241,7 +4241,7 @@ struct AGameInfo_OnLoginChange_Params
 struct AGameInfo_OnLoginFailed_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function Engine.GameInfo.ClearAutoLoginDelegates
@@ -5435,7 +5435,7 @@ struct APotentialClimbWatcher_Tick_Params
 struct ARoute_MoveOntoRoutePath_Params
 {
 	class APawn*                                       P;                                                        // (CPF_Parm)
-	TEnumAsByte<enum class ERouteDirection>            RouteDirection;                                           // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERouteDirection>                       RouteDirection;                                           // (CPF_OptionalParm, CPF_Parm)
 	float                                              DistFudgeFactor;                                          // (CPF_OptionalParm, CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -5444,7 +5444,7 @@ struct ARoute_MoveOntoRoutePath_Params
 struct ARoute_ResolveRouteIndex_Params
 {
 	int                                                Idx;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class ERouteDirection>            RouteDirection;                                           // (CPF_Parm)
+	TEnumAsByte<ERouteDirection>                       RouteDirection;                                           // (CPF_Parm)
 	unsigned char                                      out_bComplete;                                            // (CPF_Parm, CPF_OutParm)
 	unsigned char                                      out_bReverse;                                             // (CPF_Parm, CPF_OutParm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -6384,7 +6384,7 @@ struct ACoverLink_GetDebugAbbrev_Params
 struct ACoverLink_GetLocationDescription_Params
 {
 	int                                                SlotIdx;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class ECoverLocationDescription>  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ECoverLocationDescription>             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.CoverLink.GetDebugString
@@ -6497,7 +6497,7 @@ struct ACoverLink_SetDisabled_Params
 struct ACoverLink_GetSlotActions_Params
 {
 	int                                                SlotIdx;                                                  // (CPF_Parm)
-	TArray<TEnumAsByte<enum class ECoverAction>>       Actions;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<ECoverAction>>                  Actions;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function Engine.CoverLink.HasFireLinkTo
@@ -6514,8 +6514,8 @@ struct ACoverLink_GetFireLinkTo_Params
 {
 	int                                                SlotIdx;                                                  // (CPF_Parm)
 	struct FCoverInfo                                  ChkCover;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ECoverAction>               ChkAction;                                                // (CPF_Parm)
-	TEnumAsByte<enum class ECoverType>                 ChkType;                                                  // (CPF_Parm)
+	TEnumAsByte<ECoverAction>                          ChkAction;                                                // (CPF_Parm)
+	TEnumAsByte<ECoverType>                            ChkType;                                                  // (CPF_Parm)
 	int                                                out_FireLinkIdx;                                          // (CPF_Parm, CPF_OutParm)
 	TArray<int>                                        out_Items;                                                // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -6650,8 +6650,8 @@ struct ACoverLink_IsExposedTo_Params
 struct ACoverLink_GetSlotViewPoint_Params
 {
 	int                                                SlotIdx;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class ECoverType>                 Type;                                                     // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ECoverAction>               Action;                                                   // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECoverType>                            Type;                                                     // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECoverAction>                          Action;                                                   // (CPF_OptionalParm, CPF_Parm)
 	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6675,19 +6675,19 @@ struct ACoverLink_GetSlotLocation_Params
 struct ACoverLink_UnPackFireLinkInteractionInfo_Params
 {
 	unsigned char                                      PackedByte;                                               // (CPF_Const, CPF_Parm)
-	TEnumAsByte<enum class ECoverType>                 SrcType;                                                  // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ECoverAction>               SrcAction;                                                // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ECoverType>                 DestType;                                                 // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ECoverAction>               DestAction;                                               // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<ECoverType>                            SrcType;                                                  // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<ECoverAction>                          SrcAction;                                                // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<ECoverType>                            DestType;                                                 // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<ECoverAction>                          DestAction;                                               // (CPF_Parm, CPF_OutParm)
 };
 
 // Function Engine.CoverLink.PackFireLinkInteractionInfo
 struct ACoverLink_PackFireLinkInteractionInfo_Params
 {
-	TEnumAsByte<enum class ECoverType>                 SrcType;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class ECoverAction>               SrcAction;                                                // (CPF_Parm)
-	TEnumAsByte<enum class ECoverType>                 DestType;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ECoverAction>               DestAction;                                               // (CPF_Parm)
+	TEnumAsByte<ECoverType>                            SrcType;                                                  // (CPF_Parm)
+	TEnumAsByte<ECoverAction>                          SrcAction;                                                // (CPF_Parm)
+	TEnumAsByte<ECoverType>                            DestType;                                                 // (CPF_Parm)
+	TEnumAsByte<ECoverAction>                          DestAction;                                               // (CPF_Parm)
 	unsigned char                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6697,7 +6697,7 @@ struct ACoverLink_GetFireLinkTargetCoverInfo_Params
 	int                                                SlotIdx;                                                  // (CPF_Parm)
 	int                                                FireLinkIdx;                                              // (CPF_Parm)
 	struct FCoverInfo                                  out_Info;                                                 // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class EFireLinkID>                ArrayID;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EFireLinkID>                           ArrayID;                                                  // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -7386,7 +7386,7 @@ struct UActorComponent_SetComponentRBFixed_Params
 // Function Engine.ActorComponent.SetTickGroup
 struct UActorComponent_SetTickGroup_Params
 {
-	TEnumAsByte<enum class ETickingGroup>              NewTickGroup;                                             // (CPF_Parm)
+	TEnumAsByte<ETickingGroup>                         NewTickGroup;                                             // (CPF_Parm)
 };
 
 // Function Engine.AudioComponent.OcclusionChanged
@@ -7495,7 +7495,7 @@ struct UPrimitiveComponent_ClosestPointOnComponentToComponent_Params
 	class UPrimitiveComponent*                         OtherComponent;                                           // (CPF_Parm, CPF_OutParm, CPF_EditInline)
 	struct FVector                                     PointOnComponentA;                                        // (CPF_Parm, CPF_OutParm)
 	struct FVector                                     PointOnComponentB;                                        // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class GJKResult>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EGJKResult>                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.PrimitiveComponent.ClosestPointOnComponentToPoint
@@ -7505,7 +7505,7 @@ struct UPrimitiveComponent_ClosestPointOnComponentToPoint_Params
 	struct FVector                                     Extent;                                                   // (CPF_Parm, CPF_OutParm)
 	struct FVector                                     OutPointA;                                                // (CPF_Parm, CPF_OutParm)
 	struct FVector                                     OutPointB;                                                // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class GJKResult>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EGJKResult>                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.PrimitiveComponent.GetRotation
@@ -7571,13 +7571,13 @@ struct UPrimitiveComponent_SetTraceBlocking_Params
 struct UPrimitiveComponent_SetViewOwnerDepthPriorityGroup_Params
 {
 	bool                                               bNewUseViewOwnerDepthPriorityGroup;                       // (CPF_Parm)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   NewViewOwnerDepthPriorityGroup;                           // (CPF_Parm)
+	TEnumAsByte<ESceneDepthPriorityGroup>              NewViewOwnerDepthPriorityGroup;                           // (CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.SetDepthPriorityGroup
 struct UPrimitiveComponent_SetDepthPriorityGroup_Params
 {
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   NewDepthPriorityGroup;                                    // (CPF_Parm)
+	TEnumAsByte<ESceneDepthPriorityGroup>              NewDepthPriorityGroup;                                    // (CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.SetLightingChannels
@@ -7671,7 +7671,7 @@ struct UPrimitiveComponent_SetNotifyRigidBodyCollision_Params
 // Function Engine.PrimitiveComponent.SetRBChannel
 struct UPrimitiveComponent_SetRBChannel_Params
 {
-	TEnumAsByte<enum class ERBCollisionChannel>        Channel;                                                  // (CPF_Parm)
+	TEnumAsByte<ERBCollisionChannel>                   Channel;                                                  // (CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.SetRBCollisionChannels
@@ -7683,7 +7683,7 @@ struct UPrimitiveComponent_SetRBCollisionChannels_Params
 // Function Engine.PrimitiveComponent.SetRBCollidesWithChannel
 struct UPrimitiveComponent_SetRBCollidesWithChannel_Params
 {
-	TEnumAsByte<enum class ERBCollisionChannel>        Channel;                                                  // (CPF_Parm)
+	TEnumAsByte<ERBCollisionChannel>                   Channel;                                                  // (CPF_Parm)
 	bool                                               bNewCollides;                                             // (CPF_Parm)
 };
 
@@ -7752,7 +7752,7 @@ struct UPrimitiveComponent_AddTorque_Params
 {
 	struct FVector                                     Torque;                                                   // (CPF_Parm)
 	struct FName                                       BoneName;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EForceMode>                 ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EForceMode>                            ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.AddRadialForce
@@ -7761,7 +7761,7 @@ struct UPrimitiveComponent_AddRadialForce_Params
 	struct FVector                                     Origin;                                                   // (CPF_Parm)
 	float                                              Radius;                                                   // (CPF_Parm)
 	float                                              Strength;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      Falloff;                                                  // (CPF_Parm)
+	TEnumAsByte<ERadialImpulseFalloff>                 Falloff;                                                  // (CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.GetMass
@@ -7777,7 +7777,7 @@ struct UPrimitiveComponent_AddForce_Params
 	struct FVector                                     Force;                                                    // (CPF_Parm)
 	struct FVector                                     Position;                                                 // (CPF_OptionalParm, CPF_Parm)
 	struct FName                                       BoneName;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EForceMode>                 ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EForceMode>                            ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.PrimitiveComponent.AddRadialImpulse
@@ -7786,7 +7786,7 @@ struct UPrimitiveComponent_AddRadialImpulse_Params
 	struct FVector                                     Origin;                                                   // (CPF_Parm)
 	float                                              Radius;                                                   // (CPF_Parm)
 	float                                              Strength;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      Falloff;                                                  // (CPF_Parm)
+	TEnumAsByte<ERadialImpulseFalloff>                 Falloff;                                                  // (CPF_Parm)
 	bool                                               bVelChange;                                               // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -8103,7 +8103,7 @@ struct UCanvas_DrawPixel_Params
 	int                                                X;                                                        // (CPF_Parm)
 	int                                                Y;                                                        // (CPF_Parm)
 	struct FLinearColor                                PixelColor;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EBlendMode>                 BlendMode;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBlendMode>                            BlendMode;                                                // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.Canvas.DrawIcon
@@ -8145,7 +8145,7 @@ struct UCanvas_DrawBlendedTile_Params
 	float                                              V;                                                        // (CPF_Parm)
 	float                                              UL;                                                       // (CPF_Parm)
 	float                                              VL;                                                       // (CPF_Parm)
-	TEnumAsByte<enum class ECanvasBlendMode>           Blend;                                                    // (CPF_Parm)
+	TEnumAsByte<ECanvasBlendMode>                      Blend;                                                    // (CPF_Parm)
 };
 
 // Function Engine.Canvas.DrawTexture
@@ -8313,7 +8313,7 @@ struct UCanvas_DrawTimer_Params
 	float                                              UL;                                                       // (CPF_Parm)
 	float                                              VL;                                                       // (CPF_Parm)
 	struct FLinearColor                                LColor;                                                   // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EBlendMode>                 Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBlendMode>                            Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.Canvas.DrawRotatedMaterialTile
@@ -8364,7 +8364,7 @@ struct UCanvas_PreOptimizeDrawTiles_Params
 {
 	int                                                Num;                                                      // (CPF_Parm)
 	class UTexture*                                    Tex;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EBlendMode>                 Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBlendMode>                            Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.Canvas.DrawTile
@@ -8379,7 +8379,7 @@ struct UCanvas_DrawTile_Params
 	float                                              VL;                                                       // (CPF_Parm)
 	struct FLinearColor                                LColor;                                                   // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ClipTile;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EBlendMode>                 Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBlendMode>                            Blend;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.Controller.GeneratePathToLocation
@@ -9381,7 +9381,7 @@ struct APlayerController_ClientPlayCameraAnim_Params
 	float                                              BlendOutTime;                                             // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bLoop;                                                    // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bRandomStartTime;                                         // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       Space;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  Space;                                                    // (CPF_OptionalParm, CPF_Parm)
 	struct FRotator                                    CustomPlaySpace;                                          // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -9403,7 +9403,7 @@ struct APlayerController_ClientPlayCameraShake_Params
 	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
 	float                                              Scale;                                                    // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bTryForceFeedback;                                        // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
 	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -9496,7 +9496,7 @@ struct APlayerController_ClientSetForceMipLevelsToBeResident_Params
 struct APlayerController_ClientControlMovieTexture_Params
 {
 	class UTextureMovie*                               MovieTexture;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMovieControlType>          Mode;                                                     // (CPF_Parm)
+	TEnumAsByte<EMovieControlType>                     Mode;                                                     // (CPF_Parm)
 };
 
 // Function Engine.PlayerController.GetSplitscreenPlayerCount
@@ -10300,7 +10300,7 @@ struct APlayerController_SetViewTargetWithBlend_Params
 {
 	class AActor*                                      NewViewTarget;                                            // (CPF_Parm)
 	float                                              BlendTime;                                                // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EViewTargetBlendFunction>   BlendFunc;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EViewTargetBlendFunction>              BlendFunc;                                                // (CPF_OptionalParm, CPF_Parm)
 	float                                              BlendExp;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bLockOutgoing;                                            // (CPF_OptionalParm, CPF_Parm)
 };
@@ -10450,7 +10450,7 @@ struct APlayerController_Restart_Params
 // Function Engine.PlayerController.ClientSetProgressMessage
 struct APlayerController_ClientSetProgressMessage_Params
 {
-	TEnumAsByte<enum class EProgressMessageType>       MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<EProgressMessageType>                  MessageType;                                              // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Title;                                                    // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bIgnoreFutureNetworkMessages;                             // (CPF_OptionalParm, CPF_Parm)
@@ -10627,7 +10627,7 @@ struct APlayerController_ReplicateMove_Params
 {
 	float                                              DeltaTime;                                                // (CPF_Parm)
 	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EDoubleClickDir>            DoubleClickMove;                                          // (CPF_Parm)
+	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
 	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
 };
 
@@ -10671,7 +10671,7 @@ struct APlayerController_LongClientAdjustPosition_Params
 {
 	float                                              TimeStamp;                                                // (CPF_Parm)
 	struct FName                                       NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EPhysics>                   newPhysics;                                               // (CPF_Parm)
+	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
 	float                                              NewLocX;                                                  // (CPF_Parm)
 	float                                              NewLocY;                                                  // (CPF_Parm)
 	float                                              NewLocZ;                                                  // (CPF_Parm)
@@ -10701,7 +10701,7 @@ struct APlayerController_ClientAdjustPosition_Params
 {
 	float                                              TimeStamp;                                                // (CPF_Parm)
 	struct FName                                       NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EPhysics>                   newPhysics;                                               // (CPF_Parm)
+	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
 	float                                              NewLocX;                                                  // (CPF_Parm)
 	float                                              NewLocY;                                                  // (CPF_Parm)
 	float                                              NewLocZ;                                                  // (CPF_Parm)
@@ -10728,7 +10728,7 @@ struct APlayerController_ShortClientAdjustPosition_Params
 {
 	float                                              TimeStamp;                                                // (CPF_Parm)
 	struct FName                                       NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EPhysics>                   newPhysics;                                               // (CPF_Parm)
+	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
 	float                                              NewLocX;                                                  // (CPF_Parm)
 	float                                              NewLocY;                                                  // (CPF_Parm)
 	float                                              NewLocZ;                                                  // (CPF_Parm)
@@ -10759,7 +10759,7 @@ struct APlayerController_ProcessMove_Params
 {
 	float                                              DeltaTime;                                                // (CPF_Parm)
 	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EDoubleClickDir>            DoubleClickMove;                                          // (CPF_Parm)
+	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
 	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
 };
 
@@ -10840,7 +10840,7 @@ struct APlayerController_Camera_Params
 struct APlayerController_PreClientTravel_Params
 {
 	struct FString                                     PendingURL;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bIsSeamlessTravel;                                        // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -11462,7 +11462,7 @@ struct APlayerController_RemovePeer_Params
 struct APlayerController_AddPeer_Params
 {
 	struct FUniqueNetId                                PeerNetId;                                                // (CPF_Parm)
-	TEnumAsByte<enum class ENATType>                   NatType;                                                  // (CPF_Parm)
+	TEnumAsByte<ENATType>                              NatType;                                                  // (CPF_Parm)
 };
 
 // Function Engine.PlayerController.FindConnectedPeerIndex
@@ -11614,7 +11614,7 @@ struct APlayerController_UpdateURL_Params
 struct APlayerController_ClientTravel_Params
 {
 	struct FString                                     URL;                                                      // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bSeamless;                                                // (CPF_OptionalParm, CPF_Parm)
 	struct FGuid                                       MapPackageGuid;                                           // (CPF_OptionalParm, CPF_Parm, CPF_AlwaysInit)
 };
@@ -12208,7 +12208,7 @@ struct UCloudSaveSystem_GetKeyValue_Params
 {
 	int                                                SaveSlot;                                                 // (CPF_Parm)
 	struct FString                                     KeyName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPlatformInterfaceDataType> Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPlatformInterfaceDataType>            Type;                                                     // (CPF_Parm)
 	struct FPlatformInterfaceDelegateResult            Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -12313,7 +12313,7 @@ struct UCloudSaveSystem_DeserializeObject_Params
 {
 	class UClass*                                      ObjectClass;                                              // (CPF_Parm)
 	TArray<unsigned char>                              Data;                                                     // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class SaveDataVersionSupport>     VersionSupport;                                           // (CPF_Parm)
+	TEnumAsByte<ESaveDataVersionSupport>               VersionSupport;                                           // (CPF_Parm)
 	int                                                DataVersion;                                              // (CPF_Parm)
 	class UObject*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -14303,7 +14303,7 @@ struct UOnlinePlayerStorage_GetProfileSettingMappingIds_Params
 struct UOnlinePlayerStorage_GetProfileSettingMappingType_Params
 {
 	int                                                ProfileId;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EPropertyValueMappingType>  OutType;                                                  // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EPropertyValueMappingType>             OutType;                                                  // (CPF_Parm, CPF_OutParm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -14663,7 +14663,7 @@ struct UOnlineStatsWrite_OnStatsWriteComplete_Params
 struct UOnlineSubsystem_ShowRestrictionMessage_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilege>          Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -14823,13 +14823,13 @@ struct UOnlineSubsystem_PrintDebugInfo_Params
 struct UOnlineSubsystem_GetOnlinePlatformFromName_Params
 {
 	struct FString                                     PlatformName;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class OnlinePlatform>             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlinePlatform>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineSubsystem.GetPlatformName
 struct UOnlineSubsystem_GetPlatformName_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             PlatformType;                                             // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       PlatformType;                                             // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -14849,7 +14849,7 @@ struct UOnlineSubsystem_SetPlayedWith_Params
 struct UOnlineSubsystem_ReadOnlineAvatar_Params
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
-	TEnumAsByte<enum class AvatarSize>                 Size;                                                     // (CPF_Parm)
+	TEnumAsByte<EAvatarSize>                           Size;                                                     // (CPF_Parm)
 	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -15128,7 +15128,7 @@ struct UOnlineSubsystem_DecodeBase64_Params
 struct UOnlineSubsystem_GetFeaturePrivilegeLevel_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilege>          Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
 	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -15136,8 +15136,8 @@ struct UOnlineSubsystem_GetFeaturePrivilegeLevel_Params
 struct UOnlineSubsystem_FeaturePrivilegeLevelUpdated_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilege>          Privilege;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     Level;                                                    // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                Level;                                                    // (CPF_Parm)
 };
 
 // Function Engine.PlatformInterfaceBase.ClearDelegate
@@ -15516,7 +15516,7 @@ struct USavedMove_SetFlags_Params
 {
 	unsigned char                                      Flags;                                                    // (CPF_Parm)
 	class APlayerController*                           PC;                                                       // (CPF_Parm)
-	TEnumAsByte<enum class EDoubleClickDir>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EDoubleClickDir>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.SavedMove.CompressedFlags
@@ -15543,7 +15543,7 @@ struct USavedMove_SetMoveFor_Params
 	class APlayerController*                           P;                                                        // (CPF_Parm)
 	float                                              DeltaTime;                                                // (CPF_Parm)
 	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EDoubleClickDir>            InDoubleClick;                                            // (CPF_Parm)
+	TEnumAsByte<EDoubleClickDir>                       InDoubleClick;                                            // (CPF_Parm)
 };
 
 // Function Engine.SavedMove.CanCombineWith
@@ -15654,7 +15654,7 @@ struct UGameViewportClient_SetProgressTime_Params
 // Function Engine.GameViewportClient.NotifyConnectionError
 struct UGameViewportClient_NotifyConnectionError_Params
 {
-	TEnumAsByte<enum class EProgressMessageType>       MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<EProgressMessageType>                  MessageType;                                              // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Title;                                                    // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 };
@@ -15662,7 +15662,7 @@ struct UGameViewportClient_NotifyConnectionError_Params
 // Function Engine.GameViewportClient.SetProgressMessage
 struct UGameViewportClient_SetProgressMessage_Params
 {
-	TEnumAsByte<enum class EProgressMessageType>       MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<EProgressMessageType>                  MessageType;                                              // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Title;                                                    // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bIgnoreFutureNetworkMessages;                             // (CPF_OptionalParm, CPF_Parm)
@@ -15820,13 +15820,13 @@ struct UGameViewportClient_UpdateActiveSplitscreenType_Params
 // Function Engine.GameViewportClient.GetSplitscreenConfiguration
 struct UGameViewportClient_GetSplitscreenConfiguration_Params
 {
-	TEnumAsByte<enum class ESplitScreenType>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESplitScreenType>                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.GameViewportClient.SetSplitscreenConfiguration
 struct UGameViewportClient_SetSplitscreenConfiguration_Params
 {
-	TEnumAsByte<enum class ESplitScreenType>           SplitType;                                                // (CPF_Parm)
+	TEnumAsByte<ESplitScreenType>                      SplitType;                                                // (CPF_Parm)
 };
 
 // Function Engine.GameViewportClient.GameSessionEnded
@@ -15990,7 +15990,7 @@ struct UGameViewportClient_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -16070,7 +16070,7 @@ struct USettings_GetPropertyRange_Params
 struct USettings_GetPropertyMappingType_Params
 {
 	int                                                PropertyId;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EPropertyValueMappingType>  OutType;                                                  // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EPropertyValueMappingType>             OutType;                                                  // (CPF_Parm, CPF_OutParm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -16106,7 +16106,7 @@ struct USettings_UpdateStringSettings_Params
 struct USettings_GetPropertyType_Params
 {
 	int                                                PropertyId;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ESettingsDataType>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESettingsDataType>                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Settings.GetPropertyValueId
@@ -16566,7 +16566,7 @@ struct UParticleSystem_SetLODDistance_Params
 // Function Engine.ParticleSystem.SetCurrentLODMethod
 struct UParticleSystem_SetCurrentLODMethod_Params
 {
-	TEnumAsByte<enum class ParticleSystemLODMethod>    InMethod;                                                 // (CPF_Parm)
+	TEnumAsByte<EParticleSystemLODMethod>              InMethod;                                                 // (CPF_Parm)
 };
 
 // Function Engine.ParticleSystem.GetLODDistance
@@ -16585,7 +16585,7 @@ struct UParticleSystem_GetLODLevelCount_Params
 // Function Engine.ParticleSystem.GetCurrentLODMethod
 struct UParticleSystem_GetCurrentLODMethod_Params
 {
-	TEnumAsByte<enum class ParticleSystemLODMethod>    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EParticleSystemLODMethod>              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Texture2D.Create
@@ -16593,7 +16593,7 @@ struct UTexture2D_Create_Params
 {
 	int                                                InSizeX;                                                  // (CPF_Parm)
 	int                                                InSizeY;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EPixelFormat>               InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EPixelFormat>                          InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
 	class UTexture2D*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -16674,7 +16674,7 @@ struct UUIRoot_GetCurrentUIController_Params
 struct UUIRoot_GetInputPlatformType_Params
 {
 	class ULocalPlayer*                                OwningPlayer;                                             // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EInputPlatformType>                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Interaction.NotifyPlayerRemoved
@@ -16747,7 +16747,7 @@ struct UInteraction_OnReceivedNativeInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -16761,7 +16761,7 @@ struct UUIInteraction_NotifyGameSessionEnded_Params
 // Function Engine.UIInteraction.GetNATType
 struct UUIInteraction_GetNATType_Params
 {
-	TEnumAsByte<enum class ENATType>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENATType>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.UIInteraction.GetConnectedGamepadCount
@@ -16808,14 +16808,14 @@ struct UUIInteraction_HasLinkConnection_Params
 // Function Engine.UIInteraction.GetLowestLoginStatusOfControllers
 struct UUIInteraction_GetLowestLoginStatusOfControllers_Params
 {
-	TEnumAsByte<enum class ELoginStatus>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ELoginStatus>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.UIInteraction.GetLoginStatus
 struct UUIInteraction_GetLoginStatus_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ELoginStatus>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ELoginStatus>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.UIInteraction.NotifyPlayerRemoved
@@ -17269,7 +17269,7 @@ struct UNavigationHandle_GetAllPolyCentersWithinBounds_Params
 // Function Engine.NavigationHandle.GetCurrentEdgeType
 struct UNavigationHandle_GetCurrentEdgeType_Params
 {
-	TEnumAsByte<enum class ENavMeshEdgeType>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENavMeshEdgeType>                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.NavigationHandle.ClearCurrentEdge
@@ -17589,7 +17589,7 @@ struct UNavMeshPath_MinDistBetweenSpecsOfType_EnforceMinDist_Params
 {
 	class UNavigationHandle*                           NavHandle;                                                // (CPF_Parm)
 	float                                              InMinDist;                                                // (CPF_Parm)
-	TEnumAsByte<enum class ENavMeshEdgeType>           InEdgeType;                                               // (CPF_Parm)
+	TEnumAsByte<ENavMeshEdgeType>                      InEdgeType;                                               // (CPF_Parm)
 	struct FVector                                     LastLocation;                                             // (CPF_OptionalParm, CPF_Parm)
 	float                                              InPenalty;                                                // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -18438,9 +18438,9 @@ struct UAnimNodeCrossfader_PlayOneShotAnim_Params
 // Function Engine.AnimNodePlayCustomAnim.SetRootBoneAxisOption
 struct UAnimNodePlayCustomAnim_SetRootBoneAxisOption_Params
 {
-	TEnumAsByte<enum class ERootBoneAxis>              AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.AnimNodePlayCustomAnim.GetCustomAnimNodeSeq
@@ -18514,17 +18514,17 @@ struct UAnimNodeSlot_TickChildWeights_Params
 // Function Engine.AnimNodeSlot.SetRootBoneRotationOption
 struct UAnimNodeSlot_SetRootBoneRotationOption_Params
 {
-	TEnumAsByte<enum class ERootRotationOption>        AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootRotationOption>        AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootRotationOption>        AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.AnimNodeSlot.SetRootBoneAxisOption
 struct UAnimNodeSlot_SetRootBoneAxisOption_Params
 {
-	TEnumAsByte<enum class ERootBoneAxis>              AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.AnimNodeSlot.GetCustomAnimNodeSeq
@@ -18720,17 +18720,17 @@ struct UAnimTree_FindSkelControl_Params
 // Function Engine.AnimNodeSequence.SetRootBoneRotationOption
 struct UAnimNodeSequence_SetRootBoneRotationOption_Params
 {
-	TEnumAsByte<enum class ERootRotationOption>        AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootRotationOption>        AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootRotationOption>        AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.AnimNodeSequence.SetRootBoneAxisOption
 struct UAnimNodeSequence_SetRootBoneAxisOption_Params
 {
-	TEnumAsByte<enum class ERootBoneAxis>              AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ERootBoneAxis>              AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisX;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisY;                                                    // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         AxisZ;                                                    // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.AnimNodeSequence.GetTimeLeft
@@ -19923,7 +19923,7 @@ struct UParticleSystemComponent_ClearAllParameters_Params
 struct UParticleSystemComponent_ClearParameter_Params
 {
 	struct FName                                       ParameterName;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EParticleSysParamType>      ParameterType;                                            // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EParticleSysParamType>                 ParameterType;                                            // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function Engine.ParticleSystemComponent.GetMaterialParameter
@@ -21579,7 +21579,7 @@ struct APawn_SetBaseEyeheight_Params
 // Function Engine.Pawn.SpecialMoveThruEdge
 struct APawn_SpecialMoveThruEdge_Params
 {
-	TEnumAsByte<enum class ENavMeshEdgeType>           EdgeType;                                                 // (CPF_Parm)
+	TEnumAsByte<ENavMeshEdgeType>                      EdgeType;                                                 // (CPF_Parm)
 	int                                                Dir;                                                      // (CPF_Parm)
 	struct FVector                                     MoveStart;                                                // (CPF_Parm)
 	struct FVector                                     MoveDest;                                                 // (CPF_Parm)
@@ -22722,7 +22722,7 @@ struct UPhysicalMaterial_FindFractureSounds_Params
 // Function Engine.PhysicalMaterial.FindPhysEffectInfo
 struct UPhysicalMaterial_FindPhysEffectInfo_Params
 {
-	TEnumAsByte<enum class EPhysEffectType>            Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPhysEffectType>                       Type;                                                     // (CPF_Parm)
 	struct FPhysEffectInfo                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -24243,7 +24243,7 @@ struct UInput_ResetInput_Params
 struct UPlayerInput_PreClientTravel_Params
 {
 	struct FString                                     PendingURL;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bIsSeamlessTravel;                                        // (CPF_Parm)
 };
 
@@ -24292,7 +24292,7 @@ struct UPlayerInput_ProcessInputMatching_Params
 struct UPlayerInput_CheckForDoubleClickMove_Params
 {
 	float                                              DeltaTime;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EDoubleClickDir>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EDoubleClickDir>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.PlayerInput.CatchDoubleClickInput
@@ -25140,7 +25140,7 @@ struct UUIDataStore_OnlineGameSettings_CreateGame_Params
 struct UUIDataStore_InputAlias_HasAliasMappingForPlatform_Params
 {
 	struct FName                                       DesiredAlias;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         DesiredPlatform;                                          // (CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    DesiredPlatform;                                          // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25156,7 +25156,7 @@ struct UUIDataStore_InputAlias_GetAliasInputKeyDataByIndex_Params
 {
 	struct FRawInputKeyEventData                       out_InputKeyData;                                         // (CPF_Parm, CPF_OutParm)
 	int                                                AliasIndex;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25165,7 +25165,7 @@ struct UUIDataStore_InputAlias_GetAliasInputKeyData_Params
 {
 	struct FRawInputKeyEventData                       out_InputKeyData;                                         // (CPF_Parm, CPF_OutParm)
 	struct FName                                       DesiredAlias;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25173,7 +25173,7 @@ struct UUIDataStore_InputAlias_GetAliasInputKeyData_Params
 struct UUIDataStore_InputAlias_GetAliasInputKeyNameByIndex_Params
 {
 	int                                                AliasIndex;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25181,7 +25181,7 @@ struct UUIDataStore_InputAlias_GetAliasInputKeyNameByIndex_Params
 struct UUIDataStore_InputAlias_GetAliasInputKeyName_Params
 {
 	struct FName                                       DesiredAlias;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25189,7 +25189,7 @@ struct UUIDataStore_InputAlias_GetAliasInputKeyName_Params
 struct UUIDataStore_InputAlias_GetAliasFontMarkupByIndex_Params
 {
 	int                                                AliasIndex;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -25197,7 +25197,7 @@ struct UUIDataStore_InputAlias_GetAliasFontMarkupByIndex_Params
 struct UUIDataStore_InputAlias_GetAliasFontMarkup_Params
 {
 	struct FName                                       DesiredAlias;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EInputPlatformType>         OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    OverridePlatform;                                         // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -25280,7 +25280,7 @@ struct UGameUISceneClient_NotifyClientTravel_Params
 {
 	class APlayerController*                           TravellingPlayer;                                         // (CPF_Parm)
 	struct FString                                     TravelURL;                                                // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bIsSeamlessTravel;                                        // (CPF_Parm)
 };
 
@@ -25305,7 +25305,7 @@ struct UGameUISceneClient_RequestInputProcessingUpdate_Params
 // Function Engine.GameUISceneClient.GetCurrentNetMode
 struct UGameUISceneClient_GetCurrentNetMode_Params
 {
-	TEnumAsByte<enum class ENetMode>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENetMode>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.InteractiveFoliageActor.Touch
@@ -25386,14 +25386,14 @@ struct UFluidSurfaceComponent_ApplyForce_Params
 // Function Engine.SpeedTreeComponent.SetMaterial
 struct USpeedTreeComponent_SetMaterial_Params
 {
-	TEnumAsByte<enum class ESpeedTreeMeshType>         MeshType;                                                 // (CPF_Parm)
+	TEnumAsByte<ESpeedTreeMeshType>                    MeshType;                                                 // (CPF_Parm)
 	class UMaterialInterface*                          Material;                                                 // (CPF_Parm)
 };
 
 // Function Engine.SpeedTreeComponent.GetMaterial
 struct USpeedTreeComponent_GetMaterial_Params
 {
-	TEnumAsByte<enum class ESpeedTreeMeshType>         MeshType;                                                 // (CPF_Parm)
+	TEnumAsByte<ESpeedTreeMeshType>                    MeshType;                                                 // (CPF_Parm)
 	class UMaterialInterface*                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -25542,7 +25542,7 @@ struct UTexture2DDynamic_Create_Params
 {
 	int                                                InSizeX;                                                  // (CPF_Parm)
 	int                                                InSizeY;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EPixelFormat>               InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EPixelFormat>                          InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               InIsResolveTarget;                                        // (CPF_OptionalParm, CPF_Parm)
 	class UTexture2DDynamic*                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -25573,7 +25573,7 @@ struct UTexture2DDynamic_Init_Params
 {
 	int                                                InSizeX;                                                  // (CPF_Parm)
 	int                                                InSizeY;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EPixelFormat>               InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EPixelFormat>                          InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               InIsResolveTarget;                                        // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -25597,7 +25597,7 @@ struct UTextureRenderTarget2D_Create_Params
 {
 	int                                                InSizeX;                                                  // (CPF_Parm)
 	int                                                InSizeY;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EPixelFormat>               InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EPixelFormat>                          InFormat;                                                 // (CPF_OptionalParm, CPF_Parm)
 	struct FLinearColor                                InClearColor;                                             // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bOnlyRenderOnce;                                          // (CPF_OptionalParm, CPF_Parm)
 	class UTextureRenderTarget2D*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -25900,7 +25900,7 @@ struct USkeletalMeshComponent_UnHideBoneByName_Params
 struct USkeletalMeshComponent_HideBoneByName_Params
 {
 	struct FName                                       BoneName;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EPhysBodyOp>                PhysBodyOption;                                           // (CPF_Parm)
+	TEnumAsByte<EPhysBodyOp>                           PhysBodyOption;                                           // (CPF_Parm)
 };
 
 // Function Engine.SkeletalMeshComponent.IsBoneHidden
@@ -25920,14 +25920,14 @@ struct USkeletalMeshComponent_UnHideBone_Params
 struct USkeletalMeshComponent_HideBone_Params
 {
 	int                                                BoneIndex;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EPhysBodyOp>                PhysBodyOption;                                           // (CPF_Parm)
+	TEnumAsByte<EPhysBodyOp>                           PhysBodyOption;                                           // (CPF_Parm)
 };
 
 // Function Engine.SkeletalMeshComponent.SetFaceFXRegisterEx
 struct USkeletalMeshComponent_SetFaceFXRegisterEx_Params
 {
 	struct FString                                     RegName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EFaceFXRegOp>               RegOp;                                                    // (CPF_Parm)
+	TEnumAsByte<EFaceFXRegOp>                          RegOp;                                                    // (CPF_Parm)
 	float                                              FirstValue;                                               // (CPF_Parm)
 	float                                              FirstInterpDuration;                                      // (CPF_Parm)
 	float                                              NextValue;                                                // (CPF_Parm)
@@ -25939,7 +25939,7 @@ struct USkeletalMeshComponent_SetFaceFXRegister_Params
 {
 	struct FString                                     RegName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	float                                              RegVal;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EFaceFXRegOp>               RegOp;                                                    // (CPF_Parm)
+	TEnumAsByte<EFaceFXRegOp>                          RegOp;                                                    // (CPF_Parm)
 	float                                              InterpDuration;                                           // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -26135,7 +26135,7 @@ struct USkeletalMeshComponent_TransformToBoneSpace_Params
 struct USkeletalMeshComponent_GetBoneAxis_Params
 {
 	struct FName                                       BoneName;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EAxis>                      Axis;                                                     // (CPF_Parm)
+	TEnumAsByte<EAxis>                                 Axis;                                                     // (CPF_Parm)
 	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -26794,7 +26794,7 @@ struct USplineComponent_UpdateSplineCurviness_Params
 struct AProcBuilding_FindEdgeForTopLevelScope_Params
 {
 	int                                                TopLevelScopeIndex;                                       // (CPF_Parm)
-	TEnumAsByte<enum class EScopeEdge>                 Edge;                                                     // (CPF_Parm)
+	TEnumAsByte<EScopeEdge>                            Edge;                                                     // (CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -27201,7 +27201,7 @@ struct ACamera_PlayCameraShake_Params
 {
 	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
 	float                                              Scale;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
 	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -27383,7 +27383,7 @@ struct ACameraActor_GetCameraView_Params
 // Function Engine.CameraAnimInst.SetPlaySpace
 struct UCameraAnimInst_SetPlaySpace_Params
 {
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       NewSpace;                                                 // (CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  NewSpace;                                                 // (CPF_Parm)
 	struct FRotator                                    UserPlaySpace;                                            // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -27530,7 +27530,7 @@ struct UCameraModifier_CameraShake_AddCameraShake_Params
 {
 	class UCameraShake*                                NewShake;                                                 // (CPF_Parm)
 	float                                              Scale;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
 	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -27539,7 +27539,7 @@ struct UCameraModifier_CameraShake_InitializeShake_Params
 {
 	class UCameraShake*                                NewShake;                                                 // (CPF_Parm)
 	float                                              Scale;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // (CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_Parm)
 	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
 	struct FCameraShakeInstance                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -28084,7 +28084,7 @@ struct UCloudStorageBase_WriteKeyValue_Params
 struct UCloudStorageBase_ReadKeyValueFromLocalStore_Params
 {
 	struct FString                                     KeyName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPlatformInterfaceDataType> Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPlatformInterfaceDataType>            Type;                                                     // (CPF_Parm)
 	struct FPlatformInterfaceDelegateResult            Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -28093,7 +28093,7 @@ struct UCloudStorageBase_ReadKeyValueFromLocalStore_Params
 struct UCloudStorageBase_ReadKeyValue_Params
 {
 	struct FString                                     KeyName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPlatformInterfaceDataType> Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPlatformInterfaceDataType>            Type;                                                     // (CPF_Parm)
 	struct FPlatformInterfaceDelegateResult            Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -28199,7 +28199,7 @@ struct UTwitterIntegrationBase_TwitterRequest_Params
 {
 	struct FString                                     URL;                                                      // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             ParamKeysAndValues;                                       // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETwitterRequestMethod>      RequestMethod;                                            // (CPF_Parm)
+	TEnumAsByte<ETwitterRequestMethod>                 RequestMethod;                                            // (CPF_Parm)
 	int                                                AccountIndex;                                             // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -28424,7 +28424,7 @@ struct UOnlinePlayerInterface_GetAchievements_Params
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
 	TArray<struct FAchievementDetails>                 Achievements;                                             // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	int                                                TitleId;                                                  // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlinePlayerInterface.ClearReadAchievementsCompleteDelegate
@@ -28744,7 +28744,7 @@ struct UOnlinePlayerInterface_GetFriendsList_Params
 	TArray<struct FOnlineFriend>                       Friends;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	int                                                Count;                                                    // (CPF_OptionalParm, CPF_Parm)
 	int                                                StartingAt;                                               // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlinePlayerInterface.ClearReadFriendsCompleteDelegate
@@ -28993,7 +28993,7 @@ struct UOnlinePlayerInterface_AddLoginStatusChangeDelegate_Params
 // Function Engine.OnlinePlayerInterface.OnLoginStatusChange
 struct UOnlinePlayerInterface_OnLoginStatusChange_Params
 {
-	TEnumAsByte<enum class ELoginStatus>               NewStatus;                                                // (CPF_Parm)
+	TEnumAsByte<ELoginStatus>                          NewStatus;                                                // (CPF_Parm)
 	struct FUniqueNetId                                NewId;                                                    // (CPF_Parm)
 };
 
@@ -29073,15 +29073,15 @@ struct UOnlinePlayerInterface_IsFriend_Params
 struct UOnlinePlayerInterface_CanCommunicate_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ECommunicationMethod>       CommMethod;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ECommunicationMethod>                  CommMethod;                                               // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlinePlayerInterface.CanDownloadUserContent
 struct UOnlinePlayerInterface_CanDownloadUserContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29091,7 +29091,7 @@ struct UOnlinePlayerInterface_CanDownloadUserContent_Params
 struct UOnlinePlayerInterface_CanUploadFitnessData_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29101,7 +29101,7 @@ struct UOnlinePlayerInterface_CanUploadFitnessData_Params
 struct UOnlinePlayerInterface_CanShareKinectContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29111,7 +29111,7 @@ struct UOnlinePlayerInterface_CanShareKinectContent_Params
 struct UOnlinePlayerInterface_CanShareWithSocialNetwork_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29121,7 +29121,7 @@ struct UOnlinePlayerInterface_CanShareWithSocialNetwork_Params
 struct UOnlinePlayerInterface_CanBrowseInternet_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29131,7 +29131,7 @@ struct UOnlinePlayerInterface_CanBrowseInternet_Params
 struct UOnlinePlayerInterface_CanAccessPremiumVideoContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29141,7 +29141,7 @@ struct UOnlinePlayerInterface_CanAccessPremiumVideoContent_Params
 struct UOnlinePlayerInterface_CanAccessPremiumContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29151,7 +29151,7 @@ struct UOnlinePlayerInterface_CanAccessPremiumContent_Params
 struct UOnlinePlayerInterface_CanUseCloudStorage_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29161,7 +29161,7 @@ struct UOnlinePlayerInterface_CanUseCloudStorage_Params
 struct UOnlinePlayerInterface_CanRecordDVRClips_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29171,7 +29171,7 @@ struct UOnlinePlayerInterface_CanRecordDVRClips_Params
 struct UOnlinePlayerInterface_CanShowPresenceInformation_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29181,7 +29181,7 @@ struct UOnlinePlayerInterface_CanShowPresenceInformation_Params
 struct UOnlinePlayerInterface_CanViewPlayerProfiles_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29191,7 +29191,7 @@ struct UOnlinePlayerInterface_CanViewPlayerProfiles_Params
 struct UOnlinePlayerInterface_CanPurchaseContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29201,7 +29201,7 @@ struct UOnlinePlayerInterface_CanPurchaseContent_Params
 struct UOnlinePlayerInterface_CanShareUserCreatedContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29211,7 +29211,7 @@ struct UOnlinePlayerInterface_CanShareUserCreatedContent_Params
 struct UOnlinePlayerInterface_CanCommunicateVoice_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29221,7 +29221,7 @@ struct UOnlinePlayerInterface_CanCommunicateVoice_Params
 struct UOnlinePlayerInterface_CanCommunicateVideo_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29231,7 +29231,7 @@ struct UOnlinePlayerInterface_CanCommunicateVideo_Params
 struct UOnlinePlayerInterface_CanCommunicateText_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29241,7 +29241,7 @@ struct UOnlinePlayerInterface_CanCommunicateText_Params
 struct UOnlinePlayerInterface_CanPlayOnline_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -29280,7 +29280,7 @@ struct UOnlinePlayerInterface_GetUniquePlayerId_Params
 struct UOnlinePlayerInterface_GetLoginStatus_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ELoginStatus>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ELoginStatus>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlinePlayerInterface.ClearLogoutCompletedDelegate
@@ -29328,7 +29328,7 @@ struct UOnlinePlayerInterface_AddLoginFailedDelegate_Params
 struct UOnlinePlayerInterface_OnLoginFailed_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlinePlayerInterface.AutoLogin
@@ -30076,7 +30076,7 @@ struct UOnlineTitleFileCacheInterface_GetTitleFileHash_Params
 struct UOnlineTitleFileCacheInterface_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineTitleFileCacheInterface.GetTitleFileContents
@@ -30183,7 +30183,7 @@ struct UOnlineTitleFileInterface_ClearDownloadedFiles_Params
 struct UOnlineTitleFileInterface_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineTitleFileInterface.GetTitleFileContents
@@ -30210,7 +30210,7 @@ struct UOnlineTitleFileInterface_AddReadTitleFileCompleteDelegate_Params
 struct UOnlineTitleFileInterface_ReadTitleFile_Params
 {
 	struct FString                                     FileToRead;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineFileType>            FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EOnlineFileType>                       FileType;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -30359,7 +30359,7 @@ struct UOnlinePartyChatInterface_SendPartyGameInvites_Params
 struct UOnlineNewsInterface_GetNews_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -30379,14 +30379,14 @@ struct UOnlineNewsInterface_AddReadNewsCompletedDelegate_Params
 struct UOnlineNewsInterface_OnReadNewsCompleted_Params
 {
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 };
 
 // Function Engine.OnlineNewsInterface.ReadNews
 struct UOnlineNewsInterface_ReadNews_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -30936,7 +30936,7 @@ struct UOnlineContentInterface_ReadCrossTitleSaveGameData_Params
 struct UOnlineContentInterface_ClearReadCrossTitleContentCompleteDelegate_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	struct FScriptDelegate                             ReadContentCompleteDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -30944,7 +30944,7 @@ struct UOnlineContentInterface_ClearReadCrossTitleContentCompleteDelegate_Params
 struct UOnlineContentInterface_AddReadCrossTitleContentCompleteDelegate_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	struct FScriptDelegate                             ReadContentCompleteDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -30958,23 +30958,23 @@ struct UOnlineContentInterface_OnReadCrossTitleContentComplete_Params
 struct UOnlineContentInterface_GetCrossTitleContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	TArray<struct FOnlineCrossTitleContent>            ContentList;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineContentInterface.ClearCrossTitleContentList
 struct UOnlineContentInterface_ClearCrossTitleContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 };
 
 // Function Engine.OnlineContentInterface.ReadCrossTitleContentList
 struct UOnlineContentInterface_ReadCrossTitleContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	int                                                TitleId;                                                  // (CPF_OptionalParm, CPF_Parm)
 	int                                                DeviceID;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -30984,23 +30984,23 @@ struct UOnlineContentInterface_ReadCrossTitleContentList_Params
 struct UOnlineContentInterface_GetContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	TArray<struct FOnlineContent>                      ContentList;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineContentInterface.ClearContentList
 struct UOnlineContentInterface_ClearContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 };
 
 // Function Engine.OnlineContentInterface.ReadContentList
 struct UOnlineContentInterface_ReadContentList_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	int                                                DeviceID;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -31009,7 +31009,7 @@ struct UOnlineContentInterface_ReadContentList_Params
 struct UOnlineContentInterface_ClearReadContentComplete_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	struct FScriptDelegate                             ReadContentCompleteDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -31017,7 +31017,7 @@ struct UOnlineContentInterface_ClearReadContentComplete_Params
 struct UOnlineContentInterface_AddReadContentComplete_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineContentType>         ContentType;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineContentType>                    ContentType;                                              // (CPF_Parm)
 	struct FScriptDelegate                             ReadContentCompleteDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -31110,7 +31110,7 @@ struct UOnlineLobbyInterface_KickPlayer_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -31130,7 +31130,7 @@ struct UOnlineLobbyInterface_AddLobbyDestroyedDelegate_Params
 struct UOnlineLobbyInterface_OnLobbyDestroyed_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 };
 
 // Function Engine.OnlineLobbyInterface.GetLobbyMembers
@@ -31447,7 +31447,7 @@ struct UOnlineLobbyInterface_FindLobbies_Params
 	TArray<struct FLobbyFilter>                        Filters;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FLobbySortFilter>                    SortFilters;                                              // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                MinSlots;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ELobbyDistance>             Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyDistance>                        Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -31476,7 +31476,7 @@ struct UOnlineLobbyInterface_CreateLobby_Params
 {
 	int                                                LocalPlayerNum;                                           // (CPF_Parm)
 	int                                                MaxPlayers;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ELobbyVisibility>           Type;                                                     // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Type;                                                     // (CPF_OptionalParm, CPF_Parm)
 	TArray<struct FLobbyMetaData>                      InitialSettings;                                          // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -32058,7 +32058,7 @@ struct UOnlineGameInterface_SetFriendJoinLocation_Params
 {
 	struct FUniqueNetId                                JoinablePlayerID;                                         // (CPF_Parm)
 	struct FString                                     ServerAddress;                                            // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELobbyVisibility>           Visibility;                                               // (CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Visibility;                                               // (CPF_Parm)
 };
 
 // Function Engine.OnlineGameInterface.ClearReportMatchmakingInfoDelegate
@@ -32229,7 +32229,7 @@ struct UOnlineSystemInterface_OnStorageDeviceChange_Params
 // Function Engine.OnlineSystemInterface.GetNATType
 struct UOnlineSystemInterface_GetNATType_Params
 {
-	TEnumAsByte<enum class ENATType>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENATType>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineSystemInterface.ClearConnectionStatusChangeDelegate
@@ -32247,13 +32247,13 @@ struct UOnlineSystemInterface_AddConnectionStatusChangeDelegate_Params
 // Function Engine.OnlineSystemInterface.OnConnectionStatusChange
 struct UOnlineSystemInterface_OnConnectionStatusChange_Params
 {
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus;                                         // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ConnectionStatus;                                         // (CPF_Parm)
 };
 
 // Function Engine.OnlineSystemInterface.GetCurrentConnectionStatus
 struct UOnlineSystemInterface_GetCurrentConnectionStatus_Params
 {
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineSystemInterface.AnyPlayerChatRestricted
@@ -32285,14 +32285,14 @@ struct UOnlineSystemInterface_OpenStoreForDLC_Params
 struct UOnlineSystemInterface_OpenErrorDialog_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EPS4ErrorDialog>            ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EPS4ErrorDialog>                       ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineSystemInterface.OpenPS4DisplayMode
 struct UOnlineSystemInterface_OpenPS4DisplayMode_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EPS4DisplayMode>            DisplayMode;                                              // (CPF_Parm)
+	TEnumAsByte<EPS4DisplayMode>                       DisplayMode;                                              // (CPF_Parm)
 	TArray<struct FString>                             Targets;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                ServiceLabel;                                             // (CPF_OptionalParm, CPF_Parm)
 };
@@ -32375,13 +32375,13 @@ struct UOnlineSystemInterface_OnControllerChange_Params
 // Function Engine.OnlineSystemInterface.SetNetworkNotificationPosition
 struct UOnlineSystemInterface_SetNetworkNotificationPosition_Params
 {
-	TEnumAsByte<enum class ENetworkNotificationPosition> NewPos;                                                   // (CPF_Parm)
+	TEnumAsByte<ENetworkNotificationPosition>          NewPos;                                                   // (CPF_Parm)
 };
 
 // Function Engine.OnlineSystemInterface.GetNetworkNotificationPosition
 struct UOnlineSystemInterface_GetNetworkNotificationPosition_Params
 {
-	TEnumAsByte<enum class ENetworkNotificationPosition> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENetworkNotificationPosition>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineSystemInterface.ClearExternalUIChangeDelegate
@@ -32462,16 +32462,16 @@ struct UOnlineMarketplaceInterface_ConsumeInventoryItem_Params
 struct UOnlineMarketplaceInterface_ResetInventoryItems_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.GetInventoryItems
 struct UOnlineMarketplaceInterface_GetInventoryItems_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 	TArray<struct FMarketplaceInventoryItem>           InventoryItems;                                           // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.ClearReadInventoryItemsCompleteDelegate
@@ -32491,14 +32491,14 @@ struct UOnlineMarketplaceInterface_AddReadInventoryItemsCompleteDelegate_Params
 // Function Engine.OnlineMarketplaceInterface.OnReadInventoryItemsComplete
 struct UOnlineMarketplaceInterface_OnReadInventoryItemsComplete_Params
 {
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.ReadInventoryItems
 struct UOnlineMarketplaceInterface_ReadInventoryItems_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -32519,14 +32519,14 @@ struct UOnlineMarketplaceInterface_AddReadAdditionalProductDetailsCompleteDelega
 // Function Engine.OnlineMarketplaceInterface.OnReadAdditionalProductDetailsComplete
 struct UOnlineMarketplaceInterface_OnReadAdditionalProductDetailsComplete_Params
 {
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.ReadAdditionalDetailsForProducts
 struct UOnlineMarketplaceInterface_ReadAdditionalDetailsForProducts_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -32534,16 +32534,16 @@ struct UOnlineMarketplaceInterface_ReadAdditionalDetailsForProducts_Params
 struct UOnlineMarketplaceInterface_ResetAvailableProducts_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.GetAvailableProducts
 struct UOnlineMarketplaceInterface_GetAvailableProducts_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 	TArray<struct FMarketplaceProductDetails>          AvailableProducts;                                        // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.ClearReadAvailableProductsCompleteDelegate
@@ -32563,7 +32563,7 @@ struct UOnlineMarketplaceInterface_AddReadAvailableProductsCompleteDelegate_Para
 // Function Engine.OnlineMarketplaceInterface.OnReadAvailableProductsComplete
 struct UOnlineMarketplaceInterface_OnReadAvailableProductsComplete_Params
 {
-	TEnumAsByte<enum class EMediaItemType>             MediaType;                                                // (CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        MediaType;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineMarketplaceInterface.ReadAvailableProducts
@@ -32571,9 +32571,9 @@ struct UOnlineMarketplaceInterface_ReadAvailableProducts_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
 	struct FString                                     ParentId;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMediaItemType>             ParentMediaType;                                          // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EMediaItemType>             ChildMediaType;                                           // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ECatalogSortOrder>          SortOrder;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        ParentMediaType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EMediaItemType>                        ChildMediaType;                                           // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ECatalogSortOrder>                     SortOrder;                                                // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -32925,7 +32925,7 @@ struct UOnlineAccountInterface_AddCreateOnlineAccountCompletedDelegate_Params
 // Function Engine.OnlineAccountInterface.OnCreateOnlineAccountCompleted
 struct UOnlineAccountInterface_OnCreateOnlineAccountCompleted_Params
 {
-	TEnumAsByte<enum class EOnlineAccountCreateStatus> ErrorStatus;                                              // (CPF_Parm)
+	TEnumAsByte<EOnlineAccountCreateStatus>            ErrorStatus;                                              // (CPF_Parm)
 };
 
 // Function Engine.OnlineAccountInterface.CreateOnlineAccount
@@ -33336,7 +33336,7 @@ struct ACoverReplicator_NotifySetManualCoverTypeForSlots_Params
 {
 	class ACoverLink*                                  Link;                                                     // (CPF_Parm)
 	TArray<int>                                        SlotIndices;                                              // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ECoverType>                 NewCoverType;                                             // (CPF_Parm)
+	TEnumAsByte<ECoverType>                            NewCoverType;                                             // (CPF_Parm)
 };
 
 // Function Engine.CoverReplicator.ClientReceiveAdjustedSlots
@@ -33593,7 +33593,7 @@ struct UCloudSaveSystemKVSInterface_ReadKeyValue_Params
 {
 	int                                                SaveSlotIndex;                                            // (CPF_Parm)
 	struct FString                                     KeyName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPlatformInterfaceDataType> Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPlatformInterfaceDataType>            Type;                                                     // (CPF_Parm)
 	struct FPlatformInterfaceDelegateResult            Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -33674,7 +33674,7 @@ struct UCloudStorageBaseCloudSaveSystemKVS_ReadKeyValue_Params
 {
 	int                                                SaveSlotIndex;                                            // (CPF_Parm)
 	struct FString                                     KeyName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPlatformInterfaceDataType> Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EPlatformInterfaceDataType>            Type;                                                     // (CPF_Parm)
 	struct FPlatformInterfaceDelegateResult            Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };

@@ -89,11 +89,11 @@ bool UGFxFSCmdHandler::FSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_F
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_Parm)
 // bool                           bGamepad                       (CPF_Parm)
 
-void UGFxInteraction::DebugInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad)
+void UGFxInteraction::DebugInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.DebugInputKey");
 
@@ -1420,10 +1420,10 @@ int UGFxMoviePlayer::GetAVMVersion()
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   ButtonName                     (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> InputEvent                     (CPF_Parm)
+// TEnumAsByte<EInputEvent>       InputEvent                     (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxMoviePlayer::FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<enum class EInputEvent> InputEvent)
+bool UGFxMoviePlayer::FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.FilterButtonInput");
 
@@ -1664,9 +1664,9 @@ void UGFxMoviePlayer::GetVisibleFrameRect(float* x0, float* y0, float* X1, float
 // Function GFxUI.GFxMoviePlayer.SetAlignment
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class GFxAlign> A                              (CPF_Parm)
+// TEnumAsByte<EGFxAlign>         A                              (CPF_Parm)
 
-void UGFxMoviePlayer::SetAlignment(TEnumAsByte<enum class GFxAlign> A)
+void UGFxMoviePlayer::SetAlignment(TEnumAsByte<EGFxAlign> A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetAlignment");
 
@@ -1685,9 +1685,9 @@ void UGFxMoviePlayer::SetAlignment(TEnumAsByte<enum class GFxAlign> A)
 // Function GFxUI.GFxMoviePlayer.SetViewScaleMode
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class GFxScaleMode> SM                             (CPF_Parm)
+// TEnumAsByte<EGFxScaleMode>     SM                             (CPF_Parm)
 
-void UGFxMoviePlayer::SetViewScaleMode(TEnumAsByte<enum class GFxScaleMode> SM)
+void UGFxMoviePlayer::SetViewScaleMode(TEnumAsByte<EGFxScaleMode> SM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetViewScaleMode");
 
@@ -1822,9 +1822,9 @@ void UGFxMoviePlayer::SetExternalInterface(class UObject* H)
 // Function GFxUI.GFxMoviePlayer.SetTimingMode
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class GFxTimingMode> Mode                           (CPF_Parm)
+// TEnumAsByte<EGFxTimingMode>    Mode                           (CPF_Parm)
 
-void UGFxMoviePlayer::SetTimingMode(TEnumAsByte<enum class GFxTimingMode> Mode)
+void UGFxMoviePlayer::SetTimingMode(TEnumAsByte<EGFxTimingMode> Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetTimingMode");
 

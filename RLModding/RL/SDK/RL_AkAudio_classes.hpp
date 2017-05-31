@@ -9,40 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum AkAudio.AkPlaySoundComponent.EAkPlaySoundReceiver
-enum class EAkPlaySoundReceiver
-{
-	PlaySoundReceiver_All          = 0,
-	PlaySoundReceiver_Local        = 1,
-	PlaySoundReceiver_NonLocal     = 2,
-	PlaySoundReceiver_MAX          = 3
-};
-
-
-// Enum AkAudio.AkDevice.EAkOutputType
-enum class EAkOutputType
-{
-	AkOT_Speakers                  = 0,
-	AKOT_Headphones                = 1,
-	EAkOutputType_MAX              = 2
-};
-
-
-// Enum AkAudio.AkDevice.EAkListenerSpacialization
-enum class EAkListenerSpacialization
-{
-	AkLS_3D                        = 0,
-	AkLS_Left                      = 1,
-	AkLS_Right                     = 2,
-	AkLS_MAX                       = 3
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -86,7 +52,6 @@ public:
 class UAkComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FName                                       BoneName;                                                 // 0x0068(0x0008) (CPF_Edit)
 	class UAkEvent*                                    AutoPlayEvent;                                            // 0x0070(0x0004)
 	unsigned long                                      bStopWhenOwnerDestroyed : 1;                              // 0x0074(0x0004)
@@ -123,8 +88,8 @@ public:
 	void STATIC_ProfileStop();
 	void STATIC_ProfileStart();
 	void STATIC_PrintData();
-	void STATIC_SetOutputType(TEnumAsByte<enum class EAkOutputType> Type);
-	void STATIC_SetListenerSpatialization(class ULocalPlayer* Player, TEnumAsByte<enum class EAkListenerSpacialization> Value);
+	void STATIC_SetOutputType(TEnumAsByte<EAkOutputType> Type);
+	void STATIC_SetListenerSpatialization(class ULocalPlayer* Player, TEnumAsByte<EAkListenerSpacialization> Value);
 	void STATIC_RemoveListener(class ULocalPlayer* Player);
 	void STATIC_AddListener(class ULocalPlayer* Player);
 	void STATIC_SetMusicRTCP(const struct FName& Key, float Value);
@@ -186,7 +151,6 @@ public:
 class UAkParamGroup : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FAkParamSet                                 StoredParameters;                                         // 0x0068(0x0078) (CPF_Const, CPF_Transient)
 	TArray<class UAkSoundSource*>                      SoundSources;                                             // 0x00E0(0x000C) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 
@@ -211,7 +175,6 @@ public:
 class UAkPlaySoundComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FPointer                                    VfTable_IISetParameter;                                   // 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 	class UAkSoundCue*                                 SoundCue;                                                 // 0x006C(0x0004) (CPF_Edit)
 	unsigned long                                      bAutoPlay : 1;                                            // 0x0070(0x0004) (CPF_Edit)
@@ -220,8 +183,7 @@ public:
 	struct FVector                                     Translation;                                              // 0x0074(0x000C) (CPF_Edit, CPF_Const)
 	struct FRotator                                    Rotation;                                                 // 0x0080(0x000C) (CPF_Edit, CPF_Const)
 	float                                              ReFireDelay;                                              // 0x008C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAkPlaySoundReceiver>       Receiver;                                                 // 0x0090(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	TEnumAsByte<EAkPlaySoundReceiver>                  Receiver;                                                 // 0x0090(0x0001) (CPF_Edit)
 	TArray<struct FName>                               RestartSwitches;                                          // 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	class UAkSoundSource*                              SoundSource;                                              // 0x00A0(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
 	float                                              LastPlayTime;                                             // 0x00A4(0x0004) (CPF_Const, CPF_Transient)
@@ -251,7 +213,6 @@ public:
 class UAkRTPCDecayComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FName                                       RTPC;                                                     // 0x0068(0x0008) (CPF_Edit)
 	float                                              GrowValue;                                                // 0x0070(0x0004) (CPF_Edit)
 	float                                              MaxValue;                                                 // 0x0074(0x0004) (CPF_Edit)
@@ -293,13 +254,12 @@ public:
 class UAkSoundSource : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FVector                                     Translation;                                              // 0x0068(0x000C) (CPF_Edit, CPF_Const)
 	struct FRotator                                    Rotation;                                                 // 0x0074(0x000C) (CPF_Edit, CPF_Const)
 	unsigned long                                      bDetachOnComplete : 1;                                    // 0x0080(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bRegistered : 1;                                          // 0x0080(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bUpdateOrientation : 1;                                   // 0x0080(0x0004) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData01[0xC];                                       // 0x0084(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0084(0x000C) MISSED OFFSET
 	struct FMatrix                                     CachedParentToWorld;                                      // 0x0090(0x0040) (CPF_Const, CPF_Transient)
 	struct FVector                                     WorldLocation;                                            // 0x00D0(0x000C) (CPF_Const, CPF_Transient)
 	struct FRotator                                    WorldRotation;                                            // 0x00DC(0x000C) (CPF_Const, CPF_Transient)

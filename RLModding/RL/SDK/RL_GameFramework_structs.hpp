@@ -9,6 +9,177 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Constants
+//---------------------------------------------------------------------------
+
+#define CONST_GAMEEVENT_AGGREGATED_PLAYER_MATCH_WON              10004
+#define CONST_GAMEEVENT_AGGREGATED_PLAYER_TIMEALIVE              10001
+#define CONST_GAMEEVENT_AGGREGATED_DATA                          10000
+#define CONST_LOADING_MOVIE                                      "LoadingMovie"
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_WEAPON_DAMAGE    10202
+#define CONST_GAMEEVENT_AGGREGATED_PLAYER_KILLS                  10002
+#define CONST_GAMEEVENT_AGGREGATED_TEAM_GAME_SCORE               10102
+#define CONST_GAMEEVENT_AGGREGATED_PLAYER_ROUND_WON              10005
+#define CONST_GAMEEVENT_AGGREGATED_PLAYER_DEATHS                 10003
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_NORMALKILL       10006
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WASNORMALKILL 10007
+#define CONST_GAMEEVENT_AGGREGATED_TEAM_KILLS                    10100
+#define CONST_GAMEEVENT_AGGREGATED_TEAM_ROUND_WON                10104
+#define CONST_GAMEEVENT_AGGREGATED_TEAM_DEATHS                   10101
+#define CONST_GAMEEVENT_AGGREGATED_TEAM_MATCH_WON                10103
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_KILLS                  10200
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEATHS                 10201
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_MELEEHITS        10206
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_MELEE_DAMAGE     10203
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WEAPON_DAMAGE 10204
+#define CONST_NumTouchDataEntries                                5
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_MELEE_DAMAGE  10205
+#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WASMELEEHIT   10207
+#define CONST_GAMEEVENT_AGGREGATED_GAME_SPECIFIC                 11000
+#define CONST_GAMEEVENT_AGGREGATED_WEAPON_FIRED                  10300
+#define CONST_GAMEEVENT_AGGREGATED_PAWN_SPAWN                    10400
+#define CONST_NumInDragHistory                                   4
+
+//---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum GameFramework.GameTypes.EShakeParam
+enum class EShakeParam
+{
+	ESP_OffsetRandom               = 0,
+	ESP_OffsetZero                 = 1,
+	ESP_MAX                        = 2
+};
+
+
+// Enum GameFramework.GameCrowdAgent.EConformType
+enum class EConformType
+{
+	CFM_NavMesh                    = 0,
+	CFM_BSP                        = 1,
+	CFM_World                      = 2,
+	CFM_None                       = 3,
+	CFM_MAX                        = 4
+};
+
+
+// Enum GameFramework.GameCrowdAgentBehavior.ECrowdBehaviorEvent
+enum class ECrowdBehaviorEvent
+{
+	CBE_None                       = 0,
+	CBE_Spawn                      = 1,
+	CBE_Random                     = 2,
+	CBE_SeePlayer                  = 3,
+	CBE_EncounterAgent             = 4,
+	CBE_TakeDamage                 = 5,
+	CBE_GroupWaiting               = 6,
+	CBE_Uneasy                     = 7,
+	CBE_Alert                      = 8,
+	CBE_Panic                      = 9,
+	CBE_MAX                        = 10
+};
+
+
+// Enum GameFramework.GameSkelCtrl_Recoil.ERecoilStart
+enum class ERecoilStart
+{
+	ERS_Zero                       = 0,
+	ERS_Random                     = 1,
+	ERS_MAX                        = 2
+};
+
+
+// Enum GameFramework.GameStateObject.GameSessionType
+enum class EGameSessionType
+{
+	GT_SessionInvalid              = 0,
+	GT_SinglePlayer                = 1,
+	GT_Coop                        = 2,
+	GT_Multiplayer                 = 3,
+	GT_MAX                         = 4
+};
+
+
+// Enum GameFramework.GameThirdPersonCameraMode.ECameraViewportTypes
+enum class ECameraViewportTypes
+{
+	CVT_16to9_Full                 = 0,
+	CVT_16to9_VertSplit            = 1,
+	CVT_16to9_HorizSplit           = 2,
+	CVT_4to3_Full                  = 3,
+	CVT_4to3_HorizSplit            = 4,
+	CVT_4to3_VertSplit             = 5,
+	CVT_MAX                        = 6
+};
+
+
+// Enum GameFramework.MobileInputZone.EZoneType
+enum class EZoneType
+{
+	ZoneType_Button                = 0,
+	ZoneType_Joystick              = 1,
+	ZoneType_Trackball             = 2,
+	ZoneType_Slider                = 3,
+	ZoneType_SubClassed            = 4,
+	ZoneType_MultitouchSurface     = 5,
+	ZoneType_MAX                   = 6
+};
+
+
+// Enum GameFramework.MobileInputZone.EZoneState
+enum class EZoneState
+{
+	ZoneState_Inactive             = 0,
+	ZoneState_Activating           = 1,
+	ZoneState_Active               = 2,
+	ZoneState_Deactivating         = 3,
+	ZoneState_MAX                  = 4
+};
+
+
+// Enum GameFramework.MobileInputZone.EZoneSlideType
+enum class EZoneSlideType
+{
+	ZoneSlide_UpDown               = 0,
+	ZoneSlide_LeftRight            = 1,
+	ZoneSlide_MAX                  = 2
+};
+
+
+// Enum GameFramework.MobilePlayerInput.EUIOrientation
+enum class EUIOrientation
+{
+	UI_Unknown                     = 0,
+	UI_Portait                     = 1,
+	UI_PortaitUpsideDown           = 2,
+	UI_LandscapeRight              = 3,
+	UI_LandscapeLeft               = 4,
+	UI_MAX                         = 5
+};
+
+
+// Enum GameFramework.MobileMenuImage.MenuImageDrawStyle
+enum class EMenuImageDrawStyle
+{
+	IDS_Normal                     = 0,
+	IDS_Stretched                  = 1,
+	IDS_Tile                       = 2,
+	IDS_MAX                        = 3
+};
+
+
+// Enum GameFramework.SeqEvent_HudRenderText.ETextDrawMethod
+enum class ETextDrawMethod
+{
+	DRAW_CenterText                = 0,
+	DRAW_WrapText                  = 1,
+	DRAW_MAX                       = 2
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -43,7 +214,6 @@ struct FAvoidOtherSampleItem
 {
 	int                                                RotOffset;                                                // 0x0000(0x0004) (CPF_Edit)
 	unsigned char                                      NumMagSamples;                                            // 0x0004(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
 	unsigned long                                      bFallbackOnly : 1;                                        // 0x0008(0x0004) (CPF_Edit)
 };
 
@@ -162,9 +332,8 @@ struct FUVCoords
 // 0x0014
 struct FTouchDataEvent
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // 0x0000(0x0001)
+	TEnumAsByte<ETouchType>                            EventType;                                                // 0x0000(0x0001)
 	unsigned char                                      TouchpadIndex;                                            // 0x0001(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
 	struct FVector2D                                   Location;                                                 // 0x0004(0x0008)
 	struct FDouble                                     DeviceTime;                                               // 0x000C(0x0008)
 };
@@ -175,7 +344,6 @@ struct FTouchData
 {
 	int                                                Handle;                                                   // 0x0000(0x0004)
 	unsigned char                                      TouchpadIndex;                                            // 0x0004(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
 	struct FVector2D                                   Location;                                                 // 0x0008(0x0008)
 	float                                              TotalMoveDistance;                                        // 0x0010(0x0004)
 	struct FDouble                                     InitialDeviceTime;                                        // 0x0014(0x0008)
@@ -184,8 +352,7 @@ struct FTouchData
 	float                                              MoveDeltaTime;                                            // 0x0028(0x0004)
 	unsigned long                                      bInUse : 1;                                               // 0x002C(0x0004)
 	class UMobileInputZone*                            Zone;                                                     // 0x0030(0x0004)
-	TEnumAsByte<enum class ETouchType>                 State;                                                    // 0x0034(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0035(0x0003) MISSED OFFSET
+	TEnumAsByte<ETouchType>                            State;                                                    // 0x0034(0x0001)
 	TArray<struct FTouchDataEvent>                     Events;                                                   // 0x0038(0x000C) (CPF_NeedCtorLink)
 	float                                              LastActiveTime;                                           // 0x0044(0x0004)
 };
@@ -219,9 +386,9 @@ struct FPropertyInfo
 // 0x0004
 struct FRecoilParams
 {
-	TEnumAsByte<enum class ERecoilStart>               X;                                                        // 0x0000(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERecoilStart>               Y;                                                        // 0x0001(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERecoilStart>               Z;                                                        // 0x0002(0x0001) (CPF_Edit)
+	TEnumAsByte<ERecoilStart>                          X;                                                        // 0x0000(0x0001) (CPF_Edit)
+	TEnumAsByte<ERecoilStart>                          Y;                                                        // 0x0001(0x0001) (CPF_Edit)
+	TEnumAsByte<ERecoilStart>                          Z;                                                        // 0x0002(0x0001) (CPF_Edit)
 	unsigned char                                      Padding;                                                  // 0x0003(0x0001) (CPF_Const, CPF_Transient)
 };
 
@@ -384,7 +551,6 @@ struct FTakeHitInfo
 	class UClass*                                      DamageType;                                               // 0x0018(0x0004)
 	class APawn*                                       InstigatedBy;                                             // 0x001C(0x0004)
 	unsigned char                                      HitBoneIndex;                                             // 0x0020(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
 	class UPhysicalMaterial*                           PhysicalMaterial;                                         // 0x0024(0x0004)
 	float                                              Damage;                                                   // 0x0028(0x0004)
 	struct FVector                                     RadialDamageOrigin;                                       // 0x002C(0x000C)
@@ -394,9 +560,9 @@ struct FTakeHitInfo
 // 0x0004
 struct FShakeParams
 {
-	TEnumAsByte<enum class EShakeParam>                X;                                                        // 0x0000(0x0001)
-	TEnumAsByte<enum class EShakeParam>                Y;                                                        // 0x0001(0x0001)
-	TEnumAsByte<enum class EShakeParam>                Z;                                                        // 0x0002(0x0001)
+	TEnumAsByte<EShakeParam>                           X;                                                        // 0x0000(0x0001)
+	TEnumAsByte<EShakeParam>                           Y;                                                        // 0x0001(0x0001)
+	TEnumAsByte<EShakeParam>                           Z;                                                        // 0x0002(0x0001)
 	unsigned char                                      Padding;                                                  // 0x0003(0x0001) (CPF_Const, CPF_Transient)
 };
 
@@ -417,8 +583,7 @@ struct FScreenShakeStruct
 	float                                              FOVAmplitude;                                             // 0x0058(0x0004)
 	float                                              FOVFrequency;                                             // 0x005C(0x0004)
 	float                                              FOVSinOffset;                                             // 0x0060(0x0004)
-	TEnumAsByte<enum class EShakeParam>                FOVParam;                                                 // 0x0064(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	TEnumAsByte<EShakeParam>                           FOVParam;                                                 // 0x0064(0x0001)
 	struct FName                                       ShakeName;                                                // 0x0068(0x0008)
 	unsigned long                                      bOverrideTargetingDampening : 1;                          // 0x0070(0x0004)
 	float                                              TargetingDampening;                                       // 0x0074(0x0004)
@@ -486,7 +651,7 @@ struct FDragElementInfo
 	unsigned long                                      bCanDropInOver : 1;                                       // 0x0010(0x0004)
 	struct FVector2D                                   OrigTouch;                                                // 0x0014(0x0008)
 	struct FVector2D                                   CurTouch;                                                 // 0x001C(0x0008)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // 0x0024(0x0001)
+	TEnumAsByte<ETouchType>                            EventType;                                                // 0x0024(0x0001)
 };
 
 // ScriptStruct GameFramework.MobileMenuList.SelectedMenuItem

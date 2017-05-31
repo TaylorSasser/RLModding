@@ -9,6 +9,97 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum GFxUI.SwfMovie.FlashTextureRescale
+enum class EFlashTextureRescale
+{
+	FlashTextureScale_High         = 0,
+	FlashTextureScale_Low          = 1,
+	FlashTextureScale_NextLow      = 2,
+	FlashTextureScale_Mult4        = 3,
+	FlashTextureScale_None         = 4,
+	FlashTextureScale_MAX          = 5
+};
+
+
+// Enum GFxUI.GFxMoviePlayer.ASType
+enum class EASType
+{
+	AS_Undefined                   = 0,
+	AS_Null                        = 1,
+	AS_Number                      = 2,
+	AS_Int                         = 3,
+	AS_String                      = 4,
+	AS_Boolean                     = 5,
+	AS_Texture                     = 6,
+	AS_MAX                         = 7
+};
+
+
+// Enum GFxUI.GFxMoviePlayer.GFxAlign
+enum class EGFxAlign
+{
+	Align_Center                   = 0,
+	Align_TopCenter                = 1,
+	Align_BottomCenter             = 2,
+	Align_CenterLeft               = 3,
+	Align_CenterRight              = 4,
+	Align_TopLeft                  = 5,
+	Align_TopRight                 = 6,
+	Align_BottomLeft               = 7,
+	Align_BottomRight              = 8,
+	Align_MAX                      = 9
+};
+
+
+// Enum GFxUI.GFxMoviePlayer.GFxScaleMode
+enum class EGFxScaleMode
+{
+	SM_NoScale                     = 0,
+	SM_ShowAll                     = 1,
+	SM_ExactFit                    = 2,
+	SM_NoBorder                    = 3,
+	SM_MAX                         = 4
+};
+
+
+// Enum GFxUI.GFxMoviePlayer.GFxTimingMode
+enum class EGFxTimingMode
+{
+	TM_Game                        = 0,
+	TM_Real                        = 1,
+	TM_MAX                         = 2
+};
+
+
+// Enum GFxUI.GFxMoviePlayer.GFxRenderTextureMode
+enum class EGFxRenderTextureMode
+{
+	RTM_Opaque                     = 0,
+	RTM_Alpha                      = 1,
+	RTM_AlphaComposite             = 2,
+	RTM_MAX                        = 3
+};
+
+
+// Enum GFxUI.GFxEngine.EWeatherVariant
+enum class EWeatherVariant
+{
+	WeatherVariant_None            = 0,
+	WeatherVariant_Day             = 1,
+	WeatherVariant_Dusk            = 2,
+	WeatherVariant_Lab             = 3,
+	WeatherVariant_Night           = 4,
+	WeatherVariant_Rain            = 5,
+	WeatherVariant_Snow            = 6,
+	WeatherVariant_MAX             = 7
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -25,16 +116,14 @@ struct FGCReference
 // 0x0058
 struct FLoadingMovieMapInfo
 {
-	TEnumAsByte<enum class EInputPlatformType>         InputType;                                                // 0x0000(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EInputPlatformType>                    InputType;                                                // 0x0000(0x0001)
 	struct FString                                     MapBaseName;                                              // 0x0004(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     PlaylistName;                                             // 0x0010(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     MapVariantName;                                           // 0x001C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     MaximumPlayerCounts;                                      // 0x0028(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     ProtipMessage;                                            // 0x0034(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     ProtipTitle;                                              // 0x0040(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EWeatherVariant>            WeatherVariant;                                           // 0x004C(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x004D(0x0003) MISSED OFFSET
+	TEnumAsByte<EWeatherVariant>                       WeatherVariant;                                           // 0x004C(0x0001)
 	class UTexture2D*                                  LargeMapImage;                                            // 0x0050(0x0004)
 	unsigned long                                      bSetBackgroundVisible : 1;                                // 0x0054(0x0004)
 	unsigned long                                      bDisplayGenericBackground : 1;                            // 0x0054(0x0004)
@@ -69,8 +158,7 @@ struct FGFxWidgetBinding
 // 0x0020
 struct FASValue
 {
-	TEnumAsByte<enum class ASType>                     Type;                                                     // 0x0000(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EASType>                               Type;                                                     // 0x0000(0x0001) (CPF_Edit)
 	unsigned long                                      B : 1;                                                    // 0x0004(0x0004) (CPF_Edit)
 	float                                              N;                                                        // 0x0008(0x0004) (CPF_Edit)
 	int                                                I;                                                        // 0x000C(0x0004) (CPF_Edit)

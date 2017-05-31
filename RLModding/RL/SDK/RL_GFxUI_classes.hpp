@@ -9,97 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum GFxUI.SwfMovie.FlashTextureRescale
-enum class FlashTextureRescale
-{
-	FlashTextureScale_High         = 0,
-	FlashTextureScale_Low          = 1,
-	FlashTextureScale_NextLow      = 2,
-	FlashTextureScale_Mult4        = 3,
-	FlashTextureScale_None         = 4,
-	FlashTextureScale_MAX          = 5
-};
-
-
-// Enum GFxUI.GFxMoviePlayer.ASType
-enum class ASType
-{
-	AS_Undefined                   = 0,
-	AS_Null                        = 1,
-	AS_Number                      = 2,
-	AS_Int                         = 3,
-	AS_String                      = 4,
-	AS_Boolean                     = 5,
-	AS_Texture                     = 6,
-	AS_MAX                         = 7
-};
-
-
-// Enum GFxUI.GFxMoviePlayer.GFxAlign
-enum class GFxAlign
-{
-	Align_Center                   = 0,
-	Align_TopCenter                = 1,
-	Align_BottomCenter             = 2,
-	Align_CenterLeft               = 3,
-	Align_CenterRight              = 4,
-	Align_TopLeft                  = 5,
-	Align_TopRight                 = 6,
-	Align_BottomLeft               = 7,
-	Align_BottomRight              = 8,
-	Align_MAX                      = 9
-};
-
-
-// Enum GFxUI.GFxMoviePlayer.GFxScaleMode
-enum class GFxScaleMode
-{
-	SM_NoScale                     = 0,
-	SM_ShowAll                     = 1,
-	SM_ExactFit                    = 2,
-	SM_NoBorder                    = 3,
-	SM_MAX                         = 4
-};
-
-
-// Enum GFxUI.GFxMoviePlayer.GFxTimingMode
-enum class GFxTimingMode
-{
-	TM_Game                        = 0,
-	TM_Real                        = 1,
-	TM_MAX                         = 2
-};
-
-
-// Enum GFxUI.GFxMoviePlayer.GFxRenderTextureMode
-enum class GFxRenderTextureMode
-{
-	RTM_Opaque                     = 0,
-	RTM_Alpha                      = 1,
-	RTM_AlphaComposite             = 2,
-	RTM_MAX                        = 3
-};
-
-
-// Enum GFxUI.GFxEngine.EWeatherVariant
-enum class EWeatherVariant
-{
-	WeatherVariant_None            = 0,
-	WeatherVariant_Day             = 1,
-	WeatherVariant_Dusk            = 2,
-	WeatherVariant_Lab             = 3,
-	WeatherVariant_Night           = 4,
-	WeatherVariant_Rain            = 5,
-	WeatherVariant_Snow            = 6,
-	WeatherVariant_MAX             = 7
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -156,7 +65,7 @@ public:
 	}
 
 
-	void DebugInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	void DebugInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
 	void CloseAllMoviePlayers();
 	void NotifySplitscreenLayoutChanged();
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
@@ -212,16 +121,15 @@ public:
 	TArray<struct FName>                               FocusIgnoreKeys;                                          // 0x00E4(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FExternalTexture>                    ExternalTextures;                                         // 0x00F0(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FSoundThemeBinding>                  SoundThemes;                                              // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class GFxTimingMode>              TimingMode;                                               // 0x0108(0x0001)
-	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                        // 0x0109(0x0001)
+	TEnumAsByte<EGFxTimingMode>                        TimingMode;                                               // 0x0108(0x0001)
+	TEnumAsByte<EGFxRenderTextureMode>                 RenderTextureMode;                                        // 0x0109(0x0001)
 	unsigned char                                      Priority;                                                 // 0x010A(0x0001)
-	unsigned char                                      UnknownData02[0x1];                                       // 0x010B(0x0001) MISSED OFFSET
 	TArray<struct FGFxWidgetBinding>                   WidgetBindings;                                           // 0x010C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x3C];                                      // 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
+	unsigned char                                      UnknownData02[0x3C];                                      // 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
 	class UGFxObject*                                  SplitscreenLayoutObject;                                  // 0x0154(0x0004) (CPF_Transient)
 	int                                                SplitscreenLayoutYAdjust;                                 // 0x0158(0x0004) (CPF_Config)
 	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -280,7 +188,7 @@ public:
 	bool GetVariableBool(const struct FString& Path);
 	struct FASValue GetVariable(const struct FString& Path);
 	int GetAVMVersion();
-	bool FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<enum class EInputEvent> InputEvent);
+	bool FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent);
 	void FlushPlayerInput(bool capturekeysonly);
 	void ClearFocusIgnoreKeys();
 	void AddFocusIgnoreKey(const struct FName& Key);
@@ -291,14 +199,14 @@ public:
 	void SetPerspective3D(struct FMatrix* matPersp);
 	void SetView3D(struct FMatrix* matView);
 	void GetVisibleFrameRect(float* x0, float* y0, float* X1, float* Y1);
-	void SetAlignment(TEnumAsByte<enum class GFxAlign> A);
-	void SetViewScaleMode(TEnumAsByte<enum class GFxScaleMode> SM);
+	void SetAlignment(TEnumAsByte<EGFxAlign> A);
+	void SetViewScaleMode(TEnumAsByte<EGFxScaleMode> SM);
 	void SetViewport(int X, int Y, int Width, int Height);
 	class UGameViewportClient* GetGameViewportClient();
 	void SetPriority(unsigned char NewPriority);
 	bool SetExternalTexture(const struct FString& Resource, class UTexture* Texture);
 	void SetExternalInterface(class UObject* H);
-	void SetTimingMode(TEnumAsByte<enum class GFxTimingMode> Mode);
+	void SetTimingMode(TEnumAsByte<EGFxTimingMode> Mode);
 	void SetMovieInfo(class USwfMovie* Data);
 	void ConditionalClearPause();
 	void OnCleanup();
@@ -435,14 +343,13 @@ public:
 	unsigned long                                      bForceSquarePacking : 1;                                  // 0x006C(0x0004) (CPF_Edit)
 	struct FString                                     SourceFile;                                               // 0x0070(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	int                                                PackTextureSize;                                          // 0x007C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class FlashTextureRescale>        TextureRescale;                                           // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<EFlashTextureRescale>                  TextureRescale;                                           // 0x0080(0x0001) (CPF_Edit)
 	struct FString                                     TextureFormat;                                            // 0x0084(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
 	struct FString                                     SourceFileTimestamp;                                      // 0x0090(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
 	int                                                SourceFileCRC;                                            // 0x009C(0x0004) (CPF_Edit, CPF_EditConst)
 	int                                                RTTextures;                                               // 0x00A0(0x0004)
 	int                                                RTVideoTextures;                                          // 0x00A4(0x0004)
-	unsigned char                                      UnknownData01[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
 
 	static UClass* StaticClass()
 	{
@@ -539,8 +446,7 @@ public:
 	unsigned long                                      bStartPaused : 1;                                         // 0x0108(0x0004) (CPF_Edit)
 	unsigned long                                      bEnableGammaCorrection : 1;                               // 0x0108(0x0004)
 	unsigned long                                      bDisplayWithHudOff : 1;                                   // 0x0108(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                        // 0x010C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x010D(0x0003) MISSED OFFSET
+	TEnumAsByte<EGFxRenderTextureMode>                 RenderTextureMode;                                        // 0x010C(0x0001) (CPF_Edit)
 	class UTextureRenderTarget2D*                      RenderTexture;                                            // 0x0110(0x0004) (CPF_Edit)
 	TArray<struct FName>                               CaptureKeys;                                              // 0x0114(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FName>                               FocusIgnoreKeys;                                          // 0x0120(0x000C) (CPF_Edit, CPF_NeedCtorLink)

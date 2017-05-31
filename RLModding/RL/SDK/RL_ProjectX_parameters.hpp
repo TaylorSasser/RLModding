@@ -2087,7 +2087,7 @@ struct UGameViewportClient_X_SetHardwareMouseCursorVisibility_Params
 // Function ProjectX.GameViewportClient_X.NotifyConnectionError
 struct UGameViewportClient_X_NotifyConnectionError_Params
 {
-	TEnumAsByte<enum class EProgressMessageType>       MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<EProgressMessageType>                  MessageType;                                              // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Title;                                                    // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 };
@@ -2874,7 +2874,7 @@ struct ULanBeacon_X_Stop_Params
 // Function ProjectX.LanBeacon_X.Start
 struct ULanBeacon_X_Start_Params
 {
-	TEnumAsByte<enum class ELanBeaconState>            InitialState;                                             // (CPF_Parm)
+	TEnumAsByte<ELanBeaconState>                       InitialState;                                             // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -2992,7 +2992,7 @@ struct UMatchmakingReporter_PrintDebugInfo_Params
 // Function ProjectX.MatchmakingReporter.GetMatchmakingStateName
 struct UMatchmakingReporter_GetMatchmakingStateName_Params
 {
-	TEnumAsByte<enum class EMatchmakingState>          InState;                                                  // (CPF_Const, CPF_Parm)
+	TEnumAsByte<EMatchmakingState>                     InState;                                                  // (CPF_Const, CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -3000,13 +3000,13 @@ struct UMatchmakingReporter_GetMatchmakingStateName_Params
 struct UMatchmakingReporter_AddInfo_Params
 {
 	struct FString                                     Info;                                                     // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMatchmakingInfoSeverity>   Severity;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EMatchmakingInfoSeverity>              Severity;                                                 // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function ProjectX.MatchmakingReporter.SetMatchmakingState
 struct UMatchmakingReporter_SetMatchmakingState_Params
 {
-	TEnumAsByte<enum class EMatchmakingState>          InState;                                                  // (CPF_Const, CPF_Parm)
+	TEnumAsByte<EMatchmakingState>                     InState;                                                  // (CPF_Const, CPF_Parm)
 };
 
 // Function ProjectX.MatchmakingReporter.ClearStateReports
@@ -3230,8 +3230,8 @@ struct UOnlineConfig_X_Apply_Params
 // Function ProjectX.CrossplayConfig_X.PlatformsShareGroup
 struct UCrossplayConfig_X_PlatformsShareGroup_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             Platform1;                                                // (CPF_Parm)
-	TEnumAsByte<enum class OnlinePlatform>             Platform2;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform1;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform2;                                                // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -3901,7 +3901,7 @@ struct UPsyNet_X_HandleLoginChanged_Params
 // Function ProjectX.PsyNet_X.GetDevEnvironment
 struct UPsyNet_X_GetDevEnvironment_Params
 {
-	TEnumAsByte<enum class EDatabaseEnvironment>       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EDatabaseEnvironment>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function ProjectX.PsyNet_X.InitEnvironment
@@ -4122,7 +4122,7 @@ struct USaveGame_X_Load_Params
 {
 	bool                                               bMustExist;                                               // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bIgnoreErrors;                                            // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EBasicLoadResult>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBasicLoadResult>                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function ProjectX.SaveGame_X.ClearSaveTimer
@@ -4481,7 +4481,7 @@ struct UOnline_X_GetWorldInfo_Params
 // Function ProjectX.Online_X.CreateUniqueNetID
 struct UOnline_X_CreateUniqueNetID_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             Platform;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // (CPF_Parm)
 	struct FString                                     PlatformName;                                             // (CPF_Parm, CPF_NeedCtorLink)
 	struct FUniqueNetId                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -4638,7 +4638,7 @@ struct UOnlineGame_Base_X_HandleInternetConnectionChanged_Params
 // Function ProjectX.OnlineGame_Base_X.HandleConnectionStatusChanged
 struct UOnlineGame_Base_X_HandleConnectionStatusChanged_Params
 {
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus;                                         // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ConnectionStatus;                                         // (CPF_Parm)
 };
 
 // Function ProjectX.OnlineGame_Base_X.SetDefaultSearchType
@@ -4840,7 +4840,7 @@ struct UOnlineGame_X_GetPlayerAvatar_Params
 {
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
 	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class AvatarSize>                 Size;                                                     // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAvatarSize>                           Size;                                                     // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function ProjectX.OnlineGame_X.SetVoiceVolume
@@ -5465,21 +5465,21 @@ struct UOnlineGameReservations_X_GetPlayersPlatformsString_Params
 // Function ProjectX.OnlineGameReservations_X.GetPlatformsString
 struct UOnlineGameReservations_X_GetPlatformsString_Params
 {
-	TArray<TEnumAsByte<enum class OnlinePlatform>>     Platforms;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EOnlinePlatform>>               Platforms;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameReservations_X.GetPlayerPlatforms
 struct UOnlineGameReservations_X_GetPlayerPlatforms_Params
 {
-	TArray<TEnumAsByte<enum class OnlinePlatform>>     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EOnlinePlatform>>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameReservations_X.CanPlayTogether
 struct UOnlineGameReservations_X_CanPlayTogether_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             Platform1;                                                // (CPF_Parm)
-	TEnumAsByte<enum class OnlinePlatform>             Platform2;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform1;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform2;                                                // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -5493,7 +5493,7 @@ struct UOnlineGameReservations_X_CanAcceptReservationsForPlatform_Params
 // Function ProjectX.OnlineGameReservations_X.GetExclusivePlatform
 struct UOnlineGameReservations_X_GetExclusivePlatform_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlinePlatform>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function ProjectX.OnlineGameReservations_X.CanAcceptReservations
@@ -5566,7 +5566,7 @@ struct UOnlineGameReservations_X_AddSpecialReservation_Params
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FUniqueNetId                                PartyID;                                                  // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EReservationStatus>         Status;                                                   // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EReservationStatus>                    Status;                                                   // (CPF_OptionalParm, CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -5771,7 +5771,7 @@ struct UOnlineGameReservations_X_CreateReservationData_Params
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FUniqueNetId                                PartyID;                                                  // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EReservationStatus>         Status;                                                   // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EReservationStatus>                    Status;                                                   // (CPF_OptionalParm, CPF_Parm)
 	struct FReservationData                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -6005,7 +6005,7 @@ struct UOnlinePlayer_X_OnExit_Params
 // Function ProjectX.OnlinePlayer_X.CanPlayOnline
 struct UOnlinePlayer_X_CanPlayOnline_Params
 {
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function ProjectX.OnlinePlayer_X.HandlePlayerCountryReceived
@@ -6024,19 +6024,19 @@ struct UOnlinePlayer_X_GetPlayerCountry_Params
 // Function ProjectX.OnlinePlayer_X.CanCommunicateText
 struct UOnlinePlayer_X_CanCommunicateText_Params
 {
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function ProjectX.OnlinePlayer_X.OpenErrorDialog
 struct UOnlinePlayer_X_OpenErrorDialog_Params
 {
-	TEnumAsByte<enum class EPS4ErrorDialog>            ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EPS4ErrorDialog>                       ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function ProjectX.OnlinePlayer_X.OpenPS4DisplayMode
 struct UOnlinePlayer_X_OpenPS4DisplayMode_Params
 {
-	TEnumAsByte<enum class EPS4DisplayMode>            DisplayMode;                                              // (CPF_Parm)
+	TEnumAsByte<EPS4DisplayMode>                       DisplayMode;                                              // (CPF_Parm)
 	TArray<struct FString>                             Targets;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                ServiceLabel;                                             // (CPF_OptionalParm, CPF_Parm)
 };
@@ -6122,7 +6122,7 @@ struct UOnlinePlayer_X_HandleControllerChange_Params
 // Function ProjectX.OnlinePlayer_X.HandleUserLoginStatusChange
 struct UOnlinePlayer_X_HandleUserLoginStatusChange_Params
 {
-	TEnumAsByte<enum class ELoginStatus>               NewStatus;                                                // (CPF_Parm)
+	TEnumAsByte<ELoginStatus>                          NewStatus;                                                // (CPF_Parm)
 	struct FUniqueNetId                                NewId;                                                    // (CPF_Parm)
 };
 
@@ -6149,7 +6149,7 @@ struct UOnlinePlayer_X_HandleLoginChanged_Params
 struct UOnlinePlayer_X_HandleLoginFailed_Params
 {
 	unsigned char                                      PlayerNum;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function ProjectX.OnlinePlayer_X.Logout
@@ -6291,7 +6291,7 @@ struct UOnlinePlayerAuthentication_X_RequestAuthorizationCode_Params
 // Function ProjectX.OnlinePlayerAuthentication_X.AuthenticationError
 struct UOnlinePlayerAuthentication_X_AuthenticationError_Params
 {
-	TEnumAsByte<enum class EAuthResult>                AuthResult;                                               // (CPF_Parm)
+	TEnumAsByte<EAuthResult>                           AuthResult;                                               // (CPF_Parm)
 };
 
 // Function ProjectX.OnlinePlayerAuthentication_X.ResetAuthentication
@@ -6781,7 +6781,7 @@ struct UUIWidget_X_Destroy_Params
 // Function ProjectX.UIWidget_X.GetDockPosition
 struct UUIWidget_X_GetDockPosition_Params
 {
-	TEnumAsByte<enum class EDockPoint>                 DockPoint;                                                // (CPF_Parm)
+	TEnumAsByte<EDockPoint>                            DockPoint;                                                // (CPF_Parm)
 	struct FVector2D                                   OutPivotPosition;                                         // (CPF_Parm, CPF_OutParm)
 	struct FVector2D                                   OutRelativePosition;                                      // (CPF_Parm, CPF_OutParm)
 };
@@ -7036,7 +7036,7 @@ struct UUIWidget_X_SetRelativeSize_Params
 // Function ProjectX.UIWidget_X.SetDock
 struct UUIWidget_X_SetDock_Params
 {
-	TEnumAsByte<enum class EDockPoint>                 NewDock;                                                  // (CPF_Parm)
+	TEnumAsByte<EDockPoint>                            NewDock;                                                  // (CPF_Parm)
 };
 
 // Function ProjectX.UIWidget_X.SetScale2D
@@ -7092,7 +7092,7 @@ struct UUIWidget_X_OnVisibilityChanged_Params
 // Function ProjectX.UIWidget_X.SetVisibility
 struct UUIWidget_X_SetVisibility_Params
 {
-	TEnumAsByte<enum class EWidgetVisibility>          NewVisibility;                                            // (CPF_Parm)
+	TEnumAsByte<EWidgetVisibility>                     NewVisibility;                                            // (CPF_Parm)
 };
 
 // Function ProjectX.UIWidget_X.SetHidden
@@ -7104,7 +7104,7 @@ struct UUIWidget_X_SetHidden_Params
 // Function ProjectX.UIWidget_X.SetFocusType
 struct UUIWidget_X_SetFocusType_Params
 {
-	TEnumAsByte<enum class EWidgetFocusType>           NewFocusType;                                             // (CPF_Parm)
+	TEnumAsByte<EWidgetFocusType>                      NewFocusType;                                             // (CPF_Parm)
 };
 
 // Function ProjectX.UIWidget_X.SetTint
@@ -7662,7 +7662,7 @@ struct UTcpConnection_EventConnected_Params
 struct UPrivilegeCheck_X_HasFeatureRestriction_Params
 {
 	int                                                OutControllerID;                                          // (CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class EFeaturePrivilege>          OutFailedPrivilege;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilege>                     OutFailedPrivilege;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -7680,8 +7680,8 @@ struct UPrivilegeCheck_X_Fail_Params
 struct UPrivilegeCheck_X_HandlePrivilege_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilege>          Privilege;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     Level;                                                    // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                Level;                                                    // (CPF_Parm)
 };
 
 // Function ProjectX.PrivilegeCheck_X.CheckPrivilege
@@ -7702,7 +7702,7 @@ struct UPrivilegeCheck_X_CheckInternet_Params
 // Function ProjectX.PrivilegeCheck_X.RequirePrivilege
 struct UPrivilegeCheck_X_RequirePrivilege_Params
 {
-	TEnumAsByte<enum class EFeaturePrivilege>          Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
 	class UPrivilegeCheck_X*                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -7955,7 +7955,7 @@ struct UOnlineGameParty_X_IsProcessing_Params
 // Function ProjectX.OnlineGameParty_X.SetProcessingStatus
 struct UOnlineGameParty_X_SetProcessingStatus_Params
 {
-	TEnumAsByte<enum class PartyProcessingStatus>      Status;                                                   // (CPF_Parm)
+	TEnumAsByte<EPartyProcessingStatus>                Status;                                                   // (CPF_Parm)
 };
 
 // Function ProjectX.OnlineGameParty_X.PrintDebugInfo
@@ -8377,7 +8377,7 @@ struct UOnlineGameParty_X_HandleKickMessage_Params
 struct UOnlineGameParty_X_HandleLobbyDestroyed_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 };
 
 // Function ProjectX.OnlineGameParty_X.HandleLobbyReceiveBinaryData
@@ -8566,7 +8566,7 @@ struct UOnlineGameParty_X_IsPlayerInParty_Params
 struct UOnlineGameParty_X_KickPlayer_Params
 {
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -9630,28 +9630,28 @@ struct UCustomAnimComponent_X_Cleanup_Params
 // Function ProjectX.CustomAnimComponent_X.SetRootBoneRotationAxis
 struct UCustomAnimComponent_X_SetRootBoneRotationAxis_Params
 {
-	TEnumAsByte<enum class ERootRotationOption>        Axis;                                                     // (CPF_Parm)
+	TEnumAsByte<ERootRotationOption>                   Axis;                                                     // (CPF_Parm)
 	class UCustomAnimComponent_X*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 };
 
 // Function ProjectX.CustomAnimComponent_X.SetRootBoneAxis
 struct UCustomAnimComponent_X_SetRootBoneAxis_Params
 {
-	TEnumAsByte<enum class ERootBoneAxis>              Axis;                                                     // (CPF_Parm)
+	TEnumAsByte<ERootBoneAxis>                         Axis;                                                     // (CPF_Parm)
 	class UCustomAnimComponent_X*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 };
 
 // Function ProjectX.CustomAnimComponent_X.SetRootMotionRotation
 struct UCustomAnimComponent_X_SetRootMotionRotation_Params
 {
-	TEnumAsByte<enum class ERootMotionRotationMode>    Mode;                                                     // (CPF_Parm)
+	TEnumAsByte<ERootMotionRotationMode>               Mode;                                                     // (CPF_Parm)
 	class UCustomAnimComponent_X*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 };
 
 // Function ProjectX.CustomAnimComponent_X.SetRootMotion
 struct UCustomAnimComponent_X_SetRootMotion_Params
 {
-	TEnumAsByte<enum class ERootMotionMode>            Mode;                                                     // (CPF_Parm)
+	TEnumAsByte<ERootMotionMode>                       Mode;                                                     // (CPF_Parm)
 	class UCustomAnimComponent_X*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 };
 
@@ -10806,7 +10806,7 @@ struct UMaterialEffect_X_UpdateFade_Params
 // Function ProjectX.MaterialEffect_X.SetStage
 struct UMaterialEffect_X_SetStage_Params
 {
-	TEnumAsByte<enum class EMaterialEffectStage>       NewStage;                                                 // (CPF_Parm)
+	TEnumAsByte<EMaterialEffectStage>                  NewStage;                                                 // (CPF_Parm)
 };
 
 // Function ProjectX.MaterialEffect_X.Tick
@@ -12156,7 +12156,7 @@ struct UOnlineGameDedicatedServerRegistration_X_UpdateCustomGame_Params
 // Function ProjectX.OnlineGameDedicatedServerRegistration_X.GetExclusivePlatformString
 struct UOnlineGameDedicatedServerRegistration_X_GetExclusivePlatformString_Params
 {
-	TEnumAsByte<enum class OnlinePlatform>             Platform;                                                 // (CPF_Parm)
+	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -12306,7 +12306,7 @@ struct UClanforgeReservation_X_Send_Params
 // Function ProjectX.ClanforgeReservation_X.SetReserveState
 struct UClanforgeReservation_X_SetReserveState_Params
 {
-	TEnumAsByte<enum class EReserveState>              NewState;                                                 // (CPF_Parm)
+	TEnumAsByte<EReserveState>                         NewState;                                                 // (CPF_Parm)
 };
 
 // Function ProjectX.ClanforgeReservation_X.HandleActivate
@@ -12572,7 +12572,7 @@ struct UReservationsReadyMessage_X_SetServerAddress_Params
 // Function ProjectX.ReservationsPasswordMessage_X.SetReason
 struct UReservationsPasswordMessage_X_SetReason_Params
 {
-	TEnumAsByte<enum class EPasswordFailureReason>     InReason;                                                 // (CPF_Parm)
+	TEnumAsByte<EPasswordFailureReason>                InReason;                                                 // (CPF_Parm)
 	class UReservationsPasswordMessage_X*              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -13043,7 +13043,7 @@ struct UPartyMessage_SearchStatus_X_SetSearchState_Params
 // Function ProjectX.PartyMessage_Kick_X.SetReason
 struct UPartyMessage_Kick_X_SetReason_Params
 {
-	TEnumAsByte<enum class ELobbyKickReason>           InKickReason;                                             // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      InKickReason;                                             // (CPF_Parm)
 	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -14173,7 +14173,7 @@ struct UUISceneManager_X_MoveCursor_Mobile_Params
 // Function ProjectX.UISceneManager_X.HandleMobileTouch
 struct UUISceneManager_X_HandleMobileTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 };
 
 // Function ProjectX.UISceneManager_X.HandleInputAxis
@@ -14192,7 +14192,7 @@ struct UUISceneManager_X_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -14376,7 +14376,7 @@ struct UUISceneClient_X_GetHoverWidget_Params
 // Function ProjectX.UISceneClient_X.SetNavigationMode
 struct UUISceneClient_X_SetNavigationMode_Params
 {
-	TEnumAsByte<enum class EUINavigationMode>          NewNavMode;                                               // (CPF_Parm)
+	TEnumAsByte<EUINavigationMode>                     NewNavMode;                                               // (CPF_Parm)
 };
 
 // Function ProjectX.UISceneClient_X.LayoutUI
@@ -14614,7 +14614,7 @@ struct UUIInteraction_X_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -14783,7 +14783,7 @@ struct UUIWidget_InputText_X_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -14793,7 +14793,7 @@ struct UUIWidget_InputText_X_HandleInputKey_Params
 struct UUIWidget_InputText_X_ProcessControlKey_Params
 {
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 

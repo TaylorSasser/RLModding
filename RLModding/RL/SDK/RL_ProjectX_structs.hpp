@@ -9,6 +9,397 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Constants
+//---------------------------------------------------------------------------
+
+#define CONST_InMatchmakingID                                    -2
+#define CONST_MAX_CONTROLLER_IDS                                 4
+#define CONST_EpochYear                                          1970
+#define CONST_SecondsInMinute                                    60
+#define CONST_SecondsInHour                                      3600
+#define CONST_DEMO_VERSION                                       0
+#define CONST_SecondsInMonth                                     2629743
+#define CONST_MaxPing                                            1000.0f
+#define CONST_SecondsInDay                                       86400
+#define CONST_SecondsInYear                                      31556926
+#define CONST_NumFriendsPerRequest                               100
+#define CONST_FriendRequestPerFrame                              5
+
+//---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum ProjectX._Types_X.EJoinMatchType
+enum class EJoinMatchType
+{
+	JMT_Public                     = 0,
+	JMT_Private                    = 1,
+	JMT_LanHost                    = 2,
+	JMT_LanGuest                   = 3,
+	JMT_MAX                        = 4
+};
+
+
+// Enum ProjectX._Types_X.EAuthResult
+enum class EAuthResult
+{
+	AuthResult_OK                  = 0,
+	AuthResult_Unauthorized        = 1,
+	AuthResult_MAX                 = 2
+};
+
+
+// Enum ProjectX._Types_X.EWebRequestAuthorization
+enum class EWebRequestAuthorization
+{
+	WRA_Offline                    = 0,
+	WRA_Authorizing                = 1,
+	WRA_Authorized                 = 2,
+	WRA_Banned                     = 3,
+	WRA_MAX                        = 4
+};
+
+
+// Enum ProjectX._Types_X.EReservationStatus
+enum class EReservationStatus
+{
+	ReservationStatus_None         = 0,
+	ReservationStatus_Reserved     = 1,
+	ReservationStatus_Joining      = 2,
+	ReservationStatus_InGame       = 3,
+	ReservationStatus_MAX          = 4
+};
+
+
+// Enum ProjectX._Types_X.EDatabaseEnvironment
+enum class EDatabaseEnvironment
+{
+	DBE_Test                       = 0,
+	DBE_Dev                        = 1,
+	DBE_DevLocal                   = 2,
+	DBE_Production                 = 3,
+	DBE_MAX                        = 4
+};
+
+
+// Enum ProjectX._Types_X.EAxisSign
+enum class EAxisSign
+{
+	AxisSign_None                  = 0,
+	AxisSign_Positive              = 1,
+	AxisSign_Negative              = 2,
+	AxisSign_MAX                   = 3
+};
+
+
+// Enum ProjectX._Types_X.EButtonPressType
+enum class EButtonPressType
+{
+	BPT_Normal                     = 0,
+	BPT_Tap                        = 1,
+	BPT_Hold                       = 2,
+	BPT_DoubleTap                  = 3,
+	BPT_Toggle                     = 4,
+	BPT_MAX                        = 5
+};
+
+
+// Enum ProjectX._Types_X.ERemappable
+enum class ERemappable
+{
+	Remappable_All                 = 0,
+	Remappable_Key                 = 1,
+	Remappable_Axis                = 2,
+	Remappable_KeyTriggerAxis      = 3,
+	Remappable_None                = 4,
+	Remappable_MAX                 = 5
+};
+
+
+// Enum ProjectX._Types_X.EUINavigationMode
+enum class EUINavigationMode
+{
+	UINavigationMode_Keyboard      = 0,
+	UINavigationMode_Gamepad       = 1,
+	UINavigationMode_Cursor        = 2,
+	UINavigationMode_MAX           = 3
+};
+
+
+// Enum ProjectX._Types_X.EPartyMatchmakingRestriction
+enum class EPartyMatchmakingRestriction
+{
+	PMR_NotOriginalAppOwner        = 0,
+	PMR_PendingLicenseAgreement    = 1,
+	PMR_InMainMenu                 = 2,
+	PMR_MAX                        = 3
+};
+
+
+// Enum ProjectX._Types_X.EPlayerTitleType
+enum class EPlayerTitleType
+{
+	PlayerTitleType_None           = 0,
+	PlayerTitleType_XP             = 1,
+	PlayerTitleType_Developer      = 2,
+	PlayerTitleType_Helper         = 3,
+	PlayerTitleType_Participant    = 4,
+	PlayerTitleType_Champion       = 5,
+	PlayerTitleType_Ranked_Champion = 6,
+	PlayerTitleType_RLCS_Champion  = 7,
+	PlayerTitleType_MAX            = 8
+};
+
+
+// Enum ProjectX.AnimNodeSeries_X.EAnimNodeSeriesChild
+enum class EAnimNodeSeriesChild
+{
+	AnimNodeSeries_Idle            = 0,
+	AnimNodeSeries_Intro           = 1,
+	AnimNodeSeries_Loop            = 2,
+	AnimNodeSeries_Outro           = 3,
+	AnimNodeSeries_MAX             = 4
+};
+
+
+// Enum ProjectX.BugReport_X.EFileTruncateType
+enum class EFileTruncateType
+{
+	FileTruncate_None              = 0,
+	FileTruncate_KeepStart         = 1,
+	FileTruncate_KeepEnd           = 2,
+	FileTruncate_MAX               = 3
+};
+
+
+// Enum ProjectX.FXActor_X.EFXComponentTarget
+enum class EFXComponentTarget
+{
+	FXComponentTarget_All          = 0,
+	FXComponentTarget_Local        = 1,
+	FXComponentTarget_NonLocal     = 2,
+	FXComponentTarget_MAX          = 3
+};
+
+
+// Enum ProjectX.FXActor_X.EFXComponentState
+enum class EFXComponentState
+{
+	FXComponentState_Detached      = 0,
+	FXComponentState_Attached      = 1,
+	FXComponentState_PendingDetach = 2,
+	FXComponentState_MAX           = 3
+};
+
+
+// Enum ProjectX.GFxDataCallback_X.EDataCallbackType
+enum class EDataCallbackType
+{
+	DataCallbackType_All           = 0,
+	DataCallbackType_Table         = 1,
+	DataCallbackType_Row           = 2,
+	DataCallbackType_Value         = 3,
+	DataCallbackType_MAX           = 4
+};
+
+
+// Enum ProjectX.MatchmakingReporter.EMatchmakingState
+enum class EMatchmakingState
+{
+	MMState_None                   = 0,
+	MMState_SearchingLan           = 1,
+	MMState_SearchingInternet      = 2,
+	MMState_FilteringResults       = 3,
+	MMState_AttemptingJoin         = 4,
+	MMState_Finished               = 5,
+	MMState_MAX                    = 6
+};
+
+
+// Enum ProjectX.MatchmakingReporter.EMatchmakingInfoSeverity
+enum class EMatchmakingInfoSeverity
+{
+	MMSeverity_Log                 = 0,
+	MMSeverity_Warning             = 1,
+	MMSeverity_Error               = 2,
+	MMSeverity_Suppressed          = 3,
+	MMSeverity_MAX                 = 4
+};
+
+
+// Enum ProjectX.MaterialEffect_X.EMaterialEffectStage
+enum class EMaterialEffectStage
+{
+	EFFECT_INACTIVE                = 0,
+	EFFECT_FADE_IN                 = 1,
+	EFFECT_ACTIVE                  = 2,
+	EFFECT_FADE_OUT                = 3,
+	EFFECT_MAX                     = 4
+};
+
+
+// Enum ProjectX.OnlineGameDLC_X.DLCOwnershipState
+enum class EDLCOwnershipState
+{
+	DLCOwnershipState_Unknown      = 0,
+	DLCOwnershipState_Owned        = 1,
+	DLCOwnershipState_NotOwned     = 2,
+	DLCOwnershipState_Error        = 3,
+	DLCOwnershipState_MAX          = 4
+};
+
+
+// Enum ProjectX.OnlineGameParty_X.PartyProcessingStatus
+enum class EPartyProcessingStatus
+{
+	PPS_None                       = 0,
+	PPS_Create                     = 1,
+	PPS_Join                       = 2,
+	PPS_MAX                        = 3
+};
+
+
+// Enum ProjectX.ReservationsPasswordMessage_X.EPasswordFailureReason
+enum class EPasswordFailureReason
+{
+	PFR_Empty                      = 0,
+	PFR_Mismatch                   = 1,
+	PFR_MAX                        = 2
+};
+
+
+// Enum ProjectX.ShakeComponent_X.EShakeReceiver
+enum class EShakeReceiver
+{
+	ShakeReceiver_All              = 0,
+	ShakeReceiver_Local            = 1,
+	ShakeReceiver_NonLocal         = 2,
+	ShakeReceiver_MAX              = 3
+};
+
+
+// Enum ProjectX.TcpConnection.EWebSocketState
+enum class EWebSocketState
+{
+	WebSocketState_NotRequired     = 0,
+	WebSocketState_NeedsHandshake  = 1,
+	WebSocketState_Connected       = 2,
+	WebSocketState_MAX             = 3
+};
+
+
+// Enum ProjectX.TcpConnection.ETcpConnectionState
+enum class ETcpConnectionState
+{
+	TcpConnectionState_Invalid     = 0,
+	TcpConnectionState_Connecting  = 1,
+	TcpConnectionState_Connected   = 2,
+	TcpConnectionState_Disconnected = 3,
+	TcpConnectionState_MAX         = 4
+};
+
+
+// Enum ProjectX.UIAnimSequence_X.EAnimBlendMode
+enum class EAnimBlendMode
+{
+	Blend_Set                      = 0,
+	Blend_Add                      = 1,
+	Blend_ReversedSet              = 2,
+	Blend_ReversedAdd              = 3,
+	BLEND_MAX                      = 4
+};
+
+
+// Enum ProjectX.UIWidget_X.EDockPoint
+enum class EDockPoint
+{
+	Dock_None                      = 0,
+	Dock_TopLeft                   = 1,
+	Dock_Top                       = 2,
+	Dock_TopRight                  = 3,
+	Dock_Left                      = 4,
+	Dock_Center                    = 5,
+	Dock_Right                     = 6,
+	Dock_BottomLeft                = 7,
+	Dock_Bottom                    = 8,
+	Dock_BottomRight               = 9,
+	Dock_MAX                       = 10
+};
+
+
+// Enum ProjectX.UIWidget_X.EWidgetVisibility
+enum class EWidgetVisibility
+{
+	Visibility_Visible             = 0,
+	Visibility_Hidden              = 1,
+	Visibility_Collapsed           = 2,
+	Visibility_MAX                 = 3
+};
+
+
+// Enum ProjectX.UIWidget_X.EWidgetFocusType
+enum class EWidgetFocusType
+{
+	FocusType_None                 = 0,
+	FocusType_Full                 = 1,
+	FocusType_CursorOnly           = 2,
+	FocusType_MAX                  = 3
+};
+
+
+// Enum ProjectX.UIWidget_WrappedText_X.ETextAlign
+enum class ETextAlign
+{
+	TextAlign_Left                 = 0,
+	TextAlign_Center               = 1,
+	TextAlign_Right                = 2,
+	TextAlign_MAX                  = 3
+};
+
+
+// Enum ProjectX.UIWidget_Stack_X.EStackOrientation
+enum class EStackOrientation
+{
+	STACK_Vertical                 = 0,
+	STACK_Horizontal               = 1,
+	STACK_MAX                      = 2
+};
+
+
+// Enum ProjectX.WebRequest_X.EWebRequestState
+enum class EWebRequestState
+{
+	WebRequestState_PendingSend    = 0,
+	WebRequestState_PendingResponse = 1,
+	WebRequestState_Success        = 2,
+	WebRequestState_Error          = 3,
+	WebRequestState_MAX            = 4
+};
+
+
+// Enum ProjectX.FakeData_X.FakeDataEnum
+enum class EFakeDataEnum
+{
+	FakeData                       = 0,
+	FakeData01                     = 1,
+	FakeData02                     = 2,
+	FakeData_Count                 = 3,
+	FakeData_MAX                   = 4
+};
+
+
+// Enum ProjectX.ClanforgeReservation_X.EReserveState
+enum class EReserveState
+{
+	ReserveState_Unitialized       = 0,
+	ReserveState_Unreserved        = 1,
+	ReserveState_Reserved          = 2,
+	ReserveState_MAX               = 3
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -30,8 +421,7 @@ struct FFXAttachment
 	float                                              DetachDelay;                                              // 0x0014(0x0004) (CPF_Edit)
 	float                                              Lifetime;                                                 // 0x0018(0x0004) (CPF_Edit)
 	unsigned long                                      bCreateDuplicates : 1;                                    // 0x001C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EFXComponentTarget>         Target;                                                   // 0x0020(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
+	TEnumAsByte<EFXComponentTarget>                    Target;                                                   // 0x0020(0x0001) (CPF_Edit)
 	class UActorComponent*                             Component;                                                // 0x0024(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TArray<class UFXActorEvent_X*>                     AttachAny;                                                // 0x0028(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<class UFXActorEvent_X*>                     DetachAny;                                                // 0x0034(0x000C) (CPF_Edit, CPF_NeedCtorLink)
@@ -39,12 +429,11 @@ struct FFXAttachment
 	unsigned long                                      bExistingComponent : 1;                                   // 0x004C(0x0004)
 	unsigned long                                      bExistingAttachment : 1;                                  // 0x004C(0x0004)
 	float                                              AttachedTime;                                             // 0x0050(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EFXComponentState>          State;                                                    // 0x0054(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0055(0x0003) MISSED OFFSET
+	TEnumAsByte<EFXComponentState>                     State;                                                    // 0x0054(0x0001) (CPF_Transient)
 	unsigned long                                      bWantsAttachment : 1;                                     // 0x0058(0x0004) (CPF_Transient)
 	float                                              WantsAttachmentChangeTime;                                // 0x005C(0x0004) (CPF_Transient)
 	class USkeletalMeshComponent*                      AttachedToMesh;                                           // 0x0060(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	unsigned char                                      UnknownData02[0xC];                                       // 0x0064(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0064(0x000C) MISSED OFFSET
 	struct FMatrix                                     RelativeTransform;                                        // 0x0070(0x0040) (CPF_Transient)
 	int                                                BoneIndex;                                                // 0x00B0(0x0004) (CPF_Transient)
 };
@@ -134,7 +523,7 @@ struct FFileUploadData
 	struct FString                                     BugID;                                                    // 0x0004(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Folder;                                                   // 0x0010(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     FilePath;                                                 // 0x001C(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EFileTruncateType>          TruncateType;                                             // 0x0028(0x0001)
+	TEnumAsByte<EFileTruncateType>                     TruncateType;                                             // 0x0028(0x0001)
 };
 
 // ScriptStruct ProjectX.Camera_X.CameraOrientation
@@ -178,13 +567,11 @@ struct FPlayerBinding
 {
 	struct FName                                       Action;                                                   // 0x0000(0x0008) (CPF_DataBinding)
 	struct FName                                       Key;                                                      // 0x0008(0x0008) (CPF_DataBinding)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // 0x0010(0x0001) (CPF_DataBinding)
-	TEnumAsByte<enum class EButtonPressType>           PressType;                                                // 0x0011(0x0001) (CPF_DataBinding)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0012(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // 0x0010(0x0001) (CPF_DataBinding)
+	TEnumAsByte<EButtonPressType>                      PressType;                                                // 0x0011(0x0001) (CPF_DataBinding)
 	float                                              Speed;                                                    // 0x0014(0x0004) (CPF_DataBinding)
 	unsigned long                                      bRequired : 1;                                            // 0x0018(0x0004) (CPF_DataBinding)
-	TEnumAsByte<enum class ERemappable>                Remappable;                                               // 0x001C(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x001D(0x0003) MISSED OFFSET
+	TEnumAsByte<ERemappable>                           Remappable;                                               // 0x001C(0x0001)
 	float                                              PressedTime;                                              // 0x0020(0x0004) (CPF_Transient)
 	float                                              ReleasedTime;                                             // 0x0024(0x0004) (CPF_Transient)
 	unsigned long                                      bTapped : 1;                                              // 0x0028(0x0004) (CPF_Transient)
@@ -218,9 +605,8 @@ struct FFakeData1
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0018(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.FakeData_X.FakeData1.qword1
 	float                                              float1;                                                   // 0x0020(0x0004)
 	unsigned char                                      byte1;                                                    // 0x0024(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0025(0x0003) MISSED OFFSET
 	int                                                int1;                                                     // 0x0028(0x0004)
-	TEnumAsByte<enum class FakeDataEnum>               enum1;                                                    // 0x002C(0x0001)
+	TEnumAsByte<EFakeDataEnum>                         enum1;                                                    // 0x002C(0x0001)
 };
 
 // ScriptStruct ProjectX.FakeData_X.FakeData2
@@ -234,10 +620,8 @@ struct FFakeData2
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.FakeData_X.FakeData2.qword1
 	float                                              float1;                                                   // 0x0050(0x0004)
 	unsigned char                                      byte1;                                                    // 0x0054(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0055(0x0003) MISSED OFFSET
 	int                                                int1;                                                     // 0x0058(0x0004)
-	TEnumAsByte<enum class FakeDataEnum>               enum1;                                                    // 0x005C(0x0001)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x005D(0x0003) MISSED OFFSET
+	TEnumAsByte<EFakeDataEnum>                         enum1;                                                    // 0x005C(0x0001)
 	TArray<struct FFakeData1>                          array1;                                                   // 0x0060(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FString>                             array2;                                                   // 0x006C(0x000C) (CPF_NeedCtorLink)
 };
@@ -256,10 +640,8 @@ struct FFakeData3
 	unsigned char                                      UnknownData00[0x8];                                       // 0x006C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.FakeData_X.FakeData3.qword1
 	float                                              float1;                                                   // 0x0074(0x0004)
 	unsigned char                                      byte1;                                                    // 0x0078(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
 	int                                                int1;                                                     // 0x007C(0x0004)
-	TEnumAsByte<enum class FakeDataEnum>               enum1;                                                    // 0x0080(0x0001)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<EFakeDataEnum>                         enum1;                                                    // 0x0080(0x0001)
 	struct FFakeData2                                  struct2;                                                  // 0x0084(0x0078) (CPF_NeedCtorLink)
 };
 
@@ -277,9 +659,8 @@ struct FFakeData4
 	unsigned char                                      UnknownData00[0x8];                                       // 0x00D8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.FakeData_X.FakeData4.qword1
 	float                                              float1;                                                   // 0x00E0(0x0004)
 	unsigned char                                      byte1;                                                    // 0x00E4(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x00E5(0x0003) MISSED OFFSET
 	int                                                int1;                                                     // 0x00E8(0x0004)
-	TEnumAsByte<enum class FakeDataEnum>               enum1;                                                    // 0x00EC(0x0001)
+	TEnumAsByte<EFakeDataEnum>                         enum1;                                                    // 0x00EC(0x0001)
 };
 
 // ScriptStruct ProjectX.GameInfo_X.PauserData
@@ -294,8 +675,7 @@ struct FPauserData
 // 0x000C
 struct FGFxDataStoreColumn
 {
-	TEnumAsByte<enum class ASType>                     Type;                                                     // 0x0000(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EASType>                               Type;                                                     // 0x0000(0x0001)
 	struct FName                                       Name;                                                     // 0x0004(0x0008)
 };
 
@@ -394,8 +774,7 @@ struct FRenderProfile
 // 0x0010
 struct FMatchmakingInfo
 {
-	TEnumAsByte<enum class EMatchmakingInfoSeverity>   Severity;                                                 // 0x0000(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EMatchmakingInfoSeverity>              Severity;                                                 // 0x0000(0x0001)
 	struct FString                                     Info;                                                     // 0x0004(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -403,8 +782,7 @@ struct FMatchmakingInfo
 // 0x0018
 struct FMatchmakingStateReport
 {
-	TEnumAsByte<enum class EMatchmakingState>          State;                                                    // 0x0000(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EMatchmakingState>                     State;                                                    // 0x0000(0x0001)
 	float                                              StartTime;                                                // 0x0004(0x0004)
 	float                                              EndTime;                                                  // 0x0008(0x0004)
 	TArray<struct FMatchmakingInfo>                    Info;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
@@ -445,7 +823,7 @@ struct FModifierSubscription
 // 0x000C
 struct FCrossplayGroup
 {
-	TArray<TEnumAsByte<enum class OnlinePlatform>>     Platforms;                                                // 0x0000(0x000C) (CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EOnlinePlatform>>               Platforms;                                                // 0x0000(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineMessageComponent_X.OnlineMessageHandler
@@ -492,8 +870,7 @@ struct FColorParamPair
 // 0x0010
 struct FGamepadDeadzoneSettings
 {
-	TEnumAsByte<enum class EInputPlatformType>         Type;                                                     // 0x0000(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EInputPlatformType>                    Type;                                                     // 0x0000(0x0001) (CPF_Edit)
 	struct FName                                       Key;                                                      // 0x0004(0x0008) (CPF_Edit)
 	float                                              Deadzone;                                                 // 0x000C(0x0004) (CPF_Edit)
 };
@@ -505,8 +882,7 @@ struct FBindingAction
 	struct FName                                       Action;                                                   // 0x0000(0x0008) (CPF_DataBinding)
 	struct FName                                       Category;                                                 // 0x0008(0x0008) (CPF_DataBinding)
 	struct FName                                       Axis;                                                     // 0x0010(0x0008) (CPF_DataBinding)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // 0x0018(0x0001) (CPF_DataBinding)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0019(0x0003) MISSED OFFSET
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // 0x0018(0x0001) (CPF_DataBinding)
 	struct FString                                     Command;                                                  // 0x001C(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bDisableRemapping : 1;                                    // 0x0028(0x0004)
 	int                                                Priority;                                                 // 0x002C(0x0004)
@@ -584,7 +960,6 @@ struct FClubColorSet
 {
 	unsigned char                                      TeamColorID;                                              // 0x0000(0x0001)
 	unsigned char                                      CustomColorID;                                            // 0x0001(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
 	unsigned long                                      bTeamColorSet : 1;                                        // 0x0004(0x0004)
 	unsigned long                                      bCustomColorSet : 1;                                      // 0x0004(0x0004)
 };
@@ -604,7 +979,6 @@ struct FCustomMatchSettings
 	struct FString                                     GameTags;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FName                                       MapName;                                                  // 0x000C(0x0008)
 	unsigned char                                      GameMode;                                                 // 0x0014(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0015(0x0003) MISSED OFFSET
 	int                                                MaxPlayerCount;                                           // 0x0018(0x0004)
 	struct FString                                     ServerName;                                               // 0x001C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Password;                                                 // 0x0028(0x000C) (CPF_NeedCtorLink)
@@ -618,7 +992,7 @@ struct FSteamPlayerDLCOwnershipState
 {
 	struct FName                                       Name;                                                     // 0x0000(0x0008)
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamPlayerDLCOwnershipState.AppID
-	TEnumAsByte<enum class DLCOwnershipState>          State;                                                    // 0x0010(0x0001) (CPF_Transient)
+	TEnumAsByte<EDLCOwnershipState>                    State;                                                    // 0x0010(0x0001) (CPF_Transient)
 };
 
 // ScriptStruct ProjectX.OnlineGameDLC_X.PlayerDLCInfo
@@ -680,13 +1054,11 @@ struct FReservationData
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
 	struct FString                                     PlayerName;                                               // 0x0030(0x000C) (CPF_NeedCtorLink)
 	struct FUniqueNetId                                PartyID;                                                  // 0x003C(0x0030)
-	TEnumAsByte<enum class EReservationStatus>         Status;                                                   // 0x006C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	TEnumAsByte<EReservationStatus>                    Status;                                                   // 0x006C(0x0001)
 	float                                              TimeoutTime;                                              // 0x0070(0x0004)
 	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x0074(0x0004)
 	class APlayerReplicationInfo*                      PRI;                                                      // 0x0078(0x0004)
 	unsigned char                                      Team;                                                     // 0x007C(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
 	class UTcpConnection*                              Connection;                                               // 0x0080(0x0004)
 	struct FSkillRating                                Skill;                                                    // 0x0084(0x0008)
 	TArray<struct FName>                               MapLikes;                                                 // 0x008C(0x000C) (CPF_NeedCtorLink)
@@ -707,7 +1079,7 @@ struct FTeamPairHistory
 struct FPlatformAtlas
 {
 	int                                                InvTextureScale;                                          // 0x0000(0x0004) (CPF_Edit, CPF_Const)
-	TArray<TEnumAsByte<enum class EConsoleType>>       Platforms;                                                // 0x0004(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EConsoleType>>                  Platforms;                                                // 0x0004(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
 	TArray<class UTexture2D*>                          GeneratedTextures;                                        // 0x0010(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
 	TArray<struct FString>                             GeneratedTexturePaths;                                    // 0x001C(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
 };
@@ -818,8 +1190,7 @@ struct FOrientation
 // 0x0018
 struct FJoinMatchSettings
 {
-	TEnumAsByte<enum class EJoinMatchType>             MatchType;                                                // 0x0000(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EJoinMatchType>                        MatchType;                                                // 0x0000(0x0001)
 	int                                                PlaylistId;                                               // 0x0004(0x0004)
 	unsigned long                                      bFriendJoin : 1;                                          // 0x0008(0x0004)
 	unsigned long                                      bMigration : 1;                                           // 0x0008(0x0004)
@@ -972,7 +1343,7 @@ struct FReplicatedReservationData
 {
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
 	struct FString                                     PlayerName;                                               // 0x0030(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EReservationStatus>         Status;                                                   // 0x003C(0x0001)
+	TEnumAsByte<EReservationStatus>                    Status;                                                   // 0x003C(0x0001)
 };
 
 // ScriptStruct ProjectX._Types_X.ReservationPlayerData
@@ -996,7 +1367,7 @@ struct FPlayerTitleData
 {
 	struct FName                                       Id;                                                       // 0x0000(0x0008) (CPF_DataBinding)
 	struct FString                                     Text;                                                     // 0x0008(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	TEnumAsByte<enum class EPlayerTitleType>           Type;                                                     // 0x0014(0x0001) (CPF_DataBinding)
+	TEnumAsByte<EPlayerTitleType>                      Type;                                                     // 0x0014(0x0001) (CPF_DataBinding)
 };
 
 // ScriptStruct ProjectX._Types_X.GamePlaylist
@@ -1047,10 +1418,10 @@ struct FCustomAnimSettings
 	float                                              StartTime;                                                // 0x0014(0x0004) (CPF_Edit)
 	float                                              EndTime;                                                  // 0x0018(0x0004) (CPF_Edit)
 	float                                              Rate;                                                     // 0x001C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERootMotionMode>            RootMotionMode;                                           // 0x0020(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERootBoneAxis>              RootBoneAxis;                                             // 0x0021(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERootMotionRotationMode>    RootMotionRotationMode;                                   // 0x0022(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERootRotationOption>        RootBoneRotationAxis;                                     // 0x0023(0x0001) (CPF_Edit)
+	TEnumAsByte<ERootMotionMode>                       RootMotionMode;                                           // 0x0020(0x0001) (CPF_Edit)
+	TEnumAsByte<ERootBoneAxis>                         RootBoneAxis;                                             // 0x0021(0x0001) (CPF_Edit)
+	TEnumAsByte<ERootMotionRotationMode>               RootMotionRotationMode;                                   // 0x0022(0x0001) (CPF_Edit)
+	TEnumAsByte<ERootRotationOption>                   RootBoneRotationAxis;                                     // 0x0023(0x0001) (CPF_Edit)
 	struct FVector                                     RootMotionAccelScale;                                     // 0x0024(0x000C) (CPF_Edit)
 	unsigned long                                      bOverride : 1;                                            // 0x0030(0x0004) (CPF_Edit)
 	unsigned long                                      bMirrored : 1;                                            // 0x0030(0x0004) (CPF_Edit)
@@ -1426,7 +1797,6 @@ struct FPartyByTeam
 {
 	struct FUniqueNetId                                PartyID;                                                  // 0x0000(0x0030)
 	unsigned char                                      Team;                                                     // 0x0030(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0031(0x0003) MISSED OFFSET
 	int                                                Size;                                                     // 0x0034(0x0004)
 };
 
@@ -1542,7 +1912,7 @@ struct FUIAnimFrame
 	float                                              A;                                                        // 0x0014(0x0004) (CPF_Edit)
 	float                                              Duration;                                                 // 0x0018(0x0004) (CPF_Edit)
 	float                                              Falloff;                                                  // 0x001C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAnimBlendMode>             BlendMode;                                                // 0x0020(0x0001) (CPF_Edit)
+	TEnumAsByte<EAnimBlendMode>                        BlendMode;                                                // 0x0020(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct ProjectX.UISceneClient_X.DebugPoint

@@ -90,9 +90,9 @@ void UAkDevice::STATIC_PrintData()
 // Function AkAudio.AkDevice.SetOutputType
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_K2Call)
 // Parameters:
-// TEnumAsByte<enum class EAkOutputType> Type                           (CPF_Parm)
+// TEnumAsByte<EAkOutputType>     Type                           (CPF_Parm)
 
-void UAkDevice::STATIC_SetOutputType(TEnumAsByte<enum class EAkOutputType> Type)
+void UAkDevice::STATIC_SetOutputType(TEnumAsByte<EAkOutputType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetOutputType");
 
@@ -112,9 +112,9 @@ void UAkDevice::STATIC_SetOutputType(TEnumAsByte<enum class EAkOutputType> Type)
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_K2Call)
 // Parameters:
 // class ULocalPlayer*            Player                         (CPF_Parm)
-// TEnumAsByte<enum class EAkListenerSpacialization> Value                          (CPF_Parm)
+// TEnumAsByte<EAkListenerSpacialization> Value                          (CPF_Parm)
 
-void UAkDevice::STATIC_SetListenerSpatialization(class ULocalPlayer* Player, TEnumAsByte<enum class EAkListenerSpacialization> Value)
+void UAkDevice::STATIC_SetListenerSpatialization(class ULocalPlayer* Player, TEnumAsByte<EAkListenerSpacialization> Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetListenerSpatialization");
 

@@ -1285,10 +1285,10 @@ bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& Uniq
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UOnlineNewsInterfaceMcp::GetNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+struct FString UOnlineNewsInterfaceMcp::GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.GetNews");
 
@@ -1350,9 +1350,9 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptD
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // bool                           bWasSuccessful                 (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 
-void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted");
 
@@ -1372,10 +1372,10 @@ void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsBy
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<enum class EOnlineNewsType> NewsType                       (CPF_Parm)
+// TEnumAsByte<EOnlineNewsType>   NewsType                       (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType)
+bool UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.ReadNews");
 
@@ -1549,9 +1549,9 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFiles()
 // (FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileState");
 
@@ -1639,10 +1639,10 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct
 // (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 FileToRead                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineFileType> FileType                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EOnlineFileType>   FileType                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineTitleFileDownloadBase::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType)
+bool UOnlineTitleFileDownloadBase::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ReadTitleFile");
 
@@ -1732,9 +1732,9 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState");
 
@@ -1783,10 +1783,10 @@ bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(const struct FString& Fil
 // (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 FileToRead                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineFileType> FileType                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EOnlineFileType>   FileType                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType)
+bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile");
 
@@ -1923,9 +1923,9 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFiles()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState");
 
@@ -2021,10 +2021,10 @@ void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete(class UHttpRequestInter
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 FileToRead                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineFileType> FileType                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EOnlineFileType>   FileType                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineTitleFileDownloadWeb::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType)
+bool UOnlineTitleFileDownloadWeb::ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.ReadTitleFile");
 
@@ -2045,12 +2045,12 @@ bool UOnlineTitleFileDownloadWeb::ReadTitleFile(const struct FString& FileToRead
 // Function IpDrv.OnlineTitleFileDownloadWeb.UncompressTitleFileContents
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// TEnumAsByte<enum class EMcpFileCompressionType> FileCompressionType            (CPF_Parm)
+// TEnumAsByte<EMcpFileCompressionType> FileCompressionType            (CPF_Parm)
 // TArray<unsigned char>          CompressedFileContents         (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // TArray<unsigned char>          UncompressedFileContents       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(TEnumAsByte<enum class EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents)
+bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(TEnumAsByte<EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.UncompressTitleFileContents");
 
@@ -2219,9 +2219,9 @@ struct FString UTitleFileDownloadCache::GetTitleFileHash(const struct FString& F
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EOnlineEnumerationReadState> UTitleFileDownloadCache::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UTitleFileDownloadCache::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileState");
 
@@ -3099,11 +3099,11 @@ void UMcpMessageManager::FinishedAsyncUncompression(bool bWasSuccessful, const s
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 MessageId                      (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType         (CPF_Parm)
+// TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType         (CPF_Parm)
 // TArray<unsigned char>          MessageContent                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent)
+bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.StartAsyncUncompression");
 
@@ -3128,12 +3128,12 @@ bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId
 // Function IpDrv.McpMessageManager.StartAsyncCompression
 // (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType         (CPF_Parm)
+// TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType         (CPF_Parm)
 // TArray<unsigned char>          MessageContent                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // class UHttpRequestInterface*   Request                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMcpMessageManager::StartAsyncCompression(TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent)
+bool UMcpMessageManager::StartAsyncCompression(TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.StartAsyncCompression");
 
@@ -3952,11 +3952,11 @@ void UMeshBeaconClient::OnTravelRequestReceived(const struct FName& SessionName,
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestResults
 // (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
 // Parameters:
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult                     (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult                     (CPF_Parm)
 // struct FConnectionBandwidthStats BandwidthStats                 (CPF_Const, CPF_Parm, CPF_OutParm)
 
-void UMeshBeaconClient::OnReceivedBandwidthTestResults(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats)
+void UMeshBeaconClient::OnReceivedBandwidthTestResults(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestResults");
 
@@ -3978,9 +3978,9 @@ void UMeshBeaconClient::OnReceivedBandwidthTestResults(TEnumAsByte<enum class EM
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestRequest
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
 
-void UMeshBeaconClient::OnReceivedBandwidthTestRequest(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType)
+void UMeshBeaconClient::OnReceivedBandwidthTestRequest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestRequest");
 
@@ -3998,9 +3998,9 @@ void UMeshBeaconClient::OnReceivedBandwidthTestRequest(TEnumAsByte<enum class EM
 // Function IpDrv.MeshBeaconClient.OnConnectionRequestResult
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EMeshBeaconConnectionResult> ConnectionResult               (CPF_Parm)
+// TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult               (CPF_Parm)
 
-void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<enum class EMeshBeaconConnectionResult> ConnectionResult)
+void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnConnectionRequestResult");
 
@@ -4018,11 +4018,11 @@ void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<enum class EMeshBe
 // Function IpDrv.MeshBeaconClient.BeginBandwidthTest
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
 // int                            TestBufferSize                 (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
+bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.BeginBandwidthTest");
 
@@ -4270,11 +4270,11 @@ void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>* P
 // (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm)
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult                     (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult                     (CPF_Parm)
 // struct FConnectionBandwidthStats BandwidthStats                 (CPF_Const, CPF_Parm, CPF_OutParm)
 
-void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats)
+void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnFinishedBandwidthTest");
 
@@ -4298,9 +4298,9 @@ void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerN
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm)
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
 
-void UMeshBeaconHost::OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType)
+void UMeshBeaconHost::OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnStartedBandwidthTest");
 
@@ -4442,11 +4442,11 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (CPF_Parm)
-// TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
+// TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (CPF_Parm)
 // int                            TestBufferSize                 (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
+bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest");
 
@@ -6207,9 +6207,9 @@ void UOnlineGameInterfaceImpl::OnGamePlayersChanged(const struct FName& SessionN
 // Parameters:
 // struct FUniqueNetId            JoinablePlayerID               (CPF_Parm)
 // struct FString                 ServerAddress                  (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ELobbyVisibility> Visibility                     (CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Visibility                     (CPF_Parm)
 
-void UOnlineGameInterfaceImpl::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<enum class ELobbyVisibility> Visibility)
+void UOnlineGameInterfaceImpl::SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<ELobbyVisibility> Visibility)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetFriendJoinLocation");
 
@@ -8248,10 +8248,10 @@ void UOnlineLobbyInterfaceImpl::AddLocalPartyMemberToSession(struct FUniqueNetId
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
 // struct FUniqueNetId            PlayerID                       (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceImpl::KickPlayer(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
+bool UOnlineLobbyInterfaceImpl::KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.KickPlayer");
 
@@ -8328,9 +8328,9 @@ bool UOnlineLobbyInterfaceImpl::ShowInviteUI(unsigned char LocalUserNum, struct 
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
 // int                            LobbyIndex                     (CPF_Parm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 
-void UOnlineLobbyInterfaceImpl::TriggerLobbyDestroyedDelegates(int LobbyIndex, TEnumAsByte<enum class ELobbyKickReason> Reason)
+void UOnlineLobbyInterfaceImpl::TriggerLobbyDestroyedDelegates(int LobbyIndex, TEnumAsByte<ELobbyKickReason> Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyDestroyedDelegates");
 
@@ -8390,9 +8390,9 @@ void UOnlineLobbyInterfaceImpl::AddLobbyDestroyedDelegate(const struct FScriptDe
 // (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
 // Parameters:
 // struct FUniqueLobbyId          LobbyId                        (CPF_Const, CPF_Parm, CPF_OutParm)
-// TEnumAsByte<enum class ELobbyKickReason> Reason                         (CPF_Parm)
+// TEnumAsByte<ELobbyKickReason>  Reason                         (CPF_Parm)
 
-void UOnlineLobbyInterfaceImpl::OnLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
+void UOnlineLobbyInterfaceImpl::OnLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyDestroyed");
 
@@ -9560,10 +9560,10 @@ bool UOnlineLobbyInterfaceImpl::UpdateFoundLobbies(const struct FUniqueLobbyId& 
 // TArray<struct FLobbyFilter>    Filters                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FLobbySortFilter> SortFilters                    (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // int                            MinSlots                       (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<enum class ELobbyDistance> Distance                       (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyDistance>    Distance                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceImpl::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<enum class ELobbyDistance> Distance)
+bool UOnlineLobbyInterfaceImpl::FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.FindLobbies");
 
@@ -9655,11 +9655,11 @@ void UOnlineLobbyInterfaceImpl::OnCreateLobbyComplete(bool bWasSuccessful, const
 // Parameters:
 // int                            LocalPlayerNum                 (CPF_Parm)
 // int                            MaxPlayers                     (CPF_Parm)
-// TEnumAsByte<enum class ELobbyVisibility> Type                           (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<ELobbyVisibility>  Type                           (CPF_OptionalParm, CPF_Parm)
 // TArray<struct FLobbyMetaData>  InitialSettings                (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineLobbyInterfaceImpl::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<enum class ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
+bool UOnlineLobbyInterfaceImpl::CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.CreateLobby");
 
@@ -10629,9 +10629,9 @@ void UPartyBeaconClient::OnReservationCountUpdated(int ReservationRemaining)
 // Function IpDrv.PartyBeaconClient.OnReservationRequestComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// TEnumAsByte<enum class EPartyReservationResult> ReservationResult              (CPF_Parm)
+// TEnumAsByte<EPartyReservationResult> ReservationResult              (CPF_Parm)
 
-void UPartyBeaconClient::OnReservationRequestComplete(TEnumAsByte<enum class EPartyReservationResult> ReservationResult)
+void UPartyBeaconClient::OnReservationRequestComplete(TEnumAsByte<EPartyReservationResult> ReservationResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnReservationRequestComplete");
 
@@ -10995,9 +10995,9 @@ int UPartyBeaconHost::GetExistingReservation(struct FUniqueNetId* PartyLeader)
 // Parameters:
 // struct FUniqueNetId            PartyLeader                    (CPF_Parm)
 // TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EPartyReservationResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EPartyReservationResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EPartyReservationResult> UPartyBeaconHost::UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers)
+TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.UpdatePartyReservationEntry");
 
@@ -11025,9 +11025,9 @@ TEnumAsByte<enum class EPartyReservationResult> UPartyBeaconHost::UpdatePartyRes
 // TArray<struct FPlayerReservation> PlayerMembers                  (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            TeamNum                        (CPF_Parm)
 // bool                           bIsHost                        (CPF_Parm)
-// TEnumAsByte<enum class EPartyReservationResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TEnumAsByte<EPartyReservationResult> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<enum class EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
+TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AddPartyReservationEntry");
 
@@ -13836,9 +13836,9 @@ class UMcpGroupsBase* UMcpGroupsBase::STATIC_CreateInstance()
 // Parameters:
 // struct FString                 MemberId                       (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class EMcpGroupAcceptState> AcceptState                    (CPF_Parm)
+// TEnumAsByte<EMcpGroupAcceptState> AcceptState                    (CPF_Parm)
 
-void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<enum class EMcpGroupAcceptState> AcceptState)
+void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroupMember");
 

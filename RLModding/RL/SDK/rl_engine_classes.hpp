@@ -9,3672 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Constants
-//---------------------------------------------------------------------------
-
-#undef AF_MAX
-#undef PF_MAX
-
-
-#define CONST_MINFLOORZ                                          0.7
-#define CONST_ACTORMAXSTEPHEIGHT                                 35.0
-#define CONST_RBSTATE_LINVELSCALE                                10.0
-#define CONST_GAMEEVENT_TEAM_MATCH_WON                           4
-#define CONST_RBSTATE_ANGVELSCALE                                1000.0
-#define CONST_TRACEFLAG_ForceController                          16
-#define CONST_SCENEFILTER_None                                   0x00000000
-#define CONST_REP_RBLOCATION_ERROR_TOLERANCE_SQ                  16.0f
-#define CONST_TRACEFLAG_SkipMovers                               4
-#define CONST_COVERLINK_EdgeExposureDot                          0.85f
-#define CONST_RB_None                                            0x00
-#define CONST_GAMEEVENT_GAME_OPTION_URL                          7
-#define CONST_GET_SAVE_SLOT_INVALID                              -1
-#define CONST_TRACEFLAG_Blocking                                 8
-#define CONST_RB_NeedsUpdate                                     0x01
-#define CONST_GAMEEVENT_NETWORKUSAGEOUT_POLL                     38
-#define CONST_RB_Sleeping                                        0x02
-#define CONST_TRACEFLAG_PhysicsVolumes                           2
-#define CONST_DATA_STORE_ID_KEY                                  "DataStoreID"
-#define CONST_DEFAULT_SIZE_X                                     1024
-#define CONST_FSM_DEFAULTRECYCLETIME                             0.2
-#define CONST_TRACEFLAG_Bullet                                   1
-#define CONST_GAMEEVENT_GAMETHREAD_POLL                          41
-#define CONST_GAMEEVENT_MEMORYUSAGE_POLL                         35
-#define CONST_SDPG_NumBits                                       3
-#define CONST_LATENT_MOVETOWARD                                  503
-#define CONST_MAX_ACTIVE_CAMERA_ANIMS                            8
-#define CONST_GAMEEVENT_FRAMETIME_POLL                           43
-#define CONST_LINECHECK_GRANULARITY                              768.f
-#define CONST_MAXCLIENTUPDATEINTERVAL                            0.25
-#define CONST_BLOCKEDPATHCOST                                    10000000
-#define CONST_MAXPOSITIONERRORSQUARED                            3.0
-#define CONST_CLIENTADJUSTUPDATECOST                             180.0
-#define CONST_NULLCHARACTER                                      127
-#define CONST_MAXVEHICLEPOSITIONERRORSQUARED                     900.0
-#define CONST_GAMEEVENT_FRAMERATE_POLL                           36
-#define CONST_COVERLINK_ExposureDot                              0.4f
-#define CONST_GET_SAVE_SLOT_ERROR                                -2
-#define CONST_MAXNEARZEROVELOCITYSQUARED                         9.0
-#define CONST_GAMEEVENT_TEAM_ROUND_WON                           5
-#define CONST_INFINITE_PATH_COST                                 10000000
-#define CONST_NUM_SAVE_SLOTS_KEY                                 "NumSaveSlots"
-#define CONST_COMMON_DATA_SAVE_SLOT_INDEX                        -1
-#define CONST_COVERLINK_EdgeCheckDot                             0.25f
-#define CONST_SAVE_SYSTEM_VERSION_KEY                            "CloudSaveSystemVersion"
-#define CONST_SAVE_DATA_BLOB_NAME_KEY                            "DataBlobName"
-#define CONST_GAMEEVENT_PING_POLL                                39
-#define CONST_GAMEEVENT_PLAYER_MATCH_WON                         103
-#define CONST_COVERLINK_DangerDist                               1536.f
-#define CONST_DEFAULT_SIZE_Y                                     768
-#define CONST_SCENEFILTER_PausersOnly                            0x00000004
-#define CONST_MAX_SUPPORTED_GAMEPADS                             4
-#define CONST_SCENEFILTER_PrimitiveUsersOnly                     0x00000008
-#define CONST_GAMEEVENT_GAME_CLASS                               6
-#define CONST_MaxHistory                                         16
-#define CONST_GAMEEVENT_PLAYER_LOGIN                             100
-#define CONST_MAX_INSTANCES_PER_CLASS                            5
-#define CONST_MAX_BOOKMARK_NUMBER                                10
-#define CONST_HeaderFlags_NoEventStrings                         1
-#define CONST_GAMEEVENT_MATCH_STARTED                            0
-#define CONST_GAMEEVENT_MATCH_ENDED                              1
-#define CONST_GAMEEVENT_ROUND_STARTED                            2
-#define CONST_GAMEEVENT_NETWORKUSAGEIN_POLL                      37
-#define CONST_GAMEEVENT_ROUND_ENDED                              3
-#define CONST_GAMEEVENT_GAME_MAPNAME                             8
-#define CONST_GAMEEVENT_PLAYER_DEATH                             108
-#define CONST_GAMEEVENT_RENDERTHREAD_POLL                        40
-#define CONST_SCENEFILTER_IncludeTransient                       0x00000001
-#define CONST_GAMEEVENT_GPUFRAMETIME_POLL                        42
-#define CONST_GAMEEVENT_TEAM_CREATED                             50
-#define CONST_GAMEEVENT_PLAYER_KILL_STREAK                       107
-#define CONST_GAMEEVENT_TEAM_GAME_SCORE                          51
-#define CONST_GAMEEVENT_TEAM_ROUND_STALEMATE                     52
-#define CONST_PROCBUILDING_VERSION                               1
-#define CONST_GAMEEVENT_PLAYER_LOGOUT                            101
-#define CONST_GAMEEVENT_PLAYER_SPAWN                             102
-#define CONST_GAMEEVENT_PLAYER_KILL                              104
-#define CONST_GAMEEVENT_PLAYER_LOCATION_POLL                     105
-#define CONST_GAMEEVENT_PLAYER_TEAMCHANGE                        106
-#define CONST_GAMEEVENT_PLAYER_ROUND_WON                         109
-#define CONST_GAMEEVENT_PLAYER_ROUND_STALEMATE                   110
-#define CONST_GAMEEVENT_WEAPON_DAMAGE                            150
-#define CONST_GAMEEVENT_WEAPON_DAMAGE_MELEE                      151
-#define CONST_GAMEEVENT_WEAPON_FIRED                             152
-#define CONST_GAMEEVENT_PLAYER_KILL_NORMAL                       200
-#define CONST_GAMEEVENT_GENERIC_PARAM_LIST_START                 300
-#define CONST_GAMEEVENT_GENERIC_PARAM_LIST_END                   400
-#define CONST_GAMEEVENT_GAME_SPECIFIC                            1000
-#define CONST_GAMEEVENT_MAX_EVENTID                              0x0000FFFF
-#define CONST_SCENEFILTER_InputProcessorOnly                     0x00000002
-#define CONST_SCENEFILTER_UsesPostProcessing                     0x00000010
-#define CONST_SCENEFILTER_ReceivesFocus                          0x00000020
-#define CONST_SCENEFILTER_Any                                    0xFFFFFFFF
-#define CONST_MAX_AIGROUP_NUMBER                                 10
-#define CONST_NUM_PATHFINDING_PARAMS                             9
-#define CONST_NumBreadCrumbs                                     10
-#define CONST_ROOF_MINZ                                          0.7
-
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum Engine.Actor.EActorMetricsType
-enum class EActorMetricsType
-{
-	METRICS_VERTS                  = 0,
-	METRICS_TRIS                   = 1,
-	METRICS_SECTIONS               = 2,
-	METRICS_MAX                    = 3
-};
-
-
-// Enum Engine.Actor.EMoveDir
-enum class EMoveDir
-{
-	MD_Stationary                  = 0,
-	MD_Forward                     = 1,
-	MD_Backward                    = 2,
-	MD_Left                        = 3,
-	MD_Right                       = 4,
-	MD_Up                          = 5,
-	MD_Down                        = 6,
-	MD_MAX                         = 7
-};
-
-
-// Enum Engine.Actor.EPhysics
-enum class EPhysics
-{
-	PHYS_None                      = 0,
-	PHYS_Walking                   = 1,
-	PHYS_Falling                   = 2,
-	PHYS_Swimming                  = 3,
-	PHYS_Flying                    = 4,
-	PHYS_Rotating                  = 5,
-	PHYS_Projectile                = 6,
-	PHYS_Interpolating             = 7,
-	PHYS_Spider                    = 8,
-	PHYS_Ladder                    = 9,
-	PHYS_RigidBody                 = 10,
-	PHYS_SoftBody                  = 11,
-	PHYS_NavMeshWalking            = 12,
-	PHYS_Unused                    = 13,
-	PHYS_Custom                    = 14,
-	PHYS_MAX                       = 15
-};
-
-
-// Enum Engine.Actor.EForceMode
-enum class EForceMode
-{
-	ForceMode_Force                = 0,
-	ForceMode_Impulse              = 1,
-	ForceMode_Velocity             = 2,
-	ForceMode_SmoothImpulse        = 3,
-	ForceMode_SmoothVelocity       = 4,
-	ForceMode_Acceleration         = 5,
-	ForceMode_MAX                  = 6
-};
-
-
-// Enum Engine.Actor.ECollisionType
-enum class ECollisionType
-{
-	COLLIDE_CustomDefault          = 0,
-	COLLIDE_NoCollision            = 1,
-	COLLIDE_BlockAll               = 2,
-	COLLIDE_BlockWeapons           = 3,
-	COLLIDE_TouchAll               = 4,
-	COLLIDE_TouchWeapons           = 5,
-	COLLIDE_BlockAllButWeapons     = 6,
-	COLLIDE_TouchAllButWeapons     = 7,
-	COLLIDE_BlockWeaponsKickable   = 8,
-	COLLIDE_MAX                    = 9
-};
-
-
-// Enum Engine.Actor.ETravelType
-enum class ETravelType
-{
-	TRAVEL_Absolute                = 0,
-	TRAVEL_Partial                 = 1,
-	TRAVEL_Relative                = 2,
-	TRAVEL_MAX                     = 3
-};
-
-
-// Enum Engine.Actor.EDoubleClickDir
-enum class EDoubleClickDir
-{
-	DCLICK_None                    = 0,
-	DCLICK_Left                    = 1,
-	DCLICK_Right                   = 2,
-	DCLICK_Forward                 = 3,
-	DCLICK_Back                    = 4,
-	DCLICK_Active                  = 5,
-	DCLICK_Done                    = 6,
-	DCLICK_MAX                     = 7
-};
-
-
-// Enum Engine.Actor.ENetRole
-enum class ENetRole
-{
-	ROLE_None                      = 0,
-	ROLE_SimulatedProxy            = 1,
-	ROLE_AutonomousProxy           = 2,
-	ROLE_Authority                 = 3,
-	ROLE_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EFeaturePrivilege
-enum class EFeaturePrivilege
-{
-	FP_OnlinePlay                  = 0,
-	FP_CommunicationText           = 1,
-	FP_CommunicationVideo          = 2,
-	FP_CommunicationVoice          = 3,
-	FP_ShareUserCreatedContent     = 4,
-	FP_PurchaseContent             = 5,
-	FP_ViewPlayerProfile           = 6,
-	FP_ShowPresenceInformation     = 7,
-	FP_RecordDVRClips              = 8,
-	FP_CloudStorage                = 9,
-	FP_PremiumContent              = 10,
-	FP_PremiumVideoContent         = 11,
-	FP_BrowseInternet              = 12,
-	FP_SocialNetworkSharing        = 13,
-	FP_KinectSharing               = 14,
-	FP_FitnessUpload               = 15,
-	FP_MAX                         = 16
-};
-
-
-// Enum Engine.OnlineSubsystem.ELoginStatus
-enum class ELoginStatus
-{
-	LS_NotLoggedIn                 = 0,
-	LS_UsingLocalProfile           = 1,
-	LS_LoggedIn                    = 2,
-	LS_MAX                         = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.AvatarSize
-enum class AvatarSize
-{
-	AvatarSize_Small               = 0,
-	AvatarSize_Medium              = 1,
-	AvatarSize_Large               = 2,
-	AvatarSize_MAX                 = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.OnlinePlatform
-enum class OnlinePlatform
-{
-	OnlinePlatform_Unknown         = 0,
-	OnlinePlatform_Steam           = 1,
-	OnlinePlatform_PS4             = 2,
-	OnlinePlatform_PS3             = 3,
-	OnlinePlatform_Dingo           = 4,
-	OnlinePlatform_QQ              = 5,
-	OnlinePlatform_MAX             = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.ECommunicationMethod
-enum class ECommunicationMethod
-{
-	COMM_Text                      = 0,
-	COMM_Voice                     = 1,
-	COMM_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineSubsystem.EPS4ErrorDialog
-enum class EPS4ErrorDialog
-{
-	PS4_ERROR_SIGNED_OUT           = 0,
-	PS4_ERROR_SIGNED_MAX           = 1
-};
-
-
-// Enum Engine.OnlineSubsystem.EFeaturePrivilegeLevel
-enum class EFeaturePrivilegeLevel
-{
-	FPL_Disabled                   = 0,
-	FPL_Premium                    = 1,
-	FPL_EnabledFriendsOnly         = 2,
-	FPL_Enabled                    = 3,
-	FPL_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EPS4DisplayMode
-enum class EPS4DisplayMode
-{
-	PS4DM_CATEGORY                 = 0,
-	PS4DM_PRODUCT                  = 1,
-	PS4DM_PRODUCT_CODE             = 2,
-	PS4DM_CHECKOUT                 = 3,
-	PS4DM_DOWNLOADLIST             = 4,
-	PS4DM_PLUS                     = 5,
-	PS4DM_MAX                      = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.ENATType
-enum class ENATType
-{
-	NAT_Unknown                    = 0,
-	NAT_Open                       = 1,
-	NAT_Moderate                   = 2,
-	NAT_Strict                     = 3,
-	NAT_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineServerConnectionStatus
-enum class EOnlineServerConnectionStatus
-{
-	OSCS_NotConnected              = 0,
-	OSCS_Connected                 = 1,
-	OSCS_ConnectionDropped         = 2,
-	OSCS_NoNetworkConnection       = 3,
-	OSCS_ServiceUnavailable        = 4,
-	OSCS_UpdateRequired            = 5,
-	OSCS_ServersTooBusy            = 6,
-	OSCS_DuplicateLoginDetected    = 7,
-	OSCS_InvalidUser               = 8,
-	OSCS_InvalidResponse           = 9,
-	OSCS_TooYoung                  = 10,
-	OSCS_MAX                       = 11
-};
-
-
-// Enum Engine.OnlineSubsystem.ESessionMemberStatus
-enum class ESessionMemberStatus
-{
-	DSMS_Reserved                  = 0,
-	DSMS_Inactive                  = 1,
-	DSMS_Ready                     = 2,
-	DSMS_Active                    = 3,
-	DSMS_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineNewsType
-enum class EOnlineNewsType
-{
-	ONT_Unknown                    = 0,
-	ONT_GameNews                   = 1,
-	ONT_ContentAnnouncements       = 2,
-	ONT_Misc                       = 3,
-	ONT_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EInventoryItemState
-enum class EInventoryItemState
-{
-	IIS_Unknown                    = 0,
-	IIS_All                        = 1,
-	IIS_Enabled                    = 2,
-	IIS_Suspended                  = 3,
-	IIS_Expired                    = 4,
-	IIS_Canceled                   = 5,
-	IIS_MAX                        = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.EMediaItemType
-enum class EMediaItemType
-{
-	MIT_Unknown                    = 0,
-	MIT_Game                       = 1,
-	MIT_Application                = 2,
-	MIT_GameContent                = 3,
-	MIT_GameConsumable             = 4,
-	MIT_Subscription               = 5,
-	MIT_MAX                        = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineEnumerationReadState
-enum class EOnlineEnumerationReadState
-{
-	OERS_NotStarted                = 0,
-	OERS_InProgress                = 1,
-	OERS_Done                      = 2,
-	OERS_Failed                    = 3,
-	OERS_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineGameState
-enum class EOnlineGameState
-{
-	OGS_NoSession                  = 0,
-	OGS_Pending                    = 1,
-	OGS_Starting                   = 2,
-	OGS_InProgress                 = 3,
-	OGS_Ending                     = 4,
-	OGS_Ended                      = 5,
-	OGS_MAX                        = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.ECatalogSortOrder
-enum class ECatalogSortOrder
-{
-	CSO_FreeAndPaidCountDaily      = 0,
-	CSO_PaidCountAllTime           = 1,
-	CSO_PaidCountDail              = 2,
-	CSO_DigitalReleaseDate         = 3,
-	CSO_ReleaseDate                = 4,
-	CSO_UserRatings                = 5,
-	CSO_MAX                        = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.EAchievementUnlockType
-enum class EAchievementUnlockType
-{
-	AUT_Unknown                    = 0,
-	AUT_All                        = 1,
-	AUT_Persistent                 = 2,
-	AUT_Challenge                  = 3,
-	AUT_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EAchievementMediaAssetType
-enum class EAchievementMediaAssetType
-{
-	AMAT_Unknown                   = 0,
-	AMAT_Icon                      = 1,
-	AMAT_Art                       = 2,
-	AMAT_MAX                       = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.EAchievementParticipationType
-enum class EAchievementParticipationType
-{
-	APT_Unknown                    = 0,
-	APT_Individual                 = 1,
-	APT_Group                      = 2,
-	APT_MAX                        = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.EAchievementProgressState
-enum class EAchievementProgressState
-{
-	APS_Unknown                    = 0,
-	APS_Achieved                   = 1,
-	APS_NotStarted                 = 2,
-	APS_InProgress                 = 3,
-	APS_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EAchievementRewardType
-enum class EAchievementRewardType
-{
-	ART_Unknown                    = 0,
-	ART_Gamerscore                 = 1,
-	ART_InApp                      = 2,
-	ART_Art                        = 3,
-	ART_MAX                        = 4
-};
-
-
-// Enum Engine.Settings.ESettingsDataType
-enum class ESettingsDataType
-{
-	SDT_Empty                      = 0,
-	SDT_Int32                      = 1,
-	SDT_Int64                      = 2,
-	SDT_Double                     = 3,
-	SDT_String                     = 4,
-	SDT_Float                      = 5,
-	SDT_Blob                       = 6,
-	SDT_DateTime                   = 7,
-	SDT_MAX                        = 8
-};
-
-
-// Enum Engine.Settings.EOnlineDataAdvertisementType
-enum class EOnlineDataAdvertisementType
-{
-	ODAT_DontAdvertise             = 0,
-	ODAT_OnlineService             = 1,
-	ODAT_QoS                       = 2,
-	ODAT_OnlineServiceAndQoS       = 3,
-	ODAT_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineFileType
-enum class EOnlineFileType
-{
-	OFT_Unknown                    = 0,
-	OFT_Binary                     = 1,
-	OFT_Json                       = 2,
-	OFT_MAX                        = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineAccountCreateStatus
-enum class EOnlineAccountCreateStatus
-{
-	OACS_CreateSuccessful          = 0,
-	OACS_UnknownError              = 1,
-	OACS_InvalidUserName           = 2,
-	OACS_InvalidPassword           = 3,
-	OACS_InvalidUniqueUserName     = 4,
-	OACS_UniqueUserNameInUse       = 5,
-	OACS_ServiceUnavailable        = 6,
-	OACS_MAX                       = 7
-};
-
-
-// Enum Engine.OnlineSubsystem.ELanBeaconState
-enum class ELanBeaconState
-{
-	LANB_NotUsingLanBeacon         = 0,
-	LANB_Hosting                   = 1,
-	LANB_Searching                 = 2,
-	LANB_MAX                       = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineContentType
-enum class EOnlineContentType
-{
-	OCT_Downloaded                 = 0,
-	OCT_SaveGame                   = 1,
-	OCT_MAX                        = 2
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineCreateGameSessionFlag
-enum class EOnlineCreateGameSessionFlag
-{
-	OCGSF_New                      = 0,
-	OCGSF_ReSubmit                 = 1,
-	OCGSF_MAX                      = 2
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineFriendState
-enum class EOnlineFriendState
-{
-	OFS_Offline                    = 0,
-	OFS_Online                     = 1,
-	OFS_Away                       = 2,
-	OFS_Busy                       = 3,
-	OFS_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineSubsystem.EOnlineAccountTier
-enum class EOnlineAccountTier
-{
-	OAT_Unknown                    = 0,
-	OAT_NewUser                    = 1,
-	OAT_Silver                     = 2,
-	OAT_Gold                       = 3,
-	OAT_FamilyGold                 = 4,
-	OAT_MAX                        = 5
-};
-
-
-// Enum Engine.OnlineSubsystem.ENetworkNotificationPosition
-enum class ENetworkNotificationPosition
-{
-	NNP_TopLeft                    = 0,
-	NNP_TopCenter                  = 1,
-	NNP_TopRight                   = 2,
-	NNP_CenterLeft                 = 3,
-	NNP_Center                     = 4,
-	NNP_CenterRight                = 5,
-	NNP_BottomLeft                 = 6,
-	NNP_BottomCenter               = 7,
-	NNP_BottomRight                = 8,
-	NNP_MAX                        = 9
-};
-
-
-// Enum Engine.Settings.EPropertyValueMappingType
-enum class EPropertyValueMappingType
-{
-	PVMT_RawValue                  = 0,
-	PVMT_PredefinedValues          = 1,
-	PVMT_Ranged                    = 2,
-	PVMT_IdMapped                  = 3,
-	PVMT_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineAuthInterface.EAuthStatus
-enum class EAuthStatus
-{
-	AUS_NotStarted                 = 0,
-	AUS_Pending                    = 1,
-	AUS_Authenticated              = 2,
-	AUS_Failed                     = 3,
-	AUS_MAX                        = 4
-};
-
-
-// Enum Engine.PrimitiveComponent.GJKResult
-enum class GJKResult
-{
-	GJK_Intersect                  = 0,
-	GJK_NoIntersection             = 1,
-	GJK_Fail                       = 2,
-	GJK_MAX                        = 3
-};
-
-
-// Enum Engine.Scene.EDetailMode
-enum class EDetailMode
-{
-	DM_Low                         = 0,
-	DM_Medium                      = 1,
-	DM_High                        = 2,
-	DM_MAX                         = 3
-};
-
-
-// Enum Engine.Scene.ESceneDepthPriorityGroup
-enum class ESceneDepthPriorityGroup
-{
-	SDPG_UnrealEdBackground        = 0,
-	SDPG_World                     = 1,
-	SDPG_Foreground                = 2,
-	SDPG_UnrealEdForeground        = 3,
-	SDPG_PostProcess               = 4,
-	SDPG_MAX                       = 5
-};
-
-
-// Enum Engine.PrimitiveComponent.ERadialImpulseFalloff
-enum class ERadialImpulseFalloff
-{
-	RIF_Constant                   = 0,
-	RIF_Linear                     = 1,
-	RIF_MAX                        = 2
-};
-
-
-// Enum Engine.PrimitiveComponent.ERBCollisionChannel
-enum class ERBCollisionChannel
-{
-	RBCC_Default                   = 0,
-	RBCC_Nothing                   = 1,
-	RBCC_Pawn                      = 2,
-	RBCC_Vehicle                   = 3,
-	RBCC_Water                     = 4,
-	RBCC_GameplayPhysics           = 5,
-	RBCC_EffectPhysics             = 6,
-	RBCC_Ball                      = 7,
-	RBCC_VehicleBlocker            = 8,
-	RBCC_BallBlocker               = 9,
-	RBCC_Untitled4                 = 10,
-	RBCC_Cloth                     = 11,
-	RBCC_FluidDrain                = 12,
-	RBCC_SoftBody                  = 13,
-	RBCC_FracturedMeshPart         = 14,
-	RBCC_BlockingVolume            = 15,
-	RBCC_DeadPawn                  = 16,
-	RBCC_Clothing                  = 17,
-	RBCC_ClothingCollision         = 18,
-	RBCC_MAX                       = 19
-};
-
-
-// Enum Engine.Camera.EViewTargetBlendFunction
-enum class EViewTargetBlendFunction
-{
-	VTBlend_Linear                 = 0,
-	VTBlend_Cubic                  = 1,
-	VTBlend_EaseIn                 = 2,
-	VTBlend_EaseOut                = 3,
-	VTBlend_EaseInOut              = 4,
-	VTBlend_MidwayStep             = 5,
-	VTBlend_MAX                    = 6
-};
-
-
-// Enum Engine.DOFEffect.EFocusType
-enum class EFocusType
-{
-	FOCUS_Distance                 = 0,
-	FOCUS_Position                 = 1,
-	FOCUS_MAX                      = 2
-};
-
-
-// Enum Engine.Camera.ECameraAnimPlaySpace
-enum class ECameraAnimPlaySpace
-{
-	CAPS_CameraLocal               = 0,
-	CAPS_World                     = 1,
-	CAPS_UserDefined               = 2,
-	CAPS_MAX                       = 3
-};
-
-
-// Enum Engine.SeqAct_ControlMovieTexture.EMovieControlType
-enum class EMovieControlType
-{
-	MCT_Play                       = 0,
-	MCT_Stop                       = 1,
-	MCT_Pause                      = 2,
-	MCT_MAX                        = 3
-};
-
-
-// Enum Engine.OnlineGameSearch.EOnlineGameSearchComparisonType
-enum class EOnlineGameSearchComparisonType
-{
-	OGSCT_Equals                   = 0,
-	OGSCT_NotEquals                = 1,
-	OGSCT_GreaterThan              = 2,
-	OGSCT_GreaterThanEquals        = 3,
-	OGSCT_LessThan                 = 4,
-	OGSCT_LessThanEquals           = 5,
-	OGSCT_MAX                      = 6
-};
-
-
-// Enum Engine.OnlineGameSearch.EOnlineGameSearchEntryType
-enum class EOnlineGameSearchEntryType
-{
-	OGSET_Property                 = 0,
-	OGSET_LocalizedSetting         = 1,
-	OGSET_ObjectProperty           = 2,
-	OGSET_MAX                      = 3
-};
-
-
-// Enum Engine.OnlineGameSearch.EOnlineGameSearchSortType
-enum class EOnlineGameSearchSortType
-{
-	OGSSO_Ascending                = 0,
-	OGSSO_Descending               = 1,
-	OGSSO_MAX                      = 2
-};
-
-
-// Enum Engine.PlayerController.EProgressMessageType
-enum class EProgressMessageType
-{
-	PMT_Clear                      = 0,
-	PMT_Information                = 1,
-	PMT_AdminMessage               = 2,
-	PMT_DownloadProgress           = 3,
-	PMT_ConnectionFailure          = 4,
-	PMT_PeerConnectionFailure      = 5,
-	PMT_PeerHostMigrationFailure   = 6,
-	PMT_SocketFailure              = 7,
-	PMT_MAX                        = 8
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EPhysBodyOp
-enum class EPhysBodyOp
-{
-	PBO_None                       = 0,
-	PBO_Term                       = 1,
-	PBO_Disable                    = 2,
-	PBO_MAX                        = 3
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EBoneVisibilityStatus
-enum class EBoneVisibilityStatus
-{
-	BVS_HiddenByParent             = 0,
-	BVS_Visible                    = 1,
-	BVS_ExplicitlyHidden           = 2,
-	BVS_MAX                        = 3
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EFaceFXRegOp
-enum class EFaceFXRegOp
-{
-	FXRO_Add                       = 0,
-	FXRO_Multiply                  = 1,
-	FXRO_Replace                   = 2,
-	FXRO_MAX                       = 3
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EFaceFXBlendMode
-enum class EFaceFXBlendMode
-{
-	FXBM_Overwrite                 = 0,
-	FXBM_Additive                  = 1,
-	FXBM_MAX                       = 2
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EInstanceWeightUsage
-enum class EInstanceWeightUsage
-{
-	IWU_PartialSwap                = 0,
-	IWU_FullSwap                   = 1,
-	IWU_MAX                        = 2
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EAnimRotationOnly
-enum class EAnimRotationOnly
-{
-	EARO_AnimSet                   = 0,
-	EARO_ForceEnabled              = 1,
-	EARO_ForceDisabled             = 2,
-	EARO_MAX                       = 3
-};
-
-
-// Enum Engine.SkeletalMeshComponent.ERootMotionRotationMode
-enum class ERootMotionRotationMode
-{
-	RMRM_Ignore                    = 0,
-	RMRM_RotateActor               = 1,
-	RMRM_MAX                       = 2
-};
-
-
-// Enum Engine.SkeletalMeshComponent.ERootMotionMode
-enum class ERootMotionMode
-{
-	RMM_Translate                  = 0,
-	RMM_Velocity                   = 1,
-	RMM_Ignore                     = 2,
-	RMM_Accel                      = 3,
-	RMM_Relative                   = 4,
-	RMM_MAX                        = 5
-};
-
-
-// Enum Engine.SkeletalMeshComponent.EMaxDistanceScaleMode
-enum class EMaxDistanceScaleMode
-{
-	MDSM_Multiply                  = 0,
-	MDSM_Substract                 = 1,
-	MDSM_MAX                       = 2
-};
-
-
-// Enum Engine.PlayerController.EInputMatchAction
-enum class EInputMatchAction
-{
-	IMA_GreaterThan                = 0,
-	IMA_LessThan                   = 1,
-	IMA_MAX                        = 2
-};
-
-
-// Enum Engine.PlayerController.EInputTypes
-enum class EInputTypes
-{
-	IT_XAxis                       = 0,
-	IT_YAxis                       = 1,
-	IT_MAX                         = 2
-};
-
-
-// Enum Engine.Pylon.ENavMeshEdgeType
-enum class ENavMeshEdgeType
-{
-	NAVEDGE_Normal                 = 0,
-	NAVEDGE_Mantle                 = 1,
-	NAVEDGE_Coverslip              = 2,
-	NAVEDGE_SwatTurn               = 3,
-	NAVEDGE_DropDown               = 4,
-	NAVEDGE_PathObject             = 5,
-	NAVEDGE_BackRefDummy           = 6,
-	NAVEDGE_Jump                   = 7,
-	NAVEDGE_MAX                    = 8
-};
-
-
-// Enum Engine.AmbientOcclusionEffect.EAmbientOcclusionQuality
-enum class EAmbientOcclusionQuality
-{
-	AO_High                        = 0,
-	AO_Medium                      = 1,
-	AO_Low                         = 2,
-	AO_MAX                         = 3
-};
-
-
-// Enum Engine.Brush.ECsgOper
-enum class ECsgOper
-{
-	CSG_Active                     = 0,
-	CSG_Add                        = 1,
-	CSG_Subtract                   = 2,
-	CSG_Intersect                  = 3,
-	CSG_Deintersect                = 4,
-	CSG_MAX                        = 5
-};
-
-
-// Enum Engine.ReverbVolume.ReverbPreset
-enum class ReverbPreset
-{
-	REVERB_Default                 = 0,
-	REVERB_Bathroom                = 1,
-	REVERB_StoneRoom               = 2,
-	REVERB_Auditorium              = 3,
-	REVERB_ConcertHall             = 4,
-	REVERB_Cave                    = 5,
-	REVERB_Hallway                 = 6,
-	REVERB_StoneCorridor           = 7,
-	REVERB_Alley                   = 8,
-	REVERB_Forest                  = 9,
-	REVERB_City                    = 10,
-	REVERB_Mountains               = 11,
-	REVERB_Quarry                  = 12,
-	REVERB_Plain                   = 13,
-	REVERB_ParkingLot              = 14,
-	REVERB_SewerPipe               = 15,
-	REVERB_Underwater              = 16,
-	REVERB_SmallRoom               = 17,
-	REVERB_MediumRoom              = 18,
-	REVERB_LargeRoom               = 19,
-	REVERB_MediumHall              = 20,
-	REVERB_LargeHall               = 21,
-	REVERB_Plate                   = 22,
-	REVERB_MAX                     = 23
-};
-
-
-// Enum Engine.EngineTypes.EPathFindingError
-enum class EPathFindingError
-{
-	PATHERROR_STARTPOLYNOTFOUND    = 0,
-	PATHERROR_GOALPOLYNOTFOUND     = 1,
-	PATHERROR_ANCHORPYLONNOTFOUND  = 2,
-	PATHERROR_NOPATHFOUND          = 3,
-	PATHERROR_COMPUTEVALIDFINALDEST_FAIL = 4,
-	PATHERROR_GETNEXTMOVELOCATION_FAIL = 5,
-	PATHERROR_MOVETIMEOUT          = 6,
-	PATHERROR_MAX                  = 7
-};
-
-
-// Enum Engine.AudioDevice.EDebugState
-enum class EDebugState
-{
-	DEBUGSTATE_None                = 0,
-	DEBUGSTATE_IsolateDryAudio     = 1,
-	DEBUGSTATE_IsolateReverb       = 2,
-	DEBUGSTATE_TestLPF             = 3,
-	DEBUGSTATE_TestStereoBleed     = 4,
-	DEBUGSTATE_TestLFEBleed        = 5,
-	DEBUGSTATE_DisableLPF          = 6,
-	DEBUGSTATE_DisableRadio        = 7,
-	DEBUGSTATE_MAX                 = 8
-};
-
-
-// Enum Engine.AudioDevice.ESoundClassName
-enum class ESoundClassName
-{
-	WeaponTellSuper                = 0,
-	WeaponTell                     = 1,
-	WeaponMortarIncoming           = 2,
-	WeaponFriend                   = 3,
-	WeaponEnemy                    = 4,
-	WeaponBulletEffects            = 5,
-	Weapon                         = 6,
-	VoiceChat                      = 7,
-	Voice                          = 8,
-	Vehicle                        = 9,
-	UserMusic                      = 10,
-	UI                             = 11,
-	Stinger                        = 12,
-	SoundModeExceptions            = 13,
-	SFX                            = 14,
-	OptionVoice                    = 15,
-	OptionsSFX                     = 16,
-	OptionMusic                    = 17,
-	Music                          = 18,
-	MovieVoice                     = 19,
-	MovieEffects                   = 20,
-	Master                         = 21,
-	Item                           = 22,
-	GameMusic                      = 23,
-	Explosions                     = 24,
-	DialogNoRadio                  = 25,
-	DialogNoDSP                    = 26,
-	DialogMedium                   = 27,
-	DialogLoud                     = 28,
-	DialogDeafening                = 29,
-	Dialog                         = 30,
-	Cinematic                      = 31,
-	ChatterFriend                  = 32,
-	ChatterEnemytell               = 33,
-	ChatterEnemy                   = 34,
-	Chatter                        = 35,
-	CharacterFriend                = 36,
-	CharacterEnemy                 = 37,
-	Character                      = 38,
-	Ambient                        = 39,
-	ESoundClassName_MAX            = 40
-};
-
-
-// Enum Engine.AudioDevice.ETTSSpeaker
-enum class ETTSSpeaker
-{
-	TTSSPEAKER_Paul                = 0,
-	TTSSPEAKER_Harry               = 1,
-	TTSSPEAKER_Frank               = 2,
-	TTSSPEAKER_Dennis              = 3,
-	TTSSPEAKER_Kit                 = 4,
-	TTSSPEAKER_Betty               = 5,
-	TTSSPEAKER_Ursula              = 6,
-	TTSSPEAKER_Rita                = 7,
-	TTSSPEAKER_Wendy               = 8,
-	TTSSPEAKER_MAX                 = 9
-};
-
-
-// Enum Engine.SoundNodeAttenuation.ESoundDistanceCalc
-enum class ESoundDistanceCalc
-{
-	SOUNDDISTANCE_Normal           = 0,
-	SOUNDDISTANCE_InfiniteXYPlane  = 1,
-	SOUNDDISTANCE_InfiniteXZPlane  = 2,
-	SOUNDDISTANCE_InfiniteYZPlane  = 3,
-	SOUNDDISTANCE_MAX              = 4
-};
-
-
-// Enum Engine.SoundNodeAttenuation.SoundDistanceModel
-enum class SoundDistanceModel
-{
-	ATTENUATION_Linear             = 0,
-	ATTENUATION_Logarithmic        = 1,
-	ATTENUATION_Inverse            = 2,
-	ATTENUATION_LogReverse         = 3,
-	ATTENUATION_NaturalSound       = 4,
-	ATTENUATION_MAX                = 5
-};
-
-
-// Enum Engine.PlatformInterfaceBase.EPlatformInterfaceDataType
-enum class EPlatformInterfaceDataType
-{
-	PIDT_None                      = 0,
-	PIDT_Int                       = 1,
-	PIDT_Float                     = 2,
-	PIDT_String                    = 3,
-	PIDT_Object                    = 4,
-	PIDT_Custom                    = 5,
-	PIDT_QWord                     = 6,
-	PIDT_MAX                       = 7
-};
-
-
-// Enum Engine.AnimSequence.AnimationCompressionFormat
-enum class AnimationCompressionFormat
-{
-	ACF_None                       = 0,
-	ACF_Float96NoW                 = 1,
-	ACF_Fixed48NoW                 = 2,
-	ACF_IntervalFixed32NoW         = 3,
-	ACF_Fixed32NoW                 = 4,
-	ACF_Float32NoW                 = 5,
-	ACF_Identity                   = 6,
-	ACF_MAX                        = 7
-};
-
-
-// Enum Engine.AnimSequence.AnimationKeyFormat
-enum class AnimationKeyFormat
-{
-	AKF_ConstantKeyLerp            = 0,
-	AKF_VariableKeyLerp            = 1,
-	AKF_PerTrackCompression        = 2,
-	AKF_MAX                        = 3
-};
-
-
-// Enum Engine.AnimNode.ESliderType
-enum class ESliderType
-{
-	ST_1D                          = 0,
-	ST_2D                          = 1,
-	ST_MAX                         = 2
-};
-
-
-// Enum Engine.AnimNode_MultiBlendPerBone.EWeightCheck
-enum class EWeightCheck
-{
-	EWC_AnimNodeSlotNotPlaying     = 0,
-	EWC_MAX                        = 1
-};
-
-
-// Enum Engine.AnimNode_MultiBlendPerBone.EBlendType
-enum class EBlendType
-{
-	EBT_ParentBoneSpace            = 0,
-	EBT_MeshSpace                  = 1,
-	EBT_MAX                        = 2
-};
-
-
-// Enum Engine.AnimNodeAimOffset.EAnimAimDir
-enum class EAnimAimDir
-{
-	ANIMAIM_LEFTUP                 = 0,
-	ANIMAIM_CENTERUP               = 1,
-	ANIMAIM_RIGHTUP                = 2,
-	ANIMAIM_LEFTCENTER             = 3,
-	ANIMAIM_CENTERCENTER           = 4,
-	ANIMAIM_RIGHTCENTER            = 5,
-	ANIMAIM_LEFTDOWN               = 6,
-	ANIMAIM_CENTERDOWN             = 7,
-	ANIMAIM_RIGHTDOWN              = 8,
-	ANIMAIM_MAX                    = 9
-};
-
-
-// Enum Engine.AnimNodeAimOffset.EAimID
-enum class EAimID
-{
-	EAID_LeftUp                    = 0,
-	EAID_LeftDown                  = 1,
-	EAID_RightUp                   = 2,
-	EAID_RightDown                 = 3,
-	EAID_ZeroUp                    = 4,
-	EAID_ZeroDown                  = 5,
-	EAID_ZeroLeft                  = 6,
-	EAID_ZeroRight                 = 7,
-	EAID_CellLU                    = 8,
-	EAID_CellCU                    = 9,
-	EAID_CellRU                    = 10,
-	EAID_CellLC                    = 11,
-	EAID_CellCC                    = 12,
-	EAID_CellRC                    = 13,
-	EAID_CellLD                    = 14,
-	EAID_CellCD                    = 15,
-	EAID_CellRD                    = 16,
-	EAID_MAX                       = 17
-};
-
-
-// Enum Engine.AnimNodeBlendByBase.EBaseBlendType
-enum class EBaseBlendType
-{
-	BBT_ByActorTag                 = 0,
-	BBT_ByActorClass               = 1,
-	BBT_MAX                        = 2
-};
-
-
-// Enum Engine.AnimNodeSequence.ERootRotationOption
-enum class ERootRotationOption
-{
-	RRO_Default                    = 0,
-	RRO_Discard                    = 1,
-	RRO_Extract                    = 2,
-	RRO_MAX                        = 3
-};
-
-
-// Enum Engine.AnimNodeSequence.ERootBoneAxis
-enum class ERootBoneAxis
-{
-	RBA_Default                    = 0,
-	RBA_Discard                    = 1,
-	RBA_Translate                  = 2,
-	RBA_MAX                        = 3
-};
-
-
-// Enum Engine.EngineTypes.EBlendMode
-enum class EBlendMode
-{
-	BLEND_Opaque                   = 0,
-	BLEND_Masked                   = 1,
-	BLEND_Translucent              = 2,
-	BLEND_Additive                 = 3,
-	BLEND_Modulate                 = 4,
-	BLEND_ModulateAndAdd           = 5,
-	BLEND_SoftMasked               = 6,
-	BLEND_AlphaComposite           = 7,
-	BLEND_DitheredTranslucent      = 8,
-	BLEND_MAX                      = 9
-};
-
-
-// Enum Engine.EngineTypes.EMaterialLightingModel
-enum class EMaterialLightingModel
-{
-	MLM_Phong                      = 0,
-	MLM_NonDirectional             = 1,
-	MLM_Unlit                      = 2,
-	MLM_SHPRT                      = 3,
-	MLM_Custom                     = 4,
-	MLM_Anisotropic                = 5,
-	MLM_MAX                        = 6
-};
-
-
-// Enum Engine.EngineTypes.EMaterialTessellationMode
-enum class EMaterialTessellationMode
-{
-	MTM_NoTessellation             = 0,
-	MTM_FlatTessellation           = 1,
-	MTM_PNTriangles                = 2,
-	MTM_MAX                        = 3
-};
-
-
-// Enum Engine.EngineTypes.EMobileValueSource
-enum class EMobileValueSource
-{
-	MVS_Constant                   = 0,
-	MVS_VertexColorRed             = 1,
-	MVS_VertexColorGreen           = 2,
-	MVS_VertexColorBlue            = 3,
-	MVS_VertexColorAlpha           = 4,
-	MVS_BaseTextureRed             = 5,
-	MVS_BaseTextureGreen           = 6,
-	MVS_BaseTextureBlue            = 7,
-	MVS_BaseTextureAlpha           = 8,
-	MVS_MaskTextureRed             = 9,
-	MVS_MaskTextureGreen           = 10,
-	MVS_MaskTextureBlue            = 11,
-	MVS_MaskTextureAlpha           = 12,
-	MVS_NormalTextureAlpha         = 13,
-	MVS_EmissiveTextureRed         = 14,
-	MVS_EmissiveTextureGreen       = 15,
-	MVS_EmissiveTextureBlue        = 16,
-	MVS_EmissiveTextureAlpha       = 17,
-	MVS_MAX                        = 18
-};
-
-
-// Enum Engine.EngineTypes.EMobileTextureBlendFactorSource
-enum class EMobileTextureBlendFactorSource
-{
-	MTBFS_VertexColor              = 0,
-	MTBFS_MaskTexture              = 1,
-	MTBFS_MAX                      = 2
-};
-
-
-// Enum Engine.EngineTypes.EMobileTexCoordsSource
-enum class EMobileTexCoordsSource
-{
-	MTCS_TexCoords0                = 0,
-	MTCS_TexCoords1                = 1,
-	MTCS_TexCoords2                = 2,
-	MTCS_TexCoords3                = 3,
-	MTCS_MAX                       = 4
-};
-
-
-// Enum Engine.EngineTypes.EMobileAlphaValueSource
-enum class EMobileAlphaValueSource
-{
-	MAVS_DiffuseTextureAlpha       = 0,
-	MAVS_MaskTextureRed            = 1,
-	MAVS_MaskTextureGreen          = 2,
-	MAVS_MaskTextureBlue           = 3,
-	MAVS_MAX                       = 4
-};
-
-
-// Enum Engine.EngineTypes.EMobileColorMultiplySource
-enum class EMobileColorMultiplySource
-{
-	MCMS_None                      = 0,
-	MCMS_BaseTextureRed            = 1,
-	MCMS_BaseTextureGreen          = 2,
-	MCMS_BaseTextureBlue           = 3,
-	MCMS_BaseTextureAlpha          = 4,
-	MCMS_MaskTextureRed            = 5,
-	MCMS_MaskTextureGreen          = 6,
-	MCMS_MaskTextureBlue           = 7,
-	MCMS_MaskTextureAlpha          = 8,
-	MCMS_MAX                       = 9
-};
-
-
-// Enum Engine.EngineTypes.EMobileEmissiveColorSource
-enum class EMobileEmissiveColorSource
-{
-	MECS_EmissiveTexture           = 0,
-	MECS_BaseTexture               = 1,
-	MECS_Constant                  = 2,
-	MECS_MAX                       = 3
-};
-
-
-// Enum Engine.EngineTypes.EMobileEnvironmentBlendMode
-enum class EMobileEnvironmentBlendMode
-{
-	MEBM_Add                       = 0,
-	MEBM_Lerp                      = 1,
-	MEBM_MAX                       = 2
-};
-
-
-// Enum Engine.EngineTypes.EMobileSpecularMask
-enum class EMobileSpecularMask
-{
-	MSM_Constant                   = 0,
-	MSM_Luminance                  = 1,
-	MSM_DiffuseRed                 = 2,
-	MSM_DiffuseGreen               = 3,
-	MSM_DiffuseBlue                = 4,
-	MSM_DiffuseAlpha               = 5,
-	MSM_MaskTextureRGB             = 6,
-	MSM_MaskTextureRed             = 7,
-	MSM_MaskTextureGreen           = 8,
-	MSM_MaskTextureBlue            = 9,
-	MSM_MaskTextureAlpha           = 10,
-	MSM_MAX                        = 11
-};
-
-
-// Enum Engine.EngineTypes.EMobileAmbientOcclusionSource
-enum class EMobileAmbientOcclusionSource
-{
-	MAOS_Disabled                  = 0,
-	MAOS_VertexColorRed            = 1,
-	MAOS_VertexColorGreen          = 2,
-	MAOS_VertexColorBlue           = 3,
-	MAOS_VertexColorAlpha          = 4,
-	MAOS_MAX                       = 5
-};
-
-
-// Enum Engine.EngineTypes.ELightingBuildQuality
-enum class ELightingBuildQuality
-{
-	Quality_Preview                = 0,
-	Quality_Medium                 = 1,
-	Quality_High                   = 2,
-	Quality_Production             = 3,
-	Quality_NoGlobalIllumination   = 4,
-	Quality_MAX                    = 5
-};
-
-
-// Enum Engine.Pawn.EPathSearchType
-enum class EPathSearchType
-{
-	PST_Default                    = 0,
-	PST_Breadth                    = 1,
-	PST_NewBestPathTo              = 2,
-	PST_Constraint                 = 3,
-	PST_MAX                        = 4
-};
-
-
-// Enum Engine.DynamicLightEnvironmentComponent.EDynamicLightEnvironmentBoundsMethod
-enum class EDynamicLightEnvironmentBoundsMethod
-{
-	DLEB_OwnerComponents           = 0,
-	DLEB_ManualOverride            = 1,
-	DLEB_ActiveComponents          = 2,
-	DLEB_MAX                       = 3
-};
-
-
-// Enum Engine.ApexDestructibleAsset.EImpactDamageOverride
-enum class EImpactDamageOverride
-{
-	IDO_None                       = 0,
-	IDO_On                         = 1,
-	IDO_Off                        = 2,
-	IDO_MAX                        = 3
-};
-
-
-// Enum Engine.ApexDestructibleDamageParameters.EDamageParameterOverrideMode
-enum class EDamageParameterOverrideMode
-{
-	DPOM_Absolute                  = 0,
-	DPOM_Multiplier                = 1,
-	DPOM_MAX                       = 2
-};
-
-
-// Enum Engine.CameraShake.EInitialOscillatorOffset
-enum class EInitialOscillatorOffset
-{
-	EOO_OffsetRandom               = 0,
-	EOO_OffsetZero                 = 1,
-	EOO_MAX                        = 2
-};
-
-
-// Enum Engine.Canvas.ECanvasBlendMode
-enum class ECanvasBlendMode
-{
-	BLEND_CANVAS_Opaque            = 0,
-	BLEND_CANVAS_Masked            = 1,
-	BLEND_CANVAS_Translucent       = 2,
-	BLEND_CANVAS_Additive          = 3,
-	BLEND_CANVAS_Modulate          = 4,
-	BLEND_CANVAS_ModulateAndAdd    = 5,
-	BLEND_CANVAS_SoftMasked        = 6,
-	BLEND_CANVAS_AlphaComposite    = 7,
-	BLEND_CANVAS_DitheredTranslucent = 8,
-	BLEND_CANVAS_AlphaOnly         = 9,
-	BLEND_CANVAS_MAX               = 10
-};
-
-
-// Enum Engine.Texture.TextureCompressionSettings
-enum class TextureCompressionSettings
-{
-	TC_Default                     = 0,
-	TC_Normalmap                   = 1,
-	TC_Displacementmap             = 2,
-	TC_NormalmapAlpha              = 3,
-	TC_Grayscale                   = 4,
-	TC_HighDynamicRange            = 5,
-	TC_OneBitAlpha                 = 6,
-	TC_NormalmapUncompressed       = 7,
-	TC_NormalmapBC5                = 8,
-	TC_NormalmapSwizzle            = 9,
-	TC_OneBitMonochrome            = 10,
-	TC_SimpleLightmapModification  = 11,
-	TC_VectorDisplacementmap       = 12,
-	TC_MAX                         = 13
-};
-
-
-// Enum Engine.Texture.EPixelFormat
-enum class EPixelFormat
-{
-	PF_Unknown                     = 0,
-	PF_A32B32G32R32F               = 1,
-	PF_A8R8G8B8                    = 2,
-	PF_G8                          = 3,
-	PF_G16                         = 4,
-	PF_DXT1                        = 5,
-	PF_DXT3                        = 6,
-	PF_DXT5                        = 7,
-	PF_UYVY                        = 8,
-	PF_FloatRGB                    = 9,
-	PF_FloatRGBA                   = 10,
-	PF_DepthStencil                = 11,
-	PF_ShadowDepth                 = 12,
-	PF_FilteredShadowDepth         = 13,
-	PF_R32F                        = 14,
-	PF_G16R16                      = 15,
-	PF_G16R16F                     = 16,
-	PF_G16R16F_FILTER              = 17,
-	PF_G32R32F                     = 18,
-	PF_A2B10G10R10                 = 19,
-	PF_A2R10G10B10                 = 20,
-	PF_A16B16G16R16                = 21,
-	PF_D24                         = 22,
-	PF_R16F                        = 23,
-	PF_R16F_FILTER                 = 24,
-	PF_BC5                         = 25,
-	PF_V8U8                        = 26,
-	PF_A1                          = 27,
-	PF_FloatR11G11B10              = 28,
-	PF_A4R4G4B4                    = 29,
-	PF_R5G6B5                      = 30,
-	PF_G8R8                        = 31,
-	PF_R32_UINT                    = 32,
-	PF_MAX                         = 33
-};
-
-
-// Enum Engine.Texture.TextureFilter
-enum class TextureFilter
-{
-	TF_Nearest                     = 0,
-	TF_Linear                      = 1,
-	TF_MAX                         = 2
-};
-
-
-// Enum Engine.Texture.TextureAddress
-enum class TextureAddress
-{
-	TA_Wrap                        = 0,
-	TA_Clamp                       = 1,
-	TA_Mirror                      = 2,
-	TA_MAX                         = 3
-};
-
-
-// Enum Engine.Texture.TextureGroup
-enum class TextureGroup
-{
-	TEXTUREGROUP_World             = 0,
-	TEXTUREGROUP_WorldNormalMap    = 1,
-	TEXTUREGROUP_WorldSpecular     = 2,
-	TEXTUREGROUP_Character         = 3,
-	TEXTUREGROUP_CharacterNormalMap = 4,
-	TEXTUREGROUP_CharacterSpecular = 5,
-	TEXTUREGROUP_Weapon            = 6,
-	TEXTUREGROUP_WeaponNormalMap   = 7,
-	TEXTUREGROUP_WeaponSpecular    = 8,
-	TEXTUREGROUP_Vehicle           = 9,
-	TEXTUREGROUP_VehicleNormalMap  = 10,
-	TEXTUREGROUP_VehicleSpecular   = 11,
-	TEXTUREGROUP_Cinematic         = 12,
-	TEXTUREGROUP_Effects           = 13,
-	TEXTUREGROUP_EffectsNotFiltered = 14,
-	TEXTUREGROUP_Skybox            = 15,
-	TEXTUREGROUP_UI                = 16,
-	TEXTUREGROUP_Lightmap          = 17,
-	TEXTUREGROUP_RenderTarget      = 18,
-	TEXTUREGROUP_MobileFlattened   = 19,
-	TEXTUREGROUP_ProcBuilding_Face = 20,
-	TEXTUREGROUP_ProcBuilding_LightMap = 21,
-	TEXTUREGROUP_Shadowmap         = 22,
-	TEXTUREGROUP_ColorLookupTable  = 23,
-	TEXTUREGROUP_Terrain_Heightmap = 24,
-	TEXTUREGROUP_Terrain_Weightmap = 25,
-	TEXTUREGROUP_ImageBasedReflection = 26,
-	TEXTUREGROUP_Bokeh             = 27,
-	TEXTUREGROUP_MAX               = 28
-};
-
-
-// Enum Engine.Texture.TextureMipGenSettings
-enum class TextureMipGenSettings
-{
-	TMGS_FromTextureGroup          = 0,
-	TMGS_SimpleAverage             = 1,
-	TMGS_Sharpen0                  = 2,
-	TMGS_Sharpen1                  = 3,
-	TMGS_Sharpen2                  = 4,
-	TMGS_Sharpen3                  = 5,
-	TMGS_Sharpen4                  = 6,
-	TMGS_Sharpen5                  = 7,
-	TMGS_Sharpen6                  = 8,
-	TMGS_Sharpen7                  = 9,
-	TMGS_Sharpen8                  = 10,
-	TMGS_Sharpen9                  = 11,
-	TMGS_Sharpen10                 = 12,
-	TMGS_NoMipmaps                 = 13,
-	TMGS_LeaveExistingMips         = 14,
-	TMGS_Blur1                     = 15,
-	TMGS_Blur2                     = 16,
-	TMGS_Blur3                     = 17,
-	TMGS_Blur4                     = 18,
-	TMGS_Blur5                     = 19,
-	TMGS_MAX                       = 20
-};
-
-
-// Enum Engine.Texture.ETextureMipCount
-enum class ETextureMipCount
-{
-	TMC_ResidentMips               = 0,
-	TMC_AllMips                    = 1,
-	TMC_AllMipsBiased              = 2,
-	TMC_MAX                        = 3
-};
-
-
-// Enum Engine.CloudSaveSystem.SaveDataVersionSupport
-enum class SaveDataVersionSupport
-{
-	SaveDataVersionSupportLessThenEqual = 0,
-	SaveDataVersionSupportEqual    = 1,
-	SaveDataVersionSupportAny      = 2,
-	SaveDataVersionSupport_MAX     = 3
-};
-
-
-// Enum Engine.CloudSaveSystem.SaveSlotOperationEnum
-enum class SaveSlotOperationEnum
-{
-	SSO_SET                        = 0,
-	SSO_GET                        = 1,
-	SSO_DELETE                     = 2,
-	SSO_MAX                        = 3
-};
-
-
-// Enum Engine.CloudStorageBase.ECloudStorageDelegate
-enum class ECloudStorageDelegate
-{
-	CSD_KeyValueReadComplete       = 0,
-	CSD_KeyValueWriteComplete      = 1,
-	CSD_ValueChanged               = 2,
-	CSD_DocumentQueryComplete      = 3,
-	CSD_DocumentReadComplete       = 4,
-	CSD_DocumentWriteComplete      = 5,
-	CSD_DocumentConflictDetected   = 6,
-	CSD_MAX                        = 7
-};
-
-
-// Enum Engine.UIRoot.EInputPlatformType
-enum class EInputPlatformType
-{
-	IPT_PC                         = 0,
-	IPT                            = 1,
-	IPT_PS3                        = 2,
-	IPT_PS4                        = 3,
-	IPT_XBOX_ONE                   = 4,
-	IPT_MAX                        = 5
-};
-
-
-// Enum Engine.Interaction.ETouchType
-enum class ETouchType
-{
-	Touch_Began                    = 0,
-	Touch_Moved                    = 1,
-	Touch_Stationary               = 2,
-	Touch_Ended                    = 3,
-	Touch_Cancelled                = 4,
-	Touch_MAX                      = 5
-};
-
-
-// Enum Engine.CoverGroup.ECoverGroupFillAction
-enum class ECoverGroupFillAction
-{
-	CGFA_Overwrite                 = 0,
-	CGFA_Add                       = 1,
-	CGFA_Remove                    = 2,
-	CGFA_Clear                     = 3,
-	CGFA_Cylinder                  = 4,
-	CGFA_MAX                       = 5
-};
-
-
-// Enum Engine.CoverLink.ECoverLocationDescription
-enum class ECoverLocationDescription
-{
-	CoverDesc_None                 = 0,
-	CoverDesc_InWindow             = 1,
-	CoverDesc_InDoorway            = 2,
-	CoverDesc_BehindCar            = 3,
-	CoverDesc_BehindTruck          = 4,
-	CoverDesc_OnTruck              = 5,
-	CoverDesc_BehindBarrier        = 6,
-	CoverDesc_BehindColumn         = 7,
-	CoverDesc_BehindCrate          = 8,
-	CoverDesc_BehindWall           = 9,
-	CoverDesc_BehindStatue         = 10,
-	CoverDesc_BehindSandbags       = 11,
-	CoverDesc_MAX                  = 12
-};
-
-
-// Enum Engine.CoverLink.ECoverType
-enum class ECoverType
-{
-	CT_None                        = 0,
-	CT_Standing                    = 1,
-	CT_MidLevel                    = 2,
-	CT_MAX                         = 3
-};
-
-
-// Enum Engine.CoverLink.ECoverAction
-enum class ECoverAction
-{
-	CA_Default                     = 0,
-	CA_BlindLeft                   = 1,
-	CA_BlindRight                  = 2,
-	CA_LeanLeft                    = 3,
-	CA_LeanRight                   = 4,
-	CA_PopUp                       = 5,
-	CA_BlindUp                     = 6,
-	CA_PeekLeft                    = 7,
-	CA_PeekRight                   = 8,
-	CA_PeekUp                      = 9,
-	CA_MAX                         = 10
-};
-
-
-// Enum Engine.CoverLink.ECoverDirection
-enum class ECoverDirection
-{
-	CD_Default                     = 0,
-	CD_Left                        = 1,
-	CD_Right                       = 2,
-	CD_Up                          = 3,
-	CD_MAX                         = 4
-};
-
-
-// Enum Engine.CoverLink.EFireLinkID
-enum class EFireLinkID
-{
-	FLI_FireLink                   = 0,
-	FLI_RejectedFireLink           = 1,
-	FLI_MAX                        = 2
-};
-
-
-// Enum Engine.StaticMeshComponent.ELightmapModificationFunction
-enum class ELightmapModificationFunction
-{
-	MLMF_Modulate                  = 0,
-	MLMF_ModulateAlpha             = 1,
-	MLMF_MAX                       = 2
-};
-
-
-// Enum Engine.DecalComponent.EFilterMode
-enum class EFilterMode
-{
-	FM_None                        = 0,
-	FM_Ignore                      = 1,
-	FM_Affect                      = 2,
-	FM_MAX                         = 3
-};
-
-
-// Enum Engine.DecalComponent.EDecalTransform
-enum class EDecalTransform
-{
-	DecalTransform_OwnerAbsolute   = 0,
-	DecalTransform_OwnerRelative   = 1,
-	DecalTransform_SpawnRelative   = 2,
-	DecalTransform_MAX             = 3
-};
-
-
-// Enum Engine.MaterialInterface.EMaterialUsage
-enum class EMaterialUsage
-{
-	MATUSAGE_SkeletalMesh          = 0,
-	MATUSAGE_FracturedMeshes       = 1,
-	MATUSAGE_ParticleSprites       = 2,
-	MATUSAGE_BeamTrails            = 3,
-	MATUSAGE_ParticleSubUV         = 4,
-	MATUSAGE_SpeedTree             = 5,
-	MATUSAGE_StaticLighting        = 6,
-	MATUSAGE_GammaCorrection       = 7,
-	MATUSAGE_LensFlare             = 8,
-	MATUSAGE_InstancedMeshParticles = 9,
-	MATUSAGE_FluidSurface          = 10,
-	MATUSAGE_Decals                = 11,
-	MATUSAGE_MaterialEffect        = 12,
-	MATUSAGE_MorphTargets          = 13,
-	MATUSAGE_FogVolumes            = 14,
-	MATUSAGE_RadialBlur            = 15,
-	MATUSAGE_InstancedMeshes       = 16,
-	MATUSAGE_SplineMesh            = 17,
-	MATUSAGE_ScreenDoorFade        = 18,
-	MATUSAGE_APEXMesh              = 19,
-	MATUSAGE_Terrain               = 20,
-	MATUSAGE_Landscape             = 21,
-	MATUSAGE_MobileLandscape       = 22,
-	MATUSAGE_Silhouettes           = 23,
-	MATUSAGE_MAX                   = 24
-};
-
-
-// Enum Engine.LightComponent.EShadowFilterQuality
-enum class EShadowFilterQuality
-{
-	SFQ_Low                        = 0,
-	SFQ_Medium                     = 1,
-	SFQ_High                       = 2,
-	SFQ_MAX                        = 3
-};
-
-
-// Enum Engine.LightComponent.EShadowProjectionTechnique
-enum class EShadowProjectionTechnique
-{
-	ShadowProjTech_Default         = 0,
-	ShadowProjTech_PCF             = 1,
-	ShadowProjTech_VSM             = 2,
-	ShadowProjTech_BPCF_Low        = 3,
-	ShadowProjTech_BPCF_Medium     = 4,
-	ShadowProjTech_BPCF_High       = 5,
-	ShadowProjTech_MAX             = 6
-};
-
-
-// Enum Engine.LightComponent.ELightShadowMode
-enum class ELightShadowMode
-{
-	LightShadow_Normal             = 0,
-	LightShadow_Modulate           = 1,
-	LightShadow_ModulateBetter     = 2,
-	LightShadow_MAX                = 3
-};
-
-
-// Enum Engine.LightComponent.ELightAffectsClassification
-enum class ELightAffectsClassification
-{
-	LAC_USER_SELECTED              = 0,
-	LAC_DYNAMIC_AFFECTING          = 1,
-	LAC_STATIC_AFFECTING           = 2,
-	LAC_DYNAMIC_AND_STATIC_AFFECTING = 3,
-	LAC_MAX                        = 4
-};
-
-
-// Enum Engine.DistributionFloatParameterBase.DistributionParamMode
-enum class DistributionParamMode
-{
-	DPM_Normal                     = 0,
-	DPM_Abs                        = 1,
-	DPM_Direct                     = 2,
-	DPM_MAX                        = 3
-};
-
-
-// Enum Engine.DOFAndBloomEffect.EDOFQuality
-enum class EDOFQuality
-{
-	DOFQuality_Low                 = 0,
-	DOFQuality_Medium              = 1,
-	DOFQuality_High                = 2,
-	DOFQuality_MAX                 = 3
-};
-
-
-// Enum Engine.DOFAndBloomEffect.EDOFType
-enum class EDOFType
-{
-	DOFType_SimpleDOF              = 0,
-	DOFType_ReferenceDOF           = 1,
-	DOFType_BokehDOF               = 2,
-	DOFType_MAX                    = 3
-};
-
-
-// Enum Engine.DoorMarker.EDoorType
-enum class EDoorType
-{
-	DOOR_Shoot                     = 0,
-	DOOR_Touch                     = 1,
-	DOOR_MAX                       = 2
-};
-
-
-// Enum Engine.ParticleSystemComponent.EParticleSysParamType
-enum class EParticleSysParamType
-{
-	PSPT_None                      = 0,
-	PSPT_Scalar                    = 1,
-	PSPT_ScalarRand                = 2,
-	PSPT_Vector                    = 3,
-	PSPT_VectorRand                = 4,
-	PSPT_Color                     = 5,
-	PSPT_Actor                     = 6,
-	PSPT_Material                  = 7,
-	PSPT_Mesh                      = 8,
-	PSPT_MAX                       = 9
-};
-
-
-// Enum Engine.ParticleSystemComponent.ParticleReplayState
-enum class ParticleReplayState
-{
-	PRS_Disabled                   = 0,
-	PRS_Capturing                  = 1,
-	PRS_Replaying                  = 2,
-	PRS_MAX                        = 3
-};
-
-
-// Enum Engine.ParticleSystemComponent.EParticleEventType
-enum class EParticleEventType
-{
-	EPET_Any                       = 0,
-	EPET_Spawn                     = 1,
-	EPET_Death                     = 2,
-	EPET_Collision                 = 3,
-	EPET_WorldAttractorCollision   = 4,
-	EPET_Kismet                    = 5,
-	EPET_MAX                       = 6
-};
-
-
-// Enum Engine.ParticleSystem.ParticleSystemLODMethod
-enum class ParticleSystemLODMethod
-{
-	PARTICLESYSTEMLODMETHOD_Automatic = 0,
-	PARTICLESYSTEMLODMETHOD_DirectSet = 1,
-	PARTICLESYSTEMLODMETHOD_ActivateAutomatic = 2,
-	PARTICLESYSTEMLODMETHOD_MAX    = 3
-};
-
-
-// Enum Engine.Engine.EBasicLoadResult
-enum class EBasicLoadResult
-{
-	BasicLoadResult_Pending        = 0,
-	BasicLoadResult_Success        = 1,
-	BasicLoadResult_FileNotFound   = 2,
-	BasicLoadResult_WrongVersion   = 3,
-	BasicLoadResult_FileCorrupt    = 4,
-	BasicLoadResult_MountCorrupt   = 5,
-	BasicLoadResult_UserNotSignedIn = 6,
-	BasicLoadResult_Error          = 7,
-	BasicLoadResult_MAX            = 8
-};
-
-
-// Enum Engine.Engine.ETransitionType
-enum class ETransitionType
-{
-	TT_None                        = 0,
-	TT_Paused                      = 1,
-	TT_Loading                     = 2,
-	TT_Saving                      = 3,
-	TT_Connecting                  = 4,
-	TT_Precaching                  = 5,
-	TT_MAX                         = 6
-};
-
-
-// Enum Engine.FacebookIntegration.EFacebookIntegrationDelegate
-enum class EFacebookIntegrationDelegate
-{
-	FID_AuthorizationComplete      = 0,
-	FID_FacebookRequestComplete    = 1,
-	FID_DialogComplete             = 2,
-	FID_FriendsListComplete        = 3,
-	FID_MAX                        = 4
-};
-
-
-// Enum Engine.FileWriter.FWFileType
-enum class FWFileType
-{
-	FWFT_Log                       = 0,
-	FWFT_Stats                     = 1,
-	FWFT_HTML                      = 2,
-	FWFT_User                      = 3,
-	FWFT_Debug                     = 4,
-	FWFT_MAX                       = 5
-};
-
-
-// Enum Engine.FluidInfluenceComponent.EInfluenceType
-enum class EInfluenceType
-{
-	Fluid_Flow                     = 0,
-	Fluid_Raindrops                = 1,
-	Fluid_Wave                     = 2,
-	Fluid_Sphere                   = 3,
-	Fluid_MAX                      = 4
-};
-
-
-// Enum Engine.FontImportOptions.EFontImportCharacterSet
-enum class EFontImportCharacterSet
-{
-	FontICS_Default                = 0,
-	FontICS_Ansi                   = 1,
-	FontICS_Symbol                 = 2,
-	FontICS_MAX                    = 3
-};
-
-
-// Enum Engine.ForceFeedbackWaveform.EWaveformFunction
-enum class EWaveformFunction
-{
-	WF_Constant                    = 0,
-	WF_LinearIncreasing            = 1,
-	WF_LinearDecreasing            = 2,
-	WF_Sin0to90                    = 3,
-	WF_Sin90to180                  = 4,
-	WF_Sin0to180                   = 5,
-	WF_Noise                       = 6,
-	WF_MAX                         = 7
-};
-
-
-// Enum Engine.WorldInfo.EHostMigrationProgress
-enum class EHostMigrationProgress
-{
-	HostMigration_None             = 0,
-	HostMigration_FindingNewHost   = 1,
-	HostMigration_MigratingAsHost  = 2,
-	HostMigration_MigratingAsClient = 3,
-	HostMigration_ClientTravel     = 4,
-	HostMigration_HostReadyToTravel = 5,
-	HostMigration_Failed           = 6,
-	HostMigration_MAX              = 7
-};
-
-
-// Enum Engine.WorldInfo.EConsoleType
-enum class EConsoleType
-{
-	CONSOLE_Any                    = 0,
-	CONSOLE_Xbox360                = 1,
-	CONSOLE_PS3                    = 2,
-	CONSOLE_Mobile                 = 3,
-	CONSOLE_IPhone                 = 4,
-	CONSOLE_Android                = 5,
-	CONSOLE_WiiU                   = 6,
-	CONSOLE_Flash                  = 7,
-	CONSOLE_Mobile_Retina          = 8,
-	CONSOLE_PC                     = 9,
-	CONSOLE_Kindle                 = 10,
-	CONSOLE_PS4                    = 11,
-	CONSOLE_Dingo                  = 12,
-	CONSOLE_MAX                    = 13
-};
-
-
-// Enum Engine.WorldInfo.EPitchTekTargetSize
-enum class EPitchTekTargetSize
-{
-	PTTS                           = 0,
-	PTTS01                         = 1,
-	PTTS02                         = 2,
-	PTTS_MAX                       = 3
-};
-
-
-// Enum Engine.WorldInfo.EPreferredLightmapType
-enum class EPreferredLightmapType
-{
-	EPLT_Default                   = 0,
-	EPLT_Directional               = 1,
-	EPLT_Simple                    = 2,
-	EPLT_MAX                       = 3
-};
-
-
-// Enum Engine.WorldInfo.EVisibilityAggressiveness
-enum class EVisibilityAggressiveness
-{
-	VIS_LeastAggressive            = 0,
-	VIS_ModeratelyAggressive       = 1,
-	VIS_MostAggressive             = 2,
-	VIS_Max                        = 3
-};
-
-
-// Enum Engine.WorldInfo.ENetMode
-enum class ENetMode
-{
-	NM_Standalone                  = 0,
-	NM_DedicatedServer             = 1,
-	NM_ListenServer                = 2,
-	NM_Client                      = 3,
-	NM_MAX                         = 4
-};
-
-
-// Enum Engine.GameEngine.EFullyLoadPackageType
-enum class EFullyLoadPackageType
-{
-	FULLYLOAD_Map                  = 0,
-	FULLYLOAD_Game_PreLoadClass    = 1,
-	FULLYLOAD_Game_PostLoadClass   = 2,
-	FULLYLOAD_Always               = 3,
-	FULLYLOAD_Mutator              = 4,
-	FULLYLOAD_MAX                  = 5
-};
-
-
-// Enum Engine.GameInfo.EStandbyType
-enum class EStandbyType
-{
-	STDBY_Rx                       = 0,
-	STDBY_Tx                       = 1,
-	STDBY_BadPing                  = 2,
-	STDBY_MAX                      = 3
-};
-
-
-// Enum Engine.GameplayEvents.EGameStatGroups
-enum class EGameStatGroups
-{
-	GSG_EngineStats                = 0,
-	GSG_Game                       = 1,
-	GSG_Team                       = 2,
-	GSG_Player                     = 3,
-	GSG_Weapon                     = 4,
-	GSG_Damage                     = 5,
-	GSG_Projectile                 = 6,
-	GSG_Pawn                       = 7,
-	GSG_GameSpecific               = 8,
-	GSG_Aggregate                  = 9,
-	GSG_MAX                        = 10
-};
-
-
-// Enum Engine.GameViewportClient.ESplitScreenType
-enum class ESplitScreenType
-{
-	eSST_NONE                      = 0,
-	eSST_2P_HORIZONTAL             = 1,
-	eSST_2P_VERTICAL               = 2,
-	eSST_3P_FAVOR_TOP              = 3,
-	eSST_3P_FAVOR_BOTTOM           = 4,
-	eSST_3P_FAVOR_SIDELEFT         = 5,
-	eSST_3P_FAVOR_SIDERIGHT        = 6,
-	eSST_4P                        = 7,
-	eSST_MAX                       = 8
-};
-
-
-// Enum Engine.GameViewportClient.ESafeZoneType
-enum class ESafeZoneType
-{
-	eSZ_TOP                        = 0,
-	eSZ_BOTTOM                     = 1,
-	eSZ_LEFT                       = 2,
-	eSZ_RIGHT                      = 3,
-	eSZ_MAX                        = 4
-};
-
-
-// Enum Engine.GameViewportClient.ESetMode
-enum class ESetMode
-{
-	SetMode_Toggle                 = 0,
-	SetMode_Enable                 = 1,
-	SetMode_Disable                = 2,
-	SetMode_MAX                    = 3
-};
-
-
-// Enum Engine.InAppMessageBase.EInAppMessageInterfaceDelegate
-enum class EInAppMessageInterfaceDelegate
-{
-	IAMD_InAppSMSUIComplete        = 0,
-	IAMD_InAppEmailComplete        = 1,
-	IAMD_MAX                       = 2
-};
-
-
-// Enum Engine.InGameAdManager.EAdManagerDelegate
-enum class EAdManagerDelegate
-{
-	AMD_ClickedBanner              = 0,
-	AMD_UserClosedAd               = 1,
-	AMD_MAX                        = 2
-};
-
-
-// Enum Engine.InstancedFoliageSettings.FoliageCullOption
-enum class FoliageCullOption
-{
-	FOLIAGECULL_Cull               = 0,
-	FOLIAGECULL_ScaleZ             = 1,
-	FOLIAGECULL_ScaleXYZ           = 2,
-	FOLIAGECULL_TranslateZ         = 3,
-	FOLIAGECULL_MAX                = 4
-};
-
-
-// Enum Engine.Interface_NavMeshPathObstacle.EEdgeHandlingStatus
-enum class EEdgeHandlingStatus
-{
-	EHS_AddedBothDirs              = 0,
-	EHS_Added0to1                  = 1,
-	EHS_Added1to0                  = 2,
-	EHS_AddedNone                  = 3,
-	EHS_MAX                        = 4
-};
-
-
-// Enum Engine.InterpTrack.ETrackActiveCondition
-enum class ETrackActiveCondition
-{
-	ETAC_Always                    = 0,
-	ETAC_GoreEnabled               = 1,
-	ETAC_GoreDisabled              = 2,
-	ETAC_MAX                       = 3
-};
-
-
-// Enum Engine.InterpTrackHeadTracking.EHeadTrackingAction
-enum class EHeadTrackingAction
-{
-	EHTA_DisableHeadTracking       = 0,
-	EHTA_EnableHeadTracking        = 1,
-	EHTA_MAX                       = 2
-};
-
-
-// Enum Engine.InterpTrackToggle.ETrackToggleAction
-enum class ETrackToggleAction
-{
-	ETTA_Off                       = 0,
-	ETTA_On                        = 1,
-	ETTA_Toggle                    = 2,
-	ETTA_Trigger                   = 3,
-	ETTA_MAX                       = 4
-};
-
-
-// Enum Engine.InterpTrackVisibility.EVisibilityTrackCondition
-enum class EVisibilityTrackCondition
-{
-	EVTC_Always                    = 0,
-	EVTC_GoreEnabled               = 1,
-	EVTC_GoreDisabled              = 2,
-	EVTC_MAX                       = 3
-};
-
-
-// Enum Engine.InterpTrackVisibility.EVisibilityTrackAction
-enum class EVisibilityTrackAction
-{
-	EVTA_Hide                      = 0,
-	EVTA_Show                      = 1,
-	EVTA_Toggle                    = 2,
-	EVTA_MAX                       = 3
-};
-
-
-// Enum Engine.InterpTrackMove.EInterpTrackMoveRotMode
-enum class EInterpTrackMoveRotMode
-{
-	IMR_Keyframed                  = 0,
-	IMR_LookAtGroup                = 1,
-	IMR_Ignore                     = 2,
-	IMR_MAX                        = 3
-};
-
-
-// Enum Engine.InterpTrackMove.EInterpTrackMoveFrame
-enum class EInterpTrackMoveFrame
-{
-	IMF_World                      = 0,
-	IMF_RelativeToInitial          = 1,
-	IMF_MAX                        = 2
-};
-
-
-// Enum Engine.InterpTrackMoveAxis.EInterpMoveAxis
-enum class EInterpMoveAxis
-{
-	AXIS_TranslationX              = 0,
-	AXIS_TranslationY              = 1,
-	AXIS_TranslationZ              = 2,
-	AXIS_RotationX                 = 3,
-	AXIS_RotationY                 = 4,
-	AXIS_RotationZ                 = 5,
-	AXIS_MAX                       = 6
-};
-
-
-// Enum Engine.Landscape.ELandscapeSetupErrors
-enum class ELandscapeSetupErrors
-{
-	LSE_None                       = 0,
-	LSE_NoLandscapeInfo            = 1,
-	LSE_CollsionXY                 = 2,
-	LSE_NoLayerInfo                = 3,
-	LSE_MAX                        = 4
-};
-
-
-// Enum Engine.LandscapeGizmoActiveActor.ELandscapeGizmoType
-enum class ELandscapeGizmoType
-{
-	LGT_None                       = 0,
-	LGT_Height                     = 1,
-	LGT_Weight                     = 2,
-	LGT_MAX                        = 3
-};
-
-
-// Enum Engine.LevelGridVolume.LevelGridCellShape
-enum class LevelGridCellShape
-{
-	LGCS_Box                       = 0,
-	LGCS_Hex                       = 1,
-	LGCS_MAX                       = 2
-};
-
-
-// Enum Engine.LevelStreamingVolume.EStreamingVolumeUsage
-enum class EStreamingVolumeUsage
-{
-	SVB_Loading                    = 0,
-	SVB_LoadingAndVisibility       = 1,
-	SVB_VisibilityBlockingOnLoad   = 2,
-	SVB_BlockingOnLoad             = 3,
-	SVB_LoadingNotVisible          = 4,
-	SVB_MAX                        = 5
-};
-
-
-// Enum Engine.MaterialExpressionAntialiasedTextureMask.ETextureColorChannel
-enum class ETextureColorChannel
-{
-	TCC_Red                        = 0,
-	TCC_Green                      = 1,
-	TCC_Blue                       = 2,
-	TCC_Alpha                      = 3,
-	TCC_MAX                        = 4
-};
-
-
-// Enum Engine.MaterialExpressionCustom.ECustomMaterialOutputType
-enum class ECustomMaterialOutputType
-{
-	CMOT_Float1                    = 0,
-	CMOT_Float2                    = 1,
-	CMOT_Float3                    = 2,
-	CMOT_Float4                    = 3,
-	CMOT_MAX                       = 4
-};
-
-
-// Enum Engine.MaterialExpressionDepthOfFieldFunction.EDepthOfFieldFunctionValue
-enum class EDepthOfFieldFunctionValue
-{
-	TDOF_NearAndFarMask            = 0,
-	TDOF_NearMask                  = 1,
-	TDOF_FarMask                   = 2,
-	TDOF_MAX                       = 3
-};
-
-
-// Enum Engine.MaterialExpressionFunctionInput.EFunctionInputType
-enum class EFunctionInputType
-{
-	FunctionInput_Scalar           = 0,
-	FunctionInput_Vector2          = 1,
-	FunctionInput_Vector3          = 2,
-	FunctionInput_Vector4          = 3,
-	FunctionInput_Texture2D        = 4,
-	FunctionInput_TextureCube      = 5,
-	FunctionInput_StaticBool       = 6,
-	FunctionInput_MAX              = 7
-};
-
-
-// Enum Engine.MaterialExpressionLandscapeLayerBlend.ELandscapeLayerBlendType
-enum class ELandscapeLayerBlendType
-{
-	LB_AlphaBlend                  = 0,
-	LB_HeightBlend                 = 1,
-	LB_MAX                         = 2
-};
-
-
-// Enum Engine.MaterialExpressionSceneTexture.ESceneTextureType
-enum class ESceneTextureType
-{
-	SceneTex_Lighting              = 0,
-	SceneTex_MAX                   = 1
-};
-
-
-// Enum Engine.MaterialExpressionTerrainLayerCoords.ETerrainCoordMappingType
-enum class ETerrainCoordMappingType
-{
-	TCMT_Auto                      = 0,
-	TCMT_XY                        = 1,
-	TCMT_XZ                        = 2,
-	TCMT_YZ                        = 3,
-	TCMT_MAX                       = 4
-};
-
-
-// Enum Engine.MaterialExpressionTransform.EMaterialVectorCoordTransform
-enum class EMaterialVectorCoordTransform
-{
-	TRANSFORM_World                = 0,
-	TRANSFORM_View                 = 1,
-	TRANSFORM_Local                = 2,
-	TRANSFORM_Tangent              = 3,
-	TRANSFORM_MAX                  = 4
-};
-
-
-// Enum Engine.MaterialExpressionTransform.EMaterialVectorCoordTransformSource
-enum class EMaterialVectorCoordTransformSource
-{
-	TRANSFORMSOURCE_World          = 0,
-	TRANSFORMSOURCE_Local          = 1,
-	TRANSFORMSOURCE_Tangent        = 2,
-	TRANSFORMSOURCE_View           = 3,
-	TRANSFORMSOURCE_MAX            = 4
-};
-
-
-// Enum Engine.MaterialExpressionTransformPosition.EMaterialPositionTransform
-enum class EMaterialPositionTransform
-{
-	TRANSFORMPOS_World             = 0,
-	TRANSFORMPOS_MAX               = 1
-};
-
-
-// Enum Engine.MaterialExpressionTransformPosition.EMaterialPositionTransformSource
-enum class EMaterialPositionTransformSource
-{
-	TRANSFORMPOSSOURCE_Local       = 0,
-	TRANSFORMPOSSOURCE_PostProjection = 1,
-	TRANSFORMPOSSOURCE_MAX         = 2
-};
-
-
-// Enum Engine.MicroTransactionBase.EMicroTransactionDelegate
-enum class EMicroTransactionDelegate
-{
-	MTD_PurchaseQueryComplete      = 0,
-	MTD_PurchaseComplete           = 1,
-	MTD_MAX                        = 2
-};
-
-
-// Enum Engine.MicroTransactionBase.EMicroTransactionResult
-enum class EMicroTransactionResult
-{
-	MTR_Succeeded                  = 0,
-	MTR_Failed                     = 1,
-	MTR_Canceled                   = 2,
-	MTR_RestoredFromServer         = 3,
-	MTR_MAX                        = 4
-};
-
-
-// Enum Engine.NxForceFieldGeneric.FFG_ForceFieldCoordinates
-enum class FFG_ForceFieldCoordinates
-{
-	FFG_CARTESIAN                  = 0,
-	FFG_SPHERICAL                  = 1,
-	FFG_CYLINDRICAL                = 2,
-	FFG_TOROIDAL                   = 3,
-	FFG_MAX                        = 4
-};
-
-
-// Enum Engine.NxGenericForceFieldBrush.FFB_ForceFieldCoordinates
-enum class FFB_ForceFieldCoordinates
-{
-	FFB_CARTESIAN                  = 0,
-	FFB_SPHERICAL                  = 1,
-	FFB_CYLINDRICAL                = 2,
-	FFB_TOROIDAL                   = 3,
-	FFB_MAX                        = 4
-};
-
-
-// Enum Engine.OnlineLobbySettings.ELobbyKickReason
-enum class ELobbyKickReason
-{
-	LKR_Unknown                    = 0,
-	LKR_Kicked                     = 1,
-	LKR_Full                       = 2,
-	LKR_Matchmaking                = 3,
-	LKR_InGame                     = 4,
-	LKR_LeaveAction                = 5,
-	LKR_OwnerDisappeared           = 6,
-	LKR_ConnectionError            = 7,
-	LKR_SignedOut                  = 8,
-	LKR_MAX                        = 9
-};
-
-
-// Enum Engine.OnlineLobbySettings.ELobbyVisibility
-enum class ELobbyVisibility
-{
-	LV_Public                      = 0,
-	LV_Friends                     = 1,
-	LV_Private                     = 2,
-	LV_Invisible                   = 3,
-	LV_MAX                         = 4
-};
-
-
-// Enum Engine.OnlineLobbySettings.ELobbyDistance
-enum class ELobbyDistance
-{
-	LD_Best                        = 0,
-	LD_Close                       = 1,
-	LD_Far                         = 2,
-	LD_Any                         = 3,
-	LD_MAX                         = 4
-};
-
-
-// Enum Engine.OnlinePlayerStorage.EOnlineProfilePropertyOwner
-enum class EOnlineProfilePropertyOwner
-{
-	OPPO_None                      = 0,
-	OPPO_OnlineService             = 1,
-	OPPO_Game                      = 2,
-	OPPO_MAX                       = 3
-};
-
-
-// Enum Engine.OnlinePlayerStorage.EOnlinePlayerStorageAsyncState
-enum class EOnlinePlayerStorageAsyncState
-{
-	OPAS_NotStarted                = 0,
-	OPAS_Read                      = 1,
-	OPAS_Write                     = 2,
-	OPAS_Finished                  = 3,
-	OPAS_MAX                       = 4
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileSettingID
-enum class EProfileSettingID
-{
-	PSI_Unknown                    = 0,
-	PSI_ControllerVibration        = 1,
-	PSI_YInversion                 = 2,
-	PSI_GamerCred                  = 3,
-	PSI_GamerRep                   = 4,
-	PSI_VoiceMuted                 = 5,
-	PSI_VoiceThruSpeakers          = 6,
-	PSI_VoiceVolume                = 7,
-	PSI_GamerPictureKey            = 8,
-	PSI_GamerMotto                 = 9,
-	PSI_GamerTitlesPlayed          = 10,
-	PSI_GamerAchievementsEarned    = 11,
-	PSI_GameDifficulty             = 12,
-	PSI_ControllerSensitivity      = 13,
-	PSI_PreferredColor1            = 14,
-	PSI_PreferredColor2            = 15,
-	PSI_AutoAim                    = 16,
-	PSI_AutoCenter                 = 17,
-	PSI_MovementControl            = 18,
-	PSI_RaceTransmission           = 19,
-	PSI_RaceCameraLocation         = 20,
-	PSI_RaceBrakeControl           = 21,
-	PSI_RaceAcceleratorControl     = 22,
-	PSI_GameCredEarned             = 23,
-	PSI_GameAchievementsEarned     = 24,
-	PSI_EndLiveIds                 = 25,
-	PSI_ProfileVersionNum          = 26,
-	PSI_ProfileSaveCount           = 27,
-	PSI_MAX                        = 28
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileDifficultyOptions
-enum class EProfileDifficultyOptions
-{
-	PDO_Normal                     = 0,
-	PDO_Easy                       = 1,
-	PDO_Hard                       = 2,
-	PDO_MAX                        = 3
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileControllerSensitivityOptions
-enum class EProfileControllerSensitivityOptions
-{
-	PCSO_Medium                    = 0,
-	PCSO_Low                       = 1,
-	PCSO_High                      = 2,
-	PCSO_MAX                       = 3
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfilePreferredColorOptions
-enum class EProfilePreferredColorOptions
-{
-	PPCO_None                      = 0,
-	PPCO_Black                     = 1,
-	PPCO_White                     = 2,
-	PPCO_Yellow                    = 3,
-	PPCO_Orange                    = 4,
-	PPCO_Pink                      = 5,
-	PPCO_Red                       = 6,
-	PPCO_Purple                    = 7,
-	PPCO_Blue                      = 8,
-	PPCO_Green                     = 9,
-	PPCO_Brown                     = 10,
-	PPCO_Silver                    = 11,
-	PPCO_MAX                       = 12
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileAutoAimOptions
-enum class EProfileAutoAimOptions
-{
-	PAAO_Off                       = 0,
-	PAAO_On                        = 1,
-	PAAO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileAutoCenterOptions
-enum class EProfileAutoCenterOptions
-{
-	PACO_Off                       = 0,
-	PACO_On                        = 1,
-	PACO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileMovementControlOptions
-enum class EProfileMovementControlOptions
-{
-	PMCO_L_Thumbstick              = 0,
-	PMCO_R_Thumbstick              = 1,
-	PMCO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileRaceTransmissionOptions
-enum class EProfileRaceTransmissionOptions
-{
-	PRTO_Auto                      = 0,
-	PRTO_Manual                    = 1,
-	PRTO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileRaceCameraLocationOptions
-enum class EProfileRaceCameraLocationOptions
-{
-	PRCLO_Behind                   = 0,
-	PRCLO_Front                    = 1,
-	PRCLO_Inside                   = 2,
-	PRCLO_MAX                      = 3
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileRaceBrakeControlOptions
-enum class EProfileRaceBrakeControlOptions
-{
-	PRBCO_Trigger                  = 0,
-	PRBCO_Button                   = 1,
-	PRBCO_MAX                      = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileRaceAcceleratorControlOptions
-enum class EProfileRaceAcceleratorControlOptions
-{
-	PRACO_Trigger                  = 0,
-	PRACO_Button                   = 1,
-	PRACO_MAX                      = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileYInversionOptions
-enum class EProfileYInversionOptions
-{
-	PYIO_Off                       = 0,
-	PYIO_On                        = 1,
-	PYIO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileXInversionOptions
-enum class EProfileXInversionOptions
-{
-	PXIO_Off                       = 0,
-	PXIO_On                        = 1,
-	PXIO_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileOmniDirEvadeOptions
-enum class EProfileOmniDirEvadeOptions
-{
-	PODI_Off                       = 0,
-	PODI_On                        = 1,
-	PODI_MAX                       = 2
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileControllerVibrationToggleOptions
-enum class EProfileControllerVibrationToggleOptions
-{
-	PCVTO_Off                      = 0,
-	PCVTO_IgnoreThis               = 1,
-	PCVTO_IgnoreThis2              = 2,
-	PCVTO_On                       = 3,
-	PCVTO_MAX                      = 4
-};
-
-
-// Enum Engine.OnlineProfileSettings.EProfileVoiceThruSpeakersOptions
-enum class EProfileVoiceThruSpeakersOptions
-{
-	PVTSO_Off                      = 0,
-	PVTSO_On                       = 1,
-	PVTSO_Both                     = 2,
-	PVTSO_MAX                      = 3
-};
-
-
-// Enum Engine.ParticleEmitter.EEmitterRenderMode
-enum class EEmitterRenderMode
-{
-	ERM_Normal                     = 0,
-	ERM_Point                      = 1,
-	ERM_Cross                      = 2,
-	ERM_None                       = 3,
-	ERM_MAX                        = 4
-};
-
-
-// Enum Engine.ParticleEmitter.EParticleSubUVInterpMethod
-enum class EParticleSubUVInterpMethod
-{
-	PSUVIM_None                    = 0,
-	PSUVIM_Linear                  = 1,
-	PSUVIM_Linear_Blend            = 2,
-	PSUVIM_Random                  = 3,
-	PSUVIM_Random_Blend            = 4,
-	PSUVIM_MAX                     = 5
-};
-
-
-// Enum Engine.ParticleEmitter.EParticleBurstMethod
-enum class EParticleBurstMethod
-{
-	EPBM_Instant                   = 0,
-	EPBM_Interpolated              = 1,
-	EPBM_MAX                       = 2
-};
-
-
-// Enum Engine.ParticleModule.EModuleType
-enum class EModuleType
-{
-	EPMT_General                   = 0,
-	EPMT_TypeData                  = 1,
-	EPMT_Beam                      = 2,
-	EPMT_Trail                     = 3,
-	EPMT_Spawn                     = 4,
-	EPMT_Required                  = 5,
-	EPMT_Event                     = 6,
-	EPMT_MAX                       = 7
-};
-
-
-// Enum Engine.ParticleModule.EParticleSourceSelectionMethod
-enum class EParticleSourceSelectionMethod
-{
-	EPSSM_Random                   = 0,
-	EPSSM_Sequential               = 1,
-	EPSSM_MAX                      = 2
-};
-
-
-// Enum Engine.ParticleModuleAttractorBoneSocket.EBoneSocketAttractorFalloffType
-enum class EBoneSocketAttractorFalloffType
-{
-	BSFOFF_Constant                = 0,
-	BSFOFF_Linear                  = 1,
-	BSFOFF_Exponent                = 2,
-	BSFOFF_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleModuleAttractorBoneSocket.ELocationBoneSocketDestSelectionMethod
-enum class ELocationBoneSocketDestSelectionMethod
-{
-	BONESOCKETDESTSEL_Sequential   = 0,
-	BONESOCKETDESTSEL_Random       = 1,
-	BONESOCKETDESTSEL_RandomExhaustive = 2,
-	BONESOCKETDESTSEL_BlendAll     = 3,
-	BONESOCKETDESTSEL_MAX          = 4
-};
-
-
-// Enum Engine.ParticleModuleAttractorBoneSocket.ELocationBoneSocketDestination
-enum class ELocationBoneSocketDestination
-{
-	BONESOCKETDEST_Bones           = 0,
-	BONESOCKETDEST_Sockets         = 1,
-	BONESOCKETDEST_MAX             = 2
-};
-
-
-// Enum Engine.ParticleModuleAttractorParticle.EAttractorParticleSelectionMethod
-enum class EAttractorParticleSelectionMethod
-{
-	EAPSM_Random                   = 0,
-	EAPSM_Sequential               = 1,
-	EAPSM_MAX                      = 2
-};
-
-
-// Enum Engine.ParticleModuleAttractorSkelVertSurface.EVertSurfaceAttractorFalloffType
-enum class EVertSurfaceAttractorFalloffType
-{
-	VSFOFF_Constant                = 0,
-	VSFOFF_Linear                  = 1,
-	VSFOFF_Exponent                = 2,
-	VSFOFF_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleModuleAttractorSkelVertSurface.EAttractorSkelVertSurfaceDestination
-enum class EAttractorSkelVertSurfaceDestination
-{
-	VERTSURFACEDEST_Vert           = 0,
-	VERTSURFACEDEST_Surface        = 1,
-	VERTSURFACEDEST_MAX            = 2
-};
-
-
-// Enum Engine.ParticleModuleBeamBase.Beam2SourceTargetMethod
-enum class Beam2SourceTargetMethod
-{
-	PEB2STM_Default                = 0,
-	PEB2STM_UserSet                = 1,
-	PEB2STM_Emitter                = 2,
-	PEB2STM_Particle               = 3,
-	PEB2STM_Actor                  = 4,
-	PEB2STM_MAX                    = 5
-};
-
-
-// Enum Engine.ParticleModuleBeamBase.Beam2SourceTargetTangentMethod
-enum class Beam2SourceTargetTangentMethod
-{
-	PEB2STTM_Direct                = 0,
-	PEB2STTM_UserSet               = 1,
-	PEB2STTM_Distribution          = 2,
-	PEB2STTM_Emitter               = 3,
-	PEB2STTM_MAX                   = 4
-};
-
-
-// Enum Engine.ParticleModuleBeamModifier.BeamModifierType
-enum class BeamModifierType
-{
-	PEB2MT_Source                  = 0,
-	PEB2MT_Target                  = 1,
-	PEB2MT_MAX                     = 2
-};
-
-
-// Enum Engine.ParticleModuleCameraOffset.EParticleCameraOffsetUpdateMethod
-enum class EParticleCameraOffsetUpdateMethod
-{
-	EPCOUM_DirectSet               = 0,
-	EPCOUM_Additive                = 1,
-	EPCOUM_Scalar                  = 2,
-	EPCOUM_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleModuleCollisionBase.EParticleCollisionComplete
-enum class EParticleCollisionComplete
-{
-	EPCC_Kill                      = 0,
-	EPCC_Freeze                    = 1,
-	EPCC_HaltCollisions            = 2,
-	EPCC_FreezeTranslation         = 3,
-	EPCC_FreezeRotation            = 4,
-	EPCC_FreezeMovement            = 5,
-	EPCC_MAX                       = 6
-};
-
-
-// Enum Engine.ParticleModuleCollision.ParticleAttractorActionType
-enum class ParticleAttractorActionType
-{
-	PAAT_None                      = 0,
-	PAAT_Destroy                   = 1,
-	PAAT_Freeze                    = 2,
-	PAAT_Event                     = 3,
-	PAAT_MAX                       = 4
-};
-
-
-// Enum Engine.ParticleModuleLocationBoneSocket.ELocationBoneSocketSource
-enum class ELocationBoneSocketSource
-{
-	BONESOCKETSOURCE_Bones         = 0,
-	BONESOCKETSOURCE_Sockets       = 1,
-	BONESOCKETSOURCE_MAX           = 2
-};
-
-
-// Enum Engine.ParticleModuleLocationBoneSocket.ELocationBoneSocketSelectionMethod
-enum class ELocationBoneSocketSelectionMethod
-{
-	BONESOCKETSEL_Sequential       = 0,
-	BONESOCKETSEL_Random           = 1,
-	BONESOCKETSEL_RandomExhaustive = 2,
-	BONESOCKETSEL_MAX              = 3
-};
-
-
-// Enum Engine.ParticleModuleLocationEmitter.ELocationEmitterSelectionMethod
-enum class ELocationEmitterSelectionMethod
-{
-	ELESM_Random                   = 0,
-	ELESM_Sequential               = 1,
-	ELESM_MAX                      = 2
-};
-
-
-// Enum Engine.ParticleModuleLocationPrimitiveCylinder.CylinderHeightAxis
-enum class CylinderHeightAxis
-{
-	PMLPC_HEIGHTAXIS_X             = 0,
-	PMLPC_HEIGHTAXIS_Y             = 1,
-	PMLPC_HEIGHTAXIS_Z             = 2,
-	PMLPC_HEIGHTAXIS_MAX           = 3
-};
-
-
-// Enum Engine.ParticleModuleLocationSkelVertSurface.ELocationSkelVertSurfaceSource
-enum class ELocationSkelVertSurfaceSource
-{
-	VERTSURFACESOURCE_Vert         = 0,
-	VERTSURFACESOURCE_Surface      = 1,
-	VERTSURFACESOURCE_MAX          = 2
-};
-
-
-// Enum Engine.ParticleModuleLocationStaticVertSurface.ELocationStaticVertSurfaceSource
-enum class ELocationStaticVertSurfaceSource
-{
-	VERTSTATICSURFACESOURCE_Vert   = 0,
-	VERTSTATICSURFACESOURCE_Surface = 1,
-	VERTSTATICSURFACESOURCE_MAX    = 2
-};
-
-
-// Enum Engine.ParticleModuleOrbit.EOrbitChainMode
-enum class EOrbitChainMode
-{
-	EOChainMode_Add                = 0,
-	EOChainMode_Scale              = 1,
-	EOChainMode_Link               = 2,
-	EOChainMode_MAX                = 3
-};
-
-
-// Enum Engine.ParticleModuleOrientationAxisLock.EParticleAxisLock
-enum class EParticleAxisLock
-{
-	EPAL_NONE                      = 0,
-	EPAL_X                         = 1,
-	EPAL_Y                         = 2,
-	EPAL_Z                         = 3,
-	EPAL_NEGATIVE_X                = 4,
-	EPAL_NEGATIVE_Y                = 5,
-	EPAL_NEGATIVE_Z                = 6,
-	EPAL_ROTATE_X                  = 7,
-	EPAL_ROTATE_Y                  = 8,
-	EPAL_ROTATE_Z                  = 9,
-	EPAL_MAX                       = 10
-};
-
-
-// Enum Engine.ParticleModuleParameterDynamic.EEmitterDynamicParameterValue
-enum class EEmitterDynamicParameterValue
-{
-	EDPV_UserSet                   = 0,
-	EDPV_VelocityX                 = 1,
-	EDPV_VelocityY                 = 2,
-	EDPV_VelocityZ                 = 3,
-	EDPV_VelocityMag               = 4,
-	EDPV_MAX                       = 5
-};
-
-
-// Enum Engine.ParticleModulePhysicsVolumes.EParticleLevelInfluenceType
-enum class EParticleLevelInfluenceType
-{
-	LIT_Never                      = 0,
-	LIT_OutsidePhysicsVolumes      = 1,
-	LIT_Always                     = 2,
-	LIT_MAX                        = 3
-};
-
-
-// Enum Engine.ParticleSpriteEmitter.EParticleScreenAlignment
-enum class EParticleScreenAlignment
-{
-	PSA_Square                     = 0,
-	PSA_Rectangle                  = 1,
-	PSA_Velocity                   = 2,
-	PSA_TypeSpecific               = 3,
-	PSA_MAX                        = 4
-};
-
-
-// Enum Engine.ParticleModuleRequired.EEmitterNormalsMode
-enum class EEmitterNormalsMode
-{
-	ENM_CameraFacing               = 0,
-	ENM_Spherical                  = 1,
-	ENM_Cylindrical                = 2,
-	ENM_MAX                        = 3
-};
-
-
-// Enum Engine.ParticleModuleRequired.EParticleSortMode
-enum class EParticleSortMode
-{
-	PSORTMODE_None                 = 0,
-	PSORTMODE_ViewProjDepth        = 1,
-	PSORTMODE_DistanceToView       = 2,
-	PSORTMODE_Age_OldestFirst      = 3,
-	PSORTMODE_Age_NewestFirst      = 4,
-	PSORTMODE_MAX                  = 5
-};
-
-
-// Enum Engine.ParticleModuleTrailSource.ETrail2SourceMethod
-enum class ETrail2SourceMethod
-{
-	PET2SRCM_Default               = 0,
-	PET2SRCM_Particle              = 1,
-	PET2SRCM_Actor                 = 2,
-	PET2SRCM_MAX                   = 3
-};
-
-
-// Enum Engine.ParticleModuleTrailSpawn.ETrail2SpawnMethod
-enum class ETrail2SpawnMethod
-{
-	PET2SM_Emitter                 = 0,
-	PET2SM_Velocity                = 1,
-	PET2SM_Distance                = 2,
-	PET2SM_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleModuleTrailTaper.ETrailTaperMethod
-enum class ETrailTaperMethod
-{
-	PETTM_None                     = 0,
-	PETTM_Full                     = 1,
-	PETTM_Partial                  = 2,
-	PETTM_MAX                      = 3
-};
-
-
-// Enum Engine.ParticleModuleTypeDataBeam.EBeamMethod
-enum class EBeamMethod
-{
-	PEBM_Distance                  = 0,
-	PEBM_EndPoints                 = 1,
-	PEBM_EndPoints_Interpolated    = 2,
-	PEBM_UserSet_EndPoints         = 3,
-	PEBM_UserSet_EndPoints_Interpolated = 4,
-	PEBM_MAX                       = 5
-};
-
-
-// Enum Engine.ParticleModuleTypeDataBeam.EBeamEndPointMethod
-enum class EBeamEndPointMethod
-{
-	PEBEPM_Calculated              = 0,
-	PEBEPM_Distribution            = 1,
-	PEBEPM_Distribution_Constant   = 2,
-	PEBEPM_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleModuleTypeDataBeam2.EBeam2Method
-enum class EBeam2Method
-{
-	PEB2M_Distance                 = 0,
-	PEB2M_Target                   = 1,
-	PEB2M_Branch                   = 2,
-	PEB2M_MAX                      = 3
-};
-
-
-// Enum Engine.ParticleModuleTypeDataBeam2.EBeamTaperMethod
-enum class EBeamTaperMethod
-{
-	PEBTM_None                     = 0,
-	PEBTM_Full                     = 1,
-	PEBTM_Partial                  = 2,
-	PEBTM_MAX                      = 3
-};
-
-
-// Enum Engine.ParticleModuleTypeDataMesh.EMeshCameraFacingOptions
-enum class EMeshCameraFacingOptions
-{
-	XAxisFacing_NoUp               = 0,
-	XAxisFacing_ZUp                = 1,
-	XAxisFacing_NegativeZUp        = 2,
-	XAxisFacing_YUp                = 3,
-	XAxisFacing_NegativeYUp        = 4,
-	LockedAxis_ZAxisFacing         = 5,
-	LockedAxis_NegativeZAxisFacing = 6,
-	LockedAxis_YAxisFacing         = 7,
-	LockedAxis_NegativeYAxisFacing = 8,
-	VelocityAligned_ZAxisFacing    = 9,
-	VelocityAligned_NegativeZAxisFacing = 10,
-	VelocityAligned_YAxisFacing    = 11,
-	VelocityAligned_NegativeYAxisFacing = 12,
-	EMeshCameraFacingOptions_MAX   = 13
-};
-
-
-// Enum Engine.ParticleModuleTypeDataMesh.EMeshCameraFacingUpAxis
-enum class EMeshCameraFacingUpAxis
-{
-	CameraFacing_NoneUP            = 0,
-	CameraFacing_ZUp               = 1,
-	CameraFacing_NegativeZUp       = 2,
-	CameraFacing_YUp               = 3,
-	CameraFacing_NegativeYUp       = 4,
-	CameraFacing_MAX               = 5
-};
-
-
-// Enum Engine.ParticleModuleTypeDataMesh.EMeshScreenAlignment
-enum class EMeshScreenAlignment
-{
-	PSMA_MeshFaceCameraWithRoll    = 0,
-	PSMA_MeshFaceCameraWithSpin    = 1,
-	PSMA_MeshFaceCameraWithLockedAxis = 2,
-	PSMA_MAX                       = 3
-};
-
-
-// Enum Engine.ParticleModuleTypeDataMeshPhysX.EPhysXMeshRotationMethod
-enum class EPhysXMeshRotationMethod
-{
-	PMRM_Disabled                  = 0,
-	PMRM_Spherical                 = 1,
-	PMRM_Box                       = 2,
-	PMRM_LongBox                   = 3,
-	PMRM_FlatBox                   = 4,
-	PMRM_Velocity                  = 5,
-	PMRM_MAX                       = 6
-};
-
-
-// Enum Engine.ParticleModuleTypeDataRibbon.ETrailsRenderAxisOption
-enum class ETrailsRenderAxisOption
-{
-	Trails_CameraUp                = 0,
-	Trails_SourceUp                = 1,
-	Trails_WorldUp                 = 2,
-	Trails_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleSystem.EParticleSystemOcclusionBoundsMethod
-enum class EParticleSystemOcclusionBoundsMethod
-{
-	EPSOBM_None                    = 0,
-	EPSOBM_ParticleBounds          = 1,
-	EPSOBM_CustomBounds            = 2,
-	EPSOBM_MAX                     = 3
-};
-
-
-// Enum Engine.ParticleSystem.EParticleSystemUpdateMode
-enum class EParticleSystemUpdateMode
-{
-	EPSUM_RealTime                 = 0,
-	EPSUM_FixedTime                = 1,
-	EPSUM_MAX                      = 2
-};
-
-
-// Enum Engine.ProcBuildingRuleset.EProcBuildingAxis
-enum class EProcBuildingAxis
-{
-	EPBAxis_X                      = 0,
-	EPBAxis_Z                      = 1,
-	EPBAxis_MAX                    = 2
-};
-
-
-// Enum Engine.ProcBuilding.EScopeEdge
-enum class EScopeEdge
-{
-	EPSA_Top                       = 0,
-	EPSA_Bottom                    = 1,
-	EPSA_Left                      = 2,
-	EPSA_Right                     = 3,
-	EPSA_None                      = 4,
-	EPSA_MAX                       = 5
-};
-
-
-// Enum Engine.ProcBuilding.EBuildingStatsBrowserColumns
-enum class EBuildingStatsBrowserColumns
-{
-	BSBC_Name                      = 0,
-	BSBC_Ruleset                   = 1,
-	BSBC_NumStaticMeshComps        = 2,
-	BSBC_NumInstancedStaticMeshComps = 3,
-	BSBC_NumInstancedTris          = 4,
-	BSBC_LightmapMemBytes          = 5,
-	BSBC_ShadowmapMemBytes         = 6,
-	BSBC_LODDiffuseMemBytes        = 7,
-	BSBC_LODLightingMemBytes       = 8,
-	BSBC_MAX                       = 9
-};
-
-
-// Enum Engine.ProcBuilding.EPBCornerType
-enum class EPBCornerType
-{
-	EPBC_Default                   = 0,
-	EPBC_Chamfer                   = 1,
-	EPBC_Round                     = 2,
-	EPBC_MAX                       = 3
-};
-
-
-// Enum Engine.PBRuleNodeEdgeAngle.EProcBuildingEdge
-enum class EProcBuildingEdge
-{
-	EPBE_Top                       = 0,
-	EPBE_Bottom                    = 1,
-	EPBE_Left                      = 2,
-	EPBE_Right                     = 3,
-	EPBE_MAX                       = 4
-};
-
-
-// Enum Engine.PhysicalMaterial.EPhysEffectType
-enum class EPhysEffectType
-{
-	EPMET_Impact                   = 0,
-	EPMET_Slide                    = 1,
-	EPMET_MAX                      = 2
-};
-
-
-// Enum Engine.PhysXParticleSystem.ESimulationMethod
-enum class ESimulationMethod
-{
-	ESM_SPH                        = 0,
-	ESM_NO_PARTICLE_INTERACTION    = 1,
-	ESM_MIXED_MODE                 = 2,
-	ESM_MAX                        = 3
-};
-
-
-// Enum Engine.PhysXParticleSystem.EPacketSizeMultiplier
-enum class EPacketSizeMultiplier
-{
-	EPSM                           = 0,
-	EPSM01                         = 1,
-	EPSM02                         = 2,
-	EPSM03                         = 3,
-	EPSM04                         = 4,
-	EPSM05                         = 5,
-	EPSM_MAX                       = 6
-};
-
-
-// Enum Engine.SceneCaptureComponent.ESceneCaptureViewMode
-enum class ESceneCaptureViewMode
-{
-	SceneCapView_Lit               = 0,
-	SceneCapView_Unlit             = 1,
-	SceneCapView_LitNoShadows      = 2,
-	SceneCapView_Wire              = 3,
-	SceneCapView_MAX               = 4
-};
-
-
-// Enum Engine.RB_BodySetup.ESleepFamily
-enum class ESleepFamily
-{
-	SF_Normal                      = 0,
-	SF_Sensitive                   = 1,
-	SF_MAX                         = 2
-};
-
-
-// Enum Engine.RB_RadialForceActor.ERadialForceType
-enum class ERadialForceType
-{
-	RFT_Force                      = 0,
-	RFT_Impulse                    = 1,
-	RFT_MAX                        = 2
-};
-
-
-// Enum Engine.Route.ERouteDirection
-enum class ERouteDirection
-{
-	ERD_Forward                    = 0,
-	ERD_Reverse                    = 1,
-	ERD_MAX                        = 2
-};
-
-
-// Enum Engine.Route.ERouteFillAction
-enum class ERouteFillAction
-{
-	RFA_Overwrite                  = 0,
-	RFA_Add                        = 1,
-	RFA_Remove                     = 2,
-	RFA_Clear                      = 3,
-	RFA_MAX                        = 4
-};
-
-
-// Enum Engine.Route.ERouteType
-enum class ERouteType
-{
-	ERT_Linear                     = 0,
-	ERT_Loop                       = 1,
-	ERT_Circle                     = 2,
-	ERT_MAX                        = 3
-};
-
-
-// Enum Engine.SeqAct_ActorFactory.EPointSelection
-enum class EPointSelection
-{
-	PS_Normal                      = 0,
-	PS_Random                      = 1,
-	PS_Reverse                     = 2,
-	PS_MAX                         = 3
-};
-
-
-// Enum Engine.SeqAct_SetMesh.EMeshType
-enum class EMeshType
-{
-	MeshType_StaticMesh            = 0,
-	MeshType_SkeletalMesh          = 1,
-	MeshType_MAX                   = 2
-};
-
-
-// Enum Engine.WorldAttractor.EWorldAttractorFalloffType
-enum class EWorldAttractorFalloffType
-{
-	FOFF_Constant                  = 0,
-	FOFF_Linear                    = 1,
-	FOFF_Exponent                  = 2,
-	FOFF_MAX                       = 3
-};
-
-
-// Enum Engine.SeqEvent_ParticleEvent.EParticleEventOutputType
-enum class EParticleEventOutputType
-{
-	ePARTICLEOUT_Spawn             = 0,
-	ePARTICLEOUT_Death             = 1,
-	ePARTICLEOUT_Collision         = 2,
-	ePARTICLEOUT_AttractorCollision = 3,
-	ePARTICLEOUT_Kismet            = 4,
-	ePARTICLEOUT_MAX               = 5
-};
-
-
-// Enum Engine.SkelControlBase.EBoneControlSpace
-enum class EBoneControlSpace
-{
-	BCS_WorldSpace                 = 0,
-	BCS_ActorSpace                 = 1,
-	BCS_ComponentSpace             = 2,
-	BCS_ParentBoneSpace            = 3,
-	BCS_BoneSpace                  = 4,
-	BCS_OtherBoneSpace             = 5,
-	BCS_BaseMeshSpace              = 6,
-	BCS_MAX                        = 7
-};
-
-
-// Enum Engine.SkelControlSpline.ESplineControlRotMode
-enum class ESplineControlRotMode
-{
-	SCR_NoChange                   = 0,
-	SCR_AlongSpline                = 1,
-	SCR_Interpolate                = 2,
-	SCR_MAX                        = 3
-};
-
-
-// Enum Engine.SkeletalMesh.SoftBodyBoneType
-enum class SoftBodyBoneType
-{
-	SOFTBODYBONE_Fixed             = 0,
-	SOFTBODYBONE_BreakableAttachment = 1,
-	SOFTBODYBONE_TwoWayAttachment  = 2,
-	SOFTBODYBONE_MAX               = 3
-};
-
-
-// Enum Engine.SkeletalMesh.ClothBoneType
-enum class ClothBoneType
-{
-	CLOTHBONE_Fixed                = 0,
-	CLOTHBONE_BreakableAttachment  = 1,
-	CLOTHBONE_TearLine             = 2,
-	CLOTHBONE_MAX                  = 3
-};
-
-
-// Enum Engine.SkeletalMesh.SkeletalMeshOptimizationNormalMode
-enum class SkeletalMeshOptimizationNormalMode
-{
-	SMONM_Recalculate              = 0,
-	SMONM_RecalculateSoft          = 1,
-	SMONM_RecalculateHard          = 2,
-	SMONM_MAX                      = 3
-};
-
-
-// Enum Engine.SkeletalMesh.SkeletalMeshOptimizationImportance
-enum class SkeletalMeshOptimizationImportance
-{
-	SMOI_Off                       = 0,
-	SMOI_Lowest                    = 1,
-	SMOI_Low                       = 2,
-	SMOI_Normal                    = 3,
-	SMOI_High                      = 4,
-	SMOI_Highest                   = 5,
-	SMOI_MAX                       = 6
-};
-
-
-// Enum Engine.SkeletalMesh.SkeletalMeshOptimizationType
-enum class SkeletalMeshOptimizationType
-{
-	SMOT_NumOfTriangles            = 0,
-	SMOT_MaxDeviation              = 1,
-	SMOT_MAX                       = 2
-};
-
-
-// Enum Engine.SkeletalMesh.TriangleSortOption
-enum class TriangleSortOption
-{
-	TRISORT_None                   = 0,
-	TRISORT_CenterRadialDistance   = 1,
-	TRISORT_Random                 = 2,
-	TRISORT_MergeContiguous        = 3,
-	TRISORT_Custom                 = 4,
-	TRISORT_CustomLeftRight        = 5,
-	TRISORT_MAX                    = 6
-};
-
-
-// Enum Engine.SkeletalMesh.BoneBreakOption
-enum class BoneBreakOption
-{
-	BONEBREAK_SoftPreferred        = 0,
-	BONEBREAK_AutoDetect           = 1,
-	BONEBREAK_RigidPreferred       = 2,
-	BONEBREAK_MAX                  = 3
-};
-
-
-// Enum Engine.SkeletalMesh.TriangleSortAxis
-enum class TriangleSortAxis
-{
-	TSA_X_Axis                     = 0,
-	TSA_Y_Axis                     = 1,
-	TSA_Z_Axis                     = 2,
-	TSA_MAX                        = 3
-};
-
-
-// Enum Engine.SkeletalMesh.ClothMovementScaleGen
-enum class ClothMovementScaleGen
-{
-	ECMDM_DistToFixedVert          = 0,
-	ECMDM_VertexBoneWeight         = 1,
-	ECMDM_Empty                    = 2,
-	ECMDM_MAX                      = 3
-};
-
-
-// Enum Engine.SoundNodeWave.EDecompressionType
-enum class EDecompressionType
-{
-	DTYPE_Setup                    = 0,
-	DTYPE_Invalid                  = 1,
-	DTYPE_Preview                  = 2,
-	DTYPE_Native                   = 3,
-	DTYPE_RealTime                 = 4,
-	DTYPE_Procedural               = 5,
-	DTYPE_Xenon                    = 6,
-	DTYPE_Dingo                    = 7,
-	DTYPE_MAX                      = 8
-};
-
-
-// Enum Engine.SpeedTreeComponent.ESpeedTreeMeshType
-enum class ESpeedTreeMeshType
-{
-	STMT_MinMinusOne               = 0,
-	STMT_Branches1                 = 1,
-	STMT_Branches2                 = 2,
-	STMT_Fronds                    = 3,
-	STMT_LeafCards                 = 4,
-	STMT_LeafMeshes                = 5,
-	STMT_Billboards                = 6,
-	STMT_Max                       = 7
-};
-
-
-// Enum Engine.SVehicleWheel.EWheelSide
-enum class EWheelSide
-{
-	SIDE_None                      = 0,
-	SIDE_Left                      = 1,
-	SIDE_Right                     = 2,
-	SIDE_MAX                       = 3
-};
-
-
-// Enum Engine.TerrainMaterial.ETerrainMappingType
-enum class ETerrainMappingType
-{
-	TMT_Auto                       = 0,
-	TMT_XY                         = 1,
-	TMT_XZ                         = 2,
-	TMT_YZ                         = 3,
-	TMT_MAX                        = 4
-};
-
-
-// Enum Engine.TextureFlipBook.TextureFlipBookMethod
-enum class TextureFlipBookMethod
-{
-	TFBM_UL_ROW                    = 0,
-	TFBM_UL_COL                    = 1,
-	TFBM_UR_ROW                    = 2,
-	TFBM_UR_COL                    = 3,
-	TFBM_LL_ROW                    = 4,
-	TFBM_LL_COL                    = 5,
-	TFBM_LR_ROW                    = 6,
-	TFBM_LR_COL                    = 7,
-	TFBM_RANDOM                    = 8,
-	TFBM_MAX                       = 9
-};
-
-
-// Enum Engine.TextureMovie.EMovieStreamSource
-enum class EMovieStreamSource
-{
-	MovieStream_File               = 0,
-	MovieStream_Memory             = 1,
-	MovieStream_MAX                = 2
-};
-
-
-// Enum Engine.TwitterIntegrationBase.ETwitterRequestMethod
-enum class ETwitterRequestMethod
-{
-	TRM_Get                        = 0,
-	TRM_Post                       = 1,
-	TRM_Delete                     = 2,
-	TRM_MAX                        = 3
-};
-
-
-// Enum Engine.TwitterIntegrationBase.ETwitterIntegrationDelegate
-enum class ETwitterIntegrationDelegate
-{
-	TID_AuthorizeComplete          = 0,
-	TID_TweetUIComplete            = 1,
-	TID_RequestComplete            = 2,
-	TID_MAX                        = 3
-};
-
-
-// Enum Engine.UberPostProcessEffect.EPostProcessAAType
-enum class EPostProcessAAType
-{
-	PostProcessAA_Off              = 0,
-	PostProcessAA_FXAA0            = 1,
-	PostProcessAA_FXAA1            = 2,
-	PostProcessAA_FXAA2            = 3,
-	PostProcessAA_FXAA3            = 4,
-	PostProcessAA_FXAA4            = 5,
-	PostProcessAA_FXAA5            = 6,
-	PostProcessAA_MLAA             = 7,
-	PostProcessAA_MAX              = 8
-};
-
-
-// Enum Engine.UberPostProcessEffect.ETonemapperType
-enum class ETonemapperType
-{
-	Tonemapper_Off                 = 0,
-	Tonemapper_Filmic              = 1,
-	Tonemapper_Customizable        = 2,
-	Tonemapper_MAX                 = 3
-};
-
-
-// Enum Engine.UIDataProvider_MenuItem.EMenuOptionType
-enum class EMenuOptionType
-{
-	MENUOT_ComboReadOnly           = 0,
-	MENUOT_ComboNumeric            = 1,
-	MENUOT_CheckBox                = 2,
-	MENUOT_Slider                  = 3,
-	MENUOT_Spinner                 = 4,
-	MENUOT_EditBox                 = 5,
-	MENUOT_CollectionCheckBox      = 6,
-	MENUOT_CollapsingList          = 7,
-	MENUOT_MAX                     = 8
-};
-
-
-// Enum Engine.UIDataStore_OnlineStats.EStatsFetchType
-enum class EStatsFetchType
-{
-	SFT_Player                     = 0,
-	SFT_CenteredOnPlayer           = 1,
-	SFT_Friends                    = 2,
-	SFT_TopRankings                = 3,
-	SFT_MAX                        = 4
-};
-
-
-// Enum Engine.Weapon.EWeaponFireType
-enum class EWeaponFireType
-{
-	EWFT_InstantHit                = 0,
-	EWFT_Projectile                = 1,
-	EWFT_Custom                    = 2,
-	EWFT_None                      = 3,
-	EWFT_MAX                       = 4
-};
-
-
-// Enum Engine.MaterialExpressionPitchTekTextureSample.EPitchTekTextureType
-enum class EPitchTekTextureType
-{
-	PitchTek_ColorTexture          = 0,
-	PitchTek_DataTexture           = 1,
-	PitchTek_MAX                   = 2
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -3694,13 +28,12 @@ public:
 	struct FColor                                      EditorIconColor;                                          // 0x0094(0x0004) (CPF_Edit)
 	struct FRenderCommandFence                         DetachFence;                                              // 0x0098(0x0004) (CPF_Const, CPF_Native)
 	float                                              CustomTimeDilation;                                       // 0x009C(0x0004)
-	TEnumAsByte<enum class EPhysics>                   Physics;                                                  // 0x00A0(0x0001) (CPF_Edit, CPF_Const, CPF_Net)
-	TEnumAsByte<enum class ENetRole>                   RemoteRole;                                               // 0x00A1(0x0001) (CPF_Net)
-	TEnumAsByte<enum class ENetRole>                   Role;                                                     // 0x00A2(0x0001) (CPF_Net)
-	TEnumAsByte<enum class ECollisionType>             CollisionType;                                            // 0x00A3(0x0001) (CPF_Edit, CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class ECollisionType>             ReplicatedCollisionType;                                  // 0x00A4(0x0001) (CPF_Net, CPF_Transient)
-	TEnumAsByte<enum class ETickingGroup>              TickGroup;                                                // 0x00A5(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00A6(0x0002) MISSED OFFSET
+	TEnumAsByte<EPhysics>                              Physics;                                                  // 0x00A0(0x0001) (CPF_Edit, CPF_Const, CPF_Net)
+	TEnumAsByte<ENetRole>                              RemoteRole;                                               // 0x00A1(0x0001) (CPF_Net)
+	TEnumAsByte<ENetRole>                              Role;                                                     // 0x00A2(0x0001) (CPF_Net)
+	TEnumAsByte<ECollisionType>                        CollisionType;                                            // 0x00A3(0x0001) (CPF_Edit, CPF_Const, CPF_Transient)
+	TEnumAsByte<ECollisionType>                        ReplicatedCollisionType;                                  // 0x00A4(0x0001) (CPF_Net, CPF_Transient)
+	TEnumAsByte<ETickingGroup>                         TickGroup;                                                // 0x00A5(0x0001) (CPF_Const)
 	class AActor*                                      Owner;                                                    // 0x00A8(0x0004) (CPF_Const, CPF_Net)
 	class AActor*                                      Base;                                                     // 0x00AC(0x0004) (CPF_Edit, CPF_Const, CPF_Net)
 	TArray<struct FTimerData>                          Timers;                                                   // 0x00B0(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -3820,7 +153,7 @@ public:
 	struct FName                                       InitialState;                                             // 0x0104(0x0008)
 	struct FName                                       Layer;                                                    // 0x010C(0x0008) (CPF_Edit)
 	struct FName                                       Group;                                                    // 0x0114(0x0008) (CPF_Deprecated)
-	unsigned char                                      UnknownData01[0x8];                                       // 0x011C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.Actor.HiddenEditorViews
+	unsigned char                                      UnknownData00[0x8];                                       // 0x011C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.Actor.HiddenEditorViews
 	TArray<class AActor*>                              Touching;                                                 // 0x0124(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<class AActor*>                              Children;                                                 // 0x0130(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	float                                              LatentFloat;                                              // 0x013C(0x0004) (CPF_Const)
@@ -3855,7 +188,7 @@ public:
 	class USpriteComponent* GetActorSpriteComponent();
 	class UActorComponent* GetComponent(class UClass* ComponentClass);
 	class AActor* SpawnInstance(class AActor* SpawnOwner, const struct FName& SpawnTag, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, bool bNoCollisionFail);
-	int GetActorMetrics(TEnumAsByte<enum class EActorMetricsType> MetricsType);
+	int GetActorMetrics(TEnumAsByte<EActorMetricsType> MetricsType);
 	bool OnMobileTouch(class APlayerController* InPC, const struct FVector2D& TouchLocation);
 	bool IsMobileTouchEnabled();
 	bool ShouldBeHiddenBySHOW_NavigationNodes();
@@ -4062,13 +395,13 @@ public:
 	void GainedChild(class AActor* Other);
 	void Destroyed();
 	void SetTickIsDisabled(bool bInDisabled);
-	void SetTickGroup(TEnumAsByte<enum class ETickingGroup> NewTickGroup);
+	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
 	void ReattachComponent(class UActorComponent* ComponentToReattach);
 	void DetachComponent(class UActorComponent* ExComponent);
 	void AttachComponent(class UActorComponent* NewComponent);
 	void UnClock(float* Time);
 	void Clock(float* Time);
-	void SetPhysics(TEnumAsByte<enum class EPhysics> newPhysics);
+	void SetPhysics(TEnumAsByte<EPhysics> newPhysics);
 	void SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
 	void SetHidden(bool bNewHidden);
 	void ChartData(const struct FString& DataName, float DataValue);
@@ -4107,13 +440,13 @@ public:
 	bool SetRelativeLocation(const struct FVector& NewLocation);
 	bool SetRelativeRotation(const struct FRotator& NewRotation);
 	void SetZone(bool bForceRefresh);
-	TEnumAsByte<enum class EMoveDir> MovingWhichWay(float* Amount);
+	TEnumAsByte<EMoveDir> MovingWhichWay(float* Amount);
 	bool SetRotation(const struct FRotator& NewRotation);
 	bool SetLocation(const struct FVector& NewLocation);
 	bool Move(const struct FVector& Delta);
 	void SetDrawScale3D(const struct FVector& NewScale3D);
 	void SetDrawScale(float NewScale);
-	void SetCollisionType(TEnumAsByte<enum class ECollisionType> NewCollisionType);
+	void SetCollisionType(TEnumAsByte<ECollisionType> NewCollisionType);
 	void SetCollisionSize(float NewRadius, float NewHeight);
 	void SetCollision(bool bNewColActors, bool bNewBlockActors, bool bNewIgnoreEncroachers);
 	void FinishAnim(class UAnimNodeSequence* SeqNode, bool bFinishOnBlendOut);
@@ -4243,12 +576,11 @@ public:
 	class UTexture2D*                                  BSPVertex;                                                // 0x0488(0x0004)
 	TArray<struct FString>                             DeferredExecs;                                            // 0x048C(0x000C) (CPF_NeedCtorLink)
 	class AGameReplicationInfo*                        GRI;                                                      // 0x0498(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class ENetMode>                   NetMode;                                                  // 0x049C(0x0001)
-	TEnumAsByte<enum class ETravelType>                NextTravelType;                                           // 0x049D(0x0001)
-	TEnumAsByte<enum class EVisibilityAggressiveness>  VisibilityAggressiveness;                                 // 0x049E(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EPreferredLightmapType>     PreferredLightmapType;                                    // 0x049F(0x0001)
-	TEnumAsByte<enum class ELightingBuildQuality>      LevelLightingQuality;                                     // 0x04A0(0x0001) (CPF_Edit, CPF_EditConst)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x04A1(0x0003) MISSED OFFSET
+	TEnumAsByte<ENetMode>                              NetMode;                                                  // 0x049C(0x0001)
+	TEnumAsByte<ETravelType>                           NextTravelType;                                           // 0x049D(0x0001)
+	TEnumAsByte<EVisibilityAggressiveness>             VisibilityAggressiveness;                                 // 0x049E(0x0001) (CPF_Edit)
+	TEnumAsByte<EPreferredLightmapType>                PreferredLightmapType;                                    // 0x049F(0x0001)
+	TEnumAsByte<ELightingBuildQuality>                 LevelLightingQuality;                                     // 0x04A0(0x0001) (CPF_Edit, CPF_EditConst)
 	struct FString                                     ComputerName;                                             // 0x04A4(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     EngineVersion;                                            // 0x04B0(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     MinNetVersion;                                            // 0x04BC(0x000C) (CPF_NeedCtorLink)
@@ -4325,7 +657,7 @@ public:
 	TArray<struct FScreenMessageString>                PriorityScreenMessages;                                   // 0x073C(0x000C) (CPF_Native, CPF_Transient)
 	int                                                MaxTrianglesPerLeaf;                                      // 0x0748(0x0004)
 	class ULightmassLevelSettings*                     LMLevelSettings;                                          // 0x074C(0x0004) (CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline, CPF_Deprecated)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x0750(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.LandscapeInfoMap
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0750(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.LandscapeInfoMap
 	struct FLightmassWorldInfoSettings                 LightmassSettings;                                        // 0x078C(0x0058) (CPF_Edit)
 	struct FPitchTekWorldInfoSettings                  PitchTekSettings;                                         // 0x07E4(0x0044) (CPF_Edit)
 	struct FPitchTekTextureDecalSettings               PitchTekBallSettings;                                     // 0x0828(0x0018) (CPF_Edit)
@@ -4335,17 +667,17 @@ public:
 	struct FPitchTekTextureDecalSettings               PitchTekGoalExplosionSettings;                            // 0x0888(0x0018) (CPF_Edit)
 	struct FPitchTekTextureDecalSettings               PitchTekJumpBlastSettings;                                // 0x08A0(0x0018) (CPF_Edit)
 	struct FPitchTekTextureDecalSettings               PitchTekCarPositionSettings;                              // 0x08B8(0x0018) (CPF_Edit)
-	unsigned char                                      UnknownData02[0x3C];                                      // 0x08D0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.NavMeshPathConstraintCache
-	unsigned char                                      UnknownData03[0x3C];                                      // 0x090C(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.NavMeshPathGoalEvaluatorCache
+	unsigned char                                      UnknownData01[0x3C];                                      // 0x08D0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.NavMeshPathConstraintCache
+	unsigned char                                      UnknownData02[0x3C];                                      // 0x090C(0x003C) UNKNOWN PROPERTY: MapProperty Engine.WorldInfo.NavMeshPathGoalEvaluatorCache
 	class ACrowdPopulationManagerBase*                 PopulationManager;                                        // 0x0948(0x0004)
 	struct FHostMigrationState                         PeerHostMigration;                                        // 0x094C(0x001C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	float                                              HostMigrationTimeout;                                     // 0x0968(0x0004) (CPF_Config)
 	class APhysicsVolume*                              FirstPhysicsVolume;                                       // 0x096C(0x0004) (CPF_Transient)
 	class UObject*                                     GameShare;                                                // 0x0970(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __EventPauseChanged__Delegate;                            // 0x0974(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0974(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0974(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventTimeDilationChanged__Delegate;                     // 0x0984(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0984(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0984(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4360,7 +692,7 @@ public:
 	void SetTimeDilation(float NewVal);
 	void ClearObjectPools();
 	void ToggleHostMigration(bool bEnabled);
-	void NotifyHostMigrationStateChanged(TEnumAsByte<enum class EHostMigrationProgress> NewState, TEnumAsByte<enum class EHostMigrationProgress> OldState);
+	void NotifyHostMigrationStateChanged(TEnumAsByte<EHostMigrationProgress> NewState, TEnumAsByte<EHostMigrationProgress> OldState);
 	bool BeginHostMigration();
 	bool CanBeginHostMigration();
 	class AEnvironmentVolume* FindEnvironmentVolume(const struct FVector& TestLocation);
@@ -4371,7 +703,7 @@ public:
 	void GetDemoFrameInfo(int* CurrentFrame, int* TotalFrames);
 	bool IsPlayingDemo();
 	bool IsRecordingDemo();
-	TEnumAsByte<enum class EDetailMode> GetDetailMode();
+	TEnumAsByte<EDetailMode> GetDetailMode();
 	struct FString GetMapName(bool bIncludePrefix);
 	void SetMapInfo(class UMapInfo* NewMapInfo);
 	class UMapInfo* GetMapInfo();
@@ -4403,7 +735,7 @@ public:
 	bool STATIC_IsPlayInPreview();
 	bool STATIC_IsPlayInEditor();
 	bool STATIC_IsWithGFx();
-	bool STATIC_IsConsoleBuild(TEnumAsByte<enum class EConsoleType> ConsoleType);
+	bool STATIC_IsConsoleBuild(TEnumAsByte<EConsoleType> ConsoleType);
 	bool STATIC_IsDemoBuild();
 	struct FString GetLocalURL();
 	void SetLevelRBGravity(const struct FVector& NewGrav);
@@ -4714,8 +1046,7 @@ public:
 	struct FColor                                      C_BrushShape;                                             // 0x0550(0x0004) (CPF_Edit)
 	float                                              StreamingDistanceFactor;                                  // 0x0554(0x0004) (CPF_Edit)
 	struct FString                                     ScoutClassName;                                           // 0x0558(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETransitionType>            TransitionType;                                           // 0x0564(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0565(0x0003) MISSED OFFSET
+	TEnumAsByte<ETransitionType>                       TransitionType;                                           // 0x0564(0x0001)
 	struct FString                                     TransitionDescription;                                    // 0x0568(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     TransitionGameType;                                       // 0x0574(0x000C) (CPF_NeedCtorLink)
 	float                                              MeshLODRange;                                             // 0x0580(0x0004) (CPF_Config)
@@ -4752,7 +1083,7 @@ public:
 	int                                                MatineeCaptureFPS;                                        // 0x0660(0x0004) (CPF_Transient)
 	int                                                MatineeCaptureType;                                       // 0x0664(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __EventTextArchetypesReloaded__Delegate;                  // 0x0668(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0668(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0668(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4762,7 +1093,7 @@ public:
 
 
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
-	TEnumAsByte<enum class EGameVersion> STATIC_GetGameVersion();
+	TEnumAsByte<EGameVersion> STATIC_GetGameVersion();
 	class UFeatureSystem* STATIC_GetFeatureSystem();
 	void SetNetworkSecurityKey(const struct FNetworkEncryptionKey& SecurityKey);
 	void AddNetworkSecurityKey(const struct FNetworkEncryptionKey& SecurityKey);
@@ -4770,7 +1101,7 @@ public:
 	int GetSystemSettingInt(const struct FString& SettingName);
 	bool GetSystemSettingBool(const struct FString& SettingName);
 	bool STATIC_LaunchURL(const struct FString& URL);
-	TEnumAsByte<enum class EBasicLoadResult> STATIC_BasicLoadObject(class UObject* Obj, const struct FString& PathName, bool bIsSaveGame, int Version);
+	TEnumAsByte<EBasicLoadResult> STATIC_BasicLoadObject(class UObject* Obj, const struct FString& PathName, bool bIsSaveGame, int Version);
 	bool STATIC_BasicSaveObject(class UObject* Obj, const struct FString& PathName, bool bIsSaveGame, int Version, bool bEncrypt);
 	void AddTextureStreamingSlaveLoc(const struct FVector& InLoc, float BoostFactor, bool bOverrideLocation, float OverrideDuration);
 	class UPostProcessChain* STATIC_GetWorldPostProcessChain();
@@ -4819,7 +1150,6 @@ public:
 	TArray<struct FString>                             ServerActors;                                             // 0x0710(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	struct FString                                     TravelURL;                                                // 0x071C(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      TravelType;                                               // 0x0728(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0729(0x0003) MISSED OFFSET
 	unsigned long                                      bWorldWasLoadedThisTick : 1;                              // 0x072C(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bCheckForMovieCapture : 1;                                // 0x072C(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bTriggerPostLoadMap : 1;                                  // 0x072C(0x0004) (CPF_Const, CPF_Transient)
@@ -4904,8 +1234,7 @@ public:
 class ABrush : public AActor
 {
 public:
-	TEnumAsByte<enum class ECsgOper>                   CsgOper;                                                  // 0x01EC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01ED(0x0003) MISSED OFFSET
+	TEnumAsByte<ECsgOper>                              CsgOper;                                                  // 0x01EC(0x0001) (CPF_Edit)
 	struct FColor                                      BrushColor;                                               // 0x01F0(0x0004) (CPF_Edit)
 	int                                                PolyFlags;                                                // 0x01F4(0x0004)
 	unsigned long                                      bColored : 1;                                             // 0x01F8(0x0004) (CPF_Edit)
@@ -5027,8 +1356,7 @@ class ALevelGridVolume : public AVolume
 {
 public:
 	struct FString                                     LevelGridVolumeName;                                      // 0x0218(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
-	TEnumAsByte<enum class LevelGridCellShape>         CellShape;                                                // 0x0224(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0225(0x0003) MISSED OFFSET
+	TEnumAsByte<ELevelGridCellShape>                   CellShape;                                                // 0x0224(0x0001) (CPF_Edit, CPF_Const)
 	int                                                Subdivisions[0x3];                                        // 0x0228(0x0004) (CPF_Edit, CPF_Const)
 	float                                              LoadingDistance;                                          // 0x0234(0x0004) (CPF_Edit, CPF_Const)
 	float                                              KeepLoadedRange;                                          // 0x0238(0x0004) (CPF_Edit, CPF_Const)
@@ -5052,9 +1380,8 @@ public:
 	unsigned long                                      bEditorPreVisOnly : 1;                                    // 0x0224(0x0004) (CPF_Edit)
 	unsigned long                                      bDisabled : 1;                                            // 0x0224(0x0004) (CPF_Edit)
 	unsigned long                                      bTestDistanceToVolume : 1;                                // 0x0224(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EStreamingVolumeUsage>      StreamingUsage;                                           // 0x0228(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EStreamingVolumeUsage>      Usage;                                                    // 0x0229(0x0001) (CPF_Deprecated)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x022A(0x0002) MISSED OFFSET
+	TEnumAsByte<EStreamingVolumeUsage>                 StreamingUsage;                                           // 0x0228(0x0001) (CPF_Edit)
+	TEnumAsByte<EStreamingVolumeUsage>                 Usage;                                                    // 0x0229(0x0001) (CPF_Deprecated)
 	float                                              TestVolumeDistance;                                       // 0x022C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -5750,7 +2077,7 @@ public:
 	void HandlePerLoadedMapAudioStats();
 	void DoSentinelActionPerLoadedMap();
 	void DoTravelTheWorld();
-	void EndSentinelRun(TEnumAsByte<enum class EAutomatedRunResult> RunResult);
+	void EndSentinelRun(TEnumAsByte<EAutomatedRunResult> RunResult);
 	void AddSentinelPerTimePeriodStats(const struct FVector& InLocation, const struct FRotator& InRotation);
 	void BeginSentinelRun(const struct FString& TaskDescription, const struct FString& TaskParameter, const struct FString& TagDesc);
 	void InitializeOptions(const struct FString& Options);
@@ -5789,8 +2116,7 @@ class AFileWriter : public AInfo
 public:
 	struct FPointer                                    ArchivePtr;                                               // 0x01EC(0x0004) (CPF_Const, CPF_Native)
 	struct FString                                     Filename;                                                 // 0x01F0(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TEnumAsByte<enum class FWFileType>                 FileType;                                                 // 0x01FC(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01FD(0x0003) MISSED OFFSET
+	TEnumAsByte<EFWFileType>                           FileType;                                                 // 0x01FC(0x0001) (CPF_Const)
 	unsigned long                                      bFlushEachWrite : 1;                                      // 0x0200(0x0004)
 	unsigned long                                      bWantsAsyncWrites : 1;                                    // 0x0200(0x0004)
 
@@ -5804,7 +2130,7 @@ public:
 	void Destroyed();
 	void Logf(const struct FString& logString);
 	void CloseFile();
-	bool OpenFile(const struct FString& InFilename, TEnumAsByte<enum class FWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp);
+	bool OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp);
 };
 
 
@@ -5950,7 +2276,7 @@ public:
 	void InitCrowdPopulationManager();
 	void OnEngineHasLoaded();
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void StandbyCheatDetected(TEnumAsByte<enum class EStandbyType> StandbyType);
+	void StandbyCheatDetected(TEnumAsByte<EStandbyType> StandbyType);
 	void EnableStandbyCheatDetection(bool bIsEnabled);
 	void BeginBVT(const struct FString& TagDesc);
 	bool CheckForSentinelRun();
@@ -5967,7 +2293,7 @@ public:
 	void OnServerCreateComplete(const struct FName& SessionName, bool bWasSuccessful);
 	void RegisterServer();
 	void OnLoginChange(unsigned char LocalUserNum);
-	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode);
+	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
 	void ClearAutoLoginDelegates();
 	bool ProcessServerLogin();
 	void MatineeCancelled();
@@ -6185,8 +2511,7 @@ class ARoute : public AInfo
 {
 public:
 	struct FPointer                                    VfTable_IEditorLinkSelectionInterface;                    // 0x01EC(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	TEnumAsByte<enum class ERouteType>                 RouteType;                                                // 0x01F0(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01F1(0x0003) MISSED OFFSET
+	TEnumAsByte<ERouteType>                            RouteType;                                                // 0x01F0(0x0001) (CPF_Edit)
 	TArray<struct FActorReference>                     RouteList;                                                // 0x01F4(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	float                                              FudgeFactor;                                              // 0x0200(0x0004) (CPF_Edit)
 	int                                                RouteIndexOffset;                                         // 0x0204(0x0004) (CPF_Edit)
@@ -6198,8 +2523,8 @@ public:
 	}
 
 
-	int MoveOntoRoutePath(class APawn* P, TEnumAsByte<enum class ERouteDirection> RouteDirection, float DistFudgeFactor);
-	int ResolveRouteIndex(int Idx, TEnumAsByte<enum class ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse);
+	int MoveOntoRoutePath(class APawn* P, TEnumAsByte<ERouteDirection> RouteDirection, float DistFudgeFactor);
+	int ResolveRouteIndex(int Idx, TEnumAsByte<ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse);
 };
 
 
@@ -6268,9 +2593,8 @@ class AWeapon : public AInventory
 {
 public:
 	unsigned char                                      CurrentFireMode;                                          // 0x0238(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0239(0x0003) MISSED OFFSET
 	TArray<struct FName>                               FiringStatesArray;                                        // 0x023C(0x000C) (CPF_NeedCtorLink)
-	TArray<TEnumAsByte<enum class EWeaponFireType>>    WeaponFireTypes;                                          // 0x0248(0x000C) (CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EWeaponFireType>>               WeaponFireTypes;                                          // 0x0248(0x000C) (CPF_NeedCtorLink)
 	TArray<class UClass*>                              WeaponProjectiles;                                        // 0x0254(0x000C) (CPF_NeedCtorLink)
 	TArray<float>                                      FireInterval;                                             // 0x0260(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<float>                                      Spread;                                                   // 0x026C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
@@ -6647,7 +2971,7 @@ public:
 	float                                              TurnDist;                                                 // 0x0340(0x0004) (CPF_Const)
 	float                                              DangerScale;                                              // 0x0344(0x0004) (CPF_Edit)
 	class ACoverLink*                                  NextCoverLink;                                            // 0x0348(0x0004) (CPF_Const)
-	TEnumAsByte<enum class ECoverLocationDescription>  LocationDescription;                                      // 0x034C(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ECoverLocationDescription>             LocationDescription;                                      // 0x034C(0x0001) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -6657,7 +2981,7 @@ public:
 
 
 	struct FString GetDebugAbbrev();
-	TEnumAsByte<enum class ECoverLocationDescription> GetLocationDescription(int SlotIdx);
+	TEnumAsByte<ECoverLocationDescription> GetLocationDescription(int SlotIdx);
 	struct FString GetDebugString(int SlotIdx);
 	int AddCoverSlot(const struct FVector& SlotLocation, const struct FRotator& SlotRotation, int SlotIdx, bool bForceSlotUpdate, class AScout* Scout);
 	void BreakFracturedMeshes(const struct FVector& Origin, float Radius, float RBStrength, class UClass* DamageType);
@@ -6673,9 +2997,9 @@ public:
 	void NotifySlotOwnerCoverDisabled(int SlotIdx, bool bAIOnly);
 	void SetSlotEnabled(int SlotIdx, bool bEnable);
 	void SetDisabled(bool bNewDisabled);
-	void GetSlotActions(int SlotIdx, TArray<TEnumAsByte<enum class ECoverAction>>* Actions);
+	void GetSlotActions(int SlotIdx, TArray<TEnumAsByte<ECoverAction>>* Actions);
 	bool HasFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, bool bAllowFallbackLinks);
-	bool GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<enum class ECoverAction> ChkAction, TEnumAsByte<enum class ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items);
+	bool GetFireLinkTo(int SlotIdx, const struct FCoverInfo& ChkCover, TEnumAsByte<ECoverAction> ChkAction, TEnumAsByte<ECoverType> ChkType, int* out_FireLinkIdx, TArray<int>* out_Items);
 	bool AllowLeftTransition(int SlotIdx);
 	bool AllowRightTransition(int SlotIdx);
 	int GetSlotIdxToRight(int SlotIdx, int Cnt);
@@ -6691,12 +3015,12 @@ public:
 	bool Claim(class APawn* NewClaim, int SlotIdx);
 	void SetInvalidUntil(int SlotIdx, float TimeToBecomeValid);
 	bool IsExposedTo(int SlotIdx, const struct FCoverInfo& ChkSlot, float* out_ExposedScale);
-	struct FVector GetSlotViewPoint(int SlotIdx, TEnumAsByte<enum class ECoverType> Type, TEnumAsByte<enum class ECoverAction> Action);
+	struct FVector GetSlotViewPoint(int SlotIdx, TEnumAsByte<ECoverType> Type, TEnumAsByte<ECoverAction> Action);
 	struct FRotator GetSlotRotation(int SlotIdx, bool bForceUseOffset);
 	struct FVector GetSlotLocation(int SlotIdx, bool bForceUseOffset);
-	void STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, TEnumAsByte<enum class ECoverType>* SrcType, TEnumAsByte<enum class ECoverAction>* SrcAction, TEnumAsByte<enum class ECoverType>* DestType, TEnumAsByte<enum class ECoverAction>* DestAction);
-	unsigned char STATIC_PackFireLinkInteractionInfo(TEnumAsByte<enum class ECoverType> SrcType, TEnumAsByte<enum class ECoverAction> SrcAction, TEnumAsByte<enum class ECoverType> DestType, TEnumAsByte<enum class ECoverAction> DestAction);
-	bool GetFireLinkTargetCoverInfo(int SlotIdx, int FireLinkIdx, TEnumAsByte<enum class EFireLinkID> ArrayID, struct FCoverInfo* out_Info);
+	void STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, TEnumAsByte<ECoverType>* SrcType, TEnumAsByte<ECoverAction>* SrcAction, TEnumAsByte<ECoverType>* DestType, TEnumAsByte<ECoverAction>* DestAction);
+	unsigned char STATIC_PackFireLinkInteractionInfo(TEnumAsByte<ECoverType> SrcType, TEnumAsByte<ECoverAction> SrcAction, TEnumAsByte<ECoverType> DestType, TEnumAsByte<ECoverAction> DestAction);
+	bool GetFireLinkTargetCoverInfo(int SlotIdx, int FireLinkIdx, TEnumAsByte<EFireLinkID> ArrayID, struct FCoverInfo* out_Info);
 };
 
 
@@ -6706,8 +3030,7 @@ class ADoorMarker : public ANavigationPoint
 {
 public:
 	class AInterpActor*                                MyDoor;                                                   // 0x02C4(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EDoorType>                  DoorType;                                                 // 0x02C8(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x02C9(0x0003) MISSED OFFSET
+	TEnumAsByte<EDoorType>                             DoorType;                                                 // 0x02C8(0x0001) (CPF_Edit)
 	class AActor*                                      DoorTrigger;                                              // 0x02CC(0x0004) (CPF_Edit)
 	unsigned long                                      bWaitUntilCompletelyOpened : 1;                           // 0x02D0(0x0004) (CPF_Edit)
 	unsigned long                                      bInitiallyClosed : 1;                                     // 0x02D0(0x0004) (CPF_Edit)
@@ -6996,7 +3319,6 @@ public:
 	TArray<class AActor*>                              OnBuild_EnableCollisionForThese;                          // 0x0344(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	float                                              MaxPolyHeight_Optional;                                   // 0x0350(0x0004) (CPF_Edit)
 	unsigned char                                      NavMeshGenerator;                                         // 0x0354(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0355(0x0003) MISSED OFFSET
 	TArray<struct FKAggregateGeom>                     VoxelFilterBounds;                                        // 0x0358(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FMatrix>                             VoxelFilterTM;                                            // 0x0364(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                DebugEdgeCount;                                           // 0x0370(0x0004) (CPF_Edit)
@@ -7323,8 +3645,7 @@ public:
 	unsigned long                                      bHiddenByProxy : 1;                                       // 0x01F0(0x0004)
 	unsigned long                                      OldCastShadow : 1;                                        // 0x01F0(0x0004)
 	unsigned long                                      OldAcceptsLights : 1;                                     // 0x01F0(0x0004)
-	TEnumAsByte<enum class ECollisionType>             OldCollisionType;                                         // 0x01F4(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01F5(0x0003) MISSED OFFSET
+	TEnumAsByte<ECollisionType>                        OldCollisionType;                                         // 0x01F4(0x0001)
 	TArray<struct FPreCombinedStaticMeshActor>         PreCombinedStaticMeshActors;                              // 0x01F8(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -7425,14 +3746,13 @@ class UActorComponent : public UComponent
 public:
 	TArray<class APlayerController*>                   LocalViewers;                                             // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	unsigned char                                      BulletSceneGroup;                                         // 0x0054(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0055(0x0003) MISSED OFFSET
 	struct FPointer                                    Scene;                                                    // 0x0058(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	class AActor*                                      Owner;                                                    // 0x005C(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bAttached : 1;                                            // 0x0060(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	unsigned long                                      bTickInEditor : 1;                                        // 0x0060(0x0004) (CPF_Const)
 	unsigned long                                      bNeedsReattach : 1;                                       // 0x0060(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bNeedsUpdateTransform : 1;                                // 0x0060(0x0004) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class ETickingGroup>              TickGroup;                                                // 0x0064(0x0001) (CPF_Const)
+	TEnumAsByte<ETickingGroup>                         TickGroup;                                                // 0x0064(0x0001) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -7449,7 +3769,7 @@ public:
 	void DetachFromAny();
 	void ForceUpdate(bool bTransformOnly);
 	void SetComponentRBFixed(bool bFixed);
-	void SetTickGroup(TEnumAsByte<enum class ETickingGroup> NewTickGroup);
+	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
 };
 
 
@@ -7458,7 +3778,6 @@ public:
 class UAudioComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class USoundCue*                                   SoundCue;                                                 // 0x0068(0x0004) (CPF_Edit)
 	class USoundNode*                                  CueFirstNode;                                             // 0x006C(0x0004) (CPF_Const, CPF_Native)
 	TArray<struct FAudioComponentParam>                InstanceParameters;                                       // 0x0070(0x000C) (CPF_Edit, CPF_NeedCtorLink, CPF_EditInline)
@@ -7487,7 +3806,7 @@ public:
 	unsigned long                                      bIsCachedInPool : 1;                                      // 0x0088(0x0004)
 	TArray<struct FPointer>                            WaveInstances;                                            // 0x008C(0x000C) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
 	TArray<unsigned char>                              SoundNodeData;                                            // 0x0098(0x000C) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x00A4(0x003C) UNKNOWN PROPERTY: MapProperty Engine.AudioComponent.SoundNodeOffsetMap
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x00A4(0x003C) UNKNOWN PROPERTY: MapProperty Engine.AudioComponent.SoundNodeOffsetMap
 	struct FMultiMap_Mirror                            SoundNodeResetWaveMap;                                    // 0x00E0(0x003C) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
 	struct FPointer                                    Listener;                                                 // 0x011C(0x0004) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
 	float                                              PlaybackTime;                                             // 0x0120(0x0004) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
@@ -7539,9 +3858,9 @@ public:
 	float                                              LastOcclusionCheckTime;                                   // 0x023C(0x0004) (CPF_Transient)
 	class UDrawSoundRadiusComponent*                   PreviewSoundRadius;                                       // 0x0240(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FScriptDelegate                             __OnAudioFinished__Delegate;                              // 0x0244(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnQueueSubtitles__Delegate;                             // 0x0254(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -7612,8 +3931,7 @@ public:
 	float                                              LPFRadiusMax;                                             // 0x0280(0x0004) (CPF_Edit)
 	float                                              dBAttenuationAtMax;                                       // 0x0284(0x0004) (CPF_Edit)
 	float                                              FlattenAttenuationRadius;                                 // 0x0288(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class SoundDistanceModel>         DistanceAlgorithm;                                        // 0x028C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x028D(0x0003) MISSED OFFSET
+	TEnumAsByte<ESoundDistanceModel>                   DistanceAlgorithm;                                        // 0x028C(0x0001) (CPF_Edit)
 	float                                              RadiusMin;                                                // 0x0290(0x0004) (CPF_Edit)
 	float                                              RadiusMax;                                                // 0x0294(0x0004) (CPF_Edit)
 	TArray<struct FSplineSoundSlot>                    SoundSlots;                                               // 0x0298(0x000C) (CPF_Edit, CPF_AlwaysInit, CPF_NeedCtorLink)
@@ -7658,7 +3976,6 @@ public:
 class UHeightFogComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	unsigned long                                      bEnabled : 1;                                             // 0x0068(0x0004) (CPF_Edit, CPF_Const)
 	float                                              Height;                                                   // 0x006C(0x0004) (CPF_Const)
 	float                                              Density;                                                  // 0x0070(0x0004) (CPF_Edit, CPF_Const)
@@ -7683,13 +4000,12 @@ public:
 class UPrimitiveComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	int                                                Tag;                                                      // 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	struct FBoxSphereBounds                            Bounds;                                                   // 0x006C(0x001C) (CPF_Const, CPF_Native, CPF_Transient)
 	struct FPointer                                    SceneInfo;                                                // 0x0088(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                DetachFence;                                              // 0x008C(0x0004) (CPF_Const, CPF_Native)
 	float                                              LocalToWorldDeterminant;                                  // 0x0090(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	unsigned char                                      UnknownData01[0xC];                                       // 0x0094(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0094(0x000C) MISSED OFFSET
 	struct FMatrix                                     LocalToWorld;                                             // 0x00A0(0x0040) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                MotionBlurInfoIndex;                                      // 0x00E0(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<struct FPointer>                            DecalList;                                                // 0x00E4(0x000C) (CPF_Const, CPF_Native, CPF_NoImport)
@@ -7707,13 +4023,12 @@ public:
 	float                                              MotionBlurInstanceScale;                                  // 0x0124(0x0004) (CPF_Edit)
 	float                                              CullDistance;                                             // 0x0128(0x0004) (CPF_Const, CPF_NoExport, CPF_Deprecated)
 	float                                              CachedCullDistance;                                       // 0x012C(0x0004) (CPF_EditConst, CPF_Deprecated)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   DepthPriorityGroup;                                       // 0x0130(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   ViewOwnerDepthPriorityGroup;                              // 0x0131(0x0001) (CPF_Const)
-	TEnumAsByte<enum class EDetailMode>                DetailMode;                                               // 0x0132(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x0133(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ESceneDepthPriorityGroup>              DepthPriorityGroup;                                       // 0x0130(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ESceneDepthPriorityGroup>              ViewOwnerDepthPriorityGroup;                              // 0x0131(0x0001) (CPF_Const)
+	TEnumAsByte<EDetailMode>                           DetailMode;                                               // 0x0132(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x0133(0x0001) (CPF_Edit, CPF_Const)
 	unsigned char                                      RBDominanceGroup;                                         // 0x0134(0x0001) (CPF_Edit)
 	unsigned char                                      PreviewEnvironmentShadowing;                              // 0x0135(0x0001)
-	unsigned char                                      UnknownData02[0x2];                                       // 0x0136(0x0002) MISSED OFFSET
 	unsigned long                                      bUseViewOwnerDepthPriorityGroup : 1;                      // 0x0138(0x0004) (CPF_Const)
 	unsigned long                                      bOnlyBlockActorMovement : 1;                              // 0x0138(0x0004) (CPF_Const)
 	unsigned long                                      bAllowCullDistanceVolume : 1;                             // 0x0138(0x0004) (CPF_Edit, CPF_Const)
@@ -7781,7 +4096,7 @@ public:
 	struct FRBCollisionChannelContainer                RBCollideWithChannels;                                    // 0x0158(0x0004) (CPF_Edit, CPF_Const)
 	class UPhysicalMaterial*                           PhysMaterialOverride;                                     // 0x015C(0x0004) (CPF_Edit, CPF_Const)
 	class URB_BodyInstance*                            BodyInstance;                                             // 0x0160(0x0004) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
-	unsigned char                                      UnknownData03[0xC];                                       // 0x0164(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData01[0xC];                                       // 0x0164(0x000C) MISSED OFFSET
 	struct FMatrix                                     CachedParentToWorld;                                      // 0x0170(0x0040) (CPF_Const, CPF_Native, CPF_Transient)
 	struct FVector                                     Translation;                                              // 0x01B0(0x000C) (CPF_Edit, CPF_Const)
 	struct FRotator                                    Rotation;                                                 // 0x01BC(0x000C) (CPF_Edit, CPF_Const)
@@ -7800,8 +4115,8 @@ public:
 
 
 	void SetCastShadow(bool bNewCastShadow, bool bNewCastDynamicShadow);
-	TEnumAsByte<enum class GJKResult> ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB);
-	TEnumAsByte<enum class GJKResult> ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB);
+	TEnumAsByte<EGJKResult> ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB);
+	TEnumAsByte<EGJKResult> ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB);
 	struct FRotator GetRotation();
 	struct FVector GetPosition();
 	void SetAbsolute(bool NewAbsoluteTranslation, bool NewAbsoluteRotation, bool NewAbsoluteScale);
@@ -7811,8 +4126,8 @@ public:
 	void SetTranslation(const struct FVector& NewTranslation);
 	void SetActorCollision(bool NewCollideActors, bool NewBlockActors, bool NewAlwaysCheckCollision);
 	void SetTraceBlocking(bool NewBlockZeroExtent, bool NewBlockNonZeroExtent);
-	void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<enum class ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
-	void SetDepthPriorityGroup(TEnumAsByte<enum class ESceneDepthPriorityGroup> NewDepthPriorityGroup);
+	void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
+	void SetDepthPriorityGroup(TEnumAsByte<ESceneDepthPriorityGroup> NewDepthPriorityGroup);
 	void SetLightingChannels(const struct FLightingChannelContainer& NewLightingChannels);
 	void SetCullDistance(float NewCullDistance);
 	void SetLightEnvironment(class ULightEnvironmentComponent* NewLightEnvironment);
@@ -7828,9 +4143,9 @@ public:
 	void TermRBPhys();
 	void InitRBPhys();
 	void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision);
-	void SetRBChannel(TEnumAsByte<enum class ERBCollisionChannel> Channel);
+	void SetRBChannel(TEnumAsByte<ERBCollisionChannel> Channel);
 	void SetRBCollisionChannels(const struct FRBCollisionChannelContainer& Channels);
-	void SetRBCollidesWithChannel(TEnumAsByte<enum class ERBCollisionChannel> Channel, bool bNewCollides);
+	void SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, bool bNewCollides);
 	void SetBlockRigidBody(bool bNewBlockRigidBody);
 	bool RigidBodyIsAwake(const struct FName& BoneName);
 	void PutRigidBodyToSleep(const struct FName& BoneName);
@@ -7840,11 +4155,11 @@ public:
 	void RetardRBLinearVelocity(const struct FVector& RetardDir, float VelScale);
 	void SetRBAngularVelocity(const struct FVector& NewAngVel, bool bAddToCurrent);
 	void SetRBLinearVelocity(const struct FVector& NewVel, bool bAddToCurrent);
-	void AddTorque(const struct FVector& Torque, const struct FName& BoneName, TEnumAsByte<enum class EForceMode> ForceMode);
-	void AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<enum class ERadialImpulseFalloff> Falloff);
+	void AddTorque(const struct FVector& Torque, const struct FName& BoneName, TEnumAsByte<EForceMode> ForceMode);
+	void AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff);
 	float GetMass(const struct FName& BoneName);
-	void AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName, TEnumAsByte<enum class EForceMode> ForceMode);
-	void AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<enum class ERadialImpulseFalloff> Falloff, bool bVelChange);
+	void AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName, TEnumAsByte<EForceMode> ForceMode);
+	void AddRadialImpulse(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff, bool bVelChange);
 	void AddImpulse(const struct FVector& Impulse, const struct FVector& Position, const struct FName& BoneName, bool bVelChange);
 };
 
@@ -8217,10 +4532,8 @@ public:
 class URadialBlurComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UMaterialInterface*                          Material;                                                 // 0x0068(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   DepthPriorityGroup;                                       // 0x006C(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	TEnumAsByte<ESceneDepthPriorityGroup>              DepthPriorityGroup;                                       // 0x006C(0x0001) (CPF_Edit, CPF_Const)
 	float                                              BlurScale;                                                // 0x0070(0x0004) (CPF_Edit, CPF_Const)
 	float                                              BlurFalloffExponent;                                      // 0x0074(0x0004) (CPF_Edit, CPF_Const)
 	float                                              BlurOpacity;                                              // 0x0078(0x0004) (CPF_Edit, CPF_Const)
@@ -8228,7 +4541,7 @@ public:
 	float                                              DistanceFalloffExponent;                                  // 0x0080(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bRenderAsVelocity : 1;                                    // 0x0084(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bEnabled : 1;                                             // 0x0084(0x0004) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData02[0x8];                                       // 0x0088(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0088(0x0008) MISSED OFFSET
 	struct FMatrix                                     LocalToWorld;                                             // 0x0090(0x0040) (CPF_Const, CPF_Native, CPF_Transient)
 
 	static UClass* StaticClass()
@@ -8254,7 +4567,6 @@ public:
 class USceneCaptureComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	float                                              MaxCaptureTime;                                           // 0x0068(0x0004) (CPF_Edit)
 	float                                              CaptureTimeRemaining;                                     // 0x006C(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bEnabled : 1;                                             // 0x0070(0x0004) (CPF_Edit)
@@ -8265,8 +4577,7 @@ public:
 	unsigned long                                      bSkipUpdateIfOwnerOccluded : 1;                           // 0x0070(0x0004) (CPF_Edit)
 	unsigned long                                      bSkipRenderingDepthPrepass : 1;                           // 0x0070(0x0004) (CPF_Edit)
 	struct FColor                                      ClearColor;                                               // 0x0074(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ESceneCaptureViewMode>      ViewMode;                                                 // 0x0078(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
+	TEnumAsByte<ESceneCaptureViewMode>                 ViewMode;                                                 // 0x0078(0x0001) (CPF_Edit)
 	int                                                SceneLOD;                                                 // 0x007C(0x0004) (CPF_Edit)
 	float                                              FrameRate;                                                // 0x0080(0x0004) (CPF_Edit, CPF_Const)
 	class UPostProcessChain*                           PostProcess;                                              // 0x0084(0x0004) (CPF_Edit)
@@ -8405,7 +4716,6 @@ public:
 class UWindDirectionalSourceComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FPointer                                    SceneProxy;                                               // 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_Transient, CPF_NoImport)
 	float                                              Strength;                                                 // 0x006C(0x0004) (CPF_Edit)
 	float                                              Phase;                                                    // 0x0070(0x0004) (CPF_Deprecated)
@@ -8598,8 +4908,7 @@ class UActorFactoryApexDestructible : public UActorFactory
 {
 public:
 	unsigned long                                      bStartAwake : 1;                                          // 0x0068(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x006C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x006C(0x0001) (CPF_Edit)
 	struct FRBCollisionChannelContainer                CollideWithChannels;                                      // 0x0070(0x0004) (CPF_Edit, CPF_Const)
 	class UApexDestructibleAsset*                      DestructibleAsset;                                        // 0x0074(0x0004) (CPF_Edit)
 
@@ -8685,7 +4994,7 @@ public:
 	unsigned long                                      bBlockRigidBody : 1;                                      // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bUseCompartment : 1;                                      // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bCastDynamicShadow : 1;                                   // 0x0078(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ECollisionType>             CollisionType;                                            // 0x007C(0x0001) (CPF_Edit)
+	TEnumAsByte<ECollisionType>                        CollisionType;                                            // 0x007C(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -8716,7 +5025,6 @@ public:
 class UActorFactoryRigidBody : public UActorFactoryDynamicSM
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
 	unsigned long                                      bStartAwake : 1;                                          // 0x0080(0x0004) (CPF_Edit)
 	unsigned long                                      bDamageAppliesImpulse : 1;                                // 0x0080(0x0004) (CPF_Edit)
 	unsigned long                                      bLocalSpaceInitialVelocity : 1;                           // 0x0080(0x0004) (CPF_Edit)
@@ -8724,8 +5032,7 @@ public:
 	struct FVector                                     InitialVelocity;                                          // 0x0084(0x000C) (CPF_Edit)
 	class UDistributionVector*                         AdditionalVelocity;                                       // 0x0090(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	class UDistributionVector*                         InitialAngularVelocity;                                   // 0x0094(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x0098(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0099(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x0098(0x0001) (CPF_Edit)
 	float                                              StayUprightTorqueFactor;                                  // 0x009C(0x0004) (CPF_Edit)
 	float                                              StayUprightMaxTorque;                                     // 0x00A0(0x0004) (CPF_Edit)
 
@@ -8991,11 +5298,10 @@ class USoundCue : public UAkBaseSoundObject
 {
 public:
 	struct FName                                       SoundClass;                                               // 0x003C(0x0008) (CPF_Edit)
-	TEnumAsByte<enum class ESoundClassName>            SoundClassName;                                           // 0x0044(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0045(0x0003) MISSED OFFSET
+	TEnumAsByte<ESoundClassName>                       SoundClassName;                                           // 0x0044(0x0001)
 	unsigned long                                      bDebug : 1;                                               // 0x0048(0x0004) (CPF_Edit)
 	class USoundNode*                                  FirstNode;                                                // 0x004C(0x0004)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x0050(0x003C) UNKNOWN PROPERTY: MapProperty Engine.SoundCue.EditorData
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0050(0x003C) UNKNOWN PROPERTY: MapProperty Engine.SoundCue.EditorData
 	float                                              MaxAudibleDistance;                                       // 0x008C(0x0004) (CPF_Transient)
 	float                                              VolumeMultiplier;                                         // 0x0090(0x0004) (CPF_Edit)
 	float                                              PitchMultiplier;                                          // 0x0094(0x0004) (CPF_Edit)
@@ -9130,11 +5436,11 @@ public:
 	void SetDrawColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A);
 	void DrawBox(float Width, float Height);
 	void DrawRect(float RectX, float RectY, class UTexture* Tex);
-	void DrawPixel(int X, int Y, const struct FLinearColor& PixelColor, TEnumAsByte<enum class EBlendMode> BlendMode);
+	void DrawPixel(int X, int Y, const struct FLinearColor& PixelColor, TEnumAsByte<EBlendMode> BlendMode);
 	void DrawIcon(const struct FCanvasIcon& Icon, float X, float Y, float Scale);
 	void DrawScaledIcon(const struct FCanvasIcon& Icon, float X, float Y, const struct FVector& Scale);
 	struct FCanvasIcon MakeIcon(class UTexture* Texture, float U, float V, float UL, float VL);
-	void DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<enum class ECanvasBlendMode> Blend);
+	void DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<ECanvasBlendMode> Blend);
 	void DrawTexture(class UTexture* Tex, float Scale);
 	void PopMaskRegion();
 	void PushMaskRegion(float X, float Y, float XL, float YL);
@@ -9154,12 +5460,12 @@ public:
 	struct FFontRenderInfo STATIC_CreateFontRenderInfo(bool bClipText, bool bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);
 	void DrawTris(class UTexture* Tex, TArray<struct FCanvasUVTri> Triangles, const struct FColor& InColor);
 	void DrawTileStretched(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool bStretchHorizontally, bool bStretchVertically, float ScalingFactor);
-	void DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<enum class EBlendMode> Blend);
+	void DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<EBlendMode> Blend);
 	void DrawRotatedMaterialTile(class UMaterialInterface* Mat, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY);
 	void DrawRotatedTile(class UTexture* Tex, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY);
 	void DrawMaterialTile(class UMaterialInterface* Mat, float XL, float YL, float U, float V, float UL, float VL, bool bClipTile);
-	void PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<enum class EBlendMode> Blend);
-	void DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<enum class EBlendMode> Blend);
+	void PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<EBlendMode> Blend);
+	void DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<EBlendMode> Blend);
 };
 
 
@@ -9274,7 +5580,6 @@ public:
 	unsigned long                                      bUsingPathLanes : 1;                                      // 0x0200(0x0004)
 	unsigned char                                      bFire;                                                    // 0x0204(0x0001) (CPF_Input)
 	unsigned char                                      bAltFire;                                                 // 0x0205(0x0001) (CPF_Input)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0206(0x0002) MISSED OFFSET
 	float                                              MinHitWall;                                               // 0x0208(0x0004)
 	class UClass*                                      NavigationHandleClass;                                    // 0x020C(0x0004)
 	class UNavigationHandle*                           NavigationHandle;                                         // 0x0210(0x0004) (CPF_EditInline)
@@ -9493,13 +5798,12 @@ public:
 	float                                              MaxResponseTime;                                          // 0x0380(0x0004)
 	float                                              WaitDelay;                                                // 0x0384(0x0004)
 	class APawn*                                       AcknowledgedPawn;                                         // 0x0388(0x0004)
-	TEnumAsByte<enum class EDoubleClickDir>            DoubleClickDir;                                           // 0x038C(0x0001)
+	TEnumAsByte<EDoubleClickDir>                       DoubleClickDir;                                           // 0x038C(0x0001)
 	unsigned char                                      bIgnoreMoveInput;                                         // 0x038D(0x0001)
 	unsigned char                                      bIgnoreLookInput;                                         // 0x038E(0x0001)
 	unsigned char                                      bRun;                                                     // 0x038F(0x0001) (CPF_Input)
 	unsigned char                                      bDuck;                                                    // 0x0390(0x0001) (CPF_Input)
 	unsigned char                                      NetPlayerIndex;                                           // 0x0391(0x0001) (CPF_Const, CPF_DuplicateTransient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0392(0x0002) MISSED OFFSET
 	class AActor*                                      ViewTarget;                                               // 0x0394(0x0004) (CPF_Const)
 	class APlayerReplicationInfo*                      RealViewTarget;                                           // 0x0398(0x0004)
 	class UInterpTrackInstDirector*                    ControllingDirTrackInst;                                  // 0x039C(0x0004) (CPF_Transient)
@@ -9565,11 +5869,11 @@ public:
 	TArray<class AActor*>                              HiddenActors;                                             // 0x0570(0x000C) (CPF_NeedCtorLink)
 	float                                              LastSpectatorStateSynchTime;                              // 0x057C(0x0004)
 	struct FScriptDelegate                             __OnMissingPeersUnregistered__Delegate;                   // 0x0580(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0580(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0580(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __CanUnpause__Delegate;                                   // 0x0590(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0590(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0590(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __InputMatchDelegate__Delegate;                           // 0x05A0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x05A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x05A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -9598,10 +5902,10 @@ public:
 	void ClientSpawnCameraLensEffect(class UClass* LensEffectEmitterClass);
 	void DebugCameraAnims();
 	void ClientStopCameraAnim(class UCameraAnim* AnimToStop, bool bImmediate);
-	void ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<enum class ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace);
+	void ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace);
 	void OnCameraShake(class USeqAct_CameraShake* inAction);
 	void ClientStopCameraShake(class UCameraShake* Shake);
-	void ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
 	void DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float ShakeScale);
 	void InputMatchDelegate();
 	void Sentinel_PostAcquireTravelTheWorldPoints();
@@ -9615,7 +5919,7 @@ public:
 	void ClientAddTextureStreamingLoc(const struct FVector& InLoc, float Duration, bool bOverrideLocation);
 	void ClientPrestreamTextures(class AActor* ForcedActor, float ForceDuration, bool bEnableStreaming, int CinematicTextureGroups);
 	void ClientSetForceMipLevelsToBeResident(class UMaterialInterface* Material, float ForceDuration, int CinematicTextureGroups);
-	void ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<enum class EMovieControlType> Mode);
+	void ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<EMovieControlType> Mode);
 	int GetSplitscreenPlayerCount();
 	class APlayerReplicationInfo* GetSplitscreenPlayerByIndex(int PlayerIndex);
 	bool IsSplitscreenPlayer(int* out_SplitscreenPlayerIndex);
@@ -9742,7 +6046,7 @@ public:
 	void ServerVerifyViewTarget();
 	class AActor* GetViewTarget();
 	void ClientSetViewTarget(class AActor* A, const struct FViewTargetTransitionParams& TransitionParams);
-	void SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<enum class EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing);
+	void SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing);
 	void SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams);
 	bool IsLocalController();
 	bool IsLocalPlayerController();
@@ -9765,7 +6069,7 @@ public:
 	void NotifyLoadedWorld(const struct FName& WorldPackageName, bool bFinalDest);
 	void ServerNotifyLoadedWorld(const struct FName& WorldPackageName);
 	void Restart(bool bVehicleTransition);
-	void ClientSetProgressMessage(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
+	void ClientSetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
 	void SwitchLevel(const struct FString& URL);
 	void ChangeTeam(const struct FString& TeamName);
 	void SwitchTeam();
@@ -9794,23 +6098,23 @@ public:
 	void RestartLevel();
 	void Speech(const struct FName& Type, int Index, const struct FString& Callsign);
 	void HandleWalking();
-	void ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
+	void ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
 	int CompressAccel(int C);
 	class USavedMove* GetFreeMove();
 	void ClientUpdatePosition();
 	void ClearAckedMoves();
 	void ServerUpdatePing(int NewPing);
 	void UpdateStateFromAdjustment(const struct FName& NewState);
-	void LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ);
+	void LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ);
 	bool SkipPositionUpdateForRM();
 	void UpdatePing(float TimeStamp);
-	void ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
+	void ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
 	void ClientAckGoodMove(float TimeStamp);
 	void ClientCapBandwidth(int Cap);
-	void ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<enum class EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
+	void ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void VeryShortClientAdjustPosition(float TimeStamp, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void MoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
-	void ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
+	void ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
 	void ProcessDrive(float InForward, float InStrafe, float InUp, bool InJump);
 	void SendClientAdjustment();
 	void ServerMoveHandleClientError(float TimeStamp, const struct FVector& Accel, const struct FVector& ClientLoc);
@@ -9822,7 +6126,7 @@ public:
 	void SetCameraMode(const struct FName& NewCamMode);
 	void ClientSetCameraMode(const struct FName& NewCamMode);
 	void Camera(const struct FName& NewMode);
-	bool PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel);
+	bool PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void TeamSay(const struct FString& msg);
 	void ClientAdminMessage(const struct FString& msg);
 	void Say(const struct FString& msg);
@@ -9918,7 +6222,7 @@ public:
 	void NotifyPeerDisconnectHost(const struct FUniqueNetId& PeerNetId);
 	void ClientUpdateBestNextHosts(const struct FUniqueNetId& SortedNextHosts, unsigned char NumEntries);
 	void RemovePeer(const struct FUniqueNetId& PeerNetId);
-	void AddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<enum class ENATType> NatType);
+	void AddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<ENATType> NatType);
 	int FindConnectedPeerIndex(const struct FUniqueNetId& PeerNetId);
 	void ReceivedPlayer();
 	void PostBeginPlay();
@@ -9941,7 +6245,7 @@ public:
 	struct FString PasteFromClipboard();
 	void CopyToClipboard(const struct FString& Text);
 	void UpdateURL(const struct FString& NewOption, const struct FString& NewValue, bool bSave1Default);
-	void ClientTravel(const struct FString& URL, TEnumAsByte<enum class ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid);
+	void ClientTravel(const struct FString& URL, TEnumAsByte<ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid);
 	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
 	struct FString GetServerNetworkAddress();
 	struct FString GetPlayerNetworkAddress();
@@ -10122,7 +6426,7 @@ public:
 	}
 
 
-	bool GetKeyValue(int SaveSlot, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
+	bool GetKeyValue(int SaveSlot, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
 	bool GetDataStoreIDAndBlobNameForSaveSlot(int SaveSlot, struct FString* DataStoreID, struct FString* DataBlobName);
 	bool SetKeyValue(int SaveSlot, const struct FString& KeyName, struct FPlatformInterfaceData* Value);
 	bool InternalSetSaveSlotKeyValues(int SaveSlot, const struct FString& DataStoreID, const struct FString& SaveDataBlobName);
@@ -10134,7 +6438,7 @@ public:
 	void OnGetSaveDataComplete(bool bWasSuccessful, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error, TArray<unsigned char>* DataBlob);
 	void GetSaveData(int SaveSlot, const struct FScriptDelegate& OnGetSaveDataCallback);
 	void Init(const TScriptInterface<class UCloudSaveSystemKVSInterface>& InKeyValueStore, const TScriptInterface<class UCloudSaveSystemDataBlobStoreInterface>& InDataBlobStore, int VersionNumber);
-	class UObject* DeserializeObject(class UClass* ObjectClass, TEnumAsByte<enum class SaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data);
+	class UObject* DeserializeObject(class UClass* ObjectClass, TEnumAsByte<ESaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data);
 	void SerializeObject(class UObject* ObjectToSerialize, int DataVersion, TArray<unsigned char>* Data);
 	bool AreAnySlotOperationsActive();
 	bool IsDeleteOperationActive();
@@ -10329,7 +6633,7 @@ public:
 	float                                              MaxInput;                                                 // 0x0060(0x0004) (CPF_Edit)
 	float                                              MinOutput;                                                // 0x0064(0x0004) (CPF_Edit)
 	float                                              MaxOutput;                                                // 0x0068(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class DistributionParamMode>      ParamMode;                                                // 0x006C(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionParamMode>                ParamMode;                                                // 0x006C(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -10416,7 +6720,7 @@ class UDistributionVectorConstant : public UDistributionVector
 public:
 	struct FVector                                     Constant;                                                 // 0x0050(0x000C) (CPF_Edit)
 	unsigned long                                      bLockAxes : 1;                                            // 0x005C(0x0004)
-	TEnumAsByte<enum class EDistributionVectorLockFlags> LockedAxes;                                               // 0x0060(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorLockFlags>          LockedAxes;                                               // 0x0060(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -10432,13 +6736,12 @@ public:
 class UDistributionVectorParameterBase : public UDistributionVectorConstant
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	struct FName                                       ParameterName;                                            // 0x0064(0x0008) (CPF_Edit)
 	struct FVector                                     MinInput;                                                 // 0x006C(0x000C) (CPF_Edit)
 	struct FVector                                     MaxInput;                                                 // 0x0078(0x000C) (CPF_Edit)
 	struct FVector                                     MinOutput;                                                // 0x0084(0x000C) (CPF_Edit)
 	struct FVector                                     MaxOutput;                                                // 0x0090(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class DistributionParamMode>      ParamModes[0x3];                                          // 0x009C(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
+	TEnumAsByte<EDistributionParamMode>                ParamModes[0x3];                                          // 0x009C(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
 
 	static UClass* StaticClass()
 	{
@@ -10456,7 +6759,7 @@ class UDistributionVectorConstantCurve : public UDistributionVector
 public:
 	struct FInterpCurveVector                          ConstantCurve;                                            // 0x0050(0x0010) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bLockAxes : 1;                                            // 0x0060(0x0004)
-	TEnumAsByte<enum class EDistributionVectorLockFlags> LockedAxes;                                               // 0x0064(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorLockFlags>          LockedAxes;                                               // 0x0064(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -10476,8 +6779,8 @@ public:
 	struct FVector                                     Min;                                                      // 0x005C(0x000C) (CPF_Edit)
 	unsigned long                                      bLockAxes : 1;                                            // 0x0068(0x0004)
 	unsigned long                                      bUseExtremes : 1;                                         // 0x0068(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EDistributionVectorLockFlags> LockedAxes;                                               // 0x006C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDistributionVectorMirrorFlags> MirrorFlags[0x3];                                         // 0x006D(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorLockFlags>          LockedAxes;                                               // 0x006C(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorMirrorFlags>        MirrorFlags[0x3];                                         // 0x006D(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -10497,8 +6800,8 @@ public:
 	unsigned long                                      bLockAxes1 : 1;                                           // 0x0060(0x0004)
 	unsigned long                                      bLockAxes2 : 1;                                           // 0x0060(0x0004)
 	unsigned long                                      bUseExtremes : 1;                                         // 0x0060(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EDistributionVectorLockFlags> LockedAxes[0x2];                                          // 0x0064(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDistributionVectorMirrorFlags> MirrorFlags[0x3];                                         // 0x0066(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorLockFlags>          LockedAxes[0x2];                                          // 0x0064(0x0001) (CPF_Edit)
+	TEnumAsByte<EDistributionVectorMirrorFlags>        MirrorFlags[0x3];                                         // 0x0066(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -11235,8 +7538,7 @@ public:
 	TArray<struct FSubTrackGroup>                      SubTrackGroups;                                           // 0x0050(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FSupportedSubTrackInfo>              SupportedSubTracks;                                       // 0x005C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UClass*                                      TrackInstClass;                                           // 0x0068(0x0004)
-	TEnumAsByte<enum class ETrackActiveCondition>      ActiveCondition;                                          // 0x006C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	TEnumAsByte<ETrackActiveCondition>                 ActiveCondition;                                          // 0x006C(0x0001) (CPF_Edit)
 	struct FString                                     TrackTitle;                                               // 0x0070(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bOnePerGroup : 1;                                         // 0x007C(0x0004)
 	unsigned long                                      bDirGroupOnly : 1;                                        // 0x007C(0x0004)
@@ -11834,8 +8136,7 @@ public:
 	int                                                SaveCountSettingId;                                       // 0x0044(0x0004) (CPF_Const)
 	TArray<struct FOnlineProfileSetting>               ProfileSettings;                                          // 0x0048(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FSettingsPropertyPropertyMetaData>   ProfileMappings;                                          // 0x0054(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlinePlayerStorageAsyncState> AsyncState;                                               // 0x0060(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
+	TEnumAsByte<EOnlinePlayerStorageAsyncState>        AsyncState;                                               // 0x0060(0x0001) (CPF_Const)
 	int                                                DeviceID;                                                 // 0x0064(0x0004)
 
 	static UClass* StaticClass()
@@ -11855,7 +8156,7 @@ public:
 	bool SetRangedProfileSettingValue(int ProfileId, float NewValue);
 	bool GetProfileSettingRange(int ProfileId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
 	bool STATIC_GetProfileSettingMappingIds(int ProfileId, TArray<int>* Ids);
-	bool GetProfileSettingMappingType(int ProfileId, TEnumAsByte<enum class EPropertyValueMappingType>* OutType);
+	bool GetProfileSettingMappingType(int ProfileId, TEnumAsByte<EPropertyValueMappingType>* OutType);
 	bool SetProfileSettingValueFloat(int ProfileSettingId, float Value);
 	bool SetProfileSettingValueInt(int ProfileSettingId, int Value);
 	bool SetProfileSettingValueId(int ProfileSettingId, int Value);
@@ -12025,9 +8326,8 @@ public:
 	TArray<struct FSteamDLCInfo>                       SteamDLC;                                                 // 0x00F8(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
 	TArray<struct FPS4DLCInfo>                         PS4DLC;                                                   // 0x0104(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
 	TArray<struct FXboxOneDLCInfo>                     XboxOneDLC;                                               // 0x0110(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
-	TEnumAsByte<enum class OnlinePlatform>             OnlinePlatformType;                                       // 0x011C(0x0001) (CPF_Config)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> CurrentConnectionStatus;                                  // 0x011D(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x011E(0x0002) MISSED OFFSET
+	TEnumAsByte<EOnlinePlatform>                       OnlinePlatformType;                                       // 0x011C(0x0001) (CPF_Config)
+	TEnumAsByte<EOnlineServerConnectionStatus>         CurrentConnectionStatus;                                  // 0x011D(0x0001) (CPF_Transient)
 	TArray<struct FString>                             OnlineSubsystemNames;                                     // 0x0120(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	TArray<struct FNamedInterface>                     NamedInterfaces;                                          // 0x012C(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FNamedInterfaceDef>                  NamedInterfaceDefs;                                       // 0x0138(0x000C) (CPF_Config, CPF_NeedCtorLink)
@@ -12036,11 +8336,11 @@ public:
 	class UIniLocPatcher*                              Patcher;                                                  // 0x015C(0x0004) (CPF_Transient)
 	float                                              AsyncMinCompletionTime;                                   // 0x0160(0x0004) (CPF_Config)
 	struct FScriptDelegate                             __FeaturePrivilegeLevelUpdated__Delegate;                 // 0x0164(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0164(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0164(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnReadOnlineAvatarComplete__Delegate;                   // 0x0174(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnSystemUserControllerPairingChanged__Delegate;         // 0x0184(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -12049,7 +8349,7 @@ public:
 	}
 
 
-	bool ShowRestrictionMessage(int ControllerId, TEnumAsByte<enum class EFeaturePrivilege> Privilege);
+	bool ShowRestrictionMessage(int ControllerId, TEnumAsByte<EFeaturePrivilege> Privilege);
 	bool IsOriginalAppOwner();
 	bool CanPlayersTextChat(const struct FUniqueNetId& PlayerID, const struct FUniqueNetId& TargetId);
 	bool ShowHelpUI(unsigned char LocalUserNum);
@@ -12075,11 +8375,11 @@ public:
 	void SetSessionGameplayModeName(const struct FName& GameplayModeName);
 	void SetSessionGameplayMode(int GameplayMode);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
-	TEnumAsByte<enum class OnlinePlatform> STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName);
-	struct FString STATIC_GetPlatformName(TEnumAsByte<enum class OnlinePlatform> PlatformType);
+	TEnumAsByte<EOnlinePlatform> STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName);
+	struct FString STATIC_GetPlatformName(TEnumAsByte<EOnlinePlatform> PlatformType);
 	bool IsEnabled();
 	void SetPlayedWith(const struct FUniqueNetId& PlayerNetId);
-	void ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class AvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate);
+	void ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EAvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate);
 	void OnReadOnlineAvatarComplete(const struct FUniqueNetId& PlayerNetId, class UTexture* Avatar, const struct FString& OnlinePlayerName);
 	void SetDebugSpewLevel(int DebugSpewLevel);
 	void DumpVoiceRegistration();
@@ -12120,8 +8420,8 @@ public:
 	bool Init();
 	TArray<unsigned char> STATIC_EncodeBase64(const struct FString& Text);
 	TArray<unsigned char> STATIC_DecodeBase64(const struct FString& Text);
-	void GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback);
-	void FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, TEnumAsByte<enum class EFeaturePrivilegeLevel> Level);
+	void GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback);
+	void FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level);
 };
 
 
@@ -12296,8 +8596,7 @@ public:
 	struct FCurrentPostProcessVolumeInfo               CurrentPPInfo;                                            // 0x00BC(0x015C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink, CPF_NoImport)
 	struct FCurrentPostProcessVolumeInfo               LevelPPInfo;                                              // 0x0218(0x015C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink, CPF_NoImport)
 	TArray<struct FPostProcessSettingsOverride>        ActivePPOverrides;                                        // 0x0374(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EAspectRatioAxisConstraint> AspectRatioAxisConstraint;                                // 0x0380(0x0001) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0381(0x0003) MISSED OFFSET
+	TEnumAsByte<EAspectRatioAxisConstraint>            AspectRatioAxisConstraint;                                // 0x0380(0x0001) (CPF_Config)
 	struct FString                                     LastMap;                                                  // 0x0384(0x000C) (CPF_NeedCtorLink)
 	class UTranslationContext*                         TagContext;                                               // 0x0390(0x0004)
 	TScriptInterface<class UOnlineAuthInterface>       CachedAuthInt;                                            // 0x0394(0x0008)
@@ -12451,7 +8750,7 @@ public:
 	int                                                DrawHeight;                                               // 0x0054(0x0004)
 	int                                                OutDrawY;                                                 // 0x0058(0x0004)
 	int                                                InDrawY;                                                  // 0x005C(0x0004)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   SceneDPG;                                                 // 0x0060(0x0001) (CPF_Edit)
+	TEnumAsByte<ESceneDepthPriorityGroup>              SceneDPG;                                                 // 0x0060(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -12467,7 +8766,6 @@ public:
 class UAmbientOcclusionEffect : public UPostProcessEffect
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	struct FLinearColor                                OcclusionColor;                                           // 0x0064(0x0010) (CPF_Edit)
 	float                                              OcclusionPower;                                           // 0x0074(0x0004) (CPF_Edit)
 	float                                              OcclusionScale;                                           // 0x0078(0x0004) (CPF_Edit)
@@ -12477,8 +8775,7 @@ public:
 	unsigned long                                      bAngleBasedSSAO : 1;                                      // 0x0084(0x0004) (CPF_Edit)
 	float                                              OcclusionRadius;                                          // 0x0088(0x0004) (CPF_Edit)
 	float                                              OcclusionAttenuation;                                     // 0x008C(0x0004) (CPF_Deprecated)
-	TEnumAsByte<enum class EAmbientOcclusionQuality>   OcclusionQuality;                                         // 0x0090(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	TEnumAsByte<EAmbientOcclusionQuality>              OcclusionQuality;                                         // 0x0090(0x0001) (CPF_Edit)
 	float                                              OcclusionFadeoutMinDistance;                              // 0x0094(0x0004) (CPF_Edit)
 	float                                              OcclusionFadeoutMaxDistance;                              // 0x0098(0x0004) (CPF_Edit)
 	float                                              HaloDistanceThreshold;                                    // 0x009C(0x0004) (CPF_Edit)
@@ -12505,7 +8802,6 @@ public:
 class UBlurEffect : public UPostProcessEffect
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	int                                                BlurKernelSize;                                           // 0x0064(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -12522,14 +8818,12 @@ public:
 class UDOFEffect : public UPostProcessEffect
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	float                                              FalloffExponent;                                          // 0x0064(0x0004) (CPF_Edit)
 	float                                              BlurKernelSize;                                           // 0x0068(0x0004) (CPF_Edit)
 	float                                              MaxNearBlurAmount;                                        // 0x006C(0x0004) (CPF_Edit)
 	float                                              MinBlurAmount;                                            // 0x0070(0x0004) (CPF_Edit)
 	float                                              MaxFarBlurAmount;                                         // 0x0074(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EFocusType>                 FocusType;                                                // 0x0078(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0079(0x0003) MISSED OFFSET
+	TEnumAsByte<EFocusType>                            FocusType;                                                // 0x0078(0x0001) (CPF_Edit)
 	float                                              FocusInnerRadius;                                         // 0x007C(0x0004) (CPF_Edit)
 	float                                              FocusDistance;                                            // 0x0080(0x0004) (CPF_Edit)
 	struct FVector                                     FocusPosition;                                            // 0x0084(0x000C) (CPF_Edit)
@@ -12555,9 +8849,8 @@ public:
 	float                                              SceneMultiplier;                                          // 0x00A0(0x0004) (CPF_Deprecated)
 	float                                              BlurBloomKernelSize;                                      // 0x00A4(0x0004) (CPF_Edit)
 	unsigned long                                      bEnableReferenceDOF : 1;                                  // 0x00A8(0x0004) (CPF_Deprecated)
-	TEnumAsByte<enum class EDOFType>                   DepthOfFieldType;                                         // 0x00AC(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDOFQuality>                DepthOfFieldQuality;                                      // 0x00AD(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00AE(0x0002) MISSED OFFSET
+	TEnumAsByte<EDOFType>                              DepthOfFieldType;                                         // 0x00AC(0x0001) (CPF_Edit)
+	TEnumAsByte<EDOFQuality>                           DepthOfFieldQuality;                                      // 0x00AD(0x0001) (CPF_Edit)
 	class UTexture2D*                                  BokehTexture;                                             // 0x00B0(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -12599,9 +8892,8 @@ public:
 	struct FVector                                     SceneMidTones;                                            // 0x00E0(0x000C) (CPF_Edit)
 	float                                              SceneDesaturation;                                        // 0x00EC(0x0004) (CPF_Edit)
 	struct FVector                                     SceneColorize;                                            // 0x00F0(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class ETonemapperType>            TonemapperType;                                           // 0x00FC(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EPostProcessAAType>         PostProcessAAType;                                        // 0x00FD(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00FE(0x0002) MISSED OFFSET
+	TEnumAsByte<ETonemapperType>                       TonemapperType;                                           // 0x00FC(0x0001) (CPF_Edit)
+	TEnumAsByte<EPostProcessAAType>                    PostProcessAAType;                                        // 0x00FD(0x0001) (CPF_Edit)
 	float                                              TonemapperRange;                                          // 0x0100(0x0004) (CPF_Edit)
 	float                                              TonemapperToeFactor;                                      // 0x0104(0x0004) (CPF_Edit)
 	float                                              TonemapperScale;                                          // 0x0108(0x0004) (CPF_Edit)
@@ -12649,7 +8941,6 @@ public:
 class UMaterialEffect : public UPostProcessEffect
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	class UMaterialInterface*                          Material;                                                 // 0x0064(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -12666,7 +8957,6 @@ public:
 class UMotionBlurEffect : public UPostProcessEffect
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	float                                              MaxVelocity;                                              // 0x0064(0x0004) (CPF_Edit)
 	float                                              MotionBlurAmount;                                         // 0x0068(0x0004) (CPF_Edit)
 	unsigned long                                      FullMotionBlur : 1;                                       // 0x006C(0x0004) (CPF_Edit)
@@ -12753,7 +9043,6 @@ public:
 	int                                                MaxLandingVelocity;                                       // 0x0074(0x0004)
 	unsigned char                                      bPruned;                                                  // 0x0078(0x0001)
 	unsigned char                                      PathColorIndex;                                           // 0x0079(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x007A(0x0002) MISSED OFFSET
 	unsigned long                                      bAddToNavigationOctree : 1;                               // 0x007C(0x0004) (CPF_Const, CPF_EditConst)
 	unsigned long                                      bCanCutCorners : 1;                                       // 0x007C(0x0004)
 	unsigned long                                      bCheckForObstructions : 1;                                // 0x007C(0x0004)
@@ -12976,10 +9265,9 @@ public:
 	unsigned long                                      bForceRMVelocity : 1;                                     // 0x0048(0x0004)
 	unsigned long                                      bForceMaxAccel : 1;                                       // 0x0048(0x0004)
 	unsigned long                                      bRootMotionFromInterpCurve : 1;                           // 0x0048(0x0004)
-	TEnumAsByte<enum class EDoubleClickDir>            DoubleClickMove;                                          // 0x004C(0x0001)
-	TEnumAsByte<enum class EPhysics>                   SavedPhysics;                                             // 0x004D(0x0001)
-	TEnumAsByte<enum class ERootMotionMode>            RootMotionMode;                                           // 0x004E(0x0001)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x004F(0x0001) MISSED OFFSET
+	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // 0x004C(0x0001)
+	TEnumAsByte<EPhysics>                              SavedPhysics;                                             // 0x004D(0x0001)
+	TEnumAsByte<ERootMotionMode>                       RootMotionMode;                                           // 0x004E(0x0001)
 	struct FVector                                     StartLocation;                                            // 0x0050(0x000C)
 	struct FVector                                     StartRelativeLocation;                                    // 0x005C(0x000C)
 	struct FVector                                     StartVelocity;                                            // 0x0068(0x000C)
@@ -13005,11 +9293,11 @@ public:
 
 
 	struct FString GetDebugString();
-	TEnumAsByte<enum class EDoubleClickDir> STATIC_SetFlags(unsigned char Flags, class APlayerController* PC);
+	TEnumAsByte<EDoubleClickDir> STATIC_SetFlags(unsigned char Flags, class APlayerController* PC);
 	unsigned char CompressedFlags();
 	void ResetMoveFor(class APawn* P);
 	void PrepMoveFor(class APawn* P);
-	void SetMoveFor(class APlayerController* P, float DeltaTime, const struct FVector& newAccel, TEnumAsByte<enum class EDoubleClickDir> InDoubleClick);
+	void SetMoveFor(class APlayerController* P, float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> InDoubleClick);
 	bool CanCombineWith(class USavedMove* NewMove, class APawn* inPawn, float MaxDelta);
 	void SetInitialPosition(class APawn* P);
 	struct FVector GetStartLocation();
@@ -13080,10 +9368,10 @@ public:
 	unsigned long                                      bDebugNoGFxUI : 1;                                        // 0x00B0(0x0004) (CPF_Config)
 	struct FTitleSafeZoneArea                          TitleSafeZone;                                            // 0x00B4(0x0010)
 	TArray<struct FSplitscreenData>                    SplitscreenInfo;                                          // 0x00C4(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ESplitScreenType>           DesiredSplitscreenType;                                   // 0x00D0(0x0001)
-	TEnumAsByte<enum class ESplitScreenType>           ActiveSplitscreenType;                                    // 0x00D1(0x0001)
-	TEnumAsByte<enum class ESplitScreenType>           Default2PSplitType;                                       // 0x00D2(0x0001) (CPF_Const)
-	TEnumAsByte<enum class ESplitScreenType>           Default3PSplitType;                                       // 0x00D3(0x0001) (CPF_Const)
+	TEnumAsByte<ESplitScreenType>                      DesiredSplitscreenType;                                   // 0x00D0(0x0001)
+	TEnumAsByte<ESplitScreenType>                      ActiveSplitscreenType;                                    // 0x00D1(0x0001)
+	TEnumAsByte<ESplitScreenType>                      Default2PSplitType;                                       // 0x00D2(0x0001) (CPF_Const)
+	TEnumAsByte<ESplitScreenType>                      Default3PSplitType;                                       // 0x00D3(0x0001) (CPF_Const)
 	struct FString                                     ProgressMessage[0x2];                                     // 0x00D4(0x000C) (CPF_NeedCtorLink)
 	float                                              ProgressTimeOut;                                          // 0x00EC(0x0004)
 	float                                              ProgressFadeTime;                                         // 0x00F0(0x0004)
@@ -13116,8 +9404,8 @@ public:
 	class ULocalPlayer* GetPlayerOwner(int PlayerIndex);
 	void ClearProgressMessages();
 	void SetProgressTime(float T);
-	void NotifyConnectionError(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
-	void SetProgressMessage(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
+	void NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
+	void SetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
 	int RemoveLocalPlayer(class ULocalPlayer* ExistingPlayer);
 	int AddLocalPlayer(class ULocalPlayer* NewPlayer);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
@@ -13139,8 +9427,8 @@ public:
 	void GetSubtitleRegion(struct FVector2D* MinPos, struct FVector2D* MaxPos);
 	void LayoutPlayers();
 	void UpdateActiveSplitscreenType();
-	TEnumAsByte<enum class ESplitScreenType> GetSplitscreenConfiguration();
-	void SetSplitscreenConfiguration(TEnumAsByte<enum class ESplitScreenType> SplitType);
+	TEnumAsByte<ESplitScreenType> GetSplitscreenConfiguration();
+	void SetSplitscreenConfiguration(TEnumAsByte<ESplitScreenType> SplitType);
 	void GameSessionEnded();
 	class UInteraction* GetInteraction(class UClass* InteractionClass);
 	void RemoveInteraction(class UInteraction* RemInteraction);
@@ -13164,7 +9452,7 @@ public:
 	void EventScaleformEnabledChanged(class UGameViewportClient* GVC);
 	bool HandleInputChar(int ControllerId, const struct FString& Unicode);
 	bool HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
 };
 
 
@@ -13226,12 +9514,12 @@ public:
 	bool GetRangedPropertyValue(int PropertyId, float* OutValue);
 	bool SetRangedPropertyValue(int PropertyId, float NewValue);
 	bool GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
-	bool GetPropertyMappingType(int PropertyId, TEnumAsByte<enum class EPropertyValueMappingType>* OutType);
+	bool GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType);
 	bool HasStringSetting(int SettingId);
 	bool HasProperty(int PropertyId);
 	void UpdateProperties(bool bShouldAddIfMissing, TArray<struct FSettingsProperty>* Props);
 	void UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings);
-	TEnumAsByte<enum class ESettingsDataType> GetPropertyType(int PropertyId);
+	TEnumAsByte<ESettingsDataType> GetPropertyType(int PropertyId);
 	bool GetPropertyValueId(int PropertyId, int* ValueId);
 	bool SetPropertyValueId(int PropertyId, int ValueId);
 	bool GetStringProperty(int PropertyId, struct FString* Value);
@@ -13333,8 +9621,7 @@ public:
 	struct FUniqueNetId                                OwningPlayerId;                                           // 0x0094(0x0030)
 	int                                                PingInMs;                                                 // 0x00C4(0x0004) (CPF_DataBinding)
 	float                                              MatchQuality;                                             // 0x00C8(0x0004) (CPF_DataBinding)
-	TEnumAsByte<enum class EOnlineGameState>           GameState;                                                // 0x00CC(0x0001) (CPF_Const, CPF_DataBinding)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x00CD(0x0003) MISSED OFFSET
+	TEnumAsByte<EOnlineGameState>                      GameState;                                                // 0x00CC(0x0001) (CPF_Const, CPF_DataBinding)
 	int                                                BuildUniqueId;                                            // 0x00D0(0x0004) (CPF_Const)
 	TArray<struct FName>                               DataboundPropertiesToAdvertise;                           // 0x00D4(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     BeaconAddress;                                            // 0x00E0(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -13536,20 +9823,19 @@ public:
 	struct FColor                                      FlattenBackgroundColor;                                   // 0x007C(0x0004) (CPF_Edit)
 	class UTexture*                                    MobileBaseTexture;                                        // 0x0080(0x0004) (CPF_Edit)
 	class UTexture*                                    FlattenedTexture;                                         // 0x0084(0x0004) (CPF_DuplicateTransient, CPF_Deprecated)
-	TEnumAsByte<enum class EMobileTexCoordsSource>     MobileBaseTextureTexCoordsSource;                         // 0x0088(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileAmbientOcclusionSource> MobileAmbientOcclusionSource;                             // 0x0089(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileSpecularMask>        MobileSpecularMask;                                       // 0x008A(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileEmissiveColorSource> MobileEmissiveColorSource;                                // 0x008B(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileValueSource>         MobileEmissiveMaskSource;                                 // 0x008C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileValueSource>         MobileEnvironmentMaskSource;                              // 0x008D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileEnvironmentBlendMode> MobileEnvironmentBlendMode;                               // 0x008E(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileValueSource>         MobileRimLightingMaskSource;                              // 0x008F(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileTexCoordsSource>     MobileMaskTextureTexCoordsSource;                         // 0x0090(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileAlphaValueSource>    MobileAlphaValueSource;                                   // 0x0091(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileTexCoordsSource>     MobileDetailTextureTexCoordsSource;                       // 0x0092(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileTextureBlendFactorSource> MobileTextureBlendFactorSource;                           // 0x0093(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMobileColorMultiplySource> MobileColorMultiplySource;                                // 0x0094(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0095(0x0003) MISSED OFFSET
+	TEnumAsByte<EMobileTexCoordsSource>                MobileBaseTextureTexCoordsSource;                         // 0x0088(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileAmbientOcclusionSource>         MobileAmbientOcclusionSource;                             // 0x0089(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileSpecularMask>                   MobileSpecularMask;                                       // 0x008A(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileEmissiveColorSource>            MobileEmissiveColorSource;                                // 0x008B(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileValueSource>                    MobileEmissiveMaskSource;                                 // 0x008C(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileValueSource>                    MobileEnvironmentMaskSource;                              // 0x008D(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileEnvironmentBlendMode>           MobileEnvironmentBlendMode;                               // 0x008E(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileValueSource>                    MobileRimLightingMaskSource;                              // 0x008F(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileTexCoordsSource>                MobileMaskTextureTexCoordsSource;                         // 0x0090(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileAlphaValueSource>               MobileAlphaValueSource;                                   // 0x0091(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileTexCoordsSource>                MobileDetailTextureTexCoordsSource;                       // 0x0092(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileTextureBlendFactorSource>       MobileTextureBlendFactorSource;                           // 0x0093(0x0001) (CPF_Edit)
+	TEnumAsByte<EMobileColorMultiplySource>            MobileColorMultiplySource;                                // 0x0094(0x0001) (CPF_Edit)
 	class UTexture*                                    MobileNormalTexture;                                      // 0x0098(0x0004) (CPF_Edit)
 	float                                              SubUVFrameRate;                                           // 0x009C(0x0004) (CPF_Edit)
 	int                                                SubUVFrameCountAlongAxes;                                 // 0x00A0(0x0004) (CPF_Edit)
@@ -13647,8 +9933,7 @@ public:
 class URB_BodySetup : public UKMeshProps
 {
 public:
-	TEnumAsByte<enum class ESleepFamily>               SleepFamily;                                              // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<ESleepFamily>                          SleepFamily;                                              // 0x0080(0x0001) (CPF_Edit)
 	struct FName                                       BoneName;                                                 // 0x0084(0x0008) (CPF_Edit, CPF_EditConst)
 	unsigned long                                      bFixed : 1;                                               // 0x008C(0x0004) (CPF_Edit)
 	unsigned long                                      bNoCollision : 1;                                         // 0x008C(0x0004) (CPF_Edit)
@@ -13738,9 +10023,8 @@ public:
 	float                                              ReapplyDensityAmount;                                     // 0x0090(0x0004)
 	int                                                StartCullDistance;                                        // 0x0094(0x0004) (CPF_Edit)
 	int                                                EndCullDistance;                                          // 0x0098(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class FoliageCullOption>          CullOption;                                               // 0x009C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDetailMode>                DetailMode;                                               // 0x009D(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x009E(0x0002) MISSED OFFSET
+	TEnumAsByte<EFoliageCullOption>                    CullOption;                                               // 0x009C(0x0001) (CPF_Edit)
+	TEnumAsByte<EDetailMode>                           DetailMode;                                               // 0x009D(0x0001) (CPF_Edit)
 	int                                                DisplayOrder;                                             // 0x00A0(0x0004)
 
 	static UClass* StaticClass()
@@ -13800,10 +10084,9 @@ public:
 class UParticleSystem : public UObject
 {
 public:
-	TEnumAsByte<enum class EParticleSystemUpdateMode>  SystemUpdateMode;                                         // 0x003C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ParticleSystemLODMethod>    LODMethod;                                                // 0x003D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EParticleSystemOcclusionBoundsMethod> OcclusionBoundsMethod;                                    // 0x003E(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x003F(0x0001) MISSED OFFSET
+	TEnumAsByte<EParticleSystemUpdateMode>             SystemUpdateMode;                                         // 0x003C(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleSystemLODMethod>              LODMethod;                                                // 0x003D(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleSystemOcclusionBoundsMethod>  OcclusionBoundsMethod;                                    // 0x003E(0x0001) (CPF_Edit)
 	float                                              UpdateTime_FPS;                                           // 0x0040(0x0004) (CPF_Edit)
 	float                                              UpdateTime_Delta;                                         // 0x0044(0x0004)
 	float                                              WarmupTime;                                               // 0x0048(0x0004) (CPF_Edit)
@@ -13853,10 +10136,10 @@ public:
 
 	float GetMaxLifespan(float InComponentDelay);
 	bool SetLODDistance(int LODLevelIndex, float InDistance);
-	void SetCurrentLODMethod(TEnumAsByte<enum class ParticleSystemLODMethod> InMethod);
+	void SetCurrentLODMethod(TEnumAsByte<EParticleSystemLODMethod> InMethod);
 	float GetLODDistance(int LODLevelIndex);
 	int GetLODLevelCount();
-	TEnumAsByte<enum class ParticleSystemLODMethod> GetCurrentLODMethod();
+	TEnumAsByte<EParticleSystemLODMethod> GetCurrentLODMethod();
 };
 
 
@@ -13886,12 +10169,11 @@ public:
 	float                                              UnpackMin[0x4];                                           // 0x0040(0x0004) (CPF_Edit)
 	float                                              UnpackMax[0x4];                                           // 0x0050(0x0004) (CPF_Edit)
 	struct FUntypedBulkData_Mirror                     SourceArt;                                                // 0x0060(0x0034) (CPF_Const, CPF_Native)
-	TEnumAsByte<enum class TextureCompressionSettings> CompressionSettings;                                      // 0x0094(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureFilter>              Filter;                                                   // 0x0095(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureGroup>               LODGroup;                                                 // 0x0096(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureGroup>               CachedLODGroup;                                           // 0x0097(0x0001) (CPF_Transient)
-	TEnumAsByte<enum class TextureMipGenSettings>      MipGenSettings;                                           // 0x0098(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0099(0x0003) MISSED OFFSET
+	TEnumAsByte<ETextureCompressionSettings>           CompressionSettings;                                      // 0x0094(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureFilter>                        Filter;                                                   // 0x0095(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureGroup>                         LODGroup;                                                 // 0x0096(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureGroup>                         CachedLODGroup;                                           // 0x0097(0x0001) (CPF_Transient)
+	TEnumAsByte<ETextureMipGenSettings>                MipGenSettings;                                           // 0x0098(0x0001) (CPF_Edit)
 	int                                                LODBias;                                                  // 0x009C(0x0004) (CPF_Edit)
 	int                                                CachedCombinedLODBias;                                    // 0x00A0(0x0004) (CPF_Transient)
 	int                                                NumCinematicMipLevels;                                    // 0x00A4(0x0004) (CPF_Edit)
@@ -13932,10 +10214,9 @@ public:
 	int                                                SizeY;                                                    // 0x0160(0x0004) (CPF_Const)
 	int                                                OriginalSizeX;                                            // 0x0164(0x0004) (CPF_Const)
 	int                                                OriginalSizeY;                                            // 0x0168(0x0004) (CPF_Const)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x016C(0x0001) (CPF_Const)
-	TEnumAsByte<enum class TextureAddress>             AddressX;                                                 // 0x016D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureAddress>             AddressY;                                                 // 0x016E(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x016F(0x0001) MISSED OFFSET
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x016C(0x0001) (CPF_Const)
+	TEnumAsByte<ETextureAddress>                       AddressX;                                                 // 0x016D(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureAddress>                       AddressY;                                                 // 0x016E(0x0001) (CPF_Edit)
 	unsigned long                                      bIsEditorOnly : 1;                                        // 0x0170(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bIsStreamable : 1;                                        // 0x0170(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bHasCancelationPending : 1;                               // 0x0170(0x0004) (CPF_Const, CPF_Transient)
@@ -13968,7 +10249,7 @@ public:
 	}
 
 
-	class UTexture2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat);
+	class UTexture2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat);
 	void SetForceMipLevelsToBeResident(float Seconds, int CinematicTextureGroups);
 };
 
@@ -14079,7 +10360,7 @@ public:
 	class UUIDataStore* STATIC_StaticResolveDataStore(const struct FName& DataStoreTag, class ULocalPlayer* InPlayerOwner);
 	class UGameUISceneClient* STATIC_GetSceneClient();
 	class UUIInteraction* STATIC_GetCurrentUIController();
-	TEnumAsByte<enum class EInputPlatformType> STATIC_GetInputPlatformType(class ULocalPlayer* OwningPlayer);
+	TEnumAsByte<EInputPlatformType> STATIC_GetInputPlatformType(class ULocalPlayer* OwningPlayer);
 };
 
 
@@ -14114,7 +10395,7 @@ public:
 	void Tick(float DeltaTime);
 	bool OnReceivedNativeInputChar(int ControllerId, const struct FString& Unicode);
 	bool OnReceivedNativeInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	bool OnReceivedNativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
 };
 
 
@@ -14152,15 +10433,15 @@ public:
 
 
 	void NotifyGameSessionEnded();
-	TEnumAsByte<enum class ENATType> STATIC_GetNATType();
+	TEnumAsByte<ENATType> STATIC_GetNATType();
 	int STATIC_GetConnectedGamepadCount(TArray<unsigned long> ControllerConnectionStatusOverrides);
 	bool STATIC_IsGamepadConnected(int ControllerId);
 	int STATIC_GetNumGuestsLoggedIn();
 	int STATIC_GetLoggedInPlayerCount(bool bRequireOnlineLogin);
 	bool STATIC_IsLoggedIn(int ControllerId, bool bRequireOnlineLogin);
 	bool STATIC_HasLinkConnection();
-	TEnumAsByte<enum class ELoginStatus> GetLowestLoginStatusOfControllers();
-	TEnumAsByte<enum class ELoginStatus> STATIC_GetLoginStatus(int ControllerId);
+	TEnumAsByte<ELoginStatus> GetLowestLoginStatusOfControllers();
+	TEnumAsByte<ELoginStatus> STATIC_GetLoginStatus(int ControllerId);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	class ULocalPlayer* STATIC_GetLocalPlayer(int PlayerIndex);
@@ -14454,8 +10735,7 @@ public:
 	unsigned long                                      bCanHighlightSelectedSections : 1;                        // 0x0224(0x0004) (CPF_Transient)
 	unsigned long                                      bUseSimpleLightmapModifications : 1;                      // 0x0224(0x0004) (CPF_Edit)
 	class UTexture*                                    SimpleLightmapModificationTexture;                        // 0x0228(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ELightmapModificationFunction> SimpleLightmapModificationFunction;                       // 0x022C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x022D(0x0003) MISSED OFFSET
+	TEnumAsByte<ELightmapModificationFunction>         SimpleLightmapModificationFunction;                       // 0x022C(0x0001) (CPF_Edit)
 	unsigned long                                      bNeverBecomeDynamic : 1;                                  // 0x0230(0x0004) (CPF_Edit)
 	TArray<struct FGuid>                               IrrelevantLights;                                         // 0x0234(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	TArray<struct FStaticMeshComponentLODInfo>         LODData;                                                  // 0x0240(0x000C) (CPF_Const, CPF_Native, CPF_SerializeText, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NotForConsole, CPF_RepRetry, CPF_PrivateWrite, CPF_ProtectedWrite, CPF_ArchetypeProperty, CPF_EditHide, CPF_EditTextBox, CPF_CrossLevelPassive, CPF_CrossLevelActive)
@@ -14674,8 +10954,7 @@ public:
 	class UNavMeshPathConstraint*                      PathConstraintList;                                       // 0x0094(0x0004)
 	class UNavMeshPathGoalEvaluator*                   PathGoalList;                                             // 0x0098(0x0004)
 	struct FNavMeshPathParams                          CachedPathParams;                                         // 0x009C(0x0030)
-	TEnumAsByte<enum class EPathFindingError>          LastPathError;                                            // 0x00CC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00CD(0x0003) MISSED OFFSET
+	TEnumAsByte<EPathFindingError>                     LastPathError;                                            // 0x00CC(0x0001) (CPF_Edit)
 	float                                              LastPathFailTime;                                         // 0x00D0(0x0004) (CPF_Edit)
 	struct FVector                                     Breadcrumbs[0xA];                                         // 0x00D4(0x000C)
 	int                                                BreadCrumbMostRecentIdx;                                  // 0x014C(0x0004)
@@ -14702,7 +10981,7 @@ public:
 	void LimitPathCacheDistance(float MaxDist);
 	void STATIC_GetValidPositionsForBox(const struct FVector& pos, float Radius, const struct FVector& Extent, bool bMustBeReachableFromStartPos, int MaxPositions, float MinRadius, const struct FVector& ValidBoxAroundStartPos, TArray<struct FVector>* out_ValidPositions);
 	void STATIC_GetAllPolyCentersWithinBounds(const struct FVector& pos, const struct FVector& Extent, TArray<struct FVector>* out_PolyCtrs);
-	TEnumAsByte<enum class ENavMeshEdgeType> GetCurrentEdgeType();
+	TEnumAsByte<ENavMeshEdgeType> GetCurrentEdgeType();
 	void ClearCurrentEdge();
 	struct FString GetCurrentEdgeDebugText();
 	void PrintPathCacheDebugText();
@@ -14917,8 +11196,7 @@ class UNavMeshPath_MinDistBetweenSpecsOfType : public UNavMeshPathConstraint
 public:
 	float                                              MinDistBetweenEdgeTypes;                                  // 0x0050(0x0004)
 	struct FVector                                     InitLocation;                                             // 0x0054(0x000C)
-	TEnumAsByte<enum class ENavMeshEdgeType>           EdgeType;                                                 // 0x0060(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
+	TEnumAsByte<ENavMeshEdgeType>                      EdgeType;                                                 // 0x0060(0x0001)
 	float                                              Penalty;                                                  // 0x0064(0x0004)
 
 	static UClass* StaticClass()
@@ -14929,7 +11207,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<enum class ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty);
+	bool STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty);
 };
 
 
@@ -15574,7 +11852,6 @@ public:
 class UHeadTrackingComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	TArray<struct FName>                               TrackControllerName;                                      // 0x0068(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	float                                              LookAtActorRadius;                                        // 0x0074(0x0004) (CPF_Edit)
 	unsigned long                                      bDisableBeyondLimit : 1;                                  // 0x0078(0x0004) (CPF_Edit)
@@ -15583,7 +11860,7 @@ public:
 	float                                              MaxInterestTime;                                          // 0x0084(0x0004) (CPF_Edit)
 	TArray<class UClass*>                              ActorClassesToLookAt;                                     // 0x0088(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FName>                               TargetBoneNames;                                          // 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x00A0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.HeadTrackingComponent.CurrentActorMap
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x00A0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.HeadTrackingComponent.CurrentActorMap
 	class USkeletalMeshComponent*                      SkeletalMeshComp;                                         // 0x00DC(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TArray<class USkelControlLookAt*>                  TrackControls;                                            // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FVector                                     RootMeshLocation;                                         // 0x00EC(0x000C) (CPF_Transient)
@@ -15605,8 +11882,8 @@ class UAnimationCompressionAlgorithm : public UObject
 public:
 	struct FString                                     Description;                                              // 0x003C(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bNeedsSkeleton : 1;                                       // 0x0048(0x0004)
-	TEnumAsByte<enum class AnimationCompressionFormat> TranslationCompressionFormat;                             // 0x004C(0x0001)
-	TEnumAsByte<enum class AnimationCompressionFormat> RotationCompressionFormat;                                // 0x004D(0x0001) (CPF_Edit)
+	TEnumAsByte<EAnimationCompressionFormat>           TranslationCompressionFormat;                             // 0x004C(0x0001)
+	TEnumAsByte<EAnimationCompressionFormat>           RotationCompressionFormat;                                // 0x004D(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -15622,7 +11899,6 @@ public:
 class UAnimationCompressionAlgorithm_Automatic : public UAnimationCompressionAlgorithm
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004E(0x0002) MISSED OFFSET
 	float                                              MaxEndEffectorError;                                      // 0x0050(0x0004) (CPF_Edit)
 	unsigned long                                      bTryFixedBitwiseCompression : 1;                          // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bTryPerTrackBitwiseCompression : 1;                       // 0x0054(0x0004) (CPF_Edit)
@@ -15676,7 +11952,6 @@ public:
 class UAnimationCompressionAlgorithm_RemoveEverySecondKey : public UAnimationCompressionAlgorithm
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004E(0x0002) MISSED OFFSET
 	int                                                MinKeys;                                                  // 0x0050(0x0004) (CPF_Edit)
 	unsigned long                                      bStartAtSecondKey : 1;                                    // 0x0054(0x0004) (CPF_Edit)
 
@@ -15694,7 +11969,6 @@ public:
 class UAnimationCompressionAlgorithm_RemoveLinearKeys : public UAnimationCompressionAlgorithm
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004E(0x0002) MISSED OFFSET
 	float                                              MaxPosDiff;                                               // 0x0050(0x0004) (CPF_Edit)
 	float                                              MaxAngleDiff;                                             // 0x0054(0x0004) (CPF_Edit)
 	float                                              MaxEffectorDiff;                                          // 0x0058(0x0004) (CPF_Edit)
@@ -15721,8 +11995,8 @@ public:
 	float                                              MaxZeroingThreshold;                                      // 0x006C(0x0004) (CPF_Edit)
 	float                                              MaxPosDiffBitwise;                                        // 0x0070(0x0004) (CPF_Edit)
 	float                                              MaxAngleDiffBitwise;                                      // 0x0074(0x0004) (CPF_Edit)
-	TArray<TEnumAsByte<enum class AnimationCompressionFormat>> AllowedRotationFormats;                                   // 0x0078(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<TEnumAsByte<enum class AnimationCompressionFormat>> AllowedTranslationFormats;                                // 0x0084(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EAnimationCompressionFormat>>   AllowedRotationFormats;                                   // 0x0078(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EAnimationCompressionFormat>>   AllowedTranslationFormats;                                // 0x0084(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bResampleAnimation : 1;                                   // 0x0090(0x0004) (CPF_Edit)
 	unsigned long                                      bUseAdaptiveError : 1;                                    // 0x0090(0x0004) (CPF_Edit)
 	unsigned long                                      bUseOverrideForEndEffectors : 1;                          // 0x0090(0x0004) (CPF_Edit)
@@ -15752,7 +12026,6 @@ public:
 class UAnimationCompressionAlgorithm_RemoveTrivialKeys : public UAnimationCompressionAlgorithm
 {
 public:
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004E(0x0002) MISSED OFFSET
 	float                                              MaxPosDiff;                                               // 0x0050(0x0004) (CPF_Edit)
 	float                                              MaxAngleDiff;                                             // 0x0054(0x0004) (CPF_Edit)
 
@@ -15888,8 +12161,7 @@ class UAnimNotify_ClothingMaxDistanceScale : public UAnimNotify
 public:
 	float                                              StartScale;                                               // 0x0040(0x0004) (CPF_Edit)
 	float                                              EndScale;                                                 // 0x0044(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EMaxDistanceScaleMode>      ScaleMode;                                                // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<EMaxDistanceScaleMode>                 ScaleMode;                                                // 0x0048(0x0001) (CPF_Edit)
 	float                                              Duration;                                                 // 0x004C(0x0004)
 
 	static UClass* StaticClass()
@@ -16181,7 +12453,6 @@ public:
 	struct FName                                       NodeName;                                                 // 0x0088(0x0008) (CPF_Edit)
 	TArray<struct FBoneAtom>                           CachedBoneAtoms;                                          // 0x0090(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned char                                      CachedNumDesiredBones;                                    // 0x009C(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x009D(0x0003) MISSED OFFSET
 	struct FBoneAtom                                   CachedRootMotionDelta;                                    // 0x00A0(0x0020) (CPF_Transient)
 	int                                                bCachedHasRootMotion;                                     // 0x00C0(0x0004) (CPF_Transient)
 	TArray<struct FCurveKey>                           CachedCurveKeys;                                          // 0x00C4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
@@ -16212,7 +12483,7 @@ class UAnimNodeBlendBase : public UAnimNode
 public:
 	TArray<struct FAnimBlendChild>                     Children;                                                 // 0x00E0(0x000C) (CPF_ExportObject, CPF_EditFixedSize, CPF_NeedCtorLink, CPF_EditInline)
 	unsigned long                                      bFixNumChildren : 1;                                      // 0x00EC(0x0004)
-	TEnumAsByte<enum class AlphaBlendType>             BlendType;                                                // 0x00F0(0x0001) (CPF_Edit)
+	TEnumAsByte<EAlphaBlendType>                       BlendType;                                                // 0x00F0(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -16232,10 +12503,9 @@ public:
 class UAnimNode_MultiBlendPerBone : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	class APawn*                                       PawnOwner;                                                // 0x00F4(0x0004) (CPF_Const, CPF_Transient)
 	TArray<struct FPerBoneMaskInfo>                    MaskList;                                                 // 0x00F8(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink, CPF_EditInline)
-	TEnumAsByte<enum class EBlendType>                 RotationBlendType;                                        // 0x0104(0x0001) (CPF_Edit)
+	TEnumAsByte<EBlendType>                            RotationBlendType;                                        // 0x0104(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -16253,7 +12523,6 @@ public:
 class UAnimNodeAimOffset : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	struct FVector2D                                   Aim;                                                      // 0x00F4(0x0008) (CPF_Edit)
 	struct FVector2D                                   AngleOffset;                                              // 0x00FC(0x0008) (CPF_Edit)
 	unsigned long                                      bForceAimDir : 1;                                         // 0x0104(0x0004) (CPF_Edit)
@@ -16261,8 +12530,7 @@ public:
 	unsigned long                                      bPassThroughWhenNotRendered : 1;                          // 0x0104(0x0004) (CPF_Edit)
 	unsigned long                                      bSynchronizeNodesInEditor : 1;                            // 0x0104(0x0004) (CPF_Edit)
 	int                                                PassThroughAtOrAboveLOD;                                  // 0x0108(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAnimAimDir>                ForcedAimDir;                                             // 0x010C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x010D(0x0003) MISSED OFFSET
+	TEnumAsByte<EAnimAimDir>                           ForcedAimDir;                                             // 0x010C(0x0001) (CPF_Edit)
 	TArray<unsigned char>                              RequiredBones;                                            // 0x0110(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              AimCpntIndexLUT;                                          // 0x011C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UAnimNodeAimOffset*                          TemplateNode;                                             // 0x0128(0x0004) (CPF_Transient)
@@ -16286,7 +12554,6 @@ public:
 class UAnimNodeBlend : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	float                                              Child2Weight;                                             // 0x00F4(0x0004)
 	float                                              Child2WeightTarget;                                       // 0x00F8(0x0004)
 	float                                              BlendTimeToGo;                                            // 0x00FC(0x0004)
@@ -16380,7 +12647,7 @@ public:
 	}
 
 
-	void SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
 	void SetActorAnimEndNotification(bool bNewStatus);
 	void SetCustomAnim(const struct FName& AnimName);
@@ -16395,7 +12662,6 @@ public:
 class UAnimNodeBlendDirectional : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	float                                              DirDegreesPerSecond;                                      // 0x00F4(0x0004) (CPF_Edit)
 	float                                              DirAngle;                                                 // 0x00F8(0x0004)
 	int                                                SingleAnimAtOrAboveLOD;                                   // 0x00FC(0x0004) (CPF_Edit)
@@ -16416,7 +12682,6 @@ public:
 class UAnimNodeBlendList : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	TArray<float>                                      TargetWeight;                                             // 0x00F4(0x000C) (CPF_NeedCtorLink)
 	float                                              BlendTimeToGo;                                            // 0x0100(0x0004)
 	int                                                ActiveChildIndex;                                         // 0x0104(0x0004)
@@ -16442,8 +12707,7 @@ public:
 class UAnimNodeBlendByBase : public UAnimNodeBlendList
 {
 public:
-	TEnumAsByte<enum class EBaseBlendType>             Type;                                                     // 0x0114(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0115(0x0003) MISSED OFFSET
+	TEnumAsByte<EBaseBlendType>                        Type;                                                     // 0x0114(0x0001) (CPF_Edit)
 	struct FName                                       ActorTag;                                                 // 0x0118(0x0008) (CPF_Edit)
 	class UClass*                                      ActorClass;                                               // 0x0120(0x0004) (CPF_Edit)
 	float                                              BlendTime;                                                // 0x0124(0x0004) (CPF_Edit)
@@ -16567,7 +12831,6 @@ public:
 class UAnimNodeBlendMultiBone : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	TArray<struct FChildBoneBlendInfo>                 BlendTargetList;                                          // 0x00F4(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<unsigned char>                              SourceRequiredBones;                                      // 0x0100(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
@@ -16587,7 +12850,6 @@ public:
 class UAnimNodeMirror : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	unsigned long                                      bEnableMirroring : 1;                                     // 0x00F4(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -16604,7 +12866,6 @@ public:
 class UAnimNodeScalePlayRate : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	float                                              ScaleByValue;                                             // 0x00F4(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -16637,7 +12898,6 @@ public:
 class UAnimNodeSlot : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	unsigned long                                      bIsPlayingCustomAnim : 1;                                 // 0x00F4(0x0004) (CPF_Const)
 	unsigned long                                      bEarlyAnimEndNotify : 1;                                  // 0x00F4(0x0004) (CPF_Edit)
 	unsigned long                                      bSkipBlendWhenNotRendered : 1;                            // 0x00F4(0x0004) (CPF_Edit)
@@ -16658,8 +12918,8 @@ public:
 
 
 	void TickChildWeights(float DeltaSeconds);
-	void SetRootBoneRotationOption(TEnumAsByte<enum class ERootRotationOption> AxisX, TEnumAsByte<enum class ERootRotationOption> AxisY, TEnumAsByte<enum class ERootRotationOption> AxisZ);
-	void SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ);
+	void SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
 	void SetActorAnimEndNotification(bool bNewStatus);
 	void SetCustomAnim(const struct FName& AnimName);
@@ -16676,7 +12936,6 @@ public:
 class UAnimNodeSynch : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	TArray<struct FSynchGroup>                         Groups;                                                   // 0x00F4(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -16700,7 +12959,6 @@ public:
 class UAnimTree : public UAnimNodeBlendBase
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F1(0x0003) MISSED OFFSET
 	class UAnimTree*                                   AnimTreeTemplate;                                         // 0x00F4(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bEnablePooling : 1;                                       // 0x00F8(0x0004) (CPF_Edit)
 	unsigned long                                      bUseSavedPose : 1;                                        // 0x00F8(0x0004)
@@ -16798,9 +13056,8 @@ public:
 	float                                              CameraAnimPlayRate;                                       // 0x0120(0x0004) (CPF_Edit)
 	float                                              CameraAnimBlendInTime;                                    // 0x0124(0x0004) (CPF_Edit)
 	float                                              CameraAnimBlendOutTime;                                   // 0x0128(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERootBoneAxis>              RootBoneOption[0x3];                                      // 0x012C(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ERootRotationOption>        RootRotationOption[0x3];                                  // 0x012F(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0132(0x0002) MISSED OFFSET
+	TEnumAsByte<ERootBoneAxis>                         RootBoneOption[0x3];                                      // 0x012C(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ERootRotationOption>                   RootRotationOption[0x3];                                  // 0x012F(0x0001) (CPF_Edit, CPF_Const)
 	TArray<class USkelControlBase*>                    MetaDataSkelControlList;                                  // 0x0134(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -16810,8 +13067,8 @@ public:
 	}
 
 
-	void SetRootBoneRotationOption(TEnumAsByte<enum class ERootRotationOption> AxisX, TEnumAsByte<enum class ERootRotationOption> AxisY, TEnumAsByte<enum class ERootRotationOption> AxisZ);
-	void SetRootBoneAxisOption(TEnumAsByte<enum class ERootBoneAxis> AxisX, TEnumAsByte<enum class ERootBoneAxis> AxisY, TEnumAsByte<enum class ERootBoneAxis> AxisZ);
+	void SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	float GetTimeLeft();
 	float GetAnimPlaybackLength();
 	float GetGlobalPlayRate();
@@ -17001,9 +13258,8 @@ public:
 	float                                              Angle;                                                    // 0x0078(0x0004) (CPF_Const, CPF_Transient)
 	float                                              NodeWeight;                                               // 0x007C(0x0004) (CPF_Const, CPF_Transient)
 	struct FName                                       BaseBoneName;                                             // 0x0080(0x0008) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      BaseBoneAxis;                                             // 0x0088(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      AngleBoneAxis;                                            // 0x0089(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x008A(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 BaseBoneAxis;                                             // 0x0088(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 AngleBoneAxis;                                            // 0x0089(0x0001) (CPF_Edit)
 	unsigned long                                      bInvertBaseBoneAxis : 1;                                  // 0x008C(0x0004) (CPF_Edit)
 	unsigned long                                      bInvertAngleBoneAxis : 1;                                 // 0x008C(0x0004) (CPF_Edit)
 	unsigned long                                      bControlMaterialParameter : 1;                            // 0x008C(0x0004) (CPF_Edit)
@@ -17030,8 +13286,7 @@ public:
 	float                                              Angle;                                                    // 0x0078(0x0004) (CPF_Const, CPF_Transient)
 	float                                              NodeWeight;                                               // 0x007C(0x0004) (CPF_Const, CPF_Transient)
 	struct FName                                       BoneName;                                                 // 0x0080(0x0008) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      BoneAxis;                                                 // 0x0088(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0089(0x0003) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 BoneAxis;                                                 // 0x0088(0x0001) (CPF_Edit)
 	unsigned long                                      bInvertBoneAxis : 1;                                      // 0x008C(0x0004) (CPF_Edit)
 	unsigned long                                      bControlMaterialParameter : 1;                            // 0x008C(0x0004) (CPF_Edit)
 	TArray<struct FBoneAngleMorph>                     WeightArray;                                              // 0x0090(0x000C) (CPF_Edit, CPF_NeedCtorLink)
@@ -17057,8 +13312,7 @@ public:
 	float                                              ControlStrength;                                          // 0x0068(0x0004) (CPF_Edit)
 	float                                              BlendInTime;                                              // 0x006C(0x0004) (CPF_Edit)
 	float                                              BlendOutTime;                                             // 0x0070(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class AlphaBlendType>             BlendType;                                                // 0x0074(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0075(0x0003) MISSED OFFSET
+	TEnumAsByte<EAlphaBlendType>                       BlendType;                                                // 0x0074(0x0001) (CPF_Edit)
 	unsigned long                                      bPostPhysicsController : 1;                               // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bSetStrengthFromAnimNode : 1;                             // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bInitializedCachedNodeList : 1;                           // 0x0078(0x0004) (CPF_Transient)
@@ -17102,8 +13356,7 @@ class USkelControl_CCD_IK : public USkelControlBase
 {
 public:
 	struct FVector                                     EffectorLocation;                                         // 0x00BC(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          EffectorLocationSpace;                                    // 0x00C8(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C9(0x0003) MISSED OFFSET
+	TEnumAsByte<EBoneControlSpace>                     EffectorLocationSpace;                                    // 0x00C8(0x0001) (CPF_Edit)
 	struct FName                                       EffectorSpaceBoneName;                                    // 0x00CC(0x0008) (CPF_Edit)
 	struct FVector                                     EffectorTranslationFromBone;                              // 0x00D4(0x000C) (CPF_Edit)
 	int                                                NumBones;                                                 // 0x00E0(0x0004) (CPF_Edit)
@@ -17163,12 +13416,11 @@ class USkelControlLimb : public USkelControlBase
 {
 public:
 	struct FVector                                     EffectorLocation;                                         // 0x00BC(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          EffectorLocationSpace;                                    // 0x00C8(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          JointTargetLocationSpace;                                 // 0x00C9(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          JointOffsetSpace;                                         // 0x00CA(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      BoneAxis;                                                 // 0x00CB(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      JointAxis;                                                // 0x00CC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00CD(0x0003) MISSED OFFSET
+	TEnumAsByte<EBoneControlSpace>                     EffectorLocationSpace;                                    // 0x00C8(0x0001) (CPF_Edit)
+	TEnumAsByte<EBoneControlSpace>                     JointTargetLocationSpace;                                 // 0x00C9(0x0001) (CPF_Edit)
+	TEnumAsByte<EBoneControlSpace>                     JointOffsetSpace;                                         // 0x00CA(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 BoneAxis;                                                 // 0x00CB(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 JointAxis;                                                // 0x00CC(0x0001) (CPF_Edit)
 	struct FName                                       EffectorSpaceBoneName;                                    // 0x00D0(0x0008) (CPF_Edit)
 	struct FVector                                     JointTargetLocation;                                      // 0x00D8(0x000C) (CPF_Edit)
 	struct FName                                       JointTargetSpaceBoneName;                                 // 0x00E4(0x0008) (CPF_Edit)
@@ -17198,8 +13450,7 @@ class USkelControlFootPlacement : public USkelControlLimb
 {
 public:
 	float                                              FootOffset;                                               // 0x0114(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      FootUpAxis;                                               // 0x0118(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0119(0x0003) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 FootUpAxis;                                               // 0x0118(0x0001) (CPF_Edit)
 	struct FRotator                                    FootRotOffset;                                            // 0x011C(0x000C) (CPF_Edit)
 	unsigned long                                      bInvertFootUpAxis : 1;                                    // 0x0128(0x0004) (CPF_Edit)
 	unsigned long                                      bOrientFootToGround : 1;                                  // 0x0128(0x0004) (CPF_Edit)
@@ -17223,10 +13474,10 @@ class USkelControlLookAt : public USkelControlBase
 {
 public:
 	struct FVector                                     TargetLocation;                                           // 0x00BC(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          TargetLocationSpace;                                      // 0x00C8(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      LookAtAxis;                                               // 0x00C9(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      UpAxis;                                                   // 0x00CA(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          AllowRotationSpace;                                       // 0x00CB(0x0001) (CPF_Edit)
+	TEnumAsByte<EBoneControlSpace>                     TargetLocationSpace;                                      // 0x00C8(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 LookAtAxis;                                               // 0x00C9(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 UpAxis;                                                   // 0x00CA(0x0001) (CPF_Edit)
+	TEnumAsByte<EBoneControlSpace>                     AllowRotationSpace;                                       // 0x00CB(0x0001) (CPF_Edit)
 	struct FName                                       TargetSpaceBoneName;                                      // 0x00CC(0x0008) (CPF_Edit)
 	unsigned long                                      bInvertLookAtAxis : 1;                                    // 0x00D4(0x0004) (CPF_Edit)
 	unsigned long                                      bDefineUpAxis : 1;                                        // 0x00D4(0x0004) (CPF_Edit)
@@ -17283,9 +13534,8 @@ public:
 	unsigned long                                      bAddRotation : 1;                                         // 0x00BC(0x0004) (CPF_Edit)
 	unsigned long                                      bRemoveMeshRotation : 1;                                  // 0x00BC(0x0004) (CPF_Edit)
 	struct FVector                                     BoneTranslation;                                          // 0x00C0(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          BoneTranslationSpace;                                     // 0x00CC(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBoneControlSpace>          BoneRotationSpace;                                        // 0x00CD(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00CE(0x0002) MISSED OFFSET
+	TEnumAsByte<EBoneControlSpace>                     BoneTranslationSpace;                                     // 0x00CC(0x0001) (CPF_Edit)
+	TEnumAsByte<EBoneControlSpace>                     BoneRotationSpace;                                        // 0x00CD(0x0001) (CPF_Edit)
 	struct FName                                       TranslationSpaceBoneName;                                 // 0x00D0(0x0008) (CPF_Edit)
 	struct FRotator                                    BoneRotation;                                             // 0x00D8(0x000C) (CPF_Edit)
 	struct FName                                       RotationSpaceBoneName;                                    // 0x00E4(0x0008) (CPF_Edit)
@@ -17304,9 +13554,8 @@ public:
 class USkelControlHandlebars : public USkelControlSingleBone
 {
 public:
-	TEnumAsByte<enum class EAxis>                      WheelRollAxis;                                            // 0x00EC(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      HandlebarRotateAxis;                                      // 0x00ED(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00EE(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 WheelRollAxis;                                            // 0x00EC(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 HandlebarRotateAxis;                                      // 0x00ED(0x0001) (CPF_Edit)
 	struct FName                                       WheelBoneName;                                            // 0x00F0(0x0008) (CPF_Edit)
 	unsigned long                                      bInvertRotation : 1;                                      // 0x00F8(0x0004) (CPF_Edit)
 	int                                                SteerWheelBoneIndex;                                      // 0x00FC(0x0004)
@@ -17328,9 +13577,8 @@ public:
 	float                                              WheelDisplacement;                                        // 0x00EC(0x0004) (CPF_Edit, CPF_Transient)
 	float                                              WheelMaxRenderDisplacement;                               // 0x00F0(0x0004) (CPF_Edit)
 	float                                              WheelRoll;                                                // 0x00F4(0x0004) (CPF_Edit, CPF_Transient)
-	TEnumAsByte<enum class EAxis>                      WheelRollAxis;                                            // 0x00F8(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      WheelSteeringAxis;                                        // 0x00F9(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00FA(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 WheelRollAxis;                                            // 0x00F8(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 WheelSteeringAxis;                                        // 0x00F9(0x0001) (CPF_Edit)
 	float                                              WheelSteering;                                            // 0x00FC(0x0004) (CPF_Edit, CPF_Transient)
 	unsigned long                                      bInvertWheelRoll : 1;                                     // 0x0100(0x0004) (CPF_Edit)
 	unsigned long                                      bInvertWheelSteering : 1;                                 // 0x0100(0x0004) (CPF_Edit)
@@ -17350,9 +13598,8 @@ class USkelControlSpline : public USkelControlBase
 {
 public:
 	int                                                SplineLength;                                             // 0x00BC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      SplineBoneAxis;                                           // 0x00C0(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ESplineControlRotMode>      BoneRotMode;                                              // 0x00C1(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00C2(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 SplineBoneAxis;                                           // 0x00C0(0x0001) (CPF_Edit)
+	TEnumAsByte<ESplineControlRotMode>                 BoneRotMode;                                              // 0x00C1(0x0001) (CPF_Edit)
 	unsigned long                                      bInvertSplineBoneAxis : 1;                                // 0x00C4(0x0004) (CPF_Edit)
 	float                                              EndSplineTension;                                         // 0x00C8(0x0004) (CPF_Edit)
 	float                                              StartSplineTension;                                       // 0x00CC(0x0004) (CPF_Edit)
@@ -17372,8 +13619,7 @@ class USkelControlTrail : public USkelControlBase
 {
 public:
 	int                                                ChainLength;                                              // 0x00BC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      ChainBoneAxis;                                            // 0x00C0(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C1(0x0003) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 ChainBoneAxis;                                            // 0x00C0(0x0001) (CPF_Edit)
 	unsigned long                                      bInvertChainBoneAxis : 1;                                 // 0x00C4(0x0004) (CPF_Edit)
 	unsigned long                                      bLimitStretch : 1;                                        // 0x00C4(0x0004) (CPF_Edit)
 	unsigned long                                      bActorSpaceFakeVel : 1;                                   // 0x00C4(0x0004) (CPF_Edit)
@@ -17383,7 +13629,7 @@ public:
 	struct FVector                                     FakeVelocity;                                             // 0x00D0(0x000C) (CPF_Edit)
 	float                                              ThisTimstep;                                              // 0x00DC(0x0004)
 	TArray<struct FVector>                             TrailBoneLocations;                                       // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00EC(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00EC(0x0004) MISSED OFFSET
 	struct FMatrix                                     OldLocalToWorld;                                          // 0x00F0(0x0040) (CPF_Transient)
 
 	static UClass* StaticClass()
@@ -17419,10 +13665,9 @@ public:
 	TArray<struct FRotationTrack>                      RotationData;                                             // 0x009C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FCurveTrack>                         CurveData;                                                // 0x00A8(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	class UAnimationCompressionAlgorithm*              CompressionScheme;                                        // 0x00B4(0x0004) (CPF_Edit, CPF_EditConst, CPF_EditInline)
-	TEnumAsByte<enum class AnimationCompressionFormat> TranslationCompressionFormat;                             // 0x00B8(0x0001) (CPF_Const)
-	TEnumAsByte<enum class AnimationCompressionFormat> RotationCompressionFormat;                                // 0x00B9(0x0001) (CPF_Const)
-	TEnumAsByte<enum class AnimationKeyFormat>         KeyEncodingFormat;                                        // 0x00BA(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x00BB(0x0001) MISSED OFFSET
+	TEnumAsByte<EAnimationCompressionFormat>           TranslationCompressionFormat;                             // 0x00B8(0x0001) (CPF_Const)
+	TEnumAsByte<EAnimationCompressionFormat>           RotationCompressionFormat;                                // 0x00B9(0x0001) (CPF_Const)
+	TEnumAsByte<EAnimationKeyFormat>                   KeyEncodingFormat;                                        // 0x00BA(0x0001) (CPF_Const)
 	TArray<int>                                        CompressedTrackOffsets;                                   // 0x00BC(0x000C) (CPF_NeedCtorLink)
 	TArray<unsigned char>                              CompressedByteStream;                                     // 0x00C8(0x000C) (CPF_Native)
 	struct FPointer                                    TranslationCodec;                                         // 0x00D4(0x0004) (CPF_Native, CPF_Transient)
@@ -17657,9 +13902,8 @@ public:
 	float                                              BackfaceAngle;                                            // 0x02BC(0x0004) (CPF_Edit)
 	struct FVector2D                                   BlendRange;                                               // 0x02C0(0x0008) (CPF_Edit)
 	float                                              StreamingDistanceMultiplier;                              // 0x02C8(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EDecalTransform>            DecalTransform;                                           // 0x02CC(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EFilterMode>                FilterMode;                                               // 0x02CD(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x02CE(0x0002) MISSED OFFSET
+	TEnumAsByte<EDecalTransform>                       DecalTransform;                                           // 0x02CC(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EFilterMode>                           FilterMode;                                               // 0x02CD(0x0001) (CPF_Edit)
 	TArray<class AActor*>                              Filter;                                                   // 0x02D0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<class UPrimitiveComponent*>                 ReceiverImages;                                           // 0x02DC(0x000C) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 	struct FVector                                     ParentRelativeLocation;                                   // 0x02E8(0x000C) (CPF_Edit)
@@ -17738,10 +13982,9 @@ public:
 	float                                              OpacityMaskClipValue;                                     // 0x03D8(0x0004) (CPF_Edit)
 	float                                              ShadowDepthBias;                                          // 0x03DC(0x0004) (CPF_Edit)
 	struct FVector2MaterialInput                       Distortion;                                               // 0x03E0(0x0038) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBlendMode>                 BlendMode;                                                // 0x0418(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMaterialLightingModel>     LightingModel;                                            // 0x0419(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMaterialTessellationMode>  D3D11TessellationMode;                                    // 0x041A(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x041B(0x0001) MISSED OFFSET
+	TEnumAsByte<EBlendMode>                            BlendMode;                                                // 0x0418(0x0001) (CPF_Edit)
+	TEnumAsByte<EMaterialLightingModel>                LightingModel;                                            // 0x0419(0x0001) (CPF_Edit)
+	TEnumAsByte<EMaterialTessellationMode>             D3D11TessellationMode;                                    // 0x041A(0x0001) (CPF_Edit, CPF_Const)
 	struct FColorMaterialInput                         CustomLighting;                                           // 0x041C(0x0034) (CPF_NeedCtorLink)
 	struct FColorMaterialInput                         CustomSkylightDiffuse;                                    // 0x0450(0x0034) (CPF_NeedCtorLink)
 	struct FVectorMaterialInput                        AnisotropicDirection;                                     // 0x0484(0x003C) (CPF_NeedCtorLink)
@@ -17815,7 +14058,7 @@ public:
 	TArray<class UMaterialExpression*>                 Expressions;                                              // 0x06A0(0x000C) (CPF_NeedCtorLink)
 	TArray<class UMaterialExpressionComment*>          EditorComments;                                           // 0x06AC(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FMaterialFunctionInfo>               MaterialFunctionInfos;                                    // 0x06B8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x06C4(0x003C) UNKNOWN PROPERTY: MapProperty Engine.Material.EditorParameters
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x06C4(0x003C) UNKNOWN PROPERTY: MapProperty Engine.Material.EditorParameters
 	TArray<class UTexture*>                            ReferencedTextures;                                       // 0x0700(0x000C) (CPF_Const, CPF_NeedCtorLink, CPF_Deprecated)
 	TArray<struct FGuid>                               ReferencedTextureGuids;                                   // 0x070C(0x000C) (CPF_Const, CPF_NeedCtorLink)
 
@@ -17933,7 +14176,6 @@ public:
 class UExponentialHeightFogComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	unsigned long                                      bEnabled : 1;                                             // 0x0068(0x0004) (CPF_Edit, CPF_Const)
 	float                                              FogHeight;                                                // 0x006C(0x0004) (CPF_Const)
 	float                                              FogDensity;                                               // 0x0070(0x0004) (CPF_Edit, CPF_Const)
@@ -17962,7 +14204,6 @@ public:
 class UFogVolumeDensityComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UMaterialInterface*                          FogMaterial;                                              // 0x0068(0x0004) (CPF_Edit)
 	class UMaterialInterface*                          DefaultFogVolumeMaterial;                                 // 0x006C(0x0004)
 	unsigned long                                      bEnabled : 1;                                             // 0x0070(0x0004) (CPF_Edit, CPF_Const)
@@ -18203,8 +14444,7 @@ public:
 	float                                              LastSpawnTime;                                            // 0x0260(0x0004)
 	int                                                PartPoolIndex;                                            // 0x0264(0x0004)
 	float                                              FracPartGravScale;                                        // 0x0268(0x0004)
-	TEnumAsByte<enum class ERBCollisionChannel>        AsleepRBChannel;                                          // 0x026C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x026D(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   AsleepRBChannel;                                          // 0x026C(0x0001)
 	struct FVector                                     OldVelocity;                                              // 0x0270(0x000C)
 	float                                              CurrentVibrationLevel;                                    // 0x027C(0x0004)
 	float                                              LastImpactSoundTime;                                      // 0x0280(0x0004)
@@ -18330,7 +14570,6 @@ public:
 class UImageReflectionComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UTexture2D*                                  ReflectionTexture;                                        // 0x0068(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -18848,8 +15087,7 @@ class UInterpGroupInstAI : public UInterpGroupInst
 {
 public:
 	class UInterpGroupAI*                              AIGroup;                                                  // 0x0054(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EPhysics>                   SavedPhysics;                                             // 0x0058(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0059(0x0003) MISSED OFFSET
+	TEnumAsByte<EPhysics>                              SavedPhysics;                                             // 0x0058(0x0001)
 	unsigned long                                      bSavedNoEncroachCheck : 1;                                // 0x005C(0x0004)
 	unsigned long                                      bSavedCollideActors : 1;                                  // 0x005C(0x0004)
 	unsigned long                                      bSavedBlockActors : 1;                                    // 0x005C(0x0004)
@@ -19092,8 +15330,7 @@ public:
 class UInterpTrackMoveAxis : public UInterpTrackFloatBase
 {
 public:
-	TEnumAsByte<enum class EInterpMoveAxis>            MoveAxis;                                                 // 0x0094(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0095(0x0003) MISSED OFFSET
+	TEnumAsByte<EInterpMoveAxis>                       MoveAxis;                                                 // 0x0094(0x0001)
 	struct FInterpLookupTrack                          LookupTrack;                                              // 0x0098(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -19228,8 +15465,8 @@ public:
 	unsigned long                                      bShowRotationOnCurveEd : 1;                               // 0x00BC(0x0004) (CPF_Edit)
 	unsigned long                                      bHide3DTrack : 1;                                         // 0x00BC(0x0004) (CPF_Edit)
 	unsigned long                                      bUseRawActorTMforRelativeToInitial : 1;                   // 0x00BC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EInterpTrackMoveFrame>      MoveFrame;                                                // 0x00C0(0x0001) (CPF_Edit, CPF_EditConst)
-	TEnumAsByte<enum class EInterpTrackMoveRotMode>    RotMode;                                                  // 0x00C1(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpTrackMoveFrame>                 MoveFrame;                                                // 0x00C0(0x0001) (CPF_Edit, CPF_EditConst)
+	TEnumAsByte<EInterpTrackMoveRotMode>               RotMode;                                                  // 0x00C1(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -19602,9 +15839,8 @@ public:
 class UInterpTrackInstHeadTracking : public UInterpTrackInst
 {
 public:
-	TEnumAsByte<enum class EHeadTrackingAction>        Action;                                                   // 0x003C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x003D(0x0003) MISSED OFFSET
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x003D(0x003C) UNKNOWN PROPERTY: MapProperty Engine.InterpTrackInstHeadTracking.CurrentActorMap
+	TEnumAsByte<EHeadTrackingAction>                   Action;                                                   // 0x003C(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x003D(0x003C) UNKNOWN PROPERTY: MapProperty Engine.InterpTrackInstHeadTracking.CurrentActorMap
 	class USkeletalMeshComponent*                      Mesh;                                                     // 0x007C(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
 	TArray<class USkelControlLookAt*>                  TrackControls;                                            // 0x0080(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	float                                              LastUpdatePosition;                                       // 0x008C(0x0004)
@@ -19858,8 +16094,7 @@ public:
 class UInterpTrackInstToggle : public UInterpTrackInst
 {
 public:
-	TEnumAsByte<enum class ETrackToggleAction>         Action;                                                   // 0x003C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x003D(0x0003) MISSED OFFSET
+	TEnumAsByte<ETrackToggleAction>                    Action;                                                   // 0x003C(0x0001) (CPF_Edit)
 	float                                              LastUpdatePosition;                                       // 0x0040(0x0004)
 	unsigned long                                      bSavedActiveState : 1;                                    // 0x0044(0x0004)
 
@@ -19894,8 +16129,7 @@ public:
 class UInterpTrackInstVisibility : public UInterpTrackInst
 {
 public:
-	TEnumAsByte<enum class EVisibilityTrackAction>     Action;                                                   // 0x003C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x003D(0x0003) MISSED OFFSET
+	TEnumAsByte<EVisibilityTrackAction>                Action;                                                   // 0x003C(0x0001) (CPF_Edit)
 	float                                              LastUpdatePosition;                                       // 0x0040(0x0004)
 
 	static UClass* StaticClass()
@@ -20275,8 +16509,7 @@ class UMaterialExpressionCustom : public UMaterialExpression
 {
 public:
 	struct FString                                     Code;                                                     // 0x0080(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ECustomMaterialOutputType>  OutputType;                                               // 0x008C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x008D(0x0003) MISSED OFFSET
+	TEnumAsByte<ECustomMaterialOutputType>             OutputType;                                               // 0x008C(0x0001) (CPF_Edit)
 	struct FString                                     Description;                                              // 0x0090(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FCustomInput>                        Inputs;                                                   // 0x009C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
@@ -20349,8 +16582,7 @@ public:
 class UMaterialExpressionDepthOfFieldFunction : public UMaterialExpression
 {
 public:
-	TEnumAsByte<enum class EDepthOfFieldFunctionValue> FunctionValue;                                            // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<EDepthOfFieldFunctionValue>            FunctionValue;                                            // 0x0080(0x0001) (CPF_Edit)
 	struct FExpressionInput                            Depth;                                                    // 0x0084(0x002C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -20665,7 +16897,7 @@ public:
 	struct FString                                     InputName;                                                // 0x00AC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	struct FString                                     Description;                                              // 0x00B8(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	struct FGuid                                       Id;                                                       // 0x00C4(0x0010) (CPF_Const)
-	TEnumAsByte<enum class EFunctionInputType>         InputType;                                                // 0x00D4(0x0001) (CPF_Edit)
+	TEnumAsByte<EFunctionInputType>                    InputType;                                                // 0x00D4(0x0001) (CPF_Edit)
 	unsigned char                                      UnknownData00[0xB];                                       // 0x00D5(0x000B) MISSED OFFSET
 	struct FVector4                                    PreviewValue;                                             // 0x00E0(0x0010) (CPF_Edit)
 	unsigned long                                      bUsePreviewValueAsDefault : 1;                            // 0x00F0(0x0004) (CPF_Edit)
@@ -21239,7 +17471,7 @@ class UMaterialExpressionPitchTekTextureSample : public UMaterialExpression
 {
 public:
 	struct FExpressionInput                            Coordinates;                                              // 0x0080(0x002C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPitchTekTextureType>       PitchTekTextureType;                                      // 0x00AC(0x0001) (CPF_Edit)
+	TEnumAsByte<EPitchTekTextureType>                  PitchTekTextureType;                                      // 0x00AC(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -21376,8 +17608,7 @@ class UMaterialExpressionSceneTexture : public UMaterialExpression
 {
 public:
 	struct FExpressionInput                            Coordinates;                                              // 0x0080(0x002C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ESceneTextureType>          SceneTextureType;                                         // 0x00AC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00AD(0x0003) MISSED OFFSET
+	TEnumAsByte<ESceneTextureType>                     SceneTextureType;                                         // 0x00AC(0x0001) (CPF_Edit)
 	unsigned long                                      ScreenAlign : 1;                                          // 0x00B0(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -21532,8 +17763,7 @@ public:
 class UMaterialExpressionTerrainLayerCoords : public UMaterialExpression
 {
 public:
-	TEnumAsByte<enum class ETerrainCoordMappingType>   MappingType;                                              // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<ETerrainCoordMappingType>              MappingType;                                              // 0x0080(0x0001) (CPF_Edit)
 	float                                              MappingScale;                                             // 0x0084(0x0004) (CPF_Edit)
 	float                                              MappingRotation;                                          // 0x0088(0x0004) (CPF_Edit)
 	float                                              MappingPanU;                                              // 0x008C(0x0004) (CPF_Edit)
@@ -21791,7 +18021,7 @@ class UMaterialExpressionAntialiasedTextureMask : public UMaterialExpressionText
 {
 public:
 	float                                              Threshold;                                                // 0x00FC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ETextureColorChannel>       Channel;                                                  // 0x0100(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureColorChannel>                  Channel;                                                  // 0x0100(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -21930,8 +18160,8 @@ class UMaterialExpressionTransform : public UMaterialExpression
 {
 public:
 	struct FExpressionInput                            Input;                                                    // 0x0080(0x002C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMaterialVectorCoordTransformSource> TransformSourceType;                                      // 0x00AC(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EMaterialVectorCoordTransform> TransformType;                                            // 0x00AD(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EMaterialVectorCoordTransformSource>   TransformSourceType;                                      // 0x00AC(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EMaterialVectorCoordTransform>         TransformType;                                            // 0x00AD(0x0001) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -21948,8 +18178,8 @@ class UMaterialExpressionTransformPosition : public UMaterialExpression
 {
 public:
 	struct FExpressionInput                            Input;                                                    // 0x0080(0x002C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMaterialPositionTransformSource> TransformSourceType;                                      // 0x00AC(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EMaterialPositionTransform> TransformType;                                            // 0x00AD(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EMaterialPositionTransformSource>      TransformSourceType;                                      // 0x00AC(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EMaterialPositionTransform>            TransformType;                                            // 0x00AD(0x0001) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -22268,9 +18498,8 @@ public:
 	unsigned long                                      bLODUpdatePending : 1;                                    // 0x0238(0x0004) (CPF_Transient)
 	unsigned long                                      bSkipSpawnCountCheck : 1;                                 // 0x0238(0x0004) (CPF_Transient)
 	unsigned char                                      LastDetailMode;                                           // 0x023C(0x0001) (CPF_Transient)
-	TEnumAsByte<enum class ParticleSystemLODMethod>    LODMethod;                                                // 0x023D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ParticleReplayState>        ReplayState;                                              // 0x023E(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x023F(0x0001) MISSED OFFSET
+	TEnumAsByte<EParticleSystemLODMethod>              LODMethod;                                                // 0x023D(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleReplayState>                  ReplayState;                                              // 0x023E(0x0001) (CPF_Const, CPF_Transient)
 	TArray<struct FParticleSysParam>                   InstanceParameters;                                       // 0x0240(0x000C) (CPF_Edit, CPF_NeedCtorLink, CPF_EditInline)
 	struct FVector                                     OldPosition;                                              // 0x024C(0x000C)
 	struct FVector                                     PartSysVelocity;                                          // 0x0258(0x000C)
@@ -22298,7 +18527,7 @@ public:
 	float                                              EmitterDelay;                                             // 0x02F0(0x0004) (CPF_Transient)
 	struct FVector                                     FakeVelocity;                                             // 0x02F4(0x000C) (CPF_Edit)
 	struct FScriptDelegate                             __OnSystemFinished__Delegate;                             // 0x0300(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0300(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0300(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -22315,7 +18544,7 @@ public:
 	void ResetToDefaults();
 	void SetActive(bool bNowActive, bool bFlagAsJustAttached);
 	void ClearAllParameters();
-	void ClearParameter(const struct FName& ParameterName, TEnumAsByte<enum class EParticleSysParamType> ParameterType);
+	void ClearParameter(const struct FName& ParameterName, TEnumAsByte<EParticleSysParamType> ParameterType);
 	bool GetMaterialParameter(const struct FName& InName, class UMaterialInterface** OutMaterial);
 	bool GetActorParameter(const struct FName& InName, class AActor** OutActor);
 	bool GetColorParameter(const struct FName& InName, struct FColor* OutColor);
@@ -22401,8 +18630,7 @@ class UParticleEmitter : public UObject
 public:
 	struct FName                                       EmitterName;                                              // 0x003C(0x0008) (CPF_Edit)
 	int                                                SubUVDataOffset;                                          // 0x0044(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EEmitterRenderMode>         EmitterRenderMode;                                        // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<EEmitterRenderMode>                    EmitterRenderMode;                                        // 0x0048(0x0001) (CPF_Edit)
 	struct FColor                                      EmitterEditorColor;                                       // 0x004C(0x0004) (CPF_Edit)
 	TArray<class UParticleLODLevel*>                   LODLevels;                                                // 0x0050(0x000C) (CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
 	unsigned long                                      ConvertedModules : 1;                                     // 0x005C(0x0004)
@@ -22485,7 +18713,6 @@ public:
 	unsigned long                                      bSupportsRandomSeed : 1;                                  // 0x003C(0x0004)
 	unsigned long                                      bRequiresLoopingNotification : 1;                         // 0x003C(0x0004)
 	unsigned char                                      LODValidity;                                              // 0x0040(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0041(0x0003) MISSED OFFSET
 	struct FColor                                      ModuleEditorColor;                                        // 0x0044(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -22566,10 +18793,9 @@ public:
 class UParticleModuleAttractorBoneSocket : public UParticleModuleAttractorBase
 {
 public:
-	TEnumAsByte<enum class EBoneSocketAttractorFalloffType> FalloffType;                                              // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ELocationBoneSocketDestination> DestinationType;                                          // 0x0049(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ELocationBoneSocketDestSelectionMethod> SelectionMethod;                                          // 0x004A(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x004B(0x0001) MISSED OFFSET
+	TEnumAsByte<EBoneSocketAttractorFalloffType>       FalloffType;                                              // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<ELocationBoneSocketDestination>        DestinationType;                                          // 0x0049(0x0001) (CPF_Edit)
+	TEnumAsByte<ELocationBoneSocketDestSelectionMethod> SelectionMethod;                                          // 0x004A(0x0001) (CPF_Edit)
 	unsigned long                                      bParticleLifeRelative : 1;                                // 0x004C(0x0004) (CPF_Edit)
 	unsigned long                                      bAttractAlongLengthOfBone : 1;                            // 0x004C(0x0004) (CPF_Edit)
 	struct FRawDistributionFloat                       FalloffExponent;                                          // 0x0050(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
@@ -22623,8 +18849,7 @@ public:
 	unsigned long                                      bRenewSource : 1;                                         // 0x006C(0x0004) (CPF_Edit)
 	unsigned long                                      bInheritSourceVel : 1;                                    // 0x006C(0x0004) (CPF_Edit)
 	struct FRawDistributionFloat                       Strength;                                                 // 0x0070(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EAttractorParticleSelectionMethod> SelectionMethod;                                          // 0x008C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x008D(0x0003) MISSED OFFSET
+	TEnumAsByte<EAttractorParticleSelectionMethod>     SelectionMethod;                                          // 0x008C(0x0001) (CPF_Edit)
 	int                                                LastSelIndex;                                             // 0x0090(0x0004)
 
 	static UClass* StaticClass()
@@ -22663,9 +18888,8 @@ public:
 class UParticleModuleAttractorSkelVertSurface : public UParticleModuleAttractorBase
 {
 public:
-	TEnumAsByte<enum class EVertSurfaceAttractorFalloffType> FalloffType;                                              // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAttractorSkelVertSurfaceDestination> DestinationType;                                          // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<EVertSurfaceAttractorFalloffType>      FalloffType;                                              // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EAttractorSkelVertSurfaceDestination>  DestinationType;                                          // 0x0049(0x0001) (CPF_Edit)
 	unsigned long                                      bParticleLifeRelative : 1;                                // 0x004C(0x0004) (CPF_Edit)
 	unsigned long                                      bEnforceNormalCheck : 1;                                  // 0x004C(0x0004) (CPF_Edit)
 	struct FRawDistributionFloat                       FalloffExponent;                                          // 0x0050(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
@@ -22712,8 +18936,7 @@ public:
 class UParticleModuleBeamModifier : public UParticleModuleBeamBase
 {
 public:
-	TEnumAsByte<enum class BeamModifierType>           ModifierType;                                             // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<EBeamModifierType>                     ModifierType;                                             // 0x0048(0x0001) (CPF_Edit)
 	struct FBeamModifierOptions                        PositionOptions;                                          // 0x004C(0x0004) (CPF_Edit)
 	struct FRawDistributionVector                      Position;                                                 // 0x0050(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FBeamModifierOptions                        TangentOptions;                                           // 0x006C(0x0004) (CPF_Edit)
@@ -22771,9 +18994,8 @@ public:
 class UParticleModuleBeamSource : public UParticleModuleBeamBase
 {
 public:
-	TEnumAsByte<enum class Beam2SourceTargetMethod>    SourceMethod;                                             // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class Beam2SourceTargetTangentMethod> SourceTangentMethod;                                      // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<EBeam2SourceTargetMethod>              SourceMethod;                                             // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EBeam2SourceTargetTangentMethod>       SourceTangentMethod;                                      // 0x0049(0x0001) (CPF_Edit)
 	struct FName                                       SourceName;                                               // 0x004C(0x0008) (CPF_Edit)
 	unsigned long                                      bSourceAbsolute : 1;                                      // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bLockSource : 1;                                          // 0x0054(0x0004) (CPF_Edit)
@@ -22797,9 +19019,8 @@ public:
 class UParticleModuleBeamTarget : public UParticleModuleBeamBase
 {
 public:
-	TEnumAsByte<enum class Beam2SourceTargetMethod>    TargetMethod;                                             // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class Beam2SourceTargetTangentMethod> TargetTangentMethod;                                      // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<EBeam2SourceTargetMethod>              TargetMethod;                                             // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EBeam2SourceTargetTangentMethod>       TargetTangentMethod;                                      // 0x0049(0x0001) (CPF_Edit)
 	struct FName                                       TargetName;                                               // 0x004C(0x0008) (CPF_Edit)
 	struct FRawDistributionVector                      Target;                                                   // 0x0054(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	unsigned long                                      bTargetAbsolute : 1;                                      // 0x0070(0x0004) (CPF_Edit)
@@ -22841,7 +19062,7 @@ class UParticleModuleCameraOffset : public UParticleModuleCameraBase
 public:
 	struct FRawDistributionFloat                       CameraOffset;                                             // 0x0048(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	unsigned long                                      bSpawnTimeOnly : 1;                                       // 0x0064(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EParticleCameraOffsetUpdateMethod> UpdateMethod;                                             // 0x0068(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleCameraOffsetUpdateMethod>     UpdateMethod;                                             // 0x0068(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -22875,8 +19096,7 @@ public:
 	struct FRawDistributionVector                      DampingFactor;                                            // 0x0048(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionVector                      DampingFactorRotation;                                    // 0x0064(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       MaxCollisions;                                            // 0x0080(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EParticleCollisionComplete> CollisionCompletionOption;                                // 0x009C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x009D(0x0003) MISSED OFFSET
+	TEnumAsByte<EParticleCollisionComplete>            CollisionCompletionOption;                                // 0x009C(0x0001) (CPF_Edit)
 	unsigned long                                      bApplyPhysics : 1;                                        // 0x00A0(0x0004) (CPF_Edit)
 	unsigned long                                      bNoClip : 1;                                              // 0x00A0(0x0004) (CPF_Edit)
 	unsigned long                                      bPawnsDoNotDecrementCount : 1;                            // 0x00A0(0x0004) (CPF_Edit)
@@ -23080,8 +19300,7 @@ public:
 class UParticleModuleEventReceiverBase : public UParticleModuleEventBase
 {
 public:
-	TEnumAsByte<enum class EParticleEventType>         EventGeneratorType;                                       // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<EParticleEventType>                    EventGeneratorType;                                       // 0x0048(0x0001) (CPF_Edit)
 	struct FName                                       EventName;                                                // 0x004C(0x0008) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -23315,9 +19534,8 @@ public:
 class UParticleModuleLocationBoneSocket : public UParticleModuleLocationBase
 {
 public:
-	TEnumAsByte<enum class ELocationBoneSocketSource>  SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ELocationBoneSocketSelectionMethod> SelectionMethod;                                          // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<ELocationBoneSocketSource>             SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<ELocationBoneSocketSelectionMethod>    SelectionMethod;                                          // 0x0049(0x0001) (CPF_Edit)
 	struct FVector                                     UniversalOffset;                                          // 0x004C(0x000C) (CPF_Edit)
 	TArray<struct FLocationBoneSocketInfo>             SourceLocations;                                          // 0x0058(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bUpdatePositionEachFrame : 1;                             // 0x0064(0x0004) (CPF_Edit)
@@ -23361,8 +19579,7 @@ class UParticleModuleLocationEmitter : public UParticleModuleLocationBase
 {
 public:
 	struct FName                                       EmitterName;                                              // 0x0048(0x0008) (CPF_Edit, CPF_ExportObject, CPF_NoClear)
-	TEnumAsByte<enum class ELocationEmitterSelectionMethod> SelectionMethod;                                          // 0x0050(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0051(0x0003) MISSED OFFSET
+	TEnumAsByte<ELocationEmitterSelectionMethod>       SelectionMethod;                                          // 0x0050(0x0001) (CPF_Edit)
 	unsigned long                                      InheritSourceVelocity : 1;                                // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bInheritSourceRotation : 1;                               // 0x0054(0x0004) (CPF_Edit)
 	float                                              InheritSourceVelocityScale;                               // 0x0058(0x0004) (CPF_Edit)
@@ -23427,7 +19644,7 @@ public:
 	unsigned long                                      bAdjustForWorldSpace : 1;                                 // 0x0084(0x0004) (CPF_Edit)
 	struct FRawDistributionFloat                       StartRadius;                                              // 0x0088(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       StartHeight;                                              // 0x00A4(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class CylinderHeightAxis>         HeightAxis;                                               // 0x00C0(0x0001) (CPF_Edit)
+	TEnumAsByte<ECylinderHeightAxis>                   HeightAxis;                                               // 0x00C0(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -23443,7 +19660,6 @@ public:
 class UParticleModuleLocationPrimitiveCylinder_Seeded : public UParticleModuleLocationPrimitiveCylinder
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C1(0x0003) MISSED OFFSET
 	struct FParticleRandomSeedInfo                     RandomSeedInfo;                                           // 0x00C4(0x0018) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -23492,8 +19708,7 @@ public:
 class UParticleModuleLocationSkelVertSurface : public UParticleModuleLocationBase
 {
 public:
-	TEnumAsByte<enum class ELocationSkelVertSurfaceSource> SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<ELocationSkelVertSurfaceSource>        SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
 	struct FVector                                     UniversalOffset;                                          // 0x004C(0x000C) (CPF_Edit)
 	unsigned long                                      bUpdatePositionEachFrame : 1;                             // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bOrientMeshEmitters : 1;                                  // 0x0058(0x0004) (CPF_Edit)
@@ -23520,8 +19735,7 @@ public:
 class UParticleModuleLocationStaticVertSurface : public UParticleModuleLocationBase
 {
 public:
-	TEnumAsByte<enum class ELocationStaticVertSurfaceSource> SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<ELocationStaticVertSurfaceSource>      SourceType;                                               // 0x0048(0x0001) (CPF_Edit)
 	struct FVector                                     UniversalOffset;                                          // 0x004C(0x000C) (CPF_Edit)
 	unsigned long                                      bUpdatePositionEachFrame : 1;                             // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bOrientMeshEmitters : 1;                                  // 0x0058(0x0004) (CPF_Edit)
@@ -23627,8 +19841,7 @@ public:
 class UParticleModuleOrbit : public UParticleModuleOrbitBase
 {
 public:
-	TEnumAsByte<enum class EOrbitChainMode>            ChainMode;                                                // 0x004C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x004D(0x0003) MISSED OFFSET
+	TEnumAsByte<EOrbitChainMode>                       ChainMode;                                                // 0x004C(0x0001) (CPF_Edit)
 	struct FRawDistributionVector                      OffsetAmount;                                             // 0x0050(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FOrbitOptions                               OffsetOptions;                                            // 0x006C(0x0004) (CPF_Edit)
 	struct FRawDistributionVector                      RotationAmount;                                           // 0x0070(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
@@ -23665,7 +19878,7 @@ public:
 class UParticleModuleOrientationAxisLock : public UParticleModuleOrientationBase
 {
 public:
-	TEnumAsByte<enum class EParticleAxisLock>          LockAxisFlags;                                            // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleAxisLock>                     LockAxisFlags;                                            // 0x0048(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -23731,12 +19944,11 @@ class UParticleModuleRequired : public UParticleModule
 {
 public:
 	class UMaterialInterface*                          Material;                                                 // 0x0048(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EParticleScreenAlignment>   ScreenAlignment;                                          // 0x004C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EParticleSortMode>          SortMode;                                                 // 0x004D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EParticleBurstMethod>       ParticleBurstMethod;                                      // 0x004E(0x0001)
-	TEnumAsByte<enum class EParticleSubUVInterpMethod> InterpolationMethod;                                      // 0x004F(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EEmitterNormalsMode>        EmitterNormalsMode;                                       // 0x0050(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0051(0x0003) MISSED OFFSET
+	TEnumAsByte<EParticleScreenAlignment>              ScreenAlignment;                                          // 0x004C(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleSortMode>                     SortMode;                                                 // 0x004D(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleBurstMethod>                  ParticleBurstMethod;                                      // 0x004E(0x0001)
+	TEnumAsByte<EParticleSubUVInterpMethod>            InterpolationMethod;                                      // 0x004F(0x0001) (CPF_Edit)
+	TEnumAsByte<EEmitterNormalsMode>                   EmitterNormalsMode;                                       // 0x0050(0x0001) (CPF_Edit)
 	unsigned long                                      bAllowImageFlipping : 1;                                  // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bSquareImageFlipping : 1;                                 // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bUseLocalSpace : 1;                                       // 0x0054(0x0004) (CPF_Edit)
@@ -24176,8 +20388,7 @@ class UParticleModuleSpawn : public UParticleModuleSpawnBase
 public:
 	struct FRawDistributionFloat                       Rate;                                                     // 0x004C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       RateScale;                                                // 0x0068(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EParticleBurstMethod>       ParticleBurstMethod;                                      // 0x0084(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0085(0x0003) MISSED OFFSET
+	TEnumAsByte<EParticleBurstMethod>                  ParticleBurstMethod;                                      // 0x0084(0x0001) (CPF_Edit)
 	TArray<struct FParticleBurst>                      BurstList;                                                // 0x0088(0x000C) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_NoClear)
 
 	static UClass* StaticClass()
@@ -24346,9 +20557,8 @@ public:
 class UParticleModuleTrailSource : public UParticleModuleTrailBase
 {
 public:
-	TEnumAsByte<enum class ETrail2SourceMethod>        SourceMethod;                                             // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EParticleSourceSelectionMethod> SelectionMethod;                                          // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<ETrail2SourceMethod>                   SourceMethod;                                             // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleSourceSelectionMethod>        SelectionMethod;                                          // 0x0049(0x0001) (CPF_Edit)
 	struct FName                                       SourceName;                                               // 0x004C(0x0008) (CPF_Edit)
 	struct FRawDistributionFloat                       SourceStrength;                                           // 0x0054(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	unsigned long                                      bLockSourceStength : 1;                                   // 0x0070(0x0004) (CPF_Edit)
@@ -24387,8 +20597,7 @@ public:
 class UParticleModuleTrailTaper : public UParticleModuleTrailBase
 {
 public:
-	TEnumAsByte<enum class ETrailTaperMethod>          TaperMethod;                                              // 0x0048(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<ETrailTaperMethod>                     TaperMethod;                                              // 0x0048(0x0001) (CPF_Edit)
 	struct FRawDistributionFloat                       TaperFactor;                                              // 0x004C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -24465,9 +20674,8 @@ public:
 class UParticleModuleTypeDataBeam : public UParticleModuleTypeDataBase
 {
 public:
-	TEnumAsByte<enum class EBeamMethod>                BeamMethod;                                               // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBeamEndPointMethod>        EndPointMethod;                                           // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<EBeamMethod>                           BeamMethod;                                               // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EBeamEndPointMethod>                   EndPointMethod;                                           // 0x0049(0x0001) (CPF_Edit)
 	struct FRawDistributionFloat                       Distance;                                                 // 0x004C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionVector                      EndPoint;                                                 // 0x0068(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	int                                                TessellationFactor;                                       // 0x0084(0x0004) (CPF_Edit)
@@ -24494,9 +20702,8 @@ public:
 class UParticleModuleTypeDataBeam2 : public UParticleModuleTypeDataBase
 {
 public:
-	TEnumAsByte<enum class EBeam2Method>               BeamMethod;                                               // 0x0048(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EBeamTaperMethod>           TaperMethod;                                              // 0x0049(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004A(0x0002) MISSED OFFSET
+	TEnumAsByte<EBeam2Method>                          BeamMethod;                                               // 0x0048(0x0001) (CPF_Edit)
+	TEnumAsByte<EBeamTaperMethod>                      TaperMethod;                                              // 0x0049(0x0001) (CPF_Edit)
 	int                                                TextureTile;                                              // 0x004C(0x0004) (CPF_Edit)
 	float                                              TextureTileDistance;                                      // 0x0050(0x0004) (CPF_Edit)
 	int                                                Sheets;                                                   // 0x0054(0x0004) (CPF_Edit)
@@ -24536,10 +20743,10 @@ public:
 	unsigned long                                      bOverrideMaterial : 1;                                    // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bCameraFacing : 1;                                        // 0x0054(0x0004) (CPF_Edit)
 	unsigned long                                      bApplyParticleRotationAsSpin : 1;                         // 0x0054(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EMeshScreenAlignment>       MeshAlignment;                                            // 0x0058(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EParticleAxisLock>          AxisLockOption;                                           // 0x0059(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMeshCameraFacingUpAxis>    CameraFacingUpAxisOption;                                 // 0x005A(0x0001) (CPF_Deprecated)
-	TEnumAsByte<enum class EMeshCameraFacingOptions>   CameraFacingOption;                                       // 0x005B(0x0001) (CPF_Edit)
+	TEnumAsByte<EMeshScreenAlignment>                  MeshAlignment;                                            // 0x0058(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleAxisLock>                     AxisLockOption;                                           // 0x0059(0x0001) (CPF_Edit)
+	TEnumAsByte<EMeshCameraFacingUpAxis>               CameraFacingUpAxisOption;                                 // 0x005A(0x0001) (CPF_Deprecated)
+	TEnumAsByte<EMeshCameraFacingOptions>              CameraFacingOption;                                       // 0x005B(0x0001) (CPF_Edit)
 	float                                              Pitch;                                                    // 0x005C(0x0004) (CPF_Edit)
 	float                                              Roll;                                                     // 0x0060(0x0004) (CPF_Edit)
 	float                                              Yaw;                                                      // 0x0064(0x0004) (CPF_Edit)
@@ -24559,8 +20766,7 @@ class UParticleModuleTypeDataMeshPhysX : public UParticleModuleTypeDataMesh
 {
 public:
 	class UPhysXParticleSystem*                        PhysXParSys;                                              // 0x0068(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EPhysXMeshRotationMethod>   PhysXRotationMethod;                                      // 0x006C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x006D(0x0003) MISSED OFFSET
+	TEnumAsByte<EPhysXMeshRotationMethod>              PhysXRotationMethod;                                      // 0x006C(0x0001) (CPF_Edit)
 	float                                              FluidRotationCoefficient;                                 // 0x0070(0x0004) (CPF_Edit)
 	struct FPhysXEmitterVerticalLodProperties          VerticalLod;                                              // 0x0074(0x0010) (CPF_Edit)
 	float                                              ZOffset;                                                  // 0x0084(0x0004) (CPF_Edit)
@@ -24611,8 +20817,7 @@ public:
 	unsigned long                                      bRenderTangents : 1;                                      // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bRenderTessellation : 1;                                  // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bEnableTangentDiffInterpScale : 1;                        // 0x0058(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ETrailsRenderAxisOption>    RenderAxis;                                               // 0x005C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x005D(0x0003) MISSED OFFSET
+	TEnumAsByte<ETrailsRenderAxisOption>               RenderAxis;                                               // 0x005C(0x0001) (CPF_Edit)
 	float                                              TangentSpawningScalar;                                    // 0x0060(0x0004) (CPF_Edit)
 	float                                              TilingDistance;                                           // 0x0064(0x0004) (CPF_Edit)
 	float                                              DistanceTessellationStepSize;                             // 0x0068(0x0004) (CPF_Edit)
@@ -24794,8 +20999,7 @@ public:
 	struct FVector                                     PC_StartLocation;                                         // 0x00AC(0x000C) (CPF_Edit)
 	float                                              PC_StartRadius;                                           // 0x00B8(0x0004) (CPF_Edit)
 	float                                              PC_StartHeight;                                           // 0x00BC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class CylinderHeightAxis>         PC_HeightAxis;                                            // 0x00C0(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C1(0x0003) MISSED OFFSET
+	TEnumAsByte<ECylinderHeightAxis>                   PC_HeightAxis;                                            // 0x00C0(0x0001) (CPF_Edit)
 	struct FVector                                     StartLocationMin;                                         // 0x00C4(0x000C) (CPF_Edit)
 	struct FVector                                     StartLocationMax;                                         // 0x00D0(0x000C) (CPF_Edit)
 
@@ -24835,8 +21039,7 @@ public:
 	struct FRawDistributionVector                      PC_StartLocation;                                         // 0x00E4(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       PC_StartRadius;                                           // 0x0100(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       PC_StartHeight;                                           // 0x011C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class CylinderHeightAxis>         PC_HeightAxis;                                            // 0x0138(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0139(0x0003) MISSED OFFSET
+	TEnumAsByte<ECylinderHeightAxis>                   PC_HeightAxis;                                            // 0x0138(0x0001) (CPF_Edit)
 	struct FRawDistributionVector                      ColorOverLife;                                            // 0x013C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       AlphaOverLife;                                            // 0x0158(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 
@@ -25021,7 +21224,7 @@ class UParticleModulePhysicsVolumes : public UParticleModuleWorldForcesBase
 {
 public:
 	struct FRawDistributionFloat                       GlobalInfluence;                                          // 0x0048(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EParticleLevelInfluenceType> LevelInfluenceType;                                       // 0x0064(0x0001) (CPF_Edit)
+	TEnumAsByte<EParticleLevelInfluenceType>           LevelInfluenceType;                                       // 0x0064(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -25090,10 +21293,9 @@ class UPhysXParticleSystem : public UObject
 public:
 	int                                                MaxParticles;                                             // 0x003C(0x0004) (CPF_Edit)
 	int                                                ParticleSpawnReserve;                                     // 0x0040(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x0044(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ESimulationMethod>          SimulationMethod;                                         // 0x0045(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EPacketSizeMultiplier>      PacketSizeMultiplier;                                     // 0x0046(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x0047(0x0001) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x0044(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<ESimulationMethod>                     SimulationMethod;                                         // 0x0045(0x0001) (CPF_Edit)
+	TEnumAsByte<EPacketSizeMultiplier>                 PacketSizeMultiplier;                                     // 0x0046(0x0001) (CPF_Edit)
 	struct FRBCollisionChannelContainer                RBCollideWithChannels;                                    // 0x0048(0x0004) (CPF_Edit, CPF_Const)
 	float                                              CollisionDistance;                                        // 0x004C(0x0004) (CPF_Edit)
 	float                                              RestitutionWithStaticShapes;                              // 0x0050(0x0004) (CPF_Edit)
@@ -25347,12 +21549,11 @@ public:
 	unsigned long                                      bRootMotionFromInterpCurve : 1;                           // 0x0224(0x0004) (CPF_Net)
 	unsigned long                                      bDebugShowCameraLocation : 1;                             // 0x0224(0x0004) (CPF_Edit)
 	unsigned long                                      bFastAttachedMove : 1;                                    // 0x0224(0x0004) (CPF_Edit, CPF_Net)
-	TEnumAsByte<enum class EPhysics>                   WalkingPhysics;                                           // 0x0228(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EPathSearchType>            PathSearchType;                                           // 0x0229(0x0001)
+	TEnumAsByte<EPhysics>                              WalkingPhysics;                                           // 0x0228(0x0001) (CPF_Edit)
+	TEnumAsByte<EPathSearchType>                       PathSearchType;                                           // 0x0229(0x0001)
 	unsigned char                                      RemoteViewPitch;                                          // 0x022A(0x0001) (CPF_Const, CPF_Net)
 	unsigned char                                      FlashCount;                                               // 0x022B(0x0001) (CPF_Net)
 	unsigned char                                      FiringMode;                                               // 0x022C(0x0001) (CPF_Net)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x022D(0x0003) MISSED OFFSET
 	float                                              UncrouchTime;                                             // 0x0230(0x0004) (CPF_Const)
 	float                                              CrouchHeight;                                             // 0x0234(0x0004)
 	float                                              CrouchRadius;                                             // 0x0238(0x0004)
@@ -25633,7 +21834,7 @@ public:
 	void Reset();
 	void PlayerChangedTeam();
 	void SetBaseEyeheight();
-	bool SpecialMoveThruEdge(TEnumAsByte<enum class ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle);
+	bool SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle);
 	bool SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next);
 	bool TermRagdoll();
 	bool InitRagdoll();
@@ -25730,7 +21931,6 @@ public:
 	float                                              MinCrushSpeed;                                            // 0x04B8(0x0004)
 	float                                              ForceCrushPenetration;                                    // 0x04BC(0x0004)
 	unsigned char                                      StuckCount;                                               // 0x04C0(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x04C1(0x0003) MISSED OFFSET
 	float                                              ThrottleTime;                                             // 0x04C4(0x0004)
 	float                                              StuckTime;                                                // 0x04C8(0x0004)
 	float                                              OldSteering;                                              // 0x04CC(0x0004)
@@ -26011,8 +22211,7 @@ public:
 	unsigned long                                      bEnabled : 1;                                             // 0x01EC(0x0004) (CPF_Edit)
 	float                                              LoopDuration;                                             // 0x01F0(0x0004) (CPF_Edit)
 	float                                              CurrentTime;                                              // 0x01F4(0x0004)
-	TEnumAsByte<enum class EWorldAttractorFalloffType> FalloffType;                                              // 0x01F8(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01F9(0x0003) MISSED OFFSET
+	TEnumAsByte<EWorldAttractorFalloffType>            FalloffType;                                              // 0x01F8(0x0001) (CPF_Edit)
 	struct FMatineeRawDistributionFloat                FalloffExponent;                                          // 0x01FC(0x0024) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FMatineeRawDistributionFloat                Range;                                                    // 0x0220(0x0024) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FMatineeRawDistributionFloat                Strength;                                                 // 0x0244(0x0024) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
@@ -26052,8 +22251,7 @@ public:
 class URB_RadialImpulseComponent : public UPrimitiveComponent
 {
 public:
-	TEnumAsByte<enum class ERadialImpulseFalloff>      ImpulseFalloff;                                           // 0x01E8(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01E9(0x0003) MISSED OFFSET
+	TEnumAsByte<ERadialImpulseFalloff>                 ImpulseFalloff;                                           // 0x01E8(0x0001) (CPF_Edit)
 	float                                              ImpulseStrength;                                          // 0x01EC(0x0004) (CPF_Edit)
 	float                                              ImpulseRadius;                                            // 0x01F0(0x0004) (CPF_Edit)
 	unsigned long                                      bVelChange : 1;                                           // 0x01F4(0x0004) (CPF_Edit)
@@ -26076,7 +22274,6 @@ public:
 class URB_Handle : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UPrimitiveComponent*                         GrabbedComponent;                                         // 0x0068(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FName                                       GrabbedBoneName;                                          // 0x006C(0x0008)
 	int                                                SceneIndex;                                               // 0x0074(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
@@ -26117,7 +22314,6 @@ public:
 class URB_Spring : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UPrimitiveComponent*                         Component1;                                               // 0x0068(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FName                                       BoneName1;                                                // 0x006C(0x0008) (CPF_Const)
 	class UPrimitiveComponent*                         Component2;                                               // 0x0074(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
@@ -26152,7 +22348,6 @@ public:
 class USVehicleSimBase : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	float                                              WheelSuspensionStiffness;                                 // 0x0068(0x0004) (CPF_Edit)
 	float                                              WheelSuspensionDamping;                                   // 0x006C(0x0004) (CPF_Edit)
 	float                                              WheelSuspensionBias;                                      // 0x0070(0x0004) (CPF_Edit)
@@ -26237,8 +22432,7 @@ class UActorFactoryApexClothing : public UActorFactorySkeletalMesh
 {
 public:
 	TArray<class UApexClothingAsset*>                  ClothingAssets;                                           // 0x0078(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ERBCollisionChannel>        ClothingRBChannel;                                        // 0x0084(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0085(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   ClothingRBChannel;                                        // 0x0084(0x0001) (CPF_Edit, CPF_Const)
 	struct FRBCollisionChannelContainer                ClothingRBCollideWithChannels;                            // 0x0088(0x0004) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()
@@ -26323,7 +22517,7 @@ public:
 
 	class UPhysicalMaterialPropertyBase* GetPhysicalMaterialProperty(class UClass* DesiredClass);
 	void FindFractureSounds(class USoundCue** OutSoundExplosion, class USoundCue** OutSoundSingle);
-	struct FPhysEffectInfo FindPhysEffectInfo(TEnumAsByte<enum class EPhysEffectType> Type);
+	struct FPhysEffectInfo FindPhysEffectInfo(TEnumAsByte<EPhysEffectType> Type);
 };
 
 
@@ -26735,8 +22929,7 @@ public:
 	float                                              SuspensionTravel;                                         // 0x0084(0x0004) (CPF_Edit)
 	float                                              SuspensionSpeed;                                          // 0x0088(0x0004) (CPF_Edit)
 	class UParticleSystem*                             WheelParticleSystem;                                      // 0x008C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EWheelSide>                 Side;                                                     // 0x0090(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	TEnumAsByte<EWheelSide>                            Side;                                                     // 0x0090(0x0001) (CPF_Edit)
 	float                                              LongSlipFactor;                                           // 0x0094(0x0004) (CPF_Edit)
 	float                                              LatSlipFactor;                                            // 0x0098(0x0004) (CPF_Edit)
 	float                                              HandbrakeLongSlipFactor;                                  // 0x009C(0x0004) (CPF_Edit)
@@ -26777,9 +22970,8 @@ class ANxGenericForceFieldBrush : public AVolume
 public:
 	int                                                ExcludeChannel;                                           // 0x0218(0x0004) (CPF_Edit)
 	struct FRBCollisionChannelContainer                CollideWithChannels;                                      // 0x021C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x0220(0x0001) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class FFB_ForceFieldCoordinates>  Coordinates;                                              // 0x0221(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0222(0x0002) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x0220(0x0001) (CPF_Edit, CPF_Const)
+	TEnumAsByte<EFFB_ForceFieldCoordinates>            Coordinates;                                              // 0x0221(0x0001) (CPF_Edit)
 	struct FVector                                     Constant;                                                 // 0x0224(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierX;                                      // 0x0230(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierY;                                      // 0x023C(0x000C) (CPF_Edit)
@@ -26836,8 +23028,7 @@ public:
 	int                                                ExcludeChannel;                                           // 0x01EC(0x0004) (CPF_Edit)
 	unsigned long                                      bForceActive : 1;                                         // 0x01F0(0x0004) (CPF_Edit, CPF_Net)
 	struct FRBCollisionChannelContainer                CollideWithChannels;                                      // 0x01F4(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ERBCollisionChannel>        RBChannel;                                                // 0x01F8(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01F9(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   RBChannel;                                                // 0x01F8(0x0001) (CPF_Edit, CPF_Const)
 	struct FPointer                                    ForceField;                                               // 0x01FC(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<struct FPointer>                            ConvexMeshes;                                             // 0x0200(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<struct FPointer>                            ExclusionShapes;                                          // 0x020C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
@@ -26911,8 +23102,7 @@ public:
 	float                                              RoughExtentX;                                             // 0x0234(0x0004) (CPF_Edit)
 	float                                              RoughExtentY;                                             // 0x0238(0x0004) (CPF_Edit)
 	float                                              RoughExtentZ;                                             // 0x023C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class FFG_ForceFieldCoordinates>  Coordinates;                                              // 0x0240(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0241(0x0003) MISSED OFFSET
+	TEnumAsByte<EFFG_ForceFieldCoordinates>            Coordinates;                                              // 0x0240(0x0001) (CPF_Edit)
 	struct FVector                                     Constant;                                                 // 0x0244(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierX;                                      // 0x0250(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierY;                                      // 0x025C(0x000C) (CPF_Edit)
@@ -26949,8 +23139,7 @@ public:
 	float                                              ForceStrength;                                            // 0x0234(0x0004) (CPF_Edit)
 	float                                              ForceRadius;                                              // 0x0238(0x0004) (CPF_Edit)
 	float                                              SelfRotationStrength;                                     // 0x023C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      ForceFalloff;                                             // 0x0240(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0241(0x0003) MISSED OFFSET
+	TEnumAsByte<ERadialImpulseFalloff>                 ForceFalloff;                                             // 0x0240(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
 	struct FPointer                                    Kernel;                                                   // 0x0244(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 
 	static UClass* StaticClass()
@@ -27000,8 +23189,7 @@ public:
 class ANxGenericForceField : public ANxForceField
 {
 public:
-	TEnumAsByte<enum class FFG_ForceFieldCoordinates>  Coordinates;                                              // 0x022C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x022D(0x0003) MISSED OFFSET
+	TEnumAsByte<EFFG_ForceFieldCoordinates>            Coordinates;                                              // 0x022C(0x0001) (CPF_Edit)
 	struct FVector                                     Constant;                                                 // 0x0230(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierX;                                      // 0x023C(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierY;                                      // 0x0248(0x000C) (CPF_Edit)
@@ -27071,8 +23259,7 @@ public:
 	class UDrawSphereComponent*                        RenderComponent;                                          // 0x022C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	float                                              ForceStrength;                                            // 0x0230(0x0004) (CPF_Edit)
 	float                                              ForceRadius;                                              // 0x0234(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      ForceFalloff;                                             // 0x0238(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0239(0x0003) MISSED OFFSET
+	TEnumAsByte<ERadialImpulseFalloff>                 ForceFalloff;                                             // 0x0238(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
 	struct FPointer                                    LinearKernel;                                             // 0x023C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 
 	static UClass* StaticClass()
@@ -27247,9 +23434,8 @@ public:
 	float                                              ForceRadius;                                              // 0x01F4(0x0004) (CPF_Edit)
 	float                                              SwirlStrength;                                            // 0x01F8(0x0004) (CPF_Edit)
 	float                                              SpinTorque;                                               // 0x01FC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      ForceFalloff;                                             // 0x0200(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
-	TEnumAsByte<enum class ERadialForceType>           RadialForceMode;                                          // 0x0201(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0202(0x0002) MISSED OFFSET
+	TEnumAsByte<ERadialImpulseFalloff>                 ForceFalloff;                                             // 0x0200(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
+	TEnumAsByte<ERadialForceType>                      RadialForceMode;                                          // 0x0201(0x0001) (CPF_Edit)
 	unsigned long                                      bForceActive : 1;                                         // 0x0204(0x0004) (CPF_Edit, CPF_Net)
 	unsigned long                                      bForceApplyToCloth : 1;                                   // 0x0204(0x0004) (CPF_Edit)
 	unsigned long                                      bForceApplyToFluid : 1;                                   // 0x0204(0x0004) (CPF_Edit)
@@ -27334,8 +23520,7 @@ public:
 	float                                              RoughExtentX;                                             // 0x0238(0x0004) (CPF_Edit)
 	float                                              RoughExtentY;                                             // 0x023C(0x0004) (CPF_Edit)
 	float                                              RoughExtentZ;                                             // 0x0240(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class FFG_ForceFieldCoordinates>  Coordinates;                                              // 0x0244(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0245(0x0003) MISSED OFFSET
+	TEnumAsByte<EFFG_ForceFieldCoordinates>            Coordinates;                                              // 0x0244(0x0001) (CPF_Edit)
 	struct FVector                                     Constant;                                                 // 0x0248(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierX;                                      // 0x0254(0x000C) (CPF_Edit)
 	struct FVector                                     PositionMultiplierY;                                      // 0x0260(0x000C) (CPF_Edit)
@@ -27368,8 +23553,7 @@ public:
 	float                                              ForceStrength;                                            // 0x0238(0x0004) (CPF_Edit)
 	float                                              ForceRadius;                                              // 0x023C(0x0004) (CPF_Edit)
 	float                                              SelfRotationStrength;                                     // 0x0240(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ERadialImpulseFalloff>      ForceFalloff;                                             // 0x0244(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0245(0x0003) MISSED OFFSET
+	TEnumAsByte<ERadialImpulseFalloff>                 ForceFalloff;                                             // 0x0244(0x0001) (CPF_Edit, CPF_ExportObject, CPF_Component)
 	struct FPointer                                    Kernel;                                                   // 0x0248(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 
 	static UClass* StaticClass()
@@ -27652,7 +23836,6 @@ public:
 	TArray<struct FSeqEventLink>                       EventLinks;                                               // 0x00C8(0x000C) (CPF_NeedCtorLink)
 	int                                                PlayerIndex;                                              // 0x00D4(0x0004) (CPF_Transient, CPF_NoImport)
 	unsigned char                                      GamepadID;                                                // 0x00D8(0x0001) (CPF_Transient, CPF_NoImport)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00D9(0x0003) MISSED OFFSET
 	int                                                ActivateCount;                                            // 0x00DC(0x0004) (CPF_Transient)
 	int                                                SearchTag;                                                // 0x00E0(0x0004) (CPF_Const, CPF_Transient, CPF_DuplicateTransient)
 
@@ -27913,8 +24096,7 @@ public:
 	float                                              RadialShake_InnerRadius;                                  // 0x0108(0x0004) (CPF_Edit)
 	float                                              RadialShake_OuterRadius;                                  // 0x010C(0x0004) (CPF_Edit)
 	float                                              RadialShake_Falloff;                                      // 0x0110(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // 0x0114(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0115(0x0003) MISSED OFFSET
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // 0x0114(0x0001) (CPF_Edit)
 	class AActor*                                      LocationActor;                                            // 0x0118(0x0004)
 
 	static UClass* StaticClass()
@@ -27936,7 +24118,7 @@ public:
 	unsigned long                                      bCollideActors : 1;                                       // 0x00FC(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
 	unsigned long                                      bBlockActors : 1;                                         // 0x00FC(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
 	unsigned long                                      bIgnoreEncroachers : 1;                                   // 0x00FC(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
-	TEnumAsByte<enum class ECollisionType>             CollisionType;                                            // 0x0100(0x0001) (CPF_Edit)
+	TEnumAsByte<ECollisionType>                        CollisionType;                                            // 0x0100(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -28205,8 +24387,7 @@ public:
 	unsigned long                                      bIsSpawning : 1;                                          // 0x0110(0x0004)
 	unsigned long                                      bCheckSpawnCollision : 1;                                 // 0x0110(0x0004) (CPF_Edit)
 	class UActorFactory*                               Factory;                                                  // 0x0114(0x0004) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
-	TEnumAsByte<enum class EPointSelection>            PointSelection;                                           // 0x0118(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0119(0x0003) MISSED OFFSET
+	TEnumAsByte<EPointSelection>                       PointSelection;                                           // 0x0118(0x0001) (CPF_Edit)
 	TArray<class AActor*>                              SpawnPoints;                                              // 0x011C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FVector>                             SpawnLocations;                                           // 0x0128(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FVector>                             SpawnOrientations;                                        // 0x0134(0x000C) (CPF_Edit, CPF_NeedCtorLink)
@@ -28380,7 +24561,6 @@ public:
 	float                                              TerminationTime;                                          // 0x01CC(0x0004)
 	struct FRenderingPerformanceOverrides              RenderingOverrides;                                       // 0x01D0(0x0004) (CPF_Edit, CPF_Config, CPF_GlobalConfig)
 	unsigned char                                      ConstantCameraAnim;                                       // 0x01D4(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x01D5(0x0003) MISSED OFFSET
 	float                                              ConstantCameraAnimRate;                                   // 0x01D8(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -28663,8 +24843,7 @@ class USeqAct_ModifyCover : public USequenceAction
 {
 public:
 	TArray<int>                                        Slots;                                                    // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ECoverType>                 ManualCoverType;                                          // 0x0108(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0109(0x0003) MISSED OFFSET
+	TEnumAsByte<ECoverType>                            ManualCoverType;                                          // 0x0108(0x0001) (CPF_Edit)
 	unsigned long                                      bManualAdjustPlayersOnly : 1;                             // 0x010C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -28739,8 +24918,7 @@ public:
 	float                                              BlendOutTime;                                             // 0x0108(0x0004) (CPF_Edit)
 	float                                              Rate;                                                     // 0x010C(0x0004) (CPF_Edit)
 	float                                              IntensityScale;                                           // 0x0110(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // 0x0114(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0115(0x0003) MISSED OFFSET
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // 0x0114(0x0001) (CPF_Edit)
 	class AActor*                                      UserDefinedSpaceActor;                                    // 0x0118(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -28934,8 +25112,7 @@ class USeqAct_SetMesh : public USequenceAction
 public:
 	class USkeletalMesh*                               NewSkeletalMesh;                                          // 0x00FC(0x0004) (CPF_Edit)
 	class UStaticMesh*                                 NewStaticMesh;                                            // 0x0100(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EMeshType>                  MeshType;                                                 // 0x0104(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0105(0x0003) MISSED OFFSET
+	TEnumAsByte<EMeshType>                             MeshType;                                                 // 0x0104(0x0001) (CPF_Edit)
 	unsigned long                                      bIsAllowedToMove : 1;                                     // 0x0108(0x0004) (CPF_Edit)
 	unsigned long                                      bAllowDecalsToReattach : 1;                               // 0x0108(0x0004) (CPF_Edit)
 
@@ -28953,7 +25130,7 @@ public:
 class USeqAct_SetPhysics : public USequenceAction
 {
 public:
-	TEnumAsByte<enum class EPhysics>                   newPhysics;                                               // 0x00FC(0x0001) (CPF_Edit)
+	TEnumAsByte<EPhysics>                              newPhysics;                                               // 0x00FC(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -29359,8 +25536,7 @@ public:
 	unsigned long                                      bRangeField : 1;                                          // 0x0108(0x0004)
 	unsigned long                                      bStrengthField : 1;                                       // 0x0108(0x0004)
 	unsigned long                                      bEnabled : 1;                                             // 0x0108(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EWorldAttractorFalloffType> FalloffType;                                              // 0x010C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x010D(0x0003) MISSED OFFSET
+	TEnumAsByte<EWorldAttractorFalloffType>            FalloffType;                                              // 0x010C(0x0001) (CPF_Edit)
 	struct FRawDistributionFloat                       FalloffExponent;                                          // 0x0110(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       Range;                                                    // 0x012C(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
 	struct FRawDistributionFloat                       Strength;                                                 // 0x0148(0x001C) (CPF_Edit, CPF_Component, CPF_NeedCtorLink)
@@ -29840,7 +26016,6 @@ public:
 	unsigned long                                      bRegistered : 1;                                          // 0x0108(0x0004) (CPF_Transient)
 	unsigned long                                      bClientSideOnly : 1;                                      // 0x0108(0x0004) (CPF_Edit, CPF_Const)
 	unsigned char                                      Priority;                                                 // 0x010C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x010D(0x0003) MISSED OFFSET
 	int                                                MaxWidth;                                                 // 0x0110(0x0004)
 
 	static UClass* StaticClass()
@@ -30061,8 +26236,7 @@ public:
 class USeqEvent_ParticleEvent : public USequenceEvent
 {
 public:
-	TEnumAsByte<enum class EParticleEventOutputType>   EventType;                                                // 0x0114(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0115(0x0003) MISSED OFFSET
+	TEnumAsByte<EParticleEventOutputType>              EventType;                                                // 0x0114(0x0001)
 	struct FVector                                     EventPosition;                                            // 0x0118(0x000C)
 	float                                              EventEmitterTime;                                         // 0x0124(0x0004)
 	struct FVector                                     EventVelocity;                                            // 0x0128(0x000C)
@@ -30780,8 +26954,7 @@ public:
 	unsigned long                                      bSpatialize : 1;                                          // 0x004C(0x0004) (CPF_Edit)
 	unsigned long                                      bAttenuateWithLPF : 1;                                    // 0x004C(0x0004) (CPF_Edit)
 	float                                              dBAttenuationAtMax;                                       // 0x0050(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class SoundDistanceModel>         DistanceModel;                                            // 0x0054(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0055(0x0003) MISSED OFFSET
+	TEnumAsByte<ESoundDistanceModel>                   DistanceModel;                                            // 0x0054(0x0001) (CPF_Edit)
 	float                                              RadiusMin;                                                // 0x0058(0x0004) (CPF_Edit)
 	float                                              RadiusMax;                                                // 0x005C(0x0004) (CPF_Edit)
 	float                                              LPFRadiusMin;                                             // 0x0060(0x0004) (CPF_Edit)
@@ -30844,9 +27017,8 @@ public:
 	unsigned long                                      bAttenuateWithLPF : 1;                                    // 0x004C(0x0004) (CPF_Edit)
 	float                                              dBAttenuationAtMax;                                       // 0x0050(0x0004) (CPF_Edit)
 	float                                              OmniRadius;                                               // 0x0054(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class SoundDistanceModel>         DistanceAlgorithm;                                        // 0x0058(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ESoundDistanceCalc>         DistanceType;                                             // 0x0059(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x005A(0x0002) MISSED OFFSET
+	TEnumAsByte<ESoundDistanceModel>                   DistanceAlgorithm;                                        // 0x0058(0x0001) (CPF_Edit)
+	TEnumAsByte<ESoundDistanceCalc>                    DistanceType;                                             // 0x0059(0x0001) (CPF_Edit)
 	float                                              RadiusMin;                                                // 0x005C(0x0004) (CPF_Edit)
 	float                                              RadiusMax;                                                // 0x0060(0x0004) (CPF_Edit)
 	float                                              LPFRadiusMin;                                             // 0x0064(0x0004) (CPF_Edit)
@@ -30871,10 +27043,9 @@ public:
 	unsigned long                                      bAttenuateWithLPF : 1;                                    // 0x004C(0x0004) (CPF_Edit)
 	float                                              dBAttenuationAtMax;                                       // 0x0050(0x0004) (CPF_Edit)
 	float                                              OmniRadius;                                               // 0x0054(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class SoundDistanceModel>         GainDistanceAlgorithm;                                    // 0x0058(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class SoundDistanceModel>         AttenuateDistanceAlgorithm;                               // 0x0059(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ESoundDistanceCalc>         DistanceType;                                             // 0x005A(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x005B(0x0001) MISSED OFFSET
+	TEnumAsByte<ESoundDistanceModel>                   GainDistanceAlgorithm;                                    // 0x0058(0x0001) (CPF_Edit)
+	TEnumAsByte<ESoundDistanceModel>                   AttenuateDistanceAlgorithm;                               // 0x0059(0x0001) (CPF_Edit)
+	TEnumAsByte<ESoundDistanceCalc>                    DistanceType;                                             // 0x005A(0x0001) (CPF_Edit)
 	float                                              MinimalVolume;                                            // 0x005C(0x0004) (CPF_Edit)
 	float                                              RadiusMin;                                                // 0x0060(0x0004) (CPF_Edit)
 	float                                              RadiusPeak;                                               // 0x0064(0x0004) (CPF_Edit)
@@ -31148,10 +27319,9 @@ public:
 	unsigned long                                      bMature : 1;                                              // 0x0050(0x0004) (CPF_Edit, CPF_Const, CPF_Localized)
 	unsigned long                                      bManualWordWrap : 1;                                      // 0x0050(0x0004) (CPF_Edit, CPF_Const, CPF_Localized)
 	unsigned long                                      bSingleLine : 1;                                          // 0x0050(0x0004) (CPF_Edit, CPF_Const, CPF_Localized)
-	TEnumAsByte<enum class ETTSSpeaker>                TTSSpeaker;                                               // 0x0054(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDecompressionType>         DecompressionType;                                        // 0x0055(0x0001) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class EDetailMode>                MobileDetailMode;                                         // 0x0056(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x0057(0x0001) MISSED OFFSET
+	TEnumAsByte<ETTSSpeaker>                           TTSSpeaker;                                               // 0x0054(0x0001) (CPF_Edit)
+	TEnumAsByte<EDecompressionType>                    DecompressionType;                                        // 0x0055(0x0001) (CPF_Const, CPF_Transient)
+	TEnumAsByte<EDetailMode>                           MobileDetailMode;                                         // 0x0056(0x0001) (CPF_Edit, CPF_Const)
 	struct FString                                     SpokenText;                                               // 0x0058(0x000C) (CPF_Edit, CPF_Const, CPF_Localized, CPF_NeedCtorLink)
 	float                                              Volume;                                                   // 0x0064(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
 	float                                              Pitch;                                                    // 0x0068(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
@@ -31379,9 +27549,8 @@ public:
 class ALandscapeGizmoActiveActor : public ALandscapeGizmoActor
 {
 public:
-	TEnumAsByte<enum class ELandscapeGizmoType>        DataType;                                                 // 0x0208(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0209(0x0003) MISSED OFFSET
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x0209(0x003C) UNKNOWN PROPERTY: MapProperty Engine.LandscapeGizmoActiveActor.SelectedData
+	TEnumAsByte<ELandscapeGizmoType>                   DataType;                                                 // 0x0208(0x0001) (CPF_Transient)
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0209(0x003C) UNKNOWN PROPERTY: MapProperty Engine.LandscapeGizmoActiveActor.SelectedData
 	class UTexture2D*                                  GizmoTexture;                                             // 0x0248(0x0004)
 	struct FVector2D                                   TextureScale;                                             // 0x024C(0x0008)
 	TArray<struct FVector>                             SampledHeight;                                            // 0x0254(0x000C) (CPF_NeedCtorLink)
@@ -31617,8 +27786,7 @@ class UTerrainMaterial : public UObject
 public:
 	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) MISSED OFFSET
 	struct FMatrix                                     LocalToMapping;                                           // 0x0040(0x0040)
-	TEnumAsByte<enum class ETerrainMappingType>        MappingType;                                              // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<ETerrainMappingType>                   MappingType;                                              // 0x0080(0x0001) (CPF_Edit)
 	float                                              MappingScale;                                             // 0x0084(0x0004) (CPF_Edit)
 	float                                              MappingRotation;                                          // 0x0088(0x0004) (CPF_Edit)
 	float                                              MappingPanU;                                              // 0x008C(0x0004) (CPF_Edit)
@@ -31720,11 +27888,10 @@ public:
 	TArray<struct FKeyBind>                            Bindings;                                                 // 0x0088(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FName>                               PressedKeys;                                              // 0x0094(0x000C) (CPF_NeedCtorLink)
 	int                                                CurrentControllerId;                                      // 0x00A0(0x0004) (CPF_Const)
-	TEnumAsByte<enum class EInputEvent>                CurrentEvent;                                             // 0x00A4(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00A5(0x0003) MISSED OFFSET
+	TEnumAsByte<EInputEvent>                           CurrentEvent;                                             // 0x00A4(0x0001) (CPF_Const)
 	float                                              CurrentDelta;                                             // 0x00A8(0x0004) (CPF_Const)
 	float                                              CurrentDeltaTime;                                         // 0x00AC(0x0004) (CPF_Const)
-	unsigned char                                      UnknownData01[0x3C];                                      // 0x00B0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.Input.NameToPtr
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x00B0(0x003C) UNKNOWN PROPERTY: MapProperty Engine.Input.NameToPtr
 	TArray<struct FPointer>                            AxisArray;                                                // 0x00EC(0x000C) (CPF_Const, CPF_Native, CPF_AlwaysInit)
 	TArray<class USeqEvent_Input*>                     CachedInputEvents;                                        // 0x00F8(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	TArray<class USeqEvent_AnalogInput*>               CachedAnalogInputEvents;                                  // 0x0104(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -31802,7 +27969,6 @@ public:
 	unsigned char                                      bStrafe;                                                  // 0x0250(0x0001) (CPF_Input)
 	unsigned char                                      bXAxis;                                                   // 0x0251(0x0001) (CPF_Input)
 	unsigned char                                      bYAxis;                                                   // 0x0252(0x0001) (CPF_Input)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x0253(0x0001) MISSED OFFSET
 	float                                              ZeroTime[0x2];                                            // 0x0254(0x0004)
 	float                                              SmoothedMouse[0x2];                                       // 0x025C(0x0004)
 	int                                                MouseSamples;                                             // 0x0264(0x0004)
@@ -31816,7 +27982,7 @@ public:
 	}
 
 
-	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel);
+	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void ClientInitInputSystem();
 	void InitInputSystem();
 	float SmoothMouse(float aMouse, float DeltaTime, int Index, unsigned char* SampleCount);
@@ -31824,7 +27990,7 @@ public:
 	void SmartJump();
 	void Jump();
 	void ProcessInputMatching(float DeltaTime);
-	TEnumAsByte<enum class EDoubleClickDir> CheckForDoubleClickMove(float DeltaTime);
+	TEnumAsByte<EDoubleClickDir> CheckForDoubleClickMove(float DeltaTime);
 	void CatchDoubleClickInput();
 	void PlayerInput(float DeltaTime);
 	void AdjustMouseSensitivity(float FOVScale);
@@ -32456,8 +28622,7 @@ public:
 	struct FName                                       TotalRowsName;                                            // 0x00A8(0x0008) (CPF_Const)
 	TArray<class UOnlineStatsRead*>                    StatsReadObjects;                                         // 0x00B0(0x000C) (CPF_NeedCtorLink)
 	class UOnlineStatsRead*                            StatsRead;                                                // 0x00BC(0x0004)
-	TEnumAsByte<enum class EStatsFetchType>            CurrentReadType;                                          // 0x00C0(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C1(0x0003) MISSED OFFSET
+	TEnumAsByte<EStatsFetchType>                       CurrentReadType;                                          // 0x00C0(0x0001)
 	TScriptInterface<class UOnlineStatsInterface>      StatsInterface;                                           // 0x00C4(0x0008)
 	TScriptInterface<class UOnlinePlayerInterface>     PlayerInterface;                                          // 0x00CC(0x0008)
 
@@ -32550,14 +28715,14 @@ public:
 	}
 
 
-	bool HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> DesiredPlatform);
+	bool HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> DesiredPlatform);
 	int FindInputAliasIndex(const struct FName& DesiredAlias);
-	bool GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
-	bool GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
-	struct FName GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform);
-	struct FName GetAliasInputKeyName(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform);
-	struct FString GetAliasFontMarkupByIndex(int AliasIndex, TEnumAsByte<enum class EInputPlatformType> OverridePlatform);
-	struct FString GetAliasFontMarkup(const struct FName& DesiredAlias, TEnumAsByte<enum class EInputPlatformType> OverridePlatform);
+	bool GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
+	bool GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
+	struct FName GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform);
+	struct FName GetAliasInputKeyName(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform);
+	struct FString GetAliasFontMarkupByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform);
+	struct FString GetAliasFontMarkup(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform);
 };
 
 
@@ -32643,8 +28808,7 @@ public:
 class UUIDataProvider_MenuItem : public UUIResourceDataProvider
 {
 public:
-	TEnumAsByte<enum class EMenuOptionType>            OptionType;                                               // 0x0068(0x0001) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EMenuOptionType>                       OptionType;                                               // 0x0068(0x0001) (CPF_Config)
 	TArray<struct FName>                               OptionSet;                                                // 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	struct FString                                     DataStoreMarkup;                                          // 0x0078(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	struct FString                                     DescriptionMarkup;                                        // 0x0084(0x000C) (CPF_Config, CPF_NeedCtorLink)
@@ -32723,11 +28887,11 @@ public:
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyGameSessionEnded();
-	void NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel);
+	void NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void PauseGame(bool bDesiredPauseState, int PlayerIndex);
 	bool CanUnpauseInternalUI();
 	void RequestInputProcessingUpdate();
-	TEnumAsByte<enum class ENetMode> STATIC_GetCurrentNetMode();
+	TEnumAsByte<ENetMode> STATIC_GetCurrentNetMode();
 };
 
 
@@ -32894,8 +29058,7 @@ public:
 	unsigned long                                      RaindropFillEntireFluid : 1;                              // 0x01E8(0x0004) (CPF_Edit)
 	unsigned long                                      bIsToggleTriggered : 1;                                   // 0x01E8(0x0004) (CPF_Transient)
 	class AFluidSurfaceActor*                          FluidActor;                                               // 0x01EC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EInfluenceType>             InfluenceType;                                            // 0x01F0(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01F1(0x0003) MISSED OFFSET
+	TEnumAsByte<EInfluenceType>                        InfluenceType;                                            // 0x01F0(0x0001) (CPF_Edit)
 	float                                              MaxDistance;                                              // 0x01F4(0x0004) (CPF_Edit)
 	float                                              WaveStrength;                                             // 0x01F8(0x0004) (CPF_Edit)
 	float                                              WaveFrequency;                                            // 0x01FC(0x0004) (CPF_Edit)
@@ -33054,8 +29217,8 @@ public:
 	}
 
 
-	void SetMaterial(TEnumAsByte<enum class ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material);
-	class UMaterialInterface* GetMaterial(TEnumAsByte<enum class ESpeedTreeMeshType> MeshType);
+	void SetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material);
+	class UMaterialInterface* GetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType);
 };
 
 
@@ -33196,9 +29359,8 @@ class ULensFlare : public UObject
 public:
 	struct FLensFlareElement                           SourceElement;                                            // 0x003C(0x0144) (CPF_ExportObject, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 	class UStaticMesh*                                 SourceMesh;                                               // 0x0180(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   SourceDPG;                                                // 0x0184(0x0001) (CPF_Const)
-	TEnumAsByte<enum class ESceneDepthPriorityGroup>   ReflectionsDPG;                                           // 0x0185(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0186(0x0002) MISSED OFFSET
+	TEnumAsByte<ESceneDepthPriorityGroup>              SourceDPG;                                                // 0x0184(0x0001) (CPF_Const)
+	TEnumAsByte<ESceneDepthPriorityGroup>              ReflectionsDPG;                                           // 0x0185(0x0001) (CPF_Edit, CPF_Const)
 	TArray<struct FLensFlareElement>                   Reflections;                                              // 0x0188(0x000C) (CPF_ExportObject, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 	float                                              OuterCone;                                                // 0x0194(0x0004) (CPF_Edit)
 	float                                              InnerCone;                                                // 0x0198(0x0004) (CPF_Edit)
@@ -33242,8 +29404,7 @@ public:
 	unsigned long                                      bAutoPlay : 1;                                            // 0x01E0(0x0004) (CPF_Edit)
 	int                                                HorizontalImages;                                         // 0x01E4(0x0004) (CPF_Edit)
 	int                                                VerticalImages;                                           // 0x01E8(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class TextureFlipBookMethod>      FBMethod;                                                 // 0x01EC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01ED(0x0003) MISSED OFFSET
+	TEnumAsByte<ETextureFlipBookMethod>                FBMethod;                                                 // 0x01EC(0x0001) (CPF_Edit)
 	float                                              FrameRate;                                                // 0x01F0(0x0004) (CPF_Edit)
 	float                                              FrameTime;                                                // 0x01F4(0x0004)
 	int                                                CurrentRow;                                               // 0x01F8(0x0004) (CPF_Const, CPF_Transient)
@@ -33296,8 +29457,7 @@ class UTexture2DDynamic : public UTexture
 public:
 	int                                                SizeX;                                                    // 0x00F4(0x0004) (CPF_Native, CPF_Transient)
 	int                                                SizeY;                                                    // 0x00F8(0x0004) (CPF_Native, CPF_Transient)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x00FC(0x0001) (CPF_Native, CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00FD(0x0003) MISSED OFFSET
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x00FC(0x0001) (CPF_Native, CPF_Transient)
 	int                                                NumMips;                                                  // 0x0100(0x0004) (CPF_Native, CPF_Transient)
 	unsigned long                                      bIsResolveTarget : 1;                                     // 0x0104(0x0004) (CPF_Native, CPF_Transient)
 
@@ -33308,11 +29468,11 @@ public:
 	}
 
 
-	class UTexture2DDynamic* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, bool InIsResolveTarget);
+	class UTexture2DDynamic* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
 	void UpdateMipFromPNG(int MipIdx, TArray<unsigned char>* MipData);
 	void UpdateMipFromJPEG(int MipIdx, TArray<unsigned char>* MipData);
 	void UpdateMip(int MipIdx, TArray<unsigned char>* MipData);
-	void Init(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, bool InIsResolveTarget);
+	void Init(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
 };
 
 
@@ -33323,8 +29483,7 @@ class UTextureCube : public UTexture
 public:
 	int                                                SizeX;                                                    // 0x00F4(0x0004) (CPF_Const, CPF_Transient)
 	int                                                SizeY;                                                    // 0x00F8(0x0004) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x00FC(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00FD(0x0003) MISSED OFFSET
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x00FC(0x0001) (CPF_Const, CPF_Transient)
 	int                                                NumMips;                                                  // 0x0100(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bIsCubemapValid : 1;                                      // 0x0104(0x0004) (CPF_Const, CPF_Transient)
 	class UTexture2D*                                  FacePosX;                                                 // 0x0108(0x0004) (CPF_Edit, CPF_Const)
@@ -33350,10 +29509,10 @@ class UTextureMovie : public UTexture
 public:
 	int                                                SizeX;                                                    // 0x00F4(0x0004) (CPF_Const)
 	int                                                SizeY;                                                    // 0x00F8(0x0004) (CPF_Const)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x00FC(0x0001) (CPF_Const)
-	TEnumAsByte<enum class TextureAddress>             AddressX;                                                 // 0x00FD(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureAddress>             AddressY;                                                 // 0x00FE(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EMovieStreamSource>         MovieStreamSource;                                        // 0x00FF(0x0001) (CPF_Edit)
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x00FC(0x0001) (CPF_Const)
+	TEnumAsByte<ETextureAddress>                       AddressX;                                                 // 0x00FD(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureAddress>                       AddressY;                                                 // 0x00FE(0x0001) (CPF_Edit)
+	TEnumAsByte<EMovieStreamSource>                    MovieStreamSource;                                        // 0x00FF(0x0001) (CPF_Edit)
 	class UClass*                                      DecoderClass;                                             // 0x0100(0x0004) (CPF_Const)
 	class UCodecMovie*                                 Decoder;                                                  // 0x0104(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      Paused : 1;                                               // 0x0108(0x0004) (CPF_Const, CPF_Transient)
@@ -33403,14 +29562,13 @@ class UTextureRenderTarget2D : public UTextureRenderTarget
 public:
 	int                                                SizeX;                                                    // 0x00FC(0x0004) (CPF_Edit, CPF_Const)
 	int                                                SizeY;                                                    // 0x0100(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x0104(0x0001) (CPF_Const)
-	TEnumAsByte<enum class TextureAddress>             AddressX;                                                 // 0x0105(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class TextureAddress>             AddressY;                                                 // 0x0106(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x0107(0x0001) MISSED OFFSET
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x0104(0x0001) (CPF_Const)
+	TEnumAsByte<ETextureAddress>                       AddressX;                                                 // 0x0105(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextureAddress>                       AddressY;                                                 // 0x0106(0x0001) (CPF_Edit)
 	struct FLinearColor                                ClearColor;                                               // 0x0108(0x0010) (CPF_Const)
 	unsigned long                                      bForceLinearGamma : 1;                                    // 0x0118(0x0004) (CPF_Edit, CPF_Const)
 	struct FScriptDelegate                             __EventResourceUpdated__Delegate;                         // 0x011C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x011C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x011C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -33419,7 +29577,7 @@ public:
 	}
 
 
-	class UTextureRenderTarget2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<enum class EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce);
+	class UTextureRenderTarget2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce);
 	void EventResourceUpdated(class UTextureRenderTarget2D* RenderTarget);
 };
 
@@ -33451,7 +29609,7 @@ class UTextureRenderTargetCube : public UTextureRenderTarget
 {
 public:
 	int                                                SizeX;                                                    // 0x00FC(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EPixelFormat>               Format;                                                   // 0x0100(0x0001) (CPF_Const)
+	TEnumAsByte<EPixelFormat>                          Format;                                                   // 0x0100(0x0001) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -33511,8 +29669,7 @@ public:
 	float                                              ExteriorLPFInterp;                                        // 0x02AC(0x0004) (CPF_Const, CPF_Native)
 	class UAudioComponent*                             TestAudioComponent;                                       // 0x02B0(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FPointer                                    TextToSpeech;                                             // 0x02B4(0x0004) (CPF_Const, CPF_Native)
-	TEnumAsByte<enum class EDebugState>                DebugState;                                               // 0x02B8(0x0001) (CPF_Const, CPF_Native)
-	unsigned char                                      UnknownData07[0x3];                                       // 0x02B9(0x0003) MISSED OFFSET
+	TEnumAsByte<EDebugState>                           DebugState;                                               // 0x02B8(0x0001) (CPF_Const, CPF_Native)
 	float                                              TransientMasterVolume;                                    // 0x02BC(0x0004) (CPF_Transient)
 	float                                              LastUpdateTime;                                           // 0x02C0(0x0004) (CPF_Transient)
 
@@ -33910,9 +30067,8 @@ public:
 class ULightComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	struct FPointer                                    SceneInfo;                                                // 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_Transient, CPF_NoImport)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x006C(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) MISSED OFFSET
 	struct FMatrix                                     WorldToLight;                                             // 0x0070(0x0040) (CPF_Const, CPF_Native, CPF_Transient)
 	struct FMatrix                                     LightToWorld;                                             // 0x00B0(0x0040) (CPF_Const, CPF_Native, CPF_Transient)
 	struct FGuid                                       LightGuid;                                                // 0x00F0(0x0010) (CPF_Const, CPF_DuplicateTransient)
@@ -33940,16 +30096,14 @@ public:
 	unsigned long                                      bAllowCompositingIntoDLE : 1;                             // 0x011C(0x0004)
 	class ULightEnvironmentComponent*                  LightEnvironment;                                         // 0x0120(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FLightingChannelContainer                   LightingChannels;                                         // 0x0124(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ELightAffectsClassification> LightAffectsClassification;                               // 0x0128(0x0001) (CPF_Edit, CPF_Const, CPF_EditConst)
-	TEnumAsByte<enum class ELightShadowMode>           LightShadowMode;                                          // 0x0129(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData02[0x2];                                       // 0x012A(0x0002) MISSED OFFSET
+	TEnumAsByte<ELightAffectsClassification>           LightAffectsClassification;                               // 0x0128(0x0001) (CPF_Edit, CPF_Const, CPF_EditConst)
+	TEnumAsByte<ELightShadowMode>                      LightShadowMode;                                          // 0x0129(0x0001) (CPF_Edit)
 	struct FLinearColor                                ModShadowColor;                                           // 0x012C(0x0010) (CPF_Edit)
 	float                                              ModShadowFadeoutTime;                                     // 0x013C(0x0004)
 	float                                              ModShadowFadeoutExponent;                                 // 0x0140(0x0004)
 	int                                                LightListIndex;                                           // 0x0144(0x0004) (CPF_Const, CPF_Native, CPF_DuplicateTransient)
-	TEnumAsByte<enum class EShadowProjectionTechnique> ShadowProjectionTechnique;                                // 0x0148(0x0001)
-	TEnumAsByte<enum class EShadowFilterQuality>       ShadowFilterQuality;                                      // 0x0149(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData03[0x2];                                       // 0x014A(0x0002) MISSED OFFSET
+	TEnumAsByte<EShadowProjectionTechnique>            ShadowProjectionTechnique;                                // 0x0148(0x0001)
+	TEnumAsByte<EShadowFilterQuality>                  ShadowFilterQuality;                                      // 0x0149(0x0001) (CPF_Edit)
 	int                                                MinShadowResolution;                                      // 0x014C(0x0004) (CPF_Edit)
 	int                                                MaxShadowResolution;                                      // 0x0150(0x0004) (CPF_Edit)
 	int                                                ShadowFadeResolution;                                     // 0x0154(0x0004) (CPF_Edit)
@@ -34152,7 +30306,6 @@ public:
 class ULightEnvironmentComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	unsigned long                                      bEnabled : 1;                                             // 0x0068(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bForceNonCompositeDynamicLights : 1;                      // 0x0068(0x0004)
 	unsigned long                                      bAllowDynamicShadowsOnTranslucency : 1;                   // 0x0068(0x0004)
@@ -34211,8 +30364,7 @@ public:
 	float                                              DominantShadowTransitionStartDistance;                    // 0x00EC(0x0004)
 	float                                              DominantShadowTransitionEndDistance;                      // 0x00F0(0x0004)
 	float                                              MinShadowAngle;                                           // 0x00F4(0x0004)
-	TEnumAsByte<enum class EDynamicLightEnvironmentBoundsMethod> BoundsMethod;                                             // 0x00F8(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F9(0x0003) MISSED OFFSET
+	TEnumAsByte<EDynamicLightEnvironmentBoundsMethod>  BoundsMethod;                                             // 0x00F8(0x0001)
 	struct FBoxSphereBounds                            OverriddenBounds;                                         // 0x00FC(0x001C)
 	struct FLightingChannelContainer                   OverriddenLightingChannels;                               // 0x0118(0x0004)
 	TArray<class ULightComponent*>                     OverriddenLightComponents;                                // 0x011C(0x000C) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
@@ -34452,8 +30604,7 @@ public:
 	TArray<struct FVector>                             ClothMeshWeldedNormalData;                                // 0x04CC(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<int>                                        ClothMeshWeldedIndexData;                                 // 0x04D8(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                ClothDirtyBufferFlag;                                     // 0x04E4(0x0004)
-	TEnumAsByte<enum class ERBCollisionChannel>        ClothRBChannel;                                           // 0x04E8(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x04E9(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   ClothRBChannel;                                           // 0x04E8(0x0001) (CPF_Edit, CPF_Const)
 	struct FRBCollisionChannelContainer                ClothRBCollideWithChannels;                               // 0x04EC(0x0004) (CPF_Edit, CPF_Const)
 	float                                              ClothForceScale;                                          // 0x04F0(0x0004) (CPF_Edit, CPF_Const)
 	float                                              ClothImpulseScale;                                        // 0x04F4(0x0004) (CPF_Edit)
@@ -34461,11 +30612,9 @@ public:
 	unsigned long                                      bClothUseCompartment : 1;                                 // 0x04FC(0x0004) (CPF_Edit, CPF_Const)
 	float                                              MinDistanceForClothReset;                                 // 0x0500(0x0004) (CPF_Edit, CPF_Const)
 	struct FVector                                     LastClothLocation;                                        // 0x0504(0x000C) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class ERBCollisionChannel>        ApexClothingRBChannel;                                    // 0x0510(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x0511(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   ApexClothingRBChannel;                                    // 0x0510(0x0001) (CPF_Edit, CPF_Const)
 	struct FRBCollisionChannelContainer                ApexClothingRBCollideWithChannels;                        // 0x0514(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ERBCollisionChannel>        ApexClothingCollisionRBChannel;                           // 0x0518(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData03[0x3];                                       // 0x0519(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   ApexClothingCollisionRBChannel;                           // 0x0518(0x0001) (CPF_Edit, CPF_Const)
 	unsigned long                                      bAutoFreezeApexClothingWhenNotRendered : 1;               // 0x051C(0x0004) (CPF_Edit)
 	unsigned long                                      bLocalSpaceWind : 1;                                      // 0x051C(0x0004) (CPF_Edit)
 	struct FVector                                     WindVelocity;                                             // 0x0520(0x000C) (CPF_Edit)
@@ -34483,34 +30632,31 @@ public:
 	unsigned long                                      bAutoFreezeSoftBodyWhenNotRendered : 1;                   // 0x0564(0x0004) (CPF_Edit)
 	unsigned long                                      bSoftBodyAwakeOnStartup : 1;                              // 0x0564(0x0004) (CPF_Edit)
 	unsigned long                                      bSoftBodyUseCompartment : 1;                              // 0x0564(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class ERBCollisionChannel>        SoftBodyRBChannel;                                        // 0x0568(0x0001) (CPF_Edit, CPF_Const)
-	unsigned char                                      UnknownData04[0x3];                                       // 0x0569(0x0003) MISSED OFFSET
+	TEnumAsByte<ERBCollisionChannel>                   SoftBodyRBChannel;                                        // 0x0568(0x0001) (CPF_Edit, CPF_Const)
 	struct FRBCollisionChannelContainer                SoftBodyRBCollideWithChannels;                            // 0x056C(0x0004) (CPF_Edit, CPF_Const)
 	struct FPointer                                    SoftBodyASVPlane;                                         // 0x0570(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	class UMaterial*                                   LimitMaterial;                                            // 0x0574(0x0004)
-	unsigned char                                      UnknownData05[0x8];                                       // 0x0578(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0578(0x0008) MISSED OFFSET
 	struct FBoneAtom                                   RootMotionDelta;                                          // 0x0580(0x0020) (CPF_Transient)
 	struct FVector                                     RootMotionVelocity;                                       // 0x05A0(0x000C) (CPF_Transient)
 	struct FVector                                     RootBoneTranslation;                                      // 0x05AC(0x000C) (CPF_Const, CPF_Transient)
 	struct FVector                                     RootMotionAccelScale;                                     // 0x05B8(0x000C)
-	TEnumAsByte<enum class ERootMotionMode>            RootMotionMode;                                           // 0x05C4(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class ERootMotionMode>            PreviousRMM;                                              // 0x05C5(0x0001) (CPF_Const)
-	TEnumAsByte<enum class ERootMotionMode>            PendingRMM;                                               // 0x05C6(0x0001)
-	TEnumAsByte<enum class ERootMotionMode>            OldPendingRMM;                                            // 0x05C7(0x0001)
+	TEnumAsByte<ERootMotionMode>                       RootMotionMode;                                           // 0x05C4(0x0001) (CPF_Edit)
+	TEnumAsByte<ERootMotionMode>                       PreviousRMM;                                              // 0x05C5(0x0001) (CPF_Const)
+	TEnumAsByte<ERootMotionMode>                       PendingRMM;                                               // 0x05C6(0x0001)
+	TEnumAsByte<ERootMotionMode>                       OldPendingRMM;                                            // 0x05C7(0x0001)
 	int                                                bRMMOneFrameDelay;                                        // 0x05C8(0x0004) (CPF_Const)
-	TEnumAsByte<enum class ERootMotionRotationMode>    RootMotionRotationMode;                                   // 0x05CC(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAnimRotationOnly>          AnimRotationOnly;                                         // 0x05CD(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EFaceFXBlendMode>           FaceFXBlendMode;                                          // 0x05CE(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData06[0x1];                                       // 0x05CF(0x0001) MISSED OFFSET
+	TEnumAsByte<ERootMotionRotationMode>               RootMotionRotationMode;                                   // 0x05CC(0x0001) (CPF_Edit)
+	TEnumAsByte<EAnimRotationOnly>                     AnimRotationOnly;                                         // 0x05CD(0x0001) (CPF_Edit)
+	TEnumAsByte<EFaceFXBlendMode>                      FaceFXBlendMode;                                          // 0x05CE(0x0001) (CPF_Edit)
 	struct FPointer                                    FaceFXActorInstance;                                      // 0x05D0(0x0004) (CPF_Native, CPF_Transient)
 	class UAudioComponent*                             CachedFaceFXAudioComp;                                    // 0x05D4(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TArray<unsigned char>                              BoneVisibilityStates;                                     // 0x05D8(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	class UAkEvent*                                    CachedFaceFxAkEvent;                                      // 0x05E4(0x0004)
-	unsigned char                                      UnknownData07[0x8];                                       // 0x05E8(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x8];                                       // 0x05E8(0x0008) MISSED OFFSET
 	struct FBoneAtom                                   LocalToWorldBoneAtom;                                     // 0x05F0(0x0020) (CPF_Const, CPF_Transient)
 	float                                              ProgressiveDrawingFraction;                               // 0x0610(0x0004) (CPF_Transient)
 	unsigned char                                      CustomSortAlternateIndexMode;                             // 0x0614(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData08[0x3];                                       // 0x0615(0x0003) MISSED OFFSET
 	TArray<struct FName>                               MorphTargetsQueried;                                      // 0x0618(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bUseTickOptimization : 1;                                 // 0x0624(0x0004) (CPF_Edit, CPF_Const)
 	int                                                TickCount;                                                // 0x0628(0x0004) (CPF_Const)
@@ -34540,12 +30686,12 @@ public:
 	void ShowMaterialSection(int MaterialID, bool bShow, int LODIndex);
 	void UpdateMeshForBrokenConstraints();
 	void UnHideBoneByName(const struct FName& BoneName);
-	void HideBoneByName(const struct FName& BoneName, TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption);
+	void HideBoneByName(const struct FName& BoneName, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
 	bool IsBoneHidden(int BoneIndex);
 	void UnHideBone(int BoneIndex);
-	void HideBone(int BoneIndex, TEnumAsByte<enum class EPhysBodyOp> PhysBodyOption);
-	void SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<enum class EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration);
-	void SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<enum class EFaceFXRegOp> RegOp, float InterpDuration);
+	void HideBone(int BoneIndex, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
+	void SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration);
+	void SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<EFaceFXRegOp> RegOp, float InterpDuration);
 	float GetFaceFXRegister(const struct FString& RegName);
 	void DeclareFaceFXRegister(const struct FString& RegName);
 	bool IsPlayingFaceFXAnim();
@@ -34573,7 +30719,7 @@ public:
 	struct FName FindClosestBone(const struct FVector& TestLocation, float IgnoreScale, struct FVector* BoneLocation);
 	void TransformFromBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
 	void TransformToBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
-	struct FVector GetBoneAxis(const struct FName& BoneName, TEnumAsByte<enum class EAxis> Axis);
+	struct FVector GetBoneAxis(const struct FName& BoneName, TEnumAsByte<EAxis> Axis);
 	struct FVector GetComposedRefPosePosition(const struct FName& BoneName);
 	struct FVector GetRefPosePosition(int BoneIndex);
 	bool BoneIsChildOf(const struct FName& BoneName, const struct FName& ParentBoneName);
@@ -34672,12 +30818,11 @@ public:
 	struct FPointer                                    SourceData;                                               // 0x00EC(0x0004) (CPF_Const, CPF_Native)
 	TArray<struct FBoneAtom>                           RefBasesInvMatrix;                                        // 0x00F0(0x000C) (CPF_Const, CPF_Native)
 	TArray<struct FBoneMirrorInfo>                     SkelMirrorTable;                                          // 0x00FC(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EAxis>                      SkelMirrorAxis;                                           // 0x0108(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EAxis>                      SkelMirrorFlipAxis;                                       // 0x0109(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x2];                                       // 0x010A(0x0002) MISSED OFFSET
+	TEnumAsByte<EAxis>                                 SkelMirrorAxis;                                           // 0x0108(0x0001) (CPF_Edit)
+	TEnumAsByte<EAxis>                                 SkelMirrorFlipAxis;                                       // 0x0109(0x0001) (CPF_Edit)
 	TArray<class USkeletalMeshSocket*>                 Sockets;                                                  // 0x010C(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FString>                             BoneBreakNames;                                           // 0x0118(0x000C) (CPF_Edit, CPF_Const, CPF_Native, CPF_EditConst)
-	TArray<TEnumAsByte<enum class BoneBreakOption>>    BoneBreakOptions;                                         // 0x0124(0x000C) (CPF_Edit, CPF_Const, CPF_Native)
+	TArray<TEnumAsByte<EBoneBreakOption>>              BoneBreakOptions;                                         // 0x0124(0x000C) (CPF_Edit, CPF_Const, CPF_Native)
 	TArray<struct FSkeletalMeshLODInfo>                LODInfo;                                                  // 0x0130(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
 	TArray<struct FSkeletalMeshLODDistanceInfo>        LODDistanceInfo;                                          // 0x013C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FSkeletalMeshOptimizationSettings>   OptimizationSettings;                                     // 0x0148(0x000C) (CPF_NeedCtorLink)
@@ -34703,8 +30848,7 @@ public:
 	TArray<float>                                      ClothMeshScale;                                           // 0x01C4(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<int>                                        ClothToGraphicsVertMap;                                   // 0x01D0(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	TArray<float>                                      ClothMovementScale;                                       // 0x01DC(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ClothMovementScaleGen>      ClothMovementScaleGenMode;                                // 0x01E8(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x01E9(0x0003) MISSED OFFSET
+	TEnumAsByte<EClothMovementScaleGen>                ClothMovementScaleGenMode;                                // 0x01E8(0x0001) (CPF_Edit)
 	float                                              ClothToAnimMeshMaxDist;                                   // 0x01EC(0x0004) (CPF_Edit)
 	unsigned long                                      bLimitClothToAnimMesh : 1;                                // 0x01F0(0x0004) (CPF_Edit)
 	TArray<int>                                        ClothWeldingMap;                                          // 0x01F4(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -34786,7 +30930,7 @@ public:
 	TArray<float>                                      CachedStreamingTextureFactors;                            // 0x03BC(0x000C) (CPF_Const, CPF_Native)
 	float                                              StreamingDistanceMultiplier;                              // 0x03C8(0x0004) (CPF_Edit, CPF_Const)
 	int                                                ReleaseResourcesFence;                                    // 0x03CC(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	unsigned char                                      UnknownData03[0x8];                                       // 0x03D0(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.SkeletalMesh.SkelMeshRUID
+	unsigned char                                      UnknownData01[0x8];                                       // 0x03D0(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.SkeletalMesh.SkelMeshRUID
 	unsigned long                                      bUseClothingAssetMaterial : 1;                            // 0x03D8(0x0004) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()
@@ -34992,7 +31136,7 @@ public:
 	}
 
 
-	int FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<enum class EScopeEdge> Edge);
+	int FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<EScopeEdge> Edge);
 	void BreakFractureComponent(class UFracturedStaticMeshComponent* Comp, const struct FVector& BoxMin, const struct FVector& BoxMax);
 	void GetAllGroupedProcBuildings(TArray<class AProcBuilding*>* OutSet);
 	class AProcBuilding* GetBaseMostBuilding();
@@ -35043,8 +31187,7 @@ public:
 class UPBRuleNodeAlternate : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingAxis>          RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingAxis>                     RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
 	float                                              ASize;                                                    // 0x006C(0x0004) (CPF_Edit)
 	float                                              BMaxSize;                                                 // 0x0070(0x0004) (CPF_Edit)
 	unsigned long                                      bInvertPatternOrder : 1;                                  // 0x0074(0x0004) (CPF_Edit)
@@ -35090,8 +31233,7 @@ public:
 	float                                              FlatThreshold;                                            // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bNoMeshForConcaveCorners : 1;                             // 0x007C(0x0004) (CPF_Edit)
 	unsigned long                                      bUseAdjacentRulesetForRightGap : 1;                       // 0x007C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EPBCornerType>              CornerType;                                               // 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	TEnumAsByte<EPBCornerType>                         CornerType;                                               // 0x0080(0x0001) (CPF_Edit)
 	float                                              CornerShapeOffset;                                        // 0x0084(0x0004) (CPF_Edit)
 	int                                                RoundTesselation;                                         // 0x0088(0x0004) (CPF_Edit)
 	float                                              RoundCurvature;                                           // 0x008C(0x0004) (CPF_Edit)
@@ -35110,8 +31252,7 @@ public:
 class UPBRuleNodeCycle : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingAxis>          RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingAxis>                     RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
 	float                                              RepeatSize;                                               // 0x006C(0x0004) (CPF_Edit)
 	int                                                CycleSize;                                                // 0x0070(0x0004) (CPF_Edit)
 	unsigned long                                      bFixRepeatSize : 1;                                       // 0x0074(0x0004) (CPF_Edit)
@@ -35130,8 +31271,7 @@ public:
 class UPBRuleNodeEdgeAngle : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingEdge>          Edge;                                                     // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingEdge>                     Edge;                                                     // 0x0068(0x0001) (CPF_Edit)
 	TArray<struct FRBEdgeAngleInfo>                    Angles;                                                   // 0x006C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -35275,8 +31415,7 @@ public:
 class UPBRuleNodeRepeat : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingAxis>          RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingAxis>                     RepeatAxis;                                               // 0x0068(0x0001) (CPF_Edit)
 	float                                              RepeatMaxSize;                                            // 0x006C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
@@ -35293,8 +31432,7 @@ public:
 class UPBRuleNodeSize : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingAxis>          SizeAxis;                                                 // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingAxis>                     SizeAxis;                                                 // 0x0068(0x0001) (CPF_Edit)
 	float                                              DecisionSize;                                             // 0x006C(0x0004) (CPF_Edit)
 	unsigned long                                      bUseTopLevelScopeSize : 1;                                // 0x0070(0x0004) (CPF_Edit)
 
@@ -35312,8 +31450,7 @@ public:
 class UPBRuleNodeSplit : public UPBRuleNodeBase
 {
 public:
-	TEnumAsByte<enum class EProcBuildingAxis>          SplitAxis;                                                // 0x0068(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0069(0x0003) MISSED OFFSET
+	TEnumAsByte<EProcBuildingAxis>                     SplitAxis;                                                // 0x0068(0x0001) (CPF_Edit)
 	TArray<struct FRBSplitInfo>                        SplitSetup;                                               // 0x006C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
@@ -35502,8 +31639,7 @@ public:
 	int                                                Score;                                                    // 0x01EC(0x0004) (CPF_Net)
 	int                                                Deaths;                                                   // 0x01F0(0x0004) (CPF_Net)
 	unsigned char                                      Ping;                                                     // 0x01F4(0x0001) (CPF_Net)
-	TEnumAsByte<enum class ETTSSpeaker>                TTSSpeaker;                                               // 0x01F5(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x01F6(0x0002) MISSED OFFSET
+	TEnumAsByte<ETTSSpeaker>                           TTSSpeaker;                                               // 0x01F5(0x0001) (CPF_Transient)
 	int                                                NumLives;                                                 // 0x01F8(0x0004)
 	struct FString                                     PlayerName;                                               // 0x01FC(0x000C) (CPF_Net, CPF_NeedCtorLink)
 	struct FString                                     OldName;                                                  // 0x0208(0x000C) (CPF_NeedCtorLink)
@@ -35679,7 +31815,7 @@ public:
 	void STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter);
 	float STATIC_CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff);
 	void StopCameraShake(class UCameraShake* Shake);
-	void PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
 	void ClearCameraLensEffects();
 	void RemoveCameraLensEffect(class AEmitterCameraLensEffectBase* Emitter);
 	void AddCameraLensEffect(class UClass* LensEffectEmitterClass);
@@ -35796,8 +31932,7 @@ public:
 	class UInterpTrackMove*                            MoveTrack;                                                // 0x0070(0x0004) (CPF_Transient)
 	class UInterpTrackInstMove*                        MoveInst;                                                 // 0x0074(0x0004) (CPF_Transient)
 	class UAnimNodeSequence*                           SourceAnimNode;                                           // 0x0078(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class ECameraAnimPlaySpace>       PlaySpace;                                                // 0x007C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // 0x007C(0x0001)
 	struct FMatrix                                     UserPlaySpaceMatrix;                                      // 0x0080(0x0040) (CPF_Transient)
 	struct FPostProcessSettings                        LastPPSettings;                                           // 0x00C0(0x0150) (CPF_Transient, CPF_NeedCtorLink)
 	float                                              LastPPSettingsAlpha;                                      // 0x0210(0x0004) (CPF_Transient)
@@ -35810,7 +31945,7 @@ public:
 	}
 
 
-	void SetPlaySpace(TEnumAsByte<enum class ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace);
+	void SetPlaySpace(TEnumAsByte<ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace);
 	void ApplyTransientScaling(float Scalar);
 	void Stop(bool bImmediate);
 	void AdvanceAnim(float DeltaTime, bool bJump);
@@ -35830,7 +31965,6 @@ public:
 	unsigned long                                      bDebug : 1;                                               // 0x003C(0x0004) (CPF_Edit)
 	class ACamera*                                     CameraOwner;                                              // 0x0040(0x0004)
 	unsigned char                                      Priority;                                                 // 0x0044(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0045(0x0003) MISSED OFFSET
 	float                                              AlphaInTime;                                              // 0x0048(0x0004)
 	float                                              AlphaOutTime;                                             // 0x004C(0x0004)
 	float                                              Alpha;                                                    // 0x0050(0x0004) (CPF_Transient)
@@ -35875,8 +32009,8 @@ public:
 	void UpdateCameraShake(float DeltaTime, struct FCameraShakeInstance* Shake, struct FTPOV* OutPOV);
 	void RemoveAllCameraShakes();
 	void RemoveCameraShake(class UCameraShake* Shake);
-	void AddCameraShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
-	struct FCameraShakeInstance InitializeShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<enum class ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void AddCameraShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	struct FCameraShakeInstance InitializeShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
 	void ReinitShake(int ActiveShakeIdx, float Scale);
 	float STATIC_InitializeOffset(struct FFOscillator* Param);
 };
@@ -36077,8 +32211,8 @@ public:
 	int GetNumCloudDocuments(bool bIsForConflict);
 	bool QueryForCloudDocuments();
 	bool WriteKeyValue(const struct FString& KeyName, struct FPlatformInterfaceData* Value);
-	bool ReadKeyValueFromLocalStore(const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
-	bool ReadKeyValue(const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
+	bool ReadKeyValueFromLocalStore(const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
+	bool ReadKeyValue(const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
 	bool IsUsingLocalStorage();
 	void Init();
 };
@@ -36166,7 +32300,7 @@ public:
 	}
 
 
-	bool TwitterRequest(const struct FString& URL, TArray<struct FString> ParamKeysAndValues, TEnumAsByte<enum class ETwitterRequestMethod> RequestMethod, int AccountIndex);
+	bool TwitterRequest(const struct FString& URL, TArray<struct FString> ParamKeysAndValues, TEnumAsByte<ETwitterRequestMethod> RequestMethod, int AccountIndex);
 	struct FString GetAccountId(int AccountIndex);
 	struct FString GetAccountName(int AccountIndex);
 	int GetNumAccounts();
@@ -36386,7 +32520,7 @@ public:
 	void GetPlayerCountry(unsigned char LocalUserNum);
 	void ClearReadPlayerCountryDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerCountryDelegate);
 	void AddReadPlayerCountryDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerCountryDelegate);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements);
+	TEnumAsByte<EOnlineEnumerationReadState> GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements);
 	void ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void AddReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void OnReadAchievementsComplete(int TitleId);
@@ -36428,7 +32562,7 @@ public:
 	bool HideKeyboardUI(unsigned char LocalUserNum);
 	bool ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength);
 	void SetOnlineStatus(unsigned char LocalUserNum, int StatusId, TArray<struct FLocalizedStringSetting>* LocalizedStringSettings, TArray<struct FSettingsProperty>* Properties);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends);
+	TEnumAsByte<EOnlineEnumerationReadState> GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends);
 	void ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
 	void AddReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
 	void OnReadFriendsComplete(bool bWasSuccessful);
@@ -36463,7 +32597,7 @@ public:
 	void AddLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate);
 	void ClearLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum);
 	void AddLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum);
-	void OnLoginStatusChange(TEnumAsByte<enum class ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
+	void OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
 	void ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
 	void AddLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
 	void ClearUserSignInCompleteDelegate(const struct FScriptDelegate& UserSignInCompleteDelegate);
@@ -36475,36 +32609,36 @@ public:
 	bool IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 	bool AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query);
 	bool IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	TEnumAsByte<enum class EFeaturePrivilegeLevel> CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<enum class ECommunicationMethod> CommMethod);
-	bool CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<enum class EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	TEnumAsByte<EFeaturePrivilegeLevel> CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<ECommunicationMethod> CommMethod);
+	bool CanDownloadUserContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
 	bool IsLocalLogin(unsigned char LocalUserNum);
 	bool IsGuestLogin(unsigned char LocalUserNum);
 	struct FString GetPlayerNickname(unsigned char LocalUserNum);
 	bool GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID);
-	TEnumAsByte<enum class ELoginStatus> GetLoginStatus(unsigned char LocalUserNum);
+	TEnumAsByte<ELoginStatus> GetLoginStatus(unsigned char LocalUserNum);
 	void ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
 	void AddLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
 	void OnLogoutCompleted(bool bWasSuccessful);
 	bool Logout(unsigned char LocalUserNum);
 	void ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
 	void AddLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
-	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode);
+	void OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
 	bool AutoLogin();
 	bool Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, bool bWantsLocalOnly);
 	void SetKickPlayerDialogActive(bool Active);
@@ -36708,7 +32842,7 @@ public:
 	bool ClearCachedFiles();
 	struct FString GetTitleFileLogicalName(const struct FString& Filename);
 	struct FString GetTitleFileHash(const struct FString& Filename);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
 	void AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
@@ -36740,11 +32874,11 @@ public:
 	bool RequestTitleFileList();
 	bool ClearDownloadedFile(const struct FString& Filename);
 	bool ClearDownloadedFiles();
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType);
+	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 };
 
@@ -36796,11 +32930,11 @@ public:
 	}
 
 
-	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType);
+	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
 	void AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
-	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<enum class EOnlineNewsType> NewsType);
-	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType);
+	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
+	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -36919,17 +33053,17 @@ public:
 	void OnReadCrossTitleSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
 	bool GetCrossTitleSaveGameData(unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName, unsigned char* bIsValid, TArray<unsigned char>* SaveGameData);
 	bool ReadCrossTitleSaveGameData(unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
-	void ClearReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
-	void AddReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
+	void ClearReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
+	void AddReadCrossTitleContentCompleteDelegate(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
 	void OnReadCrossTitleContentComplete(bool bWasSuccessful);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, TArray<struct FOnlineCrossTitleContent>* ContentList);
-	void ClearCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType);
-	bool ReadCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, int TitleId, int DeviceID);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, TArray<struct FOnlineContent>* ContentList);
-	void ClearContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType);
-	bool ReadContentList(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, int DeviceID);
-	void ClearReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
-	void AddReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
+	TEnumAsByte<EOnlineEnumerationReadState> GetCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, TArray<struct FOnlineCrossTitleContent>* ContentList);
+	void ClearCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType);
+	bool ReadCrossTitleContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, int TitleId, int DeviceID);
+	TEnumAsByte<EOnlineEnumerationReadState> GetContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, TArray<struct FOnlineContent>* ContentList);
+	void ClearContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType);
+	bool ReadContentList(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, int DeviceID);
+	void ClearReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
+	void AddReadContentComplete(unsigned char LocalUserNum, TEnumAsByte<EOnlineContentType> ContentType, const struct FScriptDelegate& ReadContentCompleteDelegate);
 	void OnReadContentComplete(bool bWasSuccessful);
 	void ClearContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
 	void AddContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
@@ -36960,10 +33094,10 @@ public:
 	void OnLobbySessionCreated();
 	void RemoveLocalPlayerFromSession(struct FUniqueNetId* PartyMember);
 	void AddLocalPartyMemberToSession(struct FUniqueNetId* NewPartyMember);
-	bool KickPlayer(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
+	bool KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
 	void ClearLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
 	void AddLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
-	void OnLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
+	void OnLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
 	bool GetLobbyMembers(struct FUniqueLobbyId* LobbyId, TArray<struct FLobbyMember>* Members);
 	void PlayTogether_Invite(const struct FString& InviteMessage, struct FUniqueLobbyId* LobbyId);
 	bool ShowInviteUI(unsigned char LocalUserNum, struct FUniqueLobbyId* LobbyId);
@@ -37007,11 +33141,11 @@ public:
 	void AddFindLobbiesCompleteDelegate(const struct FScriptDelegate& FindLobbiesCompleteDelegate);
 	void OnFindLobbiesComplete(bool bWasSuccessful, TArray<struct FBasicLobbyInfo>* LobbyList);
 	bool UpdateFoundLobbies(const struct FUniqueLobbyId& LobbyId);
-	bool FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<enum class ELobbyDistance> Distance);
+	bool FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance);
 	void ClearCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
 	void AddCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
 	void OnCreateLobbyComplete(bool bWasSuccessful, const struct FString& Error, struct FUniqueLobbyId* LobbyId);
-	bool CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<enum class ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings);
+	bool CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings);
 };
 
 
@@ -37127,7 +33261,7 @@ public:
 	void AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	void SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<enum class ELobbyVisibility> Visibility);
+	void SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<ELobbyVisibility> Visibility);
 	void ClearReportMatchmakingInfoDelegate(const struct FScriptDelegate& OldDelegate);
 	void AddReportMatchmakingInfoDelegate(const struct FScriptDelegate& NewDelegate);
 	void EventReportMatchmakingInfo(const struct FString& NewInfo);
@@ -37172,17 +33306,17 @@ public:
 	void ClearStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate);
 	void AddStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate);
 	void OnStorageDeviceChange();
-	TEnumAsByte<enum class ENATType> GetNATType();
+	TEnumAsByte<ENATType> GetNATType();
 	void ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
 	void AddConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
-	void OnConnectionStatusChange(TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus);
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> GetCurrentConnectionStatus();
+	void OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus);
+	TEnumAsByte<EOnlineServerConnectionStatus> GetCurrentConnectionStatus();
 	bool AnyPlayerChatRestricted();
 	void InitializeTrophyAPI();
 	void OpenStoreForItems(unsigned char LocalUserNum, TArray<struct FString> Targets);
 	void OpenStoreForDLC(unsigned char LocalUserNum, const struct FName& DLC);
-	void OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode);
-	void OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<enum class EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel);
+	void OpenErrorDialog(unsigned char LocalUserNum, TEnumAsByte<EPS4ErrorDialog> ErrorCode);
+	void OpenPS4DisplayMode(unsigned char LocalUserNum, TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel);
 	void ResetControllerColor(int ControllerId);
 	void SetControllerColor(int ControllerId, const struct FColor& NewColor);
 	bool IsControllerConnected(int ControllerId);
@@ -37195,8 +33329,8 @@ public:
 	void ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
 	void AddControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
 	void OnControllerChange(int ControllerId, bool bIsConnected);
-	void SetNetworkNotificationPosition(TEnumAsByte<enum class ENetworkNotificationPosition> NewPos);
-	TEnumAsByte<enum class ENetworkNotificationPosition> GetNetworkNotificationPosition();
+	void SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos);
+	TEnumAsByte<ENetworkNotificationPosition> GetNetworkNotificationPosition();
 	void ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
 	void AddExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
 	void OnExternalUIChange(bool bIsOpening);
@@ -37224,22 +33358,22 @@ public:
 	void AddConsumeInventoryItemCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ConsumeInventoryItemCompleteDelegate);
 	void OnConsumeInventoryItemComplete(const struct FString& ProductID, bool bDidSucceed, int NewQuantity);
 	bool ConsumeInventoryItem(unsigned char LocalUserNum, const struct FString& ProductID, int Quantity, const struct FString& TransactionId);
-	void ResetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType, TArray<struct FMarketplaceInventoryItem>* InventoryItems);
+	void ResetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
+	TEnumAsByte<EOnlineEnumerationReadState> GetInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType, TArray<struct FMarketplaceInventoryItem>* InventoryItems);
 	void ClearReadInventoryItemsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadInventoryItemsCompleteDelegate);
 	void AddReadInventoryItemsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadInventoryItemsCompleteDelegate);
-	void OnReadInventoryItemsComplete(TEnumAsByte<enum class EMediaItemType> MediaType);
-	bool ReadInventoryItems(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType);
+	void OnReadInventoryItemsComplete(TEnumAsByte<EMediaItemType> MediaType);
+	bool ReadInventoryItems(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
 	void ClearReadAdditionalProductDetailsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAdditionalProductDetailsCompleteDelegate);
 	void AddReadAdditionalProductDetailsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAdditionalProductDetailsCompleteDelegate);
-	void OnReadAdditionalProductDetailsComplete(TEnumAsByte<enum class EMediaItemType> MediaType);
-	bool ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType);
-	void ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<enum class EMediaItemType> MediaType, TArray<struct FMarketplaceProductDetails>* AvailableProducts);
+	void OnReadAdditionalProductDetailsComplete(TEnumAsByte<EMediaItemType> MediaType);
+	bool ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
+	void ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
+	TEnumAsByte<EOnlineEnumerationReadState> GetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType, TArray<struct FMarketplaceProductDetails>* AvailableProducts);
 	void ClearReadAvailableProductsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAvailableProductsCompleteDelegate);
 	void AddReadAvailableProductsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAvailableProductsCompleteDelegate);
-	void OnReadAvailableProductsComplete(TEnumAsByte<enum class EMediaItemType> MediaType);
-	bool ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<enum class EMediaItemType> ParentMediaType, TEnumAsByte<enum class EMediaItemType> ChildMediaType, TEnumAsByte<enum class ECatalogSortOrder> SortOrder);
+	void OnReadAvailableProductsComplete(TEnumAsByte<EMediaItemType> MediaType);
+	bool ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<EMediaItemType> ParentMediaType, TEnumAsByte<EMediaItemType> ChildMediaType, TEnumAsByte<ECatalogSortOrder> SortOrder);
 };
 
 
@@ -37317,7 +33451,7 @@ public:
 	bool CreateLocalAccount(const struct FString& UserName, const struct FString& Password);
 	void ClearCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
 	void AddCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
-	void OnCreateOnlineAccountCompleted(TEnumAsByte<enum class EOnlineAccountCreateStatus> ErrorStatus);
+	void OnCreateOnlineAccountCompleted(TEnumAsByte<EOnlineAccountCreateStatus> ErrorStatus);
 	bool CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey);
 };
 
@@ -37583,7 +33717,7 @@ public:
 	void NotifyLinkDisabledStateChange(class ACoverLink* Link);
 	void ClientReceiveManualCoverTypeSlots(int Index, class ACoverLink* Link, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
 	void ServerSendManualCoverTypeSlots(int Index);
-	void NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<enum class ECoverType> NewCoverType, TArray<int>* SlotIndices);
+	void NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<ECoverType> NewCoverType, TArray<int>* SlotIndices);
 	void ClientReceiveAdjustedSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, bool bDone);
 	void ServerSendAdjustedSlots(int Index);
 	void NotifyAutoAdjustSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
@@ -37898,7 +34032,7 @@ public:
 
 
 	bool WriteKeyValue(int SaveSlotIndex, const struct FString& KeyName, struct FPlatformInterfaceData* Value);
-	bool ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
+	bool ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
 };
 
 
@@ -37940,7 +34074,7 @@ public:
 
 	struct FString GenerateKeyNameForSaveSlot(int SaveSlotIndex, const struct FString& KeyName);
 	bool WriteKeyValue(int SaveSlotIndex, const struct FString& KeyName, struct FPlatformInterfaceData* Value);
-	bool ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<enum class EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
+	bool ReadKeyValue(int SaveSlotIndex, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
 	void Init(class UCloudStorageBase* InCloudStorage);
 };
 

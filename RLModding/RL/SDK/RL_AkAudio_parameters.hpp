@@ -38,14 +38,14 @@ struct UAkDevice_PrintData_Params
 // Function AkAudio.AkDevice.SetOutputType
 struct UAkDevice_SetOutputType_Params
 {
-	TEnumAsByte<enum class EAkOutputType>              Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EAkOutputType>                         Type;                                                     // (CPF_Parm)
 };
 
 // Function AkAudio.AkDevice.SetListenerSpatialization
 struct UAkDevice_SetListenerSpatialization_Params
 {
 	class ULocalPlayer*                                Player;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EAkListenerSpacialization>  Value;                                                    // (CPF_Parm)
+	TEnumAsByte<EAkListenerSpacialization>             Value;                                                    // (CPF_Parm)
 };
 
 // Function AkAudio.AkDevice.RemoveListener

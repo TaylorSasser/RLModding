@@ -9,6 +9,301 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Constants
+//---------------------------------------------------------------------------
+
+#define CONST_PLAYER_MATCH                                       0
+#define CONST_UNRANKEDPROVIDERTAG                                "PlaylistsUnranked"
+#define CONST_RANKED_MATCH                                       1
+#define CONST_REC_MATCH                                          2
+#define CONST_PRIVATE_MATCH                                      3
+#define CONST_RECMODEPROVIDERTAG                                 "PlaylistsRecMode"
+#define CONST_RANKEDPROVIDERTAG                                  "PlaylistsRanked"
+#define CONST_PRIVATEPROVIDERTAG                                 "PlaylistsPrivate"
+
+//---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum IpDrv.InternetLink.ELinkMode
+enum class ELinkMode
+{
+	MODE_Text                      = 0,
+	MODE_Line                      = 1,
+	MODE_Binary                    = 2,
+	MODE_MAX                       = 3
+};
+
+
+// Enum IpDrv.InternetLink.EReceiveMode
+enum class EReceiveMode
+{
+	RMODE_Manual                   = 0,
+	RMODE_Event                    = 1,
+	RMODE_MAX                      = 2
+};
+
+
+// Enum IpDrv.InternetLink.ELineMode
+enum class ELineMode
+{
+	LMODE_auto                     = 0,
+	LMODE_DOS                      = 1,
+	LMODE_UNIX                     = 2,
+	LMODE_MAC                      = 3,
+	LMODE_MAX                      = 4
+};
+
+
+// Enum IpDrv.McpClashMobBase.McpChallengeFileStatus
+enum class EMcpChallengeFileStatus
+{
+	MCFS_NotStarted                = 0,
+	MCFS_Pending                   = 1,
+	MCFS_Success                   = 2,
+	MCFS_Failed                    = 3,
+	MCFS_MAX                       = 4
+};
+
+
+// Enum IpDrv.OnlineTitleFileDownloadBase.EMcpFileCompressionType
+enum class EMcpFileCompressionType
+{
+	MFCT_NONE                      = 0,
+	MFCT_ZLIB                      = 1,
+	MFCT_MAX                       = 2
+};
+
+
+// Enum IpDrv.McpGroupsBase.EMcpGroupAccessLevel
+enum class EMcpGroupAccessLevel
+{
+	MGAL_Owner                     = 0,
+	MGAL_Member                    = 1,
+	MGAL_Public                    = 2,
+	MGAL_MAX                       = 3
+};
+
+
+// Enum IpDrv.McpGroupsBase.EMcpGroupAcceptState
+enum class EMcpGroupAcceptState
+{
+	MGAS_Error                     = 0,
+	MGAS_Pending                   = 1,
+	MGAS_Accepted                  = 2,
+	MGAS_MAX                       = 3
+};
+
+
+// Enum IpDrv.McpMessageBase.EMcpMessageCompressionType
+enum class EMcpMessageCompressionType
+{
+	MMCT_NONE                      = 0,
+	MMCT_LZO                       = 1,
+	MMCT_ZLIB                      = 2,
+	MMCT_MAX                       = 3
+};
+
+
+// Enum IpDrv.MeshBeacon.EMeshBeaconPacketType
+enum class EMeshBeaconPacketType
+{
+	MB_Packet_UnknownType          = 0,
+	MB_Packet_ClientNewConnectionRequest = 1,
+	MB_Packet_ClientBeginBandwidthTest = 2,
+	MB_Packet_ClientCreateNewSessionResponse = 3,
+	MB_Packet_HostNewConnectionResponse = 4,
+	MB_Packet_HostBandwidthTestRequest = 5,
+	MB_Packet_HostCompletedBandwidthTest = 6,
+	MB_Packet_HostTravelRequest    = 7,
+	MB_Packet_HostCreateNewSessionRequest = 8,
+	MB_Packet_DummyData            = 9,
+	MB_Packet_Heartbeat            = 10,
+	MB_Packet_MAX                  = 11
+};
+
+
+// Enum IpDrv.MeshBeacon.EMeshBeaconConnectionResult
+enum class EMeshBeaconConnectionResult
+{
+	MB_ConnectionResult_Succeeded  = 0,
+	MB_ConnectionResult_Duplicate  = 1,
+	MB_ConnectionResult_Timeout    = 2,
+	MB_ConnectionResult_Error      = 3,
+	MB_ConnectionResult_MAX        = 4
+};
+
+
+// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestState
+enum class EMeshBeaconBandwidthTestState
+{
+	MB_BandwidthTestState_NotStarted = 0,
+	MB_BandwidthTestState_RequestPending = 1,
+	MB_BandwidthTestState_StartPending = 2,
+	MB_BandwidthTestState_InProgress = 3,
+	MB_BandwidthTestState_Completed = 4,
+	MB_BandwidthTestState_Incomplete = 5,
+	MB_BandwidthTestState_Timeout  = 6,
+	MB_BandwidthTestState_Error    = 7,
+	MB_BandwidthTestState_MAX      = 8
+};
+
+
+// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestResult
+enum class EMeshBeaconBandwidthTestResult
+{
+	MB_BandwidthTestResult_Succeeded = 0,
+	MB_BandwidthTestResult_Timeout = 1,
+	MB_BandwidthTestResult_Error   = 2,
+	MB_BandwidthTestResult_MAX     = 3
+};
+
+
+// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestType
+enum class EMeshBeaconBandwidthTestType
+{
+	MB_BandwidthTestType_Upstream  = 0,
+	MB_BandwidthTestType_Downstream = 1,
+	MB_BandwidthTestType_RoundtripLatency = 2,
+	MB_BandwidthTestType_MAX       = 3
+};
+
+
+// Enum IpDrv.MeshBeaconClient.EMeshBeaconClientState
+enum class EMeshBeaconClientState
+{
+	MBCS_None                      = 0,
+	MBCS_Connecting                = 1,
+	MBCS_Connected                 = 2,
+	MBCS_ConnectionFailed          = 3,
+	MBCS_AwaitingResponse          = 4,
+	MBCS_Closed                    = 5,
+	MBCS_MAX                       = 6
+};
+
+
+// Enum IpDrv.OnlineEventsInterfaceMcp.EEventUploadType
+enum class EEventUploadType
+{
+	EUT_GenericStats               = 0,
+	EUT_ProfileData                = 1,
+	EUT_MatchmakingData            = 2,
+	EUT_PlaylistPopulation         = 3,
+	EUT_MAX                        = 4
+};
+
+
+// Enum IpDrv.OnlineImageDownloaderWeb.EOnlineImageDownloadState
+enum class EOnlineImageDownloadState
+{
+	PIDS_NotStarted                = 0,
+	PIDS_Downloading               = 1,
+	PIDS_Succeeded                 = 2,
+	PIDS_Failed                    = 3,
+	PIDS_MAX                       = 4
+};
+
+
+// Enum IpDrv.PartyBeacon.EReservationPacketType
+enum class EReservationPacketType
+{
+	RPT_UnknownPacketType          = 0,
+	RPT_ClientReservationRequest   = 1,
+	RPT_ClientReservationUpdateRequest = 2,
+	RPT_ClientCancellationRequest  = 3,
+	RPT_HostReservationResponse    = 4,
+	RPT_HostReservationCountUpdate = 5,
+	RPT_HostTravelRequest          = 6,
+	RPT_HostIsReady                = 7,
+	RPT_HostHasCancelled           = 8,
+	RPT_Heartbeat                  = 9,
+	RPT_MAX                        = 10
+};
+
+
+// Enum IpDrv.PartyBeacon.EPartyReservationResult
+enum class EPartyReservationResult
+{
+	PRR_GeneralError               = 0,
+	PRR_PartyLimitReached          = 1,
+	PRR_IncorrectPlayerCount       = 2,
+	PRR_RequestTimedOut            = 3,
+	PRR_ReservationDuplicate       = 4,
+	PRR_ReservationNotFound        = 5,
+	PRR_ReservationAccepted        = 6,
+	PRR_ReservationDenied          = 7,
+	PRR_MAX                        = 8
+};
+
+
+// Enum IpDrv.PartyBeaconClient.EPartyBeaconClientRequest
+enum class EPartyBeaconClientRequest
+{
+	PBClientRequest_NewReservation = 0,
+	PBClientRequest_UpdateReservation = 1,
+	PBClientRequest_MAX            = 2
+};
+
+
+// Enum IpDrv.PartyBeaconClient.EPartyBeaconClientState
+enum class EPartyBeaconClientState
+{
+	PBCS_None                      = 0,
+	PBCS_Connecting                = 1,
+	PBCS_Connected                 = 2,
+	PBCS_ConnectionFailed          = 3,
+	PBCS_AwaitingResponse          = 4,
+	PBCS_Closed                    = 5,
+	PBCS_MAX                       = 6
+};
+
+
+// Enum IpDrv.PartyBeaconHost.EPartyBeaconHostState
+enum class EPartyBeaconHostState
+{
+	PBHS_AllowReservations         = 0,
+	PBHS_DenyReservations          = 1,
+	PBHS_MAX                       = 2
+};
+
+
+// Enum IpDrv.TcpLink.ELinkState
+enum class ELinkState
+{
+	STATE_Initialized              = 0,
+	STATE_Ready                    = 1,
+	STATE_Listening                = 2,
+	STATE_Connecting               = 3,
+	STATE_Connected                = 4,
+	STATE_ListenClosePending       = 5,
+	STATE_ConnectClosePending      = 6,
+	STATE_ListenClosing            = 7,
+	STATE_ConnectClosing           = 8,
+	STATE_MAX                      = 9
+};
+
+
+// Enum IpDrv.TitleFileDownloadCache.ETitleFileFileOp
+enum class ETitleFileFileOp
+{
+	TitleFile_None                 = 0,
+	TitleFile_Save                 = 1,
+	TitleFile_Load                 = 2,
+	TitleFile_MAX                  = 3
+};
+
+
+// Enum IpDrv.WebRequest.ERequestType
+enum class ERequestType
+{
+	Request_GET                    = 0,
+	Request_POST                   = 1,
+	Request_MAX                    = 2
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -16,8 +311,7 @@ namespace SDK
 // 0x0018
 struct FEventUploadConfig
 {
-	TEnumAsByte<enum class EEventUploadType>           UploadType;                                               // 0x0000(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TEnumAsByte<EEventUploadType>                      UploadType;                                               // 0x0000(0x0001) (CPF_Const)
 	struct FString                                     UploadUrl;                                                // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	float                                              Timeout;                                                  // 0x0010(0x0004) (CPF_Const)
 	unsigned long                                      bUseCompression : 1;                                      // 0x0014(0x0004) (CPF_Const)
@@ -28,9 +322,8 @@ struct FEventUploadConfig
 struct FNewsCacheEntry
 {
 	struct FString                                     NewsUrl;                                                  // 0x0000(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReadState;                                                // 0x000C(0x0001)
-	TEnumAsByte<enum class EOnlineNewsType>            NewsType;                                                 // 0x000D(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x000E(0x0002) MISSED OFFSET
+	TEnumAsByte<EOnlineEnumerationReadState>           ReadState;                                                // 0x000C(0x0001)
+	TEnumAsByte<EOnlineNewsType>                       NewsType;                                                 // 0x000D(0x0001) (CPF_Const)
 	struct FString                                     NewsItem;                                                 // 0x0010(0x000C) (CPF_NeedCtorLink)
 	float                                              Timeout;                                                  // 0x001C(0x0004) (CPF_Const)
 	unsigned long                                      bIsUnicode : 1;                                           // 0x0020(0x0004) (CPF_Const)
@@ -58,7 +351,7 @@ struct FTitleFileWeb : public FTitleFile
 {
 	struct FString                                     StringData;                                               // 0x001C(0x000C) (CPF_NeedCtorLink)
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x0028(0x0004)
-	TEnumAsByte<enum class EMcpFileCompressionType>    FileCompressionType;                                      // 0x002C(0x0001)
+	TEnumAsByte<EMcpFileCompressionType>               FileCompressionType;                                      // 0x002C(0x0001)
 };
 
 // ScriptStruct IpDrv.TitleFileDownloadCache.TitleFileCacheEntry
@@ -67,8 +360,7 @@ struct FTitleFileCacheEntry : public FTitleFile
 {
 	struct FString                                     LogicalName;                                              // 0x001C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Hash;                                                     // 0x0028(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETitleFileFileOp>           FileOp;                                                   // 0x0034(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0035(0x0003) MISSED OFFSET
+	TEnumAsByte<ETitleFileFileOp>                      FileOp;                                                   // 0x0034(0x0001)
 	struct FPointer                                    Ar;                                                       // 0x0038(0x0004) (CPF_Const, CPF_Native)
 };
 
@@ -90,7 +382,7 @@ struct FMcpMessage
 	struct FString                                     FromFriendlyName;                                         // 0x0024(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     MessageType;                                              // 0x0030(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     ValidUntil;                                               // 0x003C(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType;                                   // 0x0048(0x0001)
+	TEnumAsByte<EMcpMessageCompressionType>            MessageCompressionType;                                   // 0x0048(0x0001)
 };
 
 // ScriptStruct IpDrv.McpMessageBase.McpMessageList
@@ -156,8 +448,7 @@ struct FConnectionBandwidthStats
 struct FClientConnectionRequest
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0030)
-	TEnumAsByte<enum class ENATType>                   NatType;                                                  // 0x0030(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0031(0x0003) MISSED OFFSET
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0030(0x0001)
 	unsigned long                                      bCanHostVs : 1;                                           // 0x0034(0x0004)
 	float                                              GoodHostRatio;                                            // 0x0038(0x0004)
 	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x003C(0x000C) (CPF_NeedCtorLink)
@@ -168,9 +459,8 @@ struct FClientConnectionRequest
 // 0x0014
 struct FClientBandwidthTestData
 {
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // 0x0000(0x0001)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestState> CurrentState;                                             // 0x0001(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // 0x0000(0x0001)
+	TEnumAsByte<EMeshBeaconBandwidthTestState>         CurrentState;                                             // 0x0001(0x0001)
 	int                                                NumBytesToSendTotal;                                      // 0x0004(0x0004)
 	int                                                NumBytesSentTotal;                                        // 0x0008(0x0004)
 	int                                                NumBytesSentLast;                                         // 0x000C(0x0004)
@@ -181,9 +471,8 @@ struct FClientBandwidthTestData
 // 0x0028
 struct FClientConnectionBandwidthTestData
 {
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestState> CurrentState;                                             // 0x0000(0x0001)
-	TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;                                                 // 0x0001(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
+	TEnumAsByte<EMeshBeaconBandwidthTestState>         CurrentState;                                             // 0x0000(0x0001)
+	TEnumAsByte<EMeshBeaconBandwidthTestType>          TestType;                                                 // 0x0001(0x0001)
 	int                                                BytesTotalNeeded;                                         // 0x0004(0x0004)
 	int                                                BytesReceived;                                            // 0x0008(0x0004)
 	struct FDouble                                     RequestTestStartTime;                                     // 0x000C(0x0008)
@@ -200,8 +489,7 @@ struct FClientMeshBeaconConnection
 	struct FPointer                                    Socket;                                                   // 0x0034(0x0004) (CPF_Native, CPF_Transient)
 	unsigned long                                      bConnectionAccepted : 1;                                  // 0x0038(0x0004)
 	struct FClientConnectionBandwidthTestData          BandwidthTest;                                            // 0x003C(0x0028)
-	TEnumAsByte<enum class ENATType>                   NatType;                                                  // 0x0064(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0064(0x0001)
 	unsigned long                                      bCanHostVs : 1;                                           // 0x0068(0x0004)
 	float                                              GoodHostRatio;                                            // 0x006C(0x0004)
 	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x0070(0x000C) (CPF_NeedCtorLink)
@@ -295,7 +583,7 @@ struct FMcpClashMobChallengeFile
 	struct FString                                     dl_name;                                                  // 0x001C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     hash_code;                                                // 0x0028(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Type;                                                     // 0x0034(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class McpChallengeFileStatus>     Status;                                                   // 0x0040(0x0001)
+	TEnumAsByte<EMcpChallengeFileStatus>               Status;                                                   // 0x0040(0x0001)
 };
 
 // ScriptStruct IpDrv.McpClashMobBase.McpClashMobPushNotificationParams
@@ -397,7 +685,7 @@ struct FMcpChallengeUserRequest
 struct FMcpGroupMember
 {
 	struct FString                                     MemberId;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpGroupAcceptState>       AcceptState;                                              // 0x000C(0x0001)
+	TEnumAsByte<EMcpGroupAcceptState>                  AcceptState;                                              // 0x000C(0x0001)
 };
 
 // ScriptStruct IpDrv.McpGroupsBase.McpGroup
@@ -407,8 +695,7 @@ struct FMcpGroup
 	struct FString                                     OwnerId;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     GroupID;                                                  // 0x000C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     GroupName;                                                // 0x0018(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpGroupAccessLevel>       AccessLevel;                                              // 0x0024(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0025(0x0003) MISSED OFFSET
+	TEnumAsByte<EMcpGroupAccessLevel>                  AccessLevel;                                              // 0x0024(0x0001)
 	TArray<struct FMcpGroupMember>                     Members;                                                  // 0x0028(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -571,8 +858,7 @@ struct FOnlineImageDownload
 {
 	struct FString                                     URL;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x000C(0x0004)
-	TEnumAsByte<enum class EOnlineImageDownloadState>  State;                                                    // 0x0010(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+	TEnumAsByte<EOnlineImageDownloadState>             State;                                                    // 0x0010(0x0001)
 	unsigned long                                      bPendingRemoval : 1;                                      // 0x0014(0x0004)
 	class UTexture2DDynamic*                           Texture;                                                  // 0x0018(0x0004)
 };

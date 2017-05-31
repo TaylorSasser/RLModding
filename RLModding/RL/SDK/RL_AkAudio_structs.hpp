@@ -9,6 +9,40 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum AkAudio.AkPlaySoundComponent.EAkPlaySoundReceiver
+enum class EAkPlaySoundReceiver
+{
+	PlaySoundReceiver_All          = 0,
+	PlaySoundReceiver_Local        = 1,
+	PlaySoundReceiver_NonLocal     = 2,
+	PlaySoundReceiver_MAX          = 3
+};
+
+
+// Enum AkAudio.AkDevice.EAkOutputType
+enum class EAkOutputType
+{
+	AkOT_Speakers                  = 0,
+	AKOT_Headphones                = 1,
+	EAkOutputType_MAX              = 2
+};
+
+
+// Enum AkAudio.AkDevice.EAkListenerSpacialization
+enum class EAkListenerSpacialization
+{
+	AkLS_3D                        = 0,
+	AkLS_Left                      = 1,
+	AkLS_Right                     = 2,
+	AkLS_MAX                       = 3
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 

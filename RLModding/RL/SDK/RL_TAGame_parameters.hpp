@@ -38,7 +38,7 @@ struct U_Types_TA_InitColorSet_Params
 // Function TAGame._Types_TA.ProductQualityToString
 struct U_Types_TA_ProductQualityToString_Params
 {
-	TEnumAsByte<enum class EProductQuality>            Quality;                                                  // (CPF_Parm)
+	TEnumAsByte<EProductQuality>                       Quality;                                                  // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -687,14 +687,14 @@ struct ARBActor_TA_OnRigidBodyCollision_Params
 struct ARBActor_TA_AddTorque_Params
 {
 	struct FVector                                     Torque;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EForceMode>                 ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EForceMode>                            ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.RBActor_TA.AddForce
 struct ARBActor_TA_AddForce_Params
 {
 	struct FVector                                     Force;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EForceMode>                 ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EForceMode>                            ForceMode;                                                // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.RBActor_TA.PreAsyncTick
@@ -961,7 +961,7 @@ struct ABall_TA_Launch_Params
 struct ABall_TA_OnCarTouch_Params
 {
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Ball_TA.AttachToCar
@@ -976,7 +976,7 @@ struct ABall_TA_RecordCarHit_Params
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
 	struct FVector                                     HitLocation;                                              // (CPF_Parm)
 	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Ball_TA.Reset
@@ -1158,7 +1158,7 @@ struct ABall_TA_EventCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.BallTrajectoryComponent_TA.GetTrajectoryFXCount
@@ -1603,7 +1603,7 @@ struct UBTComponent_PrintDebugInfo_Params
 // Function TAGame.BTComponent.GetStatusColor
 struct UBTComponent_GetStatusColor_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  Status;                                                   // (CPF_Parm)
+	TEnumAsByte<EBTStatus>                             Status;                                                   // (CPF_Parm)
 	struct FColor                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -1703,7 +1703,7 @@ struct UBTNode_SetStatusString_Params
 // Function TAGame.BTCondition.ShouldProcessTeam
 struct UBTCondition_ShouldProcessTeam_Params
 {
-	TEnumAsByte<enum class EAITeam>                    CheckTeam;                                                // (CPF_Parm)
+	TEnumAsByte<EAITeam>                               CheckTeam;                                                // (CPF_Parm)
 	int                                                ActorTeam;                                                // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1711,7 +1711,7 @@ struct UBTCondition_ShouldProcessTeam_Params
 // Function TAGame.BTCondition.ShouldProcessActor
 struct UBTCondition_ShouldProcessActor_Params
 {
-	TEnumAsByte<enum class EAITeam>                    CheckTeam;                                                // (CPF_Parm)
+	TEnumAsByte<EAITeam>                               CheckTeam;                                                // (CPF_Parm)
 	class AActor*                                      CheckActor;                                               // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1747,7 +1747,7 @@ struct UBTAction_GetRunningTime_Params
 // Function TAGame.BTAction.OnExecute
 struct UBTAction_OnExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction.OnStarted
@@ -1758,7 +1758,7 @@ struct UBTAction_OnStarted_Params
 // Function TAGame.BTAction.OnStart
 struct UBTAction_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction.OnInit
@@ -1769,13 +1769,13 @@ struct UBTAction_OnInit_Params
 // Function TAGame.BTAction_Target.OnTargetExecute
 struct UBTAction_Target_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Target.OnExecute
 struct UBTAction_Target_OnExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTDynamicLink.SetChildArchetype
@@ -2689,7 +2689,7 @@ struct UGameData_TA_CanProductBeInSlot_Params
 // Function TAGame.GameData_TA.GetProductDB
 struct UGameData_TA_GetProductDB_Params
 {
-	TEnumAsByte<enum class EEdition>                   Edition;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EEdition>                              Edition;                                                  // (CPF_OptionalParm, CPF_Parm)
 	class UProductDatabase_TA*                         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -2763,7 +2763,7 @@ struct AGameEvent_TA_AllowSplitScreenPlayer_Params
 struct AGameEvent_TA_AddPlayerChatMessage_Params
 {
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	class ATeamInfo*                                   Team;                                                     // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -3756,7 +3756,7 @@ struct UGFxEngine_TA_OnGameSessionEnded_Params
 struct UGFxEngine_TA_GetSoundStatePriority_Params
 {
 	struct FName                                       StateName;                                                // (CPF_Parm)
-	TEnumAsByte<enum class ESoundStatePriority>        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESoundStatePriority>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxEngine_TA.ClearUISoundState
@@ -4001,7 +4001,7 @@ struct ULocalPlayer_TA_OnLoginCancelled_Params
 struct ULocalPlayer_TA_OnLoginFailed_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function TAGame.LocalPlayer_TA.OnControllerPairingChanged
@@ -4065,7 +4065,7 @@ struct ULocalPlayer_TA_PrintDebugInfo_Params
 struct ULocalPlayer_TA_GetSplitScreenPosition_Params
 {
 	class UGameViewportClient*                         InViewportClient;                                         // (CPF_Parm)
-	TEnumAsByte<enum class ESplitScreenPosition>       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESplitScreenPosition>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.LocalPlayer_TA.HandleSplitScreenTypeChanged
@@ -4707,7 +4707,7 @@ struct UOnlineProduct_TA_GetPaintedColorAttribute_Params
 // Function TAGame.OnlineProduct_TA.GetQuality
 struct UOnlineProduct_TA_GetQuality_Params
 {
-	TEnumAsByte<enum class EProductQuality>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EProductQuality>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.OnlineProduct_TA.GetReplicatedAttributes
@@ -4908,7 +4908,7 @@ struct APlayerControllerBase_TA_PartyLobbyMessage_TA_Params
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bIsLocalPlayer;                                           // (CPF_Parm)
-	TEnumAsByte<enum class EPartyChatCommands>         PartyChatCommand;                                         // (CPF_Parm)
+	TEnumAsByte<EPartyChatCommands>                    PartyChatCommand;                                         // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -4916,7 +4916,7 @@ struct APlayerControllerBase_TA_PartyLobbyMessage_TA_Params
 struct APlayerControllerBase_TA_Say_TA_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -4924,7 +4924,7 @@ struct APlayerControllerBase_TA_Say_TA_Params
 struct APlayerControllerBase_TA_ServerSay_TA_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -5155,7 +5155,7 @@ struct APlayerController_TA_GetHearSoundTransform_Params
 // Function TAGame.PlayerController_TA.ServerReportPlayer
 struct APlayerController_TA_ServerReportPlayer_Params
 {
-	TEnumAsByte<enum class EReportPlayerReason>        Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<EReportPlayerReason>                   Reason;                                                   // (CPF_Parm)
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -5197,7 +5197,7 @@ struct APlayerController_TA_ServerRequestSplitscreenJoin_Params
 struct APlayerController_TA_PreClientTravel_Params
 {
 	struct FString                                     PendingURL;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bIsSeamlessTravel;                                        // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -5234,7 +5234,7 @@ struct APlayerController_TA_ShouldBeMuted_Params
 // Function TAGame.PlayerController_TA.IsCommunicationFiltered
 struct APlayerController_TA_IsCommunicationFiltered_Params
 {
-	TEnumAsByte<enum class EVoiceFilter>               Filter;                                                   // (CPF_Parm)
+	TEnumAsByte<EVoiceFilter>                          Filter;                                                   // (CPF_Parm)
 	class APlayerController_TA*                        Other;                                                    // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -5280,13 +5280,13 @@ struct APlayerController_TA_GetDebugMutePlayerName_Params
 // Function TAGame.PlayerController_TA.ServerSetChatFilter
 struct APlayerController_TA_ServerSetChatFilter_Params
 {
-	TEnumAsByte<enum class EVoiceFilter>               InVoiceFilter;                                            // (CPF_Parm)
+	TEnumAsByte<EVoiceFilter>                          InVoiceFilter;                                            // (CPF_Parm)
 };
 
 // Function TAGame.PlayerController_TA.ServerSetVoiceFilter
 struct APlayerController_TA_ServerSetVoiceFilter_Params
 {
-	TEnumAsByte<enum class EVoiceFilter>               InVoiceFilter;                                            // (CPF_Parm)
+	TEnumAsByte<EVoiceFilter>                          InVoiceFilter;                                            // (CPF_Parm)
 };
 
 // Function TAGame.PlayerController_TA.IsExplictlyMuted
@@ -5323,7 +5323,7 @@ struct APlayerController_TA_ChatMessage_TA_Params
 {
 	class APlayerReplicationInfo*                      InPRI;                                                    // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_Parm)
 };
 
@@ -5331,7 +5331,7 @@ struct APlayerController_TA_ChatMessage_TA_Params
 struct APlayerController_TA_ServerSay_TA_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -5339,7 +5339,7 @@ struct APlayerController_TA_ServerSay_TA_Params
 struct APlayerController_TA_Say_TA_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -5975,7 +5975,7 @@ struct UProductAsset_Skin_TA_CheckCanSave_Params
 // Function TAGame.ProductAsset_Wheel_TA.GetMeshBoxExtent
 struct UProductAsset_Wheel_TA_GetMeshBoxExtent_Params
 {
-	TEnumAsByte<enum class EWheelPosition>             WheelPos;                                                 // (CPF_Parm)
+	TEnumAsByte<EWheelPosition>                        WheelPos;                                                 // (CPF_Parm)
 	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6154,7 +6154,7 @@ struct UProductAttribute_Painted_TA_GetPaintColor_Params
 {
 	class UProductAttribute_PaintSettings_TA*          PaintSettings;                                            // (CPF_Parm)
 	class UProductPaint_TA*                            Paint;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EPaintAttributeType>        PaintType;                                                // (CPF_Parm)
+	TEnumAsByte<EPaintAttributeType>                   PaintType;                                                // (CPF_Parm)
 	struct FLinearColor                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6250,14 +6250,14 @@ struct UProductDatabase_TA_ContainsOnlineProducts_Params
 // Function TAGame.ProductDatabase_TA.StaticIsOnlineQuality
 struct UProductDatabase_TA_StaticIsOnlineQuality_Params
 {
-	TEnumAsByte<enum class EProductQuality>            Quality;                                                  // (CPF_Parm)
+	TEnumAsByte<EProductQuality>                       Quality;                                                  // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.ProductDatabase_TA.IsOnlineUnlock
 struct UProductDatabase_TA_IsOnlineUnlock_Params
 {
-	TEnumAsByte<enum class EUnlockMethod>              UnlockMethod;                                             // (CPF_Parm)
+	TEnumAsByte<EUnlockMethod>                         UnlockMethod;                                             // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6408,7 +6408,7 @@ struct UProductDatabase_TA_GetProductID_Params
 struct UProductFilter_TA_AddLogLevel_Params
 {
 	struct FProductFilter                              Filter;                                                   // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EProductFilterLogLevel>     LogLevel;                                                 // (CPF_Parm)
+	TEnumAsByte<EProductFilterLogLevel>                LogLevel;                                                 // (CPF_Parm)
 };
 
 // Function TAGame.ProductFilter_TA.GetFilterLogString
@@ -6514,7 +6514,7 @@ struct UProductLoader_TA_EventAllProductsLoaded_Params
 // Function TAGame.ProductPaint_TA.GetPaintColorByType
 struct UProductPaint_TA_GetPaintColorByType_Params
 {
-	TEnumAsByte<enum class EPaintAttributeType>        PaintType;                                                // (CPF_Parm)
+	TEnumAsByte<EPaintAttributeType>                   PaintType;                                                // (CPF_Parm)
 	struct FLinearColor                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -6545,7 +6545,7 @@ struct UProduct_TA_GetDisplayLabelSlot_Params
 // Function TAGame.Product_TA.GetQuality
 struct UProduct_TA_GetQuality_Params
 {
-	TEnumAsByte<enum class EProductQuality>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EProductQuality>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.Product_TA.IsPlatformExclusive
@@ -6600,7 +6600,7 @@ struct UProduct_TA_GetAttribute_Params
 // Function TAGame.Product_TA.GetPlatforms
 struct UProduct_TA_GetPlatforms_Params
 {
-	TArray<TEnumAsByte<enum class EConsoleType>>       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EConsoleType>>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.Product_TA.LoadAssetAsync
@@ -6649,7 +6649,7 @@ struct UProductThumbnailQueue_TA_CancelRenderThumbnail_Params
 {
 	class UProductAsset_TA*                            Asset;                                                    // (CPF_Parm)
 	class UOnlineProduct_TA*                           OnlineProduct;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EProductThumbnailSize>      Size;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductThumbnailSize>                 Size;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.ProductThumbnailQueue_TA.CancelRenderThumbnails
@@ -6663,7 +6663,7 @@ struct UProductThumbnailQueue_TA_RenderThumbnail_Params
 {
 	class UProductAsset_TA*                            Asset;                                                    // (CPF_Parm)
 	class UOnlineProduct_TA*                           OnlineProduct;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EProductThumbnailSize>      Size;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductThumbnailSize>                 Size;                                                     // (CPF_Parm)
 	struct FScriptDelegate                             OnRendered;                                               // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -6734,7 +6734,7 @@ struct ABall_Breakout_TA_OnRigidBodyCollision_Params
 struct ABall_Breakout_TA_OnCarTouch_Params
 {
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Ball_Breakout_TA.PostBeginPlay
@@ -6892,7 +6892,7 @@ struct AVehicle_TA_HandleLocalPlayerJoin_Params
 struct AVehicle_TA_InitAudioSettings_Params
 {
 	bool                                               bIsLocal;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ESplitScreenPosition>       SplitScreenPosition;                                      // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ESplitScreenPosition>                  SplitScreenPosition;                                      // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Vehicle_TA.UpdateSplitScreenStatus
@@ -7410,21 +7410,21 @@ struct USaveObjectManager_TA_SetNewFileSaveCount_Params
 // Function TAGame.SaveObjectManager_TA.HandleSaveResult
 struct USaveObjectManager_TA_HandleSaveResult_Params
 {
-	TEnumAsByte<enum class ESaveGameResult>            Result;                                                   // (CPF_Parm)
+	TEnumAsByte<ESaveGameResult>                       Result;                                                   // (CPF_Parm)
 	struct FSaveObjectResult                           StructInitializer__s_327729354958C1690060BB8C078C5770;    // (CPF_Const, CPF_OutParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.GetSaveError
 struct USaveObjectManager_TA_GetSaveError_Params
 {
-	TEnumAsByte<enum class ESaveGameResult>            Result;                                                   // (CPF_Parm)
+	TEnumAsByte<ESaveGameResult>                       Result;                                                   // (CPF_Parm)
 	class UError_X*                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.GetLoadError
 struct USaveObjectManager_TA_GetLoadError_Params
 {
-	TEnumAsByte<enum class EBasicLoadResult>           InResult;                                                 // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      InResult;                                                 // (CPF_Parm)
 	class UError_X*                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -7538,7 +7538,7 @@ struct USaveObjectManager_TA_LoadGameData_Params
 	int                                                Version;                                                  // (CPF_Parm)
 	struct FString                                     PathName;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bExactFileMatch;                                          // (CPF_Parm)
-	TEnumAsByte<enum class EBasicLoadResult>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBasicLoadResult>                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.IsDoneSaving
@@ -7557,7 +7557,7 @@ struct USaveObjectManager_TA_IsSaving_Params
 struct USaveObjectManager_TA_UpdateSaveResult_Params
 {
 	int                                                ControllerIndex;                                          // (CPF_Parm)
-	TEnumAsByte<enum class ESaveGameResult>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESaveGameResult>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.SaveGameDataAsync
@@ -7568,7 +7568,7 @@ struct USaveObjectManager_TA_SaveGameDataAsync_Params
 	int                                                Version;                                                  // (CPF_Parm)
 	struct FString                                     PathName;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bExactFileMatch;                                          // (CPF_Parm)
-	TEnumAsByte<enum class ESaveGameResult>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESaveGameResult>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.SaveGameData
@@ -7579,14 +7579,14 @@ struct USaveObjectManager_TA_SaveGameData_Params
 	int                                                Version;                                                  // (CPF_Parm)
 	struct FString                                     PathName;                                                 // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bExactFileMatch;                                          // (CPF_Parm)
-	TEnumAsByte<enum class ESaveGameResult>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESaveGameResult>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveObjectManager_TA.OnFilesListed
 struct USaveObjectManager_TA_OnFilesListed_Params
 {
 	TArray<struct FString>                             Files;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.SaveObjectManager_TA.EventDataSaved
@@ -7943,7 +7943,7 @@ struct UCarMeshComponentBase_TA_SetTeamPaint_Params
 // Function TAGame.CarMeshComponentBase_TA.CreateWheelMesh
 struct UCarMeshComponentBase_TA_CreateWheelMesh_Params
 {
-	TEnumAsByte<enum class EWheelPosition>             WheelPos;                                                 // (CPF_Parm)
+	TEnumAsByte<EWheelPosition>                        WheelPos;                                                 // (CPF_Parm)
 	float                                              WheelRadius;                                              // (CPF_Parm)
 	float                                              WheelWidth;                                               // (CPF_Parm)
 	float                                              WheelOffset;                                              // (CPF_Parm)
@@ -8703,7 +8703,7 @@ struct AVoteActor_TA_CheckFinished_Params
 struct AVoteActor_TA_SetVoteStatus_Params
 {
 	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EVoteStatus>                Status;                                                   // (CPF_Parm)
+	TEnumAsByte<EVoteStatus>                           Status;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.VoteActor_TA.OnVotersChanged
@@ -8873,7 +8873,7 @@ struct APRI_TA_Destroyed_Params
 struct APRI_TA_ClientUnlockAchievement_Params
 {
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 };
 
 // Function TAGame.PRI_TA.ServerSetPlayerActivatedFX
@@ -9008,7 +9008,7 @@ struct APRI_TA_SetWaitingPlayer_Params
 // Function TAGame.PRI_TA.SetPawnType
 struct APRI_TA_SetPawnType_Params
 {
-	TEnumAsByte<enum class EPawnType>                  NewPawnType;                                              // (CPF_Parm)
+	TEnumAsByte<EPawnType>                             NewPawnType;                                              // (CPF_Parm)
 };
 
 // Function TAGame.PRI_TA.IsEditor
@@ -9044,7 +9044,7 @@ struct APRI_TA_ServerChangeTeam_Params
 struct APRI_TA_ServerSetVoteStatus_Params
 {
 	class AVoteActor_TA*                               VoteActor;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EVoteStatus>                NewVote;                                                  // (CPF_Parm)
+	TEnumAsByte<EVoteStatus>                           NewVote;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.PRI_TA.SetPodiumTitle
@@ -9590,7 +9590,7 @@ struct APRI_TA_EventServerUnlockedAchievement_Params
 {
 	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 };
 
 // Function TAGame.PRI_TA.EventMatchAdmin
@@ -10301,7 +10301,7 @@ struct UAchievementManager_TA_NotifyKeyInput_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -10846,14 +10846,14 @@ struct UAchievementManager_TA_IncrementStat_Params
 // Function TAGame.AchievementManager_TA.AchievementTypeExistsOnPlatform
 struct UAchievementManager_TA_AchievementTypeExistsOnPlatform_Params
 {
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.AchievementManager_TA.GetAchievementTypeMax
 struct UAchievementManager_TA_GetAchievementTypeMax_Params
 {
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -10861,7 +10861,7 @@ struct UAchievementManager_TA_GetAchievementTypeMax_Params
 struct UAchievementManager_TA_GetAchievementIconID_Params
 {
 	int                                                InAchievementID;                                          // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -10869,7 +10869,7 @@ struct UAchievementManager_TA_GetAchievementIconID_Params
 struct UAchievementManager_TA_GetActualAchievementID_Params
 {
 	int                                                InAchievementID;                                          // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -10884,7 +10884,7 @@ struct UAchievementManager_TA_HasUnlockAuthority_Params
 struct UAchievementManager_TA_GetAchievementInfo_Params
 {
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
 	struct FAchievementInfo                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -10892,7 +10892,7 @@ struct UAchievementManager_TA_GetAchievementInfo_Params
 struct UAchievementManager_TA_IsUnlocked_Params
 {
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bIgnoreAuthority;                                         // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -10901,7 +10901,7 @@ struct UAchievementManager_TA_IsUnlocked_Params
 struct UAchievementManager_TA_SetAchievementUnlocked_Params
 {
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 	bool                                               bUnlocked;                                                // (CPF_Parm)
 };
 
@@ -10909,7 +10909,7 @@ struct UAchievementManager_TA_SetAchievementUnlocked_Params
 struct UAchievementManager_TA_UnlockAchievement_Params
 {
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bIgnoreAuthority;                                         // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -10918,7 +10918,7 @@ struct UAchievementManager_TA_HandleServerUnlockedAchievement_Params
 {
 	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 };
 
 // Function TAGame.AchievementManager_TA.EventAchievementUnlocked
@@ -10926,7 +10926,7 @@ struct UAchievementManager_TA_EventAchievementUnlocked_Params
 {
 	class UAchievementManager_TA*                      Manager;                                                  // (CPF_Parm)
 	int                                                AchievementId;                                            // (CPF_Parm)
-	TEnumAsByte<enum class EAchievementType>           AchievementType;                                          // (CPF_Parm)
+	TEnumAsByte<EAchievementType>                      AchievementType;                                          // (CPF_Parm)
 };
 
 // Function TAGame.AchievementManager_TA.EventRegularSeasonAmountChanged
@@ -12810,20 +12810,20 @@ struct UProfile_TA_SetCrossPlayDisabled_Params
 struct UProfile_TA_SetCustomMatchSettings_Params
 {
 	struct FCustomMatchSettings                        Settings;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ECustomMatchSettingsType>   Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ECustomMatchSettingsType>              Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.Profile_TA.GetCustomMatchSettings
 struct UProfile_TA_GetCustomMatchSettings_Params
 {
-	TEnumAsByte<enum class ECustomMatchSettingsType>   Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ECustomMatchSettingsType>              Type;                                                     // (CPF_Parm)
 	struct FCustomMatchSettings                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.Profile_TA.GetGameTags
 struct UProfile_TA_GetGameTags_Params
 {
-	TEnumAsByte<enum class ECustomMatchSettingsType>   Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ECustomMatchSettingsType>              Type;                                                     // (CPF_Parm)
 	class UGameTags_TA*                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -12894,7 +12894,7 @@ struct UProfile_TA_GetProductStatValue_Params
 // Function TAGame.Profile_TA.GetStatValue
 struct UProfile_TA_GetStatValue_Params
 {
-	TEnumAsByte<enum class ETAStatType>                StatType;                                                 // (CPF_Parm)
+	TEnumAsByte<ETAStatType>                           StatType;                                                 // (CPF_Parm)
 	struct FName                                       Id;                                                       // (CPF_Parm)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -12902,7 +12902,7 @@ struct UProfile_TA_GetStatValue_Params
 // Function TAGame.Profile_TA.IncrementStatValue
 struct UProfile_TA_IncrementStatValue_Params
 {
-	TEnumAsByte<enum class ETAStatType>                StatType;                                                 // (CPF_Parm)
+	TEnumAsByte<ETAStatType>                           StatType;                                                 // (CPF_Parm)
 	struct FName                                       Id;                                                       // (CPF_Parm)
 	int                                                Amount;                                                   // (CPF_OptionalParm, CPF_Parm)
 };
@@ -12910,7 +12910,7 @@ struct UProfile_TA_IncrementStatValue_Params
 // Function TAGame.Profile_TA.SetStatValue
 struct UProfile_TA_SetStatValue_Params
 {
-	TEnumAsByte<enum class ETAStatType>                StatType;                                                 // (CPF_Parm)
+	TEnumAsByte<ETAStatType>                           StatType;                                                 // (CPF_Parm)
 	struct FName                                       Id;                                                       // (CPF_Parm)
 	int                                                Value;                                                    // (CPF_Parm)
 };
@@ -13900,13 +13900,13 @@ struct USaveData_TA_SetSafeZone_Params
 // Function TAGame.SaveData_TA.SetOutputType
 struct USaveData_TA_SetOutputType_Params
 {
-	TEnumAsByte<enum class EAkOutputType>              Value;                                                    // (CPF_Parm)
+	TEnumAsByte<EAkOutputType>                         Value;                                                    // (CPF_Parm)
 };
 
 // Function TAGame.SaveData_TA.SetControllerSoundMode
 struct USaveData_TA_SetControllerSoundMode_Params
 {
-	TEnumAsByte<enum class EControllerSoundMode>       NewValue;                                                 // (CPF_Parm)
+	TEnumAsByte<EControllerSoundMode>                  NewValue;                                                 // (CPF_Parm)
 };
 
 // Function TAGame.SaveData_TA.SetControllerVolume
@@ -14249,7 +14249,7 @@ struct AGameEvent_Tutorial_TA_GetBallInitialVelocity_Params
 // Function TAGame.GameEvent_Tutorial_TA.GetTrainingType
 struct AGameEvent_Tutorial_TA_GetTrainingType_Params
 {
-	TEnumAsByte<enum class ETrainingType>              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ETrainingType>                         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GameEvent_Tutorial_TA.GetDifficulty
@@ -15223,14 +15223,14 @@ struct UActivityFeedManager_TA_Init_Params
 // Function TAGame.ActivityFeedManager_TA.PostActivtyFeedSingleString
 struct UActivityFeedManager_TA_PostActivtyFeedSingleString_Params
 {
-	TEnumAsByte<enum class EActivityFeedType>          ActivityFeedID;                                           // (CPF_Parm)
+	TEnumAsByte<EActivityFeedType>                     ActivityFeedID;                                           // (CPF_Parm)
 	struct FString                                     ReplaceString;                                            // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.ActivityFeedManager_TA.PostActivityFeedMessage
 struct UActivityFeedManager_TA_PostActivityFeedMessage_Params
 {
-	TEnumAsByte<enum class EActivityFeedType>          ActivityFeedID;                                           // (CPF_Parm)
+	TEnumAsByte<EActivityFeedType>                     ActivityFeedID;                                           // (CPF_Parm)
 	TArray<struct FString>                             StringReplaceList;                                        // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -15933,13 +15933,13 @@ struct UBTAction_MoveTo_HasPassedTarget_Params
 // Function TAGame.BTAction_MoveTo.OnTargetExecute
 struct UBTAction_MoveTo_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_MoveTo.OnStart
 struct UBTAction_MoveTo_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_MoveTo.OnInit
@@ -15957,7 +15957,7 @@ struct UBTMoveModifier_AdjustDestination_Params
 // Function TAGame.BTAction_BlockGoal.OnTargetExecute
 struct UBTAction_BlockGoal_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_BlockGoal.OnInit
@@ -15982,7 +15982,7 @@ struct UBTAction_HitBall_GetLeadDestination_Params
 // Function TAGame.BTAction_HitBall.OnTargetExecute
 struct UBTAction_HitBall_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_HitBall.HasHitBall
@@ -16010,7 +16010,7 @@ struct UBTAction_CatchBall_DriveTo_Params
 // Function TAGame.BTAction_CatchBall.OnTargetExecute
 struct UBTAction_CatchBall_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_DivertBall.OnInit
@@ -16039,7 +16039,7 @@ struct UBTAction_Jump_GotoJumpState_Params
 // Function TAGame.BTAction_Jump.OnStart
 struct UBTAction_Jump_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.CarComponent_Jump_TA.ApplyForces
@@ -16068,7 +16068,7 @@ struct UBTAction_DodgeHit_GetDodgeVelocity_Params
 // Function TAGame.BTAction_DodgeHit.OnStart
 struct UBTAction_DodgeHit_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_DodgeHit.GetImpactTime
@@ -16080,7 +16080,7 @@ struct UBTAction_DodgeHit_GetImpactTime_Params
 // Function TAGame.BTAction_Face.OnTargetExecute
 struct UBTAction_Face_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Face.SetMovingForward
@@ -16092,37 +16092,37 @@ struct UBTAction_Face_SetMovingForward_Params
 // Function TAGame.BTAction_Face.OnStart
 struct UBTAction_Face_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Input.OnExecute
 struct UBTAction_Input_OnExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_PowerSlide.OnTargetExecute
 struct UBTAction_PowerSlide_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_PowerSlide.OnStart
 struct UBTAction_PowerSlide_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Stop.OnExecute
 struct UBTAction_Stop_OnExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Stop.OnStart
 struct UBTAction_Stop_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Test.GetAimDir
@@ -16136,13 +16136,13 @@ struct UBTAction_Test_GetAimDir_Params
 // Function TAGame.BTAction_Test.OnTargetExecute
 struct UBTAction_Test_OnTargetExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Test.OnStart
 struct UBTAction_Test_OnStart_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Test.GetRandomFieldLocation
@@ -16154,7 +16154,7 @@ struct UBTAction_Test_GetRandomFieldLocation_Params
 // Function TAGame.BTAction_WiggleTires.OnExecute
 struct UBTAction_WiggleTires_OnExecute_Params
 {
-	TEnumAsByte<enum class EBTStatus>                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTC_AreaClear.GetResult
@@ -16401,7 +16401,7 @@ struct UBTC_TimeSinceBallHit_HandleCarTouch_Params
 {
 	class ABall_TA*                                    InBall;                                                   // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.BTC_TimeSinceBallHit.HandleBallChanged
@@ -17016,7 +17016,7 @@ struct UGameViewportClient_TA_HandleKeyPress_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -17107,7 +17107,7 @@ struct UGameViewportClient_TA_DrawTransition_Params
 // Function TAGame.GameViewportClient_TA.NotifyConnectionError
 struct UGameViewportClient_TA_NotifyConnectionError_Params
 {
-	TEnumAsByte<enum class EProgressMessageType>       MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<EProgressMessageType>                  MessageType;                                              // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Title;                                                    // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 };
@@ -17573,14 +17573,14 @@ struct AGameInfo_GFxMenu_TA_SwapPremiumCarTo_Params
 // Function TAGame.GameInfo_GFxMenu_TA.TriggerUIStateChangeEvents
 struct AGameInfo_GFxMenu_TA_TriggerUIStateChangeEvents_Params
 {
-	TEnumAsByte<enum class EUIMenuState>               UIState;                                                  // (CPF_Parm)
+	TEnumAsByte<EUIMenuState>                          UIState;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameInfo_GFxMenu_TA.SetUIState
 struct AGameInfo_GFxMenu_TA_SetUIState_Params
 {
 	class ULocalPlayer_TA*                             Player;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EUIMenuState>               UIState;                                                  // (CPF_Parm)
+	TEnumAsByte<EUIMenuState>                          UIState;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameInfo_GFxMenu_TA.HandlePrimaryPlayerIdChanged
@@ -19645,7 +19645,7 @@ struct ACrowdActor_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.CrowdActor_TA.HandleBallRemoved
@@ -19894,7 +19894,7 @@ struct AStatFactory_TA_OnCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.StatFactory_TA.OnBallHitWorld
@@ -20700,7 +20700,7 @@ struct UDebugHelpMenu_TA_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -21179,7 +21179,7 @@ struct AHUDBase_TA_AddChatMessage_Params
 	int                                                Team;                                                     // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bLocalPlayer;                                             // (CPF_Parm)
 	bool                                               bTransient;                                               // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
@@ -21196,9 +21196,9 @@ struct AHUDBase_TA_LobbyMessage_TA_Params
 {
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	class APlayerReplicationInfo*                      SenderPRI;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EPartyChatCommands>         PartyChatCommand;                                         // (CPF_Parm)
+	TEnumAsByte<EPartyChatCommands>                    PartyChatCommand;                                         // (CPF_Parm)
 };
 
 // Function TAGame.HUDBase_TA.Message_TA
@@ -21206,7 +21206,7 @@ struct AHUDBase_TA_Message_TA_Params
 {
 	class APlayerReplicationInfo*                      PRI;                                                      // (CPF_Parm)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_Parm)
 };
 
@@ -22029,7 +22029,7 @@ struct URPC_MatchComplete_TA_SetMatchData_Params
 // Function TAGame.RPC_MatchComplete_TA.SetGameVersion
 struct URPC_MatchComplete_TA_SetGameVersion_Params
 {
-	TEnumAsByte<enum class EGameVersion>               InGameVersion;                                            // (CPF_Parm)
+	TEnumAsByte<EGameVersion>                          InGameVersion;                                            // (CPF_Parm)
 	class URPC_MatchComplete_TA*                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -22310,7 +22310,7 @@ struct UTutorial_TA_MultipleChoice_Button0_Params
 // Function TAGame.Tutorial_TA.ForceActivateOutput
 struct UTutorial_TA_ForceActivateOutput_Params
 {
-	TEnumAsByte<enum class ETutorialOutput>            Output;                                                   // (CPF_Parm)
+	TEnumAsByte<ETutorialOutput>                       Output;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.Tutorial_TA.NotifyEventOnTutorial
@@ -22335,7 +22335,7 @@ struct UTutorial_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.Tutorial_TA.HandleHitGoal
@@ -22500,7 +22500,7 @@ struct UTutorial_TA_NotifyKeyInput_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -22542,7 +22542,7 @@ struct UTutorial_TA_SetIgnoredInput_Params
 // Function TAGame.Tutorial_TA.SetAllDriving
 struct UTutorial_TA_SetAllDriving_Params
 {
-	TEnumAsByte<enum class EPlayerDriveType>           PlayerDriveType;                                          // (CPF_Parm)
+	TEnumAsByte<EPlayerDriveType>                      PlayerDriveType;                                          // (CPF_Parm)
 	bool                                               bDriving;                                                 // (CPF_Parm)
 };
 
@@ -23774,7 +23774,7 @@ struct UGFxData_Chat_TA_OnChatMessage_Params
 	int                                                Team;                                                     // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bLocalPlayer;                                             // (CPF_Parm)
 };
 
@@ -23784,7 +23784,7 @@ struct UGFxData_Chat_TA_AddChatMessage_Params
 	int                                                Team;                                                     // (CPF_Parm)
 	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 	bool                                               bLocalPlayer;                                             // (CPF_Parm)
 	bool                                               bTransient;                                               // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bPreset;                                                  // (CPF_OptionalParm, CPF_Parm)
@@ -23794,7 +23794,7 @@ struct UGFxData_Chat_TA_AddChatMessage_Params
 struct UGFxData_Chat_TA_DispatchChatMessage_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Chat_TA.HandleMessageSanitized
@@ -23835,7 +23835,7 @@ struct UGFxData_Chat_TA_SendGlobalChatMessage_Params
 struct UGFxData_Chat_TA_SendChatChannelMessage_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EChatChannel>               ChatChannel;                                              // (CPF_Parm)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Chat_TA.SendChatMessage
@@ -23848,7 +23848,7 @@ struct UGFxData_Chat_TA_SendChatMessage_Params
 // Function TAGame.GFxData_Chat_TA.GetChatFilter
 struct UGFxData_Chat_TA_GetChatFilter_Params
 {
-	TEnumAsByte<enum class EVoiceFilter>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EVoiceFilter>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_Chat_TA.OnPressChatPreset
@@ -23998,7 +23998,7 @@ struct UGFxData_Controls_TA_HandleActiveBindingsChanged_Params
 struct UGFxData_Controls_TA_IsRemappableType_Params
 {
 	struct FName                                       Action;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class ERemappable>                RemappableType;                                           // (CPF_Parm)
+	TEnumAsByte<ERemappable>                           RemappableType;                                           // (CPF_Parm)
 	TArray<struct FPlayerBinding>                      Bindings;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -24058,7 +24058,7 @@ struct UGFxData_Controls_TA_RemoveBinding_Params
 {
 	struct FName                                       Action;                                                   // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // (CPF_Parm)
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // (CPF_Parm)
 	TArray<struct FPlayerBinding>                      OutBindings;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
@@ -24067,7 +24067,7 @@ struct UGFxData_Controls_TA_SetSingleBinding_Params
 {
 	struct FName                                       Action;                                                   // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // (CPF_Parm)
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // (CPF_Parm)
 	TArray<struct FPlayerBinding>                      DefaultBindings;                                          // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FPlayerBinding>                      OutBindings;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
@@ -24077,7 +24077,7 @@ struct UGFxData_Controls_TA_SetBinding_Params
 {
 	struct FName                                       Action;                                                   // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // (CPF_Parm)
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // (CPF_Parm)
 	TArray<struct FPlayerBinding>                      DefaultBindings;                                          // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FPlayerBinding>                      OutBindings;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
@@ -24087,7 +24087,7 @@ struct UGFxData_Controls_TA_SetCurrentBinding_Params
 {
 	struct FName                                       Key;                                                      // (CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.GFxData_Controls_TA.HandleBindingInputAxis
@@ -24106,7 +24106,7 @@ struct UGFxData_Controls_TA_HandleBindingInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -24147,7 +24147,7 @@ struct UGFxData_Controls_TA_LocalizeKeyInternal_Params
 struct UGFxData_Controls_TA_LocalizeKey_Params
 {
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EAxisSign>                  AxisSign;                                                 // (CPF_Parm)
+	TEnumAsByte<EAxisSign>                             AxisSign;                                                 // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -24597,7 +24597,7 @@ struct UGFxData_Products_TA_GetProductLongLabel_Params
 struct UGFxData_Products_TA_GetProductQuality_Params
 {
 	int                                                InProductID;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EProductQuality>            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EProductQuality>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_Products_TA.GetProductTrademarkLabel
@@ -24690,14 +24690,14 @@ struct UGFxData_Products_TA_HandleProductLoaded_Params
 // Function TAGame.GFxData_Products_TA.LoadProduct
 struct UGFxData_Products_TA_LoadProduct_Params
 {
-	TEnumAsByte<enum class EProductThumbnailSize>      ThumbnailSize;                                            // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EProductThumbnailSize>                 ThumbnailSize;                                            // (CPF_OptionalParm, CPF_Parm)
 	int                                                ViewId;                                                   // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.GFxData_Products_TA.OnClearViewedProduct
 struct UGFxData_Products_TA_OnClearViewedProduct_Params
 {
-	TEnumAsByte<enum class EProductThumbnailSize>      ThumbnailSize;                                            // (CPF_Parm)
+	TEnumAsByte<EProductThumbnailSize>                 ThumbnailSize;                                            // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Products_TA.CancelLoadingThumbnail
@@ -24730,7 +24730,7 @@ struct UGFxData_Products_TA_ClearReferencedProducts_Params
 struct UGFxData_Products_TA_SetViewProducts_Params
 {
 	int                                                ViewId;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EProductThumbnailSize>      ThumbnailSize;                                            // (CPF_Parm)
+	TEnumAsByte<EProductThumbnailSize>                 ThumbnailSize;                                            // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Products_TA.GetSortedProductIDsForSlotAndPack
@@ -25385,7 +25385,7 @@ struct UGFxData_Map_TA_OnShellSet_Params
 // Function TAGame.GFxData_OnlineMatch_TA.GetStatusOwnerValue
 struct UGFxData_OnlineMatch_TA_GetStatusOwnerValue_Params
 {
-	TEnumAsByte<enum class SearchStatusOwner>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESearchStatusOwner>                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_OnlineMatch_TA.IsStatusOwner
@@ -25513,7 +25513,7 @@ struct UGFxData_OnlineMatchStatus_TA_OnSearchError_Params
 struct UGFxData_OnlineMatchStatus_TA_OnSearchMessage_Params
 {
 	struct FString                                     Message;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class SearchMessageType>          MessageType;                                              // (CPF_Parm)
+	TEnumAsByte<ESearchMessageType>                    MessageType;                                              // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_OnlineMatchStatus_TA.OnFindGameComplete
@@ -25610,7 +25610,7 @@ struct UGFxData_OnlineMatchStatus_TA_HandlePartySearchStatus_Params
 // Function TAGame.GFxData_OnlineMatchStatus_TA.SetStatusOwner
 struct UGFxData_OnlineMatchStatus_TA_SetStatusOwner_Params
 {
-	TEnumAsByte<enum class SearchStatusOwner>          NewOwner;                                                 // (CPF_Parm)
+	TEnumAsByte<ESearchStatusOwner>                    NewOwner;                                                 // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_OnlineMatchStatus_TA.OnShellSet
@@ -25678,7 +25678,7 @@ struct UGFxData_Matchmaking_TA_HandleDisableCrossPlayChange_Params
 // Function TAGame.GFxData_Matchmaking_TA.GetStatusOwnerValue
 struct UGFxData_Matchmaking_TA_GetStatusOwnerValue_Params
 {
-	TEnumAsByte<enum class SearchStatusOwner>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESearchStatusOwner>                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_Matchmaking_TA.CancelSearch
@@ -26336,7 +26336,7 @@ struct UGFxData_PlayerRecord_TA_PrintDebugInfo_Params
 // Function TAGame.GFxData_PlayerRecord_TA.Report
 struct UGFxData_PlayerRecord_TA_Report_Params
 {
-	TEnumAsByte<enum class EReportPlayerReason>        Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<EReportPlayerReason>                   Reason;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_PlayerRecord_TA.HandleUniqueIdChanged
@@ -26555,7 +26555,7 @@ struct UGFxData_PRI_TA_SetPRI_Params
 // Function TAGame.GFxData_PRI_TA.GetReservationStatusString
 struct UGFxData_PRI_TA_GetReservationStatusString_Params
 {
-	TEnumAsByte<enum class EReservationStatus>         Status;                                                   // (CPF_Parm)
+	TEnumAsByte<EReservationStatus>                    Status;                                                   // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -26580,7 +26580,7 @@ struct UGFxData_PrivateMatch_TA_SetError_Params
 // Function TAGame.GFxData_PrivateMatch_TA.GetStatusOwnerValue
 struct UGFxData_PrivateMatch_TA_GetStatusOwnerValue_Params
 {
-	TEnumAsByte<enum class SearchStatusOwner>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ESearchStatusOwner>                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_PrivateMatch_TA.HandleInviteFriends
@@ -27636,7 +27636,7 @@ struct UGFxData_UserSetting_TA_SetScalarLimits_Params
 // Function TAGame.GFxData_UserSetting_TA.Init
 struct UGFxData_UserSetting_TA_Init_Params
 {
-	TEnumAsByte<enum class EUserSettingType>           inType;                                                   // (CPF_Parm)
+	TEnumAsByte<EUserSettingType>                      inType;                                                   // (CPF_Parm)
 	struct FName                                       InGroup;                                                  // (CPF_Parm)
 	struct FName                                       InID;                                                     // (CPF_Parm)
 	struct FString                                     InDefaultValue;                                           // (CPF_Parm, CPF_NeedCtorLink)
@@ -29027,7 +29027,7 @@ struct UPostProcessManager_TA_ApplyPostProcessTypeOverride_Params
 // Function TAGame.PostProcessManager_TA.SetAAType
 struct UPostProcessManager_TA_SetAAType_Params
 {
-	TEnumAsByte<enum class EPostProcessAAType>         NewType;                                                  // (CPF_Parm)
+	TEnumAsByte<EPostProcessAAType>                    NewType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.PostProcessManager_TA.Init
@@ -29123,7 +29123,7 @@ struct UGFxData_StartMenu_TA_HandleLoginCancelled_Params
 struct UGFxData_StartMenu_TA_HandlePrimaryPlayerLoginFailed_Params
 {
 	unsigned char                                      PlayerNum;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_StartMenu_TA.HandlePrimaryPlayerLoginChange
@@ -29214,14 +29214,14 @@ struct UGFxData_Training_TA_HandleBoostMeterChanged_Params
 // Function TAGame.GFxData_Training_TA.ParseDifficulty
 struct UGFxData_Training_TA_ParseDifficulty_Params
 {
-	TEnumAsByte<enum class EDifficulty>                InDifficulty;                                             // (CPF_Parm)
+	TEnumAsByte<EDifficulty>                           InDifficulty;                                             // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.GFxData_Training_TA.ParseTutorialName
 struct UGFxData_Training_TA_ParseTutorialName_Params
 {
-	TEnumAsByte<enum class ETrainingType>              inType;                                                   // (CPF_Parm)
+	TEnumAsByte<ETrainingType>                         inType;                                                   // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -29443,7 +29443,7 @@ struct AGameEvent_GameEditor_TA_FindActorByName_Params
 struct AGameEvent_GameEditor_TA_RestoreFromHistory_Params
 {
 	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_Parm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_Parm)
 	struct U_Types_TA_FActorHistory                    RestoreHistory;                                           // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -29451,8 +29451,8 @@ struct AGameEvent_GameEditor_TA_RestoreFromHistory_Params
 // Function TAGame.GameEvent_GameEditor_TA.GetOtherHistoryType
 struct AGameEvent_GameEditor_TA_GetOtherHistoryType_Params
 {
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EHistoryType>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_Parm)
+	TEnumAsByte<EHistoryType>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GameEvent_GameEditor_TA.ClampUndoHistory
@@ -29481,7 +29481,7 @@ struct AGameEvent_GameEditor_TA_HistoriesAreEqual_Params
 struct AGameEvent_GameEditor_TA_AddUndoHistory_Params
 {
 	TScriptInterface<class UInterface_GameEditor_TA>   EditorActor;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EHistory>                   HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EHistory>                              HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bClearRedoHistory;                                        // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -29489,9 +29489,9 @@ struct AGameEvent_GameEditor_TA_AddUndoHistory_Params
 // Function TAGame.GameEvent_GameEditor_TA.AddHistory
 struct AGameEvent_GameEditor_TA_AddHistory_Params
 {
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_Parm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_Parm)
 	TScriptInterface<class UInterface_GameEditor_TA>   EditorActor;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EHistory>                   HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EHistory>                              HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bClearRedoHistory;                                        // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -29500,7 +29500,7 @@ struct AGameEvent_GameEditor_TA_AddHistory_Params
 struct AGameEvent_GameEditor_TA_MakeHistory_Params
 {
 	TScriptInterface<class UInterface_GameEditor_TA>   EditorActor;                                              // (CPF_Parm)
-	TEnumAsByte<enum class EHistory>                   HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EHistory>                              HistoryEditType;                                          // (CPF_OptionalParm, CPF_Parm)
 	struct U_Types_TA_FActorHistory                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -29519,7 +29519,7 @@ struct AGameEvent_GameEditor_TA_DeserializeAndSpawn_Params
 {
 	struct FString                                     SerializedData;                                           // (CPF_Parm, CPF_NeedCtorLink)
 	class UClass*                                      ClassType;                                                // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_OptionalParm, CPF_Parm)
 	class AActor*                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -29527,7 +29527,7 @@ struct AGameEvent_GameEditor_TA_DeserializeAndSpawn_Params
 struct AGameEvent_GameEditor_TA_DestroyActor_Params
 {
 	class AActor*                                      A;                                                        // (CPF_Parm)
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_Parm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -29595,7 +29595,7 @@ struct AGameEvent_GameEditor_TA_ResetSpawnLocations_Params
 struct AGameEvent_GameEditor_TA_OnSpawnedArchetype_Params
 {
 	class AActor*                                      SpawnedActor;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EHistoryType>               HistoryType;                                              // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EHistoryType>                          HistoryType;                                              // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.GameEvent_GameEditor_TA.SpawnArchetype
@@ -29726,13 +29726,13 @@ struct AGameEvent_TrainingEditor_TA_GetTotalRounds_Params
 // Function TAGame.GameEvent_TrainingEditor_TA.GetDifficulty
 struct AGameEvent_TrainingEditor_TA_GetDifficulty_Params
 {
-	TEnumAsByte<enum class EDifficulty>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EDifficulty>                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GameEvent_TrainingEditor_TA.GetTrainingType
 struct AGameEvent_TrainingEditor_TA_GetTrainingType_Params
 {
-	TEnumAsByte<enum class ETrainingType>              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ETrainingType>                         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GameEvent_TrainingEditor_TA.Save
@@ -29767,8 +29767,8 @@ struct AGameEvent_TrainingEditor_TA_DuplicateRound_Params
 struct AGameEvent_TrainingEditor_TA_SetMetaData_Params
 {
 	struct FString                                     NewName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETrainingType>              NewType;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EDifficulty>                NewDifficulty;                                            // (CPF_Parm)
+	TEnumAsByte<ETrainingType>                         NewType;                                                  // (CPF_Parm)
+	TEnumAsByte<EDifficulty>                           NewDifficulty;                                            // (CPF_Parm)
 	TArray<int>                                        NewTags;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -30003,7 +30003,7 @@ struct AGameEvent_TrainingEditor_TA_EndPlayTest_Params
 // Function TAGame.GameEvent_TrainingEditor_TA.StartPlayTest
 struct AGameEvent_TrainingEditor_TA_StartPlayTest_Params
 {
-	TEnumAsByte<enum class EPlayTestType>              InPlayTestType;                                           // (CPF_Parm)
+	TEnumAsByte<EPlayTestType>                         InPlayTestType;                                           // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_TrainingEditor_TA.CanPlayTestRoundNumber
@@ -30090,7 +30090,7 @@ struct AGameEvent_TrainingEditor_TA_EventRoundTimeChanged_Params
 // Function TAGame.GFxData_Vote_TA.SetVoteStatus
 struct UGFxData_Vote_TA_SetVoteStatus_Params
 {
-	TEnumAsByte<enum class EVoteStatus>                Status;                                                   // (CPF_Parm)
+	TEnumAsByte<EVoteStatus>                           Status;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Vote_TA.ClearVote
@@ -30149,14 +30149,14 @@ struct ULoadingScreen_TA_GetProtipMessageWithIcons_Params
 	struct FString                                     ProtipMessage;                                            // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     OpenDelimiter;                                            // (CPF_Parm, CPF_NeedCtorLink)
 	struct FString                                     CloseDelimiter;                                           // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInputPlatformType>         InputType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputPlatformType>                    InputType;                                                // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.LoadingScreen_TA.GetProtipInputType
 struct ULoadingScreen_TA_GetProtipInputType_Params
 {
-	TEnumAsByte<enum class EInputPlatformType>         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EInputPlatformType>                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.LoadingScreen_TA.OnLargeImageMapLoaded
@@ -31772,7 +31772,7 @@ struct UPlayerInputSequence_TA_HandleFinalInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -31783,7 +31783,7 @@ struct UPlayerInputSequence_TA_HandleInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                EventType;                                                // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           EventType;                                                // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -32605,7 +32605,7 @@ struct ABall_GameEditor_TA_IsRoundActive_Params
 struct ABall_GameEditor_TA_OnCarTouch_Params
 {
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Ball_GameEditor_TA.OnHitWorld
@@ -32658,7 +32658,7 @@ struct ABall_GameEditor_TA_RecordCarHit_Params
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
 	struct FVector                                     HitLocation;                                              // (CPF_Parm)
 	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
 // Function TAGame.Ball_GameEditor_TA.ShouldDrawTrajectory
@@ -33739,7 +33739,7 @@ struct UTutorial_Dodge_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.Tutorial_Dodge_TA.HandleCarLanded
@@ -34038,21 +34038,21 @@ struct USave_TA_Init_Params
 struct USaveData_GameEditor_Training_TA_GetTrainingFullPath_Params
 {
 	class ULocalPlayer_TA*                             Player;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class ETrainingSaveType>          InSaveType;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     InSaveType;                                               // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingPath
 struct USaveData_GameEditor_Training_TA_GetTrainingPath_Params
 {
-	TEnumAsByte<enum class ETrainingSaveType>          InSaveType;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     InSaveType;                                               // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function TAGame.SaveData_GameEditor_Training_TA.GetTrainingFolder
 struct USaveData_GameEditor_Training_TA_GetTrainingFolder_Params
 {
-	TEnumAsByte<enum class ETrainingSaveType>          InSaveType;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     InSaveType;                                               // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
@@ -34061,7 +34061,7 @@ struct USaveData_GameEditor_Training_TA_GetTrainingSaveType_Params
 {
 	bool                                               bOwned;                                                   // (CPF_Parm)
 	bool                                               bFavorited;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ETrainingSaveType>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ETrainingSaveType>                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.SaveData_GameEditor_Training_TA.GetFullSavePath
@@ -34175,7 +34175,7 @@ struct URPC_ProductsTradeIn_TA_OnComplete_Params
 // Function TAGame.RPC_ProductsTradeIn_TA.SetGameVersion
 struct URPC_ProductsTradeIn_TA_SetGameVersion_Params
 {
-	TEnumAsByte<enum class EGameVersion>               InGameVersion;                                            // (CPF_Parm)
+	TEnumAsByte<EGameVersion>                          InGameVersion;                                            // (CPF_Parm)
 	class URPC_ProductsTradeIn_TA*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -35315,7 +35315,7 @@ struct UGameEvent_Soccar_SubRules_500_TA_Handle500CarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_500_TA.Handle500GroundTouch
@@ -35382,7 +35382,7 @@ struct UGameEvent_Soccar_SubRules_Football_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_Football_TA.SetBallListeners
@@ -35580,7 +35580,7 @@ struct UGameEvent_Soccar_SubRules_TreasureHunt_TA_HandleTreasureHuntCarTouch_Par
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_TreasureHunt_TA.PrepNewBall
@@ -35693,7 +35693,7 @@ struct UGameEvent_Soccar_SubRules_TurnBased_TA_HandleTurnBasedCarTouch_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_TurnBased_TA.SetBallListeners
@@ -36176,7 +36176,7 @@ struct UGFxData_CustomTeams_TA_SetTeamName_Params
 // Function TAGame.GFxData_CustomTeams_TA.SetSettingsType
 struct UGFxData_CustomTeams_TA_SetSettingsType_Params
 {
-	TEnumAsByte<enum class ECustomMatchSettingsType>   Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ECustomMatchSettingsType>              Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_CustomTeams_TA.SaveColors
@@ -36565,7 +36565,7 @@ struct UGFxData_MapPrefs_TA_SetMapPreference_Params
 {
 	struct FName                                       PlaylistId;                                               // (CPF_Parm)
 	struct FName                                       MapID;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EMapPrefType>               Preference;                                               // (CPF_Parm)
+	TEnumAsByte<EMapPrefType>                          Preference;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_MapPrefs_TA.SetPlaylistOverrideGlobal
@@ -36806,7 +36806,7 @@ struct UGFxData_Mutators_TA_GetGameTag_Params
 // Function TAGame.GFxData_Mutators_TA.InitMutators
 struct UGFxData_Mutators_TA_InitMutators_Params
 {
-	TEnumAsByte<enum class ECustomMatchSettingsType>   InSettingsType;                                           // (CPF_Parm)
+	TEnumAsByte<ECustomMatchSettingsType>              InSettingsType;                                           // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_Mutators_TA.OnShellSet
@@ -36829,26 +36829,26 @@ struct UGFxData_PremiumGarage_TA_GetProfile_Params
 // Function TAGame.GFxData_ProductFilter_TA.PopFilterType
 struct UGFxData_ProductFilter_TA_PopFilterType_Params
 {
-	TEnumAsByte<enum class EProductFilterType>         Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.PushFilterType
 struct UGFxData_ProductFilter_TA_PushFilterType_Params
 {
-	TEnumAsByte<enum class EProductFilterType>         Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.UpdateFromType
 struct UGFxData_ProductFilter_TA_UpdateFromType_Params
 {
-	TEnumAsByte<enum class EProductFilterType>         Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.ApplyKeyTradeRestrictionOption
 struct UGFxData_ProductFilter_TA_ApplyKeyTradeRestrictionOption_Params
 {
 	struct FProductFilter                              OutFilter;                                                // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EProductFilterType>         Type;                                                     // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    Type;                                                     // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.ApplyContainerNotificationOption
@@ -36862,7 +36862,7 @@ struct UGFxData_ProductFilter_TA_SetSeriesIDSelected_Params
 {
 	int                                                Row;                                                      // (CPF_Parm)
 	bool                                               bSelected;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.SetAttributeSelected
@@ -36870,7 +36870,7 @@ struct UGFxData_ProductFilter_TA_SetAttributeSelected_Params
 {
 	int                                                Row;                                                      // (CPF_Parm)
 	bool                                               bSelected;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.SetQualitySelected
@@ -36878,7 +36878,7 @@ struct UGFxData_ProductFilter_TA_SetQualitySelected_Params
 {
 	int                                                Row;                                                      // (CPF_Parm)
 	bool                                               bSelected;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.SetSlotSelected
@@ -36886,20 +36886,20 @@ struct UGFxData_ProductFilter_TA_SetSlotSelected_Params
 {
 	int                                                Row;                                                      // (CPF_Parm)
 	bool                                               bSelected;                                                // (CPF_Parm)
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.SetLabel
 struct UGFxData_ProductFilter_TA_SetLabel_Params
 {
 	struct FString                                     NewLabel;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.FilterProducts
 struct UGFxData_ProductFilter_TA_FilterProducts_Params
 {
-	TEnumAsByte<enum class EProductFilterType>         FilterType;                                               // (CPF_Parm)
+	TEnumAsByte<EProductFilterType>                    FilterType;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_ProductFilter_TA.UpdateProductSeriesIDs
@@ -37184,7 +37184,7 @@ struct UGFxData_TrainingMode_TA_HandleUnpublish_Params
 // Function TAGame.GFxData_TrainingMode_TA.OnDelete
 struct UGFxData_TrainingMode_TA_OnDelete_Params
 {
-	TEnumAsByte<enum class ETrainingSaveType>          CurrentTab;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     CurrentTab;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingMode_TA.ForceDelete
@@ -37309,7 +37309,7 @@ struct UGFxData_TrainingMode_TA_HandleSaveResult_Params
 struct UGFxData_TrainingMode_TA_NotifySaveErrors_Params
 {
 	class UError_X*                                    Error;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class ESaveGameResult>            SaveResult;                                               // (CPF_Parm)
+	TEnumAsByte<ESaveGameResult>                       SaveResult;                                               // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -37423,14 +37423,14 @@ struct UGFxData_TrainingModeBrowser_TA_GetDownloadedFilename_Params
 struct UGFxData_TrainingModeBrowser_TA_DeleteTrainingMode_Params
 {
 	int                                                RowIndex;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ETrainingSaveType>          CurrentTab;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     CurrentTab;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingModeBrowser_TA.DeleteTrainingModeData
 struct UGFxData_TrainingModeBrowser_TA_DeleteTrainingModeData_Params
 {
 	class UGFxData_TrainingMode_TA*                    TrainingMode;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ETrainingSaveType>          CurrentTab;                                               // (CPF_Parm)
+	TEnumAsByte<ETrainingSaveType>                     CurrentTab;                                               // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingModeBrowser_TA.OnTrainingModesReady
@@ -37449,7 +37449,7 @@ struct UGFxData_TrainingModeBrowser_TA_SetTrainingFiles_Params
 struct UGFxData_TrainingModeBrowser_TA_HandleHeaders_Params
 {
 	TArray<struct FString>                             Files;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingModeBrowser_TA.HandleFavoritesLoaded
@@ -37509,7 +37509,7 @@ struct UGFxData_TrainingModeBrowser_TA_OnSearchCodeResults_Params
 struct UGFxData_TrainingModeBrowser_TA_HandleOnlineHeaders_Params
 {
 	TArray<struct FString>                             LocalFiles;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 	bool                                               bFeaturedOnly;                                            // (CPF_Parm)
 };
 
@@ -37517,14 +37517,14 @@ struct UGFxData_TrainingModeBrowser_TA_HandleOnlineHeaders_Params
 struct UGFxData_TrainingModeBrowser_TA_HandleLoadFeaturedHeaders_Params
 {
 	TArray<struct FString>                             LocalFiles;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingModeBrowser_TA.HandleLoadAllPublicHeaders
 struct UGFxData_TrainingModeBrowser_TA_HandleLoadAllPublicHeaders_Params
 {
 	TArray<struct FString>                             LocalFiles;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.GFxData_TrainingModeBrowser_TA.LoadIfFavorited
@@ -37632,8 +37632,8 @@ struct UGFxData_TrainingModeBrowser_TA_HandleLocalTrainingModeSaved_Params
 struct UGFxData_TrainingModeBrowser_TA_CreateNew_Params
 {
 	struct FString                                     NewName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETrainingType>              NewType;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EDifficulty>                NewDifficulty;                                            // (CPF_Parm)
+	TEnumAsByte<ETrainingType>                         NewType;                                                  // (CPF_Parm)
+	TEnumAsByte<EDifficulty>                           NewDifficulty;                                            // (CPF_Parm)
 	struct FName                                       MapName;                                                  // (CPF_Parm)
 	TArray<int>                                        Tags;                                                     // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -37666,7 +37666,7 @@ struct UGFxData_TrainingModeBrowser_TA_NotifyWhenFavoritesLoaded_Params
 struct UGFxData_TrainingModeBrowser_TA_HandleFavorites_Params
 {
 	TArray<struct FString>                             Files;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EBasicLoadResult>           Result;                                                   // (CPF_Parm)
+	TEnumAsByte<EBasicLoadResult>                      Result;                                                   // (CPF_Parm)
 	struct FFavoritedFileMetaData                      StructInitializer__s_A77E7F66489416A4903ED0B846182119;    // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
@@ -37838,8 +37838,8 @@ struct UGFxData_TrainingModeEditor_TA_SetActiveRound_Params
 struct UGFxData_TrainingModeEditor_TA_SetMetaData_Params
 {
 	struct FString                                     NewName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETrainingType>              NewType;                                                  // (CPF_Parm)
-	TEnumAsByte<enum class EDifficulty>                NewDifficulty;                                            // (CPF_Parm)
+	TEnumAsByte<ETrainingType>                         NewType;                                                  // (CPF_Parm)
+	TEnumAsByte<EDifficulty>                           NewDifficulty;                                            // (CPF_Parm)
 	TArray<int>                                        NewTags;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -38210,7 +38210,7 @@ struct URPC_ProductsDebugAddPainted_TA_OnSuccess_Params
 // Function TAGame.RPC_ProductsDebugAddPainted_TA.SetGameVersion
 struct URPC_ProductsDebugAddPainted_TA_SetGameVersion_Params
 {
-	TEnumAsByte<enum class EGameVersion>               InGameVersion;                                            // (CPF_Parm)
+	TEnumAsByte<EGameVersion>                          InGameVersion;                                            // (CPF_Parm)
 	class URPC_ProductsDebugAddPainted_TA*             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -38255,7 +38255,7 @@ struct URPC_ProductsDebugAddRandom_TA_OnSuccess_Params
 // Function TAGame.RPC_ProductsDebugAddRandom_TA.SetGameVersion
 struct URPC_ProductsDebugAddRandom_TA_SetGameVersion_Params
 {
-	TEnumAsByte<enum class EGameVersion>               InGameVersion;                                            // (CPF_Parm)
+	TEnumAsByte<EGameVersion>                          InGameVersion;                                            // (CPF_Parm)
 	class URPC_ProductsDebugAddRandom_TA*              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -38456,7 +38456,7 @@ struct ASpecialAttachment_TA_OnRigidBodyCollision_Params
 struct ASpecialAttachment_TA_AttachToCar_Params
 {
 	class ACar_TA*                                     InCar;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EProductAttachmentSocket>   InSocket;                                                 // (CPF_Parm)
+	TEnumAsByte<EProductAttachmentSocket>              InSocket;                                                 // (CPF_Parm)
 };
 
 // Function TAGame.SpecialAttachment_TA.Destroyed
@@ -38484,7 +38484,7 @@ struct ASpecialPickup_Spring_TA_HandleCarTouchedBall_Params
 {
 	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
 	class ACar_TA*                                     OtherCar;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.SpecialPickup_Spring_TA.ScaleSpringMeshToLocation
@@ -38580,7 +38580,7 @@ struct ASpecialPickup_BallFreeze_TA_HandleBallHit_Params
 {
 	class ABall_TA*                                    InBall;                                                   // (CPF_Parm)
 	class ACar_TA*                                     InCar;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.SpecialPickup_BallFreeze_TA.RemovePickupFX
@@ -38708,7 +38708,7 @@ struct ASpecialPickup_BallVelcro_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    InBall;                                                   // (CPF_Parm)
 	class ACar_TA*                                     InCar;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.SpecialPickup_BallVelcro_TA.PickupEnd
@@ -38766,7 +38766,7 @@ struct ASpecialPickup_Basketball_TA_HandleCarTouch_Params
 {
 	class ABall_TA*                                    InBall;                                                   // (CPF_Parm)
 	class ACar_TA*                                     InCar;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class EBallHitType>               HitType;                                                  // (CPF_Parm)
+	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
 };
 
 // Function TAGame.SpecialPickup_Basketball_TA.PickupStart

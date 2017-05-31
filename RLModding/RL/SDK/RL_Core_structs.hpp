@@ -9,6 +9,196 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
+//Constants
+//---------------------------------------------------------------------------
+
+#define CONST_UpVector                                           Vect(0,0,1)
+#define CONST_RightVector                                        Vect(0,1,0)
+#define CONST_ForwardVector                                      Vect(1,0,0)
+#define CONST_AspectRatio5x4                                     1.25
+#define CONST_RadToDeg                                           57.295779513082321600
+#define CONST_InvAspectRatio16x9                                 0.56249
+#define CONST_InvAspectRatio5x4                                  0.8
+#define CONST_AspectRatio16x9                                    1.77778
+#define CONST_InvAspectRatio4x3                                  0.75
+#define CONST_AspectRatio4x3                                     1.33333
+#define CONST_INDEX_NONE                                         -1
+#define CONST_UnrRotToDeg                                        0.00549316540360483
+#define CONST_DegToUnrRot                                        182.0444
+#define CONST_RadToUnrRot                                        10430.3783504704527
+#define CONST_UnrRotToRad                                        0.00009587379924285
+#define CONST_DegToRad                                           0.017453292519943296
+#define CONST_Pi                                                 3.1415926535897932
+#define CONST_MaxInt                                             0x7fffffff
+
+//---------------------------------------------------------------------------
+//Enums
+//---------------------------------------------------------------------------
+
+// Enum Core.Object.EEdition
+enum class EEdition
+{
+	Edition_Default                = 0,
+	Edition_Penguin                = 1,
+	Edition_MAX                    = 2
+};
+
+
+// Enum Core.Object.EDebugBreakType
+enum class EDebugBreakType
+{
+	DEBUGGER_NativeOnly            = 0,
+	DEBUGGER_ScriptOnly            = 1,
+	DEBUGGER_Both                  = 2,
+	DEBUGGER_MAX                   = 3
+};
+
+
+// Enum Core.Object.EAspectRatioAxisConstraint
+enum class EAspectRatioAxisConstraint
+{
+	AspectRatio_MaintainYFOV       = 0,
+	AspectRatio_MaintainXFOV       = 1,
+	AspectRatio_MajorAxisFOV       = 2,
+	AspectRatio_MAX                = 3
+};
+
+
+// Enum Core.Object.EAutomatedRunResult
+enum class EAutomatedRunResult
+{
+	ARR_Unknown                    = 0,
+	ARR_OOM                        = 1,
+	ARR_Passed                     = 2,
+	ARR_MAX                        = 3
+};
+
+
+// Enum Core.Object.EInterpCurveMode
+enum class EInterpCurveMode
+{
+	CIM_Linear                     = 0,
+	CIM_CurveAuto                  = 1,
+	CIM_Constant                   = 2,
+	CIM_CurveUser                  = 3,
+	CIM_CurveBreak                 = 4,
+	CIM_CurveAutoClamped           = 5,
+	CIM_MAX                        = 6
+};
+
+
+// Enum Core.Object.EInterpMethodType
+enum class EInterpMethodType
+{
+	IMT_UseFixedTangentEvalAndNewAutoTangents = 0,
+	IMT_UseFixedTangentEval        = 1,
+	IMT_UseBrokenTangentEval       = 2,
+	IMT_MAX                        = 3
+};
+
+
+// Enum Core.Object.EAxis
+enum class EAxis
+{
+	AXIS_NONE                      = 0,
+	AXIS_X                         = 1,
+	AXIS_Y                         = 2,
+	AXIS_BLANK                     = 3,
+	AXIS_Z                         = 4,
+	AXIS_MAX                       = 5
+};
+
+
+// Enum Core.Object.ETickingGroup
+enum class ETickingGroup
+{
+	TG_PreAsyncWork                = 0,
+	TG_DuringAsyncWork             = 1,
+	TG_PostAsyncWork               = 2,
+	TG_PostUpdateWork              = 3,
+	TG_EffectsUpdateWork           = 4,
+	TG_MAX                         = 5
+};
+
+
+// Enum Core.Object.EInputEvent
+enum class EInputEvent
+{
+	IE_Pressed                     = 0,
+	IE_Released                    = 1,
+	IE_Repeat                      = 2,
+	IE_DoubleClick                 = 3,
+	IE_Axis                        = 4,
+	IE_MAX                         = 5
+};
+
+
+// Enum Core.Object.AlphaBlendType
+enum class EAlphaBlendType
+{
+	ABT_Linear                     = 0,
+	ABT_Cubic                      = 1,
+	ABT_Sinusoidal                 = 2,
+	ABT_EaseInOutExponent2         = 3,
+	ABT_EaseInOutExponent3         = 4,
+	ABT_EaseInOutExponent4         = 5,
+	ABT_EaseInOutExponent5         = 6,
+	ABT_MAX                        = 7
+};
+
+
+// Enum Core.DistributionVector.EDistributionVectorLockFlags
+enum class EDistributionVectorLockFlags
+{
+	EDVLF_None                     = 0,
+	EDVLF_XY                       = 1,
+	EDVLF_XZ                       = 2,
+	EDVLF_YZ                       = 3,
+	EDVLF_XYZ                      = 4,
+	EDVLF_MAX                      = 5
+};
+
+
+// Enum Core.DistributionVector.EDistributionVectorMirrorFlags
+enum class EDistributionVectorMirrorFlags
+{
+	EDVMF_Same                     = 0,
+	EDVMF_Different                = 1,
+	EDVMF_Mirror                   = 2,
+	EDVMF_MAX                      = 3
+};
+
+
+// Enum Core.GameVersion.EGameVersion
+enum class EGameVersion
+{
+	GameVersion_Launch             = 0,
+	GameVersion_SupersonicFury     = 1,
+	GameVersion                    = 2,
+	GameVersion_Revenge            = 3,
+	GameVersion_GrayCar            = 4,
+	GameVersion01                  = 5,
+	GameVersion02                  = 6,
+	GameVersion_Wasteland          = 7,
+	GameVersion_Update8            = 8,
+	GameVersion_DarkCar            = 9,
+	GameVersion_Update9            = 10,
+	GameVersion_Update10           = 11,
+	GameVersion_NeoTokyo           = 12,
+	GameVersion_Retail             = 13,
+	GameVersion_Update11           = 14,
+	GameVersion_Update12           = 15,
+	GameVersion_Update13           = 16,
+	GameVersion_Update14           = 17,
+	GameVersion_Update15           = 18,
+	GameVersion_Update16           = 19,
+	GameVersion_Unreleased         = 20,
+	GameVersion_MAX                = 21
+};
+
+
+
+//---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
@@ -155,7 +345,7 @@ struct FInterpCurvePointVector2D
 	struct FVector2D                                   OutVal;                                                   // 0x0004(0x0008) (CPF_Edit)
 	struct FVector2D                                   ArriveTangent;                                            // 0x000C(0x0008) (CPF_Edit)
 	struct FVector2D                                   LeaveTangent;                                             // 0x0014(0x0008) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x001C(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x001C(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveVector2D
@@ -163,7 +353,7 @@ struct FInterpCurvePointVector2D
 struct FInterpCurveVector2D
 {
 	TArray<struct FInterpCurvePointVector2D>           Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.InterpCurvePointFloat
@@ -174,7 +364,7 @@ struct FInterpCurvePointFloat
 	float                                              OutVal;                                                   // 0x0004(0x0004) (CPF_Edit)
 	float                                              ArriveTangent;                                            // 0x0008(0x0004) (CPF_Edit)
 	float                                              LeaveTangent;                                             // 0x000C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x0010(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x0010(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveFloat
@@ -182,7 +372,7 @@ struct FInterpCurvePointFloat
 struct FInterpCurveFloat
 {
 	TArray<struct FInterpCurvePointFloat>              Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.Cylinder
@@ -201,7 +391,7 @@ struct FInterpCurvePointVector
 	struct FVector                                     OutVal;                                                   // 0x0004(0x000C) (CPF_Edit)
 	struct FVector                                     ArriveTangent;                                            // 0x0010(0x000C) (CPF_Edit)
 	struct FVector                                     LeaveTangent;                                             // 0x001C(0x000C) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x0028(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x0028(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveVector
@@ -209,7 +399,7 @@ struct FInterpCurvePointVector
 struct FInterpCurveVector
 {
 	TArray<struct FInterpCurvePointVector>             Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.Quat
@@ -258,7 +448,7 @@ struct FTAlphaBlend
 	float                                              AlphaTarget;                                              // 0x0008(0x0004) (CPF_Edit)
 	float                                              BlendTime;                                                // 0x000C(0x0004) (CPF_Edit)
 	float                                              BlendTimeToGo;                                            // 0x0010(0x0004) (CPF_Const)
-	TEnumAsByte<enum class AlphaBlendType>             BlendType;                                                // 0x0014(0x0001) (CPF_Edit)
+	TEnumAsByte<EAlphaBlendType>                       BlendType;                                                // 0x0014(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.BoneAtom
@@ -313,7 +503,7 @@ struct FInterpCurvePointLinearColor
 	struct FLinearColor                                OutVal;                                                   // 0x0004(0x0010) (CPF_Edit)
 	struct FLinearColor                                ArriveTangent;                                            // 0x0014(0x0010) (CPF_Edit)
 	struct FLinearColor                                LeaveTangent;                                             // 0x0024(0x0010) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x0034(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x0034(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveLinearColor
@@ -321,7 +511,7 @@ struct FInterpCurvePointLinearColor
 struct FInterpCurveLinearColor
 {
 	TArray<struct FInterpCurvePointLinearColor>        Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.InterpCurvePointQuat
@@ -333,7 +523,7 @@ struct FInterpCurvePointQuat
 	struct FQuat                                       OutVal;                                                   // 0x0010(0x0010) (CPF_Edit)
 	struct FQuat                                       ArriveTangent;                                            // 0x0020(0x0010) (CPF_Edit)
 	struct FQuat                                       LeaveTangent;                                             // 0x0030(0x0010) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x0040(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x0040(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveQuat
@@ -341,7 +531,7 @@ struct FInterpCurvePointQuat
 struct FInterpCurveQuat
 {
 	TArray<struct FInterpCurvePointQuat>               Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.InterpCurvePointTwoVectors
@@ -352,7 +542,7 @@ struct FInterpCurvePointTwoVectors
 	struct FTwoVectors                                 OutVal;                                                   // 0x0004(0x0018) (CPF_Edit)
 	struct FTwoVectors                                 ArriveTangent;                                            // 0x001C(0x0018) (CPF_Edit)
 	struct FTwoVectors                                 LeaveTangent;                                             // 0x0034(0x0018) (CPF_Edit)
-	TEnumAsByte<enum class EInterpCurveMode>           InterpMode;                                               // 0x004C(0x0001) (CPF_Edit)
+	TEnumAsByte<EInterpCurveMode>                      InterpMode;                                               // 0x004C(0x0001) (CPF_Edit)
 };
 
 // ScriptStruct Core.Object.InterpCurveTwoVectors
@@ -360,7 +550,7 @@ struct FInterpCurvePointTwoVectors
 struct FInterpCurveTwoVectors
 {
 	TArray<struct FInterpCurvePointTwoVectors>         Points;                                                   // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EInterpMethodType>          InterpMethod;                                             // 0x000C(0x0001)
+	TEnumAsByte<EInterpMethodType>                     InterpMethod;                                             // 0x000C(0x0001)
 };
 
 // ScriptStruct Core.Object.Box

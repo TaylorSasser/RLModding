@@ -9,301 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Constants
-//---------------------------------------------------------------------------
-
-#define CONST_PLAYER_MATCH                                       0
-#define CONST_UNRANKEDPROVIDERTAG                                "PlaylistsUnranked"
-#define CONST_RANKED_MATCH                                       1
-#define CONST_REC_MATCH                                          2
-#define CONST_PRIVATE_MATCH                                      3
-#define CONST_RECMODEPROVIDERTAG                                 "PlaylistsRecMode"
-#define CONST_RANKEDPROVIDERTAG                                  "PlaylistsRanked"
-#define CONST_PRIVATEPROVIDERTAG                                 "PlaylistsPrivate"
-
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum IpDrv.InternetLink.ELinkMode
-enum class ELinkMode
-{
-	MODE_Text                      = 0,
-	MODE_Line                      = 1,
-	MODE_Binary                    = 2,
-	MODE_MAX                       = 3
-};
-
-
-// Enum IpDrv.InternetLink.EReceiveMode
-enum class EReceiveMode
-{
-	RMODE_Manual                   = 0,
-	RMODE_Event                    = 1,
-	RMODE_MAX                      = 2
-};
-
-
-// Enum IpDrv.InternetLink.ELineMode
-enum class ELineMode
-{
-	LMODE_auto                     = 0,
-	LMODE_DOS                      = 1,
-	LMODE_UNIX                     = 2,
-	LMODE_MAC                      = 3,
-	LMODE_MAX                      = 4
-};
-
-
-// Enum IpDrv.McpClashMobBase.McpChallengeFileStatus
-enum class McpChallengeFileStatus
-{
-	MCFS_NotStarted                = 0,
-	MCFS_Pending                   = 1,
-	MCFS_Success                   = 2,
-	MCFS_Failed                    = 3,
-	MCFS_MAX                       = 4
-};
-
-
-// Enum IpDrv.OnlineTitleFileDownloadBase.EMcpFileCompressionType
-enum class EMcpFileCompressionType
-{
-	MFCT_NONE                      = 0,
-	MFCT_ZLIB                      = 1,
-	MFCT_MAX                       = 2
-};
-
-
-// Enum IpDrv.McpGroupsBase.EMcpGroupAccessLevel
-enum class EMcpGroupAccessLevel
-{
-	MGAL_Owner                     = 0,
-	MGAL_Member                    = 1,
-	MGAL_Public                    = 2,
-	MGAL_MAX                       = 3
-};
-
-
-// Enum IpDrv.McpGroupsBase.EMcpGroupAcceptState
-enum class EMcpGroupAcceptState
-{
-	MGAS_Error                     = 0,
-	MGAS_Pending                   = 1,
-	MGAS_Accepted                  = 2,
-	MGAS_MAX                       = 3
-};
-
-
-// Enum IpDrv.McpMessageBase.EMcpMessageCompressionType
-enum class EMcpMessageCompressionType
-{
-	MMCT_NONE                      = 0,
-	MMCT_LZO                       = 1,
-	MMCT_ZLIB                      = 2,
-	MMCT_MAX                       = 3
-};
-
-
-// Enum IpDrv.MeshBeacon.EMeshBeaconPacketType
-enum class EMeshBeaconPacketType
-{
-	MB_Packet_UnknownType          = 0,
-	MB_Packet_ClientNewConnectionRequest = 1,
-	MB_Packet_ClientBeginBandwidthTest = 2,
-	MB_Packet_ClientCreateNewSessionResponse = 3,
-	MB_Packet_HostNewConnectionResponse = 4,
-	MB_Packet_HostBandwidthTestRequest = 5,
-	MB_Packet_HostCompletedBandwidthTest = 6,
-	MB_Packet_HostTravelRequest    = 7,
-	MB_Packet_HostCreateNewSessionRequest = 8,
-	MB_Packet_DummyData            = 9,
-	MB_Packet_Heartbeat            = 10,
-	MB_Packet_MAX                  = 11
-};
-
-
-// Enum IpDrv.MeshBeacon.EMeshBeaconConnectionResult
-enum class EMeshBeaconConnectionResult
-{
-	MB_ConnectionResult_Succeeded  = 0,
-	MB_ConnectionResult_Duplicate  = 1,
-	MB_ConnectionResult_Timeout    = 2,
-	MB_ConnectionResult_Error      = 3,
-	MB_ConnectionResult_MAX        = 4
-};
-
-
-// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestState
-enum class EMeshBeaconBandwidthTestState
-{
-	MB_BandwidthTestState_NotStarted = 0,
-	MB_BandwidthTestState_RequestPending = 1,
-	MB_BandwidthTestState_StartPending = 2,
-	MB_BandwidthTestState_InProgress = 3,
-	MB_BandwidthTestState_Completed = 4,
-	MB_BandwidthTestState_Incomplete = 5,
-	MB_BandwidthTestState_Timeout  = 6,
-	MB_BandwidthTestState_Error    = 7,
-	MB_BandwidthTestState_MAX      = 8
-};
-
-
-// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestResult
-enum class EMeshBeaconBandwidthTestResult
-{
-	MB_BandwidthTestResult_Succeeded = 0,
-	MB_BandwidthTestResult_Timeout = 1,
-	MB_BandwidthTestResult_Error   = 2,
-	MB_BandwidthTestResult_MAX     = 3
-};
-
-
-// Enum IpDrv.MeshBeacon.EMeshBeaconBandwidthTestType
-enum class EMeshBeaconBandwidthTestType
-{
-	MB_BandwidthTestType_Upstream  = 0,
-	MB_BandwidthTestType_Downstream = 1,
-	MB_BandwidthTestType_RoundtripLatency = 2,
-	MB_BandwidthTestType_MAX       = 3
-};
-
-
-// Enum IpDrv.MeshBeaconClient.EMeshBeaconClientState
-enum class EMeshBeaconClientState
-{
-	MBCS_None                      = 0,
-	MBCS_Connecting                = 1,
-	MBCS_Connected                 = 2,
-	MBCS_ConnectionFailed          = 3,
-	MBCS_AwaitingResponse          = 4,
-	MBCS_Closed                    = 5,
-	MBCS_MAX                       = 6
-};
-
-
-// Enum IpDrv.OnlineEventsInterfaceMcp.EEventUploadType
-enum class EEventUploadType
-{
-	EUT_GenericStats               = 0,
-	EUT_ProfileData                = 1,
-	EUT_MatchmakingData            = 2,
-	EUT_PlaylistPopulation         = 3,
-	EUT_MAX                        = 4
-};
-
-
-// Enum IpDrv.OnlineImageDownloaderWeb.EOnlineImageDownloadState
-enum class EOnlineImageDownloadState
-{
-	PIDS_NotStarted                = 0,
-	PIDS_Downloading               = 1,
-	PIDS_Succeeded                 = 2,
-	PIDS_Failed                    = 3,
-	PIDS_MAX                       = 4
-};
-
-
-// Enum IpDrv.PartyBeacon.EReservationPacketType
-enum class EReservationPacketType
-{
-	RPT_UnknownPacketType          = 0,
-	RPT_ClientReservationRequest   = 1,
-	RPT_ClientReservationUpdateRequest = 2,
-	RPT_ClientCancellationRequest  = 3,
-	RPT_HostReservationResponse    = 4,
-	RPT_HostReservationCountUpdate = 5,
-	RPT_HostTravelRequest          = 6,
-	RPT_HostIsReady                = 7,
-	RPT_HostHasCancelled           = 8,
-	RPT_Heartbeat                  = 9,
-	RPT_MAX                        = 10
-};
-
-
-// Enum IpDrv.PartyBeacon.EPartyReservationResult
-enum class EPartyReservationResult
-{
-	PRR_GeneralError               = 0,
-	PRR_PartyLimitReached          = 1,
-	PRR_IncorrectPlayerCount       = 2,
-	PRR_RequestTimedOut            = 3,
-	PRR_ReservationDuplicate       = 4,
-	PRR_ReservationNotFound        = 5,
-	PRR_ReservationAccepted        = 6,
-	PRR_ReservationDenied          = 7,
-	PRR_MAX                        = 8
-};
-
-
-// Enum IpDrv.PartyBeaconClient.EPartyBeaconClientRequest
-enum class EPartyBeaconClientRequest
-{
-	PBClientRequest_NewReservation = 0,
-	PBClientRequest_UpdateReservation = 1,
-	PBClientRequest_MAX            = 2
-};
-
-
-// Enum IpDrv.PartyBeaconClient.EPartyBeaconClientState
-enum class EPartyBeaconClientState
-{
-	PBCS_None                      = 0,
-	PBCS_Connecting                = 1,
-	PBCS_Connected                 = 2,
-	PBCS_ConnectionFailed          = 3,
-	PBCS_AwaitingResponse          = 4,
-	PBCS_Closed                    = 5,
-	PBCS_MAX                       = 6
-};
-
-
-// Enum IpDrv.PartyBeaconHost.EPartyBeaconHostState
-enum class EPartyBeaconHostState
-{
-	PBHS_AllowReservations         = 0,
-	PBHS_DenyReservations          = 1,
-	PBHS_MAX                       = 2
-};
-
-
-// Enum IpDrv.TcpLink.ELinkState
-enum class ELinkState
-{
-	STATE_Initialized              = 0,
-	STATE_Ready                    = 1,
-	STATE_Listening                = 2,
-	STATE_Connecting               = 3,
-	STATE_Connected                = 4,
-	STATE_ListenClosePending       = 5,
-	STATE_ConnectClosePending      = 6,
-	STATE_ListenClosing            = 7,
-	STATE_ConnectClosing           = 8,
-	STATE_MAX                      = 9
-};
-
-
-// Enum IpDrv.TitleFileDownloadCache.ETitleFileFileOp
-enum class ETitleFileFileOp
-{
-	TitleFile_None                 = 0,
-	TitleFile_Save                 = 1,
-	TitleFile_Load                 = 2,
-	TitleFile_MAX                  = 3
-};
-
-
-// Enum IpDrv.WebRequest.ERequestType
-enum class ERequestType
-{
-	Request_GET                    = 0,
-	Request_POST                   = 1,
-	Request_MAX                    = 2
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -410,10 +115,10 @@ public:
 class AInternetLink : public AInfo
 {
 public:
-	TEnumAsByte<enum class ELinkMode>                  LinkMode;                                                 // 0x01EC(0x0001)
-	TEnumAsByte<enum class ELineMode>                  InLineMode;                                               // 0x01ED(0x0001)
-	TEnumAsByte<enum class ELineMode>                  OutLineMode;                                              // 0x01EE(0x0001)
-	TEnumAsByte<enum class EReceiveMode>               ReceiveMode;                                              // 0x01EF(0x0001)
+	TEnumAsByte<ELinkMode>                             LinkMode;                                                 // 0x01EC(0x0001)
+	TEnumAsByte<ELineMode>                             InLineMode;                                               // 0x01ED(0x0001)
+	TEnumAsByte<ELineMode>                             OutLineMode;                                              // 0x01EE(0x0001)
+	TEnumAsByte<EReceiveMode>                          ReceiveMode;                                              // 0x01EF(0x0001)
 	struct FPointer                                    Socket;                                                   // 0x01F0(0x0004) (CPF_Const)
 	int                                                Port;                                                     // 0x01F4(0x0004) (CPF_Const)
 	struct FPointer                                    RemoteSocket;                                             // 0x01F8(0x0004) (CPF_Const)
@@ -444,8 +149,7 @@ public:
 class ATcpLink : public AInternetLink
 {
 public:
-	TEnumAsByte<enum class ELinkState>                 LinkState;                                                // 0x0204(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0205(0x0003) MISSED OFFSET
+	TEnumAsByte<ELinkState>                            LinkState;                                                // 0x0204(0x0001)
 	struct FIpAddr                                     RemoteAddr;                                               // 0x0208(0x0014)
 	class UClass*                                      AcceptClass;                                              // 0x021C(0x0004)
 	TArray<unsigned char>                              SendFIFO;                                                 // 0x0220(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -521,7 +225,7 @@ class UOnlineEventsInterfaceMcp : public UMCPBase
 public:
 	TArray<struct FEventUploadConfig>                  EventUploadConfigs;                                       // 0x0050(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
 	TArray<struct FPointer>                            MCPEventPostObjects;                                      // 0x005C(0x000C) (CPF_Const, CPF_Native)
-	TArray<TEnumAsByte<enum class EEventUploadType>>   DisabledUploadTypes;                                      // 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EEventUploadType>>              DisabledUploadTypes;                                      // 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	unsigned long                                      bBinaryStats : 1;                                         // 0x0074(0x0004) (CPF_Const, CPF_Config)
 
 	static UClass* StaticClass()
@@ -556,11 +260,11 @@ public:
 	}
 
 
-	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType);
+	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadGameNewsDelegate);
 	void AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
-	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<enum class EOnlineNewsType> NewsType);
-	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<enum class EOnlineNewsType> NewsType);
+	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
+	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -595,11 +299,11 @@ public:
 	bool RequestTitleFileList();
 	bool ClearDownloadedFile(const struct FString& Filename);
 	bool ClearDownloadedFiles();
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType);
+	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 	void OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 };
 
@@ -621,9 +325,9 @@ public:
 
 	bool ClearDownloadedFile(const struct FString& Filename);
 	bool ClearDownloadedFiles();
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType);
+	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 };
 
 
@@ -646,12 +350,12 @@ public:
 	bool RequestTitleFileList();
 	bool ClearDownloadedFile(const struct FString& Filename);
 	bool ClearDownloadedFiles();
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void TriggerDelegates(bool bSuccess, const struct FString& FileRead);
 	void OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<enum class EOnlineFileType> FileType);
-	bool UncompressTitleFileContents(TEnumAsByte<enum class EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents);
+	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
+	bool UncompressTitleFileContents(TEnumAsByte<EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents);
 };
 
 
@@ -681,7 +385,7 @@ public:
 	bool ClearCachedFiles();
 	struct FString GetTitleFileLogicalName(const struct FString& Filename);
 	struct FString GetTitleFileHash(const struct FString& Filename);
-	TEnumAsByte<enum class EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
 	void AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
@@ -700,18 +404,17 @@ class UMcpMessageBase : public UMcpServiceBase
 {
 public:
 	struct FString                                     McpMessageManagerClassName;                               // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpMessageCompressionType> CompressionType;                                          // 0x0058(0x0001) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0059(0x0003) MISSED OFFSET
+	TEnumAsByte<EMcpMessageCompressionType>            CompressionType;                                          // 0x0058(0x0001) (CPF_Config)
 	TArray<struct FMcpMessageContents>                 MessageContentsList;                                      // 0x005C(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FMcpMessageList>                     MessageLists;                                             // 0x0068(0x000C) (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnCreateMessageComplete__Delegate;                      // 0x0074(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnDeleteMessageComplete__Delegate;                      // 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnQueryMessagesComplete__Delegate;                      // 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnQueryMessageContentsComplete__Delegate;               // 0x00A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -771,8 +474,8 @@ public:
 	void OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents);
 	void FinishedAsyncUncompression(bool bWasSuccessful, const struct FString& MessageId, TArray<unsigned char>* UncompressedMessageContents);
-	bool StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent);
-	bool StartAsyncCompression(TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent);
+	bool StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent);
+	bool StartAsyncCompression(TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent);
 };
 
 
@@ -880,9 +583,8 @@ public:
 	struct FOnlineGameSearchResult                     HostPendingRequest;                                       // 0x0078(0x0008) (CPF_Const)
 	struct FClientConnectionRequest                    ClientPendingRequest;                                     // 0x0080(0x004C) (CPF_Const, CPF_NeedCtorLink)
 	struct FClientBandwidthTestData                    CurrentBandwidthTest;                                     // 0x00CC(0x0014)
-	TEnumAsByte<enum class EMeshBeaconClientState>     ClientBeaconState;                                        // 0x00E0(0x0001)
-	TEnumAsByte<enum class EMeshBeaconPacketType>      ClientBeaconRequestType;                                  // 0x00E1(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00E2(0x0002) MISSED OFFSET
+	TEnumAsByte<EMeshBeaconClientState>                ClientBeaconState;                                        // 0x00E0(0x0001)
+	TEnumAsByte<EMeshBeaconPacketType>                 ClientBeaconRequestType;                                  // 0x00E1(0x0001)
 	float                                              ConnectionRequestTimeout;                                 // 0x00E4(0x0004) (CPF_Config)
 	float                                              ConnectionRequestElapsedTime;                             // 0x00E8(0x0004)
 	struct FString                                     ResolverClassName;                                        // 0x00EC(0x000C) (CPF_Config, CPF_NeedCtorLink)
@@ -890,15 +592,15 @@ public:
 	class UClientBeaconAddressResolver*                Resolver;                                                 // 0x00FC(0x0004)
 	unsigned long                                      bUsingRegisteredAddr : 1;                                 // 0x0100(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __OnConnectionRequestResult__Delegate;                    // 0x0104(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnReceivedBandwidthTestRequest__Delegate;               // 0x0114(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnReceivedBandwidthTestResults__Delegate;               // 0x0124(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0124(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0124(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;                      // 0x0134(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0134(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0134(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnCreateNewSessionRequestReceived__Delegate;            // 0x0144(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -910,10 +612,10 @@ public:
 	bool SendHostNewGameSessionResponse(bool bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnCreateNewSessionRequestReceived(const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
-	void OnReceivedBandwidthTestResults(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
-	void OnReceivedBandwidthTestRequest(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType);
-	void OnConnectionRequestResult(TEnumAsByte<enum class EMeshBeaconConnectionResult> ConnectionResult);
-	bool BeginBandwidthTest(TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	void OnReceivedBandwidthTestResults(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
+	void OnReceivedBandwidthTestRequest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
+	void OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult);
+	bool BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
 	bool RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest);
 	void DestroyBeacon();
 };
@@ -954,15 +656,15 @@ public:
 	bool AllPlayersConnected(TArray<struct FUniqueNetId>* Players);
 	int GetConnectionIndexForPlayer(const struct FUniqueNetId& PlayerNetId);
 	void SetPendingPlayerConnections(TArray<struct FUniqueNetId>* Players);
-	void OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
-	void OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType);
+	void OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
+	void OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
 	void OnReceivedClientConnectionRequest(struct FClientMeshBeaconConnection* NewClientConnection);
 	void AllowBandwidthTesting(bool bEnabled);
 	void CancelPendingBandwidthTests();
 	bool HasPendingBandwidthTest();
 	void CancelInProgressBandwidthTests();
 	bool HasInProgressBandwidthTest();
-	bool RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	bool RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
 	void DestroyBeacon();
 	bool InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId);
 };
@@ -1146,9 +848,8 @@ public:
 	TArray<struct FScriptDelegate>                     EndOnlineGameCompleteDelegates;                           // 0x00A8(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     FindOnlineGamesCompleteDelegates;                         // 0x00B4(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     CancelFindOnlineGamesCompleteDelegates;                   // 0x00C0(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELanBeaconState>            LanBeaconState;                                           // 0x00CC(0x0001) (CPF_Const)
+	TEnumAsByte<ELanBeaconState>                       LanBeaconState;                                           // 0x00CC(0x0001) (CPF_Const)
 	unsigned char                                      LanNonce[0x8];                                            // 0x00CD(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00D5(0x0003) MISSED OFFSET
 	int                                                LanAnnouncePort;                                          // 0x00D8(0x0004) (CPF_Const, CPF_Config)
 	int                                                LanGameUniqueId;                                          // 0x00DC(0x0004) (CPF_Const, CPF_Config)
 	int                                                LanPacketPlatformMask;                                    // 0x00E0(0x0004) (CPF_Const, CPF_Config)
@@ -1158,41 +859,41 @@ public:
 	struct FPointer                                    SessionInfo;                                              // 0x00F0(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<struct FScriptDelegate>                     GameInviteAcceptedDelegates;                              // 0x00F4(0x000C) (CPF_NeedCtorLink)
 	struct FScriptDelegate                             __OnFindOnlineGamesComplete__Delegate;                    // 0x0100(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnCreateOnlineGameComplete__Delegate;                   // 0x0110(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnUpdateOnlineGameComplete__Delegate;                   // 0x0120(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnDestroyOnlineGameComplete__Delegate;                  // 0x0130(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnCancelFindOnlineGamesComplete__Delegate;              // 0x0140(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnJoinOnlineGameComplete__Delegate;                     // 0x0150(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                                       // 0x0150(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0150(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnRegisterPlayerComplete__Delegate;                     // 0x0160(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnUnregisterPlayerComplete__Delegate;                   // 0x0170(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                                       // 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnStartOnlineGameComplete__Delegate;                    // 0x0180(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                                       // 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData08[0x4];                                       // 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnEndOnlineGameComplete__Delegate;                      // 0x0190(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData10[0x4];                                       // 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnArbitrationRegistrationComplete__Delegate;            // 0x01A0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData11[0x4];                                       // 0x01A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData10[0x4];                                       // 0x01A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnGameInviteAccepted__Delegate;                         // 0x01B0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData12[0x4];                                       // 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData11[0x4];                                       // 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnRecalculateSkillRatingComplete__Delegate;             // 0x01C0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData13[0x4];                                       // 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData12[0x4];                                       // 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnMigrateOnlineGameComplete__Delegate;                  // 0x01D0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData14[0x4];                                       // 0x01D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData13[0x4];                                       // 0x01D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnJoinMigratedOnlineGameComplete__Delegate;             // 0x01E0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData15[0x4];                                       // 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData14[0x4];                                       // 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnQosStatusChanged__Delegate;                           // 0x01F0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData16[0x4];                                       // 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData15[0x4];                                       // 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventReportMatchmakingInfo__Delegate;                   // 0x0200(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData17[0x4];                                       // 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData16[0x4];                                       // 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnGamePlayersChanged__Delegate;                         // 0x0210(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData18[0x4];                                       // 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData17[0x4];                                       // 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1204,7 +905,7 @@ public:
 	void ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
 	void AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
 	void OnGamePlayersChanged(const struct FName& SessionName, TArray<struct FUniqueNetId> Players);
-	void SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<enum class ELobbyVisibility> Visibility);
+	void SetFriendJoinLocation(const struct FUniqueNetId& JoinablePlayerID, const struct FString& ServerAddress, TEnumAsByte<ELobbyVisibility> Visibility);
 	void ClearReportMatchmakingInfoDelegate(const struct FScriptDelegate& OldDelegate);
 	void AddReportMatchmakingInfoDelegate(const struct FScriptDelegate& NewDelegate);
 	void EventReportMatchmakingInfo(const struct FString& NewInfo);
@@ -1357,13 +1058,13 @@ public:
 	int GetLobbyIndex(struct FUniqueLobbyId* LobbyId);
 	void RemoveLocalPlayerFromSession(struct FUniqueNetId* PartyMember);
 	void AddLocalPartyMemberToSession(struct FUniqueNetId* NewPartyMember);
-	bool KickPlayer(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
+	bool KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
 	void PlayTogether_Invite(const struct FString& InviteMessage, struct FUniqueLobbyId* LobbyId);
 	bool ShowInviteUI(unsigned char LocalUserNum, struct FUniqueLobbyId* LobbyId);
-	void TriggerLobbyDestroyedDelegates(int LobbyIndex, TEnumAsByte<enum class ELobbyKickReason> Reason);
+	void TriggerLobbyDestroyedDelegates(int LobbyIndex, TEnumAsByte<ELobbyKickReason> Reason);
 	void ClearLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
 	void AddLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
-	void OnLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
+	void OnLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
 	void ClearLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate);
 	void AddLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate);
 	void OnLobbyInvite(bool bAccepted, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* FriendId);
@@ -1412,11 +1113,11 @@ public:
 	void TriggerFindLobbiesCompleteDelegates(bool bWasSuccessful);
 	void OnFindLobbiesComplete(bool bWasSuccessful, TArray<struct FBasicLobbyInfo>* LobbyList);
 	bool UpdateFoundLobbies(const struct FUniqueLobbyId& LobbyId);
-	bool FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<enum class ELobbyDistance> Distance);
+	bool FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance);
 	void ClearCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
 	void AddCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
 	void OnCreateLobbyComplete(bool bWasSuccessful, const struct FString& Error, struct FUniqueLobbyId* LobbyId);
-	bool CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<enum class ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings);
+	bool CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings);
 };
 
 
@@ -1550,24 +1251,23 @@ class UPartyBeaconClient : public UPartyBeacon
 public:
 	struct FOnlineGameSearchResult                     HostPendingRequest;                                       // 0x006C(0x0008) (CPF_Const)
 	struct FPartyReservation                           PendingRequest;                                           // 0x0074(0x0040) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPartyBeaconClientState>    ClientBeaconState;                                        // 0x00B4(0x0001)
-	TEnumAsByte<enum class EPartyBeaconClientRequest>  ClientBeaconRequestType;                                  // 0x00B5(0x0001)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x00B6(0x0002) MISSED OFFSET
+	TEnumAsByte<EPartyBeaconClientState>               ClientBeaconState;                                        // 0x00B4(0x0001)
+	TEnumAsByte<EPartyBeaconClientRequest>             ClientBeaconRequestType;                                  // 0x00B5(0x0001)
 	float                                              ReservationRequestTimeout;                                // 0x00B8(0x0004) (CPF_Config)
 	float                                              ReservationRequestElapsedTime;                            // 0x00BC(0x0004)
 	struct FString                                     ResolverClassName;                                        // 0x00C0(0x000C) (CPF_Config, CPF_NeedCtorLink)
 	class UClass*                                      ResolverClass;                                            // 0x00CC(0x0004)
 	class UClientBeaconAddressResolver*                Resolver;                                                 // 0x00D0(0x0004)
 	struct FScriptDelegate                             __OnReservationRequestComplete__Delegate;                 // 0x00D4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnReservationCountUpdated__Delegate;                    // 0x00E4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;                      // 0x00F4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnHostIsReady__Delegate;                                // 0x0104(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnHostHasCancelled__Delegate;                           // 0x0114(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1584,7 +1284,7 @@ public:
 	void OnHostIsReady();
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void OnReservationCountUpdated(int ReservationRemaining);
-	void OnReservationRequestComplete(TEnumAsByte<enum class EPartyReservationResult> ReservationResult);
+	void OnReservationRequestComplete(TEnumAsByte<EPartyReservationResult> ReservationResult);
 };
 
 
@@ -1604,14 +1304,13 @@ public:
 	int                                                ForceTeamNum;                                             // 0x00A0(0x0004) (CPF_Const)
 	int                                                ReservedHostTeamNum;                                      // 0x00A4(0x0004) (CPF_Const)
 	unsigned long                                      bBestFitTeamAssignment : 1;                               // 0x00A8(0x0004)
-	TEnumAsByte<enum class EPartyBeaconHostState>      BeaconState;                                              // 0x00AC(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00AD(0x0003) MISSED OFFSET
+	TEnumAsByte<EPartyBeaconHostState>                 BeaconState;                                              // 0x00AC(0x0001) (CPF_Const)
 	struct FScriptDelegate                             __OnReservationChange__Delegate;                          // 0x00B0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00AD(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00AD(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnReservationsFull__Delegate;                           // 0x00C0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __OnClientCancellationReceived__Delegate;                 // 0x00D0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x00D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1637,8 +1336,8 @@ public:
 	void OnReservationChange();
 	void HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty);
 	int GetExistingReservation(struct FUniqueNetId* PartyLeader);
-	TEnumAsByte<enum class EPartyReservationResult> UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers);
-	TEnumAsByte<enum class EPartyReservationResult> AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
+	TEnumAsByte<EPartyReservationResult> UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers);
+	TEnumAsByte<EPartyReservationResult> AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
 	bool InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName, int InForceTeamNum);
 	void PauseReservationRequests(bool bPause);
 };
@@ -1691,8 +1390,7 @@ public:
 	struct FString                                     Password;                                                 // 0x0060(0x000C) (CPF_NeedCtorLink)
 	int                                                ContentLength;                                            // 0x006C(0x0004)
 	struct FString                                     ContentType;                                              // 0x0070(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ERequestType>               RequestType;                                              // 0x007C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
+	TEnumAsByte<ERequestType>                          RequestType;                                              // 0x007C(0x0001)
 	struct FMap_Mirror                                 HeaderMap;                                                // 0x0080(0x003C) (CPF_Const, CPF_Native)
 	struct FMap_Mirror                                 VariableMap;                                              // 0x00BC(0x003C) (CPF_Const, CPF_Native)
 
@@ -2131,7 +1829,7 @@ public:
 	}
 
 
-	void CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<enum class EMcpGroupAcceptState> AcceptState);
+	void CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState);
 	void CacheGroup(const struct FString& RequesterId, const struct FMcpGroup& Group);
 	void OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept);

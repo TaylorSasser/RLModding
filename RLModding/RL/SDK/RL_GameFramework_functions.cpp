@@ -1713,12 +1713,12 @@ void AGameCrowdAgent::StopBehavior()
 // Function GameFramework.GameCrowdAgent.HandleBehaviorEvent
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECrowdBehaviorEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<ECrowdBehaviorEvent> EventType                      (CPF_Parm)
 // class AActor*                  InInstigator                   (CPF_Parm)
 // bool                           bViralCause                    (CPF_Parm)
 // bool                           bPropagateViralFlag            (CPF_Parm)
 
-void AGameCrowdAgent::HandleBehaviorEvent(TEnumAsByte<enum class ECrowdBehaviorEvent> EventType, class AActor* InInstigator, bool bViralCause, bool bPropagateViralFlag)
+void AGameCrowdAgent::HandleBehaviorEvent(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* InInstigator, bool bViralCause, bool bPropagateViralFlag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.HandleBehaviorEvent");
 
@@ -2875,7 +2875,7 @@ bool UGameCrowdAgentBehavior::ShouldEndIdle()
 // Function GameFramework.GameCrowdAgentBehavior.TriggerCrowdBehavior
 // (FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ECrowdBehaviorEvent> EventType                      (CPF_Parm)
+// TEnumAsByte<ECrowdBehaviorEvent> EventType                      (CPF_Parm)
 // class AActor*                  Instigator                     (CPF_Parm)
 // struct FVector                 AtLocation                     (CPF_Parm)
 // float                          InRange                        (CPF_Parm)
@@ -2884,7 +2884,7 @@ bool UGameCrowdAgentBehavior::ShouldEndIdle()
 // bool                           bRequireLOS                    (CPF_OptionalParm, CPF_Parm)
 // class AGameCrowdBehaviorPoint* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class AGameCrowdBehaviorPoint* UGameCrowdAgentBehavior::STATIC_TriggerCrowdBehavior(TEnumAsByte<enum class ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS)
+class AGameCrowdBehaviorPoint* UGameCrowdAgentBehavior::STATIC_TriggerCrowdBehavior(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.TriggerCrowdBehavior");
 
@@ -5196,12 +5196,12 @@ void ADebugCameraController::ShowDebugSelectedInfo()
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool ADebugCameraController::NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad)
+bool ADebugCameraController::NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.NativeInputKey");
 
@@ -5770,12 +5770,12 @@ bool UMobileInputZone::OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // int                            SlideValue                     (CPF_Parm)
 // struct FVector2D               ViewportSize                   (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize)
+bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessSlide");
 
@@ -5799,11 +5799,11 @@ bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // struct FVector2D               TouchLocation                  (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation)
+bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnDoubleTapDelegate");
 
@@ -5826,11 +5826,11 @@ bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAs
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // struct FVector2D               TouchLocation                  (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation)
+bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnTapDelegate");
 
@@ -5855,11 +5855,11 @@ bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<e
 // class UMobileInputZone*        Zone                           (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // int                            Handle                         (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // struct FVector2D               TouchLocation                  (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileInputZone::OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation)
+bool UMobileInputZone::OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessInputDelegate");
 
@@ -6018,14 +6018,14 @@ void UMobileMenuObject::GetRealPosition(float* PosX, float* PosY)
 // Function GameFramework.MobileMenuObject.OnTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuObject::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuObject::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.OnTouch");
 
@@ -6210,13 +6210,13 @@ void UMobileMenuScene::Opened(const struct FString& Mode)
 // Function GameFramework.MobileMenuScene.OnSceneTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // bool                           bInside                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuScene::OnSceneTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, bool bInside)
+bool UMobileMenuScene::OnSceneTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, bool bInside)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.OnSceneTouch");
 
@@ -6240,11 +6240,11 @@ bool UMobileMenuScene::OnSceneTouch(TEnumAsByte<enum class ETouchType> EventType
 // (FUNC_Event, FUNC_Public)
 // Parameters:
 // class UMobileMenuObject*       Sender                         (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 
-void UMobileMenuScene::OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY)
+void UMobileMenuScene::OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.OnTouch");
 
@@ -6488,10 +6488,10 @@ void UMobilePlayerInput::SceneRenderToggle()
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 PendingURL                     (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<enum class ETravelType> TravelType                     (CPF_Parm)
+// TEnumAsByte<ETravelType>       TravelType                     (CPF_Parm)
 // bool                           bIsSeamlessTravel              (CPF_Parm)
 
-void UMobilePlayerInput::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel)
+void UMobilePlayerInput::PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.PreClientTravel");
 
@@ -6866,11 +6866,11 @@ void UMobilePlayerInput::InitInputSystem()
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // struct FVector2D               TouchLocation                  (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobilePlayerInput::ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation)
+bool UMobilePlayerInput::ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ProcessWorldTouch");
 
@@ -6919,10 +6919,10 @@ void UMobilePlayerInput::SendInputAxis(const struct FName& Key, float Delta, flo
 // (FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_Parm)
 
-void UMobilePlayerInput::SendInputKey(const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed)
+void UMobilePlayerInput::SendInputKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SendInputKey");
 
@@ -7010,12 +7010,12 @@ void UMobilePlayerInput::NativeInitializeInputSystem()
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // int                            Handle                         (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> Type                           (CPF_Parm)
+// TEnumAsByte<ETouchType>        Type                           (CPF_Parm)
 // struct FVector2D               TouchLocation                  (CPF_Parm)
 // float                          DeviceTimestamp                (CPF_Parm)
 // int                            TouchpadIndex                  (CPF_Parm)
 
-void UMobilePlayerInput::OnInputTouch(int Handle, TEnumAsByte<enum class ETouchType> Type, const struct FVector2D& TouchLocation, float DeviceTimestamp, int TouchpadIndex)
+void UMobilePlayerInput::OnInputTouch(int Handle, TEnumAsByte<ETouchType> Type, const struct FVector2D& TouchLocation, float DeviceTimestamp, int TouchpadIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OnInputTouch");
 
@@ -9519,12 +9519,12 @@ void ADebugCameraHUD::PostBeginPlay()
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UDebugCameraInput::InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad)
+bool UDebugCameraInput::InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraInput.InputKey");
 
@@ -10165,12 +10165,12 @@ void AMobileDebugCameraController::OnActivate(class APlayerController* PC)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
 // struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<enum class EInputEvent> Event                          (CPF_Parm)
+// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
 // float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
 // bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileDebugCameraInput::InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad)
+bool UMobileDebugCameraInput::InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraInput.InputKey");
 
@@ -10342,14 +10342,14 @@ void UMobileMenuBar::RenderObject(class UCanvas* Canvas, float DeltaTime)
 // Function GameFramework.MobileMenuBar.OnTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuBar::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuBar::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.OnTouch");
 
@@ -10585,13 +10585,13 @@ void UMobileMenuElement::RenderElement(class UMobileMenuObject* Owner, class UCa
 // Function GameFramework.MobileMenuElement.OnTouch
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuElement::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, float DeltaTime)
+bool UMobileMenuElement::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuElement.OnTouch");
 
@@ -10855,14 +10855,14 @@ bool UMobileMenuInventory::SwapItemsInSlots(int Slot0, int Slot1)
 // Function GameFramework.MobileMenuInventory.OnTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuInventory::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuInventory::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.OnTouch");
 
@@ -11208,14 +11208,14 @@ class UMobileMenuListItem* UMobileMenuList::GetItemClickPosition(float* MouseX, 
 // Function GameFramework.MobileMenuList.OnTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuList::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuList::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.OnTouch");
 
@@ -11490,14 +11490,14 @@ void UMobileMenuObjectProxy::RenderObject(class UCanvas* Canvas, float DeltaTime
 // Function GameFramework.MobileMenuObjectProxy.OnTouch
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuObjectProxy::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuObjectProxy::OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.OnTouch");
 
@@ -11546,14 +11546,14 @@ void UMobileMenuObjectProxy::OnRenderObject(class UMobileMenuObjectProxy* Proxy,
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UMobileMenuObjectProxy*  Proxy                          (CPF_Parm)
-// TEnumAsByte<enum class ETouchType> EventType                      (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
 // float                          TouchX                         (CPF_Parm)
 // float                          TouchY                         (CPF_Parm)
 // class UMobileMenuObject*       ObjectOver                     (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMobileMenuObjectProxy::OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
+bool UMobileMenuObjectProxy::OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.OnTouchEvent");
 

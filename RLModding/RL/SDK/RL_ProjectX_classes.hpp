@@ -9,397 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Constants
-//---------------------------------------------------------------------------
-
-#define CONST_InMatchmakingID                                    -2
-#define CONST_MAX_CONTROLLER_IDS                                 4
-#define CONST_EpochYear                                          1970
-#define CONST_SecondsInMinute                                    60
-#define CONST_SecondsInHour                                      3600
-#define CONST_DEMO_VERSION                                       0
-#define CONST_SecondsInMonth                                     2629743
-#define CONST_MaxPing                                            1000.0f
-#define CONST_SecondsInDay                                       86400
-#define CONST_SecondsInYear                                      31556926
-#define CONST_NumFriendsPerRequest                               100
-#define CONST_FriendRequestPerFrame                              5
-
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum ProjectX._Types_X.EJoinMatchType
-enum class EJoinMatchType
-{
-	JMT_Public                     = 0,
-	JMT_Private                    = 1,
-	JMT_LanHost                    = 2,
-	JMT_LanGuest                   = 3,
-	JMT_MAX                        = 4
-};
-
-
-// Enum ProjectX._Types_X.EAuthResult
-enum class EAuthResult
-{
-	AuthResult_OK                  = 0,
-	AuthResult_Unauthorized        = 1,
-	AuthResult_MAX                 = 2
-};
-
-
-// Enum ProjectX._Types_X.EWebRequestAuthorization
-enum class EWebRequestAuthorization
-{
-	WRA_Offline                    = 0,
-	WRA_Authorizing                = 1,
-	WRA_Authorized                 = 2,
-	WRA_Banned                     = 3,
-	WRA_MAX                        = 4
-};
-
-
-// Enum ProjectX._Types_X.EReservationStatus
-enum class EReservationStatus
-{
-	ReservationStatus_None         = 0,
-	ReservationStatus_Reserved     = 1,
-	ReservationStatus_Joining      = 2,
-	ReservationStatus_InGame       = 3,
-	ReservationStatus_MAX          = 4
-};
-
-
-// Enum ProjectX._Types_X.EDatabaseEnvironment
-enum class EDatabaseEnvironment
-{
-	DBE_Test                       = 0,
-	DBE_Dev                        = 1,
-	DBE_DevLocal                   = 2,
-	DBE_Production                 = 3,
-	DBE_MAX                        = 4
-};
-
-
-// Enum ProjectX._Types_X.EAxisSign
-enum class EAxisSign
-{
-	AxisSign_None                  = 0,
-	AxisSign_Positive              = 1,
-	AxisSign_Negative              = 2,
-	AxisSign_MAX                   = 3
-};
-
-
-// Enum ProjectX._Types_X.EButtonPressType
-enum class EButtonPressType
-{
-	BPT_Normal                     = 0,
-	BPT_Tap                        = 1,
-	BPT_Hold                       = 2,
-	BPT_DoubleTap                  = 3,
-	BPT_Toggle                     = 4,
-	BPT_MAX                        = 5
-};
-
-
-// Enum ProjectX._Types_X.ERemappable
-enum class ERemappable
-{
-	Remappable_All                 = 0,
-	Remappable_Key                 = 1,
-	Remappable_Axis                = 2,
-	Remappable_KeyTriggerAxis      = 3,
-	Remappable_None                = 4,
-	Remappable_MAX                 = 5
-};
-
-
-// Enum ProjectX._Types_X.EUINavigationMode
-enum class EUINavigationMode
-{
-	UINavigationMode_Keyboard      = 0,
-	UINavigationMode_Gamepad       = 1,
-	UINavigationMode_Cursor        = 2,
-	UINavigationMode_MAX           = 3
-};
-
-
-// Enum ProjectX._Types_X.EPartyMatchmakingRestriction
-enum class EPartyMatchmakingRestriction
-{
-	PMR_NotOriginalAppOwner        = 0,
-	PMR_PendingLicenseAgreement    = 1,
-	PMR_InMainMenu                 = 2,
-	PMR_MAX                        = 3
-};
-
-
-// Enum ProjectX._Types_X.EPlayerTitleType
-enum class EPlayerTitleType
-{
-	PlayerTitleType_None           = 0,
-	PlayerTitleType_XP             = 1,
-	PlayerTitleType_Developer      = 2,
-	PlayerTitleType_Helper         = 3,
-	PlayerTitleType_Participant    = 4,
-	PlayerTitleType_Champion       = 5,
-	PlayerTitleType_Ranked_Champion = 6,
-	PlayerTitleType_RLCS_Champion  = 7,
-	PlayerTitleType_MAX            = 8
-};
-
-
-// Enum ProjectX.AnimNodeSeries_X.EAnimNodeSeriesChild
-enum class EAnimNodeSeriesChild
-{
-	AnimNodeSeries_Idle            = 0,
-	AnimNodeSeries_Intro           = 1,
-	AnimNodeSeries_Loop            = 2,
-	AnimNodeSeries_Outro           = 3,
-	AnimNodeSeries_MAX             = 4
-};
-
-
-// Enum ProjectX.BugReport_X.EFileTruncateType
-enum class EFileTruncateType
-{
-	FileTruncate_None              = 0,
-	FileTruncate_KeepStart         = 1,
-	FileTruncate_KeepEnd           = 2,
-	FileTruncate_MAX               = 3
-};
-
-
-// Enum ProjectX.FXActor_X.EFXComponentTarget
-enum class EFXComponentTarget
-{
-	FXComponentTarget_All          = 0,
-	FXComponentTarget_Local        = 1,
-	FXComponentTarget_NonLocal     = 2,
-	FXComponentTarget_MAX          = 3
-};
-
-
-// Enum ProjectX.FXActor_X.EFXComponentState
-enum class EFXComponentState
-{
-	FXComponentState_Detached      = 0,
-	FXComponentState_Attached      = 1,
-	FXComponentState_PendingDetach = 2,
-	FXComponentState_MAX           = 3
-};
-
-
-// Enum ProjectX.GFxDataCallback_X.EDataCallbackType
-enum class EDataCallbackType
-{
-	DataCallbackType_All           = 0,
-	DataCallbackType_Table         = 1,
-	DataCallbackType_Row           = 2,
-	DataCallbackType_Value         = 3,
-	DataCallbackType_MAX           = 4
-};
-
-
-// Enum ProjectX.MatchmakingReporter.EMatchmakingState
-enum class EMatchmakingState
-{
-	MMState_None                   = 0,
-	MMState_SearchingLan           = 1,
-	MMState_SearchingInternet      = 2,
-	MMState_FilteringResults       = 3,
-	MMState_AttemptingJoin         = 4,
-	MMState_Finished               = 5,
-	MMState_MAX                    = 6
-};
-
-
-// Enum ProjectX.MatchmakingReporter.EMatchmakingInfoSeverity
-enum class EMatchmakingInfoSeverity
-{
-	MMSeverity_Log                 = 0,
-	MMSeverity_Warning             = 1,
-	MMSeverity_Error               = 2,
-	MMSeverity_Suppressed          = 3,
-	MMSeverity_MAX                 = 4
-};
-
-
-// Enum ProjectX.MaterialEffect_X.EMaterialEffectStage
-enum class EMaterialEffectStage
-{
-	EFFECT_INACTIVE                = 0,
-	EFFECT_FADE_IN                 = 1,
-	EFFECT_ACTIVE                  = 2,
-	EFFECT_FADE_OUT                = 3,
-	EFFECT_MAX                     = 4
-};
-
-
-// Enum ProjectX.OnlineGameDLC_X.DLCOwnershipState
-enum class DLCOwnershipState
-{
-	DLCOwnershipState_Unknown      = 0,
-	DLCOwnershipState_Owned        = 1,
-	DLCOwnershipState_NotOwned     = 2,
-	DLCOwnershipState_Error        = 3,
-	DLCOwnershipState_MAX          = 4
-};
-
-
-// Enum ProjectX.OnlineGameParty_X.PartyProcessingStatus
-enum class PartyProcessingStatus
-{
-	PPS_None                       = 0,
-	PPS_Create                     = 1,
-	PPS_Join                       = 2,
-	PPS_MAX                        = 3
-};
-
-
-// Enum ProjectX.ReservationsPasswordMessage_X.EPasswordFailureReason
-enum class EPasswordFailureReason
-{
-	PFR_Empty                      = 0,
-	PFR_Mismatch                   = 1,
-	PFR_MAX                        = 2
-};
-
-
-// Enum ProjectX.ShakeComponent_X.EShakeReceiver
-enum class EShakeReceiver
-{
-	ShakeReceiver_All              = 0,
-	ShakeReceiver_Local            = 1,
-	ShakeReceiver_NonLocal         = 2,
-	ShakeReceiver_MAX              = 3
-};
-
-
-// Enum ProjectX.TcpConnection.EWebSocketState
-enum class EWebSocketState
-{
-	WebSocketState_NotRequired     = 0,
-	WebSocketState_NeedsHandshake  = 1,
-	WebSocketState_Connected       = 2,
-	WebSocketState_MAX             = 3
-};
-
-
-// Enum ProjectX.TcpConnection.ETcpConnectionState
-enum class ETcpConnectionState
-{
-	TcpConnectionState_Invalid     = 0,
-	TcpConnectionState_Connecting  = 1,
-	TcpConnectionState_Connected   = 2,
-	TcpConnectionState_Disconnected = 3,
-	TcpConnectionState_MAX         = 4
-};
-
-
-// Enum ProjectX.UIAnimSequence_X.EAnimBlendMode
-enum class EAnimBlendMode
-{
-	Blend_Set                      = 0,
-	Blend_Add                      = 1,
-	Blend_ReversedSet              = 2,
-	Blend_ReversedAdd              = 3,
-	BLEND_MAX                      = 4
-};
-
-
-// Enum ProjectX.UIWidget_X.EDockPoint
-enum class EDockPoint
-{
-	Dock_None                      = 0,
-	Dock_TopLeft                   = 1,
-	Dock_Top                       = 2,
-	Dock_TopRight                  = 3,
-	Dock_Left                      = 4,
-	Dock_Center                    = 5,
-	Dock_Right                     = 6,
-	Dock_BottomLeft                = 7,
-	Dock_Bottom                    = 8,
-	Dock_BottomRight               = 9,
-	Dock_MAX                       = 10
-};
-
-
-// Enum ProjectX.UIWidget_X.EWidgetVisibility
-enum class EWidgetVisibility
-{
-	Visibility_Visible             = 0,
-	Visibility_Hidden              = 1,
-	Visibility_Collapsed           = 2,
-	Visibility_MAX                 = 3
-};
-
-
-// Enum ProjectX.UIWidget_X.EWidgetFocusType
-enum class EWidgetFocusType
-{
-	FocusType_None                 = 0,
-	FocusType_Full                 = 1,
-	FocusType_CursorOnly           = 2,
-	FocusType_MAX                  = 3
-};
-
-
-// Enum ProjectX.UIWidget_WrappedText_X.ETextAlign
-enum class ETextAlign
-{
-	TextAlign_Left                 = 0,
-	TextAlign_Center               = 1,
-	TextAlign_Right                = 2,
-	TextAlign_MAX                  = 3
-};
-
-
-// Enum ProjectX.UIWidget_Stack_X.EStackOrientation
-enum class EStackOrientation
-{
-	STACK_Vertical                 = 0,
-	STACK_Horizontal               = 1,
-	STACK_MAX                      = 2
-};
-
-
-// Enum ProjectX.WebRequest_X.EWebRequestState
-enum class EWebRequestState
-{
-	WebRequestState_PendingSend    = 0,
-	WebRequestState_PendingResponse = 1,
-	WebRequestState_Success        = 2,
-	WebRequestState_Error          = 3,
-	WebRequestState_MAX            = 4
-};
-
-
-// Enum ProjectX.FakeData_X.FakeDataEnum
-enum class FakeDataEnum
-{
-	FakeData                       = 0,
-	FakeData01                     = 1,
-	FakeData02                     = 2,
-	FakeData_Count                 = 3,
-	FakeData_MAX                   = 4
-};
-
-
-// Enum ProjectX.ClanforgeReservation_X.EReserveState
-enum class EReserveState
-{
-	ReserveState_Unitialized       = 0,
-	ReserveState_Unreserved        = 1,
-	ReserveState_Reserved          = 2,
-	ReserveState_MAX               = 3
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -455,7 +64,6 @@ public:
 class UActorComponent_X : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	unsigned long                                      bTick : 1;                                                // 0x0068(0x0004)
 	unsigned long                                      bIgnoreScriptAttach : 1;                                  // 0x0068(0x0004) (CPF_Const, CPF_Transient)
 
@@ -541,8 +149,7 @@ public:
 	unsigned long                                      bAttenuate : 1;                                           // 0x0078(0x0004) (CPF_Edit)
 	unsigned long                                      bPlaying : 1;                                             // 0x0078(0x0004) (CPF_Transient)
 	unsigned long                                      bStopping : 1;                                            // 0x0078(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EShakeReceiver>             Receiver;                                                 // 0x007C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
+	TEnumAsByte<EShakeReceiver>                        Receiver;                                                 // 0x007C(0x0001) (CPF_Edit)
 	float                                              RadiusScale;                                              // 0x0080(0x0004) (CPF_Edit)
 	float                                              BlendInTime;                                              // 0x0084(0x0004) (CPF_Edit)
 	float                                              BlendOutTime;                                             // 0x0088(0x0004) (CPF_Edit)
@@ -660,7 +267,6 @@ public:
 class UAnimateParametersComponent_X : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	TArray<struct FAnimatedFloatParam>                 FloatParameters;                                          // 0x0068(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FAnimatedVectorParam>                VectorParameters;                                         // 0x0074(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<struct FAnimatedLinearColorParam>           ColorParameters;                                          // 0x0080(0x000C) (CPF_Edit, CPF_NeedCtorLink)
@@ -966,7 +572,6 @@ public:
 class UCameraAttachmentComponent_X : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	TArray<class UActorComponent*>                     Attachments;                                              // 0x0068(0x000C) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 	unsigned long                                      bDirtyTransform : 1;                                      // 0x0074(0x0004) (CPF_Const, CPF_Transient)
 
@@ -1003,7 +608,6 @@ public:
 class UCanvasTextureComponent_X : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	class UMeshComponent*                              Mesh;                                                     // 0x0068(0x0004) (CPF_Edit, CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	int                                                MaterialIndex;                                            // 0x006C(0x0004) (CPF_Edit, CPF_Const)
 	struct FName                                       MaterialParamName;                                        // 0x0070(0x0008) (CPF_Edit, CPF_Const)
@@ -1710,7 +1314,7 @@ public:
 	bool RemovePlayerByID(int ControllerId);
 	void FlashWindow();
 	void SetHardwareMouseCursorVisibility(bool bIsVisible);
-	void NotifyConnectionError(TEnumAsByte<enum class EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
+	void NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
 	class ULocalPlayer* CreatePlayer(int ControllerId, bool bSpawnActor, struct FString* OutError);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
@@ -1788,15 +1392,14 @@ public:
 	float                                              RightY;                                                   // 0x006C(0x0004) (CPF_DataBinding)
 	TArray<class UGFxMoviePlayer_X*>                   Movies;                                                   // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	class UGFxDataStore_X*                             DataStore;                                                // 0x007C(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	TEnumAsByte<enum class EUINavigationMode>          NavigationMode;                                           // 0x0080(0x0001) (CPF_Transient)
-	TEnumAsByte<enum class EInputPlatformType>         InputType;                                                // 0x0081(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x0082(0x0002) MISSED OFFSET
+	TEnumAsByte<EUINavigationMode>                     NavigationMode;                                           // 0x0080(0x0001) (CPF_Transient)
+	TEnumAsByte<EInputPlatformType>                    InputType;                                                // 0x0081(0x0001) (CPF_Const, CPF_Transient)
 	struct FScriptDelegate                             __EventInputCaptureChanged__Delegate;                     // 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0082(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0082(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventInputTypeChanged__Delegate;                        // 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventReceivedInput__Delegate;                           // 0x00A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1885,12 +1488,11 @@ public:
 	TArray<class UGFxShell_X*>                         Shells;                                                   // 0x00A8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FDirtyObject>                        DirtyObjects;                                             // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bAnyShellHasInput : 1;                                    // 0x00C0(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EInputPlatformType>         AvailableGamepadType;                                     // 0x00C4(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00C5(0x0003) MISSED OFFSET
+	TEnumAsByte<EInputPlatformType>                    AvailableGamepadType;                                     // 0x00C4(0x0001) (CPF_Const, CPF_Transient)
 	struct FScriptDelegate                             __EventAvailableGamepadTypeChanged__Delegate;             // 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00C5(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C5(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventGameSessionEnded__Delegate;                        // 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1998,7 +1600,7 @@ public:
 	struct FName                                       Table;                                                    // 0x006C(0x0008) (CPF_Transient)
 	int                                                Row;                                                      // 0x0074(0x0004) (CPF_Transient)
 	struct FName                                       Column;                                                   // 0x0078(0x0008) (CPF_Transient)
-	TEnumAsByte<enum class EDataCallbackType>          Type;                                                     // 0x0080(0x0001) (CPF_Transient)
+	TEnumAsByte<EDataCallbackType>                     Type;                                                     // 0x0080(0x0001) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -2083,8 +1685,7 @@ public:
 	struct FPointer                                    LanBeacon;                                                // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                LanAnnouncePort;                                          // 0x0050(0x0004) (CPF_Const, CPF_Config)
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0054(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanBeacon_X.QueryNonce
-	TEnumAsByte<enum class ELanBeaconState>            BeaconState;                                              // 0x005C(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x005D(0x0003) MISSED OFFSET
+	TEnumAsByte<ELanBeaconState>                       BeaconState;                                              // 0x005C(0x0001) (CPF_Const)
 	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x0060(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	int                                                MaxPacketSize;                                            // 0x0064(0x0004) (CPF_Const)
 
@@ -2098,7 +1699,7 @@ public:
 	bool BroadcastMessage(class UObject* Message);
 	bool BroadcastData(TArray<unsigned char>* Data);
 	void Stop();
-	bool Start(TEnumAsByte<enum class ELanBeaconState> InitialState);
+	bool Start(TEnumAsByte<ELanBeaconState> InitialState);
 };
 
 
@@ -2214,8 +1815,7 @@ class UMatchmakingReporter : public UObject
 {
 public:
 	TArray<struct FString>                             Instructions;                                             // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMatchmakingState>          MatchmakingState;                                         // 0x0048(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0049(0x0003) MISSED OFFSET
+	TEnumAsByte<EMatchmakingState>                     MatchmakingState;                                         // 0x0048(0x0001) (CPF_Transient)
 	TArray<struct FMatchmakingStateReport>             StateReports;                                             // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                NumReports;                                               // 0x0058(0x0004) (CPF_Const)
 
@@ -2227,9 +1827,9 @@ public:
 
 
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
-	struct FString GetMatchmakingStateName(TEnumAsByte<enum class EMatchmakingState> InState);
-	void AddInfo(const struct FString& Info, TEnumAsByte<enum class EMatchmakingInfoSeverity> Severity);
-	void SetMatchmakingState(TEnumAsByte<enum class EMatchmakingState> InState);
+	struct FString GetMatchmakingStateName(TEnumAsByte<EMatchmakingState> InState);
+	void AddInfo(const struct FString& Info, TEnumAsByte<EMatchmakingInfoSeverity> Severity);
+	void SetMatchmakingState(TEnumAsByte<EMatchmakingState> InState);
 	void ClearStateReports();
 	bool Initialize();
 	void STATIC_ShowReportsLocation();
@@ -2406,7 +2006,7 @@ public:
 	}
 
 
-	bool PlatformsShareGroup(TEnumAsByte<enum class OnlinePlatform> Platform1, TEnumAsByte<enum class OnlinePlatform> Platform2);
+	bool PlatformsShareGroup(TEnumAsByte<EOnlinePlatform> Platform1, TEnumAsByte<EOnlinePlatform> Platform2);
 };
 
 
@@ -2826,15 +2426,14 @@ public:
 class UPsyNet_X : public UObject
 {
 public:
-	TEnumAsByte<enum class EDatabaseEnvironment>       Environment;                                              // 0x003C(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x003D(0x0003) MISSED OFFSET
+	TEnumAsByte<EDatabaseEnvironment>                  Environment;                                              // 0x003C(0x0001) (CPF_Transient)
 	struct FString                                     EnvironmentName;                                          // 0x0040(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FString>                             URLs;                                                     // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bZipRequests : 1;                                         // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bZipResponses : 1;                                        // 0x0058(0x0004) (CPF_Edit)
 	struct FPsyNetKeys                                 Keys;                                                     // 0x005C(0x003C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventPrimaryPlayerLoggedIn__Delegate;                   // 0x0098(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2848,7 +2447,7 @@ public:
 	void STATIC_NetworkError(const struct FUniqueNetId& PlayerID, const struct FString& Reason);
 	void NotifyWhenLoggedIn(const struct FScriptDelegate& Callback);
 	void HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth);
-	TEnumAsByte<enum class EDatabaseEnvironment> GetDevEnvironment();
+	TEnumAsByte<EDatabaseEnvironment> GetDevEnvironment();
 	void InitEnvironment();
 	void Init();
 	void Flush();
@@ -3075,7 +2674,7 @@ public:
 	struct FString GetSaveFilename();
 	void OnInit();
 	void OnLoaded();
-	TEnumAsByte<enum class EBasicLoadResult> Load(bool bMustExist, bool bIgnoreErrors);
+	TEnumAsByte<EBasicLoadResult> Load(bool bMustExist, bool bIgnoreErrors);
 	void ClearSaveTimer();
 	void SetSaveTimer(float Delay);
 	bool SaveNow();
@@ -3303,7 +2902,7 @@ public:
 	bool IsInMainMenu();
 	class AGRI_X* GetGRI();
 	class AWorldInfo* GetWorldInfo();
-	struct FUniqueNetId STATIC_CreateUniqueNetID(TEnumAsByte<enum class OnlinePlatform> Platform, const struct FString& PlatformName);
+	struct FUniqueNetId STATIC_CreateUniqueNetID(TEnumAsByte<EOnlinePlatform> Platform, const struct FString& PlatformName);
 	bool STATIC_UniqueLobbyIDIsSet(const struct FUniqueLobbyId& InID);
 	struct FUniqueLobbyId STATIC_StringToUniqueLobbyId(const struct FString& InID);
 	struct FString STATIC_UniqueLobbyIdToString(const struct FUniqueLobbyId& InID);
@@ -3343,14 +2942,13 @@ public:
 	class UWebCache_X*                                 WebCache;                                                 // 0x00A4(0x0004)
 	class UOnlineComponents_X*                         OnlineComponents;                                         // 0x00A8(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	unsigned long                                      bLockGameSettings : 1;                                    // 0x00AC(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> CurrentConnectionStatus;                                  // 0x00B0(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00B1(0x0003) MISSED OFFSET
+	TEnumAsByte<EOnlineServerConnectionStatus>         CurrentConnectionStatus;                                  // 0x00B0(0x0001) (CPF_Transient)
 	struct FString                                     ServerName;                                               // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FString                                     CachedOptions;                                            // 0x00C0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class URPCQueue_X*                                 RPCQueue;                                                 // 0x00CC(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	class UOnlineConfigDispatcher_X*                   OnlineConfigDispatcher;                                   // 0x00D0(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __EventInternetConnectionChanged__Delegate;               // 0x00D4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3365,7 +2963,7 @@ public:
 	struct FString GetExternalHostAddress(bool bWithPort);
 	struct FString GetLocalHostAddress(bool bWithPort);
 	void HandleInternetConnectionChanged(bool bConnected);
-	void HandleConnectionStatusChanged(TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus);
+	void HandleConnectionStatusChanged(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus);
 	void SetDefaultSearchType(class UClass* OnlineSearchClass);
 	bool IsPortZero(const struct FString& InURL);
 	struct FString RemovePort(const struct FString& InURL);
@@ -3441,7 +3039,7 @@ public:
 	void RemoveOnlinePlayer(class ULocalPlayer_X* LocalPlayer);
 	class UOnlinePlayer_X* CreateOnlinePlayer(class ULocalPlayer_X* LocalPlayer);
 	void SetPlayedWith(const struct FUniqueNetId& PlayerID);
-	void GetPlayerAvatar(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, TEnumAsByte<enum class AvatarSize> Size);
+	void GetPlayerAvatar(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate, TEnumAsByte<EAvatarSize> Size);
 	void SetVoiceVolume(float NewValue);
 	void OnNewGameInfoCreated(class AGameInfo_X* Game);
 	void OnMainMenuOpened();
@@ -3687,11 +3285,11 @@ public:
 	struct FUniqueNetId GetPartyID(const struct FUniqueNetId& PlayerID);
 	unsigned char GetTeamNum(const struct FUniqueNetId& PlayerID);
 	struct FString GetPlayersPlatformsString();
-	struct FString GetPlatformsString(TArray<TEnumAsByte<enum class OnlinePlatform>>* Platforms);
-	TArray<TEnumAsByte<enum class OnlinePlatform>> GetPlayerPlatforms();
-	bool CanPlayTogether(TEnumAsByte<enum class OnlinePlatform> Platform1, TEnumAsByte<enum class OnlinePlatform> Platform2);
+	struct FString GetPlatformsString(TArray<TEnumAsByte<EOnlinePlatform>>* Platforms);
+	TArray<TEnumAsByte<EOnlinePlatform>> GetPlayerPlatforms();
+	bool CanPlayTogether(TEnumAsByte<EOnlinePlatform> Platform1, TEnumAsByte<EOnlinePlatform> Platform2);
 	bool CanAcceptReservationsForPlatform(class UAddReservationMessagePublic_X* Message);
-	TEnumAsByte<enum class OnlinePlatform> GetExclusivePlatform();
+	TEnumAsByte<EOnlinePlatform> GetExclusivePlatform();
 	bool CanAcceptReservations(class UAddReservationMessagePublic_X* Message);
 	void GetPlayerCounts(int* Team0Reserved, int* Team0Joined, int* Team1Reserved, int* Team1Joined);
 	void NotifyReservationsUpdated();
@@ -3703,7 +3301,7 @@ public:
 	void SetServerTraveling(bool bTraveling);
 	void CloseConnection(int Index);
 	void RemoveReservationIndex(int Index);
-	int AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<enum class EReservationStatus> Status);
+	int AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<EReservationStatus> Status);
 	void HandleTeamChanged(class APRI_X* PRI);
 	void RemoveReservation(const struct FUniqueNetId& PlayerID);
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
@@ -3735,7 +3333,7 @@ public:
 	bool AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
 	bool IsCheatingSplitscreenReservation(class UAddReservationMessage_X* Message);
 	bool IsCheatingSplitscreen(const struct FUniqueNetId& PrimaryPlayerID, const struct FUniqueNetId& SplitscreenPlayerID);
-	struct FReservationData CreateReservationData(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<enum class EReservationStatus> Status);
+	struct FReservationData CreateReservationData(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<EReservationStatus> Status);
 	void NotAllPlayersJoined();
 	void DisconnectExistingPlayers(class UAddReservationMessage_X* ReservationMessage);
 	void SetPlayers(TArray<struct FReservationData>* TempPlayers);
@@ -3788,25 +3386,24 @@ public:
 	class UOnlinePlayerAuthentication_X*               Authentication;                                           // 0x0064(0x0004) (CPF_Edit)
 	struct FString                                     PlayerName;                                               // 0x0068(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0074(0x0030) (CPF_Transient)
-	TEnumAsByte<enum class ELoginStatus>               LoginStatus;                                              // 0x00A4(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00A5(0x0003) MISSED OFFSET
+	TEnumAsByte<ELoginStatus>                          LoginStatus;                                              // 0x00A4(0x0001) (CPF_Transient)
 	int                                                LocalPlayerNum;                                           // 0x00A8(0x0004) (CPF_Transient)
 	unsigned long                                      bLoggingIn : 1;                                           // 0x00AC(0x0004)
 	unsigned long                                      bLoggingOut : 1;                                          // 0x00AC(0x0004)
 	class UError_X*                                    LoginError;                                               // 0x00B0(0x0004) (CPF_Transient)
 	class UAuthenticatedRPCQueue_X*                    RPCQueue;                                                 // 0x00B4(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	struct FScriptDelegate                             __EventLoginComplete__Delegate;                           // 0x00B8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventLogoutComplete__Delegate;                          // 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventLoginStatusChanged__Delegate;                      // 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventCountryUpdated__Delegate;                          // 0x00E8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventCanPlayOnlineChanged__Delegate;                    // 0x00F8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x00F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventShowKeyboardComplete__Delegate;                    // 0x0108(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                                       // 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3827,12 +3424,12 @@ public:
 	struct FString GetRemoteName(int LocalPlayerIndex);
 	void HandleCanPlayOnlineChanged(unsigned char LocalUserNum);
 	void OnExit();
-	TEnumAsByte<enum class EFeaturePrivilegeLevel> CanPlayOnline();
+	TEnumAsByte<EFeaturePrivilegeLevel> CanPlayOnline();
 	void HandlePlayerCountryReceived(const struct FUniqueNetId& InPlayerId, const struct FString& Country);
 	void GetPlayerCountry(const struct FScriptDelegate& Handler);
-	TEnumAsByte<enum class EFeaturePrivilegeLevel> CanCommunicateText();
-	void OpenErrorDialog(TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode);
-	void OpenPS4DisplayMode(TEnumAsByte<enum class EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel);
+	TEnumAsByte<EFeaturePrivilegeLevel> CanCommunicateText();
+	void OpenErrorDialog(TEnumAsByte<EPS4ErrorDialog> ErrorCode);
+	void OpenPS4DisplayMode(TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel);
 	void ResetControllerColor(int InControllerID);
 	void SetControllerColor(int InControllerID, const struct FColor& NewColor);
 	void PostActivityFeedMessage(const struct FString& Id, TArray<struct FString> StringReplaceList);
@@ -3844,11 +3441,11 @@ public:
 	bool ShowKeyboard(const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, const struct FString& DefaultText, int MaxLength, const struct FScriptDelegate& OnCompleteDelegate, int LocalPlayerNumOverride);
 	void OnNewGame();
 	void HandleControllerChange(int InControllerID, bool bIsConnected);
-	void HandleUserLoginStatusChange(TEnumAsByte<enum class ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
+	void HandleUserLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
 	bool IsLoggedIn(bool bRequireOnlineLogin);
 	void HandleLogoutComplete(bool bWasSuccessful);
 	void HandleLoginChanged(unsigned char PlayerNum);
-	void HandleLoginFailed(unsigned char PlayerNum, TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode);
+	void HandleLoginFailed(unsigned char PlayerNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
 	void Logout(const struct FScriptDelegate& Callback);
 	void Login(const struct FString& LoginName, const struct FString& LoginPassword, const struct FScriptDelegate& Callback);
 	void OnRemoved();
@@ -3885,8 +3482,7 @@ public:
 	float                                              BannedUntilTime;                                          // 0x00C4(0x0004) (CPF_Transient)
 	struct FString                                     BannedReason;                                             // 0x00C8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FString                                     EncryptedAuthTicket;                                      // 0x00D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EAuthStatus>                AuthStatus;                                               // 0x00E0(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x00E1(0x0003) MISSED OFFSET
+	TEnumAsByte<EAuthStatus>                           AuthStatus;                                               // 0x00E0(0x0001) (CPF_Transient)
 	int                                                AuthRequestFailureMax;                                    // 0x00E4(0x0004) (CPF_Const)
 	int                                                AuthRequestRetryTime;                                     // 0x00E8(0x0004) (CPF_Const)
 	int                                                AuthRequestFailureCount;                                  // 0x00EC(0x0004) (CPF_Transient)
@@ -3895,13 +3491,13 @@ public:
 	float                                              LoginRetryDelay;                                          // 0x0108(0x0004) (CPF_Edit)
 	class UOnlineGameTrial_X*                          Trial;                                                    // 0x010C(0x0004) (CPF_Edit)
 	struct FScriptDelegate                             __EventLoginChanged__Delegate;                            // 0x0110(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventUnauthorized__Delegate;                            // 0x0120(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventBanned__Delegate;                                  // 0x0130(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventAuthenticatedNameChanged__Delegate;                // 0x0140(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3919,7 +3515,7 @@ public:
 	bool NeedToAuthenticateName();
 	void HandleReceivedAuthorizationCode(bool bSuccess, const struct FString& AuthorizationCode, const struct FString& EncryptedTicket, int IssuerID);
 	bool RequestAuthorizationCode();
-	void AuthenticationError(TEnumAsByte<enum class EAuthResult> AuthResult);
+	void AuthenticationError(TEnumAsByte<EAuthResult> AuthResult);
 	void ResetAuthentication();
 	bool RequiresAuthorizationCode();
 	void AuthResponse(class UWebRequest_X* WebRequest);
@@ -3949,11 +3545,10 @@ public:
 class UTickActorComponent_X : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
 	TArray<struct FTimerData>                          Timers;                                                   // 0x0068(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	unsigned long                                      bTick : 1;                                                // 0x0074(0x0004) (CPF_Const)
 	struct FScriptDelegate                             __EventTick__Delegate;                                    // 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4070,8 +3665,7 @@ public:
 	TArray<struct FPlatformAtlas>                      PlatformAtlases;                                          // 0x004C(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
 	struct FVector2D                                   MaxTextureSize;                                           // 0x0058(0x0008) (CPF_Edit, CPF_Const)
 	int                                                Margin;                                                   // 0x0060(0x0004) (CPF_Edit, CPF_Const)
-	TEnumAsByte<enum class EConsoleType>               ForcedPlatformType;                                       // 0x0064(0x0001) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	TEnumAsByte<EConsoleType>                          ForcedPlatformType;                                       // 0x0064(0x0001) (CPF_Config)
 	TArray<class UUITextureSlice_X*>                   Slices;                                                   // 0x0068(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
 	TArray<class UTexture2D*>                          Textures;                                                 // 0x0074(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	struct FVector2D                                   TextureScale;                                             // 0x0080(0x0008) (CPF_Const, CPF_Transient)
@@ -4113,10 +3707,9 @@ public:
 class UUIWidget_X : public UObject
 {
 public:
-	TEnumAsByte<enum class EWidgetFocusType>           FocusType;                                                // 0x003C(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EWidgetVisibility>          Visibility;                                               // 0x003D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EDockPoint>                 Dock;                                                     // 0x003E(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x003F(0x0001) MISSED OFFSET
+	TEnumAsByte<EWidgetFocusType>                      FocusType;                                                // 0x003C(0x0001) (CPF_Edit)
+	TEnumAsByte<EWidgetVisibility>                     Visibility;                                               // 0x003D(0x0001) (CPF_Edit)
+	TEnumAsByte<EDockPoint>                            Dock;                                                     // 0x003E(0x0001) (CPF_Edit)
 	unsigned long                                      bAbsorbCursor : 1;                                        // 0x0040(0x0004) (CPF_Edit)
 	unsigned long                                      bHierarchyHidden : 1;                                     // 0x0040(0x0004) (CPF_Transient)
 	unsigned long                                      bStretchedBackTexture : 1;                                // 0x0040(0x0004) (CPF_Edit)
@@ -4164,19 +3757,19 @@ public:
 	class UUIInteraction_X*                            Interaction;                                              // 0x018C(0x0004) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
 	TArray<struct FKeyHandler>                         KeyHandlers;                                              // 0x0190(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventHoverChanged__Delegate;                            // 0x019C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x019C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x019C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPressChanged__Delegate;                            // 0x01AC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x01AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventFocusChanged__Delegate;                            // 0x01BC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x01BC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x01BC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventClicked__Delegate;                                 // 0x01CC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x01CC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x01CC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventDragged__Delegate;                                 // 0x01DC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x01DC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x01DC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventInputKey__Delegate;                                // 0x01EC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                                       // 0x01EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData05[0x4];                                       // 0x01EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventDestroyed__Delegate;                               // 0x01FC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                                       // 0x01FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData06[0x4];                                       // 0x01FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4210,7 +3803,7 @@ public:
 	void SetTimer(float InRate, bool bLoop, const struct FName& FuncName);
 	void OnDestroyed();
 	void Destroy();
-	void GetDockPosition(TEnumAsByte<enum class EDockPoint> DockPoint, struct FVector2D* OutPivotPosition, struct FVector2D* OutRelativePosition);
+	void GetDockPosition(TEnumAsByte<EDockPoint> DockPoint, struct FVector2D* OutPivotPosition, struct FVector2D* OutRelativePosition);
 	void DrawText(class UCanvas* C, const struct FString& Str, const struct FUIWidgetMatrix& DrawArea);
 	void DrawSelf(class UCanvas* C);
 	void DrawChildren(class UCanvas* C, float DeltaSeconds);
@@ -4249,7 +3842,7 @@ public:
 	void SetText(const struct FString& NewText);
 	void SetPixelSize(float NewX, float NewY);
 	void SetRelativeSize(float NewX, float NewY);
-	void SetDock(TEnumAsByte<enum class EDockPoint> NewDock);
+	void SetDock(TEnumAsByte<EDockPoint> NewDock);
 	void SetScale2D(float NewX, float NewY);
 	void SetScale(float NewScale);
 	void SetPixelOffset(float NewX, float NewY);
@@ -4258,9 +3851,9 @@ public:
 	void OnHierarchyHiddenChanged();
 	void UpdateHierarchyHidden(bool bRecurse);
 	void OnVisibilityChanged();
-	void SetVisibility(TEnumAsByte<enum class EWidgetVisibility> NewVisibility);
+	void SetVisibility(TEnumAsByte<EWidgetVisibility> NewVisibility);
 	void SetHidden(bool bNewHidden);
-	void SetFocusType(TEnumAsByte<enum class EWidgetFocusType> NewFocusType);
+	void SetFocusType(TEnumAsByte<EWidgetFocusType> NewFocusType);
 	void SetTint(float R, float G, float B, float A);
 	bool FindAndAddCommand(const struct FName& WidgetName, const struct FName& EventName, const struct FString& Command, bool bIgnoreParent);
 	bool FindAndSetText(const struct FName& WidgetName, const struct FString& Txt);
@@ -4318,8 +3911,7 @@ public:
 class UUIWidget_WrappedText_X : public UUIWidget_X
 {
 public:
-	TEnumAsByte<enum class ETextAlign>                 TextAlign;                                                // 0x020C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x020D(0x0003) MISSED OFFSET
+	TEnumAsByte<ETextAlign>                            TextAlign;                                                // 0x020C(0x0001) (CPF_Edit)
 	float                                              LineSpacing;                                              // 0x0210(0x0004) (CPF_Edit)
 	struct FLinearColor                                LinkTint;                                                 // 0x0214(0x0010) (CPF_Edit)
 	TArray<struct FWrappedStringElement>               WrappedLines;                                             // 0x0224(0x000C) (CPF_Transient, CPF_NeedCtorLink)
@@ -4356,8 +3948,7 @@ public:
 	unsigned long                                      bZipRequest : 1;                                          // 0x003C(0x0004) (CPF_Edit)
 	unsigned long                                      bZipResponse : 1;                                         // 0x003C(0x0004) (CPF_Edit)
 	unsigned long                                      bConnectionReset : 1;                                     // 0x003C(0x0004) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class EWebRequestState>           RequestState;                                             // 0x0040(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0041(0x0003) MISSED OFFSET
+	TEnumAsByte<EWebRequestState>                      RequestState;                                             // 0x0040(0x0001) (CPF_Const, CPF_Transient)
 	struct FString                                     URL;                                                      // 0x0044(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x0050(0x0004) (CPF_Transient)
 	class UHttpResponseInterface*                      HttpResponse;                                             // 0x0054(0x0004) (CPF_Const, CPF_Transient)
@@ -4366,7 +3957,7 @@ public:
 	TArray<unsigned char>                              ResponseData;                                             // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	class UError_X*                                    Error;                                                    // 0x007C(0x0004) (CPF_Const, CPF_Transient)
 	struct FScriptDelegate                             __EventCompleted__Delegate;                               // 0x0080(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4531,18 +4122,17 @@ public:
 	float                                              InitialConnectionTimeout;                                 // 0x0040(0x0004) (CPF_Config)
 	float                                              ConnectionTimeout;                                        // 0x0044(0x0004) (CPF_Config)
 	struct FPointer                                    Socket;                                                   // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	TEnumAsByte<enum class ETcpConnectionState>        ConnectionState;                                          // 0x004C(0x0001) (CPF_Const, CPF_Transient)
-	TEnumAsByte<enum class EWebSocketState>            WebSocketState;                                           // 0x004D(0x0001) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x004E(0x0002) MISSED OFFSET
+	TEnumAsByte<ETcpConnectionState>                   ConnectionState;                                          // 0x004C(0x0001) (CPF_Const, CPF_Transient)
+	TEnumAsByte<EWebSocketState>                       WebSocketState;                                           // 0x004D(0x0001) (CPF_Const, CPF_Transient)
 	float                                              LastReceiveTime;                                          // 0x0050(0x0004) (CPF_Const, CPF_Transient)
 	TArray<unsigned char>                              InBytes;                                                  // 0x0054(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              OutBytes;                                                 // 0x0060(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              QueuedWebSocketBytes;                                     // 0x006C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              InBytesDecoded;                                           // 0x0078(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4591,16 +4181,15 @@ public:
 	TArray<int>                                        ControllerIDs;                                            // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bHasRestriction : 1;                                      // 0x0048(0x0004) (CPF_Transient)
 	unsigned long                                      bFinished : 1;                                            // 0x0048(0x0004) (CPF_Transient)
-	TArray<TEnumAsByte<enum class EFeaturePrivilege>>  PendingPrivileges;                                        // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<TEnumAsByte<EFeaturePrivilege>>             PendingPrivileges;                                        // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                FailedControllerID;                                       // 0x0058(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EFeaturePrivilege>          FailedPrivilege;                                          // 0x005C(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x005D(0x0003) MISSED OFFSET
+	TEnumAsByte<EFeaturePrivilege>                     FailedPrivilege;                                          // 0x005C(0x0001) (CPF_Transient)
 	TArray<int>                                        PendingControllerIDs;                                     // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     CheckDelegates;                                           // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FScriptDelegate                             EventFinished;                                            // 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __CheckDelegate__Delegate;                                // 0x0088(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4609,14 +4198,14 @@ public:
 	}
 
 
-	bool HasFeatureRestriction(int* OutControllerID, TEnumAsByte<enum class EFeaturePrivilege>* OutFailedPrivilege);
+	bool HasFeatureRestriction(int* OutControllerID, TEnumAsByte<EFeaturePrivilege>* OutFailedPrivilege);
 	void OnFinished();
 	void Fail();
-	void HandlePrivilege(unsigned char LocalUserNum, TEnumAsByte<enum class EFeaturePrivilege> Privilege, TEnumAsByte<enum class EFeaturePrivilegeLevel> Level);
+	void HandlePrivilege(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level);
 	void CheckPrivilege();
 	void CheckPsyNet();
 	void CheckInternet();
-	class UPrivilegeCheck_X* RequirePrivilege(TEnumAsByte<enum class EFeaturePrivilege> Privilege);
+	class UPrivilegeCheck_X* RequirePrivilege(TEnumAsByte<EFeaturePrivilege> Privilege);
 	class UPrivilegeCheck_X* RequirePsyNet();
 	class UPrivilegeCheck_X* RequireInternet();
 	void StartNextCheck();
@@ -4727,8 +4316,7 @@ public:
 	unsigned long                                      LastLockStatus : 1;                                       // 0x00C0(0x0004) (CPF_Transient)
 	struct FName                                       LastSearchState;                                          // 0x00C4(0x0008) (CPF_Transient)
 	struct FPartyJoinMatchSettings                     MatchSettings;                                            // 0x00CC(0x002C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<enum class PartyProcessingStatus>      ProcessingStatus;                                         // 0x00F8(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00F9(0x0003) MISSED OFFSET
+	TEnumAsByte<EPartyProcessingStatus>                ProcessingStatus;                                         // 0x00F8(0x0001) (CPF_Transient)
 	float                                              SkillCacheTime;                                           // 0x00FC(0x0004) (CPF_Edit)
 	float                                              LastSkillSyncTime;                                        // 0x0100(0x0004) (CPF_Transient)
 	int                                                PendingPartyLocalPlayerNum;                               // 0x0104(0x0004) (CPF_Transient)
@@ -4740,53 +4328,53 @@ public:
 	class URankedConfig_X*                             RankedConfig;                                             // 0x013C(0x0004) (CPF_Edit)
 	class UOnlineGameTrial_X*                          Trial;                                                    // 0x0140(0x0004) (CPF_Edit)
 	struct FScriptDelegate                             __EventPartyCreated__Delegate;                            // 0x0144(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPlayerInvited__Delegate;                           // 0x0154(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0154(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0154(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartyChanged__Delegate;                            // 0x0164(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0164(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0164(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartySizeChanged__Delegate;                        // 0x0174(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventSearchStatusChanged__Delegate;                     // 0x0184(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartyError__Delegate;                              // 0x0194(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                                       // 0x0194(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0194(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartyJoinGameError__Delegate;                      // 0x01A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                                       // 0x01A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData06[0x4];                                       // 0x01A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartyJoinGameSuccess__Delegate;                    // 0x01B4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                                       // 0x01B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData07[0x4];                                       // 0x01B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPartyDestroyed__Delegate;                          // 0x01C4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                                       // 0x01C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData08[0x4];                                       // 0x01C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventConfirmJoinGameMessage__Delegate;                  // 0x01D4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData10[0x4];                                       // 0x01D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData09[0x4];                                       // 0x01D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventLeaderLeftOnlineGame__Delegate;                    // 0x01E4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData11[0x4];                                       // 0x01E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData10[0x4];                                       // 0x01E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventProcessingStatusChanged__Delegate;                 // 0x01F4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData12[0x4];                                       // 0x01F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData11[0x4];                                       // 0x01F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventDisableCrossPlayChanged__Delegate;                 // 0x0204(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData13[0x4];                                       // 0x0204(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData12[0x4];                                       // 0x0204(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPlaylistSkillRestrictionChange__Delegate;          // 0x0214(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData14[0x4];                                       // 0x0214(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData13[0x4];                                       // 0x0214(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPlayerTradingChanged__Delegate;                    // 0x0224(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData15[0x4];                                       // 0x0224(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData14[0x4];                                       // 0x0224(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventInviteToTrade__Delegate;                           // 0x0234(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData16[0x4];                                       // 0x0234(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData15[0x4];                                       // 0x0234(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventAcceptedInviteToTrade__Delegate;                   // 0x0244(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData17[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData16[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventCloseInviteToTrade__Delegate;                      // 0x0254(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData18[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData17[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventReadyToTrade__Delegate;                            // 0x0264(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData19[0x4];                                       // 0x0264(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData18[0x4];                                       // 0x0264(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventNotReadyToTrade__Delegate;                         // 0x0274(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData20[0x4];                                       // 0x0274(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData19[0x4];                                       // 0x0274(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventTradeReady__Delegate;                              // 0x0284(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData21[0x4];                                       // 0x0284(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData20[0x4];                                       // 0x0284(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventAnotherInviteToTrade__Delegate;                    // 0x0294(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData22[0x4];                                       // 0x0294(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData21[0x4];                                       // 0x0294(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPlayerInMatchChanged__Delegate;                    // 0x02A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData23[0x4];                                       // 0x02A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData22[0x4];                                       // 0x02A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventPlayerIsCurrentlyTrading__Delegate;                // 0x02B4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData24[0x4];                                       // 0x02B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData23[0x4];                                       // 0x02B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4818,7 +4406,7 @@ public:
 	TArray<struct FUniqueNetId> GetPartyMemberIDs();
 	void HandleSessionCreated();
 	bool IsProcessing();
-	void SetProcessingStatus(TEnumAsByte<enum class PartyProcessingStatus> Status);
+	void SetProcessingStatus(TEnumAsByte<EPartyProcessingStatus> Status);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	struct FString GetPlayerRatingString(const struct FUniqueNetId& PlayerID, int Playlist);
 	void HandlePartyBugReport(class UOnlineMessageComponent_X* Component, class UObject* Message);
@@ -4886,7 +4474,7 @@ public:
 	bool HasRemoteMember();
 	void HandleNewLeader(class UOnlineMessageComponent_X* Component, class UObject* Message);
 	void HandleKickMessage(class UOnlineMessageComponent_X* Component, class UObject* Message);
-	void HandleLobbyDestroyed(TEnumAsByte<enum class ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
+	void HandleLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
 	void HandleLobbyReceiveBinaryData(int MemberIndex, struct FActiveLobbyInfo* LobbyInfo, TArray<unsigned char>* Data);
 	void RemoveAllPartyMembers();
 	void RemovePartyMemberByLocalPlayer(class ULocalPlayer* Player);
@@ -4914,7 +4502,7 @@ public:
 	bool IsPrimaryPlayerIndex(int MemberIdx);
 	bool IsPrimaryPlayer(struct FUniqueNetId* PlayerID);
 	bool IsPlayerInParty(struct FUniqueNetId* PlayerID);
-	bool KickPlayer(const struct FUniqueNetId& PlayerID, TEnumAsByte<enum class ELobbyKickReason> Reason);
+	bool KickPlayer(const struct FUniqueNetId& PlayerID, TEnumAsByte<ELobbyKickReason> Reason);
 	bool ShowInviteUI(unsigned char LocalUserNum);
 	bool LeaveParty(const struct FString& Reason);
 	bool IsInCurrentGame(const struct FUniqueNetId& MemberId);
@@ -5420,10 +5008,10 @@ public:
 	bool IsPlayingAnim(const struct FName& InAnimName);
 	float GetCurrentAnimPosition();
 	void Cleanup();
-	class UCustomAnimComponent_X* SetRootBoneRotationAxis(TEnumAsByte<enum class ERootRotationOption> Axis);
-	class UCustomAnimComponent_X* SetRootBoneAxis(TEnumAsByte<enum class ERootBoneAxis> Axis);
-	class UCustomAnimComponent_X* SetRootMotionRotation(TEnumAsByte<enum class ERootMotionRotationMode> Mode);
-	class UCustomAnimComponent_X* SetRootMotion(TEnumAsByte<enum class ERootMotionMode> Mode);
+	class UCustomAnimComponent_X* SetRootBoneRotationAxis(TEnumAsByte<ERootRotationOption> Axis);
+	class UCustomAnimComponent_X* SetRootBoneAxis(TEnumAsByte<ERootBoneAxis> Axis);
+	class UCustomAnimComponent_X* SetRootMotionRotation(TEnumAsByte<ERootMotionRotationMode> Mode);
+	class UCustomAnimComponent_X* SetRootMotion(TEnumAsByte<ERootMotionMode> Mode);
 	class UCustomAnimComponent_X* SetMirrored(bool bMirrored);
 	class UCustomAnimComponent_X* SetRate(float Rate);
 	class UCustomAnimComponent_X* SetBlendOutTime(float Time);
@@ -6251,8 +5839,7 @@ public:
 	float                                              ValueMin;                                                 // 0x0084(0x0004) (CPF_Edit)
 	float                                              ValueMax;                                                 // 0x0088(0x0004) (CPF_Edit)
 	class UMaterialInstanceConstant*                   MatInst;                                                  // 0x008C(0x0004) (CPF_Transient)
-	TEnumAsByte<enum class EMaterialEffectStage>       Stage;                                                    // 0x0090(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	TEnumAsByte<EMaterialEffectStage>                  Stage;                                                    // 0x0090(0x0001) (CPF_Transient)
 	float                                              StageTime;                                                // 0x0094(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
@@ -6269,7 +5856,7 @@ public:
 	void SetMaterialParameterValue(const struct FName& MaterialParamName, float NewValue);
 	void HandleParametersChanged();
 	void UpdateFade(float Alpha);
-	void SetStage(TEnumAsByte<enum class EMaterialEffectStage> NewStage);
+	void SetStage(TEnumAsByte<EMaterialEffectStage> NewStage);
 	bool Tick(float dt);
 	void End();
 	void Start();
@@ -6996,7 +6583,7 @@ public:
 
 
 	void UpdateCustomGame();
-	struct FString GetExclusivePlatformString(TEnumAsByte<enum class OnlinePlatform> Platform);
+	struct FString GetExclusivePlatformString(TEnumAsByte<EOnlinePlatform> Platform);
 	void UpdateGameTime(int TimeSeconds);
 	bool ShouldShutdownWhenEmpty();
 	void TimerShutdownWhenEmpty();
@@ -7081,8 +6668,7 @@ class UClanforgeReservation_X : public UObject
 {
 public:
 	struct FString                                     ReserveURLs[0x3];                                         // 0x003C(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EReserveState>              ReserveState;                                             // 0x0060(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
+	TEnumAsByte<EReserveState>                         ReserveState;                                             // 0x0060(0x0001) (CPF_Transient)
 	TArray<float>                                      RetryDelays;                                              // 0x0064(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	int                                                SendFailures;                                             // 0x0070(0x0004) (CPF_Transient)
 	class UWebRequest_X*                               PendingRequest;                                           // 0x0074(0x0004) (CPF_Transient)
@@ -7098,7 +6684,7 @@ public:
 	void Retry();
 	void HandleSendComplete(class UWebRequest_X* Request);
 	void Send(const struct FString& URL);
-	void SetReserveState(TEnumAsByte<enum class EReserveState> NewState);
+	void SetReserveState(TEnumAsByte<EReserveState> NewState);
 	void HandleActivate(class UOnlineGameDedicatedServer_X* Server);
 	void HandleInactive(class UOnlineGameDedicatedServer_X* Server);
 	void Init(class UOnlineGameDedicatedServer_X* Server, const struct FString& ReserveURL, const struct FString& UnreserveURL);
@@ -7398,7 +6984,7 @@ public:
 class UReservationsPasswordMessage_X : public UBeaconMessage_X
 {
 public:
-	TEnumAsByte<enum class EPasswordFailureReason>     Reason;                                                   // 0x003C(0x0001)
+	TEnumAsByte<EPasswordFailureReason>                Reason;                                                   // 0x003C(0x0001)
 
 	static UClass* StaticClass()
 	{
@@ -7407,7 +6993,7 @@ public:
 	}
 
 
-	class UReservationsPasswordMessage_X* SetReason(TEnumAsByte<enum class EPasswordFailureReason> InReason);
+	class UReservationsPasswordMessage_X* SetReason(TEnumAsByte<EPasswordFailureReason> InReason);
 };
 
 
@@ -7924,7 +7510,7 @@ class UPartyMessage_Kick_X : public UPartyMessage_X
 public:
 	struct FUniqueNetId                                KickPlayer;                                               // 0x003C(0x0030)
 	struct FUniqueNetId                                Instigator;                                               // 0x006C(0x0030)
-	TEnumAsByte<enum class ELobbyKickReason>           KickReason;                                               // 0x009C(0x0001)
+	TEnumAsByte<ELobbyKickReason>                      KickReason;                                               // 0x009C(0x0001)
 
 	static UClass* StaticClass()
 	{
@@ -7933,7 +7519,7 @@ public:
 	}
 
 
-	class UPartyMessage_Kick_X* SetReason(TEnumAsByte<enum class ELobbyKickReason> InKickReason);
+	class UPartyMessage_Kick_X* SetReason(TEnumAsByte<ELobbyKickReason> InKickReason);
 	class UPartyMessage_Kick_X* SetInstigator(const struct FUniqueNetId& InPlayer);
 	class UPartyMessage_Kick_X* SetKicked(const struct FUniqueNetId& InPlayer);
 };
@@ -8729,7 +8315,7 @@ class UPsyWebServerSettings_X : public UObject
 {
 public:
 	struct FString                                     DatabaseDevName;                                          // 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_Config, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EDatabaseEnvironment>       DatabaseEnvironment;                                      // 0x0048(0x0001) (CPF_Edit, CPF_Const, CPF_Config)
+	TEnumAsByte<EDatabaseEnvironment>                  DatabaseEnvironment;                                      // 0x0048(0x0001) (CPF_Edit, CPF_Const, CPF_Config)
 
 	static UClass* StaticClass()
 	{
@@ -8909,15 +8495,14 @@ public:
 	float                                              Delay;                                                    // 0x005C(0x0004) (CPF_Edit)
 	TArray<struct FUIAnimFrame>                        Sequence;                                                 // 0x0060(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	int                                                Loops;                                                    // 0x006C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAnimBlendMode>             BlendMode;                                                // 0x0070(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0071(0x0003) MISSED OFFSET
+	TEnumAsByte<EAnimBlendMode>                        BlendMode;                                                // 0x0070(0x0001) (CPF_Edit)
 	struct FName                                       TriggerOnEnd;                                             // 0x0074(0x0008) (CPF_Edit)
 	unsigned long                                      bInitialized : 1;                                         // 0x007C(0x0004) (CPF_Transient)
 	float                                              SequenceTime;                                             // 0x0080(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __GetWidgetValue__Delegate;                               // 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __SetWidgetValue__Delegate;                               // 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -9021,9 +8606,9 @@ public:
 	void UpdateCursor(class UCanvas* Canvas, float DeltaTime);
 	void Draw(class ULocalPlayer* ForPlayer, class UCanvas* Canvas, float DeltaTime);
 	void MoveCursor_Mobile(const struct FVector2D& NewPosition);
-	void HandleMobileTouch(TEnumAsByte<enum class ETouchType> EventType);
+	void HandleMobileTouch(TEnumAsByte<ETouchType> EventType);
 	bool HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
 	void CloseAllScenes();
 	void RegisterUIScene(class UUIScene_X* SceneInstance, class ULocalPlayer* Player);
 	class UUIScene_X* OpenUIScene(class UUIScene_X* SceneArchetype, class ULocalPlayer* Player);
@@ -9044,8 +8629,7 @@ class UUISceneClient_X : public UObject
 public:
 	class UUIWidget_X*                                 Root;                                                     // 0x003C(0x0004) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
 	class ULocalPlayer*                                Player;                                                   // 0x0040(0x0004)
-	TEnumAsByte<enum class EUINavigationMode>          NavigationMode;                                           // 0x0044(0x0001) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0045(0x0003) MISSED OFFSET
+	TEnumAsByte<EUINavigationMode>                     NavigationMode;                                           // 0x0044(0x0001) (CPF_Transient)
 	class UUIWidget_X*                                 HoverWidget;                                              // 0x0048(0x0004) (CPF_Transient)
 	class UUIWidget_X*                                 FocusWidget;                                              // 0x004C(0x0004) (CPF_Transient)
 	int                                                NumInteractions;                                          // 0x0050(0x0004) (CPF_Transient)
@@ -9085,7 +8669,7 @@ public:
 	void HandleHoverWidgetHoverChanged(class UUIWidget_X* Widget);
 	void SetHoverWidget(class UUIWidget_X* NewHoverWidget);
 	bool GetHoverWidget(const struct FVector& ScreenPosition, class UUIWidget_X** OutWidget);
-	void SetNavigationMode(TEnumAsByte<enum class EUINavigationMode> NewNavMode);
+	void SetNavigationMode(TEnumAsByte<EUINavigationMode> NewNavMode);
 	void LayoutUI(class UCanvas* C);
 	void DrawDebugPoints(class UCanvas* C);
 	void AddDebugPoint(const struct FVector& V, const struct FString& Text);
@@ -9185,7 +8769,7 @@ public:
 
 	struct FName GetFakeAxisKey(const struct FName& Key, float Delta);
 	bool HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
-	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> EventType, float AmountDepressed, bool bGamepad);
+	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
 	void AddKeyHandlers(TArray<struct FKeyHandler>* Handlers);
 	void SetKeyHandler(const struct FName& Key, const struct FScriptDelegate& Handler);
 	float GetOpenTime();
@@ -9284,8 +8868,8 @@ public:
 	void SetText(const struct FString& NewText);
 	struct FString ValidateText(const struct FString& NewText);
 	bool HandleInputChar(int ControllerId, const struct FString& Unicode);
-	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad);
-	bool ProcessControlKey(const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event);
+	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	bool ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event);
 	void SetCursorVisible(bool bVisible);
 	void DrawCursor(class UCanvas* C);
 	void DrawSelf(class UCanvas* C);
@@ -9304,8 +8888,7 @@ public:
 class UUIWidget_Stack_X : public UUIWidget_X
 {
 public:
-	TEnumAsByte<enum class EStackOrientation>          Stack;                                                    // 0x020C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x020D(0x0003) MISSED OFFSET
+	TEnumAsByte<EStackOrientation>                     Stack;                                                    // 0x020C(0x0001) (CPF_Edit)
 	float                                              ItemPadding;                                              // 0x0210(0x0004) (CPF_Edit)
 	int                                                MaxItems;                                                 // 0x0214(0x0004) (CPF_Edit)
 

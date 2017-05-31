@@ -501,7 +501,7 @@ struct UOnlineGameInterfaceSteamworks_PsyNet_SetFriendJoinLocation_Params
 {
 	struct FUniqueNetId                                JoinablePlayerID;                                         // (CPF_Parm)
 	struct FString                                     ServerAddress;                                            // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELobbyVisibility>           Visibility;                                               // (CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Visibility;                                               // (CPF_Parm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineLobbyInterfaceSteamworks.KickPlayer
@@ -509,7 +509,7 @@ struct UOnlineLobbyInterfaceSteamworks_KickPlayer_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
 	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyKickReason>           Reason;                                                   // (CPF_Parm)
+	TEnumAsByte<ELobbyKickReason>                      Reason;                                                   // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -557,7 +557,7 @@ struct UOnlineLobbyInterfaceSteamworks_SetLobbyLock_Params
 struct UOnlineLobbyInterfaceSteamworks_SetLobbyType_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm)
-	TEnumAsByte<enum class ELobbyVisibility>           Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Type;                                                     // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -656,7 +656,7 @@ struct UOnlineLobbyInterfaceSteamworks_FindLobbies_Params
 	TArray<struct FLobbyFilter>                        Filters;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FLobbySortFilter>                    SortFilters;                                              // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                MinSlots;                                                 // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class ELobbyDistance>             Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyDistance>                        Distance;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -665,7 +665,7 @@ struct UOnlineLobbyInterfaceSteamworks_CreateLobby_Params
 {
 	int                                                LocalPlayerNum;                                           // (CPF_Parm)
 	int                                                MaxPlayers;                                               // (CPF_Parm)
-	TEnumAsByte<enum class ELobbyVisibility>           Type;                                                     // (CPF_OptionalParm, CPF_Parm)
+	TEnumAsByte<ELobbyVisibility>                      Type;                                                     // (CPF_OptionalParm, CPF_Parm)
 	TArray<struct FLobbyMetaData>                      InitialSettings;                                          // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1041,14 +1041,14 @@ struct UOnlineSubsystemSteamworks_OpenStoreForDLC_Params
 struct UOnlineSubsystemSteamworks_OpenErrorDialog_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EPS4ErrorDialog>            ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EPS4ErrorDialog>                       ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenPS4DisplayMode
 struct UOnlineSubsystemSteamworks_OpenPS4DisplayMode_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EPS4DisplayMode>            DisplayMode;                                              // (CPF_Parm)
+	TEnumAsByte<EPS4DisplayMode>                       DisplayMode;                                              // (CPF_Parm)
 	TArray<struct FString>                             Targets;                                                  // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	int                                                ServiceLabel;                                             // (CPF_OptionalParm, CPF_Parm)
 };
@@ -1404,8 +1404,8 @@ struct UOnlineSubsystemSteamworks_DisplayAchievementProgress_Params
 struct UOnlineSubsystemSteamworks_CreateLeaderboard_Params
 {
 	struct FString                                     LeaderboardName;                                          // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELeaderboardSortType>       SortType;                                                 // (CPF_Parm)
-	TEnumAsByte<enum class ELeaderboardFormat>         DisplayFormat;                                            // (CPF_Parm)
+	TEnumAsByte<ELeaderboardSortType>                  SortType;                                                 // (CPF_Parm)
+	TEnumAsByte<ELeaderboardFormat>                    DisplayFormat;                                            // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -1515,7 +1515,7 @@ struct UOnlineSubsystemSteamworks_GetNumberOfCurrentPlayers_Params
 struct UOnlineSubsystemSteamworks_ReadOnlineAvatar_Params
 {
 	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
-	TEnumAsByte<enum class AvatarSize>                 Size;                                                     // (CPF_Parm)
+	TEnumAsByte<EAvatarSize>                           Size;                                                     // (CPF_Parm)
 	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // (CPF_Parm, CPF_NeedCtorLink)
 };
 
@@ -1535,7 +1535,7 @@ struct UOnlineSubsystemSteamworks_GetAchievements_Params
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
 	TArray<struct FAchievementDetails>                 Achievements;                                             // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	int                                                TitleId;                                                  // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ClearReadAchievementsCompleteDelegate
@@ -2079,7 +2079,7 @@ struct UOnlineSubsystemSteamworks_SetOnlineStatus_Params
 struct UOnlineSubsystemSteamworks_GetTitleFileState_Params
 {
 	struct FString                                     Filename;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetTitleFileContents
@@ -2142,7 +2142,7 @@ struct UOnlineSubsystemSteamworks_GetLocale_Params
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNATType
 struct UOnlineSubsystemSteamworks_GetNATType_Params
 {
-	TEnumAsByte<enum class ENATType>                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENATType>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ClearConnectionStatusChangeDelegate
@@ -2160,13 +2160,13 @@ struct UOnlineSubsystemSteamworks_AddConnectionStatusChangeDelegate_Params
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnConnectionStatusChange
 struct UOnlineSubsystemSteamworks_OnConnectionStatusChange_Params
 {
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus;                                         // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ConnectionStatus;                                         // (CPF_Parm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetCurrentConnectionStatus
 struct UOnlineSubsystemSteamworks_GetCurrentConnectionStatus_Params
 {
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsControllerConnected
@@ -2234,13 +2234,13 @@ struct UOnlineSubsystemSteamworks_OnControllerChange_Params
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SetNetworkNotificationPosition
 struct UOnlineSubsystemSteamworks_SetNetworkNotificationPosition_Params
 {
-	TEnumAsByte<enum class ENetworkNotificationPosition> NewPos;                                                   // (CPF_Parm)
+	TEnumAsByte<ENetworkNotificationPosition>          NewPos;                                                   // (CPF_Parm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetNetworkNotificationPosition
 struct UOnlineSubsystemSteamworks_GetNetworkNotificationPosition_Params
 {
-	TEnumAsByte<enum class ENetworkNotificationPosition> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ENetworkNotificationPosition>          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ClearExternalUIChangeDelegate
@@ -2567,7 +2567,7 @@ struct UOnlineSubsystemSteamworks_GetFriendsList_Params
 	TArray<struct FOnlineFriend>                       Friends;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	int                                                Count;                                                    // (CPF_OptionalParm, CPF_Parm)
 	int                                                StartingAt;                                               // (CPF_OptionalParm, CPF_Parm)
-	TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<EOnlineEnumerationReadState>           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ClearReadFriendsCompleteDelegate
@@ -2816,7 +2816,7 @@ struct UOnlineSubsystemSteamworks_AddLoginStatusChangeDelegate_Params
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnLoginStatusChange
 struct UOnlineSubsystemSteamworks_OnLoginStatusChange_Params
 {
-	TEnumAsByte<enum class ELoginStatus>               NewStatus;                                                // (CPF_Parm)
+	TEnumAsByte<ELoginStatus>                          NewStatus;                                                // (CPF_Parm)
 	struct FUniqueNetId                                NewId;                                                    // (CPF_Parm)
 };
 
@@ -2889,7 +2889,7 @@ struct UOnlineSubsystemSteamworks_IsFriend_Params
 struct UOnlineSubsystemSteamworks_CanUploadFitnessData_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2899,7 +2899,7 @@ struct UOnlineSubsystemSteamworks_CanUploadFitnessData_Params
 struct UOnlineSubsystemSteamworks_CanShareKinectContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2909,7 +2909,7 @@ struct UOnlineSubsystemSteamworks_CanShareKinectContent_Params
 struct UOnlineSubsystemSteamworks_CanShareWithSocialNetwork_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2919,7 +2919,7 @@ struct UOnlineSubsystemSteamworks_CanShareWithSocialNetwork_Params
 struct UOnlineSubsystemSteamworks_CanBrowseInternet_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2929,7 +2929,7 @@ struct UOnlineSubsystemSteamworks_CanBrowseInternet_Params
 struct UOnlineSubsystemSteamworks_CanAccessPremiumVideoContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2939,7 +2939,7 @@ struct UOnlineSubsystemSteamworks_CanAccessPremiumVideoContent_Params
 struct UOnlineSubsystemSteamworks_CanAccessPremiumContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2949,7 +2949,7 @@ struct UOnlineSubsystemSteamworks_CanAccessPremiumContent_Params
 struct UOnlineSubsystemSteamworks_CanUseCloudStorage_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2959,7 +2959,7 @@ struct UOnlineSubsystemSteamworks_CanUseCloudStorage_Params
 struct UOnlineSubsystemSteamworks_CanRecordDVRClips_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2969,7 +2969,7 @@ struct UOnlineSubsystemSteamworks_CanRecordDVRClips_Params
 struct UOnlineSubsystemSteamworks_CanShowPresenceInformation_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2979,7 +2979,7 @@ struct UOnlineSubsystemSteamworks_CanShowPresenceInformation_Params
 struct UOnlineSubsystemSteamworks_CanViewPlayerProfiles_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2989,7 +2989,7 @@ struct UOnlineSubsystemSteamworks_CanViewPlayerProfiles_Params
 struct UOnlineSubsystemSteamworks_CanPurchaseContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -2999,7 +2999,7 @@ struct UOnlineSubsystemSteamworks_CanPurchaseContent_Params
 struct UOnlineSubsystemSteamworks_CanDownloadUserContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3009,7 +3009,7 @@ struct UOnlineSubsystemSteamworks_CanDownloadUserContent_Params
 struct UOnlineSubsystemSteamworks_CanShareUserCreatedContent_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3019,7 +3019,7 @@ struct UOnlineSubsystemSteamworks_CanShareUserCreatedContent_Params
 struct UOnlineSubsystemSteamworks_CanCommunicateVoice_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3029,7 +3029,7 @@ struct UOnlineSubsystemSteamworks_CanCommunicateVoice_Params
 struct UOnlineSubsystemSteamworks_CanCommunicateVideo_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3039,7 +3039,7 @@ struct UOnlineSubsystemSteamworks_CanCommunicateVideo_Params
 struct UOnlineSubsystemSteamworks_CanCommunicateText_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3049,15 +3049,15 @@ struct UOnlineSubsystemSteamworks_CanCommunicateText_Params
 struct UOnlineSubsystemSteamworks_CanCommunicate_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ECommunicationMethod>       CommMethod;                                               // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ECommunicationMethod>                  CommMethod;                                               // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanPlayOnline
 struct UOnlineSubsystemSteamworks_CanPlayOnline_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EFeaturePrivilegeLevel>     PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (CPF_Parm, CPF_OutParm)
 	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3096,7 +3096,7 @@ struct UOnlineSubsystemSteamworks_IsGuestLogin_Params
 struct UOnlineSubsystemSteamworks_GetLoginStatus_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class ELoginStatus>               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	TEnumAsByte<ELoginStatus>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ClearLogoutCompletedDelegate
@@ -3144,7 +3144,7 @@ struct UOnlineSubsystemSteamworks_AddLoginFailedDelegate_Params
 struct UOnlineSubsystemSteamworks_OnLoginFailed_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;                                                // (CPF_Parm)
+	TEnumAsByte<EOnlineServerConnectionStatus>         ErrorCode;                                                // (CPF_Parm)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AutoLogin

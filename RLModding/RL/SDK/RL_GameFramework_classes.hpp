@@ -9,177 +9,6 @@
 namespace SDK
 {
 //---------------------------------------------------------------------------
-//Constants
-//---------------------------------------------------------------------------
-
-#define CONST_GAMEEVENT_AGGREGATED_PLAYER_MATCH_WON              10004
-#define CONST_GAMEEVENT_AGGREGATED_PLAYER_TIMEALIVE              10001
-#define CONST_GAMEEVENT_AGGREGATED_DATA                          10000
-#define CONST_LOADING_MOVIE                                      "LoadingMovie"
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_WEAPON_DAMAGE    10202
-#define CONST_GAMEEVENT_AGGREGATED_PLAYER_KILLS                  10002
-#define CONST_GAMEEVENT_AGGREGATED_TEAM_GAME_SCORE               10102
-#define CONST_GAMEEVENT_AGGREGATED_PLAYER_ROUND_WON              10005
-#define CONST_GAMEEVENT_AGGREGATED_PLAYER_DEATHS                 10003
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_NORMALKILL       10006
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WASNORMALKILL 10007
-#define CONST_GAMEEVENT_AGGREGATED_TEAM_KILLS                    10100
-#define CONST_GAMEEVENT_AGGREGATED_TEAM_ROUND_WON                10104
-#define CONST_GAMEEVENT_AGGREGATED_TEAM_DEATHS                   10101
-#define CONST_GAMEEVENT_AGGREGATED_TEAM_MATCH_WON                10103
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_KILLS                  10200
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEATHS                 10201
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_MELEEHITS        10206
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_DEALT_MELEE_DAMAGE     10203
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WEAPON_DAMAGE 10204
-#define CONST_NumTouchDataEntries                                5
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_MELEE_DAMAGE  10205
-#define CONST_GAMEEVENT_AGGREGATED_DAMAGE_RECEIVED_WASMELEEHIT   10207
-#define CONST_GAMEEVENT_AGGREGATED_GAME_SPECIFIC                 11000
-#define CONST_GAMEEVENT_AGGREGATED_WEAPON_FIRED                  10300
-#define CONST_GAMEEVENT_AGGREGATED_PAWN_SPAWN                    10400
-#define CONST_NumInDragHistory                                   4
-
-//---------------------------------------------------------------------------
-//Enums
-//---------------------------------------------------------------------------
-
-// Enum GameFramework.GameTypes.EShakeParam
-enum class EShakeParam
-{
-	ESP_OffsetRandom               = 0,
-	ESP_OffsetZero                 = 1,
-	ESP_MAX                        = 2
-};
-
-
-// Enum GameFramework.GameCrowdAgent.EConformType
-enum class EConformType
-{
-	CFM_NavMesh                    = 0,
-	CFM_BSP                        = 1,
-	CFM_World                      = 2,
-	CFM_None                       = 3,
-	CFM_MAX                        = 4
-};
-
-
-// Enum GameFramework.GameCrowdAgentBehavior.ECrowdBehaviorEvent
-enum class ECrowdBehaviorEvent
-{
-	CBE_None                       = 0,
-	CBE_Spawn                      = 1,
-	CBE_Random                     = 2,
-	CBE_SeePlayer                  = 3,
-	CBE_EncounterAgent             = 4,
-	CBE_TakeDamage                 = 5,
-	CBE_GroupWaiting               = 6,
-	CBE_Uneasy                     = 7,
-	CBE_Alert                      = 8,
-	CBE_Panic                      = 9,
-	CBE_MAX                        = 10
-};
-
-
-// Enum GameFramework.GameSkelCtrl_Recoil.ERecoilStart
-enum class ERecoilStart
-{
-	ERS_Zero                       = 0,
-	ERS_Random                     = 1,
-	ERS_MAX                        = 2
-};
-
-
-// Enum GameFramework.GameStateObject.GameSessionType
-enum class GameSessionType
-{
-	GT_SessionInvalid              = 0,
-	GT_SinglePlayer                = 1,
-	GT_Coop                        = 2,
-	GT_Multiplayer                 = 3,
-	GT_MAX                         = 4
-};
-
-
-// Enum GameFramework.GameThirdPersonCameraMode.ECameraViewportTypes
-enum class ECameraViewportTypes
-{
-	CVT_16to9_Full                 = 0,
-	CVT_16to9_VertSplit            = 1,
-	CVT_16to9_HorizSplit           = 2,
-	CVT_4to3_Full                  = 3,
-	CVT_4to3_HorizSplit            = 4,
-	CVT_4to3_VertSplit             = 5,
-	CVT_MAX                        = 6
-};
-
-
-// Enum GameFramework.MobileInputZone.EZoneType
-enum class EZoneType
-{
-	ZoneType_Button                = 0,
-	ZoneType_Joystick              = 1,
-	ZoneType_Trackball             = 2,
-	ZoneType_Slider                = 3,
-	ZoneType_SubClassed            = 4,
-	ZoneType_MultitouchSurface     = 5,
-	ZoneType_MAX                   = 6
-};
-
-
-// Enum GameFramework.MobileInputZone.EZoneState
-enum class EZoneState
-{
-	ZoneState_Inactive             = 0,
-	ZoneState_Activating           = 1,
-	ZoneState_Active               = 2,
-	ZoneState_Deactivating         = 3,
-	ZoneState_MAX                  = 4
-};
-
-
-// Enum GameFramework.MobileInputZone.EZoneSlideType
-enum class EZoneSlideType
-{
-	ZoneSlide_UpDown               = 0,
-	ZoneSlide_LeftRight            = 1,
-	ZoneSlide_MAX                  = 2
-};
-
-
-// Enum GameFramework.MobilePlayerInput.EUIOrientation
-enum class EUIOrientation
-{
-	UI_Unknown                     = 0,
-	UI_Portait                     = 1,
-	UI_PortaitUpsideDown           = 2,
-	UI_LandscapeRight              = 3,
-	UI_LandscapeLeft               = 4,
-	UI_MAX                         = 5
-};
-
-
-// Enum GameFramework.MobileMenuImage.MenuImageDrawStyle
-enum class MenuImageDrawStyle
-{
-	IDS_Normal                     = 0,
-	IDS_Stretched                  = 1,
-	IDS_Tile                       = 2,
-	IDS_MAX                        = 3
-};
-
-
-// Enum GameFramework.SeqEvent_HudRenderText.ETextDrawMethod
-enum class ETextDrawMethod
-{
-	DRAW_CenterText                = 0,
-	DRAW_WrapText                  = 1,
-	DRAW_MAX                       = 2
-};
-
-
-
-//---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
@@ -427,8 +256,7 @@ public:
 	unsigned long                                      bHasNotifiedSpawner : 1;                                  // 0x023C(0x0004)
 	unsigned long                                      bIsInSpawnPool : 1;                                       // 0x023C(0x0004)
 	unsigned long                                      bPaused : 1;                                              // 0x023C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EConformType>               ConformType;                                              // 0x0240(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0241(0x0003) MISSED OFFSET
+	TEnumAsByte<EConformType>                          ConformType;                                              // 0x0240(0x0001) (CPF_Edit)
 	float                                              ConformTraceDist;                                         // 0x0244(0x0004) (CPF_Edit)
 	int                                                ConformTraceInterval;                                     // 0x0248(0x0004) (CPF_Edit)
 	int                                                CurrentConformTraceInterval;                              // 0x024C(0x0004)
@@ -522,7 +350,7 @@ public:
 	bool IsIdle();
 	void SetCurrentBehavior(class UGameCrowdAgentBehavior* BehaviorArchetype);
 	void StopBehavior();
-	void HandleBehaviorEvent(TEnumAsByte<enum class ECrowdBehaviorEvent> EventType, class AActor* InInstigator, bool bViralCause, bool bPropagateViralFlag);
+	void HandleBehaviorEvent(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* InInstigator, bool bViralCause, bool bPropagateViralFlag);
 	void ActivateInstancedBehavior(class UGameCrowdAgentBehavior* NewBehaviorObject);
 	void ActivateBehavior(class UGameCrowdAgentBehavior* NewBehaviorArchetype, class AActor* LookAtActor);
 	void ResetSeePlayer();
@@ -633,9 +461,8 @@ public:
 class UGameCrowdAgentBehavior : public UObject
 {
 public:
-	TEnumAsByte<enum class ECrowdBehaviorEvent>        MyEventType;                                              // 0x003C(0x0001)
-	TEnumAsByte<enum class ECrowdBehaviorEvent>        ViralBehaviorEvent;                                       // 0x003D(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x2];                                       // 0x003E(0x0002) MISSED OFFSET
+	TEnumAsByte<ECrowdBehaviorEvent>                   MyEventType;                                              // 0x003C(0x0001)
+	TEnumAsByte<ECrowdBehaviorEvent>                   ViralBehaviorEvent;                                       // 0x003D(0x0001) (CPF_Edit)
 	float                                              DurationOfBehavior;                                       // 0x0040(0x0004) (CPF_Edit)
 	float                                              TimeUntilStopBehavior;                                    // 0x0044(0x0004)
 	unsigned long                                      bIdleBehavior : 1;                                        // 0x0048(0x0004) (CPF_Edit)
@@ -675,7 +502,7 @@ public:
 	bool CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& CameraLoc);
 	void Tick(float DeltaTime);
 	bool ShouldEndIdle();
-	class AGameCrowdBehaviorPoint* STATIC_TriggerCrowdBehavior(TEnumAsByte<enum class ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS);
+	class AGameCrowdBehaviorPoint* STATIC_TriggerCrowdBehavior(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS);
 };
 
 
@@ -847,8 +674,7 @@ class AGameCrowdBehaviorPoint : public AGameCrowdInteractionPoint
 public:
 	float                                              RadiusOfBehaviorEvent;                                    // 0x01F4(0x0004) (CPF_Config)
 	float                                              DurationOfBehaviorEvent;                                  // 0x01F8(0x0004) (CPF_Config)
-	TEnumAsByte<enum class ECrowdBehaviorEvent>        EventType;                                                // 0x01FC(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x01FD(0x0003) MISSED OFFSET
+	TEnumAsByte<ECrowdBehaviorEvent>                   EventType;                                                // 0x01FC(0x0001) (CPF_Edit)
 	unsigned long                                      bRequireLOS : 1;                                          // 0x0200(0x0004) (CPF_Edit)
 	class AActor*                                      Initiator;                                                // 0x0204(0x0004)
 
@@ -1243,7 +1069,7 @@ public:
 
 	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
 	void ShowDebugSelectedInfo();
-	bool NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	bool NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
 	void InitDebugInputSystem();
 	void DisableDebugCamera();
 	void NormalSpeed();
@@ -1334,10 +1160,10 @@ public:
 class UMobileInputZone : public UObject
 {
 public:
-	TEnumAsByte<enum class EZoneType>                  Type;                                                     // 0x003C(0x0001) (CPF_Edit, CPF_Config)
+	TEnumAsByte<EZoneType>                             Type;                                                     // 0x003C(0x0001) (CPF_Edit, CPF_Config)
 	unsigned char                                      TouchpadIndex;                                            // 0x003D(0x0001) (CPF_Edit)
-	TEnumAsByte<enum class EZoneState>                 State;                                                    // 0x003E(0x0001)
-	TEnumAsByte<enum class EZoneSlideType>             SlideType;                                                // 0x003F(0x0001) (CPF_Edit, CPF_Config)
+	TEnumAsByte<EZoneState>                            State;                                                    // 0x003E(0x0001)
+	TEnumAsByte<EZoneSlideType>                        SlideType;                                                // 0x003F(0x0001) (CPF_Edit, CPF_Config)
 	struct FString                                     Caption;                                                  // 0x0040(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
 	struct FName                                       InputKey;                                                 // 0x004C(0x0008) (CPF_Edit, CPF_Config)
 	struct FName                                       HorizontalInputKey;                                       // 0x0054(0x0008) (CPF_Edit, CPF_Config)
@@ -1435,10 +1261,10 @@ public:
 	void AddKismetEventHandler(class USeqEvent_MobileZoneBase* NewHandler);
 	void OnPostDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas);
 	bool OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas);
-	bool OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize);
-	bool OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation);
-	bool OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation);
-	bool OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation);
+	bool OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize);
+	bool OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
+	bool OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
+	bool OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
 	void DeactivateZone();
 	void ActivateZone();
 };
@@ -1499,7 +1325,7 @@ public:
 	void SetCanvasPos(class UCanvas* Canvas, float OffsetX, float OffsetY);
 	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
 	void GetRealPosition(float* PosX, float* PosY);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 };
 
 
@@ -1509,8 +1335,7 @@ class UMobileMenuImage : public UMobileMenuObject
 {
 public:
 	class UTexture2D*                                  Image;                                                    // 0x00A4(0x0004)
-	TEnumAsByte<enum class MenuImageDrawStyle>         ImageDrawStyle;                                           // 0x00A8(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x00A9(0x0003) MISSED OFFSET
+	TEnumAsByte<EMenuImageDrawStyle>                   ImageDrawStyle;                                           // 0x00A8(0x0001)
 	struct FUVCoords                                   ImageUVs;                                                 // 0x00AC(0x0014)
 	struct FLinearColor                                ImageColor;                                               // 0x00C0(0x0010)
 
@@ -1544,7 +1369,6 @@ public:
 	unsigned long                                      bApplyGlobalScaleWidth : 1;                               // 0x005C(0x0004) (CPF_Edit)
 	unsigned long                                      bApplyGlobalScaleHeight : 1;                              // 0x005C(0x0004) (CPF_Edit)
 	unsigned char                                      TouchpadIndex;                                            // 0x0060(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0061(0x0003) MISSED OFFSET
 	float                                              Left;                                                     // 0x0064(0x0004) (CPF_Edit)
 	float                                              Top;                                                      // 0x0068(0x0004) (CPF_Edit)
 	float                                              Width;                                                    // 0x006C(0x0004) (CPF_Edit)
@@ -1572,8 +1396,8 @@ public:
 	bool Closing();
 	void MadeTopMenu();
 	void Opened(const struct FString& Mode);
-	bool OnSceneTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, bool bInside);
-	void OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY);
+	bool OnSceneTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, bool bInside);
+	void OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY);
 	void PreRenderMenuObject(class UMobileMenuObject* MenuObject, class UCanvas* Canvas, float RenderDelta);
 	void RenderScene(class UCanvas* Canvas, float RenderDelta);
 	class UFont* GetSceneFont();
@@ -1638,7 +1462,7 @@ public:
 	class UMobileMenuScene* OpenMobileMenu(const struct FString& MenuClassName);
 	void MobileMenuCommand(const struct FString& MenuCommand);
 	void SceneRenderToggle();
-	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<enum class ETravelType> TravelType, bool bIsSeamlessTravel);
+	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void RenderMenus(class UCanvas* Canvas, float RenderDelta);
 	void CloseAllMenus();
 	void CloseMenuScene(class UMobileMenuScene* SceneToClose);
@@ -1657,13 +1481,13 @@ public:
 	void InitTouchSystem();
 	void ClientInitInputSystem();
 	void InitInputSystem();
-	bool ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<enum class ETouchType> EventType, const struct FVector2D& TouchLocation);
+	bool ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
 	void SendInputAxis(const struct FName& Key, float Delta, float DeltaTime);
-	void SendInputKey(const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed);
+	void SendInputKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed);
 	void ConditionalUpdateInputZones(int NewViewportX, int NewViewportY, int NewViewportSizeX, int NewViewportSizeY);
 	void NativeInitializeInputZones(bool bIsFirstInitialize);
 	void NativeInitializeInputSystem();
-	void OnInputTouch(int Handle, TEnumAsByte<enum class ETouchType> Type, const struct FVector2D& TouchLocation, float DeviceTimestamp, int TouchpadIndex);
+	void OnInputTouch(int Handle, TEnumAsByte<ETouchType> Type, const struct FVector2D& TouchLocation, float DeviceTimestamp, int TouchpadIndex);
 	bool OnPreviewTouch(float X, float Y, int TouchpadIndex);
 	void OnTouchNotHandledInMenu();
 	void PlayerInput(float DeltaTime);
@@ -2408,7 +2232,7 @@ public:
 	struct FVector2D                                   DOF_RadiusDistRange;                                      // 0x021C(0x0008) (CPF_Edit, CPF_Const)
 	float                                              ViewOffsetInterp;                                         // 0x0224(0x0004)
 	float                                              OffsetAdjustmentInterpSpeed;                              // 0x0228(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class ECameraViewportTypes>       CurrentViewportType;                                      // 0x022C(0x0001) (CPF_Transient)
+	TEnumAsByte<ECameraViewportTypes>                  CurrentViewportType;                                      // 0x022C(0x0001) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -2438,7 +2262,6 @@ public:
 class UGameThirdPersonCameraMode_Default : public UGameThirdPersonCameraMode
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                                       // 0x022D(0x0003) MISSED OFFSET
 	float                                              WorstLocAimingZOffset;                                    // 0x0230(0x0004) (CPF_Edit, CPF_Const)
 	unsigned long                                      bTemporaryOriginRotInterp : 1;                            // 0x0234(0x0004) (CPF_Transient)
 	float                                              TemporaryOriginRotInterpSpeed;                            // 0x0238(0x0004) (CPF_Edit, CPF_Const)
@@ -2510,8 +2333,7 @@ class UGameStateObject : public UGameplayEventsHandler
 public:
 	struct FArray_Mirror                               TeamStates;                                               // 0x0058(0x000C) (CPF_Const, CPF_Native)
 	struct FArray_Mirror                               PlayerStates;                                             // 0x0064(0x000C) (CPF_Const, CPF_Native)
-	TEnumAsByte<enum class GameSessionType>            SessionType;                                              // 0x0070(0x0001)
-	unsigned char                                      UnknownData00[0x3];                                       // 0x0071(0x0003) MISSED OFFSET
+	TEnumAsByte<EGameSessionType>                      SessionType;                                              // 0x0070(0x0001)
 	unsigned long                                      bIsMatchStarted : 1;                                      // 0x0074(0x0004)
 	unsigned long                                      bIsRoundStarted : 1;                                      // 0x0074(0x0004)
 	int                                                RoundNumber;                                              // 0x0078(0x0004)
@@ -2628,7 +2450,7 @@ public:
 	}
 
 
-	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
 };
 
 
@@ -2897,7 +2719,7 @@ public:
 	}
 
 
-	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<enum class EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	bool InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
 };
 
 
@@ -2943,7 +2765,7 @@ public:
 	void SetFirstItem(int First);
 	void RenderItem(class UCanvas* Canvas, float DeltaTime, int ItemIndex);
 	void RenderObject(class UCanvas* Canvas, float DeltaTime);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 	class UMobileMenuBarItem* GetSelected();
 	int Num();
 	void AddItem(class UMobileMenuBarItem* Item, int Index);
@@ -3013,7 +2835,7 @@ public:
 
 
 	void RenderElement(class UMobileMenuObject* Owner, class UCanvas* Canvas, float DeltaTime, float Opacity);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, float DeltaTime);
 };
 
 
@@ -3086,7 +2908,7 @@ public:
 	void UpdateItemInSlot(int InSlot);
 	class UMobileMenuElement* AddItemToSlot(class UMobileMenuElement* Element, int ToSlot);
 	bool SwapItemsInSlots(int Slot0, int Slot1);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 	bool CanPutItemInSlot(class UMobileMenuElement* Item, class UMobileMenuElement* ToSlot, int ToIdx, int FromIdx);
 	void ScaleSlot(class UMobileMenuElement* Slot);
 	int AddSlot(class UMobileMenuElement* Slot);
@@ -3156,7 +2978,7 @@ public:
 	void UpdateScroll(float DeltaTime);
 	float CalculateSelectedItem(float ScrollAmount, bool bForceZeroAdjustment, struct FSelectedMenuItem* Selected);
 	class UMobileMenuListItem* GetItemClickPosition(float* MouseX, float* MouseY);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 	bool SetSelectedItem(int ItemIndex, bool bForceAll);
 	int GetNumVisible();
 	int SetSelectedToVisibleIndex(int VisibleIndex);
@@ -3206,9 +3028,9 @@ public:
 
 
 	void RenderObject(class UCanvas* Canvas, float DeltaTime);
-	bool OnTouch(TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 	void OnRenderObject(class UMobileMenuObjectProxy* Proxy, class UCanvas* Canvas, float DeltaTime);
-	bool OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<enum class ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	bool OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 };
 
 
@@ -3338,7 +3160,7 @@ public:
 	struct FColor                                      DisplayColor;                                             // 0x012C(0x0004) (CPF_Edit)
 	struct FVector                                     DisplayLocation;                                          // 0x0130(0x000C) (CPF_Edit)
 	struct FString                                     DisplayText;                                              // 0x013C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETextDrawMethod>            TextDrawMethod;                                           // 0x0148(0x0001) (CPF_Edit)
+	TEnumAsByte<ETextDrawMethod>                       TextDrawMethod;                                           // 0x0148(0x0001) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{

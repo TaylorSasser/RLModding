@@ -533,7 +533,7 @@ struct AGameCrowdAgent_StopBehavior_Params
 // Function GameFramework.GameCrowdAgent.HandleBehaviorEvent
 struct AGameCrowdAgent_HandleBehaviorEvent_Params
 {
-	TEnumAsByte<enum class ECrowdBehaviorEvent>        EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ECrowdBehaviorEvent>                   EventType;                                                // (CPF_Parm)
 	class AActor*                                      InInstigator;                                             // (CPF_Parm)
 	bool                                               bViralCause;                                              // (CPF_Parm)
 	bool                                               bPropagateViralFlag;                                      // (CPF_Parm)
@@ -885,7 +885,7 @@ struct UGameCrowdAgentBehavior_ShouldEndIdle_Params
 // Function GameFramework.GameCrowdAgentBehavior.TriggerCrowdBehavior
 struct UGameCrowdAgentBehavior_TriggerCrowdBehavior_Params
 {
-	TEnumAsByte<enum class ECrowdBehaviorEvent>        EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ECrowdBehaviorEvent>                   EventType;                                                // (CPF_Parm)
 	class AActor*                                      Instigator;                                               // (CPF_Parm)
 	struct FVector                                     AtLocation;                                               // (CPF_Parm)
 	float                                              InRange;                                                  // (CPF_Parm)
@@ -1583,7 +1583,7 @@ struct ADebugCameraController_NativeInputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -1757,7 +1757,7 @@ struct UMobileInputZone_OnPreDrawZone_Params
 struct UMobileInputZone_OnProcessSlide_Params
 {
 	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	int                                                SlideValue;                                               // (CPF_Parm)
 	struct FVector2D                                   ViewportSize;                                             // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -1767,7 +1767,7 @@ struct UMobileInputZone_OnProcessSlide_Params
 struct UMobileInputZone_OnDoubleTapDelegate_Params
 {
 	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1776,7 +1776,7 @@ struct UMobileInputZone_OnDoubleTapDelegate_Params
 struct UMobileInputZone_OnTapDelegate_Params
 {
 	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1787,7 +1787,7 @@ struct UMobileInputZone_OnProcessInputDelegate_Params
 	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
 	float                                              DeltaTime;                                                // (CPF_Parm)
 	int                                                Handle;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -1837,7 +1837,7 @@ struct UMobileMenuObject_GetRealPosition_Params
 // Function GameFramework.MobileMenuObject.OnTouch
 struct UMobileMenuObject_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
@@ -1896,7 +1896,7 @@ struct UMobileMenuScene_Opened_Params
 // Function GameFramework.MobileMenuScene.OnSceneTouch
 struct UMobileMenuScene_OnSceneTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	bool                                               bInside;                                                  // (CPF_Parm)
@@ -1907,7 +1907,7 @@ struct UMobileMenuScene_OnSceneTouch_Params
 struct UMobileMenuScene_OnTouch_Params
 {
 	class UMobileMenuObject*                           Sender;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 };
@@ -1984,7 +1984,7 @@ struct UMobilePlayerInput_SceneRenderToggle_Params
 struct UMobilePlayerInput_PreClientTravel_Params
 {
 	struct FString                                     PendingURL;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<enum class ETravelType>                TravelType;                                               // (CPF_Parm)
+	TEnumAsByte<ETravelType>                           TravelType;                                               // (CPF_Parm)
 	bool                                               bIsSeamlessTravel;                                        // (CPF_Parm)
 };
 
@@ -2098,7 +2098,7 @@ struct UMobilePlayerInput_InitInputSystem_Params
 struct UMobilePlayerInput_ProcessWorldTouch_Params
 {
 	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
@@ -2115,7 +2115,7 @@ struct UMobilePlayerInput_SendInputAxis_Params
 struct UMobilePlayerInput_SendInputKey_Params
 {
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_Parm)
 };
 
@@ -2143,7 +2143,7 @@ struct UMobilePlayerInput_NativeInitializeInputSystem_Params
 struct UMobilePlayerInput_OnInputTouch_Params
 {
 	int                                                Handle;                                                   // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 Type;                                                     // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            Type;                                                     // (CPF_Parm)
 	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
 	float                                              DeviceTimestamp;                                          // (CPF_Parm)
 	int                                                TouchpadIndex;                                            // (CPF_Parm)
@@ -2905,7 +2905,7 @@ struct UDebugCameraInput_InputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3104,7 +3104,7 @@ struct UMobileDebugCameraInput_InputKey_Params
 {
 	int                                                ControllerId;                                             // (CPF_Parm)
 	struct FName                                       Key;                                                      // (CPF_Parm)
-	TEnumAsByte<enum class EInputEvent>                Event;                                                    // (CPF_Parm)
+	TEnumAsByte<EInputEvent>                           Event;                                                    // (CPF_Parm)
 	float                                              AmountDepressed;                                          // (CPF_OptionalParm, CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -3159,7 +3159,7 @@ struct UMobileMenuBar_RenderObject_Params
 // Function GameFramework.MobileMenuBar.OnTouch
 struct UMobileMenuBar_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
@@ -3239,7 +3239,7 @@ struct UMobileMenuElement_RenderElement_Params
 // Function GameFramework.MobileMenuElement.OnTouch
 struct UMobileMenuElement_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	float                                              DeltaTime;                                                // (CPF_Parm)
@@ -3324,7 +3324,7 @@ struct UMobileMenuInventory_SwapItemsInSlots_Params
 // Function GameFramework.MobileMenuInventory.OnTouch
 struct UMobileMenuInventory_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
@@ -3437,7 +3437,7 @@ struct UMobileMenuList_GetItemClickPosition_Params
 // Function GameFramework.MobileMenuList.OnTouch
 struct UMobileMenuList_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
@@ -3526,7 +3526,7 @@ struct UMobileMenuObjectProxy_RenderObject_Params
 // Function GameFramework.MobileMenuObjectProxy.OnTouch
 struct UMobileMenuObjectProxy_OnTouch_Params
 {
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
@@ -3546,7 +3546,7 @@ struct UMobileMenuObjectProxy_OnRenderObject_Params
 struct UMobileMenuObjectProxy_OnTouchEvent_Params
 {
 	class UMobileMenuObjectProxy*                      Proxy;                                                    // (CPF_Parm)
-	TEnumAsByte<enum class ETouchType>                 EventType;                                                // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
 	float                                              TouchX;                                                   // (CPF_Parm)
 	float                                              TouchY;                                                   // (CPF_Parm)
 	class UMobileMenuObject*                           ObjectOver;                                               // (CPF_Parm)
