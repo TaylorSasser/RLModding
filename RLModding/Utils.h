@@ -25,10 +25,10 @@ namespace Utils {
 
 
 	template<typename T> 
-	T* EditParams(void* NewParams,void* OldParams) {
+	T* EditParams(void* oldParam,void* newParam) {
 		T* oldParams = reinterpret_cast<T*>(OldParams);
 		T* newParams = reinterpret_cast<T*>(NewParams);
-		memcpy(newParams,oldParams,sizeof(T));
+		memcpy(oldParams,newParams,sizeof(T));
 		delete oldParams;
 		return newParams;
 	}
