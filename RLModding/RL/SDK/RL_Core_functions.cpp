@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -59,12 +57,7 @@ struct FString UObject::STATIC_PadString(const struct FString& Str, int Characte
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PadString");
 
-	struct
-	{
-		struct FString                 Str;
-		int                            Characters;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_PadString_Params params;
 	params.Str = Str;
 	params.Characters = Characters;
 
@@ -87,10 +80,7 @@ class UObjectProvider* UObject::STATIC_GetObjectProvider()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetObjectProvider");
 
-	struct
-	{
-		class UObjectProvider*         ReturnValue;
-	} params;
+	UObject_GetObjectProvider_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -112,10 +102,7 @@ TEnumAsByte<enum class EEdition> UObject::STATIC_GetEdition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEdition");
 
-	struct
-	{
-		TEnumAsByte<enum class EEdition> ReturnValue;
-	} params;
+	UObject_GetEdition_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -138,11 +125,7 @@ bool UObject::STATIC_IsEdition(TEnumAsByte<enum class EEdition> Edition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsEdition");
 
-	struct
-	{
-		TEnumAsByte<enum class EEdition> Edition;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsEdition_Params params;
 	params.Edition = Edition;
 
 	auto flags = fn->FunctionFlags;
@@ -165,10 +148,7 @@ void UObject::SetRooted(bool bRooted)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SetRooted");
 
-	struct
-	{
-		bool                           bRooted;
-	} params;
+	UObject_SetRooted_Params params;
 	params.bRooted = bRooted;
 
 	auto flags = fn->FunctionFlags;
@@ -189,10 +169,7 @@ void UObject::STATIC_ProfNodeEvent(const struct FString& EventName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeEvent");
 
-	struct
-	{
-		struct FString                 EventName;
-	} params;
+	UObject_ProfNodeEvent_Params params;
 	params.EventName = EventName;
 
 	auto flags = fn->FunctionFlags;
@@ -213,10 +190,7 @@ void UObject::STATIC_ProfNodeSetDepthThreshold(int Depth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeSetDepthThreshold");
 
-	struct
-	{
-		int                            Depth;
-	} params;
+	UObject_ProfNodeSetDepthThreshold_Params params;
 	params.Depth = Depth;
 
 	auto flags = fn->FunctionFlags;
@@ -237,10 +211,7 @@ void UObject::STATIC_ProfNodeSetTimeThresholdSeconds(float Threshold)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeSetTimeThresholdSeconds");
 
-	struct
-	{
-		float                          Threshold;
-	} params;
+	UObject_ProfNodeSetTimeThresholdSeconds_Params params;
 	params.Threshold = Threshold;
 
 	auto flags = fn->FunctionFlags;
@@ -261,10 +232,7 @@ void UObject::STATIC_ProfNodeStop(int AssumedTimerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeStop");
 
-	struct
-	{
-		int                            AssumedTimerIndex;
-	} params;
+	UObject_ProfNodeStop_Params params;
 	params.AssumedTimerIndex = AssumedTimerIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -286,11 +254,7 @@ int UObject::STATIC_ProfNodeStart(const struct FString& TimerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeStart");
 
-	struct
-	{
-		struct FString                 TimerName;
-		int                            ReturnValue;
-	} params;
+	UObject_ProfNodeStart_Params params;
 	params.TimerName = TimerName;
 
 	auto flags = fn->FunctionFlags;
@@ -314,11 +278,7 @@ struct FString UObject::STATIC_GetStringFromGuid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetStringFromGuid");
 
-	struct
-	{
-		struct FGuid                   InGuid;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_GetStringFromGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -344,11 +304,7 @@ struct FGuid UObject::STATIC_GetGuidFromString(struct FString* InGuidString)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetGuidFromString");
 
-	struct
-	{
-		struct FString                 InGuidString;
-		struct FGuid                   ReturnValue;
-	} params;
+	UObject_GetGuidFromString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -373,10 +329,7 @@ struct FGuid UObject::STATIC_CreateGuid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.CreateGuid");
 
-	struct
-	{
-		struct FGuid                   ReturnValue;
-	} params;
+	UObject_CreateGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -399,11 +352,7 @@ bool UObject::STATIC_IsGuidValid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsGuidValid");
 
-	struct
-	{
-		struct FGuid                   InGuid;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsGuidValid_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -428,10 +377,7 @@ void UObject::STATIC_InvalidateGuid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InvalidateGuid");
 
-	struct
-	{
-		struct FGuid                   InGuid;
-	} params;
+	UObject_InvalidateGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -457,13 +403,7 @@ class UObject* UObject::FindStructProperty(class UClass* PropertyClass, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindStructProperty");
 
-	struct
-	{
-		class UClass*                  PropertyClass;
-		struct FName                   PropertyName;
-		struct FName                   StructName;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_FindStructProperty_Params params;
 	params.PropertyClass = PropertyClass;
 	params.PropertyName = PropertyName;
 	params.StructName = StructName;
@@ -490,12 +430,7 @@ class UObject* UObject::FindProperty(class UClass* PropertyClass, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindProperty");
 
-	struct
-	{
-		class UClass*                  PropertyClass;
-		struct FName                   PropertyName;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_FindProperty_Params params;
 	params.PropertyClass = PropertyClass;
 	params.PropertyName = PropertyName;
 
@@ -521,12 +456,7 @@ bool UObject::STATIC_Identical(class UObject* Left, class UObject* Right)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Identical");
 
-	struct
-	{
-		class UObject*                 Left;
-		class UObject*                 Right;
-		bool                           ReturnValue;
-	} params;
+	UObject_Identical_Params params;
 	params.Left = Left;
 	params.Right = Right;
 
@@ -552,12 +482,7 @@ class UObject* UObject::DuplicateObject(class UObject* Template, class UObject* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DuplicateObject");
 
-	struct
-	{
-		class UObject*                 Template;
-		class UObject*                 ObjOuter;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_DuplicateObject_Params params;
 	params.Template = Template;
 	params.ObjOuter = ObjOuter;
 
@@ -585,14 +510,7 @@ float UObject::RunningAverage(float OldAverage, float NewValue, int NewCount, in
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RunningAverage");
 
-	struct
-	{
-		float                          OldAverage;
-		float                          NewValue;
-		int                            NewCount;
-		int                            OldCount;
-		float                          ReturnValue;
-	} params;
+	UObject_RunningAverage_Params params;
 	params.OldAverage = OldAverage;
 	params.NewValue = NewValue;
 	params.NewCount = NewCount;
@@ -618,10 +536,7 @@ float UObject::GetCurrentTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetCurrentTime");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UObject_GetCurrentTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -644,11 +559,7 @@ struct FLinearColor UObject::GetMaxLinearColorBrightness(const struct FLinearCol
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetMaxLinearColorBrightness");
 
-	struct
-	{
-		struct FLinearColor            C;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_GetMaxLinearColorBrightness_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -671,11 +582,7 @@ struct FColor UObject::GetMaxColorBrightness(const struct FColor& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetMaxColorBrightness");
 
-	struct
-	{
-		struct FColor                  C;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_GetMaxColorBrightness_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -698,11 +605,7 @@ struct FLinearColor UObject::STATIC_HSVtoRGB(const struct FLinearColor& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.HSVtoRGB");
 
-	struct
-	{
-		struct FLinearColor            C;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_HSVtoRGB_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -726,11 +629,7 @@ struct FLinearColor UObject::STATIC_RGBtoHSV(const struct FLinearColor& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RGBtoHSV");
 
-	struct
-	{
-		struct FLinearColor            C;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_RGBtoHSV_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -754,11 +653,7 @@ struct FColor UObject::STATIC_IntToColor(int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IntToColor");
 
-	struct
-	{
-		int                            I;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_IntToColor_Params params;
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
@@ -781,11 +676,7 @@ int UObject::STATIC_LinearColorToInt(const struct FLinearColor& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LinearColorToInt");
 
-	struct
-	{
-		struct FLinearColor            C;
-		int                            ReturnValue;
-	} params;
+	UObject_LinearColorToInt_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -808,11 +699,7 @@ int UObject::STATIC_ColorToInt(const struct FColor& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ColorToInt");
 
-	struct
-	{
-		struct FColor                  C;
-		int                            ReturnValue;
-	} params;
+	UObject_ColorToInt_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -838,14 +725,7 @@ bool UObject::SolveVelocityQuadratic(float Distance, float Speed, float Accel, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SolveVelocityQuadratic");
 
-	struct
-	{
-		float                          Distance;
-		float                          Speed;
-		float                          Accel;
-		float                          Time;
-		bool                           ReturnValue;
-	} params;
+	UObject_SolveVelocityQuadratic_Params params;
 	params.Distance = Distance;
 	params.Speed = Speed;
 	params.Accel = Accel;
@@ -874,11 +754,7 @@ float UObject::Sign(float X)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Sign");
 
-	struct
-	{
-		float                          X;
-		float                          ReturnValue;
-	} params;
+	UObject_Sign_Params params;
 	params.X = X;
 
 	auto flags = fn->FunctionFlags;
@@ -903,12 +779,7 @@ struct FVector2D UObject::STATIC_MakeVector2D(float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeVector2D");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_MakeVector2D_Params params;
 	params.X = X;
 	params.Y = Y;
 
@@ -932,11 +803,7 @@ struct FVector UObject::STATIC_VAbs(const struct FVector& V)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VAbs");
 
-	struct
-	{
-		struct FVector                 V;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VAbs_Params params;
 	params.V = V;
 
 	auto flags = fn->FunctionFlags;
@@ -961,13 +828,7 @@ struct FVector UObject::STATIC_MakeVector(float X, float Y, float Z)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeVector");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		float                          Z;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MakeVector_Params params;
 	params.X = X;
 	params.Y = Y;
 	params.Z = Z;
@@ -993,12 +854,7 @@ struct FVector UObject::FlattenVector(const struct FVector& NormalToFlatten, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FlattenVector");
 
-	struct
-	{
-		struct FVector                 NormalToFlatten;
-		struct FVector                 PlaneNormal;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_FlattenVector_Params params;
 	params.NormalToFlatten = NormalToFlatten;
 	params.PlaneNormal = PlaneNormal;
 
@@ -1021,10 +877,7 @@ struct FName UObject::GetRealArchetypeName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRealArchetypeName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UObject_GetRealArchetypeName_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1047,11 +900,7 @@ struct FString UObject::STATIC_FormatTime(int Seconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FormatTime");
 
-	struct
-	{
-		int                            Seconds;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_FormatTime_Params params;
 	params.Seconds = Seconds;
 
 	auto flags = fn->FunctionFlags;
@@ -1074,11 +923,7 @@ void UObject::SwapRefrences(class UObject** A, class UObject** B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SwapRefrences");
 
-	struct
-	{
-		class UObject*                 A;
-		class UObject*                 B;
-	} params;
+	UObject_SwapRefrences_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1104,12 +949,7 @@ class UObject* UObject::STATIC_GetTextArchetype(class UClass* ArchetypeClass, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetTextArchetype");
 
-	struct
-	{
-		class UClass*                  ArchetypeClass;
-		struct FString                 Path;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_GetTextArchetype_Params params;
 	params.ArchetypeClass = ArchetypeClass;
 	params.Path = Path;
 
@@ -1133,10 +973,7 @@ bool UObject::IsArchetype()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsArchetype");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_IsArchetype_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1156,9 +993,7 @@ void UObject::UnsubscribeFromAllEvents()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.UnsubscribeFromAllEvents");
 
-	struct
-	{
-	} params;
+	UObject_UnsubscribeFromAllEvents_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1179,11 +1014,7 @@ class UObject* UObject::NewInstance(class UObject* ObjOuter)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NewInstance");
 
-	struct
-	{
-		class UObject*                 ObjOuter;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_NewInstance_Params params;
 	params.ObjOuter = ObjOuter;
 
 	auto flags = fn->FunctionFlags;
@@ -1206,10 +1037,7 @@ void UObject::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UObject_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -1230,11 +1058,7 @@ struct FRotator UObject::RotatorFromInt(int RotationPitchAndYaw)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotatorFromInt");
 
-	struct
-	{
-		int                            RotationPitchAndYaw;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RotatorFromInt_Params params;
 	params.RotationPitchAndYaw = RotationPitchAndYaw;
 
 	auto flags = fn->FunctionFlags;
@@ -1257,11 +1081,7 @@ int UObject::RotatorToInt(const struct FRotator& Rotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotatorToInt");
 
-	struct
-	{
-		struct FRotator                Rotation;
-		int                            ReturnValue;
-	} params;
+	UObject_RotatorToInt_Params params;
 	params.Rotation = Rotation;
 
 	auto flags = fn->FunctionFlags;
@@ -1283,10 +1103,7 @@ struct FString UObject::STATIC_GetLanguage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetLanguage");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UObject_GetLanguage_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1309,11 +1126,7 @@ int UObject::GetRandomOptionSumFrequency(TArray<float>* FreqList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRandomOptionSumFrequency");
 
-	struct
-	{
-		TArray<float>                  FreqList;
-		int                            ReturnValue;
-	} params;
+	UObject_GetRandomOptionSumFrequency_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1337,10 +1150,7 @@ int UObject::GetBuildChangelistNumber()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetBuildChangelistNumber");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UObject_GetBuildChangelistNumber_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1362,10 +1172,7 @@ int UObject::GetEngineVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEngineVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UObject_GetEngineVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1394,17 +1201,7 @@ void UObject::GetSystemTime(int* Year, int* Month, int* DayOfWeek, int* Day, int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetSystemTime");
 
-	struct
-	{
-		int                            Year;
-		int                            Month;
-		int                            DayOfWeek;
-		int                            Day;
-		int                            Hour;
-		int                            Min;
-		int                            Sec;
-		int                            MSec;
-	} params;
+	UObject_GetSystemTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1441,10 +1238,7 @@ struct FString UObject::TimeStamp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TimeStamp");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UObject_TimeStamp_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1469,13 +1263,7 @@ struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformVectorByRotation");
 
-	struct
-	{
-		struct FRotator                SourceRotation;
-		struct FVector                 SourceVector;
-		bool                           bInverse;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_TransformVectorByRotation_Params params;
 	params.SourceRotation = SourceRotation;
 	params.SourceVector = SourceVector;
 	params.bInverse = bInverse;
@@ -1500,10 +1288,7 @@ struct FName UObject::GetPackageName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPackageName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UObject_GetPackageName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1524,10 +1309,7 @@ bool UObject::IsPendingKill()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsPendingKill");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_IsPendingKill_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1551,12 +1333,7 @@ float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ByteToFloat");
 
-	struct
-	{
-		unsigned char                  inputByte;
-		bool                           bSigned;
-		float                          ReturnValue;
-	} params;
+	UObject_ByteToFloat_Params params;
 	params.inputByte = inputByte;
 	params.bSigned = bSigned;
 
@@ -1581,12 +1358,7 @@ unsigned char UObject::FloatToByte(float inputFloat, bool bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FloatToByte");
 
-	struct
-	{
-		float                          inputFloat;
-		bool                           bSigned;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_FloatToByte_Params params;
 	params.inputFloat = inputFloat;
 	params.bSigned = bSigned;
 
@@ -1610,11 +1382,7 @@ float UObject::STATIC_UnwindHeading(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.UnwindHeading");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_UnwindHeading_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -1638,12 +1406,7 @@ float UObject::STATIC_FindDeltaAngle(float A1, float A2)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindDeltaAngle");
 
-	struct
-	{
-		float                          A1;
-		float                          A2;
-		float                          ReturnValue;
-	} params;
+	UObject_FindDeltaAngle_Params params;
 	params.A1 = A1;
 	params.A2 = A2;
 
@@ -1667,11 +1430,7 @@ float UObject::STATIC_GetHeadingAngle(const struct FVector& Dir)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetHeadingAngle");
 
-	struct
-	{
-		struct FVector                 Dir;
-		float                          ReturnValue;
-	} params;
+	UObject_GetHeadingAngle_Params params;
 	params.Dir = Dir;
 
 	auto flags = fn->FunctionFlags;
@@ -1693,10 +1452,7 @@ void UObject::STATIC_GetAngularDegreesFromRadians(struct FVector2D* OutFOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularDegreesFromRadians");
 
-	struct
-	{
-		struct FVector2D               OutFOV;
-	} params;
+	UObject_GetAngularDegreesFromRadians_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1719,11 +1475,7 @@ void UObject::STATIC_GetAngularFromDotDist(const struct FVector2D& DotDist, stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularFromDotDist");
 
-	struct
-	{
-		struct FVector2D               OutAngDist;
-		struct FVector2D               DotDist;
-	} params;
+	UObject_GetAngularFromDotDist_Params params;
 	params.DotDist = DotDist;
 
 	auto flags = fn->FunctionFlags;
@@ -1752,15 +1504,7 @@ bool UObject::STATIC_GetAngularDistance(const struct FVector& Direction, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularDistance");
 
-	struct
-	{
-		struct FVector2D               OutAngularDist;
-		struct FVector                 Direction;
-		struct FVector                 AxisX;
-		struct FVector                 AxisY;
-		struct FVector                 AxisZ;
-		bool                           ReturnValue;
-	} params;
+	UObject_GetAngularDistance_Params params;
 	params.Direction = Direction;
 	params.AxisX = AxisX;
 	params.AxisY = AxisY;
@@ -1794,15 +1538,7 @@ bool UObject::STATIC_GetDotDistance(const struct FVector& Direction, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetDotDistance");
 
-	struct
-	{
-		struct FVector2D               OutDotDist;
-		struct FVector                 Direction;
-		struct FVector                 AxisX;
-		struct FVector                 AxisY;
-		struct FVector                 AxisZ;
-		bool                           ReturnValue;
-	} params;
+	UObject_GetDotDistance_Params params;
 	params.Direction = Direction;
 	params.AxisX = AxisX;
 	params.AxisY = AxisY;
@@ -1838,17 +1574,7 @@ bool UObject::LinePlaneIntersection(const struct FVector& LineStart, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LinePlaneIntersection");
 
-	struct
-	{
-		struct FVector                 LineStart;
-		struct FVector                 LineEnd;
-		struct FVector                 PlaneOrigin;
-		struct FVector                 PlaneNormal;
-		struct FVector                 Out_Intersection;
-		float                          Out_T;
-		bool                           bCheckLineSegment;
-		bool                           ReturnValue;
-	} params;
+	UObject_LinePlaneIntersection_Params params;
 	params.LineStart = LineStart;
 	params.LineEnd = LineEnd;
 	params.PlaneOrigin = PlaneOrigin;
@@ -1883,14 +1609,7 @@ struct FVector UObject::STATIC_PointProjectToPlane(const struct FVector& Point, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointProjectToPlane");
 
-	struct
-	{
-		struct FVector                 Point;
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 C;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_PointProjectToPlane_Params params;
 	params.Point = Point;
 	params.A = A;
 	params.B = B;
@@ -1920,14 +1639,7 @@ float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToPlane");
 
-	struct
-	{
-		struct FVector                 Point;
-		struct FRotator                Orientation;
-		struct FVector                 Origin;
-		struct FVector                 out_ClosestPoint;
-		float                          ReturnValue;
-	} params;
+	UObject_PointDistToPlane_Params params;
 	params.Point = Point;
 	params.Orientation = Orientation;
 	params.Origin = Origin;
@@ -1958,14 +1670,7 @@ float UObject::PointDistToSegment(const struct FVector& Point, const struct FVec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToSegment");
 
-	struct
-	{
-		struct FVector                 Point;
-		struct FVector                 StartPoint;
-		struct FVector                 EndPoint;
-		struct FVector                 OutClosestPoint;
-		float                          ReturnValue;
-	} params;
+	UObject_PointDistToSegment_Params params;
 	params.Point = Point;
 	params.StartPoint = StartPoint;
 	params.EndPoint = EndPoint;
@@ -1997,14 +1702,7 @@ float UObject::PointDistToLine(const struct FVector& Point, const struct FVector
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToLine");
 
-	struct
-	{
-		struct FVector                 Point;
-		struct FVector                 Line;
-		struct FVector                 Origin;
-		struct FVector                 OutClosestPoint;
-		float                          ReturnValue;
-	} params;
+	UObject_PointDistToLine_Params params;
 	params.Point = Point;
 	params.Line = Line;
 	params.Origin = Origin;
@@ -2035,13 +1733,7 @@ void UObject::STATIC_GetPerObjectConfigObjects(class UClass* SearchClass, class 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPerObjectConfigObjects");
 
-	struct
-	{
-		class UClass*                  SearchClass;
-		class UObject*                 OutObject;
-		class UObject*                 ObjectOuter;
-		int                            MaxResults;
-	} params;
+	UObject_GetPerObjectConfigObjects_Params params;
 	params.SearchClass = SearchClass;
 	params.ObjectOuter = ObjectOuter;
 	params.MaxResults = MaxResults;
@@ -2071,14 +1763,7 @@ bool UObject::STATIC_GetPerObjectConfigSections(class UClass* SearchClass, class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPerObjectConfigSections");
 
-	struct
-	{
-		class UClass*                  SearchClass;
-		TArray<struct FString>         out_SectionNames;
-		class UObject*                 ObjectOuter;
-		int                            MaxResults;
-		bool                           ReturnValue;
-	} params;
+	UObject_GetPerObjectConfigSections_Params params;
 	params.SearchClass = SearchClass;
 	params.ObjectOuter = ObjectOuter;
 	params.MaxResults = MaxResults;
@@ -2107,11 +1792,7 @@ void UObject::STATIC_ImportJSON(const struct FString& PropertyName, struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ImportJSON");
 
-	struct
-	{
-		struct FString                 PropertyName;
-		struct FString                 JSON;
-	} params;
+	UObject_ImportJSON_Params params;
 	params.PropertyName = PropertyName;
 
 	auto flags = fn->FunctionFlags;
@@ -2133,9 +1814,7 @@ void UObject::STATIC_StaticSaveConfig()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.StaticSaveConfig");
 
-	struct
-	{
-	} params;
+	UObject_StaticSaveConfig_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2153,9 +1832,7 @@ void UObject::SaveConfig()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SaveConfig");
 
-	struct
-	{
-	} params;
+	UObject_SaveConfig_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2177,12 +1854,7 @@ class UObject* UObject::STATIC_FindObject(const struct FString& ObjectName, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindObject");
 
-	struct
-	{
-		struct FString                 ObjectName;
-		class UClass*                  ObjectClass;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_FindObject_Params params;
 	params.ObjectName = ObjectName;
 	params.ObjectClass = ObjectClass;
 
@@ -2209,13 +1881,7 @@ class UObject* UObject::STATIC_DynamicLoadObject(const struct FString& ObjectNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DynamicLoadObject");
 
-	struct
-	{
-		struct FString                 ObjectName;
-		class UClass*                  ObjectClass;
-		bool                           MayFail;
-		class UObject*                 ReturnValue;
-	} params;
+	UObject_DynamicLoadObject_Params params;
 	params.ObjectName = ObjectName;
 	params.ObjectClass = ObjectClass;
 	params.MayFail = MayFail;
@@ -2242,12 +1908,7 @@ int UObject::STATIC_EnumFromString(class UObject* E, const struct FName& ValueNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EnumFromString");
 
-	struct
-	{
-		class UObject*                 E;
-		struct FName                   ValueName;
-		int                            ReturnValue;
-	} params;
+	UObject_EnumFromString_Params params;
 	params.E = E;
 	params.ValueName = ValueName;
 
@@ -2273,12 +1934,7 @@ struct FName UObject::STATIC_GetEnum(class UObject* E, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEnum");
 
-	struct
-	{
-		class UObject*                 E;
-		int                            I;
-		struct FName                   ReturnValue;
-	} params;
+	UObject_GetEnum_Params params;
 	params.E = E;
 	params.I = I;
 
@@ -2302,10 +1958,7 @@ void UObject::Disable(const struct FName& ProbeFunc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Disable");
 
-	struct
-	{
-		struct FName                   ProbeFunc;
-	} params;
+	UObject_Disable_Params params;
 	params.ProbeFunc = ProbeFunc;
 
 	auto flags = fn->FunctionFlags;
@@ -2326,10 +1979,7 @@ void UObject::Enable(const struct FName& ProbeFunc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Enable");
 
-	struct
-	{
-		struct FName                   ProbeFunc;
-	} params;
+	UObject_Enable_Params params;
 	params.ProbeFunc = ProbeFunc;
 
 	auto flags = fn->FunctionFlags;
@@ -2348,9 +1998,7 @@ void UObject::ContinuedState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ContinuedState");
 
-	struct
-	{
-	} params;
+	UObject_ContinuedState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2367,9 +2015,7 @@ void UObject::PausedState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PausedState");
 
-	struct
-	{
-	} params;
+	UObject_PausedState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2386,9 +2032,7 @@ void UObject::PoppedState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PoppedState");
 
-	struct
-	{
-	} params;
+	UObject_PoppedState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2405,9 +2049,7 @@ void UObject::PushedState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PushedState");
 
-	struct
-	{
-	} params;
+	UObject_PushedState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2426,10 +2068,7 @@ void UObject::EndState(const struct FName& NextStateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EndState");
 
-	struct
-	{
-		struct FName                   NextStateName;
-	} params;
+	UObject_EndState_Params params;
 	params.NextStateName = NextStateName;
 
 	auto flags = fn->FunctionFlags;
@@ -2449,10 +2088,7 @@ void UObject::BeginState(const struct FName& PreviousStateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.BeginState");
 
-	struct
-	{
-		struct FName                   PreviousStateName;
-	} params;
+	UObject_BeginState_Params params;
 	params.PreviousStateName = PreviousStateName;
 
 	auto flags = fn->FunctionFlags;
@@ -2470,9 +2106,7 @@ void UObject::DumpStateStack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DumpStateStack");
 
-	struct
-	{
-	} params;
+	UObject_DumpStateStack_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2492,10 +2126,7 @@ void UObject::PopState(bool bPopAll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PopState");
 
-	struct
-	{
-		bool                           bPopAll;
-	} params;
+	UObject_PopState_Params params;
 	params.bPopAll = bPopAll;
 
 	auto flags = fn->FunctionFlags;
@@ -2517,11 +2148,7 @@ void UObject::PushState(const struct FName& NewState, const struct FName& NewLab
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PushState");
 
-	struct
-	{
-		struct FName                   NewState;
-		struct FName                   NewLabel;
-	} params;
+	UObject_PushState_Params params;
 	params.NewState = NewState;
 	params.NewLabel = NewLabel;
 
@@ -2543,10 +2170,7 @@ struct FName UObject::GetStateName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetStateName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UObject_GetStateName_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2570,12 +2194,7 @@ bool UObject::IsChildState(const struct FName& TestState, const struct FName& Te
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsChildState");
 
-	struct
-	{
-		struct FName                   TestState;
-		struct FName                   TestParentState;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsChildState_Params params;
 	params.TestState = TestState;
 	params.TestParentState = TestParentState;
 
@@ -2601,12 +2220,7 @@ bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsInState");
 
-	struct
-	{
-		struct FName                   TestState;
-		bool                           bTestStateStack;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsInState_Params params;
 	params.TestState = TestState;
 	params.bTestStateStack = bTestStateStack;
 
@@ -2633,13 +2247,7 @@ void UObject::GotoState(const struct FName& NewState, const struct FName& Label,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GotoState");
 
-	struct
-	{
-		struct FName                   NewState;
-		struct FName                   Label;
-		bool                           bForceEvents;
-		bool                           bKeepStack;
-	} params;
+	UObject_GotoState_Params params;
 	params.NewState = NewState;
 	params.Label = Label;
 	params.bForceEvents = bForceEvents;
@@ -2663,10 +2271,7 @@ bool UObject::STATIC_IsUTracing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsUTracing");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_IsUTracing_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2688,10 +2293,7 @@ void UObject::STATIC_SetUTracing(bool bShouldUTrace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SetUTracing");
 
-	struct
-	{
-		bool                           bShouldUTrace;
-	} params;
+	UObject_SetUTracing_Params params;
 	params.bShouldUTrace = bShouldUTrace;
 
 	auto flags = fn->FunctionFlags;
@@ -2712,10 +2314,7 @@ struct FName UObject::STATIC_GetFuncName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetFuncName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UObject_GetFuncName_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2738,11 +2337,7 @@ void UObject::STATIC_DebugBreak(int UserFlags, TEnumAsByte<enum class EDebugBrea
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DebugBreak");
 
-	struct
-	{
-		int                            UserFlags;
-		TEnumAsByte<enum class EDebugBreakType> DebuggerType;
-	} params;
+	UObject_DebugBreak_Params params;
 	params.UserFlags = UserFlags;
 	params.DebuggerType = DebuggerType;
 
@@ -2764,10 +2359,7 @@ struct FString UObject::STATIC_GetScriptTrace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetScriptTrace");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UObject_GetScriptTrace_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2787,9 +2379,7 @@ void UObject::STATIC_ScriptTrace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ScriptTrace");
 
-	struct
-	{
-	} params;
+	UObject_ScriptTrace_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2810,11 +2400,7 @@ struct FString UObject::STATIC_ParseLocalizedPropertyPath(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ParseLocalizedPropertyPath");
 
-	struct
-	{
-		struct FString                 PathName;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_ParseLocalizedPropertyPath_Params params;
 	params.PathName = PathName;
 
 	auto flags = fn->FunctionFlags;
@@ -2840,14 +2426,7 @@ struct FString UObject::STATIC_Localize(const struct FString& SectionName, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Localize");
 
-	struct
-	{
-		struct FString                 SectionName;
-		struct FString                 KeyName;
-		struct FString                 PackageName;
-		bool                           bOptional;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Localize_Params params;
 	params.SectionName = SectionName;
 	params.KeyName = KeyName;
 	params.PackageName = PackageName;
@@ -2873,10 +2452,7 @@ void UObject::STATIC_WarnInternal(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.WarnInternal");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	UObject_WarnInternal_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -2899,12 +2475,7 @@ void UObject::STATIC_LogInternal(const struct FString& S, const struct FName& Ta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LogInternal");
 
-	struct
-	{
-		struct FString                 S;
-		struct FName                   Tag;
-		bool                           bFileOnly;
-	} params;
+	UObject_LogInternal_Params params;
 	params.S = S;
 	params.Tag = Tag;
 	params.bFileOnly = bFileOnly;
@@ -2930,13 +2501,7 @@ struct FLinearColor UObject::STATIC_LinearColorLerp(const struct FLinearColor& C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LinearColorLerp");
 
-	struct
-	{
-		struct FLinearColor            ColorA;
-		struct FLinearColor            ColorB;
-		float                          Alpha;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_LinearColorLerp_Params params;
 	params.ColorA = ColorA;
 	params.ColorB = ColorB;
 	params.Alpha = Alpha;
@@ -2962,12 +2527,7 @@ struct FLinearColor UObject::STATIC_Subtract_LinearColorLinearColor(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_LinearColorLinearColor");
 
-	struct
-	{
-		struct FLinearColor            A;
-		struct FLinearColor            B;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_Subtract_LinearColorLinearColor_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -2992,12 +2552,7 @@ struct FLinearColor UObject::STATIC_Multiply_LinearColorFloat(const struct FLine
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_LinearColorFloat");
 
-	struct
-	{
-		struct FLinearColor            LC;
-		float                          Mult;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_Multiply_LinearColorFloat_Params params;
 	params.LC = LC;
 	params.Mult = Mult;
 
@@ -3021,11 +2576,7 @@ struct FLinearColor UObject::STATIC_ConvertFromSRGB(const struct FLinearColor& O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ConvertFromSRGB");
 
-	struct
-	{
-		struct FLinearColor            OldColor;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_ConvertFromSRGB_Params params;
 	params.OldColor = OldColor;
 
 	auto flags = fn->FunctionFlags;
@@ -3049,11 +2600,7 @@ struct FColor UObject::STATIC_LinearColorToColor(const struct FLinearColor& OldC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LinearColorToColor");
 
-	struct
-	{
-		struct FLinearColor            OldColor;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_LinearColorToColor_Params params;
 	params.OldColor = OldColor;
 
 	auto flags = fn->FunctionFlags;
@@ -3076,11 +2623,7 @@ struct FLinearColor UObject::STATIC_ColorToLinearColor(const struct FColor& OldC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ColorToLinearColor");
 
-	struct
-	{
-		struct FColor                  OldColor;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_ColorToLinearColor_Params params;
 	params.OldColor = OldColor;
 
 	auto flags = fn->FunctionFlags;
@@ -3106,14 +2649,7 @@ struct FLinearColor UObject::STATIC_MakeLinearColor(float R, float G, float B, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeLinearColor");
 
-	struct
-	{
-		float                          R;
-		float                          G;
-		float                          B;
-		float                          A;
-		struct FLinearColor            ReturnValue;
-	} params;
+	UObject_MakeLinearColor_Params params;
 	params.R = R;
 	params.G = G;
 	params.B = B;
@@ -3141,13 +2677,7 @@ struct FColor UObject::STATIC_LerpColor(const struct FColor& A, const struct FCo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LerpColor");
 
-	struct
-	{
-		struct FColor                  A;
-		struct FColor                  B;
-		float                          Alpha;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_LerpColor_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -3175,14 +2705,7 @@ struct FColor UObject::STATIC_MakeColor(unsigned char R, unsigned char G, unsign
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeColor");
 
-	struct
-	{
-		unsigned char                  R;
-		unsigned char                  G;
-		unsigned char                  B;
-		unsigned char                  A;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_MakeColor_Params params;
 	params.R = R;
 	params.G = G;
 	params.B = B;
@@ -3209,12 +2732,7 @@ struct FColor UObject::STATIC_Add_ColorColor(const struct FColor& A, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_ColorColor");
 
-	struct
-	{
-		struct FColor                  A;
-		struct FColor                  B;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_Add_ColorColor_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3239,12 +2757,7 @@ struct FColor UObject::STATIC_Multiply_ColorFloat(const struct FColor& A, float 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_ColorFloat");
 
-	struct
-	{
-		struct FColor                  A;
-		float                          B;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_Multiply_ColorFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3269,12 +2782,7 @@ struct FColor UObject::STATIC_Multiply_FloatColor(float A, const struct FColor& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatColor");
 
-	struct
-	{
-		float                          A;
-		struct FColor                  B;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_Multiply_FloatColor_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3299,12 +2807,7 @@ struct FColor UObject::STATIC_Subtract_ColorColor(const struct FColor& A, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_ColorColor");
 
-	struct
-	{
-		struct FColor                  A;
-		struct FColor                  B;
-		struct FColor                  ReturnValue;
-	} params;
+	UObject_Subtract_ColorColor_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3329,12 +2832,7 @@ struct FVector2D UObject::STATIC_EvalInterpCurveVector2D(float InVal, struct FIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveVector2D");
 
-	struct
-	{
-		struct FInterpCurveVector2D    Vector2DCurve;
-		float                          InVal;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_EvalInterpCurveVector2D_Params params;
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
@@ -3362,12 +2860,7 @@ struct FVector UObject::STATIC_EvalInterpCurveVector(float InVal, struct FInterp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveVector");
 
-	struct
-	{
-		struct FInterpCurveVector      VectorCurve;
-		float                          InVal;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_EvalInterpCurveVector_Params params;
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
@@ -3395,12 +2888,7 @@ float UObject::STATIC_EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveFloat");
 
-	struct
-	{
-		struct FInterpCurveFloat       FloatCurve;
-		float                          InVal;
-		float                          ReturnValue;
-	} params;
+	UObject_EvalInterpCurveFloat_Params params;
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
@@ -3428,12 +2916,7 @@ struct FVector2D UObject::STATIC_vect2d(float InX, float InY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.vect2d");
 
-	struct
-	{
-		float                          InX;
-		float                          InY;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_vect2d_Params params;
 	params.InX = InX;
 	params.InY = InY;
 
@@ -3459,13 +2942,7 @@ float UObject::STATIC_GetMappedRangeValue(const struct FVector2D& InputRange, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetMappedRangeValue");
 
-	struct
-	{
-		struct FVector2D               InputRange;
-		struct FVector2D               OutputRange;
-		float                          Value;
-		float                          ReturnValue;
-	} params;
+	UObject_GetMappedRangeValue_Params params;
 	params.InputRange = InputRange;
 	params.OutputRange = OutputRange;
 	params.Value = Value;
@@ -3492,12 +2969,7 @@ float UObject::STATIC_GetRangePctByValue(const struct FVector2D& Range, float Va
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRangePctByValue");
 
-	struct
-	{
-		struct FVector2D               Range;
-		float                          Value;
-		float                          ReturnValue;
-	} params;
+	UObject_GetRangePctByValue_Params params;
 	params.Range = Range;
 	params.Value = Value;
 
@@ -3522,12 +2994,7 @@ float UObject::STATIC_GetRangeValueByPct(const struct FVector2D& Range, float Pc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRangeValueByPct");
 
-	struct
-	{
-		struct FVector2D               Range;
-		float                          Pct;
-		float                          ReturnValue;
-	} params;
+	UObject_GetRangeValueByPct_Params params;
 	params.Range = Range;
 	params.Pct = Pct;
 
@@ -3551,11 +3018,7 @@ struct FVector2D UObject::STATIC_V2DNormal(const struct FVector2D& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.V2DNormal");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_V2DNormal_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -3579,11 +3042,7 @@ float UObject::STATIC_V2DSizeSq(const struct FVector2D& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.V2DSizeSq");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          ReturnValue;
-	} params;
+	UObject_V2DSizeSq_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -3607,11 +3066,7 @@ float UObject::STATIC_V2DSize(const struct FVector2D& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.V2DSize");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          ReturnValue;
-	} params;
+	UObject_V2DSize_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -3636,12 +3091,7 @@ float UObject::STATIC_Dot_Vector2DVector2D(const struct FVector2D& A, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Dot_Vector2DVector2D");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               B;
-		float                          ReturnValue;
-	} params;
+	UObject_Dot_Vector2DVector2D_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3667,12 +3117,7 @@ struct FVector2D UObject::STATIC_SubtractEqual_Vector2DVector2D(const struct FVe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_Vector2DVector2D");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_SubtractEqual_Vector2DVector2D_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -3700,12 +3145,7 @@ struct FVector2D UObject::STATIC_AddEqual_Vector2DVector2D(const struct FVector2
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_Vector2DVector2D");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_AddEqual_Vector2DVector2D_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -3733,12 +3173,7 @@ struct FVector2D UObject::STATIC_DivideEqual_Vector2DFloat(float B, struct FVect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_Vector2DFloat");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_DivideEqual_Vector2DFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -3766,12 +3201,7 @@ struct FVector2D UObject::STATIC_MultiplyEqual_Vector2DFloat(float B, struct FVe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_Vector2DFloat");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_MultiplyEqual_Vector2DFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -3799,12 +3229,7 @@ struct FVector2D UObject::STATIC_Divide_Vector2DFloat(const struct FVector2D& A,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_Vector2DFloat");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_Divide_Vector2DFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3830,12 +3255,7 @@ struct FVector2D UObject::STATIC_Multiply_Vector2DFloat(const struct FVector2D& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_Vector2DFloat");
 
-	struct
-	{
-		struct FVector2D               A;
-		float                          B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_Multiply_Vector2DFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3861,12 +3281,7 @@ struct FVector2D UObject::STATIC_Subtract_Vector2DVector2D(const struct FVector2
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_Vector2DVector2D");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_Subtract_Vector2DVector2D_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3892,12 +3307,7 @@ struct FVector2D UObject::STATIC_Add_Vector2DVector2D(const struct FVector2D& A,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_Vector2DVector2D");
 
-	struct
-	{
-		struct FVector2D               A;
-		struct FVector2D               B;
-		struct FVector2D               ReturnValue;
-	} params;
+	UObject_Add_Vector2DVector2D_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3923,12 +3333,7 @@ struct FQuat UObject::STATIC_Subtract_QuatQuat(const struct FQuat& A, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_QuatQuat");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   B;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_Subtract_QuatQuat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3954,12 +3359,7 @@ struct FQuat UObject::STATIC_Add_QuatQuat(const struct FQuat& A, const struct FQ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_QuatQuat");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   B;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_Add_QuatQuat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -3987,14 +3387,7 @@ struct FQuat UObject::STATIC_QuatSlerp(const struct FQuat& A, const struct FQuat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatSlerp");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   B;
-		float                          Alpha;
-		bool                           bShortestPath;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatSlerp_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -4021,11 +3414,7 @@ struct FRotator UObject::STATIC_QuatToRotator(const struct FQuat& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatToRotator");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_QuatToRotator_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -4049,11 +3438,7 @@ struct FQuat UObject::STATIC_QuatFromRotator(const struct FRotator& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFromRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatFromRotator_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -4078,12 +3463,7 @@ struct FQuat UObject::STATIC_QuatFromAxisAndAngle(const struct FVector& Axis, fl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFromAxisAndAngle");
 
-	struct
-	{
-		struct FVector                 Axis;
-		float                          Angle;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatFromAxisAndAngle_Params params;
 	params.Axis = Axis;
 	params.Angle = Angle;
 
@@ -4109,12 +3489,7 @@ struct FQuat UObject::STATIC_QuatFindBetween(const struct FVector& A, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFindBetween");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatFindBetween_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4140,12 +3515,7 @@ struct FVector UObject::STATIC_QuatRotateVector(const struct FQuat& A, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatRotateVector");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_QuatRotateVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4170,11 +3540,7 @@ struct FQuat UObject::STATIC_QuatInvert(const struct FQuat& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatInvert");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatInvert_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -4199,12 +3565,7 @@ float UObject::STATIC_QuatDot(const struct FQuat& A, const struct FQuat& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatDot");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   B;
-		float                          ReturnValue;
-	} params;
+	UObject_QuatDot_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4230,12 +3591,7 @@ struct FQuat UObject::STATIC_QuatProduct(const struct FQuat& A, const struct FQu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatProduct");
 
-	struct
-	{
-		struct FQuat                   A;
-		struct FQuat                   B;
-		struct FQuat                   ReturnValue;
-	} params;
+	UObject_QuatProduct_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4261,12 +3617,7 @@ struct FVector UObject::STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsBy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetAxis");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		TEnumAsByte<enum class EAxis>  Axis;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MatrixGetAxis_Params params;
 	params.TM = TM;
 	params.Axis = Axis;
 
@@ -4291,11 +3642,7 @@ struct FVector UObject::STATIC_MatrixGetOrigin(const struct FMatrix& TM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetOrigin");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MatrixGetOrigin_Params params;
 	params.TM = TM;
 
 	auto flags = fn->FunctionFlags;
@@ -4319,11 +3666,7 @@ struct FRotator UObject::STATIC_MatrixGetRotator(const struct FMatrix& TM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetRotator");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_MatrixGetRotator_Params params;
 	params.TM = TM;
 
 	auto flags = fn->FunctionFlags;
@@ -4347,11 +3690,7 @@ struct FMatrix UObject::STATIC_MakeRotationMatrix(const struct FRotator& Rotatio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotationMatrix");
 
-	struct
-	{
-		struct FRotator                Rotation;
-		struct FMatrix                 ReturnValue;
-	} params;
+	UObject_MakeRotationMatrix_Params params;
 	params.Rotation = Rotation;
 
 	auto flags = fn->FunctionFlags;
@@ -4376,12 +3715,7 @@ struct FMatrix UObject::STATIC_MakeRotationTranslationMatrix(const struct FVecto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotationTranslationMatrix");
 
-	struct
-	{
-		struct FVector                 Translation;
-		struct FRotator                Rotation;
-		struct FMatrix                 ReturnValue;
-	} params;
+	UObject_MakeRotationTranslationMatrix_Params params;
 	params.Translation = Translation;
 	params.Rotation = Rotation;
 
@@ -4407,12 +3741,7 @@ struct FVector UObject::STATIC_InverseTransformNormal(const struct FMatrix& TM, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InverseTransformNormal");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_InverseTransformNormal_Params params;
 	params.TM = TM;
 	params.A = A;
 
@@ -4438,12 +3767,7 @@ struct FVector UObject::STATIC_TransformNormal(const struct FMatrix& TM, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformNormal");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_TransformNormal_Params params;
 	params.TM = TM;
 	params.A = A;
 
@@ -4469,12 +3793,7 @@ struct FVector UObject::STATIC_InverseTransformVector(const struct FMatrix& TM, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InverseTransformVector");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_InverseTransformVector_Params params;
 	params.TM = TM;
 	params.A = A;
 
@@ -4500,12 +3819,7 @@ struct FVector UObject::STATIC_TransformVector(const struct FMatrix& TM, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformVector");
 
-	struct
-	{
-		struct FMatrix                 TM;
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_TransformVector_Params params;
 	params.TM = TM;
 	params.A = A;
 
@@ -4531,12 +3845,7 @@ struct FMatrix UObject::STATIC_Multiply_MatrixMatrix(const struct FMatrix& A, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_MatrixMatrix");
 
-	struct
-	{
-		struct FMatrix                 A;
-		struct FMatrix                 B;
-		struct FMatrix                 ReturnValue;
-	} params;
+	UObject_Multiply_MatrixMatrix_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4562,12 +3871,7 @@ bool UObject::STATIC_NotEqual_NameName(const struct FName& A, const struct FName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_NameName");
 
-	struct
-	{
-		struct FName                   A;
-		struct FName                   B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_NameName_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4593,12 +3897,7 @@ bool UObject::STATIC_EqualEqual_NameName(const struct FName& A, const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_NameName");
 
-	struct
-	{
-		struct FName                   A;
-		struct FName                   B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_NameName_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4623,11 +3922,7 @@ bool UObject::IsA(const struct FName& ClassName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsA");
 
-	struct
-	{
-		struct FName                   ClassName;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsA_Params params;
 	params.ClassName = ClassName;
 
 	auto flags = fn->FunctionFlags;
@@ -4652,12 +3947,7 @@ bool UObject::STATIC_ClassIsChildOf(class UClass* TestClass, class UClass* Paren
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClassIsChildOf");
 
-	struct
-	{
-		class UClass*                  TestClass;
-		class UClass*                  ParentClass;
-		bool                           ReturnValue;
-	} params;
+	UObject_ClassIsChildOf_Params params;
 	params.TestClass = TestClass;
 	params.ParentClass = ParentClass;
 
@@ -4683,12 +3973,7 @@ bool UObject::STATIC_NotEqual_InterfaceInterface(const TScriptInterface<class UI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_InterfaceInterface");
 
-	struct
-	{
-		TScriptInterface<class UInterface> A;
-		TScriptInterface<class UInterface> B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_InterfaceInterface_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4714,12 +3999,7 @@ bool UObject::STATIC_EqualEqual_InterfaceInterface(const TScriptInterface<class 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_InterfaceInterface");
 
-	struct
-	{
-		TScriptInterface<class UInterface> A;
-		TScriptInterface<class UInterface> B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_InterfaceInterface_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4745,12 +4025,7 @@ bool UObject::STATIC_NotEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_ObjectObject");
 
-	struct
-	{
-		class UObject*                 A;
-		class UObject*                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_ObjectObject_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4776,12 +4051,7 @@ bool UObject::STATIC_EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_ObjectObject");
 
-	struct
-	{
-		class UObject*                 A;
-		class UObject*                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_ObjectObject_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -4805,10 +4075,7 @@ struct FString UObject::GetPathName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPathName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UObject_GetPathName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4830,11 +4097,7 @@ struct FString UObject::STATIC_PathName(class UObject* CheckObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PathName");
 
-	struct
-	{
-		class UObject*                 CheckObject;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_PathName_Params params;
 	params.CheckObject = CheckObject;
 
 	auto flags = fn->FunctionFlags;
@@ -4860,13 +4123,7 @@ TArray<struct FString> UObject::STATIC_SplitString(const struct FString& Source,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SplitString");
 
-	struct
-	{
-		struct FString                 Source;
-		struct FString                 Delimiter;
-		bool                           bCullEmpty;
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UObject_SplitString_Params params;
 	params.Source = Source;
 	params.Delimiter = Delimiter;
 	params.bCullEmpty = bCullEmpty;
@@ -4893,13 +4150,7 @@ void UObject::STATIC_ParseStringIntoArray(const struct FString& BaseString, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ParseStringIntoArray");
 
-	struct
-	{
-		struct FString                 BaseString;
-		TArray<struct FString>         Pieces;
-		struct FString                 delim;
-		bool                           bCullEmpty;
-	} params;
+	UObject_ParseStringIntoArray_Params params;
 	params.BaseString = BaseString;
 	params.delim = delim;
 	params.bCullEmpty = bCullEmpty;
@@ -4927,12 +4178,7 @@ struct FString UObject::RepeatString(const struct FString& InValue, int Count)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RepeatString");
 
-	struct
-	{
-		struct FString                 InValue;
-		int                            Count;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_RepeatString_Params params;
 	params.InValue = InValue;
 	params.Count = Count;
 
@@ -4957,12 +4203,7 @@ struct FString UObject::JoinArrayQWord(const struct FString& delim, bool bIgnore
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArrayQWord");
 
-	struct
-	{
-		struct FString                 delim;
-		bool                           bIgnoreBlanks;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_JoinArrayQWord_Params params;
 	params.delim = delim;
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
@@ -4988,13 +4229,7 @@ struct FString UObject::JoinArrayInt(const struct FString& delim, bool bIgnoreBl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArrayInt");
 
-	struct
-	{
-		TArray<int>                    IntArray;
-		struct FString                 delim;
-		bool                           bIgnoreBlanks;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_JoinArrayInt_Params params;
 	params.delim = delim;
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
@@ -5023,13 +4258,7 @@ struct FString UObject::JoinArrayName(const struct FString& delim, bool bIgnoreB
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArrayName");
 
-	struct
-	{
-		TArray<struct FName>           NameArray;
-		struct FString                 delim;
-		bool                           bIgnoreBlanks;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_JoinArrayName_Params params;
 	params.delim = delim;
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
@@ -5058,13 +4287,7 @@ struct FString UObject::STATIC_JoinArrayStr(const struct FString& delim, bool bI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArrayStr");
 
-	struct
-	{
-		TArray<struct FString>         StringArray;
-		struct FString                 delim;
-		bool                           bIgnoreBlanks;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_JoinArrayStr_Params params;
 	params.delim = delim;
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
@@ -5093,13 +4316,7 @@ void UObject::STATIC_JoinArray(const struct FString& delim, bool bIgnoreBlanks, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArray");
 
-	struct
-	{
-		TArray<struct FString>         StringArray;
-		struct FString                 out_Result;
-		struct FString                 delim;
-		bool                           bIgnoreBlanks;
-	} params;
+	UObject_JoinArray_Params params;
 	params.delim = delim;
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
@@ -5127,11 +4344,7 @@ struct FString UObject::STATIC_GetRightMost(const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRightMost");
 
-	struct
-	{
-		struct FString                 Text;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_GetRightMost_Params params;
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
@@ -5156,13 +4369,7 @@ struct FString UObject::STATIC_Split(const struct FString& Text, const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Split");
 
-	struct
-	{
-		struct FString                 Text;
-		struct FString                 SplitStr;
-		bool                           bOmitSplitStr;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Split_Params params;
 	params.Text = Text;
 	params.SplitStr = SplitStr;
 	params.bOmitSplitStr = bOmitSplitStr;
@@ -5187,11 +4394,7 @@ struct FString UObject::STATIC_Trim(const struct FString& Src)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Trim");
 
-	struct
-	{
-		struct FString                 Src;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Trim_Params params;
 	params.Src = Src;
 
 	auto flags = fn->FunctionFlags;
@@ -5218,14 +4421,7 @@ struct FString UObject::STATIC_Repl(const struct FString& Src, const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Repl");
 
-	struct
-	{
-		struct FString                 Src;
-		struct FString                 Match;
-		struct FString                 With;
-		bool                           bCaseSensitive;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Repl_Params params;
 	params.Src = Src;
 	params.Match = Match;
 	params.With = With;
@@ -5252,11 +4448,7 @@ int UObject::STATIC_Asc(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Asc");
 
-	struct
-	{
-		struct FString                 S;
-		int                            ReturnValue;
-	} params;
+	UObject_Asc_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -5280,11 +4472,7 @@ struct FString UObject::STATIC_Chr(int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Chr");
 
-	struct
-	{
-		int                            I;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Chr_Params params;
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
@@ -5308,11 +4496,7 @@ struct FString UObject::STATIC_Locs(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Locs");
 
-	struct
-	{
-		struct FString                 S;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Locs_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -5336,11 +4520,7 @@ struct FString UObject::STATIC_Caps(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Caps");
 
-	struct
-	{
-		struct FString                 S;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Caps_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -5365,12 +4545,7 @@ struct FString UObject::STATIC_Right(const struct FString& S, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Right");
 
-	struct
-	{
-		struct FString                 S;
-		int                            I;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Right_Params params;
 	params.S = S;
 	params.I = I;
 
@@ -5396,12 +4571,7 @@ struct FString UObject::STATIC_Left(const struct FString& S, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Left");
 
-	struct
-	{
-		struct FString                 S;
-		int                            I;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Left_Params params;
 	params.S = S;
 	params.I = I;
 
@@ -5428,13 +4598,7 @@ struct FString UObject::STATIC_Mid(const struct FString& S, int I, int J)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Mid");
 
-	struct
-	{
-		struct FString                 S;
-		int                            I;
-		int                            J;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Mid_Params params;
 	params.S = S;
 	params.I = I;
 	params.J = J;
@@ -5464,15 +4628,7 @@ int UObject::STATIC_InStr(const struct FString& S, const struct FString& T, bool
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InStr");
 
-	struct
-	{
-		struct FString                 S;
-		struct FString                 T;
-		bool                           bSearchFromRight;
-		bool                           bIgnoreCase;
-		int                            StartPos;
-		int                            ReturnValue;
-	} params;
+	UObject_InStr_Params params;
 	params.S = S;
 	params.T = T;
 	params.bSearchFromRight = bSearchFromRight;
@@ -5500,11 +4656,7 @@ int UObject::STATIC_Len(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Len");
 
-	struct
-	{
-		struct FString                 S;
-		int                            ReturnValue;
-	} params;
+	UObject_Len_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -5529,12 +4681,7 @@ struct FString UObject::STATIC_SubtractEqual_StrStr(const struct FString& B, str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_SubtractEqual_StrStr_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -5562,12 +4709,7 @@ struct FString UObject::STATIC_AtEqual_StrStr(const struct FString& B, struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AtEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_AtEqual_StrStr_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -5595,12 +4737,7 @@ struct FString UObject::STATIC_ConcatEqual_StrStr(const struct FString& B, struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ConcatEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_ConcatEqual_StrStr_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -5628,12 +4765,7 @@ bool UObject::STATIC_ComplementEqual_StrStr(const struct FString& A, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_ComplementEqual_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5659,12 +4791,7 @@ bool UObject::STATIC_NotEqual_StrStr(const struct FString& A, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5690,12 +4817,7 @@ bool UObject::STATIC_EqualEqual_StrStr(const struct FString& A, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5721,12 +4843,7 @@ bool UObject::STATIC_GreaterEqual_StrStr(const struct FString& A, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_GreaterEqual_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5752,12 +4869,7 @@ bool UObject::STATIC_LessEqual_StrStr(const struct FString& A, const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_LessEqual_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5783,12 +4895,7 @@ bool UObject::STATIC_Greater_StrStr(const struct FString& A, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Greater_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5814,12 +4921,7 @@ bool UObject::STATIC_Less_StrStr(const struct FString& A, const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Less_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5845,12 +4947,7 @@ struct FString UObject::STATIC_At_StrStr(const struct FString& A, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.At_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_At_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5876,12 +4973,7 @@ struct FString UObject::STATIC_Concat_StrStr(const struct FString& A, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Concat_StrStr");
 
-	struct
-	{
-		struct FString                 A;
-		struct FString                 B;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_Concat_StrStr_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -5909,14 +5001,7 @@ struct FRotator UObject::STATIC_RotateRotator(const struct FVector& Axis, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotateRotator");
 
-	struct
-	{
-		struct FVector                 Axis;
-		struct FRotator                Rot;
-		struct FRotator                Direction;
-		float                          Amount;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RotateRotator_Params params;
 	params.Axis = Axis;
 	params.Rot = Rot;
 	params.Direction = Direction;
@@ -5944,13 +5029,7 @@ struct FRotator UObject::STATIC_MakeRotator(int Pitch, int Yaw, int Roll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotator");
 
-	struct
-	{
-		int                            Pitch;
-		int                            Yaw;
-		int                            Roll;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_MakeRotator_Params params;
 	params.Pitch = Pitch;
 	params.Yaw = Yaw;
 	params.Roll = Roll;
@@ -5980,16 +5059,7 @@ bool UObject::STATIC_SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SClampRotAxis");
 
-	struct
-	{
-		float                          DeltaTime;
-		int                            ViewAxis;
-		int                            out_DeltaViewAxis;
-		int                            MaxLimit;
-		int                            MinLimit;
-		float                          InterpolationSpeed;
-		bool                           ReturnValue;
-	} params;
+	UObject_SClampRotAxis_Params params;
 	params.DeltaTime = DeltaTime;
 	params.ViewAxis = ViewAxis;
 	params.MaxLimit = MaxLimit;
@@ -6021,13 +5091,7 @@ int UObject::STATIC_ClampRotAxisFromRange(int Current, int Min, int Max)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxisFromRange");
 
-	struct
-	{
-		int                            Current;
-		int                            Min;
-		int                            Max;
-		int                            ReturnValue;
-	} params;
+	UObject_ClampRotAxisFromRange_Params params;
 	params.Current = Current;
 	params.Min = Min;
 	params.Max = Max;
@@ -6054,13 +5118,7 @@ int UObject::STATIC_ClampRotAxisFromBase(int Current, int Center, int MaxDelta)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxisFromBase");
 
-	struct
-	{
-		int                            Current;
-		int                            Center;
-		int                            MaxDelta;
-		int                            ReturnValue;
-	} params;
+	UObject_ClampRotAxisFromBase_Params params;
 	params.Current = Current;
 	params.Center = Center;
 	params.MaxDelta = MaxDelta;
@@ -6087,13 +5145,7 @@ void UObject::STATIC_ClampRotAxis(int ViewAxis, int MaxLimit, int MinLimit, int*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxis");
 
-	struct
-	{
-		int                            ViewAxis;
-		int                            out_DeltaViewAxis;
-		int                            MaxLimit;
-		int                            MinLimit;
-	} params;
+	UObject_ClampRotAxis_Params params;
 	params.ViewAxis = ViewAxis;
 	params.MaxLimit = MaxLimit;
 	params.MinLimit = MinLimit;
@@ -6121,13 +5173,7 @@ struct FRotator UObject::STATIC_FlattenRotatorOnAxis(const struct FVector& AxisT
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FlattenRotatorOnAxis");
 
-	struct
-	{
-		struct FVector                 AxisToRemove;
-		struct FRotator                RotToFlatten;
-		struct FRotator                RotToFlattenTo;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_FlattenRotatorOnAxis_Params params;
 	params.AxisToRemove = AxisToRemove;
 	params.RotToFlatten = RotToFlatten;
 	params.RotToFlattenTo = RotToFlattenTo;
@@ -6152,11 +5198,7 @@ float UObject::STATIC_RSize(const struct FRotator& R)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RSize");
 
-	struct
-	{
-		struct FRotator                R;
-		float                          ReturnValue;
-	} params;
+	UObject_RSize_Params params;
 	params.R = R;
 
 	auto flags = fn->FunctionFlags;
@@ -6181,12 +5223,7 @@ float UObject::STATIC_RDiff(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RDiff");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		float                          ReturnValue;
-	} params;
+	UObject_RDiff_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6211,11 +5248,7 @@ int UObject::STATIC_NormalizeRotAxis(int Angle)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NormalizeRotAxis");
 
-	struct
-	{
-		int                            Angle;
-		int                            ReturnValue;
-	} params;
+	UObject_NormalizeRotAxis_Params params;
 	params.Angle = Angle;
 
 	auto flags = fn->FunctionFlags;
@@ -6243,15 +5276,7 @@ struct FRotator UObject::STATIC_RInterpTo(const struct FRotator& Current, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RInterpTo");
 
-	struct
-	{
-		struct FRotator                Current;
-		struct FRotator                Target;
-		float                          DeltaTime;
-		float                          InterpSpeed;
-		bool                           bConstantInterpSpeed;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RInterpTo_Params params;
 	params.Current = Current;
 	params.Target = Target;
 	params.DeltaTime = DeltaTime;
@@ -6280,12 +5305,7 @@ struct FRotator UObject::STATIC_RTransform(const struct FRotator& R, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RTransform");
 
-	struct
-	{
-		struct FRotator                R;
-		struct FRotator                RBasis;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RTransform_Params params;
 	params.R = R;
 	params.RBasis = RBasis;
 
@@ -6313,14 +5333,7 @@ struct FRotator UObject::STATIC_RLerp(const struct FRotator& A, const struct FRo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RLerp");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		float                          Alpha;
-		bool                           bShortestPath;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RLerp_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -6347,11 +5360,7 @@ struct FRotator UObject::STATIC_Normalize(const struct FRotator& Rot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Normalize");
 
-	struct
-	{
-		struct FRotator                Rot;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Normalize_Params params;
 	params.Rot = Rot;
 
 	auto flags = fn->FunctionFlags;
@@ -6377,13 +5386,7 @@ struct FRotator UObject::STATIC_OrthoRotation(const struct FVector& X, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.OrthoRotation");
 
-	struct
-	{
-		struct FVector                 X;
-		struct FVector                 Y;
-		struct FVector                 Z;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_OrthoRotation_Params params;
 	params.X = X;
 	params.Y = Y;
 	params.Z = Z;
@@ -6409,11 +5412,7 @@ struct FRotator UObject::STATIC_RotRand(bool bRoll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotRand");
 
-	struct
-	{
-		bool                           bRoll;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_RotRand_Params params;
 	params.bRoll = bRoll;
 
 	auto flags = fn->FunctionFlags;
@@ -6438,12 +5437,7 @@ struct FVector UObject::STATIC_GetRotatorAxis(const struct FRotator& A, int Axis
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRotatorAxis");
 
-	struct
-	{
-		struct FRotator                A;
-		int                            Axis;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_GetRotatorAxis_Params params;
 	params.A = A;
 	params.Axis = Axis;
 
@@ -6470,13 +5464,7 @@ void UObject::STATIC_GetUnAxes(const struct FRotator& A, struct FVector* X, stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetUnAxes");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FVector                 X;
-		struct FVector                 Y;
-		struct FVector                 Z;
-	} params;
+	UObject_GetUnAxes_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -6507,13 +5495,7 @@ void UObject::STATIC_GetAxes(const struct FRotator& A, struct FVector* X, struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAxes");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FVector                 X;
-		struct FVector                 Y;
-		struct FVector                 Z;
-	} params;
+	UObject_GetAxes_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -6543,12 +5525,7 @@ bool UObject::STATIC_ClockwiseFrom_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClockwiseFrom_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_ClockwiseFrom_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6574,12 +5551,7 @@ struct FRotator UObject::STATIC_SubtractEqual_RotatorRotator(const struct FRotat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_SubtractEqual_RotatorRotator_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -6607,12 +5579,7 @@ struct FRotator UObject::STATIC_AddEqual_RotatorRotator(const struct FRotator& B
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_AddEqual_RotatorRotator_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -6640,12 +5607,7 @@ struct FRotator UObject::STATIC_Subtract_RotatorRotator(const struct FRotator& A
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Subtract_RotatorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6671,12 +5633,7 @@ struct FRotator UObject::STATIC_Add_RotatorRotator(const struct FRotator& A, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Add_RotatorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6702,12 +5659,7 @@ struct FRotator UObject::STATIC_DivideEqual_RotatorFloat(float B, struct FRotato
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_RotatorFloat");
 
-	struct
-	{
-		struct FRotator                A;
-		float                          B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_DivideEqual_RotatorFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -6735,12 +5687,7 @@ struct FRotator UObject::STATIC_MultiplyEqual_RotatorFloat(float B, struct FRota
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_RotatorFloat");
 
-	struct
-	{
-		struct FRotator                A;
-		float                          B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_MultiplyEqual_RotatorFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -6768,12 +5715,7 @@ struct FRotator UObject::STATIC_Divide_RotatorFloat(const struct FRotator& A, fl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_RotatorFloat");
 
-	struct
-	{
-		struct FRotator                A;
-		float                          B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Divide_RotatorFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6799,12 +5741,7 @@ struct FRotator UObject::STATIC_Multiply_FloatRotator(float A, const struct FRot
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatRotator");
 
-	struct
-	{
-		float                          A;
-		struct FRotator                B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Multiply_FloatRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6830,12 +5767,7 @@ struct FRotator UObject::STATIC_Multiply_RotatorFloat(const struct FRotator& A, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_RotatorFloat");
 
-	struct
-	{
-		struct FRotator                A;
-		float                          B;
-		struct FRotator                ReturnValue;
-	} params;
+	UObject_Multiply_RotatorFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6861,12 +5793,7 @@ bool UObject::STATIC_NotEqual_RotatorRotator(const struct FRotator& A, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_RotatorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6892,12 +5819,7 @@ bool UObject::STATIC_EqualEqual_RotatorRotator(const struct FRotator& A, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_RotatorRotator");
 
-	struct
-	{
-		struct FRotator                A;
-		struct FRotator                B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_RotatorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -6923,12 +5845,7 @@ float UObject::STATIC_GetRadiansBetweenVectors(const struct FVector& V0, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRadiansBetweenVectors");
 
-	struct
-	{
-		struct FVector                 V0;
-		struct FVector                 v1;
-		float                          ReturnValue;
-	} params;
+	UObject_GetRadiansBetweenVectors_Params params;
 	params.V0 = V0;
 	params.v1 = v1;
 
@@ -6954,13 +5871,7 @@ struct FVector UObject::STATIC_VClamp(const struct FVector& A, const struct FVec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VClamp");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 Min;
-		struct FVector                 Max;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VClamp_Params params;
 	params.A = A;
 	params.Min = Min;
 	params.Max = Max;
@@ -6987,13 +5898,7 @@ struct FVector UObject::STATIC_vect3d(float X, float Y, float Z)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.vect3d");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		float                          Z;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_vect3d_Params params;
 	params.X = X;
 	params.Y = Y;
 	params.Z = Z;
@@ -7022,15 +5927,7 @@ bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Di
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InCylinder");
 
-	struct
-	{
-		struct FVector                 Origin;
-		struct FRotator                Dir;
-		float                          Width;
-		struct FVector                 A;
-		bool                           bIgnoreZ;
-		bool                           ReturnValue;
-	} params;
+	UObject_InCylinder_Params params;
 	params.Origin = Origin;
 	params.Dir = Dir;
 	params.Width = Width;
@@ -7058,12 +5955,7 @@ float UObject::STATIC_NoZDot(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NoZDot");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		float                          ReturnValue;
-	} params;
+	UObject_NoZDot_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7089,12 +5981,7 @@ struct FVector UObject::STATIC_ClampLength(const struct FVector& V, float MaxLen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampLength");
 
-	struct
-	{
-		struct FVector                 V;
-		float                          MaxLength;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_ClampLength_Params params;
 	params.V = V;
 	params.MaxLength = MaxLength;
 
@@ -7122,14 +6009,7 @@ struct FVector UObject::STATIC_VInterpConstantTo(const struct FVector& Current, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VInterpConstantTo");
 
-	struct
-	{
-		struct FVector                 Current;
-		struct FVector                 Target;
-		float                          DeltaTime;
-		float                          InterpSpeed;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VInterpConstantTo_Params params;
 	params.Current = Current;
 	params.Target = Target;
 	params.DeltaTime = DeltaTime;
@@ -7159,14 +6039,7 @@ struct FVector UObject::STATIC_VInterpTo(const struct FVector& Current, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VInterpTo");
 
-	struct
-	{
-		struct FVector                 Current;
-		struct FVector                 Target;
-		float                          DeltaTime;
-		float                          InterpSpeed;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VInterpTo_Params params;
 	params.Current = Current;
 	params.Target = Target;
 	params.DeltaTime = DeltaTime;
@@ -7190,9 +6063,7 @@ void UObject::Construct()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Construct");
 
-	struct
-	{
-	} params;
+	UObject_Construct_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7212,11 +6083,7 @@ bool UObject::STATIC_IsZero(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsZero");
 
-	struct
-	{
-		struct FVector                 A;
-		bool                           ReturnValue;
-	} params;
+	UObject_IsZero_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7241,12 +6108,7 @@ struct FVector UObject::STATIC_ProjectOnTo(const struct FVector& X, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProjectOnTo");
 
-	struct
-	{
-		struct FVector                 X;
-		struct FVector                 Y;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_ProjectOnTo_Params params;
 	params.X = X;
 	params.Y = Y;
 
@@ -7272,12 +6134,7 @@ struct FVector UObject::STATIC_MirrorVectorByNormal(const struct FVector& InVect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MirrorVectorByNormal");
 
-	struct
-	{
-		struct FVector                 InVect;
-		struct FVector                 InNormal;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MirrorVectorByNormal_Params params;
 	params.InVect = InVect;
 	params.InNormal = InNormal;
 
@@ -7304,13 +6161,7 @@ struct FVector UObject::STATIC_VRandCone2(const struct FVector& Dir, float Horiz
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRandCone2");
 
-	struct
-	{
-		struct FVector                 Dir;
-		float                          HorizontalConeHalfAngleRadians;
-		float                          VerticalConeHalfAngleRadians;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VRandCone2_Params params;
 	params.Dir = Dir;
 	params.HorizontalConeHalfAngleRadians = HorizontalConeHalfAngleRadians;
 	params.VerticalConeHalfAngleRadians = VerticalConeHalfAngleRadians;
@@ -7337,12 +6188,7 @@ struct FVector UObject::STATIC_VRandCone(const struct FVector& Dir, float ConeHa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRandCone");
 
-	struct
-	{
-		struct FVector                 Dir;
-		float                          ConeHalfAngleRadians;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VRandCone_Params params;
 	params.Dir = Dir;
 	params.ConeHalfAngleRadians = ConeHalfAngleRadians;
 
@@ -7366,10 +6212,7 @@ struct FVector UObject::STATIC_VRand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRand");
 
-	struct
-	{
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VRand_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7394,13 +6237,7 @@ struct FVector UObject::STATIC_VLerp(const struct FVector& A, const struct FVect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VLerp");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		float                          Alpha;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_VLerp_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -7426,11 +6263,7 @@ struct FVector UObject::STATIC_Normal2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Normal2D");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Normal2D_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7454,11 +6287,7 @@ struct FVector UObject::STATIC_Normal(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Normal");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Normal_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7482,11 +6311,7 @@ float UObject::STATIC_VSizeSq2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSizeSq2D");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          ReturnValue;
-	} params;
+	UObject_VSizeSq2D_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7510,11 +6335,7 @@ float UObject::STATIC_VSizeSq(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSizeSq");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          ReturnValue;
-	} params;
+	UObject_VSizeSq_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7538,11 +6359,7 @@ float UObject::STATIC_VSize2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSize2D");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          ReturnValue;
-	} params;
+	UObject_VSize2D_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7566,11 +6383,7 @@ float UObject::STATIC_VSize(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSize");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          ReturnValue;
-	} params;
+	UObject_VSize_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -7595,12 +6408,7 @@ struct FVector UObject::STATIC_SubtractEqual_VectorVector(const struct FVector& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_SubtractEqual_VectorVector_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -7628,12 +6436,7 @@ struct FVector UObject::STATIC_AddEqual_VectorVector(const struct FVector& B, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_AddEqual_VectorVector_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -7661,12 +6464,7 @@ struct FVector UObject::STATIC_DivideEqual_VectorFloat(float B, struct FVector* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_VectorFloat");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_DivideEqual_VectorFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -7694,12 +6492,7 @@ struct FVector UObject::STATIC_MultiplyEqual_VectorVector(const struct FVector& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MultiplyEqual_VectorVector_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -7727,12 +6520,7 @@ struct FVector UObject::STATIC_MultiplyEqual_VectorFloat(float B, struct FVector
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_VectorFloat");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_MultiplyEqual_VectorFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -7760,12 +6548,7 @@ struct FVector UObject::STATIC_Cross_VectorVector(const struct FVector& A, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Cross_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Cross_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7791,12 +6574,7 @@ float UObject::STATIC_Dot_VectorVector(const struct FVector& A, const struct FVe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Dot_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		float                          ReturnValue;
-	} params;
+	UObject_Dot_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7822,12 +6600,7 @@ bool UObject::STATIC_NotEqual_VectorVector(const struct FVector& A, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7853,12 +6626,7 @@ bool UObject::STATIC_EqualEqual_VectorVector(const struct FVector& A, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7884,12 +6652,7 @@ struct FVector UObject::STATIC_GreaterGreater_VectorRotator(const struct FVector
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreater_VectorRotator");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FRotator                B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_GreaterGreater_VectorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7915,12 +6678,7 @@ struct FVector UObject::STATIC_LessLess_VectorRotator(const struct FVector& A, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessLess_VectorRotator");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FRotator                B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_LessLess_VectorRotator_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7946,12 +6704,7 @@ struct FVector UObject::STATIC_Subtract_VectorVector(const struct FVector& A, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Subtract_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -7977,12 +6730,7 @@ struct FVector UObject::STATIC_Add_VectorVector(const struct FVector& A, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Add_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8008,12 +6756,7 @@ struct FVector UObject::STATIC_Divide_VectorFloat(const struct FVector& A, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_VectorFloat");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Divide_VectorFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8039,12 +6782,7 @@ struct FVector UObject::STATIC_Multiply_VectorVector(const struct FVector& A, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_VectorVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Multiply_VectorVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8070,12 +6808,7 @@ struct FVector UObject::STATIC_Multiply_FloatVector(float A, const struct FVecto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatVector");
 
-	struct
-	{
-		float                          A;
-		struct FVector                 B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Multiply_FloatVector_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8101,12 +6834,7 @@ struct FVector UObject::STATIC_Multiply_VectorFloat(const struct FVector& A, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_VectorFloat");
 
-	struct
-	{
-		struct FVector                 A;
-		float                          B;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Multiply_VectorFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8131,11 +6859,7 @@ struct FVector UObject::STATIC_Subtract_PreVector(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreVector");
 
-	struct
-	{
-		struct FVector                 A;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_Subtract_PreVector_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8162,14 +6886,7 @@ float UObject::STATIC_FInterpConstantTo(float Current, float Target, float Delta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpConstantTo");
 
-	struct
-	{
-		float                          Current;
-		float                          Target;
-		float                          DeltaTime;
-		float                          InterpSpeed;
-		float                          ReturnValue;
-	} params;
+	UObject_FInterpConstantTo_Params params;
 	params.Current = Current;
 	params.Target = Target;
 	params.DeltaTime = DeltaTime;
@@ -8199,14 +6916,7 @@ float UObject::STATIC_FInterpTo(float Current, float Target, float DeltaTime, fl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpTo");
 
-	struct
-	{
-		float                          Current;
-		float                          Target;
-		float                          DeltaTime;
-		float                          InterpSpeed;
-		float                          ReturnValue;
-	} params;
+	UObject_FInterpTo_Params params;
 	params.Current = Current;
 	params.Target = Target;
 	params.DeltaTime = DeltaTime;
@@ -8235,13 +6945,7 @@ float UObject::STATIC_FPctByRange(float Value, float InMin, float InMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FPctByRange");
 
-	struct
-	{
-		float                          Value;
-		float                          InMin;
-		float                          InMax;
-		float                          ReturnValue;
-	} params;
+	UObject_FPctByRange_Params params;
 	params.Value = Value;
 	params.InMin = InMin;
 	params.InMax = InMax;
@@ -8266,11 +6970,7 @@ float UObject::STATIC_RandSign(float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RandSign");
 
-	struct
-	{
-		float                          Value;
-		float                          ReturnValue;
-	} params;
+	UObject_RandSign_Params params;
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
@@ -8297,15 +6997,7 @@ struct FVector UObject::STATIC_CalculateGravityPosition(const struct FVector& Lo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.CalculateGravityPosition");
 
-	struct
-	{
-		struct FVector                 Location;
-		struct FVector                 Velocity;
-		float                          Gravity;
-		float                          Time;
-		struct FVector                 GravityDirection;
-		struct FVector                 ReturnValue;
-	} params;
+	UObject_CalculateGravityPosition_Params params;
 	params.Location = Location;
 	params.Velocity = Velocity;
 	params.Gravity = Gravity;
@@ -8333,12 +7025,7 @@ float UObject::STATIC_RandRange(float InMin, float InMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RandRange");
 
-	struct
-	{
-		float                          InMin;
-		float                          InMax;
-		float                          ReturnValue;
-	} params;
+	UObject_RandRange_Params params;
 	params.InMin = InMin;
 	params.InMax = InMax;
 
@@ -8365,14 +7052,7 @@ float UObject::STATIC_FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseInOut");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          Alpha;
-		float                          Exp;
-		float                          ReturnValue;
-	} params;
+	UObject_FInterpEaseInOut_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -8402,14 +7082,7 @@ float UObject::STATIC_FInterpEaseOut(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseOut");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          Alpha;
-		float                          Exp;
-		float                          ReturnValue;
-	} params;
+	UObject_FInterpEaseOut_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -8438,14 +7111,7 @@ float UObject::STATIC_FInterpEaseIn(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseIn");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          Alpha;
-		float                          Exp;
-		float                          ReturnValue;
-	} params;
+	UObject_FInterpEaseIn_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -8475,15 +7141,7 @@ float UObject::STATIC_FCubicInterp(float P0, float T0, float P1, float T1, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FCubicInterp");
 
-	struct
-	{
-		float                          P0;
-		float                          T0;
-		float                          P1;
-		float                          T1;
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_FCubicInterp_Params params;
 	params.P0 = P0;
 	params.T0 = T0;
 	params.P1 = P1;
@@ -8511,11 +7169,7 @@ int UObject::STATIC_FloorLog2(int Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FloorLog2");
 
-	struct
-	{
-		int                            Value;
-		int                            ReturnValue;
-	} params;
+	UObject_FloorLog2_Params params;
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
@@ -8539,11 +7193,7 @@ int UObject::STATIC_FCeil(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FCeil");
 
-	struct
-	{
-		float                          A;
-		int                            ReturnValue;
-	} params;
+	UObject_FCeil_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8567,11 +7217,7 @@ int UObject::STATIC_FFloor(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FFloor");
 
-	struct
-	{
-		float                          A;
-		int                            ReturnValue;
-	} params;
+	UObject_FFloor_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8595,11 +7241,7 @@ int UObject::STATIC_Round(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Round");
 
-	struct
-	{
-		float                          A;
-		int                            ReturnValue;
-	} params;
+	UObject_Round_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8625,13 +7267,7 @@ float UObject::STATIC_Lerp(float A, float B, float Alpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Lerp");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          Alpha;
-		float                          ReturnValue;
-	} params;
+	UObject_Lerp_Params params;
 	params.A = A;
 	params.B = B;
 	params.Alpha = Alpha;
@@ -8659,13 +7295,7 @@ float UObject::STATIC_FClamp(float V, float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FClamp");
 
-	struct
-	{
-		float                          V;
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_FClamp_Params params;
 	params.V = V;
 	params.A = A;
 	params.B = B;
@@ -8692,12 +7322,7 @@ float UObject::STATIC_FMax(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FMax");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_FMax_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8723,12 +7348,7 @@ float UObject::STATIC_FMin(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FMin");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_FMin_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8752,10 +7372,7 @@ float UObject::STATIC_FRand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FRand");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UObject_FRand_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8778,11 +7395,7 @@ float UObject::STATIC_Square(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Square");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Square_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8806,11 +7419,7 @@ float UObject::STATIC_Sqrt(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Sqrt");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Sqrt_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8834,11 +7443,7 @@ float UObject::STATIC_Loge(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Loge");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Loge_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8862,11 +7467,7 @@ float UObject::STATIC_Exp(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Exp");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Exp_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8891,12 +7492,7 @@ float UObject::STATIC_Atan2(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Atan2");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Atan2_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -8921,11 +7517,7 @@ float UObject::STATIC_Atan(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Atan");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Atan_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8949,11 +7541,7 @@ float UObject::STATIC_Tan(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Tan");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Tan_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -8977,11 +7565,7 @@ float UObject::STATIC_Acos(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Acos");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Acos_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9005,11 +7589,7 @@ float UObject::STATIC_Cos(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Cos");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Cos_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9033,11 +7613,7 @@ float UObject::STATIC_Asin(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Asin");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Asin_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9061,11 +7637,7 @@ float UObject::STATIC_Sin(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Sin");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Sin_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9089,11 +7661,7 @@ float UObject::STATIC_Abs(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Abs");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Abs_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9118,12 +7686,7 @@ float UObject::STATIC_SubtractEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_SubtractEqual_FloatFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -9151,12 +7714,7 @@ float UObject::STATIC_AddEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_AddEqual_FloatFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -9184,12 +7742,7 @@ float UObject::STATIC_DivideEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_DivideEqual_FloatFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -9217,12 +7770,7 @@ float UObject::STATIC_MultiplyEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_MultiplyEqual_FloatFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -9250,12 +7798,7 @@ bool UObject::STATIC_NotEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9281,12 +7824,7 @@ bool UObject::STATIC_ComplementEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_ComplementEqual_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9312,12 +7850,7 @@ bool UObject::STATIC_EqualEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9343,12 +7876,7 @@ bool UObject::STATIC_GreaterEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_GreaterEqual_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9374,12 +7902,7 @@ bool UObject::STATIC_LessEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_LessEqual_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9405,12 +7928,7 @@ bool UObject::STATIC_Greater_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Greater_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9436,12 +7954,7 @@ bool UObject::STATIC_Less_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Less_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9467,12 +7980,7 @@ float UObject::STATIC_Subtract_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Subtract_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9498,12 +8006,7 @@ float UObject::STATIC_Add_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Add_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9529,12 +8032,7 @@ float UObject::STATIC_Percent_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Percent_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Percent_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9560,12 +8058,7 @@ float UObject::STATIC_Divide_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Divide_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9591,12 +8084,7 @@ float UObject::STATIC_Multiply_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatFloat");
 
-	struct
-	{
-		float                          A;
-		float                          B;
-		float                          ReturnValue;
-	} params;
+	UObject_Multiply_FloatFloat_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9622,12 +8110,7 @@ float UObject::STATIC_MultiplyMultiply_FloatFloat(float Base, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyMultiply_FloatFloat");
 
-	struct
-	{
-		float                          Base;
-		float                          Exp;
-		float                          ReturnValue;
-	} params;
+	UObject_MultiplyMultiply_FloatFloat_Params params;
 	params.Base = Base;
 	params.Exp = Exp;
 
@@ -9652,11 +8135,7 @@ float UObject::STATIC_Subtract_PreFloat(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreFloat");
 
-	struct
-	{
-		float                          A;
-		float                          ReturnValue;
-	} params;
+	UObject_Subtract_PreFloat_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9680,11 +8159,7 @@ struct FString UObject::STATIC_ToHex(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ToHex");
 
-	struct
-	{
-		int                            A;
-		struct FString                 ReturnValue;
-	} params;
+	UObject_ToHex_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -9710,13 +8185,7 @@ int UObject::STATIC_Clamp(int V, int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Clamp");
 
-	struct
-	{
-		int                            V;
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Clamp_Params params;
 	params.V = V;
 	params.A = A;
 	params.B = B;
@@ -9743,12 +8212,7 @@ int UObject::STATIC_Max(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Max");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Max_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9774,12 +8238,7 @@ int UObject::STATIC_Min(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Min");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Min_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -9804,11 +8263,7 @@ int UObject::STATIC_Rand(int Max)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Rand");
 
-	struct
-	{
-		int                            Max;
-		int                            ReturnValue;
-	} params;
+	UObject_Rand_Params params;
 	params.Max = Max;
 
 	auto flags = fn->FunctionFlags;
@@ -9833,12 +8288,7 @@ void UObject::UnbindDelegate(const struct FName& DelegateName, class UObject* Ta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.UnbindDelegate");
 
-	struct
-	{
-		struct FName                   DelegateName;
-		class UObject*                 TargetObject;
-		struct FName                   TargetFuncName;
-	} params;
+	UObject_UnbindDelegate_Params params;
 	params.DelegateName = DelegateName;
 	params.TargetObject = TargetObject;
 	params.TargetFuncName = TargetFuncName;
@@ -9863,12 +8313,7 @@ void UObject::BindStateDelegate(const struct FName& DelegateName, class UObject*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.BindStateDelegate");
 
-	struct
-	{
-		struct FName                   DelegateName;
-		class UObject*                 TargetObject;
-		struct FName                   TargetFuncName;
-	} params;
+	UObject_BindStateDelegate_Params params;
 	params.DelegateName = DelegateName;
 	params.TargetObject = TargetObject;
 	params.TargetFuncName = TargetFuncName;
@@ -9893,12 +8338,7 @@ void UObject::BindDelegate(const struct FName& DelegateName, class UObject* Targ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.BindDelegate");
 
-	struct
-	{
-		struct FName                   DelegateName;
-		class UObject*                 TargetObject;
-		struct FName                   TargetFuncName;
-	} params;
+	UObject_BindDelegate_Params params;
 	params.DelegateName = DelegateName;
 	params.TargetObject = TargetObject;
 	params.TargetFuncName = TargetFuncName;
@@ -9922,11 +8362,7 @@ int UObject::STATIC_FromHex(const struct FString& Hex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FromHex");
 
-	struct
-	{
-		struct FString                 Hex;
-		int                            ReturnValue;
-	} params;
+	UObject_FromHex_Params params;
 	params.Hex = Hex;
 
 	auto flags = fn->FunctionFlags;
@@ -9949,10 +8385,7 @@ bool UObject::STATIC_NotEqual_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9974,10 +8407,7 @@ bool UObject::STATIC_EqualEqual_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9999,10 +8429,7 @@ bool UObject::STATIC_GreaterEqual_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_GreaterEqual_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10024,10 +8451,7 @@ bool UObject::STATIC_LessEqual_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_LessEqual_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10049,10 +8473,7 @@ bool UObject::STATIC_Greater_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_Greater_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10074,10 +8495,7 @@ bool UObject::STATIC_Less_QWordQWord()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_QWordQWord");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UObject_Less_QWordQWord_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10100,11 +8518,7 @@ int UObject::STATIC_SubtractSubtract_Int(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_Int");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_SubtractSubtract_Int_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10130,11 +8544,7 @@ int UObject::STATIC_AddAdd_Int(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_Int");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_AddAdd_Int_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10160,11 +8570,7 @@ int UObject::STATIC_SubtractSubtract_PreInt(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_PreInt");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_SubtractSubtract_PreInt_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10190,11 +8596,7 @@ int UObject::STATIC_AddAdd_PreInt(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_PreInt");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_AddAdd_PreInt_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10221,12 +8623,7 @@ int UObject::STATIC_SubtractEqual_IntInt(int B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_SubtractEqual_IntInt_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -10254,12 +8651,7 @@ int UObject::STATIC_AddEqual_IntInt(int B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_AddEqual_IntInt_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -10287,12 +8679,7 @@ int UObject::STATIC_DivideEqual_IntFloat(float B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_IntFloat");
 
-	struct
-	{
-		int                            A;
-		float                          B;
-		int                            ReturnValue;
-	} params;
+	UObject_DivideEqual_IntFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -10320,12 +8707,7 @@ int UObject::STATIC_MultiplyEqual_IntFloat(float B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_IntFloat");
 
-	struct
-	{
-		int                            A;
-		float                          B;
-		int                            ReturnValue;
-	} params;
+	UObject_MultiplyEqual_IntFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -10353,12 +8735,7 @@ int UObject::STATIC_Or_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Or_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Or_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10384,12 +8761,7 @@ int UObject::STATIC_Xor_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Xor_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Xor_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10415,12 +8787,7 @@ int UObject::STATIC_And_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.And_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_And_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10446,12 +8813,7 @@ bool UObject::STATIC_NotEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10477,12 +8839,7 @@ bool UObject::STATIC_EqualEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10508,12 +8865,7 @@ bool UObject::STATIC_GreaterEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_GreaterEqual_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10539,12 +8891,7 @@ bool UObject::STATIC_LessEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_LessEqual_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10570,12 +8917,7 @@ bool UObject::STATIC_Greater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Greater_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10601,12 +8943,7 @@ bool UObject::STATIC_Less_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		bool                           ReturnValue;
-	} params;
+	UObject_Less_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10632,12 +8969,7 @@ int UObject::STATIC_GreaterGreaterGreater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreaterGreater_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_GreaterGreaterGreater_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10663,12 +8995,7 @@ int UObject::STATIC_GreaterGreater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreater_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_GreaterGreater_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10694,12 +9021,7 @@ int UObject::STATIC_LessLess_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessLess_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_LessLess_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10725,12 +9047,7 @@ int UObject::STATIC_Subtract_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Subtract_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10756,12 +9073,7 @@ int UObject::STATIC_Add_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Add_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10787,12 +9099,7 @@ int UObject::STATIC_Percent_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Percent_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Percent_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10818,12 +9125,7 @@ int UObject::STATIC_Divide_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Divide_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10849,12 +9151,7 @@ int UObject::STATIC_Multiply_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_IntInt");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UObject_Multiply_IntInt_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -10879,11 +9176,7 @@ int UObject::STATIC_Subtract_PreInt(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreInt");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_Subtract_PreInt_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -10907,11 +9200,7 @@ int UObject::STATIC_Complement_PreInt(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Complement_PreInt");
 
-	struct
-	{
-		int                            A;
-		int                            ReturnValue;
-	} params;
+	UObject_Complement_PreInt_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -10935,11 +9224,7 @@ unsigned char UObject::STATIC_SubtractSubtract_Byte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_Byte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_SubtractSubtract_Byte_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10965,11 +9250,7 @@ unsigned char UObject::STATIC_AddAdd_Byte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_Byte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_AddAdd_Byte_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10995,11 +9276,7 @@ unsigned char UObject::STATIC_SubtractSubtract_PreByte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_PreByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_SubtractSubtract_PreByte_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11025,11 +9302,7 @@ unsigned char UObject::STATIC_AddAdd_PreByte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_PreByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_AddAdd_PreByte_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11056,12 +9329,7 @@ unsigned char UObject::STATIC_SubtractEqual_ByteByte(unsigned char B, unsigned c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_ByteByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  B;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_SubtractEqual_ByteByte_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -11089,12 +9357,7 @@ unsigned char UObject::STATIC_AddEqual_ByteByte(unsigned char B, unsigned char* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_ByteByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  B;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_AddEqual_ByteByte_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -11122,12 +9385,7 @@ unsigned char UObject::STATIC_DivideEqual_ByteByte(unsigned char B, unsigned cha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_ByteByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  B;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_DivideEqual_ByteByte_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -11155,12 +9413,7 @@ unsigned char UObject::STATIC_MultiplyEqual_ByteFloat(float B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_ByteFloat");
 
-	struct
-	{
-		unsigned char                  A;
-		float                          B;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_MultiplyEqual_ByteFloat_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -11188,12 +9441,7 @@ unsigned char UObject::STATIC_MultiplyEqual_ByteByte(unsigned char B, unsigned c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_ByteByte");
 
-	struct
-	{
-		unsigned char                  A;
-		unsigned char                  B;
-		unsigned char                  ReturnValue;
-	} params;
+	UObject_MultiplyEqual_ByteByte_Params params;
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
@@ -11221,12 +9469,7 @@ bool UObject::STATIC_OrOr_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.OrOr_BoolBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           B;
-		bool                           ReturnValue;
-	} params;
+	UObject_OrOr_BoolBool_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -11252,12 +9495,7 @@ bool UObject::STATIC_XorXor_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.XorXor_BoolBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           B;
-		bool                           ReturnValue;
-	} params;
+	UObject_XorXor_BoolBool_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -11283,12 +9521,7 @@ bool UObject::STATIC_AndAnd_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AndAnd_BoolBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           B;
-		bool                           ReturnValue;
-	} params;
+	UObject_AndAnd_BoolBool_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -11314,12 +9547,7 @@ bool UObject::STATIC_NotEqual_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_BoolBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           B;
-		bool                           ReturnValue;
-	} params;
+	UObject_NotEqual_BoolBool_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -11345,12 +9573,7 @@ bool UObject::STATIC_EqualEqual_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_BoolBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           B;
-		bool                           ReturnValue;
-	} params;
+	UObject_EqualEqual_BoolBool_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -11375,11 +9598,7 @@ bool UObject::STATIC_Not_PreBool(bool A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Not_PreBool");
 
-	struct
-	{
-		bool                           A;
-		bool                           ReturnValue;
-	} params;
+	UObject_Not_PreBool_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -11403,11 +9622,7 @@ void UObjectProvider::SetSingleton(class UClass* ObjClass, class UObject* Replac
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.SetSingleton");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		class UObject*                 Replacement;
-	} params;
+	UObjectProvider_SetSingleton_Params params;
 	params.ObjClass = ObjClass;
 	params.Replacement = Replacement;
 
@@ -11430,11 +9645,7 @@ void UObjectProvider::AddAndRemoveObjects(TArray<class UObject*>* AddObjects, TA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.AddAndRemoveObjects");
 
-	struct
-	{
-		TArray<class UObject*>         AddObjects;
-		TArray<class UObject*>         RemoveObjects;
-	} params;
+	UObjectProvider_AddAndRemoveObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11459,10 +9670,7 @@ void UObjectProvider::RemoveObjects(TArray<class UObject*>* InObjects)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.RemoveObjects");
 
-	struct
-	{
-		TArray<class UObject*>         InObjects;
-	} params;
+	UObjectProvider_RemoveObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11485,10 +9693,7 @@ void UObjectProvider::RemoveObject(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.RemoveObject");
 
-	struct
-	{
-		class UObject*                 Obj;
-	} params;
+	UObjectProvider_RemoveObject_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -11509,10 +9714,7 @@ void UObjectProvider::AddObjects(TArray<class UObject*>* InObjects)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.AddObjects");
 
-	struct
-	{
-		TArray<class UObject*>         InObjects;
-	} params;
+	UObjectProvider_AddObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11535,10 +9737,7 @@ void UObjectProvider::AddObject(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.AddObject");
 
-	struct
-	{
-		class UObject*                 Obj;
-	} params;
+	UObjectProvider_AddObject_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -11560,11 +9759,7 @@ class UObject* UObjectProvider::GetOrCreate(class UClass* ObjClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.GetOrCreate");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		class UObject*                 ReturnValue;
-	} params;
+	UObjectProvider_GetOrCreate_Params params;
 	params.ObjClass = ObjClass;
 
 	auto flags = fn->FunctionFlags;
@@ -11588,11 +9783,7 @@ class UObject* UObjectProvider::Get(class UClass* ObjClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.Get");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		class UObject*                 ReturnValue;
-	} params;
+	UObjectProvider_Get_Params params;
 	params.ObjClass = ObjClass;
 
 	auto flags = fn->FunctionFlags;
@@ -11617,12 +9808,7 @@ void UObjectProvider::AllObjects(class UClass* BaseClass, class UClass* Interfac
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.AllObjects");
 
-	struct
-	{
-		class UClass*                  BaseClass;
-		class UObject*                 Obj;
-		class UClass*                  InterfaceClass;
-	} params;
+	UObjectProvider_AllObjects_Params params;
 	params.BaseClass = BaseClass;
 	params.InterfaceClass = InterfaceClass;
 
@@ -11647,10 +9833,7 @@ void UObjectProvider::Inject(class UObject* Subscriber)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.Inject");
 
-	struct
-	{
-		class UObject*                 Subscriber;
-	} params;
+	UObjectProvider_Inject_Params params;
 	params.Subscriber = Subscriber;
 
 	auto flags = fn->FunctionFlags;
@@ -11671,10 +9854,7 @@ void UObjectProvider::UnsubscribeAll(class UObject* Subscription)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.UnsubscribeAll");
 
-	struct
-	{
-		class UObject*                 Subscription;
-	} params;
+	UObjectProvider_UnsubscribeAll_Params params;
 	params.Subscription = Subscription;
 
 	auto flags = fn->FunctionFlags;
@@ -11695,10 +9875,7 @@ void UObjectProvider::Unsubscribe(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.Unsubscribe");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UObjectProvider_Unsubscribe_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -11720,11 +9897,7 @@ void UObjectProvider::SubscribeList(class UClass* BaseClass, const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.SubscribeList");
 
-	struct
-	{
-		class UClass*                  BaseClass;
-		struct FScriptDelegate         Callback;
-	} params;
+	UObjectProvider_SubscribeList_Params params;
 	params.BaseClass = BaseClass;
 	params.Callback = Callback;
 
@@ -11748,12 +9921,7 @@ void UObjectProvider::Subscribe(class UClass* BaseClass, const struct FScriptDel
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.Subscribe");
 
-	struct
-	{
-		class UClass*                  BaseClass;
-		struct FScriptDelegate         OnAdd;
-		struct FScriptDelegate         OnRemove;
-	} params;
+	UObjectProvider_Subscribe_Params params;
 	params.BaseClass = BaseClass;
 	params.OnAdd = OnAdd;
 	params.OnRemove = OnRemove;
@@ -11774,9 +9942,7 @@ void UObjectProvider::ObjectChangeCallback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.ObjectChangeCallback");
 
-	struct
-	{
-	} params;
+	UObjectProvider_ObjectChangeCallback_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11795,10 +9961,7 @@ void UObjectProvider::ObjectListSubscriptionCallback(class UObjectProvider* Prov
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.ObjectListSubscriptionCallback");
 
-	struct
-	{
-		class UObjectProvider*         Provider;
-	} params;
+	UObjectProvider_ObjectListSubscriptionCallback_Params params;
 	params.Provider = Provider;
 
 	auto flags = fn->FunctionFlags;
@@ -11818,10 +9981,7 @@ void UObjectProvider::ObjectSubscriptionCallback(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.ObjectProvider.ObjectSubscriptionCallback");
 
-	struct
-	{
-		class UObject*                 Obj;
-	} params;
+	UObjectProvider_ObjectSubscriptionCallback_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -11842,11 +10002,7 @@ bool UFileSystem::STATIC_DeleteDirectoryTree(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.DeleteDirectoryTree");
 
-	struct
-	{
-		struct FString                 Path;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_DeleteDirectoryTree_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -11870,11 +10026,7 @@ bool UFileSystem::STATIC_DeleteFile(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.DeleteFile");
 
-	struct
-	{
-		struct FString                 Path;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_DeleteFile_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -11899,12 +10051,7 @@ bool UFileSystem::STATIC_AppendStringToFile(const struct FString& Path, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.AppendStringToFile");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 Text;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_AppendStringToFile_Params params;
 	params.Path = Path;
 	params.Text = Text;
 
@@ -11930,12 +10077,7 @@ bool UFileSystem::STATIC_SaveStringToFile(const struct FString& Path, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.SaveStringToFile");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 Text;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_SaveStringToFile_Params params;
 	params.Path = Path;
 	params.Text = Text;
 
@@ -11961,12 +10103,7 @@ bool UFileSystem::STATIC_SaveBytesToFile(const struct FString& Path, TArray<unsi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.SaveBytesToFile");
 
-	struct
-	{
-		struct FString                 Path;
-		TArray<unsigned char>          Bytes;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_SaveBytesToFile_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -11994,12 +10131,7 @@ bool UFileSystem::STATIC_LoadFileToBytes(const struct FString& Path, TArray<unsi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.LoadFileToBytes");
 
-	struct
-	{
-		struct FString                 Path;
-		TArray<unsigned char>          OutBytes;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_LoadFileToBytes_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12027,12 +10159,7 @@ bool UFileSystem::STATIC_LoadFileToString(const struct FString& Path, struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.LoadFileToString");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 OutText;
-		bool                           ReturnValue;
-	} params;
+	UFileSystem_LoadFileToString_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12059,11 +10186,7 @@ struct FString UFileSystem::STATIC_GetFileExtensionWithoutDot(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.GetFileExtensionWithoutDot");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UFileSystem_GetFileExtensionWithoutDot_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12087,11 +10210,7 @@ struct FString UFileSystem::STATIC_GetFileExtension(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.GetFileExtension");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UFileSystem_GetFileExtension_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12115,11 +10234,7 @@ struct FString UFileSystem::STATIC_GetFilePathWithoutExtension(const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.GetFilePathWithoutExtension");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UFileSystem_GetFilePathWithoutExtension_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12143,11 +10258,7 @@ struct FString UFileSystem::STATIC_GetFileNameWithoutExtension(const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.GetFileNameWithoutExtension");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UFileSystem_GetFileNameWithoutExtension_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12171,11 +10282,7 @@ struct FString UFileSystem::STATIC_GetFilename(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.FileSystem.GetFilename");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UFileSystem_GetFilename_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -12196,9 +10303,7 @@ void UDebugDrawer::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.Reset");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12218,11 +10323,7 @@ void UDebugDrawer::PrintText(const struct FString& Text, const struct FColor& In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.PrintText");
 
-	struct
-	{
-		struct FString                 Text;
-		struct FColor                  InColor;
-	} params;
+	UDebugDrawer_PrintText_Params params;
 	params.Text = Text;
 	params.InColor = InColor;
 
@@ -12245,12 +10346,7 @@ void UDebugDrawer::PrintArrayProperty(const struct FString& PropertyName, int In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.PrintArrayProperty");
 
-	struct
-	{
-		struct FString                 PropertyName;
-		int                            Index;
-		struct FString                 Value;
-	} params;
+	UDebugDrawer_PrintArrayProperty_Params params;
 	params.PropertyName = PropertyName;
 	params.Index = Index;
 	params.Value = Value;
@@ -12273,11 +10369,7 @@ void UDebugDrawer::PrintProperty(const struct FString& PropertyName, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.PrintProperty");
 
-	struct
-	{
-		struct FString                 PropertyName;
-		struct FString                 Value;
-	} params;
+	UDebugDrawer_PrintProperty_Params params;
 	params.PropertyName = PropertyName;
 	params.Value = Value;
 
@@ -12296,9 +10388,7 @@ void UDebugDrawer::EndSection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.EndSection");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_EndSection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12315,9 +10405,7 @@ void UDebugDrawer::StartSection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.StartSection");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_StartSection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12337,11 +10425,7 @@ void UDebugDrawer::PrintObject(const struct FString& Title, class UObject* ForOb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.PrintObject");
 
-	struct
-	{
-		struct FString                 Title;
-		class UObject*                 ForObj;
-	} params;
+	UDebugDrawer_PrintObject_Params params;
 	params.Title = Title;
 	params.ForObj = ForObj;
 
@@ -12360,9 +10444,7 @@ void UDebugDrawer::PrintSeperater()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.PrintSeperater");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_PrintSeperater_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12383,12 +10465,7 @@ void UDebugDrawer::DebugArrayObject(const struct FString& Title, int Index, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.DebugArrayObject");
 
-	struct
-	{
-		struct FString                 Title;
-		int                            Index;
-		class UObject*                 ForObj;
-	} params;
+	UDebugDrawer_DebugArrayObject_Params params;
 	params.Title = Title;
 	params.Index = Index;
 	params.ForObj = ForObj;
@@ -12411,11 +10488,7 @@ void UDebugDrawer::DebugObject(const struct FString& Title, class UObject* ForOb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.DebugObject");
 
-	struct
-	{
-		struct FString                 Title;
-		class UObject*                 ForObj;
-	} params;
+	UDebugDrawer_DebugObject_Params params;
 	params.Title = Title;
 	params.ForObj = ForObj;
 
@@ -12437,11 +10510,7 @@ bool UDebugDrawer::ShouldDisplayDebug(const struct FName& Category)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.ShouldDisplayDebug");
 
-	struct
-	{
-		struct FName                   Category;
-		bool                           ReturnValue;
-	} params;
+	UDebugDrawer_ShouldDisplayDebug_Params params;
 	params.Category = Category;
 
 	auto flags = fn->FunctionFlags;
@@ -12463,10 +10532,7 @@ void UDebugDrawer::LogFunc(const struct FString& Str)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DebugDrawer.LogFunc");
 
-	struct
-	{
-		struct FString                 Str;
-	} params;
+	UDebugDrawer_LogFunc_Params params;
 	params.Str = Str;
 
 	auto flags = fn->FunctionFlags;
@@ -12488,12 +10554,7 @@ struct FVector UDistributionVector::GetVectorValue(float F, int LastExtreme)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DistributionVector.GetVectorValue");
 
-	struct
-	{
-		float                          F;
-		int                            LastExtreme;
-		struct FVector                 ReturnValue;
-	} params;
+	UDistributionVector_GetVectorValue_Params params;
 	params.F = F;
 	params.LastExtreme = LastExtreme;
 
@@ -12518,11 +10579,7 @@ float UDistributionFloat::GetFloatValue(float F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DistributionFloat.GetFloatValue");
 
-	struct
-	{
-		float                          F;
-		float                          ReturnValue;
-	} params;
+	UDistributionFloat_GetFloatValue_Params params;
 	params.F = F;
 
 	auto flags = fn->FunctionFlags;
@@ -12546,11 +10603,7 @@ int UCommandlet::Main(const struct FString& Params)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Commandlet.Main");
 
-	struct
-	{
-		struct FString                 Params;
-		int                            ReturnValue;
-	} params;
+	UCommandlet_Main_Params params;
 	params.Params = Params;
 
 	auto flags = fn->FunctionFlags;
@@ -12573,11 +10626,7 @@ int UHelpCommandlet::Main(const struct FString& Params)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.HelpCommandlet.Main");
 
-	struct
-	{
-		struct FString                 Params;
-		int                            ReturnValue;
-	} params;
+	UHelpCommandlet_Main_Params params;
 	params.Params = Params;
 
 	auto flags = fn->FunctionFlags;
@@ -12597,9 +10646,7 @@ void U_LoggingDoc::STATIC_TestSpecialLogging()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core._LoggingDoc.TestSpecialLogging");
 
-	struct
-	{
-	} params;
+	U_LoggingDoc_TestSpecialLogging_Params params;
 
 	auto flags = fn->FunctionFlags;
 

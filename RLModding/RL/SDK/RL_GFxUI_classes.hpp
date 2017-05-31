@@ -108,9 +108,9 @@ enum class EWeatherVariant
 class UGFxEngine : public UObject
 {
 public:
-	TArray<struct FGCReference>                        GCReferences;                                     		// 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                RefCount;                                         		// 0x0048(0x0004) (CPF_Transient)
-	struct FLoadingMovieMapInfo                        LoadingScreenInfo;                                		// 0x004C(0x0058) (CPF_NeedCtorLink)
+	TArray<struct FGCReference>                        GCReferences;                                             // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	int                                                RefCount;                                                 // 0x0048(0x0004) (CPF_Transient)
+	struct FLoadingMovieMapInfo                        LoadingScreenInfo;                                        // 0x004C(0x0058) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -146,8 +146,8 @@ public:
 class UGFxInteraction : public UInteraction
 {
 public:
-	struct FPointer                                    VfTable_FCallbackEventDevice;                     		// 0x0088(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	unsigned long                                      bFakeMobileTouches : 1;                           		// 0x008C(0x0004)
+	struct FPointer                                    VfTable_FCallbackEventDevice;                             // 0x0088(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	unsigned long                                      bFakeMobileTouches : 1;                                   // 0x008C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -171,57 +171,57 @@ public:
 class UGFxMoviePlayer : public UObject
 {
 public:
-	struct FPointer                                    pMovie;                                           		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FPointer                                    pCaptureKeys;                                     		// 0x0040(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FPointer                                    pFocusIgnoreKeys;                                 		// 0x0044(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	unsigned char                                      UnknownData00[0x3C];                              		// 0x0048(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.ASUClasses
-	unsigned char                                      UnknownData01[0x3C];                              		// 0x0084(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.ASUObjects
-	int                                                NextASUObject;                                    		// 0x00C0(0x0004) (CPF_Const, CPF_Transient)
-	class USwfMovie*                                   MovieInfo;                                        		// 0x00C4(0x0004)
-	unsigned long                                      bMovieIsOpen : 1;                                 		// 0x00C8(0x0004) (CPF_Const)
-	unsigned long                                      bDisplayWithHudOff : 1;                           		// 0x00C8(0x0004)
-	unsigned long                                      bEnableGammaCorrection : 1;                       		// 0x00C8(0x0004)
-	unsigned long                                      bWidgetsInitializedThisFrame : 1;                 		// 0x00C8(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bLogUnhandedWidgetInitializations : 1;            		// 0x00C8(0x0004)
-	unsigned long                                      bAllowInput : 1;                                  		// 0x00C8(0x0004)
-	unsigned long                                      bAllowFocus : 1;                                  		// 0x00C8(0x0004)
-	unsigned long                                      bAutoPlay : 1;                                    		// 0x00C8(0x0004)
-	unsigned long                                      bPauseGameWhileActive : 1;                        		// 0x00C8(0x0004)
-	unsigned long                                      bDisableWorldRendering : 1;                       		// 0x00C8(0x0004)
-	unsigned long                                      bCaptureWorldRendering : 1;                       		// 0x00C8(0x0004)
-	unsigned long                                      bCloseOnLevelChange : 1;                          		// 0x00C8(0x0004)
-	unsigned long                                      bOnlyOwnerFocusable : 1;                          		// 0x00C8(0x0004)
-	unsigned long                                      bForceFullViewport : 1;                           		// 0x00C8(0x0004)
-	unsigned long                                      bDiscardNonOwnerInput : 1;                        		// 0x00C8(0x0004)
-	unsigned long                                      bCaptureInput : 1;                                		// 0x00C8(0x0004)
-	unsigned long                                      bCaptureMouseInput : 1;                           		// 0x00C8(0x0004)
-	unsigned long                                      bIgnoreMouseInput : 1;                            		// 0x00C8(0x0004)
-	unsigned long                                      bIsSplitscreenLayoutModified : 1;                 		// 0x00C8(0x0004) (CPF_Transient)
-	unsigned long                                      bShowHardwareMouseCursor : 1;                     		// 0x00C8(0x0004)
-	unsigned long                                      bForceFullScreen : 1;                             		// 0x00C8(0x0004)
-	unsigned long                                      bBlurLesserMovies : 1;                            		// 0x00C8(0x0004)
-	unsigned long                                      bHideLesserMovies : 1;                            		// 0x00C8(0x0004)
-	unsigned long                                      bIsPriorityBlurred : 1;                           		// 0x00C8(0x0004)
-	unsigned long                                      bIsPriorityHidden : 1;                            		// 0x00C8(0x0004)
-	unsigned long                                      bIgnoreVisibilityEffect : 1;                      		// 0x00C8(0x0004)
-	unsigned long                                      bIgnoreBlurEffect : 1;                            		// 0x00C8(0x0004)
-	class UTextureRenderTarget2D*                      RenderTexture;                                    		// 0x00CC(0x0004) (CPF_Edit)
-	int                                                LocalPlayerOwnerIndex;                            		// 0x00D0(0x0004) (CPF_Transient)
-	class UObject*                                     ExternalInterface;                                		// 0x00D4(0x0004)
-	TArray<struct FName>                               CaptureKeys;                                      		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FName>                               FocusIgnoreKeys;                                  		// 0x00E4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FExternalTexture>                    ExternalTextures;                                 		// 0x00F0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSoundThemeBinding>                  SoundThemes;                                      		// 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TEnumAsByte<enum class GFxTimingMode>              TimingMode;                                       		// 0x0108(0x0001)
-	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                		// 0x0109(0x0001)
-	unsigned char                                      Priority;                                         		// 0x010A(0x0001)
-	unsigned char                                      UnknownData02[0x1];                               		// 0x010B(0x0001) MISSED OFFSET
-	TArray<struct FGFxWidgetBinding>                   WidgetBindings;                                   		// 0x010C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x3C];                              		// 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
-	class UGFxObject*                                  SplitscreenLayoutObject;                          		// 0x0154(0x0004) (CPF_Transient)
-	int                                                SplitscreenLayoutYAdjust;                         		// 0x0158(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnPostAdvance__Delegate;                        		// 0x015C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    pMovie;                                                   // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FPointer                                    pCaptureKeys;                                             // 0x0040(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FPointer                                    pFocusIgnoreKeys;                                         // 0x0044(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0048(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.ASUClasses
+	unsigned char                                      UnknownData01[0x3C];                                      // 0x0084(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.ASUObjects
+	int                                                NextASUObject;                                            // 0x00C0(0x0004) (CPF_Const, CPF_Transient)
+	class USwfMovie*                                   MovieInfo;                                                // 0x00C4(0x0004)
+	unsigned long                                      bMovieIsOpen : 1;                                         // 0x00C8(0x0004) (CPF_Const)
+	unsigned long                                      bDisplayWithHudOff : 1;                                   // 0x00C8(0x0004)
+	unsigned long                                      bEnableGammaCorrection : 1;                               // 0x00C8(0x0004)
+	unsigned long                                      bWidgetsInitializedThisFrame : 1;                         // 0x00C8(0x0004) (CPF_Const, CPF_Transient)
+	unsigned long                                      bLogUnhandedWidgetInitializations : 1;                    // 0x00C8(0x0004)
+	unsigned long                                      bAllowInput : 1;                                          // 0x00C8(0x0004)
+	unsigned long                                      bAllowFocus : 1;                                          // 0x00C8(0x0004)
+	unsigned long                                      bAutoPlay : 1;                                            // 0x00C8(0x0004)
+	unsigned long                                      bPauseGameWhileActive : 1;                                // 0x00C8(0x0004)
+	unsigned long                                      bDisableWorldRendering : 1;                               // 0x00C8(0x0004)
+	unsigned long                                      bCaptureWorldRendering : 1;                               // 0x00C8(0x0004)
+	unsigned long                                      bCloseOnLevelChange : 1;                                  // 0x00C8(0x0004)
+	unsigned long                                      bOnlyOwnerFocusable : 1;                                  // 0x00C8(0x0004)
+	unsigned long                                      bForceFullViewport : 1;                                   // 0x00C8(0x0004)
+	unsigned long                                      bDiscardNonOwnerInput : 1;                                // 0x00C8(0x0004)
+	unsigned long                                      bCaptureInput : 1;                                        // 0x00C8(0x0004)
+	unsigned long                                      bCaptureMouseInput : 1;                                   // 0x00C8(0x0004)
+	unsigned long                                      bIgnoreMouseInput : 1;                                    // 0x00C8(0x0004)
+	unsigned long                                      bIsSplitscreenLayoutModified : 1;                         // 0x00C8(0x0004) (CPF_Transient)
+	unsigned long                                      bShowHardwareMouseCursor : 1;                             // 0x00C8(0x0004)
+	unsigned long                                      bForceFullScreen : 1;                                     // 0x00C8(0x0004)
+	unsigned long                                      bBlurLesserMovies : 1;                                    // 0x00C8(0x0004)
+	unsigned long                                      bHideLesserMovies : 1;                                    // 0x00C8(0x0004)
+	unsigned long                                      bIsPriorityBlurred : 1;                                   // 0x00C8(0x0004)
+	unsigned long                                      bIsPriorityHidden : 1;                                    // 0x00C8(0x0004)
+	unsigned long                                      bIgnoreVisibilityEffect : 1;                              // 0x00C8(0x0004)
+	unsigned long                                      bIgnoreBlurEffect : 1;                                    // 0x00C8(0x0004)
+	class UTextureRenderTarget2D*                      RenderTexture;                                            // 0x00CC(0x0004) (CPF_Edit)
+	int                                                LocalPlayerOwnerIndex;                                    // 0x00D0(0x0004) (CPF_Transient)
+	class UObject*                                     ExternalInterface;                                        // 0x00D4(0x0004)
+	TArray<struct FName>                               CaptureKeys;                                              // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FName>                               FocusIgnoreKeys;                                          // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FExternalTexture>                    ExternalTextures;                                         // 0x00F0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSoundThemeBinding>                  SoundThemes;                                              // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TEnumAsByte<enum class GFxTimingMode>              TimingMode;                                               // 0x0108(0x0001)
+	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                        // 0x0109(0x0001)
+	unsigned char                                      Priority;                                                 // 0x010A(0x0001)
+	unsigned char                                      UnknownData02[0x1];                                       // 0x010B(0x0001) MISSED OFFSET
+	TArray<struct FGFxWidgetBinding>                   WidgetBindings;                                           // 0x010C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x3C];                                      // 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
+	class UGFxObject*                                  SplitscreenLayoutObject;                                  // 0x0154(0x0004) (CPF_Transient)
+	int                                                SplitscreenLayoutYAdjust;                                 // 0x0158(0x0004) (CPF_Config)
+	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -317,8 +317,8 @@ public:
 class UGFxObject : public UObject
 {
 public:
-	int                                                Value[0xC];                                       		// 0x003C(0x0004) (CPF_Const, CPF_Native)
-	TArray<struct FGFxWidgetBinding>                   SubWidgetBindings;                                		// 0x006C(0x000C) (CPF_NeedCtorLink)
+	int                                                Value[0xC];                                               // 0x003C(0x0004) (CPF_Const, CPF_Native)
+	TArray<struct FGFxWidgetBinding>                   SubWidgetBindings;                                        // 0x006C(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -410,10 +410,10 @@ public:
 class UGFxRawData : public UObject
 {
 public:
-	TArray<unsigned char>                              RawData;                                          		// 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FString>                             ReferencedSwfs;                                   		// 0x0048(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
-	TArray<class UObject*>                             References;                                       		// 0x0054(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
-	TArray<class UObject*>                             UserReferences;                                   		// 0x0060(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<unsigned char>                              RawData;                                                  // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FString>                             ReferencedSwfs;                                           // 0x0048(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
+	TArray<class UObject*>                             References;                                               // 0x0054(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
+	TArray<class UObject*>                             UserReferences;                                           // 0x0060(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -429,20 +429,20 @@ public:
 class USwfMovie : public UGFxRawData
 {
 public:
-	unsigned long                                      bUsesFontlib : 1;                                 		// 0x006C(0x0004) (CPF_Edit)
-	unsigned long                                      bSetSRGBOnImportedTextures : 1;                   		// 0x006C(0x0004) (CPF_Edit, CPF_EditConst)
-	unsigned long                                      bPackTextures : 1;                                		// 0x006C(0x0004) (CPF_Edit)
-	unsigned long                                      bForceSquarePacking : 1;                          		// 0x006C(0x0004) (CPF_Edit)
-	struct FString                                     SourceFile;                                       		// 0x0070(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	int                                                PackTextureSize;                                  		// 0x007C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class FlashTextureRescale>        TextureRescale;                                   		// 0x0080(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0081(0x0003) MISSED OFFSET
-	struct FString                                     TextureFormat;                                    		// 0x0084(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
-	struct FString                                     SourceFileTimestamp;                              		// 0x0090(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
-	int                                                SourceFileCRC;                                    		// 0x009C(0x0004) (CPF_Edit, CPF_EditConst)
-	int                                                RTTextures;                                       		// 0x00A0(0x0004)
-	int                                                RTVideoTextures;                                  		// 0x00A4(0x0004)
-	unsigned char                                      UnknownData01[0x8];                               		// 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
+	unsigned long                                      bUsesFontlib : 1;                                         // 0x006C(0x0004) (CPF_Edit)
+	unsigned long                                      bSetSRGBOnImportedTextures : 1;                           // 0x006C(0x0004) (CPF_Edit, CPF_EditConst)
+	unsigned long                                      bPackTextures : 1;                                        // 0x006C(0x0004) (CPF_Edit)
+	unsigned long                                      bForceSquarePacking : 1;                                  // 0x006C(0x0004) (CPF_Edit)
+	struct FString                                     SourceFile;                                               // 0x0070(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	int                                                PackTextureSize;                                          // 0x007C(0x0004) (CPF_Edit)
+	TEnumAsByte<enum class FlashTextureRescale>        TextureRescale;                                           // 0x0080(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0081(0x0003) MISSED OFFSET
+	struct FString                                     TextureFormat;                                            // 0x0084(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
+	struct FString                                     SourceFileTimestamp;                                      // 0x0090(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
+	int                                                SourceFileCRC;                                            // 0x009C(0x0004) (CPF_Edit, CPF_EditConst)
+	int                                                RTTextures;                                               // 0x00A0(0x0004)
+	int                                                RTVideoTextures;                                          // 0x00A4(0x0004)
+	unsigned char                                      UnknownData01[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
 
 	static UClass* StaticClass()
 	{
@@ -473,8 +473,8 @@ public:
 class UGFxAction_CloseMovie : public USequenceAction
 {
 public:
-	class UGFxMoviePlayer*                             Movie;                                            		// 0x00FC(0x0004)
-	unsigned long                                      bUnload : 1;                                      		// 0x0100(0x0004) (CPF_Edit)
+	class UGFxMoviePlayer*                             Movie;                                                    // 0x00FC(0x0004)
+	unsigned long                                      bUnload : 1;                                              // 0x0100(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -492,8 +492,8 @@ public:
 class UGFxAction_GetVariable : public USequenceAction
 {
 public:
-	class UGFxMoviePlayer*                             Movie;                                            		// 0x00FC(0x0004)
-	struct FString                                     Variable;                                         		// 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UGFxMoviePlayer*                             Movie;                                                    // 0x00FC(0x0004)
+	struct FString                                     Variable;                                                 // 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -511,9 +511,9 @@ public:
 class UGFxAction_Invoke : public USequenceAction
 {
 public:
-	class UGFxMoviePlayer*                             Movie;                                            		// 0x00FC(0x0004)
-	struct FString                                     MethodName;                                       		// 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FASValue>                            Arguments;                                        		// 0x010C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UGFxMoviePlayer*                             Movie;                                                    // 0x00FC(0x0004)
+	struct FString                                     MethodName;                                               // 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FASValue>                            Arguments;                                                // 0x010C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -531,19 +531,19 @@ public:
 class UGFxAction_OpenMovie : public USequenceAction
 {
 public:
-	class USwfMovie*                                   Movie;                                            		// 0x00FC(0x0004) (CPF_Edit)
-	class UClass*                                      MoviePlayerClass;                                 		// 0x0100(0x0004) (CPF_Edit)
-	class UGFxMoviePlayer*                             MoviePlayer;                                      		// 0x0104(0x0004)
-	unsigned long                                      bTakeFocus : 1;                                   		// 0x0108(0x0004) (CPF_Edit)
-	unsigned long                                      bCaptureInput : 1;                                		// 0x0108(0x0004) (CPF_Edit)
-	unsigned long                                      bStartPaused : 1;                                 		// 0x0108(0x0004) (CPF_Edit)
-	unsigned long                                      bEnableGammaCorrection : 1;                       		// 0x0108(0x0004)
-	unsigned long                                      bDisplayWithHudOff : 1;                           		// 0x0108(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                		// 0x010C(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x010D(0x0003) MISSED OFFSET
-	class UTextureRenderTarget2D*                      RenderTexture;                                    		// 0x0110(0x0004) (CPF_Edit)
-	TArray<struct FName>                               CaptureKeys;                                      		// 0x0114(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FName>                               FocusIgnoreKeys;                                  		// 0x0120(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class USwfMovie*                                   Movie;                                                    // 0x00FC(0x0004) (CPF_Edit)
+	class UClass*                                      MoviePlayerClass;                                         // 0x0100(0x0004) (CPF_Edit)
+	class UGFxMoviePlayer*                             MoviePlayer;                                              // 0x0104(0x0004)
+	unsigned long                                      bTakeFocus : 1;                                           // 0x0108(0x0004) (CPF_Edit)
+	unsigned long                                      bCaptureInput : 1;                                        // 0x0108(0x0004) (CPF_Edit)
+	unsigned long                                      bStartPaused : 1;                                         // 0x0108(0x0004) (CPF_Edit)
+	unsigned long                                      bEnableGammaCorrection : 1;                               // 0x0108(0x0004)
+	unsigned long                                      bDisplayWithHudOff : 1;                                   // 0x0108(0x0004) (CPF_Edit)
+	TEnumAsByte<enum class GFxRenderTextureMode>       RenderTextureMode;                                        // 0x010C(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x010D(0x0003) MISSED OFFSET
+	class UTextureRenderTarget2D*                      RenderTexture;                                            // 0x0110(0x0004) (CPF_Edit)
+	TArray<struct FName>                               CaptureKeys;                                              // 0x0114(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FName>                               FocusIgnoreKeys;                                          // 0x0120(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -561,8 +561,8 @@ public:
 class UGFxAction_SetCaptureKeys : public USequenceAction
 {
 public:
-	class UGFxMoviePlayer*                             Movie;                                            		// 0x00FC(0x0004)
-	TArray<struct FName>                               CaptureKeys;                                      		// 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UGFxMoviePlayer*                             Movie;                                                    // 0x00FC(0x0004)
+	TArray<struct FName>                               CaptureKeys;                                              // 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -578,8 +578,8 @@ public:
 class UGFxAction_SetVariable : public USequenceAction
 {
 public:
-	class UGFxMoviePlayer*                             Movie;                                            		// 0x00FC(0x0004)
-	struct FString                                     Variable;                                         		// 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UGFxMoviePlayer*                             Movie;                                                    // 0x00FC(0x0004)
+	struct FString                                     Variable;                                                 // 0x0100(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -597,9 +597,9 @@ public:
 class UGFxEvent_FSCommand : public USequenceEvent
 {
 public:
-	class USwfMovie*                                   Movie;                                            		// 0x0114(0x0004) (CPF_Edit)
-	struct FString                                     FSCommand;                                        		// 0x0118(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	class UGFxFSCmdHandler_Kismet*                     Handler;                                          		// 0x0124(0x0004)
+	class USwfMovie*                                   Movie;                                                    // 0x0114(0x0004) (CPF_Edit)
+	struct FString                                     FSCommand;                                                // 0x0118(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UGFxFSCmdHandler_Kismet*                     Handler;                                                  // 0x0124(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -632,8 +632,8 @@ public:
 class UGFxClikWidget : public UGFxObject
 {
 public:
-	struct FScriptDelegate                             __EventListener__Delegate;                        		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventListener__Delegate;                                // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{

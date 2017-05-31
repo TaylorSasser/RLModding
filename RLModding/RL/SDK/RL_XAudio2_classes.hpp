@@ -17,7 +17,7 @@ namespace SDK
 class UXAudio2Device : public UAudioDevice
 {
 public:
-	unsigned char                                      UnknownData00[0x9C];                              		// 0x02C4(0x009C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x9C];                                      // 0x02C4(0x009C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

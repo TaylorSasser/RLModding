@@ -1,5 +1,5 @@
 #pragma once
-#include "RL/SDK/RL_Core_classes.hpp"
+#include "RL/SDK.hpp"
 #include <string>
 
 template<typename T>

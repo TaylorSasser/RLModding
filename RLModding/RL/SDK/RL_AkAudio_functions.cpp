@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -23,10 +21,7 @@ void UAkDevice::STATIC_NotifyWhenInitialized(const struct FScriptDelegate& Callb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.NotifyWhenInitialized");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UAkDevice_NotifyWhenInitialized_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -45,9 +40,7 @@ void UAkDevice::STATIC_ProfileStop()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.ProfileStop");
 
-	struct
-	{
-	} params;
+	UAkDevice_ProfileStop_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -65,9 +58,7 @@ void UAkDevice::STATIC_ProfileStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.ProfileStart");
 
-	struct
-	{
-	} params;
+	UAkDevice_ProfileStart_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -85,9 +76,7 @@ void UAkDevice::STATIC_PrintData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.PrintData");
 
-	struct
-	{
-	} params;
+	UAkDevice_PrintData_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -107,10 +96,7 @@ void UAkDevice::STATIC_SetOutputType(TEnumAsByte<enum class EAkOutputType> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetOutputType");
 
-	struct
-	{
-		TEnumAsByte<enum class EAkOutputType> Type;
-	} params;
+	UAkDevice_SetOutputType_Params params;
 	params.Type = Type;
 
 	auto flags = fn->FunctionFlags;
@@ -132,11 +118,7 @@ void UAkDevice::STATIC_SetListenerSpatialization(class ULocalPlayer* Player, TEn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetListenerSpatialization");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-		TEnumAsByte<enum class EAkListenerSpacialization> Value;
-	} params;
+	UAkDevice_SetListenerSpatialization_Params params;
 	params.Player = Player;
 	params.Value = Value;
 
@@ -158,10 +140,7 @@ void UAkDevice::STATIC_RemoveListener(class ULocalPlayer* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.RemoveListener");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-	} params;
+	UAkDevice_RemoveListener_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -182,10 +161,7 @@ void UAkDevice::STATIC_AddListener(class ULocalPlayer* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.AddListener");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-	} params;
+	UAkDevice_AddListener_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -207,11 +183,7 @@ void UAkDevice::STATIC_SetMusicRTCP(const struct FName& Key, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetMusicRTCP");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkDevice_SetMusicRTCP_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -234,11 +206,7 @@ void UAkDevice::STATIC_SetGlobalRTCP(const struct FName& Key, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetGlobalRTCP");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkDevice_SetGlobalRTCP_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -260,10 +228,7 @@ void UAkDevice::STATIC_StopPlayingID(int PlayingID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.StopPlayingID");
 
-	struct
-	{
-		int                            PlayingID;
-	} params;
+	UAkDevice_StopPlayingID_Params params;
 	params.PlayingID = PlayingID;
 
 	auto flags = fn->FunctionFlags;
@@ -284,10 +249,7 @@ void UAkDevice::STATIC_StopBGMusic(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.StopBGMusic");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkDevice_StopBGMusic_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -309,11 +271,7 @@ int UAkDevice::STATIC_PlayBGMusic(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.PlayBGMusic");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-		int                            ReturnValue;
-	} params;
+	UAkDevice_PlayBGMusic_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -336,10 +294,7 @@ void UAkDevice::STATIC_StopGlobalSound(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.StopGlobalSound");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkDevice_StopGlobalSound_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -360,10 +315,7 @@ void UAkDevice::STATIC_PlayGlobalSound(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.PlayGlobalSound");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkDevice_PlayGlobalSound_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -385,11 +337,7 @@ void UAkDevice::STATIC_SetState(const struct FName& InStateGroup, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetState");
 
-	struct
-	{
-		struct FName                   InStateGroup;
-		struct FName                   InState;
-	} params;
+	UAkDevice_SetState_Params params;
 	params.InStateGroup = InStateGroup;
 	params.InState = InState;
 
@@ -413,12 +361,7 @@ void UAkDevice::STATIC_SetSwitch(class AActor* SourceActor, const struct FName& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetSwitch");
 
-	struct
-	{
-		class AActor*                  SourceActor;
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UAkDevice_SetSwitch_Params params;
 	params.SourceActor = SourceActor;
 	params.Key = Key;
 	params.Value = Value;
@@ -443,12 +386,7 @@ void UAkDevice::STATIC_SetRTCP(class AActor* SourceActor, const struct FName& Ke
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.SetRTCP");
 
-	struct
-	{
-		class AActor*                  SourceActor;
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkDevice_SetRTCP_Params params;
 	params.SourceActor = SourceActor;
 	params.Key = Key;
 	params.Value = Value;
@@ -471,10 +409,7 @@ void UAkDevice::STATIC_StopAllSounds(class AActor* SourceActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.StopAllSounds");
 
-	struct
-	{
-		class AActor*                  SourceActor;
-	} params;
+	UAkDevice_StopAllSounds_Params params;
 	params.SourceActor = SourceActor;
 
 	auto flags = fn->FunctionFlags;
@@ -496,11 +431,7 @@ void UAkDevice::STATIC_StopSound(class AActor* SourceActor, class UAkSoundCue* S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.StopSound");
 
-	struct
-	{
-		class AActor*                  SourceActor;
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkDevice_StopSound_Params params;
 	params.SourceActor = SourceActor;
 	params.Sound = Sound;
 
@@ -526,14 +457,7 @@ class UAkSoundSource* UAkDevice::STATIC_PlaySound(class AActor* SourceActor, cla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.PlaySound");
 
-	struct
-	{
-		class AActor*                  SourceActor;
-		class UAkSoundCue*             Sound;
-		struct FVector                 Translation;
-		struct FRotator                Rotation;
-		class UAkSoundSource*          ReturnValue;
-	} params;
+	UAkDevice_PlaySound_Params params;
 	params.SourceActor = SourceActor;
 	params.Sound = Sound;
 	params.Translation = Translation;
@@ -559,10 +483,7 @@ void UAkDevice::EventMusicTrackEnd(int PlayingID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.EventMusicTrackEnd");
 
-	struct
-	{
-		int                            PlayingID;
-	} params;
+	UAkDevice_EventMusicTrackEnd_Params params;
 	params.PlayingID = PlayingID;
 
 	auto flags = fn->FunctionFlags;
@@ -583,11 +504,7 @@ void UAkDevice::EventMusicTrackStart(int PlayingID, const struct FString& FileMa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.EventMusicTrackStart");
 
-	struct
-	{
-		int                            PlayingID;
-		struct FString                 FileMarker;
-	} params;
+	UAkDevice_EventMusicTrackStart_Params params;
 	params.PlayingID = PlayingID;
 	params.FileMarker = FileMarker;
 
@@ -606,9 +523,7 @@ void UAkDevice::EventInitialized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkDevice.EventInitialized");
 
-	struct
-	{
-	} params;
+	UAkDevice_EventInitialized_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -627,10 +542,7 @@ void UAkParamGroup::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UAkParamGroup_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -653,13 +565,7 @@ void UAkParamGroup::GetDebugData(TArray<struct FName>* RTCPKeys, TArray<float>* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.GetDebugData");
 
-	struct
-	{
-		TArray<struct FName>           RTCPKeys;
-		TArray<float>                  RTCPValues;
-		TArray<struct FName>           SwitchKeys;
-		TArray<struct FName>           SwitchValues;
-	} params;
+	UAkParamGroup_GetDebugData_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -688,10 +594,7 @@ void UAkParamGroup::StopSound(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.StopSound");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkParamGroup_StopSound_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -715,13 +618,7 @@ class UAkSoundSource* UAkParamGroup::PlaySound(class UAkSoundCue* Sound, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.PlaySound");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-		struct FVector                 Translation;
-		struct FRotator                Rotation;
-		class UAkSoundSource*          ReturnValue;
-	} params;
+	UAkParamGroup_PlaySound_Params params;
 	params.Sound = Sound;
 	params.Translation = Translation;
 	params.Rotation = Rotation;
@@ -747,11 +644,7 @@ void UAkParamGroup::SetSwitch(const struct FName& Key, const struct FName& Value
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.SetSwitch");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UAkParamGroup_SetSwitch_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -774,11 +667,7 @@ void UAkParamGroup::SetRTCP(const struct FName& Key, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkParamGroup.SetRTCP");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkParamGroup_SetRTCP_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -801,11 +690,7 @@ void UAkPlaySoundComponent::SetLinearColorParameter(const struct FName& Key, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetLinearColorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FLinearColor            Value;
-	} params;
+	UAkPlaySoundComponent_SetLinearColorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -828,11 +713,7 @@ void UAkPlaySoundComponent::SetVectorParameter(const struct FName& Key, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetVectorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FVector                 Value;
-	} params;
+	UAkPlaySoundComponent_SetVectorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -855,11 +736,7 @@ void UAkPlaySoundComponent::SetFloatParameter(const struct FName& Key, float Val
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetFloatParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkPlaySoundComponent_SetFloatParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -882,11 +759,7 @@ void UAkPlaySoundComponent::SetNameParameter(const struct FName& Key, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetNameParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UAkPlaySoundComponent_SetNameParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -909,11 +782,7 @@ void UAkPlaySoundComponent::SetRTCP(const struct FName& Key, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetRTCP");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UAkPlaySoundComponent_SetRTCP_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -936,11 +805,7 @@ void UAkPlaySoundComponent::SetSwitch(const struct FName& Key, const struct FNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.SetSwitch");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UAkPlaySoundComponent_SetSwitch_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -962,10 +827,7 @@ bool UAkPlaySoundComponent::IsPlaying()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.IsPlaying");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UAkPlaySoundComponent_IsPlaying_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -985,9 +847,7 @@ void UAkPlaySoundComponent::Stop()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.Stop");
 
-	struct
-	{
-	} params;
+	UAkPlaySoundComponent_Stop_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1005,9 +865,7 @@ void UAkPlaySoundComponent::Play()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkPlaySoundComponent.Play");
 
-	struct
-	{
-	} params;
+	UAkPlaySoundComponent_Play_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1027,10 +885,7 @@ bool UAkSoundSource::IsPlayingAny()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkSoundSource.IsPlayingAny");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UAkSoundSource_IsPlayingAny_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1053,11 +908,7 @@ bool UAkSoundSource::IsPlaying(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkSoundSource.IsPlaying");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-		bool                           ReturnValue;
-	} params;
+	UAkSoundSource_IsPlaying_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -1078,9 +929,7 @@ void UAkSoundSource::StopAll()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkSoundSource.StopAll");
 
-	struct
-	{
-	} params;
+	UAkSoundSource_StopAll_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1100,10 +949,7 @@ void UAkSoundSource::Stop(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkSoundSource.Stop");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkSoundSource_Stop_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -1124,10 +970,7 @@ void UAkSoundSource::Play(class UAkSoundCue* Sound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkSoundSource.Play");
 
-	struct
-	{
-		class UAkSoundCue*             Sound;
-	} params;
+	UAkSoundSource_Play_Params params;
 	params.Sound = Sound;
 
 	auto flags = fn->FunctionFlags;
@@ -1148,10 +991,7 @@ void AAkAmbientSoundActor::OnToggle(class USeqAct_Toggle* Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkAmbientSoundActor.OnToggle");
 
-	struct
-	{
-		class USeqAct_Toggle*          Action;
-	} params;
+	AAkAmbientSoundActor_OnToggle_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -1172,11 +1012,7 @@ void USeqAct_AkPlaySound::ToggleSoundFor(class AActor* A, bool bPlay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.SeqAct_AkPlaySound.ToggleSoundFor");
 
-	struct
-	{
-		class AActor*                  A;
-		bool                           bPlay;
-	} params;
+	USeqAct_AkPlaySound_ToggleSoundFor_Params params;
 	params.A = A;
 	params.bPlay = bPlay;
 
@@ -1197,10 +1033,7 @@ void USeqAct_AkPlaySound::ToggleSound(bool bPlay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.SeqAct_AkPlaySound.ToggleSound");
 
-	struct
-	{
-		bool                           bPlay;
-	} params;
+	USeqAct_AkPlaySound_ToggleSound_Params params;
 	params.bPlay = bPlay;
 
 	auto flags = fn->FunctionFlags;
@@ -1218,9 +1051,7 @@ void USeqAct_AkPlaySound::Activated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.SeqAct_AkPlaySound.Activated");
 
-	struct
-	{
-	} params;
+	USeqAct_AkPlaySound_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 

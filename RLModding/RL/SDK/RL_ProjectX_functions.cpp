@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -24,11 +22,7 @@ int U_SharedHelpers::STATIC_ScoreDeltaFromDefault(class UObject* Object)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.ScoreDeltaFromDefault");
 
-	struct
-	{
-		class UObject*                 Object;
-		int                            ReturnValue;
-	} params;
+	U_SharedHelpers_ScoreDeltaFromDefault_Params params;
 	params.Object = Object;
 
 	auto flags = fn->FunctionFlags;
@@ -53,12 +47,7 @@ int U_SharedHelpers::STATIC_FindNetId(const struct FUniqueNetId& FindId, TArray<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.FindNetId");
 
-	struct
-	{
-		struct FUniqueNetId            FindId;
-		TArray<struct FUniqueNetId>    List;
-		int                            ReturnValue;
-	} params;
+	U_SharedHelpers_FindNetId_Params params;
 	params.FindId = FindId;
 
 	auto flags = fn->FunctionFlags;
@@ -87,14 +76,7 @@ void U_SharedHelpers::STATIC_DrawShadowedText(class UCanvas* Canvas, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.DrawShadowedText");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		struct FString                 Text;
-		int                            ShadowOffsetX;
-		int                            ShadowOffsetY;
-		int                            ShadowAlpha;
-	} params;
+	U_SharedHelpers_DrawShadowedText_Params params;
 	params.Canvas = Canvas;
 	params.Text = Text;
 	params.ShadowOffsetX = ShadowOffsetX;
@@ -119,11 +101,7 @@ bool U_SharedHelpers::STATIC_IsInTransientPackage(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.IsInTransientPackage");
 
-	struct
-	{
-		class UObject*                 Obj;
-		bool                           ReturnValue;
-	} params;
+	U_SharedHelpers_IsInTransientPackage_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -147,11 +125,7 @@ class APlayerController* U_SharedHelpers::STATIC_GetAPlayerController(class UCla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.GetAPlayerController");
 
-	struct
-	{
-		class UClass*                  PlayerControllerClass;
-		class APlayerController*       ReturnValue;
-	} params;
+	U_SharedHelpers_GetAPlayerController_Params params;
 	params.PlayerControllerClass = PlayerControllerClass;
 
 	auto flags = fn->FunctionFlags;
@@ -175,11 +149,7 @@ class UObject* U_SharedHelpers::STATIC_GetDefaultObject(class UClass* ObjClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.GetDefaultObject");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		class UObject*                 ReturnValue;
-	} params;
+	U_SharedHelpers_GetDefaultObject_Params params;
 	params.ObjClass = ObjClass;
 
 	auto flags = fn->FunctionFlags;
@@ -200,9 +170,7 @@ void U_SharedHelpers::STATIC_DumpUnreferencedAnims()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.DumpUnreferencedAnims");
 
-	struct
-	{
-	} params;
+	U_SharedHelpers_DumpUnreferencedAnims_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -222,10 +190,7 @@ struct FString U_SharedHelpers::STATIC_GetLanguageExtension()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._SharedHelpers.GetLanguageExtension");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	U_SharedHelpers_GetLanguageExtension_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -248,11 +213,7 @@ struct FIntVector3 U_Types_X::STATIC_ToIntVector3(const struct FVector& V)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._Types_X.ToIntVector3");
 
-	struct
-	{
-		struct FVector                 V;
-		struct FIntVector3             ReturnValue;
-	} params;
+	U_Types_X_ToIntVector3_Params params;
 	params.V = V;
 
 	auto flags = fn->FunctionFlags;
@@ -274,10 +235,7 @@ void U_Types_X::OnPriviledgeChecked(class UPrivilegeCheck_X* PrivilegeCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._Types_X.OnPriviledgeChecked");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       PrivilegeCheck;
-	} params;
+	U_Types_X_OnPriviledgeChecked_Params params;
 	params.PrivilegeCheck = PrivilegeCheck;
 
 	auto flags = fn->FunctionFlags;
@@ -297,10 +255,7 @@ bool U_Types_X::KeyPressDelegate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX._Types_X.KeyPressDelegate");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	U_Types_X_KeyPressDelegate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -319,9 +274,7 @@ void UActorComponent_X::Reattach()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActorComponent_X.Reattach");
 
-	struct
-	{
-	} params;
+	UActorComponent_X_Reattach_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -341,10 +294,7 @@ void UActorComponent_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActorComponent_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UActorComponent_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -362,9 +312,7 @@ void UActorComponent_X::Detached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActorComponent_X.Detached");
 
-	struct
-	{
-	} params;
+	UActorComponent_X_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -381,9 +329,7 @@ void UActorComponent_X::Attached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActorComponent_X.Attached");
 
-	struct
-	{
-	} params;
+	UActorComponent_X_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -400,9 +346,7 @@ void UActorComponent_X::BeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActorComponent_X.BeginPlay");
 
-	struct
-	{
-	} params;
+	UActorComponent_X_BeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -424,13 +368,7 @@ void UExplosionComponent_X::ProcessHit(class AActor* Victim, const struct FVecto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ExplosionComponent_X.ProcessHit");
 
-	struct
-	{
-		class AActor*                  Victim;
-		struct FVector                 HitLocation;
-		struct FTraceHitInfo           ExtraHitInfo;
-		float                          DamageScale;
-	} params;
+	UExplosionComponent_X_ProcessHit_Params params;
 	params.Victim = Victim;
 	params.HitLocation = HitLocation;
 	params.ExtraHitInfo = ExtraHitInfo;
@@ -451,9 +389,7 @@ void UExplosionComponent_X::Detached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ExplosionComponent_X.Detached");
 
-	struct
-	{
-	} params;
+	UExplosionComponent_X_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -470,9 +406,7 @@ void UMICParamDispenserComponent_X::Attached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.Attached");
 
-	struct
-	{
-	} params;
+	UMICParamDispenserComponent_X_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -492,11 +426,7 @@ void UMICParamDispenserComponent_X::SetLinearColorParameter(const struct FName& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.SetLinearColorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FLinearColor            Value;
-	} params;
+	UMICParamDispenserComponent_X_SetLinearColorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -519,11 +449,7 @@ void UMICParamDispenserComponent_X::SetVectorParameter(const struct FName& Key, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.SetVectorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FVector                 Value;
-	} params;
+	UMICParamDispenserComponent_X_SetVectorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -546,11 +472,7 @@ void UMICParamDispenserComponent_X::SetFloatParameter(const struct FName& Key, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.SetFloatParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UMICParamDispenserComponent_X_SetFloatParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -573,11 +495,7 @@ void UMICParamDispenserComponent_X::SetNameParameter(const struct FName& Key, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.SetNameParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UMICParamDispenserComponent_X_SetNameParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -601,12 +519,7 @@ bool UShakeComponent_X::GetColorParameter(const struct FName& InName, struct FCo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.GetColorParameter");
 
-	struct
-	{
-		struct FName                   InName;
-		struct FColor                  OutColor;
-		bool                           ReturnValue;
-	} params;
+	UShakeComponent_X_GetColorParameter_Params params;
 	params.InName = InName;
 
 	auto flags = fn->FunctionFlags;
@@ -634,12 +547,7 @@ bool UShakeComponent_X::GetVectorParameter(const struct FName& InName, struct FV
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.GetVectorParameter");
 
-	struct
-	{
-		struct FName                   InName;
-		struct FVector                 OutVector;
-		bool                           ReturnValue;
-	} params;
+	UShakeComponent_X_GetVectorParameter_Params params;
 	params.InName = InName;
 
 	auto flags = fn->FunctionFlags;
@@ -667,12 +575,7 @@ bool UShakeComponent_X::GetFloatParameter(const struct FName& InName, float* Out
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.GetFloatParameter");
 
-	struct
-	{
-		struct FName                   InName;
-		float                          OutFloat;
-		bool                           ReturnValue;
-	} params;
+	UShakeComponent_X_GetFloatParameter_Params params;
 	params.InName = InName;
 
 	auto flags = fn->FunctionFlags;
@@ -699,11 +602,7 @@ void UShakeComponent_X::SetColorParameter(const struct FName& ParameterName, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.SetColorParameter");
 
-	struct
-	{
-		struct FName                   ParameterName;
-		struct FColor                  Param;
-	} params;
+	UShakeComponent_X_SetColorParameter_Params params;
 	params.ParameterName = ParameterName;
 	params.Param = Param;
 
@@ -727,12 +626,7 @@ void UShakeComponent_X::SetVectorRandParameter(const struct FName& ParameterName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.SetVectorRandParameter");
 
-	struct
-	{
-		struct FName                   ParameterName;
-		struct FVector                 Param;
-		struct FVector                 ParamLow;
-	} params;
+	UShakeComponent_X_SetVectorRandParameter_Params params;
 	params.ParameterName = ParameterName;
 
 	auto flags = fn->FunctionFlags;
@@ -759,11 +653,7 @@ void UShakeComponent_X::SetVectorParameter(const struct FName& ParameterName, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.SetVectorParameter");
 
-	struct
-	{
-		struct FName                   ParameterName;
-		struct FVector                 Param;
-	} params;
+	UShakeComponent_X_SetVectorParameter_Params params;
 	params.ParameterName = ParameterName;
 	params.Param = Param;
 
@@ -787,12 +677,7 @@ void UShakeComponent_X::SetFloatRandParameter(const struct FName& ParameterName,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.SetFloatRandParameter");
 
-	struct
-	{
-		struct FName                   ParameterName;
-		float                          Param;
-		float                          ParamLow;
-	} params;
+	UShakeComponent_X_SetFloatRandParameter_Params params;
 	params.ParameterName = ParameterName;
 	params.Param = Param;
 	params.ParamLow = ParamLow;
@@ -816,11 +701,7 @@ void UShakeComponent_X::SetFloatParameter(const struct FName& ParameterName, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.SetFloatParameter");
 
-	struct
-	{
-		struct FName                   ParameterName;
-		float                          Param;
-	} params;
+	UShakeComponent_X_SetFloatParameter_Params params;
 	params.ParameterName = ParameterName;
 	params.Param = Param;
 
@@ -842,10 +723,7 @@ bool UShakeComponent_X::IsPlaying()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.IsPlaying");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UShakeComponent_X_IsPlaying_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -866,10 +744,7 @@ void UShakeComponent_X::StopShake(float InBlendOutTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.StopShake");
 
-	struct
-	{
-		float                          InBlendOutTime;
-	} params;
+	UShakeComponent_X_StopShake_Params params;
 	params.InBlendOutTime = InBlendOutTime;
 
 	auto flags = fn->FunctionFlags;
@@ -887,9 +762,7 @@ void UShakeComponent_X::InitParams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.InitParams");
 
-	struct
-	{
-	} params;
+	UShakeComponent_X_InitParams_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -907,9 +780,7 @@ void UShakeComponent_X::PlayShake()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.PlayShake");
 
-	struct
-	{
-	} params;
+	UShakeComponent_X_PlayShake_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -926,9 +797,7 @@ void UShakeComponent_X::Detached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.Detached");
 
-	struct
-	{
-	} params;
+	UShakeComponent_X_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -945,9 +814,7 @@ void UShakeComponent_X::Attached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ShakeComponent_X.Attached");
 
-	struct
-	{
-	} params;
+	UShakeComponent_X_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -964,9 +831,7 @@ void AFXActor_X::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.Destroyed");
 
-	struct
-	{
-	} params;
+	AFXActor_X_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -985,10 +850,7 @@ void AFXActor_X::TickFX(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.TickFX");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	AFXActor_X_TickFX_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -1008,10 +870,7 @@ void AFXActor_X::OnToggle(class USeqAct_Toggle* Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.OnToggle");
 
-	struct
-	{
-		class USeqAct_Toggle*          Action;
-	} params;
+	AFXActor_X_OnToggle_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -1031,10 +890,7 @@ void AFXActor_X::OnTriggerFXActor_X(class USeqAct_TriggerFXActor_X* SeqAct)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.OnTriggerFXActor_X");
 
-	struct
-	{
-		class USeqAct_TriggerFXActor_X* SeqAct;
-	} params;
+	AFXActor_X_OnTriggerFXActor_X_Params params;
 	params.SeqAct = SeqAct;
 
 	auto flags = fn->FunctionFlags;
@@ -1054,10 +910,7 @@ void AFXActor_X::Inherit(class AFXActor_X* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.Inherit");
 
-	struct
-	{
-		class AFXActor_X*              Other;
-	} params;
+	AFXActor_X_Inherit_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -1077,10 +930,7 @@ void AFXActor_X::CopyFrom(class AFXActor_X* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.CopyFrom");
 
-	struct
-	{
-		class AFXActor_X*              Other;
-	} params;
+	AFXActor_X_CopyFrom_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -1098,9 +948,7 @@ void AFXActor_X::ResetParticles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.ResetParticles");
 
-	struct
-	{
-	} params;
+	AFXActor_X_ResetParticles_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1117,9 +965,7 @@ void AFXActor_X::StopAllEffects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.StopAllEffects");
 
-	struct
-	{
-	} params;
+	AFXActor_X_StopAllEffects_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1136,9 +982,7 @@ void AFXActor_X::DeactivateAndDestroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.DeactivateAndDestroy");
 
-	struct
-	{
-	} params;
+	AFXActor_X_DeactivateAndDestroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1157,10 +1001,7 @@ void AFXActor_X::OnDetached(class UActorComponent* AC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.OnDetached");
 
-	struct
-	{
-		class UActorComponent*         AC;
-	} params;
+	AFXActor_X_OnDetached_Params params;
 	params.AC = AC;
 
 	auto flags = fn->FunctionFlags;
@@ -1180,10 +1021,7 @@ void AFXActor_X::DeactivateFXComponent(class UActorComponent* AC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.DeactivateFXComponent");
 
-	struct
-	{
-		class UActorComponent*         AC;
-	} params;
+	AFXActor_X_DeactivateFXComponent_Params params;
 	params.AC = AC;
 
 	auto flags = fn->FunctionFlags;
@@ -1203,10 +1041,7 @@ void AFXActor_X::ActivateFXComponent(class UActorComponent* AC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.ActivateFXComponent");
 
-	struct
-	{
-		class UActorComponent*         AC;
-	} params;
+	AFXActor_X_ActivateFXComponent_Params params;
 	params.AC = AC;
 
 	auto flags = fn->FunctionFlags;
@@ -1226,10 +1061,7 @@ void AFXActor_X::OnAttached(class UActorComponent* AC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.OnAttached");
 
-	struct
-	{
-		class UActorComponent*         AC;
-	} params;
+	AFXActor_X_OnAttached_Params params;
 	params.AC = AC;
 
 	auto flags = fn->FunctionFlags;
@@ -1247,9 +1079,7 @@ void AFXActor_X::UpdateFXStates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.UpdateFXStates");
 
-	struct
-	{
-	} params;
+	AFXActor_X_UpdateFXStates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1268,10 +1098,7 @@ bool AFXActor_X::IsLocallyControlled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.IsLocallyControlled");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AFXActor_X_IsLocallyControlled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1292,10 +1119,7 @@ void AFXActor_X::ToggleState(class UFXActorEvent_X* NewState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.ToggleState");
 
-	struct
-	{
-		class UFXActorEvent_X*         NewState;
-	} params;
+	AFXActor_X_ToggleState_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -1315,10 +1139,7 @@ void AFXActor_X::RemoveState(class UFXActorEvent_X* OldState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.RemoveState");
 
-	struct
-	{
-		class UFXActorEvent_X*         OldState;
-	} params;
+	AFXActor_X_RemoveState_Params params;
 	params.OldState = OldState;
 
 	auto flags = fn->FunctionFlags;
@@ -1338,10 +1159,7 @@ void AFXActor_X::AddState(class UFXActorEvent_X* NewState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.AddState");
 
-	struct
-	{
-		class UFXActorEvent_X*         NewState;
-	} params;
+	AFXActor_X_AddState_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -1362,11 +1180,7 @@ bool AFXActor_X::IsStateActive(class UFXActorEvent_X* InState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.IsStateActive");
 
-	struct
-	{
-		class UFXActorEvent_X*         InState;
-		bool                           ReturnValue;
-	} params;
+	AFXActor_X_IsStateActive_Params params;
 	params.InState = InState;
 
 	auto flags = fn->FunctionFlags;
@@ -1386,9 +1200,7 @@ void AFXActor_X::Deactivate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.Deactivate");
 
-	struct
-	{
-	} params;
+	AFXActor_X_Deactivate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1405,9 +1217,7 @@ void AFXActor_X::Activate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.Activate");
 
-	struct
-	{
-	} params;
+	AFXActor_X_Activate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1427,11 +1237,7 @@ void AFXActor_X::HandleParentStatePopped(class AFXActor_X* P, class UFXActorEven
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.HandleParentStatePopped");
 
-	struct
-	{
-		class AFXActor_X*              P;
-		class UFXActorEvent_X*         Event;
-	} params;
+	AFXActor_X_HandleParentStatePopped_Params params;
 	params.P = P;
 	params.Event = Event;
 
@@ -1453,11 +1259,7 @@ void AFXActor_X::HandleParentStatePushed(class AFXActor_X* P, class UFXActorEven
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.HandleParentStatePushed");
 
-	struct
-	{
-		class AFXActor_X*              P;
-		class UFXActorEvent_X*         Event;
-	} params;
+	AFXActor_X_HandleParentStatePushed_Params params;
 	params.P = P;
 	params.Event = Event;
 
@@ -1478,10 +1280,7 @@ void AFXActor_X::BindTo(class AFXActor_X* ParentFXActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.BindTo");
 
-	struct
-	{
-		class AFXActor_X*              ParentFXActor;
-	} params;
+	AFXActor_X_BindTo_Params params;
 	params.ParentFXActor = ParentFXActor;
 
 	auto flags = fn->FunctionFlags;
@@ -1501,10 +1300,7 @@ void AFXActor_X::SetAttachmentActor(class AActor* AttachToActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.SetAttachmentActor");
 
-	struct
-	{
-		class AActor*                  AttachToActor;
-	} params;
+	AFXActor_X_SetAttachmentActor_Params params;
 	params.AttachToActor = AttachToActor;
 
 	auto flags = fn->FunctionFlags;
@@ -1522,9 +1318,7 @@ void AFXActor_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AFXActor_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1545,12 +1339,7 @@ void AFXActor_X::AllAttachments(class UClass* ComponentClass, class UActorCompon
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.AllAttachments");
 
-	struct
-	{
-		class UClass*                  ComponentClass;
-		class UActorComponent*         OutComponent;
-		int                            OutAttachmentIdx;
-	} params;
+	AFXActor_X_AllAttachments_Params params;
 	params.ComponentClass = ComponentClass;
 
 	auto flags = fn->FunctionFlags;
@@ -1578,12 +1367,7 @@ class UActorComponent* AFXActor_X::GetComponentByName(class UClass* ComponentCla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.GetComponentByName");
 
-	struct
-	{
-		class UClass*                  ComponentClass;
-		struct FName                   ComponentName;
-		class UActorComponent*         ReturnValue;
-	} params;
+	AFXActor_X_GetComponentByName_Params params;
 	params.ComponentClass = ComponentClass;
 	params.ComponentName = ComponentName;
 
@@ -1608,11 +1392,7 @@ void AFXActor_X::EventFXStatePopped(class AFXActor_X* FXActor, class UFXActorEve
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.EventFXStatePopped");
 
-	struct
-	{
-		class AFXActor_X*              FXActor;
-		class UFXActorEvent_X*         Event;
-	} params;
+	AFXActor_X_EventFXStatePopped_Params params;
 	params.FXActor = FXActor;
 	params.Event = Event;
 
@@ -1634,11 +1414,7 @@ void AFXActor_X::EventFXStatePushed(class AFXActor_X* FXActor, class UFXActorEve
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FXActor_X.EventFXStatePushed");
 
-	struct
-	{
-		class AFXActor_X*              FXActor;
-		class UFXActorEvent_X*         Event;
-	} params;
+	AFXActor_X_EventFXStatePushed_Params params;
 	params.FXActor = FXActor;
 	params.Event = Event;
 
@@ -1659,10 +1435,7 @@ void AArchetypeSpawnPoint_X::OnSpawned(class AActor* Spawned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.OnSpawned");
 
-	struct
-	{
-		class AActor*                  Spawned;
-	} params;
+	AArchetypeSpawnPoint_X_OnSpawned_Params params;
 	params.Spawned = Spawned;
 
 	auto flags = fn->FunctionFlags;
@@ -1682,10 +1455,7 @@ class AActor* AArchetypeSpawnPoint_X::DoSpawn()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.DoSpawn");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	AArchetypeSpawnPoint_X_DoSpawn_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1706,10 +1476,7 @@ void AArchetypeSpawnPoint_X::OnToggle(class USeqAct_Toggle* Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.OnToggle");
 
-	struct
-	{
-		class USeqAct_Toggle*          Action;
-	} params;
+	AArchetypeSpawnPoint_X_OnToggle_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -1729,10 +1496,7 @@ void AArchetypeSpawnPoint_X::OnDestroy(class USeqAct_Destroy* Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.OnDestroy");
 
-	struct
-	{
-		class USeqAct_Destroy*         Action;
-	} params;
+	AArchetypeSpawnPoint_X_OnDestroy_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -1750,9 +1514,7 @@ void AArchetypeSpawnPoint_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AArchetypeSpawnPoint_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1772,11 +1534,7 @@ void AArchetypeSpawnPoint_X::EventSpawned(class AArchetypeSpawnPoint_X* SpawnPoi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArchetypeSpawnPoint_X.EventSpawned");
 
-	struct
-	{
-		class AArchetypeSpawnPoint_X*  SpawnPoint;
-		class AActor*                  Spawned;
-	} params;
+	AArchetypeSpawnPoint_X_EventSpawned_Params params;
 	params.SpawnPoint = SpawnPoint;
 	params.Spawned = Spawned;
 
@@ -1797,10 +1555,7 @@ void UAws4Signature_X::STATIC_SignRequest(class UHttpRequestInterface* HTTPReque
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Aws4Signature_X.SignRequest");
 
-	struct
-	{
-		class UHttpRequestInterface*   HTTPRequest;
-	} params;
+	UAws4Signature_X_SignRequest_Params params;
 	params.HTTPRequest = HTTPRequest;
 
 	auto flags = fn->FunctionFlags;
@@ -1821,10 +1576,7 @@ void UTcpBeacon::OnDisconnected(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.OnDisconnected");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_OnDisconnected_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -1845,10 +1597,7 @@ void UTcpBeacon::OnConnected(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.OnConnected");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_OnConnected_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -1869,10 +1618,7 @@ void UTcpBeacon::OnConnectionRemoved(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.OnConnectionRemoved");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_OnConnectionRemoved_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -1892,10 +1638,7 @@ void UTcpBeacon::OnConnectionAdded(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.OnConnectionAdded");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_OnConnectionAdded_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -1916,11 +1659,7 @@ class UTcpConnection* UTcpBeacon::GetConnection(const struct FString& Address)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.GetConnection");
 
-	struct
-	{
-		struct FString                 Address;
-		class UTcpConnection*          ReturnValue;
-	} params;
+	UTcpBeacon_GetConnection_Params params;
 	params.Address = Address;
 
 	auto flags = fn->FunctionFlags;
@@ -1941,9 +1680,7 @@ void UTcpBeacon::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.Close");
 
-	struct
-	{
-	} params;
+	UTcpBeacon_Close_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1963,10 +1700,7 @@ struct FString UTcpBeacon::GetExternalHostAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.GetExternalHostAddress");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UTcpBeacon_GetExternalHostAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1988,10 +1722,7 @@ struct FString UTcpBeacon::GetLocalHostAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.GetLocalHostAddress");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UTcpBeacon_GetLocalHostAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2013,10 +1744,7 @@ bool UTcpBeacon::BeginListen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.BeginListen");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UTcpBeacon_BeginListen_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2039,11 +1767,7 @@ class UTcpConnection* UTcpBeacon::BeginConnect(const struct FString& Address)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.BeginConnect");
 
-	struct
-	{
-		struct FString                 Address;
-		class UTcpConnection*          ReturnValue;
-	} params;
+	UTcpBeacon_BeginConnect_Params params;
 	params.Address = Address;
 
 	auto flags = fn->FunctionFlags;
@@ -2067,11 +1791,7 @@ void UTcpBeacon::EventDisconnected(class UTcpBeacon* Beacon, class UTcpConnectio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.EventDisconnected");
 
-	struct
-	{
-		class UTcpBeacon*              Beacon;
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_EventDisconnected_Params params;
 	params.Beacon = Beacon;
 	params.Connection = Connection;
 
@@ -2093,11 +1813,7 @@ void UTcpBeacon::EventConnected(class UTcpBeacon* Beacon, class UTcpConnection* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpBeacon.EventConnected");
 
-	struct
-	{
-		class UTcpBeacon*              Beacon;
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpBeacon_EventConnected_Params params;
 	params.Beacon = Beacon;
 	params.Connection = Connection;
 
@@ -2118,10 +1834,7 @@ void UTcpMessageBeacon::BroadcastMessage(class UObject* Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.BroadcastMessage");
 
-	struct
-	{
-		class UObject*                 Message;
-	} params;
+	UTcpMessageBeacon_BroadcastMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -2143,11 +1856,7 @@ void UTcpMessageBeacon::SendMessage(class UTcpConnection* Connection, class UObj
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.SendMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UTcpMessageBeacon_SendMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -2170,11 +1879,7 @@ class UBeaconMessage_X* UTcpMessageBeacon::CreateMessage(class UClass* MessageCl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.CreateMessage");
 
-	struct
-	{
-		class UClass*                  MessageClass;
-		class UBeaconMessage_X*        ReturnValue;
-	} params;
+	UTcpMessageBeacon_CreateMessage_Params params;
 	params.MessageClass = MessageClass;
 
 	auto flags = fn->FunctionFlags;
@@ -2197,10 +1902,7 @@ void UTcpMessageBeacon::RemoveMessageHandler(const struct FScriptDelegate& Callb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.RemoveMessageHandler");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UTcpMessageBeacon_RemoveMessageHandler_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -2222,11 +1924,7 @@ void UTcpMessageBeacon::AddMessageHandler(class UClass* MessageClass, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.AddMessageHandler");
 
-	struct
-	{
-		class UClass*                  MessageClass;
-		struct FScriptDelegate         Callback;
-	} params;
+	UTcpMessageBeacon_AddMessageHandler_Params params;
 	params.MessageClass = MessageClass;
 	params.Callback = Callback;
 
@@ -2249,11 +1947,7 @@ void UTcpMessageBeacon::MessageReceivedDelegate(class UTcpConnection* Connection
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpMessageBeacon.MessageReceivedDelegate");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UTcpMessageBeacon_MessageReceivedDelegate_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -2274,10 +1968,7 @@ class UBeaconMessage_X* UBeaconMessage_X::Broadcast()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BeaconMessage_X.Broadcast");
 
-	struct
-	{
-		class UBeaconMessage_X*        ReturnValue;
-	} params;
+	UBeaconMessage_X_Broadcast_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2300,11 +1991,7 @@ class UBeaconMessage_X* UBeaconMessage_X::Send(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BeaconMessage_X.Send");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UBeaconMessage_X*        ReturnValue;
-	} params;
+	UBeaconMessage_X_Send_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -2329,12 +2016,7 @@ void UBugReport_X::HandleHttpRequestComplete(class UHttpRequestInterface* Origin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.HandleHttpRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  InHttpResponse;
-		bool                           bDidSucceed;
-	} params;
+	UBugReport_X_HandleHttpRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.InHttpResponse = InHttpResponse;
 	params.bDidSucceed = bDidSucceed;
@@ -2357,10 +2039,7 @@ void UBugReport_X::LogText(const struct FString& Str)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.LogText");
 
-	struct
-	{
-		struct FString                 Str;
-	} params;
+	UBugReport_X_LogText_Params params;
 	params.Str = Str;
 
 	auto flags = fn->FunctionFlags;
@@ -2379,9 +2058,7 @@ void UBugReport_X::PDIReport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.PDIReport");
 
-	struct
-	{
-	} params;
+	UBugReport_X_PDIReport_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2398,9 +2075,7 @@ void UBugReport_X::CancelBugReport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.CancelBugReport");
 
-	struct
-	{
-	} params;
+	UBugReport_X_CancelBugReport_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2422,12 +2097,7 @@ void UBugReport_X::SubmitBugReport(const struct FString& Title, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.SubmitBugReport");
 
-	struct
-	{
-		struct FString                 Title;
-		struct FString                 Description;
-		struct FString                 Email;
-	} params;
+	UBugReport_X_SubmitBugReport_Params params;
 	params.Title = Title;
 	params.Description = Description;
 	params.Email = Email;
@@ -2448,9 +2118,7 @@ void UBugReport_X::StartBugReport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.StartBugReport");
 
-	struct
-	{
-	} params;
+	UBugReport_X_StartBugReport_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2470,10 +2138,7 @@ void UBugReport_X::STATIC_StaticSubmitBugReport(const struct FString& Title)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.StaticSubmitBugReport");
 
-	struct
-	{
-		struct FString                 Title;
-	} params;
+	UBugReport_X_StaticSubmitBugReport_Params params;
 	params.Title = Title;
 
 	auto flags = fn->FunctionFlags;
@@ -2493,10 +2158,7 @@ class UBugReport_X* UBugReport_X::STATIC_CreateBugReport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.BugReport_X.CreateBugReport");
 
-	struct
-	{
-		class UBugReport_X*            ReturnValue;
-	} params;
+	UBugReport_X_CreateBugReport_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2518,10 +2180,7 @@ struct FString UCachedWebData_X::GetText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CachedWebData_X.GetText");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UCachedWebData_X_GetText_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2544,11 +2203,7 @@ void UCachedWebData_X::UpdateData(TArray<unsigned char> NewData, const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CachedWebData_X.UpdateData");
 
-	struct
-	{
-		TArray<unsigned char>          NewData;
-		struct FString                 NewETag;
-	} params;
+	UCachedWebData_X_UpdateData_Params params;
 	params.NewData = NewData;
 	params.NewETag = NewETag;
 
@@ -2568,9 +2223,7 @@ void ACamera_X::OnViewTargetChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.OnViewTargetChanged");
 
-	struct
-	{
-	} params;
+	ACamera_X_OnViewTargetChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2590,11 +2243,7 @@ void ACamera_X::SetViewTarget(class AActor* NewViewTarget, const struct FViewTar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.SetViewTarget");
 
-	struct
-	{
-		class AActor*                  NewViewTarget;
-		struct FViewTargetTransitionParams TransitionParams;
-	} params;
+	ACamera_X_SetViewTarget_Params params;
 	params.NewViewTarget = NewViewTarget;
 	params.TransitionParams = TransitionParams;
 
@@ -2616,10 +2265,7 @@ void ACamera_X::HandleBlenderStateChanged(class UCameraStateBlender_X* CameraBle
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.HandleBlenderStateChanged");
 
-	struct
-	{
-		class UCameraStateBlender_X*   CameraBlender;
-	} params;
+	ACamera_X_HandleBlenderStateChanged_Params params;
 	params.CameraBlender = CameraBlender;
 
 	auto flags = fn->FunctionFlags;
@@ -2637,9 +2283,7 @@ void ACamera_X::SnapTransition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.SnapTransition");
 
-	struct
-	{
-	} params;
+	ACamera_X_SnapTransition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2658,10 +2302,7 @@ void ACamera_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	ACamera_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -2682,11 +2323,7 @@ void ACamera_X::ApplyCameraModifiers(float DeltaTime, struct FTPOV* OutPOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ApplyCameraModifiers");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FTPOV                   OutPOV;
-	} params;
+	ACamera_X_ApplyCameraModifiers_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2715,15 +2352,7 @@ bool ACamera_X::CameraTrace(const struct FVector& End, const struct FVector& Sta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.CameraTrace");
 
-	struct
-	{
-		struct FVector                 End;
-		struct FVector                 Start;
-		struct FVector                 Extent;
-		struct FVector                 HitLoc;
-		class AActor*                  HitActor;
-		bool                           ReturnValue;
-	} params;
+	ACamera_X_CameraTrace_Params params;
 	params.End = End;
 	params.Start = Start;
 	params.Extent = Extent;
@@ -2754,11 +2383,7 @@ class UCameraState_X* ACamera_X::InstanceCameraState(class UCameraState_X* Arche
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.InstanceCameraState");
 
-	struct
-	{
-		class UCameraState_X*          Archetype;
-		class UCameraState_X*          ReturnValue;
-	} params;
+	ACamera_X_InstanceCameraState_Params params;
 	params.Archetype = Archetype;
 
 	auto flags = fn->FunctionFlags;
@@ -2780,10 +2405,7 @@ void ACamera_X::ModifyPostProcessSettings(struct FPostProcessSettings* PP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ModifyPostProcessSettings");
 
-	struct
-	{
-		struct FPostProcessSettings    PP;
-	} params;
+	ACamera_X_ModifyPostProcessSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2807,12 +2429,7 @@ void ACamera_X::ProcessViewRotation(float DeltaTime, struct FRotator* OutViewRot
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FRotator                OutViewRotation;
-		struct FRotator                OutDeltaRot;
-	} params;
+	ACamera_X_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2838,11 +2455,7 @@ void ACamera_X::PostProcessCameraState(float DeltaTime, struct FCameraOrientatio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.PostProcessCameraState");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	ACamera_X_PostProcessCameraState_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2866,11 +2479,7 @@ void ACamera_X::ProcessCameraState(float DeltaTime, struct FCameraOrientation* O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ProcessCameraState");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	ACamera_X_ProcessCameraState_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2893,10 +2502,7 @@ void ACamera_X::CheckViewTarget(struct FTViewTarget* VT)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.CheckViewTarget");
 
-	struct
-	{
-		struct FTViewTarget            VT;
-	} params;
+	ACamera_X_CheckViewTarget_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2919,10 +2525,7 @@ void ACamera_X::CopyFade(class ACamera_X* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.CopyFade");
 
-	struct
-	{
-		class ACamera_X*               Other;
-	} params;
+	ACamera_X_CopyFade_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -2946,14 +2549,7 @@ void ACamera_X::SetCameraFade(bool bNewEnableFading, const struct FColor& NewFad
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.SetCameraFade");
 
-	struct
-	{
-		bool                           bNewEnableFading;
-		struct FColor                  NewFadeColor;
-		struct FVector2D               NewFadeAlpha;
-		float                          NewFadeTime;
-		bool                           bNewFadeAudio;
-	} params;
+	ACamera_X_SetCameraFade_Params params;
 	params.bNewEnableFading = bNewEnableFading;
 	params.NewFadeColor = NewFadeColor;
 	params.NewFadeAlpha = NewFadeAlpha;
@@ -2977,10 +2573,7 @@ void ACamera_X::UpdateFade(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.UpdateFade");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	ACamera_X_UpdateFade_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -3000,10 +2593,7 @@ void ACamera_X::UpdateCamera(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.UpdateCamera");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	ACamera_X_UpdateCamera_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -3023,10 +2613,7 @@ void ACamera_X::ClampPOV(struct FCameraOrientation* OutPOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ClampPOV");
 
-	struct
-	{
-		struct FCameraOrientation      OutPOV;
-	} params;
+	ACamera_X_ClampPOV_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3049,11 +2636,7 @@ struct FRotator ACamera_X::RemoveRoll(const struct FRotator& InRot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.RemoveRoll");
 
-	struct
-	{
-		struct FRotator                InRot;
-		struct FRotator                ReturnValue;
-	} params;
+	ACamera_X_RemoveRoll_Params params;
 	params.InRot = InRot;
 
 	auto flags = fn->FunctionFlags;
@@ -3075,10 +2658,7 @@ class UCameraState_X* ACamera_X::GetCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.GetCameraState");
 
-	struct
-	{
-		class UCameraState_X*          ReturnValue;
-	} params;
+	ACamera_X_GetCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3099,10 +2679,7 @@ class UCameraState_X* ACamera_X::SelectCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.SelectCameraState");
 
-	struct
-	{
-		class UCameraState_X*          ReturnValue;
-	} params;
+	ACamera_X_SelectCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3121,9 +2698,7 @@ void ACamera_X::UpdateCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.UpdateCameraState");
 
-	struct
-	{
-	} params;
+	ACamera_X_UpdateCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3143,11 +2718,7 @@ void ACamera_X::UpdateCameraKnocks(float DeltaTime, struct FCameraOrientation* O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.UpdateCameraKnocks");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	ACamera_X_UpdateCameraKnocks_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -3171,11 +2742,7 @@ void ACamera_X::AddRotationKnock(const struct FRotationCameraKnock& Knock, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.AddRotationKnock");
 
-	struct
-	{
-		struct FRotationCameraKnock    Knock;
-		float                          Scale;
-	} params;
+	ACamera_X_AddRotationKnock_Params params;
 	params.Knock = Knock;
 	params.Scale = Scale;
 
@@ -3198,12 +2765,7 @@ void ACamera_X::AddLocationKnock(const struct FLocationCameraKnock& Knock, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.AddLocationKnock");
 
-	struct
-	{
-		struct FLocationCameraKnock    Knock;
-		float                          Scale;
-		struct FRotator                Transform;
-	} params;
+	ACamera_X_AddLocationKnock_Params params;
 	params.Knock = Knock;
 	params.Scale = Scale;
 	params.Transform = Transform;
@@ -3223,9 +2785,7 @@ void ACamera_X::InstanceCameraStates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.InstanceCameraStates");
 
-	struct
-	{
-	} params;
+	ACamera_X_InstanceCameraStates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3244,10 +2804,7 @@ void ACamera_X::InitializeFor(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.InitializeFor");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	ACamera_X_InitializeFor_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -3268,11 +2825,7 @@ void ACamera_X::ModifyCameraShakeScale(class UCameraShake* Shake, float NewScale
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.ModifyCameraShakeScale");
 
-	struct
-	{
-		class UCameraShake*            Shake;
-		float                          NewScale;
-	} params;
+	ACamera_X_ModifyCameraShakeScale_Params params;
 	params.Shake = Shake;
 	params.NewScale = NewScale;
 
@@ -3291,9 +2844,7 @@ void ACamera_X::OnLoadingMovieClosesd()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.OnLoadingMovieClosesd");
 
-	struct
-	{
-	} params;
+	ACamera_X_OnLoadingMovieClosesd_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3310,9 +2861,7 @@ void ACamera_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	ACamera_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3336,15 +2885,7 @@ struct FVector ACamera_X::STATIC_InterpVector(const struct FVector& OldValue, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.InterpVector");
 
-	struct
-	{
-		struct FVector                 OldValue;
-		struct FVector                 NewValue;
-		struct FVectorInterpRate       Rate;
-		struct FRotator                Orientation;
-		float                          DeltaTime;
-		struct FVector                 ReturnValue;
-	} params;
+	ACamera_X_InterpVector_Params params;
 	params.OldValue = OldValue;
 	params.NewValue = NewValue;
 	params.Rate = Rate;
@@ -3370,10 +2911,7 @@ void ACamera_X::STATIC_FinalizeOrientation(struct FCameraOrientation* OutPOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.FinalizeOrientation");
 
-	struct
-	{
-		struct FCameraOrientation      OutPOV;
-	} params;
+	ACamera_X_FinalizeOrientation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3398,13 +2936,7 @@ struct FCameraOrientation ACamera_X::STATIC_BlendCameraOrientations(float Alpha,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.BlendCameraOrientations");
 
-	struct
-	{
-		struct FCameraOrientation      A;
-		struct FCameraOrientation      B;
-		float                          Alpha;
-		struct FCameraOrientation      ReturnValue;
-	} params;
+	ACamera_X_BlendCameraOrientations_Params params;
 	params.Alpha = Alpha;
 
 	auto flags = fn->FunctionFlags;
@@ -3432,11 +2964,7 @@ void ACamera_X::EventCameraStateChanged(class ACamera_X* Camera, class UCameraSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.EventCameraStateChanged");
 
-	struct
-	{
-		class ACamera_X*               Camera;
-		class UCameraState_X*          CameraState;
-	} params;
+	ACamera_X_EventCameraStateChanged_Params params;
 	params.Camera = Camera;
 	params.CameraState = CameraState;
 
@@ -3457,10 +2985,7 @@ void UCanvasTexture_X::Draw(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CanvasTexture_X.Draw");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UCanvasTexture_X_Draw_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -3480,10 +3005,7 @@ void UCanvasTextureComponent_X::OnDraw(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CanvasTextureComponent_X.OnDraw");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UCanvasTextureComponent_X_OnDraw_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -3503,10 +3025,7 @@ void APlayerController_X::ServerUpdateCustomMatchSettings(const struct FCustomMa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerUpdateCustomMatchSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    Settings;
-	} params;
+	APlayerController_X_ServerUpdateCustomMatchSettings_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -3527,11 +3046,7 @@ void APlayerController_X::ServerSetParty(const struct FUniqueNetId& MemberId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerSetParty");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		struct FUniqueNetId            NewPartyID;
-	} params;
+	APlayerController_X_ServerSetParty_Params params;
 	params.MemberId = MemberId;
 	params.NewPartyID = NewPartyID;
 
@@ -3552,10 +3067,7 @@ void APlayerController_X::DisconnectSplitScreenPlayer(class UPlayer* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DisconnectSplitScreenPlayer");
 
-	struct
-	{
-		class UPlayer*                 P;
-	} params;
+	APlayerController_X_DisconnectSplitScreenPlayer_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -3574,9 +3086,7 @@ void APlayerController_X::ServerDestroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerDestroy");
 
-	struct
-	{
-	} params;
+	APlayerController_X_ServerDestroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3593,9 +3103,7 @@ void APlayerController_X::ServerTyping()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerTyping");
 
-	struct
-	{
-	} params;
+	APlayerController_X_ServerTyping_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3612,9 +3120,7 @@ void APlayerController_X::NotifyTyping()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.NotifyTyping");
 
-	struct
-	{
-	} params;
+	APlayerController_X_NotifyTyping_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3634,11 +3140,7 @@ void APlayerController_X::KickPlayerForReason(const struct FString& Reason, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.KickPlayerForReason");
 
-	struct
-	{
-		struct FString                 Reason;
-		struct FString                 Title;
-	} params;
+	APlayerController_X_KickPlayerForReason_Params params;
 	params.Reason = Reason;
 	params.Title = Title;
 
@@ -3662,13 +3164,7 @@ void APlayerController_X::ClientNetLag(float PktLag, float PktVariance, float Pk
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClientNetLag");
 
-	struct
-	{
-		float                          PktLag;
-		float                          PktVariance;
-		float                          PktLoss;
-		float                          PktDup;
-	} params;
+	APlayerController_X_ClientNetLag_Params params;
 	params.PktLag = PktLag;
 	params.PktVariance = PktVariance;
 	params.PktLoss = PktLoss;
@@ -3694,13 +3190,7 @@ void APlayerController_X::ServerNetLag(float PktLag, float PktVariance, float Pk
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerNetLag");
 
-	struct
-	{
-		float                          PktLag;
-		float                          PktVariance;
-		float                          PktLoss;
-		float                          PktDup;
-	} params;
+	APlayerController_X_ServerNetLag_Params params;
 	params.PktLag = PktLag;
 	params.PktVariance = PktVariance;
 	params.PktLoss = PktLoss;
@@ -3721,9 +3211,7 @@ void APlayerController_X::Pause()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.Pause");
 
-	struct
-	{
-	} params;
+	APlayerController_X_Pause_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3742,10 +3230,7 @@ void APlayerController_X::RemoveOptionFromLastURL(const struct FString& OptName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.RemoveOptionFromLastURL");
 
-	struct
-	{
-		struct FString                 OptName;
-	} params;
+	APlayerController_X_RemoveOptionFromLastURL_Params params;
 	params.OptName = OptName;
 
 	auto flags = fn->FunctionFlags;
@@ -3766,10 +3251,7 @@ void APlayerController_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	APlayerController_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -3787,9 +3269,7 @@ void APlayerController_X::ClearOnlineDelegates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClearOnlineDelegates");
 
-	struct
-	{
-	} params;
+	APlayerController_X_ClearOnlineDelegates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3806,9 +3286,7 @@ void APlayerController_X::RegisterOnlineDelegates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.RegisterOnlineDelegates");
 
-	struct
-	{
-	} params;
+	APlayerController_X_RegisterOnlineDelegates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3827,10 +3305,7 @@ void APlayerController_X::NotifyTakeHit_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.NotifyTakeHit_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APlayerController_X_NotifyTakeHit_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -3851,11 +3326,7 @@ void APlayerController_X::ClientPlayForceFeedbackWaveform(class UForceFeedbackWa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClientPlayForceFeedbackWaveform");
 
-	struct
-	{
-		class UForceFeedbackWaveform*  FFWaveform;
-		class AActor*                  FFWaveformInstigator;
-	} params;
+	APlayerController_X_ClientPlayForceFeedbackWaveform_Params params;
 	params.FFWaveform = FFWaveform;
 	params.FFWaveformInstigator = FFWaveformInstigator;
 
@@ -3876,10 +3347,7 @@ void APlayerController_X::ClientCommand(const struct FString& Command)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClientCommand");
 
-	struct
-	{
-		struct FString                 Command;
-	} params;
+	APlayerController_X_ClientCommand_Params params;
 	params.Command = Command;
 
 	auto flags = fn->FunctionFlags;
@@ -3899,10 +3367,7 @@ void APlayerController_X::ServerCommand(const struct FString& Command)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerCommand");
 
-	struct
-	{
-		struct FString                 Command;
-	} params;
+	APlayerController_X_ServerCommand_Params params;
 	params.Command = Command;
 
 	auto flags = fn->FunctionFlags;
@@ -3922,10 +3387,7 @@ void APlayerController_X::PawnDied(class APawn* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.PawnDied");
 
-	struct
-	{
-		class APawn*                   P;
-	} params;
+	APlayerController_X_PawnDied_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -3943,9 +3405,7 @@ void APlayerController_X::UnPossess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.UnPossess");
 
-	struct
-	{
-	} params;
+	APlayerController_X_UnPossess_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3965,11 +3425,7 @@ void APlayerController_X::Possess(class APawn* aPawn, bool bVehicleTransition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.Possess");
 
-	struct
-	{
-		class APawn*                   aPawn;
-		bool                           bVehicleTransition;
-	} params;
+	APlayerController_X_Possess_Params params;
 	params.aPawn = aPawn;
 	params.bVehicleTransition = bVehicleTransition;
 
@@ -3991,11 +3447,7 @@ void APlayerController_X::OnPawnChange(class APawn* OldPawn, class APawn* NewPaw
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.OnPawnChange");
 
-	struct
-	{
-		class APawn*                   OldPawn;
-		class APawn*                   NewPawn;
-	} params;
+	APlayerController_X_OnPawnChange_Params params;
 	params.OldPawn = OldPawn;
 	params.NewPawn = NewPawn;
 
@@ -4014,9 +3466,7 @@ void APlayerController_X::PawnReferenceUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.PawnReferenceUpdated");
 
-	struct
-	{
-	} params;
+	APlayerController_X_PawnReferenceUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4035,10 +3485,7 @@ void APlayerController_X::ClientRestart(class APawn* NewPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClientRestart");
 
-	struct
-	{
-		class APawn*                   NewPawn;
-	} params;
+	APlayerController_X_ClientRestart_Params params;
 	params.NewPawn = NewPawn;
 
 	auto flags = fn->FunctionFlags;
@@ -4058,10 +3505,7 @@ void APlayerController_X::GivePawn(class APawn* NewPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GivePawn");
 
-	struct
-	{
-		class APawn*                   NewPawn;
-	} params;
+	APlayerController_X_GivePawn_Params params;
 	params.NewPawn = NewPawn;
 
 	auto flags = fn->FunctionFlags;
@@ -4079,9 +3523,7 @@ void APlayerController_X::InitInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.InitInputSystem");
 
-	struct
-	{
-	} params;
+	APlayerController_X_InitInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4100,10 +3542,7 @@ class ACamera* APlayerController_X::GetCameraArchetype()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetCameraArchetype");
 
-	struct
-	{
-		class ACamera*                 ReturnValue;
-	} params;
+	APlayerController_X_GetCameraArchetype_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4122,9 +3561,7 @@ void APlayerController_X::SpawnPlayerCamera()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.SpawnPlayerCamera");
 
-	struct
-	{
-	} params;
+	APlayerController_X_SpawnPlayerCamera_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4143,10 +3580,7 @@ void APlayerController_X::OnCameraChanged(class ACamera* InCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.OnCameraChanged");
 
-	struct
-	{
-		class ACamera*                 InCamera;
-	} params;
+	APlayerController_X_OnCameraChanged_Params params;
 	params.InCamera = InCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -4166,10 +3600,7 @@ void APlayerController_X::AddCheats(bool bForce)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.AddCheats");
 
-	struct
-	{
-		bool                           bForce;
-	} params;
+	APlayerController_X_AddCheats_Params params;
 	params.bForce = bForce;
 
 	auto flags = fn->FunctionFlags;
@@ -4189,10 +3620,7 @@ class UOnlineGameAccount_X* APlayerController_X::GetOnlineAccount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlineAccount");
 
-	struct
-	{
-		class UOnlineGameAccount_X*    ReturnValue;
-	} params;
+	APlayerController_X_GetOnlineAccount_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4213,10 +3641,7 @@ class UOnlinePlayer_X* APlayerController_X::GetOnlinePlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlinePlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         ReturnValue;
-	} params;
+	APlayerController_X_GetOnlinePlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4235,9 +3660,7 @@ void APlayerController_X::OnReceivedPRI()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.OnReceivedPRI");
 
-	struct
-	{
-	} params;
+	APlayerController_X_OnReceivedPRI_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4254,9 +3677,7 @@ void APlayerController_X::InitPlayerReplicationInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.InitPlayerReplicationInfo");
 
-	struct
-	{
-	} params;
+	APlayerController_X_InitPlayerReplicationInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4273,9 +3694,7 @@ void APlayerController_X::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.Destroyed");
 
-	struct
-	{
-	} params;
+	APlayerController_X_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4294,10 +3713,7 @@ void APlayerController_X::OnExternalUIChanged(bool bIsOpening)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.OnExternalUIChanged");
 
-	struct
-	{
-		bool                           bIsOpening;
-	} params;
+	APlayerController_X_OnExternalUIChanged_Params params;
 	params.bIsOpening = bIsOpening;
 
 	auto flags = fn->FunctionFlags;
@@ -4317,10 +3733,7 @@ void APlayerController_X::SetPaused(bool bPaused)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.SetPaused");
 
-	struct
-	{
-		bool                           bPaused;
-	} params;
+	APlayerController_X_SetPaused_Params params;
 	params.bPaused = bPaused;
 
 	auto flags = fn->FunctionFlags;
@@ -4338,9 +3751,7 @@ void APlayerController_X::ReceivedPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ReceivedPlayer");
 
-	struct
-	{
-	} params;
+	APlayerController_X_ReceivedPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4359,10 +3770,7 @@ class UOnlineGame_X* APlayerController_X::GetOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlineGame");
 
-	struct
-	{
-		class UOnlineGame_X*           ReturnValue;
-	} params;
+	APlayerController_X_GetOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4383,10 +3791,7 @@ TScriptInterface<class UIOnlineGameHost_X> APlayerController_X::STATIC_GetOnline
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlineGameHost");
 
-	struct
-	{
-		TScriptInterface<class UIOnlineGameHost_X> ReturnValue;
-	} params;
+	APlayerController_X_GetOnlineGameHost_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4407,10 +3812,7 @@ class UOnlineGameLanServer_X* APlayerController_X::STATIC_GetOnlineGameLanServer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlineGameLanServer");
 
-	struct
-	{
-		class UOnlineGameLanServer_X*  ReturnValue;
-	} params;
+	APlayerController_X_GetOnlineGameLanServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4431,10 +3833,7 @@ class UOnlineGameDedicatedServer_X* APlayerController_X::GetOnlineGameDedicatedS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.GetOnlineGameDedicatedServer");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* ReturnValue;
-	} params;
+	APlayerController_X_GetOnlineGameDedicatedServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4453,9 +3852,7 @@ void APlayerController_X::SpawnDefaultHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.SpawnDefaultHUD");
 
-	struct
-	{
-	} params;
+	APlayerController_X_SpawnDefaultHUD_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4474,10 +3871,7 @@ void APlayerController_X::SetPRI(class APlayerReplicationInfo* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.SetPRI");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	APlayerController_X_SetPRI_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -4497,10 +3891,7 @@ void APlayerController_X::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	APlayerController_X_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -4520,10 +3911,7 @@ void APlayerController_X::EventPlayerCameraChange(class APlayerController_X* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventPlayerCameraChange");
 
-	struct
-	{
-		class APlayerController_X*     PC;
-	} params;
+	APlayerController_X_EventPlayerCameraChange_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -4543,10 +3931,7 @@ void APlayerController_X::EventDestroyed(class APlayerController_X* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventDestroyed");
 
-	struct
-	{
-		class APlayerController_X*     PC;
-	} params;
+	APlayerController_X_EventDestroyed_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -4566,10 +3951,7 @@ void APlayerController_X::EventReceivedPlayer(class APlayerController_X* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventReceivedPlayer");
 
-	struct
-	{
-		class APlayerController_X*     PC;
-	} params;
+	APlayerController_X_EventReceivedPlayer_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -4591,12 +3973,7 @@ void APlayerController_X::EventPawnChange(class APlayerController_X* PC, class A
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventPawnChange");
 
-	struct
-	{
-		class APlayerController_X*     PC;
-		class APawn*                   OldPawn;
-		class APawn*                   NewPawn;
-	} params;
+	APlayerController_X_EventPawnChange_Params params;
 	params.PC = PC;
 	params.OldPawn = OldPawn;
 	params.NewPawn = NewPawn;
@@ -4618,10 +3995,7 @@ void APlayerController_X::EventReceivedPRI(class APlayerController_X* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventReceivedPRI");
 
-	struct
-	{
-		class APlayerController_X*     PC;
-	} params;
+	APlayerController_X_EventReceivedPRI_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -4641,10 +4015,7 @@ TArray<class UObject*> UCheatManager_X::CreateCheatObjects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.CreateCheatObjects");
 
-	struct
-	{
-		TArray<class UObject*>         ReturnValue;
-	} params;
+	UCheatManager_X_CreateCheatObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4667,11 +4038,7 @@ void UCheatManager_X::HandleSanitize(const struct FString& Comment, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.HandleSanitize");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FString                 Sanitized;
-	} params;
+	UCheatManager_X_HandleSanitize_Params params;
 	params.Comment = Comment;
 	params.Sanitized = Sanitized;
 
@@ -4692,10 +4059,7 @@ void UCheatManager_X::TestWorldFilter(const struct FString& Words)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.TestWorldFilter");
 
-	struct
-	{
-		struct FString                 Words;
-	} params;
+	UCheatManager_X_TestWorldFilter_Params params;
 	params.Words = Words;
 
 	auto flags = fn->FunctionFlags;
@@ -4716,11 +4080,7 @@ void UCheatManager_X::LoadOnlineComponents(const struct FString& Platform, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.LoadOnlineComponents");
 
-	struct
-	{
-		struct FString                 Platform;
-		struct FString                 Language;
-	} params;
+	UCheatManager_X_LoadOnlineComponents_Params params;
 	params.Platform = Platform;
 	params.Language = Language;
 
@@ -4741,10 +4101,7 @@ void UCheatManager_X::TestUTCTime(int AdjustSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.TestUTCTime");
 
-	struct
-	{
-		int                            AdjustSeconds;
-	} params;
+	UCheatManager_X_TestUTCTime_Params params;
 	params.AdjustSeconds = AdjustSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -4765,11 +4122,7 @@ void UCheatManager_X::HandleImageDownloaded(class UOnlineImageDownloaderWeb_X* D
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.HandleImageDownloaded");
 
-	struct
-	{
-		class UOnlineImageDownloaderWeb_X* Downloader;
-		struct FDownloadedImage        Image;
-	} params;
+	UCheatManager_X_HandleImageDownloaded_Params params;
 	params.Downloader = Downloader;
 	params.Image = Image;
 
@@ -4790,10 +4143,7 @@ void UCheatManager_X::DownloadImage(const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.DownloadImage");
 
-	struct
-	{
-		struct FString                 URL;
-	} params;
+	UCheatManager_X_DownloadImage_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -4813,10 +4163,7 @@ void UCheatManager_X::LoadKismetLevel(const struct FName& LeveFileName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.LoadKismetLevel");
 
-	struct
-	{
-		struct FName                   LeveFileName;
-	} params;
+	UCheatManager_X_LoadKismetLevel_Params params;
 	params.LeveFileName = LeveFileName;
 
 	auto flags = fn->FunctionFlags;
@@ -4837,10 +4184,7 @@ void UCheatManager_X::DrawBulletContacts(float Lifetime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.DrawBulletContacts");
 
-	struct
-	{
-		float                          Lifetime;
-	} params;
+	UCheatManager_X_DrawBulletContacts_Params params;
 	params.Lifetime = Lifetime;
 
 	auto flags = fn->FunctionFlags;
@@ -4862,11 +4206,7 @@ void UCheatManager_X::PrintReproPhysics(const struct FString& Command, class AAc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.PrintReproPhysics");
 
-	struct
-	{
-		struct FString                 Command;
-		class AActor*                  A;
-	} params;
+	UCheatManager_X_PrintReproPhysics_Params params;
 	params.Command = Command;
 	params.A = A;
 
@@ -4898,20 +4238,7 @@ void UCheatManager_X::ReproPhysics(class AActor* A, float LX, float LY, float LZ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.ReproPhysics");
 
-	struct
-	{
-		class AActor*                  A;
-		float                          LX;
-		float                          LY;
-		float                          LZ;
-		float                          RX;
-		float                          RY;
-		float                          RZ;
-		float                          RW;
-		float                          VX;
-		float                          VY;
-		float                          VZ;
-	} params;
+	UCheatManager_X_ReproPhysics_Params params;
 	params.A = A;
 	params.LX = LX;
 	params.LY = LY;
@@ -4940,9 +4267,7 @@ void UCheatManager_X::DisableCCD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.DisableCCD");
 
-	struct
-	{
-	} params;
+	UCheatManager_X_DisableCCD_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4962,10 +4287,7 @@ void UCheatManager_X::SimulateInputKey(const struct FName& KeyName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.SimulateInputKey");
 
-	struct
-	{
-		struct FName                   KeyName;
-	} params;
+	UCheatManager_X_SimulateInputKey_Params params;
 	params.KeyName = KeyName;
 
 	auto flags = fn->FunctionFlags;
@@ -4986,10 +4308,7 @@ void UCheatManager_X::SetNetServerMaxTickRate(float Rate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.SetNetServerMaxTickRate");
 
-	struct
-	{
-		float                          Rate;
-	} params;
+	UCheatManager_X_SetNetServerMaxTickRate_Params params;
 	params.Rate = Rate;
 
 	auto flags = fn->FunctionFlags;
@@ -5008,9 +4327,7 @@ void UCheatManager_X::ListVisiblePrimitives()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.ListVisiblePrimitives");
 
-	struct
-	{
-	} params;
+	UCheatManager_X_ListVisiblePrimitives_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5031,11 +4348,7 @@ void UCheatManager_X::HideVisiblePrimitives(const struct FString& NameMatch, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.HideVisiblePrimitives");
 
-	struct
-	{
-		struct FString                 NameMatch;
-		struct FString                 NameIgnore;
-	} params;
+	UCheatManager_X_HideVisiblePrimitives_Params params;
 	params.NameMatch = NameMatch;
 	params.NameIgnore = NameIgnore;
 
@@ -5055,9 +4368,7 @@ void UCheatManager_X::ToggleReplicateVoiceToSelf()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.ToggleReplicateVoiceToSelf");
 
-	struct
-	{
-	} params;
+	UCheatManager_X_ToggleReplicateVoiceToSelf_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5075,9 +4386,7 @@ void UCheatManager_X::ToggleReplicateVoiceToSender()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.ToggleReplicateVoiceToSender");
 
-	struct
-	{
-	} params;
+	UCheatManager_X_ToggleReplicateVoiceToSender_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5095,9 +4404,7 @@ void UCheatManager_X::EventDelegateTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.EventDelegateTest");
 
-	struct
-	{
-	} params;
+	UCheatManager_X_EventDelegateTest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5116,10 +4423,7 @@ TArray<struct FPlayerBinding> UControlPreset_X::GetGamepadBindings()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ControlPreset_X.GetGamepadBindings");
 
-	struct
-	{
-		TArray<struct FPlayerBinding>  ReturnValue;
-	} params;
+	UControlPreset_X_GetGamepadBindings_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5141,10 +4445,7 @@ TArray<struct FPlayerBinding> UControlPreset_X::GetPCBindings()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ControlPreset_X.GetPCBindings");
 
-	struct
-	{
-		TArray<struct FPlayerBinding>  ReturnValue;
-	} params;
+	UControlPreset_X_GetPCBindings_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5166,10 +4467,7 @@ TArray<struct FPlayerBinding> UControlPreset_X::STATIC_GetDefaultGamepadBindings
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ControlPreset_X.GetDefaultGamepadBindings");
 
-	struct
-	{
-		TArray<struct FPlayerBinding>  ReturnValue;
-	} params;
+	UControlPreset_X_GetDefaultGamepadBindings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5190,10 +4488,7 @@ TArray<struct FPlayerBinding> UControlPreset_X::STATIC_GetDefaultPCBindings()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ControlPreset_X.GetDefaultPCBindings");
 
-	struct
-	{
-		TArray<struct FPlayerBinding>  ReturnValue;
-	} params;
+	UControlPreset_X_GetDefaultPCBindings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5216,12 +4511,7 @@ int UCRC_X::STATIC_GetStringCRC(const struct FString& Text, int Seed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CRC_X.GetStringCRC");
 
-	struct
-	{
-		struct FString                 Text;
-		int                            Seed;
-		int                            ReturnValue;
-	} params;
+	UCRC_X_GetStringCRC_Params params;
 	params.Text = Text;
 	params.Seed = Seed;
 
@@ -5245,10 +4535,7 @@ void UCycleLog_X::AllLogs(struct FString* S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CycleLog_X.AllLogs");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	UCycleLog_X_AllLogs_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5269,9 +4556,7 @@ void UDamageComponent_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.Reset");
 
-	struct
-	{
-	} params;
+	UDamageComponent_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5291,11 +4576,7 @@ float UDamageComponent_X::CalculateDamage(class AActor* Victim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.CalculateDamage");
 
-	struct
-	{
-		class AActor*                  Victim;
-		float                          ReturnValue;
-	} params;
+	UDamageComponent_X_CalculateDamage_Params params;
 	params.Victim = Victim;
 
 	auto flags = fn->FunctionFlags;
@@ -5318,11 +4599,7 @@ void UDamageComponent_X::ApplyDamage(class AActor* Victim, bool bManualReset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.ApplyDamage");
 
-	struct
-	{
-		class AActor*                  Victim;
-		bool                           bManualReset;
-	} params;
+	UDamageComponent_X_ApplyDamage_Params params;
 	params.Victim = Victim;
 	params.bManualReset = bManualReset;
 
@@ -5344,11 +4621,7 @@ class UDamageComponent_X* UDamageComponent_X::SetImpact(const struct FImpactInfo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.SetImpact");
 
-	struct
-	{
-		struct FImpactInfo             Impact;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_SetImpact_Params params;
 	params.Impact = Impact;
 
 	auto flags = fn->FunctionFlags;
@@ -5371,11 +4644,7 @@ class UDamageComponent_X* UDamageComponent_X::SetHitInfo(const struct FTraceHitI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.SetHitInfo");
 
-	struct
-	{
-		struct FTraceHitInfo           InHitInfo;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_SetHitInfo_Params params;
 	params.InHitInfo = InHitInfo;
 
 	auto flags = fn->FunctionFlags;
@@ -5398,11 +4667,7 @@ class UDamageComponent_X* UDamageComponent_X::ScaleDamage(float InScale)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.ScaleDamage");
 
-	struct
-	{
-		float                          InScale;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_ScaleDamage_Params params;
 	params.InScale = InScale;
 
 	auto flags = fn->FunctionFlags;
@@ -5425,11 +4690,7 @@ class UDamageComponent_X* UDamageComponent_X::SetMomentumDir(const struct FVecto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.SetMomentumDir");
 
-	struct
-	{
-		struct FVector                 InMomentumDir;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_SetMomentumDir_Params params;
 	params.InMomentumDir = InMomentumDir;
 
 	auto flags = fn->FunctionFlags;
@@ -5452,11 +4713,7 @@ class UDamageComponent_X* UDamageComponent_X::SetLocation(const struct FVector& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.SetLocation");
 
-	struct
-	{
-		struct FVector                 InLocation;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_SetLocation_Params params;
 	params.InLocation = InLocation;
 
 	auto flags = fn->FunctionFlags;
@@ -5479,11 +4736,7 @@ class UDamageComponent_X* UDamageComponent_X::SetSource(class AActor* InSource)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.SetSource");
 
-	struct
-	{
-		class AActor*                  InSource;
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_SetSource_Params params;
 	params.InSource = InSource;
 
 	auto flags = fn->FunctionFlags;
@@ -5503,9 +4756,7 @@ void UDamageComponent_X::InitSource()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.InitSource");
 
-	struct
-	{
-	} params;
+	UDamageComponent_X_InitSource_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5524,10 +4775,7 @@ class UDamageComponent_X* UDamageComponent_X::GetArchetype()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DamageComponent_X.GetArchetype");
 
-	struct
-	{
-		class UDamageComponent_X*      ReturnValue;
-	} params;
+	UDamageComponent_X_GetArchetype_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5549,11 +4797,7 @@ void UDemoRecDriverInterface_X::STATIC_DemoLog(class UObject* context, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.DemoLog");
 
-	struct
-	{
-		class UObject*                 context;
-		struct FString                 Text;
-	} params;
+	UDemoRecDriverInterface_X_DemoLog_Params params;
 	params.context = context;
 	params.Text = Text;
 
@@ -5575,10 +4819,7 @@ int UDemoRecDriverInterface_X::GetCurrentFrame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.GetCurrentFrame");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UDemoRecDriverInterface_X_GetCurrentFrame_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5600,10 +4841,7 @@ void UDemoRecDriverInterface_X::DelayedAdvancePlayback(float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.DelayedAdvancePlayback");
 
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
+	UDemoRecDriverInterface_X_DelayedAdvancePlayback_Params params;
 	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -5621,9 +4859,7 @@ void UDemoRecDriverInterface_X::TogglePause()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.TogglePause");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_TogglePause_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5640,9 +4876,7 @@ void UDemoRecDriverInterface_X::RestartPlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.RestartPlayback");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_RestartPlayback_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5662,10 +4896,7 @@ void UDemoRecDriverInterface_X::SetPlaybackSpeed(float Speed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.SetPlaybackSpeed");
 
-	struct
-	{
-		float                          Speed;
-	} params;
+	UDemoRecDriverInterface_X_SetPlaybackSpeed_Params params;
 	params.Speed = Speed;
 
 	auto flags = fn->FunctionFlags;
@@ -5687,11 +4918,7 @@ float UDemoRecDriverInterface_X::GetTime(int ForFrameNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.GetTime");
 
-	struct
-	{
-		int                            ForFrameNum;
-		float                          ReturnValue;
-	} params;
+	UDemoRecDriverInterface_X_GetTime_Params params;
 	params.ForFrameNum = ForFrameNum;
 
 	auto flags = fn->FunctionFlags;
@@ -5715,11 +4942,7 @@ float UDemoRecDriverInterface_X::GetTimelinePoint(int ForFrameNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.GetTimelinePoint");
 
-	struct
-	{
-		int                            ForFrameNum;
-		float                          ReturnValue;
-	} params;
+	UDemoRecDriverInterface_X_GetTimelinePoint_Params params;
 	params.ForFrameNum = ForFrameNum;
 
 	auto flags = fn->FunctionFlags;
@@ -5743,11 +4966,7 @@ int UDemoRecDriverInterface_X::GetTimelineFrameNum(float TimelinePoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.GetTimelineFrameNum");
 
-	struct
-	{
-		float                          TimelinePoint;
-		int                            ReturnValue;
-	} params;
+	UDemoRecDriverInterface_X_GetTimelineFrameNum_Params params;
 	params.TimelinePoint = TimelinePoint;
 
 	auto flags = fn->FunctionFlags;
@@ -5770,10 +4989,7 @@ int UDemoRecDriverInterface_X::GetFrameNum()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.GetFrameNum");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UDemoRecDriverInterface_X_GetFrameNum_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5795,10 +5011,7 @@ void UDemoRecDriverInterface_X::AdvancePlayback(float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.AdvancePlayback");
 
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
+	UDemoRecDriverInterface_X_AdvancePlayback_Params params;
 	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -5819,10 +5032,7 @@ void UDemoRecDriverInterface_X::SkipToTimelinePoint(float Percentage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.SkipToTimelinePoint");
 
-	struct
-	{
-		float                          Percentage;
-	} params;
+	UDemoRecDriverInterface_X_SkipToTimelinePoint_Params params;
 	params.Percentage = Percentage;
 
 	auto flags = fn->FunctionFlags;
@@ -5843,10 +5053,7 @@ void UDemoRecDriverInterface_X::SkipToFrameNum(int FrameNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.SkipToFrameNum");
 
-	struct
-	{
-		int                            FrameNum;
-	} params;
+	UDemoRecDriverInterface_X_SkipToFrameNum_Params params;
 	params.FrameNum = FrameNum;
 
 	auto flags = fn->FunctionFlags;
@@ -5865,9 +5072,7 @@ void UDemoRecDriverInterface_X::StepFrame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.StepFrame");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_StepFrame_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5885,9 +5090,7 @@ void UDemoRecDriverInterface_X::ResumePlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.ResumePlayback");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_ResumePlayback_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5905,9 +5108,7 @@ void UDemoRecDriverInterface_X::PausePlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.PausePlayback");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_PausePlayback_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5925,9 +5126,7 @@ void UDemoRecDriverInterface_X::ResumeRecording()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.ResumeRecording");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_ResumeRecording_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5945,9 +5144,7 @@ void UDemoRecDriverInterface_X::PauseRecording()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.PauseRecording");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_PauseRecording_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5965,9 +5162,7 @@ void UDemoRecDriverInterface_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoRecDriverInterface_X.OnInit");
 
-	struct
-	{
-	} params;
+	UDemoRecDriverInterface_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5987,11 +5182,7 @@ struct FEffectsMapping UEffectsMap_X::GetEffects(class UPhysicalMaterial* PhysMa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EffectsMap_X.GetEffects");
 
-	struct
-	{
-		class UPhysicalMaterial*       PhysMat;
-		struct FEffectsMapping         ReturnValue;
-	} params;
+	UEffectsMap_X_GetEffects_Params params;
 	params.PhysMat = PhysMat;
 
 	auto flags = fn->FunctionFlags;
@@ -6014,10 +5205,7 @@ void UEngineShare_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UEngineShare_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -6037,10 +5225,7 @@ struct FString UEngineShare_X::GetRegionString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.GetRegionString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UEngineShare_X_GetRegionString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6062,10 +5247,7 @@ struct FString UEngineShare_X::GetPlatformString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.GetPlatformString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UEngineShare_X_GetPlatformString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6085,9 +5267,7 @@ void UEngineShare_X::STATIC_Crash()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.Crash");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_Crash_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6109,12 +5289,7 @@ bool UEngineShare_X::STATIC_ParseCommandlineString(const struct FString& Param, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.ParseCommandlineString");
 
-	struct
-	{
-		struct FString                 Param;
-		struct FString                 OutValue;
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_ParseCommandlineString_Params params;
 	params.Param = Param;
 
 	auto flags = fn->FunctionFlags;
@@ -6141,11 +5316,7 @@ bool UEngineShare_X::STATIC_ParseCommandlineQWORD(const struct FString& Param)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.ParseCommandlineQWORD");
 
-	struct
-	{
-		struct FString                 Param;
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_ParseCommandlineQWORD_Params params;
 	params.Param = Param;
 
 	auto flags = fn->FunctionFlags;
@@ -6170,12 +5341,7 @@ bool UEngineShare_X::STATIC_ParseCommandlineFloat(const struct FString& Param, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.ParseCommandlineFloat");
 
-	struct
-	{
-		struct FString                 Param;
-		float                          OutValue;
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_ParseCommandlineFloat_Params params;
 	params.Param = Param;
 
 	auto flags = fn->FunctionFlags;
@@ -6203,12 +5369,7 @@ bool UEngineShare_X::STATIC_ParseCommandlineInt(const struct FString& Param, int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.ParseCommandlineInt");
 
-	struct
-	{
-		struct FString                 Param;
-		int                            OutValue;
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_ParseCommandlineInt_Params params;
 	params.Param = Param;
 
 	auto flags = fn->FunctionFlags;
@@ -6235,11 +5396,7 @@ bool UEngineShare_X::STATIC_ParseCommandlineParam(const struct FString& Param)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.ParseCommandlineParam");
 
-	struct
-	{
-		struct FString                 Param;
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_ParseCommandlineParam_Params params;
 	params.Param = Param;
 
 	auto flags = fn->FunctionFlags;
@@ -6262,10 +5419,7 @@ void UEngineShare_X::InitOnlineGame(class UOnlineSubsystem* NewOnlineSubsystem)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.InitOnlineGame");
 
-	struct
-	{
-		class UOnlineSubsystem*        NewOnlineSubsystem;
-	} params;
+	UEngineShare_X_InitOnlineGame_Params params;
 	params.NewOnlineSubsystem = NewOnlineSubsystem;
 
 	auto flags = fn->FunctionFlags;
@@ -6285,10 +5439,7 @@ bool UEngineShare_X::STATIC_IsLanServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.IsLanServer");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_IsLanServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6310,10 +5461,7 @@ bool UEngineShare_X::STATIC_IsDedicatedServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.IsDedicatedServer");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UEngineShare_X_IsDedicatedServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6333,9 +5481,7 @@ void UEngineShare_X::EventPostLoadMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventPostLoadMap");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventPostLoadMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6354,10 +5500,7 @@ void UEngineShare_X::EventPreLoadMap(const struct FString& MapName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventPreLoadMap");
 
-	struct
-	{
-		struct FString                 MapName;
-	} params;
+	UEngineShare_X_EventPreLoadMap_Params params;
 	params.MapName = MapName;
 
 	auto flags = fn->FunctionFlags;
@@ -6375,9 +5518,7 @@ void UEngineShare_X::EventOnlineGameInitialized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventOnlineGameInitialized");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventOnlineGameInitialized_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6394,9 +5535,7 @@ void UEngineShare_X::EventPostScriptsReloaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventPostScriptsReloaded");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventPostScriptsReloaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6413,9 +5552,7 @@ void UEngineShare_X::EventPreScriptsReloaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventPreScriptsReloaded");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventPreScriptsReloaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6432,9 +5569,7 @@ void UEngineShare_X::EventLoadingMovieClosed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventLoadingMovieClosed");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventLoadingMovieClosed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6451,9 +5586,7 @@ void UEngineShare_X::EventPreExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EngineShare_X.EventPreExit");
 
-	struct
-	{
-	} params;
+	UEngineShare_X_EventPreExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6472,10 +5605,7 @@ struct FString UError_X::GetDebugMessage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Error_X.GetDebugMessage");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UError_X_GetDebugMessage_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6496,10 +5626,7 @@ struct FString UError_X::GetLocalizedMessage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Error_X.GetLocalizedMessage");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UError_X_GetLocalizedMessage_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6522,11 +5649,7 @@ class UErrorType_X* UErrorsList_X::STATIC_GetErrorType(const struct FName& Error
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.GetErrorType");
 
-	struct
-	{
-		struct FName                   Error;
-		class UErrorType_X*            ReturnValue;
-	} params;
+	UErrorsList_X_GetErrorType_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -6552,13 +5675,7 @@ bool UErrorsList_X::GetResponseError(const struct FString& Exception, class UErr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.GetResponseError");
 
-	struct
-	{
-		struct FString                 Exception;
-		class UErrorType_X*            OutType;
-		int                            OutCode;
-		bool                           ReturnValue;
-	} params;
+	UErrorsList_X_GetResponseError_Params params;
 	params.Exception = Exception;
 
 	auto flags = fn->FunctionFlags;
@@ -6587,12 +5704,7 @@ bool UErrorsList_X::MatchError(const struct FString& Compare, struct FString* Ex
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.MatchError");
 
-	struct
-	{
-		struct FString                 Exception;
-		struct FString                 Compare;
-		bool                           ReturnValue;
-	} params;
+	UErrorsList_X_MatchError_Params params;
 	params.Compare = Compare;
 
 	auto flags = fn->FunctionFlags;
@@ -6620,13 +5732,7 @@ bool UErrors_X::GetResponseError(const struct FString& Exception, class UErrorTy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Errors_X.GetResponseError");
 
-	struct
-	{
-		struct FString                 Exception;
-		class UErrorType_X*            OutType;
-		int                            OutCode;
-		bool                           ReturnValue;
-	} params;
+	UErrors_X_GetResponseError_Params params;
 	params.Exception = Exception;
 
 	auto flags = fn->FunctionFlags;
@@ -6655,12 +5761,7 @@ class UError_X* UErrorType_X::CreateError(const struct FString& InErrorMessage, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorType_X.CreateError");
 
-	struct
-	{
-		struct FString                 InErrorMessage;
-		int                            InErrorCode;
-		class UError_X*                ReturnValue;
-	} params;
+	UErrorType_X_CreateError_Params params;
 	params.InErrorMessage = InErrorMessage;
 	params.InErrorCode = InErrorCode;
 
@@ -6684,10 +5785,7 @@ struct FString UErrorType_X::GetLocalizedMessage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorType_X.GetLocalizedMessage");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UErrorType_X_GetLocalizedMessage_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6711,12 +5809,7 @@ int UFakeData_X::STATIC_RandomizeValues(class UObject* Target, int InRandomSeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FakeData_X.RandomizeValues");
 
-	struct
-	{
-		class UObject*                 Target;
-		int                            InRandomSeed;
-		int                            ReturnValue;
-	} params;
+	UFakeData_X_RandomizeValues_Params params;
 	params.Target = Target;
 	params.InRandomSeed = InRandomSeed;
 
@@ -6742,12 +5835,7 @@ class UFakeData_X* UFakeData_X::STATIC_RandomizeFakeData(class UFakeData_X* Fake
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FakeData_X.RandomizeFakeData");
 
-	struct
-	{
-		class UFakeData_X*             FakeData;
-		int                            InRandomSeed;
-		class UFakeData_X*             ReturnValue;
-	} params;
+	UFakeData_X_RandomizeFakeData_Params params;
 	params.FakeData = FakeData;
 	params.InRandomSeed = InRandomSeed;
 
@@ -6771,11 +5859,7 @@ class UFakeData_X* UFakeData_X::STATIC_GenerateFakeData(int InRandomSeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FakeData_X.GenerateFakeData");
 
-	struct
-	{
-		int                            InRandomSeed;
-		class UFakeData_X*             ReturnValue;
-	} params;
+	UFakeData_X_GenerateFakeData_Params params;
 	params.InRandomSeed = InRandomSeed;
 
 	auto flags = fn->FunctionFlags;
@@ -6797,10 +5881,7 @@ void UGameEngine_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameEngine_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGameEngine_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -6818,9 +5899,7 @@ void UGameEngine_X::OnlineSubsystemInitialized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameEngine_X.OnlineSubsystemInitialized");
 
-	struct
-	{
-	} params;
+	UGameEngine_X_OnlineSubsystemInitialized_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6839,10 +5918,7 @@ void AGameInfo_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	AGameInfo_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -6863,11 +5939,7 @@ void AGameInfo_X::ClientMapLoadFail(const struct FUniqueNetId& PlayerID, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.ClientMapLoadFail");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 MapName;
-	} params;
+	AGameInfo_X_ClientMapLoadFail_Params params;
 	params.PlayerID = PlayerID;
 	params.MapName = MapName;
 
@@ -6889,11 +5961,7 @@ void AGameInfo_X::SetPaused(class APlayerController* PC, bool bPause)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.SetPaused");
 
-	struct
-	{
-		class APlayerController*       PC;
-		bool                           bPause;
-	} params;
+	AGameInfo_X_SetPaused_Params params;
 	params.PC = PC;
 	params.bPause = bPause;
 
@@ -6914,10 +5982,7 @@ void AGameInfo_X::TogglePause(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.TogglePause");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	AGameInfo_X_TogglePause_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -6938,11 +6003,7 @@ bool AGameInfo_X::IsPaused(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.IsPaused");
 
-	struct
-	{
-		class APlayerController*       PC;
-		bool                           ReturnValue;
-	} params;
+	AGameInfo_X_IsPaused_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -6964,10 +6025,7 @@ TScriptInterface<class UIOnlineGameHost_X> AGameInfo_X::STATIC_GetOnlineGameHost
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GetOnlineGameHost");
 
-	struct
-	{
-		TScriptInterface<class UIOnlineGameHost_X> ReturnValue;
-	} params;
+	AGameInfo_X_GetOnlineGameHost_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6988,10 +6046,7 @@ class UOnlineGameLanServer_X* AGameInfo_X::STATIC_GetOnlineGameLanServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GetOnlineGameLanServer");
 
-	struct
-	{
-		class UOnlineGameLanServer_X*  ReturnValue;
-	} params;
+	AGameInfo_X_GetOnlineGameLanServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7012,10 +6067,7 @@ class UOnlineGameDedicatedServer_X* AGameInfo_X::STATIC_GetOnlineGameDedicatedSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GetOnlineGameDedicatedServer");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* ReturnValue;
-	} params;
+	AGameInfo_X_GetOnlineGameDedicatedServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7036,10 +6088,7 @@ class UOnlineGame_Base_X* AGameInfo_X::STATIC_GetOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GetOnlineGame");
 
-	struct
-	{
-		class UOnlineGame_Base_X*      ReturnValue;
-	} params;
+	AGameInfo_X_GetOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7058,9 +6107,7 @@ void AGameInfo_X::EndOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.EndOnlineGame");
 
-	struct
-	{
-	} params;
+	AGameInfo_X_EndOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7079,10 +6126,7 @@ void AGameInfo_X::Logout(class AController* Exiting)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.Logout");
 
-	struct
-	{
-		class AController*             Exiting;
-	} params;
+	AGameInfo_X_Logout_Params params;
 	params.Exiting = Exiting;
 
 	auto flags = fn->FunctionFlags;
@@ -7102,10 +6146,7 @@ void AGameInfo_X::GenericPlayerInitialization(class AController* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GenericPlayerInitialization");
 
-	struct
-	{
-		class AController*             C;
-	} params;
+	AGameInfo_X_GenericPlayerInitialization_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -7125,10 +6166,7 @@ void AGameInfo_X::STATIC_DisconnectExistingPlayer(struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.DisconnectExistingPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	AGameInfo_X_DisconnectExistingPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7154,14 +6192,7 @@ class APlayerController* AGameInfo_X::Login(const struct FString& Portal, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.Login");
 
-	struct
-	{
-		struct FString                 Portal;
-		struct FString                 Options;
-		struct FUniqueNetId            UniqueId;
-		struct FString                 ErrorMessage;
-		class APlayerController*       ReturnValue;
-	} params;
+	AGameInfo_X_Login_Params params;
 	params.Portal = Portal;
 	params.Options = Options;
 	params.UniqueId = UniqueId;
@@ -7192,14 +6223,7 @@ void AGameInfo_X::PreLogin(const struct FString& Options, const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.PreLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FString                 Address;
-		struct FUniqueNetId            UniqueId;
-		bool                           bSupportsAuth;
-		struct FString                 ErrorMessage;
-	} params;
+	AGameInfo_X_PreLogin_Params params;
 	params.Options = Options;
 	params.Address = Address;
 	params.UniqueId = UniqueId;
@@ -7223,9 +6247,7 @@ void AGameInfo_X::UpdateGameSettingsCounts()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.UpdateGameSettingsCounts");
 
-	struct
-	{
-	} params;
+	AGameInfo_X_UpdateGameSettingsCounts_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7242,9 +6264,7 @@ void AGameInfo_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameInfo_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7263,10 +6283,7 @@ bool AGameInfo_X::ProcessServerLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.ProcessServerLogin");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameInfo_X_ProcessServerLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7285,9 +6302,7 @@ void AGameInfo_X::RegisterServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.RegisterServer");
 
-	struct
-	{
-	} params;
+	AGameInfo_X_RegisterServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7308,12 +6323,7 @@ class APawn* AGameInfo_X::SpawnDefaultPawnFor(class AController* NewPlayer, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.SpawnDefaultPawnFor");
 
-	struct
-	{
-		class AController*             NewPlayer;
-		class ANavigationPoint*        StartSpot;
-		class APawn*                   ReturnValue;
-	} params;
+	AGameInfo_X_SpawnDefaultPawnFor_Params params;
 	params.NewPlayer = NewPlayer;
 	params.StartSpot = StartSpot;
 
@@ -7339,13 +6349,7 @@ void AGameInfo_X::Killed_X(class AController* Killer, class AController* KilledP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.Killed_X");
 
-	struct
-	{
-		class AController*             Killer;
-		class AController*             KilledPlayer;
-		class APawn*                   KilledPawn;
-		class UDamageComponent_X*      Damage;
-	} params;
+	AGameInfo_X_Killed_X_Params params;
 	params.Killer = Killer;
 	params.KilledPlayer = KilledPlayer;
 	params.KilledPawn = KilledPawn;
@@ -7369,11 +6373,7 @@ void AGameInfo_X::AdjustDamage_X(class APawn* injured, class UDamageComponent_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.AdjustDamage_X");
 
-	struct
-	{
-		class APawn*                   injured;
-		class UDamageComponent_X*      Damage;
-	} params;
+	AGameInfo_X_AdjustDamage_X_Params params;
 	params.injured = injured;
 	params.Damage = Damage;
 
@@ -7392,9 +6392,7 @@ void AGameInfo_X::PreBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.PreBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameInfo_X_PreBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7415,12 +6413,7 @@ class APlayerController* AGameInfo_X::SpawnPlayerController(const struct FVector
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.SpawnPlayerController");
 
-	struct
-	{
-		struct FVector                 SpawnLocation;
-		struct FRotator                SpawnRotation;
-		class APlayerController*       ReturnValue;
-	} params;
+	AGameInfo_X_SpawnPlayerController_Params params;
 	params.SpawnLocation = SpawnLocation;
 	params.SpawnRotation = SpawnRotation;
 
@@ -7446,13 +6439,7 @@ class UClass* AGameInfo_X::STATIC_SetGameType(const struct FString& MapName, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.SetGameType");
 
-	struct
-	{
-		struct FString                 MapName;
-		struct FString                 Options;
-		struct FString                 Portal;
-		class UClass*                  ReturnValue;
-	} params;
+	AGameInfo_X_SetGameType_Params params;
 	params.MapName = MapName;
 	params.Options = Options;
 	params.Portal = Portal;
@@ -7479,13 +6466,7 @@ struct FString AGameInfo_X::STATIC_GetDefaultGameClassPath(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.GetDefaultGameClassPath");
 
-	struct
-	{
-		struct FString                 MapName;
-		struct FString                 Options;
-		struct FString                 Portal;
-		struct FString                 ReturnValue;
-	} params;
+	AGameInfo_X_GetDefaultGameClassPath_Params params;
 	params.MapName = MapName;
 	params.Options = Options;
 	params.Portal = Portal;
@@ -7510,11 +6491,7 @@ void AGameInfo_X::PDI(class UClass* ActorClass, bool bOnlybDebug)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.PDI");
 
-	struct
-	{
-		class UClass*                  ActorClass;
-		bool                           bOnlybDebug;
-	} params;
+	AGameInfo_X_PDI_Params params;
 	params.ActorClass = ActorClass;
 	params.bOnlybDebug = bOnlybDebug;
 
@@ -7536,11 +6513,7 @@ void AGameInfo_X::InitGame(const struct FString& Options, struct FString* ErrorM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.InitGame");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FString                 ErrorMessage;
-	} params;
+	AGameInfo_X_InitGame_Params params;
 	params.Options = Options;
 
 	auto flags = fn->FunctionFlags;
@@ -7564,11 +6537,7 @@ void AGameInfo_X::EventInit(class AGameInfo_X* G, const struct FString& Options)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.EventInit");
 
-	struct
-	{
-		class AGameInfo_X*             G;
-		struct FString                 Options;
-	} params;
+	AGameInfo_X_EventInit_Params params;
 	params.G = G;
 	params.Options = Options;
 
@@ -7589,10 +6558,7 @@ void AGameInfo_X::EventSpawned(class AGameInfo_X* G)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_X.EventSpawned");
 
-	struct
-	{
-		class AGameInfo_X*             G;
-	} params;
+	AGameInfo_X_EventSpawned_Params params;
 	params.G = G;
 
 	auto flags = fn->FunctionFlags;
@@ -7612,10 +6578,7 @@ void UGameSetting_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSetting_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGameSetting_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -7636,11 +6599,7 @@ bool UGameSetting_X::IsSetting(const struct FName& SettingName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSetting_X.IsSetting");
 
-	struct
-	{
-		struct FName                   SettingName;
-		bool                           ReturnValue;
-	} params;
+	UGameSetting_X_IsSetting_Params params;
 	params.SettingName = SettingName;
 
 	auto flags = fn->FunctionFlags;
@@ -7663,11 +6622,7 @@ void UGameSetting_X::AddGameSettingToList(class UOnlineGameSettings_X* OnlineGam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSetting_X.AddGameSettingToList");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   OnlineGameSettings;
-		TArray<class UGameSetting_X*>  GameSettingsArray;
-	} params;
+	UGameSetting_X_AddGameSettingToList_Params params;
 	params.OnlineGameSettings = OnlineGameSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -7691,10 +6646,7 @@ void UGameSettingCategory_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGameSettingCategory_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -7715,11 +6667,7 @@ int UGameSettingCategory_X::GetGameSettingIndex(const struct FName& SettingName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.GetGameSettingIndex");
 
-	struct
-	{
-		struct FName                   SettingName;
-		int                            ReturnValue;
-	} params;
+	UGameSettingCategory_X_GetGameSettingIndex_Params params;
 	params.SettingName = SettingName;
 
 	auto flags = fn->FunctionFlags;
@@ -7742,11 +6690,7 @@ bool UGameSettingCategory_X::HasSetting(const struct FName& SettingName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.HasSetting");
 
-	struct
-	{
-		struct FName                   SettingName;
-		bool                           ReturnValue;
-	} params;
+	UGameSettingCategory_X_HasSetting_Params params;
 	params.SettingName = SettingName;
 
 	auto flags = fn->FunctionFlags;
@@ -7768,10 +6712,7 @@ void UGameSettingCategory_X::GetSelectedGameSettings(TArray<class UGameSetting_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.GetSelectedGameSettings");
 
-	struct
-	{
-		TArray<class UGameSetting_X*>  SelectedGameSettings;
-	} params;
+	UGameSettingCategory_X_GetSelectedGameSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7793,10 +6734,7 @@ class UGameSetting_X* UGameSettingCategory_X::GetFirstSelectedGameSetting()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.GetFirstSelectedGameSetting");
 
-	struct
-	{
-		class UGameSetting_X*          ReturnValue;
-	} params;
+	UGameSettingCategory_X_GetFirstSelectedGameSetting_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7815,9 +6753,7 @@ void UGameSettingCategory_X::ClearSelected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.ClearSelected");
 
-	struct
-	{
-	} params;
+	UGameSettingCategory_X_ClearSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7836,10 +6772,7 @@ void UGameSettingCategory_X::AddSelectedSetting(const struct FName& NewSelectedN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.AddSelectedSetting");
 
-	struct
-	{
-		struct FName                   NewSelectedName;
-	} params;
+	UGameSettingCategory_X_AddSelectedSetting_Params params;
 	params.NewSelectedName = NewSelectedName;
 
 	auto flags = fn->FunctionFlags;
@@ -7859,10 +6792,7 @@ void UGameSettingCategory_X::SetGameSettings(TArray<class UGameSetting_X*> NewGa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingCategory_X.SetGameSettings");
 
-	struct
-	{
-		TArray<class UGameSetting_X*>  NewGameSettings;
-	} params;
+	UGameSettingCategory_X_SetGameSettings_Params params;
 	params.NewGameSettings = NewGameSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -7882,10 +6812,7 @@ float UGameViewportClient_X::GetDefaultSafeZone()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetDefaultSafeZone");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UGameViewportClient_X_GetDefaultSafeZone_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7908,11 +6835,7 @@ void UGameViewportClient_X::OnPrimaryPlayerSwitch(class ULocalPlayer* OldPrimary
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.OnPrimaryPlayerSwitch");
 
-	struct
-	{
-		class ULocalPlayer*            OldPrimaryPlayer;
-		class ULocalPlayer*            NewPrimaryPlayer;
-	} params;
+	UGameViewportClient_X_OnPrimaryPlayerSwitch_Params params;
 	params.OldPrimaryPlayer = OldPrimaryPlayer;
 	params.NewPrimaryPlayer = NewPrimaryPlayer;
 
@@ -7934,11 +6857,7 @@ bool UGameViewportClient_X::ForceRemovePlayer(class ULocalPlayer* ExPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.ForceRemovePlayer");
 
-	struct
-	{
-		class ULocalPlayer*            ExPlayer;
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_ForceRemovePlayer_Params params;
 	params.ExPlayer = ExPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -7961,11 +6880,7 @@ bool UGameViewportClient_X::RemovePlayer(class ULocalPlayer* ExPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.RemovePlayer");
 
-	struct
-	{
-		class ULocalPlayer*            ExPlayer;
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_RemovePlayer_Params params;
 	params.ExPlayer = ExPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -7988,11 +6903,7 @@ bool UGameViewportClient_X::RemovePlayerByID(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.RemovePlayerByID");
 
-	struct
-	{
-		int                            ControllerId;
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_RemovePlayerByID_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -8012,9 +6923,7 @@ void UGameViewportClient_X::FlashWindow()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.FlashWindow");
 
-	struct
-	{
-	} params;
+	UGameViewportClient_X_FlashWindow_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8034,10 +6943,7 @@ void UGameViewportClient_X::SetHardwareMouseCursorVisibility(bool bIsVisible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.SetHardwareMouseCursorVisibility");
 
-	struct
-	{
-		bool                           bIsVisible;
-	} params;
+	UGameViewportClient_X_SetHardwareMouseCursorVisibility_Params params;
 	params.bIsVisible = bIsVisible;
 
 	auto flags = fn->FunctionFlags;
@@ -8059,12 +6965,7 @@ void UGameViewportClient_X::NotifyConnectionError(TEnumAsByte<enum class EProgre
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.NotifyConnectionError");
 
-	struct
-	{
-		TEnumAsByte<enum class EProgressMessageType> MessageType;
-		struct FString                 Message;
-		struct FString                 Title;
-	} params;
+	UGameViewportClient_X_NotifyConnectionError_Params params;
 	params.MessageType = MessageType;
 	params.Message = Message;
 	params.Title = Title;
@@ -8089,13 +6990,7 @@ class ULocalPlayer* UGameViewportClient_X::CreatePlayer(int ControllerId, bool b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.CreatePlayer");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FString                 OutError;
-		bool                           bSpawnActor;
-		class ULocalPlayer*            ReturnValue;
-	} params;
+	UGameViewportClient_X_CreatePlayer_Params params;
 	params.ControllerId = ControllerId;
 	params.bSpawnActor = bSpawnActor;
 
@@ -8122,11 +7017,7 @@ void UGameViewportClient_X::NotifyPlayerRemoved(int PlayerIndex, class ULocalPla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.NotifyPlayerRemoved");
 
-	struct
-	{
-		int                            PlayerIndex;
-		class ULocalPlayer*            RemovedPlayer;
-	} params;
+	UGameViewportClient_X_NotifyPlayerRemoved_Params params;
 	params.PlayerIndex = PlayerIndex;
 	params.RemovedPlayer = RemovedPlayer;
 
@@ -8148,11 +7039,7 @@ void UGameViewportClient_X::NotifyPlayerAdded(int PlayerIndex, class ULocalPlaye
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.NotifyPlayerAdded");
 
-	struct
-	{
-		int                            PlayerIndex;
-		class ULocalPlayer*            AddedPlayer;
-	} params;
+	UGameViewportClient_X_NotifyPlayerAdded_Params params;
 	params.PlayerIndex = PlayerIndex;
 	params.AddedPlayer = AddedPlayer;
 
@@ -8171,9 +7058,7 @@ void UGameViewportClient_X::SaveCurrentWindowState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.SaveCurrentWindowState");
 
-	struct
-	{
-	} params;
+	UGameViewportClient_X_SaveCurrentWindowState_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8197,14 +7082,7 @@ void UGameViewportClient_X::SaveWindowState(int ResX, int ResY, bool bFullScreen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.SaveWindowState");
 
-	struct
-	{
-		int                            ResX;
-		int                            ResY;
-		bool                           bFullScreen;
-		bool                           bBorderless;
-		bool                           bVsync;
-	} params;
+	UGameViewportClient_X_SaveWindowState_Params params;
 	params.ResX = ResX;
 	params.ResY = ResY;
 	params.bFullScreen = bFullScreen;
@@ -8230,11 +7108,7 @@ bool UGameViewportClient_X::GetAvailableResolutions(TArray<struct FIntPoint>* Re
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetAvailableResolutions");
 
-	struct
-	{
-		TArray<struct FIntPoint>       Resolutions;
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_GetAvailableResolutions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8260,11 +7134,7 @@ bool UGameViewportClient_X::GetAvailableResolutionsStr(TArray<struct FString>* R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetAvailableResolutionsStr");
 
-	struct
-	{
-		TArray<struct FString>         Resolutions;
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_GetAvailableResolutionsStr_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8289,10 +7159,7 @@ bool UGameViewportClient_X::IsBorderlessViewport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.IsBorderlessViewport");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameViewportClient_X_IsBorderlessViewport_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8314,10 +7181,7 @@ struct FIntPoint UGameViewportClient_X::GetViewportSizePoint()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetViewportSizePoint");
 
-	struct
-	{
-		struct FIntPoint               ReturnValue;
-	} params;
+	UGameViewportClient_X_GetViewportSizePoint_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8339,10 +7203,7 @@ struct FString UGameViewportClient_X::GetViewportSizeStr()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetViewportSizeStr");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameViewportClient_X_GetViewportSizeStr_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8364,10 +7225,7 @@ class UGameViewportClient_X* UGameViewportClient_X::STATIC_GetInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.GetInstance");
 
-	struct
-	{
-		class UGameViewportClient_X*   ReturnValue;
-	} params;
+	UGameViewportClient_X_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8389,11 +7247,7 @@ void UGameViewportClient_X::EventPrimaryPlayerChange(class ULocalPlayer* OldPrim
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.EventPrimaryPlayerChange");
 
-	struct
-	{
-		class ULocalPlayer*            OldPrimaryPlayer;
-		class ULocalPlayer*            NewPrimaryPlayer;
-	} params;
+	UGameViewportClient_X_EventPrimaryPlayerChange_Params params;
 	params.OldPrimaryPlayer = OldPrimaryPlayer;
 	params.NewPrimaryPlayer = NewPrimaryPlayer;
 
@@ -8415,11 +7269,7 @@ void UGameViewportClient_X::EventNotifyConnectionError(const struct FString& Tit
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.EventNotifyConnectionError");
 
-	struct
-	{
-		struct FString                 Title;
-		struct FString                 Message;
-	} params;
+	UGameViewportClient_X_EventNotifyConnectionError_Params params;
 	params.Title = Title;
 	params.Message = Message;
 
@@ -8440,10 +7290,7 @@ void UGameViewportClient_X::EventLocalPlayerLeave(class ULocalPlayer* OldPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.EventLocalPlayerLeave");
 
-	struct
-	{
-		class ULocalPlayer*            OldPlayer;
-	} params;
+	UGameViewportClient_X_EventLocalPlayerLeave_Params params;
 	params.OldPlayer = OldPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -8463,10 +7310,7 @@ void UGameViewportClient_X::EventLocalPlayerJoin(class ULocalPlayer* NewPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameViewportClient_X.EventLocalPlayerJoin");
 
-	struct
-	{
-		class ULocalPlayer*            NewPlayer;
-	} params;
+	UGameViewportClient_X_EventLocalPlayerJoin_Params params;
 	params.NewPlayer = NewPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -8486,10 +7330,7 @@ class UGFxObject* UGFxDataRow_X::FlashEventObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.FlashEventObject");
 
-	struct
-	{
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxDataRow_X_FlashEventObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8511,10 +7352,7 @@ struct FString UGFxDataRow_X::FlashEventString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.FlashEventString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGFxDataRow_X_FlashEventString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8536,10 +7374,7 @@ float UGFxDataRow_X::FlashEventFloat()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.FlashEventFloat");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UGFxDataRow_X_FlashEventFloat_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8561,10 +7396,7 @@ int UGFxDataRow_X::FlashEventInt()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.FlashEventInt");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UGFxDataRow_X_FlashEventInt_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8584,9 +7416,7 @@ void UGFxDataRow_X::FlashEventVoid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.FlashEventVoid");
 
-	struct
-	{
-	} params;
+	UGFxDataRow_X_FlashEventVoid_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8606,10 +7436,7 @@ void UGFxDataRow_X::SetProxy(class UObject* InProxyObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.SetProxy");
 
-	struct
-	{
-		class UObject*                 InProxyObject;
-	} params;
+	UGFxDataRow_X_SetProxy_Params params;
 	params.InProxyObject = InProxyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -8628,9 +7455,7 @@ void UGFxDataRow_X::OnRemoved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.OnRemoved");
 
-	struct
-	{
-	} params;
+	UGFxDataRow_X_OnRemoved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8647,9 +7472,7 @@ void UGFxDataRow_X::OnShellSet()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataRow_X.OnShellSet");
 
-	struct
-	{
-	} params;
+	UGFxDataRow_X_OnShellSet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8668,10 +7491,7 @@ void UGFxShell_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGFxShell_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -8692,11 +7512,7 @@ void UGFxShell_X::SetMouseKeyPressed(const struct FName& Key, bool bPressed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.SetMouseKeyPressed");
 
-	struct
-	{
-		struct FName                   Key;
-		bool                           bPressed;
-	} params;
+	UGFxShell_X_SetMouseKeyPressed_Params params;
 	params.Key = Key;
 	params.bPressed = bPressed;
 
@@ -8718,10 +7534,7 @@ void UGFxShell_X::SetAllowAnyPlayerInput(bool bAllow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.SetAllowAnyPlayerInput");
 
-	struct
-	{
-		bool                           bAllow;
-	} params;
+	UGFxShell_X_SetAllowAnyPlayerInput_Params params;
 	params.bAllow = bAllow;
 
 	auto flags = fn->FunctionFlags;
@@ -8739,9 +7552,7 @@ void UGFxShell_X::HandlePauseChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.HandlePauseChanged");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_HandlePauseChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8758,9 +7569,7 @@ void UGFxShell_X::OnShowKeyboardCanceled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.OnShowKeyboardCanceled");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_OnShowKeyboardCanceled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8779,10 +7588,7 @@ void UGFxShell_X::OnShowKeyboardComplete(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.OnShowKeyboardComplete");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UGFxShell_X_OnShowKeyboardComplete_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -8803,11 +7609,7 @@ void UGFxShell_X::HandleShowKeyboardComplete(const struct FString& NewText, bool
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.HandleShowKeyboardComplete");
 
-	struct
-	{
-		struct FString                 NewText;
-		bool                           bCanceled;
-	} params;
+	UGFxShell_X_HandleShowKeyboardComplete_Params params;
 	params.NewText = NewText;
 	params.bCanceled = bCanceled;
 
@@ -8828,10 +7630,7 @@ struct FString UGFxShell_X::PasteFromClipboard()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.PasteFromClipboard");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGFxShell_X_PasteFromClipboard_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8852,10 +7651,7 @@ void UGFxShell_X::CopyToClipboard(const struct FString& ClipboardText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.CopyToClipboard");
 
-	struct
-	{
-		struct FString                 ClipboardText;
-	} params;
+	UGFxShell_X_CopyToClipboard_Params params;
 	params.ClipboardText = ClipboardText;
 
 	auto flags = fn->FunctionFlags;
@@ -8873,9 +7669,7 @@ void UGFxShell_X::HideKeyboard()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.HideKeyboard");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_HideKeyboard_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8899,15 +7693,7 @@ bool UGFxShell_X::ShowKeyboard(const struct FString& TitleText, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.ShowKeyboard");
 
-	struct
-	{
-		struct FString                 TitleText;
-		struct FString                 DescriptionText;
-		bool                           bIsPassword;
-		struct FString                 DefaultText;
-		int                            MaxLength;
-		bool                           ReturnValue;
-	} params;
+	UGFxShell_X_ShowKeyboard_Params params;
 	params.TitleText = TitleText;
 	params.DescriptionText = DescriptionText;
 	params.bIsPassword = bIsPassword;
@@ -8933,10 +7719,7 @@ void UGFxShell_X::SetGamePaused(bool bPaused)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.SetGamePaused");
 
-	struct
-	{
-		bool                           bPaused;
-	} params;
+	UGFxShell_X_SetGamePaused_Params params;
 	params.bPaused = bPaused;
 
 	auto flags = fn->FunctionFlags;
@@ -8954,9 +7737,7 @@ void UGFxShell_X::ExitToMainMenu()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.ExitToMainMenu");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_ExitToMainMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8973,9 +7754,7 @@ void UGFxShell_X::ExitGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.ExitGame");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_ExitGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8994,10 +7773,7 @@ void UGFxShell_X::HandleMovieInputCaptureChanged(class UGFxMoviePlayer_X* MovieP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.HandleMovieInputCaptureChanged");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       MoviePlayer;
-	} params;
+	UGFxShell_X_HandleMovieInputCaptureChanged_Params params;
 	params.MoviePlayer = MoviePlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -9015,9 +7791,7 @@ void UGFxShell_X::TriggerDataCallbacks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.TriggerDataCallbacks");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_TriggerDataCallbacks_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9037,10 +7811,7 @@ void UGFxShell_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGFxShell_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -9061,10 +7832,7 @@ void UGFxShell_X::OnMovieClosed(class UGFxMoviePlayer_X* Movie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.OnMovieClosed");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Movie;
-	} params;
+	UGFxShell_X_OnMovieClosed_Params params;
 	params.Movie = Movie;
 
 	auto flags = fn->FunctionFlags;
@@ -9084,10 +7852,7 @@ void UGFxShell_X::OnMovieStarted(class UGFxMoviePlayer_X* Movie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.OnMovieStarted");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Movie;
-	} params;
+	UGFxShell_X_OnMovieStarted_Params params;
 	params.Movie = Movie;
 
 	auto flags = fn->FunctionFlags;
@@ -9107,10 +7872,7 @@ void UGFxShell_X::StopMovie(class UGFxMoviePlayer_X* Movie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.StopMovie");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Movie;
-	} params;
+	UGFxShell_X_StopMovie_Params params;
 	params.Movie = Movie;
 
 	auto flags = fn->FunctionFlags;
@@ -9131,10 +7893,7 @@ void UGFxShell_X::StartMovie(class UGFxMoviePlayer_X* Movie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.StartMovie");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Movie;
-	} params;
+	UGFxShell_X_StartMovie_Params params;
 	params.Movie = Movie;
 
 	auto flags = fn->FunctionFlags;
@@ -9153,9 +7912,7 @@ void UGFxShell_X::Stop()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.Stop");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_Stop_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9173,9 +7930,7 @@ void UGFxShell_X::OnStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.OnStart");
 
-	struct
-	{
-	} params;
+	UGFxShell_X_OnStart_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9194,10 +7949,7 @@ void UGFxShell_X::Start(class ULocalPlayer_X* InPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.Start");
 
-	struct
-	{
-		class ULocalPlayer_X*          InPlayer;
-	} params;
+	UGFxShell_X_Start_Params params;
 	params.InPlayer = InPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -9218,10 +7970,7 @@ void UGFxShell_X::EventReceivedInput(class UGFxShell_X* InShell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.EventReceivedInput");
 
-	struct
-	{
-		class UGFxShell_X*             InShell;
-	} params;
+	UGFxShell_X_EventReceivedInput_Params params;
 	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
@@ -9241,10 +7990,7 @@ void UGFxShell_X::EventInputTypeChanged(class UGFxShell_X* InShell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.EventInputTypeChanged");
 
-	struct
-	{
-		class UGFxShell_X*             InShell;
-	} params;
+	UGFxShell_X_EventInputTypeChanged_Params params;
 	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
@@ -9264,10 +8010,7 @@ void UGFxShell_X::EventInputCaptureChanged(class UGFxShell_X* InShell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxShell_X.EventInputCaptureChanged");
 
-	struct
-	{
-		class UGFxShell_X*             InShell;
-	} params;
+	UGFxShell_X_EventInputCaptureChanged_Params params;
 	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
@@ -9287,10 +8030,7 @@ void UGFxDataStore_X::ExportFakeData(const struct FName& TableName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.ExportFakeData");
 
-	struct
-	{
-		struct FName                   TableName;
-	} params;
+	UGFxDataStore_X_ExportFakeData_Params params;
 	params.TableName = TableName;
 
 	auto flags = fn->FunctionFlags;
@@ -9311,10 +8051,7 @@ void UGFxDataStore_X::PrintData(const struct FName& TableName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.PrintData");
 
-	struct
-	{
-		struct FName                   TableName;
-	} params;
+	UGFxDataStore_X_PrintData_Params params;
 	params.TableName = TableName;
 
 	auto flags = fn->FunctionFlags;
@@ -9336,11 +8073,7 @@ int UGFxDataStore_X::GetObjectRow(class UGFxDataRow_X* O)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.GetObjectRow");
 
-	struct
-	{
-		class UGFxDataRow_X*           O;
-		int                            ReturnValue;
-	} params;
+	UGFxDataStore_X_GetObjectRow_Params params;
 	params.O = O;
 
 	auto flags = fn->FunctionFlags;
@@ -9365,12 +8098,7 @@ void UGFxDataStore_X::AllObjects(class UClass* ObjClass, class UGFxDataRow_X** O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.AllObjects");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		class UGFxDataRow_X*           OutObject;
-		int                            Row;
-	} params;
+	UGFxDataStore_X_AllObjects_Params params;
 	params.ObjClass = ObjClass;
 
 	auto flags = fn->FunctionFlags;
@@ -9398,12 +8126,7 @@ class UGFxDataRow_X* UGFxDataStore_X::GetObject(class UClass* ObjClass, int Row)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.GetObject");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		int                            Row;
-		class UGFxDataRow_X*           ReturnValue;
-	} params;
+	UGFxDataStore_X_GetObject_Params params;
 	params.ObjClass = ObjClass;
 	params.Row = Row;
 
@@ -9427,10 +8150,7 @@ void UGFxDataStore_X::RemoveObject(class UGFxDataRow_X* O)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.RemoveObject");
 
-	struct
-	{
-		class UGFxDataRow_X*           O;
-	} params;
+	UGFxDataStore_X_RemoveObject_Params params;
 	params.O = O;
 
 	auto flags = fn->FunctionFlags;
@@ -9452,11 +8172,7 @@ void UGFxDataStore_X::BindObject(class UGFxDataRow_X* Object, int Row)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.BindObject");
 
-	struct
-	{
-		class UGFxDataRow_X*           Object;
-		int                            Row;
-	} params;
+	UGFxDataStore_X_BindObject_Params params;
 	params.Object = Object;
 	params.Row = Row;
 
@@ -9480,12 +8196,7 @@ class UGFxDataRow_X* UGFxDataStore_X::CreateObject(class UClass* ObjClass, int R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.CreateObject");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		int                            Row;
-		class UGFxDataRow_X*           ReturnValue;
-	} params;
+	UGFxDataStore_X_CreateObject_Params params;
 	params.ObjClass = ObjClass;
 	params.Row = Row;
 
@@ -9507,9 +8218,7 @@ void UGFxDataStore_X::EmptyTables()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.EmptyTables");
 
-	struct
-	{
-	} params;
+	UGFxDataStore_X_EmptyTables_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9529,10 +8238,7 @@ void UGFxDataStore_X::EmptyTable(const struct FName& Table)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.EmptyTable");
 
-	struct
-	{
-		struct FName                   Table;
-	} params;
+	UGFxDataStore_X_EmptyTable_Params params;
 	params.Table = Table;
 
 	auto flags = fn->FunctionFlags;
@@ -9554,11 +8260,7 @@ void UGFxDataStore_X::RemoveRow(const struct FName& Table, int Row)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.RemoveRow");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-	} params;
+	UGFxDataStore_X_RemoveRow_Params params;
 	params.Table = Table;
 	params.Row = Row;
 
@@ -9581,11 +8283,7 @@ int UGFxDataStore_X::GetRowCount(const struct FName& Table)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.GetRowCount");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            ReturnValue;
-	} params;
+	UGFxDataStore_X_GetRowCount_Params params;
 	params.Table = Table;
 
 	auto flags = fn->FunctionFlags;
@@ -9611,13 +8309,7 @@ struct FASValue UGFxDataStore_X::GetValue(const struct FName& Table, int Row, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.GetValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxDataStore_X_GetValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9645,13 +8337,7 @@ void UGFxDataStore_X::SetASValue(const struct FName& Table, int Row, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetASValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		struct FASValue                Value;
-	} params;
+	UGFxDataStore_X_SetASValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9680,13 +8366,7 @@ void UGFxDataStore_X::SetTextureValue(const struct FName& Table, int Row, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetTextureValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		class UTexture*                Value;
-	} params;
+	UGFxDataStore_X_SetTextureValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9713,13 +8393,7 @@ void UGFxDataStore_X::SetStringValue(const struct FName& Table, int Row, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetStringValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		struct FString                 Value;
-	} params;
+	UGFxDataStore_X_SetStringValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9745,12 +8419,7 @@ void UGFxDataStore_X::SetQWordValue(const struct FName& Table, int Row, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetQWordValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-	} params;
+	UGFxDataStore_X_SetQWordValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9776,13 +8445,7 @@ void UGFxDataStore_X::SetFloatValue(const struct FName& Table, int Row, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetFloatValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		float                          Value;
-	} params;
+	UGFxDataStore_X_SetFloatValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9809,13 +8472,7 @@ void UGFxDataStore_X::SetIntValue(const struct FName& Table, int Row, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetIntValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		int                            Value;
-	} params;
+	UGFxDataStore_X_SetIntValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9842,13 +8499,7 @@ void UGFxDataStore_X::SetBoolValue(const struct FName& Table, int Row, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetBoolValue");
 
-	struct
-	{
-		struct FName                   Table;
-		int                            Row;
-		struct FName                   Column;
-		bool                           Value;
-	} params;
+	UGFxDataStore_X_SetBoolValue_Params params;
 	params.Table = Table;
 	params.Row = Row;
 	params.Column = Column;
@@ -9874,12 +8525,7 @@ void UGFxDataStore_X::SetDirty(const struct FName& TableName, int RowNum, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetDirty");
 
-	struct
-	{
-		struct FName                   TableName;
-		int                            RowNum;
-		struct FName                   Value;
-	} params;
+	UGFxDataStore_X_SetDirty_Params params;
 	params.TableName = TableName;
 	params.RowNum = RowNum;
 	params.Value = Value;
@@ -9902,10 +8548,7 @@ void UGFxEngine_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGFxEngine_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -9923,9 +8566,7 @@ void UGFxEngine_X::OnGameSessionEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.OnGameSessionEnded");
 
-	struct
-	{
-	} params;
+	UGFxEngine_X_OnGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9946,12 +8587,7 @@ void UGFxEngine_X::STATIC_GetFlashKey(const struct FName& UnrealKey, int* KeyCod
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.GetFlashKey");
 
-	struct
-	{
-		struct FName                   UnrealKey;
-		int                            KeyCode;
-		int                            MouseButton;
-	} params;
+	UGFxEngine_X_GetFlashKey_Params params;
 	params.UnrealKey = UnrealKey;
 
 	auto flags = fn->FunctionFlags;
@@ -9975,9 +8611,7 @@ void UGFxEngine_X::UpdateHardwareMouseCursorVisibility()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.UpdateHardwareMouseCursorVisibility");
 
-	struct
-	{
-	} params;
+	UGFxEngine_X_UpdateHardwareMouseCursorVisibility_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9996,10 +8630,7 @@ void UGFxEngine_X::HandleShellInputTypeChanged(class UGFxShell_X* InShell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.HandleShellInputTypeChanged");
 
-	struct
-	{
-		class UGFxShell_X*             InShell;
-	} params;
+	UGFxEngine_X_HandleShellInputTypeChanged_Params params;
 	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
@@ -10019,10 +8650,7 @@ void UGFxEngine_X::HandleGFxEnabledChanged(class UGameViewportClient* GVC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.HandleGFxEnabledChanged");
 
-	struct
-	{
-		class UGameViewportClient*     GVC;
-	} params;
+	UGFxEngine_X_HandleGFxEnabledChanged_Params params;
 	params.GVC = GVC;
 
 	auto flags = fn->FunctionFlags;
@@ -10042,10 +8670,7 @@ void UGFxEngine_X::HandleShellInputCaptureChanged(class UGFxShell_X* InShell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.HandleShellInputCaptureChanged");
 
-	struct
-	{
-		class UGFxShell_X*             InShell;
-	} params;
+	UGFxEngine_X_HandleShellInputCaptureChanged_Params params;
 	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
@@ -10063,9 +8688,7 @@ void UGFxEngine_X::FlushDirtyObjects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.FlushDirtyObjects");
 
-	struct
-	{
-	} params;
+	UGFxEngine_X_FlushDirtyObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10085,10 +8708,7 @@ void UGFxEngine_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGFxEngine_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -10110,11 +8730,7 @@ class UGFxShell_X* UGFxEngine_X::FindShell(class ULocalPlayer_X* ForPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.FindShell");
 
-	struct
-	{
-		class ULocalPlayer_X*          ForPlayer;
-		class UGFxShell_X*             ReturnValue;
-	} params;
+	UGFxEngine_X_FindShell_Params params;
 	params.ForPlayer = ForPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -10136,10 +8752,7 @@ void UGFxEngine_X::OnShellDestroyed(class UGFxShell_X* Shell)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.OnShellDestroyed");
 
-	struct
-	{
-		class UGFxShell_X*             Shell;
-	} params;
+	UGFxEngine_X_OnShellDestroyed_Params params;
 	params.Shell = Shell;
 
 	auto flags = fn->FunctionFlags;
@@ -10159,10 +8772,7 @@ void UGFxEngine_X::DestroyShell(class ULocalPlayer* ForPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.DestroyShell");
 
-	struct
-	{
-		class ULocalPlayer*            ForPlayer;
-	} params;
+	UGFxEngine_X_DestroyShell_Params params;
 	params.ForPlayer = ForPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -10182,10 +8792,7 @@ class UGFxShell_X* UGFxEngine_X::CreateShell()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.CreateShell");
 
-	struct
-	{
-		class UGFxShell_X*             ReturnValue;
-	} params;
+	UGFxEngine_X_CreateShell_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10207,11 +8814,7 @@ class UGFxShell_X* UGFxEngine_X::GetShell(class ULocalPlayer_X* ForPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.GetShell");
 
-	struct
-	{
-		class ULocalPlayer_X*          ForPlayer;
-		class UGFxShell_X*             ReturnValue;
-	} params;
+	UGFxEngine_X_GetShell_Params params;
 	params.ForPlayer = ForPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -10234,10 +8837,7 @@ void UGFxEngine_X::SetShellArchetype(class UGFxShell_X* InShellArchetype)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.SetShellArchetype");
 
-	struct
-	{
-		class UGFxShell_X*             InShellArchetype;
-	} params;
+	UGFxEngine_X_SetShellArchetype_Params params;
 	params.InShellArchetype = InShellArchetype;
 
 	auto flags = fn->FunctionFlags;
@@ -10258,11 +8858,7 @@ class UGFxEngine_X* UGFxEngine_X::STATIC_GetInstance(class UClass* Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.GetInstance");
 
-	struct
-	{
-		class UClass*                  Type;
-		class UGFxEngine_X*            ReturnValue;
-	} params;
+	UGFxEngine_X_GetInstance_Params params;
 	params.Type = Type;
 
 	auto flags = fn->FunctionFlags;
@@ -10283,9 +8879,7 @@ void UGFxEngine_X::EventGameSessionEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.EventGameSessionEnded");
 
-	struct
-	{
-	} params;
+	UGFxEngine_X_EventGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10304,10 +8898,7 @@ void UGFxEngine_X::EventAvailableGamepadTypeChanged(class UGFxEngine_X* Engine)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.EventAvailableGamepadTypeChanged");
 
-	struct
-	{
-		class UGFxEngine_X*            Engine;
-	} params;
+	UGFxEngine_X_EventAvailableGamepadTypeChanged_Params params;
 	params.Engine = Engine;
 
 	auto flags = fn->FunctionFlags;
@@ -10327,10 +8918,7 @@ void UGFxMoviePlayer_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UGFxMoviePlayer_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -10350,10 +8938,7 @@ void UGFxMoviePlayer_X::SetAllowAnyPlayerInput(bool bAllow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.SetAllowAnyPlayerInput");
 
-	struct
-	{
-		bool                           bAllow;
-	} params;
+	UGFxMoviePlayer_X_SetAllowAnyPlayerInput_Params params;
 	params.bAllow = bAllow;
 
 	auto flags = fn->FunctionFlags;
@@ -10375,12 +8960,7 @@ bool UGFxMoviePlayer_X::PopString(const struct FString& Value, TArray<struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.PopString");
 
-	struct
-	{
-		TArray<struct FString>         Items;
-		struct FString                 Value;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_X_PopString_Params params;
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
@@ -10406,11 +8986,7 @@ void UGFxMoviePlayer_X::SetGlobalRTCP(const struct FName& Key, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.SetGlobalRTCP");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UGFxMoviePlayer_X_SetGlobalRTCP_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -10431,10 +9007,7 @@ void UGFxMoviePlayer_X::StopAllSounds(class UGFxSoundPack_X* SoundPack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.StopAllSounds");
 
-	struct
-	{
-		class UGFxSoundPack_X*         SoundPack;
-	} params;
+	UGFxMoviePlayer_X_StopAllSounds_Params params;
 	params.SoundPack = SoundPack;
 
 	auto flags = fn->FunctionFlags;
@@ -10454,10 +9027,7 @@ void UGFxMoviePlayer_X::StopSound(const struct FName& EventName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.StopSound");
 
-	struct
-	{
-		struct FName                   EventName;
-	} params;
+	UGFxMoviePlayer_X_StopSound_Params params;
 	params.EventName = EventName;
 
 	auto flags = fn->FunctionFlags;
@@ -10477,10 +9047,7 @@ void UGFxMoviePlayer_X::PlaySound(const struct FName& EventName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.PlaySound");
 
-	struct
-	{
-		struct FName                   EventName;
-	} params;
+	UGFxMoviePlayer_X_PlaySound_Params params;
 	params.EventName = EventName;
 
 	auto flags = fn->FunctionFlags;
@@ -10501,11 +9068,7 @@ void UGFxMoviePlayer_X::PlaySoundFromTheme(const struct FName& EventName, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.PlaySoundFromTheme");
 
-	struct
-	{
-		struct FName                   EventName;
-		struct FName                   SoundThemeName;
-	} params;
+	UGFxMoviePlayer_X_PlaySoundFromTheme_Params params;
 	params.EventName = EventName;
 	params.SoundThemeName = SoundThemeName;
 
@@ -10526,10 +9089,7 @@ class AActor* UGFxMoviePlayer_X::GetSoundSource()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.GetSoundSource");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGFxMoviePlayer_X_GetSoundSource_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10548,9 +9108,7 @@ void UGFxMoviePlayer_X::UpdateCursorVisibility()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.UpdateCursorVisibility");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_X_UpdateCursorVisibility_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10570,11 +9128,7 @@ void UGFxMoviePlayer_X::SetCaptureAllInput(bool bNewCaptureInput, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.SetCaptureAllInput");
 
-	struct
-	{
-		bool                           bNewCaptureInput;
-		struct FString                 SceneName;
-	} params;
+	UGFxMoviePlayer_X_SetCaptureAllInput_Params params;
 	params.bNewCaptureInput = bNewCaptureInput;
 	params.SceneName = SceneName;
 
@@ -10596,11 +9150,7 @@ void UGFxMoviePlayer_X::SetReceiveInput(bool bNewReceiveInput, const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.SetReceiveInput");
 
-	struct
-	{
-		bool                           bNewReceiveInput;
-		struct FString                 SceneName;
-	} params;
+	UGFxMoviePlayer_X_SetReceiveInput_Params params;
 	params.bNewReceiveInput = bNewReceiveInput;
 	params.SceneName = SceneName;
 
@@ -10622,11 +9172,7 @@ void UGFxMoviePlayer_X::SetCursorVisible(bool bVisible, const struct FString& Sc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.SetCursorVisible");
 
-	struct
-	{
-		bool                           bVisible;
-		struct FString                 SceneName;
-	} params;
+	UGFxMoviePlayer_X_SetCursorVisible_Params params;
 	params.bVisible = bVisible;
 	params.SceneName = SceneName;
 
@@ -10645,9 +9191,7 @@ void UGFxMoviePlayer_X::InitShellHooks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.InitShellHooks");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_X_InitShellHooks_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10665,9 +9209,7 @@ void UGFxMoviePlayer_X::InitDataHooks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.InitDataHooks");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_X_InitDataHooks_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10685,9 +9227,7 @@ void UGFxMoviePlayer_X::OnClose()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.OnClose");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_X_OnClose_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10708,11 +9248,7 @@ bool UGFxMoviePlayer_X::Start(bool StartPaused)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.Start");
 
-	struct
-	{
-		bool                           StartPaused;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_X_Start_Params params;
 	params.StartPaused = StartPaused;
 
 	auto flags = fn->FunctionFlags;
@@ -10735,10 +9271,7 @@ void UGFxMoviePlayer_X::EventInputCaptureChanged(class UGFxMoviePlayer_X* Player
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.EventInputCaptureChanged");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Player;
-	} params;
+	UGFxMoviePlayer_X_EventInputCaptureChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -10758,10 +9291,7 @@ void UGFxMoviePlayer_X::EventClosed(class UGFxMoviePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.EventClosed");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Player;
-	} params;
+	UGFxMoviePlayer_X_EventClosed_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -10781,10 +9311,7 @@ void UGFxMoviePlayer_X::EventStarted(class UGFxMoviePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxMoviePlayer_X.EventStarted");
 
-	struct
-	{
-		class UGFxMoviePlayer_X*       Player;
-	} params;
+	UGFxMoviePlayer_X_EventStarted_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -10807,13 +9334,7 @@ bool UGFxSoundPack_X::ToggleSound(int Idx, class AActor* Target, bool bPlay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxSoundPack_X.ToggleSound");
 
-	struct
-	{
-		int                            Idx;
-		class AActor*                  Target;
-		bool                           bPlay;
-		bool                           ReturnValue;
-	} params;
+	UGFxSoundPack_X_ToggleSound_Params params;
 	params.Idx = Idx;
 	params.Target = Target;
 	params.bPlay = bPlay;
@@ -10837,10 +9358,7 @@ void UGFxSoundPack_X::StopAll(class AActor* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxSoundPack_X.StopAll");
 
-	struct
-	{
-		class AActor*                  Target;
-	} params;
+	UGFxSoundPack_X_StopAll_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -10862,12 +9380,7 @@ bool UGFxSoundPack_X::StopSound(const struct FName& SoundName, class AActor* Tar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxSoundPack_X.StopSound");
 
-	struct
-	{
-		struct FName                   SoundName;
-		class AActor*                  Target;
-		bool                           ReturnValue;
-	} params;
+	UGFxSoundPack_X_StopSound_Params params;
 	params.SoundName = SoundName;
 	params.Target = Target;
 
@@ -10892,12 +9405,7 @@ bool UGFxSoundPack_X::PlaySound(const struct FName& SoundName, class AActor* Tar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxSoundPack_X.PlaySound");
 
-	struct
-	{
-		struct FName                   SoundName;
-		class AActor*                  Target;
-		bool                           ReturnValue;
-	} params;
+	UGFxSoundPack_X_PlaySound_Params params;
 	params.SoundName = SoundName;
 	params.Target = Target;
 
@@ -10920,10 +9428,7 @@ void UInterpComponent_X::DetachComponent(class UActorComponent* Component)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.InterpComponent_X.DetachComponent");
 
-	struct
-	{
-		class UActorComponent*         Component;
-	} params;
+	UInterpComponent_X_DetachComponent_Params params;
 	params.Component = Component;
 
 	auto flags = fn->FunctionFlags;
@@ -10947,13 +9452,7 @@ void UInterpComponent_X::AttachComponent(class UActorComponent* Component, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.InterpComponent_X.AttachComponent");
 
-	struct
-	{
-		class UActorComponent*         Component;
-		struct FVector                 RelativeLocation;
-		struct FRotator                RelativeRotation;
-		struct FVector                 RelativeScale;
-	} params;
+	UInterpComponent_X_AttachComponent_Params params;
 	params.Component = Component;
 	params.RelativeLocation = RelativeLocation;
 	params.RelativeRotation = RelativeRotation;
@@ -10978,11 +9477,7 @@ bool UJsonTests_X::STATIC_ToJsonAndBack(class UObject* Target)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JsonTests_X.ToJsonAndBack");
 
-	struct
-	{
-		class UObject*                 Target;
-		bool                           ReturnValue;
-	} params;
+	UJsonTests_X_ToJsonAndBack_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -11005,10 +9500,7 @@ void UJsonTests_X::STATIC_RunJsonTests(int RandomSeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JsonTests_X.RunJsonTests");
 
-	struct
-	{
-		int                            RandomSeed;
-	} params;
+	UJsonTests_X_RunJsonTests_Params params;
 	params.RandomSeed = RandomSeed;
 
 	auto flags = fn->FunctionFlags;
@@ -11030,11 +9522,7 @@ bool ULanBeacon_X::BroadcastMessage(class UObject* Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanBeacon_X.BroadcastMessage");
 
-	struct
-	{
-		class UObject*                 Message;
-		bool                           ReturnValue;
-	} params;
+	ULanBeacon_X_BroadcastMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -11057,11 +9545,7 @@ bool ULanBeacon_X::BroadcastData(TArray<unsigned char>* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanBeacon_X.BroadcastData");
 
-	struct
-	{
-		TArray<unsigned char>          Data;
-		bool                           ReturnValue;
-	} params;
+	ULanBeacon_X_BroadcastData_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11084,9 +9568,7 @@ void ULanBeacon_X::Stop()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanBeacon_X.Stop");
 
-	struct
-	{
-	} params;
+	ULanBeacon_X_Stop_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11107,11 +9589,7 @@ bool ULanBeacon_X::Start(TEnumAsByte<enum class ELanBeaconState> InitialState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanBeacon_X.Start");
 
-	struct
-	{
-		TEnumAsByte<enum class ELanBeaconState> InitialState;
-		bool                           ReturnValue;
-	} params;
+	ULanBeacon_X_Start_Params params;
 	params.InitialState = InitialState;
 
 	auto flags = fn->FunctionFlags;
@@ -11135,11 +9613,7 @@ void ULensFlareComponent_X::SetLinearColorParameter(const struct FName& Key, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LensFlareComponent_X.SetLinearColorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FLinearColor            Value;
-	} params;
+	ULensFlareComponent_X_SetLinearColorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -11162,11 +9636,7 @@ void ULensFlareComponent_X::SetVectorParameter(const struct FName& Key, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LensFlareComponent_X.SetVectorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FVector                 Value;
-	} params;
+	ULensFlareComponent_X_SetVectorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -11189,11 +9659,7 @@ void ULensFlareComponent_X::SetFloatParameter(const struct FName& Key, float Val
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LensFlareComponent_X.SetFloatParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	ULensFlareComponent_X_SetFloatParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -11216,11 +9682,7 @@ void ULensFlareComponent_X::SetNameParameter(const struct FName& Key, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LensFlareComponent_X.SetNameParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	ULensFlareComponent_X_SetNameParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -11242,10 +9704,7 @@ bool ULocalCache_X::HasActiveTasks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.HasActiveTasks");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	ULocalCache_X_HasActiveTasks_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11269,12 +9728,7 @@ void ULocalCache_X::ExportObject(class UObject* CacheObject, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.ExportObject");
 
-	struct
-	{
-		class UObject*                 CacheObject;
-		struct FString                 Path;
-		struct FScriptDelegate         Callback;
-	} params;
+	ULocalCache_X_ExportObject_Params params;
 	params.CacheObject = CacheObject;
 	params.Path = Path;
 	params.Callback = Callback;
@@ -11299,12 +9753,7 @@ void ULocalCache_X::ImportObject(class UObject* CacheObject, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.ImportObject");
 
-	struct
-	{
-		class UObject*                 CacheObject;
-		struct FString                 Path;
-		struct FScriptDelegate         Callback;
-	} params;
+	ULocalCache_X_ImportObject_Params params;
 	params.CacheObject = CacheObject;
 	params.Path = Path;
 	params.Callback = Callback;
@@ -11329,12 +9778,7 @@ void ULocalCache_X::EventExportFinished(class ULocalCache_X* Cache, class UObjec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.EventExportFinished");
 
-	struct
-	{
-		class ULocalCache_X*           Cache;
-		class UObject*                 CacheObject;
-		class UError_X*                Error;
-	} params;
+	ULocalCache_X_EventExportFinished_Params params;
 	params.Cache = Cache;
 	params.CacheObject = CacheObject;
 	params.Error = Error;
@@ -11358,12 +9802,7 @@ void ULocalCache_X::EventImportFinished(class ULocalCache_X* Cache, class UObjec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.EventImportFinished");
 
-	struct
-	{
-		class ULocalCache_X*           Cache;
-		class UObject*                 CacheObject;
-		class UError_X*                Error;
-	} params;
+	ULocalCache_X_EventImportFinished_Params params;
 	params.Cache = Cache;
 	params.CacheObject = CacheObject;
 	params.Error = Error;
@@ -11387,12 +9826,7 @@ bool ULocalPlayer_X::SpawnPlayActor(const struct FString& URL, struct FString* O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalPlayer_X.SpawnPlayActor");
 
-	struct
-	{
-		struct FString                 URL;
-		struct FString                 OutError;
-		bool                           ReturnValue;
-	} params;
+	ULocalPlayer_X_SpawnPlayActor_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -11416,9 +9850,7 @@ void ULocalPlayer_X::NotifyServerConnectionOpen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalPlayer_X.NotifyServerConnectionOpen");
 
-	struct
-	{
-	} params;
+	ULocalPlayer_X_NotifyServerConnectionOpen_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11435,9 +9867,7 @@ void ULocalPlayer_X::OnRemoved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalPlayer_X.OnRemoved");
 
-	struct
-	{
-	} params;
+	ULocalPlayer_X_OnRemoved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11454,9 +9884,7 @@ void ULocalPlayer_X::OnCreated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalPlayer_X.OnCreated");
 
-	struct
-	{
-	} params;
+	ULocalPlayer_X_OnCreated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11473,9 +9901,7 @@ void AMapFlythroughProfiler_X::SetupPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapFlythroughProfiler_X.SetupPlayers");
 
-	struct
-	{
-	} params;
+	AMapFlythroughProfiler_X_SetupPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11492,9 +9918,7 @@ void AMapFlythroughProfiler_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapFlythroughProfiler_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AMapFlythroughProfiler_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11513,10 +9937,7 @@ void AMapFlythroughProfiler_X::EventFinished(class AMapFlythroughProfiler_X* Pro
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapFlythroughProfiler_X.EventFinished");
 
-	struct
-	{
-		class AMapFlythroughProfiler_X* Profiler;
-	} params;
+	AMapFlythroughProfiler_X_EventFinished_Params params;
 	params.Profiler = Profiler;
 
 	auto flags = fn->FunctionFlags;
@@ -11536,10 +9957,7 @@ void UMatchmakingReporter::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UMatchmakingReporter_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -11560,11 +9978,7 @@ struct FString UMatchmakingReporter::GetMatchmakingStateName(TEnumAsByte<enum cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.GetMatchmakingStateName");
 
-	struct
-	{
-		TEnumAsByte<enum class EMatchmakingState> InState;
-		struct FString                 ReturnValue;
-	} params;
+	UMatchmakingReporter_GetMatchmakingStateName_Params params;
 	params.InState = InState;
 
 	auto flags = fn->FunctionFlags;
@@ -11588,11 +10002,7 @@ void UMatchmakingReporter::AddInfo(const struct FString& Info, TEnumAsByte<enum 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.AddInfo");
 
-	struct
-	{
-		struct FString                 Info;
-		TEnumAsByte<enum class EMatchmakingInfoSeverity> Severity;
-	} params;
+	UMatchmakingReporter_AddInfo_Params params;
 	params.Info = Info;
 	params.Severity = Severity;
 
@@ -11614,10 +10024,7 @@ void UMatchmakingReporter::SetMatchmakingState(TEnumAsByte<enum class EMatchmaki
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.SetMatchmakingState");
 
-	struct
-	{
-		TEnumAsByte<enum class EMatchmakingState> InState;
-	} params;
+	UMatchmakingReporter_SetMatchmakingState_Params params;
 	params.InState = InState;
 
 	auto flags = fn->FunctionFlags;
@@ -11636,9 +10043,7 @@ void UMatchmakingReporter::ClearStateReports()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.ClearStateReports");
 
-	struct
-	{
-	} params;
+	UMatchmakingReporter_ClearStateReports_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11658,10 +10063,7 @@ bool UMatchmakingReporter::Initialize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.Initialize");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMatchmakingReporter_Initialize_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11681,9 +10083,7 @@ void UMatchmakingReporter::STATIC_ShowReportsLocation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.ShowReportsLocation");
 
-	struct
-	{
-	} params;
+	UMatchmakingReporter_ShowReportsLocation_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11703,10 +10103,7 @@ class UMatchmakingReporter* UMatchmakingReporter::STATIC_GetInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingReporter.GetInstance");
 
-	struct
-	{
-		class UMatchmakingReporter*    ReturnValue;
-	} params;
+	UMatchmakingReporter_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11729,11 +10126,7 @@ struct FString UMetricsGroup_X::VectorToString(const struct FVector& V)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.VectorToString");
 
-	struct
-	{
-		struct FVector                 V;
-		struct FString                 ReturnValue;
-	} params;
+	UMetricsGroup_X_VectorToString_Params params;
 	params.V = V;
 
 	auto flags = fn->FunctionFlags;
@@ -11753,9 +10146,7 @@ void UMetricsGroup_X::STATIC_RecordFunction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.RecordFunction");
 
-	struct
-	{
-	} params;
+	UMetricsGroup_X_RecordFunction_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11775,10 +10166,7 @@ class UMetricsSystem_X* UMetricsGroup_X::GetMetricsSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.GetMetricsSystem");
 
-	struct
-	{
-		class UMetricsSystem_X*        ReturnValue;
-	} params;
+	UMetricsGroup_X_GetMetricsSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11800,10 +10188,7 @@ void UMetricsSystem_X::MetricsFlood(const struct FString& LastEventName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.MetricsFlood");
 
-	struct
-	{
-		struct FString                 LastEventName;
-	} params;
+	UMetricsSystem_X_MetricsFlood_Params params;
 	params.LastEventName = LastEventName;
 
 	auto flags = fn->FunctionFlags;
@@ -11823,10 +10208,7 @@ void UMetricsSystem_X::SetLevelSessionID(const struct FGuid& Id)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.SetLevelSessionID");
 
-	struct
-	{
-		struct FGuid                   Id;
-	} params;
+	UMetricsSystem_X_SetLevelSessionID_Params params;
 	params.Id = Id;
 
 	auto flags = fn->FunctionFlags;
@@ -11845,9 +10227,7 @@ void UMetricsSystem_X::Send()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.Send");
 
-	struct
-	{
-	} params;
+	UMetricsSystem_X_Send_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11869,12 +10249,7 @@ void UMetricsSystem_X::RecordEvent(const struct FString& Category, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.RecordEvent");
 
-	struct
-	{
-		struct FString                 Category;
-		struct FName                   Event;
-		struct FString                 Data;
-	} params;
+	UMetricsSystem_X_RecordEvent_Params params;
 	params.Category = Category;
 	params.Event = Event;
 
@@ -11899,10 +10274,7 @@ void UMetricsSystem_X::STATIC_RecordFunction(const struct FString& Category)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.RecordFunction");
 
-	struct
-	{
-		struct FString                 Category;
-	} params;
+	UMetricsSystem_X_RecordFunction_Params params;
 	params.Category = Category;
 
 	auto flags = fn->FunctionFlags;
@@ -11923,10 +10295,7 @@ int UObjectListComponent_X::GetCount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.GetCount");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UObjectListComponent_X_GetCount_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11948,10 +10317,7 @@ void UObjectListComponent_X::Merge(TArray<class UObject*> NewList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.Merge");
 
-	struct
-	{
-		TArray<class UObject*>         NewList;
-	} params;
+	UObjectListComponent_X_Merge_Params params;
 	params.NewList = NewList;
 
 	auto flags = fn->FunctionFlags;
@@ -11972,10 +10338,7 @@ void UObjectListComponent_X::RemoveObject(class UObject* NewObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.RemoveObject");
 
-	struct
-	{
-		class UObject*                 NewObj;
-	} params;
+	UObjectListComponent_X_RemoveObject_Params params;
 	params.NewObj = NewObj;
 
 	auto flags = fn->FunctionFlags;
@@ -11996,10 +10359,7 @@ void UObjectListComponent_X::AddObject(class UObject* NewObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.AddObject");
 
-	struct
-	{
-		class UObject*                 NewObj;
-	} params;
+	UObjectListComponent_X_AddObject_Params params;
 	params.NewObj = NewObj;
 
 	auto flags = fn->FunctionFlags;
@@ -12021,11 +10381,7 @@ void UObjectListComponent_X::RemoveListener(class UObject* Listener, class UClas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.RemoveListener");
 
-	struct
-	{
-		class UObject*                 Listener;
-		class UClass*                  ObjClass;
-	} params;
+	UObjectListComponent_X_RemoveListener_Params params;
 	params.Listener = Listener;
 	params.ObjClass = ObjClass;
 
@@ -12049,12 +10405,7 @@ void UObjectListComponent_X::AddListener(const struct FScriptDelegate& OnAdd, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.AddListener");
 
-	struct
-	{
-		struct FScriptDelegate         OnAdd;
-		struct FScriptDelegate         OnRemove;
-		class UClass*                  ObjClass;
-	} params;
+	UObjectListComponent_X_AddListener_Params params;
 	params.OnAdd = OnAdd;
 	params.OnRemove = OnRemove;
 	params.ObjClass = ObjClass;
@@ -12079,12 +10430,7 @@ void UObjectListComponent_X::AllObjects(class UClass* BaseClass, class UClass* I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.AllObjects");
 
-	struct
-	{
-		class UClass*                  BaseClass;
-		class UObject*                 Obj;
-		class UClass*                  InterfaceClass;
-	} params;
+	UObjectListComponent_X_AllObjects_Params params;
 	params.BaseClass = BaseClass;
 	params.InterfaceClass = InterfaceClass;
 
@@ -12109,10 +10455,7 @@ void UObjectListComponent_X::ObjectListenerCallback(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectListComponent_X.ObjectListenerCallback");
 
-	struct
-	{
-		class UObject*                 Obj;
-	} params;
+	UObjectListComponent_X_ObjectListenerCallback_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -12130,9 +10473,7 @@ void UOnlineComponents_X::UpdateRegisteredObjects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.UpdateRegisteredObjects");
 
-	struct
-	{
-	} params;
+	UOnlineComponents_X_UpdateRegisteredObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12153,11 +10494,7 @@ bool UOnlineComponents_X::LoadFromUTF8(TArray<unsigned char>* SignedData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.LoadFromUTF8");
 
-	struct
-	{
-		TArray<unsigned char>          SignedData;
-		bool                           ReturnValue;
-	} params;
+	UOnlineComponents_X_LoadFromUTF8_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12183,11 +10520,7 @@ bool UOnlineComponents_X::LoadFromSignedUTF8(TArray<unsigned char>* SignedData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.LoadFromSignedUTF8");
 
-	struct
-	{
-		TArray<unsigned char>          SignedData;
-		bool                           ReturnValue;
-	} params;
+	UOnlineComponents_X_LoadFromSignedUTF8_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12210,9 +10543,7 @@ void UOnlineComponents_X::CreateComponents()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.CreateComponents");
 
-	struct
-	{
-	} params;
+	UOnlineComponents_X_CreateComponents_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12232,10 +10563,7 @@ void UOnlineComponents_X::HandleDataChanged(class UOnlineResource_X* Resource)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleDataChanged");
 
-	struct
-	{
-		class UOnlineResource_X*       Resource;
-	} params;
+	UOnlineComponents_X_HandleDataChanged_Params params;
 	params.Resource = Resource;
 
 	auto flags = fn->FunctionFlags;
@@ -12255,10 +10583,7 @@ void UOnlineComponents_X::HandleGetURL(class URPC_GetStaticDataURL_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleGetURL");
 
-	struct
-	{
-		class URPC_GetStaticDataURL_X* RPC;
-	} params;
+	UOnlineComponents_X_HandleGetURL_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -12276,9 +10601,7 @@ void UOnlineComponents_X::Sync()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.Sync");
 
-	struct
-	{
-	} params;
+	UOnlineComponents_X_Sync_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12297,10 +10620,7 @@ void UOnlineComponents_X::HandleCacheExpired(class UCacheTimer_X* Timer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleCacheExpired");
 
-	struct
-	{
-		class UCacheTimer_X*           Timer;
-	} params;
+	UOnlineComponents_X_HandleCacheExpired_Params params;
 	params.Timer = Timer;
 
 	auto flags = fn->FunctionFlags;
@@ -12318,9 +10638,7 @@ void UOnlineComponents_X::HandlePsyNetLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandlePsyNetLogin");
 
-	struct
-	{
-	} params;
+	UOnlineComponents_X_HandlePsyNetLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12337,9 +10655,7 @@ void UOnlineComponents_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.Init");
 
-	struct
-	{
-	} params;
+	UOnlineComponents_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12358,10 +10674,7 @@ void UOnlineComponents_X::EventLoaded(class UOnlineComponents_X* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.EventLoaded");
 
-	struct
-	{
-		class UOnlineComponents_X*     Data;
-	} params;
+	UOnlineComponents_X_EventLoaded_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -12383,12 +10696,7 @@ bool UOnlineComponentsParser_X::STATIC_ParseObjectsFromUTF8(TArray<unsigned char
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponentsParser_X.ParseObjectsFromUTF8");
 
-	struct
-	{
-		TArray<unsigned char>          UTF8Data;
-		TArray<class UObject*>         OutObjects;
-		bool                           ReturnValue;
-	} params;
+	UOnlineComponentsParser_X_ParseObjectsFromUTF8_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12413,9 +10721,7 @@ void UOnlineConfig_X::UnsubscribeModifiers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfig_X.UnsubscribeModifiers");
 
-	struct
-	{
-	} params;
+	UOnlineConfig_X_UnsubscribeModifiers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12436,12 +10742,7 @@ void UOnlineConfig_X::ModifyObjects(class UClass* ObjClass, const struct FScript
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfig_X.ModifyObjects");
 
-	struct
-	{
-		class UClass*                  ObjClass;
-		struct FScriptDelegate         ApplyCallback;
-		struct FScriptDelegate         ResetCallback;
-	} params;
+	UOnlineConfig_X_ModifyObjects_Params params;
 	params.ObjClass = ObjClass;
 	params.ApplyCallback = ApplyCallback;
 	params.ResetCallback = ResetCallback;
@@ -12461,9 +10762,7 @@ void UOnlineConfig_X::Undo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfig_X.Undo");
 
-	struct
-	{
-	} params;
+	UOnlineConfig_X_Undo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12480,9 +10779,7 @@ void UOnlineConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UOnlineConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12503,12 +10800,7 @@ bool UCrossplayConfig_X::PlatformsShareGroup(TEnumAsByte<enum class OnlinePlatfo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CrossplayConfig_X.PlatformsShareGroup");
 
-	struct
-	{
-		TEnumAsByte<enum class OnlinePlatform> Platform1;
-		TEnumAsByte<enum class OnlinePlatform> Platform2;
-		bool                           ReturnValue;
-	} params;
+	UCrossplayConfig_X_PlatformsShareGroup_Params params;
 	params.Platform1 = Platform1;
 	params.Platform2 = Platform2;
 
@@ -12533,12 +10825,7 @@ bool UOnlineGameSearch_X::GetStringProperty(int PropertyId, struct FString* Valu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.GetStringProperty");
 
-	struct
-	{
-		int                            PropertyId;
-		struct FString                 Value;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSearch_X_GetStringProperty_Params params;
 	params.PropertyId = PropertyId;
 
 	auto flags = fn->FunctionFlags;
@@ -12564,10 +10851,7 @@ struct FString UOnlineGameSearch_X::GetExclusiveGameTags()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.GetExclusiveGameTags");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameSearch_X_GetExclusiveGameTags_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12588,10 +10872,7 @@ struct FString UOnlineGameSearch_X::GetInclusiveGameTags()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.GetInclusiveGameTags");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameSearch_X_GetInclusiveGameTags_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12612,10 +10893,7 @@ void UOnlineGameSearch_X::SetMap(const struct FString& inMapName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.SetMap");
 
-	struct
-	{
-		struct FString                 inMapName;
-	} params;
+	UOnlineGameSearch_X_SetMap_Params params;
 	params.inMapName = inMapName;
 
 	auto flags = fn->FunctionFlags;
@@ -12635,10 +10913,7 @@ void UOnlineGameSearch_X::SetExclusiveGameTags(TArray<struct FString> inGameTags
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.SetExclusiveGameTags");
 
-	struct
-	{
-		TArray<struct FString>         inGameTagsArray;
-	} params;
+	UOnlineGameSearch_X_SetExclusiveGameTags_Params params;
 	params.inGameTagsArray = inGameTagsArray;
 
 	auto flags = fn->FunctionFlags;
@@ -12658,10 +10933,7 @@ void UOnlineGameSearch_X::SetInclusiveGameTags(TArray<struct FString> inGameTags
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSearch_X.SetInclusiveGameTags");
 
-	struct
-	{
-		TArray<struct FString>         inGameTagsArray;
-	} params;
+	UOnlineGameSearch_X_SetInclusiveGameTags_Params params;
 	params.inGameTagsArray = inGameTagsArray;
 
 	auto flags = fn->FunctionFlags;
@@ -12681,10 +10953,7 @@ void UOnlineGameSettings_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameSettings_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -12705,11 +10974,7 @@ bool UOnlineGameSettings_X::Equals(class UOnlineGameSettings_X* OtherGameSetting
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.Equals");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   OtherGameSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSettings_X_Equals_Params params;
 	params.OtherGameSettings = OtherGameSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -12729,9 +10994,7 @@ void UOnlineGameSettings_X::SetBeganWaitingTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.SetBeganWaitingTime");
 
-	struct
-	{
-	} params;
+	UOnlineGameSettings_X_SetBeganWaitingTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12748,9 +11011,7 @@ void UOnlineGameSettings_X::CalculateMinAndMaxNumPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.CalculateMinAndMaxNumPlayers");
 
-	struct
-	{
-	} params;
+	UOnlineGameSettings_X_CalculateMinAndMaxNumPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12769,10 +11030,7 @@ void UOnlineGameSettings_X::CopyFrom(class UOnlineGameSettings_X* OtherGameSetti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.CopyFrom");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   OtherGameSettings;
-	} params;
+	UOnlineGameSettings_X_CopyFrom_Params params;
 	params.OtherGameSettings = OtherGameSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -12792,10 +11050,7 @@ class UGameSettingPlaylist_X* UOnlineGameSettings_X::GetPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetPlaylist");
 
-	struct
-	{
-		class UGameSettingPlaylist_X*  ReturnValue;
-	} params;
+	UOnlineGameSettings_X_GetPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12816,10 +11071,7 @@ bool UOnlineGameSettings_X::IsValid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.IsValid");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSettings_X_IsValid_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12840,10 +11092,7 @@ void UOnlineGameSettings_X::RemoveMismatchedTags(class UOnlineGameSettings_X* Ot
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.RemoveMismatchedTags");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   OtherGameSettings;
-	} params;
+	UOnlineGameSettings_X_RemoveMismatchedTags_Params params;
 	params.OtherGameSettings = OtherGameSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -12864,11 +11113,7 @@ class UGameSettingCategory_X* UOnlineGameSettings_X::GetGameSettingCategoryByNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetGameSettingCategoryByName");
 
-	struct
-	{
-		struct FName                   CategoryName;
-		class UGameSettingCategory_X*  ReturnValue;
-	} params;
+	UOnlineGameSettings_X_GetGameSettingCategoryByName_Params params;
 	params.CategoryName = CategoryName;
 
 	auto flags = fn->FunctionFlags;
@@ -12891,11 +11136,7 @@ void UOnlineGameSettings_X::SetIntProperty(int PropertyId, int Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.SetIntProperty");
 
-	struct
-	{
-		int                            PropertyId;
-		int                            Value;
-	} params;
+	UOnlineGameSettings_X_SetIntProperty_Params params;
 	params.PropertyId = PropertyId;
 	params.Value = Value;
 
@@ -12917,10 +11158,7 @@ void UOnlineGameSettings_X::SetGameTag(const struct FName& NewGameTag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.SetGameTag");
 
-	struct
-	{
-		struct FName                   NewGameTag;
-	} params;
+	UOnlineGameSettings_X_SetGameTag_Params params;
 	params.NewGameTag = NewGameTag;
 
 	auto flags = fn->FunctionFlags;
@@ -12942,11 +11180,7 @@ void UOnlineGameSettings_X::UpdateFromURL(class AGameInfo* Game, struct FString*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.UpdateFromURL");
 
-	struct
-	{
-		struct FString                 URL;
-		class AGameInfo*               Game;
-	} params;
+	UOnlineGameSettings_X_UpdateFromURL_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -12971,11 +11205,7 @@ bool UOnlineGameSettings_X::HasSetting(const struct FName& SettingName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.HasSetting");
 
-	struct
-	{
-		struct FName                   SettingName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSettings_X_HasSetting_Params params;
 	params.SettingName = SettingName;
 
 	auto flags = fn->FunctionFlags;
@@ -12998,10 +11228,7 @@ void UOnlineGameSettings_X::GetActiveGameSettings(TArray<class UGameSetting_X*>*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetActiveGameSettings");
 
-	struct
-	{
-		TArray<class UGameSetting_X*>  GameSettings;
-	} params;
+	UOnlineGameSettings_X_GetActiveGameSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13026,12 +11253,7 @@ class UGameSetting_X* UOnlineGameSettings_X::GetGameSetting(const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetGameSetting");
 
-	struct
-	{
-		struct FString                 SettingName;
-		class UGameSettingCategory_X*  Category;
-		class UGameSetting_X*          ReturnValue;
-	} params;
+	UOnlineGameSettings_X_GetGameSetting_Params params;
 	params.SettingName = SettingName;
 
 	auto flags = fn->FunctionFlags;
@@ -13057,10 +11279,7 @@ struct FString UOnlineGameSettings_X::GetGameTags()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetGameTags");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameSettings_X_GetGameTags_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13084,12 +11303,7 @@ bool UOnlineGameSettings_X::GetStringProperty(int PropertyId, struct FString* Va
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.GetStringProperty");
 
-	struct
-	{
-		int                            PropertyId;
-		struct FString                 Value;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSettings_X_GetStringProperty_Params params;
 	params.PropertyId = PropertyId;
 
 	auto flags = fn->FunctionFlags;
@@ -13113,9 +11327,7 @@ void UOnlineGameSettings_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.Init");
 
-	struct
-	{
-	} params;
+	UOnlineGameSettings_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13135,11 +11347,7 @@ void UOnlineGameSettings_X::EventNumPlayersUpdated(class UOnlineGameSettings_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.EventNumPlayersUpdated");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   GameSettings;
-		int                            NewMinimumPlayersRequired;
-	} params;
+	UOnlineGameSettings_X_EventNumPlayersUpdated_Params params;
 	params.GameSettings = GameSettings;
 	params.NewMinimumPlayersRequired = NewMinimumPlayersRequired;
 
@@ -13160,10 +11368,7 @@ void UOnlineLegalText_X::HandleWebText(class UCachedWebData_X* InCachedData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.HandleWebText");
 
-	struct
-	{
-		class UCachedWebData_X*        InCachedData;
-	} params;
+	UOnlineLegalText_X_HandleWebText_Params params;
 	params.InCachedData = InCachedData;
 
 	auto flags = fn->FunctionFlags;
@@ -13184,10 +11389,7 @@ struct FString UOnlineLegalText_X::GetWebUrl()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.GetWebUrl");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineLegalText_X_GetWebUrl_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13208,10 +11410,7 @@ struct FString UOnlineLegalText_X::GetPlatformString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.GetPlatformString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineLegalText_X_GetPlatformString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13232,10 +11431,7 @@ struct FString UOnlineLegalText_X::GetRelativeUrl()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.GetRelativeUrl");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineLegalText_X_GetRelativeUrl_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13256,10 +11452,7 @@ struct FString UOnlineLegalText_X::GetText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.GetText");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineLegalText_X_GetText_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13279,9 +11472,7 @@ void UOnlineLegalText_X::Sync()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.Sync");
 
-	struct
-	{
-	} params;
+	UOnlineLegalText_X_Sync_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13300,10 +11491,7 @@ void UOnlineLegalText_X::EventNewText(class UOnlineLegalText_X* Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineLegalText_X.EventNewText");
 
-	struct
-	{
-		class UOnlineLegalText_X*      Text;
-	} params;
+	UOnlineLegalText_X_EventNewText_Params params;
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
@@ -13326,13 +11514,7 @@ bool UOnlineMessageComponent_X::DeserializeMessage(class UObject* MessageOuter, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.DeserializeMessage");
 
-	struct
-	{
-		TArray<unsigned char>          Data;
-		class UObject*                 OutMessage;
-		class UObject*                 MessageOuter;
-		bool                           ReturnValue;
-	} params;
+	UOnlineMessageComponent_X_DeserializeMessage_Params params;
 	params.MessageOuter = MessageOuter;
 
 	auto flags = fn->FunctionFlags;
@@ -13362,12 +11544,7 @@ bool UOnlineMessageComponent_X::SerializeMessage(class UObject* Message, TArray<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.SerializeMessage");
 
-	struct
-	{
-		class UObject*                 Message;
-		TArray<unsigned char>          OutData;
-		bool                           ReturnValue;
-	} params;
+	UOnlineMessageComponent_X_SerializeMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -13395,12 +11572,7 @@ class UOnlineMessage_X* UOnlineMessageComponent_X::CreateMessage(class UClass* M
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.CreateMessage");
 
-	struct
-	{
-		class UClass*                  MessageClass;
-		class UObject*                 MessageOuter;
-		class UOnlineMessage_X*        ReturnValue;
-	} params;
+	UOnlineMessageComponent_X_CreateMessage_Params params;
 	params.MessageClass = MessageClass;
 	params.MessageOuter = MessageOuter;
 
@@ -13424,10 +11596,7 @@ void UOnlineMessageComponent_X::RemoveMessageHandler(const struct FScriptDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.RemoveMessageHandler");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineMessageComponent_X_RemoveMessageHandler_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -13449,11 +11618,7 @@ void UOnlineMessageComponent_X::AddMessageHandler(class UClass* MessageClass, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.AddMessageHandler");
 
-	struct
-	{
-		class UClass*                  MessageClass;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineMessageComponent_X_AddMessageHandler_Params params;
 	params.MessageClass = MessageClass;
 	params.Callback = Callback;
 
@@ -13476,11 +11641,7 @@ void UOnlineMessageComponent_X::MessageReceivedDelegate(class UOnlineMessageComp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.MessageReceivedDelegate");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineMessageComponent_X_MessageReceivedDelegate_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -13501,10 +11662,7 @@ void UParameterDispenser_X::Inherit(class UParameterDispenser_X* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.Inherit");
 
-	struct
-	{
-		class UParameterDispenser_X*   Other;
-	} params;
+	UParameterDispenser_X_Inherit_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -13522,9 +11680,7 @@ void UParameterDispenser_X::ResetMaterials()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.ResetMaterials");
 
-	struct
-	{
-	} params;
+	UParameterDispenser_X_ResetMaterials_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13544,10 +11700,7 @@ void UParameterDispenser_X::ApplyAllParameters(const TScriptInterface<class UISe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.ApplyAllParameters");
 
-	struct
-	{
-		TScriptInterface<class UISetParameter> ActorComp;
-	} params;
+	UParameterDispenser_X_ApplyAllParameters_Params params;
 	params.ActorComp = ActorComp;
 
 	auto flags = fn->FunctionFlags;
@@ -13569,11 +11722,7 @@ void UParameterDispenser_X::SetLinearColorParameter(const struct FName& Key, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.SetLinearColorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FLinearColor            Value;
-	} params;
+	UParameterDispenser_X_SetLinearColorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -13596,11 +11745,7 @@ void UParameterDispenser_X::SetVectorParameter(const struct FName& Key, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.SetVectorParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FVector                 Value;
-	} params;
+	UParameterDispenser_X_SetVectorParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -13623,11 +11768,7 @@ void UParameterDispenser_X::SetFloatParameter(const struct FName& Key, float Val
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.SetFloatParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Value;
-	} params;
+	UParameterDispenser_X_SetFloatParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -13650,11 +11791,7 @@ void UParameterDispenser_X::SetNameParameter(const struct FName& Key, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.SetNameParameter");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FName                   Value;
-	} params;
+	UParameterDispenser_X_SetNameParameter_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -13676,10 +11813,7 @@ void UParameterDispenser_X::RemoveComponent(const TScriptInterface<class UISetPa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.RemoveComponent");
 
-	struct
-	{
-		TScriptInterface<class UISetParameter> ActorComp;
-	} params;
+	UParameterDispenser_X_RemoveComponent_Params params;
 	params.ActorComp = ActorComp;
 
 	auto flags = fn->FunctionFlags;
@@ -13700,10 +11834,7 @@ void UParameterDispenser_X::AddComponent(const TScriptInterface<class UISetParam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ParameterDispenser_X.AddComponent");
 
-	struct
-	{
-		TScriptInterface<class UISetParameter> ActorComp;
-	} params;
+	UParameterDispenser_X_AddComponent_Params params;
 	params.ActorComp = ActorComp;
 
 	auto flags = fn->FunctionFlags;
@@ -13725,11 +11856,7 @@ bool APawn_X::IsSameTeam(class APawn* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.IsSameTeam");
 
-	struct
-	{
-		class APawn*                   Other;
-		bool                           ReturnValue;
-	} params;
+	APawn_X_IsSameTeam_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -13749,9 +11876,7 @@ void APawn_X::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Destroyed");
 
-	struct
-	{
-	} params;
+	APawn_X_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13770,10 +11895,7 @@ float APawn_X::GetGravityZ()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.GetGravityZ");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	APawn_X_GetGravityZ_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13795,10 +11917,7 @@ void APawn_X::NotifyTakeHit_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.NotifyTakeHit_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_NotifyTakeHit_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13818,10 +11937,7 @@ void APawn_X::PlayDeath_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.PlayDeath_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_PlayDeath_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13841,10 +11957,7 @@ void APawn_X::PlayHit_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.PlayHit_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_PlayHit_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13864,10 +11977,7 @@ void APawn_X::OnDied(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.OnDied");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_OnDied_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13889,12 +11999,7 @@ bool APawn_X::Died_X(class AController* Killer, class UDamageComponent_X* Damage
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Died_X");
 
-	struct
-	{
-		class AController*             Killer;
-		class UDamageComponent_X*      Damage;
-		bool                           ReturnValue;
-	} params;
+	APawn_X_Died_X_Params params;
 	params.Killer = Killer;
 	params.Damage = Damage;
 
@@ -13917,10 +12022,7 @@ void APawn_X::AdjustDamage_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.AdjustDamage_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_AdjustDamage_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13940,10 +12042,7 @@ void APawn_X::OnTakeDamage(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.OnTakeDamage");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_OnTakeDamage_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13964,11 +12063,7 @@ bool APawn_X::TakeDamage_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.TakeDamage_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-		bool                           ReturnValue;
-	} params;
+	APawn_X_TakeDamage_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -13990,10 +12085,7 @@ void APawn_X::OnHealDamage(int Amount)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.OnHealDamage");
 
-	struct
-	{
-		int                            Amount;
-	} params;
+	APawn_X_OnHealDamage_Params params;
 	params.Amount = Amount;
 
 	auto flags = fn->FunctionFlags;
@@ -14016,13 +12108,7 @@ bool APawn_X::HealDamage(int Amount, class AController* Healer, class UClass* Da
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.HealDamage");
 
-	struct
-	{
-		int                            Amount;
-		class AController*             Healer;
-		class UClass*                  DamageType;
-		bool                           ReturnValue;
-	} params;
+	APawn_X_HealDamage_Params params;
 	params.Amount = Amount;
 	params.Healer = Healer;
 	params.DamageType = DamageType;
@@ -14052,16 +12138,7 @@ void APawn_X::TakeDamage(int Damage, class AController* InstigatedBy, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.TakeDamage");
 
-	struct
-	{
-		int                            Damage;
-		class AController*             InstigatedBy;
-		struct FVector                 HitLocation;
-		struct FVector                 Momentum;
-		class UClass*                  DamageType;
-		struct FTraceHitInfo           HitInfo;
-		class AActor*                  DamageCauser;
-	} params;
+	APawn_X_TakeDamage_Params params;
 	params.Damage = Damage;
 	params.InstigatedBy = InstigatedBy;
 	params.HitLocation = HitLocation;
@@ -14085,9 +12162,7 @@ void APawn_X::Suicide()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Suicide");
 
-	struct
-	{
-	} params;
+	APawn_X_Suicide_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14108,12 +12183,7 @@ void APawn_X::OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, floa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.OnAnimEnd");
 
-	struct
-	{
-		class UAnimNodeSequence*       SeqNode;
-		float                          PlayedTime;
-		float                          ExcessTime;
-	} params;
+	APawn_X_OnAnimEnd_Params params;
 	params.SeqNode = SeqNode;
 	params.PlayedTime = PlayedTime;
 	params.ExcessTime = ExcessTime;
@@ -14133,9 +12203,7 @@ void APawn_X::PlayerChangedTeam()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.PlayerChangedTeam");
 
-	struct
-	{
-	} params;
+	APawn_X_PlayerChangedTeam_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14152,9 +12220,7 @@ void APawn_X::OnControllerChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.OnControllerChanged");
 
-	struct
-	{
-	} params;
+	APawn_X_OnControllerChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14174,11 +12240,7 @@ void APawn_X::PossessedBy(class AController* C, bool bVehicleTransition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.PossessedBy");
 
-	struct
-	{
-		class AController*             C;
-		bool                           bVehicleTransition;
-	} params;
+	APawn_X_PossessedBy_Params params;
 	params.C = C;
 	params.bVehicleTransition = bVehicleTransition;
 
@@ -14197,9 +12259,7 @@ void APawn_X::UpdateControllerRef()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.UpdateControllerRef");
 
-	struct
-	{
-	} params;
+	APawn_X_UpdateControllerRef_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14218,10 +12278,7 @@ void APawn_X::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	APawn_X_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -14242,11 +12299,7 @@ void APawn_X::EventAnimEnd(class APawn_X* ForPawn, class UAnimNodeSequence* SeqN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.EventAnimEnd");
 
-	struct
-	{
-		class APawn_X*                 ForPawn;
-		class UAnimNodeSequence*       SeqNode;
-	} params;
+	APawn_X_EventAnimEnd_Params params;
 	params.ForPawn = ForPawn;
 	params.SeqNode = SeqNode;
 
@@ -14267,10 +12320,7 @@ void APawn_X::EventDestroyed(class APawn_X* Pawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.EventDestroyed");
 
-	struct
-	{
-		class APawn_X*                 Pawn;
-	} params;
+	APawn_X_EventDestroyed_Params params;
 	params.Pawn = Pawn;
 
 	auto flags = fn->FunctionFlags;
@@ -14291,11 +12341,7 @@ void APawn_X::EventDied(class APawn_X* Pawn, class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.EventDied");
 
-	struct
-	{
-		class APawn_X*                 Pawn;
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_EventDied_Params params;
 	params.Pawn = Pawn;
 	params.Damage = Damage;
 
@@ -14317,11 +12363,7 @@ void APawn_X::EventHealDamage(class APawn_X* Pawn, int Amount)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.EventHealDamage");
 
-	struct
-	{
-		class APawn_X*                 Pawn;
-		int                            Amount;
-	} params;
+	APawn_X_EventHealDamage_Params params;
 	params.Pawn = Pawn;
 	params.Amount = Amount;
 
@@ -14343,11 +12385,7 @@ void APawn_X::EventTakeDamage(class APawn_X* Pawn, class UDamageComponent_X* Dam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.EventTakeDamage");
 
-	struct
-	{
-		class APawn_X*                 Pawn;
-		class UDamageComponent_X*      Damage;
-	} params;
+	APawn_X_EventTakeDamage_Params params;
 	params.Pawn = Pawn;
 	params.Damage = Damage;
 
@@ -14368,10 +12406,7 @@ class APawn* ADemoPC_X::GetFollowPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.GetFollowPlayer");
 
-	struct
-	{
-		class APawn*                   ReturnValue;
-	} params;
+	ADemoPC_X_GetFollowPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14393,11 +12428,7 @@ void ADemoPC_X::DrawLogs(class UCanvas* C, class APawn* InPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.DrawLogs");
 
-	struct
-	{
-		class UCanvas*                 C;
-		class APawn*                   InPlayer;
-	} params;
+	ADemoPC_X_DrawLogs_Params params;
 	params.C = C;
 	params.InPlayer = InPlayer;
 
@@ -14418,10 +12449,7 @@ void ADemoPC_X::DrawNames(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.DrawNames");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	ADemoPC_X_DrawNames_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -14441,10 +12469,7 @@ void ADemoPC_X::DrawTimeline(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.DrawTimeline");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	ADemoPC_X_DrawTimeline_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -14464,10 +12489,7 @@ void ADemoPC_X::DrawHUD(class AHUD* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.DrawHUD");
 
-	struct
-	{
-		class AHUD*                    H;
-	} params;
+	ADemoPC_X_DrawHUD_Params params;
 	params.H = H;
 
 	auto flags = fn->FunctionFlags;
@@ -14489,12 +12511,7 @@ void ADemoPC_X::HUDMessage(const struct FString& S, const struct FName& Type, fl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.HUDMessage");
 
-	struct
-	{
-		struct FString                 S;
-		struct FName                   Type;
-		float                          Lifetime;
-	} params;
+	ADemoPC_X_HUDMessage_Params params;
 	params.S = S;
 	params.Type = Type;
 	params.Lifetime = Lifetime;
@@ -14514,9 +12531,7 @@ void ADemoPC_X::ClientStartOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.ClientStartOnlineGame");
 
-	struct
-	{
-	} params;
+	ADemoPC_X_ClientStartOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14533,9 +12548,7 @@ void ADemoPC_X::InitPlayerReplicationInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.InitPlayerReplicationInfo");
 
-	struct
-	{
-	} params;
+	ADemoPC_X_InitPlayerReplicationInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14552,9 +12565,7 @@ void ADemoPC_X::ClientSkipToFirstFrame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.ClientSkipToFirstFrame");
 
-	struct
-	{
-	} params;
+	ADemoPC_X_ClientSkipToFirstFrame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14573,10 +12584,7 @@ void ADemoPC_X::ReplicateStreamingStatus(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.ReplicateStreamingStatus");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	ADemoPC_X_ReplicateStreamingStatus_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -14596,10 +12604,7 @@ void ADemoPC_X::SetDemoInterface(class UDemoRecDriverInterface_X* InDemoInterfac
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.SetDemoInterface");
 
-	struct
-	{
-		class UDemoRecDriverInterface_X* InDemoInterface;
-	} params;
+	ADemoPC_X_SetDemoInterface_Params params;
 	params.InDemoInterface = InDemoInterface;
 
 	auto flags = fn->FunctionFlags;
@@ -14617,9 +12622,7 @@ void ADemoPC_X::ReceivedPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.ReceivedPlayer");
 
-	struct
-	{
-	} params;
+	ADemoPC_X_ReceivedPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14636,9 +12639,7 @@ void UPlayerInput_MobileNative_X::EventAppEnteredForeground()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_MobileNative_X.EventAppEnteredForeground");
 
-	struct
-	{
-	} params;
+	UPlayerInput_MobileNative_X_EventAppEnteredForeground_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14655,9 +12656,7 @@ void UPlayerInput_MobileNative_X::EventAppEnteredBackground()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_MobileNative_X.EventAppEnteredBackground");
 
-	struct
-	{
-	} params;
+	UPlayerInput_MobileNative_X_EventAppEnteredBackground_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14676,10 +12675,7 @@ void UPlayerInput_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UPlayerInput_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -14697,9 +12693,7 @@ void UPlayerInput_X::AbsorbCurrentKeyPress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.AbsorbCurrentKeyPress");
 
-	struct
-	{
-	} params;
+	UPlayerInput_X_AbsorbCurrentKeyPress_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14720,11 +12714,7 @@ void UPlayerInput_X::SetBindings(TArray<struct FPlayerBinding>* PC, TArray<struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.SetBindings");
 
-	struct
-	{
-		TArray<struct FPlayerBinding>  PC;
-		TArray<struct FPlayerBinding>  Gamepad;
-	} params;
+	UPlayerInput_X_SetBindings_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14747,9 +12737,7 @@ void UPlayerInput_X::ClearDisableActionUntilNextUseList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.ClearDisableActionUntilNextUseList");
 
-	struct
-	{
-	} params;
+	UPlayerInput_X_ClearDisableActionUntilNextUseList_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14769,10 +12757,7 @@ void UPlayerInput_X::DisableActionUntilNextUse(const struct FName& ActionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.DisableActionUntilNextUse");
 
-	struct
-	{
-		struct FName                   ActionName;
-	} params;
+	UPlayerInput_X_DisableActionUntilNextUse_Params params;
 	params.ActionName = ActionName;
 
 	auto flags = fn->FunctionFlags;
@@ -14791,9 +12776,7 @@ void UPlayerInput_X::ClearDisabledActions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.ClearDisabledActions");
 
-	struct
-	{
-	} params;
+	UPlayerInput_X_ClearDisabledActions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14813,10 +12796,7 @@ void UPlayerInput_X::RemoveFromDisabledActions(const struct FName& ActionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.RemoveFromDisabledActions");
 
-	struct
-	{
-		struct FName                   ActionName;
-	} params;
+	UPlayerInput_X_RemoveFromDisabledActions_Params params;
 	params.ActionName = ActionName;
 
 	auto flags = fn->FunctionFlags;
@@ -14837,10 +12817,7 @@ void UPlayerInput_X::AddToDisabledActions(const struct FName& ActionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.AddToDisabledActions");
 
-	struct
-	{
-		struct FName                   ActionName;
-	} params;
+	UPlayerInput_X_AddToDisabledActions_Params params;
 	params.ActionName = ActionName;
 
 	auto flags = fn->FunctionFlags;
@@ -14862,11 +12839,7 @@ void UPlayerInput_X::ReleaseKey(const struct FName& Key, bool bTriggerEvents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.ReleaseKey");
 
-	struct
-	{
-		struct FName                   Key;
-		bool                           bTriggerEvents;
-	} params;
+	UPlayerInput_X_ReleaseKey_Params params;
 	params.Key = Key;
 	params.bTriggerEvents = bTriggerEvents;
 
@@ -14889,11 +12862,7 @@ struct FString UPlayerInput_X::STATIC_GetUIKey(const struct FName& KeyName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.GetUIKey");
 
-	struct
-	{
-		struct FName                   KeyName;
-		struct FString                 ReturnValue;
-	} params;
+	UPlayerInput_X_GetUIKey_Params params;
 	params.KeyName = KeyName;
 
 	auto flags = fn->FunctionFlags;
@@ -14913,9 +12882,7 @@ void UPlayerInput_X::InitInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.InitInputSystem");
 
-	struct
-	{
-	} params;
+	UPlayerInput_X_InitInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14933,9 +12900,7 @@ void UPlayerInput_X::ResetInput()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.ResetInput");
 
-	struct
-	{
-	} params;
+	UPlayerInput_X_ResetInput_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -14955,10 +12920,7 @@ void UPlayerInput_X::SetControlPreset(const struct FName& PresetName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.SetControlPreset");
 
-	struct
-	{
-		struct FName                   PresetName;
-	} params;
+	UPlayerInput_X_SetControlPreset_Params params;
 	params.PresetName = PresetName;
 
 	auto flags = fn->FunctionFlags;
@@ -14981,12 +12943,7 @@ float UPsyNet_X::STATIC_GetRetryDelay(int Failures, TArray<float> Delays)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.GetRetryDelay");
 
-	struct
-	{
-		int                            Failures;
-		TArray<float>                  Delays;
-		float                          ReturnValue;
-	} params;
+	UPsyNet_X_GetRetryDelay_Params params;
 	params.Failures = Failures;
 	params.Delays = Delays;
 
@@ -15010,10 +12967,7 @@ void UPsyNet_X::STATIC_ConnectionChangedIP(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.ConnectionChangedIP");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UPsyNet_X_ConnectionChangedIP_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -15034,11 +12988,7 @@ void UPsyNet_X::STATIC_NetworkError(const struct FUniqueNetId& PlayerID, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.NetworkError");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 Reason;
-	} params;
+	UPsyNet_X_NetworkError_Params params;
 	params.PlayerID = PlayerID;
 	params.Reason = Reason;
 
@@ -15059,10 +13009,7 @@ void UPsyNet_X::NotifyWhenLoggedIn(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.NotifyWhenLoggedIn");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UPsyNet_X_NotifyWhenLoggedIn_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -15082,10 +13029,7 @@ void UPsyNet_X::HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.HandleLoginChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UPsyNet_X_HandleLoginChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -15105,10 +13049,7 @@ TEnumAsByte<enum class EDatabaseEnvironment> UPsyNet_X::GetDevEnvironment()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.GetDevEnvironment");
 
-	struct
-	{
-		TEnumAsByte<enum class EDatabaseEnvironment> ReturnValue;
-	} params;
+	UPsyNet_X_GetDevEnvironment_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15127,9 +13068,7 @@ void UPsyNet_X::InitEnvironment()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.InitEnvironment");
 
-	struct
-	{
-	} params;
+	UPsyNet_X_InitEnvironment_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15146,9 +13085,7 @@ void UPsyNet_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.Init");
 
-	struct
-	{
-	} params;
+	UPsyNet_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15165,9 +13102,7 @@ void UPsyNet_X::Flush()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.Flush");
 
-	struct
-	{
-	} params;
+	UPsyNet_X_Flush_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15189,12 +13124,7 @@ class URPC_X* UPsyNet_X::STATIC_RPC(class UClass* RPCClass, const struct FUnique
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.RPC");
 
-	struct
-	{
-		class UClass*                  RPCClass;
-		struct FUniqueNetId            PlayerID;
-		class URPC_X*                  ReturnValue;
-	} params;
+	UPsyNet_X_RPC_Params params;
 	params.RPCClass = RPCClass;
 	params.PlayerID = PlayerID;
 
@@ -15219,11 +13149,7 @@ class UWebRequest_X* UPsyNet_X::STATIC_CreateWebRequest(const struct FUniqueNetI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.CreateWebRequest");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UPsyNet_X_CreateWebRequest_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -15246,10 +13172,7 @@ class UPsyNet_X* UPsyNet_X::STATIC_GetInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.GetInstance");
 
-	struct
-	{
-		class UPsyNet_X*               ReturnValue;
-	} params;
+	UPsyNet_X_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15269,9 +13192,7 @@ void UPsyNet_X::EventPrimaryPlayerLoggedIn()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.EventPrimaryPlayerLoggedIn");
 
-	struct
-	{
-	} params;
+	UPsyNet_X_EventPrimaryPlayerLoggedIn_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15290,10 +13211,7 @@ void URandomStream_X::SetCurrentSeed(int NewSeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RandomStream_X.SetCurrentSeed");
 
-	struct
-	{
-		int                            NewSeed;
-	} params;
+	URandomStream_X_SetCurrentSeed_Params params;
 	params.NewSeed = NewSeed;
 
 	auto flags = fn->FunctionFlags;
@@ -15314,10 +13232,7 @@ float URandomStream_X::GetNextValue()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RandomStream_X.GetNextValue");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	URandomStream_X_GetNextValue_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15337,9 +13252,7 @@ void ARenderProfiler_X::SetupPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RenderProfiler_X.SetupPlayers");
 
-	struct
-	{
-	} params;
+	ARenderProfiler_X_SetupPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15356,9 +13269,7 @@ void ARenderProfiler_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RenderProfiler_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	ARenderProfiler_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15377,10 +13288,7 @@ void ARenderProfiler_X::EventFinished(class ARenderProfiler_X* Profiler)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RenderProfiler_X.EventFinished");
 
-	struct
-	{
-		class ARenderProfiler_X*       Profiler;
-	} params;
+	ARenderProfiler_X_EventFinished_Params params;
 	params.Profiler = Profiler;
 
 	auto flags = fn->FunctionFlags;
@@ -15400,10 +13308,7 @@ bool URPC_X::STATIC_IsPersistentConnection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.IsPersistentConnection");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	URPC_X_IsPersistentConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15422,9 +13327,7 @@ void URPC_X::NotifySuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifySuccess");
 
-	struct
-	{
-	} params;
+	URPC_X_NotifySuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15444,10 +13347,7 @@ void URPC_X::NotifyError(class UError_X* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifyError");
 
-	struct
-	{
-		class UError_X*                InError;
-	} params;
+	URPC_X_NotifyError_Params params;
 	params.InError = InError;
 
 	auto flags = fn->FunctionFlags;
@@ -15469,11 +13369,7 @@ bool URPC_X::ShouldResendOnFail(class UError_X* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.ShouldResendOnFail");
 
-	struct
-	{
-		class UError_X*                InError;
-		bool                           ReturnValue;
-	} params;
+	URPC_X_ShouldResendOnFail_Params params;
 	params.InError = InError;
 
 	auto flags = fn->FunctionFlags;
@@ -15493,9 +13389,7 @@ void URPC_X::OnComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.OnComplete");
 
-	struct
-	{
-	} params;
+	URPC_X_OnComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15512,9 +13406,7 @@ void URPC_X::OnFail()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.OnFail");
 
-	struct
-	{
-	} params;
+	URPC_X_OnFail_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15531,9 +13423,7 @@ void URPC_X::OnSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.OnSuccess");
 
-	struct
-	{
-	} params;
+	URPC_X_OnSuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15550,9 +13440,7 @@ void URPC_X::ClearCallbacks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.ClearCallbacks");
 
-	struct
-	{
-	} params;
+	URPC_X_ClearCallbacks_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15572,11 +13460,7 @@ class URPC_X* URPC_X::NotifyOnComplete(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifyOnComplete");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class URPC_X*                  ReturnValue;
-	} params;
+	URPC_X_NotifyOnComplete_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -15599,11 +13483,7 @@ class URPC_X* URPC_X::NotifyOnFail(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifyOnFail");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class URPC_X*                  ReturnValue;
-	} params;
+	URPC_X_NotifyOnFail_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -15626,11 +13506,7 @@ class URPC_X* URPC_X::NotifyOnSuccess(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifyOnSuccess");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class URPC_X*                  ReturnValue;
-	} params;
+	URPC_X_NotifyOnSuccess_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -15652,10 +13528,7 @@ void URPC_X::EventComplete(class URPC_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.EventComplete");
 
-	struct
-	{
-		class URPC_X*                  RPC;
-	} params;
+	URPC_X_EventComplete_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -15675,10 +13548,7 @@ void URPC_X::EventFail(class URPC_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.EventFail");
 
-	struct
-	{
-		class URPC_X*                  RPC;
-	} params;
+	URPC_X_EventFail_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -15698,10 +13568,7 @@ void URPC_X::EventSuccess(class URPC_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.EventSuccess");
 
-	struct
-	{
-		class URPC_X*                  RPC;
-	} params;
+	URPC_X_EventSuccess_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -15721,10 +13588,7 @@ void URPCQueue_X::STATIC_SignatureMismatch(int ServiceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.SignatureMismatch");
 
-	struct
-	{
-		int                            ServiceID;
-	} params;
+	URPCQueue_X_SignatureMismatch_Params params;
 	params.ServiceID = ServiceID;
 
 	auto flags = fn->FunctionFlags;
@@ -15744,10 +13608,7 @@ void URPCQueue_X::FailAllPending(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.FailAllPending");
 
-	struct
-	{
-		class UError_X*                Error;
-	} params;
+	URPCQueue_X_FailAllPending_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -15768,10 +13629,7 @@ void URPCQueue_X::SetEnabled(bool bNewEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.SetEnabled");
 
-	struct
-	{
-		bool                           bNewEnabled;
-	} params;
+	URPCQueue_X_SetEnabled_Params params;
 	params.bNewEnabled = bNewEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -15790,9 +13648,7 @@ void URPCQueue_X::Flush()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.Flush");
 
-	struct
-	{
-	} params;
+	URPCQueue_X_Flush_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15810,9 +13666,7 @@ void URPCQueue_X::TickReceive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.TickReceive");
 
-	struct
-	{
-	} params;
+	URPCQueue_X_TickReceive_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15830,9 +13684,7 @@ void URPCQueue_X::TickSend()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.TickSend");
 
-	struct
-	{
-	} params;
+	URPCQueue_X_TickSend_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15853,11 +13705,7 @@ class URPC_X* URPCQueue_X::CreatePendingRPC(class UClass* RPCClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.CreatePendingRPC");
 
-	struct
-	{
-		class UClass*                  RPCClass;
-		class URPC_X*                  ReturnValue;
-	} params;
+	URPCQueue_X_CreatePendingRPC_Params params;
 	params.RPCClass = RPCClass;
 
 	auto flags = fn->FunctionFlags;
@@ -15878,9 +13726,7 @@ void URPCQueue_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.Init");
 
-	struct
-	{
-	} params;
+	URPCQueue_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -15900,10 +13746,7 @@ struct FString USaveGame_X::GetSaveFilename()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.GetSaveFilename");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	USaveGame_X_GetSaveFilename_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15922,9 +13765,7 @@ void USaveGame_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.OnInit");
 
-	struct
-	{
-	} params;
+	USaveGame_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15941,9 +13782,7 @@ void USaveGame_X::OnLoaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.OnLoaded");
 
-	struct
-	{
-	} params;
+	USaveGame_X_OnLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15964,12 +13803,7 @@ TEnumAsByte<enum class EBasicLoadResult> USaveGame_X::Load(bool bMustExist, bool
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.Load");
 
-	struct
-	{
-		bool                           bMustExist;
-		bool                           bIgnoreErrors;
-		TEnumAsByte<enum class EBasicLoadResult> ReturnValue;
-	} params;
+	USaveGame_X_Load_Params params;
 	params.bMustExist = bMustExist;
 	params.bIgnoreErrors = bIgnoreErrors;
 
@@ -15990,9 +13824,7 @@ void USaveGame_X::ClearSaveTimer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.ClearSaveTimer");
 
-	struct
-	{
-	} params;
+	USaveGame_X_ClearSaveTimer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16011,10 +13843,7 @@ void USaveGame_X::SetSaveTimer(float Delay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.SetSaveTimer");
 
-	struct
-	{
-		float                          Delay;
-	} params;
+	USaveGame_X_SetSaveTimer_Params params;
 	params.Delay = Delay;
 
 	auto flags = fn->FunctionFlags;
@@ -16034,10 +13863,7 @@ bool USaveGame_X::SaveNow()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.SaveNow");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	USaveGame_X_SaveNow_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16056,9 +13882,7 @@ void USaveGame_X::Save()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.Save");
 
-	struct
-	{
-	} params;
+	USaveGame_X_Save_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16077,10 +13901,7 @@ void USaveGame_X::EventLoadFail(class USaveGame_X* SaveGame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.EventLoadFail");
 
-	struct
-	{
-		class USaveGame_X*             SaveGame;
-	} params;
+	USaveGame_X_EventLoadFail_Params params;
 	params.SaveGame = SaveGame;
 
 	auto flags = fn->FunctionFlags;
@@ -16100,10 +13921,7 @@ void USaveGame_X::EventSaveFail(class USaveGame_X* SaveGame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SaveGame_X.EventSaveFail");
 
-	struct
-	{
-		class USaveGame_X*             SaveGame;
-	} params;
+	USaveGame_X_EventSaveFail_Params params;
 	params.SaveGame = SaveGame;
 
 	auto flags = fn->FunctionFlags;
@@ -16124,11 +13942,7 @@ bool USeqAct_NonNativeUpdate_X::Update(float dt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqAct_NonNativeUpdate_X.Update");
 
-	struct
-	{
-		float                          dt;
-		bool                           ReturnValue;
-	} params;
+	USeqAct_NonNativeUpdate_X_Update_Params params;
 	params.dt = dt;
 
 	auto flags = fn->FunctionFlags;
@@ -16148,9 +13962,7 @@ void USequenceCondition_X::Activated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SequenceCondition_X.Activated");
 
-	struct
-	{
-	} params;
+	USequenceCondition_X_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16170,11 +13982,7 @@ void USerializer_X::DeserializeObject(class UObject* Target, TArray<unsigned cha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Serializer_X.DeserializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          InData;
-	} params;
+	USerializer_X_DeserializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16199,11 +14007,7 @@ void USerializer_X::SerializeObject(class UObject* Target, TArray<unsigned char>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Serializer_X.SerializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          OutData;
-	} params;
+	USerializer_X_SerializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16228,11 +14032,7 @@ void UJSONSerializer_X::STATIC_DecodeObject(class UObject* Target, struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JSONSerializer_X.DecodeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		struct FString                 Stream;
-	} params;
+	UJSONSerializer_X_DecodeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16257,11 +14057,7 @@ void UJSONSerializer_X::STATIC_EncodeObject(class UObject* Target, struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JSONSerializer_X.EncodeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		struct FString                 Stream;
-	} params;
+	UJSONSerializer_X_EncodeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16286,11 +14082,7 @@ void UJSONSerializer_X::DeserializeObject(class UObject* Target, TArray<unsigned
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JSONSerializer_X.DeserializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          InData;
-	} params;
+	UJSONSerializer_X_DeserializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16315,11 +14107,7 @@ void UJSONSerializer_X::SerializeObject(class UObject* Target, TArray<unsigned c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.JSONSerializer_X.SerializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          OutData;
-	} params;
+	UJSONSerializer_X_SerializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16344,11 +14132,7 @@ void UObjectSerializer_X::DeserializeObject(class UObject* Target, TArray<unsign
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectSerializer_X.DeserializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          InData;
-	} params;
+	UObjectSerializer_X_DeserializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16373,11 +14157,7 @@ void UObjectSerializer_X::SerializeObject(class UObject* Target, TArray<unsigned
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ObjectSerializer_X.SerializeObject");
 
-	struct
-	{
-		class UObject*                 Target;
-		TArray<unsigned char>          OutData;
-	} params;
+	UObjectSerializer_X_SerializeObject_Params params;
 	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
@@ -16399,9 +14179,7 @@ void UStateObject_X::InitExecution()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.StateObject_X.InitExecution");
 
-	struct
-	{
-	} params;
+	UStateObject_X_InitExecution_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -16419,9 +14197,7 @@ void UStateObject_X::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.StateObject_X.Destroyed");
 
-	struct
-	{
-	} params;
+	UStateObject_X_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16438,9 +14214,7 @@ void UStateObject_X::Destroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.StateObject_X.Destroy");
 
-	struct
-	{
-	} params;
+	UStateObject_X_Destroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -16460,10 +14234,7 @@ void UTickableStateObject_X::Sleep(float Seconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.Sleep");
 
-	struct
-	{
-		float                          Seconds;
-	} params;
+	UTickableStateObject_X_Sleep_Params params;
 	params.Seconds = Seconds;
 
 	auto flags = fn->FunctionFlags;
@@ -16484,10 +14255,7 @@ void UTickableStateObject_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UTickableStateObject_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -16507,10 +14275,7 @@ void UTickableStateObject_X::ProcessState(float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.ProcessState");
 
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
+	UTickableStateObject_X_ProcessState_Params params;
 	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -16531,10 +14296,7 @@ void UTickableStateObject_X::UpdateTimers(float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.UpdateTimers");
 
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
+	UTickableStateObject_X_UpdateTimers_Params params;
 	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -16555,10 +14317,7 @@ void UTickableStateObject_X::NativeTick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.NativeTick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UTickableStateObject_X_NativeTick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -16577,9 +14336,7 @@ void UTickableStateObject_X::Destroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.Destroy");
 
-	struct
-	{
-	} params;
+	UTickableStateObject_X_Destroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -16599,10 +14356,7 @@ void UTickableStateObject_X::SetTickable(bool bTick)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.SetTickable");
 
-	struct
-	{
-		bool                           bTick;
-	} params;
+	UTickableStateObject_X_SetTickable_Params params;
 	params.bTick = bTick;
 
 	auto flags = fn->FunctionFlags;
@@ -16625,12 +14379,7 @@ bool UTickableStateObject_X::IsTimerActive(const struct FName& inTimerFunc, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.IsTimerActive");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-		bool                           ReturnValue;
-	} params;
+	UTickableStateObject_X_IsTimerActive_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -16656,12 +14405,7 @@ void UTickableStateObject_X::PauseTimer(bool bPause, const struct FName& inTimer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.PauseTimer");
 
-	struct
-	{
-		bool                           bPause;
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTickableStateObject_X_PauseTimer_Params params;
 	params.bPause = bPause;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
@@ -16684,10 +14428,7 @@ void UTickableStateObject_X::ClearAllTimers(class UObject* inObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.ClearAllTimers");
 
-	struct
-	{
-		class UObject*                 inObj;
-	} params;
+	UTickableStateObject_X_ClearAllTimers_Params params;
 	params.inObj = inObj;
 
 	auto flags = fn->FunctionFlags;
@@ -16709,11 +14450,7 @@ void UTickableStateObject_X::ClearTimer(const struct FName& inTimerFunc, class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.ClearTimer");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTickableStateObject_X_ClearTimer_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -16737,12 +14474,7 @@ void UTickableStateObject_X::SetStateTimer(float InRate, bool inbLoop, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.SetStateTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           inbLoop;
-		struct FName                   inTimerFunc;
-	} params;
+	UTickableStateObject_X_SetStateTimer_Params params;
 	params.InRate = InRate;
 	params.inbLoop = inbLoop;
 	params.inTimerFunc = inTimerFunc;
@@ -16768,13 +14500,7 @@ void UTickableStateObject_X::SetTimer(float InRate, bool inbLoop, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickableStateObject_X.SetTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           inbLoop;
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTickableStateObject_X_SetTimer_Params params;
 	params.InRate = InRate;
 	params.inbLoop = inbLoop;
 	params.inTimerFunc = inTimerFunc;
@@ -16798,10 +14524,7 @@ void UAutomationScript_X::Wait(float Time)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.Wait");
 
-	struct
-	{
-		float                          Time;
-	} params;
+	UAutomationScript_X_Wait_Params params;
 	params.Time = Time;
 
 	auto flags = fn->FunctionFlags;
@@ -16821,10 +14544,7 @@ void UAutomationScript_X::ExecuteCommand(const struct FString& Command)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.ExecuteCommand");
 
-	struct
-	{
-		struct FString                 Command;
-	} params;
+	UAutomationScript_X_ExecuteCommand_Params params;
 	params.Command = Command;
 
 	auto flags = fn->FunctionFlags;
@@ -16843,9 +14563,7 @@ void UAutomationScript_X::ExecuteNextCommand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.ExecuteNextCommand");
 
-	struct
-	{
-	} params;
+	UAutomationScript_X_ExecuteNextCommand_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16862,9 +14580,7 @@ void UAutomationScript_X::Start()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.Start");
 
-	struct
-	{
-	} params;
+	UAutomationScript_X_Start_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -16884,10 +14600,7 @@ void UAutomationScript_X::LoadCommandsFromText(const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.LoadCommandsFromText");
 
-	struct
-	{
-		struct FString                 Text;
-	} params;
+	UAutomationScript_X_LoadCommandsFromText_Params params;
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
@@ -16908,10 +14621,7 @@ void UAutomationScript_X::LoadCommandsFromFile(const struct FString& FilePath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AutomationScript_X.LoadCommandsFromFile");
 
-	struct
-	{
-		struct FString                 FilePath;
-	} params;
+	UAutomationScript_X_LoadCommandsFromFile_Params params;
 	params.FilePath = FilePath;
 
 	auto flags = fn->FunctionFlags;
@@ -16936,14 +14646,7 @@ class UDrawDebugBox_X* UDrawDebugManager_X::STATIC_DrawBox(const struct FVector&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawBox");
 
-	struct
-	{
-		struct FVector                 Start;
-		struct FVector                 Extent;
-		class AActor*                  A;
-		float                          Lifetime;
-		class UDrawDebugBox_X*         ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawBox_Params params;
 	params.Start = Start;
 	params.Extent = Extent;
 	params.A = A;
@@ -16972,14 +14675,7 @@ class UDrawDebugSphere_X* UDrawDebugManager_X::STATIC_DrawSphere(const struct FV
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawSphere");
 
-	struct
-	{
-		struct FVector                 Start;
-		float                          Radius;
-		class AActor*                  A;
-		float                          Lifetime;
-		class UDrawDebugSphere_X*      ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawSphere_Params params;
 	params.Start = Start;
 	params.Radius = Radius;
 	params.A = A;
@@ -17007,13 +14703,7 @@ class UDrawDebugLinePivot_X* UDrawDebugManager_X::STATIC_DrawLinePivotActor(clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawLinePivotActor");
 
-	struct
-	{
-		class AActor*                  A;
-		float                          Size;
-		float                          Lifetime;
-		class UDrawDebugLinePivot_X*   ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawLinePivotActor_Params params;
 	params.A = A;
 	params.Size = Size;
 	params.Lifetime = Lifetime;
@@ -17041,14 +14731,7 @@ class UDrawDebugLinePivot_X* UDrawDebugManager_X::STATIC_DrawLinePivot(const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawLinePivot");
 
-	struct
-	{
-		struct FVector                 Start;
-		struct FRotator                Rotation;
-		float                          Size;
-		float                          Lifetime;
-		class UDrawDebugLinePivot_X*   ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawLinePivot_Params params;
 	params.Start = Start;
 	params.Rotation = Rotation;
 	params.Size = Size;
@@ -17076,13 +14759,7 @@ class UDrawDebugLine_X* UDrawDebugManager_X::STATIC_DrawLineActors(class AActor*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawLineActors");
 
-	struct
-	{
-		class AActor*                  ActorStart;
-		class AActor*                  ActorEnd;
-		float                          Lifetime;
-		class UDrawDebugLine_X*        ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawLineActors_Params params;
 	params.ActorStart = ActorStart;
 	params.ActorEnd = ActorEnd;
 	params.Lifetime = Lifetime;
@@ -17109,13 +14786,7 @@ class UDrawDebugLine_X* UDrawDebugManager_X::STATIC_DrawLine(const struct FVecto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.DrawLine");
 
-	struct
-	{
-		struct FVector                 Start;
-		struct FVector                 End;
-		float                          Lifetime;
-		class UDrawDebugLine_X*        ReturnValue;
-	} params;
+	UDrawDebugManager_X_DrawLine_Params params;
 	params.Start = Start;
 	params.End = End;
 	params.Lifetime = Lifetime;
@@ -17142,13 +14813,7 @@ class UDrawDebugObject_X* UDrawDebugManager_X::CreateObject(class UClass* Type, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.CreateObject");
 
-	struct
-	{
-		class UClass*                  Type;
-		float                          Lifetime;
-		class AActor*                  ActorRef;
-		class UDrawDebugObject_X*      ReturnValue;
-	} params;
+	UDrawDebugManager_X_CreateObject_Params params;
 	params.Type = Type;
 	params.Lifetime = Lifetime;
 	params.ActorRef = ActorRef;
@@ -17174,12 +14839,7 @@ void UDrawDebugManager_X::SetColor(unsigned char R, unsigned char G, unsigned ch
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.SetColor");
 
-	struct
-	{
-		unsigned char                  R;
-		unsigned char                  G;
-		unsigned char                  B;
-	} params;
+	UDrawDebugManager_X_SetColor_Params params;
 	params.R = R;
 	params.G = G;
 	params.B = B;
@@ -17201,10 +14861,7 @@ void UDrawDebugManager_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugManager_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -17222,9 +14879,7 @@ void UDrawDebugManager_X::Destroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.Destroy");
 
-	struct
-	{
-	} params;
+	UDrawDebugManager_X_Destroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -17244,10 +14899,7 @@ class UDrawDebugManager_X* UDrawDebugManager_X::STATIC_GetInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugManager_X.GetInstance");
 
-	struct
-	{
-		class UDrawDebugManager_X*     ReturnValue;
-	} params;
+	UDrawDebugManager_X_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -17269,10 +14921,7 @@ bool UOnline_X::IsInOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.IsInOnlineGame");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnline_X_IsInOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17293,10 +14942,7 @@ bool UOnline_X::IsInMainMenu()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.IsInMainMenu");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnline_X_IsInMainMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17317,10 +14963,7 @@ class AGRI_X* UOnline_X::GetGRI()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetGRI");
 
-	struct
-	{
-		class AGRI_X*                  ReturnValue;
-	} params;
+	UOnline_X_GetGRI_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17341,10 +14984,7 @@ class AWorldInfo* UOnline_X::GetWorldInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetWorldInfo");
 
-	struct
-	{
-		class AWorldInfo*              ReturnValue;
-	} params;
+	UOnline_X_GetWorldInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17367,12 +15007,7 @@ struct FUniqueNetId UOnline_X::STATIC_CreateUniqueNetID(TEnumAsByte<enum class O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.CreateUniqueNetID");
 
-	struct
-	{
-		TEnumAsByte<enum class OnlinePlatform> Platform;
-		struct FString                 PlatformName;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnline_X_CreateUniqueNetID_Params params;
 	params.Platform = Platform;
 	params.PlatformName = PlatformName;
 
@@ -17397,11 +15032,7 @@ bool UOnline_X::STATIC_UniqueLobbyIDIsSet(const struct FUniqueLobbyId& InID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.UniqueLobbyIDIsSet");
 
-	struct
-	{
-		struct FUniqueLobbyId          InID;
-		bool                           ReturnValue;
-	} params;
+	UOnline_X_UniqueLobbyIDIsSet_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17424,11 +15055,7 @@ struct FUniqueLobbyId UOnline_X::STATIC_StringToUniqueLobbyId(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.StringToUniqueLobbyId");
 
-	struct
-	{
-		struct FString                 InID;
-		struct FUniqueLobbyId          ReturnValue;
-	} params;
+	UOnline_X_StringToUniqueLobbyId_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17451,11 +15078,7 @@ struct FString UOnline_X::STATIC_UniqueLobbyIdToString(const struct FUniqueLobby
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.UniqueLobbyIdToString");
 
-	struct
-	{
-		struct FUniqueLobbyId          InID;
-		struct FString                 ReturnValue;
-	} params;
+	UOnline_X_UniqueLobbyIdToString_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17478,11 +15101,7 @@ struct FUniqueNetId UOnline_X::STATIC_GetUniqueNetIDWithoutSplitscreenID(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetUniqueNetIDWithoutSplitscreenID");
 
-	struct
-	{
-		struct FUniqueNetId            Id;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnline_X_GetUniqueNetIDWithoutSplitscreenID_Params params;
 	params.Id = Id;
 
 	auto flags = fn->FunctionFlags;
@@ -17505,11 +15124,7 @@ struct FUniqueNetId UOnline_X::STATIC_GetPrimaryIDForGuest(const struct FUniqueN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetPrimaryIDForGuest");
 
-	struct
-	{
-		struct FUniqueNetId            InGuestID;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnline_X_GetPrimaryIDForGuest_Params params;
 	params.InGuestID = InGuestID;
 
 	auto flags = fn->FunctionFlags;
@@ -17532,11 +15147,7 @@ bool UOnline_X::STATIC_UniqueNetIDIsGuest(const struct FUniqueNetId& InID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.UniqueNetIDIsGuest");
 
-	struct
-	{
-		struct FUniqueNetId            InID;
-		bool                           ReturnValue;
-	} params;
+	UOnline_X_UniqueNetIDIsGuest_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17559,11 +15170,7 @@ bool UOnline_X::STATIC_UniqueNetIDIsValid(const struct FUniqueNetId& InID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.UniqueNetIDIsValid");
 
-	struct
-	{
-		struct FUniqueNetId            InID;
-		bool                           ReturnValue;
-	} params;
+	UOnline_X_UniqueNetIDIsValid_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17587,11 +15194,7 @@ struct FUniqueNetId UOnline_X::STATIC_StringToUniqueNetId(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.StringToUniqueNetId");
 
-	struct
-	{
-		struct FString                 InID;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnline_X_StringToUniqueNetId_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17615,11 +15218,7 @@ struct FString UOnline_X::STATIC_UniqueNetIdToString(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.UniqueNetIdToString");
 
-	struct
-	{
-		struct FUniqueNetId            InID;
-		struct FString                 ReturnValue;
-	} params;
+	UOnline_X_UniqueNetIdToString_Params params;
 	params.InID = InID;
 
 	auto flags = fn->FunctionFlags;
@@ -17643,12 +15242,7 @@ int UOnline_X::STATIC_FindUniqueNetID(TArray<struct FUniqueNetId>* List, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.FindUniqueNetID");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    List;
-		struct FUniqueNetId            Search;
-		int                            ReturnValue;
-	} params;
+	UOnline_X_FindUniqueNetID_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -17677,12 +15271,7 @@ class UError_X* UOnline_X::GetConnectionStatusError(int ErrorCode, class UError_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetConnectionStatusError");
 
-	struct
-	{
-		int                            ErrorCode;
-		class UError_X*                FallbackError;
-		class UError_X*                ReturnValue;
-	} params;
+	UOnline_X_GetConnectionStatusError_Params params;
 	params.ErrorCode = ErrorCode;
 	params.FallbackError = FallbackError;
 
@@ -17703,9 +15292,7 @@ void UOnline_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnline_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17722,9 +15309,7 @@ void UOnline_X::OnNewGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.OnNewGame");
 
-	struct
-	{
-	} params;
+	UOnline_X_OnNewGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17741,9 +15326,7 @@ void UOnline_X::OnMainMenuOpened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.OnMainMenuOpened");
 
-	struct
-	{
-	} params;
+	UOnline_X_OnMainMenuOpened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17762,10 +15345,7 @@ void UOnline_X::HandleGRISpawned(class AGRI_X* GRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.HandleGRISpawned");
 
-	struct
-	{
-		class AGRI_X*                  GRI;
-	} params;
+	UOnline_X_HandleGRISpawned_Params params;
 	params.GRI = GRI;
 
 	auto flags = fn->FunctionFlags;
@@ -17783,9 +15363,7 @@ void UOnline_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnline_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17804,10 +15382,7 @@ void UOnline_X::Init(class UOnlineSubsystem* NewOnlineSubsystem)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.Init");
 
-	struct
-	{
-		class UOnlineSubsystem*        NewOnlineSubsystem;
-	} params;
+	UOnline_X_Init_Params params;
 	params.NewOnlineSubsystem = NewOnlineSubsystem;
 
 	auto flags = fn->FunctionFlags;
@@ -17827,10 +15402,7 @@ void UOnlineGame_Base_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGame_Base_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -17850,10 +15422,7 @@ bool UOnlineGame_Base_X::HasInternetConnection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.HasInternetConnection");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_Base_X_HasInternetConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17874,10 +15443,7 @@ int UOnlineGame_Base_X::GetPort()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.GetPort");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGame_Base_X_GetPort_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -17900,11 +15466,7 @@ struct FString UOnlineGame_Base_X::GetExternalHostAddress(bool bWithPort)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.GetExternalHostAddress");
 
-	struct
-	{
-		bool                           bWithPort;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGame_Base_X_GetExternalHostAddress_Params params;
 	params.bWithPort = bWithPort;
 
 	auto flags = fn->FunctionFlags;
@@ -17928,11 +15490,7 @@ struct FString UOnlineGame_Base_X::GetLocalHostAddress(bool bWithPort)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.GetLocalHostAddress");
 
-	struct
-	{
-		bool                           bWithPort;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGame_Base_X_GetLocalHostAddress_Params params;
 	params.bWithPort = bWithPort;
 
 	auto flags = fn->FunctionFlags;
@@ -17955,10 +15513,7 @@ void UOnlineGame_Base_X::HandleInternetConnectionChanged(bool bConnected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.HandleInternetConnectionChanged");
 
-	struct
-	{
-		bool                           bConnected;
-	} params;
+	UOnlineGame_Base_X_HandleInternetConnectionChanged_Params params;
 	params.bConnected = bConnected;
 
 	auto flags = fn->FunctionFlags;
@@ -17978,10 +15533,7 @@ void UOnlineGame_Base_X::HandleConnectionStatusChanged(TEnumAsByte<enum class EO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.HandleConnectionStatusChanged");
 
-	struct
-	{
-		TEnumAsByte<enum class EOnlineServerConnectionStatus> ConnectionStatus;
-	} params;
+	UOnlineGame_Base_X_HandleConnectionStatusChanged_Params params;
 	params.ConnectionStatus = ConnectionStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -18001,10 +15553,7 @@ void UOnlineGame_Base_X::SetDefaultSearchType(class UClass* OnlineSearchClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.SetDefaultSearchType");
 
-	struct
-	{
-		class UClass*                  OnlineSearchClass;
-	} params;
+	UOnlineGame_Base_X_SetDefaultSearchType_Params params;
 	params.OnlineSearchClass = OnlineSearchClass;
 
 	auto flags = fn->FunctionFlags;
@@ -18026,11 +15575,7 @@ bool UOnlineGame_Base_X::IsPortZero(const struct FString& InURL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.IsPortZero");
 
-	struct
-	{
-		struct FString                 InURL;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_Base_X_IsPortZero_Params params;
 	params.InURL = InURL;
 
 	auto flags = fn->FunctionFlags;
@@ -18053,11 +15598,7 @@ struct FString UOnlineGame_Base_X::RemovePort(const struct FString& InURL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.RemovePort");
 
-	struct
-	{
-		struct FString                 InURL;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGame_Base_X_RemovePort_Params params;
 	params.InURL = InURL;
 
 	auto flags = fn->FunctionFlags;
@@ -18077,9 +15618,7 @@ void UOnlineGame_Base_X::KickAllPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.KickAllPlayers");
 
-	struct
-	{
-	} params;
+	UOnlineGame_Base_X_KickAllPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18096,9 +15635,7 @@ void UOnlineGame_Base_X::DelayedShutdownServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.DelayedShutdownServer");
 
-	struct
-	{
-	} params;
+	UOnlineGame_Base_X_DelayedShutdownServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18115,9 +15652,7 @@ void UOnlineGame_Base_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnlineGame_Base_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18136,10 +15671,7 @@ void UOnlineGame_Base_X::OnNewSettingsChosen(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.OnNewSettingsChosen");
 
-	struct
-	{
-		int                            PlaylistId;
-	} params;
+	UOnlineGame_Base_X_OnNewSettingsChosen_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -18159,10 +15691,7 @@ void UOnlineGame_Base_X::UpdateGameSettingsPlayerCount(int NumPlayers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.UpdateGameSettingsPlayerCount");
 
-	struct
-	{
-		int                            NumPlayers;
-	} params;
+	UOnlineGame_Base_X_UpdateGameSettingsPlayerCount_Params params;
 	params.NumPlayers = NumPlayers;
 
 	auto flags = fn->FunctionFlags;
@@ -18183,11 +15712,7 @@ void UOnlineGame_Base_X::UpdateGameSettings(class UOnlineGameSettings_X* InGameS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.UpdateGameSettings");
 
-	struct
-	{
-		class UOnlineGameSettings_X*   InGameSettings;
-		struct FString                 Options;
-	} params;
+	UOnlineGame_Base_X_UpdateGameSettings_Params params;
 	params.InGameSettings = InGameSettings;
 	params.Options = Options;
 
@@ -18209,11 +15734,7 @@ class UOnlineGameSettings_X* UOnlineGame_Base_X::CreateOnlineGameSettings(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.CreateOnlineGameSettings");
 
-	struct
-	{
-		struct FString                 Options;
-		class UOnlineGameSettings_X*   ReturnValue;
-	} params;
+	UOnlineGame_Base_X_CreateOnlineGameSettings_Params params;
 	params.Options = Options;
 
 	auto flags = fn->FunctionFlags;
@@ -18235,10 +15756,7 @@ void UOnlineGame_Base_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGame_Base_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -18256,9 +15774,7 @@ void UOnlineGame_Base_X::InitOnlineSubsystemInterfaces()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.InitOnlineSubsystemInterfaces");
 
-	struct
-	{
-	} params;
+	UOnlineGame_Base_X_InitOnlineSubsystemInterfaces_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -18276,9 +15792,7 @@ void UOnlineGame_Base_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGame_Base_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18298,11 +15812,7 @@ class UOnlineGame_Base_X* UOnlineGame_Base_X::STATIC_GetInstance(class UClass* T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.GetInstance");
 
-	struct
-	{
-		class UClass*                  Type;
-		class UOnlineGame_Base_X*      ReturnValue;
-	} params;
+	UOnlineGame_Base_X_GetInstance_Params params;
 	params.Type = Type;
 
 	auto flags = fn->FunctionFlags;
@@ -18325,10 +15835,7 @@ void UOnlineGame_Base_X::EventInternetConnectionChanged(bool bConnected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.EventInternetConnectionChanged");
 
-	struct
-	{
-		bool                           bConnected;
-	} params;
+	UOnlineGame_Base_X_EventInternetConnectionChanged_Params params;
 	params.bConnected = bConnected;
 
 	auto flags = fn->FunctionFlags;
@@ -18348,10 +15855,7 @@ void UOnlineGame_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGame_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -18371,10 +15875,7 @@ void UOnlineGame_X::NotifyPlayerPsyNetLogout(const struct FScriptDelegate& Callb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.NotifyPlayerPsyNetLogout");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGame_X_NotifyPlayerPsyNetLogout_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -18394,10 +15895,7 @@ void UOnlineGame_X::NotifyPlayerPsyNetLogin(const struct FScriptDelegate& Callba
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.NotifyPlayerPsyNetLogin");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGame_X_NotifyPlayerPsyNetLogin_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -18418,11 +15916,7 @@ bool UOnlineGame_X::IsSignedIn(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.IsSignedIn");
 
-	struct
-	{
-		int                            ControllerId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_IsSignedIn_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -18445,11 +15939,7 @@ bool UOnlineGame_X::CheckUpToDate(class UError_X** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckUpToDate");
 
-	struct
-	{
-		class UError_X*                Error;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_CheckUpToDate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18474,11 +15964,7 @@ bool UOnlineGame_X::CheckNotTooYoung(class UError_X** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckNotTooYoung");
 
-	struct
-	{
-		class UError_X*                Error;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_CheckNotTooYoung_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18503,11 +15989,7 @@ bool UOnlineGame_X::CheckPsyNetConnection(class UError_X** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckPsyNetConnection");
 
-	struct
-	{
-		class UError_X*                Error;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_CheckPsyNetConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18532,11 +16014,7 @@ bool UOnlineGame_X::CheckInternetConnection(class UError_X** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckInternetConnection");
 
-	struct
-	{
-		class UError_X*                Error;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_CheckInternetConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18561,11 +16039,7 @@ bool UOnlineGame_X::IsOnlinePlayerID(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.IsOnlinePlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_IsOnlinePlayerID_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -18588,11 +16062,7 @@ class UOnlinePlayer_X* UOnlineGame_X::GetOnlinePlayerByID(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetOnlinePlayerByID");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		class UOnlinePlayer_X*         ReturnValue;
-	} params;
+	UOnlineGame_X_GetOnlinePlayerByID_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -18614,10 +16084,7 @@ void UOnlineGame_X::OnNewSettingsChosen(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.OnNewSettingsChosen");
 
-	struct
-	{
-		int                            PlaylistId;
-	} params;
+	UOnlineGame_X_OnNewSettingsChosen_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -18637,10 +16104,7 @@ struct FUniqueNetId UOnlineGame_X::GetPrimaryPlayerID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetPrimaryPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGame_X_GetPrimaryPlayerID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18661,10 +16125,7 @@ class UOnlinePlayer_X* UOnlineGame_X::GetPrimaryPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetPrimaryPlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         ReturnValue;
-	} params;
+	UOnlineGame_X_GetPrimaryPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18685,10 +16146,7 @@ void UOnlineGame_X::RemoveOnlinePlayer(class ULocalPlayer_X* LocalPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.RemoveOnlinePlayer");
 
-	struct
-	{
-		class ULocalPlayer_X*          LocalPlayer;
-	} params;
+	UOnlineGame_X_RemoveOnlinePlayer_Params params;
 	params.LocalPlayer = LocalPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -18709,11 +16167,7 @@ class UOnlinePlayer_X* UOnlineGame_X::CreateOnlinePlayer(class ULocalPlayer_X* L
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CreateOnlinePlayer");
 
-	struct
-	{
-		class ULocalPlayer_X*          LocalPlayer;
-		class UOnlinePlayer_X*         ReturnValue;
-	} params;
+	UOnlineGame_X_CreateOnlinePlayer_Params params;
 	params.LocalPlayer = LocalPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -18735,10 +16189,7 @@ void UOnlineGame_X::SetPlayedWith(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.SetPlayedWith");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGame_X_SetPlayedWith_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -18760,12 +16211,7 @@ void UOnlineGame_X::GetPlayerAvatar(const struct FUniqueNetId& PlayerID, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetPlayerAvatar");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate;
-		TEnumAsByte<enum class AvatarSize> Size;
-	} params;
+	UOnlineGame_X_GetPlayerAvatar_Params params;
 	params.PlayerID = PlayerID;
 	params.ReadOnlineAvatarCompleteDelegate = ReadOnlineAvatarCompleteDelegate;
 	params.Size = Size;
@@ -18787,10 +16233,7 @@ void UOnlineGame_X::SetVoiceVolume(float NewValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.SetVoiceVolume");
 
-	struct
-	{
-		float                          NewValue;
-	} params;
+	UOnlineGame_X_SetVoiceVolume_Params params;
 	params.NewValue = NewValue;
 
 	auto flags = fn->FunctionFlags;
@@ -18810,10 +16253,7 @@ void UOnlineGame_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGame_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -18831,9 +16271,7 @@ void UOnlineGame_X::OnMainMenuOpened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.OnMainMenuOpened");
 
-	struct
-	{
-	} params;
+	UOnlineGame_X_OnMainMenuOpened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18853,11 +16291,7 @@ void UOnlineGame_X::HandlePlayerLogin(class UOnlinePlayer_X* OnlinePlayer, class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.HandlePlayerLogin");
 
-	struct
-	{
-		class UOnlinePlayer_X*         OnlinePlayer;
-		class UError_X*                Error;
-	} params;
+	UOnlineGame_X_HandlePlayerLogin_Params params;
 	params.OnlinePlayer = OnlinePlayer;
 	params.Error = Error;
 
@@ -18878,10 +16312,7 @@ void UOnlineGame_X::HandlePsyNetLoginChanged(class UOnlinePlayerAuthentication_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.HandlePsyNetLoginChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlineGame_X_HandlePsyNetLoginChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -18902,11 +16333,7 @@ bool UOnlineGame_X::IsLoggedInToPsyNet(class UOnlinePlayer_X* OnlinePlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.IsLoggedInToPsyNet");
 
-	struct
-	{
-		class UOnlinePlayer_X*         OnlinePlayer;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGame_X_IsLoggedInToPsyNet_Params params;
 	params.OnlinePlayer = OnlinePlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -18926,9 +16353,7 @@ void UOnlineGame_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGame_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18947,10 +16372,7 @@ void UOnlineGame_X::EventPlayerPsyNetLogout(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.EventPlayerPsyNetLogout");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGame_X_EventPlayerPsyNetLogout_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -18970,10 +16392,7 @@ void UOnlineGame_X::EventPlayerPsyNetLogin(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.EventPlayerPsyNetLogin");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGame_X_EventPlayerPsyNetLogin_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -18994,11 +16413,7 @@ void UOnlineGame_X::EventConnectionError(class UError_X* Error, class UOnlinePla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.EventConnectionError");
 
-	struct
-	{
-		class UError_X*                Error;
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGame_X_EventConnectionError_Params params;
 	params.Error = Error;
 	params.Player = Player;
 
@@ -19019,10 +16434,7 @@ void UOnlineGameDedicatedServer_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameDedicatedServer_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -19040,9 +16452,7 @@ void UOnlineGameDedicatedServer_X::CreateMatchID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.CreateMatchID");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_CreateMatchID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19061,10 +16471,7 @@ struct FName UOnlineGameDedicatedServer_X::GetCurrentMapName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetCurrentMapName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetCurrentMapName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19085,10 +16492,7 @@ void UOnlineGameDedicatedServer_X::ClearMatchmakingBan(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.ClearMatchmakingBan");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGameDedicatedServer_X_ClearMatchmakingBan_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -19109,11 +16513,7 @@ void UOnlineGameDedicatedServer_X::IssueMatchmakingBan(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.IssueMatchmakingBan");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 Reason;
-	} params;
+	UOnlineGameDedicatedServer_X_IssueMatchmakingBan_Params params;
 	params.PlayerID = PlayerID;
 	params.Reason = Reason;
 
@@ -19135,11 +16535,7 @@ unsigned char UOnlineGameDedicatedServer_X::GetTeamNum(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetTeamNum");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		unsigned char                  ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetTeamNum_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -19161,10 +16557,7 @@ bool UOnlineGameDedicatedServer_X::IsRankedMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.IsRankedMatch");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_IsRankedMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19183,9 +16576,7 @@ void UOnlineGameDedicatedServer_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19204,10 +16595,7 @@ void UOnlineGameDedicatedServer_X::HandleNewServerIPRPC(class URPC_CheckReplacem
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.HandleNewServerIPRPC");
 
-	struct
-	{
-		class URPC_CheckReplacementDedicatedServer_X* RPC;
-	} params;
+	UOnlineGameDedicatedServer_X_HandleNewServerIPRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -19225,9 +16613,7 @@ void UOnlineGameDedicatedServer_X::CheckNewServerIP()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.CheckNewServerIP");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_CheckNewServerIP_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19244,9 +16630,7 @@ void UOnlineGameDedicatedServer_X::CheckNewServerTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.CheckNewServerTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_CheckNewServerTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19265,10 +16649,7 @@ void UOnlineGameDedicatedServer_X::CheckStartShutdown(int GameTimeRemaining)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.CheckStartShutdown");
 
-	struct
-	{
-		int                            GameTimeRemaining;
-	} params;
+	UOnlineGameDedicatedServer_X_CheckStartShutdown_Params params;
 	params.GameTimeRemaining = GameTimeRemaining;
 
 	auto flags = fn->FunctionFlags;
@@ -19288,10 +16669,7 @@ void UOnlineGameDedicatedServer_X::UpdateGameTime(int TimeSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.UpdateGameTime");
 
-	struct
-	{
-		int                            TimeSeconds;
-	} params;
+	UOnlineGameDedicatedServer_X_UpdateGameTime_Params params;
 	params.TimeSeconds = TimeSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -19311,10 +16689,7 @@ void UOnlineGameDedicatedServer_X::FindNewDedicatedServerForPlayers(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.FindNewDedicatedServerForPlayers");
 
-	struct
-	{
-		struct FScriptDelegate         InDelegate;
-	} params;
+	UOnlineGameDedicatedServer_X_FindNewDedicatedServerForPlayers_Params params;
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -19334,10 +16709,7 @@ bool UOnlineGameDedicatedServer_X::IsInPostGameLobby()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.IsInPostGameLobby");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_IsInPostGameLobby_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19358,10 +16730,7 @@ bool UOnlineGameDedicatedServer_X::IsTravellingToNextMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.IsTravellingToNextMap");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_IsTravellingToNextMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19380,9 +16749,7 @@ void UOnlineGameDedicatedServer_X::UpdateOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.UpdateOnlineGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_UpdateOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19404,13 +16771,7 @@ bool UOnlineGameDedicatedServer_X::AllowSplitscreenJoin(class APlayerReplication
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.AllowSplitscreenJoin");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PrimaryPRI;
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_AllowSplitscreenJoin_Params params;
 	params.PrimaryPRI = PrimaryPRI;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
@@ -19434,10 +16795,7 @@ void UOnlineGameDedicatedServer_X::PlayerLoggedOut(class APlayerReplicationInfo*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.PlayerLoggedOut");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameDedicatedServer_X_PlayerLoggedOut_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -19457,10 +16815,7 @@ void UOnlineGameDedicatedServer_X::PlayerLoggedIn(class APlayerReplicationInfo* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.PlayerLoggedIn");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameDedicatedServer_X_PlayerLoggedIn_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -19482,12 +16837,7 @@ bool UOnlineGameDedicatedServer_X::AllowPlayerLogin(const struct FString& Option
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.AllowPlayerLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_AllowPlayerLogin_Params params;
 	params.Options = Options;
 	params.PlayerID = PlayerID;
 
@@ -19510,10 +16860,7 @@ void UOnlineGameDedicatedServer_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGameDedicatedServer_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -19533,10 +16880,7 @@ void UOnlineGameDedicatedServer_X::TravelToMap(const struct FString& ServerComma
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.TravelToMap");
 
-	struct
-	{
-		struct FString                 ServerCommand;
-	} params;
+	UOnlineGameDedicatedServer_X_TravelToMap_Params params;
 	params.ServerCommand = ServerCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -19557,11 +16901,7 @@ void UOnlineGameDedicatedServer_X::GotoPrivateMatchMap(const struct FName& MapNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GotoPrivateMatchMap");
 
-	struct
-	{
-		struct FName                   MapName;
-		int                            GameMode;
-	} params;
+	UOnlineGameDedicatedServer_X_GotoPrivateMatchMap_Params params;
 	params.MapName = MapName;
 	params.GameMode = GameMode;
 
@@ -19580,9 +16920,7 @@ void UOnlineGameDedicatedServer_X::GotoNextPrivateMatchMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GotoNextPrivateMatchMap");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_GotoNextPrivateMatchMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19599,9 +16937,7 @@ void UOnlineGameDedicatedServer_X::OnPrivateEventDestroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.OnPrivateEventDestroyed");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_OnPrivateEventDestroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19620,10 +16956,7 @@ struct FString UOnlineGameDedicatedServer_X::GetStartServerCommand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetStartServerCommand");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetStartServerCommand_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19645,11 +16978,7 @@ struct FName UOnlineGameDedicatedServer_X::GetNextRandomMapName(int GameMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetNextRandomMapName");
 
-	struct
-	{
-		int                            GameMode;
-		struct FName                   ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetNextRandomMapName_Params params;
 	params.GameMode = GameMode;
 
 	auto flags = fn->FunctionFlags;
@@ -19672,11 +17001,7 @@ struct FName UOnlineGameDedicatedServer_X::GetNextMapName(int GameMode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetNextMapName");
 
-	struct
-	{
-		int                            GameMode;
-		struct FName                   ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetNextMapName_Params params;
 	params.GameMode = GameMode;
 
 	auto flags = fn->FunctionFlags;
@@ -19698,10 +17023,7 @@ void UOnlineGameDedicatedServer_X::GetCustomMatchSettings(struct FCustomMatchSet
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetCustomMatchSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    OutSettings;
-	} params;
+	UOnlineGameDedicatedServer_X_GetCustomMatchSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19723,10 +17045,7 @@ struct FUniqueNetId UOnlineGameDedicatedServer_X::GetCustomMatchOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetCustomMatchOwner");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetCustomMatchOwner_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19747,10 +17066,7 @@ void UOnlineGameDedicatedServer_X::UpdateCustomMatchOwner(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.UpdateCustomMatchOwner");
 
-	struct
-	{
-		struct FUniqueNetId            NewOwner;
-	} params;
+	UOnlineGameDedicatedServer_X_UpdateCustomMatchOwner_Params params;
 	params.NewOwner = NewOwner;
 
 	auto flags = fn->FunctionFlags;
@@ -19770,10 +17086,7 @@ void UOnlineGameDedicatedServer_X::SetCustomSettings(const struct FCustomMatchSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.SetCustomSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    Settings;
-	} params;
+	UOnlineGameDedicatedServer_X_SetCustomSettings_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -19794,11 +17107,7 @@ void UOnlineGameDedicatedServer_X::SetupPrivateMatch(const struct FCustomMatchSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.SetupPrivateMatch");
 
-	struct
-	{
-		struct FCustomMatchSettings    Settings;
-		struct FUniqueNetId            Creator;
-	} params;
+	UOnlineGameDedicatedServer_X_SetupPrivateMatch_Params params;
 	params.Settings = Settings;
 	params.Creator = Creator;
 
@@ -19817,9 +17126,7 @@ void UOnlineGameDedicatedServer_X::GoToNextMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GoToNextMap");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_GoToNextMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19838,10 +17145,7 @@ struct FName UOnlineGameDedicatedServer_X::GetNextMutatorMapName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetNextMutatorMapName");
 
-	struct
-	{
-		struct FName                   ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetNextMutatorMapName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19862,10 +17166,7 @@ void UOnlineGameDedicatedServer_X::GoToMap(const struct FString& MapName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GoToMap");
 
-	struct
-	{
-		struct FString                 MapName;
-	} params;
+	UOnlineGameDedicatedServer_X_GoToMap_Params params;
 	params.MapName = MapName;
 
 	auto flags = fn->FunctionFlags;
@@ -19885,10 +17186,7 @@ struct FString UOnlineGameDedicatedServer_X::GetPlaylistTags()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.GetPlaylistTags");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameDedicatedServer_X_GetPlaylistTags_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19907,9 +17205,7 @@ void UOnlineGameDedicatedServer_X::UpdateAverageMMR()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.UpdateAverageMMR");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_UpdateAverageMMR_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19926,9 +17222,7 @@ void UOnlineGameDedicatedServer_X::ClearSettings()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.ClearSettings");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_ClearSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19947,10 +17241,7 @@ void UOnlineGameDedicatedServer_X::SetPlaylist(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.SetPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-	} params;
+	UOnlineGameDedicatedServer_X_SetPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -19968,9 +17259,7 @@ void UOnlineGameDedicatedServer_X::HandleReservationsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.HandleReservationsUpdated");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_HandleReservationsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19987,9 +17276,7 @@ void UOnlineGameDedicatedServer_X::InitClanforge()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.InitClanforge");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_InitClanforge_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20006,9 +17293,7 @@ void UOnlineGameDedicatedServer_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServer_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20027,10 +17312,7 @@ void UOnlineGameDedicatedServer_X::EventActive(class UOnlineGameDedicatedServer_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventActive");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UOnlineGameDedicatedServer_X_EventActive_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -20050,10 +17332,7 @@ void UOnlineGameDedicatedServer_X::EventInactive(class UOnlineGameDedicatedServe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventInactive");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UOnlineGameDedicatedServer_X_EventInactive_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -20074,11 +17353,7 @@ void UOnlineGameDedicatedServer_X::EventPrivateMatchSettingsChanged(class UOnlin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventPrivateMatchSettingsChanged");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-		struct FCustomMatchSettings    NewSettings;
-	} params;
+	UOnlineGameDedicatedServer_X_EventPrivateMatchSettingsChanged_Params params;
 	params.Server = Server;
 	params.NewSettings = NewSettings;
 
@@ -20099,10 +17374,7 @@ void UOnlineGameDedicatedServer_X::EventPlaylistSet(class UOnlineGameDedicatedSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventPlaylistSet");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UOnlineGameDedicatedServer_X_EventPlaylistSet_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -20122,10 +17394,7 @@ void UOnlineGameDedicatedServer_X::EventAverageMMRChanged(class UOnlineGameDedic
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventAverageMMRChanged");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UOnlineGameDedicatedServer_X_EventAverageMMRChanged_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -20145,10 +17414,7 @@ void UOnlineGameDedicatedServer_X::EventFoundNewDedicatedServerForPlayers(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.EventFoundNewDedicatedServerForPlayers");
 
-	struct
-	{
-		struct FString                 NewIP;
-	} params;
+	UOnlineGameDedicatedServer_X_EventFoundNewDedicatedServerForPlayers_Params params;
 	params.NewIP = NewIP;
 
 	auto flags = fn->FunctionFlags;
@@ -20170,12 +17436,7 @@ bool UOnlineGameDLC_X::DoesPlayerOwnDLC(struct FUniqueNetId* PlayerID, struct FN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.DoesPlayerOwnDLC");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FName                   DLCName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDLC_X_DoesPlayerOwnDLC_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -20202,10 +17463,7 @@ void UOnlineGameDLC_X::HandleGetPublisherAppOwnership(class UWebRequest_X* Reque
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.HandleGetPublisherAppOwnership");
 
-	struct
-	{
-		class UWebRequest_X*           Request;
-	} params;
+	UOnlineGameDLC_X_HandleGetPublisherAppOwnership_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -20224,9 +17482,7 @@ void UOnlineGameDLC_X::OnMatchFinished()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.OnMatchFinished");
 
-	struct
-	{
-	} params;
+	UOnlineGameDLC_X_OnMatchFinished_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20246,11 +17502,7 @@ void UOnlineGameDLC_X::SyncPlayerDLC(const struct FUniqueNetId& PlayerID, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.SyncPlayerDLC");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameDLC_X_SyncPlayerDLC_Params params;
 	params.PlayerID = PlayerID;
 	params.Callback = Callback;
 
@@ -20271,10 +17523,7 @@ void UOnlineGameDLC_X::UpdatePlayerDLCInfo(int PlayerInfoIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.UpdatePlayerDLCInfo");
 
-	struct
-	{
-		int                            PlayerInfoIndex;
-	} params;
+	UOnlineGameDLC_X_UpdatePlayerDLCInfo_Params params;
 	params.PlayerInfoIndex = PlayerInfoIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -20295,11 +17544,7 @@ int UOnlineGameDLC_X::CreatePlayerDLCInfo(struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.CreatePlayerDLCInfo");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameDLC_X_CreatePlayerDLCInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20324,11 +17569,7 @@ bool UOnlineGameDLC_X::IsPlayerReadyForValidation(struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.IsPlayerReadyForValidation");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDLC_X_IsPlayerReadyForValidation_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -20351,9 +17592,7 @@ void UOnlineGameDLC_X::EventValidationReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDLC_X.EventValidationReady");
 
-	struct
-	{
-	} params;
+	UOnlineGameDLC_X_EventValidationReady_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20374,12 +17613,7 @@ bool UOnlineGameLeaderboards_X::IsSkillLeaderboard(const struct FString& NewLead
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.IsSkillLeaderboard");
 
-	struct
-	{
-		struct FString                 NewLeaderboardID;
-		int                            Playlist;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_IsSkillLeaderboard_Params params;
 	params.NewLeaderboardID = NewLeaderboardID;
 
 	auto flags = fn->FunctionFlags;
@@ -20405,11 +17639,7 @@ TArray<struct FLeaderboardData> UOnlineGameLeaderboards_X::SortLeaderboardDataMM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.SortLeaderboardDataMMR");
 
-	struct
-	{
-		TArray<struct FLeaderboardData> Leaderboard;
-		TArray<struct FLeaderboardData> ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_SortLeaderboardDataMMR_Params params;
 	params.Leaderboard = Leaderboard;
 
 	auto flags = fn->FunctionFlags;
@@ -20433,11 +17663,7 @@ TArray<struct FLeaderboardData> UOnlineGameLeaderboards_X::SortLeaderboardData(T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.SortLeaderboardData");
 
-	struct
-	{
-		TArray<struct FLeaderboardData> Leaderboard;
-		TArray<struct FLeaderboardData> ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_SortLeaderboardData_Params params;
 	params.Leaderboard = Leaderboard;
 
 	auto flags = fn->FunctionFlags;
@@ -20460,10 +17686,7 @@ void UOnlineGameLeaderboards_X::HandleGetLeaderboardFriendsRPC(class URPC_GetLea
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.HandleGetLeaderboardFriendsRPC");
 
-	struct
-	{
-		class URPC_GetLeaderboardRankForUsersBase_X* RPC;
-	} params;
+	UOnlineGameLeaderboards_X_HandleGetLeaderboardFriendsRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -20481,9 +17704,7 @@ void UOnlineGameLeaderboards_X::DispatchLeaderboardFriendsRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.DispatchLeaderboardFriendsRequest");
 
-	struct
-	{
-	} params;
+	UOnlineGameLeaderboards_X_DispatchLeaderboardFriendsRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20502,10 +17723,7 @@ void UOnlineGameLeaderboards_X::GetLeaderboardsForAllFriends(const struct FName&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetLeaderboardsForAllFriends");
 
-	struct
-	{
-		struct FName                   LeaderboardId;
-	} params;
+	UOnlineGameLeaderboards_X_GetLeaderboardsForAllFriends_Params params;
 	params.LeaderboardId = LeaderboardId;
 
 	auto flags = fn->FunctionFlags;
@@ -20528,13 +17746,7 @@ void UOnlineGameLeaderboards_X::GetLeaderboardFriends(class UOnlinePlayer_X* Onl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetLeaderboardFriends");
 
-	struct
-	{
-		class UOnlinePlayer_X*         OnlinePlayer;
-		struct FName                   NewLeaderboardID;
-		struct FScriptDelegate         NewDelegate;
-		struct FScriptDelegate         FailedDelegate;
-	} params;
+	UOnlineGameLeaderboards_X_GetLeaderboardFriends_Params params;
 	params.OnlinePlayer = OnlinePlayer;
 	params.NewLeaderboardID = NewLeaderboardID;
 	params.NewDelegate = NewDelegate;
@@ -20559,12 +17771,7 @@ void UOnlineGameLeaderboards_X::HandleGetAvatar(const struct FUniqueNetId& Playe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.HandleGetAvatar");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		class UTexture*                Avatar;
-		struct FString                 OnlinePlayerName;
-	} params;
+	UOnlineGameLeaderboards_X_HandleGetAvatar_Params params;
 	params.PlayerID = PlayerID;
 	params.Avatar = Avatar;
 	params.OnlinePlayerName = OnlinePlayerName;
@@ -20586,10 +17793,7 @@ void UOnlineGameLeaderboards_X::RequestPlayerAvatar(const struct FUniqueNetId& P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.RequestPlayerAvatar");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGameLeaderboards_X_RequestPlayerAvatar_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -20609,10 +17813,7 @@ void UOnlineGameLeaderboards_X::HandleGetLeaderboardRPC(class URPC_GetLeaderboar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.HandleGetLeaderboardRPC");
 
-	struct
-	{
-		class URPC_GetLeaderboardBase_X* RPC;
-	} params;
+	UOnlineGameLeaderboards_X_HandleGetLeaderboardRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -20635,13 +17836,7 @@ void UOnlineGameLeaderboards_X::GetLeaderboard(const struct FName& NewLeaderboar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetLeaderboard");
 
-	struct
-	{
-		struct FName                   NewLeaderboardID;
-		bool                           bGlobal;
-		struct FScriptDelegate         NewDelegate;
-		struct FScriptDelegate         FailedDelegate;
-	} params;
+	UOnlineGameLeaderboards_X_GetLeaderboard_Params params;
 	params.NewLeaderboardID = NewLeaderboardID;
 	params.bGlobal = bGlobal;
 	params.NewDelegate = NewDelegate;
@@ -20666,12 +17861,7 @@ bool UOnlineGameLeaderboards_X::GetCachedLeaderboardData(const struct FName& Lea
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetCachedLeaderboardData");
 
-	struct
-	{
-		struct FName                   LeaderboardId;
-		TArray<struct FLeaderboardData> LeaderboardDataList;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_GetCachedLeaderboardData_Params params;
 	params.LeaderboardId = LeaderboardId;
 
 	auto flags = fn->FunctionFlags;
@@ -20698,12 +17888,7 @@ int UOnlineGameLeaderboards_X::CalcDivision(float TopValue, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.CalcDivision");
 
-	struct
-	{
-		float                          TopValue;
-		float                          Value;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_CalcDivision_Params params;
 	params.TopValue = TopValue;
 	params.Value = Value;
 
@@ -20729,13 +17914,7 @@ void UOnlineGameLeaderboards_X::GetRankForPrimaryPlayer(const struct FName& Lead
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetRankForPrimaryPlayer");
 
-	struct
-	{
-		struct FName                   LeaderboardId;
-		int                            Value;
-		int                            Rank;
-		int                            Division;
-	} params;
+	UOnlineGameLeaderboards_X_GetRankForPrimaryPlayer_Params params;
 	params.LeaderboardId = LeaderboardId;
 	params.Value = Value;
 
@@ -20761,10 +17940,7 @@ void UOnlineGameLeaderboards_X::HandleGetLeaderboardPlayerValueRPC(class URPC_Ge
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.HandleGetLeaderboardPlayerValueRPC");
 
-	struct
-	{
-		class URPC_GetLeaderboardValueForUserBase_X* RPC;
-	} params;
+	UOnlineGameLeaderboards_X_HandleGetLeaderboardPlayerValueRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -20785,11 +17961,7 @@ void UOnlineGameLeaderboards_X::GetLeaderboardPlayerValue(const struct FName& Ne
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetLeaderboardPlayerValue");
 
-	struct
-	{
-		struct FName                   NewLeaderboardID;
-		struct FScriptDelegate         NewDelegate;
-	} params;
+	UOnlineGameLeaderboards_X_GetLeaderboardPlayerValue_Params params;
 	params.NewLeaderboardID = NewLeaderboardID;
 	params.NewDelegate = NewDelegate;
 
@@ -20810,10 +17982,7 @@ struct FString UOnlineGameLeaderboards_X::GetCurrentPlatformName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.GetCurrentPlatformName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameLeaderboards_X_GetCurrentPlatformName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20835,11 +18004,7 @@ void UOnlineGameLeaderboards_X::EventLeaderboardAvatarFound(class UTexture* Avat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.EventLeaderboardAvatarFound");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		class UTexture*                Avatar;
-	} params;
+	UOnlineGameLeaderboards_X_EventLeaderboardAvatarFound_Params params;
 	params.Avatar = Avatar;
 
 	auto flags = fn->FunctionFlags;
@@ -20862,10 +18027,7 @@ void UOnlineGameLeaderboards_X::EventGetLeaderboardFailed(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.EventGetLeaderboardFailed");
 
-	struct
-	{
-		class UError_X*                Error;
-	} params;
+	UOnlineGameLeaderboards_X_EventGetLeaderboardFailed_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -20886,11 +18048,7 @@ void UOnlineGameLeaderboards_X::EventNewLeaderboard(const struct FName& NewLeade
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.EventNewLeaderboard");
 
-	struct
-	{
-		struct FName                   NewLeaderboardID;
-		TArray<struct FLeaderboardData> NewLeaderboardData;
-	} params;
+	UOnlineGameLeaderboards_X_EventNewLeaderboard_Params params;
 	params.NewLeaderboardID = NewLeaderboardID;
 
 	auto flags = fn->FunctionFlags;
@@ -20916,13 +18074,7 @@ void UOnlineGameLeaderboards_X::OnGetLeaderboardPlayerValue(class UOnlineGameLea
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.OnGetLeaderboardPlayerValue");
 
-	struct
-	{
-		class UOnlineGameLeaderboards_X* LeaderboardsRef;
-		struct FLeaderboardData        PlayerLeaderboardData;
-		struct FName                   LeaderboardId;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameLeaderboards_X_OnGetLeaderboardPlayerValue_Params params;
 	params.LeaderboardsRef = LeaderboardsRef;
 	params.LeaderboardId = LeaderboardId;
 	params.Error = Error;
@@ -20948,11 +18100,7 @@ void UOnlineGameReservations_X::GetAccumulatedPrefs(TArray<struct FName>* Likes,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetAccumulatedPrefs");
 
-	struct
-	{
-		TArray<struct FName>           Likes;
-		TArray<struct FName>           Dislikes;
-	} params;
+	UOnlineGameReservations_X_GetAccumulatedPrefs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20976,10 +18124,7 @@ void UOnlineGameReservations_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameReservations_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -20999,10 +18144,7 @@ class UReservationsMetrics_X* UOnlineGameReservations_X::GetMetrics()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetMetrics");
 
-	struct
-	{
-		class UReservationsMetrics_X*  ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetMetrics_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21023,10 +18165,7 @@ void UOnlineGameReservations_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGameReservations_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -21046,10 +18185,7 @@ bool UOnlineGameReservations_X::HasSplitscreenPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HasSplitscreenPlayers");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HasSplitscreenPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21071,11 +18207,7 @@ void UOnlineGameReservations_X::SetParty(const struct FUniqueNetId& MemberId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.SetParty");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		struct FUniqueNetId            PartyID;
-	} params;
+	UOnlineGameReservations_X_SetParty_Params params;
 	params.MemberId = MemberId;
 	params.PartyID = PartyID;
 
@@ -21097,11 +18229,7 @@ struct FUniqueNetId UOnlineGameReservations_X::GetPartyID(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPartyID");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetPartyID_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -21124,11 +18252,7 @@ unsigned char UOnlineGameReservations_X::GetTeamNum(const struct FUniqueNetId& P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetTeamNum");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		unsigned char                  ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetTeamNum_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -21150,10 +18274,7 @@ struct FString UOnlineGameReservations_X::GetPlayersPlatformsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlayersPlatformsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetPlayersPlatformsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21175,11 +18296,7 @@ struct FString UOnlineGameReservations_X::GetPlatformsString(TArray<TEnumAsByte<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlatformsString");
 
-	struct
-	{
-		TArray<TEnumAsByte<enum class OnlinePlatform>> Platforms;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetPlatformsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21203,10 +18320,7 @@ TArray<TEnumAsByte<enum class OnlinePlatform>> UOnlineGameReservations_X::GetPla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlayerPlatforms");
 
-	struct
-	{
-		TArray<TEnumAsByte<enum class OnlinePlatform>> ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetPlayerPlatforms_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21229,12 +18343,7 @@ bool UOnlineGameReservations_X::CanPlayTogether(TEnumAsByte<enum class OnlinePla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanPlayTogether");
 
-	struct
-	{
-		TEnumAsByte<enum class OnlinePlatform> Platform1;
-		TEnumAsByte<enum class OnlinePlatform> Platform2;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CanPlayTogether_Params params;
 	params.Platform1 = Platform1;
 	params.Platform2 = Platform2;
 
@@ -21258,11 +18367,7 @@ bool UOnlineGameReservations_X::CanAcceptReservationsForPlatform(class UAddReser
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanAcceptReservationsForPlatform");
 
-	struct
-	{
-		class UAddReservationMessagePublic_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CanAcceptReservationsForPlatform_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -21284,10 +18389,7 @@ TEnumAsByte<enum class OnlinePlatform> UOnlineGameReservations_X::GetExclusivePl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetExclusivePlatform");
 
-	struct
-	{
-		TEnumAsByte<enum class OnlinePlatform> ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetExclusivePlatform_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21309,11 +18411,7 @@ bool UOnlineGameReservations_X::CanAcceptReservations(class UAddReservationMessa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanAcceptReservations");
 
-	struct
-	{
-		class UAddReservationMessagePublic_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CanAcceptReservations_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -21338,13 +18436,7 @@ void UOnlineGameReservations_X::GetPlayerCounts(int* Team0Reserved, int* Team0Jo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetPlayerCounts");
 
-	struct
-	{
-		int                            Team0Reserved;
-		int                            Team0Joined;
-		int                            Team1Reserved;
-		int                            Team1Joined;
-	} params;
+	UOnlineGameReservations_X_GetPlayerCounts_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21370,9 +18462,7 @@ void UOnlineGameReservations_X::NotifyReservationsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.NotifyReservationsUpdated");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_NotifyReservationsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21389,9 +18479,7 @@ void UOnlineGameReservations_X::OnReservationsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.OnReservationsUpdated");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_OnReservationsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21408,9 +18496,7 @@ void UOnlineGameReservations_X::CheckReservationTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CheckReservationTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_CheckReservationTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21427,9 +18513,7 @@ void UOnlineGameReservations_X::StartReservationTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.StartReservationTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_StartReservationTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21446,9 +18530,7 @@ void UOnlineGameReservations_X::SyncSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.SyncSkills");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_SyncSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21465,9 +18547,7 @@ void UOnlineGameReservations_X::HackForceNotServerTravelling()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HackForceNotServerTravelling");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_HackForceNotServerTravelling_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21486,10 +18566,7 @@ void UOnlineGameReservations_X::SetServerTraveling(bool bTraveling)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.SetServerTraveling");
 
-	struct
-	{
-		bool                           bTraveling;
-	} params;
+	UOnlineGameReservations_X_SetServerTraveling_Params params;
 	params.bTraveling = bTraveling;
 
 	auto flags = fn->FunctionFlags;
@@ -21509,10 +18586,7 @@ void UOnlineGameReservations_X::CloseConnection(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CloseConnection");
 
-	struct
-	{
-		int                            Index;
-	} params;
+	UOnlineGameReservations_X_CloseConnection_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -21532,10 +18606,7 @@ void UOnlineGameReservations_X::RemoveReservationIndex(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.RemoveReservationIndex");
 
-	struct
-	{
-		int                            Index;
-	} params;
+	UOnlineGameReservations_X_RemoveReservationIndex_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -21559,14 +18630,7 @@ int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AddSpecialReservation");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		struct FUniqueNetId            PartyID;
-		TEnumAsByte<enum class EReservationStatus> Status;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AddSpecialReservation_Params params;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 	params.PartyID = PartyID;
@@ -21591,10 +18655,7 @@ void UOnlineGameReservations_X::HandleTeamChanged(class APRI_X* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleTeamChanged");
 
-	struct
-	{
-		class APRI_X*                  PRI;
-	} params;
+	UOnlineGameReservations_X_HandleTeamChanged_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -21614,10 +18675,7 @@ void UOnlineGameReservations_X::RemoveReservation(const struct FUniqueNetId& Pla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.RemoveReservation");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGameReservations_X_RemoveReservation_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -21637,10 +18695,7 @@ void UOnlineGameReservations_X::PlayerLoggedOut(class APlayerReplicationInfo* PR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PlayerLoggedOut");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameReservations_X_PlayerLoggedOut_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -21660,10 +18715,7 @@ void UOnlineGameReservations_X::PlayerLoggedIn(class APlayerReplicationInfo* PRI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PlayerLoggedIn");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameReservations_X_PlayerLoggedIn_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -21685,12 +18737,7 @@ bool UOnlineGameReservations_X::AllowPlayerLogin(const struct FString& Options, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AllowPlayerLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AllowPlayerLogin_Params params;
 	params.Options = Options;
 	params.PlayerID = PlayerID;
 
@@ -21713,10 +18760,7 @@ bool UOnlineGameReservations_X::AllPlayersInGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AllPlayersInGame");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AllPlayersInGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21737,10 +18781,7 @@ bool UOnlineGameReservations_X::AllPlayersReserved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AllPlayersReserved");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AllPlayersReserved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21761,10 +18802,7 @@ bool UOnlineGameReservations_X::HasGameEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HasGameEnded");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HasGameEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21785,10 +18823,7 @@ bool UOnlineGameReservations_X::HasGameStarted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HasGameStarted");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HasGameStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21809,10 +18844,7 @@ bool UOnlineGameReservations_X::CanStartMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanStartMatch");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CanStartMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21833,10 +18865,7 @@ bool UOnlineGameReservations_X::HasJoiningPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HasJoiningPlayers");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HasJoiningPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21857,10 +18886,7 @@ bool UOnlineGameReservations_X::IsEmpty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsEmpty");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsEmpty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21881,10 +18907,7 @@ bool UOnlineGameReservations_X::IsNearlyFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsNearlyFull");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsNearlyFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21905,10 +18928,7 @@ bool UOnlineGameReservations_X::IsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsFull");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21929,10 +18949,7 @@ int UOnlineGameReservations_X::GetNumReservedPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.GetNumReservedPlayers");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameReservations_X_GetNumReservedPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21953,10 +18970,7 @@ bool UOnlineGameReservations_X::IsCustomMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsCustomMatch");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsCustomMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21977,10 +18991,7 @@ void UOnlineGameReservations_X::HandleReservationDisconnected(class UTcpConnecti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleReservationDisconnected");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UOnlineGameReservations_X_HandleReservationDisconnected_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -21998,9 +19009,7 @@ void UOnlineGameReservations_X::ClearGetKeysRPCs()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.ClearGetKeysRPCs");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_ClearGetKeysRPCs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22017,9 +19026,7 @@ void UOnlineGameReservations_X::ClearTeamHistory()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.ClearTeamHistory");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_ClearTeamHistory_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22036,9 +19043,7 @@ void UOnlineGameReservations_X::ClearReservations()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.ClearReservations");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_ClearReservations_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22055,9 +19060,7 @@ void UOnlineGameReservations_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.Reset");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22077,11 +19080,7 @@ void UOnlineGameReservations_X::STATIC_RecordTeamHistory(TArray<struct FReservat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.RecordTeamHistory");
 
-	struct
-	{
-		TArray<struct FReservationData> TestPlayers;
-		TArray<struct FTeamPairHistory> History;
-	} params;
+	UOnlineGameReservations_X_RecordTeamHistory_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -22104,9 +19103,7 @@ void UOnlineGameReservations_X::ScrambleTeams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.ScrambleTeams");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_ScrambleTeams_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22123,9 +19120,7 @@ void UOnlineGameReservations_X::UpdateTeams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.UpdateTeams");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_UpdateTeams_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22142,9 +19137,7 @@ void UOnlineGameReservations_X::AssignTeamsByPartySize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AssignTeamsByPartySize");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_AssignTeamsByPartySize_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22166,13 +19159,7 @@ bool UOnlineGameReservations_X::STATIC_AssignScrambledTeams(int TeamSize, TArray
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AssignScrambledTeams");
 
-	struct
-	{
-		int                            TeamSize;
-		TArray<struct FTeamPairHistory> History;
-		TArray<struct FReservationData> TestPlayers;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AssignScrambledTeams_Params params;
 	params.TeamSize = TeamSize;
 
 	auto flags = fn->FunctionFlags;
@@ -22202,12 +19189,7 @@ bool UOnlineGameReservations_X::STATIC_AssignTeams(int TeamSize, TArray<struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AssignTeams");
 
-	struct
-	{
-		int                            TeamSize;
-		TArray<struct FReservationData> TestPlayers;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AssignTeams_Params params;
 	params.TeamSize = TeamSize;
 
 	auto flags = fn->FunctionFlags;
@@ -22235,12 +19217,7 @@ void UOnlineGameReservations_X::HandleSkillSynced(class UOnlineGameSkill_X* Skil
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleSkillSynced");
 
-	struct
-	{
-		class UOnlineGameSkill_X*      SkillSystem;
-		struct FUniqueNetId            PlayerID;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameReservations_X_HandleSkillSynced_Params params;
 	params.SkillSystem = SkillSystem;
 	params.PlayerID = PlayerID;
 	params.Error = Error;
@@ -22265,13 +19242,7 @@ bool UOnlineGameReservations_X::AllowSplitscreenJoin(class APlayerReplicationInf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AllowSplitscreenJoin");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PrimaryPRI;
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AllowSplitscreenJoin_Params params;
 	params.PrimaryPRI = PrimaryPRI;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
@@ -22296,11 +19267,7 @@ bool UOnlineGameReservations_X::IsCheatingSplitscreenReservation(class UAddReser
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsCheatingSplitscreenReservation");
 
-	struct
-	{
-		class UAddReservationMessage_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsCheatingSplitscreenReservation_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -22324,12 +19291,7 @@ bool UOnlineGameReservations_X::IsCheatingSplitscreen(const struct FUniqueNetId&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsCheatingSplitscreen");
 
-	struct
-	{
-		struct FUniqueNetId            PrimaryPlayerID;
-		struct FUniqueNetId            SplitscreenPlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsCheatingSplitscreen_Params params;
 	params.PrimaryPlayerID = PrimaryPlayerID;
 	params.SplitscreenPlayerID = SplitscreenPlayerID;
 
@@ -22356,14 +19318,7 @@ struct FReservationData UOnlineGameReservations_X::CreateReservationData(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CreateReservationData");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		struct FUniqueNetId            PartyID;
-		TEnumAsByte<enum class EReservationStatus> Status;
-		struct FReservationData        ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CreateReservationData_Params params;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 	params.PartyID = PartyID;
@@ -22386,9 +19341,7 @@ void UOnlineGameReservations_X::NotAllPlayersJoined()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.NotAllPlayersJoined");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_NotAllPlayersJoined_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22407,10 +19360,7 @@ void UOnlineGameReservations_X::DisconnectExistingPlayers(class UAddReservationM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.DisconnectExistingPlayers");
 
-	struct
-	{
-		class UAddReservationMessage_X* ReservationMessage;
-	} params;
+	UOnlineGameReservations_X_DisconnectExistingPlayers_Params params;
 	params.ReservationMessage = ReservationMessage;
 
 	auto flags = fn->FunctionFlags;
@@ -22430,10 +19380,7 @@ void UOnlineGameReservations_X::SetPlayers(TArray<struct FReservationData>* Temp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.SetPlayers");
 
-	struct
-	{
-		TArray<struct FReservationData> TempPlayers;
-	} params;
+	UOnlineGameReservations_X_SetPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22457,12 +19404,7 @@ TArray<struct FReservationData> UOnlineGameReservations_X::AddPlayersFromReserva
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AddPlayersFromReservationMessage");
 
-	struct
-	{
-		class UAddReservationMessage_X* ReservationMessage;
-		class UTcpConnection*          Connection;
-		TArray<struct FReservationData> ReturnValue;
-	} params;
+	UOnlineGameReservations_X_AddPlayersFromReservationMessage_Params params;
 	params.ReservationMessage = ReservationMessage;
 	params.Connection = Connection;
 
@@ -22486,11 +19428,7 @@ bool UOnlineGameReservations_X::IsUnique(TArray<struct FName>* Prefs)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsUnique");
 
-	struct
-	{
-		TArray<struct FName>           Prefs;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsUnique_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22516,12 +19454,7 @@ bool UOnlineGameReservations_X::HandlePrivateReservation(class UTcpConnection* C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandlePrivateReservation");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePrivate_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HandlePrivateReservation_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22545,11 +19478,7 @@ void UOnlineGameReservations_X::SendGetKeysRPCs(class UTcpConnection* Connection
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.SendGetKeysRPCs");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessage_X* Message;
-	} params;
+	UOnlineGameReservations_X_SendGetKeysRPCs_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22571,11 +19500,7 @@ void UOnlineGameReservations_X::HandlePrivateReservationMessage(class UTcpConnec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandlePrivateReservationMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePrivate_X* Message;
-	} params;
+	UOnlineGameReservations_X_HandlePrivateReservationMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22598,12 +19523,7 @@ bool UOnlineGameReservations_X::CanAcceptReservationsForServerKey(class UAddRese
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CanAcceptReservationsForServerKey");
 
-	struct
-	{
-		class UAddReservationMessagePublic_X* Message;
-		bool                           bServerKey;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CanAcceptReservationsForServerKey_Params params;
 	params.Message = Message;
 	params.bServerKey = bServerKey;
 
@@ -22626,10 +19546,7 @@ void UOnlineGameReservations_X::RemoveKeysRPC(class URPC_GetKeys_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.RemoveKeysRPC");
 
-	struct
-	{
-		class URPC_GetKeys_X*          RPC;
-	} params;
+	UOnlineGameReservations_X_RemoveKeysRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -22649,10 +19566,7 @@ void UOnlineGameReservations_X::HandleGetKeysRPCFail(class URPC_GetKeys_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleGetKeysRPCFail");
 
-	struct
-	{
-		class URPC_GetKeys_X*          RPC;
-	} params;
+	UOnlineGameReservations_X_HandleGetKeysRPCFail_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -22672,10 +19586,7 @@ void UOnlineGameReservations_X::AddNetworkKeys(class URPC_GetKeys_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AddNetworkKeys");
 
-	struct
-	{
-		class URPC_GetKeys_X*          RPC;
-	} params;
+	UOnlineGameReservations_X_AddNetworkKeys_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -22695,10 +19606,7 @@ void UOnlineGameReservations_X::HandleGetKeysRPCSuccess(class URPC_GetKeys_X* RP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleGetKeysRPCSuccess");
 
-	struct
-	{
-		class URPC_GetKeys_X*          RPC;
-	} params;
+	UOnlineGameReservations_X_HandleGetKeysRPCSuccess_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -22718,10 +19626,7 @@ void UOnlineGameReservations_X::HandleGetKeysRPC(class URPC_GetKeys_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleGetKeysRPC");
 
-	struct
-	{
-		class URPC_GetKeys_X*          RPC;
-	} params;
+	UOnlineGameReservations_X_HandleGetKeysRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -22739,9 +19644,7 @@ void UOnlineGameReservations_X::StartMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.StartMatch");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_StartMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22760,10 +19663,7 @@ class UReservationsReadyMessage_X* UOnlineGameReservations_X::CreateReadyMessage
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CreateReadyMessage");
 
-	struct
-	{
-		class UReservationsReadyMessage_X* ReturnValue;
-	} params;
+	UOnlineGameReservations_X_CreateReadyMessage_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22785,11 +19685,7 @@ bool UOnlineGameReservations_X::IsSoloPlaylist(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.IsSoloPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_IsSoloPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -22813,12 +19709,7 @@ bool UOnlineGameReservations_X::HandlePublicReservation(class UTcpConnection* Co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandlePublicReservation");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePublic_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X_HandlePublicReservation_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22842,11 +19733,7 @@ void UOnlineGameReservations_X::HandlePublicReservationMessage(class UTcpConnect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandlePublicReservationMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePublic_X* Message;
-	} params;
+	UOnlineGameReservations_X_HandlePublicReservationMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22868,11 +19755,7 @@ void UOnlineGameReservations_X::HandlePingMessage(class UTcpConnection* Connecti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandlePingMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameReservations_X_HandlePingMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -22891,9 +19774,7 @@ void UOnlineGameReservations_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22910,9 +19791,7 @@ void UOnlineGameReservations_X::EventMigrationJoinOccurred()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.EventMigrationJoinOccurred");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_EventMigrationJoinOccurred_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22929,9 +19808,7 @@ void UOnlineGameReservations_X::EventReservationsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.EventReservationsUpdated");
 
-	struct
-	{
-	} params;
+	UOnlineGameReservations_X_EventReservationsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -22951,11 +19828,7 @@ void UOnlineGameStats_X::UploadStats(const struct FString& StatType, TArray<stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameStats_X.UploadStats");
 
-	struct
-	{
-		struct FString                 StatType;
-		TArray<struct FUploadStatDataSet> DataSet;
-	} params;
+	UOnlineGameStats_X_UploadStats_Params params;
 	params.StatType = StatType;
 
 	auto flags = fn->FunctionFlags;
@@ -22980,12 +19853,7 @@ void UOnlinePlayer_X::GetPlayersLikesDislikes(class UGameSettingPlaylist_X* Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetPlayersLikesDislikes");
 
-	struct
-	{
-		class UGameSettingPlaylist_X*  Playlist;
-		TArray<struct FName>           PlayerLikes;
-		TArray<struct FName>           PlayerDislikes;
-	} params;
+	UOnlinePlayer_X_GetPlayersLikesDislikes_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -23010,10 +19878,7 @@ void UOnlinePlayer_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlinePlayer_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -23033,10 +19898,7 @@ bool UOnlinePlayer_X::IsGuestAccount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.IsGuestAccount");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayer_X_IsGuestAccount_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23057,10 +19919,7 @@ void UOnlinePlayer_X::SetPlayerName(const struct FString& NewName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.SetPlayerName");
 
-	struct
-	{
-		struct FString                 NewName;
-	} params;
+	UOnlinePlayer_X_SetPlayerName_Params params;
 	params.NewName = NewName;
 
 	auto flags = fn->FunctionFlags;
@@ -23080,10 +19939,7 @@ class UWebRequest_X* UOnlinePlayer_X::CreatePsyNetWebRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.CreatePsyNetWebRequest");
 
-	struct
-	{
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UOnlinePlayer_X_CreatePsyNetWebRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23102,9 +19958,7 @@ void UOnlinePlayer_X::UpdateSplitscreenId()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.UpdateSplitscreenId");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_UpdateSplitscreenId_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23123,10 +19977,7 @@ bool UOnlinePlayer_X::IsUpdateRequired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.IsUpdateRequired");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayer_X_IsUpdateRequired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23147,10 +19998,7 @@ struct FString UOnlinePlayer_X::GetOnlineName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetOnlineName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayer_X_GetOnlineName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23171,10 +20019,7 @@ struct FString UOnlinePlayer_X::GetLocalName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetLocalName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayer_X_GetLocalName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23196,11 +20041,7 @@ struct FString UOnlinePlayer_X::GetRemoteName(int LocalPlayerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetRemoteName");
 
-	struct
-	{
-		int                            LocalPlayerIndex;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayer_X_GetRemoteName_Params params;
 	params.LocalPlayerIndex = LocalPlayerIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -23222,10 +20063,7 @@ void UOnlinePlayer_X::HandleCanPlayOnlineChanged(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleCanPlayOnlineChanged");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-	} params;
+	UOnlinePlayer_X_HandleCanPlayOnlineChanged_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -23243,9 +20081,7 @@ void UOnlinePlayer_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23264,10 +20100,7 @@ TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayer_X::CanPlayOnline()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.CanPlayOnline");
 
-	struct
-	{
-		TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue;
-	} params;
+	UOnlinePlayer_X_CanPlayOnline_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23289,11 +20122,7 @@ void UOnlinePlayer_X::HandlePlayerCountryReceived(const struct FUniqueNetId& InP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandlePlayerCountryReceived");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		struct FString                 Country;
-	} params;
+	UOnlinePlayer_X_HandlePlayerCountryReceived_Params params;
 	params.InPlayerId = InPlayerId;
 	params.Country = Country;
 
@@ -23314,10 +20143,7 @@ void UOnlinePlayer_X::GetPlayerCountry(const struct FScriptDelegate& Handler)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetPlayerCountry");
 
-	struct
-	{
-		struct FScriptDelegate         Handler;
-	} params;
+	UOnlinePlayer_X_GetPlayerCountry_Params params;
 	params.Handler = Handler;
 
 	auto flags = fn->FunctionFlags;
@@ -23337,10 +20163,7 @@ TEnumAsByte<enum class EFeaturePrivilegeLevel> UOnlinePlayer_X::CanCommunicateTe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.CanCommunicateText");
 
-	struct
-	{
-		TEnumAsByte<enum class EFeaturePrivilegeLevel> ReturnValue;
-	} params;
+	UOnlinePlayer_X_CanCommunicateText_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23361,10 +20184,7 @@ void UOnlinePlayer_X::OpenErrorDialog(TEnumAsByte<enum class EPS4ErrorDialog> Er
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OpenErrorDialog");
 
-	struct
-	{
-		TEnumAsByte<enum class EPS4ErrorDialog> ErrorCode;
-	} params;
+	UOnlinePlayer_X_OpenErrorDialog_Params params;
 	params.ErrorCode = ErrorCode;
 
 	auto flags = fn->FunctionFlags;
@@ -23386,12 +20206,7 @@ void UOnlinePlayer_X::OpenPS4DisplayMode(TEnumAsByte<enum class EPS4DisplayMode>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OpenPS4DisplayMode");
 
-	struct
-	{
-		TEnumAsByte<enum class EPS4DisplayMode> DisplayMode;
-		TArray<struct FString>         Targets;
-		int                            ServiceLabel;
-	} params;
+	UOnlinePlayer_X_OpenPS4DisplayMode_Params params;
 	params.DisplayMode = DisplayMode;
 	params.Targets = Targets;
 	params.ServiceLabel = ServiceLabel;
@@ -23413,10 +20228,7 @@ void UOnlinePlayer_X::ResetControllerColor(int InControllerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.ResetControllerColor");
 
-	struct
-	{
-		int                            InControllerID;
-	} params;
+	UOnlinePlayer_X_ResetControllerColor_Params params;
 	params.InControllerID = InControllerID;
 
 	auto flags = fn->FunctionFlags;
@@ -23437,11 +20249,7 @@ void UOnlinePlayer_X::SetControllerColor(int InControllerID, const struct FColor
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.SetControllerColor");
 
-	struct
-	{
-		int                            InControllerID;
-		struct FColor                  NewColor;
-	} params;
+	UOnlinePlayer_X_SetControllerColor_Params params;
 	params.InControllerID = InControllerID;
 	params.NewColor = NewColor;
 
@@ -23463,11 +20271,7 @@ void UOnlinePlayer_X::PostActivityFeedMessage(const struct FString& Id, TArray<s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.PostActivityFeedMessage");
 
-	struct
-	{
-		struct FString                 Id;
-		TArray<struct FString>         StringReplaceList;
-	} params;
+	UOnlinePlayer_X_PostActivityFeedMessage_Params params;
 	params.Id = Id;
 	params.StringReplaceList = StringReplaceList;
 
@@ -23489,11 +20293,7 @@ TArray<unsigned long> UOnlinePlayer_X::GetSyncedAchievements(unsigned char Local
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetSyncedAchievements");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		TArray<unsigned long>          ReturnValue;
-	} params;
+	UOnlinePlayer_X_GetSyncedAchievements_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -23517,12 +20317,7 @@ void UOnlinePlayer_X::UnlockAchievement(unsigned char LocalUserNum, int Achievem
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.UnlockAchievement");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		int                            AchievementId;
-		float                          PercentComplete;
-	} params;
+	UOnlinePlayer_X_UnlockAchievement_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.AchievementId = AchievementId;
 	params.PercentComplete = PercentComplete;
@@ -23545,11 +20340,7 @@ void UOnlinePlayer_X::UpdateStat(const struct FName& StatName, int Points)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.UpdateStat");
 
-	struct
-	{
-		struct FName                   StatName;
-		int                            Points;
-	} params;
+	UOnlinePlayer_X_UpdateStat_Params params;
 	params.StatName = StatName;
 	params.Points = Points;
 
@@ -23570,10 +20361,7 @@ void UOnlinePlayer_X::HandleShowKeyboardComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleShowKeyboardComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlinePlayer_X_HandleShowKeyboardComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -23591,9 +20379,7 @@ void UOnlinePlayer_X::HideKeyboard()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HideKeyboard");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_HideKeyboard_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23619,17 +20405,7 @@ bool UOnlinePlayer_X::ShowKeyboard(const struct FString& TitleText, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.ShowKeyboard");
 
-	struct
-	{
-		struct FString                 TitleText;
-		struct FString                 DescriptionText;
-		bool                           bIsPassword;
-		struct FString                 DefaultText;
-		int                            MaxLength;
-		struct FScriptDelegate         OnCompleteDelegate;
-		int                            LocalPlayerNumOverride;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayer_X_ShowKeyboard_Params params;
 	params.TitleText = TitleText;
 	params.DescriptionText = DescriptionText;
 	params.bIsPassword = bIsPassword;
@@ -23655,9 +20431,7 @@ void UOnlinePlayer_X::OnNewGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OnNewGame");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_OnNewGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23677,11 +20451,7 @@ void UOnlinePlayer_X::HandleControllerChange(int InControllerID, bool bIsConnect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleControllerChange");
 
-	struct
-	{
-		int                            InControllerID;
-		bool                           bIsConnected;
-	} params;
+	UOnlinePlayer_X_HandleControllerChange_Params params;
 	params.InControllerID = InControllerID;
 	params.bIsConnected = bIsConnected;
 
@@ -23703,11 +20473,7 @@ void UOnlinePlayer_X::HandleUserLoginStatusChange(TEnumAsByte<enum class ELoginS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleUserLoginStatusChange");
 
-	struct
-	{
-		TEnumAsByte<enum class ELoginStatus> NewStatus;
-		struct FUniqueNetId            NewId;
-	} params;
+	UOnlinePlayer_X_HandleUserLoginStatusChange_Params params;
 	params.NewStatus = NewStatus;
 	params.NewId = NewId;
 
@@ -23729,11 +20495,7 @@ bool UOnlinePlayer_X::IsLoggedIn(bool bRequireOnlineLogin)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.IsLoggedIn");
 
-	struct
-	{
-		bool                           bRequireOnlineLogin;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayer_X_IsLoggedIn_Params params;
 	params.bRequireOnlineLogin = bRequireOnlineLogin;
 
 	auto flags = fn->FunctionFlags;
@@ -23755,10 +20517,7 @@ void UOnlinePlayer_X::HandleLogoutComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleLogoutComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlinePlayer_X_HandleLogoutComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -23778,10 +20537,7 @@ void UOnlinePlayer_X::HandleLoginChanged(unsigned char PlayerNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleLoginChanged");
 
-	struct
-	{
-		unsigned char                  PlayerNum;
-	} params;
+	UOnlinePlayer_X_HandleLoginChanged_Params params;
 	params.PlayerNum = PlayerNum;
 
 	auto flags = fn->FunctionFlags;
@@ -23802,11 +20558,7 @@ void UOnlinePlayer_X::HandleLoginFailed(unsigned char PlayerNum, TEnumAsByte<enu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleLoginFailed");
 
-	struct
-	{
-		unsigned char                  PlayerNum;
-		TEnumAsByte<enum class EOnlineServerConnectionStatus> ErrorCode;
-	} params;
+	UOnlinePlayer_X_HandleLoginFailed_Params params;
 	params.PlayerNum = PlayerNum;
 	params.ErrorCode = ErrorCode;
 
@@ -23827,10 +20579,7 @@ void UOnlinePlayer_X::Logout(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.Logout");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlinePlayer_X_Logout_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -23852,12 +20601,7 @@ void UOnlinePlayer_X::Login(const struct FString& LoginName, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.Login");
 
-	struct
-	{
-		struct FString                 LoginName;
-		struct FString                 LoginPassword;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlinePlayer_X_Login_Params params;
 	params.LoginName = LoginName;
 	params.LoginPassword = LoginPassword;
 	params.Callback = Callback;
@@ -23877,9 +20621,7 @@ void UOnlinePlayer_X::OnRemoved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OnRemoved");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_OnRemoved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23896,9 +20638,7 @@ void UOnlinePlayer_X::InitPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.InitPlayer");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_InitPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23917,10 +20657,7 @@ bool UOnlinePlayer_X::IsPrimaryPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.IsPrimaryPlayer");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayer_X_IsPrimaryPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23939,9 +20676,7 @@ void UOnlinePlayer_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlinePlayer_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23960,10 +20695,7 @@ class UOnlineGame_X* UOnlinePlayer_X::GetOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.GetOnlineGame");
 
-	struct
-	{
-		class UOnlineGame_X*           ReturnValue;
-	} params;
+	UOnlinePlayer_X_GetOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -23985,11 +20717,7 @@ void UOnlinePlayer_X::EventShowKeyboardComplete(const struct FString& NewText, b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventShowKeyboardComplete");
 
-	struct
-	{
-		struct FString                 NewText;
-		bool                           bCanceled;
-	} params;
+	UOnlinePlayer_X_EventShowKeyboardComplete_Params params;
 	params.NewText = NewText;
 	params.bCanceled = bCanceled;
 
@@ -24010,10 +20738,7 @@ void UOnlinePlayer_X::EventCanPlayOnlineChanged(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventCanPlayOnlineChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayer_X_EventCanPlayOnlineChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -24033,10 +20758,7 @@ void UOnlinePlayer_X::EventCountryUpdated(const struct FString& Country)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventCountryUpdated");
 
-	struct
-	{
-		struct FString                 Country;
-	} params;
+	UOnlinePlayer_X_EventCountryUpdated_Params params;
 	params.Country = Country;
 
 	auto flags = fn->FunctionFlags;
@@ -24056,10 +20778,7 @@ void UOnlinePlayer_X::EventLoginStatusChanged(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventLoginStatusChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayer_X_EventLoginStatusChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -24079,10 +20798,7 @@ void UOnlinePlayer_X::EventLogoutComplete(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventLogoutComplete");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayer_X_EventLogoutComplete_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -24103,11 +20819,7 @@ void UOnlinePlayer_X::EventLoginComplete(class UOnlinePlayer_X* Player, class UE
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventLoginComplete");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-		class UError_X*                Error;
-	} params;
+	UOnlinePlayer_X_EventLoginComplete_Params params;
 	params.Player = Player;
 	params.Error = Error;
 
@@ -24128,10 +20840,7 @@ bool UOnlinePlayerAuthentication_X::IsBanned()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.IsBanned");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_IsBanned_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -24153,10 +20862,7 @@ void UOnlinePlayerAuthentication_X::SetLoggedIn(bool bSignedIn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.SetLoggedIn");
 
-	struct
-	{
-		bool                           bSignedIn;
-	} params;
+	UOnlinePlayerAuthentication_X_SetLoggedIn_Params params;
 	params.bSignedIn = bSignedIn;
 
 	auto flags = fn->FunctionFlags;
@@ -24177,10 +20883,7 @@ int UOnlinePlayerAuthentication_X::GetGameVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.GetGameVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_GetGameVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24201,10 +20904,7 @@ struct FString UOnlinePlayerAuthentication_X::GetBuildRegion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.GetBuildRegion");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_GetBuildRegion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24225,10 +20925,7 @@ void UOnlinePlayerAuthentication_X::HandleTrialStatusChanged(class UOnlineGameTr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.HandleTrialStatusChanged");
 
-	struct
-	{
-		class UOnlineGameTrial_X*      InTrial;
-	} params;
+	UOnlinePlayerAuthentication_X_HandleTrialStatusChanged_Params params;
 	params.InTrial = InTrial;
 
 	auto flags = fn->FunctionFlags;
@@ -24248,10 +20945,7 @@ void UOnlinePlayerAuthentication_X::OnChangeAuthenticatedName(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.OnChangeAuthenticatedName");
 
-	struct
-	{
-		struct FString                 NewName;
-	} params;
+	UOnlinePlayerAuthentication_X_OnChangeAuthenticatedName_Params params;
 	params.NewName = NewName;
 
 	auto flags = fn->FunctionFlags;
@@ -24271,10 +20965,7 @@ bool UOnlinePlayerAuthentication_X::NeedToAuthenticateName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.NeedToAuthenticateName");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_NeedToAuthenticateName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24298,13 +20989,7 @@ void UOnlinePlayerAuthentication_X::HandleReceivedAuthorizationCode(bool bSucces
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.HandleReceivedAuthorizationCode");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 AuthorizationCode;
-		struct FString                 EncryptedTicket;
-		int                            IssuerID;
-	} params;
+	UOnlinePlayerAuthentication_X_HandleReceivedAuthorizationCode_Params params;
 	params.bSuccess = bSuccess;
 	params.AuthorizationCode = AuthorizationCode;
 	params.EncryptedTicket = EncryptedTicket;
@@ -24327,10 +21012,7 @@ bool UOnlinePlayerAuthentication_X::RequestAuthorizationCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.RequestAuthorizationCode");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_RequestAuthorizationCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24351,10 +21033,7 @@ void UOnlinePlayerAuthentication_X::AuthenticationError(TEnumAsByte<enum class E
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.AuthenticationError");
 
-	struct
-	{
-		TEnumAsByte<enum class EAuthResult> AuthResult;
-	} params;
+	UOnlinePlayerAuthentication_X_AuthenticationError_Params params;
 	params.AuthResult = AuthResult;
 
 	auto flags = fn->FunctionFlags;
@@ -24372,9 +21051,7 @@ void UOnlinePlayerAuthentication_X::ResetAuthentication()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.ResetAuthentication");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_ResetAuthentication_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24393,10 +21070,7 @@ bool UOnlinePlayerAuthentication_X::RequiresAuthorizationCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.RequiresAuthorizationCode");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_RequiresAuthorizationCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24417,10 +21091,7 @@ void UOnlinePlayerAuthentication_X::AuthResponse(class UWebRequest_X* WebRequest
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.AuthResponse");
 
-	struct
-	{
-		class UWebRequest_X*           WebRequest;
-	} params;
+	UOnlinePlayerAuthentication_X_AuthResponse_Params params;
 	params.WebRequest = WebRequest;
 
 	auto flags = fn->FunctionFlags;
@@ -24438,9 +21109,7 @@ void UOnlinePlayerAuthentication_X::ReLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.ReLogin");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_ReLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24459,10 +21128,7 @@ void UOnlinePlayerAuthentication_X::SetLoggedInPlayer(class UOnlinePlayer_X* Pla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.SetLoggedInPlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayerAuthentication_X_SetLoggedInPlayer_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -24482,10 +21148,7 @@ void UOnlinePlayerAuthentication_X::HandleLocalPlayerLoginStatusChanged(class UO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.HandleLocalPlayerLoginStatusChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayerAuthentication_X_HandleLocalPlayerLoginStatusChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -24505,10 +21168,7 @@ int UOnlinePlayerAuthentication_X::GetBannedMinutesRemaining()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.GetBannedMinutesRemaining");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_GetBannedMinutesRemaining_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24530,11 +21190,7 @@ bool UOnlinePlayerAuthentication_X::ParseBanned(class URPC_LoginAuthPlayer_X* RP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.ParseBanned");
 
-	struct
-	{
-		class URPC_LoginAuthPlayer_X*  RPC;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerAuthentication_X_ParseBanned_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -24556,10 +21212,7 @@ void UOnlinePlayerAuthentication_X::ReceiveAuthenticatedName(const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.ReceiveAuthenticatedName");
 
-	struct
-	{
-		struct FString                 ReceivedName;
-	} params;
+	UOnlinePlayerAuthentication_X_ReceiveAuthenticatedName_Params params;
 	params.ReceivedName = ReceivedName;
 
 	auto flags = fn->FunctionFlags;
@@ -24577,9 +21230,7 @@ void UOnlinePlayerAuthentication_X::RetryLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.RetryLogin");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_RetryLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24598,10 +21249,7 @@ void UOnlinePlayerAuthentication_X::OnLoginFailRPC(class URPC_LoginAuthPlayer_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.OnLoginFailRPC");
 
-	struct
-	{
-		class URPC_LoginAuthPlayer_X*  RPC;
-	} params;
+	UOnlinePlayerAuthentication_X_OnLoginFailRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -24621,10 +21269,7 @@ void UOnlinePlayerAuthentication_X::OnLoginSuccessRPC(class URPC_LoginAuthPlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.OnLoginSuccessRPC");
 
-	struct
-	{
-		class URPC_LoginAuthPlayer_X*  RPC;
-	} params;
+	UOnlinePlayerAuthentication_X_OnLoginSuccessRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -24642,9 +21287,7 @@ void UOnlinePlayerAuthentication_X::SendLoginRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.SendLoginRequest");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_SendLoginRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24661,9 +21304,7 @@ void UOnlinePlayerAuthentication_X::ClearLoginRPC()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.ClearLoginRPC");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_ClearLoginRPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24680,9 +21321,7 @@ void UOnlinePlayerAuthentication_X::PsyNetLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.PsyNetLogin");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_PsyNetLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24699,9 +21338,7 @@ void UOnlinePlayerAuthentication_X::OnRemoved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.OnRemoved");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_OnRemoved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24718,9 +21355,7 @@ void UOnlinePlayerAuthentication_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24739,10 +21374,7 @@ void UOnlinePlayerAuthentication_X::EventAuthenticatedNameChanged(class UOnlineP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.EventAuthenticatedNameChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlinePlayerAuthentication_X_EventAuthenticatedNameChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -24762,10 +21394,7 @@ void UOnlinePlayerAuthentication_X::EventBanned(class UOnlinePlayerAuthenticatio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.EventBanned");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlinePlayerAuthentication_X_EventBanned_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -24783,9 +21412,7 @@ void UOnlinePlayerAuthentication_X::EventUnauthorized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.EventUnauthorized");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerAuthentication_X_EventUnauthorized_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -24804,10 +21431,7 @@ void UOnlinePlayerAuthentication_X::EventLoginChanged(class UOnlinePlayerAuthent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.EventLoginChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlinePlayerAuthentication_X_EventLoginChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -24827,10 +21451,7 @@ void UTickActorComponent_X::SetTickable(bool bWantsTick)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickActorComponent_X.SetTickable");
 
-	struct
-	{
-		bool                           bWantsTick;
-	} params;
+	UTickActorComponent_X_SetTickable_Params params;
 	params.bWantsTick = bWantsTick;
 
 	auto flags = fn->FunctionFlags;
@@ -24851,10 +21472,7 @@ void UTickActorComponent_X::ClearAllTimers(class UObject* inObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickActorComponent_X.ClearAllTimers");
 
-	struct
-	{
-		class UObject*                 inObj;
-	} params;
+	UTickActorComponent_X_ClearAllTimers_Params params;
 	params.inObj = inObj;
 
 	auto flags = fn->FunctionFlags;
@@ -24876,11 +21494,7 @@ void UTickActorComponent_X::ClearTimer(const struct FName& inTimerFunc, class UO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickActorComponent_X.ClearTimer");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTickActorComponent_X_ClearTimer_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -24905,13 +21519,7 @@ void UTickActorComponent_X::SetTimer(float InRate, bool inbLoop, const struct FN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickActorComponent_X.SetTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           inbLoop;
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTickActorComponent_X_SetTimer_Params params;
 	params.InRate = InRate;
 	params.inbLoop = inbLoop;
 	params.inTimerFunc = inTimerFunc;
@@ -24935,10 +21543,7 @@ void UTickActorComponent_X::EventTick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickActorComponent_X.EventTick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UTickActorComponent_X_EventTick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -24960,12 +21565,7 @@ float UTimers_X::STATIC_GetRemainingTime(class UObject* Obj, const struct FName&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.GetRemainingTime");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-		float                          ReturnValue;
-	} params;
+	UTimers_X_GetRemainingTime_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 
@@ -24990,12 +21590,7 @@ float UTimers_X::STATIC_GetRate(class UObject* Obj, const struct FName& FuncName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.GetRate");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-		float                          ReturnValue;
-	} params;
+	UTimers_X_GetRate_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 
@@ -25021,12 +21616,7 @@ float UTimers_X::STATIC_GetCount(class UObject* Obj, const struct FName& FuncNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.GetCount");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-		float                          ReturnValue;
-	} params;
+	UTimers_X_GetCount_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 
@@ -25050,10 +21640,7 @@ void UTimers_X::STATIC_ClearAll(class UObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.ClearAll");
 
-	struct
-	{
-		class UObject*                 Obj;
-	} params;
+	UTimers_X_ClearAll_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -25075,11 +21662,7 @@ void UTimers_X::STATIC_Clear(class UObject* Obj, const struct FName& FuncName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.Clear");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-	} params;
+	UTimers_X_Clear_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 
@@ -25103,12 +21686,7 @@ bool UTimers_X::STATIC_IsActive(class UObject* Obj, const struct FName& FuncName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.IsActive");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-		bool                           ReturnValue;
-	} params;
+	UTimers_X_IsActive_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 
@@ -25135,13 +21713,7 @@ void UTimers_X::STATIC_Set(class UObject* Obj, const struct FName& FuncName, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.Set");
 
-	struct
-	{
-		class UObject*                 Obj;
-		struct FName                   FuncName;
-		float                          Rate;
-		bool                           bLoop;
-	} params;
+	UTimers_X_Set_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
 	params.Rate = Rate;
@@ -25167,12 +21739,7 @@ float UTimersComponent_X::GetRemainingTimeForTimer(const struct FName& inTimerFu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.GetRemainingTimeForTimer");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-		float                          ReturnValue;
-	} params;
+	UTimersComponent_X_GetRemainingTimeForTimer_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -25197,12 +21764,7 @@ float UTimersComponent_X::GetTimerRate(const struct FName& inTimerFunc, class UO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.GetTimerRate");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-		float                          ReturnValue;
-	} params;
+	UTimersComponent_X_GetTimerRate_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -25228,12 +21790,7 @@ float UTimersComponent_X::GetTimerCount(const struct FName& inTimerFunc, class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.GetTimerCount");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-		float                          ReturnValue;
-	} params;
+	UTimersComponent_X_GetTimerCount_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -25257,10 +21814,7 @@ void UTimersComponent_X::NotifyStateChanged(const struct FName& OldStateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.NotifyStateChanged");
 
-	struct
-	{
-		struct FName                   OldStateName;
-	} params;
+	UTimersComponent_X_NotifyStateChanged_Params params;
 	params.OldStateName = OldStateName;
 
 	auto flags = fn->FunctionFlags;
@@ -25281,10 +21835,7 @@ void UTimersComponent_X::UpdateTimers(float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.UpdateTimers");
 
-	struct
-	{
-		float                          DeltaSeconds;
-	} params;
+	UTimersComponent_X_UpdateTimers_Params params;
 	params.DeltaSeconds = DeltaSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -25305,10 +21856,7 @@ void UTimersComponent_X::ClearAllTimers(class UObject* inObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.ClearAllTimers");
 
-	struct
-	{
-		class UObject*                 inObj;
-	} params;
+	UTimersComponent_X_ClearAllTimers_Params params;
 	params.inObj = inObj;
 
 	auto flags = fn->FunctionFlags;
@@ -25330,11 +21878,7 @@ void UTimersComponent_X::ClearTimer(const struct FName& inTimerFunc, class UObje
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.ClearTimer");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTimersComponent_X_ClearTimer_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -25358,12 +21902,7 @@ bool UTimersComponent_X::IsTimerActive(const struct FName& inTimerFunc, class UO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.IsTimerActive");
 
-	struct
-	{
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-		bool                           ReturnValue;
-	} params;
+	UTimersComponent_X_IsTimerActive_Params params;
 	params.inTimerFunc = inTimerFunc;
 	params.inObj = inObj;
 
@@ -25389,12 +21928,7 @@ void UTimersComponent_X::SetStateTimer(float InRate, bool inbLoop, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.SetStateTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           inbLoop;
-		struct FName                   inTimerFunc;
-	} params;
+	UTimersComponent_X_SetStateTimer_Params params;
 	params.InRate = InRate;
 	params.inbLoop = inbLoop;
 	params.inTimerFunc = inTimerFunc;
@@ -25420,13 +21954,7 @@ void UTimersComponent_X::SetTimer(float InRate, bool inbLoop, const struct FName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.SetTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           inbLoop;
-		struct FName                   inTimerFunc;
-		class UObject*                 inObj;
-	} params;
+	UTimersComponent_X_SetTimer_Params params;
 	params.InRate = InRate;
 	params.inbLoop = inbLoop;
 	params.inTimerFunc = inTimerFunc;
@@ -25450,10 +21978,7 @@ void UTickComponent_X::SetTickable(bool bWantsTick)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickComponent_X.SetTickable");
 
-	struct
-	{
-		bool                           bWantsTick;
-	} params;
+	UTickComponent_X_SetTickable_Params params;
 	params.bWantsTick = bWantsTick;
 
 	auto flags = fn->FunctionFlags;
@@ -25474,10 +21999,7 @@ void UTickComponent_X::TickDelegate(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TickComponent_X.TickDelegate");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UTickComponent_X_TickDelegate_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -25500,13 +22022,7 @@ void UUITextureSlice_X::DrawRotated(class UCanvas* C, float PixelSizeX, float Pi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.DrawRotated");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          PixelSizeX;
-		float                          PixelSizeY;
-		struct FRotator                Rotation;
-	} params;
+	UUITextureSlice_X_DrawRotated_Params params;
 	params.C = C;
 	params.PixelSizeX = PixelSizeX;
 	params.PixelSizeY = PixelSizeY;
@@ -25531,12 +22047,7 @@ void UUITextureSlice_X::DrawStretched(class UCanvas* C, float PixelSizeX, float 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.DrawStretched");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          PixelSizeX;
-		float                          PixelSizeY;
-	} params;
+	UUITextureSlice_X_DrawStretched_Params params;
 	params.C = C;
 	params.PixelSizeX = PixelSizeX;
 	params.PixelSizeY = PixelSizeY;
@@ -25560,12 +22071,7 @@ void UUITextureSlice_X::Draw(class UCanvas* C, float PixelSizeX, float PixelSize
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.Draw");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          PixelSizeX;
-		float                          PixelSizeY;
-	} params;
+	UUITextureSlice_X_Draw_Params params;
 	params.C = C;
 	params.PixelSizeX = PixelSizeX;
 	params.PixelSizeY = PixelSizeY;
@@ -25589,12 +22095,7 @@ bool UUIWidget_X::STATIC_ParseLink(struct FString* FullText, struct FTextLink* L
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ParseLink");
 
-	struct
-	{
-		struct FString                 FullText;
-		struct FTextLink               Link;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_ParseLink_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25621,11 +22122,7 @@ void UUIWidget_X::STATIC_ParseLinks(struct FString* FullText, TArray<struct FTex
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ParseLinks");
 
-	struct
-	{
-		struct FString                 FullText;
-		TArray<struct FTextLink>       Links;
-	} params;
+	UUIWidget_X_ParseLinks_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25651,12 +22148,7 @@ struct FString UUIWidget_X::STATIC_GetAttributeValue(const struct FString& Input
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetAttributeValue");
 
-	struct
-	{
-		struct FString                 Input;
-		struct FString                 Attribute;
-		struct FString                 ReturnValue;
-	} params;
+	UUIWidget_X_GetAttributeValue_Params params;
 	params.Input = Input;
 	params.Attribute = Attribute;
 
@@ -25681,12 +22173,7 @@ struct FTaggedContent UUIWidget_X::STATIC_GetTaggedContent(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetTaggedContent");
 
-	struct
-	{
-		struct FString                 Input;
-		struct FString                 Tag;
-		struct FTaggedContent          ReturnValue;
-	} params;
+	UUIWidget_X_GetTaggedContent_Params params;
 	params.Input = Input;
 	params.Tag = Tag;
 
@@ -25709,10 +22196,7 @@ class UUIWidget_X* UUIWidget_X::GetCursorTarget()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetCursorTarget");
 
-	struct
-	{
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_X_GetCursorTarget_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25734,11 +22218,7 @@ bool UUIWidget_X::InputKey(const struct FName& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.InputKey");
 
-	struct
-	{
-		struct FName                   Key;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_InputKey_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -25760,10 +22240,7 @@ class UUIScene_X* UUIWidget_X::GetScene()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetScene");
 
-	struct
-	{
-		class UUIScene_X*              ReturnValue;
-	} params;
+	UUIWidget_X_GetScene_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25784,10 +22261,7 @@ void UUIWidget_X::GatherSceneReferences(TArray<class UUIWidget_X*>* Scenes)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GatherSceneReferences");
 
-	struct
-	{
-		TArray<class UUIWidget_X*>     Scenes;
-	} params;
+	UUIWidget_X_GatherSceneReferences_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25810,11 +22284,7 @@ bool UUIWidget_X::GetAllFocusWidgets(TArray<class UUIWidget_X*>* OutWidgets)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetAllFocusWidgets");
 
-	struct
-	{
-		TArray<class UUIWidget_X*>     OutWidgets;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_GetAllFocusWidgets_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25840,12 +22310,7 @@ bool UUIWidget_X::GetCursorHoverWidget(const struct FVector& ScreenPosition, cla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetCursorHoverWidget");
 
-	struct
-	{
-		struct FVector                 ScreenPosition;
-		class UUIWidget_X*             HoverWidget;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_GetCursorHoverWidget_Params params;
 	params.ScreenPosition = ScreenPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -25870,10 +22335,7 @@ class UOnlineGame_X* UUIWidget_X::GetOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOnlineGame");
 
-	struct
-	{
-		class UOnlineGame_X*           ReturnValue;
-	} params;
+	UUIWidget_X_GetOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25894,10 +22356,7 @@ class UOnlinePlayer_X* UUIWidget_X::GetOnlinePlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOnlinePlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         ReturnValue;
-	} params;
+	UUIWidget_X_GetOnlinePlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -25922,14 +22381,7 @@ void UUIWidget_X::ModifyAnimPosition(const struct FName& EventName, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ModifyAnimPosition");
 
-	struct
-	{
-		struct FName                   EventName;
-		struct FName                   SequenceName;
-		float                          NewX;
-		float                          NewY;
-		bool                           bWarnifNotFound;
-	} params;
+	UUIWidget_X_ModifyAnimPosition_Params params;
 	params.EventName = EventName;
 	params.SequenceName = SequenceName;
 	params.NewX = NewX;
@@ -25953,10 +22405,7 @@ void UUIWidget_X::SetUITimer(const struct FUITimer& InTimer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetUITimer");
 
-	struct
-	{
-		struct FUITimer                InTimer;
-	} params;
+	UUIWidget_X_SetUITimer_Params params;
 	params.InTimer = InTimer;
 
 	auto flags = fn->FunctionFlags;
@@ -25978,12 +22427,7 @@ void UUIWidget_X::AddCommand(const struct FName& EventName, const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.AddCommand");
 
-	struct
-	{
-		struct FName                   EventName;
-		struct FString                 Cmd;
-		bool                           bIgnoreParent;
-	} params;
+	UUIWidget_X_AddCommand_Params params;
 	params.EventName = EventName;
 	params.Cmd = Cmd;
 	params.bIgnoreParent = bIgnoreParent;
@@ -26005,10 +22449,7 @@ class UUISceneManager_X* UUIWidget_X::GetSceneManager()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetSceneManager");
 
-	struct
-	{
-		class UUISceneManager_X*       ReturnValue;
-	} params;
+	UUIWidget_X_GetSceneManager_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26029,10 +22470,7 @@ float UUIWidget_X::GetTimeSeconds()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetTimeSeconds");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUIWidget_X_GetTimeSeconds_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26053,10 +22491,7 @@ class AWorldInfo* UUIWidget_X::GetWorldInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetWorldInfo");
 
-	struct
-	{
-		class AWorldInfo*              ReturnValue;
-	} params;
+	UUIWidget_X_GetWorldInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26077,10 +22512,7 @@ float UUIWidget_X::GetOpenTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOpenTime");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUIWidget_X_GetOpenTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26102,11 +22534,7 @@ bool UUIWidget_X::IsTimerActive(const struct FName& FuncName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.IsTimerActive");
 
-	struct
-	{
-		struct FName                   FuncName;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_IsTimerActive_Params params;
 	params.FuncName = FuncName;
 
 	auto flags = fn->FunctionFlags;
@@ -26126,9 +22554,7 @@ void UUIWidget_X::ClearAllTimers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ClearAllTimers");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_ClearAllTimers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26147,10 +22573,7 @@ void UUIWidget_X::ClearTimer(const struct FName& FuncName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ClearTimer");
 
-	struct
-	{
-		struct FName                   FuncName;
-	} params;
+	UUIWidget_X_ClearTimer_Params params;
 	params.FuncName = FuncName;
 
 	auto flags = fn->FunctionFlags;
@@ -26172,12 +22595,7 @@ void UUIWidget_X::SetTimer(float InRate, bool bLoop, const struct FName& FuncNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetTimer");
 
-	struct
-	{
-		float                          InRate;
-		bool                           bLoop;
-		struct FName                   FuncName;
-	} params;
+	UUIWidget_X_SetTimer_Params params;
 	params.InRate = InRate;
 	params.bLoop = bLoop;
 	params.FuncName = FuncName;
@@ -26197,9 +22615,7 @@ void UUIWidget_X::OnDestroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnDestroyed");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnDestroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26216,9 +22632,7 @@ void UUIWidget_X::Destroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Destroy");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_Destroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -26240,12 +22654,7 @@ void UUIWidget_X::GetDockPosition(TEnumAsByte<enum class EDockPoint> DockPoint, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetDockPosition");
 
-	struct
-	{
-		TEnumAsByte<enum class EDockPoint> DockPoint;
-		struct FVector2D               OutPivotPosition;
-		struct FVector2D               OutRelativePosition;
-	} params;
+	UUIWidget_X_GetDockPosition_Params params;
 	params.DockPoint = DockPoint;
 
 	auto flags = fn->FunctionFlags;
@@ -26272,12 +22681,7 @@ void UUIWidget_X::DrawText(class UCanvas* C, const struct FString& Str, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawText");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FString                 Str;
-		struct FUIWidgetMatrix         DrawArea;
-	} params;
+	UUIWidget_X_DrawText_Params params;
 	params.C = C;
 	params.Str = Str;
 	params.DrawArea = DrawArea;
@@ -26299,10 +22703,7 @@ void UUIWidget_X::DrawSelf(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawSelf");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_X_DrawSelf_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -26323,11 +22724,7 @@ void UUIWidget_X::DrawChildren(class UCanvas* C, float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawChildren");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaSeconds;
-	} params;
+	UUIWidget_X_DrawChildren_Params params;
 	params.C = C;
 	params.DeltaSeconds = DeltaSeconds;
 
@@ -26349,11 +22746,7 @@ void UUIWidget_X::Draw(class UCanvas* C, float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Draw");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaSeconds;
-	} params;
+	UUIWidget_X_Draw_Params params;
 	params.C = C;
 	params.DeltaSeconds = DeltaSeconds;
 
@@ -26375,11 +22768,7 @@ void UUIWidget_X::UpdateFinalColor(class UCanvas* C, const struct FUIWidgetMatri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalColor");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_UpdateFinalColor_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26400,10 +22789,7 @@ void UUIWidget_X::UpdateOffScreen(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateOffScreen");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_X_UpdateOffScreen_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -26424,11 +22810,7 @@ void UUIWidget_X::ApplyDeltaFinalPosition(class UCanvas* C, const struct FVector
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ApplyDeltaFinalPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FVector                 Delta;
-	} params;
+	UUIWidget_X_ApplyDeltaFinalPosition_Params params;
 	params.C = C;
 	params.Delta = Delta;
 
@@ -26450,11 +22832,7 @@ void UUIWidget_X::ResizeToContent(class UCanvas* C, const struct FUIWidgetMatrix
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ResizeToContent");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_ResizeToContent_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26475,10 +22853,7 @@ bool UUIWidget_X::UpdateBounds()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateBounds");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_UpdateBounds_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26500,11 +22875,7 @@ void UUIWidget_X::UpdateFinalPosition(class UCanvas* C, const struct FUIWidgetMa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_UpdateFinalPosition_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26527,12 +22898,7 @@ void UUIWidget_X::LayoutChildPosition(class UCanvas* C, class UUIWidget_X* Child
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		class UUIWidget_X*             ChildWidget;
-		struct FUIWidgetMatrix         ChildMatrix;
-	} params;
+	UUIWidget_X_LayoutChildPosition_Params params;
 	params.C = C;
 	params.ChildWidget = ChildWidget;
 	params.ChildMatrix = ChildMatrix;
@@ -26555,11 +22921,7 @@ void UUIWidget_X::LayoutChildrenPosition(class UCanvas* C, const struct FUIWidge
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildrenPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ChildContainerMatrix;
-	} params;
+	UUIWidget_X_LayoutChildrenPosition_Params params;
 	params.C = C;
 	params.ChildContainerMatrix = ChildContainerMatrix;
 
@@ -26580,10 +22942,7 @@ struct FUIWidgetMatrix UUIWidget_X::GetChildContainerMatrix()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetChildContainerMatrix");
 
-	struct
-	{
-		struct FUIWidgetMatrix         ReturnValue;
-	} params;
+	UUIWidget_X_GetChildContainerMatrix_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26605,11 +22964,7 @@ void UUIWidget_X::LayoutPosition(class UCanvas* C, const struct FUIWidgetMatrix&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_LayoutPosition_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26631,11 +22986,7 @@ void UUIWidget_X::UpdateFinalSize(class UCanvas* C, const struct FUIWidgetMatrix
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_UpdateFinalSize_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26658,12 +23009,7 @@ void UUIWidget_X::LayoutChildSize(class UCanvas* C, class UUIWidget_X* ChildWidg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-		class UUIWidget_X*             ChildWidget;
-		struct FUIWidgetMatrix         ChildMatrix;
-	} params;
+	UUIWidget_X_LayoutChildSize_Params params;
 	params.C = C;
 	params.ChildWidget = ChildWidget;
 	params.ChildMatrix = ChildMatrix;
@@ -26685,10 +23031,7 @@ void UUIWidget_X::LayoutChildrenSize(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildrenSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_X_LayoutChildrenSize_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -26709,11 +23052,7 @@ void UUIWidget_X::LayoutSize(class UCanvas* C, const struct FUIWidgetMatrix& Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_X_LayoutSize_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -26732,9 +23071,7 @@ void UUIWidget_X::LayoutDirty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutDirty");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_LayoutDirty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26754,11 +23091,7 @@ void UUIWidget_X::Tick(class UCanvas* C, float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Tick");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaSeconds;
-	} params;
+	UUIWidget_X_Tick_Params params;
 	params.C = C;
 	params.DeltaSeconds = DeltaSeconds;
 
@@ -26779,10 +23112,7 @@ void UUIWidget_X::OnExecuteCmd(const struct FString& Cmd)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnExecuteCmd");
 
-	struct
-	{
-		struct FString                 Cmd;
-	} params;
+	UUIWidget_X_OnExecuteCmd_Params params;
 	params.Cmd = Cmd;
 
 	auto flags = fn->FunctionFlags;
@@ -26802,10 +23132,7 @@ void UUIWidget_X::ExecuteCmd(const struct FString& Cmd)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ExecuteCmd");
 
-	struct
-	{
-		struct FString                 Cmd;
-	} params;
+	UUIWidget_X_ExecuteCmd_Params params;
 	params.Cmd = Cmd;
 
 	auto flags = fn->FunctionFlags;
@@ -26826,10 +23153,7 @@ void UUIWidget_X::TickQueuedEvents(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.TickQueuedEvents");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UUIWidget_X_TickQueuedEvents_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -26849,10 +23173,7 @@ void UUIWidget_X::TickAnimations(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.TickAnimations");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UUIWidget_X_TickAnimations_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -26872,10 +23193,7 @@ void UUIWidget_X::PlayAnim(class UUIAnimSequence_X* Sequence)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PlayAnim");
 
-	struct
-	{
-		class UUIAnimSequence_X*       Sequence;
-	} params;
+	UUIWidget_X_PlayAnim_Params params;
 	params.Sequence = Sequence;
 
 	auto flags = fn->FunctionFlags;
@@ -26896,11 +23214,7 @@ void UUIWidget_X::OnEvent(const struct FName& EventName, bool bFromParent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnEvent");
 
-	struct
-	{
-		struct FName                   EventName;
-		bool                           bFromParent;
-	} params;
+	UUIWidget_X_OnEvent_Params params;
 	params.EventName = EventName;
 	params.bFromParent = bFromParent;
 
@@ -26923,12 +23237,7 @@ void UUIWidget_X::NotifyEvent(const struct FName& EventName, bool bRecursive, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.NotifyEvent");
 
-	struct
-	{
-		struct FName                   EventName;
-		bool                           bRecursive;
-		bool                           bFromParent;
-	} params;
+	UUIWidget_X_NotifyEvent_Params params;
 	params.EventName = EventName;
 	params.bRecursive = bRecursive;
 	params.bFromParent = bFromParent;
@@ -26951,11 +23260,7 @@ void UUIWidget_X::Drag(class UUICursor_X* Cursor, const struct FVector& Delta)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Drag");
 
-	struct
-	{
-		class UUICursor_X*             Cursor;
-		struct FVector                 Delta;
-	} params;
+	UUIWidget_X_Drag_Params params;
 	params.Cursor = Cursor;
 	params.Delta = Delta;
 
@@ -26976,10 +23281,7 @@ void UUIWidget_X::Click(class UUICursor_X* Cursor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Click");
 
-	struct
-	{
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_X_Click_Params params;
 	params.Cursor = Cursor;
 
 	auto flags = fn->FunctionFlags;
@@ -26997,9 +23299,7 @@ void UUIWidget_X::OnFocusChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnFocusChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnFocusChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27018,10 +23318,7 @@ void UUIWidget_X::SetFocused(bool bNewFocused)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetFocused");
 
-	struct
-	{
-		bool                           bNewFocused;
-	} params;
+	UUIWidget_X_SetFocused_Params params;
 	params.bNewFocused = bNewFocused;
 
 	auto flags = fn->FunctionFlags;
@@ -27039,9 +23336,7 @@ void UUIWidget_X::OnPressChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnPressChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnPressChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27060,10 +23355,7 @@ void UUIWidget_X::SetPressed(bool bNewPressed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPressed");
 
-	struct
-	{
-		bool                           bNewPressed;
-	} params;
+	UUIWidget_X_SetPressed_Params params;
 	params.bNewPressed = bNewPressed;
 
 	auto flags = fn->FunctionFlags;
@@ -27081,9 +23373,7 @@ void UUIWidget_X::OnHoverChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnHoverChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnHoverChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27102,10 +23392,7 @@ void UUIWidget_X::SetHovered(bool bNewHovered)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetHovered");
 
-	struct
-	{
-		bool                           bNewHovered;
-	} params;
+	UUIWidget_X_SetHovered_Params params;
 	params.bNewHovered = bNewHovered;
 
 	auto flags = fn->FunctionFlags;
@@ -27125,10 +23412,7 @@ void UUIWidget_X::SetText(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetText");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UUIWidget_X_SetText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -27149,11 +23433,7 @@ void UUIWidget_X::SetPixelSize(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPixelSize");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetPixelSize_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27175,11 +23455,7 @@ void UUIWidget_X::SetRelativeSize(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetRelativeSize");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetRelativeSize_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27200,10 +23476,7 @@ void UUIWidget_X::SetDock(TEnumAsByte<enum class EDockPoint> NewDock)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetDock");
 
-	struct
-	{
-		TEnumAsByte<enum class EDockPoint> NewDock;
-	} params;
+	UUIWidget_X_SetDock_Params params;
 	params.NewDock = NewDock;
 
 	auto flags = fn->FunctionFlags;
@@ -27224,11 +23497,7 @@ void UUIWidget_X::SetScale2D(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetScale2D");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetScale2D_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27249,10 +23518,7 @@ void UUIWidget_X::SetScale(float NewScale)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetScale");
 
-	struct
-	{
-		float                          NewScale;
-	} params;
+	UUIWidget_X_SetScale_Params params;
 	params.NewScale = NewScale;
 
 	auto flags = fn->FunctionFlags;
@@ -27273,11 +23539,7 @@ void UUIWidget_X::SetPixelOffset(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPixelOffset");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetPixelOffset_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27299,11 +23561,7 @@ void UUIWidget_X::SetRelativePosition(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetRelativePosition");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetRelativePosition_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27325,11 +23583,7 @@ void UUIWidget_X::SetPivotPosition(float NewX, float NewY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPivotPosition");
 
-	struct
-	{
-		float                          NewX;
-		float                          NewY;
-	} params;
+	UUIWidget_X_SetPivotPosition_Params params;
 	params.NewX = NewX;
 	params.NewY = NewY;
 
@@ -27348,9 +23602,7 @@ void UUIWidget_X::OnHierarchyHiddenChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnHierarchyHiddenChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnHierarchyHiddenChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27369,10 +23621,7 @@ void UUIWidget_X::UpdateHierarchyHidden(bool bRecurse)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateHierarchyHidden");
 
-	struct
-	{
-		bool                           bRecurse;
-	} params;
+	UUIWidget_X_UpdateHierarchyHidden_Params params;
 	params.bRecurse = bRecurse;
 
 	auto flags = fn->FunctionFlags;
@@ -27390,9 +23639,7 @@ void UUIWidget_X::OnVisibilityChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnVisibilityChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_OnVisibilityChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27411,10 +23658,7 @@ void UUIWidget_X::SetVisibility(TEnumAsByte<enum class EWidgetVisibility> NewVis
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetVisibility");
 
-	struct
-	{
-		TEnumAsByte<enum class EWidgetVisibility> NewVisibility;
-	} params;
+	UUIWidget_X_SetVisibility_Params params;
 	params.NewVisibility = NewVisibility;
 
 	auto flags = fn->FunctionFlags;
@@ -27434,10 +23678,7 @@ void UUIWidget_X::SetHidden(bool bNewHidden)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetHidden");
 
-	struct
-	{
-		bool                           bNewHidden;
-	} params;
+	UUIWidget_X_SetHidden_Params params;
 	params.bNewHidden = bNewHidden;
 
 	auto flags = fn->FunctionFlags;
@@ -27457,10 +23698,7 @@ void UUIWidget_X::SetFocusType(TEnumAsByte<enum class EWidgetFocusType> NewFocus
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetFocusType");
 
-	struct
-	{
-		TEnumAsByte<enum class EWidgetFocusType> NewFocusType;
-	} params;
+	UUIWidget_X_SetFocusType_Params params;
 	params.NewFocusType = NewFocusType;
 
 	auto flags = fn->FunctionFlags;
@@ -27483,13 +23721,7 @@ void UUIWidget_X::SetTint(float R, float G, float B, float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetTint");
 
-	struct
-	{
-		float                          R;
-		float                          G;
-		float                          B;
-		float                          A;
-	} params;
+	UUIWidget_X_SetTint_Params params;
 	params.R = R;
 	params.G = G;
 	params.B = B;
@@ -27516,14 +23748,7 @@ bool UUIWidget_X::FindAndAddCommand(const struct FName& WidgetName, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindAndAddCommand");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FName                   EventName;
-		struct FString                 Command;
-		bool                           bIgnoreParent;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_FindAndAddCommand_Params params;
 	params.WidgetName = WidgetName;
 	params.EventName = EventName;
 	params.Command = Command;
@@ -27550,12 +23775,7 @@ bool UUIWidget_X::FindAndSetText(const struct FName& WidgetName, const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindAndSetText");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FString                 Txt;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_X_FindAndSetText_Params params;
 	params.WidgetName = WidgetName;
 	params.Txt = Txt;
 
@@ -27579,11 +23799,7 @@ class UUIWidget_X* UUIWidget_X::FindWidgetChecked(const struct FName& WidgetName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindWidgetChecked");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_X_FindWidgetChecked_Params params;
 	params.WidgetName = WidgetName;
 
 	auto flags = fn->FunctionFlags;
@@ -27606,11 +23822,7 @@ class UUIWidget_X* UUIWidget_X::FindWidget(const struct FName& WidgetName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindWidget");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_X_FindWidget_Params params;
 	params.WidgetName = WidgetName;
 
 	auto flags = fn->FunctionFlags;
@@ -27633,11 +23845,7 @@ void UUIWidget_X::HandleWidgetFocusChanged(class UUIWidget_X* Sender, class UUIW
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetFocusChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Sender;
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_HandleWidgetFocusChanged_Params params;
 	params.Sender = Sender;
 	params.Widget = Widget;
 
@@ -27660,12 +23868,7 @@ void UUIWidget_X::HandleWidgetClicked(class UUIWidget_X* Sender, class UUIWidget
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetClicked");
 
-	struct
-	{
-		class UUIWidget_X*             Sender;
-		class UUIWidget_X*             Widget;
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_X_HandleWidgetClicked_Params params;
 	params.Sender = Sender;
 	params.Widget = Widget;
 	params.Cursor = Cursor;
@@ -27687,10 +23890,7 @@ void UUIWidget_X::HandleWidgetDestroyed(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetDestroyed");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_HandleWidgetDestroyed_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27711,11 +23911,7 @@ int UUIWidget_X::GetWidgetIndex(class UUIWidget_X* ChildWidget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetWidgetIndex");
 
-	struct
-	{
-		class UUIWidget_X*             ChildWidget;
-		int                            ReturnValue;
-	} params;
+	UUIWidget_X_GetWidgetIndex_Params params;
 	params.ChildWidget = ChildWidget;
 
 	auto flags = fn->FunctionFlags;
@@ -27735,9 +23931,7 @@ void UUIWidget_X::RemoveAllWidgets()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RemoveAllWidgets");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_RemoveAllWidgets_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27756,10 +23950,7 @@ void UUIWidget_X::RemoveWidget(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RemoveWidget");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_RemoveWidget_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27779,10 +23970,7 @@ void UUIWidget_X::UnregisterWidget(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UnregisterWidget");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_UnregisterWidget_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27802,10 +23990,7 @@ void UUIWidget_X::RegisterWidget(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RegisterWidget");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_RegisterWidget_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27826,11 +24011,7 @@ void UUIWidget_X::InsertWidget(class UUIWidget_X* Widget, int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.InsertWidget");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		int                            Index;
-	} params;
+	UUIWidget_X_InsertWidget_Params params;
 	params.Widget = Widget;
 	params.Index = Index;
 
@@ -27851,10 +24032,7 @@ void UUIWidget_X::AddWidget(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.AddWidget");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_AddWidget_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27872,9 +24050,7 @@ void UUIWidget_X::PostInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PostInit");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_PostInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27891,9 +24067,7 @@ void UUIWidget_X::PreInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PreInit");
 
-	struct
-	{
-	} params;
+	UUIWidget_X_PreInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -27912,10 +24086,7 @@ void UUIWidget_X::Initialize(class UUISceneClient_X* ForClient)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Initialize");
 
-	struct
-	{
-		class UUISceneClient_X*        ForClient;
-	} params;
+	UUIWidget_X_Initialize_Params params;
 	params.ForClient = ForClient;
 
 	auto flags = fn->FunctionFlags;
@@ -27935,10 +24106,7 @@ void UUIWidget_X::EventDestroyed(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventDestroyed");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_EventDestroyed_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -27960,12 +24128,7 @@ void UUIWidget_X::EventInputKey(class UUIWidget_X* Widget, const struct FName& K
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventInputKey");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FName                   Key;
-		unsigned char                  bHandled;
-	} params;
+	UUIWidget_X_EventInputKey_Params params;
 	params.Widget = Widget;
 	params.Key = Key;
 
@@ -27990,11 +24153,7 @@ void UUIWidget_X::EventDragged(class UUIWidget_X* Widget, class UUICursor_X* Cur
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventDragged");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_X_EventDragged_Params params;
 	params.Widget = Widget;
 	params.Cursor = Cursor;
 
@@ -28017,12 +24176,7 @@ void UUIWidget_X::EventClicked(class UUIWidget_X* Sender, class UUIWidget_X* Wid
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventClicked");
 
-	struct
-	{
-		class UUIWidget_X*             Sender;
-		class UUIWidget_X*             Widget;
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_X_EventClicked_Params params;
 	params.Sender = Sender;
 	params.Widget = Widget;
 	params.Cursor = Cursor;
@@ -28045,11 +24199,7 @@ void UUIWidget_X::EventFocusChanged(class UUIWidget_X* Sender, class UUIWidget_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventFocusChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Sender;
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_EventFocusChanged_Params params;
 	params.Sender = Sender;
 	params.Widget = Widget;
 
@@ -28070,10 +24220,7 @@ void UUIWidget_X::EventPressChanged(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventPressChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_EventPressChanged_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -28093,10 +24240,7 @@ void UUIWidget_X::EventHoverChanged(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventHoverChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIWidget_X_EventHoverChanged_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -28120,14 +24264,7 @@ struct FScreenLocationInfo UUIWidget_Locator_X::STATIC_StaticGetScreenLocation(c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.StaticGetScreenLocation");
 
-	struct
-	{
-		class UCanvas*                 InCanvas;
-		struct FVector                 TargetLocation;
-		struct FVector                 ViewLocation;
-		struct FRotator                ViewRotation;
-		struct FScreenLocationInfo     ReturnValue;
-	} params;
+	UUIWidget_Locator_X_StaticGetScreenLocation_Params params;
 	params.InCanvas = InCanvas;
 	params.TargetLocation = TargetLocation;
 	params.ViewLocation = ViewLocation;
@@ -28155,12 +24292,7 @@ struct FScreenLocationInfo UUIWidget_Locator_X::GetScreenLocation(class UCanvas*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.GetScreenLocation");
 
-	struct
-	{
-		class UCanvas*                 InCanvas;
-		struct FVector                 TargetLocation;
-		struct FScreenLocationInfo     ReturnValue;
-	} params;
+	UUIWidget_Locator_X_GetScreenLocation_Params params;
 	params.InCanvas = InCanvas;
 	params.TargetLocation = TargetLocation;
 
@@ -28184,11 +24316,7 @@ struct FVector UUIWidget_Locator_X::GetLocatorLocation(class AActor* InLocator)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.GetLocatorLocation");
 
-	struct
-	{
-		class AActor*                  InLocator;
-		struct FVector                 ReturnValue;
-	} params;
+	UUIWidget_Locator_X_GetLocatorLocation_Params params;
 	params.InLocator = InLocator;
 
 	auto flags = fn->FunctionFlags;
@@ -28210,10 +24338,7 @@ void UUIWidget_Locator_X::SetLocator(class AActor* InLocator)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.SetLocator");
 
-	struct
-	{
-		class AActor*                  InLocator;
-	} params;
+	UUIWidget_Locator_X_SetLocator_Params params;
 	params.InLocator = InLocator;
 
 	auto flags = fn->FunctionFlags;
@@ -28234,11 +24359,7 @@ void UUIWidget_Locator_X::Tick(class UCanvas* C, float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.Tick");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaSeconds;
-	} params;
+	UUIWidget_Locator_X_Tick_Params params;
 	params.C = C;
 	params.DeltaSeconds = DeltaSeconds;
 
@@ -28259,10 +24380,7 @@ void UUIWidget_WrappedText_X::Click(class UUICursor_X* Cursor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.Click");
 
-	struct
-	{
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_WrappedText_X_Click_Params params;
 	params.Cursor = Cursor;
 
 	auto flags = fn->FunctionFlags;
@@ -28283,11 +24401,7 @@ struct FString UUIWidget_WrappedText_X::GetURL(const struct FVector& ScreenPosit
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.GetURL");
 
-	struct
-	{
-		struct FVector                 ScreenPosition;
-		struct FString                 ReturnValue;
-	} params;
+	UUIWidget_WrappedText_X_GetURL_Params params;
 	params.ScreenPosition = ScreenPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -28311,12 +24425,7 @@ bool UUIWidget_WrappedText_X::GetCursorHoverWidget(const struct FVector& ScreenP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.GetCursorHoverWidget");
 
-	struct
-	{
-		struct FVector                 ScreenPosition;
-		class UUIWidget_X*             HoverWidget;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_WrappedText_X_GetCursorHoverWidget_Params params;
 	params.ScreenPosition = ScreenPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -28341,10 +24450,7 @@ void UUIWidget_WrappedText_X::DrawSelf(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.DrawSelf");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_WrappedText_X_DrawSelf_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -28366,12 +24472,7 @@ bool UUIWidget_WrappedText_X::TokenizeLine(int LineIdx, int LinkIdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.TokenizeLine");
 
-	struct
-	{
-		int                            LineIdx;
-		int                            LinkIdx;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_WrappedText_X_TokenizeLine_Params params;
 	params.LineIdx = LineIdx;
 	params.LinkIdx = LinkIdx;
 
@@ -28392,9 +24493,7 @@ void UUIWidget_WrappedText_X::TokenizeWrappedLines()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.TokenizeWrappedLines");
 
-	struct
-	{
-	} params;
+	UUIWidget_WrappedText_X_TokenizeWrappedLines_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -28414,11 +24513,7 @@ void UUIWidget_WrappedText_X::UpdateFinalSize(class UCanvas* C, const struct FUI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateFinalSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ParentMatrix;
-	} params;
+	UUIWidget_WrappedText_X_UpdateFinalSize_Params params;
 	params.C = C;
 	params.ParentMatrix = ParentMatrix;
 
@@ -28437,9 +24532,7 @@ void UUIWidget_WrappedText_X::UpdateLinks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateLinks");
 
-	struct
-	{
-	} params;
+	UUIWidget_WrappedText_X_UpdateLinks_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -28458,10 +24551,7 @@ void UUIWidget_WrappedText_X::SetText(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.SetText");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UUIWidget_WrappedText_X_SetText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -28479,9 +24569,7 @@ void UUIWidget_WrappedText_X::PostInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.PostInit");
 
-	struct
-	{
-	} params;
+	UUIWidget_WrappedText_X_PostInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -28501,11 +24589,7 @@ void UUIWidget_WrappedText_X::UpdateWrappedLines(class UCanvas* C, float Width)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateWrappedLines");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          Width;
-	} params;
+	UUIWidget_WrappedText_X_UpdateWrappedLines_Params params;
 	params.C = C;
 	params.Width = Width;
 
@@ -28527,10 +24611,7 @@ void UWebRequest_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UWebRequest_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -28550,10 +24631,7 @@ void UWebRequest_X::SetError(class UError_X* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetError");
 
-	struct
-	{
-		class UError_X*                InError;
-	} params;
+	UWebRequest_X_SetError_Params params;
 	params.InError = InError;
 
 	auto flags = fn->FunctionFlags;
@@ -28574,10 +24652,7 @@ bool UWebRequest_X::HasInternetConnection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.HasInternetConnection");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_HasInternetConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -28600,12 +24675,7 @@ void UWebRequest_X::HandleHttpRequestComplete(class UHttpRequestInterface* Origi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.HandleHttpRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UWebRequest_X_HandleHttpRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -28626,9 +24696,7 @@ void UWebRequest_X::ConstructHttpRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.ConstructHttpRequest");
 
-	struct
-	{
-	} params;
+	UWebRequest_X_ConstructHttpRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -28648,11 +24716,7 @@ struct FString UWebRequest_X::GetResponseHeader(const struct FString& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.GetResponseHeader");
 
-	struct
-	{
-		struct FString                 Key;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_X_GetResponseHeader_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -28675,10 +24739,7 @@ struct FString UWebRequest_X::GetResponseString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.GetResponseString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_X_GetResponseString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28701,11 +24762,7 @@ bool UWebRequest_X::HasNewETag(struct FString* OutETag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.HasNewETag");
 
-	struct
-	{
-		struct FString                 OutETag;
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_HasNewETag_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28730,10 +24787,7 @@ bool UWebRequest_X::IsSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.IsSuccess");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_IsSuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28755,10 +24809,7 @@ bool UWebRequest_X::IsError()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.IsError");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_IsError_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28780,10 +24831,7 @@ bool UWebRequest_X::IsComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.IsComplete");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_IsComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28805,10 +24853,7 @@ bool UWebRequest_X::IsSent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.IsSent");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebRequest_X_IsSent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28830,10 +24875,7 @@ class UHttpRequestInterface* UWebRequest_X::GetHttpRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.GetHttpRequest");
 
-	struct
-	{
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UWebRequest_X_GetHttpRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -28857,12 +24899,7 @@ class UWebRequest_X* UWebRequest_X::Send(const struct FString& InURL, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.Send");
 
-	struct
-	{
-		struct FString                 InURL;
-		struct FScriptDelegate         OnCompleteCallback;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_Send_Params params;
 	params.InURL = InURL;
 	params.OnCompleteCallback = OnCompleteCallback;
 
@@ -28886,10 +24923,7 @@ void UWebRequest_X::PrepareRequest(const struct FString& InURL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.PrepareRequest");
 
-	struct
-	{
-		struct FString                 InURL;
-	} params;
+	UWebRequest_X_PrepareRequest_Params params;
 	params.InURL = InURL;
 
 	auto flags = fn->FunctionFlags;
@@ -28910,10 +24944,7 @@ void UWebRequest_X::SetContentFromString(const struct FString& ContentString)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetContentFromString");
 
-	struct
-	{
-		struct FString                 ContentString;
-	} params;
+	UWebRequest_X_SetContentFromString_Params params;
 	params.ContentString = ContentString;
 
 	auto flags = fn->FunctionFlags;
@@ -28934,10 +24965,7 @@ void UWebRequest_X::SetETag(const struct FString& ETag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetETag");
 
-	struct
-	{
-		struct FString                 ETag;
-	} params;
+	UWebRequest_X_SetETag_Params params;
 	params.ETag = ETag;
 
 	auto flags = fn->FunctionFlags;
@@ -28959,11 +24987,7 @@ class UWebRequest_X* UWebRequest_X::SetSessionID(const struct FString& Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetSessionID");
 
-	struct
-	{
-		struct FString                 Value;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_SetSessionID_Params params;
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
@@ -28988,12 +25012,7 @@ class UWebRequest_X* UWebRequest_X::SetHeader(const struct FString& Key, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetHeader");
 
-	struct
-	{
-		struct FString                 Key;
-		struct FString                 Value;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_SetHeader_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -29018,11 +25037,7 @@ class UWebRequest_X* UWebRequest_X::AddPlayerIDParam(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.AddPlayerIDParam");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_AddPlayerIDParam_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -29047,12 +25062,7 @@ class UWebRequest_X* UWebRequest_X::AddStringParam(const struct FString& Key, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.AddStringParam");
 
-	struct
-	{
-		struct FString                 Key;
-		struct FString                 Value;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_AddStringParam_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -29078,12 +25088,7 @@ class UWebRequest_X* UWebRequest_X::AddFloatParam(const struct FString& Key, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.AddFloatParam");
 
-	struct
-	{
-		struct FString                 Key;
-		float                          Value;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_AddFloatParam_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -29108,11 +25113,7 @@ class UWebRequest_X* UWebRequest_X::AddQwordParam(const struct FString& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.AddQwordParam");
 
-	struct
-	{
-		struct FString                 Key;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_AddQwordParam_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -29137,12 +25138,7 @@ class UWebRequest_X* UWebRequest_X::AddIntParam(const struct FString& Key, int V
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.AddIntParam");
 
-	struct
-	{
-		struct FString                 Key;
-		int                            Value;
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_AddIntParam_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -29166,10 +25162,7 @@ class UWebRequest_X* UWebRequest_X::STATIC_Create()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.Create");
 
-	struct
-	{
-		class UWebRequest_X*           ReturnValue;
-	} params;
+	UWebRequest_X_Create_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29190,10 +25183,7 @@ void UWebRequest_X::EventCompleted(class UWebRequest_X* Request)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.EventCompleted");
 
-	struct
-	{
-		class UWebRequest_X*           Request;
-	} params;
+	UWebRequest_X_EventCompleted_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -29214,11 +25204,7 @@ void UAnimNodeBlendBase_X::SetActiveChildNamed(const struct FName& ChildName, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodeBlendBase_X.SetActiveChildNamed");
 
-	struct
-	{
-		struct FName                   ChildName;
-		bool                           bForce;
-	} params;
+	UAnimNodeBlendBase_X_SetActiveChildNamed_Params params;
 	params.ChildName = ChildName;
 	params.bForce = bForce;
 
@@ -29240,11 +25226,7 @@ float UAnimNodeBlendBase_X::GetAnimDuration(int ChildIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodeBlendBase_X.GetAnimDuration");
 
-	struct
-	{
-		int                            ChildIndex;
-		float                          ReturnValue;
-	} params;
+	UAnimNodeBlendBase_X_GetAnimDuration_Params params;
 	params.ChildIndex = ChildIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -29269,12 +25251,7 @@ float UAnimNodeBlendBase_X::GetBlendTime(int ChildIndex, bool bGetDefault)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodeBlendBase_X.GetBlendTime");
 
-	struct
-	{
-		int                            ChildIndex;
-		bool                           bGetDefault;
-		float                          ReturnValue;
-	} params;
+	UAnimNodeBlendBase_X_GetBlendTime_Params params;
 	params.ChildIndex = ChildIndex;
 	params.bGetDefault = bGetDefault;
 
@@ -29300,12 +25277,7 @@ void UAnimNodePose_X::PlayAnim(bool bLoop, float InRate, float StartTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodePose_X.PlayAnim");
 
-	struct
-	{
-		bool                           bLoop;
-		float                          InRate;
-		float                          StartTime;
-	} params;
+	UAnimNodePose_X_PlayAnim_Params params;
 	params.bLoop = bLoop;
 	params.InRate = InRate;
 	params.StartTime = StartTime;
@@ -29328,10 +25300,7 @@ void UAnimNodeSlot_X::AddNodeToGroup(const struct FName& GroupName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodeSlot_X.AddNodeToGroup");
 
-	struct
-	{
-		struct FName                   GroupName;
-	} params;
+	UAnimNodeSlot_X_AddNodeToGroup_Params params;
 	params.GroupName = GroupName;
 
 	auto flags = fn->FunctionFlags;
@@ -29353,11 +25322,7 @@ float UAnimNodeSlot_X::PlaySettings(const struct FCustomAnimSettings& Settings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNodeSlot_X.PlaySettings");
 
-	struct
-	{
-		struct FCustomAnimSettings     Settings;
-		float                          ReturnValue;
-	} params;
+	UAnimNodeSlot_X_PlaySettings_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -29379,10 +25344,7 @@ void UAnimNotify_PlayParticleEffect_X::OnParticleSystemFinished(class UParticleS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNotify_PlayParticleEffect_X.OnParticleSystemFinished");
 
-	struct
-	{
-		class UParticleSystemComponent* Component;
-	} params;
+	UAnimNotify_PlayParticleEffect_X_OnParticleSystemFinished_Params params;
 	params.Component = Component;
 
 	auto flags = fn->FunctionFlags;
@@ -29403,11 +25365,7 @@ void UAnimNotify_PlayParticleEffect_X::NotifyEnd(class AActor* Owner, class UAni
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNotify_PlayParticleEffect_X.NotifyEnd");
 
-	struct
-	{
-		class AActor*                  Owner;
-		class UAnimNodeSequence*       AnimSeqInstigator;
-	} params;
+	UAnimNotify_PlayParticleEffect_X_NotifyEnd_Params params;
 	params.Owner = Owner;
 	params.AnimSeqInstigator = AnimSeqInstigator;
 
@@ -29429,11 +25387,7 @@ void UAnimNotify_PlayParticleEffect_X::Notify(class AActor* Owner, class UAnimNo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AnimNotify_PlayParticleEffect_X.Notify");
 
-	struct
-	{
-		class AActor*                  Owner;
-		class UAnimNodeSequence*       AnimSeqInstigator;
-	} params;
+	UAnimNotify_PlayParticleEffect_X_Notify_Params params;
 	params.Owner = Owner;
 	params.AnimSeqInstigator = AnimSeqInstigator;
 
@@ -29452,9 +25406,7 @@ void UTcpConnection::OnDisconnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.OnDisconnected");
 
-	struct
-	{
-	} params;
+	UTcpConnection_OnDisconnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29471,9 +25423,7 @@ void UTcpConnection::OnConnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.OnConnected");
 
-	struct
-	{
-	} params;
+	UTcpConnection_OnConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29490,9 +25440,7 @@ void UTcpConnection::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.Close");
 
-	struct
-	{
-	} params;
+	UTcpConnection_Close_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -29512,10 +25460,7 @@ struct FString UTcpConnection::GetRemoteAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.GetRemoteAddress");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UTcpConnection_GetRemoteAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -29537,10 +25482,7 @@ struct FString UTcpConnection::GetAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.GetAddress");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UTcpConnection_GetAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -29562,10 +25504,7 @@ void UTcpConnection::EventDisconnected(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.EventDisconnected");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpConnection_EventDisconnected_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -29585,10 +25524,7 @@ void UTcpConnection::EventConnected(class UTcpConnection* Connection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TcpConnection.EventConnected");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-	} params;
+	UTcpConnection_EventConnected_Params params;
 	params.Connection = Connection;
 
 	auto flags = fn->FunctionFlags;
@@ -29610,12 +25546,7 @@ bool UPrivilegeCheck_X::HasFeatureRestriction(int* OutControllerID, TEnumAsByte<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.HasFeatureRestriction");
 
-	struct
-	{
-		int                            OutControllerID;
-		TEnumAsByte<enum class EFeaturePrivilege> OutFailedPrivilege;
-		bool                           ReturnValue;
-	} params;
+	UPrivilegeCheck_X_HasFeatureRestriction_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29639,9 +25570,7 @@ void UPrivilegeCheck_X::OnFinished()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.OnFinished");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_OnFinished_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29658,9 +25587,7 @@ void UPrivilegeCheck_X::Fail()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.Fail");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_Fail_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29681,12 +25608,7 @@ void UPrivilegeCheck_X::HandlePrivilege(unsigned char LocalUserNum, TEnumAsByte<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.HandlePrivilege");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		TEnumAsByte<enum class EFeaturePrivilege> Privilege;
-		TEnumAsByte<enum class EFeaturePrivilegeLevel> Level;
-	} params;
+	UPrivilegeCheck_X_HandlePrivilege_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.Privilege = Privilege;
 	params.Level = Level;
@@ -29706,9 +25628,7 @@ void UPrivilegeCheck_X::CheckPrivilege()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.CheckPrivilege");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_CheckPrivilege_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29725,9 +25645,7 @@ void UPrivilegeCheck_X::CheckPsyNet()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.CheckPsyNet");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_CheckPsyNet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29744,9 +25662,7 @@ void UPrivilegeCheck_X::CheckInternet()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.CheckInternet");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_CheckInternet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29766,11 +25682,7 @@ class UPrivilegeCheck_X* UPrivilegeCheck_X::RequirePrivilege(TEnumAsByte<enum cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.RequirePrivilege");
 
-	struct
-	{
-		TEnumAsByte<enum class EFeaturePrivilege> Privilege;
-		class UPrivilegeCheck_X*       ReturnValue;
-	} params;
+	UPrivilegeCheck_X_RequirePrivilege_Params params;
 	params.Privilege = Privilege;
 
 	auto flags = fn->FunctionFlags;
@@ -29792,10 +25704,7 @@ class UPrivilegeCheck_X* UPrivilegeCheck_X::RequirePsyNet()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.RequirePsyNet");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       ReturnValue;
-	} params;
+	UPrivilegeCheck_X_RequirePsyNet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29816,10 +25725,7 @@ class UPrivilegeCheck_X* UPrivilegeCheck_X::RequireInternet()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.RequireInternet");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       ReturnValue;
-	} params;
+	UPrivilegeCheck_X_RequireInternet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29838,9 +25744,7 @@ void UPrivilegeCheck_X::StartNextCheck()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.StartNextCheck");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_StartNextCheck_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29857,9 +25761,7 @@ void UPrivilegeCheck_X::Start()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.Start");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_Start_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29878,10 +25780,7 @@ void UPrivilegeCheck_X::Init(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.Init");
 
-	struct
-	{
-		int                            ControllerId;
-	} params;
+	UPrivilegeCheck_X_Init_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -29899,9 +25798,7 @@ void UPrivilegeCheck_X::CheckDelegate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.CheckDelegate");
 
-	struct
-	{
-	} params;
+	UPrivilegeCheck_X_CheckDelegate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29921,11 +25818,7 @@ struct FUniqueNetId AAccessControl_X::GetPlayerIDFromPlayer(class UPlayer* Searc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AccessControl_X.GetPlayerIDFromPlayer");
 
-	struct
-	{
-		class UPlayer*                 SearchPlayer;
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	AAccessControl_X_GetPlayerIDFromPlayer_Params params;
 	params.SearchPlayer = SearchPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -29948,11 +25841,7 @@ void UActivateAnimSeriesComponent_X::SetAnimSeriesActiveInComponent(class USkele
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActivateAnimSeriesComponent_X.SetAnimSeriesActiveInComponent");
 
-	struct
-	{
-		class USkeletalMeshComponent*  SKC;
-		bool                           bActive;
-	} params;
+	UActivateAnimSeriesComponent_X_SetAnimSeriesActiveInComponent_Params params;
 	params.SKC = SKC;
 	params.bActive = bActive;
 
@@ -29973,10 +25862,7 @@ void UActivateAnimSeriesComponent_X::SetAnimSeriesActive(bool bActive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActivateAnimSeriesComponent_X.SetAnimSeriesActive");
 
-	struct
-	{
-		bool                           bActive;
-	} params;
+	UActivateAnimSeriesComponent_X_SetAnimSeriesActive_Params params;
 	params.bActive = bActive;
 
 	auto flags = fn->FunctionFlags;
@@ -29994,9 +25880,7 @@ void UActivateAnimSeriesComponent_X::Detached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActivateAnimSeriesComponent_X.Detached");
 
-	struct
-	{
-	} params;
+	UActivateAnimSeriesComponent_X_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30013,9 +25897,7 @@ void UActivateAnimSeriesComponent_X::Attached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ActivateAnimSeriesComponent_X.Attached");
 
-	struct
-	{
-	} params;
+	UActivateAnimSeriesComponent_X_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30036,12 +25918,7 @@ void UAddReservationMessage_X::GetPlayerMapPrefs(const struct FUniqueNetId& Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessage_X.GetPlayerMapPrefs");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		TArray<struct FName>           Likes;
-		TArray<struct FName>           Dislikes;
-	} params;
+	UAddReservationMessage_X_GetPlayerMapPrefs_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -30067,11 +25944,7 @@ class UAddReservationMessage_X* UAddReservationMessage_X::SetDisableCrossPlay(bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessage_X.SetDisableCrossPlay");
 
-	struct
-	{
-		bool                           bValue;
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessage_X_SetDisableCrossPlay_Params params;
 	params.bValue = bValue;
 
 	auto flags = fn->FunctionFlags;
@@ -30096,13 +25969,7 @@ class UAddReservationMessage_X* UAddReservationMessage_X::AddPlayer(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessage_X.AddPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           bRemotePlayer;
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessage_X_AddPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 	params.bRemotePlayer = bRemotePlayer;
@@ -30128,12 +25995,7 @@ class UAddReservationMessage_X* UAddReservationMessage_X::AddOnlinePlayer(class 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessage_X.AddOnlinePlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-		bool                           bFriendJoin;
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessage_X_AddOnlinePlayer_Params params;
 	params.Player = Player;
 	params.bFriendJoin = bFriendJoin;
 
@@ -30156,10 +26018,7 @@ class UAddReservationMessage_X* UAddReservationMessage_X::AddPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessage_X.AddPlayers");
 
-	struct
-	{
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessage_X_AddPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30181,11 +26040,7 @@ void UOnlineGameParty_X::HandlePlayerTradeComplete(class UOnlineMessageComponent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayerTradeComplete");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandlePlayerTradeComplete_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -30204,9 +26059,7 @@ void UOnlineGameParty_X::SendPlayerTradeComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SendPlayerTradeComplete");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_SendPlayerTradeComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30225,10 +26078,7 @@ void UOnlineGameParty_X::SendPlayerTradeCompleteAndClear(bool bWasCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SendPlayerTradeCompleteAndClear");
 
-	struct
-	{
-		bool                           bWasCanceled;
-	} params;
+	UOnlineGameParty_X_SendPlayerTradeCompleteAndClear_Params params;
 	params.bWasCanceled = bWasCanceled;
 
 	auto flags = fn->FunctionFlags;
@@ -30249,11 +26099,7 @@ void UOnlineGameParty_X::HandleReadyToTrade(class UOnlineMessageComponent_X* Com
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleReadyToTrade");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleReadyToTrade_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -30274,10 +26120,7 @@ void UOnlineGameParty_X::ReadyToTrade(bool bReadyToTrade)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ReadyToTrade");
 
-	struct
-	{
-		bool                           bReadyToTrade;
-	} params;
+	UOnlineGameParty_X_ReadyToTrade_Params params;
 	params.bReadyToTrade = bReadyToTrade;
 
 	auto flags = fn->FunctionFlags;
@@ -30297,10 +26140,7 @@ void UOnlineGameParty_X::SetPartyMessageHandlerTradeProductUpdate(bool bAddHandl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetPartyMessageHandlerTradeProductUpdate");
 
-	struct
-	{
-		bool                           bAddHandler;
-	} params;
+	UOnlineGameParty_X_SetPartyMessageHandlerTradeProductUpdate_Params params;
 	params.bAddHandler = bAddHandler;
 
 	auto flags = fn->FunctionFlags;
@@ -30320,10 +26160,7 @@ void UOnlineGameParty_X::ClearTradingPlayer(bool bWasCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ClearTradingPlayer");
 
-	struct
-	{
-		bool                           bWasCanceled;
-	} params;
+	UOnlineGameParty_X_ClearTradingPlayer_Params params;
 	params.bWasCanceled = bWasCanceled;
 
 	auto flags = fn->FunctionFlags;
@@ -30344,11 +26181,7 @@ void UOnlineGameParty_X::HandleAcceptInviteToTrade(class UOnlineMessageComponent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleAcceptInviteToTrade");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleAcceptInviteToTrade_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -30369,10 +26202,7 @@ bool UOnlineGameParty_X::CanAcceptTrade()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.CanAcceptTrade");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_CanAcceptTrade_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30393,10 +26223,7 @@ void UOnlineGameParty_X::AcceptInviteToTrade(bool bAccepted)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AcceptInviteToTrade");
 
-	struct
-	{
-		bool                           bAccepted;
-	} params;
+	UOnlineGameParty_X_AcceptInviteToTrade_Params params;
 	params.bAccepted = bAccepted;
 
 	auto flags = fn->FunctionFlags;
@@ -30418,12 +26245,7 @@ struct FGuid UOnlineGameParty_X::ResolveGuids(struct FGuid* A, struct FGuid* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ResolveGuids");
 
-	struct
-	{
-		struct FGuid                   A;
-		struct FGuid                   B;
-		struct FGuid                   ReturnValue;
-	} params;
+	UOnlineGameParty_X_ResolveGuids_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30449,10 +26271,7 @@ struct FUniqueNetId UOnlineGameParty_X::GetTradingPlayerID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetTradingPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetTradingPlayerID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30473,10 +26292,7 @@ struct FString UOnlineGameParty_X::GetTradingPlayerName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetTradingPlayerName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetTradingPlayerName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30498,11 +26314,7 @@ void UOnlineGameParty_X::HandleInviteToTradeMessage(class UOnlineMessageComponen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleInviteToTradeMessage");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleInviteToTradeMessage_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -30523,10 +26335,7 @@ void UOnlineGameParty_X::InvitePlayerToTrade(const struct FUniqueNetId& InMember
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.InvitePlayerToTrade");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-	} params;
+	UOnlineGameParty_X_InvitePlayerToTrade_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -30547,11 +26356,7 @@ bool UOnlineGameParty_X::IsPlayerTrading(const struct FUniqueNetId& InMemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPlayerTrading");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPlayerTrading_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -30571,9 +26376,7 @@ void UOnlineGameParty_X::ClearAllPlayersTrading()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ClearAllPlayersTrading");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_ClearAllPlayersTrading_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30594,12 +26397,7 @@ void UOnlineGameParty_X::SetPlayersTrading(const struct FUniqueNetId& InMember1I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetPlayersTrading");
 
-	struct
-	{
-		struct FUniqueNetId            InMember1Id;
-		struct FUniqueNetId            InMember2Id;
-		bool                           bTrading;
-	} params;
+	UOnlineGameParty_X_SetPlayersTrading_Params params;
 	params.InMember1Id = InMember1Id;
 	params.InMember2Id = InMember2Id;
 	params.bTrading = bTrading;
@@ -30622,11 +26420,7 @@ struct FString UOnlineGameParty_X::GetMemberName(const struct FUniqueNetId& InMe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetMemberName");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetMemberName_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -30648,10 +26442,7 @@ TArray<struct FUniqueNetId> UOnlineGameParty_X::GetOrderedPartyMemberIDs()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetOrderedPartyMemberIDs");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetOrderedPartyMemberIDs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30672,10 +26463,7 @@ TArray<struct FUniqueNetId> UOnlineGameParty_X::GetPartyMemberIDs()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPartyMemberIDs");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetPartyMemberIDs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30694,9 +26482,7 @@ void UOnlineGameParty_X::HandleSessionCreated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleSessionCreated");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_HandleSessionCreated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30715,10 +26501,7 @@ bool UOnlineGameParty_X::IsProcessing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsProcessing");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsProcessing_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30739,10 +26522,7 @@ void UOnlineGameParty_X::SetProcessingStatus(TEnumAsByte<enum class PartyProcess
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetProcessingStatus");
 
-	struct
-	{
-		TEnumAsByte<enum class PartyProcessingStatus> Status;
-	} params;
+	UOnlineGameParty_X_SetProcessingStatus_Params params;
 	params.Status = Status;
 
 	auto flags = fn->FunctionFlags;
@@ -30762,10 +26542,7 @@ void UOnlineGameParty_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameParty_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -30787,12 +26564,7 @@ struct FString UOnlineGameParty_X::GetPlayerRatingString(const struct FUniqueNet
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPlayerRatingString");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            Playlist;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetPlayerRatingString_Params params;
 	params.PlayerID = PlayerID;
 	params.Playlist = Playlist;
 
@@ -30816,11 +26588,7 @@ void UOnlineGameParty_X::HandlePartyBugReport(class UOnlineMessageComponent_X* C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyBugReport");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandlePartyBugReport_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -30841,10 +26609,7 @@ void UOnlineGameParty_X::BroadcastBugReport(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastBugReport");
 
-	struct
-	{
-		struct FString                 Reason;
-	} params;
+	UOnlineGameParty_X_BroadcastBugReport_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -30864,10 +26629,7 @@ void UOnlineGameParty_X::OnPartyError(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnPartyError");
 
-	struct
-	{
-		class UError_X*                Error;
-	} params;
+	UOnlineGameParty_X_OnPartyError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -30887,10 +26649,7 @@ void UOnlineGameParty_X::HandlePartyError(const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyError");
 
-	struct
-	{
-		struct FString                 Error;
-	} params;
+	UOnlineGameParty_X_HandlePartyError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -30908,9 +26667,7 @@ void UOnlineGameParty_X::HandleRankedConfigChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleRankedConfigChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_HandleRankedConfigChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30927,9 +26684,7 @@ void UOnlineGameParty_X::UpdatePlaylistRestrictions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UpdatePlaylistRestrictions");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_UpdatePlaylistRestrictions_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30949,11 +26704,7 @@ struct FPlaylistSkillRestrictionInfo UOnlineGameParty_X::GetPlaylistSkillRestric
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPlaylistSkillRestrictionInfo");
 
-	struct
-	{
-		int                            PlaylistId;
-		struct FPlaylistSkillRestrictionInfo ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetPlaylistSkillRestrictionInfo_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -30976,11 +26727,7 @@ bool UOnlineGameParty_X::IsPlaylistSkillRestricted(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPlaylistSkillRestricted");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPlaylistSkillRestricted_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -31004,12 +26751,7 @@ void UOnlineGameParty_X::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleGroupSkillSynced");
 
-	struct
-	{
-		class UOnlineGameSkillGroups_X* SkillObj;
-		TArray<struct FUniqueNetId>    PlayerIDs;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameParty_X_HandleGroupSkillSynced_Params params;
 	params.SkillObj = SkillObj;
 	params.PlayerIDs = PlayerIDs;
 	params.Error = Error;
@@ -31033,12 +26775,7 @@ void UOnlineGameParty_X::HandlePlayerSkillSynced(class UOnlineGameSkill_X* Skill
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayerSkillSynced");
 
-	struct
-	{
-		class UOnlineGameSkill_X*      SkillObj;
-		struct FUniqueNetId            PlayerID;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameParty_X_HandlePlayerSkillSynced_Params params;
 	params.SkillObj = SkillObj;
 	params.PlayerID = PlayerID;
 	params.Error = Error;
@@ -31061,11 +26798,7 @@ float UOnlineGameParty_X::GetAverageSkill(int Playlist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetAverageSkill");
 
-	struct
-	{
-		int                            Playlist;
-		float                          ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetAverageSkill_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -31088,11 +26821,7 @@ float UOnlineGameParty_X::GetGroupSkill(int Playlist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetGroupSkill");
 
-	struct
-	{
-		int                            Playlist;
-		float                          ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetGroupSkill_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -31115,11 +26844,7 @@ float UOnlineGameParty_X::GetSkill(int Playlist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetSkill");
 
-	struct
-	{
-		int                            Playlist;
-		float                          ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetSkill_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -31139,9 +26864,7 @@ void UOnlineGameParty_X::SyncUpdatedSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SyncUpdatedSkills");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_SyncUpdatedSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31158,9 +26881,7 @@ void UOnlineGameParty_X::SyncIndividualSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SyncIndividualSkills");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_SyncIndividualSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31177,9 +26898,7 @@ void UOnlineGameParty_X::SyncGroupSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SyncGroupSkills");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_SyncGroupSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31198,10 +26917,7 @@ void UOnlineGameParty_X::SyncSkills(bool bFromCache)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SyncSkills");
 
-	struct
-	{
-		bool                           bFromCache;
-	} params;
+	UOnlineGameParty_X_SyncSkills_Params params;
 	params.bFromCache = bFromCache;
 
 	auto flags = fn->FunctionFlags;
@@ -31221,10 +26937,7 @@ void UOnlineGameParty_X::SyncPlayerSkill(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SyncPlayerSkill");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-	} params;
+	UOnlineGameParty_X_SyncPlayerSkill_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -31242,9 +26955,7 @@ void UOnlineGameParty_X::HandlePsyNetLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePsyNetLogin");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_HandlePsyNetLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31261,9 +26972,7 @@ void UOnlineGameParty_X::OnPartyChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnPartyChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_OnPartyChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31282,10 +26991,7 @@ bool UOnlineGameParty_X::UseGroupMMR()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UseGroupMMR");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_UseGroupMMR_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31309,13 +27015,7 @@ bool UOnlineGameParty_X::TryGetValueInt(const struct FString& Key, TArray<struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.TryGetValueInt");
 
-	struct
-	{
-		TArray<struct FLobbyMetaData>  MetaData;
-		struct FString                 Key;
-		int                            Value;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_TryGetValueInt_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -31342,10 +27042,7 @@ bool UOnlineGameParty_X::PartyHasDisableCrossPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.PartyHasDisableCrossPlay");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_PartyHasDisableCrossPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31367,11 +27064,7 @@ void UOnlineGameParty_X::SetDisableCrossPlayForMember(const struct FUniqueNetId&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetDisableCrossPlayForMember");
 
-	struct
-	{
-		struct FUniqueNetId            PartyMemberID;
-		bool                           bDisableCrossPlay;
-	} params;
+	UOnlineGameParty_X_SetDisableCrossPlayForMember_Params params;
 	params.PartyMemberID = PartyMemberID;
 	params.bDisableCrossPlay = bDisableCrossPlay;
 
@@ -31393,11 +27086,7 @@ void UOnlineGameParty_X::HandleDisableCrossPlayMessage(class UOnlineMessageCompo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleDisableCrossPlayMessage");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleDisableCrossPlayMessage_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -31416,9 +27105,7 @@ void UOnlineGameParty_X::BroadcastDisableCrossPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastDisableCrossPlay");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastDisableCrossPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31437,10 +27124,7 @@ struct FString UOnlineGameParty_X::GetAnyAppOwnerRestrictionPlayerName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetAnyAppOwnerRestrictionPlayerName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetAnyAppOwnerRestrictionPlayerName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31461,10 +27145,7 @@ struct FString UOnlineGameParty_X::GetMatchmakingRestrictionError()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetMatchmakingRestrictionError");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetMatchmakingRestrictionError_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31486,11 +27167,7 @@ bool UOnlineGameParty_X::IsPlayerInMainMenu(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPlayerInMainMenu");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPlayerInMainMenu_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -31513,11 +27190,7 @@ bool UOnlineGameParty_X::IsPlayerInMatch(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPlayerInMatch");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPlayerInMatch_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -31540,11 +27213,7 @@ void UOnlineGameParty_X::SetAvailableForMatchmakingForMember(const struct FUniqu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetAvailableForMatchmakingForMember");
 
-	struct
-	{
-		struct FUniqueNetId            PartyMemberID;
-		int                            MatchmakeRestrictions;
-	} params;
+	UOnlineGameParty_X_SetAvailableForMatchmakingForMember_Params params;
 	params.PartyMemberID = PartyMemberID;
 	params.MatchmakeRestrictions = MatchmakeRestrictions;
 
@@ -31566,11 +27235,7 @@ void UOnlineGameParty_X::HandleMatchmakingAvailability(class UOnlineMessageCompo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleMatchmakingAvailability");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleMatchmakingAvailability_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -31591,10 +27256,7 @@ int UOnlineGameParty_X::BuildMatchmakingRestrictions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BuildMatchmakingRestrictions");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameParty_X_BuildMatchmakingRestrictions_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31613,9 +27275,7 @@ void UOnlineGameParty_X::BroadcastMatchmakingAvailability()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastMatchmakingAvailability");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastMatchmakingAvailability_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31632,9 +27292,7 @@ void UOnlineGameParty_X::BroadcastAllLocalPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastAllLocalPlayers");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastAllLocalPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31651,9 +27309,7 @@ void UOnlineGameParty_X::BroadcastLocalPlayersDelayed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastLocalPlayersDelayed");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastLocalPlayersDelayed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31670,9 +27326,7 @@ void UOnlineGameParty_X::BroadcastLocalPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastLocalPlayers");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastLocalPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31691,10 +27345,7 @@ void UOnlineGameParty_X::HandleLocalPlayerLoginStatusChanged(class UOnlinePlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLocalPlayerLoginStatusChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGameParty_X_HandleLocalPlayerLoginStatusChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -31714,10 +27365,7 @@ void UOnlineGameParty_X::HandleLocalPlayerLeave(class ULocalPlayer* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLocalPlayerLeave");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-	} params;
+	UOnlineGameParty_X_HandleLocalPlayerLeave_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -31737,10 +27385,7 @@ void UOnlineGameParty_X::HandleLocalPlayerJoin(class ULocalPlayer* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLocalPlayerJoin");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-	} params;
+	UOnlineGameParty_X_HandleLocalPlayerJoin_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -31760,10 +27405,7 @@ void UOnlineGameParty_X::ProcessLocalPlayersMessage(class UPartyMessage_LocalPla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ProcessLocalPlayersMessage");
 
-	struct
-	{
-		class UPartyMessage_LocalPlayers_X* Message;
-	} params;
+	UOnlineGameParty_X_ProcessLocalPlayersMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -31784,11 +27426,7 @@ void UOnlineGameParty_X::HandleLocalPlayers(class UOnlineMessageComponent_X* Com
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLocalPlayers");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 ObjMessage;
-	} params;
+	UOnlineGameParty_X_HandleLocalPlayers_Params params;
 	params.Component = Component;
 	params.ObjMessage = ObjMessage;
 
@@ -31811,12 +27449,7 @@ bool UOnlineGameParty_X::AllowSplitScreenPlayer(int ControllerId, class UError_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AllowSplitScreenPlayer");
 
-	struct
-	{
-		int                            ControllerId;
-		class UError_X*                OutError;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_AllowSplitScreenPlayer_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -31841,10 +27474,7 @@ int UOnlineGameParty_X::GetPartySize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPartySize");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetPartySize_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31866,11 +27496,7 @@ void UOnlineGameParty_X::HandleSearchStatus(class UOnlineMessageComponent_X* Com
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleSearchStatus");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleSearchStatus_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -31889,9 +27515,7 @@ void UOnlineGameParty_X::BroadcastSearchStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastSearchStatus");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastSearchStatus_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31910,10 +27534,7 @@ class UPartyMessage_SearchStatus_X* UOnlineGameParty_X::GetSearchStatusMessage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetSearchStatusMessage");
 
-	struct
-	{
-		class UPartyMessage_SearchStatus_X* ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetSearchStatusMessage_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31934,10 +27555,7 @@ bool UOnlineGameParty_X::TogglePartyLock()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.TogglePartyLock");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_TogglePartyLock_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31958,10 +27576,7 @@ int UOnlineGameParty_X::GetMaxPartySize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetMaxPartySize");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetMaxPartySize_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31983,11 +27598,7 @@ bool UOnlineGameParty_X::AllowPartySize(int InSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AllowPartySize");
 
-	struct
-	{
-		int                            InSize;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_AllowPartySize_Params params;
 	params.InSize = InSize;
 
 	auto flags = fn->FunctionFlags;
@@ -32009,10 +27620,7 @@ bool UOnlineGameParty_X::IsPartyOverFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPartyOverFull");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPartyOverFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32033,10 +27641,7 @@ bool UOnlineGameParty_X::AllowNewMember()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AllowNewMember");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_AllowNewMember_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32055,9 +27660,7 @@ void UOnlineGameParty_X::UpdatePartyLock()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UpdatePartyLock");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_UpdatePartyLock_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32076,10 +27679,7 @@ void UOnlineGameParty_X::HandleFindGameStateChanged(const struct FName& NewState
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleFindGameStateChanged");
 
-	struct
-	{
-		struct FName                   NewState;
-	} params;
+	UOnlineGameParty_X_HandleFindGameStateChanged_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -32097,9 +27697,7 @@ void UOnlineGameParty_X::ClearLastServerAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ClearLastServerAddress");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_ClearLastServerAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32118,10 +27716,7 @@ void UOnlineGameParty_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGameParty_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -32141,10 +27736,7 @@ void UOnlineGameParty_X::OnNewSettingsChosen(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnNewSettingsChosen");
 
-	struct
-	{
-		int                            PlaylistId;
-	} params;
+	UOnlineGameParty_X_OnNewSettingsChosen_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -32162,9 +27754,7 @@ void UOnlineGameParty_X::OnNewGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnNewGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_OnNewGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32183,10 +27773,7 @@ void UOnlineGameParty_X::SetMatchmakingSearching(bool bState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetMatchmakingSearching");
 
-	struct
-	{
-		bool                           bState;
-	} params;
+	UOnlineGameParty_X_SetMatchmakingSearching_Params params;
 	params.bState = bState;
 
 	auto flags = fn->FunctionFlags;
@@ -32206,10 +27793,7 @@ void UOnlineGameParty_X::SetSearchState(const struct FName& SearchState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetSearchState");
 
-	struct
-	{
-		struct FName                   SearchState;
-	} params;
+	UOnlineGameParty_X_SetSearchState_Params params;
 	params.SearchState = SearchState;
 
 	auto flags = fn->FunctionFlags;
@@ -32229,10 +27813,7 @@ struct FUniqueNetId UOnlineGameParty_X::GetLocalMemberId()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetLocalMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetLocalMemberId_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32254,11 +27835,7 @@ bool UOnlineGameParty_X::IsMemberLocal(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsMemberLocal");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsMemberLocal_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -32280,10 +27857,7 @@ bool UOnlineGameParty_X::HasRemoteMember()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HasRemoteMember");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_HasRemoteMember_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32305,11 +27879,7 @@ void UOnlineGameParty_X::HandleNewLeader(class UOnlineMessageComponent_X* Compon
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleNewLeader");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleNewLeader_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -32331,11 +27901,7 @@ void UOnlineGameParty_X::HandleKickMessage(class UOnlineMessageComponent_X* Comp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleKickMessage");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameParty_X_HandleKickMessage_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -32357,11 +27923,7 @@ void UOnlineGameParty_X::HandleLobbyDestroyed(TEnumAsByte<enum class ELobbyKickR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLobbyDestroyed");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		TEnumAsByte<enum class ELobbyKickReason> Reason;
-	} params;
+	UOnlineGameParty_X_HandleLobbyDestroyed_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -32386,12 +27948,7 @@ void UOnlineGameParty_X::HandleLobbyReceiveBinaryData(int MemberIndex, struct FA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLobbyReceiveBinaryData");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-		TArray<unsigned char>          Data;
-	} params;
+	UOnlineGameParty_X_HandleLobbyReceiveBinaryData_Params params;
 	params.MemberIndex = MemberIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -32414,9 +27971,7 @@ void UOnlineGameParty_X::RemoveAllPartyMembers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.RemoveAllPartyMembers");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_RemoveAllPartyMembers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32435,10 +27990,7 @@ void UOnlineGameParty_X::RemovePartyMemberByLocalPlayer(class ULocalPlayer* Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.RemovePartyMemberByLocalPlayer");
 
-	struct
-	{
-		class ULocalPlayer*            Player;
-	} params;
+	UOnlineGameParty_X_RemovePartyMemberByLocalPlayer_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -32458,10 +28010,7 @@ void UOnlineGameParty_X::RemovePartyMemberByID(const struct FUniqueNetId& Member
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.RemovePartyMemberByID");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-	} params;
+	UOnlineGameParty_X_RemovePartyMemberByID_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -32485,14 +28034,7 @@ int UOnlineGameParty_X::AddPartyMember(const struct FUniqueNetId& PrimaryMemberI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AddPartyMember");
 
-	struct
-	{
-		struct FUniqueNetId            PrimaryMemberId;
-		struct FUniqueNetId            MemberId;
-		struct FString                 MemberName;
-		int                            ControllerId;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameParty_X_AddPartyMember_Params params;
 	params.PrimaryMemberId = PrimaryMemberId;
 	params.MemberId = MemberId;
 	params.MemberName = MemberName;
@@ -32517,10 +28059,7 @@ void UOnlineGameParty_X::OnEditExistingPartyMember(int PartyMemberIdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnEditExistingPartyMember");
 
-	struct
-	{
-		int                            PartyMemberIdx;
-	} params;
+	UOnlineGameParty_X_OnEditExistingPartyMember_Params params;
 	params.PartyMemberIdx = PartyMemberIdx;
 
 	auto flags = fn->FunctionFlags;
@@ -32540,10 +28079,7 @@ void UOnlineGameParty_X::OnAddNewPartyMember(int PartyMemberIdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnAddNewPartyMember");
 
-	struct
-	{
-		int                            PartyMemberIdx;
-	} params;
+	UOnlineGameParty_X_OnAddNewPartyMember_Params params;
 	params.PartyMemberIdx = PartyMemberIdx;
 
 	auto flags = fn->FunctionFlags;
@@ -32563,10 +28099,7 @@ void UOnlineGameParty_X::UpdatePartyInfo(struct FActiveLobbyInfo* Lobby)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UpdatePartyInfo");
 
-	struct
-	{
-		struct FActiveLobbyInfo        Lobby;
-	} params;
+	UOnlineGameParty_X_UpdatePartyInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32586,9 +28119,7 @@ void UOnlineGameParty_X::OnNewLobby()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnNewLobby");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_OnNewLobby_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32610,13 +28141,7 @@ void UOnlineGameParty_X::HandleJoinLobby(bool bWasSuccessful, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleJoinLobby");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FActiveLobbyInfo        LobbyInfo;
-		struct FUniqueLobbyId          LobbyUID;
-		struct FString                 Error;
-	} params;
+	UOnlineGameParty_X_HandleJoinLobby_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -32645,13 +28170,7 @@ void UOnlineGameParty_X::HandleLobbyMemberStatusUpdate(int MemberIndex, int Inst
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleLobbyMemberStatusUpdate");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-		int                            InstigatorIndex;
-		struct FString                 Status;
-	} params;
+	UOnlineGameParty_X_HandleLobbyMemberStatusUpdate_Params params;
 	params.MemberIndex = MemberIndex;
 	params.InstigatorIndex = InstigatorIndex;
 	params.Status = Status;
@@ -32677,11 +28196,7 @@ void UOnlineGameParty_X::HandlePartyJoinGameComplete(bool bSuccess, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyJoinGameComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameParty_X_HandlePartyJoinGameComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 
@@ -32702,10 +28217,7 @@ void UOnlineGameParty_X::HandleConfirmJoinGame(const struct FPartyJoinMatchSetti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleConfirmJoinGame");
 
-	struct
-	{
-		struct FPartyJoinMatchSettings InSettings;
-	} params;
+	UOnlineGameParty_X_HandleConfirmJoinGame_Params params;
 	params.InSettings = InSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -32725,10 +28237,7 @@ void UOnlineGameParty_X::JoinFriend(const struct FUniqueNetId& PartyMemberID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.JoinFriend");
 
-	struct
-	{
-		struct FUniqueNetId            PartyMemberID;
-	} params;
+	UOnlineGameParty_X_JoinFriend_Params params;
 	params.PartyMemberID = PartyMemberID;
 
 	auto flags = fn->FunctionFlags;
@@ -32748,10 +28257,7 @@ bool UOnlineGameParty_X::WantsToFollowTheLeaderOutOfGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.WantsToFollowTheLeaderOutOfGame");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_WantsToFollowTheLeaderOutOfGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32773,11 +28279,7 @@ void UOnlineGameParty_X::HandlePartyJoinGame(class UOnlineMessageComponent_X* Co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyJoinGame");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 MessageObject;
-	} params;
+	UOnlineGameParty_X_HandlePartyJoinGame_Params params;
 	params.Component = Component;
 	params.MessageObject = MessageObject;
 
@@ -32796,9 +28298,7 @@ void UOnlineGameParty_X::BroadcastPartyServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastPartyServer");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_BroadcastPartyServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32815,9 +28315,7 @@ void UOnlineGameParty_X::HandleServerReserved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleServerReserved");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_HandleServerReserved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32837,11 +28335,7 @@ void UOnlineGameParty_X::HandleJoinGameComplete(bool bSuccess, const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleJoinGameComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameParty_X_HandleJoinGameComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 
@@ -32863,11 +28357,7 @@ struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FParty
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPartyMemberServer");
 
-	struct
-	{
-		struct FPartyMemberServer      ReturnValue;
-		struct FPartyMemberServer      StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31;
-	} params;
+	UOnlineGameParty_X_GetPartyMemberServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32892,11 +28382,7 @@ void UOnlineGameParty_X::HandlePartyMemberJoinGame(class UOnlineMessageComponent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyMemberJoinGame");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UPartyMessage_PartyMemberJoinGame_X* MessageObject;
-	} params;
+	UOnlineGameParty_X_HandlePartyMemberJoinGame_Params params;
 	params.Component = Component;
 	params.MessageObject = MessageObject;
 
@@ -32919,12 +28405,7 @@ bool UOnlineGameParty_X::SetPartyMemberJoinGame(struct FUniqueNetId* PlayerID, s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetPartyMemberJoinGame");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FPartyMemberServer      Server;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_SetPartyMemberJoinGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -32951,11 +28432,7 @@ void UOnlineGameParty_X::BroadcastPartyMember(const struct FUniqueNetId& PlayerI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.BroadcastPartyMember");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FPartyMemberServer      Server;
-	} params;
+	UOnlineGameParty_X_BroadcastPartyMember_Params params;
 	params.PlayerID = PlayerID;
 	params.Server = Server;
 
@@ -32977,11 +28454,7 @@ bool UOnlineGameParty_X::SetLeader(const struct FUniqueNetId& NewLeader)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.SetLeader");
 
-	struct
-	{
-		struct FUniqueNetId            NewLeader;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_SetLeader_Params params;
 	params.NewLeader = NewLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -33004,11 +28477,7 @@ bool UOnlineGameParty_X::IsPrimaryPlayerIndex(int MemberIdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPrimaryPlayerIndex");
 
-	struct
-	{
-		int                            MemberIdx;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPrimaryPlayerIndex_Params params;
 	params.MemberIdx = MemberIdx;
 
 	auto flags = fn->FunctionFlags;
@@ -33031,11 +28500,7 @@ bool UOnlineGameParty_X::IsPrimaryPlayer(struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPrimaryPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPrimaryPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33060,11 +28525,7 @@ bool UOnlineGameParty_X::IsPlayerInParty(struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPlayerInParty");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPlayerInParty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33090,12 +28551,7 @@ bool UOnlineGameParty_X::KickPlayer(const struct FUniqueNetId& PlayerID, TEnumAs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.KickPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		TEnumAsByte<enum class ELobbyKickReason> Reason;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_KickPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.Reason = Reason;
 
@@ -33119,11 +28575,7 @@ bool UOnlineGameParty_X::ShowInviteUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.ShowInviteUI");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_ShowInviteUI_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -33146,11 +28598,7 @@ bool UOnlineGameParty_X::LeaveParty(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.LeaveParty");
 
-	struct
-	{
-		struct FString                 Reason;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_LeaveParty_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -33173,11 +28621,7 @@ bool UOnlineGameParty_X::IsInCurrentGame(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsInCurrentGame");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsInCurrentGame_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -33199,10 +28643,7 @@ bool UOnlineGameParty_X::IsPartyLeader()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsPartyLeader");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsPartyLeader_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33223,10 +28664,7 @@ bool UOnlineGameParty_X::IsInParty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.IsInParty");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_IsInParty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33247,10 +28685,7 @@ void UOnlineGameParty_X::HandleJoinPartyPrivilegeCheck(class UPrivilegeCheck_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleJoinPartyPrivilegeCheck");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       PrivilegeCheck;
-	} params;
+	UOnlineGameParty_X_HandleJoinPartyPrivilegeCheck_Params params;
 	params.PrivilegeCheck = PrivilegeCheck;
 
 	auto flags = fn->FunctionFlags;
@@ -33271,11 +28706,7 @@ void UOnlineGameParty_X::JoinParty(int LocalPlayerNum, struct FUniqueLobbyId* In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.JoinParty");
 
-	struct
-	{
-		int                            LocalPlayerNum;
-		struct FUniqueLobbyId          InPartyId;
-	} params;
+	UOnlineGameParty_X_JoinParty_Params params;
 	params.LocalPlayerNum = LocalPlayerNum;
 
 	auto flags = fn->FunctionFlags;
@@ -33296,9 +28727,7 @@ void UOnlineGameParty_X::CheckPartyTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.CheckPartyTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_CheckPartyTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33315,9 +28744,7 @@ void UOnlineGameParty_X::StartPartyTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.StartPartyTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_StartPartyTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33338,12 +28765,7 @@ void UOnlineGameParty_X::OnPartyCreated(bool bWasSuccessful, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnPartyCreated");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FUniqueLobbyId          InPartyId;
-		struct FString                 Error;
-	} params;
+	UOnlineGameParty_X_OnPartyCreated_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -33370,13 +28792,7 @@ bool UOnlineGameParty_X::CreateParty(int LocalPlayerNum, int MaxPlayers, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.CreateParty");
 
-	struct
-	{
-		int                            LocalPlayerNum;
-		int                            MaxPlayers;
-		struct FScriptDelegate         Handler;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameParty_X_CreateParty_Params params;
 	params.LocalPlayerNum = LocalPlayerNum;
 	params.MaxPlayers = MaxPlayers;
 	params.Handler = Handler;
@@ -33401,11 +28817,7 @@ void UOnlineGameParty_X::OnCreatePlayTogetherParty(class UOnlineGameParty_X* InP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnCreatePlayTogetherParty");
 
-	struct
-	{
-		class UOnlineGameParty_X*      InParty;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameParty_X_OnCreatePlayTogetherParty_Params params;
 	params.InParty = InParty;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -33424,9 +28836,7 @@ void UOnlineGameParty_X::FinishHostStartPlayTogether()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.FinishHostStartPlayTogether");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_FinishHostStartPlayTogether_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33443,9 +28853,7 @@ void UOnlineGameParty_X::UpdatePlayTogether()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UpdatePlayTogether");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_UpdatePlayTogether_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33464,10 +28872,7 @@ void UOnlineGameParty_X::HandlePlayTogetherLoginChanged(class UOnlinePlayerAuthe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayTogetherLoginChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlineGameParty_X_HandlePlayTogetherLoginChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -33487,10 +28892,7 @@ void UOnlineGameParty_X::HandleHostStartPlayTogether(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleHostStartPlayTogether");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-	} params;
+	UOnlineGameParty_X_HandleHostStartPlayTogether_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -33512,12 +28914,7 @@ void UOnlineGameParty_X::HandlePlayerInvited(bool bAccepted, struct FUniqueLobby
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayerInvited");
 
-	struct
-	{
-		struct FUniqueLobbyId          InLobbyId;
-		struct FUniqueNetId            FriendId;
-		bool                           bAccepted;
-	} params;
+	UOnlineGameParty_X_HandlePlayerInvited_Params params;
 	params.bAccepted = bAccepted;
 
 	auto flags = fn->FunctionFlags;
@@ -33542,10 +28939,7 @@ void UOnlineGameParty_X::HandlePartySizeTracker(class UOnlineGameParty_X* PartyO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartySizeTracker");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_HandlePartySizeTracker_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33566,11 +28960,7 @@ void UOnlineGameParty_X::HandlePrimaryPlayerIdChanged(class UOnlineGameAccount_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePrimaryPlayerIdChanged");
 
-	struct
-	{
-		class UOnlineGameAccount_X*    InAccount;
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGameParty_X_HandlePrimaryPlayerIdChanged_Params params;
 	params.InAccount = InAccount;
 	params.PlayerID = PlayerID;
 
@@ -33591,10 +28981,7 @@ void UOnlineGameParty_X::HandleInternetConnectionChanged(bool bConnected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleInternetConnectionChanged");
 
-	struct
-	{
-		bool                           bConnected;
-	} params;
+	UOnlineGameParty_X_HandleInternetConnectionChanged_Params params;
 	params.bConnected = bConnected;
 
 	auto flags = fn->FunctionFlags;
@@ -33614,10 +29001,7 @@ class UPartyMetrics_X* UOnlineGameParty_X::GetMetrics()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetMetrics");
 
-	struct
-	{
-		class UPartyMetrics_X*         ReturnValue;
-	} params;
+	UOnlineGameParty_X_GetMetrics_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33636,9 +29020,7 @@ void UOnlineGameParty_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameParty_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33658,11 +29040,7 @@ void UOnlineGameParty_X::EventPlayerIsCurrentlyTrading(class UOnlineGameParty_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPlayerIsCurrentlyTrading");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueNetId            InMemberId;
-	} params;
+	UOnlineGameParty_X_EventPlayerIsCurrentlyTrading_Params params;
 	params.PartyObject = PartyObject;
 	params.InMemberId = InMemberId;
 
@@ -33684,11 +29062,7 @@ void UOnlineGameParty_X::EventPlayerInMatchChanged(class UOnlineGameParty_X* Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPlayerInMatchChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueNetId            InMemberId;
-	} params;
+	UOnlineGameParty_X_EventPlayerInMatchChanged_Params params;
 	params.PartyObject = PartyObject;
 	params.InMemberId = InMemberId;
 
@@ -33710,11 +29084,7 @@ void UOnlineGameParty_X::EventAnotherInviteToTrade(class UOnlineGameParty_X* Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventAnotherInviteToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueNetId            InMemberId;
-	} params;
+	UOnlineGameParty_X_EventAnotherInviteToTrade_Params params;
 	params.PartyObject = PartyObject;
 	params.InMemberId = InMemberId;
 
@@ -33735,10 +29105,7 @@ void UOnlineGameParty_X::EventTradeReady(class UOnlineGameParty_X* PartyObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventTradeReady");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventTradeReady_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33758,10 +29125,7 @@ void UOnlineGameParty_X::EventNotReadyToTrade(class UOnlineGameParty_X* PartyObj
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventNotReadyToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventNotReadyToTrade_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33781,10 +29145,7 @@ void UOnlineGameParty_X::EventReadyToTrade(class UOnlineGameParty_X* PartyObject
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventReadyToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventReadyToTrade_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33805,11 +29166,7 @@ void UOnlineGameParty_X::EventCloseInviteToTrade(class UOnlineGameParty_X* Party
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventCloseInviteToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		bool                           bWasCanceled;
-	} params;
+	UOnlineGameParty_X_EventCloseInviteToTrade_Params params;
 	params.PartyObject = PartyObject;
 	params.bWasCanceled = bWasCanceled;
 
@@ -33830,10 +29187,7 @@ void UOnlineGameParty_X::EventAcceptedInviteToTrade(class UOnlineGameParty_X* Pa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventAcceptedInviteToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventAcceptedInviteToTrade_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33854,11 +29208,7 @@ void UOnlineGameParty_X::EventInviteToTrade(class UOnlineGameParty_X* PartyObjec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventInviteToTrade");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueNetId            InMemberId;
-	} params;
+	UOnlineGameParty_X_EventInviteToTrade_Params params;
 	params.PartyObject = PartyObject;
 	params.InMemberId = InMemberId;
 
@@ -33881,12 +29231,7 @@ void UOnlineGameParty_X::EventPlayerTradingChanged(class UOnlineGameParty_X* Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPlayerTradingChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueNetId            InMemberId;
-		bool                           bIsPlayerTrading;
-	} params;
+	UOnlineGameParty_X_EventPlayerTradingChanged_Params params;
 	params.PartyObject = PartyObject;
 	params.InMemberId = InMemberId;
 	params.bIsPlayerTrading = bIsPlayerTrading;
@@ -33908,10 +29253,7 @@ void UOnlineGameParty_X::EventPlaylistSkillRestrictionChange(class UOnlineGamePa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPlaylistSkillRestrictionChange");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventPlaylistSkillRestrictionChange_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33931,10 +29273,7 @@ void UOnlineGameParty_X::EventDisableCrossPlayChanged(class UOnlineGameParty_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventDisableCrossPlayChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventDisableCrossPlayChanged_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33954,10 +29293,7 @@ void UOnlineGameParty_X::EventProcessingStatusChanged(class UOnlineGameParty_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventProcessingStatusChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventProcessingStatusChanged_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -33977,10 +29313,7 @@ void UOnlineGameParty_X::EventLeaderLeftOnlineGame(class UOnlineGameParty_X* Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventLeaderLeftOnlineGame");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventLeaderLeftOnlineGame_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34000,10 +29333,7 @@ void UOnlineGameParty_X::EventConfirmJoinGameMessage(class UOnlineGameParty_X* P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventConfirmJoinGameMessage");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventConfirmJoinGameMessage_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34023,10 +29353,7 @@ void UOnlineGameParty_X::EventPartyDestroyed(class UOnlineGameParty_X* PartyObje
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyDestroyed");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventPartyDestroyed_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34046,10 +29373,7 @@ void UOnlineGameParty_X::EventPartyJoinGameSuccess(class UOnlineGameParty_X* Par
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyJoinGameSuccess");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventPartyJoinGameSuccess_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34070,11 +29394,7 @@ void UOnlineGameParty_X::EventPartyJoinGameError(class UOnlineGameParty_X* Party
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyJoinGameError");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FString                 LocalizedErrorString;
-	} params;
+	UOnlineGameParty_X_EventPartyJoinGameError_Params params;
 	params.PartyObject = PartyObject;
 	params.LocalizedErrorString = LocalizedErrorString;
 
@@ -34096,11 +29416,7 @@ void UOnlineGameParty_X::EventPartyError(class UOnlineGameParty_X* PartyObject, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyError");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameParty_X_EventPartyError_Params params;
 	params.PartyObject = PartyObject;
 	params.Error = Error;
 
@@ -34122,11 +29438,7 @@ void UOnlineGameParty_X::EventSearchStatusChanged(class UOnlineGameParty_X* Part
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventSearchStatusChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		class UPartyMessage_SearchStatus_X* StatusMessage;
-	} params;
+	UOnlineGameParty_X_EventSearchStatusChanged_Params params;
 	params.PartyObject = PartyObject;
 	params.StatusMessage = StatusMessage;
 
@@ -34149,12 +29461,7 @@ void UOnlineGameParty_X::EventPartySizeChanged(class UOnlineGameParty_X* PartyOb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartySizeChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		int                            NewSize;
-		int                            OldSize;
-	} params;
+	UOnlineGameParty_X_EventPartySizeChanged_Params params;
 	params.PartyObject = PartyObject;
 	params.NewSize = NewSize;
 	params.OldSize = OldSize;
@@ -34176,10 +29483,7 @@ void UOnlineGameParty_X::EventPartyChanged(class UOnlineGameParty_X* PartyObject
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameParty_X_EventPartyChanged_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34201,12 +29505,7 @@ void UOnlineGameParty_X::EventPlayerInvited(class UOnlineGameParty_X* PartyObjec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPlayerInvited");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		struct FUniqueLobbyId          InPartyId;
-		struct FUniqueNetId            FriendId;
-	} params;
+	UOnlineGameParty_X_EventPlayerInvited_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -34232,11 +29531,7 @@ void UOnlineGameParty_X::EventPartyCreated(class UOnlineGameParty_X* PartyObject
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyCreated");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameParty_X_EventPartyCreated_Params params;
 	params.PartyObject = PartyObject;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -34257,10 +29552,7 @@ void UOnlineGameAccount_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameAccount_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -34278,9 +29570,7 @@ void UOnlineGameAccount_X::OnMainMenuOpened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.OnMainMenuOpened");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_OnMainMenuOpened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34299,10 +29589,7 @@ int UOnlineGameAccount_X::GetNumLocalPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.GetNumLocalPlayers");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameAccount_X_GetNumLocalPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34321,9 +29608,7 @@ void UOnlineGameAccount_X::SendUpdatePlayerCurrentGameRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.SendUpdatePlayerCurrentGameRequest");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_SendUpdatePlayerCurrentGameRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34340,9 +29625,7 @@ void UOnlineGameAccount_X::UpdateCurrentGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.UpdateCurrentGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_UpdateCurrentGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34359,9 +29642,7 @@ void UOnlineGameAccount_X::ClearCurrentPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.ClearCurrentPlaylist");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_ClearCurrentPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34380,10 +29661,7 @@ void UOnlineGameAccount_X::SetCurrentPlaylist(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.SetCurrentPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-	} params;
+	UOnlineGameAccount_X_SetCurrentPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -34401,9 +29679,7 @@ void UOnlineGameAccount_X::HandleServerAddressChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.HandleServerAddressChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_HandleServerAddressChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34422,10 +29698,7 @@ void UOnlineGameAccount_X::HandlePsyNetLoginChanged(class UOnlinePlayerAuthentic
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.HandlePsyNetLoginChanged");
 
-	struct
-	{
-		class UOnlinePlayerAuthentication_X* Auth;
-	} params;
+	UOnlineGameAccount_X_HandlePsyNetLoginChanged_Params params;
 	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
@@ -34445,10 +29718,7 @@ void UOnlineGameAccount_X::HandlePlayerLoginStatusChanged(class UOnlinePlayer_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.HandlePlayerLoginStatusChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGameAccount_X_HandlePlayerLoginStatusChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -34466,9 +29736,7 @@ void UOnlineGameAccount_X::OnPrimaryPlayerIdChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.OnPrimaryPlayerIdChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_OnPrimaryPlayerIdChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34487,10 +29755,7 @@ void UOnlineGameAccount_X::SetPrimaryPlayer(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.SetPrimaryPlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGameAccount_X_SetPrimaryPlayer_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -34508,9 +29773,7 @@ void UOnlineGameAccount_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameAccount_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34530,11 +29793,7 @@ void UOnlineGameAccount_X::EventCurrentPlaylistSet(class UOnlineGameAccount_X* I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.EventCurrentPlaylistSet");
 
-	struct
-	{
-		class UOnlineGameAccount_X*    InAccount;
-		class UGameSettingPlaylist_X*  NewPlaylist;
-	} params;
+	UOnlineGameAccount_X_EventCurrentPlaylistSet_Params params;
 	params.InAccount = InAccount;
 	params.NewPlaylist = NewPlaylist;
 
@@ -34556,11 +29815,7 @@ void UOnlineGameAccount_X::EventPrimaryPlayerIdChanged(class UOnlineGameAccount_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameAccount_X.EventPrimaryPlayerIdChanged");
 
-	struct
-	{
-		class UOnlineGameAccount_X*    InAccount;
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGameAccount_X_EventPrimaryPlayerIdChanged_Params params;
 	params.InAccount = InAccount;
 	params.PlayerID = PlayerID;
 
@@ -34581,10 +29836,7 @@ struct FString UAddReservationMessagePrivate_X::GetDebugString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePrivate_X.GetDebugString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UAddReservationMessagePrivate_X_GetDebugString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34606,11 +29858,7 @@ class UAddReservationMessagePrivate_X* UAddReservationMessagePrivate_X::SetSetti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePrivate_X.SetSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    InSettings;
-		class UAddReservationMessagePrivate_X* ReturnValue;
-	} params;
+	UAddReservationMessagePrivate_X_SetSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34634,10 +29882,7 @@ class UAddReservationMessage_X* UAddReservationMessagePublic_X::AddPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.AddPlayers");
 
-	struct
-	{
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessagePublic_X_AddPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34659,11 +29904,7 @@ void UAddReservationMessagePublic_X::SetPlayerPref(class UGameSettingPlaylist_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.SetPlayerPref");
 
-	struct
-	{
-		class UGameSettingPlaylist_X*  Playlist;
-		class UOnlinePlayer_X*         OnlinePlayer;
-	} params;
+	UAddReservationMessagePublic_X_SetPlayerPref_Params params;
 	params.Playlist = Playlist;
 	params.OnlinePlayer = OnlinePlayer;
 
@@ -34686,12 +29927,7 @@ void UAddReservationMessagePublic_X::GetPlayerMapPrefs(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.GetPlayerMapPrefs");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		TArray<struct FName>           Likes;
-		TArray<struct FName>           Dislikes;
-	} params;
+	UAddReservationMessagePublic_X_GetPlayerMapPrefs_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -34719,13 +29955,7 @@ class UAddReservationMessage_X* UAddReservationMessagePublic_X::AddPlayer(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.AddPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           bRemotePlayer;
-		class UAddReservationMessage_X* ReturnValue;
-	} params;
+	UAddReservationMessagePublic_X_AddPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 	params.bRemotePlayer = bRemotePlayer;
@@ -34749,10 +29979,7 @@ struct FString UAddReservationMessagePublic_X::GetDebugString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.GetDebugString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UAddReservationMessagePublic_X_GetDebugString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34774,11 +30001,7 @@ struct FString UAddReservationMessagePublic_X::GetPlayerDebugString(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.GetPlayerDebugString");
 
-	struct
-	{
-		struct FReservationPlayerData  Player;
-		struct FString                 ReturnValue;
-	} params;
+	UAddReservationMessagePublic_X_GetPlayerDebugString_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -34801,11 +30024,7 @@ class UAddReservationMessagePublic_X* UAddReservationMessagePublic_X::SetSetting
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AddReservationMessagePublic_X.SetSettings");
 
-	struct
-	{
-		struct FJoinMatchSettings      InSettings;
-		class UAddReservationMessagePublic_X* ReturnValue;
-	} params;
+	UAddReservationMessagePublic_X_SetSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34830,11 +30049,7 @@ class UPlaylistSkillCache_X* UOnlineGameSkill_X::GetPlaylistSkillCache(int Playl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetPlaylistSkillCache");
 
-	struct
-	{
-		int                            Playlist;
-		class UPlaylistSkillCache_X*   ReturnValue;
-	} params;
+	UOnlineGameSkill_X_GetPlaylistSkillCache_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -34856,10 +30071,7 @@ void UOnlineGameSkill_X::HandleSkillsUpdateFailed(class URPC_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.HandleSkillsUpdateFailed");
 
-	struct
-	{
-		class URPC_X*                  RPC;
-	} params;
+	UOnlineGameSkill_X_HandleSkillsUpdateFailed_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -34879,10 +30091,7 @@ void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.HandleSkillsUpdated");
 
-	struct
-	{
-		class URPC_X*                  RPC;
-	} params;
+	UOnlineGameSkill_X_HandleSkillsUpdated_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -34903,11 +30112,7 @@ void UOnlineGameSkill_X::SubmitMatch(class UMatchRecorder_X* MatchRecorder, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.SubmitMatch");
 
-	struct
-	{
-		class UMatchRecorder_X*        MatchRecorder;
-		struct FString                 MatchGUID;
-	} params;
+	UOnlineGameSkill_X_SubmitMatch_Params params;
 	params.MatchRecorder = MatchRecorder;
 	params.MatchGUID = MatchGUID;
 
@@ -34926,9 +30131,7 @@ void UOnlineGameSkill_X::Clear()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.Clear");
 
-	struct
-	{
-	} params;
+	UOnlineGameSkill_X_Clear_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34949,12 +30152,7 @@ float UOnlineGameSkill_X::STATIC_GetMMR(float Mu, float Sigma)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetMMR");
 
-	struct
-	{
-		float                          Mu;
-		float                          Sigma;
-		float                          ReturnValue;
-	} params;
+	UOnlineGameSkill_X_GetMMR_Params params;
 	params.Mu = Mu;
 	params.Sigma = Sigma;
 
@@ -34979,12 +30177,7 @@ float UOnlineGameSkill_X::GetPlayerMMR(const struct FUniqueNetId& PlayerID, int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetPlayerMMR");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            Playlist;
-		float                          ReturnValue;
-	} params;
+	UOnlineGameSkill_X_GetPlayerMMR_Params params;
 	params.PlayerID = PlayerID;
 	params.Playlist = Playlist;
 
@@ -35009,12 +30202,7 @@ struct FPlayerSkillRating UOnlineGameSkill_X::GetPlayerRating(const struct FUniq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetPlayerRating");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            Playlist;
-		struct FPlayerSkillRating      ReturnValue;
-	} params;
+	UOnlineGameSkill_X_GetPlayerRating_Params params;
 	params.PlayerID = PlayerID;
 	params.Playlist = Playlist;
 
@@ -35038,11 +30226,7 @@ void UOnlineGameSkill_X::OnSkillSynced(const struct FUniqueNetId& PlayerID, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.OnSkillSynced");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameSkill_X_OnSkillSynced_Params params;
 	params.PlayerID = PlayerID;
 	params.Error = Error;
 
@@ -35063,10 +30247,7 @@ void UOnlineGameSkill_X::HandleSkillRequestCompleteRPC(class URPC_GetPlayerSkill
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.HandleSkillRequestCompleteRPC");
 
-	struct
-	{
-		class URPC_GetPlayerSkill_X*   RPC;
-	} params;
+	UOnlineGameSkill_X_HandleSkillRequestCompleteRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -35087,11 +30268,7 @@ void UOnlineGameSkill_X::SyncPlayerSkill(const struct FUniqueNetId& PlayerID, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.SyncPlayerSkill");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameSkill_X_SyncPlayerSkill_Params params;
 	params.PlayerID = PlayerID;
 	params.Callback = Callback;
 
@@ -35113,11 +30290,7 @@ void UOnlineGameSkill_X::CacheSkill(const struct FPlayerSkillRating& Rating, int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.CacheSkill");
 
-	struct
-	{
-		struct FPlayerSkillRating      Rating;
-		int                            Playlist;
-	} params;
+	UOnlineGameSkill_X_CacheSkill_Params params;
 	params.Rating = Rating;
 	params.Playlist = Playlist;
 
@@ -35139,11 +30312,7 @@ void UOnlineGameSkill_X::PreCacheSkill(const struct FPlayerSkillRating& Rating, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.PreCacheSkill");
 
-	struct
-	{
-		struct FPlayerSkillRating      Rating;
-		int                            Playlist;
-	} params;
+	UOnlineGameSkill_X_PreCacheSkill_Params params;
 	params.Rating = Rating;
 	params.Playlist = Playlist;
 
@@ -35165,11 +30334,7 @@ int UOnlineGameSkill_X::STATIC_GetSkillPlaylistID(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetSkillPlaylistID");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkill_X_GetSkillPlaylistID_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -35193,12 +30358,7 @@ void UOnlineGameSkill_X::EventSkillSynced(class UOnlineGameSkill_X* Skill, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.EventSkillSynced");
 
-	struct
-	{
-		class UOnlineGameSkill_X*      Skill;
-		struct FUniqueNetId            PlayerID;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameSkill_X_EventSkillSynced_Params params;
 	params.Skill = Skill;
 	params.PlayerID = PlayerID;
 	params.Error = Error;
@@ -35221,11 +30381,7 @@ TArray<struct FName> UOnlineGamePlaylists_X::GetAccessiblePlaylists(TArray<struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.GetAccessiblePlaylists");
 
-	struct
-	{
-		TArray<struct FName>           SelectedPlaylists;
-		TArray<struct FName>           ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_GetAccessiblePlaylists_Params params;
 	params.SelectedPlaylists = SelectedPlaylists;
 
 	auto flags = fn->FunctionFlags;
@@ -35247,10 +30403,7 @@ bool UOnlineGamePlaylists_X::IsRankedEnabled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.IsRankedEnabled");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_IsRankedEnabled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35272,11 +30425,7 @@ bool UOnlineGamePlaylists_X::IsRankedPlaylistID(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.IsRankedPlaylistID");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_IsRankedPlaylistID_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -35299,11 +30448,7 @@ bool UOnlineGamePlaylists_X::IsRankedPlaylistName(const struct FName& PlaylistNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.IsRankedPlaylistName");
 
-	struct
-	{
-		struct FName                   PlaylistName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_IsRankedPlaylistName_Params params;
 	params.PlaylistName = PlaylistName;
 
 	auto flags = fn->FunctionFlags;
@@ -35326,11 +30471,7 @@ void UOnlineGamePlaylists_X::NamesToIDs(TArray<struct FName>* Names, TArray<int>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.NamesToIDs");
 
-	struct
-	{
-		TArray<struct FName>           Names;
-		TArray<int>                    Ids;
-	} params;
+	UOnlineGamePlaylists_X_NamesToIDs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35355,11 +30496,7 @@ struct FString UOnlineGamePlaylists_X::GetPlaylistFriendlyName(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.GetPlaylistFriendlyName");
 
-	struct
-	{
-		int                            PlaylistId;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_GetPlaylistFriendlyName_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -35379,9 +30516,7 @@ void UOnlineGamePlaylists_X::CopyPlaylistGameTags()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.CopyPlaylistGameTags");
 
-	struct
-	{
-	} params;
+	UOnlineGamePlaylists_X_CopyPlaylistGameTags_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35400,10 +30535,7 @@ void UOnlineGamePlaylists_X::HandlePlaylistsChanged(class UObjectProvider* Provi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.HandlePlaylistsChanged");
 
-	struct
-	{
-		class UObjectProvider*         Provider;
-	} params;
+	UOnlineGamePlaylists_X_HandlePlaylistsChanged_Params params;
 	params.Provider = Provider;
 
 	auto flags = fn->FunctionFlags;
@@ -35424,11 +30556,7 @@ int UOnlineGamePlaylists_X::NameToID(const struct FName& PlaylistName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.NameToID");
 
-	struct
-	{
-		struct FName                   PlaylistName;
-		int                            ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_NameToID_Params params;
 	params.PlaylistName = PlaylistName;
 
 	auto flags = fn->FunctionFlags;
@@ -35451,11 +30579,7 @@ class UGameSettingPlaylist_X* UOnlineGamePlaylists_X::GetPlaylistByID(int Playli
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.GetPlaylistByID");
 
-	struct
-	{
-		int                            PlaylistId;
-		class UGameSettingPlaylist_X*  ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_GetPlaylistByID_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -35478,11 +30602,7 @@ class UGameSettingPlaylist_X* UOnlineGamePlaylists_X::GetPlaylistByName(const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.GetPlaylistByName");
 
-	struct
-	{
-		struct FName                   PlaylistName;
-		class UGameSettingPlaylist_X*  ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_GetPlaylistByName_Params params;
 	params.PlaylistName = PlaylistName;
 
 	auto flags = fn->FunctionFlags;
@@ -35505,11 +30625,7 @@ bool UOnlineGamePlaylists_X::IsPlaylistEnabled(class UGameSettingPlaylist_X* Pla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.IsPlaylistEnabled");
 
-	struct
-	{
-		class UGameSettingPlaylist_X*  Playlist;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePlaylists_X_IsPlaylistEnabled_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -35531,10 +30647,7 @@ void UOnlineGamePlaylists_X::NotifyWhenChanged(const struct FScriptDelegate& Cal
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.NotifyWhenChanged");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePlaylists_X_NotifyWhenChanged_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -35552,9 +30665,7 @@ void UOnlineGamePlaylists_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGamePlaylists_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35573,10 +30684,7 @@ void UOnlineGamePlaylists_X::EventPlaylistsChanged(class UOnlineGamePlaylists_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlaylists_X.EventPlaylistsChanged");
 
-	struct
-	{
-		class UOnlineGamePlaylists_X*  PlaylistsObj;
-	} params;
+	UOnlineGamePlaylists_X_EventPlaylistsChanged_Params params;
 	params.PlaylistsObj = PlaylistsObj;
 
 	auto flags = fn->FunctionFlags;
@@ -35596,10 +30704,7 @@ bool UGameSettingPlaylist_X::ShouldUpdateSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.ShouldUpdateSkills");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameSettingPlaylist_X_ShouldUpdateSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35621,11 +30726,7 @@ bool UGameSettingPlaylist_X::STATIC_IsValidID(int InPlaylistID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.IsValidID");
 
-	struct
-	{
-		int                            InPlaylistID;
-		bool                           ReturnValue;
-	} params;
+	UGameSettingPlaylist_X_IsValidID_Params params;
 	params.InPlaylistID = InPlaylistID;
 
 	auto flags = fn->FunctionFlags;
@@ -35647,10 +30748,7 @@ bool UGameSettingPlaylist_X::IsValid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.IsValid");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameSettingPlaylist_X_IsValid_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35671,10 +30769,7 @@ struct FString UGameSettingPlaylist_X::GetLocalizedDescription()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.GetLocalizedDescription");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameSettingPlaylist_X_GetLocalizedDescription_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35695,10 +30790,7 @@ struct FString UGameSettingPlaylist_X::GetLocalizedName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.GetLocalizedName");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameSettingPlaylist_X_GetLocalizedName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35719,10 +30811,7 @@ void UGameSettingPlaylist_X::Setup(class UPlaylistSettings_X* Settings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameSettingPlaylist_X.Setup");
 
-	struct
-	{
-		class UPlaylistSettings_X*     Settings;
-	} params;
+	UGameSettingPlaylist_X_Setup_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -35742,10 +30831,7 @@ void USeqEvent_Spawned_X::STATIC_TriggerFor(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqEvent_Spawned_X.TriggerFor");
 
-	struct
-	{
-		class AActor*                  A;
-	} params;
+	USeqEvent_Spawned_X_TriggerFor_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -35765,10 +30851,7 @@ float UCameraStateBlender_X::GetTransitionBlend()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.GetTransitionBlend");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UCameraStateBlender_X_GetTransitionBlend_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35790,11 +30873,7 @@ void UCameraStateBlender_X::BlendCameraState(float DeltaTime, struct FCameraOrie
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.BlendCameraState");
 
-	struct
-	{
-		struct FCameraOrientation      OutPOV;
-		float                          DeltaTime;
-	} params;
+	UCameraStateBlender_X_BlendCameraState_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -35818,11 +30897,7 @@ void UCameraStateBlender_X::PostProcessPOV(float DeltaTime, struct FCameraOrient
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.PostProcessPOV");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	UCameraStateBlender_X_PostProcessPOV_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -35846,11 +30921,7 @@ void UCameraStateBlender_X::UpdatePOV(float DeltaTime, struct FCameraOrientation
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.UpdatePOV");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	UCameraStateBlender_X_UpdatePOV_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -35873,10 +30944,7 @@ void UCameraStateBlender_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UCameraStateBlender_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -35894,9 +30962,7 @@ void UCameraStateBlender_X::ClearTransitionDelta()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.ClearTransitionDelta");
 
-	struct
-	{
-	} params;
+	UCameraStateBlender_X_ClearTransitionDelta_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35913,9 +30979,7 @@ void UCameraStateBlender_X::ClearTransition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.ClearTransition");
 
-	struct
-	{
-	} params;
+	UCameraStateBlender_X_ClearTransition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35935,11 +30999,7 @@ bool UCameraStateBlender_X::TransitionToState(class UCameraState_X* NewState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.TransitionToState");
 
-	struct
-	{
-		class UCameraState_X*          NewState;
-		bool                           ReturnValue;
-	} params;
+	UCameraStateBlender_X_TransitionToState_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -35959,9 +31019,7 @@ void UCameraStateBlender_X::Snap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.Snap");
 
-	struct
-	{
-	} params;
+	UCameraStateBlender_X_Snap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35980,10 +31038,7 @@ void UCameraStateBlender_X::EventBlenderStateChanged(class UCameraStateBlender_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.EventBlenderStateChanged");
 
-	struct
-	{
-		class UCameraStateBlender_X*   CameraBender;
-	} params;
+	UCameraStateBlender_X_EventBlenderStateChanged_Params params;
 	params.CameraBender = CameraBender;
 
 	auto flags = fn->FunctionFlags;
@@ -36001,9 +31056,7 @@ void UCameraState_X::OnSnap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.OnSnap");
 
-	struct
-	{
-	} params;
+	UCameraState_X_OnSnap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36022,10 +31075,7 @@ void UCameraState_X::ModifyPostProcessSettings(struct FPostProcessSettings* PP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.ModifyPostProcessSettings");
 
-	struct
-	{
-		struct FPostProcessSettings    PP;
-	} params;
+	UCameraState_X_ModifyPostProcessSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36049,12 +31099,7 @@ void UCameraState_X::ProcessViewRotation(float DeltaTime, struct FRotator* OutVi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FRotator                OutViewRotation;
-		struct FRotator                OutDeltaRot;
-	} params;
+	UCameraState_X_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -36080,11 +31125,7 @@ void UCameraState_X::UpdatePOV(float DeltaTime, struct FCameraOrientation* OutPO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.UpdatePOV");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	UCameraState_X_UpdatePOV_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -36107,10 +31148,7 @@ void UCameraState_X::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UCameraState_X_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -36128,9 +31166,7 @@ void UCameraState_X::EndCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.EndCameraState");
 
-	struct
-	{
-	} params;
+	UCameraState_X_EndCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36147,9 +31183,7 @@ void UCameraState_X::BeginCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.BeginCameraState");
 
-	struct
-	{
-	} params;
+	UCameraState_X_BeginCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36169,11 +31203,7 @@ struct FViewTargetTransitionParams UCameraState_X::GetEndBlendParams(class UCame
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.GetEndBlendParams");
 
-	struct
-	{
-		class UCameraState_X*          NewState;
-		struct FViewTargetTransitionParams ReturnValue;
-	} params;
+	UCameraState_X_GetEndBlendParams_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -36196,11 +31226,7 @@ struct FViewTargetTransitionParams UCameraState_X::GetStartBlendParams(class UCa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.GetStartBlendParams");
 
-	struct
-	{
-		class UCameraState_X*          PreviousState;
-		struct FViewTargetTransitionParams ReturnValue;
-	} params;
+	UCameraState_X_GetStartBlendParams_Params params;
 	params.PreviousState = PreviousState;
 
 	auto flags = fn->FunctionFlags;
@@ -36222,10 +31248,7 @@ bool UCameraState_X::ShouldKeepExecuting()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.ShouldKeepExecuting");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UCameraState_X_ShouldKeepExecuting_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36246,10 +31269,7 @@ bool UCameraState_X::ShouldExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.ShouldExecute");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UCameraState_X_ShouldExecute_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36270,10 +31290,7 @@ void UCameraState_X::Init(class ACamera_X* InCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_X.Init");
 
-	struct
-	{
-		class ACamera_X*               InCamera;
-	} params;
+	UCameraState_X_Init_Params params;
 	params.InCamera = InCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -36294,11 +31311,7 @@ void UCameraModifier_CameraShake_X::ModifyCameraShakeScale(class UCameraShake* S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraModifier_CameraShake_X.ModifyCameraShakeScale");
 
-	struct
-	{
-		class UCameraShake*            Shake;
-		float                          NewScale;
-	} params;
+	UCameraModifier_CameraShake_X_ModifyCameraShakeScale_Params params;
 	params.Shake = Shake;
 	params.NewScale = NewScale;
 
@@ -36319,10 +31332,7 @@ void UCameraModifier_CameraShake_X::RemoveCameraShake(class UCameraShake* Shake)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraModifier_CameraShake_X.RemoveCameraShake");
 
-	struct
-	{
-		class UCameraShake*            Shake;
-	} params;
+	UCameraModifier_CameraShake_X_RemoveCameraShake_Params params;
 	params.Shake = Shake;
 
 	auto flags = fn->FunctionFlags;
@@ -36343,11 +31353,7 @@ void UCameraState_CamActor_X::UpdatePOV(float DeltaTime, struct FCameraOrientati
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActor_X.UpdatePOV");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	UCameraState_CamActor_X_UpdatePOV_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -36368,9 +31374,7 @@ void UCameraState_CamActor_X::EndCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActor_X.EndCameraState");
 
-	struct
-	{
-	} params;
+	UCameraState_CamActor_X_EndCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36390,11 +31394,7 @@ struct FViewTargetTransitionParams UCameraState_CamActor_X::GetBlendParams(class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActor_X.GetBlendParams");
 
-	struct
-	{
-		class UCameraState_X*          PrevState;
-		struct FViewTargetTransitionParams ReturnValue;
-	} params;
+	UCameraState_CamActor_X_GetBlendParams_Params params;
 	params.PrevState = PrevState;
 
 	auto flags = fn->FunctionFlags;
@@ -36416,10 +31416,7 @@ bool UCameraState_CamActor_X::ShouldExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActor_X.ShouldExecute");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UCameraState_CamActor_X_ShouldExecute_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36440,10 +31437,7 @@ void UUIScene_X::CopyProperties(class UUIScene_X* ReplacementScene)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.CopyProperties");
 
-	struct
-	{
-		class UUIScene_X*              ReplacementScene;
-	} params;
+	UUIScene_X_CopyProperties_Params params;
 	params.ReplacementScene = ReplacementScene;
 
 	auto flags = fn->FunctionFlags;
@@ -36461,9 +31455,7 @@ void UUIScene_X::OnDestroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.OnDestroyed");
 
-	struct
-	{
-	} params;
+	UUIScene_X_OnDestroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36480,9 +31472,7 @@ void UUIScene_X::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.Close");
 
-	struct
-	{
-	} params;
+	UUIScene_X_Close_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36499,9 +31489,7 @@ void UUIScene_X::PostInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.PostInit");
 
-	struct
-	{
-	} params;
+	UUIScene_X_PostInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36520,10 +31508,7 @@ void UUIScene_X::EventClosed(class UUIScene_X* Scene)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.EventClosed");
 
-	struct
-	{
-		class UUIScene_X*              Scene;
-	} params;
+	UUIScene_X_EventClosed_Params params;
 	params.Scene = Scene;
 
 	auto flags = fn->FunctionFlags;
@@ -36545,12 +31530,7 @@ struct FString UOnlineGameWordFilter_X::SanitizePhraseAndNotify(const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhraseAndNotify");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FScriptDelegate         Callback;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_SanitizePhraseAndNotify_Params params;
 	params.Comment = Comment;
 	params.Callback = Callback;
 
@@ -36574,11 +31554,7 @@ void UOnlineGameWordFilter_X::AddCallback(int Index, const struct FScriptDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.AddCallback");
 
-	struct
-	{
-		int                            Index;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameWordFilter_X_AddCallback_Params params;
 	params.Index = Index;
 	params.Callback = Callback;
 
@@ -36600,11 +31576,7 @@ struct FString UOnlineGameWordFilter_X::SanitizePhrase(const struct FString& Com
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhrase");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_SanitizePhrase_Params params;
 	params.Comment = Comment;
 
 	auto flags = fn->FunctionFlags;
@@ -36627,11 +31599,7 @@ void UOnlineGameWordFilter_X::HandleCommentSanitized(const struct FString& Origi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.HandleCommentSanitized");
 
-	struct
-	{
-		struct FString                 Original;
-		struct FString                 Sanitized;
-	} params;
+	UOnlineGameWordFilter_X_HandleCommentSanitized_Params params;
 	params.Original = Original;
 	params.Sanitized = Sanitized;
 
@@ -36655,13 +31623,7 @@ struct FString UOnlineGameWordFilter_X::InternalSanitize(const struct FString& C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.InternalSanitize");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FScriptDelegate         Callback;
-		bool                           bUnique;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_InternalSanitize_Params params;
 	params.Comment = Comment;
 	params.Callback = Callback;
 	params.bUnique = bUnique;
@@ -36686,11 +31648,7 @@ bool UOnlineGameWordFilter_X::IsPending(const struct FString& Comment)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.IsPending");
 
-	struct
-	{
-		struct FString                 Comment;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_IsPending_Params params;
 	params.Comment = Comment;
 
 	auto flags = fn->FunctionFlags;
@@ -36714,12 +31672,7 @@ struct FString UOnlineGameWordFilter_X::SanitizeUnique(const struct FString& Com
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizeUnique");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FScriptDelegate         Callback;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_SanitizeUnique_Params params;
 	params.Comment = Comment;
 	params.Callback = Callback;
 
@@ -36744,12 +31697,7 @@ struct FString UOnlineGameWordFilter_X::Sanitize(const struct FString& Comment, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.Sanitize");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FScriptDelegate         Callback;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameWordFilter_X_Sanitize_Params params;
 	params.Comment = Comment;
 	params.Callback = Callback;
 
@@ -36770,9 +31718,7 @@ void UOnlineGameWordFilter_X::OnMainMenuOpened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.OnMainMenuOpened");
 
-	struct
-	{
-	} params;
+	UOnlineGameWordFilter_X_OnMainMenuOpened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36792,11 +31738,7 @@ void UOnlineGameWordFilter_X::EventCommentSanitized(const struct FString& Origin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.EventCommentSanitized");
 
-	struct
-	{
-		struct FString                 Original;
-		struct FString                 Sanitized;
-	} params;
+	UOnlineGameWordFilter_X_EventCommentSanitized_Params params;
 	params.Original = Original;
 	params.Sanitized = Sanitized;
 
@@ -36817,10 +31759,7 @@ void AHUD_X::SetShowDebugObject(class UObject* inObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.SetShowDebugObject");
 
-	struct
-	{
-		class UObject*                 inObj;
-	} params;
+	AHUD_X_SetShowDebugObject_Params params;
 	params.inObj = inObj;
 
 	auto flags = fn->FunctionFlags;
@@ -36841,11 +31780,7 @@ void AHUD_X::ShowDebugInfo(float* out_YL, float* out_YPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.ShowDebugInfo");
 
-	struct
-	{
-		float                          out_YL;
-		float                          out_YPos;
-	} params;
+	AHUD_X_ShowDebugInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36869,10 +31804,7 @@ void AHUD_X::ShowDebug(const struct FName& DebugType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.ShowDebug");
 
-	struct
-	{
-		struct FName                   DebugType;
-	} params;
+	AHUD_X_ShowDebug_Params params;
 	params.DebugType = DebugType;
 
 	auto flags = fn->FunctionFlags;
@@ -36892,10 +31824,7 @@ void AHUD_X::DebugCategorySwitch(bool bForward)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.DebugCategorySwitch");
 
-	struct
-	{
-		bool                           bForward;
-	} params;
+	AHUD_X_DebugCategorySwitch_Params params;
 	params.bForward = bForward;
 
 	auto flags = fn->FunctionFlags;
@@ -36913,9 +31842,7 @@ void AHUD_X::DrawPauseScreen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.DrawPauseScreen");
 
-	struct
-	{
-	} params;
+	AHUD_X_DrawPauseScreen_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36935,11 +31862,7 @@ bool AHUD_X::ShouldShowConsoleMessage(const struct FConsoleMessage& InConsoleMes
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.ShouldShowConsoleMessage");
 
-	struct
-	{
-		struct FConsoleMessage         InConsoleMessage;
-		bool                           ReturnValue;
-	} params;
+	AHUD_X_ShouldShowConsoleMessage_Params params;
 	params.InConsoleMessage = InConsoleMessage;
 
 	auto flags = fn->FunctionFlags;
@@ -36959,9 +31882,7 @@ void AHUD_X::DrawDebugTexture()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.DrawDebugTexture");
 
-	struct
-	{
-	} params;
+	AHUD_X_DrawDebugTexture_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36978,9 +31899,7 @@ void AHUD_X::DrawHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.DrawHUD");
 
-	struct
-	{
-	} params;
+	AHUD_X_DrawHUD_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36997,9 +31916,7 @@ void AHUD_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.HUD_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AHUD_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37020,12 +31937,7 @@ void UOnlineImageDownloaderWeb_X::OnDownloadComplete(class UHttpRequestInterface
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineImageDownloaderWeb_X.OnDownloadComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UOnlineImageDownloaderWeb_X_OnDownloadComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -37049,12 +31961,7 @@ void UOnlineImageDownloaderWeb_X::RequestOnlineImage(const struct FString& URL, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineImageDownloaderWeb_X.RequestOnlineImage");
 
-	struct
-	{
-		struct FString                 URL;
-		bool                           bSRGB;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineImageDownloaderWeb_X_RequestOnlineImage_Params params;
 	params.URL = URL;
 	params.bSRGB = bSRGB;
 	params.Callback = Callback;
@@ -37077,11 +31984,7 @@ void UOnlineImageDownloaderWeb_X::EventImageDownloaded(class UOnlineImageDownloa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineImageDownloaderWeb_X.EventImageDownloaded");
 
-	struct
-	{
-		class UOnlineImageDownloaderWeb_X* Downloader;
-		struct FDownloadedImage        Image;
-	} params;
+	UOnlineImageDownloaderWeb_X_EventImageDownloaded_Params params;
 	params.Downloader = Downloader;
 	params.Image = Image;
 
@@ -37103,11 +32006,7 @@ bool UCustomAnimComponent_X::IsPlayingAnim(const struct FName& InAnimName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.IsPlayingAnim");
 
-	struct
-	{
-		struct FName                   InAnimName;
-		bool                           ReturnValue;
-	} params;
+	UCustomAnimComponent_X_IsPlayingAnim_Params params;
 	params.InAnimName = InAnimName;
 
 	auto flags = fn->FunctionFlags;
@@ -37129,10 +32028,7 @@ float UCustomAnimComponent_X::GetCurrentAnimPosition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.GetCurrentAnimPosition");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_GetCurrentAnimPosition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37151,9 +32047,7 @@ void UCustomAnimComponent_X::Cleanup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Cleanup");
 
-	struct
-	{
-	} params;
+	UCustomAnimComponent_X_Cleanup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37173,11 +32067,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneRotationAxis(TE
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootBoneRotationAxis");
 
-	struct
-	{
-		TEnumAsByte<enum class ERootRotationOption> Axis;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetRootBoneRotationAxis_Params params;
 	params.Axis = Axis;
 
 	auto flags = fn->FunctionFlags;
@@ -37200,11 +32090,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootBoneAxis(TEnumAsByt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootBoneAxis");
 
-	struct
-	{
-		TEnumAsByte<enum class ERootBoneAxis> Axis;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetRootBoneAxis_Params params;
 	params.Axis = Axis;
 
 	auto flags = fn->FunctionFlags;
@@ -37227,11 +32113,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotionRotation(TEnu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootMotionRotation");
 
-	struct
-	{
-		TEnumAsByte<enum class ERootMotionRotationMode> Mode;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetRootMotionRotation_Params params;
 	params.Mode = Mode;
 
 	auto flags = fn->FunctionFlags;
@@ -37254,11 +32136,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRootMotion(TEnumAsByte<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRootMotion");
 
-	struct
-	{
-		TEnumAsByte<enum class ERootMotionMode> Mode;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetRootMotion_Params params;
 	params.Mode = Mode;
 
 	auto flags = fn->FunctionFlags;
@@ -37281,11 +32159,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetMirrored(bool bMirrored
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetMirrored");
 
-	struct
-	{
-		bool                           bMirrored;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetMirrored_Params params;
 	params.bMirrored = bMirrored;
 
 	auto flags = fn->FunctionFlags;
@@ -37308,11 +32182,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetRate(float Rate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetRate");
 
-	struct
-	{
-		float                          Rate;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetRate_Params params;
 	params.Rate = Rate;
 
 	auto flags = fn->FunctionFlags;
@@ -37335,11 +32205,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetBlendOutTime(float Time
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetBlendOutTime");
 
-	struct
-	{
-		float                          Time;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetBlendOutTime_Params params;
 	params.Time = Time;
 
 	auto flags = fn->FunctionFlags;
@@ -37362,11 +32228,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetBlendInTime(float Time)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetBlendInTime");
 
-	struct
-	{
-		float                          Time;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetBlendInTime_Params params;
 	params.Time = Time;
 
 	auto flags = fn->FunctionFlags;
@@ -37389,11 +32251,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetLooping(bool bLooping)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetLooping");
 
-	struct
-	{
-		bool                           bLooping;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetLooping_Params params;
 	params.bLooping = bLooping;
 
 	auto flags = fn->FunctionFlags;
@@ -37416,11 +32274,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::SetStartTime(float StartTi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.SetStartTime");
 
-	struct
-	{
-		float                          StartTime;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_SetStartTime_Params params;
 	params.StartTime = StartTime;
 
 	auto flags = fn->FunctionFlags;
@@ -37440,9 +32294,7 @@ void UCustomAnimComponent_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Reset");
 
-	struct
-	{
-	} params;
+	UCustomAnimComponent_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37462,11 +32314,7 @@ float UCustomAnimComponent_X::Stop(float BlendOutTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Stop");
 
-	struct
-	{
-		float                          BlendOutTime;
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_Stop_Params params;
 	params.BlendOutTime = BlendOutTime;
 
 	auto flags = fn->FunctionFlags;
@@ -37489,11 +32337,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::Que(const struct FName& An
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Que");
 
-	struct
-	{
-		struct FName                   AnimName;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_Que_Params params;
 	params.AnimName = AnimName;
 
 	auto flags = fn->FunctionFlags;
@@ -37516,11 +32360,7 @@ class UCustomAnimComponent_X* UCustomAnimComponent_X::QueSettings(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.QueSettings");
 
-	struct
-	{
-		struct FCustomAnimSettings     Settings;
-		class UCustomAnimComponent_X*  ReturnValue;
-	} params;
+	UCustomAnimComponent_X_QueSettings_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -37544,12 +32384,7 @@ float UCustomAnimComponent_X::Play_Internal(const struct FName& AnimName, float 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Play_Internal");
 
-	struct
-	{
-		struct FName                   AnimName;
-		float                          Priority;
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_Play_Internal_Params params;
 	params.AnimName = AnimName;
 	params.Priority = Priority;
 
@@ -37574,12 +32409,7 @@ float UCustomAnimComponent_X::Play(const struct FName& AnimName, float Priority)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Play");
 
-	struct
-	{
-		struct FName                   AnimName;
-		float                          Priority;
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_Play_Params params;
 	params.AnimName = AnimName;
 	params.Priority = Priority;
 
@@ -37606,14 +32436,7 @@ float UCustomAnimComponent_X::PlayBlended(const struct FCustomAnimSettings& Sett
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.PlayBlended");
 
-	struct
-	{
-		struct FCustomAnimSettings     SettingsA;
-		struct FCustomAnimSettings     SettingsB;
-		float                          Blend;
-		float                          Priority;
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_PlayBlended_Params params;
 	params.SettingsA = SettingsA;
 	params.SettingsB = SettingsB;
 	params.Blend = Blend;
@@ -37640,12 +32463,7 @@ float UCustomAnimComponent_X::PlaySettings(const struct FCustomAnimSettings& Set
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.PlaySettings");
 
-	struct
-	{
-		struct FCustomAnimSettings     Settings;
-		float                          Priority;
-		float                          ReturnValue;
-	} params;
+	UCustomAnimComponent_X_PlaySettings_Params params;
 	params.Settings = Settings;
 	params.Priority = Priority;
 
@@ -37666,9 +32484,7 @@ void UCustomAnimComponent_X::OnAnimComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.OnAnimComplete");
 
-	struct
-	{
-	} params;
+	UCustomAnimComponent_X_OnAnimComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37688,11 +32504,7 @@ void UCustomAnimComponent_X::HandleAnimEnd(class APawn_X* ForPawn, class UAnimNo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.HandleAnimEnd");
 
-	struct
-	{
-		class APawn_X*                 ForPawn;
-		class UAnimNodeSequence*       SeqNode;
-	} params;
+	UCustomAnimComponent_X_HandleAnimEnd_Params params;
 	params.ForPawn = ForPawn;
 	params.SeqNode = SeqNode;
 
@@ -37713,10 +32525,7 @@ void UCustomAnimComponent_X::Init(class USkeletalMeshComponent* InMesh)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.Init");
 
-	struct
-	{
-		class USkeletalMeshComponent*  InMesh;
-	} params;
+	UCustomAnimComponent_X_Init_Params params;
 	params.InMesh = InMesh;
 
 	auto flags = fn->FunctionFlags;
@@ -37736,10 +32545,7 @@ void UCustomAnimComponent_X::EventFinished(class UCustomAnimComponent_X* AnimCom
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CustomAnimComponent_X.EventFinished");
 
-	struct
-	{
-		class UCustomAnimComponent_X*  AnimComponent;
-	} params;
+	UCustomAnimComponent_X_EventFinished_Params params;
 	params.AnimComponent = AnimComponent;
 
 	auto flags = fn->FunctionFlags;
@@ -37760,11 +32566,7 @@ bool UITakeDamage_X::TakeDamage_X(class UDamageComponent_X* Damage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ITakeDamage_X.TakeDamage_X");
 
-	struct
-	{
-		class UDamageComponent_X*      Damage;
-		bool                           ReturnValue;
-	} params;
+	UITakeDamage_X_TakeDamage_X_Params params;
 	params.Damage = Damage;
 
 	auto flags = fn->FunctionFlags;
@@ -37784,9 +32586,7 @@ void UDebugDrawer_X::DrawHeader()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.DrawHeader");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_DrawHeader_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37805,10 +32605,7 @@ void UDebugDrawer_X::DrawSpacer(float Height)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.DrawSpacer");
 
-	struct
-	{
-		float                          Height;
-	} params;
+	UDebugDrawer_X_DrawSpacer_Params params;
 	params.Height = Height;
 
 	auto flags = fn->FunctionFlags;
@@ -37829,11 +32626,7 @@ void UDebugDrawer_X::DrawBackground(float Width, float Height)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.DrawBackground");
 
-	struct
-	{
-		float                          Width;
-		float                          Height;
-	} params;
+	UDebugDrawer_X_DrawBackground_Params params;
 	params.Width = Width;
 	params.Height = Height;
 
@@ -37852,9 +32645,7 @@ void UDebugDrawer_X::FinishDrawDebug()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.FinishDrawDebug");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_FinishDrawDebug_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37873,10 +32664,7 @@ void UDebugDrawer_X::StartDrawDebug(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.StartDrawDebug");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UDebugDrawer_X_StartDrawDebug_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -37897,11 +32685,7 @@ void UDebugDrawer_X::PrintText(const struct FString& Text, const struct FColor& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.PrintText");
 
-	struct
-	{
-		struct FString                 Text;
-		struct FColor                  InColor;
-	} params;
+	UDebugDrawer_X_PrintText_Params params;
 	params.Text = Text;
 	params.InColor = InColor;
 
@@ -37923,11 +32707,7 @@ void UDebugDrawer_X::PrintProperty(const struct FString& PropertyName, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.PrintProperty");
 
-	struct
-	{
-		struct FString                 PropertyName;
-		struct FString                 Value;
-	} params;
+	UDebugDrawer_X_PrintProperty_Params params;
 	params.PropertyName = PropertyName;
 	params.Value = Value;
 
@@ -37946,9 +32726,7 @@ void UDebugDrawer_X::PrintSeperater()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.PrintSeperater");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_PrintSeperater_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37965,9 +32743,7 @@ void UDebugDrawer_X::UpdateCanvasIndentation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.UpdateCanvasIndentation");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_UpdateCanvasIndentation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -37984,9 +32760,7 @@ void UDebugDrawer_X::EndSection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.EndSection");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_EndSection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38003,9 +32777,7 @@ void UDebugDrawer_X::StartSection()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.StartSection");
 
-	struct
-	{
-	} params;
+	UDebugDrawer_X_StartSection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38025,11 +32797,7 @@ void UDebugDrawer_X::SetPos(float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.SetPos");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-	} params;
+	UDebugDrawer_X_SetPos_Params params;
 	params.X = X;
 	params.Y = Y;
 
@@ -38051,11 +32819,7 @@ bool UDebugDrawer_X::ShouldDisplayDebug(const struct FName& Category)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DebugDrawer_X.ShouldDisplayDebug");
 
-	struct
-	{
-		struct FName                   Category;
-		bool                           ReturnValue;
-	} params;
+	UDebugDrawer_X_ShouldDisplayDebug_Params params;
 	params.Category = Category;
 
 	auto flags = fn->FunctionFlags;
@@ -38075,9 +32839,7 @@ void UOnlineGameLanServer_X::StartReservationTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.StartReservationTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanServer_X_StartReservationTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38096,10 +32858,7 @@ void UOnlineGameLanServer_X::PlayerLoggedOut(class APlayerReplicationInfo* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.PlayerLoggedOut");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameLanServer_X_PlayerLoggedOut_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -38122,13 +32881,7 @@ bool UOnlineGameLanServer_X::AllowSplitscreenJoin(class APlayerReplicationInfo* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.AllowSplitscreenJoin");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PrimaryPRI;
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanServer_X_AllowSplitscreenJoin_Params params;
 	params.PrimaryPRI = PrimaryPRI;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
@@ -38152,10 +32905,7 @@ void UOnlineGameLanServer_X::PlayerLoggedIn(class APlayerReplicationInfo* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.PlayerLoggedIn");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameLanServer_X_PlayerLoggedIn_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -38177,12 +32927,7 @@ bool UOnlineGameLanServer_X::AllowPlayerLogin(const struct FString& Options, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.AllowPlayerLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanServer_X_AllowPlayerLogin_Params params;
 	params.Options = Options;
 	params.PlayerID = PlayerID;
 
@@ -38205,10 +32950,7 @@ void UOnlineGameLanServer_X::TravelToMap(const struct FString& ServerCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.TravelToMap");
 
-	struct
-	{
-		struct FString                 ServerCommand;
-	} params;
+	UOnlineGameLanServer_X_TravelToMap_Params params;
 	params.ServerCommand = ServerCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -38228,10 +32970,7 @@ void UOnlineGameLanServer_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGameLanServer_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -38249,9 +32988,7 @@ void UOnlineGameLanServer_X::GoToNextMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.GoToNextMap");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanServer_X_GoToNextMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38268,9 +33005,7 @@ void UOnlineGameLanServer_X::ClearSettings()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.ClearSettings");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanServer_X_ClearSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38287,9 +33022,7 @@ void UOnlineGameLanServer_X::HandleReservationsTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.HandleReservationsTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanServer_X_HandleReservationsTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38308,10 +33041,7 @@ void UOnlineGameLanServer_X::GetCustomMatchSettings(struct FCustomMatchSettings*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.GetCustomMatchSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    OutSettings;
-	} params;
+	UOnlineGameLanServer_X_GetCustomMatchSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38333,10 +33063,7 @@ struct FUniqueNetId UOnlineGameLanServer_X::GetCustomMatchOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.GetCustomMatchOwner");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UOnlineGameLanServer_X_GetCustomMatchOwner_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38357,10 +33084,7 @@ void UOnlineGameLanServer_X::UpdateCustomMatchOwner(const struct FUniqueNetId& N
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.UpdateCustomMatchOwner");
 
-	struct
-	{
-		struct FUniqueNetId            NewOwner;
-	} params;
+	UOnlineGameLanServer_X_UpdateCustomMatchOwner_Params params;
 	params.NewOwner = NewOwner;
 
 	auto flags = fn->FunctionFlags;
@@ -38381,11 +33105,7 @@ void UOnlineGameLanServer_X::SetupPrivateMatch(const struct FCustomMatchSettings
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.SetupPrivateMatch");
 
-	struct
-	{
-		struct FCustomMatchSettings    Settings;
-		struct FUniqueNetId            Creator;
-	} params;
+	UOnlineGameLanServer_X_SetupPrivateMatch_Params params;
 	params.Settings = Settings;
 	params.Creator = Creator;
 
@@ -38404,9 +33124,7 @@ void UOnlineGameLanServer_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanServer_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38425,10 +33143,7 @@ struct FUniqueNetId UIOnlineGameHost_X::GetCustomMatchOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.GetCustomMatchOwner");
 
-	struct
-	{
-		struct FUniqueNetId            ReturnValue;
-	} params;
+	UIOnlineGameHost_X_GetCustomMatchOwner_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38449,10 +33164,7 @@ void UIOnlineGameHost_X::GetCustomMatchSettings(struct FCustomMatchSettings* Out
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.GetCustomMatchSettings");
 
-	struct
-	{
-		struct FCustomMatchSettings    OutSettings;
-	} params;
+	UIOnlineGameHost_X_GetCustomMatchSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38477,13 +33189,7 @@ bool UIOnlineGameHost_X::AllowSplitscreenJoin(class APlayerReplicationInfo* Prim
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.AllowSplitscreenJoin");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PrimaryPRI;
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		bool                           ReturnValue;
-	} params;
+	UIOnlineGameHost_X_AllowSplitscreenJoin_Params params;
 	params.PrimaryPRI = PrimaryPRI;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
@@ -38507,10 +33213,7 @@ void UIOnlineGameHost_X::PlayerLoggedOut(class APlayerReplicationInfo* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.PlayerLoggedOut");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UIOnlineGameHost_X_PlayerLoggedOut_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -38530,10 +33233,7 @@ void UIOnlineGameHost_X::PlayerLoggedIn(class APlayerReplicationInfo* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.PlayerLoggedIn");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UIOnlineGameHost_X_PlayerLoggedIn_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -38555,12 +33255,7 @@ bool UIOnlineGameHost_X::AllowPlayerLogin(const struct FString& Options, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.IOnlineGameHost_X.AllowPlayerLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UIOnlineGameHost_X_AllowPlayerLogin_Params params;
 	params.Options = Options;
 	params.PlayerID = PlayerID;
 
@@ -38584,11 +33279,7 @@ class URPC_ReportCheater_X* URPC_ReportCheater_X::SetReason(const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportCheater_X.SetReason");
 
-	struct
-	{
-		struct FString                 InReason;
-		class URPC_ReportCheater_X*    ReturnValue;
-	} params;
+	URPC_ReportCheater_X_SetReason_Params params;
 	params.InReason = InReason;
 
 	auto flags = fn->FunctionFlags;
@@ -38611,11 +33302,7 @@ class URPC_ReportCheater_X* URPC_ReportCheater_X::SetPlayerID(const struct FUniq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportCheater_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_ReportCheater_X*    ReturnValue;
-	} params;
+	URPC_ReportCheater_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -38637,10 +33324,7 @@ void UDrawDebugObject_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugObject_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38661,11 +33345,7 @@ bool UDrawDebugObject_X::UpdateLifetime(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.UpdateLifetime");
 
-	struct
-	{
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UDrawDebugObject_X_UpdateLifetime_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38685,9 +33365,7 @@ void UDrawDebugObject_X::Destroy()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.Destroy");
 
-	struct
-	{
-	} params;
+	UDrawDebugObject_X_Destroy_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38704,9 +33382,7 @@ void UDrawDebugObject_X::ShutDown()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.ShutDown");
 
-	struct
-	{
-	} params;
+	UDrawDebugObject_X_ShutDown_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38725,10 +33401,7 @@ void UDrawDebugObject_X::Initialize(float InLifetime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.Initialize");
 
-	struct
-	{
-		float                          InLifetime;
-	} params;
+	UDrawDebugObject_X_Initialize_Params params;
 	params.InLifetime = InLifetime;
 
 	auto flags = fn->FunctionFlags;
@@ -38748,10 +33421,7 @@ class AWorldInfo* UDrawDebugObject_X::GetWorldInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugObject_X.GetWorldInfo");
 
-	struct
-	{
-		class AWorldInfo*              ReturnValue;
-	} params;
+	UDrawDebugObject_X_GetWorldInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38772,10 +33442,7 @@ void UDrawDebugBox_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugBox_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugBox_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38795,10 +33462,7 @@ void UDrawDebugLine_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugLine_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugLine_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38818,10 +33482,7 @@ void UDrawDebugLineActors_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugLineActors_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugLineActors_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38841,10 +33502,7 @@ void UDrawDebugLinePivot_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugLinePivot_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugLinePivot_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38864,10 +33522,7 @@ void UDrawDebugSphere_X::Update(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DrawDebugSphere_X.Update");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UDrawDebugSphere_X_Update_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -38885,9 +33540,7 @@ void AExplosion_X::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.Destroyed");
 
-	struct
-	{
-	} params;
+	AExplosion_X_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38904,9 +33557,7 @@ void AExplosion_X::ForceNetRelevant()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.ForceNetRelevant");
 
-	struct
-	{
-	} params;
+	AExplosion_X_ForceNetRelevant_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38925,10 +33576,7 @@ void AExplosion_X::SetFXActorArchetype(class AFXActor_X* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.SetFXActorArchetype");
 
-	struct
-	{
-		class AFXActor_X*              A;
-	} params;
+	AExplosion_X_SetFXActorArchetype_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -38946,9 +33594,7 @@ void AExplosion_X::SpawnFX()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.SpawnFX");
 
-	struct
-	{
-	} params;
+	AExplosion_X_SpawnFX_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38965,9 +33611,7 @@ void AExplosion_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AExplosion_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38986,10 +33630,7 @@ void AExplosion_X::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Explosion_X.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	AExplosion_X_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -39009,10 +33650,7 @@ void UFacebookAchievementManager_X::OnDeleteAchievementComplete(struct FPlatform
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.OnDeleteAchievementComplete");
 
-	struct
-	{
-		struct FPlatformInterfaceDelegateResult Result;
-	} params;
+	UFacebookAchievementManager_X_OnDeleteAchievementComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39032,9 +33670,7 @@ void UFacebookAchievementManager_X::ResetNextAchievement()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.ResetNextAchievement");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_ResetNextAchievement_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39053,10 +33689,7 @@ void UFacebookAchievementManager_X::ResetAchievements(TArray<int> AchievementIDs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.ResetAchievements");
 
-	struct
-	{
-		TArray<int>                    AchievementIDs;
-	} params;
+	UFacebookAchievementManager_X_ResetAchievements_Params params;
 	params.AchievementIDs = AchievementIDs;
 
 	auto flags = fn->FunctionFlags;
@@ -39076,10 +33709,7 @@ void UFacebookAchievementManager_X::OnAddAchievementComplete(struct FPlatformInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.OnAddAchievementComplete");
 
-	struct
-	{
-		struct FPlatformInterfaceDelegateResult Result;
-	} params;
+	UFacebookAchievementManager_X_OnAddAchievementComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39102,11 +33732,7 @@ struct FString UFacebookAchievementManager_X::GetAchievementURL(int AchievementI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.GetAchievementURL");
 
-	struct
-	{
-		int                            AchievementId;
-		struct FString                 ReturnValue;
-	} params;
+	UFacebookAchievementManager_X_GetAchievementURL_Params params;
 	params.AchievementId = AchievementId;
 
 	auto flags = fn->FunctionFlags;
@@ -39128,10 +33754,7 @@ void UFacebookAchievementManager_X::SendFacebookRequest(int AchievementId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.SendFacebookRequest");
 
-	struct
-	{
-		int                            AchievementId;
-	} params;
+	UFacebookAchievementManager_X_SendFacebookRequest_Params params;
 	params.AchievementId = AchievementId;
 
 	auto flags = fn->FunctionFlags;
@@ -39151,10 +33774,7 @@ void UFacebookAchievementManager_X::UnlockAchievement(int AchievementId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.UnlockAchievement");
 
-	struct
-	{
-		int                            AchievementId;
-	} params;
+	UFacebookAchievementManager_X_UnlockAchievement_Params params;
 	params.AchievementId = AchievementId;
 
 	auto flags = fn->FunctionFlags;
@@ -39172,9 +33792,7 @@ void UFacebookAchievementManager_X::CheckPendingAchievements()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.CheckPendingAchievements");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_CheckPendingAchievements_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39191,9 +33809,7 @@ void UFacebookAchievementManager_X::InitFacebook()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.InitFacebook");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_InitFacebook_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39210,9 +33826,7 @@ void UFacebookAchievementManager_X::Cleanup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.Cleanup");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_Cleanup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39229,9 +33843,7 @@ void UFacebookAchievementManager_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.Reset");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39250,10 +33862,7 @@ void UFacebookAchievementManager_X::EventFacebookAchievementsResetUpdate(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.EventFacebookAchievementsResetUpdate");
 
-	struct
-	{
-		struct FString                 UpdateMessage;
-	} params;
+	UFacebookAchievementManager_X_EventFacebookAchievementsResetUpdate_Params params;
 	params.UpdateMessage = UpdateMessage;
 
 	auto flags = fn->FunctionFlags;
@@ -39271,9 +33880,7 @@ void UFacebookAchievementManager_X::EventFacebookAchievementsResetComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.FacebookAchievementManager_X.EventFacebookAchievementsResetComplete");
 
-	struct
-	{
-	} params;
+	UFacebookAchievementManager_X_EventFacebookAchievementsResetComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39292,10 +33899,7 @@ void AGameInfo_MapProfiler_X::GenericPlayerInitialization(class AController* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_MapProfiler_X.GenericPlayerInitialization");
 
-	struct
-	{
-		class AController*             C;
-	} params;
+	AGameInfo_MapProfiler_X_GenericPlayerInitialization_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -39317,12 +33921,7 @@ class APlayerController* AGameInfo_MapProfiler_X::SpawnPlayerController(const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GameInfo_MapProfiler_X.SpawnPlayerController");
 
-	struct
-	{
-		struct FVector                 SpawnLocation;
-		struct FRotator                SpawnRotation;
-		class APlayerController*       ReturnValue;
-	} params;
+	AGameInfo_MapProfiler_X_SpawnPlayerController_Params params;
 	params.SpawnLocation = SpawnLocation;
 	params.SpawnRotation = SpawnRotation;
 
@@ -39345,10 +33944,7 @@ void UOnlineGameMatchmakingOld_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameMatchmakingOld_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -39368,10 +33964,7 @@ void UOnlineGameMatchmakingOld_X::SubmitMatchmakingAnalytics(bool bOnClose)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SubmitMatchmakingAnalytics");
 
-	struct
-	{
-		bool                           bOnClose;
-	} params;
+	UOnlineGameMatchmakingOld_X_SubmitMatchmakingAnalytics_Params params;
 	params.bOnClose = bOnClose;
 
 	auto flags = fn->FunctionFlags;
@@ -39389,9 +33982,7 @@ void UOnlineGameMatchmakingOld_X::Cancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.Cancel");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_Cancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39412,12 +34003,7 @@ int UOnlineGameMatchmakingOld_X::SortSearchResults(const struct FOnlineGameSearc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SortSearchResults");
 
-	struct
-	{
-		struct FOnlineGameSearchResult A;
-		struct FOnlineGameSearchResult B;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameMatchmakingOld_X_SortSearchResults_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -39440,10 +34026,7 @@ void UOnlineGameMatchmakingOld_X::SortResultsBasedOnRelativePing(TArray<struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SortResultsBasedOnRelativePing");
 
-	struct
-	{
-		TArray<struct FOnlineGameSearchResult> Results;
-	} params;
+	UOnlineGameMatchmakingOld_X_SortResultsBasedOnRelativePing_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39465,10 +34048,7 @@ void UOnlineGameMatchmakingOld_X::FilterSearchResults(TArray<struct FOnlineGameS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.FilterSearchResults");
 
-	struct
-	{
-		TArray<struct FOnlineGameSearchResult> FoundResults;
-	} params;
+	UOnlineGameMatchmakingOld_X_FilterSearchResults_Params params;
 	params.FoundResults = FoundResults;
 
 	auto flags = fn->FunctionFlags;
@@ -39486,9 +34066,7 @@ void UOnlineGameMatchmakingOld_X::ClearTimeoutTimer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.ClearTimeoutTimer");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_ClearTimeoutTimer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39505,9 +34083,7 @@ void UOnlineGameMatchmakingOld_X::HandleConnectionTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleConnectionTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39526,10 +34102,7 @@ void UOnlineGameMatchmakingOld_X::HandleConnectionFailed(const struct FString& M
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionFailed");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleConnectionFailed_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -39547,9 +34120,7 @@ void UOnlineGameMatchmakingOld_X::OnNewGameStarted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnNewGameStarted");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_OnNewGameStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39569,11 +34140,7 @@ void UOnlineGameMatchmakingOld_X::HandleOnlineGameDestroyComplete(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleOnlineGameDestroyComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleOnlineGameDestroyComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -39592,9 +34159,7 @@ void UOnlineGameMatchmakingOld_X::DestroyOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.DestroyOnlineGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_DestroyOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39614,11 +34179,7 @@ void UOnlineGameMatchmakingOld_X::HandleJoinOnlineGameComplete(const struct FNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleJoinOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleJoinOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -39640,11 +34201,7 @@ void UOnlineGameMatchmakingOld_X::JoinOnlineGame(const struct FName& SessionName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.JoinOnlineGame");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FOnlineGameSearchResult DesiredGame;
-	} params;
+	UOnlineGameMatchmakingOld_X_JoinOnlineGame_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -39665,9 +34222,7 @@ void UOnlineGameMatchmakingOld_X::TryToJoinNextGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.TryToJoinNextGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_TryToJoinNextGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39686,10 +34241,7 @@ void UOnlineGameMatchmakingOld_X::HandleFindOnlineGamesComplete(bool bWasSuccess
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindOnlineGamesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleFindOnlineGamesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -39707,9 +34259,7 @@ void UOnlineGameMatchmakingOld_X::StartNewGameSearch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.StartNewGameSearch");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_StartNewGameSearch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39728,10 +34278,7 @@ void UOnlineGameMatchmakingOld_X::HandleFindGameFailed(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindGameFailed");
 
-	struct
-	{
-		class UError_X*                Error;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleFindGameFailed_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -39760,19 +34307,7 @@ void UOnlineGameMatchmakingOld_X::FindAndJoinOnlineGame(bool bInOfficialSearch, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.FindAndJoinOnlineGame");
 
-	struct
-	{
-		bool                           bInOfficialSearch;
-		bool                           bInNoSeparateCleanSearch;
-		TArray<struct FString>         inRequiredGameTags;
-		TArray<struct FString>         NeedsOneGameTags;
-		TArray<struct FString>         MapNames;
-		struct FScriptDelegate         FindGameStatusChangedDelegate;
-		struct FScriptDelegate         FindGameTryingServerDelegate;
-		struct FScriptDelegate         FindGameFailedDelegate;
-		bool                           bDontJoinServer;
-		struct FString                 inFakeBuildID;
-	} params;
+	UOnlineGameMatchmakingOld_X_FindAndJoinOnlineGame_Params params;
 	params.bInOfficialSearch = bInOfficialSearch;
 	params.bInNoSeparateCleanSearch = bInNoSeparateCleanSearch;
 	params.inRequiredGameTags = inRequiredGameTags;
@@ -39799,9 +34334,7 @@ void UOnlineGameMatchmakingOld_X::ResumeMatchmaking()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.ResumeMatchmaking");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_ResumeMatchmaking_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39820,10 +34353,7 @@ void UOnlineGameMatchmakingOld_X::HandleMatchmakingReport(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleMatchmakingReport");
 
-	struct
-	{
-		struct FString                 Info;
-	} params;
+	UOnlineGameMatchmakingOld_X_HandleMatchmakingReport_Params params;
 	params.Info = Info;
 
 	auto flags = fn->FunctionFlags;
@@ -39841,9 +34371,7 @@ void UOnlineGameMatchmakingOld_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39860,9 +34388,7 @@ void UOnlineGameMatchmakingOld_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingOld_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39881,10 +34407,7 @@ void UOnlineGameMatchmakingOld_X::EventFindGameFailed(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameFailed");
 
-	struct
-	{
-		class UError_X*                Error;
-	} params;
+	UOnlineGameMatchmakingOld_X_EventFindGameFailed_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -39906,12 +34429,7 @@ void UOnlineGameMatchmakingOld_X::EventFindGameTryingServer(int TryingServerIdx,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameTryingServer");
 
-	struct
-	{
-		int                            TryingServerIdx;
-		int                            TotalServersFound;
-		class UOnlineGameSettings_X*   ServerGameSettings;
-	} params;
+	UOnlineGameMatchmakingOld_X_EventFindGameTryingServer_Params params;
 	params.TryingServerIdx = TryingServerIdx;
 	params.TotalServersFound = TotalServersFound;
 	params.ServerGameSettings = ServerGameSettings;
@@ -39933,10 +34451,7 @@ void UOnlineGameMatchmakingOld_X::EventFindGameStatusChanged(const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameStatusChanged");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameMatchmakingOld_X_EventFindGameStatusChanged_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -39956,10 +34471,7 @@ void UOnlineGameJoinGame_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameJoinGame_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -39979,10 +34491,7 @@ bool UOnlineGameJoinGame_X::IsInTransition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.IsInTransition");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameJoinGame_X_IsInTransition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40001,9 +34510,7 @@ void UOnlineGameJoinGame_X::SendPing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.SendPing");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_SendPing_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40023,11 +34530,7 @@ void UOnlineGameJoinGame_X::HandleConnectionResponse(class UTcpConnection* Conne
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.HandleConnectionResponse");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameJoinGame_X_HandleConnectionResponse_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -40049,11 +34552,7 @@ void UOnlineGameJoinGame_X::HandleReservationResponse(class UTcpConnection* Conn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.HandleReservationResponse");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameJoinGame_X_HandleReservationResponse_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -40072,9 +34571,7 @@ void UOnlineGameJoinGame_X::OnMainMenuOpened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OnMainMenuOpened");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_OnMainMenuOpened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40093,10 +34590,7 @@ void UOnlineGameJoinGame_X::NotifyConnectionFailed(const struct FString& Message
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.NotifyConnectionFailed");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UOnlineGameJoinGame_X_NotifyConnectionFailed_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -40118,12 +34612,7 @@ void UOnlineGameJoinGame_X::OnJoinGameComplete(bool bSuccess, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OnJoinGameComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-		struct FString                 BugItReason;
-	} params;
+	UOnlineGameJoinGame_X_OnJoinGameComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 	params.BugItReason = BugItReason;
@@ -40145,10 +34634,7 @@ void UOnlineGameJoinGame_X::SetServerBeaconAddress(const struct FString& NewValu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.SetServerBeaconAddress");
 
-	struct
-	{
-		struct FString                 NewValue;
-	} params;
+	UOnlineGameJoinGame_X_SetServerBeaconAddress_Params params;
 	params.NewValue = NewValue;
 
 	auto flags = fn->FunctionFlags;
@@ -40166,9 +34652,7 @@ void UOnlineGameJoinGame_X::ClearServerData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ClearServerData");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_ClearServerData_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40187,10 +34671,7 @@ bool UOnlineGameJoinGame_X::IsJoiningGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.IsJoiningGame");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameJoinGame_X_IsJoiningGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40209,9 +34690,7 @@ void UOnlineGameJoinGame_X::CancelJoin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.CancelJoin");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_CancelJoin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40233,13 +34712,7 @@ bool UOnlineGameJoinGame_X::StartJoinPrivateMatch(const struct FString& BeaconAd
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.StartJoinPrivateMatch");
 
-	struct
-	{
-		struct FString                 BeaconAddress;
-		struct FCustomMatchSettings    InSettings;
-		struct FJoinMatchSettings      JoinSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameJoinGame_X_StartJoinPrivateMatch_Params params;
 	params.BeaconAddress = BeaconAddress;
 	params.JoinSettings = JoinSettings;
 
@@ -40267,12 +34740,7 @@ bool UOnlineGameJoinGame_X::StartJoin(const struct FString& BeaconAddress, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.StartJoin");
 
-	struct
-	{
-		struct FString                 BeaconAddress;
-		struct FJoinMatchSettings      JoinSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameJoinGame_X_StartJoin_Params params;
 	params.BeaconAddress = BeaconAddress;
 	params.JoinSettings = JoinSettings;
 
@@ -40293,9 +34761,7 @@ void UOnlineGameJoinGame_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40315,11 +34781,7 @@ void UOnlineGameJoinGame_X::EventMaxPlayersChanged(class UOnlineGameJoinGame_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventMaxPlayersChanged");
 
-	struct
-	{
-		class UOnlineGameJoinGame_X*   OnlineGameJoinGame;
-		int                            MaxPlayers;
-	} params;
+	UOnlineGameJoinGame_X_EventMaxPlayersChanged_Params params;
 	params.OnlineGameJoinGame = OnlineGameJoinGame;
 	params.MaxPlayers = MaxPlayers;
 
@@ -40340,10 +34802,7 @@ void UOnlineGameJoinGame_X::EventJoiningGame(class UOnlineGameJoinGame_X* Online
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventJoiningGame");
 
-	struct
-	{
-		class UOnlineGameJoinGame_X*   OnlineGameJoinGame;
-	} params;
+	UOnlineGameJoinGame_X_EventJoiningGame_Params params;
 	params.OnlineGameJoinGame = OnlineGameJoinGame;
 
 	auto flags = fn->FunctionFlags;
@@ -40361,9 +34820,7 @@ void UOnlineGameJoinGame_X::EventPasswordRequired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventPasswordRequired");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_EventPasswordRequired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40380,9 +34837,7 @@ void UOnlineGameJoinGame_X::EventServerReserved()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventServerReserved");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_EventServerReserved_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40399,9 +34854,7 @@ void UOnlineGameJoinGame_X::EventServerBeaconAddressChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventServerBeaconAddressChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_EventServerBeaconAddressChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40418,9 +34871,7 @@ void UOnlineGameJoinGame_X::EventCountdownEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventCountdownEnded");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_EventCountdownEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40437,9 +34888,7 @@ void UOnlineGameJoinGame_X::EventCountdownStarted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventCountdownStarted");
 
-	struct
-	{
-	} params;
+	UOnlineGameJoinGame_X_EventCountdownStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40458,10 +34907,7 @@ void UOnlineGameJoinGame_X::EventStatusUpdate(const struct FString& NewStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventStatusUpdate");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameJoinGame_X_EventStatusUpdate_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -40482,11 +34928,7 @@ void UOnlineGameJoinGame_X::EventJoinGameComplete(bool bSuccess, const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.EventJoinGameComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameJoinGame_X_EventJoinGameComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 
@@ -40505,9 +34947,7 @@ void UGFxModal_X::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.Close");
 
-	struct
-	{
-	} params;
+	UGFxModal_X_Close_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40526,10 +34966,7 @@ void UGFxModal_X::FlashAddButton(const struct FString& Label)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.FlashAddButton");
 
-	struct
-	{
-		struct FString                 Label;
-	} params;
+	UGFxModal_X_FlashAddButton_Params params;
 	params.Label = Label;
 
 	auto flags = fn->FunctionFlags;
@@ -40549,10 +34986,7 @@ void UGFxModal_X::HandleButtonClicked(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.HandleButtonClicked");
 
-	struct
-	{
-		int                            Index;
-	} params;
+	UGFxModal_X_HandleButtonClicked_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -40574,12 +35008,7 @@ class UGFxModal_X* UGFxModal_X::AddButton(const struct FString& Label, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.AddButton");
 
-	struct
-	{
-		struct FString                 Label;
-		struct FScriptDelegate         OnClick;
-		class UGFxModal_X*             ReturnValue;
-	} params;
+	UGFxModal_X_AddButton_Params params;
 	params.Label = Label;
 	params.OnClick = OnClick;
 
@@ -40603,11 +35032,7 @@ class UGFxModal_X* UGFxModal_X::SetDefaultSelectedButtonIndex(int buttonIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.SetDefaultSelectedButtonIndex");
 
-	struct
-	{
-		int                            buttonIndex;
-		class UGFxModal_X*             ReturnValue;
-	} params;
+	UGFxModal_X_SetDefaultSelectedButtonIndex_Params params;
 	params.buttonIndex = buttonIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -40630,11 +35055,7 @@ class UGFxModal_X* UGFxModal_X::SetBody(const struct FString& LocalizedText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.SetBody");
 
-	struct
-	{
-		struct FString                 LocalizedText;
-		class UGFxModal_X*             ReturnValue;
-	} params;
+	UGFxModal_X_SetBody_Params params;
 	params.LocalizedText = LocalizedText;
 
 	auto flags = fn->FunctionFlags;
@@ -40657,11 +35078,7 @@ class UGFxModal_X* UGFxModal_X::SetTitle(const struct FString& LocalizedText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.SetTitle");
 
-	struct
-	{
-		struct FString                 LocalizedText;
-		class UGFxModal_X*             ReturnValue;
-	} params;
+	UGFxModal_X_SetTitle_Params params;
 	params.LocalizedText = LocalizedText;
 
 	auto flags = fn->FunctionFlags;
@@ -40683,10 +35100,7 @@ void UGFxModal_X::SetGFxObject(class UGFxObject* Obj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.SetGFxObject");
 
-	struct
-	{
-		class UGFxObject*              Obj;
-	} params;
+	UGFxModal_X_SetGFxObject_Params params;
 	params.Obj = Obj;
 
 	auto flags = fn->FunctionFlags;
@@ -40706,10 +35120,7 @@ void UGFxModal_X::EventClosed(class UGFxModal_X* Modal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.EventClosed");
 
-	struct
-	{
-		class UGFxModal_X*             Modal;
-	} params;
+	UGFxModal_X_EventClosed_Params params;
 	params.Modal = Modal;
 
 	auto flags = fn->FunctionFlags;
@@ -40729,10 +35140,7 @@ void UGFxModal_X::ClickDelegate(class UGFxModal_X* Modal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxModal_X.ClickDelegate");
 
-	struct
-	{
-		class UGFxModal_X*             Modal;
-	} params;
+	UGFxModal_X_ClickDelegate_Params params;
 	params.Modal = Modal;
 
 	auto flags = fn->FunctionFlags;
@@ -40752,10 +35160,7 @@ void AGRI_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	AGRI_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -40775,10 +35180,7 @@ bool AGRI_X::IsPlaylistRanked()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.IsPlaylistRanked");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGRI_X_IsPlaylistRanked_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40799,10 +35201,7 @@ class UGameSettingPlaylist_X* AGRI_X::GetPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.GetPlaylist");
 
-	struct
-	{
-		class UGameSettingPlaylist_X*  ReturnValue;
-	} params;
+	AGRI_X_GetPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40824,11 +35223,7 @@ bool AGRI_X::PlayerIsInCurrentGame(const struct FUniqueNetId& MemberId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.PlayerIsInCurrentGame");
 
-	struct
-	{
-		struct FUniqueNetId            MemberId;
-		bool                           ReturnValue;
-	} params;
+	AGRI_X_PlayerIsInCurrentGame_Params params;
 	params.MemberId = MemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -40851,11 +35246,7 @@ struct FString AGRI_X::GetReservationDebugString(const struct FReplicatedReserva
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.GetReservationDebugString");
 
-	struct
-	{
-		struct FReplicatedReservationData Data;
-		struct FString                 ReturnValue;
-	} params;
+	AGRI_X_GetReservationDebugString_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -40877,10 +35268,7 @@ class UOnlineGameDedicatedServer_X* AGRI_X::GetOnlineGameDedicated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.GetOnlineGameDedicated");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* ReturnValue;
-	} params;
+	AGRI_X_GetOnlineGameDedicated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40901,10 +35289,7 @@ class UOnlineGame_Base_X* AGRI_X::GetOnlineGameBase()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.GetOnlineGameBase");
 
-	struct
-	{
-		class UOnlineGame_Base_X*      ReturnValue;
-	} params;
+	AGRI_X_GetOnlineGameBase_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40925,10 +35310,7 @@ class UOnlineGame_X* AGRI_X::GetOnlineGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.GetOnlineGame");
 
-	struct
-	{
-		class UOnlineGame_X*           ReturnValue;
-	} params;
+	AGRI_X_GetOnlineGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40949,10 +35331,7 @@ bool AGRI_X::HasSelectedGameData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.HasSelectedGameData");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGRI_X_HasSelectedGameData_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40971,9 +35350,7 @@ void AGRI_X::SetGameStarted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.SetGameStarted");
 
-	struct
-	{
-	} params;
+	AGRI_X_SetGameStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40992,10 +35369,7 @@ void AGRI_X::SetOfflineGameData(const struct FName& PlaylistName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.SetOfflineGameData");
 
-	struct
-	{
-		struct FName                   PlaylistName;
-	} params;
+	AGRI_X_SetOfflineGameData_Params params;
 	params.PlaylistName = PlaylistName;
 
 	auto flags = fn->FunctionFlags;
@@ -41016,11 +35390,7 @@ void AGRI_X::SetGameData(int NewPlaylistID, int MutatorIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.SetGameData");
 
-	struct
-	{
-		int                            NewPlaylistID;
-		int                            MutatorIndex;
-	} params;
+	AGRI_X_SetGameData_Params params;
 	params.NewPlaylistID = NewPlaylistID;
 	params.MutatorIndex = MutatorIndex;
 
@@ -41041,10 +35411,7 @@ void AGRI_X::HandleGamePlaylistSet(class UOnlineGameDedicatedServer_X* Dedicated
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.HandleGamePlaylistSet");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* DedicatedServer;
-	} params;
+	AGRI_X_HandleGamePlaylistSet_Params params;
 	params.DedicatedServer = DedicatedServer;
 
 	auto flags = fn->FunctionFlags;
@@ -41062,9 +35429,7 @@ void AGRI_X::OnReservationsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.OnReservationsUpdated");
 
-	struct
-	{
-	} params;
+	AGRI_X_OnReservationsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41081,9 +35446,7 @@ void AGRI_X::UpdateReservations()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.UpdateReservations");
 
-	struct
-	{
-	} params;
+	AGRI_X_UpdateReservations_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41102,10 +35465,7 @@ void AGRI_X::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	AGRI_X_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -41123,9 +35483,7 @@ void AGRI_X::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGRI_X_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41144,10 +35502,7 @@ void AGRI_X::EventGameStarted(class AGRI_X* GRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.EventGameStarted");
 
-	struct
-	{
-		class AGRI_X*                  GRI;
-	} params;
+	AGRI_X_EventGameStarted_Params params;
 	params.GRI = GRI;
 
 	auto flags = fn->FunctionFlags;
@@ -41167,10 +35522,7 @@ void AGRI_X::EventServerNameChanged(class AGRI_X* GRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.EventServerNameChanged");
 
-	struct
-	{
-		class AGRI_X*                  GRI;
-	} params;
+	AGRI_X_EventServerNameChanged_Params params;
 	params.GRI = GRI;
 
 	auto flags = fn->FunctionFlags;
@@ -41190,10 +35542,7 @@ void AGRI_X::EventReservationsUpdated(class AGRI_X* GRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.EventReservationsUpdated");
 
-	struct
-	{
-		class AGRI_X*                  GRI;
-	} params;
+	AGRI_X_EventReservationsUpdated_Params params;
 	params.GRI = GRI;
 
 	auto flags = fn->FunctionFlags;
@@ -41214,11 +35563,7 @@ void AGRI_X::EventGameDataSelected(int PlaylistId, int MutatorIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.EventGameDataSelected");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            MutatorIndex;
-	} params;
+	AGRI_X_EventGameDataSelected_Params params;
 	params.PlaylistId = PlaylistId;
 	params.MutatorIndex = MutatorIndex;
 
@@ -41239,10 +35584,7 @@ void AGRI_X::EventSpawned(class AGRI_X* GRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GRI_X.EventSpawned");
 
-	struct
-	{
-		class AGRI_X*                  GRI;
-	} params;
+	AGRI_X_EventSpawned_Params params;
 	params.GRI = GRI;
 
 	auto flags = fn->FunctionFlags;
@@ -41262,10 +35604,7 @@ bool ULanMessage_X::Broadcast()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_X.Broadcast");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	ULanMessage_X_Broadcast_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41286,10 +35625,7 @@ class ULanMessage_X* ULanMessage_X::SetNonce()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_X.SetNonce");
 
-	struct
-	{
-		class ULanMessage_X*           ReturnValue;
-	} params;
+	ULanMessage_X_SetNonce_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41311,11 +35647,7 @@ class ULanMessage_HostQuery_X* ULanMessage_HostQuery_X::SetHost(bool bValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_HostQuery_X.SetHost");
 
-	struct
-	{
-		bool                           bValue;
-		class ULanMessage_HostQuery_X* ReturnValue;
-	} params;
+	ULanMessage_HostQuery_X_SetHost_Params params;
 	params.bValue = bValue;
 
 	auto flags = fn->FunctionFlags;
@@ -41338,11 +35670,7 @@ class ULanMessage_HostQuery_X* ULanMessage_HostQuery_X::SetBuildID(int InBuildID
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_HostQuery_X.SetBuildID");
 
-	struct
-	{
-		int                            InBuildID;
-		class ULanMessage_HostQuery_X* ReturnValue;
-	} params;
+	ULanMessage_HostQuery_X_SetBuildID_Params params;
 	params.InBuildID = InBuildID;
 
 	auto flags = fn->FunctionFlags;
@@ -41365,11 +35693,7 @@ class ULanMessage_HostQuery_X* ULanMessage_HostQuery_X::SetFilter(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_HostQuery_X.SetFilter");
 
-	struct
-	{
-		struct FCustomMatchSettings    InFilter;
-		class ULanMessage_HostQuery_X* ReturnValue;
-	} params;
+	ULanMessage_HostQuery_X_SetFilter_Params params;
 	params.InFilter = InFilter;
 
 	auto flags = fn->FunctionFlags;
@@ -41391,10 +35715,7 @@ struct FString ULanMessage_HostResponse_X::GetDebugString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_HostResponse_X.GetDebugString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	ULanMessage_HostResponse_X_GetDebugString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41416,11 +35737,7 @@ class ULanMessage_HostResponse_X* ULanMessage_HostResponse_X::SetResult(const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LanMessage_HostResponse_X.SetResult");
 
-	struct
-	{
-		struct FServerResult           InResult;
-		class ULanMessage_HostResponse_X* ReturnValue;
-	} params;
+	ULanMessage_HostResponse_X_SetResult_Params params;
 	params.InResult = InResult;
 
 	auto flags = fn->FunctionFlags;
@@ -41440,9 +35757,7 @@ void UMapRenderProfiler_X::Finalize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.Finalize");
 
-	struct
-	{
-	} params;
+	UMapRenderProfiler_X_Finalize_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41459,9 +35774,7 @@ void UMapRenderProfiler_X::LoadNextMap()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.LoadNextMap");
 
-	struct
-	{
-	} params;
+	UMapRenderProfiler_X_LoadNextMap_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41478,9 +35791,7 @@ void UMapRenderProfiler_X::Start()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.Start");
 
-	struct
-	{
-	} params;
+	UMapRenderProfiler_X_Start_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41499,10 +35810,7 @@ struct FString UMaterialEffect_X::GetActiveEffects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.GetActiveEffects");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UMaterialEffect_X_GetActiveEffects_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41523,10 +35831,7 @@ bool UMaterialEffect_X::HasAnyEffectsActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.HasAnyEffectsActive");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMaterialEffect_X_HasAnyEffectsActive_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41548,11 +35853,7 @@ float UMaterialEffect_X::GetMaterialParameterValue(const struct FName& MaterialP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.GetMaterialParameterValue");
 
-	struct
-	{
-		struct FName                   MaterialParamName;
-		float                          ReturnValue;
-	} params;
+	UMaterialEffect_X_GetMaterialParameterValue_Params params;
 	params.MaterialParamName = MaterialParamName;
 
 	auto flags = fn->FunctionFlags;
@@ -41575,11 +35876,7 @@ void UMaterialEffect_X::SetMaterialParameterLinearColorValue(const struct FName&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.SetMaterialParameterLinearColorValue");
 
-	struct
-	{
-		struct FName                   MaterialParamName;
-		struct FLinearColor            NewValue;
-	} params;
+	UMaterialEffect_X_SetMaterialParameterLinearColorValue_Params params;
 	params.MaterialParamName = MaterialParamName;
 	params.NewValue = NewValue;
 
@@ -41601,11 +35898,7 @@ void UMaterialEffect_X::SetMaterialParameterValue(const struct FName& MaterialPa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.SetMaterialParameterValue");
 
-	struct
-	{
-		struct FName                   MaterialParamName;
-		float                          NewValue;
-	} params;
+	UMaterialEffect_X_SetMaterialParameterValue_Params params;
 	params.MaterialParamName = MaterialParamName;
 	params.NewValue = NewValue;
 
@@ -41624,9 +35917,7 @@ void UMaterialEffect_X::HandleParametersChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.HandleParametersChanged");
 
-	struct
-	{
-	} params;
+	UMaterialEffect_X_HandleParametersChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41645,10 +35936,7 @@ void UMaterialEffect_X::UpdateFade(float Alpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.UpdateFade");
 
-	struct
-	{
-		float                          Alpha;
-	} params;
+	UMaterialEffect_X_UpdateFade_Params params;
 	params.Alpha = Alpha;
 
 	auto flags = fn->FunctionFlags;
@@ -41668,10 +35956,7 @@ void UMaterialEffect_X::SetStage(TEnumAsByte<enum class EMaterialEffectStage> Ne
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.SetStage");
 
-	struct
-	{
-		TEnumAsByte<enum class EMaterialEffectStage> NewStage;
-	} params;
+	UMaterialEffect_X_SetStage_Params params;
 	params.NewStage = NewStage;
 
 	auto flags = fn->FunctionFlags;
@@ -41692,11 +35977,7 @@ bool UMaterialEffect_X::Tick(float dt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.Tick");
 
-	struct
-	{
-		float                          dt;
-		bool                           ReturnValue;
-	} params;
+	UMaterialEffect_X_Tick_Params params;
 	params.dt = dt;
 
 	auto flags = fn->FunctionFlags;
@@ -41716,9 +35997,7 @@ void UMaterialEffect_X::End()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.End");
 
-	struct
-	{
-	} params;
+	UMaterialEffect_X_End_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41735,9 +36014,7 @@ void UMaterialEffect_X::Start()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.Start");
 
-	struct
-	{
-	} params;
+	UMaterialEffect_X_Start_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41754,9 +36031,7 @@ void UMaterialEffect_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.Init");
 
-	struct
-	{
-	} params;
+	UMaterialEffect_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41775,10 +36050,7 @@ bool UMaterialEffect_X::IsInitialized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MaterialEffect_X.IsInitialized");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMaterialEffect_X_IsInitialized_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41800,11 +36072,7 @@ void UOnlineGamePlayerTitles_X::HandlePlayerTitlesSynced(class UOnlineGamePlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.HandlePlayerTitlesSynced");
 
-	struct
-	{
-		class UOnlineGamePlayerTitles_X* TitlesObj;
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGamePlayerTitles_X_HandlePlayerTitlesSynced_Params params;
 	params.TitlesObj = TitlesObj;
 	params.PlayerID = PlayerID;
 
@@ -41825,10 +36093,7 @@ void UOnlineGamePlayerTitles_X::SyncPlayerTitlesAndData(const struct FUniqueNetI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.SyncPlayerTitlesAndData");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGamePlayerTitles_X_SyncPlayerTitlesAndData_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -41849,11 +36114,7 @@ struct FPlayerTitleData UOnlineGamePlayerTitles_X::GetTitleData(const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.GetTitleData");
 
-	struct
-	{
-		struct FName                   TitleId;
-		struct FPlayerTitleData        ReturnValue;
-	} params;
+	UOnlineGamePlayerTitles_X_GetTitleData_Params params;
 	params.TitleId = TitleId;
 
 	auto flags = fn->FunctionFlags;
@@ -41877,12 +36138,7 @@ struct FString UOnlineGamePlayerTitles_X::GetContent(const struct FString& Text,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.GetContent");
 
-	struct
-	{
-		struct FString                 Text;
-		struct FString                 Key;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGamePlayerTitles_X_GetContent_Params params;
 	params.Text = Text;
 	params.Key = Key;
 
@@ -41905,10 +36161,7 @@ void UOnlineGamePlayerTitles_X::HandleTitleText(class UWebRequest_X* WebRequest)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.HandleTitleText");
 
-	struct
-	{
-		class UWebRequest_X*           WebRequest;
-	} params;
+	UOnlineGamePlayerTitles_X_HandleTitleText_Params params;
 	params.WebRequest = WebRequest;
 
 	auto flags = fn->FunctionFlags;
@@ -41929,11 +36182,7 @@ void UOnlineGamePlayerTitles_X::SyncTitleData(const struct FName& TitleId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.SyncTitleData");
 
-	struct
-	{
-		struct FName                   TitleId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePlayerTitles_X_SyncTitleData_Params params;
 	params.TitleId = TitleId;
 	params.Callback = Callback;
 
@@ -41955,11 +36204,7 @@ TArray<struct FName> UOnlineGamePlayerTitles_X::GetPlayerTitles(const struct FUn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.GetPlayerTitles");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		TArray<struct FName>           ReturnValue;
-	} params;
+	UOnlineGamePlayerTitles_X_GetPlayerTitles_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -41981,10 +36226,7 @@ void UOnlineGamePlayerTitles_X::HandlePlayerTitlesRPC(class URPC_GetPlayerTitles
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.HandlePlayerTitlesRPC");
 
-	struct
-	{
-		class URPC_GetPlayerTitles_X*  RPC;
-	} params;
+	UOnlineGamePlayerTitles_X_HandlePlayerTitlesRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -42005,11 +36247,7 @@ void UOnlineGamePlayerTitles_X::SyncPlayerTitles(const struct FUniqueNetId& Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.SyncPlayerTitles");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePlayerTitles_X_SyncPlayerTitles_Params params;
 	params.PlayerID = PlayerID;
 	params.Callback = Callback;
 
@@ -42030,10 +36268,7 @@ void UOnlineGamePlayerTitles_X::HandlePlayerPsyNetLogin(class UOnlinePlayer_X* P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.HandlePlayerPsyNetLogin");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGamePlayerTitles_X_HandlePlayerPsyNetLogin_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -42051,9 +36286,7 @@ void UOnlineGamePlayerTitles_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGamePlayerTitles_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -42073,11 +36306,7 @@ void UOnlineGamePlayerTitles_X::EventTitleDataUpdated(class UOnlineGamePlayerTit
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.EventTitleDataUpdated");
 
-	struct
-	{
-		class UOnlineGamePlayerTitles_X* Titles;
-		struct FName                   TitleId;
-	} params;
+	UOnlineGamePlayerTitles_X_EventTitleDataUpdated_Params params;
 	params.Titles = Titles;
 	params.TitleId = TitleId;
 
@@ -42099,11 +36328,7 @@ void UOnlineGamePlayerTitles_X::EventPlayerTitledUpdated(class UOnlineGamePlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePlayerTitles_X.EventPlayerTitledUpdated");
 
-	struct
-	{
-		class UOnlineGamePlayerTitles_X* Titles;
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UOnlineGamePlayerTitles_X_EventPlayerTitledUpdated_Params params;
 	params.Titles = Titles;
 	params.PlayerID = PlayerID;
 
@@ -42125,11 +36350,7 @@ struct FString UOnlineConfigDispatcher_X::GetDebugString(class UOnlineConfig_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfigDispatcher_X.GetDebugString");
 
-	struct
-	{
-		class UOnlineConfig_X*         Config;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineConfigDispatcher_X_GetDebugString_Params params;
 	params.Config = Config;
 
 	auto flags = fn->FunctionFlags;
@@ -42151,10 +36372,7 @@ void UOnlineConfigDispatcher_X::UndoConfigObject(class UOnlineConfig_X* Config)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfigDispatcher_X.UndoConfigObject");
 
-	struct
-	{
-		class UOnlineConfig_X*         Config;
-	} params;
+	UOnlineConfigDispatcher_X_UndoConfigObject_Params params;
 	params.Config = Config;
 
 	auto flags = fn->FunctionFlags;
@@ -42174,10 +36392,7 @@ void UOnlineConfigDispatcher_X::ApplyConfigObject(class UOnlineConfig_X* Config)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfigDispatcher_X.ApplyConfigObject");
 
-	struct
-	{
-		class UOnlineConfig_X*         Config;
-	} params;
+	UOnlineConfigDispatcher_X_ApplyConfigObject_Params params;
 	params.Config = Config;
 
 	auto flags = fn->FunctionFlags;
@@ -42195,9 +36410,7 @@ void UOnlineConfigDispatcher_X::Construct()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineConfigDispatcher_X.Construct");
 
-	struct
-	{
-	} params;
+	UOnlineConfigDispatcher_X_Construct_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -42217,11 +36430,7 @@ struct FString UWebCache_X::GetErrorDebugString(class UError_X* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.GetErrorDebugString");
 
-	struct
-	{
-		class UError_X*                Error;
-		struct FString                 ReturnValue;
-	} params;
+	UWebCache_X_GetErrorDebugString_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -42244,11 +36453,7 @@ struct FString UWebCache_X::GetRequestDebugString(const struct FCachedDataReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.GetRequestDebugString");
 
-	struct
-	{
-		struct FCachedDataRequest      Request;
-		struct FString                 ReturnValue;
-	} params;
+	UWebCache_X_GetRequestDebugString_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -42270,10 +36475,7 @@ void UWebCache_X::HandleWebRequest(class UWebRequest_X* WebRequest)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.HandleWebRequest");
 
-	struct
-	{
-		class UWebRequest_X*           WebRequest;
-	} params;
+	UWebCache_X_HandleWebRequest_Params params;
 	params.WebRequest = WebRequest;
 
 	auto flags = fn->FunctionFlags;
@@ -42294,11 +36496,7 @@ void UWebCache_X::DownloadData(const struct FString& URL, const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.DownloadData");
 
-	struct
-	{
-		struct FString                 URL;
-		struct FString                 ETag;
-	} params;
+	UWebCache_X_DownloadData_Params params;
 	params.URL = URL;
 	params.ETag = ETag;
 
@@ -42321,12 +36519,7 @@ void UWebCache_X::HandleLoadFromCache(class ULocalCache_X* Cache, class UCachedW
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.HandleLoadFromCache");
 
-	struct
-	{
-		class ULocalCache_X*           Cache;
-		class UCachedWebData_X*        CacheObject;
-		class UError_X*                Error;
-	} params;
+	UWebCache_X_HandleLoadFromCache_Params params;
 	params.Cache = Cache;
 	params.CacheObject = CacheObject;
 	params.Error = Error;
@@ -42349,11 +36542,7 @@ void UWebCache_X::GetData(const struct FString& URL, const struct FScriptDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.GetData");
 
-	struct
-	{
-		struct FString                 URL;
-		struct FScriptDelegate         Callback;
-	} params;
+	UWebCache_X_GetData_Params params;
 	params.URL = URL;
 	params.Callback = Callback;
 
@@ -42375,11 +36564,7 @@ struct FString UWebCache_X::STATIC_GetCachedPath(const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.GetCachedPath");
 
-	struct
-	{
-		struct FString                 URL;
-		struct FString                 ReturnValue;
-	} params;
+	UWebCache_X_GetCachedPath_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -42401,10 +36586,7 @@ void UWebCache_X::CachedTextCallback(class UCachedWebData_X* CachedData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.CachedTextCallback");
 
-	struct
-	{
-		class UCachedWebData_X*        CachedData;
-	} params;
+	UWebCache_X_CachedTextCallback_Params params;
 	params.CachedData = CachedData;
 
 	auto flags = fn->FunctionFlags;
@@ -42424,10 +36606,7 @@ void UOnlineGameSkillGroups_X::HandleSkillsUpdateFailed(class URPC_X* RPCObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.HandleSkillsUpdateFailed");
 
-	struct
-	{
-		class URPC_X*                  RPCObject;
-	} params;
+	UOnlineGameSkillGroups_X_HandleSkillsUpdateFailed_Params params;
 	params.RPCObject = RPCObject;
 
 	auto flags = fn->FunctionFlags;
@@ -42447,10 +36626,7 @@ void UOnlineGameSkillGroups_X::HandleSkillsUpdated(class URPC_X* RPCObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.HandleSkillsUpdated");
 
-	struct
-	{
-		class URPC_X*                  RPCObject;
-	} params;
+	UOnlineGameSkillGroups_X_HandleSkillsUpdated_Params params;
 	params.RPCObject = RPCObject;
 
 	auto flags = fn->FunctionFlags;
@@ -42470,10 +36646,7 @@ void UOnlineGameSkillGroups_X::SubmitMatch(class UMatchRecorder_X* MatchRecorder
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.SubmitMatch");
 
-	struct
-	{
-		class UMatchRecorder_X*        MatchRecorder;
-	} params;
+	UOnlineGameSkillGroups_X_SubmitMatch_Params params;
 	params.MatchRecorder = MatchRecorder;
 
 	auto flags = fn->FunctionFlags;
@@ -42494,11 +36667,7 @@ TArray<struct FUniqueNetId> UOnlineGameSkillGroups_X::ReverseMapPlayerIDs(TArray
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.ReverseMapPlayerIDs");
 
-	struct
-	{
-		TArray<int>                    PlayerIndexes;
-		TArray<struct FUniqueNetId>    ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_ReverseMapPlayerIDs_Params params;
 	params.PlayerIndexes = PlayerIndexes;
 
 	auto flags = fn->FunctionFlags;
@@ -42522,12 +36691,7 @@ bool UOnlineGameSkillGroups_X::ArraysEqual(TArray<int> A, TArray<int> B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.ArraysEqual");
 
-	struct
-	{
-		TArray<int>                    A;
-		TArray<int>                    B;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_ArraysEqual_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -42551,11 +36715,7 @@ int UOnlineGameSkillGroups_X::HashPlayerIndexes(TArray<int> PlayerIndexes)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.HashPlayerIndexes");
 
-	struct
-	{
-		TArray<int>                    PlayerIndexes;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_HashPlayerIndexes_Params params;
 	params.PlayerIndexes = PlayerIndexes;
 
 	auto flags = fn->FunctionFlags;
@@ -42578,11 +36738,7 @@ int UOnlineGameSkillGroups_X::MapPlayerID(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.MapPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_MapPlayerID_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -42606,12 +36762,7 @@ int UOnlineGameSkillGroups_X::SortPlayerIndexes(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.SortPlayerIndexes");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_SortPlayerIndexes_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -42635,11 +36786,7 @@ TArray<int> UOnlineGameSkillGroups_X::MapPlayerIDs(TArray<struct FUniqueNetId> P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.MapPlayerIDs");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    PlayerIDs;
-		TArray<int>                    ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_MapPlayerIDs_Params params;
 	params.PlayerIDs = PlayerIDs;
 
 	auto flags = fn->FunctionFlags;
@@ -42662,11 +36809,7 @@ int UOnlineGameSkillGroups_X::GetOrCreatePlayerGroup(TArray<struct FUniqueNetId>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.GetOrCreatePlayerGroup");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_GetOrCreatePlayerGroup_Params params;
 	params.Players = Players;
 
 	auto flags = fn->FunctionFlags;
@@ -42690,12 +36833,7 @@ int UOnlineGameSkillGroups_X::GetOrCreateGroupRating(TArray<struct FUniqueNetId>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.GetOrCreateGroupRating");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		int                            Playlist;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_GetOrCreateGroupRating_Params params;
 	params.Players = Players;
 	params.Playlist = Playlist;
 
@@ -42720,12 +36858,7 @@ struct FTierSkillRating UOnlineGameSkillGroups_X::GetGroupSkillRating(TArray<str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.GetGroupSkillRating");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		int                            Playlist;
-		struct FTierSkillRating        ReturnValue;
-	} params;
+	UOnlineGameSkillGroups_X_GetGroupSkillRating_Params params;
 	params.Players = Players;
 	params.Playlist = Playlist;
 
@@ -42748,10 +36881,7 @@ void UOnlineGameSkillGroups_X::HandleSyncComplete(class URPC_X* RPCObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.HandleSyncComplete");
 
-	struct
-	{
-		class URPC_X*                  RPCObject;
-	} params;
+	UOnlineGameSkillGroups_X_HandleSyncComplete_Params params;
 	params.RPCObject = RPCObject;
 
 	auto flags = fn->FunctionFlags;
@@ -42772,11 +36902,7 @@ void UOnlineGameSkillGroups_X::SyncGroupSkill(TArray<struct FUniqueNetId> Player
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.SyncGroupSkill");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameSkillGroups_X_SyncGroupSkill_Params params;
 	params.Players = Players;
 	params.Callback = Callback;
 
@@ -42801,14 +36927,7 @@ void UOnlineGameSkillGroups_X::CacheSkill(TArray<struct FUniqueNetId> Players, i
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.CacheSkill");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		int                            Playlist;
-		float                          Mu;
-		float                          Sigma;
-		int                            Tier;
-	} params;
+	UOnlineGameSkillGroups_X_CacheSkill_Params params;
 	params.Players = Players;
 	params.Playlist = Playlist;
 	params.Mu = Mu;
@@ -42836,14 +36955,7 @@ void UOnlineGameSkillGroups_X::PreCacheSkill(TArray<struct FUniqueNetId> Players
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.PreCacheSkill");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		int                            Playlist;
-		float                          Mu;
-		float                          Sigma;
-		int                            Tier;
-	} params;
+	UOnlineGameSkillGroups_X_PreCacheSkill_Params params;
 	params.Players = Players;
 	params.Playlist = Playlist;
 	params.Mu = Mu;
@@ -42869,12 +36981,7 @@ void UOnlineGameSkillGroups_X::EventGroupSkillSynced(class UOnlineGameSkillGroup
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.EventGroupSkillSynced");
 
-	struct
-	{
-		class UOnlineGameSkillGroups_X* Skill;
-		TArray<struct FUniqueNetId>    PlayerIDs;
-		class UError_X*                Error;
-	} params;
+	UOnlineGameSkillGroups_X_EventGroupSkillSynced_Params params;
 	params.Skill = Skill;
 	params.PlayerIDs = PlayerIDs;
 	params.Error = Error;
@@ -42896,10 +37003,7 @@ void UNetMetrics_X::RpcSignatureMismatch(int ServiceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.RpcSignatureMismatch");
 
-	struct
-	{
-		int                            ServiceID;
-	} params;
+	UNetMetrics_X_RpcSignatureMismatch_Params params;
 	params.ServiceID = ServiceID;
 
 	auto flags = fn->FunctionFlags;
@@ -42919,10 +37023,7 @@ void UNetMetrics_X::ConnectionChangedIP(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.ConnectionChangedIP");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UNetMetrics_X_ConnectionChangedIP_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -42943,11 +37044,7 @@ void UNetMetrics_X::PlayerNetworkError(const struct FUniqueNetId& PlayerID, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.PlayerNetworkError");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 Reason;
-	} params;
+	UNetMetrics_X_PlayerNetworkError_Params params;
 	params.PlayerID = PlayerID;
 	params.Reason = Reason;
 
@@ -42968,10 +37065,7 @@ void UNetMetrics_X::PlayerTimeout(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.PlayerTimeout");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UNetMetrics_X_PlayerTimeout_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -43001,20 +37095,7 @@ void UNetMetrics_X::PlayerNetwork(const struct FUniqueNetId& PlayerID, int PingM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.PlayerNetwork");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            PingMin;
-		int                            PingMax;
-		int                            PingAvg;
-		int                            PktLossRateMin;
-		int                            PktLossRateMax;
-		int                            PktLossAvg;
-		int                            InBpsMax;
-		int                            InBpsAvg;
-		int                            OutBpsMax;
-		int                            OutBpsAvg;
-	} params;
+	UNetMetrics_X_PlayerNetwork_Params params;
 	params.PlayerID = PlayerID;
 	params.PingMin = PingMin;
 	params.PingMax = PingMax;
@@ -43044,10 +37125,7 @@ void UNetMetrics_X::RecordPlayerNetwork(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetMetrics_X.RecordPlayerNetwork");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	UNetMetrics_X_RecordPlayerNetwork_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -43067,10 +37145,7 @@ void UOnlineGameWordFilterProcessor_X::TriggerCallbacks(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilterProcessor_X.TriggerCallbacks");
 
-	struct
-	{
-		int                            Index;
-	} params;
+	UOnlineGameWordFilterProcessor_X_TriggerCallbacks_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -43088,9 +37163,7 @@ void UOnlineGameWordFilterProcessor_X::ProcessSanitizedDelayed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilterProcessor_X.ProcessSanitizedDelayed");
 
-	struct
-	{
-	} params;
+	UOnlineGameWordFilterProcessor_X_ProcessSanitizedDelayed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43109,10 +37182,7 @@ void UOnlineGameWordFilterProcessor_X::HandleWordSanitized(class UWebRequest_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilterProcessor_X.HandleWordSanitized");
 
-	struct
-	{
-		class UWebRequest_X*           Request;
-	} params;
+	UOnlineGameWordFilterProcessor_X_HandleWordSanitized_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -43134,12 +37204,7 @@ bool UOnlineGameWordFilterProcessor_X::SanitizeString(const struct FString& Comm
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilterProcessor_X.SanitizeString");
 
-	struct
-	{
-		struct FString                 Comment;
-		struct FScriptDelegate         SanitizeDelegate;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameWordFilterProcessor_X_SanitizeString_Params params;
 	params.Comment = Comment;
 	params.SanitizeDelegate = SanitizeDelegate;
 
@@ -43163,11 +37228,7 @@ void UOnlineGameWordFilterProcessor_X::OnSanitizeStringComplete(const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilterProcessor_X.OnSanitizeStringComplete");
 
-	struct
-	{
-		struct FString                 Original;
-		struct FString                 Sanitized;
-	} params;
+	UOnlineGameWordFilterProcessor_X_OnSanitizeStringComplete_Params params;
 	params.Original = Original;
 	params.Sanitized = Sanitized;
 
@@ -43188,10 +37249,7 @@ bool UOnlineGamePrivileges_X::IsCheckingPrivileges()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.IsCheckingPrivileges");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePrivileges_X_IsCheckingPrivileges_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43212,10 +37270,7 @@ void UOnlineGamePrivileges_X::RemoveCallback(const struct FScriptDelegate& Callb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.RemoveCallback");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_RemoveCallback_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -43235,10 +37290,7 @@ void UOnlineGamePrivileges_X::HandlePrivilegeCheckFinished(class UPrivilegeCheck
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.HandlePrivilegeCheckFinished");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       PrivilegeCheck;
-	} params;
+	UOnlineGamePrivileges_X_HandlePrivilegeCheckFinished_Params params;
 	params.PrivilegeCheck = PrivilegeCheck;
 
 	auto flags = fn->FunctionFlags;
@@ -43260,12 +37312,7 @@ class UPrivilegeCheck_X* UOnlineGamePrivileges_X::CreatePrivilegeCheck(int Contr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.CreatePrivilegeCheck");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-		class UPrivilegeCheck_X*       ReturnValue;
-	} params;
+	UOnlineGamePrivileges_X_CreatePrivilegeCheck_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43289,11 +37336,7 @@ void UOnlineGamePrivileges_X::TryToUseUGC(int ControllerId, const struct FScript
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.TryToUseUGC");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_TryToUseUGC_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43315,11 +37358,7 @@ void UOnlineGamePrivileges_X::TryToPlayOnline(int ControllerId, const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.TryToPlayOnline");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_TryToPlayOnline_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43341,11 +37380,7 @@ void UOnlineGamePrivileges_X::TryToUsePsyNet(int ControllerId, const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.TryToUsePsyNet");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_TryToUsePsyNet_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43367,11 +37402,7 @@ void UOnlineGamePrivileges_X::TryToViewLeaderboards(int ControllerId, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.TryToViewLeaderboards");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_TryToViewLeaderboards_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43393,11 +37424,7 @@ void UOnlineGamePrivileges_X::TryToBrowseInternet(int ControllerId, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.TryToBrowseInternet");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGamePrivileges_X_TryToBrowseInternet_Params params;
 	params.ControllerId = ControllerId;
 	params.Callback = Callback;
 
@@ -43418,10 +37445,7 @@ void UOnlineGamePrivileges_X::EventPrivilegeCheckRestriction(class UPrivilegeChe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.EventPrivilegeCheckRestriction");
 
-	struct
-	{
-		class UPrivilegeCheck_X*       Check;
-	} params;
+	UOnlineGamePrivileges_X_EventPrivilegeCheckRestriction_Params params;
 	params.Check = Check;
 
 	auto flags = fn->FunctionFlags;
@@ -43441,10 +37465,7 @@ void UOnlineGamePrivileges_X::EventCheckingPrivilegesChanged(class UOnlineGamePr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivileges_X.EventCheckingPrivilegesChanged");
 
-	struct
-	{
-		class UOnlineGamePrivileges_X* PrivilegesObject;
-	} params;
+	UOnlineGamePrivileges_X_EventCheckingPrivilegesChanged_Params params;
 	params.PrivilegesObject = PrivilegesObject;
 
 	auto flags = fn->FunctionFlags;
@@ -43464,10 +37485,7 @@ void UOnlineGameRegions_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameRegions_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -43487,10 +37505,7 @@ void UOnlineGameRegions_X::NotifyWhenSynced(const struct FScriptDelegate& Callba
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.NotifyWhenSynced");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameRegions_X_NotifyWhenSynced_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -43510,10 +37525,7 @@ struct FString UOnlineGameRegions_X::GetRegionsDebugString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.GetRegionsDebugString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameRegions_X_GetRegionsDebugString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43534,10 +37546,7 @@ struct FString UOnlineGameRegions_X::GetFriendlyRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.GetFriendlyRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameRegions_X_GetFriendlyRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43558,10 +37567,7 @@ struct FString UOnlineGameRegions_X::GetFriendlySortedRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.GetFriendlySortedRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameRegions_X_GetFriendlySortedRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43582,10 +37588,7 @@ struct FString UOnlineGameRegions_X::GetSortedRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.GetSortedRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameRegions_X_GetSortedRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43608,12 +37611,7 @@ int UOnlineGameRegions_X::SortRegionDelegate(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.SortRegionDelegate");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameRegions_X_SortRegionDelegate_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -43634,9 +37632,7 @@ void UOnlineGameRegions_X::OnAllRegionsPinged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.OnAllRegionsPinged");
 
-	struct
-	{
-	} params;
+	UOnlineGameRegions_X_OnAllRegionsPinged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43656,11 +37652,7 @@ void UOnlineGameRegions_X::HandlePingMessage(class UTcpConnection* Connection, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.HandlePingMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 PingMessage;
-	} params;
+	UOnlineGameRegions_X_HandlePingMessage_Params params;
 	params.Connection = Connection;
 	params.PingMessage = PingMessage;
 
@@ -43681,10 +37673,7 @@ void UOnlineGameRegions_X::HandleGetPingRegionListRPC(class URPC_GetGameServerPi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.HandleGetPingRegionListRPC");
 
-	struct
-	{
-		class URPC_GetGameServerPingList_X* RPC;
-	} params;
+	UOnlineGameRegions_X_HandleGetPingRegionListRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -43704,10 +37693,7 @@ void UOnlineGameRegions_X::PingRegions(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.PingRegions");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineGameRegions_X_PingRegions_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -43727,10 +37713,7 @@ void UOnlineGameRegions_X::HandleSyncedRegionsRPC(class URPC_GetRegionList_X* RP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.HandleSyncedRegionsRPC");
 
-	struct
-	{
-		class URPC_GetRegionList_X*    RPC;
-	} params;
+	UOnlineGameRegions_X_HandleSyncedRegionsRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -43748,9 +37731,7 @@ void UOnlineGameRegions_X::SyncRegions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.SyncRegions");
 
-	struct
-	{
-	} params;
+	UOnlineGameRegions_X_SyncRegions_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43767,9 +37748,7 @@ void UOnlineGameRegions_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameRegions_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43788,10 +37767,7 @@ void UOnlineGameRegions_X::EventRegionsPinged(class UOnlineGameRegions_X* Region
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.EventRegionsPinged");
 
-	struct
-	{
-		class UOnlineGameRegions_X*    RegionsObj;
-	} params;
+	UOnlineGameRegions_X_EventRegionsPinged_Params params;
 	params.RegionsObj = RegionsObj;
 
 	auto flags = fn->FunctionFlags;
@@ -43811,10 +37787,7 @@ void UOnlineGameRegions_X::EventRegionsSynced(class UOnlineGameRegions_X* Region
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.EventRegionsSynced");
 
-	struct
-	{
-		class UOnlineGameRegions_X*    RegionsObj;
-	} params;
+	UOnlineGameRegions_X_EventRegionsSynced_Params params;
 	params.RegionsObj = RegionsObj;
 
 	auto flags = fn->FunctionFlags;
@@ -43835,11 +37808,7 @@ void UOnlineGameInvite_X::OnGameInviteComplete(bool bSuccess, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.OnGameInviteComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameInvite_X_OnGameInviteComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 
@@ -43860,10 +37829,7 @@ void UOnlineGameInvite_X::JoinGameInviteGame(const struct FJoinMatchSettings& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.JoinGameInviteGame");
 
-	struct
-	{
-		struct FJoinMatchSettings      Settings;
-	} params;
+	UOnlineGameInvite_X_JoinGameInviteGame_Params params;
 	params.Settings = Settings;
 
 	auto flags = fn->FunctionFlags;
@@ -43884,11 +37850,7 @@ void UOnlineGameInvite_X::OnGameInviteAccepted(const struct FString& ErrorString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.OnGameInviteAccepted");
 
-	struct
-	{
-		struct FOnlineGameSearchResult InviteResult;
-		struct FString                 ErrorString;
-	} params;
+	UOnlineGameInvite_X_OnGameInviteAccepted_Params params;
 	params.ErrorString = ErrorString;
 
 	auto flags = fn->FunctionFlags;
@@ -43909,9 +37871,7 @@ void UOnlineGameInvite_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameInvite_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43928,9 +37888,7 @@ void UOnlineGameInvite_X::EventPasswordRequired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.EventPasswordRequired");
 
-	struct
-	{
-	} params;
+	UOnlineGameInvite_X_EventPasswordRequired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43949,10 +37907,7 @@ void UOnlineGameInvite_X::EventConfirmationRequired(const struct FName& Confirma
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.EventConfirmationRequired");
 
-	struct
-	{
-		struct FName                   ConfirmationReason;
-	} params;
+	UOnlineGameInvite_X_EventConfirmationRequired_Params params;
 	params.ConfirmationReason = ConfirmationReason;
 
 	auto flags = fn->FunctionFlags;
@@ -43973,11 +37928,7 @@ void UOnlineGameInvite_X::EventGameInviteComplete(bool bSuccess, const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.EventGameInviteComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameInvite_X_EventGameInviteComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.FailReason = FailReason;
 
@@ -43996,9 +37947,7 @@ void UOnlineGameInvite_X::EventGameInviteAccepted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.EventGameInviteAccepted");
 
-	struct
-	{
-	} params;
+	UOnlineGameInvite_X_EventGameInviteAccepted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44018,11 +37967,7 @@ unsigned char UOnlineGameVoice_X::GetControllerId(class APlayerReplicationInfo* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.GetControllerId");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-		unsigned char                  ReturnValue;
-	} params;
+	UOnlineGameVoice_X_GetControllerId_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -44044,10 +37989,7 @@ int UOnlineGameVoice_X::GetNumTalkers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.GetNumTalkers");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameVoice_X_GetNumTalkers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44069,11 +38011,7 @@ bool UOnlineGameVoice_X::IsRemotePlayerTalking(class APlayerReplicationInfo* PRI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.IsRemotePlayerTalking");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameVoice_X_IsRemotePlayerTalking_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -44096,11 +38034,7 @@ void UOnlineGameVoice_X::HandlePlayerTalkingStateChange(const struct FUniqueNetI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.HandlePlayerTalkingStateChange");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           bTalking;
-	} params;
+	UOnlineGameVoice_X_HandlePlayerTalkingStateChange_Params params;
 	params.PlayerID = PlayerID;
 	params.bTalking = bTalking;
 
@@ -44121,10 +38055,7 @@ void UOnlineGameVoice_X::UnregisterTalker(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.UnregisterTalker");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGameVoice_X_UnregisterTalker_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -44144,10 +38075,7 @@ void UOnlineGameVoice_X::RegisterTalker(class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.RegisterTalker");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlineGameVoice_X_RegisterTalker_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -44165,9 +38093,7 @@ void UOnlineGameVoice_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameVoice_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44188,12 +38114,7 @@ void UOnlineGameVoice_X::EventPlayerTalking(class UOnlineGameVoice_X* SelfRef, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVoice_X.EventPlayerTalking");
 
-	struct
-	{
-		class UOnlineGameVoice_X*      SelfRef;
-		struct FUniqueNetId            PlayerID;
-		bool                           bTalking;
-	} params;
+	UOnlineGameVoice_X_EventPlayerTalking_Params params;
 	params.SelfRef = SelfRef;
 	params.PlayerID = PlayerID;
 	params.bTalking = bTalking;
@@ -44213,9 +38134,7 @@ void UOnlineGameCommunity_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameCommunity_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameCommunity_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44234,10 +38153,7 @@ void UOnlineGamePopulation_X::HandleGotAllPopulationPlaylistsRPC(class URPC_GetP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePopulation_X.HandleGotAllPopulationPlaylistsRPC");
 
-	struct
-	{
-		class URPC_GetPopulation_X*    RPC;
-	} params;
+	UOnlineGamePopulation_X_HandleGotAllPopulationPlaylistsRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -44257,10 +38173,7 @@ void UOnlineGamePopulation_X::GetPlaylistPopulations(const struct FScriptDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePopulation_X.GetPlaylistPopulations");
 
-	struct
-	{
-		struct FScriptDelegate         NewDelegate;
-	} params;
+	UOnlineGamePopulation_X_GetPlaylistPopulations_Params params;
 	params.NewDelegate = NewDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -44280,10 +38193,7 @@ void UOnlineGamePopulation_X::EventGetPlaylistPopulations(class UOnlineGamePopul
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePopulation_X.EventGetPlaylistPopulations");
 
-	struct
-	{
-		class UOnlineGamePopulation_X* PopulationsObject;
-	} params;
+	UOnlineGamePopulation_X_EventGetPlaylistPopulations_Params params;
 	params.PopulationsObject = PopulationsObject;
 
 	auto flags = fn->FunctionFlags;
@@ -44304,11 +38214,7 @@ void UOnlineGameLanBrowser_X::CreateLanGame(const struct FCustomMatchSettings& M
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.CreateLanGame");
 
-	struct
-	{
-		struct FServerResult           HostResponse;
-		struct FCustomMatchSettings    MatchSettings;
-	} params;
+	UOnlineGameLanBrowser_X_CreateLanGame_Params params;
 	params.MatchSettings = MatchSettings;
 
 	auto flags = fn->FunctionFlags;
@@ -44332,11 +38238,7 @@ void UOnlineGameLanBrowser_X::HandleHostResponse(class UOnlineMessageComponent_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.HandleHostResponse");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameLanBrowser_X_HandleHostResponse_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -44357,10 +38259,7 @@ void UOnlineGameLanBrowser_X::OnSearchComplete(bool bCancelled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.OnSearchComplete");
 
-	struct
-	{
-		bool                           bCancelled;
-	} params;
+	UOnlineGameLanBrowser_X_OnSearchComplete_Params params;
 	params.bCancelled = bCancelled;
 
 	auto flags = fn->FunctionFlags;
@@ -44380,10 +38279,7 @@ void UOnlineGameLanBrowser_X::OnSearchError(const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.OnSearchError");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UOnlineGameLanBrowser_X_OnSearchError_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -44403,10 +38299,7 @@ bool UOnlineGameLanBrowser_X::IsSearching()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.IsSearching");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_IsSearching_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44425,9 +38318,7 @@ void UOnlineGameLanBrowser_X::Cancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Cancel");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanBrowser_X_Cancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44448,12 +38339,7 @@ bool UOnlineGameLanBrowser_X::StartSearch(const struct FCustomMatchSettings& InF
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.StartSearch");
 
-	struct
-	{
-		struct FCustomMatchSettings    InFilter;
-		bool                           bHostQuery;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_StartSearch_Params params;
 	params.InFilter = InFilter;
 	params.bHostQuery = bHostQuery;
 
@@ -44477,11 +38363,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::ClearCompleteDelegate(co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.ClearCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_ClearCompleteDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44504,11 +38386,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::ClearNewResponseDelegate
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.ClearNewResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_ClearNewResponseDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44531,11 +38409,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::ClearStateChangedDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.ClearStateChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_ClearStateChangedDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44558,11 +38432,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::ClearStatusDelegate(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.ClearStatusDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_ClearStatusDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44585,11 +38455,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::ClearErrorDelegate(const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.ClearErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_ClearErrorDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44612,11 +38478,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::SetCompleteDelegate(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.SetCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_SetCompleteDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44639,11 +38501,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::SetNewResponseDelegate(c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.SetNewResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_SetNewResponseDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44666,11 +38524,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::SetStateChangedDelegate(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.SetStateChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_SetStateChangedDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44693,11 +38547,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::SetStatusDelegate(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.SetStatusDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_SetStatusDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44720,11 +38570,7 @@ class UOnlineGameLanBrowser_X* UOnlineGameLanBrowser_X::SetErrorDelegate(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.SetErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameLanBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameLanBrowser_X_SetErrorDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -44744,9 +38590,7 @@ void UOnlineGameLanBrowser_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanBrowser_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44765,10 +38609,7 @@ void UOnlineGameLanBrowser_X::EventSearchError(const struct FString& NewStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.EventSearchError");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameLanBrowser_X_EventSearchError_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -44788,10 +38629,7 @@ void UOnlineGameLanBrowser_X::EventSearchComplete(bool bCancelled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.EventSearchComplete");
 
-	struct
-	{
-		bool                           bCancelled;
-	} params;
+	UOnlineGameLanBrowser_X_EventSearchComplete_Params params;
 	params.bCancelled = bCancelled;
 
 	auto flags = fn->FunctionFlags;
@@ -44811,10 +38649,7 @@ void UOnlineGameLanBrowser_X::EventSearchStateChanged(const struct FName& Search
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.EventSearchStateChanged");
 
-	struct
-	{
-		struct FName                   SearchState;
-	} params;
+	UOnlineGameLanBrowser_X_EventSearchStateChanged_Params params;
 	params.SearchState = SearchState;
 
 	auto flags = fn->FunctionFlags;
@@ -44834,10 +38669,7 @@ void UOnlineGameLanBrowser_X::EventSearchStatus(const struct FString& NewStatus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.EventSearchStatus");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameLanBrowser_X_EventSearchStatus_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -44857,10 +38689,7 @@ void UOnlineGameLanBrowser_X::EventSearchNewResponse(struct FServerResult* Resul
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.EventSearchNewResponse");
 
-	struct
-	{
-		struct FServerResult           Result;
-	} params;
+	UOnlineGameLanBrowser_X_EventSearchNewResponse_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44882,10 +38711,7 @@ void UOnlineGameServerBrowser_X::HandleGameServerList(class URPC_CustomGameServe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.HandleGameServerList");
 
-	struct
-	{
-		class URPC_CustomGameServerGet_X* RPC;
-	} params;
+	UOnlineGameServerBrowser_X_HandleGameServerList_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -44905,10 +38731,7 @@ struct FString UOnlineGameServerBrowser_X::GetFriendlyRegionString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.GetFriendlyRegionString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_GetFriendlyRegionString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44929,10 +38752,7 @@ struct FString UOnlineGameServerBrowser_X::GetRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.GetRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_GetRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44953,10 +38773,7 @@ void UOnlineGameServerBrowser_X::OnSearchComplete(TArray<struct FServerResult>* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.OnSearchComplete");
 
-	struct
-	{
-		TArray<struct FServerResult>   Results;
-	} params;
+	UOnlineGameServerBrowser_X_OnSearchComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44978,10 +38795,7 @@ void UOnlineGameServerBrowser_X::OnSearchError(const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.OnSearchError");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UOnlineGameServerBrowser_X_OnSearchError_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -45001,10 +38815,7 @@ bool UOnlineGameServerBrowser_X::IsSearching()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.IsSearching");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_IsSearching_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45023,9 +38834,7 @@ void UOnlineGameServerBrowser_X::Cancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Cancel");
 
-	struct
-	{
-	} params;
+	UOnlineGameServerBrowser_X_Cancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45046,12 +38855,7 @@ bool UOnlineGameServerBrowser_X::StartSearch(const struct FCustomMatchSettings& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.StartSearch");
 
-	struct
-	{
-		struct FCustomMatchSettings    InFilter;
-		struct FString                 InPreferredRegion;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_StartSearch_Params params;
 	params.InFilter = InFilter;
 	params.InPreferredRegion = InPreferredRegion;
 
@@ -45075,11 +38879,7 @@ class UOnlineGameServerBrowser_X* UOnlineGameServerBrowser_X::SetCompleteDelegat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.SetCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameServerBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_SetCompleteDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -45102,11 +38902,7 @@ class UOnlineGameServerBrowser_X* UOnlineGameServerBrowser_X::SetErrorDelegate(c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.SetErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-		class UOnlineGameServerBrowser_X* ReturnValue;
-	} params;
+	UOnlineGameServerBrowser_X_SetErrorDelegate_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -45128,10 +38924,7 @@ void UOnlineGameServerBrowser_X::EventSearchError(const struct FString& NewStatu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.EventSearchError");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameServerBrowser_X_EventSearchError_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -45151,10 +38944,7 @@ void UOnlineGameServerBrowser_X::EventSearchComplete(TArray<struct FServerResult
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.EventSearchComplete");
 
-	struct
-	{
-		TArray<struct FServerResult>   Results;
-	} params;
+	UOnlineGameServerBrowser_X_EventSearchComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45176,10 +38966,7 @@ class UCheckReservation_X* UOnlineGameMatchmakingBase_X::CreateCheckReservation(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.CreateCheckReservation");
 
-	struct
-	{
-		class UCheckReservation_X*     ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_CreateCheckReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45200,10 +38987,7 @@ void UOnlineGameMatchmakingBase_X::GotoMatchmakingState(const struct FName& Stat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.GotoMatchmakingState");
 
-	struct
-	{
-		struct FName                   StateName;
-	} params;
+	UOnlineGameMatchmakingBase_X_GotoMatchmakingState_Params params;
 	params.StateName = StateName;
 
 	auto flags = fn->FunctionFlags;
@@ -45221,9 +39005,7 @@ void UOnlineGameMatchmakingBase_X::ClearStartMatchmakingRPC()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.ClearStartMatchmakingRPC");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingBase_X_ClearStartMatchmakingRPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45240,9 +39022,7 @@ void UOnlineGameMatchmakingBase_X::ClearCheckReservation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.ClearCheckReservation");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingBase_X_ClearCheckReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45261,10 +39041,7 @@ void UOnlineGameMatchmakingBase_X::OnSearchComplete(bool bCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.OnSearchComplete");
 
-	struct
-	{
-		bool                           bCanceled;
-	} params;
+	UOnlineGameMatchmakingBase_X_OnSearchComplete_Params params;
 	params.bCanceled = bCanceled;
 
 	auto flags = fn->FunctionFlags;
@@ -45282,9 +39059,7 @@ void UOnlineGameMatchmakingBase_X::Cancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Cancel");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmakingBase_X_Cancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45303,10 +39078,7 @@ bool UOnlineGameMatchmakingBase_X::IsSearching()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.IsSearching");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_IsSearching_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45328,11 +39100,7 @@ class UOnlineGameMatchmakingBase_X* UOnlineGameMatchmakingBase_X::AddFindGameSta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.AddFindGameStateChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         NewDelegate;
-		class UOnlineGameMatchmakingBase_X* ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_AddFindGameStateChangedDelegate_Params params;
 	params.NewDelegate = NewDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -45355,11 +39123,7 @@ class UOnlineGameMatchmakingBase_X* UOnlineGameMatchmakingBase_X::AddFindGameCom
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.AddFindGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         HandleFindGameComplete;
-		class UOnlineGameMatchmakingBase_X* ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_AddFindGameCompleteDelegate_Params params;
 	params.HandleFindGameComplete = HandleFindGameComplete;
 
 	auto flags = fn->FunctionFlags;
@@ -45382,11 +39146,7 @@ class UOnlineGameMatchmakingBase_X* UOnlineGameMatchmakingBase_X::AddFindGameErr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.AddFindGameErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         HandleFindGameError;
-		class UOnlineGameMatchmakingBase_X* ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_AddFindGameErrorDelegate_Params params;
 	params.HandleFindGameError = HandleFindGameError;
 
 	auto flags = fn->FunctionFlags;
@@ -45409,11 +39169,7 @@ class UOnlineGameMatchmakingBase_X* UOnlineGameMatchmakingBase_X::AddFindGameSta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.AddFindGameStatusChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         HandleFindGameStatusChanged;
-		class UOnlineGameMatchmakingBase_X* ReturnValue;
-	} params;
+	UOnlineGameMatchmakingBase_X_AddFindGameStatusChangedDelegate_Params params;
 	params.HandleFindGameStatusChanged = HandleFindGameStatusChanged;
 
 	auto flags = fn->FunctionFlags;
@@ -45435,10 +39191,7 @@ void UOnlineGameMatchmakingBase_X::EventFindGameStateChanged(const struct FName&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.EventFindGameStateChanged");
 
-	struct
-	{
-		struct FName                   NewState;
-	} params;
+	UOnlineGameMatchmakingBase_X_EventFindGameStateChanged_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -45458,10 +39211,7 @@ void UOnlineGameMatchmakingBase_X::EventFindGameError(const struct FString& NewS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.EventFindGameError");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameMatchmakingBase_X_EventFindGameError_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -45481,10 +39231,7 @@ void UOnlineGameMatchmakingBase_X::EventFindGameStatus(const struct FString& New
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.EventFindGameStatus");
 
-	struct
-	{
-		struct FString                 NewStatus;
-	} params;
+	UOnlineGameMatchmakingBase_X_EventFindGameStatus_Params params;
 	params.NewStatus = NewStatus;
 
 	auto flags = fn->FunctionFlags;
@@ -45504,10 +39251,7 @@ void UOnlineGameMatchmakingBase_X::EventFindGameComplete(bool bCancelled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.EventFindGameComplete");
 
-	struct
-	{
-		bool                           bCancelled;
-	} params;
+	UOnlineGameMatchmakingBase_X_EventFindGameComplete_Params params;
 	params.bCancelled = bCancelled;
 
 	auto flags = fn->FunctionFlags;
@@ -45527,10 +39271,7 @@ struct FString UOnlineGamePrivateMatch_X::GetFriendlyRegionString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.GetFriendlyRegionString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGamePrivateMatch_X_GetFriendlyRegionString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45551,10 +39292,7 @@ struct FString UOnlineGamePrivateMatch_X::GetRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.GetRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGamePrivateMatch_X_GetRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45575,10 +39313,7 @@ void UOnlineGamePrivateMatch_X::OnPrivateMatchError(const struct FString& Messag
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.OnPrivateMatchError");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UOnlineGamePrivateMatch_X_OnPrivateMatchError_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -45600,12 +39335,7 @@ bool UOnlineGamePrivateMatch_X::StartSearch(const struct FString& InPreferredReg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.StartSearch");
 
-	struct
-	{
-		struct FString                 InPreferredRegion;
-		struct FCustomMatchSettings    InSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGamePrivateMatch_X_StartSearch_Params params;
 	params.InPreferredRegion = InPreferredRegion;
 	params.InSettings = InSettings;
 
@@ -45628,10 +39358,7 @@ void UOnlineGameMatchmaking_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UOnlineGameMatchmaking_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -45651,10 +39378,7 @@ bool UOnlineGameMatchmaking_X::IsMatchmakingDisabled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.IsMatchmakingDisabled");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_IsMatchmakingDisabled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45675,10 +39399,7 @@ class UMatchmakingMetrics_X* UOnlineGameMatchmaking_X::GetMetrics()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetMetrics");
 
-	struct
-	{
-		class UMatchmakingMetrics_X*   ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetMetrics_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45699,10 +39420,7 @@ void UOnlineGameMatchmaking_X::SetSkillIgnored(bool bIgnore)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.SetSkillIgnored");
 
-	struct
-	{
-		bool                           bIgnore;
-	} params;
+	UOnlineGameMatchmaking_X_SetSkillIgnored_Params params;
 	params.bIgnore = bIgnore;
 
 	auto flags = fn->FunctionFlags;
@@ -45720,9 +39438,7 @@ void UOnlineGameMatchmaking_X::ToggleSkill()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.ToggleSkill");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmaking_X_ToggleSkill_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45739,9 +39455,7 @@ void UOnlineGameMatchmaking_X::ClearMatchmakingBanTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.ClearMatchmakingBanTime");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmaking_X_ClearMatchmakingBanTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45762,12 +39476,7 @@ void UOnlineGameMatchmaking_X::HandlePartySizeChanged(class UOnlineGameParty_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.HandlePartySizeChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-		int                            NewSize;
-		int                            OldSize;
-	} params;
+	UOnlineGameMatchmaking_X_HandlePartySizeChanged_Params params;
 	params.PartyObject = PartyObject;
 	params.NewSize = NewSize;
 	params.OldSize = OldSize;
@@ -45789,10 +39498,7 @@ void UOnlineGameMatchmaking_X::HandlePartyDestroyed(class UOnlineGameParty_X* Pa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.HandlePartyDestroyed");
 
-	struct
-	{
-		class UOnlineGameParty_X*      PartyObject;
-	} params;
+	UOnlineGameMatchmaking_X_HandlePartyDestroyed_Params params;
 	params.PartyObject = PartyObject;
 
 	auto flags = fn->FunctionFlags;
@@ -45812,10 +39518,7 @@ void UOnlineGameMatchmaking_X::OnFindGameWarning(const struct FString& FailReaso
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.OnFindGameWarning");
 
-	struct
-	{
-		struct FString                 FailReason;
-	} params;
+	UOnlineGameMatchmaking_X_OnFindGameWarning_Params params;
 	params.FailReason = FailReason;
 
 	auto flags = fn->FunctionFlags;
@@ -45833,9 +39536,7 @@ void UOnlineGameMatchmaking_X::GetGameServerID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetGameServerID");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmaking_X_GetGameServerID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45856,12 +39557,7 @@ int UOnlineGameMatchmaking_X::SortPlaylists(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.SortPlaylists");
 
-	struct
-	{
-		int                            A;
-		int                            B;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_SortPlaylists_Params params;
 	params.A = A;
 	params.B = B;
 
@@ -45884,10 +39580,7 @@ struct FString UOnlineGameMatchmaking_X::GetPartyMembersString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetPartyMembersString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetPartyMembersString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45908,10 +39601,7 @@ struct FString UOnlineGameMatchmaking_X::GetSkillsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetSkillsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetSkillsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45932,10 +39622,7 @@ struct FString UOnlineGameMatchmaking_X::GetLocalizedRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetLocalizedRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetLocalizedRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45956,10 +39643,7 @@ struct FString UOnlineGameMatchmaking_X::GetRegionsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetRegionsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetRegionsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45980,10 +39664,7 @@ struct FString UOnlineGameMatchmaking_X::GetLocalizedPlaylistsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetLocalizedPlaylistsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetLocalizedPlaylistsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46004,10 +39685,7 @@ struct FString UOnlineGameMatchmaking_X::GetPlaylistsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.GetPlaylistsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_GetPlaylistsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46026,9 +39704,7 @@ void UOnlineGameMatchmaking_X::OnExit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.OnExit");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmaking_X_OnExit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46049,12 +39725,7 @@ bool UOnlineGameMatchmaking_X::StartSearch(TArray<int> InPreferredPlaylists, TAr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.StartSearch");
 
-	struct
-	{
-		TArray<int>                    InPreferredPlaylists;
-		TArray<struct FString>         InPreferredRegions;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameMatchmaking_X_StartSearch_Params params;
 	params.InPreferredPlaylists = InPreferredPlaylists;
 	params.InPreferredRegions = InPreferredRegions;
 
@@ -46075,9 +39746,7 @@ void UOnlineGameMatchmaking_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameMatchmaking_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46094,9 +39763,7 @@ void UOnlineGameTrial_X::OnChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.OnChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_OnChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46113,9 +39780,7 @@ void UOnlineGameTrial_X::HandleMapChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.HandleMapChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_HandleMapChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46134,10 +39799,7 @@ void UOnlineGameTrial_X::OverrideTrialMode(bool bTrial)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.OverrideTrialMode");
 
-	struct
-	{
-		bool                           bTrial;
-	} params;
+	UOnlineGameTrial_X_OverrideTrialMode_Params params;
 	params.bTrial = bTrial;
 
 	auto flags = fn->FunctionFlags;
@@ -46155,9 +39817,7 @@ void UOnlineGameTrial_X::SetUpdateTimer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.SetUpdateTimer");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_SetUpdateTimer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46176,10 +39836,7 @@ void UOnlineGameTrial_X::SetTime(int InMinutesRemaining)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.SetTime");
 
-	struct
-	{
-		int                            InMinutesRemaining;
-	} params;
+	UOnlineGameTrial_X_SetTime_Params params;
 	params.InMinutesRemaining = InMinutesRemaining;
 
 	auto flags = fn->FunctionFlags;
@@ -46197,9 +39854,7 @@ void UOnlineGameTrial_X::CommitTimePlayed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.CommitTimePlayed");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_CommitTimePlayed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46218,10 +39873,7 @@ void UOnlineGameTrial_X::AccummulateTimePlayed(int InSecondsPlayed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.AccummulateTimePlayed");
 
-	struct
-	{
-		int                            InSecondsPlayed;
-	} params;
+	UOnlineGameTrial_X_AccummulateTimePlayed_Params params;
 	params.InSecondsPlayed = InSecondsPlayed;
 
 	auto flags = fn->FunctionFlags;
@@ -46241,10 +39893,7 @@ float UOnlineGameTrial_X::GetSecondsSinceLastPlayTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.GetSecondsSinceLastPlayTime");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UOnlineGameTrial_X_GetSecondsSinceLastPlayTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46265,10 +39914,7 @@ void UOnlineGameTrial_X::HandleGetTrialDataRPC(class URPC_GetTrialData_X* RPC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.HandleGetTrialDataRPC");
 
-	struct
-	{
-		class URPC_GetTrialData_X*     RPC;
-	} params;
+	UOnlineGameTrial_X_HandleGetTrialDataRPC_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -46286,9 +39932,7 @@ void UOnlineGameTrial_X::SyncTrialData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.SyncTrialData");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_SyncTrialData_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46305,9 +39949,7 @@ void UOnlineGameTrial_X::HandlePsyNetLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.HandlePsyNetLogin");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_HandlePsyNetLogin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46324,9 +39966,7 @@ void UOnlineGameTrial_X::UpdateTrialStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.UpdateTrialStatus");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_UpdateTrialStatus_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46345,10 +39985,7 @@ bool UOnlineGameTrial_X::IsTrialExpired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.IsTrialExpired");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameTrial_X_IsTrialExpired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46369,10 +40006,7 @@ bool UOnlineGameTrial_X::IsFullVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.IsFullVersion");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameTrial_X_IsFullVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46393,10 +40027,7 @@ bool UOnlineGameTrial_X::IsTrialVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.IsTrialVersion");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameTrial_X_IsTrialVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46415,9 +40046,7 @@ void UOnlineGameTrial_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameTrial_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46436,10 +40065,7 @@ void UOnlineGameTrial_X::EventUpdated(class UOnlineGameTrial_X* Trial)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameTrial_X.EventUpdated");
 
-	struct
-	{
-		class UOnlineGameTrial_X*      Trial;
-	} params;
+	UOnlineGameTrial_X_EventUpdated_Params params;
 	params.Trial = Trial;
 
 	auto flags = fn->FunctionFlags;
@@ -46460,11 +40086,7 @@ class URPC_UpdatePlayerPlaylist_X* URPC_UpdatePlayerPlaylist_X::SetNumLocalPlaye
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdatePlayerPlaylist_X.SetNumLocalPlayers");
 
-	struct
-	{
-		int                            InNumLocalPlayers;
-		class URPC_UpdatePlayerPlaylist_X* ReturnValue;
-	} params;
+	URPC_UpdatePlayerPlaylist_X_SetNumLocalPlayers_Params params;
 	params.InNumLocalPlayers = InNumLocalPlayers;
 
 	auto flags = fn->FunctionFlags;
@@ -46487,11 +40109,7 @@ class URPC_UpdatePlayerPlaylist_X* URPC_UpdatePlayerPlaylist_X::SetPlaylist(int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdatePlayerPlaylist_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_UpdatePlayerPlaylist_X* ReturnValue;
-	} params;
+	URPC_UpdatePlayerPlaylist_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -46511,9 +40129,7 @@ void UOnlineStaticTextSync_X::OnTextChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.OnTextChanged");
 
-	struct
-	{
-	} params;
+	UOnlineStaticTextSync_X_OnTextChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46532,10 +40148,7 @@ void UOnlineStaticTextSync_X::SetText(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.SetText");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UOnlineStaticTextSync_X_SetText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -46555,10 +40168,7 @@ void UOnlineStaticTextSync_X::HandleTextSync(class UWebRequest_X* Request)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.HandleTextSync");
 
-	struct
-	{
-		class UWebRequest_X*           Request;
-	} params;
+	UOnlineStaticTextSync_X_HandleTextSync_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -46578,10 +40188,7 @@ void UOnlineStaticTextSync_X::GetText(const struct FScriptDelegate& Callback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.GetText");
 
-	struct
-	{
-		struct FScriptDelegate         Callback;
-	} params;
+	UOnlineStaticTextSync_X_GetText_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -46601,10 +40208,7 @@ struct FString UOnlineStaticTextSync_X::STATIC_GetDBEnvironment()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.GetDBEnvironment");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineStaticTextSync_X_GetDBEnvironment_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46625,10 +40229,7 @@ void UOnlineStaticTextSync_X::EventTextSynced(class UOnlineStaticTextSync_X* Tex
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.EventTextSynced");
 
-	struct
-	{
-		class UOnlineStaticTextSync_X* TextSync;
-	} params;
+	UOnlineStaticTextSync_X_EventTextSynced_Params params;
 	params.TextSync = TextSync;
 
 	auto flags = fn->FunctionFlags;
@@ -46648,10 +40249,7 @@ void UOnlineStaticTextSync_X::EventTextChanged(class UOnlineStaticTextSync_X* Te
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineStaticTextSync_X.EventTextChanged");
 
-	struct
-	{
-		class UOnlineStaticTextSync_X* TextSync;
-	} params;
+	UOnlineStaticTextSync_X_EventTextChanged_Params params;
 	params.TextSync = TextSync;
 
 	auto flags = fn->FunctionFlags;
@@ -46672,11 +40270,7 @@ struct FString UOnlineGameBlog_X::FormatMotD(const struct FString& MotDText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.FormatMotD");
 
-	struct
-	{
-		struct FString                 MotDText;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameBlog_X_FormatMotD_Params params;
 	params.MotDText = MotDText;
 
 	auto flags = fn->FunctionFlags;
@@ -46700,12 +40294,7 @@ struct FString UOnlineGameBlog_X::GetKeyValue(const struct FString& SearchText, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.GetKeyValue");
 
-	struct
-	{
-		struct FString                 SearchText;
-		struct FString                 Key;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameBlog_X_GetKeyValue_Params params;
 	params.SearchText = SearchText;
 	params.Key = Key;
 
@@ -46729,11 +40318,7 @@ struct FString UOnlineGameBlog_X::GetSectionText(const struct FString& Section)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.GetSectionText");
 
-	struct
-	{
-		struct FString                 Section;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameBlog_X_GetSectionText_Params params;
 	params.Section = Section;
 
 	auto flags = fn->FunctionFlags;
@@ -46753,9 +40338,7 @@ void UOnlineGameBlog_X::ParseText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.ParseText");
 
-	struct
-	{
-	} params;
+	UOnlineGameBlog_X_ParseText_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46772,9 +40355,7 @@ void UOnlineGameBlog_X::OnTextChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.OnTextChanged");
 
-	struct
-	{
-	} params;
+	UOnlineGameBlog_X_OnTextChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46791,9 +40372,7 @@ void UOnlineGameBlog_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.Init");
 
-	struct
-	{
-	} params;
+	UOnlineGameBlog_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46810,9 +40389,7 @@ void UOnlineGameDedicatedServerRegistration_X::UpdateCustomGame()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.UpdateCustomGame");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_UpdateCustomGame_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46832,11 +40409,7 @@ struct FString UOnlineGameDedicatedServerRegistration_X::GetExclusivePlatformStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.GetExclusivePlatformString");
 
-	struct
-	{
-		TEnumAsByte<enum class OnlinePlatform> Platform;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_GetExclusivePlatformString_Params params;
 	params.Platform = Platform;
 
 	auto flags = fn->FunctionFlags;
@@ -46858,10 +40431,7 @@ void UOnlineGameDedicatedServerRegistration_X::UpdateGameTime(int TimeSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.UpdateGameTime");
 
-	struct
-	{
-		int                            TimeSeconds;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_UpdateGameTime_Params params;
 	params.TimeSeconds = TimeSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -46881,10 +40451,7 @@ bool UOnlineGameDedicatedServerRegistration_X::ShouldShutdownWhenEmpty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.ShouldShutdownWhenEmpty");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_ShouldShutdownWhenEmpty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46903,9 +40470,7 @@ void UOnlineGameDedicatedServerRegistration_X::TimerShutdownWhenEmpty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.TimerShutdownWhenEmpty");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_TimerShutdownWhenEmpty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46924,10 +40489,7 @@ void UOnlineGameDedicatedServerRegistration_X::HandleUpdateServerFailed(class UR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.HandleUpdateServerFailed");
 
-	struct
-	{
-		class URPC_UpdateGameServer_X* RPC;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_HandleUpdateServerFailed_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -46947,10 +40509,7 @@ void UOnlineGameDedicatedServerRegistration_X::HandleUpdateServerSucces(class UR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.HandleUpdateServerSucces");
 
-	struct
-	{
-		class URPC_UpdateGameServer_X* RPC;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_HandleUpdateServerSucces_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -46970,10 +40529,7 @@ void UOnlineGameDedicatedServerRegistration_X::HandleCreateServerFailed(class UR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.HandleCreateServerFailed");
 
-	struct
-	{
-		class URPC_CreateGameServer_X* RPC;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_HandleCreateServerFailed_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -46993,10 +40549,7 @@ void UOnlineGameDedicatedServerRegistration_X::HandleCreateServerSucces(class UR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.HandleCreateServerSucces");
 
-	struct
-	{
-		class URPC_CreateGameServer_X* RPC;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_HandleCreateServerSucces_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -47014,9 +40567,7 @@ void UOnlineGameDedicatedServerRegistration_X::SetServerNotJoinable()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.SetServerNotJoinable");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_SetServerNotJoinable_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47033,9 +40584,7 @@ void UOnlineGameDedicatedServerRegistration_X::SendUpdateServerRPC()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.SendUpdateServerRPC");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_SendUpdateServerRPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47054,10 +40603,7 @@ struct FString UOnlineGameDedicatedServerRegistration_X::GetServerType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.GetServerType");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_GetServerType_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47076,9 +40622,7 @@ void UOnlineGameDedicatedServerRegistration_X::SendCreateServerRPC()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.SendCreateServerRPC");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_SendCreateServerRPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47095,9 +40639,7 @@ void UOnlineGameDedicatedServerRegistration_X::SendUpdateRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.SendUpdateRequest");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_SendUpdateRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47114,9 +40656,7 @@ void UOnlineGameDedicatedServerRegistration_X::UpdateServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.UpdateServer");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_UpdateServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47133,9 +40673,7 @@ void UOnlineGameDedicatedServerRegistration_X::UnregisterServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.UnregisterServer");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_UnregisterServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47152,9 +40690,7 @@ void UOnlineGameDedicatedServerRegistration_X::RegisterServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.RegisterServer");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_RegisterServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47171,9 +40707,7 @@ void UOnlineGameDedicatedServerRegistration_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameDedicatedServerRegistration_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47192,10 +40726,7 @@ struct FString URPC_CheckReplacementDedicatedServer_X::GetServerAddress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckReplacementDedicatedServer_X.GetServerAddress");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	URPC_CheckReplacementDedicatedServer_X_GetServerAddress_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47217,11 +40748,7 @@ class URPC_CheckReplacementDedicatedServer_X* URPC_CheckReplacementDedicatedServ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckReplacementDedicatedServer_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_CheckReplacementDedicatedServer_X* ReturnValue;
-	} params;
+	URPC_CheckReplacementDedicatedServer_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -47244,11 +40771,7 @@ class URPC_AddQuitter_X* URPC_AddQuitter_X::SetReason(const struct FString& InRe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_AddQuitter_X.SetReason");
 
-	struct
-	{
-		struct FString                 InReason;
-		class URPC_AddQuitter_X*       ReturnValue;
-	} params;
+	URPC_AddQuitter_X_SetReason_Params params;
 	params.InReason = InReason;
 
 	auto flags = fn->FunctionFlags;
@@ -47271,11 +40794,7 @@ class URPC_AddQuitter_X* URPC_AddQuitter_X::SetPlayerID(const struct FUniqueNetI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_AddQuitter_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_AddQuitter_X*       ReturnValue;
-	} params;
+	URPC_AddQuitter_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -47298,11 +40817,7 @@ class URPC_RemoveQuitter_X* URPC_RemoveQuitter_X::SetPlayerID(const struct FUniq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_RemoveQuitter_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_RemoveQuitter_X*    ReturnValue;
-	} params;
+	URPC_RemoveQuitter_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -47322,9 +40837,7 @@ void UClanforgeReservation_X::HandleRetry()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.HandleRetry");
 
-	struct
-	{
-	} params;
+	UClanforgeReservation_X_HandleRetry_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47341,9 +40854,7 @@ void UClanforgeReservation_X::Retry()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.Retry");
 
-	struct
-	{
-	} params;
+	UClanforgeReservation_X_Retry_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47362,10 +40873,7 @@ void UClanforgeReservation_X::HandleSendComplete(class UWebRequest_X* Request)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.HandleSendComplete");
 
-	struct
-	{
-		class UWebRequest_X*           Request;
-	} params;
+	UClanforgeReservation_X_HandleSendComplete_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -47385,10 +40893,7 @@ void UClanforgeReservation_X::Send(const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.Send");
 
-	struct
-	{
-		struct FString                 URL;
-	} params;
+	UClanforgeReservation_X_Send_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -47408,10 +40913,7 @@ void UClanforgeReservation_X::SetReserveState(TEnumAsByte<enum class EReserveSta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.SetReserveState");
 
-	struct
-	{
-		TEnumAsByte<enum class EReserveState> NewState;
-	} params;
+	UClanforgeReservation_X_SetReserveState_Params params;
 	params.NewState = NewState;
 
 	auto flags = fn->FunctionFlags;
@@ -47431,10 +40933,7 @@ void UClanforgeReservation_X::HandleActivate(class UOnlineGameDedicatedServer_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.HandleActivate");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UClanforgeReservation_X_HandleActivate_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -47454,10 +40953,7 @@ void UClanforgeReservation_X::HandleInactive(class UOnlineGameDedicatedServer_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.HandleInactive");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-	} params;
+	UClanforgeReservation_X_HandleInactive_Params params;
 	params.Server = Server;
 
 	auto flags = fn->FunctionFlags;
@@ -47479,12 +40975,7 @@ void UClanforgeReservation_X::Init(class UOnlineGameDedicatedServer_X* Server, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.Init");
 
-	struct
-	{
-		class UOnlineGameDedicatedServer_X* Server;
-		struct FString                 ReserveURL;
-		struct FString                 UnreserveURL;
-	} params;
+	UClanforgeReservation_X_Init_Params params;
 	params.Server = Server;
 	params.ReserveURL = ReserveURL;
 	params.UnreserveURL = UnreserveURL;
@@ -47507,11 +40998,7 @@ class URPC_DeactivateGameServer_X* URPC_DeactivateGameServer_X::SetServerID(int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_DeactivateGameServer_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_DeactivateGameServer_X* ReturnValue;
-	} params;
+	URPC_DeactivateGameServer_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -47533,10 +41020,7 @@ float UCacheTimer_X::GetRandomCacheTimeoutTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.GetRandomCacheTimeoutTime");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UCacheTimer_X_GetRandomCacheTimeoutTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47555,9 +41039,7 @@ void UCacheTimer_X::OnExpired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.OnExpired");
 
-	struct
-	{
-	} params;
+	UCacheTimer_X_OnExpired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47574,9 +41056,7 @@ void UCacheTimer_X::OnDisabled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.OnDisabled");
 
-	struct
-	{
-	} params;
+	UCacheTimer_X_OnDisabled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47593,9 +41073,7 @@ void UCacheTimer_X::OnEnabled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.OnEnabled");
 
-	struct
-	{
-	} params;
+	UCacheTimer_X_OnEnabled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47614,10 +41092,7 @@ void UCacheTimer_X::SetEnabled(bool bEnableExpiration)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.SetEnabled");
 
-	struct
-	{
-		bool                           bEnableExpiration;
-	} params;
+	UCacheTimer_X_SetEnabled_Params params;
 	params.bEnableExpiration = bEnableExpiration;
 
 	auto flags = fn->FunctionFlags;
@@ -47635,9 +41110,7 @@ void UCacheTimer_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.Reset");
 
-	struct
-	{
-	} params;
+	UCacheTimer_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47656,10 +41129,7 @@ bool UCacheTimer_X::IsExpired()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.IsExpired");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UCacheTimer_X_IsExpired_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -47680,10 +41150,7 @@ void UCacheTimer_X::EventExpired(class UCacheTimer_X* Timer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CacheTimer_X.EventExpired");
 
-	struct
-	{
-		class UCacheTimer_X*           Timer;
-	} params;
+	UCacheTimer_X_EventExpired_Params params;
 	params.Timer = Timer;
 
 	auto flags = fn->FunctionFlags;
@@ -47704,11 +41171,7 @@ class URPC_SetServerNotJoinable_X* URPC_SetServerNotJoinable_X::SetServerID(int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetServerNotJoinable_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_SetServerNotJoinable_X* ReturnValue;
-	} params;
+	URPC_SetServerNotJoinable_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -47731,11 +41194,7 @@ class URPC_UpdateCustomGameServer_X* URPC_UpdateCustomGameServer_X::SetPassword(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateCustomGameServer_X.SetPassword");
 
-	struct
-	{
-		struct FString                 InPassword;
-		class URPC_UpdateCustomGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateCustomGameServer_X_SetPassword_Params params;
 	params.InPassword = InPassword;
 
 	auto flags = fn->FunctionFlags;
@@ -47758,11 +41217,7 @@ class URPC_UpdateCustomGameServer_X* URPC_UpdateCustomGameServer_X::SetServerNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateCustomGameServer_X.SetServerName");
 
-	struct
-	{
-		struct FString                 InServerName;
-		class URPC_UpdateCustomGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateCustomGameServer_X_SetServerName_Params params;
 	params.InServerName = InServerName;
 
 	auto flags = fn->FunctionFlags;
@@ -47785,11 +41240,7 @@ class URPC_UpdateCustomGameServer_X* URPC_UpdateCustomGameServer_X::SetServerID(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateCustomGameServer_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_UpdateCustomGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateCustomGameServer_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -47812,11 +41263,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetPlayersPlatforms(TArr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetPlayersPlatforms");
 
-	struct
-	{
-		TArray<struct FString>         InPlayersPlatforms;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetPlayersPlatforms_Params params;
 	params.InPlayersPlatforms = InPlayersPlatforms;
 
 	auto flags = fn->FunctionFlags;
@@ -47839,11 +41286,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetExclusivePlatform(con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetExclusivePlatform");
 
-	struct
-	{
-		struct FString                 InExclusivePlatform;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetExclusivePlatform_Params params;
 	params.InExclusivePlatform = InExclusivePlatform;
 
 	auto flags = fn->FunctionFlags;
@@ -47866,11 +41309,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetTimeRemaining(int InT
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetTimeRemaining");
 
-	struct
-	{
-		int                            InTimeRemaining;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetTimeRemaining_Params params;
 	params.InTimeRemaining = InTimeRemaining;
 
 	auto flags = fn->FunctionFlags;
@@ -47893,11 +41332,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetIsPostGame(bool bInIs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetIsPostGame");
 
-	struct
-	{
-		bool                           bInIsPostGame;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetIsPostGame_Params params;
 	params.bInIsPostGame = bInIsPostGame;
 
 	auto flags = fn->FunctionFlags;
@@ -47920,11 +41355,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetAvgSkill(int InAvgSki
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetAvgSkill");
 
-	struct
-	{
-		int                            InAvgSkill;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetAvgSkill_Params params;
 	params.InAvgSkill = InAvgSkill;
 
 	auto flags = fn->FunctionFlags;
@@ -47947,11 +41378,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetReservationsTeam2(int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetReservationsTeam2");
 
-	struct
-	{
-		int                            InReservationsTeam2;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetReservationsTeam2_Params params;
 	params.InReservationsTeam2 = InReservationsTeam2;
 
 	auto flags = fn->FunctionFlags;
@@ -47974,11 +41401,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetReservationsTeam1(int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetReservationsTeam1");
 
-	struct
-	{
-		int                            InReservationsTeam1;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetReservationsTeam1_Params params;
 	params.InReservationsTeam1 = InReservationsTeam1;
 
 	auto flags = fn->FunctionFlags;
@@ -48001,11 +41424,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetNumPlayersTeam2(int I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetNumPlayersTeam2");
 
-	struct
-	{
-		int                            InNumPlayersTeam2;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetNumPlayersTeam2_Params params;
 	params.InNumPlayersTeam2 = InNumPlayersTeam2;
 
 	auto flags = fn->FunctionFlags;
@@ -48028,11 +41447,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetNumPlayersTeam1(int I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetNumPlayersTeam1");
 
-	struct
-	{
-		int                            InNumPlayersTeam1;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetNumPlayersTeam1_Params params;
 	params.InNumPlayersTeam1 = InNumPlayersTeam1;
 
 	auto flags = fn->FunctionFlags;
@@ -48055,11 +41470,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetMaxPlayers(int InMaxP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetMaxPlayers");
 
-	struct
-	{
-		int                            InMaxPlayers;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetMaxPlayers_Params params;
 	params.InMaxPlayers = InMaxPlayers;
 
 	auto flags = fn->FunctionFlags;
@@ -48082,11 +41493,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetPlaylist(int InPlayli
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -48109,11 +41516,7 @@ class URPC_UpdateGameServer_X* URPC_UpdateGameServer_X::SetServerID(int InServer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGameServer_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_UpdateGameServer_X* ReturnValue;
-	} params;
+	URPC_UpdateGameServer_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -48136,11 +41539,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetBuildID(int InBuildID
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetBuildID");
 
-	struct
-	{
-		int                            InBuildID;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetBuildID_Params params;
 	params.InBuildID = InBuildID;
 
 	auto flags = fn->FunctionFlags;
@@ -48163,11 +41562,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetRegion(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetRegion");
 
-	struct
-	{
-		struct FString                 InRegion;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetRegion_Params params;
 	params.InRegion = InRegion;
 
 	auto flags = fn->FunctionFlags;
@@ -48190,11 +41585,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetIP(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetIP");
 
-	struct
-	{
-		struct FString                 InIP;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetIP_Params params;
 	params.InIP = InIP;
 
 	auto flags = fn->FunctionFlags;
@@ -48217,11 +41608,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetMachineID(int InMachi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetMachineID");
 
-	struct
-	{
-		int                            InMachineID;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetMachineID_Params params;
 	params.InMachineID = InMachineID;
 
 	auto flags = fn->FunctionFlags;
@@ -48244,11 +41631,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetServerType(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetServerType");
 
-	struct
-	{
-		struct FString                 InServerType;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetServerType_Params params;
 	params.InServerType = InServerType;
 
 	auto flags = fn->FunctionFlags;
@@ -48271,11 +41654,7 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetServerName(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CreateGameServer_X.SetServerName");
 
-	struct
-	{
-		struct FString                 InServerName;
-		class URPC_CreateGameServer_X* ReturnValue;
-	} params;
+	URPC_CreateGameServer_X_SetServerName_Params params;
 	params.InServerName = InServerName;
 
 	auto flags = fn->FunctionFlags;
@@ -48297,10 +41676,7 @@ void UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.LambdaCallback");
 
-	struct
-	{
-		class UCacheTimer_X*           Timer;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5_LambdaCallback_Params params;
 	params.Timer = Timer;
 
 	auto flags = fn->FunctionFlags;
@@ -48321,11 +41697,7 @@ class UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C1641
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.StaticConstruct");
 
-	struct
-	{
-		class UOnlineGameDedicatedServerRegistration_X* InOuter;
-		class UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5* ReturnValue;
-	} params;
+	UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5_StaticConstruct_Params params;
 	params.InOuter = InOuter;
 
 	auto flags = fn->FunctionFlags;
@@ -48349,12 +41721,7 @@ class UReservationsWaitingMessage_X* UReservationsWaitingMessage_X::SetWaitingFo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsWaitingMessage_X.SetWaitingForPlayers");
 
-	struct
-	{
-		int                            WaitingReserved;
-		int                            WaitingMax;
-		class UReservationsWaitingMessage_X* ReturnValue;
-	} params;
+	UReservationsWaitingMessage_X_SetWaitingForPlayers_Params params;
 	params.WaitingReserved = WaitingReserved;
 	params.WaitingMax = WaitingMax;
 
@@ -48378,11 +41745,7 @@ class UReservationsReadyMessage_X* UReservationsReadyMessage_X::SetProductIDs(TA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsReadyMessage_X.SetProductIDs");
 
-	struct
-	{
-		TArray<int>                    InProductIDs;
-		class UReservationsReadyMessage_X* ReturnValue;
-	} params;
+	UReservationsReadyMessage_X_SetProductIDs_Params params;
 	params.InProductIDs = InProductIDs;
 
 	auto flags = fn->FunctionFlags;
@@ -48405,11 +41768,7 @@ class UReservationsReadyMessage_X* UReservationsReadyMessage_X::SetServerAddress
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsReadyMessage_X.SetServerAddress");
 
-	struct
-	{
-		struct FString                 InAddress;
-		class UReservationsReadyMessage_X* ReturnValue;
-	} params;
+	UReservationsReadyMessage_X_SetServerAddress_Params params;
 	params.InAddress = InAddress;
 
 	auto flags = fn->FunctionFlags;
@@ -48432,11 +41791,7 @@ class UReservationsPasswordMessage_X* UReservationsPasswordMessage_X::SetReason(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsPasswordMessage_X.SetReason");
 
-	struct
-	{
-		TEnumAsByte<enum class EPasswordFailureReason> InReason;
-		class UReservationsPasswordMessage_X* ReturnValue;
-	} params;
+	UReservationsPasswordMessage_X_SetReason_Params params;
 	params.InReason = InReason;
 
 	auto flags = fn->FunctionFlags;
@@ -48459,11 +41814,7 @@ class UReservationsMaxPlayersMessage_X* UReservationsMaxPlayersMessage_X::SetMax
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMaxPlayersMessage_X.SetMaxPlayerCount");
 
-	struct
-	{
-		int                            inMaxPlayerCount;
-		class UReservationsMaxPlayersMessage_X* ReturnValue;
-	} params;
+	UReservationsMaxPlayersMessage_X_SetMaxPlayerCount_Params params;
 	params.inMaxPlayerCount = inMaxPlayerCount;
 
 	auto flags = fn->FunctionFlags;
@@ -48485,10 +41836,7 @@ class UPingMessage_X* UPingMessage_X::SetIsResponse()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PingMessage_X.SetIsResponse");
 
-	struct
-	{
-		class UPingMessage_X*          ReturnValue;
-	} params;
+	UPingMessage_X_SetIsResponse_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48509,10 +41857,7 @@ class URPC_KeysBase_X* URPC_KeysBase_X::SetPrimaryPlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer");
 
-	struct
-	{
-		class URPC_KeysBase_X*         ReturnValue;
-	} params;
+	URPC_KeysBase_X_SetPrimaryPlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48534,11 +41879,7 @@ class URPC_KeysBase_X* URPC_KeysBase_X::SetServerAddress(const struct FString& S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_KeysBase_X.SetServerAddress");
 
-	struct
-	{
-		struct FString                 ServerAddress;
-		class URPC_KeysBase_X*         ReturnValue;
-	} params;
+	URPC_KeysBase_X_SetServerAddress_Params params;
 	params.ServerAddress = ServerAddress;
 
 	auto flags = fn->FunctionFlags;
@@ -48558,9 +41899,7 @@ void UOnlineGameLanReservations_X::HackForceNotServerTravelling()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HackForceNotServerTravelling");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_HackForceNotServerTravelling_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48579,10 +41918,7 @@ void UOnlineGameLanReservations_X::SetServerTraveling(bool bTraveling)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.SetServerTraveling");
 
-	struct
-	{
-		bool                           bTraveling;
-	} params;
+	UOnlineGameLanReservations_X_SetServerTraveling_Params params;
 	params.bTraveling = bTraveling;
 
 	auto flags = fn->FunctionFlags;
@@ -48602,10 +41938,7 @@ void UOnlineGameLanReservations_X::OnNewGameInfoCreated(class AGameInfo_X* Game)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.OnNewGameInfoCreated");
 
-	struct
-	{
-		class AGameInfo_X*             Game;
-	} params;
+	UOnlineGameLanReservations_X_OnNewGameInfoCreated_Params params;
 	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
@@ -48625,10 +41958,7 @@ int UOnlineGameLanReservations_X::GetNumPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.GetNumPlayers");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineGameLanReservations_X_GetNumPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48651,12 +41981,7 @@ bool UOnlineGameLanReservations_X::AllowPlayerLogin(const struct FString& Option
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.AllowPlayerLogin");
 
-	struct
-	{
-		struct FString                 Options;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanReservations_X_AllowPlayerLogin_Params params;
 	params.Options = Options;
 	params.PlayerID = PlayerID;
 
@@ -48679,10 +42004,7 @@ void UOnlineGameLanReservations_X::PlayerLoggedOut(class APlayerReplicationInfo*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PlayerLoggedOut");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameLanReservations_X_PlayerLoggedOut_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -48702,10 +42024,7 @@ void UOnlineGameLanReservations_X::PlayerLoggedIn(class APlayerReplicationInfo* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PlayerLoggedIn");
 
-	struct
-	{
-		class APlayerReplicationInfo*  PRI;
-	} params;
+	UOnlineGameLanReservations_X_PlayerLoggedIn_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -48723,9 +42042,7 @@ void UOnlineGameLanReservations_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.Reset");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48742,9 +42059,7 @@ void UOnlineGameLanReservations_X::CheckReservationTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.CheckReservationTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_CheckReservationTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48765,12 +42080,7 @@ bool UOnlineGameLanReservations_X::HandlePublicReservation(class UTcpConnection*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandlePublicReservation");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePublic_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanReservations_X_HandlePublicReservation_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -48794,11 +42104,7 @@ void UOnlineGameLanReservations_X::HandlePublicReservationMessage(class UTcpConn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandlePublicReservationMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameLanReservations_X_HandlePublicReservationMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -48817,9 +42123,7 @@ void UOnlineGameLanReservations_X::StartReservationTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.StartReservationTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_StartReservationTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48840,12 +42144,7 @@ bool UOnlineGameLanReservations_X::HandlePrivateReservation(class UTcpConnection
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandlePrivateReservation");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UAddReservationMessagePrivate_X* Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameLanReservations_X_HandlePrivateReservation_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -48869,11 +42168,7 @@ void UOnlineGameLanReservations_X::HandlePrivateReservationMessage(class UTcpCon
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandlePrivateReservationMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameLanReservations_X_HandlePrivateReservationMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -48895,11 +42190,7 @@ void UOnlineGameLanReservations_X::HandlePingMessage(class UTcpConnection* Conne
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandlePingMessage");
 
-	struct
-	{
-		class UTcpConnection*          Connection;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameLanReservations_X_HandlePingMessage_Params params;
 	params.Connection = Connection;
 	params.Message = Message;
 
@@ -48921,11 +42212,7 @@ void UOnlineGameLanReservations_X::HandleLanQueryMessage(class UOnlineMessageCom
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.HandleLanQueryMessage");
 
-	struct
-	{
-		class UOnlineMessageComponent_X* Component;
-		class UObject*                 Message;
-	} params;
+	UOnlineGameLanReservations_X_HandleLanQueryMessage_Params params;
 	params.Component = Component;
 	params.Message = Message;
 
@@ -48944,9 +42231,7 @@ void UOnlineGameLanReservations_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48963,9 +42248,7 @@ void UOnlineGameLanReservations_X::EventReservationsTimeout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.EventReservationsTimeout");
 
-	struct
-	{
-	} params;
+	UOnlineGameLanReservations_X_EventReservationsTimeout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48985,11 +42268,7 @@ class URPC_GetLeaderboardValueForUserBase_X* URPC_GetLeaderboardValueForUserBase
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboardValueForUserBase_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_GetLeaderboardValueForUserBase_X* ReturnValue;
-	} params;
+	URPC_GetLeaderboardValueForUserBase_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -49012,11 +42291,7 @@ class URPC_GetSkillLeaderboardValueForUser_X* URPC_GetSkillLeaderboardValueForUs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetSkillLeaderboardValueForUser_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_GetSkillLeaderboardValueForUser_X* ReturnValue;
-	} params;
+	URPC_GetSkillLeaderboardValueForUser_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -49039,11 +42314,7 @@ class URPC_GetLeaderboardValueForUser_X* URPC_GetLeaderboardValueForUser_X::SetS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboardValueForUser_X.SetStat");
 
-	struct
-	{
-		struct FString                 InStat;
-		class URPC_GetLeaderboardValueForUser_X* ReturnValue;
-	} params;
+	URPC_GetLeaderboardValueForUser_X_SetStat_Params params;
 	params.InStat = InStat;
 
 	auto flags = fn->FunctionFlags;
@@ -49066,11 +42337,7 @@ class URPC_GetLeaderboardBase_X* URPC_GetLeaderboardBase_X::SetDisableCrossPlay(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboardBase_X.SetDisableCrossPlay");
 
-	struct
-	{
-		bool                           InDisableCrossPlay;
-		class URPC_GetLeaderboardBase_X* ReturnValue;
-	} params;
+	URPC_GetLeaderboardBase_X_SetDisableCrossPlay_Params params;
 	params.InDisableCrossPlay = InDisableCrossPlay;
 
 	auto flags = fn->FunctionFlags;
@@ -49093,11 +42360,7 @@ class URPC_GetSkillLeaderboard_X* URPC_GetSkillLeaderboard_X::SetPlaylist(int In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetSkillLeaderboard_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_GetSkillLeaderboard_X* ReturnValue;
-	} params;
+	URPC_GetSkillLeaderboard_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -49120,11 +42383,7 @@ class URPC_GetLeaderboard_X* URPC_GetLeaderboard_X::SetStat(const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboard_X.SetStat");
 
-	struct
-	{
-		struct FString                 InStat;
-		class URPC_GetLeaderboard_X*   ReturnValue;
-	} params;
+	URPC_GetLeaderboard_X_SetStat_Params params;
 	params.InStat = InStat;
 
 	auto flags = fn->FunctionFlags;
@@ -49146,10 +42405,7 @@ void UOnlinePlayerFriends_X::ShowPlayerCard(const struct FUniqueNetId& FriendId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.ShowPlayerCard");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-	} params;
+	UOnlinePlayerFriends_X_ShowPlayerCard_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49171,12 +42427,7 @@ void UOnlinePlayerFriends_X::SetRichPresence(unsigned char LocalUserNum, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.SetRichPresence");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		struct FString                 PresenceString;
-		struct FString                 GameDataString;
-	} params;
+	UOnlinePlayerFriends_X_SetRichPresence_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.PresenceString = PresenceString;
 	params.GameDataString = GameDataString;
@@ -49198,10 +42449,7 @@ void UOnlinePlayerFriends_X::RemoveFriend(const struct FUniqueNetId& FriendId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.RemoveFriend");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-	} params;
+	UOnlinePlayerFriends_X_RemoveFriend_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49221,10 +42469,7 @@ void UOnlinePlayerFriends_X::AddFriend(const struct FUniqueNetId& FriendId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.AddFriend");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-	} params;
+	UOnlinePlayerFriends_X_AddFriend_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49245,11 +42490,7 @@ struct FString UOnlinePlayerFriends_X::GetFriendPresence(const struct FOnlineFri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.GetFriendPresence");
 
-	struct
-	{
-		struct FOnlineFriend           Friend;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayerFriends_X_GetFriendPresence_Params params;
 	params.Friend = Friend;
 
 	auto flags = fn->FunctionFlags;
@@ -49272,11 +42513,7 @@ bool UOnlinePlayerFriends_X::IsFriendJoinable(const struct FUniqueNetId& FriendI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.IsFriendJoinable");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerFriends_X_IsFriendJoinable_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49299,11 +42536,7 @@ struct FString UOnlinePlayerFriends_X::GetFriendName(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.GetFriendName");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlayerFriends_X_GetFriendName_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49326,11 +42559,7 @@ bool UOnlinePlayerFriends_X::IsFriend(const struct FUniqueNetId& FriendId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.IsFriend");
 
-	struct
-	{
-		struct FUniqueNetId            FriendId;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlayerFriends_X_IsFriend_Params params;
 	params.FriendId = FriendId;
 
 	auto flags = fn->FunctionFlags;
@@ -49350,9 +42579,7 @@ void UOnlinePlayerFriends_X::HandleFriendsChange()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.HandleFriendsChange");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerFriends_X_HandleFriendsChange_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49369,9 +42596,7 @@ void UOnlinePlayerFriends_X::GetFriendsFromOnlineSub()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.GetFriendsFromOnlineSub");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerFriends_X_GetFriendsFromOnlineSub_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49390,10 +42615,7 @@ void UOnlinePlayerFriends_X::UpdateFriendsList(const struct FScriptDelegate& Han
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.UpdateFriendsList");
 
-	struct
-	{
-		struct FScriptDelegate         HandleFriendsListChanged;
-	} params;
+	UOnlinePlayerFriends_X_UpdateFriendsList_Params params;
 	params.HandleFriendsListChanged = HandleFriendsListChanged;
 
 	auto flags = fn->FunctionFlags;
@@ -49413,10 +42635,7 @@ void UOnlinePlayerFriends_X::HandleDownloadFriendsComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.HandleDownloadFriendsComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlinePlayerFriends_X_HandleDownloadFriendsComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -49434,9 +42653,7 @@ void UOnlinePlayerFriends_X::DownloadFriendsList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.DownloadFriendsList");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerFriends_X_DownloadFriendsList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49455,10 +42672,7 @@ void UOnlinePlayerFriends_X::HandleLoginStatusChanged(class UOnlinePlayer_X* Pla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.HandleLoginStatusChanged");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-	} params;
+	UOnlinePlayerFriends_X_HandleLoginStatusChanged_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -49476,9 +42690,7 @@ void UOnlinePlayerFriends_X::OnInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.OnInit");
 
-	struct
-	{
-	} params;
+	UOnlinePlayerFriends_X_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49498,11 +42710,7 @@ void UOnlinePlayerFriends_X::EventFriendsListChanged(class UOnlinePlayerFriends_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.EventFriendsListChanged");
 
-	struct
-	{
-		class UOnlinePlayerFriends_X*  FriendsRef;
-		class UError_X*                Error;
-	} params;
+	UOnlinePlayerFriends_X_EventFriendsListChanged_Params params;
 	params.FriendsRef = FriendsRef;
 	params.Error = Error;
 
@@ -49524,11 +42732,7 @@ class URPC_GetLeaderboardRankForUsersBase_X* URPC_GetLeaderboardRankForUsersBase
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboardRankForUsersBase_X.SetPlayerIDs");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    InPlayerIDs;
-		class URPC_GetLeaderboardRankForUsersBase_X* ReturnValue;
-	} params;
+	URPC_GetLeaderboardRankForUsersBase_X_SetPlayerIDs_Params params;
 	params.InPlayerIDs = InPlayerIDs;
 
 	auto flags = fn->FunctionFlags;
@@ -49551,11 +42755,7 @@ class URPC_GetSkillLeaderboardRankForUsers_X* URPC_GetSkillLeaderboardRankForUse
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetSkillLeaderboardRankForUsers_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_GetSkillLeaderboardRankForUsers_X* ReturnValue;
-	} params;
+	URPC_GetSkillLeaderboardRankForUsers_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -49578,11 +42778,7 @@ class URPC_GetLeaderboardRankForUsers_X* URPC_GetLeaderboardRankForUsers_X::SetS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetLeaderboardRankForUsers_X.SetStat");
 
-	struct
-	{
-		struct FString                 InStat;
-		class URPC_GetLeaderboardRankForUsers_X* ReturnValue;
-	} params;
+	URPC_GetLeaderboardRankForUsers_X_SetStat_Params params;
 	params.InStat = InStat;
 
 	auto flags = fn->FunctionFlags;
@@ -49604,10 +42800,7 @@ void UCheckReservation_X::HandleCheckReservation(class URPC_CheckReservation_X* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.HandleCheckReservation");
 
-	struct
-	{
-		class URPC_CheckReservation_X* RPC;
-	} params;
+	UCheckReservation_X_HandleCheckReservation_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -49625,9 +42818,7 @@ void UCheckReservation_X::SendRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.SendRequest");
 
-	struct
-	{
-	} params;
+	UCheckReservation_X_SendRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49644,9 +42835,7 @@ void UCheckReservation_X::Cancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.Cancel");
 
-	struct
-	{
-	} params;
+	UCheckReservation_X_Cancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49665,10 +42854,7 @@ bool UCheckReservation_X::IsSearching()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.IsSearching");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UCheckReservation_X_IsSearching_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49687,9 +42873,7 @@ void UCheckReservation_X::StartSearch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.StartSearch");
 
-	struct
-	{
-	} params;
+	UCheckReservation_X_StartSearch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49709,11 +42893,7 @@ class UCheckReservation_X* UCheckReservation_X::NotifyOnError(const struct FScri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.NotifyOnError");
 
-	struct
-	{
-		struct FScriptDelegate         NewDelegate;
-		class UCheckReservation_X*     ReturnValue;
-	} params;
+	UCheckReservation_X_NotifyOnError_Params params;
 	params.NewDelegate = NewDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -49736,11 +42916,7 @@ class UCheckReservation_X* UCheckReservation_X::NotifyOnSuccess(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.NotifyOnSuccess");
 
-	struct
-	{
-		struct FScriptDelegate         NewDelegate;
-		class UCheckReservation_X*     ReturnValue;
-	} params;
+	UCheckReservation_X_NotifyOnSuccess_Params params;
 	params.NewDelegate = NewDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -49763,11 +42939,7 @@ void UCheckReservation_X::EventSuccess(class UCheckReservation_X* ReservationObj
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.EventSuccess");
 
-	struct
-	{
-		class UCheckReservation_X*     ReservationObj;
-		struct FCheckReservationData   Reservation;
-	} params;
+	UCheckReservation_X_EventSuccess_Params params;
 	params.ReservationObj = ReservationObj;
 	params.Reservation = Reservation;
 
@@ -49789,11 +42961,7 @@ void UCheckReservation_X::EventError(class UCheckReservation_X* ReservationObj, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.EventError");
 
-	struct
-	{
-		class UCheckReservation_X*     ReservationObj;
-		class UError_X*                Error;
-	} params;
+	UCheckReservation_X_EventError_Params params;
 	params.ReservationObj = ReservationObj;
 	params.Error = Error;
 
@@ -49812,9 +42980,7 @@ void UMatchmakingMetrics_X::MatchmakingEnd()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingEnd");
 
-	struct
-	{
-	} params;
+	UMatchmakingMetrics_X_MatchmakingEnd_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49831,9 +42997,7 @@ void UMatchmakingMetrics_X::MatchmakingFoundServer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingFoundServer");
 
-	struct
-	{
-	} params;
+	UMatchmakingMetrics_X_MatchmakingFoundServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49850,9 +43014,7 @@ void UMatchmakingMetrics_X::MatchmakingCancel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingCancel");
 
-	struct
-	{
-	} params;
+	UMatchmakingMetrics_X_MatchmakingCancel_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49871,10 +43033,7 @@ void UMatchmakingMetrics_X::MatchmakingError(int Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingError");
 
-	struct
-	{
-		int                            Error;
-	} params;
+	UMatchmakingMetrics_X_MatchmakingError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -49894,10 +43053,7 @@ void UMatchmakingMetrics_X::MatchmakingErrorUnknown(const struct FString& Messag
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingErrorUnknown");
 
-	struct
-	{
-		struct FString                 Message;
-	} params;
+	UMatchmakingMetrics_X_MatchmakingErrorUnknown_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -49917,10 +43073,7 @@ void UMatchmakingMetrics_X::RecordError(const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.RecordError");
 
-	struct
-	{
-		struct FString                 Error;
-	} params;
+	UMatchmakingMetrics_X_RecordError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -49942,12 +43095,7 @@ void UMatchmakingMetrics_X::MatchmakingStart(TArray<struct FString> Regions, TAr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingStart");
 
-	struct
-	{
-		TArray<struct FString>         Regions;
-		TArray<int>                    Playlists;
-		bool                           bDisableCrossPlay;
-	} params;
+	UMatchmakingMetrics_X_MatchmakingStart_Params params;
 	params.Regions = Regions;
 	params.Playlists = Playlists;
 	params.bDisableCrossPlay = bDisableCrossPlay;
@@ -49970,11 +43118,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetIgnoreSkill(bool bInI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetIgnoreSkill");
 
-	struct
-	{
-		bool                           bInIgnoreSkill;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetIgnoreSkill_Params params;
 	params.bInIgnoreSkill = bInIgnoreSkill;
 
 	auto flags = fn->FunctionFlags;
@@ -49997,11 +43141,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetPartyMembers(TArray<s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetPartyMembers");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    InPartyMembers;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetPartyMembers_Params params;
 	params.InPartyMembers = InPartyMembers;
 
 	auto flags = fn->FunctionFlags;
@@ -50024,11 +43164,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetDisableCrossPlay(bool
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetDisableCrossPlay");
 
-	struct
-	{
-		bool                           bInDisableCrossplay;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetDisableCrossPlay_Params params;
 	params.bInDisableCrossplay = bInDisableCrossplay;
 
 	auto flags = fn->FunctionFlags;
@@ -50050,10 +43186,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetCurrentServerID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetCurrentServerID");
 
-	struct
-	{
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetCurrentServerID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50075,11 +43208,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetSecondsSearching(int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetSecondsSearching");
 
-	struct
-	{
-		int                            InSecondsSearching;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetSecondsSearching_Params params;
 	params.InSecondsSearching = InSecondsSearching;
 
 	auto flags = fn->FunctionFlags;
@@ -50102,11 +43231,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetPlaylists(TArray<int>
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetPlaylists");
 
-	struct
-	{
-		TArray<int>                    InPlaylists;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetPlaylists_Params params;
 	params.InPlaylists = InPlaylists;
 
 	auto flags = fn->FunctionFlags;
@@ -50129,11 +43254,7 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetRegions(TArray<struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_StartMatchmaking_X.SetRegions");
 
-	struct
-	{
-		TArray<struct FString>         InRegions;
-		class URPC_StartMatchmaking_X* ReturnValue;
-	} params;
+	URPC_StartMatchmaking_X_SetRegions_Params params;
 	params.InRegions = InRegions;
 
 	auto flags = fn->FunctionFlags;
@@ -50155,10 +43276,7 @@ bool UPartyMessage_X::Broadcast()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_X.Broadcast");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UPartyMessage_X_Broadcast_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50180,11 +43298,7 @@ class UPartyMessage_SearchStatus_X* UPartyMessage_SearchStatus_X::SetIsSearching
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_SearchStatus_X.SetIsSearching");
 
-	struct
-	{
-		bool                           bValue;
-		class UPartyMessage_SearchStatus_X* ReturnValue;
-	} params;
+	UPartyMessage_SearchStatus_X_SetIsSearching_Params params;
 	params.bValue = bValue;
 
 	auto flags = fn->FunctionFlags;
@@ -50207,11 +43321,7 @@ class UPartyMessage_SearchStatus_X* UPartyMessage_SearchStatus_X::SetSearchState
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_SearchStatus_X.SetSearchState");
 
-	struct
-	{
-		struct FName                   InSearchState;
-		class UPartyMessage_SearchStatus_X* ReturnValue;
-	} params;
+	UPartyMessage_SearchStatus_X_SetSearchState_Params params;
 	params.InSearchState = InSearchState;
 
 	auto flags = fn->FunctionFlags;
@@ -50234,11 +43344,7 @@ class UPartyMessage_Kick_X* UPartyMessage_Kick_X::SetReason(TEnumAsByte<enum cla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_Kick_X.SetReason");
 
-	struct
-	{
-		TEnumAsByte<enum class ELobbyKickReason> InKickReason;
-		class UPartyMessage_Kick_X*    ReturnValue;
-	} params;
+	UPartyMessage_Kick_X_SetReason_Params params;
 	params.InKickReason = InKickReason;
 
 	auto flags = fn->FunctionFlags;
@@ -50261,11 +43367,7 @@ class UPartyMessage_Kick_X* UPartyMessage_Kick_X::SetInstigator(const struct FUn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_Kick_X.SetInstigator");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayer;
-		class UPartyMessage_Kick_X*    ReturnValue;
-	} params;
+	UPartyMessage_Kick_X_SetInstigator_Params params;
 	params.InPlayer = InPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -50288,11 +43390,7 @@ class UPartyMessage_Kick_X* UPartyMessage_Kick_X::SetKicked(const struct FUnique
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_Kick_X.SetKicked");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayer;
-		class UPartyMessage_Kick_X*    ReturnValue;
-	} params;
+	UPartyMessage_Kick_X_SetKicked_Params params;
 	params.InPlayer = InPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -50315,11 +43413,7 @@ class UPartyMessage_NewLeader_X* UPartyMessage_NewLeader_X::SetLeader(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_NewLeader_X.SetLeader");
 
-	struct
-	{
-		struct FUniqueNetId            InLeader;
-		class UPartyMessage_NewLeader_X* ReturnValue;
-	} params;
+	UPartyMessage_NewLeader_X_SetLeader_Params params;
 	params.InLeader = InLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -50342,11 +43436,7 @@ class UPartyMessage_LocalPlayers_X* UPartyMessage_LocalPlayers_X::SetFromLeader(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.SetFromLeader");
 
-	struct
-	{
-		bool                           bIsLeader;
-		class UPartyMessage_LocalPlayers_X* ReturnValue;
-	} params;
+	UPartyMessage_LocalPlayers_X_SetFromLeader_Params params;
 	params.bIsLeader = bIsLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -50368,10 +43458,7 @@ void UPartyMessage_LocalPlayers_X::AddMember(const struct FPartyMember& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.AddMember");
 
-	struct
-	{
-		struct FPartyMember            Member;
-	} params;
+	UPartyMessage_LocalPlayers_X_AddMember_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -50393,12 +43480,7 @@ class UPartyMessage_LocalPlayers_X* UPartyMessage_LocalPlayers_X::AddPlayer(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.AddPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 PlayerName;
-		class UPartyMessage_LocalPlayers_X* ReturnValue;
-	} params;
+	UPartyMessage_LocalPlayers_X_AddPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 
@@ -50422,11 +43504,7 @@ class UPartyMessage_LocalPlayers_X* UPartyMessage_LocalPlayers_X::AddOnlinePlaye
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayer");
 
-	struct
-	{
-		class UOnlinePlayer_X*         Player;
-		class UPartyMessage_LocalPlayers_X* ReturnValue;
-	} params;
+	UPartyMessage_LocalPlayers_X_AddOnlinePlayer_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -50449,11 +43527,7 @@ class UPartyMessage_LocalPlayers_X* UPartyMessage_LocalPlayers_X::SetPrimaryMemb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.SetPrimaryMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InPrimaryMemberId;
-		class UPartyMessage_LocalPlayers_X* ReturnValue;
-	} params;
+	UPartyMessage_LocalPlayers_X_SetPrimaryMemberId_Params params;
 	params.InPrimaryMemberId = InPrimaryMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50475,10 +43549,7 @@ class UPartyMessage_LocalPlayers_X* UPartyMessage_LocalPlayers_X::AddOnlinePlaye
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayers");
 
-	struct
-	{
-		class UPartyMessage_LocalPlayers_X* ReturnValue;
-	} params;
+	UPartyMessage_LocalPlayers_X_AddOnlinePlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50500,11 +43571,7 @@ class UPartyMessage_MatchmakingAvailability_X* UPartyMessage_MatchmakingAvailabi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMatchmakeRestrictions");
 
-	struct
-	{
-		int                            InRestrictions;
-		class UPartyMessage_MatchmakingAvailability_X* ReturnValue;
-	} params;
+	UPartyMessage_MatchmakingAvailability_X_SetMatchmakeRestrictions_Params params;
 	params.InRestrictions = InRestrictions;
 
 	auto flags = fn->FunctionFlags;
@@ -50527,11 +43594,7 @@ class UPartyMessage_MatchmakingAvailability_X* UPartyMessage_MatchmakingAvailabi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_MatchmakingAvailability_X* ReturnValue;
-	} params;
+	UPartyMessage_MatchmakingAvailability_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50554,11 +43617,7 @@ class UPartyMessage_JoinGame_X* UPartyMessage_JoinGame_X::SetSettings(struct FPa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_JoinGame_X.SetSettings");
 
-	struct
-	{
-		struct FPartyJoinMatchSettings InSettings;
-		class UPartyMessage_JoinGame_X* ReturnValue;
-	} params;
+	UPartyMessage_JoinGame_X_SetSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50583,11 +43642,7 @@ class UPartyMessage_PartyMemberJoinGame_X* UPartyMessage_PartyMemberJoinGame_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class UPartyMessage_PartyMemberJoinGame_X* ReturnValue;
-	} params;
+	UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -50610,11 +43665,7 @@ class UPartyMessage_PartyMemberJoinGame_X* UPartyMessage_PartyMemberJoinGame_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberServer");
 
-	struct
-	{
-		struct FPartyMemberServer      InServer;
-		class UPartyMessage_PartyMemberJoinGame_X* ReturnValue;
-	} params;
+	UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberServer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50639,11 +43690,7 @@ class UPartyMessage_BugIt_X* UPartyMessage_BugIt_X::SetReason(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_BugIt_X.SetReason");
 
-	struct
-	{
-		struct FString                 InReason;
-		class UPartyMessage_BugIt_X*   ReturnValue;
-	} params;
+	UPartyMessage_BugIt_X_SetReason_Params params;
 	params.InReason = InReason;
 
 	auto flags = fn->FunctionFlags;
@@ -50666,11 +43713,7 @@ class UPartyMessage_DisableCrossPlay_X* UPartyMessage_DisableCrossPlay_X::SetDis
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_DisableCrossPlay_X.SetDisableCrossPlay");
 
-	struct
-	{
-		bool                           InDisableCrossPlay;
-		class UPartyMessage_DisableCrossPlay_X* ReturnValue;
-	} params;
+	UPartyMessage_DisableCrossPlay_X_SetDisableCrossPlay_Params params;
 	params.InDisableCrossPlay = InDisableCrossPlay;
 
 	auto flags = fn->FunctionFlags;
@@ -50693,11 +43736,7 @@ class UPartyMessage_DisableCrossPlay_X* UPartyMessage_DisableCrossPlay_X::SetMem
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_DisableCrossPlay_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_DisableCrossPlay_X* ReturnValue;
-	} params;
+	UPartyMessage_DisableCrossPlay_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50720,11 +43759,7 @@ class UPartyMessage_InviteToTrade_X* UPartyMessage_InviteToTrade_X::SetInviteMem
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_InviteToTrade_X.SetInviteMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_InviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_InviteToTrade_X_SetInviteMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50747,11 +43782,7 @@ class UPartyMessage_InviteToTrade_X* UPartyMessage_InviteToTrade_X::SetMemberId(
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_InviteToTrade_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_InviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_InviteToTrade_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50774,11 +43805,7 @@ class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetTradeId");
 
-	struct
-	{
-		struct FGuid                   InTradeId;
-		class UPartyMessage_AcceptInviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_AcceptInviteToTrade_X_SetTradeId_Params params;
 	params.InTradeId = InTradeId;
 
 	auto flags = fn->FunctionFlags;
@@ -50801,11 +43828,7 @@ class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteAccepted");
 
-	struct
-	{
-		bool                           bInInviteAccepted;
-		class UPartyMessage_AcceptInviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_AcceptInviteToTrade_X_SetInviteAccepted_Params params;
 	params.bInInviteAccepted = bInInviteAccepted;
 
 	auto flags = fn->FunctionFlags;
@@ -50828,11 +43851,7 @@ class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_AcceptInviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_AcceptInviteToTrade_X_SetInviteMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50855,11 +43874,7 @@ class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_AcceptInviteToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_AcceptInviteToTrade_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50882,11 +43897,7 @@ class UPartyMessage_PlayerTradeComplete_X* UPartyMessage_PlayerTradeComplete_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetTradingMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_PlayerTradeComplete_X* ReturnValue;
-	} params;
+	UPartyMessage_PlayerTradeComplete_X_SetTradingMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50909,11 +43920,7 @@ class UPartyMessage_PlayerTradeComplete_X* UPartyMessage_PlayerTradeComplete_X::
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_PlayerTradeComplete_X* ReturnValue;
-	} params;
+	UPartyMessage_PlayerTradeComplete_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -50938,13 +43945,7 @@ void UPartyMetrics_X::PartyChanged(bool bLeader, int PartySize, int LocalPlayers
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyChanged");
 
-	struct
-	{
-		bool                           bLeader;
-		int                            PartySize;
-		int                            LocalPlayers;
-		int                            RemotePlayers;
-	} params;
+	UPartyMetrics_X_PartyChanged_Params params;
 	params.bLeader = bLeader;
 	params.PartySize = PartySize;
 	params.LocalPlayers = LocalPlayers;
@@ -50968,11 +43969,7 @@ struct FPartyMetricsData UPartyMetrics_X::CreatePartyMetricsData(class UOnlineGa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.CreatePartyMetricsData");
 
-	struct
-	{
-		class UOnlineGameParty_X*      Party;
-		struct FPartyMetricsData       ReturnValue;
-	} params;
+	UPartyMetrics_X_CreatePartyMetricsData_Params params;
 	params.Party = Party;
 
 	auto flags = fn->FunctionFlags;
@@ -50994,10 +43991,7 @@ void UPartyMetrics_X::RecordPartyChanged(class UOnlineGameParty_X* Party)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.RecordPartyChanged");
 
-	struct
-	{
-		class UOnlineGameParty_X*      Party;
-	} params;
+	UPartyMetrics_X_RecordPartyChanged_Params params;
 	params.Party = Party;
 
 	auto flags = fn->FunctionFlags;
@@ -51017,10 +44011,7 @@ void UPartyMetrics_X::PartyError(const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyError");
 
-	struct
-	{
-		struct FString                 Error;
-	} params;
+	UPartyMetrics_X_PartyError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -51040,10 +44031,7 @@ void UPartyMetrics_X::PartyKickRemotePlayer(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyKickRemotePlayer");
 
-	struct
-	{
-		struct FString                 Reason;
-	} params;
+	UPartyMetrics_X_PartyKickRemotePlayer_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -51063,10 +44051,7 @@ void UPartyMetrics_X::PartyKickLocalPlayer(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyKickLocalPlayer");
 
-	struct
-	{
-		struct FString                 Reason;
-	} params;
+	UPartyMetrics_X_PartyKickLocalPlayer_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -51086,10 +44071,7 @@ void UPartyMetrics_X::PartyLeave(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyLeave");
 
-	struct
-	{
-		struct FString                 Reason;
-	} params;
+	UPartyMetrics_X_PartyLeave_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -51107,9 +44089,7 @@ void UPartyMetrics_X::PartyCreationFailed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyCreationFailed");
 
-	struct
-	{
-	} params;
+	UPartyMetrics_X_PartyCreationFailed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51126,9 +44106,7 @@ void UPartyMetrics_X::PartyCreated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyCreated");
 
-	struct
-	{
-	} params;
+	UPartyMetrics_X_PartyCreated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51148,11 +44126,7 @@ class UPartyMessage_ReadyToTrade_X* UPartyMessage_ReadyToTrade_X::SetReadyToTrad
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_ReadyToTrade_X.SetReadyToTrade");
 
-	struct
-	{
-		bool                           bInReadyToTrade;
-		class UPartyMessage_ReadyToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_ReadyToTrade_X_SetReadyToTrade_Params params;
 	params.bInReadyToTrade = bInReadyToTrade;
 
 	auto flags = fn->FunctionFlags;
@@ -51175,11 +44149,7 @@ class UPartyMessage_ReadyToTrade_X* UPartyMessage_ReadyToTrade_X::SetTradingMemb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_ReadyToTrade_X.SetTradingMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InTradingMemberId;
-		class UPartyMessage_ReadyToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_ReadyToTrade_X_SetTradingMemberId_Params params;
 	params.InTradingMemberId = InTradingMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -51202,11 +44172,7 @@ class UPartyMessage_ReadyToTrade_X* UPartyMessage_ReadyToTrade_X::SetMemberId(co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_ReadyToTrade_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_ReadyToTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_ReadyToTrade_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -51228,10 +44194,7 @@ bool URankedConfig_X::HasSeasonEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RankedConfig_X.HasSeasonEnded");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	URankedConfig_X_HasSeasonEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51252,10 +44215,7 @@ int URankedConfig_X::GetSeasonTimeRemaining()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RankedConfig_X.GetSeasonTimeRemaining");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	URankedConfig_X_GetSeasonTimeRemaining_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51274,9 +44234,7 @@ void URankedConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RankedConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	URankedConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51296,11 +44254,7 @@ class URPC_GetPlayerTitles_X* URPC_GetPlayerTitles_X::SetPlayerID(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerTitles_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_GetPlayerTitles_X*  ReturnValue;
-	} params;
+	URPC_GetPlayerTitles_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -51323,11 +44277,7 @@ class URPC_PlayerSearchPrivateMatch_X* URPC_PlayerSearchPrivateMatch_X::SetRegio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_PlayerSearchPrivateMatch_X.SetRegion");
 
-	struct
-	{
-		struct FString                 InRegion;
-		class URPC_PlayerSearchPrivateMatch_X* ReturnValue;
-	} params;
+	URPC_PlayerSearchPrivateMatch_X_SetRegion_Params params;
 	params.InRegion = InRegion;
 
 	auto flags = fn->FunctionFlags;
@@ -51351,12 +44301,7 @@ int UOnlineGameReservations_AssignTeamsByParty_X::STATIC_PartySort(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_AssignTeamsByParty_X.PartySort");
 
-	struct
-	{
-		struct FPartyByTeam            Left;
-		struct FPartyByTeam            Right;
-		int                            ReturnValue;
-	} params;
+	UOnlineGameReservations_AssignTeamsByParty_X_PartySort_Params params;
 	params.Left = Left;
 	params.Right = Right;
 
@@ -51380,11 +44325,7 @@ void UOnlineGameReservations_AssignTeamsByParty_X::STATIC_AssignTeams(int TeamSi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_AssignTeamsByParty_X.AssignTeams");
 
-	struct
-	{
-		int                            TeamSize;
-		TArray<struct FReservationData> TestPlayers;
-	} params;
+	UOnlineGameReservations_AssignTeamsByParty_X_AssignTeams_Params params;
 	params.TeamSize = TeamSize;
 
 	auto flags = fn->FunctionFlags;
@@ -51405,9 +44346,7 @@ void UReservationsMetrics_X::NotAllPlayersJoined()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.NotAllPlayersJoined");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_NotAllPlayersJoined_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51424,9 +44363,7 @@ void UReservationsMetrics_X::GetKeysInvalidOrigin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.GetKeysInvalidOrigin");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_GetKeysInvalidOrigin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51443,9 +44380,7 @@ void UReservationsMetrics_X::GetKeysFailed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.GetKeysFailed");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_GetKeysFailed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51462,9 +44397,7 @@ void UReservationsMetrics_X::ReservationsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.ReservationsFull");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_ReservationsFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51481,9 +44414,7 @@ void UReservationsMetrics_X::PlatformExlusiveReservation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.PlatformExlusiveReservation");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_PlatformExlusiveReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51500,9 +44431,7 @@ void UReservationsMetrics_X::WrongReservationPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.WrongReservationPlaylist");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_WrongReservationPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51519,9 +44448,7 @@ void UReservationsMetrics_X::InvalidReservationPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.InvalidReservationPlaylist");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_InvalidReservationPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51538,9 +44465,7 @@ void UReservationsMetrics_X::RankedReconnect()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.RankedReconnect");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_RankedReconnect_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51557,9 +44482,7 @@ void UReservationsMetrics_X::RankedReconnectFinished()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.RankedReconnectFinished");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_RankedReconnectFinished_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51576,9 +44499,7 @@ void UReservationsMetrics_X::FriendJoin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.FriendJoin");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_FriendJoin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51595,9 +44516,7 @@ void UReservationsMetrics_X::FriendJoinEmpty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.FriendJoinEmpty");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_FriendJoinEmpty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51614,9 +44533,7 @@ void UReservationsMetrics_X::FriendJoinRanked()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.FriendJoinRanked");
 
-	struct
-	{
-	} params;
+	UReservationsMetrics_X_FriendJoinRanked_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51635,10 +44552,7 @@ void UReservationsMetrics_X::FirstReservation(int Playlist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.FirstReservation");
 
-	struct
-	{
-		int                            Playlist;
-	} params;
+	UReservationsMetrics_X_FirstReservation_Params params;
 	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
@@ -51659,11 +44573,7 @@ bool UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.LambdaCallback");
 
-	struct
-	{
-		struct FReservationData        P;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2_LambdaCallback_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -51686,11 +44596,7 @@ class UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D6
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.StaticConstruct");
 
-	struct
-	{
-		class UOnlineGameReservations_X* InOuter;
-		class UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2* ReturnValue;
-	} params;
+	UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2_StaticConstruct_Params params;
 	params.InOuter = InOuter;
 
 	auto flags = fn->FunctionFlags;
@@ -51710,9 +44616,7 @@ void APRI_X::OnUniqueIdChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.OnUniqueIdChanged");
 
-	struct
-	{
-	} params;
+	APRI_X_OnUniqueIdChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51731,10 +44635,7 @@ void APRI_X::SetUniqueId(const struct FUniqueNetId& PlayerUniqueId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.SetUniqueId");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerUniqueId;
-	} params;
+	APRI_X_SetUniqueId_Params params;
 	params.PlayerUniqueId = PlayerUniqueId;
 
 	auto flags = fn->FunctionFlags;
@@ -51752,9 +44653,7 @@ void APRI_X::RegisterPlayerWithSession()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.RegisterPlayerWithSession");
 
-	struct
-	{
-	} params;
+	APRI_X_RegisterPlayerWithSession_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51771,9 +44670,7 @@ void APRI_X::OnTeamChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.OnTeamChanged");
 
-	struct
-	{
-	} params;
+	APRI_X_OnTeamChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51792,10 +44689,7 @@ void APRI_X::SetPlayerTeam(class ATeamInfo* NewTeam)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.SetPlayerTeam");
 
-	struct
-	{
-		class ATeamInfo*               NewTeam;
-	} params;
+	APRI_X_SetPlayerTeam_Params params;
 	params.NewTeam = NewTeam;
 
 	auto flags = fn->FunctionFlags;
@@ -51813,9 +44707,7 @@ void APRI_X::OnOwnerChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.OnOwnerChanged");
 
-	struct
-	{
-	} params;
+	APRI_X_OnOwnerChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51834,10 +44726,7 @@ void APRI_X::SetPlayerName(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.SetPlayerName");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	APRI_X_SetPlayerName_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -51857,10 +44746,7 @@ void APRI_X::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	APRI_X_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -51880,10 +44766,7 @@ void APRI_X::EventTeamChanged(class APRI_X* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.EventTeamChanged");
 
-	struct
-	{
-		class APRI_X*                  PRI;
-	} params;
+	APRI_X_EventTeamChanged_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -51903,10 +44786,7 @@ void APRI_X::EventUniqueIdChanged(class APRI_X* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.EventUniqueIdChanged");
 
-	struct
-	{
-		class APRI_X*                  PRI;
-	} params;
+	APRI_X_EventUniqueIdChanged_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -51926,10 +44806,7 @@ void APRI_X::EventPlayerNameChanged(class APRI_X* PRI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PRI_X.EventPlayerNameChanged");
 
-	struct
-	{
-		class APRI_X*                  PRI;
-	} params;
+	APRI_X_EventPlayerNameChanged_Params params;
 	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
@@ -51950,11 +44827,7 @@ bool UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.LambdaCallback");
 
-	struct
-	{
-		struct FReservationData        P;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6_LambdaCallback_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -51977,11 +44850,7 @@ class UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.StaticConstruct");
 
-	struct
-	{
-		class UOnlineGameReservations_X* InOuter;
-		class UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6* ReturnValue;
-	} params;
+	UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6_StaticConstruct_Params params;
 	params.InOuter = InOuter;
 
 	auto flags = fn->FunctionFlags;
@@ -52004,11 +44873,7 @@ class URPC_GetKeys_X* URPC_GetKeys_X::SetPlayer(const struct FUniqueNetId& InPla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetKeys_X.SetPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_GetKeys_X*          ReturnValue;
-	} params;
+	URPC_GetKeys_X_SetPlayer_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -52028,9 +44893,7 @@ void URPC_CustomGameServerGet_X::OnSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CustomGameServerGet_X.OnSuccess");
 
-	struct
-	{
-	} params;
+	URPC_CustomGameServerGet_X_OnSuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52050,11 +44913,7 @@ class URPC_CustomGameServerGet_X* URPC_CustomGameServerGet_X::SetPassword(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CustomGameServerGet_X.SetPassword");
 
-	struct
-	{
-		struct FString                 InPassword;
-		class URPC_CustomGameServerGet_X* ReturnValue;
-	} params;
+	URPC_CustomGameServerGet_X_SetPassword_Params params;
 	params.InPassword = InPassword;
 
 	auto flags = fn->FunctionFlags;
@@ -52077,11 +44936,7 @@ class URPC_CustomGameServerGet_X* URPC_CustomGameServerGet_X::SetServerName(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CustomGameServerGet_X.SetServerName");
 
-	struct
-	{
-		struct FString                 InServerName;
-		class URPC_CustomGameServerGet_X* ReturnValue;
-	} params;
+	URPC_CustomGameServerGet_X_SetServerName_Params params;
 	params.InServerName = InServerName;
 
 	auto flags = fn->FunctionFlags;
@@ -52104,11 +44959,7 @@ int UPlaylistSkillCache_X::GetPlayerIndex(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlaylistSkillCache_X.GetPlayerIndex");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            ReturnValue;
-	} params;
+	UPlaylistSkillCache_X_GetPlayerIndex_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -52131,11 +44982,7 @@ struct FPlayerSkillRating UPlaylistSkillCache_X::GetPlayerRating(const struct FU
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlaylistSkillCache_X.GetPlayerRating");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FPlayerSkillRating      ReturnValue;
-	} params;
+	UPlaylistSkillCache_X_GetPlayerRating_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -52157,10 +45004,7 @@ void UPlaylistSkillCache_X::ClearSkill(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlaylistSkillCache_X.ClearSkill");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-	} params;
+	UPlaylistSkillCache_X_ClearSkill_Params params;
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
@@ -52180,10 +45024,7 @@ void UPlaylistSkillCache_X::CacheSkill(const struct FPlayerSkillRating& Rating)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlaylistSkillCache_X.CacheSkill");
 
-	struct
-	{
-		struct FPlayerSkillRating      Rating;
-	} params;
+	UPlaylistSkillCache_X_CacheSkill_Params params;
 	params.Rating = Rating;
 
 	auto flags = fn->FunctionFlags;
@@ -52203,10 +45044,7 @@ void UPlaylistSkillCache_X::PreCacheSkill(const struct FPlayerSkillRating& Ratin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlaylistSkillCache_X.PreCacheSkill");
 
-	struct
-	{
-		struct FPlayerSkillRating      Rating;
-	} params;
+	UPlaylistSkillCache_X_PreCacheSkill_Params params;
 	params.Rating = Rating;
 
 	auto flags = fn->FunctionFlags;
@@ -52227,11 +45065,7 @@ class URPC_GetPlayerSkill_X* URPC_GetPlayerSkill_X::SetPlayerID(const struct FUn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerSkill_X.SetPlayerID");
 
-	struct
-	{
-		struct FUniqueNetId            InPlayerId;
-		class URPC_GetPlayerSkill_X*   ReturnValue;
-	} params;
+	URPC_GetPlayerSkill_X_SetPlayerID_Params params;
 	params.InPlayerId = InPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -52256,13 +45090,7 @@ struct FSkillMatchPlayer URPC_UpdateSkills_X::CreateSkillMatchPlayer(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateSkills_X.CreateSkillMatchPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		float                          PctTimePlayed;
-		bool                           bQuitter;
-		struct FSkillMatchPlayer       ReturnValue;
-	} params;
+	URPC_UpdateSkills_X_CreateSkillMatchPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.PctTimePlayed = PctTimePlayed;
 	params.bQuitter = bQuitter;
@@ -52287,11 +45115,7 @@ class URPC_UpdateSkills_X* URPC_UpdateSkills_X::SetMetrics(class UMetricsSystem_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateSkills_X.SetMetrics");
 
-	struct
-	{
-		class UMetricsSystem_X*        MetricsSystem;
-		class URPC_UpdateSkills_X*     ReturnValue;
-	} params;
+	URPC_UpdateSkills_X_SetMetrics_Params params;
 	params.MetricsSystem = MetricsSystem;
 
 	auto flags = fn->FunctionFlags;
@@ -52314,11 +45138,7 @@ class URPC_UpdateSkills_X* URPC_UpdateSkills_X::SetMatch(class UMatchRecorder_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateSkills_X.SetMatch");
 
-	struct
-	{
-		class UMatchRecorder_X*        InRecorder;
-		class URPC_UpdateSkills_X*     ReturnValue;
-	} params;
+	URPC_UpdateSkills_X_SetMatch_Params params;
 	params.InRecorder = InRecorder;
 
 	auto flags = fn->FunctionFlags;
@@ -52341,11 +45161,7 @@ class URPC_UpdateSkills_X* URPC_UpdateSkills_X::SetMatchGUID(const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateSkills_X.SetMatchGUID");
 
-	struct
-	{
-		struct FString                 InGuid;
-		class URPC_UpdateSkills_X*     ReturnValue;
-	} params;
+	URPC_UpdateSkills_X_SetMatchGUID_Params params;
 	params.InGuid = InGuid;
 
 	auto flags = fn->FunctionFlags;
@@ -52368,11 +45184,7 @@ void UMatchRecorder_X::GetSkillMatchPlayers(TArray<struct FSkillMatchPlayer>* Wi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.GetSkillMatchPlayers");
 
-	struct
-	{
-		TArray<struct FSkillMatchPlayer> Winners;
-		TArray<struct FSkillMatchPlayer> Losers;
-	} params;
+	UMatchRecorder_X_GetSkillMatchPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52397,11 +45209,7 @@ struct FSkillMatchPlayer UMatchRecorder_X::GetSkillMatchPlayer(const struct FRec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.GetSkillMatchPlayer");
 
-	struct
-	{
-		struct FRecordedMatchPlayer    Player;
-		struct FSkillMatchPlayer       ReturnValue;
-	} params;
+	UMatchRecorder_X_GetSkillMatchPlayer_Params params;
 	params.Player = Player;
 
 	auto flags = fn->FunctionFlags;
@@ -52427,14 +45235,7 @@ void UMatchRecorder_X::Finish(int InWinningTeam, int InTeam0Score, int InTeam1Sc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.Finish");
 
-	struct
-	{
-		int                            InWinningTeam;
-		int                            InTeam0Score;
-		int                            InTeam1Score;
-		int                            InPlaylist;
-		bool                           bInOvertime;
-	} params;
+	UMatchRecorder_X_Finish_Params params;
 	params.InWinningTeam = InWinningTeam;
 	params.InTeam0Score = InTeam0Score;
 	params.InTeam1Score = InTeam1Score;
@@ -52458,10 +45259,7 @@ void UMatchRecorder_X::AccumulateTime(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.AccumulateTime");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UMatchRecorder_X_AccumulateTime_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -52482,11 +45280,7 @@ void UMatchRecorder_X::RemovePlayer(const struct FUniqueNetId& PlayerID, bool bP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.RemovePlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           bPenalize;
-	} params;
+	UMatchRecorder_X_RemovePlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.bPenalize = bPenalize;
 
@@ -52509,12 +45303,7 @@ void UMatchRecorder_X::AddPlayer(const struct FUniqueNetId& PlayerID, int Team, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.AddPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            Team;
-		struct FUniqueNetId            PartyID;
-	} params;
+	UMatchRecorder_X_AddPlayer_Params params;
 	params.PlayerID = PlayerID;
 	params.Team = Team;
 	params.PartyID = PartyID;
@@ -52537,11 +45326,7 @@ class URPC_UpdateLeaderboard_X* URPC_UpdateLeaderboard_X::SetUpdates(TArray<stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateLeaderboard_X.SetUpdates");
 
-	struct
-	{
-		TArray<struct FUploadStatDataSet> InUpdates;
-		class URPC_UpdateLeaderboard_X* ReturnValue;
-	} params;
+	URPC_UpdateLeaderboard_X_SetUpdates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52566,11 +45351,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetTrial(bool bIsTrial)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetTrial");
 
-	struct
-	{
-		bool                           bIsTrial;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetTrial_Params params;
 	params.bIsTrial = bIsTrial;
 
 	auto flags = fn->FunctionFlags;
@@ -52593,11 +45374,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetBuildRegion(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetBuildRegion");
 
-	struct
-	{
-		struct FString                 InBuildRegion;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetBuildRegion_Params params;
 	params.InBuildRegion = InBuildRegion;
 
 	auto flags = fn->FunctionFlags;
@@ -52620,11 +45397,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetAuthTicket(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetAuthTicket");
 
-	struct
-	{
-		struct FString                 InAuthTicket;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetAuthTicket_Params params;
 	params.InAuthTicket = InAuthTicket;
 
 	auto flags = fn->FunctionFlags;
@@ -52647,11 +45420,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetLanguage(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetLanguage");
 
-	struct
-	{
-		struct FString                 InLanguage;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetLanguage_Params params;
 	params.InLanguage = InLanguage;
 
 	auto flags = fn->FunctionFlags;
@@ -52674,11 +45443,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetGameVersion(int InGameV
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetGameVersion");
 
-	struct
-	{
-		int                            InGameVersion;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetGameVersion_Params params;
 	params.InGameVersion = InGameVersion;
 
 	auto flags = fn->FunctionFlags;
@@ -52700,10 +45465,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetPlayerID()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetPlayerID");
 
-	struct
-	{
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetPlayerID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52725,11 +45487,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetPlayerName(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetPlayerName");
 
-	struct
-	{
-		struct FString                 InPlayerName;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetPlayerName_Params params;
 	params.InPlayerName = InPlayerName;
 
 	auto flags = fn->FunctionFlags;
@@ -52752,11 +45510,7 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetPlatform(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_LoginAuthPlayer_X.SetPlatform");
 
-	struct
-	{
-		struct FString                 InPlatform;
-		class URPC_LoginAuthPlayer_X*  ReturnValue;
-	} params;
+	URPC_LoginAuthPlayer_X_SetPlatform_Params params;
 	params.InPlatform = InPlatform;
 
 	auto flags = fn->FunctionFlags;
@@ -52779,11 +45533,7 @@ class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetAllow");
 
-	struct
-	{
-		bool                           bValue;
-		class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue;
-	} params;
+	UPartyMessage_RequestAddLocalPlayer_X_SetAllow_Params params;
 	params.bValue = bValue;
 
 	auto flags = fn->FunctionFlags;
@@ -52805,10 +45555,7 @@ class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetReponse");
 
-	struct
-	{
-		class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue;
-	} params;
+	UPartyMessage_RequestAddLocalPlayer_X_SetReponse_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52830,11 +45577,7 @@ class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue;
-	} params;
+	UPartyMessage_RequestAddLocalPlayer_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -52856,10 +45599,7 @@ int UPostProcessManager_X::GetNextPostProcessOverride()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.GetNextPostProcessOverride");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UPostProcessManager_X_GetNextPostProcessOverride_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52881,11 +45621,7 @@ void UPostProcessManager_X::TogglePostProcessSettings(const struct FName& Id, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.TogglePostProcessSettings");
 
-	struct
-	{
-		struct FName                   Id;
-		bool                           bEnabled;
-	} params;
+	UPostProcessManager_X_TogglePostProcessSettings_Params params;
 	params.Id = Id;
 	params.bEnabled = bEnabled;
 
@@ -52907,11 +45643,7 @@ void UPostProcessManager_X::SetMaterialEffectValue(const struct FName& EffectNam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.SetMaterialEffectValue");
 
-	struct
-	{
-		struct FName                   EffectName;
-		float                          NewValue;
-	} params;
+	UPostProcessManager_X_SetMaterialEffectValue_Params params;
 	params.EffectName = EffectName;
 	params.NewValue = NewValue;
 
@@ -52932,10 +45664,7 @@ void UPostProcessManager_X::ResetEffectsToDefaults(bool bRebuildPostProcessChain
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.ResetEffectsToDefaults");
 
-	struct
-	{
-		bool                           bRebuildPostProcessChains;
-	} params;
+	UPostProcessManager_X_ResetEffectsToDefaults_Params params;
 	params.bRebuildPostProcessChains = bRebuildPostProcessChains;
 
 	auto flags = fn->FunctionFlags;
@@ -52957,12 +45686,7 @@ void UPostProcessManager_X::ToggleChainNamed(class UPostProcessChain* Chain, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.ToggleChainNamed");
 
-	struct
-	{
-		class UPostProcessChain*       Chain;
-		struct FName                   ChainName;
-		bool                           bEnabled;
-	} params;
+	UPostProcessManager_X_ToggleChainNamed_Params params;
 	params.Chain = Chain;
 	params.ChainName = ChainName;
 	params.bEnabled = bEnabled;
@@ -52984,10 +45708,7 @@ void UPostProcessManager_X::StopChainNamed(const struct FName& ChainName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.StopChainNamed");
 
-	struct
-	{
-		struct FName                   ChainName;
-	} params;
+	UPostProcessManager_X_StopChainNamed_Params params;
 	params.ChainName = ChainName;
 
 	auto flags = fn->FunctionFlags;
@@ -53008,11 +45729,7 @@ void UPostProcessManager_X::StartChainNamed(class UPostProcessChain* Chain, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.StartChainNamed");
 
-	struct
-	{
-		class UPostProcessChain*       Chain;
-		struct FName                   ChainName;
-	} params;
+	UPostProcessManager_X_StartChainNamed_Params params;
 	params.Chain = Chain;
 	params.ChainName = ChainName;
 
@@ -53034,11 +45751,7 @@ bool UPostProcessManager_X::RemovePostProcessChain(int OldChain)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.RemovePostProcessChain");
 
-	struct
-	{
-		int                            OldChain;
-		bool                           ReturnValue;
-	} params;
+	UPostProcessManager_X_RemovePostProcessChain_Params params;
 	params.OldChain = OldChain;
 
 	auto flags = fn->FunctionFlags;
@@ -53062,12 +45775,7 @@ int UPostProcessManager_X::AddPostProcessChain(class UPostProcessChain* NewChain
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.AddPostProcessChain");
 
-	struct
-	{
-		class UPostProcessChain*       NewChain;
-		struct FName                   ChainName;
-		int                            ReturnValue;
-	} params;
+	UPostProcessManager_X_AddPostProcessChain_Params params;
 	params.NewChain = NewChain;
 	params.ChainName = ChainName;
 
@@ -53091,11 +45799,7 @@ class UMaterialEffect_X* UPostProcessManager_X::GetEffect(const struct FName& Ef
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.GetEffect");
 
-	struct
-	{
-		struct FName                   EffectName;
-		class UMaterialEffect_X*       ReturnValue;
-	} params;
+	UPostProcessManager_X_GetEffect_Params params;
 	params.EffectName = EffectName;
 
 	auto flags = fn->FunctionFlags;
@@ -53117,10 +45821,7 @@ void UPostProcessManager_X::TickPostProcess(float dt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.TickPostProcess");
 
-	struct
-	{
-		float                          dt;
-	} params;
+	UPostProcessManager_X_TickPostProcess_Params params;
 	params.dt = dt;
 
 	auto flags = fn->FunctionFlags;
@@ -53141,11 +45842,7 @@ void UPostProcessManager_X::ToggleEffect(class UMaterialEffect_X* Effect, bool b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.ToggleEffect");
 
-	struct
-	{
-		class UMaterialEffect_X*       Effect;
-		bool                           bEnabled;
-	} params;
+	UPostProcessManager_X_ToggleEffect_Params params;
 	params.Effect = Effect;
 	params.bEnabled = bEnabled;
 
@@ -53166,10 +45863,7 @@ void UPostProcessManager_X::StopEffectNamed(const struct FName& EffectName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.StopEffectNamed");
 
-	struct
-	{
-		struct FName                   EffectName;
-	} params;
+	UPostProcessManager_X_StopEffectNamed_Params params;
 	params.EffectName = EffectName;
 
 	auto flags = fn->FunctionFlags;
@@ -53189,10 +45883,7 @@ void UPostProcessManager_X::StartEffectNamed(const struct FName& EffectName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.StartEffectNamed");
 
-	struct
-	{
-		struct FName                   EffectName;
-	} params;
+	UPostProcessManager_X_StartEffectNamed_Params params;
 	params.EffectName = EffectName;
 
 	auto flags = fn->FunctionFlags;
@@ -53213,11 +45904,7 @@ void UPostProcessManager_X::ToggleEffectNamed(const struct FName& EffectName, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.ToggleEffectNamed");
 
-	struct
-	{
-		struct FName                   EffectName;
-		bool                           bEnabled;
-	} params;
+	UPostProcessManager_X_ToggleEffectNamed_Params params;
 	params.EffectName = EffectName;
 	params.bEnabled = bEnabled;
 
@@ -53238,10 +45925,7 @@ void UPostProcessManager_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.PrintDebugInfo");
 
-	struct
-	{
-		class UDebugDrawer*            Drawer;
-	} params;
+	UPostProcessManager_X_PrintDebugInfo_Params params;
 	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
@@ -53261,10 +45945,7 @@ class UUberPostProcessEffect* UPostProcessManager_X::GetUberPostProcessEffect()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.GetUberPostProcessEffect");
 
-	struct
-	{
-		class UUberPostProcessEffect*  ReturnValue;
-	} params;
+	UPostProcessManager_X_GetUberPostProcessEffect_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53285,10 +45966,7 @@ class UPostProcessChain* UPostProcessManager_X::GetPlayerChain()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.GetPlayerChain");
 
-	struct
-	{
-		class UPostProcessChain*       ReturnValue;
-	} params;
+	UPostProcessManager_X_GetPlayerChain_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53307,9 +45985,7 @@ void UPostProcessManager_X::Exit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.Exit");
 
-	struct
-	{
-	} params;
+	UPostProcessManager_X_Exit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53328,10 +46004,7 @@ void UPostProcessManager_X::Init(class APlayerController_X* NewOwner)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PostProcessManager_X.Init");
 
-	struct
-	{
-		class APlayerController_X*     NewOwner;
-	} params;
+	UPostProcessManager_X_Init_Params params;
 	params.NewOwner = NewOwner;
 
 	auto flags = fn->FunctionFlags;
@@ -53353,12 +46026,7 @@ bool URPC_Test_X::Check(bool Assertion, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.Check");
 
-	struct
-	{
-		bool                           Assertion;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_Check_Params params;
 	params.Assertion = Assertion;
 	params.Message = Message;
 
@@ -53384,13 +46052,7 @@ bool URPC_Test_X::CheckParamArraysMatch(TArray<struct FRPCTestParam> A, TArray<s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.CheckParamArraysMatch");
 
-	struct
-	{
-		TArray<struct FRPCTestParam>   A;
-		TArray<struct FRPCTestParam>   B;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_CheckParamArraysMatch_Params params;
 	params.A = A;
 	params.B = B;
 	params.Message = Message;
@@ -53417,13 +46079,7 @@ bool URPC_Test_X::CheckItemArraysMatch(TArray<struct FRPCTestItem> A, TArray<str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.CheckItemArraysMatch");
 
-	struct
-	{
-		TArray<struct FRPCTestItem>    A;
-		TArray<struct FRPCTestItem>    B;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_CheckItemArraysMatch_Params params;
 	params.A = A;
 	params.B = B;
 	params.Message = Message;
@@ -53450,13 +46106,7 @@ bool URPC_Test_X::CheckStringArraysMatch(TArray<struct FString> A, TArray<struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.CheckStringArraysMatch");
 
-	struct
-	{
-		TArray<struct FString>         A;
-		TArray<struct FString>         B;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_CheckStringArraysMatch_Params params;
 	params.A = A;
 	params.B = B;
 	params.Message = Message;
@@ -53483,13 +46133,7 @@ bool URPC_Test_X::CheckItemsMatch(const struct FRPCTestItem& A, const struct FRP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.CheckItemsMatch");
 
-	struct
-	{
-		struct FRPCTestItem            A;
-		struct FRPCTestItem            B;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_CheckItemsMatch_Params params;
 	params.A = A;
 	params.B = B;
 	params.Message = Message;
@@ -53516,13 +46160,7 @@ bool URPC_Test_X::CheckParamsMatch(const struct FRPCTestParam& A, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.CheckParamsMatch");
 
-	struct
-	{
-		struct FRPCTestParam           A;
-		struct FRPCTestParam           B;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_CheckParamsMatch_Params params;
 	params.A = A;
 	params.B = B;
 	params.Message = Message;
@@ -53546,10 +46184,7 @@ bool URPC_Test_X::ValidateResults()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.ValidateResults");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	URPC_Test_X_ValidateResults_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53568,9 +46203,7 @@ void URPC_Test_X::OnComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.OnComplete");
 
-	struct
-	{
-	} params;
+	URPC_Test_X_OnComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53589,10 +46222,7 @@ TArray<struct FRPCTestParam> URPC_Test_X::GetRandomTestParams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.GetRandomTestParams");
 
-	struct
-	{
-		TArray<struct FRPCTestParam>   ReturnValue;
-	} params;
+	URPC_Test_X_GetRandomTestParams_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53613,10 +46243,7 @@ struct FRPCTestParam URPC_Test_X::GetRandomTestParam()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.GetRandomTestParam");
 
-	struct
-	{
-		struct FRPCTestParam           ReturnValue;
-	} params;
+	URPC_Test_X_GetRandomTestParam_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53637,10 +46264,7 @@ TArray<struct FRPCTestItem> URPC_Test_X::GetRandomTestItems()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.GetRandomTestItems");
 
-	struct
-	{
-		TArray<struct FRPCTestItem>    ReturnValue;
-	} params;
+	URPC_Test_X_GetRandomTestItems_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53661,10 +46285,7 @@ struct FRPCTestItem URPC_Test_X::GetRandomTestItem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.GetRandomTestItem");
 
-	struct
-	{
-		struct FRPCTestItem            ReturnValue;
-	} params;
+	URPC_Test_X_GetRandomTestItem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53683,9 +46304,7 @@ void URPC_Test_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_Test_X.Init");
 
-	struct
-	{
-	} params;
+	URPC_Test_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53704,10 +46323,7 @@ TArray<struct FString> UTestsHelper_X::STATIC_GetRandomStringArray()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TestsHelper_X.GetRandomStringArray");
 
-	struct
-	{
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UTestsHelper_X_GetRandomStringArray_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53728,10 +46344,7 @@ struct FString UTestsHelper_X::STATIC_GetRandomString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TestsHelper_X.GetRandomString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UTestsHelper_X_GetRandomString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53750,9 +46363,7 @@ void USeqAct_OpenUIScene_X::Activated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqAct_OpenUIScene_X.Activated");
 
-	struct
-	{
-	} params;
+	USeqAct_OpenUIScene_X_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53771,10 +46382,7 @@ void USeqAct_SpawnArchetype_X::Init(class AActor* SpawnedActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqAct_SpawnArchetype_X.Init");
 
-	struct
-	{
-		class AActor*                  SpawnedActor;
-	} params;
+	USeqAct_SpawnArchetype_X_Init_Params params;
 	params.SpawnedActor = SpawnedActor;
 
 	auto flags = fn->FunctionFlags;
@@ -53792,9 +46400,7 @@ void USeqAct_SpawnArchetype_X::Activated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqAct_SpawnArchetype_X.Activated");
 
-	struct
-	{
-	} params;
+	USeqAct_SpawnArchetype_X_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53811,9 +46417,7 @@ void UTask_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Task_X.Reset");
 
-	struct
-	{
-	} params;
+	UTask_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53832,10 +46436,7 @@ bool UTask_X::Execute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Task_X.Execute");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UTask_X_Execute_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53854,9 +46455,7 @@ void UTask_X::TaskToExecute()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Task_X.TaskToExecute");
 
-	struct
-	{
-	} params;
+	UTask_X_TaskToExecute_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -53878,13 +46477,7 @@ void UUIAnimSequence_X::ModifyAnimPosition(int FrameIndex, float NewX, float New
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.ModifyAnimPosition");
 
-	struct
-	{
-		int                            FrameIndex;
-		float                          NewX;
-		float                          NewY;
-		bool                           bWarnifNotFound;
-	} params;
+	UUIAnimSequence_X_ModifyAnimPosition_Params params;
 	params.FrameIndex = FrameIndex;
 	params.NewX = NewX;
 	params.NewY = NewY;
@@ -53910,13 +46503,7 @@ struct FUIAnimValue UUIAnimSequence_X::GetBlendedValue(const struct FUIAnimValue
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetBlendedValue");
 
-	struct
-	{
-		struct FUIAnimValue            BlendStart;
-		struct FUIAnimValue            BlendEnd;
-		float                          Blend;
-		struct FUIAnimValue            ReturnValue;
-	} params;
+	UUIAnimSequence_X_GetBlendedValue_Params params;
 	params.BlendStart = BlendStart;
 	params.BlendEnd = BlendEnd;
 	params.Blend = Blend;
@@ -53942,12 +46529,7 @@ void UUIAnimSequence_X::GetAnimKeyframes(int SeqIndex, struct FUIAnimValue* Star
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetAnimKeyframes");
 
-	struct
-	{
-		int                            SeqIndex;
-		struct FUIAnimValue            StartValue;
-		struct FUIAnimValue            EndValue;
-	} params;
+	UUIAnimSequence_X_GetAnimKeyframes_Params params;
 	params.SeqIndex = SeqIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -53975,13 +46557,7 @@ bool UUIAnimSequence_X::GetNewValue(float Time, const struct FUIAnimValue& Start
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetNewValue");
 
-	struct
-	{
-		float                          Time;
-		struct FUIAnimValue            StartValue;
-		struct FUIAnimValue            NewValue;
-		bool                           ReturnValue;
-	} params;
+	UUIAnimSequence_X_GetNewValue_Params params;
 	params.Time = Time;
 	params.StartValue = StartValue;
 
@@ -54005,9 +46581,7 @@ void UUIAnimSequence_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.Init");
 
-	struct
-	{
-	} params;
+	UUIAnimSequence_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54027,11 +46601,7 @@ void UUIAnimSequence_X::SetWidgetValue(class UUIWidget_X* Widget, struct FUIAnim
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.SetWidgetValue");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            AnimValue;
-	} params;
+	UUIAnimSequence_X_SetWidgetValue_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -54055,11 +46625,7 @@ void UUIAnimSequence_X::GetWidgetValue(class UUIWidget_X* Widget, struct FUIAnim
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetWidgetValue");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            AnimValue;
-	} params;
+	UUIAnimSequence_X_GetWidgetValue_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -54080,9 +46646,7 @@ void UUICursor_X::OnClick()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnClick");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54099,9 +46663,7 @@ void UUICursor_X::OnDragEnd()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragEnd");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnDragEnd_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54118,9 +46680,7 @@ void UUICursor_X::OnDragMove()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragMove");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnDragMove_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54137,9 +46697,7 @@ void UUICursor_X::OnDragStart()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragStart");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnDragStart_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54156,9 +46714,7 @@ void UUICursor_X::OnReleased()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnReleased");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnReleased_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54175,9 +46731,7 @@ void UUICursor_X::OnPressed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnPressed");
 
-	struct
-	{
-	} params;
+	UUICursor_X_OnPressed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54194,9 +46748,7 @@ void UUICursor_X::NotifyGameSessionEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.NotifyGameSessionEnded");
 
-	struct
-	{
-	} params;
+	UUICursor_X_NotifyGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54215,10 +46767,7 @@ void UUICursor_X::SetPressedInternal(bool bNewPressed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetPressedInternal");
 
-	struct
-	{
-		bool                           bNewPressed;
-	} params;
+	UUICursor_X_SetPressedInternal_Params params;
 	params.bNewPressed = bNewPressed;
 
 	auto flags = fn->FunctionFlags;
@@ -54238,10 +46787,7 @@ void UUICursor_X::SetPressed(bool bNewPressed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetPressed");
 
-	struct
-	{
-		bool                           bNewPressed;
-	} params;
+	UUICursor_X_SetPressed_Params params;
 	params.bNewPressed = bNewPressed;
 
 	auto flags = fn->FunctionFlags;
@@ -54259,9 +46805,7 @@ void UUICursor_X::UpdateHoverWidget()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.UpdateHoverWidget");
 
-	struct
-	{
-	} params;
+	UUICursor_X_UpdateHoverWidget_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54280,10 +46824,7 @@ void UUICursor_X::TickCursor(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.TickCursor");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUICursor_X_TickCursor_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -54303,10 +46844,7 @@ void UUICursor_X::SetCanvasPosition(const struct FVector2D& NewPosition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetCanvasPosition");
 
-	struct
-	{
-		struct FVector2D               NewPosition;
-	} params;
+	UUICursor_X_SetCanvasPosition_Params params;
 	params.NewPosition = NewPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -54326,10 +46864,7 @@ float UUICursor_X::GetTimeSeconds()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.GetTimeSeconds");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUICursor_X_GetTimeSeconds_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54350,10 +46885,7 @@ class AWorldInfo* UUICursor_X::GetWorldInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.GetWorldInfo");
 
-	struct
-	{
-		class AWorldInfo*              ReturnValue;
-	} params;
+	UUICursor_X_GetWorldInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54374,10 +46906,7 @@ void UUICursor_X::Init(class UUISceneManager_X* InManager)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.Init");
 
-	struct
-	{
-		class UUISceneManager_X*       InManager;
-	} params;
+	UUICursor_X_Init_Params params;
 	params.InManager = InManager;
 
 	auto flags = fn->FunctionFlags;
@@ -54395,9 +46924,7 @@ void UUISceneManager_X::NotifyGameSessionEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.NotifyGameSessionEnded");
 
-	struct
-	{
-	} params;
+	UUISceneManager_X_NotifyGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54416,10 +46943,7 @@ void UUISceneManager_X::SetHasInteraction(bool bHasInteraction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.SetHasInteraction");
 
-	struct
-	{
-		bool                           bHasInteraction;
-	} params;
+	UUISceneManager_X_SetHasInteraction_Params params;
 	params.bHasInteraction = bHasInteraction;
 
 	auto flags = fn->FunctionFlags;
@@ -54437,9 +46961,7 @@ void UUISceneManager_X::UpdateCursorVisibility()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.UpdateCursorVisibility");
 
-	struct
-	{
-	} params;
+	UUISceneManager_X_UpdateCursorVisibility_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54460,12 +46982,7 @@ class UUIWidget_X* UUISceneManager_X::GetHoverWidget(const struct FVector& Scree
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetHoverWidget");
 
-	struct
-	{
-		struct FVector                 ScreenPosition;
-		struct FRay                    WorldRay;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUISceneManager_X_GetHoverWidget_Params params;
 	params.ScreenPosition = ScreenPosition;
 	params.WorldRay = WorldRay;
 
@@ -54489,11 +47006,7 @@ void UUISceneManager_X::UpdateCursor(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.UpdateCursor");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UUISceneManager_X_UpdateCursor_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -54516,12 +47029,7 @@ void UUISceneManager_X::Draw(class ULocalPlayer* ForPlayer, class UCanvas* Canva
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.Draw");
 
-	struct
-	{
-		class ULocalPlayer*            ForPlayer;
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UUISceneManager_X_Draw_Params params;
 	params.ForPlayer = ForPlayer;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
@@ -54543,10 +47051,7 @@ void UUISceneManager_X::MoveCursor_Mobile(const struct FVector2D& NewPosition)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.MoveCursor_Mobile");
 
-	struct
-	{
-		struct FVector2D               NewPosition;
-	} params;
+	UUISceneManager_X_MoveCursor_Mobile_Params params;
 	params.NewPosition = NewPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -54566,10 +47071,7 @@ void UUISceneManager_X::HandleMobileTouch(TEnumAsByte<enum class ETouchType> Eve
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleMobileTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-	} params;
+	UUISceneManager_X_HandleMobileTouch_Params params;
 	params.EventType = EventType;
 
 	auto flags = fn->FunctionFlags;
@@ -54594,15 +47096,7 @@ bool UUISceneManager_X::HandleInputAxis(int ControllerId, const struct FName& Ke
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleInputAxis");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		float                          Delta;
-		float                          DeltaTime;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UUISceneManager_X_HandleInputAxis_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Delta = Delta;
@@ -54633,15 +47127,7 @@ bool UUISceneManager_X::HandleInputKey(int ControllerId, const struct FName& Key
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleInputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> EventType;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UUISceneManager_X_HandleInputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.EventType = EventType;
@@ -54665,9 +47151,7 @@ void UUISceneManager_X::CloseAllScenes()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.CloseAllScenes");
 
-	struct
-	{
-	} params;
+	UUISceneManager_X_CloseAllScenes_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54687,11 +47171,7 @@ void UUISceneManager_X::RegisterUIScene(class UUIScene_X* SceneInstance, class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.RegisterUIScene");
 
-	struct
-	{
-		class UUIScene_X*              SceneInstance;
-		class ULocalPlayer*            Player;
-	} params;
+	UUISceneManager_X_RegisterUIScene_Params params;
 	params.SceneInstance = SceneInstance;
 	params.Player = Player;
 
@@ -54714,12 +47194,7 @@ class UUIScene_X* UUISceneManager_X::OpenUIScene(class UUIScene_X* SceneArchetyp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.OpenUIScene");
 
-	struct
-	{
-		class UUIScene_X*              SceneArchetype;
-		class ULocalPlayer*            Player;
-		class UUIScene_X*              ReturnValue;
-	} params;
+	UUISceneManager_X_OpenUIScene_Params params;
 	params.SceneArchetype = SceneArchetype;
 	params.Player = Player;
 
@@ -54743,11 +47218,7 @@ class UUISceneClient_X* UUISceneManager_X::GetSceneClientByID(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetSceneClientByID");
 
-	struct
-	{
-		int                            ControllerId;
-		class UUISceneClient_X*        ReturnValue;
-	} params;
+	UUISceneManager_X_GetSceneClientByID_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -54770,11 +47241,7 @@ class ULocalPlayer* UUISceneManager_X::GetLocalPlayer(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetLocalPlayer");
 
-	struct
-	{
-		int                            ControllerId;
-		class ULocalPlayer*            ReturnValue;
-	} params;
+	UUISceneManager_X_GetLocalPlayer_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -54796,10 +47263,7 @@ float UUISceneManager_X::GetRealTimeSeconds()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetRealTimeSeconds");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUISceneManager_X_GetRealTimeSeconds_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54818,9 +47282,7 @@ void UUISceneManager_X::OnCursorPressEmptySpace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.OnCursorPressEmptySpace");
 
-	struct
-	{
-	} params;
+	UUISceneManager_X_OnCursorPressEmptySpace_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54837,9 +47299,7 @@ void UUISceneManager_X::Initialize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.Initialize");
 
-	struct
-	{
-	} params;
+	UUISceneManager_X_Initialize_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54858,10 +47318,7 @@ class UGameViewportClient_X* UUISceneManager_X::GetGameVieport()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetGameVieport");
 
-	struct
-	{
-		class UGameViewportClient_X*   ReturnValue;
-	} params;
+	UUISceneManager_X_GetGameVieport_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54882,10 +47339,7 @@ class UUISceneManager_X* UUISceneManager_X::STATIC_GetInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetInstance");
 
-	struct
-	{
-		class UUISceneManager_X*       ReturnValue;
-	} params;
+	UUISceneManager_X_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54909,13 +47363,7 @@ class UUIWidget_X* UUISceneClient_X::GetNewWidget(class UUIWidget_X* OldWidget, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetNewWidget");
 
-	struct
-	{
-		class UUIWidget_X*             OldWidget;
-		TArray<class UUIWidget_X*>     OldScenes;
-		TArray<class UUIWidget_X*>     NewScenes;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUISceneClient_X_GetNewWidget_Params params;
 	params.OldWidget = OldWidget;
 	params.OldScenes = OldScenes;
 	params.NewScenes = NewScenes;
@@ -54937,9 +47385,7 @@ void UUISceneClient_X::HandleTextArchetypesReloaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleTextArchetypesReloaded");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_HandleTextArchetypesReloaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54956,9 +47402,7 @@ void UUISceneClient_X::UpdateCursorVisibility()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.UpdateCursorVisibility");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_UpdateCursorVisibility_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -54977,10 +47421,7 @@ bool UUISceneClient_X::OnPressEnter()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressEnter");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnPressEnter_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55001,10 +47442,7 @@ bool UUISceneClient_X::OnPressRight()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressRight");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnPressRight_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55025,10 +47463,7 @@ bool UUISceneClient_X::OnPressLeft()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressLeft");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnPressLeft_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55049,10 +47484,7 @@ bool UUISceneClient_X::OnPressDown()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressDown");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnPressDown_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55073,10 +47505,7 @@ bool UUISceneClient_X::OnPressUp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressUp");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnPressUp_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55098,11 +47527,7 @@ bool UUISceneClient_X::OnInputKey(const struct FName& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnInputKey");
 
-	struct
-	{
-		struct FName                   Key;
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_OnInputKey_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -55124,10 +47549,7 @@ void UUISceneClient_X::SetHasInteraction(bool bHasInteraction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetHasInteraction");
 
-	struct
-	{
-		bool                           bHasInteraction;
-	} params;
+	UUISceneClient_X_SetHasInteraction_Params params;
 	params.bHasInteraction = bHasInteraction;
 
 	auto flags = fn->FunctionFlags;
@@ -55147,10 +47569,7 @@ void UUISceneClient_X::AutoNavigate(const struct FVector& Direction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.AutoNavigate");
 
-	struct
-	{
-		struct FVector                 Direction;
-	} params;
+	UUISceneClient_X_AutoNavigate_Params params;
 	params.Direction = Direction;
 
 	auto flags = fn->FunctionFlags;
@@ -55170,10 +47589,7 @@ class UUIWidget_X* UUISceneClient_X::GetAutoFocusWidget()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetAutoFocusWidget");
 
-	struct
-	{
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUISceneClient_X_GetAutoFocusWidget_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55195,11 +47611,7 @@ void UUISceneClient_X::HandleFocusWidgetFocusChanged(class UUIWidget_X* Sender, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleFocusWidgetFocusChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Sender;
-		class UUIWidget_X*             Widget;
-	} params;
+	UUISceneClient_X_HandleFocusWidgetFocusChanged_Params params;
 	params.Sender = Sender;
 	params.Widget = Widget;
 
@@ -55220,10 +47632,7 @@ void UUISceneClient_X::SetFocusWidget(class UUIWidget_X* NewFocusWidget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetFocusWidget");
 
-	struct
-	{
-		class UUIWidget_X*             NewFocusWidget;
-	} params;
+	UUISceneClient_X_SetFocusWidget_Params params;
 	params.NewFocusWidget = NewFocusWidget;
 
 	auto flags = fn->FunctionFlags;
@@ -55243,10 +47652,7 @@ void UUISceneClient_X::SetAutoFocusWidget(class UUIWidget_X* NewWidget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetAutoFocusWidget");
 
-	struct
-	{
-		class UUIWidget_X*             NewWidget;
-	} params;
+	UUISceneClient_X_SetAutoFocusWidget_Params params;
 	params.NewWidget = NewWidget;
 
 	auto flags = fn->FunctionFlags;
@@ -55266,10 +47672,7 @@ void UUISceneClient_X::HandleHoverWidgetHoverChanged(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleHoverWidgetHoverChanged");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUISceneClient_X_HandleHoverWidgetHoverChanged_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55289,10 +47692,7 @@ void UUISceneClient_X::SetHoverWidget(class UUIWidget_X* NewHoverWidget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetHoverWidget");
 
-	struct
-	{
-		class UUIWidget_X*             NewHoverWidget;
-	} params;
+	UUISceneClient_X_SetHoverWidget_Params params;
 	params.NewHoverWidget = NewHoverWidget;
 
 	auto flags = fn->FunctionFlags;
@@ -55314,12 +47714,7 @@ bool UUISceneClient_X::GetHoverWidget(const struct FVector& ScreenPosition, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetHoverWidget");
 
-	struct
-	{
-		struct FVector                 ScreenPosition;
-		class UUIWidget_X*             OutWidget;
-		bool                           ReturnValue;
-	} params;
+	UUISceneClient_X_GetHoverWidget_Params params;
 	params.ScreenPosition = ScreenPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -55344,10 +47739,7 @@ void UUISceneClient_X::SetNavigationMode(TEnumAsByte<enum class EUINavigationMod
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetNavigationMode");
 
-	struct
-	{
-		TEnumAsByte<enum class EUINavigationMode> NewNavMode;
-	} params;
+	UUISceneClient_X_SetNavigationMode_Params params;
 	params.NewNavMode = NewNavMode;
 
 	auto flags = fn->FunctionFlags;
@@ -55367,10 +47759,7 @@ void UUISceneClient_X::LayoutUI(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.LayoutUI");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUISceneClient_X_LayoutUI_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -55390,10 +47779,7 @@ void UUISceneClient_X::DrawDebugPoints(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.DrawDebugPoints");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUISceneClient_X_DrawDebugPoints_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -55414,11 +47800,7 @@ void UUISceneClient_X::AddDebugPoint(const struct FVector& V, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.AddDebugPoint");
 
-	struct
-	{
-		struct FVector                 V;
-		struct FString                 Text;
-	} params;
+	UUISceneClient_X_AddDebugPoint_Params params;
 	params.V = V;
 	params.Text = Text;
 
@@ -55440,11 +47822,7 @@ void UUISceneClient_X::Draw(class UCanvas* C, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.Draw");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaTime;
-	} params;
+	UUISceneClient_X_Draw_Params params;
 	params.C = C;
 	params.DeltaTime = DeltaTime;
 
@@ -55463,9 +47841,7 @@ void UUISceneClient_X::ValidateFocusWidget()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.ValidateFocusWidget");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_ValidateFocusWidget_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55482,9 +47858,7 @@ void UUISceneClient_X::UpdateFocusWidgets()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.UpdateFocusWidgets");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_UpdateFocusWidgets_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55501,9 +47875,7 @@ void UUISceneClient_X::NotifyFocusDirty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.NotifyFocusDirty");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_NotifyFocusDirty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55520,9 +47892,7 @@ void UUISceneClient_X::NotifyLayoutDirty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.NotifyLayoutDirty");
 
-	struct
-	{
-	} params;
+	UUISceneClient_X_NotifyLayoutDirty_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -55541,10 +47911,7 @@ void UUISceneClient_X::RegisterScene(class UUIScene_X* SceneInstance)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.RegisterScene");
 
-	struct
-	{
-		class UUIScene_X*              SceneInstance;
-	} params;
+	UUISceneClient_X_RegisterScene_Params params;
 	params.SceneInstance = SceneInstance;
 
 	auto flags = fn->FunctionFlags;
@@ -55565,11 +47932,7 @@ class UUIScene_X* UUISceneClient_X::OpenScene(class UUIScene_X* SceneArchetype)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OpenScene");
 
-	struct
-	{
-		class UUIScene_X*              SceneArchetype;
-		class UUIScene_X*              ReturnValue;
-	} params;
+	UUISceneClient_X_OpenScene_Params params;
 	params.SceneArchetype = SceneArchetype;
 
 	auto flags = fn->FunctionFlags;
@@ -55591,10 +47954,7 @@ void UUISceneClient_X::InitSceneClient(class ULocalPlayer* InPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.InitSceneClient");
 
-	struct
-	{
-		class ULocalPlayer*            InPlayer;
-	} params;
+	UUISceneClient_X_InitSceneClient_Params params;
 	params.InPlayer = InPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -55617,13 +47977,7 @@ void UUIEventAction_X::ModifyAnimPosition(const struct FName& SequenceName, floa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.ModifyAnimPosition");
 
-	struct
-	{
-		struct FName                   SequenceName;
-		float                          NewX;
-		float                          NewY;
-		bool                           bWarnifNotFound;
-	} params;
+	UUIEventAction_X_ModifyAnimPosition_Params params;
 	params.SequenceName = SequenceName;
 	params.NewX = NewX;
 	params.NewY = NewY;
@@ -55647,11 +48001,7 @@ void UUIEventAction_X::SetWidgetValueRotation(class UUIWidget_X* Widget, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueRotation");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueRotation_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55675,11 +48025,7 @@ void UUIEventAction_X::GetWidgetValueRotation(class UUIWidget_X* Widget, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueRotation");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueRotation_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55703,11 +48049,7 @@ void UUIEventAction_X::SetWidgetValueOpacity(class UUIWidget_X* Widget, struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueOpacity");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueOpacity_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55731,11 +48073,7 @@ void UUIEventAction_X::GetWidgetValueOpacity(class UUIWidget_X* Widget, struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueOpacity");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueOpacity_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55759,11 +48097,7 @@ void UUIEventAction_X::SetWidgetValueBackColor(class UUIWidget_X* Widget, struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueBackColor");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueBackColor_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55787,11 +48121,7 @@ void UUIEventAction_X::GetWidgetValueBackColor(class UUIWidget_X* Widget, struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueBackColor");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueBackColor_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55815,11 +48145,7 @@ void UUIEventAction_X::SetWidgetValueTint(class UUIWidget_X* Widget, struct FUIA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueTint");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueTint_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55843,11 +48169,7 @@ void UUIEventAction_X::GetWidgetValueTint(class UUIWidget_X* Widget, struct FUIA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueTint");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueTint_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55871,11 +48193,7 @@ void UUIEventAction_X::SetWidgetValueScale2D(class UUIWidget_X* Widget, struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueScale2D");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueScale2D_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55899,11 +48217,7 @@ void UUIEventAction_X::GetWidgetValueScale2D(class UUIWidget_X* Widget, struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueScale2D");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueScale2D_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55927,11 +48241,7 @@ void UUIEventAction_X::SetWidgetValueScale(class UUIWidget_X* Widget, struct FUI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueScale");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueScale_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55955,11 +48265,7 @@ void UUIEventAction_X::GetWidgetValueScale(class UUIWidget_X* Widget, struct FUI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueScale");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueScale_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -55983,11 +48289,7 @@ void UUIEventAction_X::SetWidgetValuePivotPosition(class UUIWidget_X* Widget, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValuePivotPosition");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValuePivotPosition_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56011,11 +48313,7 @@ void UUIEventAction_X::GetWidgetValuePivotPosition(class UUIWidget_X* Widget, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValuePivotPosition");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValuePivotPosition_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56039,11 +48337,7 @@ void UUIEventAction_X::SetWidgetValueRelativePosition(class UUIWidget_X* Widget,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueRelativePosition");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValueRelativePosition_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56067,11 +48361,7 @@ void UUIEventAction_X::GetWidgetValueRelativePosition(class UUIWidget_X* Widget,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueRelativePosition");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValueRelativePosition_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56095,11 +48385,7 @@ void UUIEventAction_X::SetWidgetValuePixelOffset(class UUIWidget_X* Widget, stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValuePixelOffset");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_SetWidgetValuePixelOffset_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56123,11 +48409,7 @@ void UUIEventAction_X::GetWidgetValuePixelOffset(class UUIWidget_X* Widget, stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValuePixelOffset");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-		struct FUIAnimValue            Value;
-	} params;
+	UUIEventAction_X_GetWidgetValuePixelOffset_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56150,10 +48432,7 @@ void UUIEventAction_X::Trigger(class UUIWidget_X* Widget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.Trigger");
 
-	struct
-	{
-		class UUIWidget_X*             Widget;
-	} params;
+	UUIEventAction_X_Trigger_Params params;
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
@@ -56171,9 +48450,7 @@ void UUIEventAction_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.Init");
 
-	struct
-	{
-	} params;
+	UUIEventAction_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56194,12 +48471,7 @@ struct FName UUIInteraction_X::GetFakeAxisKey(const struct FName& Key, float Del
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetFakeAxisKey");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Delta;
-		struct FName                   ReturnValue;
-	} params;
+	UUIInteraction_X_GetFakeAxisKey_Params params;
 	params.Key = Key;
 	params.Delta = Delta;
 
@@ -56227,15 +48499,7 @@ bool UUIInteraction_X::HandleInputAxis(int ControllerId, const struct FName& Key
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.HandleInputAxis");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		float                          Delta;
-		float                          DeltaTime;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UUIInteraction_X_HandleInputAxis_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Delta = Delta;
@@ -56266,15 +48530,7 @@ bool UUIInteraction_X::HandleInputKey(int ControllerId, const struct FName& Key,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.HandleInputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> EventType;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UUIInteraction_X_HandleInputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.EventType = EventType;
@@ -56300,10 +48556,7 @@ void UUIInteraction_X::AddKeyHandlers(TArray<struct FKeyHandler>* Handlers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.AddKeyHandlers");
 
-	struct
-	{
-		TArray<struct FKeyHandler>     Handlers;
-	} params;
+	UUIInteraction_X_AddKeyHandlers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56326,11 +48579,7 @@ void UUIInteraction_X::SetKeyHandler(const struct FName& Key, const struct FScri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetKeyHandler");
 
-	struct
-	{
-		struct FName                   Key;
-		struct FScriptDelegate         Handler;
-	} params;
+	UUIInteraction_X_SetKeyHandler_Params params;
 	params.Key = Key;
 	params.Handler = Handler;
 
@@ -56351,10 +48600,7 @@ float UUIInteraction_X::GetOpenTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetOpenTime");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUIInteraction_X_GetOpenTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56375,10 +48621,7 @@ float UUIInteraction_X::GetTimeSeconds()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetTimeSeconds");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UUIInteraction_X_GetTimeSeconds_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56399,10 +48642,7 @@ class AWorldInfo* UUIInteraction_X::GetWorldInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetWorldInfo");
 
-	struct
-	{
-		class AWorldInfo*              ReturnValue;
-	} params;
+	UUIInteraction_X_GetWorldInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56424,11 +48664,7 @@ int UUIInteraction_X::GetInteractionIndex(TArray<class UInteraction*>* Interacti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetInteractionIndex");
 
-	struct
-	{
-		TArray<class UInteraction*>    Interactions;
-		int                            ReturnValue;
-	} params;
+	UUIInteraction_X_GetInteractionIndex_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56452,10 +48688,7 @@ void UUIInteraction_X::SetEnabled(bool bNewEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetEnabled");
 
-	struct
-	{
-		bool                           bNewEnabled;
-	} params;
+	UUIInteraction_X_SetEnabled_Params params;
 	params.bNewEnabled = bNewEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -56475,10 +48708,7 @@ void UUIInteraction_X::SetPlayer(class ULocalPlayer* ForPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetPlayer");
 
-	struct
-	{
-		class ULocalPlayer*            ForPlayer;
-	} params;
+	UUIInteraction_X_SetPlayer_Params params;
 	params.ForPlayer = ForPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -56499,11 +48729,7 @@ bool UUIInteraction_X::OnInputKey(const struct FName& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.OnInputKey");
 
-	struct
-	{
-		struct FName                   Key;
-		bool                           ReturnValue;
-	} params;
+	UUIInteraction_X_OnInputKey_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -56525,10 +48751,7 @@ void UUIToggleButton_X::SetDisabled(bool bNewDisabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.SetDisabled");
 
-	struct
-	{
-		bool                           bNewDisabled;
-	} params;
+	UUIToggleButton_X_SetDisabled_Params params;
 	params.bNewDisabled = bNewDisabled;
 
 	auto flags = fn->FunctionFlags;
@@ -56548,10 +48771,7 @@ void UUIToggleButton_X::SetSelected(bool bNewSelected)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.SetSelected");
 
-	struct
-	{
-		bool                           bNewSelected;
-	} params;
+	UUIToggleButton_X_SetSelected_Params params;
 	params.bNewSelected = bNewSelected;
 
 	auto flags = fn->FunctionFlags;
@@ -56571,10 +48791,7 @@ void UUIToggleButton_X::Click(class UUICursor_X* Cursor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.Click");
 
-	struct
-	{
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIToggleButton_X_Click_Params params;
 	params.Cursor = Cursor;
 
 	auto flags = fn->FunctionFlags;
@@ -56592,9 +48809,7 @@ void UUIToggleButton_X::PostInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.PostInit");
 
-	struct
-	{
-	} params;
+	UUIToggleButton_X_PostInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56614,11 +48829,7 @@ void UUIToggleButton_X::EventToggled(class UUIToggleButton_X* Button, bool bIsSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.EventToggled");
 
-	struct
-	{
-		class UUIToggleButton_X*       Button;
-		bool                           bIsSelected;
-	} params;
+	UUIToggleButton_X_EventToggled_Params params;
 	params.Button = Button;
 	params.bIsSelected = bIsSelected;
 
@@ -56637,9 +48848,7 @@ void UUIWidget_InputText_X::NotifyServerTyping()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.NotifyServerTyping");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_NotifyServerTyping_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56658,10 +48867,7 @@ void UUIWidget_InputText_X::Click(class UUICursor_X* Cursor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Click");
 
-	struct
-	{
-		class UUICursor_X*             Cursor;
-	} params;
+	UUIWidget_InputText_X_Click_Params params;
 	params.Cursor = Cursor;
 
 	auto flags = fn->FunctionFlags;
@@ -56681,10 +48887,7 @@ void UUIWidget_InputText_X::SetCursorLine(int NewLine)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorLine");
 
-	struct
-	{
-		int                            NewLine;
-	} params;
+	UUIWidget_InputText_X_SetCursorLine_Params params;
 	params.NewLine = NewLine;
 
 	auto flags = fn->FunctionFlags;
@@ -56702,9 +48905,7 @@ void UUIWidget_InputText_X::UpdateCursorLine()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.UpdateCursorLine");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_UpdateCursorLine_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56723,10 +48924,7 @@ void UUIWidget_InputText_X::SetCursorPos(int NewPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorPos");
 
-	struct
-	{
-		int                            NewPos;
-	} params;
+	UUIWidget_InputText_X_SetCursorPos_Params params;
 	params.NewPos = NewPos;
 
 	auto flags = fn->FunctionFlags;
@@ -56744,9 +48942,7 @@ void UUIWidget_InputText_X::Delete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Delete");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_Delete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56763,9 +48959,7 @@ void UUIWidget_InputText_X::Backspace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Backspace");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_Backspace_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -56784,10 +48978,7 @@ void UUIWidget_InputText_X::AppendText(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.AppendText");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UUIWidget_InputText_X_AppendText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -56807,10 +48998,7 @@ void UUIWidget_InputText_X::SetTextInternal(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetTextInternal");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UUIWidget_InputText_X_SetTextInternal_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -56830,10 +49018,7 @@ void UUIWidget_InputText_X::SetText(const struct FString& NewText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetText");
 
-	struct
-	{
-		struct FString                 NewText;
-	} params;
+	UUIWidget_InputText_X_SetText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -56854,11 +49039,7 @@ struct FString UUIWidget_InputText_X::ValidateText(const struct FString& NewText
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.ValidateText");
 
-	struct
-	{
-		struct FString                 NewText;
-		struct FString                 ReturnValue;
-	} params;
+	UUIWidget_InputText_X_ValidateText_Params params;
 	params.NewText = NewText;
 
 	auto flags = fn->FunctionFlags;
@@ -56882,12 +49063,7 @@ bool UUIWidget_InputText_X::HandleInputChar(int ControllerId, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleInputChar");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FString                 Unicode;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_InputText_X_HandleInputChar_Params params;
 	params.ControllerId = ControllerId;
 	params.Unicode = Unicode;
 
@@ -56915,15 +49091,7 @@ bool UUIWidget_InputText_X::HandleInputKey(int ControllerId, const struct FName&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleInputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_InputText_X_HandleInputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Event = Event;
@@ -56951,12 +49119,7 @@ bool UUIWidget_InputText_X::ProcessControlKey(const struct FName& Key, TEnumAsBy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.ProcessControlKey");
 
-	struct
-	{
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		bool                           ReturnValue;
-	} params;
+	UUIWidget_InputText_X_ProcessControlKey_Params params;
 	params.Key = Key;
 	params.Event = Event;
 
@@ -56979,10 +49142,7 @@ void UUIWidget_InputText_X::SetCursorVisible(bool bVisible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorVisible");
 
-	struct
-	{
-		bool                           bVisible;
-	} params;
+	UUIWidget_InputText_X_SetCursorVisible_Params params;
 	params.bVisible = bVisible;
 
 	auto flags = fn->FunctionFlags;
@@ -57002,10 +49162,7 @@ void UUIWidget_InputText_X::DrawCursor(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.DrawCursor");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_InputText_X_DrawCursor_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -57025,10 +49182,7 @@ void UUIWidget_InputText_X::DrawSelf(class UCanvas* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.DrawSelf");
 
-	struct
-	{
-		class UCanvas*                 C;
-	} params;
+	UUIWidget_InputText_X_DrawSelf_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -57050,12 +49204,7 @@ void UUIWidget_InputText_X::LayoutChildSize(class UCanvas* C, class UUIWidget_X*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.LayoutChildSize");
 
-	struct
-	{
-		class UCanvas*                 C;
-		class UUIWidget_X*             ChildWidget;
-		struct FUIWidgetMatrix         ChildMatrix;
-	} params;
+	UUIWidget_InputText_X_LayoutChildSize_Params params;
 	params.C = C;
 	params.ChildWidget = ChildWidget;
 	params.ChildMatrix = ChildMatrix;
@@ -57078,11 +49227,7 @@ void UUIWidget_InputText_X::Tick(class UCanvas* C, float DeltaSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Tick");
 
-	struct
-	{
-		class UCanvas*                 C;
-		float                          DeltaSeconds;
-	} params;
+	UUIWidget_InputText_X_Tick_Params params;
 	params.C = C;
 	params.DeltaSeconds = DeltaSeconds;
 
@@ -57104,11 +49249,7 @@ void UUIWidget_InputText_X::HandleConsoleInputComplete(const struct FString& New
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleConsoleInputComplete");
 
-	struct
-	{
-		struct FString                 NewText;
-		bool                           bCanceled;
-	} params;
+	UUIWidget_InputText_X_HandleConsoleInputComplete_Params params;
 	params.NewText = NewText;
 	params.bCanceled = bCanceled;
 
@@ -57127,9 +49268,7 @@ void UUIWidget_InputText_X::OnFocusChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.OnFocusChanged");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_OnFocusChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57148,10 +49287,7 @@ void UUIWidget_InputText_X::SetReadOnlyText(const struct FString& Txt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetReadOnlyText");
 
-	struct
-	{
-		struct FString                 Txt;
-	} params;
+	UUIWidget_InputText_X_SetReadOnlyText_Params params;
 	params.Txt = Txt;
 
 	auto flags = fn->FunctionFlags;
@@ -57169,9 +49305,7 @@ void UUIWidget_InputText_X::PostInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.PostInit");
 
-	struct
-	{
-	} params;
+	UUIWidget_InputText_X_PostInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57190,10 +49324,7 @@ void UUIWidget_InputText_X::EventSelectNextInputText(class UUIWidget_InputText_X
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.EventSelectNextInputText");
 
-	struct
-	{
-		class UUIWidget_InputText_X*   LastWidget;
-	} params;
+	UUIWidget_InputText_X_EventSelectNextInputText_Params params;
 	params.LastWidget = LastWidget;
 
 	auto flags = fn->FunctionFlags;
@@ -57214,11 +49345,7 @@ void UUIWidget_Stack_X::LayoutChildrenPosition(class UCanvas* C, const struct FU
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Stack_X.LayoutChildrenPosition");
 
-	struct
-	{
-		class UCanvas*                 C;
-		struct FUIWidgetMatrix         ChildContainerMatrix;
-	} params;
+	UUIWidget_Stack_X_LayoutChildrenPosition_Params params;
 	params.C = C;
 	params.ChildContainerMatrix = ChildContainerMatrix;
 
@@ -57239,10 +49366,7 @@ void UUIWidget_List_X::SetNumberOfItems(int NumItems)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.SetNumberOfItems");
 
-	struct
-	{
-		int                            NumItems;
-	} params;
+	UUIWidget_List_X_SetNumberOfItems_Params params;
 	params.NumItems = NumItems;
 
 	auto flags = fn->FunctionFlags;
@@ -57260,9 +49384,7 @@ void UUIWidget_List_X::RemoveAllWidgets()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.RemoveAllWidgets");
 
-	struct
-	{
-	} params;
+	UUIWidget_List_X_RemoveAllWidgets_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57282,11 +49404,7 @@ class UUIWidget_X* UUIWidget_List_X::AddSimpleTextItem(const struct FString& Lab
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.AddSimpleTextItem");
 
-	struct
-	{
-		struct FString                 Label;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_List_X_AddSimpleTextItem_Params params;
 	params.Label = Label;
 
 	auto flags = fn->FunctionFlags;
@@ -57310,12 +49428,7 @@ class UUIWidget_X* UUIWidget_List_X::InsertItem(int Index, class UUIWidget_X* Te
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.InsertItem");
 
-	struct
-	{
-		int                            Index;
-		class UUIWidget_X*             Template;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_List_X_InsertItem_Params params;
 	params.Index = Index;
 	params.Template = Template;
 
@@ -57339,11 +49452,7 @@ class UUIWidget_X* UUIWidget_List_X::AddItem(class UUIWidget_X* Template)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.AddItem");
 
-	struct
-	{
-		class UUIWidget_X*             Template;
-		class UUIWidget_X*             ReturnValue;
-	} params;
+	UUIWidget_List_X_AddItem_Params params;
 	params.Template = Template;
 
 	auto flags = fn->FunctionFlags;
@@ -57366,11 +49475,7 @@ class URPC_GetGroupSkills_X* URPC_GetGroupSkills_X::SetPlayers(TArray<struct FUn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetGroupSkills_X.SetPlayers");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    InPlayers;
-		class URPC_GetGroupSkills_X*   ReturnValue;
-	} params;
+	URPC_GetGroupSkills_X_SetPlayers_Params params;
 	params.InPlayers = InPlayers;
 
 	auto flags = fn->FunctionFlags;
@@ -57392,10 +49497,7 @@ void URPC_UpdateGroupSkills_X::CreateGroupSkillsFor(TArray<struct FSkillMatchPar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.CreateGroupSkillsFor");
 
-	struct
-	{
-		TArray<struct FSkillMatchParty> MatchParties;
-	} params;
+	URPC_UpdateGroupSkills_X_CreateGroupSkillsFor_Params params;
 	params.MatchParties = MatchParties;
 
 	auto flags = fn->FunctionFlags;
@@ -57413,9 +49515,7 @@ void URPC_UpdateGroupSkills_X::CreateGroupSkills()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.CreateGroupSkills");
 
-	struct
-	{
-	} params;
+	URPC_UpdateGroupSkills_X_CreateGroupSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57432,9 +49532,7 @@ void URPC_UpdateGroupSkills_X::OnSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.OnSuccess");
 
-	struct
-	{
-	} params;
+	URPC_UpdateGroupSkills_X_OnSuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57457,14 +49555,7 @@ void URPC_UpdateGroupSkills_X::AddToGroup(const struct FUniqueNetId& PlayerID, i
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.AddToGroup");
 
-	struct
-	{
-		TArray<struct FSkillMatchParty> Groups;
-		struct FUniqueNetId            PlayerID;
-		int                            PartyID;
-		float                          PctTimePlayed;
-		bool                           bQuitter;
-	} params;
+	URPC_UpdateGroupSkills_X_AddToGroup_Params params;
 	params.PlayerID = PlayerID;
 	params.PartyID = PartyID;
 	params.PctTimePlayed = PctTimePlayed;
@@ -57494,14 +49585,7 @@ class URPC_UpdateGroupSkills_X* URPC_UpdateGroupSkills_X::AddLoser(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.AddLoser");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            PartyID;
-		float                          PctTimePlayed;
-		bool                           bQuitter;
-		class URPC_UpdateGroupSkills_X* ReturnValue;
-	} params;
+	URPC_UpdateGroupSkills_X_AddLoser_Params params;
 	params.PlayerID = PlayerID;
 	params.PartyID = PartyID;
 	params.PctTimePlayed = PctTimePlayed;
@@ -57530,14 +49614,7 @@ class URPC_UpdateGroupSkills_X* URPC_UpdateGroupSkills_X::AddWinner(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.AddWinner");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		int                            PartyID;
-		float                          PctTimePlayed;
-		bool                           bQuitter;
-		class URPC_UpdateGroupSkills_X* ReturnValue;
-	} params;
+	URPC_UpdateGroupSkills_X_AddWinner_Params params;
 	params.PlayerID = PlayerID;
 	params.PartyID = PartyID;
 	params.PctTimePlayed = PctTimePlayed;
@@ -57563,11 +49640,7 @@ class URPC_UpdateGroupSkills_X* URPC_UpdateGroupSkills_X::SetMatch(class UMatchR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateGroupSkills_X.SetMatch");
 
-	struct
-	{
-		class UMatchRecorder_X*        InRecorder;
-		class URPC_UpdateGroupSkills_X* ReturnValue;
-	} params;
+	URPC_UpdateGroupSkills_X_SetMatch_Params params;
 	params.InRecorder = InRecorder;
 
 	auto flags = fn->FunctionFlags;
@@ -57593,14 +49666,7 @@ class URPC_SetGroupSkills_X* URPC_SetGroupSkills_X::SetSkills(TArray<struct FUni
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetGroupSkills_X.SetSkills");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    InPlayers;
-		TArray<int>                    InPlaylists;
-		float                          InMu;
-		float                          InSigma;
-		class URPC_SetGroupSkills_X*   ReturnValue;
-	} params;
+	URPC_SetGroupSkills_X_SetSkills_Params params;
 	params.InPlayers = InPlayers;
 	params.InPlaylists = InPlaylists;
 	params.InMu = InMu;
@@ -57629,14 +49695,7 @@ class URPC_SetGroupTiers_X* URPC_SetGroupTiers_X::SetTiers(TArray<struct FUnique
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetGroupTiers_X.SetTiers");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    InPlayers;
-		TArray<int>                    InPlaylists;
-		int                            InTier;
-		int                            InMatchesPlayed;
-		class URPC_SetGroupTiers_X*    ReturnValue;
-	} params;
+	URPC_SetGroupTiers_X_SetTiers_Params params;
 	params.InPlayers = InPlayers;
 	params.InPlaylists = InPlaylists;
 	params.InTier = InTier;
@@ -57659,9 +49718,7 @@ void URPC_TestPlayerID_X::OnSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_TestPlayerID_X.OnSuccess");
 
-	struct
-	{
-	} params;
+	URPC_TestPlayerID_X_OnSuccess_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57678,9 +49735,7 @@ void URPC_TestPlayerID_X::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_TestPlayerID_X.Init");
 
-	struct
-	{
-	} params;
+	URPC_TestPlayerID_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57700,11 +49755,7 @@ class UPartyMessage_AcceptTrade_X* UPartyMessage_AcceptTrade_X::SetMemberId(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptTrade_X.SetMemberId");
 
-	struct
-	{
-		struct FUniqueNetId            InMemberId;
-		class UPartyMessage_AcceptTrade_X* ReturnValue;
-	} params;
+	UPartyMessage_AcceptTrade_X_SetMemberId_Params params;
 	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
@@ -57727,11 +49778,7 @@ class URPC_RecordMatch_X* URPC_RecordMatch_X::SetMatch(class UMatchRecorder_X* I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_RecordMatch_X.SetMatch");
 
-	struct
-	{
-		class UMatchRecorder_X*        InRecorder;
-		class URPC_RecordMatch_X*      ReturnValue;
-	} params;
+	URPC_RecordMatch_X_SetMatch_Params params;
 	params.InRecorder = InRecorder;
 
 	auto flags = fn->FunctionFlags;
@@ -57754,11 +49801,7 @@ class URPC_RecordMatch_X* URPC_RecordMatch_X::SetMatchGUID(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_RecordMatch_X.SetMatchGUID");
 
-	struct
-	{
-		struct FString                 InGuid;
-		class URPC_RecordMatch_X*      ReturnValue;
-	} params;
+	URPC_RecordMatch_X_SetMatchGUID_Params params;
 	params.InGuid = InGuid;
 
 	auto flags = fn->FunctionFlags;
@@ -57782,12 +49825,7 @@ void ULocalCacheTests_X::STATIC_HandleLocalCacheImported(class ULocalCache_X* Ca
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.HandleLocalCacheImported");
 
-	struct
-	{
-		class ULocalCache_X*           Cache;
-		class UObject*                 CacheObject;
-		class UError_X*                Error;
-	} params;
+	ULocalCacheTests_X_HandleLocalCacheImported_Params params;
 	params.Cache = Cache;
 	params.CacheObject = CacheObject;
 	params.Error = Error;
@@ -57807,9 +49845,7 @@ void ULocalCacheTests_X::STATIC_ImportTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.ImportTest");
 
-	struct
-	{
-	} params;
+	ULocalCacheTests_X_ImportTest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57830,12 +49866,7 @@ void ULocalCacheTests_X::STATIC_HandleLocalCacheExported(class ULocalCache_X* Ca
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.HandleLocalCacheExported");
 
-	struct
-	{
-		class ULocalCache_X*           Cache;
-		class UObject*                 CacheObject;
-		class UError_X*                Error;
-	} params;
+	ULocalCacheTests_X_HandleLocalCacheExported_Params params;
 	params.Cache = Cache;
 	params.CacheObject = CacheObject;
 	params.Error = Error;
@@ -57857,10 +49888,7 @@ void ULocalCacheTests_X::STATIC_ToCacheAndBack(int RandomSeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.ToCacheAndBack");
 
-	struct
-	{
-		int                            RandomSeed;
-	} params;
+	ULocalCacheTests_X_ToCacheAndBack_Params params;
 	params.RandomSeed = RandomSeed;
 
 	auto flags = fn->FunctionFlags;
@@ -57881,11 +49909,7 @@ void USkelControlBlendTargetComponent_X::SetControlActiveInComponent(class USkel
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SkelControlBlendTargetComponent_X.SetControlActiveInComponent");
 
-	struct
-	{
-		class USkeletalMeshComponent*  SKC;
-		bool                           bActive;
-	} params;
+	USkelControlBlendTargetComponent_X_SetControlActiveInComponent_Params params;
 	params.SKC = SKC;
 	params.bActive = bActive;
 
@@ -57906,10 +49930,7 @@ void USkelControlBlendTargetComponent_X::SetControlActive(bool bActive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SkelControlBlendTargetComponent_X.SetControlActive");
 
-	struct
-	{
-		bool                           bActive;
-	} params;
+	USkelControlBlendTargetComponent_X_SetControlActive_Params params;
 	params.bActive = bActive;
 
 	auto flags = fn->FunctionFlags;
@@ -57927,9 +49948,7 @@ void USkelControlBlendTargetComponent_X::Detached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SkelControlBlendTargetComponent_X.Detached");
 
-	struct
-	{
-	} params;
+	USkelControlBlendTargetComponent_X_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57946,9 +49965,7 @@ void USkelControlBlendTargetComponent_X::Attached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SkelControlBlendTargetComponent_X.Attached");
 
-	struct
-	{
-	} params;
+	USkelControlBlendTargetComponent_X_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57967,10 +49984,7 @@ bool UAprilConfig_X::IsActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AprilConfig_X.IsActive");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UAprilConfig_X_IsActive_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57989,9 +50003,7 @@ void UAprilConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.AprilConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UAprilConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58011,11 +50023,7 @@ TArray<struct FString> UArrayFuncs_X::STATIC_ShuffleStringArray(TArray<struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ArrayFuncs_X.ShuffleStringArray");
 
-	struct
-	{
-		TArray<struct FString>         ArrayToShuffle;
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UArrayFuncs_X_ShuffleStringArray_Params params;
 	params.ArrayToShuffle = ArrayToShuffle;
 
 	auto flags = fn->FunctionFlags;
@@ -58038,11 +50046,7 @@ void UCameraState_CamActorCinematic_X::UpdatePOV(float DeltaTime, struct FCamera
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActorCinematic_X.UpdatePOV");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FCameraOrientation      OutPOV;
-	} params;
+	UCameraState_CamActorCinematic_X_UpdatePOV_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -58063,9 +50067,7 @@ void UCameraState_CamActorCinematic_X::EndCameraState()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActorCinematic_X.EndCameraState");
 
-	struct
-	{
-	} params;
+	UCameraState_CamActorCinematic_X_EndCameraState_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58084,10 +50086,7 @@ struct FCheckReservationData URPC_CheckReservation_X::GetReservation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckReservation_X.GetReservation");
 
-	struct
-	{
-		struct FCheckReservationData   ReturnValue;
-	} params;
+	URPC_CheckReservation_X_GetReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58109,11 +50108,7 @@ class URPC_CheckReservation_X* URPC_CheckReservation_X::SetIsHeartbeat(bool bInI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckReservation_X.SetIsHeartbeat");
 
-	struct
-	{
-		bool                           bInIsHeartbeat;
-		class URPC_CheckReservation_X* ReturnValue;
-	} params;
+	URPC_CheckReservation_X_SetIsHeartbeat_Params params;
 	params.bInIsHeartbeat = bInIsHeartbeat;
 
 	auto flags = fn->FunctionFlags;
@@ -58135,10 +50130,7 @@ void UMetricsConfig_X::ResetProperties(class UMetricsSystem_X* Metrics)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.ResetProperties");
 
-	struct
-	{
-		class UMetricsSystem_X*        Metrics;
-	} params;
+	UMetricsConfig_X_ResetProperties_Params params;
 	params.Metrics = Metrics;
 
 	auto flags = fn->FunctionFlags;
@@ -58158,10 +50150,7 @@ void UMetricsConfig_X::SetProperties(class UMetricsSystem_X* Metrics)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.SetProperties");
 
-	struct
-	{
-		class UMetricsSystem_X*        Metrics;
-	} params;
+	UMetricsConfig_X_SetProperties_Params params;
 	params.Metrics = Metrics;
 
 	auto flags = fn->FunctionFlags;
@@ -58179,9 +50168,7 @@ void UMetricsConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UMetricsConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58198,9 +50185,7 @@ void UNetworkConfig_X::Undo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetworkConfig_X.Undo");
 
-	struct
-	{
-	} params;
+	UNetworkConfig_X_Undo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58217,9 +50202,7 @@ void UNetworkConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.NetworkConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UNetworkConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58238,10 +50221,7 @@ void UOnlineResource_X::SetCachedData(class UCachedWebData_X* NewData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.SetCachedData");
 
-	struct
-	{
-		class UCachedWebData_X*        NewData;
-	} params;
+	UOnlineResource_X_SetCachedData_Params params;
 	params.NewData = NewData;
 
 	auto flags = fn->FunctionFlags;
@@ -58262,11 +50242,7 @@ bool UOnlineResource_X::IsValidNewData(class UCachedWebData_X* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.IsValidNewData");
 
-	struct
-	{
-		class UCachedWebData_X*        Data;
-		bool                           ReturnValue;
-	} params;
+	UOnlineResource_X_IsValidNewData_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -58286,9 +50262,7 @@ void UOnlineResource_X::ClearRetryTimer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.ClearRetryTimer");
 
-	struct
-	{
-	} params;
+	UOnlineResource_X_ClearRetryTimer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58307,10 +50281,7 @@ void UOnlineResource_X::SetRetryTimer(float Delay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.SetRetryTimer");
 
-	struct
-	{
-		float                          Delay;
-	} params;
+	UOnlineResource_X_SetRetryTimer_Params params;
 	params.Delay = Delay;
 
 	auto flags = fn->FunctionFlags;
@@ -58330,10 +50301,7 @@ void UOnlineResource_X::HandleSync(class UCachedWebData_X* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.HandleSync");
 
-	struct
-	{
-		class UCachedWebData_X*        Data;
-	} params;
+	UOnlineResource_X_HandleSync_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -58351,9 +50319,7 @@ void UOnlineResource_X::SyncData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.SyncData");
 
-	struct
-	{
-	} params;
+	UOnlineResource_X_SyncData_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58372,10 +50338,7 @@ void UOnlineResource_X::EventDataChanged(class UOnlineResource_X* DataSync)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineResource_X.EventDataChanged");
 
-	struct
-	{
-		class UOnlineResource_X*       DataSync;
-	} params;
+	UOnlineResource_X_EventDataChanged_Params params;
 	params.DataSync = DataSync;
 
 	auto flags = fn->FunctionFlags;
@@ -58396,11 +50359,7 @@ class URPC_UpdateTrialData_X* URPC_UpdateTrialData_X::SetAdditionalMinutesToRemo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateTrialData_X.SetAdditionalMinutesToRemove");
 
-	struct
-	{
-		int                            InAdditionalMinutesToRemove;
-		class URPC_UpdateTrialData_X*  ReturnValue;
-	} params;
+	URPC_UpdateTrialData_X_SetAdditionalMinutesToRemove_Params params;
 	params.InAdditionalMinutesToRemove = InAdditionalMinutesToRemove;
 
 	auto flags = fn->FunctionFlags;
@@ -58423,11 +50382,7 @@ class URPC_UpdateTrialData_X* URPC_UpdateTrialData_X::SetMinutesToRemove(int InM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_UpdateTrialData_X.SetMinutesToRemove");
 
-	struct
-	{
-		int                            InMinutesToRemove;
-		class URPC_UpdateTrialData_X*  ReturnValue;
-	} params;
+	URPC_UpdateTrialData_X_SetMinutesToRemove_Params params;
 	params.InMinutesToRemove = InMinutesToRemove;
 
 	auto flags = fn->FunctionFlags;
@@ -58449,10 +50404,7 @@ void UPhysicsConfig_X::DisableFeature(const struct FString& Feature)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PhysicsConfig_X.DisableFeature");
 
-	struct
-	{
-		struct FString                 Feature;
-	} params;
+	UPhysicsConfig_X_DisableFeature_Params params;
 	params.Feature = Feature;
 
 	auto flags = fn->FunctionFlags;
@@ -58472,10 +50424,7 @@ void UPhysicsConfig_X::EnableFeature(const struct FString& Feature)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PhysicsConfig_X.EnableFeature");
 
-	struct
-	{
-		struct FString                 Feature;
-	} params;
+	UPhysicsConfig_X_EnableFeature_Params params;
 	params.Feature = Feature;
 
 	auto flags = fn->FunctionFlags;
@@ -58493,9 +50442,7 @@ void UPhysicsConfig_X::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PhysicsConfig_X.Reset");
 
-	struct
-	{
-	} params;
+	UPhysicsConfig_X_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58512,9 +50459,7 @@ void UPhysicsConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PhysicsConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UPhysicsConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58533,10 +50478,7 @@ void UPsyNetConfig_X::ResetProperties(class UPsyNet_X* PsyNet)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetConfig_X.ResetProperties");
 
-	struct
-	{
-		class UPsyNet_X*               PsyNet;
-	} params;
+	UPsyNetConfig_X_ResetProperties_Params params;
 	params.PsyNet = PsyNet;
 
 	auto flags = fn->FunctionFlags;
@@ -58556,10 +50498,7 @@ void UPsyNetConfig_X::SetProperties(class UPsyNet_X* PsyNet)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetConfig_X.SetProperties");
 
-	struct
-	{
-		class UPsyNet_X*               PsyNet;
-	} params;
+	UPsyNetConfig_X_SetProperties_Params params;
 	params.PsyNet = PsyNet;
 
 	auto flags = fn->FunctionFlags;
@@ -58577,9 +50516,7 @@ void UPsyNetConfig_X::Apply()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetConfig_X.Apply");
 
-	struct
-	{
-	} params;
+	UPsyNetConfig_X_Apply_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58598,10 +50535,7 @@ bool URPC_CheckKeys_X::KeysMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckKeys_X.KeysMatch");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	URPC_CheckKeys_X_KeysMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58623,11 +50557,7 @@ class URPC_CheckKeys_X* URPC_CheckKeys_X::SetKeyToCheck(const struct FString& In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_CheckKeys_X.SetKeyToCheck");
 
-	struct
-	{
-		struct FString                 InKey;
-		class URPC_CheckKeys_X*        ReturnValue;
-	} params;
+	URPC_CheckKeys_X_SetKeyToCheck_Params params;
 	params.InKey = InKey;
 
 	auto flags = fn->FunctionFlags;
@@ -58650,11 +50580,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetNumBots(int InNumBots)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetNumBots");
 
-	struct
-	{
-		int                            InNumBots;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetNumBots_Params params;
 	params.InNumBots = InNumBots;
 
 	auto flags = fn->FunctionFlags;
@@ -58677,11 +50603,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetNumHumans(int InNumHumans)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetNumHumans");
 
-	struct
-	{
-		int                            InNumHumans;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetNumHumans_Params params;
 	params.InNumHumans = InNumHumans;
 
 	auto flags = fn->FunctionFlags;
@@ -58704,11 +50626,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetServerName(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetServerName");
 
-	struct
-	{
-		struct FString                 InServerName;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetServerName_Params params;
 	params.InServerName = InServerName;
 
 	auto flags = fn->FunctionFlags;
@@ -58731,11 +50649,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetServerID(int InServerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetServerID");
 
-	struct
-	{
-		int                            InServerID;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetServerID_Params params;
 	params.InServerID = InServerID;
 
 	auto flags = fn->FunctionFlags;
@@ -58758,11 +50672,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetMachineID(int InMachineID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetMachineID");
 
-	struct
-	{
-		int                            InMachineID;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetMachineID_Params params;
 	params.InMachineID = InMachineID;
 
 	auto flags = fn->FunctionFlags;
@@ -58785,11 +50695,7 @@ class URPC_ReportLowFPS_X* URPC_ReportLowFPS_X::SetIP(const struct FString& InIP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_ReportLowFPS_X.SetIP");
 
-	struct
-	{
-		struct FString                 InIP;
-		class URPC_ReportLowFPS_X*     ReturnValue;
-	} params;
+	URPC_ReportLowFPS_X_SetIP_Params params;
 	params.InIP = InIP;
 
 	auto flags = fn->FunctionFlags;
@@ -58812,11 +50718,7 @@ class URPC_SetPlayerSkill_X* URPC_SetPlayerSkill_X::SetSigma(float InSigma)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkill_X.SetSigma");
 
-	struct
-	{
-		float                          InSigma;
-		class URPC_SetPlayerSkill_X*   ReturnValue;
-	} params;
+	URPC_SetPlayerSkill_X_SetSigma_Params params;
 	params.InSigma = InSigma;
 
 	auto flags = fn->FunctionFlags;
@@ -58839,11 +50741,7 @@ class URPC_SetPlayerSkill_X* URPC_SetPlayerSkill_X::SetMu(float InMu)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkill_X.SetMu");
 
-	struct
-	{
-		float                          InMu;
-		class URPC_SetPlayerSkill_X*   ReturnValue;
-	} params;
+	URPC_SetPlayerSkill_X_SetMu_Params params;
 	params.InMu = InMu;
 
 	auto flags = fn->FunctionFlags;
@@ -58866,11 +50764,7 @@ class URPC_SetPlayerSkill_X* URPC_SetPlayerSkill_X::SetPlaylist(int InPlaylist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkill_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_SetPlayerSkill_X*   ReturnValue;
-	} params;
+	URPC_SetPlayerSkill_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;
@@ -58893,11 +50787,7 @@ class URPC_SetPlayerSkillTier_X* URPC_SetPlayerSkillTier_X::SetMatchesPlayed(int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkillTier_X.SetMatchesPlayed");
 
-	struct
-	{
-		int                            InMatchesPlayed;
-		class URPC_SetPlayerSkillTier_X* ReturnValue;
-	} params;
+	URPC_SetPlayerSkillTier_X_SetMatchesPlayed_Params params;
 	params.InMatchesPlayed = InMatchesPlayed;
 
 	auto flags = fn->FunctionFlags;
@@ -58920,11 +50810,7 @@ class URPC_SetPlayerSkillTier_X* URPC_SetPlayerSkillTier_X::SetTier(int InTier)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkillTier_X.SetTier");
 
-	struct
-	{
-		int                            InTier;
-		class URPC_SetPlayerSkillTier_X* ReturnValue;
-	} params;
+	URPC_SetPlayerSkillTier_X_SetTier_Params params;
 	params.InTier = InTier;
 
 	auto flags = fn->FunctionFlags;
@@ -58947,11 +50833,7 @@ class URPC_SetPlayerSkillTier_X* URPC_SetPlayerSkillTier_X::SetPlaylist(int InPl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetPlayerSkillTier_X.SetPlaylist");
 
-	struct
-	{
-		int                            InPlaylist;
-		class URPC_SetPlayerSkillTier_X* ReturnValue;
-	} params;
+	URPC_SetPlayerSkillTier_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
 
 	auto flags = fn->FunctionFlags;

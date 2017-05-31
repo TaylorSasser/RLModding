@@ -17,8 +17,8 @@ namespace SDK
 class UFacebookWindows : public UFacebookIntegration
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x00A0(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	struct FPointer                                    ChildProcHandle;                                  		// 0x00A4(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x00A0(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FPointer                                    ChildProcHandle;                                          // 0x00A4(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -46,10 +46,10 @@ public:
 class UHttpRequestWindows : public UHttpRequestInterface
 {
 public:
-	struct FPointer                                    Request;                                          		// 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FString                                     RequestVerb;                                      		// 0x0050(0x000C) (CPF_Const, CPF_Native)
-	struct FPointer                                    RequestURL;                                       		// 0x005C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<unsigned char>                              Payload;                                          		// 0x0060(0x000C) (CPF_Const, CPF_Native)
+	struct FPointer                                    Request;                                                  // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FString                                     RequestVerb;                                              // 0x0050(0x000C) (CPF_Const, CPF_Native)
+	struct FPointer                                    RequestURL;                                               // 0x005C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<unsigned char>                              Payload;                                                  // 0x0060(0x000C) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -80,8 +80,8 @@ public:
 class UHttpResponseWindows : public UHttpResponseInterface
 {
 public:
-	struct FPointer                                    Response;                                         		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<unsigned char>                              Payload;                                          		// 0x0040(0x000C) (CPF_Const, CPF_Native)
+	struct FPointer                                    Response;                                                 // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<unsigned char>                              Payload;                                                  // 0x0040(0x000C) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -107,7 +107,7 @@ public:
 class USwrveAnalyticsWindows : public UAnalyticEventsBase
 {
 public:
-	unsigned char                                      UnknownData00[0x38];                              		// 0x006C(0x0038) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x38];                                      // 0x006C(0x0038) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -123,11 +123,11 @@ public:
 class UWindowsClient : public UClient
 {
 public:
-	unsigned char                                      UnknownData00[0x1D4];                             		// 0x0050(0x01D4) MISSED OFFSET
-	class UClass*                                      AudioDeviceClass;                                 		// 0x0224(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData01[0x30];                              		// 0x0228(0x0030) MISSED OFFSET
-	int                                                AllowJoystickInput;                               		// 0x0258(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData02[0x10];                              		// 0x025C(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x1D4];                                     // 0x0050(0x01D4) MISSED OFFSET
+	class UClass*                                      AudioDeviceClass;                                         // 0x0224(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData01[0x30];                                      // 0x0228(0x0030) MISSED OFFSET
+	int                                                AllowJoystickInput;                                       // 0x0258(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData02[0x10];                                      // 0x025C(0x0010) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -143,7 +143,7 @@ public:
 class UXnaForceFeedbackManager : public UForceFeedbackManager
 {
 public:
-	unsigned char                                      UnknownData00[0x14];                              		// 0x0064(0x0014) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x14];                                      // 0x0064(0x0014) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -159,8 +159,8 @@ public:
 class UHttpRequestWindowsMcp : public UHttpRequestWindows
 {
 public:
-	struct FString                                     AppID;                                            		// 0x006C(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     AppSecret;                                        		// 0x0078(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AppID;                                                    // 0x006C(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AppSecret;                                                // 0x0078(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

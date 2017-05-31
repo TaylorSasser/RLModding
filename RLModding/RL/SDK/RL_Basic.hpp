@@ -95,7 +95,7 @@ struct FString : private TArray<wchar_t>
 
 		std::string str(length, '\0');
 
-		std::use_facet<std::ctype<wchar_t>>(std::locale()).narrow(Data, Data + length, '?',  &str[0]);
+		std::use_facet<std::ctype<wchar_t>>(std::locale()).narrow(Data, Data + length, '?', &str[0]);
 
 		return str;
 	}

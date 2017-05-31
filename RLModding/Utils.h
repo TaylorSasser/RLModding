@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include "RL/SDK.hpp"
 
+
 namespace Utils {
 	struct FOutParmRec {
 		class UProperty*								   Property;
@@ -21,6 +22,16 @@ namespace Utils {
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
+
+
+	template<typename T> 
+	T* EditParams(void* NewParams,void* OldParams) {
+		T* oldParams = reinterpret_cast<T*>(OldParams);
+		T* newParams = reinterpret_cast<T*>(NewParams);
+		memcpy(newParams,oldParams,sizeof(T));
+		delete oldParams;
+		return newParams;
+	}
 }
 
   

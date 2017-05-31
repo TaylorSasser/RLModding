@@ -11,3 +11,8 @@ Change C:/Boost to your main boost folder, not the path of the of the headers.
 
 Next change your linker->General->Additional Library Directories and change your Library from C:\Boost\Stage\Lib to the
 directories of the 32 bit .lib files you built 
+
+Known bugs:
+
+Due to the microsoft vs compiler, classes that end with a TEnumAsByte will automatically have extra bytes added to the end of it and mess everything up.
+Let me know if you find a class that doesnt work and i'll try to come up with a solution

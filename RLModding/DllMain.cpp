@@ -18,6 +18,7 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 	switch (dwReason) {
 	case DLL_PROCESS_ATTACH:
 		CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)onAttach, hModule, 0, NULL);
+		//CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Sniffer::PacketSniffer,0,0,NULL);
 	case DLL_PROCESS_DETACH:
 		Core::Restore();
 	}
@@ -35,10 +36,8 @@ void onAttach(HMODULE hModule) {
 void TestFunction(SDK::UObject** object,SDK::UFunction* func, void* params, bool isCallFunc) {
 
 	if (GetAsyncKeyState(VK_NUMPAD5)) {
-	SDK::UOnlineGameDedicatedServer_X* server = (SDK::UOnlineGameDedicatedServer_X*)Utils::GetInstanceOf(SDK::UOnlineGameDedicatedServer_X::StaticClass());
-		if (server != NULL) {
-			std::cout << "Traveling to map..." << std::endl;
-			server->TravelToMap(L"UTOPIASTADIUM_P?Game=TAGame.GameInfo_Tutorial_TA?FreePlay?");
-		}
+		auto CustomParams = new SDK::UGFxData_Settings_TA_SetCrossPlay_Params;
+		CustomParams->Value = false;
+		Utils::EditParams<SDK::UGFxData_Settings_TA_SetCrossPlay_Params>(CustomParams,params);
 	}
 }

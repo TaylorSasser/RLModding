@@ -207,20 +207,20 @@ enum class EGameVersion
 class UObject
 {
 public:
-	static TArray<UObject*>*                           GObjects;                                         		// 0x0000(0x0000)
-	struct FPointer                                    VfTableObject;                                    		// 0x0000(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
-	struct FPointer                                    HashNext;                                         		// 0x0004(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
-	unsigned char                                      UnknownData00[0x8];                               		// 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty Core.Object.ObjectFlags
-	struct FPointer                                    HashOuterNext;                                    		// 0x0010(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
-	struct FPointer                                    StateFrame;                                       		// 0x0014(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
-	class UObject*                                     Linker;                                           		// 0x0018(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
-	struct FPointer                                    LinkerIndex;                                      		// 0x001C(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
-	int                                                ObjectInternalInteger;                            		// 0x0020(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
-	int                                                NetIndex;                                         		// 0x0024(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
-	class UObject*                                     Outer;                                            		// 0x0028(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
-	struct FName                                       Name;                                             		// 0x002C(0x0008) (CPF_Edit, CPF_Const, CPF_Native, CPF_EditConst)
-	class UClass*                                      Class;                                            		// 0x0034(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
-	class UObject*                                     ObjectArchetype;                                  		// 0x0038(0x0004) (CPF_Edit, CPF_Const, CPF_Native, CPF_EditConst)
+	static TArray<UObject*>*                           GObjects;                                                 // 0x0000(0x0000)
+	struct FPointer                                    VfTableObject;                                            // 0x0000(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
+	struct FPointer                                    HashNext;                                                 // 0x0004(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty Core.Object.ObjectFlags
+	struct FPointer                                    HashOuterNext;                                            // 0x0010(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
+	struct FPointer                                    StateFrame;                                               // 0x0014(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
+	class UObject*                                     Linker;                                                   // 0x0018(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
+	struct FPointer                                    LinkerIndex;                                              // 0x001C(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
+	int                                                ObjectInternalInteger;                                    // 0x0020(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
+	int                                                NetIndex;                                                 // 0x0024(0x0004) (CPF_Const, CPF_Native, CPF_EditConst, CPF_NoExport)
+	class UObject*                                     Outer;                                                    // 0x0028(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
+	struct FName                                       Name;                                                     // 0x002C(0x0008) (CPF_Edit, CPF_Const, CPF_Native, CPF_EditConst)
+	class UClass*                                      Class;                                                    // 0x0034(0x0004) (CPF_Const, CPF_Native, CPF_EditConst)
+	class UObject*                                     ObjectArchetype;                                          // 0x0038(0x0004) (CPF_Edit, CPF_Const, CPF_Native, CPF_EditConst)
 
 	static inline TArray<UObject*>& GetGlobalObjects()
 	{
@@ -274,7 +274,7 @@ public:
 
 	inline void ProcessEvent(class UFunction* function, void* parms)
 	{
-		return GetVFunction<void(__thiscall *)(UObject*, class UFunction*, void*,uint32_t)>(this, 67)(this, function, parms,NULL);
+		return GetVFunction<void(__thiscall *)(UObject*, class UFunction*, void*, void*)>(this, 67)(this, function, parms, nullptr);
 	}
 
 
@@ -660,7 +660,7 @@ public:
 class UTextBuffer : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x24];                              		// 0x003C(0x0024) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x24];                                      // 0x003C(0x0024) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -676,7 +676,7 @@ public:
 class USubsystem : public UObject
 {
 public:
-	struct FPointer                                    VfTable_FExec;                                    		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FPointer                                    VfTable_FExec;                                            // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 
 	static UClass* StaticClass()
 	{
@@ -692,25 +692,25 @@ public:
 class USystem : public USubsystem
 {
 public:
-	int                                                StaleCacheDays;                                   		// 0x0040(0x0004) (CPF_Config)
-	int                                                MaxStaleCacheSize;                                		// 0x0044(0x0004) (CPF_Config)
-	int                                                MaxOverallCacheSize;                              		// 0x0048(0x0004) (CPF_Config)
-	int                                                PackageSizeSoftLimit;                             		// 0x004C(0x0004) (CPF_Config)
-	float                                              AsyncIOBandwidthLimit;                            		// 0x0050(0x0004) (CPF_Config)
-	struct FString                                     SavePath;                                         		// 0x0054(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     CachePath;                                        		// 0x0060(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     CacheExt;                                         		// 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             Paths;                                            		// 0x0078(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             SeekFreePCPaths;                                  		// 0x0084(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             ScriptPaths;                                      		// 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             FRScriptPaths;                                    		// 0x009C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             CutdownPaths;                                     		// 0x00A8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FName>                               Suppress;                                         		// 0x00B4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FName>                               SuppressPublic;                                   		// 0x00C0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             Extensions;                                       		// 0x00CC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             SeekFreePCExtensions;                             		// 0x00D8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             LocalizationPaths;                                		// 0x00E4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     TextureFileCacheExtension;                        		// 0x00F0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	int                                                StaleCacheDays;                                           // 0x0040(0x0004) (CPF_Config)
+	int                                                MaxStaleCacheSize;                                        // 0x0044(0x0004) (CPF_Config)
+	int                                                MaxOverallCacheSize;                                      // 0x0048(0x0004) (CPF_Config)
+	int                                                PackageSizeSoftLimit;                                     // 0x004C(0x0004) (CPF_Config)
+	float                                              AsyncIOBandwidthLimit;                                    // 0x0050(0x0004) (CPF_Config)
+	struct FString                                     SavePath;                                                 // 0x0054(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     CachePath;                                                // 0x0060(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     CacheExt;                                                 // 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             Paths;                                                    // 0x0078(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             SeekFreePCPaths;                                          // 0x0084(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             ScriptPaths;                                              // 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             FRScriptPaths;                                            // 0x009C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             CutdownPaths;                                             // 0x00A8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FName>                               Suppress;                                                 // 0x00B4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FName>                               SuppressPublic;                                           // 0x00C0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             Extensions;                                               // 0x00CC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             SeekFreePCExtensions;                                     // 0x00D8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             LocalizationPaths;                                        // 0x00E4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     TextureFileCacheExtension;                                // 0x00F0(0x000C) (CPF_Config, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -726,7 +726,7 @@ public:
 class UPackageMap : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x84];                              		// 0x003C(0x0084) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x84];                                      // 0x003C(0x0084) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -742,7 +742,7 @@ public:
 class UObjectSerializer : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0xC];                               		// 0x003C(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x003C(0x000C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -758,7 +758,7 @@ public:
 class UObjectRedirector : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x003C(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -774,20 +774,20 @@ public:
 class UObjectProvider : public UObject
 {
 public:
-	struct FPointer                                    VfTable_FObjectDestructionSubscriber;             		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	TArray<class UObject*>                             Objects;                                          		// 0x0040(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FObjectProviderSubscription>         SubscribedToAdds;                                 		// 0x004C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FObjectProviderSubscription>         SubscribedToRemoves;                              		// 0x0058(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FObjectProviderSubscription>         SubscribedToLists;                                		// 0x0064(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FObjectPropertyInjection>            Injections;                                       		// 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                                 		// 0x007C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	unsigned long                                      bNeedsCleanup : 1;                                		// 0x0088(0x0004) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;           		// 0x008C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x008C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __ObjectListSubscriptionCallback__Delegate;       		// 0x009C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __ObjectChangeCallback__Delegate;                 		// 0x00AC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    VfTable_FObjectDestructionSubscriber;                     // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	TArray<class UObject*>                             Objects;                                                  // 0x0040(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FObjectProviderSubscription>         SubscribedToAdds;                                         // 0x004C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FObjectProviderSubscription>         SubscribedToRemoves;                                      // 0x0058(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FObjectProviderSubscription>         SubscribedToLists;                                        // 0x0064(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FObjectPropertyInjection>            Injections;                                               // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                                         // 0x007C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	unsigned long                                      bNeedsCleanup : 1;                                        // 0x0088(0x0004) (CPF_Const, CPF_Transient)
+	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;                   // 0x008C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x008C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __ObjectListSubscriptionCallback__Delegate;               // 0x009C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __ObjectChangeCallback__Delegate;                         // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -821,7 +821,7 @@ public:
 class UMetaData : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x3C];                              		// 0x003C(0x003C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x003C(0x003C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -837,7 +837,7 @@ public:
 class ULinker : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x138];                             		// 0x003C(0x0138) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x138];                                     // 0x003C(0x0138) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -853,7 +853,7 @@ public:
 class ULinkerSave : public ULinker
 {
 public:
-	unsigned char                                      UnknownData00[0xA4];                              		// 0x0174(0x00A4) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xA4];                                      // 0x0174(0x00A4) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -869,7 +869,7 @@ public:
 class ULinkerLoad : public ULinker
 {
 public:
-	unsigned char                                      UnknownData00[0x5C4];                             		// 0x0174(0x05C4) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x5C4];                                     // 0x0174(0x05C4) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -928,8 +928,8 @@ public:
 class UField : public UObject
 {
 public:
-	class UField*                                      Next;                                             		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData00[0x08];                              		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	class UField*                                      Next;                                                     // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData00[0x08];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -945,11 +945,11 @@ public:
 class UStruct : public UField
 {
 public:
-	char                                               UnknownData00[0x08];                              		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	class UField*                                      SuperField;                                       		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	class UField*                                      Children;                                         		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned long                                      PropertySize;                                     		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData01[0x30];                              		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData00[0x08];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	class UField*                                      SuperField;                                               // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	class UField*                                      Children;                                                 // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned long                                      PropertySize;                                             // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData01[0x30];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -965,7 +965,7 @@ public:
 class UScriptStruct : public UStruct
 {
 public:
-	unsigned char                                      UnknownData00[0x1C];                              		// 0x008C(0x001C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x1C];                                      // 0x008C(0x001C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -981,16 +981,16 @@ public:
 class UFunction : public UStruct
 {
 public:
-	unsigned long                                      FunctionFlags;                                    		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned short                                     iNative;                                          		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned short                                     RepOffset;                                        		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	FName                                              FriendlyName;                                     		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned char                                      OperPrecedence;                                   		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned char                                      NumParms;                                         		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned short                                     ParmsSize;                                        		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	unsigned long                                      ReturnValueOffset;                                		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData00[0x4];                               		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	void*                                              Func;                                             		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned long                                      FunctionFlags;                                            // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned short                                     iNative;                                                  // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned short                                     RepOffset;                                                // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	FName                                              FriendlyName;                                             // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned char                                      OperPrecedence;                                           // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned char                                      NumParms;                                                 // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned short                                     ParmsSize;                                                // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	unsigned long                                      ReturnValueOffset;                                        // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData00[0x4];                                       // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	void*                                              Func;                                                     // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1006,7 +1006,7 @@ public:
 class UProperty : public UField
 {
 public:
-	unsigned char                                      UnknownData00[0x3C];                              		// 0x0048(0x003C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0048(0x003C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1022,7 +1022,7 @@ public:
 class UStructProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0084(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1068,7 +1068,7 @@ public:
 class UObjectProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0xC];                               		// 0x0084(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0084(0x000C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1099,7 +1099,7 @@ public:
 class UClassProperty : public UObjectProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0090(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0090(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1130,7 +1130,7 @@ public:
 class UMapProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                               		// 0x0084(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0084(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1161,7 +1161,7 @@ public:
 class UInterfaceProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0084(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1192,7 +1192,7 @@ public:
 class UDelegateProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                               		// 0x0084(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0084(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1208,7 +1208,7 @@ public:
 class UByteProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0084(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1224,7 +1224,7 @@ public:
 class UBoolProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0084(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1240,7 +1240,7 @@ public:
 class UArrayProperty : public UProperty
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0084(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1256,7 +1256,7 @@ public:
 class UEnum : public UField
 {
 public:
-	unsigned char                                      UnknownData00[0xC];                               		// 0x0048(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0048(0x000C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1272,7 +1272,7 @@ public:
 class UConst : public UField
 {
 public:
-	unsigned char                                      UnknownData00[0xC];                               		// 0x0048(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0048(0x000C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1288,69 +1288,69 @@ public:
 class UFeatureSystem : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x14];                              		// 0x003C(0x0014) MISSED OFFSET
-	unsigned long                                      Matchmaking : 1;                                  		// 0x0050(0x0004) (CPF_DataBinding)
-	unsigned long                                      PrivateMatch : 1;                                 		// 0x0054(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitscreenMatch : 1;                             		// 0x0058(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitscreenJoin : 1;                              		// 0x005C(0x0004) (CPF_DataBinding)
-	unsigned long                                      SeasonMode : 1;                                   		// 0x0060(0x0004) (CPF_DataBinding)
-	unsigned long                                      Tutorial : 1;                                     		// 0x0064(0x0004) (CPF_DataBinding)
-	unsigned long                                      Garage : 1;                                       		// 0x0068(0x0004) (CPF_DataBinding)
-	unsigned long                                      Options : 1;                                      		// 0x006C(0x0004) (CPF_DataBinding)
-	unsigned long                                      ReplaySaves : 1;                                  		// 0x0070(0x0004) (CPF_DataBinding)
-	unsigned long                                      MainMenu : 1;                                     		// 0x0074(0x0004) (CPF_DataBinding)
-	unsigned long                                      MidgameMenu : 1;                                  		// 0x0078(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x007C(0x0004) MISSED OFFSET
-	unsigned long                                      Party : 1;                                        		// 0x0080(0x0004) (CPF_DataBinding)
-	unsigned long                                      Achievements : 1;                                 		// 0x0084(0x0004) (CPF_DataBinding)
-	unsigned long                                      Stats : 1;                                        		// 0x0088(0x0004) (CPF_DataBinding)
-	unsigned long                                      Leaderboards : 1;                                 		// 0x008C(0x0004) (CPF_DataBinding)
-	unsigned long                                      XP : 1;                                           		// 0x0090(0x0004) (CPF_DataBinding)
-	unsigned long                                      Chat : 1;                                         		// 0x0094(0x0004) (CPF_DataBinding)
-	unsigned long                                      FullCredits : 1;                                  		// 0x0098(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x009C(0x0004) MISSED OFFSET
-	unsigned long                                      TrainingDifficulties : 1;                         		// 0x00A0(0x0004) (CPF_DataBinding)
-	unsigned long                                      Ads : 1;                                          		// 0x00A4(0x0004) (CPF_DataBinding)
-	unsigned long                                      Microtransactions : 1;                            		// 0x00A8(0x0004) (CPF_DataBinding)
-	unsigned long                                      ItemDrops : 1;                                    		// 0x00AC(0x0004) (CPF_DataBinding)
-	unsigned long                                      Spectator : 1;                                    		// 0x00B0(0x0004) (CPF_DataBinding)
-	unsigned long                                      CrossPlatformPrivateMatch : 1;                    		// 0x00B4(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x00B8(0x0004) MISSED OFFSET
-	unsigned long                                      BuyDLC : 1;                                       		// 0x00BC(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x00C0(0x0004) MISSED OFFSET
-	unsigned long                                      PlayerReporting : 1;                              		// 0x00C4(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x00C8(0x0004) MISSED OFFSET
-	unsigned long                                      PremiumGarage : 1;                                		// 0x00CC(0x0004) (CPF_DataBinding)
-	unsigned long                                      PodiumSpotlight : 1;                              		// 0x00D0(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x00D4(0x0004) MISSED OFFSET
-	unsigned long                                      CustomTeamNames : 1;                              		// 0x00D8(0x0004) (CPF_DataBinding)
-	unsigned long                                      CustomTeamColors : 1;                             		// 0x00DC(0x0004) (CPF_DataBinding)
-	unsigned long                                      PlayerTrading : 1;                                		// 0x00E0(0x0004) (CPF_DataBinding)
-	unsigned long                                      GaragePresets : 1;                                		// 0x00E4(0x0004) (CPF_DataBinding)
-	unsigned long                                      PartyChat : 1;                                    		// 0x00E8(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData07[0x10];                              		// 0x00EC(0x0010) MISSED OFFSET
-	unsigned long                                      OnlineServices : 1;                               		// 0x00FC(0x0004) (CPF_DataBinding)
-	unsigned long                                      HideUnreleasedDLC : 1;                            		// 0x0100(0x0004) (CPF_DataBinding)
-	unsigned long                                      RemoveCrossPlatformProducts : 1;                  		// 0x0104(0x0004) (CPF_DataBinding)
-	unsigned long                                      Mutators : 1;                                     		// 0x0108(0x0004) (CPF_DataBinding)
-	unsigned long                                      ProductValidation : 1;                            		// 0x010C(0x0004) (CPF_DataBinding)
-	unsigned long                                      PlayerTitle : 1;                                  		// 0x0110(0x0004) (CPF_DataBinding)
-	unsigned long                                      DynamicThumbnails : 1;                            		// 0x0114(0x0004) (CPF_DataBinding)
-	unsigned long                                      MapPrefs : 1;                                     		// 0x0118(0x0004) (CPF_DataBinding)
-	unsigned long                                      Workshop : 1;                                     		// 0x011C(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData08[0x34];                              		// 0x0120(0x0034) MISSED OFFSET
-	unsigned long                                      Inventory : 1;                                    		// 0x0154(0x0004) (CPF_DataBinding)
-	unsigned long                                      TrainingEditor : 1;                               		// 0x0158(0x0004) (CPF_DataBinding)
-	unsigned long                                      RedeemCode : 1;                                   		// 0x015C(0x0004) (CPF_DataBinding)
-	unsigned long                                      VoiceChat : 1;                                    		// 0x0160(0x0004) (CPF_DataBinding)
-	unsigned long                                      EditBindings : 1;                                 		// 0x0164(0x0004) (CPF_DataBinding)
-	unsigned long                                      UIScale : 1;                                      		// 0x0168(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitScreen : 1;                                  		// 0x016C(0x0004) (CPF_DataBinding)
-	unsigned long                                      Crossplay : 1;                                    		// 0x0170(0x0004) (CPF_DataBinding)
-	unsigned long                                      CompetitiveDivisions : 1;                         		// 0x0174(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData09[0x4];                               		// 0x0178(0x0004) MISSED OFFSET
-	unsigned long                                      ClanforgeReservation : 1;                         		// 0x017C(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData10[0x3C];                              		// 0x0180(0x003C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x14];                                      // 0x003C(0x0014) MISSED OFFSET
+	unsigned long                                      Matchmaking : 1;                                          // 0x0050(0x0004) (CPF_DataBinding)
+	unsigned long                                      PrivateMatch : 1;                                         // 0x0054(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitscreenMatch : 1;                                     // 0x0058(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitscreenJoin : 1;                                      // 0x005C(0x0004) (CPF_DataBinding)
+	unsigned long                                      SeasonMode : 1;                                           // 0x0060(0x0004) (CPF_DataBinding)
+	unsigned long                                      Tutorial : 1;                                             // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      Garage : 1;                                               // 0x0068(0x0004) (CPF_DataBinding)
+	unsigned long                                      Options : 1;                                              // 0x006C(0x0004) (CPF_DataBinding)
+	unsigned long                                      ReplaySaves : 1;                                          // 0x0070(0x0004) (CPF_DataBinding)
+	unsigned long                                      MainMenu : 1;                                             // 0x0074(0x0004) (CPF_DataBinding)
+	unsigned long                                      MidgameMenu : 1;                                          // 0x0078(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) MISSED OFFSET
+	unsigned long                                      Party : 1;                                                // 0x0080(0x0004) (CPF_DataBinding)
+	unsigned long                                      Achievements : 1;                                         // 0x0084(0x0004) (CPF_DataBinding)
+	unsigned long                                      Stats : 1;                                                // 0x0088(0x0004) (CPF_DataBinding)
+	unsigned long                                      Leaderboards : 1;                                         // 0x008C(0x0004) (CPF_DataBinding)
+	unsigned long                                      XP : 1;                                                   // 0x0090(0x0004) (CPF_DataBinding)
+	unsigned long                                      Chat : 1;                                                 // 0x0094(0x0004) (CPF_DataBinding)
+	unsigned long                                      FullCredits : 1;                                          // 0x0098(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x009C(0x0004) MISSED OFFSET
+	unsigned long                                      TrainingDifficulties : 1;                                 // 0x00A0(0x0004) (CPF_DataBinding)
+	unsigned long                                      Ads : 1;                                                  // 0x00A4(0x0004) (CPF_DataBinding)
+	unsigned long                                      Microtransactions : 1;                                    // 0x00A8(0x0004) (CPF_DataBinding)
+	unsigned long                                      ItemDrops : 1;                                            // 0x00AC(0x0004) (CPF_DataBinding)
+	unsigned long                                      Spectator : 1;                                            // 0x00B0(0x0004) (CPF_DataBinding)
+	unsigned long                                      CrossPlatformPrivateMatch : 1;                            // 0x00B4(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00B8(0x0004) MISSED OFFSET
+	unsigned long                                      BuyDLC : 1;                                               // 0x00BC(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00C0(0x0004) MISSED OFFSET
+	unsigned long                                      PlayerReporting : 1;                                      // 0x00C4(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00C8(0x0004) MISSED OFFSET
+	unsigned long                                      PremiumGarage : 1;                                        // 0x00CC(0x0004) (CPF_DataBinding)
+	unsigned long                                      PodiumSpotlight : 1;                                      // 0x00D0(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00D4(0x0004) MISSED OFFSET
+	unsigned long                                      CustomTeamNames : 1;                                      // 0x00D8(0x0004) (CPF_DataBinding)
+	unsigned long                                      CustomTeamColors : 1;                                     // 0x00DC(0x0004) (CPF_DataBinding)
+	unsigned long                                      PlayerTrading : 1;                                        // 0x00E0(0x0004) (CPF_DataBinding)
+	unsigned long                                      GaragePresets : 1;                                        // 0x00E4(0x0004) (CPF_DataBinding)
+	unsigned long                                      PartyChat : 1;                                            // 0x00E8(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData07[0x10];                                      // 0x00EC(0x0010) MISSED OFFSET
+	unsigned long                                      OnlineServices : 1;                                       // 0x00FC(0x0004) (CPF_DataBinding)
+	unsigned long                                      HideUnreleasedDLC : 1;                                    // 0x0100(0x0004) (CPF_DataBinding)
+	unsigned long                                      RemoveCrossPlatformProducts : 1;                          // 0x0104(0x0004) (CPF_DataBinding)
+	unsigned long                                      Mutators : 1;                                             // 0x0108(0x0004) (CPF_DataBinding)
+	unsigned long                                      ProductValidation : 1;                                    // 0x010C(0x0004) (CPF_DataBinding)
+	unsigned long                                      PlayerTitle : 1;                                          // 0x0110(0x0004) (CPF_DataBinding)
+	unsigned long                                      DynamicThumbnails : 1;                                    // 0x0114(0x0004) (CPF_DataBinding)
+	unsigned long                                      MapPrefs : 1;                                             // 0x0118(0x0004) (CPF_DataBinding)
+	unsigned long                                      Workshop : 1;                                             // 0x011C(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData08[0x34];                                      // 0x0120(0x0034) MISSED OFFSET
+	unsigned long                                      Inventory : 1;                                            // 0x0154(0x0004) (CPF_DataBinding)
+	unsigned long                                      TrainingEditor : 1;                                       // 0x0158(0x0004) (CPF_DataBinding)
+	unsigned long                                      RedeemCode : 1;                                           // 0x015C(0x0004) (CPF_DataBinding)
+	unsigned long                                      VoiceChat : 1;                                            // 0x0160(0x0004) (CPF_DataBinding)
+	unsigned long                                      EditBindings : 1;                                         // 0x0164(0x0004) (CPF_DataBinding)
+	unsigned long                                      UIScale : 1;                                              // 0x0168(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitScreen : 1;                                          // 0x016C(0x0004) (CPF_DataBinding)
+	unsigned long                                      Crossplay : 1;                                            // 0x0170(0x0004) (CPF_DataBinding)
+	unsigned long                                      CompetitiveDivisions : 1;                                 // 0x0174(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0178(0x0004) MISSED OFFSET
+	unsigned long                                      ClanforgeReservation : 1;                                 // 0x017C(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData10[0x3C];                                      // 0x0180(0x003C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1366,18 +1366,18 @@ public:
 class UFactory : public UObject
 {
 public:
-	struct FString                                     Category;                                         		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	class UClass*                                      SupportedClass;                                   		// 0x0048(0x0004)
-	class UClass*                                      ContextClass;                                     		// 0x004C(0x0004)
-	struct FString                                     Description;                                      		// 0x0050(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FString>                             Formats;                                          		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bCreateNew : 1;                                   		// 0x0068(0x0004)
-	unsigned long                                      bEditAfterNew : 1;                                		// 0x0068(0x0004)
-	unsigned long                                      bEditorImport : 1;                                		// 0x0068(0x0004)
-	unsigned long                                      bText : 1;                                        		// 0x0068(0x0004)
-	unsigned long                                      bAssetNameMatchesPackageName : 1;                 		// 0x0068(0x0004)
-	int                                                AutoPriority;                                     		// 0x006C(0x0004)
-	TArray<struct FString>                             ValidGameNames;                                   		// 0x0070(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Category;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	class UClass*                                      SupportedClass;                                           // 0x0048(0x0004)
+	class UClass*                                      ContextClass;                                             // 0x004C(0x0004)
+	struct FString                                     Description;                                              // 0x0050(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FString>                             Formats;                                                  // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bCreateNew : 1;                                           // 0x0068(0x0004)
+	unsigned long                                      bEditAfterNew : 1;                                        // 0x0068(0x0004)
+	unsigned long                                      bEditorImport : 1;                                        // 0x0068(0x0004)
+	unsigned long                                      bText : 1;                                                // 0x0068(0x0004)
+	unsigned long                                      bAssetNameMatchesPackageName : 1;                         // 0x0068(0x0004)
+	int                                                AutoPriority;                                             // 0x006C(0x0004)
+	TArray<struct FString>                             ValidGameNames;                                           // 0x0070(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1408,10 +1408,10 @@ public:
 class UExporter : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x4];                               		// 0x003C(0x0004) MISSED OFFSET
-	TArray<struct FString>                             FormatExtension;                                  		// 0x0040(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FString>                             FormatDescription;                                		// 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0xC];                               		// 0x0058(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) MISSED OFFSET
+	TArray<struct FString>                             FormatExtension;                                          // 0x0040(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FString>                             FormatDescription;                                        // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0xC];                                       // 0x0058(0x000C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1427,16 +1427,16 @@ public:
 class UDebugDrawer : public UObject
 {
 public:
-	struct FColor                                      DefaultTextColor;                                 		// 0x003C(0x0004) (CPF_Edit)
-	unsigned long                                      bSilent : 1;                                      		// 0x0040(0x0004) (CPF_Edit)
-	unsigned long                                      bPrintActorsInline : 1;                           		// 0x0040(0x0004) (CPF_Edit)
-	int                                                Indentation;                                      		// 0x0044(0x0004) (CPF_Transient)
-	struct FString                                     IndentationString;                                		// 0x0048(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<class UObject*>                             PrintedObjects;                                   		// 0x0054(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<class UObject*>                             QueuedObjects;                                    		// 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                PrintObjectCount;                                 		// 0x006C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __LogFunc__Delegate;                              		// 0x0070(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FColor                                      DefaultTextColor;                                         // 0x003C(0x0004) (CPF_Edit)
+	unsigned long                                      bSilent : 1;                                              // 0x0040(0x0004) (CPF_Edit)
+	unsigned long                                      bPrintActorsInline : 1;                                   // 0x0040(0x0004) (CPF_Edit)
+	int                                                Indentation;                                              // 0x0044(0x0004) (CPF_Transient)
+	struct FString                                     IndentationString;                                        // 0x0048(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<class UObject*>                             PrintedObjects;                                           // 0x0054(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<class UObject*>                             QueuedObjects;                                            // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	int                                                PrintObjectCount;                                         // 0x006C(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __LogFunc__Delegate;                                      // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1465,8 +1465,8 @@ public:
 class UComponent : public UObject
 {
 public:
-	class UClass*                                      TemplateOwnerClass;                               		// 0x003C(0x0004) (CPF_Const, CPF_Native)
-	struct FName                                       TemplateName;                                     		// 0x0040(0x0008) (CPF_Const, CPF_Native)
+	class UClass*                                      TemplateOwnerClass;                                       // 0x003C(0x0004) (CPF_Const, CPF_Native)
+	struct FName                                       TemplateName;                                             // 0x0040(0x0008) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -1482,9 +1482,9 @@ public:
 class UDistributionVector : public UComponent
 {
 public:
-	struct FPointer                                    VfTable_FCurveEdInterface;                        		// 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	unsigned long                                      bCanBeBaked : 1;                                  		// 0x004C(0x0004) (CPF_Edit)
-	unsigned long                                      bIsDirty : 1;                                     		// 0x004C(0x0004)
+	struct FPointer                                    VfTable_FCurveEdInterface;                                // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	unsigned long                                      bCanBeBaked : 1;                                          // 0x004C(0x0004) (CPF_Edit)
+	unsigned long                                      bIsDirty : 1;                                             // 0x004C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1502,9 +1502,9 @@ public:
 class UDistributionFloat : public UComponent
 {
 public:
-	struct FPointer                                    VfTable_FCurveEdInterface;                        		// 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	unsigned long                                      bCanBeBaked : 1;                                  		// 0x004C(0x0004) (CPF_Edit)
-	unsigned long                                      bIsDirty : 1;                                     		// 0x004C(0x0004)
+	struct FPointer                                    VfTable_FCurveEdInterface;                                // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	unsigned long                                      bCanBeBaked : 1;                                          // 0x004C(0x0004) (CPF_Edit)
+	unsigned long                                      bIsDirty : 1;                                             // 0x004C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1522,16 +1522,16 @@ public:
 class UCommandlet : public UObject
 {
 public:
-	struct FString                                     HelpDescription;                                  		// 0x003C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     HelpUsage;                                        		// 0x0048(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     HelpWebLink;                                      		// 0x0054(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TArray<struct FString>                             HelpParamNames;                                   		// 0x0060(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TArray<struct FString>                             HelpParamDescriptions;                            		// 0x006C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	unsigned long                                      IsServer : 1;                                     		// 0x0078(0x0004)
-	unsigned long                                      IsClient : 1;                                     		// 0x0078(0x0004)
-	unsigned long                                      IsEditor : 1;                                     		// 0x0078(0x0004)
-	unsigned long                                      LogToConsole : 1;                                 		// 0x0078(0x0004)
-	unsigned long                                      ShowErrorCount : 1;                               		// 0x0078(0x0004)
+	struct FString                                     HelpDescription;                                          // 0x003C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     HelpUsage;                                                // 0x0048(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     HelpWebLink;                                              // 0x0054(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	TArray<struct FString>                             HelpParamNames;                                           // 0x0060(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	TArray<struct FString>                             HelpParamDescriptions;                                    // 0x006C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	unsigned long                                      IsServer : 1;                                             // 0x0078(0x0004)
+	unsigned long                                      IsClient : 1;                                             // 0x0078(0x0004)
+	unsigned long                                      IsEditor : 1;                                             // 0x0078(0x0004)
+	unsigned long                                      LogToConsole : 1;                                         // 0x0078(0x0004)
+	unsigned long                                      ShowErrorCount : 1;                                       // 0x0078(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1566,7 +1566,7 @@ public:
 class UState : public UStruct
 {
 public:
-	unsigned char                                      UnknownData00[0x48];                              		// 0x008C(0x0048) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x48];                                      // 0x008C(0x0048) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1582,7 +1582,7 @@ public:
 class UPackage : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0xB4];                              		// 0x003C(0x00B4) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xB4];                                      // 0x003C(0x00B4) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1598,9 +1598,9 @@ public:
 class UClass : public UState
 {
 public:
-	char                                               UnknownData00[0x88];                              		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	class UObject*                                     ClassDefaultObject;                               		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData01[0x70];                              		// 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData00[0x88];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	class UObject*                                     ClassDefaultObject;                                       // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	char                                               UnknownData01[0x70];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	template<typename T>
 	inline T* CreateDefaultObject()

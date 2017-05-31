@@ -51,7 +51,7 @@ enum class EAkListenerSpacialization
 class UActorFactoryAkAmbientSound : public UActorFactory
 {
 public:
-	class UAkEvent*                                    AmbientEvent;                                     		// 0x0068(0x0004) (CPF_Edit)
+	class UAkEvent*                                    AmbientEvent;                                             // 0x0068(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -67,10 +67,10 @@ public:
 class AAkAmbientSound : public AKeypoint
 {
 public:
-	unsigned long                                      bAutoPlay : 1;                                    		// 0x01F0(0x0004)
-	unsigned long                                      StopWhenOwnerIsDestroyed : 1;                     		// 0x01F0(0x0004) (CPF_Edit)
-	unsigned long                                      bIsPlaying : 1;                                   		// 0x01F0(0x0004) (CPF_Transient)
-	class UAkEvent*                                    PlayEvent;                                        		// 0x01F4(0x0004) (CPF_Edit)
+	unsigned long                                      bAutoPlay : 1;                                            // 0x01F0(0x0004)
+	unsigned long                                      StopWhenOwnerIsDestroyed : 1;                             // 0x01F0(0x0004) (CPF_Edit)
+	unsigned long                                      bIsPlaying : 1;                                           // 0x01F0(0x0004) (CPF_Transient)
+	class UAkEvent*                                    PlayEvent;                                                // 0x01F4(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -86,10 +86,10 @@ public:
 class UAkComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0065(0x0003) MISSED OFFSET
-	struct FName                                       BoneName;                                         		// 0x0068(0x0008) (CPF_Edit)
-	class UAkEvent*                                    AutoPlayEvent;                                    		// 0x0070(0x0004)
-	unsigned long                                      bStopWhenOwnerDestroyed : 1;                      		// 0x0074(0x0004)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FName                                       BoneName;                                                 // 0x0068(0x0008) (CPF_Edit)
+	class UAkEvent*                                    AutoPlayEvent;                                            // 0x0070(0x0004)
+	unsigned long                                      bStopWhenOwnerDestroyed : 1;                              // 0x0074(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -105,12 +105,12 @@ public:
 class UAkDevice : public UObject
 {
 public:
-	struct FScriptDelegate                             __EventInitialized__Delegate;                     		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventMusicTrackStart__Delegate;                 		// 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventMusicTrackEnd__Delegate;                   		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInitialized__Delegate;                             // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventMusicTrackStart__Delegate;                         // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventMusicTrackEnd__Delegate;                           // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -151,7 +151,7 @@ public:
 class UAkDialogueEvent : public UObject
 {
 public:
-	TArray<class UAkSwitch*>                           Arguments;                                        		// 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
+	TArray<class UAkSwitch*>                           Arguments;                                                // 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -167,10 +167,10 @@ public:
 class AAkEnvironmentVolume : public AVolume
 {
 public:
-	struct FString                                     EnvironmentID;                                    		// 0x0218(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	int                                                Priority;                                         		// 0x0224(0x0004) (CPF_Edit)
-	float                                              Value;                                            		// 0x0228(0x0004) (CPF_Edit)
-	struct Fuint                                       HashedEnvID;                                      		// 0x022C(0x0004) (CPF_Const, CPF_Transient)
+	struct FString                                     EnvironmentID;                                            // 0x0218(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	int                                                Priority;                                                 // 0x0224(0x0004) (CPF_Edit)
+	float                                              Value;                                                    // 0x0228(0x0004) (CPF_Edit)
+	struct Fuint                                       HashedEnvID;                                              // 0x022C(0x0004) (CPF_Const, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -186,9 +186,9 @@ public:
 class UAkParamGroup : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0065(0x0003) MISSED OFFSET
-	struct FAkParamSet                                 StoredParameters;                                 		// 0x0068(0x0078) (CPF_Const, CPF_Transient)
-	TArray<class UAkSoundSource*>                      SoundSources;                                     		// 0x00E0(0x000C) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FAkParamSet                                 StoredParameters;                                         // 0x0068(0x0078) (CPF_Const, CPF_Transient)
+	TArray<class UAkSoundSource*>                      SoundSources;                                             // 0x00E0(0x000C) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_NeedCtorLink, CPF_EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -211,21 +211,21 @@ public:
 class UAkPlaySoundComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0065(0x0003) MISSED OFFSET
-	struct FPointer                                    VfTable_IISetParameter;                           		// 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	class UAkSoundCue*                                 SoundCue;                                         		// 0x006C(0x0004) (CPF_Edit)
-	unsigned long                                      bAutoPlay : 1;                                    		// 0x0070(0x0004) (CPF_Edit)
-	unsigned long                                      bKillSoundOnDetach : 1;                           		// 0x0070(0x0004) (CPF_Edit)
-	unsigned long                                      bWasAttached : 1;                                 		// 0x0070(0x0004) (CPF_Const, CPF_Transient)
-	struct FVector                                     Translation;                                      		// 0x0074(0x000C) (CPF_Edit, CPF_Const)
-	struct FRotator                                    Rotation;                                         		// 0x0080(0x000C) (CPF_Edit, CPF_Const)
-	float                                              ReFireDelay;                                      		// 0x008C(0x0004) (CPF_Edit)
-	TEnumAsByte<enum class EAkPlaySoundReceiver>       Receiver;                                         		// 0x0090(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x3];                               		// 0x0091(0x0003) MISSED OFFSET
-	TArray<struct FName>                               RestartSwitches;                                  		// 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	class UAkSoundSource*                              SoundSource;                                      		// 0x00A0(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	float                                              LastPlayTime;                                     		// 0x00A4(0x0004) (CPF_Const, CPF_Transient)
-	struct FAkParamSet                                 StoredParameters;                                 		// 0x00A8(0x0078) (CPF_Const, CPF_Transient)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FPointer                                    VfTable_IISetParameter;                                   // 0x0068(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	class UAkSoundCue*                                 SoundCue;                                                 // 0x006C(0x0004) (CPF_Edit)
+	unsigned long                                      bAutoPlay : 1;                                            // 0x0070(0x0004) (CPF_Edit)
+	unsigned long                                      bKillSoundOnDetach : 1;                                   // 0x0070(0x0004) (CPF_Edit)
+	unsigned long                                      bWasAttached : 1;                                         // 0x0070(0x0004) (CPF_Const, CPF_Transient)
+	struct FVector                                     Translation;                                              // 0x0074(0x000C) (CPF_Edit, CPF_Const)
+	struct FRotator                                    Rotation;                                                 // 0x0080(0x000C) (CPF_Edit, CPF_Const)
+	float                                              ReFireDelay;                                              // 0x008C(0x0004) (CPF_Edit)
+	TEnumAsByte<enum class EAkPlaySoundReceiver>       Receiver;                                                 // 0x0090(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0091(0x0003) MISSED OFFSET
+	TArray<struct FName>                               RestartSwitches;                                          // 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UAkSoundSource*                              SoundSource;                                              // 0x00A0(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
+	float                                              LastPlayTime;                                             // 0x00A4(0x0004) (CPF_Const, CPF_Transient)
+	struct FAkParamSet                                 StoredParameters;                                         // 0x00A8(0x0078) (CPF_Const, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -251,15 +251,15 @@ public:
 class UAkRTPCDecayComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0065(0x0003) MISSED OFFSET
-	struct FName                                       RTPC;                                             		// 0x0068(0x0008) (CPF_Edit)
-	float                                              GrowValue;                                        		// 0x0070(0x0004) (CPF_Edit)
-	float                                              MaxValue;                                         		// 0x0074(0x0004) (CPF_Edit)
-	struct FInterpCurveFloat                           DecayPerSecond;                                   		// 0x0078(0x0010) (CPF_Edit, CPF_NeedCtorLink)
-	class UAkSoundSource*                              SoundSource;                                      		// 0x0088(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	float                                              CurrentValue;                                     		// 0x008C(0x0004) (CPF_Const, CPF_Transient)
-	float                                              LastAttachTime;                                   		// 0x0090(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bWasAttached : 1;                                 		// 0x0094(0x0004) (CPF_Const, CPF_Transient)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FName                                       RTPC;                                                     // 0x0068(0x0008) (CPF_Edit)
+	float                                              GrowValue;                                                // 0x0070(0x0004) (CPF_Edit)
+	float                                              MaxValue;                                                 // 0x0074(0x0004) (CPF_Edit)
+	struct FInterpCurveFloat                           DecayPerSecond;                                           // 0x0078(0x0010) (CPF_Edit, CPF_NeedCtorLink)
+	class UAkSoundSource*                              SoundSource;                                              // 0x0088(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
+	float                                              CurrentValue;                                             // 0x008C(0x0004) (CPF_Const, CPF_Transient)
+	float                                              LastAttachTime;                                           // 0x0090(0x0004) (CPF_Const, CPF_Transient)
+	unsigned long                                      bWasAttached : 1;                                         // 0x0094(0x0004) (CPF_Const, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -275,9 +275,9 @@ public:
 class UAkSoundCue : public UObject
 {
 public:
-	class UAkBank*                                     RequiredBank;                                     		// 0x003C(0x0004) (CPF_Edit)
-	struct FString                                     StartEvent;                                       		// 0x0040(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	struct FString                                     StopEvent;                                        		// 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UAkBank*                                     RequiredBank;                                             // 0x003C(0x0004) (CPF_Edit)
+	struct FString                                     StartEvent;                                               // 0x0040(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     StopEvent;                                                // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -293,18 +293,18 @@ public:
 class UAkSoundSource : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0065(0x0003) MISSED OFFSET
-	struct FVector                                     Translation;                                      		// 0x0068(0x000C) (CPF_Edit, CPF_Const)
-	struct FRotator                                    Rotation;                                         		// 0x0074(0x000C) (CPF_Edit, CPF_Const)
-	unsigned long                                      bDetachOnComplete : 1;                            		// 0x0080(0x0004) (CPF_Edit, CPF_Const)
-	unsigned long                                      bRegistered : 1;                                  		// 0x0080(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bUpdateOrientation : 1;                           		// 0x0080(0x0004) (CPF_Const, CPF_Transient)
-	unsigned char                                      UnknownData01[0xC];                               		// 0x0084(0x000C) MISSED OFFSET
-	struct FMatrix                                     CachedParentToWorld;                              		// 0x0090(0x0040) (CPF_Const, CPF_Transient)
-	struct FVector                                     WorldLocation;                                    		// 0x00D0(0x000C) (CPF_Const, CPF_Transient)
-	struct FRotator                                    WorldRotation;                                    		// 0x00DC(0x000C) (CPF_Const, CPF_Transient)
-	class UAkParamGroup*                               Params;                                           		// 0x00E8(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	TArray<struct FActiveSound>                        ActiveSounds;                                     		// 0x00EC(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FVector                                     Translation;                                              // 0x0068(0x000C) (CPF_Edit, CPF_Const)
+	struct FRotator                                    Rotation;                                                 // 0x0074(0x000C) (CPF_Edit, CPF_Const)
+	unsigned long                                      bDetachOnComplete : 1;                                    // 0x0080(0x0004) (CPF_Edit, CPF_Const)
+	unsigned long                                      bRegistered : 1;                                          // 0x0080(0x0004) (CPF_Const, CPF_Transient)
+	unsigned long                                      bUpdateOrientation : 1;                                   // 0x0080(0x0004) (CPF_Const, CPF_Transient)
+	unsigned char                                      UnknownData01[0xC];                                       // 0x0084(0x000C) MISSED OFFSET
+	struct FMatrix                                     CachedParentToWorld;                                      // 0x0090(0x0040) (CPF_Const, CPF_Transient)
+	struct FVector                                     WorldLocation;                                            // 0x00D0(0x000C) (CPF_Const, CPF_Transient)
+	struct FRotator                                    WorldRotation;                                            // 0x00DC(0x000C) (CPF_Const, CPF_Transient)
+	class UAkParamGroup*                               Params;                                                   // 0x00E8(0x0004) (CPF_Const, CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
+	TArray<struct FActiveSound>                        ActiveSounds;                                             // 0x00EC(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -341,7 +341,7 @@ public:
 class UInterpTrackAkEvent : public UInterpTrack
 {
 public:
-	TArray<struct FAkEventTrackKey>                    AkEvents;                                         		// 0x0080(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FAkEventTrackKey>                    AkEvents;                                                 // 0x0080(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -357,7 +357,7 @@ public:
 class UInterpTrackAkRTPC : public UInterpTrackFloatBase
 {
 public:
-	struct FString                                     Param;                                            		// 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     Param;                                                    // 0x0094(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -373,7 +373,7 @@ public:
 class UInterpTrackInstAkEvent : public UInterpTrackInst
 {
 public:
-	float                                              LastUpdatePosition;                               		// 0x003C(0x0004)
+	float                                              LastUpdatePosition;                                       // 0x003C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -419,10 +419,10 @@ public:
 class USeqAct_AkLoadBank : public USeqAct_Latent
 {
 public:
-	unsigned long                                      Async : 1;                                        		// 0x0110(0x0004) (CPF_Edit)
-	unsigned long                                      bWaitingCallback : 1;                             		// 0x0110(0x0004) (CPF_Transient)
-	class UAkBank*                                     Bank;                                             		// 0x0114(0x0004) (CPF_Edit)
-	int                                                Signal;                                           		// 0x0118(0x0004) (CPF_Transient)
+	unsigned long                                      Async : 1;                                                // 0x0110(0x0004) (CPF_Edit)
+	unsigned long                                      bWaitingCallback : 1;                                     // 0x0110(0x0004) (CPF_Transient)
+	class UAkBank*                                     Bank;                                                     // 0x0114(0x0004) (CPF_Edit)
+	int                                                Signal;                                                   // 0x0118(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -438,8 +438,8 @@ public:
 class USeqAct_AkPostEvent : public USeqAct_Latent
 {
 public:
-	int                                                Signal;                                           		// 0x0110(0x0004) (CPF_Transient)
-	class UAkEvent*                                    Event;                                            		// 0x0114(0x0004) (CPF_Edit)
+	int                                                Signal;                                                   // 0x0110(0x0004) (CPF_Transient)
+	class UAkEvent*                                    Event;                                                    // 0x0114(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -455,7 +455,7 @@ public:
 class USeqAct_AkPostTrigger : public USequenceAction
 {
 public:
-	struct FString                                     Trigger;                                          		// 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     Trigger;                                                  // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -471,9 +471,9 @@ public:
 class USeqAct_AkSetRTPCValue : public USeqAct_Latent
 {
 public:
-	struct FString                                     Param;                                            		// 0x0110(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              Value;                                            		// 0x011C(0x0004) (CPF_Edit)
-	unsigned long                                      Running : 1;                                      		// 0x0120(0x0004) (CPF_Transient)
+	struct FString                                     Param;                                                    // 0x0110(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              Value;                                                    // 0x011C(0x0004) (CPF_Edit)
+	unsigned long                                      Running : 1;                                              // 0x0120(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -489,8 +489,8 @@ public:
 class USeqAct_AkSetState : public USequenceAction
 {
 public:
-	struct FString                                     StateGroup;                                       		// 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	struct FString                                     State;                                            		// 0x0108(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     StateGroup;                                               // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     State;                                                    // 0x0108(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -506,8 +506,8 @@ public:
 class USeqAct_AkSetSwitch : public USequenceAction
 {
 public:
-	struct FString                                     SwitchGroup;                                      		// 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	struct FString                                     Switch;                                           		// 0x0108(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     SwitchGroup;                                              // 0x00FC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     Switch;                                                   // 0x0108(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -553,7 +553,7 @@ public:
 class AAkAmbientSoundActor : public AKeypoint
 {
 public:
-	class UAkPlaySoundComponent*                       PlaySoundComponent;                               		// 0x01F0(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UAkPlaySoundComponent*                       PlaySoundComponent;                                       // 0x01F0(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -571,8 +571,8 @@ public:
 class USeqAct_AkPlaySound : public USequenceAction
 {
 public:
-	class UAkSoundCue*                                 SoundCue;                                         		// 0x00FC(0x0004) (CPF_Edit)
-	unsigned long                                      bBGMusic : 1;                                     		// 0x0100(0x0004) (CPF_Edit)
+	class UAkSoundCue*                                 SoundCue;                                                 // 0x00FC(0x0004) (CPF_Edit)
+	unsigned long                                      bBGMusic : 1;                                             // 0x0100(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -592,11 +592,11 @@ public:
 class UAkAudioDevice : public USubsystem
 {
 public:
-	unsigned char                                      UnknownData00[0xC];                               		// 0x0040(0x000C) MISSED OFFSET
-	int                                                DefaultMemoryPoolKB;                              		// 0x004C(0x0004) (CPF_Config)
-	int                                                DefaultEngineMemoryPoolKB;                        		// 0x0050(0x0004) (CPF_Config)
-	float                                              LowMemoryThreshold;                               		// 0x0054(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData01[0x134];                             		// 0x0058(0x0134) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0040(0x000C) MISSED OFFSET
+	int                                                DefaultMemoryPoolKB;                                      // 0x004C(0x0004) (CPF_Config)
+	int                                                DefaultEngineMemoryPoolKB;                                // 0x0050(0x0004) (CPF_Config)
+	float                                              LowMemoryThreshold;                                       // 0x0054(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData01[0x134];                                     // 0x0058(0x0134) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

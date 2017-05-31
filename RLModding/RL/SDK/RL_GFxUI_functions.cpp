@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -23,10 +21,7 @@ void UGFxEngine::UpdateMovieLoadingInfo(struct FLoadingMovieMapInfo* LoadingInfo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxEngine.UpdateMovieLoadingInfo");
 
-	struct
-	{
-		struct FLoadingMovieMapInfo    LoadingInfo;
-	} params;
+	UGFxEngine_UpdateMovieLoadingInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -49,10 +44,7 @@ void UGFxEngine::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxEngine.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGFxEngine_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -76,14 +68,7 @@ bool UGFxFSCmdHandler::FSCommand(class UGFxMoviePlayer* Movie, class UGFxEvent_F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxFSCmdHandler.FSCommand");
 
-	struct
-	{
-		class UGFxMoviePlayer*         Movie;
-		class UGFxEvent_FSCommand*     Event;
-		struct FString                 Cmd;
-		struct FString                 Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxFSCmdHandler_FSCommand_Params params;
 	params.Movie = Movie;
 	params.Event = Event;
 	params.Cmd = Cmd;
@@ -112,14 +97,7 @@ void UGFxInteraction::DebugInputKey(int ControllerId, const struct FName& Key, T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.DebugInputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-	} params;
+	UGFxInteraction_DebugInputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Event = Event;
@@ -142,9 +120,7 @@ void UGFxInteraction::CloseAllMoviePlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.CloseAllMoviePlayers");
 
-	struct
-	{
-	} params;
+	UGFxInteraction_CloseAllMoviePlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -162,9 +138,7 @@ void UGFxInteraction::NotifySplitscreenLayoutChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.NotifySplitscreenLayoutChanged");
 
-	struct
-	{
-	} params;
+	UGFxInteraction_NotifySplitscreenLayoutChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -185,11 +159,7 @@ void UGFxInteraction::NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.NotifyPlayerRemoved");
 
-	struct
-	{
-		int                            PlayerIndex;
-		class ULocalPlayer*            RemovedPlayer;
-	} params;
+	UGFxInteraction_NotifyPlayerRemoved_Params params;
 	params.PlayerIndex = PlayerIndex;
 	params.RemovedPlayer = RemovedPlayer;
 
@@ -212,11 +182,7 @@ void UGFxInteraction::NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* Add
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.NotifyPlayerAdded");
 
-	struct
-	{
-		int                            PlayerIndex;
-		class ULocalPlayer*            AddedPlayer;
-	} params;
+	UGFxInteraction_NotifyPlayerAdded_Params params;
 	params.PlayerIndex = PlayerIndex;
 	params.AddedPlayer = AddedPlayer;
 
@@ -236,9 +202,7 @@ void UGFxInteraction::NotifyGameSessionEnded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.NotifyGameSessionEnded");
 
-	struct
-	{
-	} params;
+	UGFxInteraction_NotifyGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -259,11 +223,7 @@ class UGFxMoviePlayer* UGFxInteraction::GetFocusMovie(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxInteraction.GetFocusMovie");
 
-	struct
-	{
-		int                            ControllerId;
-		class UGFxMoviePlayer*         ReturnValue;
-	} params;
+	UGFxInteraction_GetFocusMovie_Params params;
 	params.ControllerId = ControllerId;
 
 	auto flags = fn->FunctionFlags;
@@ -286,10 +246,7 @@ void UGFxMoviePlayer::SetFullScreen(bool bFullScreen)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetFullScreen");
 
-	struct
-	{
-		bool                           bFullScreen;
-	} params;
+	UGFxMoviePlayer_SetFullScreen_Params params;
 	params.bFullScreen = bFullScreen;
 
 	auto flags = fn->FunctionFlags;
@@ -310,10 +267,7 @@ bool UGFxMoviePlayer::IsHidden()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.IsHidden");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_IsHidden_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -335,10 +289,7 @@ void UGFxMoviePlayer::SetHidden(bool bHidden)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetHidden");
 
-	struct
-	{
-		bool                           bHidden;
-	} params;
+	UGFxMoviePlayer_SetHidden_Params params;
 	params.bHidden = bHidden;
 
 	auto flags = fn->FunctionFlags;
@@ -357,9 +308,7 @@ void UGFxMoviePlayer::RenderOnce()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.RenderOnce");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_RenderOnce_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -377,9 +326,7 @@ void UGFxMoviePlayer::UpdateSplitscreenLayout()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.UpdateSplitscreenLayout");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_UpdateSplitscreenLayout_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -399,10 +346,7 @@ void UGFxMoviePlayer::ApplyPriorityVisibilityEffect(bool bRemoveEffect)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ApplyPriorityVisibilityEffect");
 
-	struct
-	{
-		bool                           bRemoveEffect;
-	} params;
+	UGFxMoviePlayer_ApplyPriorityVisibilityEffect_Params params;
 	params.bRemoveEffect = bRemoveEffect;
 
 	auto flags = fn->FunctionFlags;
@@ -422,10 +366,7 @@ void UGFxMoviePlayer::ApplyPriorityBlurEffect(bool bRemoveEffect)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ApplyPriorityBlurEffect");
 
-	struct
-	{
-		bool                           bRemoveEffect;
-	} params;
+	UGFxMoviePlayer_ApplyPriorityBlurEffect_Params params;
 	params.bRemoveEffect = bRemoveEffect;
 
 	auto flags = fn->FunctionFlags;
@@ -446,11 +387,7 @@ void UGFxMoviePlayer::ApplyPriorityEffect(bool bRequestedBlurState, bool bReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ApplyPriorityEffect");
 
-	struct
-	{
-		bool                           bRequestedBlurState;
-		bool                           bRequestedHiddenState;
-	} params;
+	UGFxMoviePlayer_ApplyPriorityEffect_Params params;
 	params.bRequestedBlurState = bRequestedBlurState;
 	params.bRequestedHiddenState = bRequestedHiddenState;
 
@@ -472,11 +409,7 @@ void UGFxMoviePlayer::PlaySoundFromTheme(const struct FName& EventName, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.PlaySoundFromTheme");
 
-	struct
-	{
-		struct FName                   EventName;
-		struct FName                   SoundThemeName;
-	} params;
+	UGFxMoviePlayer_PlaySoundFromTheme_Params params;
 	params.EventName = EventName;
 	params.SoundThemeName = SoundThemeName;
 
@@ -497,10 +430,7 @@ void UGFxMoviePlayer::OnFocusLost(int LocalPlayerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.OnFocusLost");
 
-	struct
-	{
-		int                            LocalPlayerIndex;
-	} params;
+	UGFxMoviePlayer_OnFocusLost_Params params;
 	params.LocalPlayerIndex = LocalPlayerIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -520,10 +450,7 @@ void UGFxMoviePlayer::OnFocusGained(int LocalPlayerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.OnFocusGained");
 
-	struct
-	{
-		int                            LocalPlayerIndex;
-	} params;
+	UGFxMoviePlayer_OnFocusGained_Params params;
 	params.LocalPlayerIndex = LocalPlayerIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -543,10 +470,7 @@ void UGFxMoviePlayer::ConsoleCommand(const struct FString& Command)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ConsoleCommand");
 
-	struct
-	{
-		struct FString                 Command;
-	} params;
+	UGFxMoviePlayer_ConsoleCommand_Params params;
 	params.Command = Command;
 
 	auto flags = fn->FunctionFlags;
@@ -566,10 +490,7 @@ class APlayerController* UGFxMoviePlayer::GetPC()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetPC");
 
-	struct
-	{
-		class APlayerController*       ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -590,10 +511,7 @@ class ULocalPlayer* UGFxMoviePlayer::GetLP()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetLP");
 
-	struct
-	{
-		class ULocalPlayer*            ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetLP_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -614,10 +532,7 @@ void UGFxMoviePlayer::Init(class ULocalPlayer* LocPlay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.Init");
 
-	struct
-	{
-		class ULocalPlayer*            LocPlay;
-	} params;
+	UGFxMoviePlayer_Init_Params params;
 	params.LocPlay = LocPlay;
 
 	auto flags = fn->FunctionFlags;
@@ -638,11 +553,7 @@ void UGFxMoviePlayer::SetWidgetPathBinding(class UGFxObject* WidgetToBind, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetWidgetPathBinding");
 
-	struct
-	{
-		class UGFxObject*              WidgetToBind;
-		struct FName                   Path;
-	} params;
+	UGFxMoviePlayer_SetWidgetPathBinding_Params params;
 	params.WidgetToBind = WidgetToBind;
 	params.Path = Path;
 
@@ -662,9 +573,7 @@ void UGFxMoviePlayer::PostWidgetInit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.PostWidgetInit");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_PostWidgetInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -686,13 +595,7 @@ bool UGFxMoviePlayer::WidgetUnloaded(const struct FName& WidgetName, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.WidgetUnloaded");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FName                   WidgetPath;
-		class UGFxObject*              Widget;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_WidgetUnloaded_Params params;
 	params.WidgetName = WidgetName;
 	params.WidgetPath = WidgetPath;
 	params.Widget = Widget;
@@ -719,13 +622,7 @@ bool UGFxMoviePlayer::WidgetInitialized(const struct FName& WidgetName, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.WidgetInitialized");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FName                   WidgetPath;
-		class UGFxObject*              Widget;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_WidgetInitialized_Params params;
 	params.WidgetName = WidgetName;
 	params.WidgetPath = WidgetPath;
 	params.Widget = Widget;
@@ -750,11 +647,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptConstructor(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptConstructor");
 
-	struct
-	{
-		struct FString                 ClassName;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxMoviePlayer_ActionScriptConstructor_Params params;
 	params.ClassName = ClassName;
 
 	auto flags = fn->FunctionFlags;
@@ -778,11 +671,7 @@ class UGFxObject* UGFxMoviePlayer::ActionScriptObject(const struct FString& Path
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptObject");
 
-	struct
-	{
-		struct FString                 Path;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxMoviePlayer_ActionScriptObject_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -806,11 +695,7 @@ struct FString UGFxMoviePlayer::ActionScriptString(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptString");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxMoviePlayer_ActionScriptString_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -834,11 +719,7 @@ float UGFxMoviePlayer::ActionScriptFloat(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptFloat");
 
-	struct
-	{
-		struct FString                 Path;
-		float                          ReturnValue;
-	} params;
+	UGFxMoviePlayer_ActionScriptFloat_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -862,11 +743,7 @@ int UGFxMoviePlayer::ActionScriptInt(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptInt");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            ReturnValue;
-	} params;
+	UGFxMoviePlayer_ActionScriptInt_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -889,10 +766,7 @@ void UGFxMoviePlayer::ActionScriptVoid(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptVoid");
 
-	struct
-	{
-		struct FString                 Path;
-	} params;
+	UGFxMoviePlayer_ActionScriptVoid_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -915,12 +789,7 @@ struct FASValue UGFxMoviePlayer::Invoke(const struct FString& method, TArray<str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.Invoke");
 
-	struct
-	{
-		struct FString                 method;
-		TArray<struct FASValue>        args;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxMoviePlayer_Invoke_Params params;
 	params.method = method;
 	params.args = args;
 
@@ -945,11 +814,7 @@ void UGFxMoviePlayer::ActionScriptSetFunction(class UGFxObject* Object, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ActionScriptSetFunction");
 
-	struct
-	{
-		class UGFxObject*              Object;
-		struct FString                 Member;
-	} params;
+	UGFxMoviePlayer_ActionScriptSetFunction_Params params;
 	params.Object = Object;
 	params.Member = Member;
 
@@ -971,10 +836,7 @@ class UGFxObject* UGFxMoviePlayer::CreateArray()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.CreateArray");
 
-	struct
-	{
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxMoviePlayer_CreateArray_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -999,13 +861,7 @@ class UGFxObject* UGFxMoviePlayer::CreateObject(const struct FString& ASClass, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.CreateObject");
 
-	struct
-	{
-		struct FString                 ASClass;
-		class UClass*                  Type;
-		TArray<struct FASValue>        args;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxMoviePlayer_CreateObject_Params params;
 	params.ASClass = ASClass;
 	params.Type = Type;
 	params.args = args;
@@ -1033,13 +889,7 @@ bool UGFxMoviePlayer::SetVariableStringArray(const struct FString& Path, int Ind
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableStringArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<struct FString>         Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_SetVariableStringArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 	params.Arg = Arg;
@@ -1067,13 +917,7 @@ bool UGFxMoviePlayer::SetVariableFloatArray(const struct FString& Path, int Inde
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableFloatArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<float>                  Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_SetVariableFloatArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 	params.Arg = Arg;
@@ -1101,13 +945,7 @@ bool UGFxMoviePlayer::SetVariableIntArray(const struct FString& Path, int Index,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableIntArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<int>                    Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_SetVariableIntArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 	params.Arg = Arg;
@@ -1135,13 +973,7 @@ bool UGFxMoviePlayer::SetVariableArray(const struct FString& Path, int Index, TA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<struct FASValue>        Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_SetVariableArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 	params.Arg = Arg;
@@ -1169,13 +1001,7 @@ bool UGFxMoviePlayer::GetVariableStringArray(const struct FString& Path, int Ind
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableStringArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<struct FString>         Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableStringArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 
@@ -1205,13 +1031,7 @@ bool UGFxMoviePlayer::GetVariableFloatArray(const struct FString& Path, int Inde
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableFloatArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<float>                  Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableFloatArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 
@@ -1241,13 +1061,7 @@ bool UGFxMoviePlayer::GetVariableIntArray(const struct FString& Path, int Index,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableIntArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<int>                    Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableIntArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 
@@ -1277,13 +1091,7 @@ bool UGFxMoviePlayer::GetVariableArray(const struct FString& Path, int Index, TA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableArray");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            Index;
-		TArray<struct FASValue>        Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableArray_Params params;
 	params.Path = Path;
 	params.Index = Index;
 
@@ -1311,11 +1119,7 @@ void UGFxMoviePlayer::SetVariableObject(const struct FString& Path, class UGFxOb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableObject");
 
-	struct
-	{
-		struct FString                 Path;
-		class UGFxObject*              Object;
-	} params;
+	UGFxMoviePlayer_SetVariableObject_Params params;
 	params.Path = Path;
 	params.Object = Object;
 
@@ -1338,11 +1142,7 @@ void UGFxMoviePlayer::SetVariableString(const struct FString& Path, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableString");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 S;
-	} params;
+	UGFxMoviePlayer_SetVariableString_Params params;
 	params.Path = Path;
 	params.S = S;
 
@@ -1365,11 +1165,7 @@ void UGFxMoviePlayer::SetVariableInt(const struct FString& Path, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableInt");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            I;
-	} params;
+	UGFxMoviePlayer_SetVariableInt_Params params;
 	params.Path = Path;
 	params.I = I;
 
@@ -1392,11 +1188,7 @@ void UGFxMoviePlayer::SetVariableNumber(const struct FString& Path, float F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableNumber");
 
-	struct
-	{
-		struct FString                 Path;
-		float                          F;
-	} params;
+	UGFxMoviePlayer_SetVariableNumber_Params params;
 	params.Path = Path;
 	params.F = F;
 
@@ -1419,11 +1211,7 @@ void UGFxMoviePlayer::SetVariableBool(const struct FString& Path, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariableBool");
 
-	struct
-	{
-		struct FString                 Path;
-		bool                           B;
-	} params;
+	UGFxMoviePlayer_SetVariableBool_Params params;
 	params.Path = Path;
 	params.B = B;
 
@@ -1446,11 +1234,7 @@ void UGFxMoviePlayer::SetVariable(const struct FString& Path, const struct FASVa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetVariable");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FASValue                Arg;
-	} params;
+	UGFxMoviePlayer_SetVariable_Params params;
 	params.Path = Path;
 	params.Arg = Arg;
 
@@ -1474,12 +1258,7 @@ class UGFxObject* UGFxMoviePlayer::GetVariableObject(const struct FString& Path,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableObject");
 
-	struct
-	{
-		struct FString                 Path;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableObject_Params params;
 	params.Path = Path;
 	params.Type = Type;
 
@@ -1504,11 +1283,7 @@ struct FString UGFxMoviePlayer::GetVariableString(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableString");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableString_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -1532,11 +1307,7 @@ int UGFxMoviePlayer::GetVariableInt(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableInt");
 
-	struct
-	{
-		struct FString                 Path;
-		int                            ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableInt_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -1560,11 +1331,7 @@ float UGFxMoviePlayer::GetVariableNumber(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableNumber");
 
-	struct
-	{
-		struct FString                 Path;
-		float                          ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableNumber_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -1588,11 +1355,7 @@ bool UGFxMoviePlayer::GetVariableBool(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariableBool");
 
-	struct
-	{
-		struct FString                 Path;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariableBool_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -1616,11 +1379,7 @@ struct FASValue UGFxMoviePlayer::GetVariable(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVariable");
 
-	struct
-	{
-		struct FString                 Path;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetVariable_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -1643,10 +1402,7 @@ int UGFxMoviePlayer::GetAVMVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetAVMVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetAVMVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1671,13 +1427,7 @@ bool UGFxMoviePlayer::FilterButtonInput(int ControllerId, const struct FName& Bu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.FilterButtonInput");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   ButtonName;
-		TEnumAsByte<enum class EInputEvent> InputEvent;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_FilterButtonInput_Params params;
 	params.ControllerId = ControllerId;
 	params.ButtonName = ButtonName;
 	params.InputEvent = InputEvent;
@@ -1701,10 +1451,7 @@ void UGFxMoviePlayer::FlushPlayerInput(bool capturekeysonly)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.FlushPlayerInput");
 
-	struct
-	{
-		bool                           capturekeysonly;
-	} params;
+	UGFxMoviePlayer_FlushPlayerInput_Params params;
 	params.capturekeysonly = capturekeysonly;
 
 	auto flags = fn->FunctionFlags;
@@ -1723,9 +1470,7 @@ void UGFxMoviePlayer::ClearFocusIgnoreKeys()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ClearFocusIgnoreKeys");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_ClearFocusIgnoreKeys_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1745,10 +1490,7 @@ void UGFxMoviePlayer::AddFocusIgnoreKey(const struct FName& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.AddFocusIgnoreKey");
 
-	struct
-	{
-		struct FName                   Key;
-	} params;
+	UGFxMoviePlayer_AddFocusIgnoreKey_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -1767,9 +1509,7 @@ void UGFxMoviePlayer::ClearCaptureKeys()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ClearCaptureKeys");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_ClearCaptureKeys_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1789,10 +1529,7 @@ void UGFxMoviePlayer::AddCaptureKey(const struct FName& Key)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.AddCaptureKey");
 
-	struct
-	{
-		struct FName                   Key;
-	} params;
+	UGFxMoviePlayer_AddCaptureKey_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -1813,10 +1550,7 @@ void UGFxMoviePlayer::SetMovieCanReceiveInput(bool bCanReceiveInput)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetMovieCanReceiveInput");
 
-	struct
-	{
-		bool                           bCanReceiveInput;
-	} params;
+	UGFxMoviePlayer_SetMovieCanReceiveInput_Params params;
 	params.bCanReceiveInput = bCanReceiveInput;
 
 	auto flags = fn->FunctionFlags;
@@ -1837,10 +1571,7 @@ void UGFxMoviePlayer::SetMovieCanReceiveFocus(bool bCanReceiveFocus)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetMovieCanReceiveFocus");
 
-	struct
-	{
-		bool                           bCanReceiveFocus;
-	} params;
+	UGFxMoviePlayer_SetMovieCanReceiveFocus_Params params;
 	params.bCanReceiveFocus = bCanReceiveFocus;
 
 	auto flags = fn->FunctionFlags;
@@ -1861,10 +1592,7 @@ void UGFxMoviePlayer::SetPerspective3D(struct FMatrix* matPersp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetPerspective3D");
 
-	struct
-	{
-		struct FMatrix                 matPersp;
-	} params;
+	UGFxMoviePlayer_SetPerspective3D_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1887,10 +1615,7 @@ void UGFxMoviePlayer::SetView3D(struct FMatrix* matView)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetView3D");
 
-	struct
-	{
-		struct FMatrix                 matView;
-	} params;
+	UGFxMoviePlayer_SetView3D_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1916,13 +1641,7 @@ void UGFxMoviePlayer::GetVisibleFrameRect(float* x0, float* y0, float* X1, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetVisibleFrameRect");
 
-	struct
-	{
-		float                          x0;
-		float                          y0;
-		float                          X1;
-		float                          Y1;
-	} params;
+	UGFxMoviePlayer_GetVisibleFrameRect_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1951,10 +1670,7 @@ void UGFxMoviePlayer::SetAlignment(TEnumAsByte<enum class GFxAlign> A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetAlignment");
 
-	struct
-	{
-		TEnumAsByte<enum class GFxAlign> A;
-	} params;
+	UGFxMoviePlayer_SetAlignment_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -1975,10 +1691,7 @@ void UGFxMoviePlayer::SetViewScaleMode(TEnumAsByte<enum class GFxScaleMode> SM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetViewScaleMode");
 
-	struct
-	{
-		TEnumAsByte<enum class GFxScaleMode> SM;
-	} params;
+	UGFxMoviePlayer_SetViewScaleMode_Params params;
 	params.SM = SM;
 
 	auto flags = fn->FunctionFlags;
@@ -2002,13 +1715,7 @@ void UGFxMoviePlayer::SetViewport(int X, int Y, int Width, int Height)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetViewport");
 
-	struct
-	{
-		int                            X;
-		int                            Y;
-		int                            Width;
-		int                            Height;
-	} params;
+	UGFxMoviePlayer_SetViewport_Params params;
 	params.X = X;
 	params.Y = Y;
 	params.Width = Width;
@@ -2032,10 +1739,7 @@ class UGameViewportClient* UGFxMoviePlayer::GetGameViewportClient()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.GetGameViewportClient");
 
-	struct
-	{
-		class UGameViewportClient*     ReturnValue;
-	} params;
+	UGFxMoviePlayer_GetGameViewportClient_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2057,10 +1761,7 @@ void UGFxMoviePlayer::SetPriority(unsigned char NewPriority)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetPriority");
 
-	struct
-	{
-		unsigned char                  NewPriority;
-	} params;
+	UGFxMoviePlayer_SetPriority_Params params;
 	params.NewPriority = NewPriority;
 
 	auto flags = fn->FunctionFlags;
@@ -2083,12 +1784,7 @@ bool UGFxMoviePlayer::SetExternalTexture(const struct FString& Resource, class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetExternalTexture");
 
-	struct
-	{
-		struct FString                 Resource;
-		class UTexture*                Texture;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_SetExternalTexture_Params params;
 	params.Resource = Resource;
 	params.Texture = Texture;
 
@@ -2112,10 +1808,7 @@ void UGFxMoviePlayer::SetExternalInterface(class UObject* H)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetExternalInterface");
 
-	struct
-	{
-		class UObject*                 H;
-	} params;
+	UGFxMoviePlayer_SetExternalInterface_Params params;
 	params.H = H;
 
 	auto flags = fn->FunctionFlags;
@@ -2135,10 +1828,7 @@ void UGFxMoviePlayer::SetTimingMode(TEnumAsByte<enum class GFxTimingMode> Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetTimingMode");
 
-	struct
-	{
-		TEnumAsByte<enum class GFxTimingMode> Mode;
-	} params;
+	UGFxMoviePlayer_SetTimingMode_Params params;
 	params.Mode = Mode;
 
 	auto flags = fn->FunctionFlags;
@@ -2159,10 +1849,7 @@ void UGFxMoviePlayer::SetMovieInfo(class USwfMovie* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetMovieInfo");
 
-	struct
-	{
-		class USwfMovie*               Data;
-	} params;
+	UGFxMoviePlayer_SetMovieInfo_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -2180,9 +1867,7 @@ void UGFxMoviePlayer::ConditionalClearPause()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.ConditionalClearPause");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_ConditionalClearPause_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2199,9 +1884,7 @@ void UGFxMoviePlayer::OnCleanup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.OnCleanup");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_OnCleanup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2218,9 +1901,7 @@ void UGFxMoviePlayer::OnClose()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.OnClose");
 
-	struct
-	{
-	} params;
+	UGFxMoviePlayer_OnClose_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2239,10 +1920,7 @@ void UGFxMoviePlayer::Close(bool Unload)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.Close");
 
-	struct
-	{
-		bool                           Unload;
-	} params;
+	UGFxMoviePlayer_Close_Params params;
 	params.Unload = Unload;
 
 	auto flags = fn->FunctionFlags;
@@ -2263,10 +1941,7 @@ void UGFxMoviePlayer::SetPause(bool bPausePlayback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.SetPause");
 
-	struct
-	{
-		bool                           bPausePlayback;
-	} params;
+	UGFxMoviePlayer_SetPause_Params params;
 	params.bPausePlayback = bPausePlayback;
 
 	auto flags = fn->FunctionFlags;
@@ -2287,10 +1962,7 @@ void UGFxMoviePlayer::OnPostAdvance(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.OnPostAdvance");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGFxMoviePlayer_OnPostAdvance_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2310,10 +1982,7 @@ void UGFxMoviePlayer::PostAdvance(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.PostAdvance");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGFxMoviePlayer_PostAdvance_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -2334,10 +2003,7 @@ void UGFxMoviePlayer::Advance(float Time)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.Advance");
 
-	struct
-	{
-		float                          Time;
-	} params;
+	UGFxMoviePlayer_Advance_Params params;
 	params.Time = Time;
 
 	auto flags = fn->FunctionFlags;
@@ -2359,11 +2025,7 @@ bool UGFxMoviePlayer::Start(bool StartPaused)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxMoviePlayer.Start");
 
-	struct
-	{
-		bool                           StartPaused;
-		bool                           ReturnValue;
-	} params;
+	UGFxMoviePlayer_Start_Params params;
 	params.StartPaused = StartPaused;
 
 	auto flags = fn->FunctionFlags;
@@ -2389,13 +2051,7 @@ bool UGFxObject::WidgetUnloaded(const struct FName& WidgetName, const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.WidgetUnloaded");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FName                   WidgetPath;
-		class UGFxObject*              Widget;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_WidgetUnloaded_Params params;
 	params.WidgetName = WidgetName;
 	params.WidgetPath = WidgetPath;
 	params.Widget = Widget;
@@ -2422,13 +2078,7 @@ bool UGFxObject::WidgetInitialized(const struct FName& WidgetName, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.WidgetInitialized");
 
-	struct
-	{
-		struct FName                   WidgetName;
-		struct FName                   WidgetPath;
-		class UGFxObject*              Widget;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_WidgetInitialized_Params params;
 	params.WidgetName = WidgetName;
 	params.WidgetPath = WidgetPath;
 	params.Widget = Widget;
@@ -2456,14 +2106,7 @@ class UGFxObject* UGFxObject::AttachMovie(const struct FString& symbolname, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.AttachMovie");
 
-	struct
-	{
-		struct FString                 symbolname;
-		struct FString                 instancename;
-		int                            Depth;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_AttachMovie_Params params;
 	params.symbolname = symbolname;
 	params.instancename = instancename;
 	params.Depth = Depth;
@@ -2492,13 +2135,7 @@ class UGFxObject* UGFxObject::CreateEmptyMovieClip(const struct FString& instanc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.CreateEmptyMovieClip");
 
-	struct
-	{
-		struct FString                 instancename;
-		int                            Depth;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_CreateEmptyMovieClip_Params params;
 	params.instancename = instancename;
 	params.Depth = Depth;
 	params.Type = Type;
@@ -2523,10 +2160,7 @@ void UGFxObject::GotoAndStopI(int frame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GotoAndStopI");
 
-	struct
-	{
-		int                            frame;
-	} params;
+	UGFxObject_GotoAndStopI_Params params;
 	params.frame = frame;
 
 	auto flags = fn->FunctionFlags;
@@ -2547,10 +2181,7 @@ void UGFxObject::GotoAndStop(const struct FString& frame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GotoAndStop");
 
-	struct
-	{
-		struct FString                 frame;
-	} params;
+	UGFxObject_GotoAndStop_Params params;
 	params.frame = frame;
 
 	auto flags = fn->FunctionFlags;
@@ -2571,10 +2202,7 @@ void UGFxObject::GotoAndPlayI(int frame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GotoAndPlayI");
 
-	struct
-	{
-		int                            frame;
-	} params;
+	UGFxObject_GotoAndPlayI_Params params;
 	params.frame = frame;
 
 	auto flags = fn->FunctionFlags;
@@ -2595,10 +2223,7 @@ void UGFxObject::GotoAndPlay(const struct FString& frame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GotoAndPlay");
 
-	struct
-	{
-		struct FString                 frame;
-	} params;
+	UGFxObject_GotoAndPlay_Params params;
 	params.frame = frame;
 
 	auto flags = fn->FunctionFlags;
@@ -2620,11 +2245,7 @@ TArray<class UGFxObject*> UGFxObject::ActionScriptArray(const struct FString& Pa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptArray");
 
-	struct
-	{
-		struct FString                 Path;
-		TArray<class UGFxObject*>      ReturnValue;
-	} params;
+	UGFxObject_ActionScriptArray_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -2648,11 +2269,7 @@ class UGFxObject* UGFxObject::ActionScriptObject(const struct FString& Path)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptObject");
 
-	struct
-	{
-		struct FString                 Path;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_ActionScriptObject_Params params;
 	params.Path = Path;
 
 	auto flags = fn->FunctionFlags;
@@ -2676,11 +2293,7 @@ struct FString UGFxObject::ActionScriptString(const struct FString& method)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptString");
 
-	struct
-	{
-		struct FString                 method;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_ActionScriptString_Params params;
 	params.method = method;
 
 	auto flags = fn->FunctionFlags;
@@ -2704,11 +2317,7 @@ float UGFxObject::ActionScriptFloat(const struct FString& method)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptFloat");
 
-	struct
-	{
-		struct FString                 method;
-		float                          ReturnValue;
-	} params;
+	UGFxObject_ActionScriptFloat_Params params;
 	params.method = method;
 
 	auto flags = fn->FunctionFlags;
@@ -2732,11 +2341,7 @@ int UGFxObject::ActionScriptInt(const struct FString& method)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptInt");
 
-	struct
-	{
-		struct FString                 method;
-		int                            ReturnValue;
-	} params;
+	UGFxObject_ActionScriptInt_Params params;
 	params.method = method;
 
 	auto flags = fn->FunctionFlags;
@@ -2759,10 +2364,7 @@ void UGFxObject::ActionScriptVoid(const struct FString& method)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptVoid");
 
-	struct
-	{
-		struct FString                 method;
-	} params;
+	UGFxObject_ActionScriptVoid_Params params;
 	params.method = method;
 
 	auto flags = fn->FunctionFlags;
@@ -2785,12 +2387,7 @@ struct FASValue UGFxObject::Invoke(const struct FString& Member, TArray<struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.Invoke");
 
-	struct
-	{
-		struct FString                 Member;
-		TArray<struct FASValue>        args;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxObject_Invoke_Params params;
 	params.Member = Member;
 	params.args = args;
 
@@ -2815,11 +2412,7 @@ void UGFxObject::ActionScriptSetFunctionOn(class UGFxObject* Target, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptSetFunctionOn");
 
-	struct
-	{
-		class UGFxObject*              Target;
-		struct FString                 Member;
-	} params;
+	UGFxObject_ActionScriptSetFunctionOn_Params params;
 	params.Target = Target;
 	params.Member = Member;
 
@@ -2841,10 +2434,7 @@ void UGFxObject::ActionScriptSetFunction(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.ActionScriptSetFunction");
 
-	struct
-	{
-		struct FString                 Member;
-	} params;
+	UGFxObject_ActionScriptSetFunction_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -2867,12 +2457,7 @@ void UGFxObject::SetElementMemberString(int Index, const struct FString& Member,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMemberString");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		struct FString                 S;
-	} params;
+	UGFxObject_SetElementMemberString_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.S = S;
@@ -2897,12 +2482,7 @@ void UGFxObject::SetElementMemberInt(int Index, const struct FString& Member, in
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMemberInt");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		int                            I;
-	} params;
+	UGFxObject_SetElementMemberInt_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.I = I;
@@ -2927,12 +2507,7 @@ void UGFxObject::SetElementMemberFloat(int Index, const struct FString& Member, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMemberFloat");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		float                          F;
-	} params;
+	UGFxObject_SetElementMemberFloat_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.F = F;
@@ -2957,12 +2532,7 @@ void UGFxObject::SetElementMemberBool(int Index, const struct FString& Member, b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMemberBool");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		bool                           B;
-	} params;
+	UGFxObject_SetElementMemberBool_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.B = B;
@@ -2987,12 +2557,7 @@ void UGFxObject::SetElementMemberObject(int Index, const struct FString& Member,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMemberObject");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		class UGFxObject*              val;
-	} params;
+	UGFxObject_SetElementMemberObject_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.val = val;
@@ -3017,12 +2582,7 @@ void UGFxObject::SetElementMember(int Index, const struct FString& Member, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementMember");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		struct FASValue                Arg;
-	} params;
+	UGFxObject_SetElementMember_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.Arg = Arg;
@@ -3047,12 +2607,7 @@ struct FString UGFxObject::GetElementMemberString(int Index, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMemberString");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_GetElementMemberString_Params params;
 	params.Index = Index;
 	params.Member = Member;
 
@@ -3078,12 +2633,7 @@ int UGFxObject::GetElementMemberInt(int Index, const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMemberInt");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		int                            ReturnValue;
-	} params;
+	UGFxObject_GetElementMemberInt_Params params;
 	params.Index = Index;
 	params.Member = Member;
 
@@ -3109,12 +2659,7 @@ float UGFxObject::GetElementMemberFloat(int Index, const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMemberFloat");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		float                          ReturnValue;
-	} params;
+	UGFxObject_GetElementMemberFloat_Params params;
 	params.Index = Index;
 	params.Member = Member;
 
@@ -3140,12 +2685,7 @@ bool UGFxObject::GetElementMemberBool(int Index, const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMemberBool");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_GetElementMemberBool_Params params;
 	params.Index = Index;
 	params.Member = Member;
 
@@ -3172,13 +2712,7 @@ class UGFxObject* UGFxObject::GetElementMemberObject(int Index, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMemberObject");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_GetElementMemberObject_Params params;
 	params.Index = Index;
 	params.Member = Member;
 	params.Type = Type;
@@ -3205,12 +2739,7 @@ struct FASValue UGFxObject::GetElementMember(int Index, const struct FString& Me
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementMember");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 Member;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxObject_GetElementMember_Params params;
 	params.Index = Index;
 	params.Member = Member;
 
@@ -3235,11 +2764,7 @@ void UGFxObject::SetElementColorTransform(int Index, const struct FASColorTransf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementColorTransform");
 
-	struct
-	{
-		int                            Index;
-		struct FASColorTransform       cxform;
-	} params;
+	UGFxObject_SetElementColorTransform_Params params;
 	params.Index = Index;
 	params.cxform = cxform;
 
@@ -3263,12 +2788,7 @@ void UGFxObject::SetElementPosition(int Index, float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementPosition");
 
-	struct
-	{
-		int                            Index;
-		float                          X;
-		float                          Y;
-	} params;
+	UGFxObject_SetElementPosition_Params params;
 	params.Index = Index;
 	params.X = X;
 	params.Y = Y;
@@ -3292,11 +2812,7 @@ void UGFxObject::SetElementVisible(int Index, bool Visible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementVisible");
 
-	struct
-	{
-		int                            Index;
-		bool                           Visible;
-	} params;
+	UGFxObject_SetElementVisible_Params params;
 	params.Index = Index;
 	params.Visible = Visible;
 
@@ -3319,11 +2835,7 @@ void UGFxObject::SetElementDisplayMatrix(int Index, const struct FMatrix& M)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementDisplayMatrix");
 
-	struct
-	{
-		int                            Index;
-		struct FMatrix                 M;
-	} params;
+	UGFxObject_SetElementDisplayMatrix_Params params;
 	params.Index = Index;
 	params.M = M;
 
@@ -3346,11 +2858,7 @@ void UGFxObject::SetElementDisplayInfo(int Index, const struct FASDisplayInfo& D
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementDisplayInfo");
 
-	struct
-	{
-		int                            Index;
-		struct FASDisplayInfo          D;
-	} params;
+	UGFxObject_SetElementDisplayInfo_Params params;
 	params.Index = Index;
 	params.D = D;
 
@@ -3373,11 +2881,7 @@ struct FMatrix UGFxObject::GetElementDisplayMatrix(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementDisplayMatrix");
 
-	struct
-	{
-		int                            Index;
-		struct FMatrix                 ReturnValue;
-	} params;
+	UGFxObject_GetElementDisplayMatrix_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3401,11 +2905,7 @@ struct FASDisplayInfo UGFxObject::GetElementDisplayInfo(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementDisplayInfo");
 
-	struct
-	{
-		int                            Index;
-		struct FASDisplayInfo          ReturnValue;
-	} params;
+	UGFxObject_GetElementDisplayInfo_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3429,11 +2929,7 @@ void UGFxObject::SetElementString(int Index, const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementString");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 S;
-	} params;
+	UGFxObject_SetElementString_Params params;
 	params.Index = Index;
 	params.S = S;
 
@@ -3456,11 +2952,7 @@ void UGFxObject::SetElementInt(int Index, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementInt");
 
-	struct
-	{
-		int                            Index;
-		int                            I;
-	} params;
+	UGFxObject_SetElementInt_Params params;
 	params.Index = Index;
 	params.I = I;
 
@@ -3483,11 +2975,7 @@ void UGFxObject::SetElementFloat(int Index, float F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementFloat");
 
-	struct
-	{
-		int                            Index;
-		float                          F;
-	} params;
+	UGFxObject_SetElementFloat_Params params;
 	params.Index = Index;
 	params.F = F;
 
@@ -3510,11 +2998,7 @@ void UGFxObject::SetElementBool(int Index, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementBool");
 
-	struct
-	{
-		int                            Index;
-		bool                           B;
-	} params;
+	UGFxObject_SetElementBool_Params params;
 	params.Index = Index;
 	params.B = B;
 
@@ -3537,11 +3021,7 @@ void UGFxObject::SetElementObject(int Index, class UGFxObject* val)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElementObject");
 
-	struct
-	{
-		int                            Index;
-		class UGFxObject*              val;
-	} params;
+	UGFxObject_SetElementObject_Params params;
 	params.Index = Index;
 	params.val = val;
 
@@ -3564,11 +3044,7 @@ void UGFxObject::SetElement(int Index, const struct FASValue& Arg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetElement");
 
-	struct
-	{
-		int                            Index;
-		struct FASValue                Arg;
-	} params;
+	UGFxObject_SetElement_Params params;
 	params.Index = Index;
 	params.Arg = Arg;
 
@@ -3591,11 +3067,7 @@ struct FString UGFxObject::GetElementString(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementString");
 
-	struct
-	{
-		int                            Index;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_GetElementString_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3619,11 +3091,7 @@ int UGFxObject::GetElementInt(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementInt");
 
-	struct
-	{
-		int                            Index;
-		int                            ReturnValue;
-	} params;
+	UGFxObject_GetElementInt_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3647,11 +3115,7 @@ float UGFxObject::GetElementFloat(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementFloat");
 
-	struct
-	{
-		int                            Index;
-		float                          ReturnValue;
-	} params;
+	UGFxObject_GetElementFloat_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3675,11 +3139,7 @@ bool UGFxObject::GetElementBool(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementBool");
 
-	struct
-	{
-		int                            Index;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_GetElementBool_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3704,12 +3164,7 @@ class UGFxObject* UGFxObject::GetElementObject(int Index, class UClass* Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElementObject");
 
-	struct
-	{
-		int                            Index;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_GetElementObject_Params params;
 	params.Index = Index;
 	params.Type = Type;
 
@@ -3734,11 +3189,7 @@ struct FASValue UGFxObject::GetElement(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetElement");
 
-	struct
-	{
-		int                            Index;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxObject_GetElement_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -3762,11 +3213,7 @@ void UGFxObject::SetText(const struct FString& Text, class UTranslationContext* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetText");
 
-	struct
-	{
-		struct FString                 Text;
-		class UTranslationContext*     InContext;
-	} params;
+	UGFxObject_SetText_Params params;
 	params.Text = Text;
 	params.InContext = InContext;
 
@@ -3788,10 +3235,7 @@ struct FString UGFxObject::GetText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetText");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_GetText_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3813,10 +3257,7 @@ void UGFxObject::SetVisible(bool Visible)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetVisible");
 
-	struct
-	{
-		bool                           Visible;
-	} params;
+	UGFxObject_SetVisible_Params params;
 	params.Visible = Visible;
 
 	auto flags = fn->FunctionFlags;
@@ -3837,10 +3278,7 @@ void UGFxObject::SetDisplayMatrix3D(const struct FMatrix& M)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetDisplayMatrix3D");
 
-	struct
-	{
-		struct FMatrix                 M;
-	} params;
+	UGFxObject_SetDisplayMatrix3D_Params params;
 	params.M = M;
 
 	auto flags = fn->FunctionFlags;
@@ -3861,10 +3299,7 @@ void UGFxObject::SetDisplayMatrix(const struct FMatrix& M)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetDisplayMatrix");
 
-	struct
-	{
-		struct FMatrix                 M;
-	} params;
+	UGFxObject_SetDisplayMatrix_Params params;
 	params.M = M;
 
 	auto flags = fn->FunctionFlags;
@@ -3885,10 +3320,7 @@ void UGFxObject::SetColorTransform(const struct FASColorTransform& cxform)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetColorTransform");
 
-	struct
-	{
-		struct FASColorTransform       cxform;
-	} params;
+	UGFxObject_SetColorTransform_Params params;
 	params.cxform = cxform;
 
 	auto flags = fn->FunctionFlags;
@@ -3910,11 +3342,7 @@ void UGFxObject::SetPosition(float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetPosition");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-	} params;
+	UGFxObject_SetPosition_Params params;
 	params.X = X;
 	params.Y = Y;
 
@@ -3936,10 +3364,7 @@ void UGFxObject::SetDisplayInfo(const struct FASDisplayInfo& D)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetDisplayInfo");
 
-	struct
-	{
-		struct FASDisplayInfo          D;
-	} params;
+	UGFxObject_SetDisplayInfo_Params params;
 	params.D = D;
 
 	auto flags = fn->FunctionFlags;
@@ -3960,10 +3385,7 @@ struct FMatrix UGFxObject::GetDisplayMatrix3D()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetDisplayMatrix3D");
 
-	struct
-	{
-		struct FMatrix                 ReturnValue;
-	} params;
+	UGFxObject_GetDisplayMatrix3D_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3985,10 +3407,7 @@ struct FMatrix UGFxObject::GetDisplayMatrix()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetDisplayMatrix");
 
-	struct
-	{
-		struct FMatrix                 ReturnValue;
-	} params;
+	UGFxObject_GetDisplayMatrix_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4010,10 +3429,7 @@ struct FASColorTransform UGFxObject::GetColorTransform()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetColorTransform");
 
-	struct
-	{
-		struct FASColorTransform       ReturnValue;
-	} params;
+	UGFxObject_GetColorTransform_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4037,12 +3453,7 @@ bool UGFxObject::GetPosition(float* X, float* Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetPosition");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_GetPosition_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4069,10 +3480,7 @@ struct FASDisplayInfo UGFxObject::GetDisplayInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetDisplayInfo");
 
-	struct
-	{
-		struct FASDisplayInfo          ReturnValue;
-	} params;
+	UGFxObject_GetDisplayInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4096,12 +3504,7 @@ struct FString UGFxObject::STATIC_TranslateString(const struct FString& StringTo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.TranslateString");
 
-	struct
-	{
-		struct FString                 StringToTranslate;
-		class UTranslationContext*     InContext;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_TranslateString_Params params;
 	params.StringToTranslate = StringToTranslate;
 	params.InContext = InContext;
 
@@ -4127,12 +3530,7 @@ void UGFxObject::SetFunction(const struct FString& Member, class UObject* contex
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetFunction");
 
-	struct
-	{
-		struct FString                 Member;
-		class UObject*                 context;
-		struct FName                   fname;
-	} params;
+	UGFxObject_SetFunction_Params params;
 	params.Member = Member;
 	params.context = context;
 	params.fname = fname;
@@ -4156,11 +3554,7 @@ void UGFxObject::SetObject(const struct FString& Member, class UGFxObject* val)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetObject");
 
-	struct
-	{
-		struct FString                 Member;
-		class UGFxObject*              val;
-	} params;
+	UGFxObject_SetObject_Params params;
 	params.Member = Member;
 	params.val = val;
 
@@ -4184,12 +3578,7 @@ void UGFxObject::SetString(const struct FString& Member, const struct FString& S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetString");
 
-	struct
-	{
-		struct FString                 Member;
-		struct FString                 S;
-		class UTranslationContext*     InContext;
-	} params;
+	UGFxObject_SetString_Params params;
 	params.Member = Member;
 	params.S = S;
 	params.InContext = InContext;
@@ -4213,11 +3602,7 @@ void UGFxObject::SetInt(const struct FString& Member, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetInt");
 
-	struct
-	{
-		struct FString                 Member;
-		int                            I;
-	} params;
+	UGFxObject_SetInt_Params params;
 	params.Member = Member;
 	params.I = I;
 
@@ -4240,11 +3625,7 @@ void UGFxObject::SetFloat(const struct FString& Member, float F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetFloat");
 
-	struct
-	{
-		struct FString                 Member;
-		float                          F;
-	} params;
+	UGFxObject_SetFloat_Params params;
 	params.Member = Member;
 	params.F = F;
 
@@ -4267,11 +3648,7 @@ void UGFxObject::SetBool(const struct FString& Member, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetBool");
 
-	struct
-	{
-		struct FString                 Member;
-		bool                           B;
-	} params;
+	UGFxObject_SetBool_Params params;
 	params.Member = Member;
 	params.B = B;
 
@@ -4294,11 +3671,7 @@ void UGFxObject::Set(const struct FString& Member, const struct FASValue& Arg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.Set");
 
-	struct
-	{
-		struct FString                 Member;
-		struct FASValue                Arg;
-	} params;
+	UGFxObject_Set_Params params;
 	params.Member = Member;
 	params.Arg = Arg;
 
@@ -4322,12 +3695,7 @@ class UGFxObject* UGFxObject::GetObject(const struct FString& Member, class UCla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetObject");
 
-	struct
-	{
-		struct FString                 Member;
-		class UClass*                  Type;
-		class UGFxObject*              ReturnValue;
-	} params;
+	UGFxObject_GetObject_Params params;
 	params.Member = Member;
 	params.Type = Type;
 
@@ -4352,11 +3720,7 @@ struct FString UGFxObject::GetString(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetString");
 
-	struct
-	{
-		struct FString                 Member;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxObject_GetString_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -4380,11 +3744,7 @@ int UGFxObject::GetInt(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetInt");
 
-	struct
-	{
-		struct FString                 Member;
-		int                            ReturnValue;
-	} params;
+	UGFxObject_GetInt_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -4408,11 +3768,7 @@ float UGFxObject::GetFloat(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetFloat");
 
-	struct
-	{
-		struct FString                 Member;
-		float                          ReturnValue;
-	} params;
+	UGFxObject_GetFloat_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -4436,11 +3792,7 @@ bool UGFxObject::GetBool(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.GetBool");
 
-	struct
-	{
-		struct FString                 Member;
-		bool                           ReturnValue;
-	} params;
+	UGFxObject_GetBool_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -4464,11 +3816,7 @@ struct FASValue UGFxObject::Get(const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.Get");
 
-	struct
-	{
-		struct FString                 Member;
-		struct FASValue                ReturnValue;
-	} params;
+	UGFxObject_Get_Params params;
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
@@ -4491,10 +3839,7 @@ bool UGFxAction_CloseMovie::IsValidLevelSequenceObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxAction_CloseMovie.IsValidLevelSequenceObject");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxAction_CloseMovie_IsValidLevelSequenceObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4515,10 +3860,7 @@ bool UGFxAction_GetVariable::IsValidLevelSequenceObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxAction_GetVariable.IsValidLevelSequenceObject");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxAction_GetVariable_IsValidLevelSequenceObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4539,10 +3881,7 @@ bool UGFxAction_Invoke::IsValidLevelSequenceObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxAction_Invoke.IsValidLevelSequenceObject");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxAction_Invoke_IsValidLevelSequenceObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4563,10 +3902,7 @@ bool UGFxAction_OpenMovie::IsValidLevelSequenceObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxAction_OpenMovie.IsValidLevelSequenceObject");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxAction_OpenMovie_IsValidLevelSequenceObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4587,10 +3923,7 @@ bool UGFxAction_SetVariable::IsValidLevelSequenceObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxAction_SetVariable.IsValidLevelSequenceObject");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGFxAction_SetVariable_IsValidLevelSequenceObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4615,14 +3948,7 @@ bool UGFxFSCmdHandler_Kismet::FSCommand(class UGFxMoviePlayer* Movie, class UGFx
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxFSCmdHandler_Kismet.FSCommand");
 
-	struct
-	{
-		class UGFxMoviePlayer*         Movie;
-		class UGFxEvent_FSCommand*     Event;
-		struct FString                 Cmd;
-		struct FString                 Arg;
-		bool                           ReturnValue;
-	} params;
+	UGFxFSCmdHandler_Kismet_FSCommand_Params params;
 	params.Movie = Movie;
 	params.Event = Event;
 	params.Cmd = Cmd;
@@ -4648,10 +3974,7 @@ void UGFxClikWidget::ASRemoveAllEventListeners(const struct FString& Event)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.ASRemoveAllEventListeners");
 
-	struct
-	{
-		struct FString                 Event;
-	} params;
+	UGFxClikWidget_ASRemoveAllEventListeners_Params params;
 	params.Event = Event;
 
 	auto flags = fn->FunctionFlags;
@@ -4675,14 +3998,7 @@ void UGFxClikWidget::AS3AddEventListener(const struct FString& Type, class UGFxO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.AS3AddEventListener");
 
-	struct
-	{
-		struct FString                 Type;
-		class UGFxObject*              O;
-		bool                           useCapture;
-		int                            listenerPriority;
-		bool                           useWeakReference;
-	} params;
+	UGFxClikWidget_AS3AddEventListener_Params params;
 	params.Type = Type;
 	params.O = O;
 	params.useCapture = useCapture;
@@ -4708,12 +4024,7 @@ void UGFxClikWidget::ASAddEventListener(const struct FString& Type, class UGFxOb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.ASAddEventListener");
 
-	struct
-	{
-		struct FString                 Type;
-		class UGFxObject*              O;
-		struct FString                 func;
-	} params;
+	UGFxClikWidget_ASAddEventListener_Params params;
 	params.Type = Type;
 	params.O = O;
 	params.func = func;
@@ -4737,12 +4048,7 @@ void UGFxClikWidget::SetListener(class UGFxObject* O, const struct FString& Memb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.SetListener");
 
-	struct
-	{
-		class UGFxObject*              O;
-		struct FString                 Member;
-		struct FScriptDelegate         Listener;
-	} params;
+	UGFxClikWidget_SetListener_Params params;
 	params.O = O;
 	params.Member = Member;
 	params.Listener = Listener;
@@ -4765,11 +4071,7 @@ struct FString UGFxClikWidget::GetEventStringFromTypename(const struct FName& Ty
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.GetEventStringFromTypename");
 
-	struct
-	{
-		struct FName                   Typename;
-		struct FString                 ReturnValue;
-	} params;
+	UGFxClikWidget_GetEventStringFromTypename_Params params;
 	params.Typename = Typename;
 
 	auto flags = fn->FunctionFlags;
@@ -4791,10 +4093,7 @@ void UGFxClikWidget::RemoveAllEventListeners(const struct FString& Event)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.RemoveAllEventListeners");
 
-	struct
-	{
-		struct FString                 Event;
-	} params;
+	UGFxClikWidget_RemoveAllEventListeners_Params params;
 	params.Event = Event;
 
 	auto flags = fn->FunctionFlags;
@@ -4818,14 +4117,7 @@ void UGFxClikWidget::AddEventListener(const struct FName& Type, const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.AddEventListener");
 
-	struct
-	{
-		struct FName                   Type;
-		struct FScriptDelegate         Listener;
-		bool                           useCapture;
-		int                            listenerPriority;
-		bool                           useWeakReference;
-	} params;
+	UGFxClikWidget_AddEventListener_Params params;
 	params.Type = Type;
 	params.Listener = Listener;
 	params.useCapture = useCapture;
@@ -4849,10 +4141,7 @@ void UGFxClikWidget::EventListener(const struct FEventData& Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxClikWidget.EventListener");
 
-	struct
-	{
-		struct FEventData              Data;
-	} params;
+	UGFxClikWidget_EventListener_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;

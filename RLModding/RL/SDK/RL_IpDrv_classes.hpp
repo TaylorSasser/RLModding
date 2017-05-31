@@ -312,8 +312,8 @@ enum class ERequestType
 class UClientBeaconAddressResolver : public UObject
 {
 public:
-	int                                                BeaconPort;                                       		// 0x003C(0x0004)
-	struct FName                                       BeaconName;                                       		// 0x0040(0x0008)
+	int                                                BeaconPort;                                               // 0x003C(0x0004)
+	struct FName                                       BeaconName;                                               // 0x0040(0x0008)
 
 	static UClass* StaticClass()
 	{
@@ -329,11 +329,11 @@ public:
 class UHTTPDownload : public UDownload
 {
 public:
-	struct FString                                     ProxyServerHost;                                  		// 0x0A70(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	int                                                ProxyServerPort;                                  		// 0x0A7C(0x0004) (CPF_Config)
-	unsigned long                                      MaxRedirection : 1;                               		// 0x0A80(0x0004) (CPF_Config)
-	float                                              ConnectionTimeout;                                		// 0x0A84(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData00[0xE8];                              		// 0x0A88(0x00E8) MISSED OFFSET
+	struct FString                                     ProxyServerHost;                                          // 0x0A70(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	int                                                ProxyServerPort;                                          // 0x0A7C(0x0004) (CPF_Config)
+	unsigned long                                      MaxRedirection : 1;                                       // 0x0A80(0x0004) (CPF_Config)
+	float                                              ConnectionTimeout;                                        // 0x0A84(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData00[0xE8];                                      // 0x0A88(0x00E8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -349,10 +349,10 @@ public:
 class UHttpRequestCurl : public UHttpRequestInterface
 {
 public:
-	struct FPointer                                    Request;                                          		// 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FString                                     RequestVerb;                                      		// 0x0050(0x000C) (CPF_Const, CPF_Native)
-	struct FString                                     RequestURL;                                       		// 0x005C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<unsigned char>                              Payload;                                          		// 0x0068(0x000C) (CPF_Const, CPF_Native)
+	struct FPointer                                    Request;                                                  // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FString                                     RequestVerb;                                              // 0x0050(0x000C) (CPF_Const, CPF_Native)
+	struct FString                                     RequestURL;                                               // 0x005C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<unsigned char>                              Payload;                                                  // 0x0068(0x000C) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -383,8 +383,8 @@ public:
 class UHttpResponseCurl : public UHttpResponseInterface
 {
 public:
-	struct FPointer                                    Response;                                         		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<unsigned char>                              Payload;                                          		// 0x0040(0x000C) (CPF_Const, CPF_Native)
+	struct FPointer                                    Response;                                                 // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<unsigned char>                              Payload;                                                  // 0x0040(0x000C) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -410,15 +410,15 @@ public:
 class AInternetLink : public AInfo
 {
 public:
-	TEnumAsByte<enum class ELinkMode>                  LinkMode;                                         		// 0x01EC(0x0001)
-	TEnumAsByte<enum class ELineMode>                  InLineMode;                                       		// 0x01ED(0x0001)
-	TEnumAsByte<enum class ELineMode>                  OutLineMode;                                      		// 0x01EE(0x0001)
-	TEnumAsByte<enum class EReceiveMode>               ReceiveMode;                                      		// 0x01EF(0x0001)
-	struct FPointer                                    Socket;                                           		// 0x01F0(0x0004) (CPF_Const)
-	int                                                Port;                                             		// 0x01F4(0x0004) (CPF_Const)
-	struct FPointer                                    RemoteSocket;                                     		// 0x01F8(0x0004) (CPF_Const)
-	struct FPointer                                    PrivateResolveInfo;                               		// 0x01FC(0x0004) (CPF_Const, CPF_Native)
-	int                                                DataPending;                                      		// 0x0200(0x0004) (CPF_Const)
+	TEnumAsByte<enum class ELinkMode>                  LinkMode;                                                 // 0x01EC(0x0001)
+	TEnumAsByte<enum class ELineMode>                  InLineMode;                                               // 0x01ED(0x0001)
+	TEnumAsByte<enum class ELineMode>                  OutLineMode;                                              // 0x01EE(0x0001)
+	TEnumAsByte<enum class EReceiveMode>               ReceiveMode;                                              // 0x01EF(0x0001)
+	struct FPointer                                    Socket;                                                   // 0x01F0(0x0004) (CPF_Const)
+	int                                                Port;                                                     // 0x01F4(0x0004) (CPF_Const)
+	struct FPointer                                    RemoteSocket;                                             // 0x01F8(0x0004) (CPF_Const)
+	struct FPointer                                    PrivateResolveInfo;                                       // 0x01FC(0x0004) (CPF_Const, CPF_Native)
+	int                                                DataPending;                                              // 0x0200(0x0004) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -444,12 +444,12 @@ public:
 class ATcpLink : public AInternetLink
 {
 public:
-	TEnumAsByte<enum class ELinkState>                 LinkState;                                        		// 0x0204(0x0001)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0205(0x0003) MISSED OFFSET
-	struct FIpAddr                                     RemoteAddr;                                       		// 0x0208(0x0014)
-	class UClass*                                      AcceptClass;                                      		// 0x021C(0x0004)
-	TArray<unsigned char>                              SendFIFO;                                         		// 0x0220(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FString                                     RecvBuf;                                          		// 0x022C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TEnumAsByte<enum class ELinkState>                 LinkState;                                                // 0x0204(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0205(0x0003) MISSED OFFSET
+	struct FIpAddr                                     RemoteAddr;                                               // 0x0208(0x0014)
+	class UClass*                                      AcceptClass;                                              // 0x021C(0x0004)
+	TArray<unsigned char>                              SendFIFO;                                                 // 0x0220(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FString                                     RecvBuf;                                                  // 0x022C(0x000C) (CPF_Const, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -481,8 +481,8 @@ public:
 class UMcpServiceBase : public UObject
 {
 public:
-	struct FString                                     McpConfigClassName;                               		// 0x003C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	class UMcpServiceConfig*                           McpConfig;                                        		// 0x0048(0x0004)
+	struct FString                                     McpConfigClassName;                                       // 0x003C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	class UMcpServiceConfig*                           McpConfig;                                                // 0x0048(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -503,7 +503,7 @@ public:
 class UMCPBase : public UMcpServiceBase
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 
 	static UClass* StaticClass()
 	{
@@ -519,10 +519,10 @@ public:
 class UOnlineEventsInterfaceMcp : public UMCPBase
 {
 public:
-	TArray<struct FEventUploadConfig>                  EventUploadConfigs;                               		// 0x0050(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FPointer>                            MCPEventPostObjects;                              		// 0x005C(0x000C) (CPF_Const, CPF_Native)
-	TArray<TEnumAsByte<enum class EEventUploadType>>   DisabledUploadTypes;                              		// 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	unsigned long                                      bBinaryStats : 1;                                 		// 0x0074(0x0004) (CPF_Const, CPF_Config)
+	TArray<struct FEventUploadConfig>                  EventUploadConfigs;                                       // 0x0050(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FPointer>                            MCPEventPostObjects;                                      // 0x005C(0x000C) (CPF_Const, CPF_Native)
+	TArray<TEnumAsByte<enum class EEventUploadType>>   DisabledUploadTypes;                                      // 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	unsigned long                                      bBinaryStats : 1;                                         // 0x0074(0x0004) (CPF_Const, CPF_Config)
 
 	static UClass* StaticClass()
 	{
@@ -543,11 +543,11 @@ public:
 class UOnlineNewsInterfaceMcp : public UMCPBase
 {
 public:
-	TArray<struct FNewsCacheEntry>                     NewsItems;                                        		// 0x0050(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ReadNewsDelegates;                                		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bNeedsTicking : 1;                                		// 0x0068(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __OnReadNewsCompleted__Delegate;                  		// 0x006C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FNewsCacheEntry>                     NewsItems;                                                // 0x0050(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ReadNewsDelegates;                                        // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bNeedsTicking : 1;                                        // 0x0068(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __OnReadNewsCompleted__Delegate;                          // 0x006C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -569,17 +569,17 @@ public:
 class UOnlineTitleFileDownloadBase : public UMCPBase
 {
 public:
-	TArray<struct FScriptDelegate>                     ReadTitleFileCompleteDelegates;                   		// 0x0050(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     RequestTitleFileListCompleteDelegates;            		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     BaseUrl;                                          		// 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     RequestFileListURL;                               		// 0x0074(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     RequestFileURL;                                   		// 0x0080(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	float                                              Timeout;                                          		// 0x008C(0x0004) (CPF_Config)
-	TArray<struct FFileNameToURLMapping>               FilesToUrls;                                      		// 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnReadTitleFileComplete__Delegate;              		// 0x009C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRequestTitleFileListComplete__Delegate;       		// 0x00AC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FScriptDelegate>                     ReadTitleFileCompleteDelegates;                           // 0x0050(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     RequestTitleFileListCompleteDelegates;                    // 0x005C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     BaseUrl;                                                  // 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     RequestFileListURL;                                       // 0x0074(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     RequestFileURL;                                           // 0x0080(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	float                                              Timeout;                                                  // 0x008C(0x0004) (CPF_Config)
+	TArray<struct FFileNameToURLMapping>               FilesToUrls;                                              // 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadTitleFileComplete__Delegate;                      // 0x009C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRequestTitleFileListComplete__Delegate;               // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -609,8 +609,8 @@ public:
 class UOnlineTitleFileDownloadMcp : public UOnlineTitleFileDownloadBase
 {
 public:
-	TArray<struct FTitleFileMcp>                       TitleFiles;                                       		// 0x00BC(0x000C) (CPF_NeedCtorLink)
-	int                                                DownloadCount;                                    		// 0x00C8(0x0004) (CPF_Transient)
+	TArray<struct FTitleFileMcp>                       TitleFiles;                                               // 0x00BC(0x000C) (CPF_NeedCtorLink)
+	int                                                DownloadCount;                                            // 0x00C8(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -632,7 +632,7 @@ public:
 class UOnlineTitleFileDownloadWeb : public UOnlineTitleFileDownloadBase
 {
 public:
-	TArray<struct FTitleFileWeb>                       TitleFiles;                                       		// 0x00BC(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FTitleFileWeb>                       TitleFiles;                                               // 0x00BC(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -660,13 +660,13 @@ public:
 class UTitleFileDownloadCache : public UMCPBase
 {
 public:
-	TArray<struct FTitleFileCacheEntry>                TitleFiles;                                       		// 0x0050(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LoadCompleteDelegates;                            		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     SaveCompleteDelegates;                            		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnLoadTitleFileComplete__Delegate;              		// 0x0074(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnSaveTitleFileComplete__Delegate;              		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FTitleFileCacheEntry>                TitleFiles;                                               // 0x0050(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LoadCompleteDelegates;                                    // 0x005C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     SaveCompleteDelegates;                                    // 0x0068(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLoadTitleFileComplete__Delegate;                      // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnSaveTitleFileComplete__Delegate;                      // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -699,19 +699,19 @@ public:
 class UMcpMessageBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpMessageManagerClassName;                       		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TEnumAsByte<enum class EMcpMessageCompressionType> CompressionType;                                  		// 0x0058(0x0001) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x0059(0x0003) MISSED OFFSET
-	TArray<struct FMcpMessageContents>                 MessageContentsList;                              		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FMcpMessageList>                     MessageLists;                                     		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnCreateMessageComplete__Delegate;              		// 0x0074(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteMessageComplete__Delegate;              		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryMessagesComplete__Delegate;              		// 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryMessageContentsComplete__Delegate;       		// 0x00A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpMessageManagerClassName;                               // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TEnumAsByte<enum class EMcpMessageCompressionType> CompressionType;                                          // 0x0058(0x0001) (CPF_Config)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0059(0x0003) MISSED OFFSET
+	TArray<struct FMcpMessageContents>                 MessageContentsList;                                      // 0x005C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FMcpMessageList>                     MessageLists;                                             // 0x0068(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCreateMessageComplete__Delegate;                      // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteMessageComplete__Delegate;                      // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryMessagesComplete__Delegate;                      // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryMessageContentsComplete__Delegate;               // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -741,14 +741,14 @@ public:
 class UMcpMessageManager : public UMcpMessageBase
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x00B4(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	struct FString                                     CreateMessageUrl;                                 		// 0x00B8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteMessageUrl;                                 		// 0x00C4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryMessagesUrl;                                 		// 0x00D0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryMessageContentsUrl;                          		// 0x00DC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteAllMessagesUrl;                             		// 0x00E8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FMcpCompressMessageRequest>          CompressMessageRequests;                          		// 0x00F4(0x000C) (CPF_Native)
-	TArray<struct FMcpUncompressMessageRequest>        UncompressMessageRequests;                        		// 0x0100(0x000C) (CPF_Native)
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x00B4(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FString                                     CreateMessageUrl;                                         // 0x00B8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteMessageUrl;                                         // 0x00C4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryMessagesUrl;                                         // 0x00D0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryMessageContentsUrl;                                  // 0x00DC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteAllMessagesUrl;                                     // 0x00E8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FMcpCompressMessageRequest>          CompressMessageRequests;                                  // 0x00F4(0x000C) (CPF_Native)
+	TArray<struct FMcpUncompressMessageRequest>        UncompressMessageRequests;                                // 0x0100(0x000C) (CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -781,23 +781,23 @@ public:
 class UMcpUserCloudFileDownload : public UMcpServiceBase
 {
 public:
-	struct FString                                     EnumerateCloudFilesUrl;                           		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ReadCloudFileUrl;                                 		// 0x0058(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     WriteCloudFileUrl;                                		// 0x0064(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteCloudFileUrl;                               		// 0x0070(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FMcpUserCloudFilesEntry>             UserCloudFileRequests;                            		// 0x007C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     EnumerateUserFilesCompleteDelegates;              		// 0x0088(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ReadUserFileCompleteDelegates;                    		// 0x0094(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     WriteUserFileCompleteDelegates;                   		// 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     DeleteUserFileCompleteDelegates;                  		// 0x00AC(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnEnumerateUserFilesComplete__Delegate;         		// 0x00B8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadUserFileComplete__Delegate;               		// 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnWriteUserFileComplete__Delegate;              		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteUserFileComplete__Delegate;             		// 0x00E8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     EnumerateCloudFilesUrl;                                   // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ReadCloudFileUrl;                                         // 0x0058(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     WriteCloudFileUrl;                                        // 0x0064(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteCloudFileUrl;                                       // 0x0070(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FMcpUserCloudFilesEntry>             UserCloudFileRequests;                                    // 0x007C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     EnumerateUserFilesCompleteDelegates;                      // 0x0088(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ReadUserFileCompleteDelegates;                            // 0x0094(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     WriteUserFileCompleteDelegates;                           // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     DeleteUserFileCompleteDelegates;                          // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnEnumerateUserFilesComplete__Delegate;                 // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReadUserFileComplete__Delegate;                       // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnWriteUserFileComplete__Delegate;                      // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteUserFileComplete__Delegate;                     // 0x00E8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -844,22 +844,22 @@ public:
 class UMeshBeacon : public UObject
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	int                                                MeshBeaconPort;                                   		// 0x0040(0x0004) (CPF_Config)
-	struct FPointer                                    Socket;                                           		// 0x0044(0x0004) (CPF_Native, CPF_Transient)
-	unsigned long                                      bIsInTick : 1;                                    		// 0x0048(0x0004) (CPF_Transient)
-	unsigned long                                      bWantsDeferredDestroy : 1;                        		// 0x0048(0x0004) (CPF_Transient)
-	unsigned long                                      bShouldTick : 1;                                  		// 0x0048(0x0004)
-	float                                              HeartbeatTimeout;                                 		// 0x004C(0x0004) (CPF_Config)
-	float                                              ElapsedHeartbeatTime;                             		// 0x0050(0x0004)
-	struct FName                                       BeaconName;                                       		// 0x0054(0x0008)
-	int                                                SocketSendBufferSize;                             		// 0x005C(0x0004) (CPF_Config)
-	int                                                SocketReceiveBufferSize;                          		// 0x0060(0x0004) (CPF_Config)
-	int                                                MaxBandwidthTestBufferSize;                       		// 0x0064(0x0004) (CPF_Config)
-	int                                                MinBandwidthTestBufferSize;                       		// 0x0068(0x0004) (CPF_Config)
-	float                                              MaxBandwidthTestSendTime;                         		// 0x006C(0x0004) (CPF_Config)
-	float                                              MaxBandwidthTestReceiveTime;                      		// 0x0070(0x0004) (CPF_Config)
-	int                                                MaxBandwidthHistoryEntries;                       		// 0x0074(0x0004) (CPF_Config)
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	int                                                MeshBeaconPort;                                           // 0x0040(0x0004) (CPF_Config)
+	struct FPointer                                    Socket;                                                   // 0x0044(0x0004) (CPF_Native, CPF_Transient)
+	unsigned long                                      bIsInTick : 1;                                            // 0x0048(0x0004) (CPF_Transient)
+	unsigned long                                      bWantsDeferredDestroy : 1;                                // 0x0048(0x0004) (CPF_Transient)
+	unsigned long                                      bShouldTick : 1;                                          // 0x0048(0x0004)
+	float                                              HeartbeatTimeout;                                         // 0x004C(0x0004) (CPF_Config)
+	float                                              ElapsedHeartbeatTime;                                     // 0x0050(0x0004)
+	struct FName                                       BeaconName;                                               // 0x0054(0x0008)
+	int                                                SocketSendBufferSize;                                     // 0x005C(0x0004) (CPF_Config)
+	int                                                SocketReceiveBufferSize;                                  // 0x0060(0x0004) (CPF_Config)
+	int                                                MaxBandwidthTestBufferSize;                               // 0x0064(0x0004) (CPF_Config)
+	int                                                MinBandwidthTestBufferSize;                               // 0x0068(0x0004) (CPF_Config)
+	float                                              MaxBandwidthTestSendTime;                                 // 0x006C(0x0004) (CPF_Config)
+	float                                              MaxBandwidthTestReceiveTime;                              // 0x0070(0x0004) (CPF_Config)
+	int                                                MaxBandwidthHistoryEntries;                               // 0x0074(0x0004) (CPF_Config)
 
 	static UClass* StaticClass()
 	{
@@ -877,28 +877,28 @@ public:
 class UMeshBeaconClient : public UMeshBeacon
 {
 public:
-	struct FOnlineGameSearchResult                     HostPendingRequest;                               		// 0x0078(0x0008) (CPF_Const)
-	struct FClientConnectionRequest                    ClientPendingRequest;                             		// 0x0080(0x004C) (CPF_Const, CPF_NeedCtorLink)
-	struct FClientBandwidthTestData                    CurrentBandwidthTest;                             		// 0x00CC(0x0014)
-	TEnumAsByte<enum class EMeshBeaconClientState>     ClientBeaconState;                                		// 0x00E0(0x0001)
-	TEnumAsByte<enum class EMeshBeaconPacketType>      ClientBeaconRequestType;                          		// 0x00E1(0x0001)
-	unsigned char                                      UnknownData00[0x2];                               		// 0x00E2(0x0002) MISSED OFFSET
-	float                                              ConnectionRequestTimeout;                         		// 0x00E4(0x0004) (CPF_Config)
-	float                                              ConnectionRequestElapsedTime;                     		// 0x00E8(0x0004)
-	struct FString                                     ResolverClassName;                                		// 0x00EC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	class UClass*                                      ResolverClass;                                    		// 0x00F8(0x0004)
-	class UClientBeaconAddressResolver*                Resolver;                                         		// 0x00FC(0x0004)
-	unsigned long                                      bUsingRegisteredAddr : 1;                         		// 0x0100(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __OnConnectionRequestResult__Delegate;            		// 0x0104(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReceivedBandwidthTestRequest__Delegate;       		// 0x0114(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReceivedBandwidthTestResults__Delegate;       		// 0x0124(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0124(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;              		// 0x0134(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0134(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnCreateNewSessionRequestReceived__Delegate;    		// 0x0144(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FOnlineGameSearchResult                     HostPendingRequest;                                       // 0x0078(0x0008) (CPF_Const)
+	struct FClientConnectionRequest                    ClientPendingRequest;                                     // 0x0080(0x004C) (CPF_Const, CPF_NeedCtorLink)
+	struct FClientBandwidthTestData                    CurrentBandwidthTest;                                     // 0x00CC(0x0014)
+	TEnumAsByte<enum class EMeshBeaconClientState>     ClientBeaconState;                                        // 0x00E0(0x0001)
+	TEnumAsByte<enum class EMeshBeaconPacketType>      ClientBeaconRequestType;                                  // 0x00E1(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x00E2(0x0002) MISSED OFFSET
+	float                                              ConnectionRequestTimeout;                                 // 0x00E4(0x0004) (CPF_Config)
+	float                                              ConnectionRequestElapsedTime;                             // 0x00E8(0x0004)
+	struct FString                                     ResolverClassName;                                        // 0x00EC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	class UClass*                                      ResolverClass;                                            // 0x00F8(0x0004)
+	class UClientBeaconAddressResolver*                Resolver;                                                 // 0x00FC(0x0004)
+	unsigned long                                      bUsingRegisteredAddr : 1;                                 // 0x0100(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __OnConnectionRequestResult__Delegate;                    // 0x0104(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReceivedBandwidthTestRequest__Delegate;               // 0x0114(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReceivedBandwidthTestResults__Delegate;               // 0x0124(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0124(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;                      // 0x0134(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0134(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnCreateNewSessionRequestReceived__Delegate;            // 0x0144(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -924,21 +924,21 @@ public:
 class UMeshBeaconHost : public UMeshBeacon
 {
 public:
-	TArray<struct FClientMeshBeaconConnection>         ClientConnections;                                		// 0x0078(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FUniqueNetId>                        PendingPlayerConnections;                         		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	struct FUniqueNetId                                OwningPlayerId;                                   		// 0x0090(0x0030) (CPF_Const)
-	unsigned long                                      bAllowBandwidthTesting : 1;                       		// 0x00C0(0x0004)
-	int                                                ConnectionBacklog;                                		// 0x00C4(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnReceivedClientConnectionRequest__Delegate;    		// 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnStartedBandwidthTest__Delegate;               		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFinishedBandwidthTest__Delegate;              		// 0x00E8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAllPendingPlayersConnected__Delegate;         		// 0x00F8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x00F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReceivedClientCreateNewSessionResult__Delegate;		// 0x0108(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FClientMeshBeaconConnection>         ClientConnections;                                        // 0x0078(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FUniqueNetId>                        PendingPlayerConnections;                                 // 0x0084(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                OwningPlayerId;                                           // 0x0090(0x0030) (CPF_Const)
+	unsigned long                                      bAllowBandwidthTesting : 1;                               // 0x00C0(0x0004)
+	int                                                ConnectionBacklog;                                        // 0x00C4(0x0004) (CPF_Config)
+	struct FScriptDelegate                             __OnReceivedClientConnectionRequest__Delegate;            // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnStartedBandwidthTest__Delegate;                       // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnFinishedBandwidthTest__Delegate;                      // 0x00E8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAllPendingPlayersConnected__Delegate;                 // 0x00F8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReceivedClientCreateNewSessionResult__Delegate;       // 0x0108(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -973,17 +973,17 @@ public:
 class UOnlineSubsystemCommonImpl : public UOnlineSubsystem
 {
 public:
-	struct FPointer                                    VoiceEngine;                                      		// 0x0194(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	int                                                MaxLocalTalkers;                                  		// 0x0198(0x0004) (CPF_Config)
-	int                                                MaxRemoteTalkers;                                 		// 0x019C(0x0004) (CPF_Config)
-	unsigned long                                      bIsUsingSpeechRecognition : 1;                    		// 0x01A0(0x0004) (CPF_Config)
-	class UOnlineGameInterfaceImpl*                    GameInterfaceImpl;                                		// 0x01A4(0x0004)
-	class UOnlineAuthInterfaceImpl*                    AuthInterfaceImpl;                                		// 0x01A8(0x0004)
-	class UOnlinePurchaseInterfaceImpl*                PurchaseInterfaceImpl;                            		// 0x01AC(0x0004)
-	struct FScriptDelegate                             __OnSanitizeStringComplete__Delegate;             		// 0x01B0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnPlayerCountryRetrieved__Delegate;             		// 0x01C0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    VoiceEngine;                                              // 0x0194(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	int                                                MaxLocalTalkers;                                          // 0x0198(0x0004) (CPF_Config)
+	int                                                MaxRemoteTalkers;                                         // 0x019C(0x0004) (CPF_Config)
+	unsigned long                                      bIsUsingSpeechRecognition : 1;                            // 0x01A0(0x0004) (CPF_Config)
+	class UOnlineGameInterfaceImpl*                    GameInterfaceImpl;                                        // 0x01A4(0x0004)
+	class UOnlineAuthInterfaceImpl*                    AuthInterfaceImpl;                                        // 0x01A8(0x0004)
+	class UOnlinePurchaseInterfaceImpl*                PurchaseInterfaceImpl;                                    // 0x01AC(0x0004)
+	struct FScriptDelegate                             __OnSanitizeStringComplete__Delegate;                     // 0x01B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPlayerCountryRetrieved__Delegate;                     // 0x01C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1005,50 +1005,50 @@ public:
 class UOnlineAuthInterfaceImpl : public UObject
 {
 public:
-	struct FPointer                                    VfTable_IOnlineAuthInterface;                     		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	class UOnlineSubsystemCommonImpl*                  OwningSubsystem;                                  		// 0x0040(0x0004)
-	unsigned long                                      bAuthReady : 1;                                   		// 0x0044(0x0004) (CPF_Const)
-	struct FSparseArray_Mirror                         ClientAuthSessions;                               		// 0x0048(0x0030) (CPF_Const, CPF_Native)
-	struct FSparseArray_Mirror                         ServerAuthSessions;                               		// 0x0078(0x0030) (CPF_Const, CPF_Native)
-	struct FSparseArray_Mirror                         PeerAuthSessions;                                 		// 0x00A8(0x0030) (CPF_Const, CPF_Native)
-	struct FSparseArray_Mirror                         LocalClientAuthSessions;                          		// 0x00D8(0x0030) (CPF_Const, CPF_Native)
-	struct FSparseArray_Mirror                         LocalServerAuthSessions;                          		// 0x0108(0x0030) (CPF_Const, CPF_Native)
-	struct FSparseArray_Mirror                         LocalPeerAuthSessions;                            		// 0x0138(0x0030) (CPF_Const, CPF_Native)
-	TArray<struct FScriptDelegate>                     AuthReadyDelegates;                               		// 0x0168(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ClientAuthRequestDelegates;                       		// 0x0174(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ServerAuthRequestDelegates;                       		// 0x0180(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ClientAuthResponseDelegates;                      		// 0x018C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ServerAuthResponseDelegates;                      		// 0x0198(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ClientAuthCompleteDelegates;                      		// 0x01A4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ServerAuthCompleteDelegates;                      		// 0x01B0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ClientAuthEndSessionRequestDelegates;             		// 0x01BC(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ServerAuthRetryRequestDelegates;                  		// 0x01C8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ClientConnectionCloseDelegates;                   		// 0x01D4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     ServerConnectionCloseDelegates;                   		// 0x01E0(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnAuthReady__Delegate;                          		// 0x01EC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x01EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientAuthRequest__Delegate;                  		// 0x01FC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x01FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnServerAuthRequest__Delegate;                  		// 0x020C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x020C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientAuthResponse__Delegate;                 		// 0x021C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x021C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnServerAuthResponse__Delegate;                 		// 0x022C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x022C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientAuthComplete__Delegate;                 		// 0x023C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x023C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnServerAuthComplete__Delegate;                 		// 0x024C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x024C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientAuthEndSessionRequest__Delegate;        		// 0x025C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                               		// 0x025C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnServerAuthRetryRequest__Delegate;             		// 0x026C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                               		// 0x026C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientConnectionClose__Delegate;              		// 0x027C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                               		// 0x027C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnServerConnectionClose__Delegate;              		// 0x028C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData10[0x4];                               		// 0x028C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReceivedAuthorizationCode__Delegate;          		// 0x029C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData11[0x4];                               		// 0x029C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    VfTable_IOnlineAuthInterface;                             // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	class UOnlineSubsystemCommonImpl*                  OwningSubsystem;                                          // 0x0040(0x0004)
+	unsigned long                                      bAuthReady : 1;                                           // 0x0044(0x0004) (CPF_Const)
+	struct FSparseArray_Mirror                         ClientAuthSessions;                                       // 0x0048(0x0030) (CPF_Const, CPF_Native)
+	struct FSparseArray_Mirror                         ServerAuthSessions;                                       // 0x0078(0x0030) (CPF_Const, CPF_Native)
+	struct FSparseArray_Mirror                         PeerAuthSessions;                                         // 0x00A8(0x0030) (CPF_Const, CPF_Native)
+	struct FSparseArray_Mirror                         LocalClientAuthSessions;                                  // 0x00D8(0x0030) (CPF_Const, CPF_Native)
+	struct FSparseArray_Mirror                         LocalServerAuthSessions;                                  // 0x0108(0x0030) (CPF_Const, CPF_Native)
+	struct FSparseArray_Mirror                         LocalPeerAuthSessions;                                    // 0x0138(0x0030) (CPF_Const, CPF_Native)
+	TArray<struct FScriptDelegate>                     AuthReadyDelegates;                                       // 0x0168(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ClientAuthRequestDelegates;                               // 0x0174(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ServerAuthRequestDelegates;                               // 0x0180(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ClientAuthResponseDelegates;                              // 0x018C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ServerAuthResponseDelegates;                              // 0x0198(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ClientAuthCompleteDelegates;                              // 0x01A4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ServerAuthCompleteDelegates;                              // 0x01B0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ClientAuthEndSessionRequestDelegates;                     // 0x01BC(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ServerAuthRetryRequestDelegates;                          // 0x01C8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ClientConnectionCloseDelegates;                           // 0x01D4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ServerConnectionCloseDelegates;                           // 0x01E0(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnAuthReady__Delegate;                                  // 0x01EC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x01EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientAuthRequest__Delegate;                          // 0x01FC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnServerAuthRequest__Delegate;                          // 0x020C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x020C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientAuthResponse__Delegate;                         // 0x021C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x021C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnServerAuthResponse__Delegate;                         // 0x022C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x022C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientAuthComplete__Delegate;                         // 0x023C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x023C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnServerAuthComplete__Delegate;                         // 0x024C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x024C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientAuthEndSessionRequest__Delegate;                // 0x025C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x025C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnServerAuthRetryRequest__Delegate;                     // 0x026C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x026C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientConnectionClose__Delegate;                      // 0x027C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x027C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnServerConnectionClose__Delegate;                      // 0x028C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData10[0x4];                                       // 0x028C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReceivedAuthorizationCode__Delegate;                  // 0x029C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData11[0x4];                                       // 0x029C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1132,67 +1132,67 @@ public:
 class UOnlineGameInterfaceImpl : public UObject
 {
 public:
-	class UOnlineSubsystemCommonImpl*                  OwningSubsystem;                                  		// 0x003C(0x0004)
-	class UOnlineGameSettings*                         GameSettings;                                     		// 0x0040(0x0004) (CPF_Const)
-	class UOnlineGameSearch*                           GameSearch;                                       		// 0x0044(0x0004) (CPF_Const)
-	TArray<struct FScriptDelegate>                     CreateOnlineGameCompleteDelegates;                		// 0x0048(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     UpdateOnlineGameCompleteDelegates;                		// 0x0054(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     DestroyOnlineGameCompleteDelegates;               		// 0x0060(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     JoinOnlineGameCompleteDelegates;                  		// 0x006C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     MigrateOnlineGameCompleteDelegates;               		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     JoinMigratedOnlineGameCompleteDelegates;          		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     RecalculateSkillRatingCompleteDelegates;          		// 0x0090(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     StartOnlineGameCompleteDelegates;                 		// 0x009C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     EndOnlineGameCompleteDelegates;                   		// 0x00A8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     FindOnlineGamesCompleteDelegates;                 		// 0x00B4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     CancelFindOnlineGamesCompleteDelegates;           		// 0x00C0(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ELanBeaconState>            LanBeaconState;                                   		// 0x00CC(0x0001) (CPF_Const)
-	unsigned char                                      LanNonce[0x8];                                    		// 0x00CD(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x00D5(0x0003) MISSED OFFSET
-	int                                                LanAnnouncePort;                                  		// 0x00D8(0x0004) (CPF_Const, CPF_Config)
-	int                                                LanGameUniqueId;                                  		// 0x00DC(0x0004) (CPF_Const, CPF_Config)
-	int                                                LanPacketPlatformMask;                            		// 0x00E0(0x0004) (CPF_Const, CPF_Config)
-	float                                              LanQueryTimeLeft;                                 		// 0x00E4(0x0004)
-	float                                              LanQueryTimeout;                                  		// 0x00E8(0x0004) (CPF_Config)
-	struct FPointer                                    LanBeacon;                                        		// 0x00EC(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FPointer                                    SessionInfo;                                      		// 0x00F0(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FScriptDelegate>                     GameInviteAcceptedDelegates;                      		// 0x00F4(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnFindOnlineGamesComplete__Delegate;            		// 0x0100(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnCreateOnlineGameComplete__Delegate;           		// 0x0110(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUpdateOnlineGameComplete__Delegate;           		// 0x0120(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDestroyOnlineGameComplete__Delegate;          		// 0x0130(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnCancelFindOnlineGamesComplete__Delegate;      		// 0x0140(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnJoinOnlineGameComplete__Delegate;             		// 0x0150(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x0150(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRegisterPlayerComplete__Delegate;             		// 0x0160(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                               		// 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUnregisterPlayerComplete__Delegate;           		// 0x0170(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                               		// 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnStartOnlineGameComplete__Delegate;            		// 0x0180(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                               		// 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnEndOnlineGameComplete__Delegate;              		// 0x0190(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData10[0x4];                               		// 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnArbitrationRegistrationComplete__Delegate;    		// 0x01A0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData11[0x4];                               		// 0x01A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnGameInviteAccepted__Delegate;                 		// 0x01B0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData12[0x4];                               		// 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRecalculateSkillRatingComplete__Delegate;     		// 0x01C0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData13[0x4];                               		// 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnMigrateOnlineGameComplete__Delegate;          		// 0x01D0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData14[0x4];                               		// 0x01D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnJoinMigratedOnlineGameComplete__Delegate;     		// 0x01E0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData15[0x4];                               		// 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQosStatusChanged__Delegate;                   		// 0x01F0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData16[0x4];                               		// 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventReportMatchmakingInfo__Delegate;           		// 0x0200(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData17[0x4];                               		// 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnGamePlayersChanged__Delegate;                 		// 0x0210(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData18[0x4];                               		// 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	class UOnlineSubsystemCommonImpl*                  OwningSubsystem;                                          // 0x003C(0x0004)
+	class UOnlineGameSettings*                         GameSettings;                                             // 0x0040(0x0004) (CPF_Const)
+	class UOnlineGameSearch*                           GameSearch;                                               // 0x0044(0x0004) (CPF_Const)
+	TArray<struct FScriptDelegate>                     CreateOnlineGameCompleteDelegates;                        // 0x0048(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     UpdateOnlineGameCompleteDelegates;                        // 0x0054(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     DestroyOnlineGameCompleteDelegates;                       // 0x0060(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     JoinOnlineGameCompleteDelegates;                          // 0x006C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     MigrateOnlineGameCompleteDelegates;                       // 0x0078(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     JoinMigratedOnlineGameCompleteDelegates;                  // 0x0084(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     RecalculateSkillRatingCompleteDelegates;                  // 0x0090(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     StartOnlineGameCompleteDelegates;                         // 0x009C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     EndOnlineGameCompleteDelegates;                           // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     FindOnlineGamesCompleteDelegates;                         // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     CancelFindOnlineGamesCompleteDelegates;                   // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	TEnumAsByte<enum class ELanBeaconState>            LanBeaconState;                                           // 0x00CC(0x0001) (CPF_Const)
+	unsigned char                                      LanNonce[0x8];                                            // 0x00CD(0x0001) (CPF_Const)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x00D5(0x0003) MISSED OFFSET
+	int                                                LanAnnouncePort;                                          // 0x00D8(0x0004) (CPF_Const, CPF_Config)
+	int                                                LanGameUniqueId;                                          // 0x00DC(0x0004) (CPF_Const, CPF_Config)
+	int                                                LanPacketPlatformMask;                                    // 0x00E0(0x0004) (CPF_Const, CPF_Config)
+	float                                              LanQueryTimeLeft;                                         // 0x00E4(0x0004)
+	float                                              LanQueryTimeout;                                          // 0x00E8(0x0004) (CPF_Config)
+	struct FPointer                                    LanBeacon;                                                // 0x00EC(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	struct FPointer                                    SessionInfo;                                              // 0x00F0(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FScriptDelegate>                     GameInviteAcceptedDelegates;                              // 0x00F4(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFindOnlineGamesComplete__Delegate;                    // 0x0100(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnCreateOnlineGameComplete__Delegate;                   // 0x0110(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUpdateOnlineGameComplete__Delegate;                   // 0x0120(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDestroyOnlineGameComplete__Delegate;                  // 0x0130(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnCancelFindOnlineGamesComplete__Delegate;              // 0x0140(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnJoinOnlineGameComplete__Delegate;                     // 0x0150(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0150(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRegisterPlayerComplete__Delegate;                     // 0x0160(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUnregisterPlayerComplete__Delegate;                   // 0x0170(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnStartOnlineGameComplete__Delegate;                    // 0x0180(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnEndOnlineGameComplete__Delegate;                      // 0x0190(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData10[0x4];                                       // 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnArbitrationRegistrationComplete__Delegate;            // 0x01A0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData11[0x4];                                       // 0x01A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnGameInviteAccepted__Delegate;                         // 0x01B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData12[0x4];                                       // 0x01B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRecalculateSkillRatingComplete__Delegate;             // 0x01C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData13[0x4];                                       // 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnMigrateOnlineGameComplete__Delegate;                  // 0x01D0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData14[0x4];                                       // 0x01D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnJoinMigratedOnlineGameComplete__Delegate;             // 0x01E0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData15[0x4];                                       // 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQosStatusChanged__Delegate;                           // 0x01F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData16[0x4];                                       // 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReportMatchmakingInfo__Delegate;                   // 0x0200(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData17[0x4];                                       // 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnGamePlayersChanged__Delegate;                         // 0x0210(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData18[0x4];                                       // 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1290,51 +1290,51 @@ public:
 class UOnlineLobbyInterfaceImpl : public UObject
 {
 public:
-	TArray<struct FScriptDelegate>                     CreateLobbyCompleteDelegates;                     		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     FindLobbiesCompleteDelegates;                     		// 0x0048(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     JoinLobbyCompleteDelegates;                       		// 0x0054(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbySettingsUpdateDelegates;                     		// 0x0060(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyMemberSettingsUpdateDelegates;               		// 0x006C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyMemberStatusUpdateDelegates;                 		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyReceiveMessageDelegates;                     		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyReceiveBinaryDataDelegates;                  		// 0x0090(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyJoinGameDelegates;                           		// 0x009C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyInviteDelegates;                             		// 0x00A8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyErrorDelegates;                              		// 0x00B4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbyDestroyedDelegates;                          		// 0x00C0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     LobbySessionCreatedDelegates;                     		// 0x00CC(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FScriptDelegate>                     HostStartPlayTogetherDelegates;                   		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FActiveLobbyInfo>                    ActiveLobbies;                                    		// 0x00E4(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FBasicLobbyInfo>                     CachedFindLobbyResults;                           		// 0x00F0(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<unsigned char>                              CachedBinaryData;                                 		// 0x00FC(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnCreateLobbyComplete__Delegate;                		// 0x0108(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFindLobbiesComplete__Delegate;                		// 0x0118(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0118(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnJoinLobbyComplete__Delegate;                  		// 0x0128(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0128(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbySettingsUpdate__Delegate;                		// 0x0138(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0138(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyMemberSettingsUpdate__Delegate;          		// 0x0148(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0148(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyMemberStatusUpdate__Delegate;            		// 0x0158(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x0158(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyReceiveMessage__Delegate;                		// 0x0168(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x0168(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyReceiveBinaryData__Delegate;             		// 0x0178(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                               		// 0x0178(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyJoinGame__Delegate;                      		// 0x0188(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                               		// 0x0188(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyInvite__Delegate;                        		// 0x0198(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                               		// 0x0198(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyDestroyed__Delegate;                     		// 0x01A8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData10[0x4];                               		// 0x01A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbySessionCreated__Delegate;                		// 0x01B8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData11[0x4];                               		// 0x01B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLobbyError__Delegate;                         		// 0x01C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData12[0x4];                               		// 0x01C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnHostStartPlayTogether__Delegate;              		// 0x01D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData13[0x4];                               		// 0x01D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FScriptDelegate>                     CreateLobbyCompleteDelegates;                             // 0x003C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     FindLobbiesCompleteDelegates;                             // 0x0048(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     JoinLobbyCompleteDelegates;                               // 0x0054(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbySettingsUpdateDelegates;                             // 0x0060(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyMemberSettingsUpdateDelegates;                       // 0x006C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyMemberStatusUpdateDelegates;                         // 0x0078(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyReceiveMessageDelegates;                             // 0x0084(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyReceiveBinaryDataDelegates;                          // 0x0090(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyJoinGameDelegates;                                   // 0x009C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyInviteDelegates;                                     // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyErrorDelegates;                                      // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbyDestroyedDelegates;                                  // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     LobbySessionCreatedDelegates;                             // 0x00CC(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     HostStartPlayTogetherDelegates;                           // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FActiveLobbyInfo>                    ActiveLobbies;                                            // 0x00E4(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FBasicLobbyInfo>                     CachedFindLobbyResults;                                   // 0x00F0(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<unsigned char>                              CachedBinaryData;                                         // 0x00FC(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCreateLobbyComplete__Delegate;                        // 0x0108(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnFindLobbiesComplete__Delegate;                        // 0x0118(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0118(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnJoinLobbyComplete__Delegate;                          // 0x0128(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0128(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbySettingsUpdate__Delegate;                        // 0x0138(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0138(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyMemberSettingsUpdate__Delegate;                  // 0x0148(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0148(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyMemberStatusUpdate__Delegate;                    // 0x0158(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0158(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyReceiveMessage__Delegate;                        // 0x0168(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0168(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyReceiveBinaryData__Delegate;                     // 0x0178(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0178(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyJoinGame__Delegate;                              // 0x0188(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x0188(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyInvite__Delegate;                                // 0x0198(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0198(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyDestroyed__Delegate;                             // 0x01A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData10[0x4];                                       // 0x01A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbySessionCreated__Delegate;                        // 0x01B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData11[0x4];                                       // 0x01B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyError__Delegate;                                 // 0x01C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData12[0x4];                                       // 0x01C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnHostStartPlayTogether__Delegate;                      // 0x01D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData13[0x4];                                       // 0x01D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1425,31 +1425,31 @@ public:
 class UOnlinePlaylistManager : public UObject
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	TArray<struct FPlaylist>                           Playlists;                                        		// 0x0040(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FString>                             PlaylistFileNames;                                		// 0x004C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FName>                               DatastoresToRefresh;                              		// 0x0058(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	int                                                DownloadCount;                                    		// 0x0064(0x0004)
-	int                                                SuccessfulCount;                                  		// 0x0068(0x0004)
-	int                                                VersionNumber;                                    		// 0x006C(0x0004) (CPF_Config)
-	TArray<struct UOnlinePlaylistManager_FPlaylistPopulation> PopulationData;                                   		// 0x0070(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	int                                                WorldwideTotalPlayers;                            		// 0x007C(0x0004)
-	int                                                RegionTotalPlayers;                               		// 0x0080(0x0004)
-	TScriptInterface<class UOnlineTitleFileInterface>  TitleFileInterface;                               		// 0x0084(0x0008) (CPF_Transient)
-	struct FString                                     PopulationFileName;                               		// 0x008C(0x000C) (CPF_NeedCtorLink)
-	float                                              NextPlaylistPopulationUpdateTime;                 		// 0x0098(0x0004) (CPF_Transient)
-	float                                              PlaylistPopulationUpdateInterval;                 		// 0x009C(0x0004) (CPF_Config)
-	int                                                MinPlaylistIdToReport;                            		// 0x00A0(0x0004) (CPF_Config)
-	int                                                CurrentPlaylistId;                                		// 0x00A4(0x0004) (CPF_Transient)
-	struct FName                                       EventsInterfaceName;                              		// 0x00A8(0x0008) (CPF_Config)
-	int                                                DataCenterId;                                     		// 0x00B0(0x0004) (CPF_Config)
-	struct FString                                     DataCenterFileName;                               		// 0x00B4(0x000C) (CPF_NeedCtorLink)
-	float                                              LastPlaylistDownloadTime;                         		// 0x00C0(0x0004) (CPF_Transient)
-	float                                              PlaylistRefreshInterval;                          		// 0x00C4(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnReadPlaylistComplete__Delegate;               		// 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnPlaylistPopulationDataUpdated__Delegate;      		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	TArray<struct FPlaylist>                           Playlists;                                                // 0x0040(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FString>                             PlaylistFileNames;                                        // 0x004C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FName>                               DatastoresToRefresh;                                      // 0x0058(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	int                                                DownloadCount;                                            // 0x0064(0x0004)
+	int                                                SuccessfulCount;                                          // 0x0068(0x0004)
+	int                                                VersionNumber;                                            // 0x006C(0x0004) (CPF_Config)
+	TArray<struct UOnlinePlaylistManager_FPlaylistPopulation> PopulationData;                                           // 0x0070(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	int                                                WorldwideTotalPlayers;                                    // 0x007C(0x0004)
+	int                                                RegionTotalPlayers;                                       // 0x0080(0x0004)
+	TScriptInterface<class UOnlineTitleFileInterface>  TitleFileInterface;                                       // 0x0084(0x0008) (CPF_Transient)
+	struct FString                                     PopulationFileName;                                       // 0x008C(0x000C) (CPF_NeedCtorLink)
+	float                                              NextPlaylistPopulationUpdateTime;                         // 0x0098(0x0004) (CPF_Transient)
+	float                                              PlaylistPopulationUpdateInterval;                         // 0x009C(0x0004) (CPF_Config)
+	int                                                MinPlaylistIdToReport;                                    // 0x00A0(0x0004) (CPF_Config)
+	int                                                CurrentPlaylistId;                                        // 0x00A4(0x0004) (CPF_Transient)
+	struct FName                                       EventsInterfaceName;                                      // 0x00A8(0x0008) (CPF_Config)
+	int                                                DataCenterId;                                             // 0x00B0(0x0004) (CPF_Config)
+	struct FString                                     DataCenterFileName;                                       // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	float                                              LastPlaylistDownloadTime;                                 // 0x00C0(0x0004) (CPF_Transient)
+	float                                              PlaylistRefreshInterval;                                  // 0x00C4(0x0004) (CPF_Config)
+	struct FScriptDelegate                             __OnReadPlaylistComplete__Delegate;                       // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPlaylistPopulationDataUpdated__Delegate;              // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1493,10 +1493,10 @@ public:
 class UOnlinePurchaseInterfaceImpl : public UObject
 {
 public:
-	struct FScriptDelegate                             __EventGetAppPriceInfoComplete__Delegate;         		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnMicroTxnResponse__Delegate;                   		// 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGetAppPriceInfoComplete__Delegate;                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnMicroTxnResponse__Delegate;                           // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1519,17 +1519,17 @@ public:
 class UPartyBeacon : public UObject
 {
 public:
-	struct FPointer                                    VfTable_FTickableObject;                          		// 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	int                                                PartyBeaconPort;                                  		// 0x0040(0x0004) (CPF_Config)
-	struct FPointer                                    Socket;                                           		// 0x0044(0x0004) (CPF_Native, CPF_Transient)
-	unsigned long                                      bIsInTick : 1;                                    		// 0x0048(0x0004)
-	unsigned long                                      bWantsDeferredDestroy : 1;                        		// 0x0048(0x0004)
-	unsigned long                                      bShouldTick : 1;                                  		// 0x0048(0x0004)
-	float                                              HeartbeatTimeout;                                 		// 0x004C(0x0004) (CPF_Config)
-	float                                              ElapsedHeartbeatTime;                             		// 0x0050(0x0004)
-	struct FName                                       BeaconName;                                       		// 0x0054(0x0008)
-	struct FScriptDelegate                             __OnDestroyComplete__Delegate;                    		// 0x005C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	int                                                PartyBeaconPort;                                          // 0x0040(0x0004) (CPF_Config)
+	struct FPointer                                    Socket;                                                   // 0x0044(0x0004) (CPF_Native, CPF_Transient)
+	unsigned long                                      bIsInTick : 1;                                            // 0x0048(0x0004)
+	unsigned long                                      bWantsDeferredDestroy : 1;                                // 0x0048(0x0004)
+	unsigned long                                      bShouldTick : 1;                                          // 0x0048(0x0004)
+	float                                              HeartbeatTimeout;                                         // 0x004C(0x0004) (CPF_Config)
+	float                                              ElapsedHeartbeatTime;                                     // 0x0050(0x0004)
+	struct FName                                       BeaconName;                                               // 0x0054(0x0008)
+	struct FScriptDelegate                             __OnDestroyComplete__Delegate;                            // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1548,26 +1548,26 @@ public:
 class UPartyBeaconClient : public UPartyBeacon
 {
 public:
-	struct FOnlineGameSearchResult                     HostPendingRequest;                               		// 0x006C(0x0008) (CPF_Const)
-	struct FPartyReservation                           PendingRequest;                                   		// 0x0074(0x0040) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class EPartyBeaconClientState>    ClientBeaconState;                                		// 0x00B4(0x0001)
-	TEnumAsByte<enum class EPartyBeaconClientRequest>  ClientBeaconRequestType;                          		// 0x00B5(0x0001)
-	unsigned char                                      UnknownData00[0x2];                               		// 0x00B6(0x0002) MISSED OFFSET
-	float                                              ReservationRequestTimeout;                        		// 0x00B8(0x0004) (CPF_Config)
-	float                                              ReservationRequestElapsedTime;                    		// 0x00BC(0x0004)
-	struct FString                                     ResolverClassName;                                		// 0x00C0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	class UClass*                                      ResolverClass;                                    		// 0x00CC(0x0004)
-	class UClientBeaconAddressResolver*                Resolver;                                         		// 0x00D0(0x0004)
-	struct FScriptDelegate                             __OnReservationRequestComplete__Delegate;         		// 0x00D4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReservationCountUpdated__Delegate;            		// 0x00E4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;              		// 0x00F4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnHostIsReady__Delegate;                        		// 0x0104(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnHostHasCancelled__Delegate;                   		// 0x0114(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FOnlineGameSearchResult                     HostPendingRequest;                                       // 0x006C(0x0008) (CPF_Const)
+	struct FPartyReservation                           PendingRequest;                                           // 0x0074(0x0040) (CPF_NeedCtorLink)
+	TEnumAsByte<enum class EPartyBeaconClientState>    ClientBeaconState;                                        // 0x00B4(0x0001)
+	TEnumAsByte<enum class EPartyBeaconClientRequest>  ClientBeaconRequestType;                                  // 0x00B5(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x00B6(0x0002) MISSED OFFSET
+	float                                              ReservationRequestTimeout;                                // 0x00B8(0x0004) (CPF_Config)
+	float                                              ReservationRequestElapsedTime;                            // 0x00BC(0x0004)
+	struct FString                                     ResolverClassName;                                        // 0x00C0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	class UClass*                                      ResolverClass;                                            // 0x00CC(0x0004)
+	class UClientBeaconAddressResolver*                Resolver;                                                 // 0x00D0(0x0004)
+	struct FScriptDelegate                             __OnReservationRequestComplete__Delegate;                 // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReservationCountUpdated__Delegate;                    // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnTravelRequestReceived__Delegate;                      // 0x00F4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnHostIsReady__Delegate;                                // 0x0104(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnHostHasCancelled__Delegate;                           // 0x0114(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1593,25 +1593,25 @@ public:
 class UPartyBeaconHost : public UPartyBeacon
 {
 public:
-	TArray<struct FClientBeaconConnection>             Clients;                                          		// 0x006C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	int                                                NumTeams;                                         		// 0x0078(0x0004) (CPF_Const)
-	int                                                NumPlayersPerTeam;                                		// 0x007C(0x0004) (CPF_Const)
-	int                                                NumReservations;                                  		// 0x0080(0x0004) (CPF_Const)
-	int                                                NumConsumedReservations;                          		// 0x0084(0x0004) (CPF_Const)
-	TArray<struct FPartyReservation>                   Reservations;                                     		// 0x0088(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FName                                       OnlineSessionName;                                		// 0x0094(0x0008)
-	int                                                ConnectionBacklog;                                		// 0x009C(0x0004) (CPF_Config)
-	int                                                ForceTeamNum;                                     		// 0x00A0(0x0004) (CPF_Const)
-	int                                                ReservedHostTeamNum;                              		// 0x00A4(0x0004) (CPF_Const)
-	unsigned long                                      bBestFitTeamAssignment : 1;                       		// 0x00A8(0x0004)
-	TEnumAsByte<enum class EPartyBeaconHostState>      BeaconState;                                      		// 0x00AC(0x0001) (CPF_Const)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x00AD(0x0003) MISSED OFFSET
-	struct FScriptDelegate                             __OnReservationChange__Delegate;                  		// 0x00B0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x00AD(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReservationsFull__Delegate;                   		// 0x00C0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnClientCancellationReceived__Delegate;         		// 0x00D0(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x00D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FClientBeaconConnection>             Clients;                                                  // 0x006C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	int                                                NumTeams;                                                 // 0x0078(0x0004) (CPF_Const)
+	int                                                NumPlayersPerTeam;                                        // 0x007C(0x0004) (CPF_Const)
+	int                                                NumReservations;                                          // 0x0080(0x0004) (CPF_Const)
+	int                                                NumConsumedReservations;                                  // 0x0084(0x0004) (CPF_Const)
+	TArray<struct FPartyReservation>                   Reservations;                                             // 0x0088(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FName                                       OnlineSessionName;                                        // 0x0094(0x0008)
+	int                                                ConnectionBacklog;                                        // 0x009C(0x0004) (CPF_Config)
+	int                                                ForceTeamNum;                                             // 0x00A0(0x0004) (CPF_Const)
+	int                                                ReservedHostTeamNum;                                      // 0x00A4(0x0004) (CPF_Const)
+	unsigned long                                      bBestFitTeamAssignment : 1;                               // 0x00A8(0x0004)
+	TEnumAsByte<enum class EPartyBeaconHostState>      BeaconState;                                              // 0x00AC(0x0001) (CPF_Const)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x00AD(0x0003) MISSED OFFSET
+	struct FScriptDelegate                             __OnReservationChange__Delegate;                          // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00AD(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReservationsFull__Delegate;                           // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnClientCancellationReceived__Delegate;                 // 0x00D0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1649,7 +1649,7 @@ public:
 class UTcpipConnection : public UNetConnection
 {
 public:
-	unsigned char                                      UnknownData00[0x1C];                              		// 0x9124(0x001C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x1C];                                      // 0x9124(0x001C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1665,11 +1665,11 @@ public:
 class UTcpNetDriver : public UNetDriver
 {
 public:
-	unsigned long                                      EnableDynamicIP : 1;                              		// 0x0190(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData00[0x3C];                              		// 0x0194(0x003C) MISSED OFFSET
-	unsigned long                                      AllowPlayerPortUnreach : 1;                       		// 0x01D0(0x0004) (CPF_Config)
-	unsigned long                                      LogPortUnreach : 1;                               		// 0x01D4(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData01[0x14];                              		// 0x01D8(0x0014) MISSED OFFSET
+	unsigned long                                      EnableDynamicIP : 1;                                      // 0x0190(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData00[0x3C];                                      // 0x0194(0x003C) MISSED OFFSET
+	unsigned long                                      AllowPlayerPortUnreach : 1;                               // 0x01D0(0x0004) (CPF_Config)
+	unsigned long                                      LogPortUnreach : 1;                                       // 0x01D4(0x0004) (CPF_Config)
+	unsigned char                                      UnknownData01[0x14];                                      // 0x01D8(0x0014) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1685,16 +1685,16 @@ public:
 class UWebRequest : public UObject
 {
 public:
-	struct FString                                     RemoteAddr;                                       		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     URI;                                              		// 0x0048(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     UserName;                                         		// 0x0054(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Password;                                         		// 0x0060(0x000C) (CPF_NeedCtorLink)
-	int                                                ContentLength;                                    		// 0x006C(0x0004)
-	struct FString                                     ContentType;                                      		// 0x0070(0x000C) (CPF_NeedCtorLink)
-	TEnumAsByte<enum class ERequestType>               RequestType;                                      		// 0x007C(0x0001)
-	unsigned char                                      UnknownData00[0x3];                               		// 0x007D(0x0003) MISSED OFFSET
-	struct FMap_Mirror                                 HeaderMap;                                        		// 0x0080(0x003C) (CPF_Const, CPF_Native)
-	struct FMap_Mirror                                 VariableMap;                                      		// 0x00BC(0x003C) (CPF_Const, CPF_Native)
+	struct FString                                     RemoteAddr;                                               // 0x003C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     URI;                                                      // 0x0048(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     UserName;                                                 // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Password;                                                 // 0x0060(0x000C) (CPF_NeedCtorLink)
+	int                                                ContentLength;                                            // 0x006C(0x0004)
+	struct FString                                     ContentType;                                              // 0x0070(0x000C) (CPF_NeedCtorLink)
+	TEnumAsByte<enum class ERequestType>               RequestType;                                              // 0x007C(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x007D(0x0003) MISSED OFFSET
+	struct FMap_Mirror                                 HeaderMap;                                                // 0x0080(0x003C) (CPF_Const, CPF_Native)
+	struct FMap_Mirror                                 VariableMap;                                              // 0x00BC(0x003C) (CPF_Const, CPF_Native)
 
 	static UClass* StaticClass()
 	{
@@ -1725,13 +1725,13 @@ public:
 class UWebResponse : public UObject
 {
 public:
-	TArray<struct FString>                             Headers;                                          		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	struct FMap_Mirror                                 ReplacementMap;                                   		// 0x0048(0x003C) (CPF_Const, CPF_Native)
-	struct FString                                     IncludePath;                                      		// 0x0084(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     CharSet;                                          		// 0x0090(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	class AWebConnection*                              Connection;                                       		// 0x009C(0x0004)
-	unsigned long                                      bSentText : 1;                                    		// 0x00A0(0x0004)
-	unsigned long                                      bSentResponse : 1;                                		// 0x00A0(0x0004)
+	TArray<struct FString>                             Headers;                                                  // 0x003C(0x000C) (CPF_NeedCtorLink)
+	struct FMap_Mirror                                 ReplacementMap;                                           // 0x0048(0x003C) (CPF_Const, CPF_Native)
+	struct FString                                     IncludePath;                                              // 0x0084(0x000C) (CPF_Const, CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     CharSet;                                                  // 0x0090(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	class AWebConnection*                              Connection;                                               // 0x009C(0x0004)
+	unsigned long                                      bSentText : 1;                                            // 0x00A0(0x0004)
+	unsigned long                                      bSentResponse : 1;                                        // 0x00A0(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1769,10 +1769,10 @@ public:
 class UOnlinePlaylistProvider : public UUIResourceDataProvider
 {
 public:
-	int                                                PlaylistId;                                       		// 0x0068(0x0004) (CPF_Config)
-	TArray<struct FName>                               PlaylistGameTypeNames;                            		// 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DisplayName;                                      		// 0x0078(0x000C) (CPF_Const, CPF_Config, CPF_Localized, CPF_NeedCtorLink)
-	int                                                Priority;                                         		// 0x0084(0x0004) (CPF_Config)
+	int                                                PlaylistId;                                               // 0x0068(0x0004) (CPF_Config)
+	TArray<struct FName>                               PlaylistGameTypeNames;                                    // 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DisplayName;                                              // 0x0078(0x000C) (CPF_Const, CPF_Config, CPF_Localized, CPF_NeedCtorLink)
+	int                                                Priority;                                                 // 0x0084(0x0004) (CPF_Config)
 
 	static UClass* StaticClass()
 	{
@@ -1788,13 +1788,13 @@ public:
 class UUIDataStore_OnlinePlaylists : public UUIDataStore
 {
 public:
-	struct FString                                     ProviderClassName;                                		// 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	class UClass*                                      ProviderClass;                                    		// 0x0078(0x0004) (CPF_Transient)
-	TArray<class UUIResourceDataProvider*>             RankedDataProviders;                              		// 0x007C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<class UUIResourceDataProvider*>             UnrankedDataProviders;                            		// 0x0088(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<class UUIResourceDataProvider*>             RecModeDataProviders;                             		// 0x0094(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<class UUIResourceDataProvider*>             PrivateDataProviders;                             		// 0x00A0(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	class UOnlinePlaylistManager*                      PlaylistMan;                                      		// 0x00AC(0x0004)
+	struct FString                                     ProviderClassName;                                        // 0x006C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	class UClass*                                      ProviderClass;                                            // 0x0078(0x0004) (CPF_Transient)
+	TArray<class UUIResourceDataProvider*>             RankedDataProviders;                                      // 0x007C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<class UUIResourceDataProvider*>             UnrankedDataProviders;                                    // 0x0088(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<class UUIResourceDataProvider*>             RecModeDataProviders;                                     // 0x0094(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<class UUIResourceDataProvider*>             PrivateDataProviders;                                     // 0x00A0(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	class UOnlinePlaylistManager*                      PlaylistMan;                                              // 0x00AC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1816,9 +1816,9 @@ public:
 class UWebApplication : public UObject
 {
 public:
-	class AWorldInfo*                                  WorldInfo;                                        		// 0x003C(0x0004)
-	class AWebServer*                                  WebServer;                                        		// 0x0040(0x0004)
-	struct FString                                     Path;                                             		// 0x0044(0x000C) (CPF_NeedCtorLink)
+	class AWorldInfo*                                  WorldInfo;                                                // 0x003C(0x0004)
+	class AWebServer*                                  WebServer;                                                // 0x0040(0x0004)
+	struct FString                                     Path;                                                     // 0x0044(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1841,18 +1841,18 @@ public:
 class AWebServer : public ATcpLink
 {
 public:
-	struct FString                                     ServerName;                                       		// 0x0238(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     Applications[0xA];                                		// 0x0244(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ApplicationPaths[0xA];                            		// 0x02BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	unsigned long                                      bEnabled : 1;                                     		// 0x0334(0x0004) (CPF_Config)
-	int                                                ListenPort;                                       		// 0x0338(0x0004) (CPF_Config)
-	int                                                MaxConnections;                                   		// 0x033C(0x0004) (CPF_Config)
-	int                                                DefaultApplication;                               		// 0x0340(0x0004) (CPF_Config)
-	int                                                ExpirationSeconds;                                		// 0x0344(0x0004) (CPF_Config)
-	struct FString                                     ServerURL;                                        		// 0x0348(0x000C) (CPF_NeedCtorLink)
-	class UWebApplication*                             ApplicationObjects[0xA];                          		// 0x0354(0x0004)
-	int                                                ConnectionCount;                                  		// 0x037C(0x0004)
-	int                                                ConnID;                                           		// 0x0380(0x0004)
+	struct FString                                     ServerName;                                               // 0x0238(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     Applications[0xA];                                        // 0x0244(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ApplicationPaths[0xA];                                    // 0x02BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	unsigned long                                      bEnabled : 1;                                             // 0x0334(0x0004) (CPF_Config)
+	int                                                ListenPort;                                               // 0x0338(0x0004) (CPF_Config)
+	int                                                MaxConnections;                                           // 0x033C(0x0004) (CPF_Config)
+	int                                                DefaultApplication;                                       // 0x0340(0x0004) (CPF_Config)
+	int                                                ExpirationSeconds;                                        // 0x0344(0x0004) (CPF_Config)
+	struct FString                                     ServerURL;                                                // 0x0348(0x000C) (CPF_NeedCtorLink)
+	class UWebApplication*                             ApplicationObjects[0xA];                                  // 0x0354(0x0004)
+	int                                                ConnectionCount;                                          // 0x037C(0x0004)
+	int                                                ConnID;                                                   // 0x0380(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1909,10 +1909,10 @@ public:
 class UMcpServiceConfig : public UObject
 {
 public:
-	struct FString                                     Protocol;                                         		// 0x003C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     Domain;                                           		// 0x0048(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     AppKey;                                           		// 0x0054(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     AppSecret;                                        		// 0x0060(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Protocol;                                                 // 0x003C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     Domain;                                                   // 0x0048(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AppKey;                                                   // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     AppSecret;                                                // 0x0060(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1930,19 +1930,19 @@ public:
 class UMcpClashMobBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpClashMobClassName;                             		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnQueryChallengeListComplete__Delegate;         		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDownloadChallengeFileComplete__Delegate;      		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAcceptChallengeComplete__Delegate;            		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryChallengeUserStatusComplete__Delegate;   		// 0x0088(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUpdateChallengeUserProgressComplete__Delegate;		// 0x0098(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUpdateChallengeUserRewardComplete__Delegate;  		// 0x00A8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpClashMobClassName;                                     // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnQueryChallengeListComplete__Delegate;                 // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDownloadChallengeFileComplete__Delegate;              // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAcceptChallengeComplete__Delegate;                    // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryChallengeUserStatusComplete__Delegate;           // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUpdateChallengeUserProgressComplete__Delegate;        // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUpdateChallengeUserRewardComplete__Delegate;          // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1996,20 +1996,20 @@ public:
 class UMcpClashMobManager : public UMcpClashMobBase
 {
 public:
-	struct FString                                     ChallengeListUrl;                                 		// 0x00B8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ChallengeStatusUrl;                               		// 0x00C4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ChallengeMultiStatusUrl;                          		// 0x00D0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     AcceptChallengeUrl;                               		// 0x00DC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     UpdateChallengeProgressUrl;                       		// 0x00E8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     UpdateRewardProgressUrl;                          		// 0x00F4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	class UHttpRequestInterface*                       HTTPRequestChallengeList;                         		// 0x0100(0x0004)
-	TArray<struct FMcpChallengeUserRequest>            ChallengeUserRequests;                            		// 0x0104(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FMcpClashMobChallengeEvent>          ChallengeEvents;                                  		// 0x0110(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FMcpClashMobChallengeUserStatus>     ChallengeUserStatus;                              		// 0x011C(0x000C) (CPF_NeedCtorLink)
-	struct FMcpClashMobChallengeUserStatus             TempChallengeUserStatus;                          		// 0x0128(0x0068) (CPF_NeedCtorLink)
-	TArray<struct FMcpClashMobChallengeUserStatus>     TempChallengeUserStatusArray;                     		// 0x0190(0x000C) (CPF_NeedCtorLink)
-	TScriptInterface<class UOnlineTitleFileCacheInterface> FileCache;                                        		// 0x019C(0x0008)
-	class UMcpClashMobFileDownload*                    FileDownloader;                                   		// 0x01A4(0x0004)
+	struct FString                                     ChallengeListUrl;                                         // 0x00B8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ChallengeStatusUrl;                                       // 0x00C4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ChallengeMultiStatusUrl;                                  // 0x00D0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AcceptChallengeUrl;                                       // 0x00DC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     UpdateChallengeProgressUrl;                               // 0x00E8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     UpdateRewardProgressUrl;                                  // 0x00F4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	class UHttpRequestInterface*                       HTTPRequestChallengeList;                                 // 0x0100(0x0004)
+	TArray<struct FMcpChallengeUserRequest>            ChallengeUserRequests;                                    // 0x0104(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FMcpClashMobChallengeEvent>          ChallengeEvents;                                          // 0x0110(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FMcpClashMobChallengeUserStatus>     ChallengeUserStatus;                                      // 0x011C(0x000C) (CPF_NeedCtorLink)
+	struct FMcpClashMobChallengeUserStatus             TempChallengeUserStatus;                                  // 0x0128(0x0068) (CPF_NeedCtorLink)
+	TArray<struct FMcpClashMobChallengeUserStatus>     TempChallengeUserStatusArray;                             // 0x0190(0x000C) (CPF_NeedCtorLink)
+	TScriptInterface<class UOnlineTitleFileCacheInterface> FileCache;                                                // 0x019C(0x0008)
+	class UMcpClashMobFileDownload*                    FileDownloader;                                           // 0x01A4(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2048,26 +2048,26 @@ public:
 class UMcpGroupsBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpGroupsManagerClassName;                        		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FMcpGroupList>                       GroupLists;                                       		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnCreateGroupComplete__Delegate;                		// 0x0064(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteGroupComplete__Delegate;                		// 0x0074(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryGroupsComplete__Delegate;                		// 0x0084(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryGroupMembersComplete__Delegate;          		// 0x0094(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAddGroupMembersComplete__Delegate;            		// 0x00A4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRemoveGroupMembersComplete__Delegate;         		// 0x00B4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x00B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteAllGroupsComplete__Delegate;            		// 0x00C4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x00C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryGroupInvitesComplete__Delegate;          		// 0x00D4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                               		// 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAcceptGroupInviteComplete__Delegate;          		// 0x00E4(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                               		// 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpGroupsManagerClassName;                                // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FMcpGroupList>                       GroupLists;                                               // 0x0058(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCreateGroupComplete__Delegate;                        // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteGroupComplete__Delegate;                        // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryGroupsComplete__Delegate;                        // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryGroupMembersComplete__Delegate;                  // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAddGroupMembersComplete__Delegate;                    // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRemoveGroupMembersComplete__Delegate;                 // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteAllGroupsComplete__Delegate;                    // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryGroupInvitesComplete__Delegate;                  // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAcceptGroupInviteComplete__Delegate;                  // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2106,23 +2106,23 @@ public:
 class UMcpGroupsManager : public UMcpGroupsBase
 {
 public:
-	struct FString                                     CreateGroupUrl;                                   		// 0x00F4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteGroupUrl;                                   		// 0x0100(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryGroupsUrl;                                   		// 0x010C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryGroupMembersUrl;                             		// 0x0118(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     AddGroupMembersUrl;                               		// 0x0124(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     RemoveGroupMembersUrl;                            		// 0x0130(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteAllGroupsUrl;                               		// 0x013C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     AcceptGroupInviteUrl;                             		// 0x0148(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     RejectGroupInviteUrl;                             		// 0x0154(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnQueryGroupsRequestComplete__Delegate;         		// 0x0160(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryGroupMembersRequestComplete__Delegate;   		// 0x0170(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAddGroupMembersRequestComplete__Delegate;     		// 0x0180(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAcceptGroupInviteRequestComplete__Delegate;   		// 0x0190(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     CreateGroupUrl;                                           // 0x00F4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteGroupUrl;                                           // 0x0100(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryGroupsUrl;                                           // 0x010C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryGroupMembersUrl;                                     // 0x0118(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AddGroupMembersUrl;                                       // 0x0124(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     RemoveGroupMembersUrl;                                    // 0x0130(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteAllGroupsUrl;                                       // 0x013C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     AcceptGroupInviteUrl;                                     // 0x0148(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     RejectGroupInviteUrl;                                     // 0x0154(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnQueryGroupsRequestComplete__Delegate;                 // 0x0160(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryGroupMembersRequestComplete__Delegate;           // 0x0170(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0170(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAddGroupMembersRequestComplete__Delegate;             // 0x0180(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0180(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAcceptGroupInviteRequestComplete__Delegate;           // 0x0190(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0190(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2159,11 +2159,11 @@ public:
 class UMcpIdMappingBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpIdMappingClassName;                            		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnAddMappingComplete__Delegate;                 		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryMappingsComplete__Delegate;              		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpIdMappingClassName;                                    // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnAddMappingComplete__Delegate;                         // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryMappingsComplete__Delegate;                      // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2186,11 +2186,11 @@ public:
 class UMcpIdMappingManager : public UMcpIdMappingBase
 {
 public:
-	TArray<struct FMcpIdMapping>                       AccountMappings;                                  		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     AddMappingUrl;                                    		// 0x0084(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryMappingUrl;                                  		// 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FAddMappingRequest>                  AddMappingRequests;                               		// 0x009C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FQueryMappingRequest>                QueryMappingRequests;                             		// 0x00A8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FMcpIdMapping>                       AccountMappings;                                          // 0x0078(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     AddMappingUrl;                                            // 0x0084(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryMappingUrl;                                          // 0x0090(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FAddMappingRequest>                  AddMappingRequests;                                       // 0x009C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FQueryMappingRequest>                QueryMappingRequests;                                     // 0x00A8(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2212,15 +2212,15 @@ public:
 class UMcpManagedValueManagerBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpManagedValueManagerClassName;                  		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnCreateSaveSlotComplete__Delegate;             		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadSaveSlotComplete__Delegate;               		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUpdateValueComplete__Delegate;                		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteValueComplete__Delegate;                		// 0x0088(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpManagedValueManagerClassName;                          // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCreateSaveSlotComplete__Delegate;                     // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReadSaveSlotComplete__Delegate;                       // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUpdateValueComplete__Delegate;                        // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteValueComplete__Delegate;                        // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2248,15 +2248,15 @@ public:
 class UMcpManagedValueManager : public UMcpManagedValueManagerBase
 {
 public:
-	struct FString                                     CreateSaveSlotUrl;                                		// 0x0098(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ReadSaveSlotUrl;                                  		// 0x00A4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     UpdateValueUrl;                                   		// 0x00B0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteValueUrl;                                   		// 0x00BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FManagedValueSaveSlot>               SaveSlots;                                        		// 0x00C8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct UMcpManagedValueManager_FSaveSlotRequestState> CreateSaveSlotRequests;                           		// 0x00D4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct UMcpManagedValueManager_FSaveSlotRequestState> ReadSaveSlotRequests;                             		// 0x00E0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FValueRequestState>                  UpdateValueRequests;                              		// 0x00EC(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FValueRequestState>                  DeleteValueRequests;                              		// 0x00F8(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     CreateSaveSlotUrl;                                        // 0x0098(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ReadSaveSlotUrl;                                          // 0x00A4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     UpdateValueUrl;                                           // 0x00B0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteValueUrl;                                           // 0x00BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FManagedValueSaveSlot>               SaveSlots;                                                // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct UMcpManagedValueManager_FSaveSlotRequestState> CreateSaveSlotRequests;                                   // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct UMcpManagedValueManager_FSaveSlotRequestState> ReadSaveSlotRequests;                                     // 0x00E0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FValueRequestState>                  UpdateValueRequests;                                      // 0x00EC(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FValueRequestState>                  DeleteValueRequests;                                      // 0x00F8(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2285,9 +2285,9 @@ public:
 class UMcpServerTimeBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpServerTimeClassName;                           		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnQueryServerTimeComplete__Delegate;            		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpServerTimeClassName;                                   // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnQueryServerTimeComplete__Delegate;                    // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2308,9 +2308,9 @@ public:
 class UMcpServerTimeManager : public UMcpServerTimeBase
 {
 public:
-	struct FString                                     TimeStampUrl;                                     		// 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     LastTimeStamp;                                    		// 0x0074(0x000C) (CPF_NeedCtorLink)
-	class UHttpRequestInterface*                       HTTPRequestServerTime;                            		// 0x0080(0x0004)
+	struct FString                                     TimeStampUrl;                                             // 0x0068(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     LastTimeStamp;                                            // 0x0074(0x000C) (CPF_NeedCtorLink)
+	class UHttpRequestInterface*                       HTTPRequestServerTime;                                    // 0x0080(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2330,27 +2330,27 @@ public:
 class UMcpUserInventoryBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpUserInventoryClassName;                        		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnCreateSaveSlotComplete__Delegate;             		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteSaveSlotComplete__Delegate;             		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQuerySaveSlotListComplete__Delegate;          		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryInventoryItemsComplete__Delegate;        		// 0x0088(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnPurchaseItemComplete__Delegate;               		// 0x0098(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData04[0x4];                               		// 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnSellItemComplete__Delegate;                   		// 0x00A8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x4];                               		// 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnEarnItemComplete__Delegate;                   		// 0x00B8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData06[0x4];                               		// 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnConsumeItemComplete__Delegate;                		// 0x00C8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData07[0x4];                               		// 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteItemComplete__Delegate;                 		// 0x00D8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData08[0x4];                               		// 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRecordIapComplete__Delegate;                  		// 0x00E8(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData09[0x4];                               		// 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpUserInventoryClassName;                                // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCreateSaveSlotComplete__Delegate;                     // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteSaveSlotComplete__Delegate;                     // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQuerySaveSlotListComplete__Delegate;                  // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryInventoryItemsComplete__Delegate;                // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPurchaseItemComplete__Delegate;                       // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnSellItemComplete__Delegate;                           // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnEarnItemComplete__Delegate;                           // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnConsumeItemComplete__Delegate;                        // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteItemComplete__Delegate;                         // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRecordIapComplete__Delegate;                          // 0x00E8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2391,21 +2391,21 @@ public:
 class UMcpUserInventoryManager : public UMcpUserInventoryBase
 {
 public:
-	struct FString                                     CreateSaveSlotUrl;                                		// 0x00F8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteSaveSlotUrl;                                		// 0x0104(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ListSaveSlotUrl;                                  		// 0x0110(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ListItemsUrl;                                     		// 0x011C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     PurchaseItemUrl;                                  		// 0x0128(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     SellItemUrl;                                      		// 0x0134(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     EarnItemUrl;                                      		// 0x0140(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ConsumeItemUrl;                                   		// 0x014C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteItemUrl;                                    		// 0x0158(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     IapRecordUrl;                                     		// 0x0164(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<struct FMcpInventorySaveSlot>               SaveSlots;                                        		// 0x0170(0x000C) (CPF_NeedCtorLink)
-	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> SaveSlotRequests;                                 		// 0x017C(0x000C) (CPF_NeedCtorLink)
-	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> ListSaveSlotRequests;                             		// 0x0188(0x000C) (CPF_NeedCtorLink)
-	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> ListItemsRequests;                                		// 0x0194(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FInventoryItemRequestState>          ItemRequests;                                     		// 0x01A0(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     CreateSaveSlotUrl;                                        // 0x00F8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteSaveSlotUrl;                                        // 0x0104(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ListSaveSlotUrl;                                          // 0x0110(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ListItemsUrl;                                             // 0x011C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     PurchaseItemUrl;                                          // 0x0128(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     SellItemUrl;                                              // 0x0134(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     EarnItemUrl;                                              // 0x0140(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ConsumeItemUrl;                                           // 0x014C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteItemUrl;                                            // 0x0158(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     IapRecordUrl;                                             // 0x0164(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FMcpInventorySaveSlot>               SaveSlots;                                                // 0x0170(0x000C) (CPF_NeedCtorLink)
+	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> SaveSlotRequests;                                         // 0x017C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> ListSaveSlotRequests;                                     // 0x0188(0x000C) (CPF_NeedCtorLink)
+	TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> ListItemsRequests;                                        // 0x0194(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FInventoryItemRequestState>          ItemRequests;                                             // 0x01A0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2450,15 +2450,15 @@ public:
 class UMcpUserManagerBase : public UMcpServiceBase
 {
 public:
-	struct FString                                     McpUserManagerClassName;                          		// 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnRegisterUserComplete__Delegate;               		// 0x0058(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAuthenticateUserComplete__Delegate;           		// 0x0068(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                               		// 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnQueryUsersComplete__Delegate;                 		// 0x0078(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                               		// 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteUserComplete__Delegate;                 		// 0x0088(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                               		// 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FString                                     McpUserManagerClassName;                                  // 0x004C(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnRegisterUserComplete__Delegate;                       // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnAuthenticateUserComplete__Delegate;                   // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnQueryUsersComplete__Delegate;                         // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDeleteUserComplete__Delegate;                         // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2489,18 +2489,18 @@ public:
 class UMcpUserManager : public UMcpUserManagerBase
 {
 public:
-	TArray<struct FMcpUserStatus>                      UserStatuses;                                     		// 0x0098(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     RegisterUserMcpUrl;                               		// 0x00A4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     RegisterUserFacebookUrl;                          		// 0x00B0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryUserUrl;                                     		// 0x00BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     QueryUsersUrl;                                    		// 0x00C8(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DeleteUserUrl;                                    		// 0x00D4(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     FacebookAuthUrl;                                  		// 0x00E0(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     McpAuthUrl;                                       		// 0x00EC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<class UHttpRequestInterface*>               RegisterUserRequests;                             		// 0x00F8(0x000C) (CPF_NeedCtorLink)
-	TArray<class UHttpRequestInterface*>               QueryUsersRequests;                               		// 0x0104(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FUserRequest>                        DeleteUserRequests;                               		// 0x0110(0x000C) (CPF_NeedCtorLink)
-	TArray<class UHttpRequestInterface*>               AuthUserRequests;                                 		// 0x011C(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FMcpUserStatus>                      UserStatuses;                                             // 0x0098(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     RegisterUserMcpUrl;                                       // 0x00A4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     RegisterUserFacebookUrl;                                  // 0x00B0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryUserUrl;                                             // 0x00BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     QueryUsersUrl;                                            // 0x00C8(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DeleteUserUrl;                                            // 0x00D4(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     FacebookAuthUrl;                                          // 0x00E0(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     McpAuthUrl;                                               // 0x00EC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<class UHttpRequestInterface*>               RegisterUserRequests;                                     // 0x00F8(0x000C) (CPF_NeedCtorLink)
+	TArray<class UHttpRequestInterface*>               QueryUsersRequests;                                       // 0x0104(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FUserRequest>                        DeleteUserRequests;                                       // 0x0110(0x000C) (CPF_NeedCtorLink)
+	TArray<class UHttpRequestInterface*>               AuthUserRequests;                                         // 0x011C(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2533,10 +2533,10 @@ public:
 class UOnlineImageDownloaderWeb : public UObject
 {
 public:
-	TArray<struct FOnlineImageDownload>                DownloadImages;                                   		// 0x003C(0x000C) (CPF_NeedCtorLink)
-	int                                                MaxSimultaneousDownloads;                         		// 0x0048(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnOnlineImageDownloaded__Delegate;              		// 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                               		// 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	TArray<struct FOnlineImageDownload>                DownloadImages;                                           // 0x003C(0x000C) (CPF_NeedCtorLink)
+	int                                                MaxSimultaneousDownloads;                                 // 0x0048(0x0004) (CPF_Config)
+	struct FScriptDelegate                             __OnOnlineImageDownloaded__Delegate;                      // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2562,16 +2562,16 @@ public:
 class AWebConnection : public ATcpLink
 {
 public:
-	class AWebServer*                                  WebServer;                                        		// 0x0238(0x0004)
-	struct FString                                     ReceivedData;                                     		// 0x023C(0x000C) (CPF_NeedCtorLink)
-	class UWebRequest*                                 Request;                                          		// 0x0248(0x0004)
-	class UWebResponse*                                Response;                                         		// 0x024C(0x0004)
-	class UWebApplication*                             Application;                                      		// 0x0250(0x0004)
-	unsigned long                                      bDelayCleanup : 1;                                		// 0x0254(0x0004)
-	int                                                RawBytesExpecting;                                		// 0x0258(0x0004)
-	int                                                MaxValueLength;                                   		// 0x025C(0x0004) (CPF_Config)
-	int                                                MaxLineLength;                                    		// 0x0260(0x0004) (CPF_Config)
-	int                                                ConnID;                                           		// 0x0264(0x0004)
+	class AWebServer*                                  WebServer;                                                // 0x0238(0x0004)
+	struct FString                                     ReceivedData;                                             // 0x023C(0x000C) (CPF_NeedCtorLink)
+	class UWebRequest*                                 Request;                                                  // 0x0248(0x0004)
+	class UWebResponse*                                Response;                                                 // 0x024C(0x0004)
+	class UWebApplication*                             Application;                                              // 0x0250(0x0004)
+	unsigned long                                      bDelayCleanup : 1;                                        // 0x0254(0x0004)
+	int                                                RawBytesExpecting;                                        // 0x0258(0x0004)
+	int                                                MaxValueLength;                                           // 0x025C(0x0004) (CPF_Config)
+	int                                                MaxLineLength;                                            // 0x0260(0x0004) (CPF_Config)
+	int                                                ConnID;                                                   // 0x0264(0x0004)
 
 	static UClass* StaticClass()
 	{

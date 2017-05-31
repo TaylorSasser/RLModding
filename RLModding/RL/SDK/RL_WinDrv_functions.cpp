@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -25,12 +23,7 @@ void UFacebookWindows::OnFacebookFriendsRequestComplete(class UHttpRequestInterf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.OnFacebookFriendsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UFacebookWindows_OnFacebookFriendsRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -50,9 +43,7 @@ void UFacebookWindows::RequestFacebookFriends()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.RequestFacebookFriends");
 
-	struct
-	{
-	} params;
+	UFacebookWindows_RequestFacebookFriends_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -73,12 +64,7 @@ void UFacebookWindows::OnFacebookMeRequestComplete(class UHttpRequestInterface* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.OnFacebookMeRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UFacebookWindows_OnFacebookMeRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -98,9 +84,7 @@ void UFacebookWindows::RequestFacebookMeInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.RequestFacebookMeInfo");
 
-	struct
-	{
-	} params;
+	UFacebookWindows_RequestFacebookMeInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -121,12 +105,7 @@ void UFacebookWindows::FacebookRequestCallback(class UHttpRequestInterface* Orig
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.FacebookRequestCallback");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UFacebookWindows_FacebookRequestCallback_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -149,11 +128,7 @@ void UFacebookWindows::ProcessFacebookRequest(const struct FString& Payload, int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.ProcessFacebookRequest");
 
-	struct
-	{
-		struct FString                 Payload;
-		int                            ResponseCode;
-	} params;
+	UFacebookWindows_ProcessFacebookRequest_Params params;
 	params.Payload = Payload;
 	params.ResponseCode = ResponseCode;
 
@@ -177,12 +152,7 @@ void UFacebookWindows::FacebookRequest(const struct FString& GraphRequest, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.FacebookRequest");
 
-	struct
-	{
-		struct FString                 GraphRequest;
-		struct FString                 HTTPMethod;
-		TArray<struct FString>         ParamKeysAndValues;
-	} params;
+	UFacebookWindows_FacebookRequest_Params params;
 	params.GraphRequest = GraphRequest;
 	params.HTTPMethod = HTTPMethod;
 	params.ParamKeysAndValues = ParamKeysAndValues;
@@ -202,9 +172,7 @@ void UFacebookWindows::Disconnect()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.Disconnect");
 
-	struct
-	{
-	} params;
+	UFacebookWindows_Disconnect_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -224,10 +192,7 @@ bool UFacebookWindows::IsAuthorized()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.IsAuthorized");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UFacebookWindows_IsAuthorized_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -249,10 +214,7 @@ bool UFacebookWindows::Authorize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.Authorize");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UFacebookWindows_Authorize_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -274,10 +236,7 @@ bool UFacebookWindows::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.FacebookWindows.Init");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UFacebookWindows_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -299,10 +258,7 @@ bool UHttpRequestWindows::ProcessRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.ProcessRequest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UHttpRequestWindows_ProcessRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -326,12 +282,7 @@ class UHttpRequestInterface* UHttpRequestWindows::SetHeader(const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.SetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 HeaderValue;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestWindows_SetHeader_Params params;
 	params.HeaderName = HeaderName;
 	params.HeaderValue = HeaderValue;
 
@@ -356,11 +307,7 @@ class UHttpRequestInterface* UHttpRequestWindows::SetContentAsString(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.SetContentAsString");
 
-	struct
-	{
-		struct FString                 ContentString;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestWindows_SetContentAsString_Params params;
 	params.ContentString = ContentString;
 
 	auto flags = fn->FunctionFlags;
@@ -384,11 +331,7 @@ class UHttpRequestInterface* UHttpRequestWindows::SetContent(TArray<unsigned cha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.SetContent");
 
-	struct
-	{
-		TArray<unsigned char>          ContentPayload;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestWindows_SetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -414,11 +357,7 @@ class UHttpRequestInterface* UHttpRequestWindows::SetURL(const struct FString& U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.SetURL");
 
-	struct
-	{
-		struct FString                 URL;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestWindows_SetURL_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -442,11 +381,7 @@ class UHttpRequestInterface* UHttpRequestWindows::SetVerb(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.SetVerb");
 
-	struct
-	{
-		struct FString                 Verb;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestWindows_SetVerb_Params params;
 	params.Verb = Verb;
 
 	auto flags = fn->FunctionFlags;
@@ -469,10 +404,7 @@ struct FString UHttpRequestWindows::GetVerb()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetVerb");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestWindows_GetVerb_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -494,10 +426,7 @@ void UHttpRequestWindows::GetContent(TArray<unsigned char>* Content)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetContent");
 
-	struct
-	{
-		TArray<unsigned char>          Content;
-	} params;
+	UHttpRequestWindows_GetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -520,10 +449,7 @@ struct FString UHttpRequestWindows::GetURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestWindows_GetURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -545,10 +471,7 @@ int UHttpRequestWindows::GetContentLength()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetContentLength");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpRequestWindows_GetContentLength_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -570,10 +493,7 @@ struct FString UHttpRequestWindows::GetContentType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetContentType");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestWindows_GetContentType_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -596,11 +516,7 @@ struct FString UHttpRequestWindows::GetURLParameter(const struct FString& Parame
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetURLParameter");
 
-	struct
-	{
-		struct FString                 ParameterName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestWindows_GetURLParameter_Params params;
 	params.ParameterName = ParameterName;
 
 	auto flags = fn->FunctionFlags;
@@ -623,10 +539,7 @@ TArray<struct FString> UHttpRequestWindows::GetHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetHeaders");
 
-	struct
-	{
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UHttpRequestWindows_GetHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -649,11 +562,7 @@ struct FString UHttpRequestWindows::GetHeader(const struct FString& HeaderName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindows.GetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestWindows_GetHeader_Params params;
 	params.HeaderName = HeaderName;
 
 	auto flags = fn->FunctionFlags;
@@ -676,10 +585,7 @@ int UHttpResponseWindows::GetResponseCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetResponseCode");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpResponseWindows_GetResponseCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -701,10 +607,7 @@ struct FString UHttpResponseWindows::GetContentAsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetContentAsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseWindows_GetContentAsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -726,10 +629,7 @@ void UHttpResponseWindows::GetContent(TArray<unsigned char>* Content)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetContent");
 
-	struct
-	{
-		TArray<unsigned char>          Content;
-	} params;
+	UHttpResponseWindows_GetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -752,10 +652,7 @@ struct FString UHttpResponseWindows::GetURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseWindows_GetURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -777,10 +674,7 @@ int UHttpResponseWindows::GetContentLength()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetContentLength");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpResponseWindows_GetContentLength_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -802,10 +696,7 @@ struct FString UHttpResponseWindows::GetContentType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetContentType");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseWindows_GetContentType_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -828,11 +719,7 @@ struct FString UHttpResponseWindows::GetURLParameter(const struct FString& Param
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetURLParameter");
 
-	struct
-	{
-		struct FString                 ParameterName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseWindows_GetURLParameter_Params params;
 	params.ParameterName = ParameterName;
 
 	auto flags = fn->FunctionFlags;
@@ -855,10 +742,7 @@ TArray<struct FString> UHttpResponseWindows::GetHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetHeaders");
 
-	struct
-	{
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UHttpResponseWindows_GetHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -881,11 +765,7 @@ struct FString UHttpResponseWindows::GetHeader(const struct FString& HeaderName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpResponseWindows.GetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseWindows_GetHeader_Params params;
 	params.HeaderName = HeaderName;
 
 	auto flags = fn->FunctionFlags;
@@ -908,10 +788,7 @@ bool UHttpRequestWindowsMcp::ProcessRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function WinDrv.HttpRequestWindowsMcp.ProcessRequest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UHttpRequestWindowsMcp_ProcessRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 

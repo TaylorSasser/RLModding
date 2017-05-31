@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -23,10 +21,7 @@ struct FString AGameAIController::GetActionString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GetActionString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	AGameAIController_GetActionString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -50,13 +45,7 @@ void AGameAIController::SetDesiredRotation(const struct FRotator& TargetDesiredR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.SetDesiredRotation");
 
-	struct
-	{
-		struct FRotator                TargetDesiredRotation;
-		bool                           InLockDesiredRotation;
-		bool                           InUnlockWhenReached;
-		float                          InterpolationTime;
-	} params;
+	AGameAIController_SetDesiredRotation_Params params;
 	params.TargetDesiredRotation = TargetDesiredRotation;
 	params.InLockDesiredRotation = InLockDesiredRotation;
 	params.InUnlockWhenReached = InUnlockWhenReached;
@@ -81,12 +70,7 @@ void AGameAIController::AILog_Internal(const struct FString& LogText, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.AILog_Internal");
 
-	struct
-	{
-		struct FString                 LogText;
-		struct FName                   LogCategory;
-		bool                           bForce;
-	} params;
+	AGameAIController_AILog_Internal_Params params;
 	params.LogText = LogText;
 	params.LogCategory = LogCategory;
 	params.bForce = bForce;
@@ -108,10 +92,7 @@ void AGameAIController::RecordDemoAILog(const struct FString& LogText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.RecordDemoAILog");
 
-	struct
-	{
-		struct FString                 LogText;
-	} params;
+	AGameAIController_RecordDemoAILog_Params params;
 	params.LogText = LogText;
 
 	auto flags = fn->FunctionFlags;
@@ -129,9 +110,7 @@ void AGameAIController::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.Destroyed");
 
-	struct
-	{
-	} params;
+	AGameAIController_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -148,9 +127,7 @@ void AGameAIController::ReachedIntermediateMoveGoal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.ReachedIntermediateMoveGoal");
 
-	struct
-	{
-	} params;
+	AGameAIController_ReachedIntermediateMoveGoal_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -167,9 +144,7 @@ void AGameAIController::ReachedMoveGoal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.ReachedMoveGoal");
 
-	struct
-	{
-	} params;
+	AGameAIController_ReachedMoveGoal_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -188,10 +163,7 @@ float AGameAIController::GetDestinationOffset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GetDestinationOffset");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	AGameAIController_GetDestinationOffset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -213,11 +185,7 @@ class UGameAICommand* AGameAIController::GetAICommandInStack(class UClass* InCla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GetAICommandInStack");
 
-	struct
-	{
-		class UClass*                  InClass;
-		class UGameAICommand*          ReturnValue;
-	} params;
+	AGameAIController_GetAICommandInStack_Params params;
 	params.InClass = InClass;
 
 	auto flags = fn->FunctionFlags;
@@ -241,11 +209,7 @@ class UGameAICommand* AGameAIController::FindCommandOfClass(class UClass* Search
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.FindCommandOfClass");
 
-	struct
-	{
-		class UClass*                  SearchClass;
-		class UGameAICommand*          ReturnValue;
-	} params;
+	AGameAIController_FindCommandOfClass_Params params;
 	params.SearchClass = SearchClass;
 
 	auto flags = fn->FunctionFlags;
@@ -266,9 +230,7 @@ void AGameAIController::DumpCommandStack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DumpCommandStack");
 
-	struct
-	{
-	} params;
+	AGameAIController_DumpCommandStack_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -286,9 +248,7 @@ void AGameAIController::CheckCommandCount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.CheckCommandCount");
 
-	struct
-	{
-	} params;
+	AGameAIController_CheckCommandCount_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -308,10 +268,7 @@ class UGameAICommand* AGameAIController::GetActiveCommand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.GetActiveCommand");
 
-	struct
-	{
-		class UGameAICommand*          ReturnValue;
-	} params;
+	AGameAIController_GetActiveCommand_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -335,12 +292,7 @@ bool AGameAIController::AbortCommand(class UGameAICommand* AbortCmd, class UClas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.AbortCommand");
 
-	struct
-	{
-		class UGameAICommand*          AbortCmd;
-		class UClass*                  AbortClass;
-		bool                           ReturnValue;
-	} params;
+	AGameAIController_AbortCommand_Params params;
 	params.AbortCmd = AbortCmd;
 	params.AbortClass = AbortClass;
 
@@ -364,10 +316,7 @@ void AGameAIController::PopCommand(class UGameAICommand* ToBePoppedCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.PopCommand");
 
-	struct
-	{
-		class UGameAICommand*          ToBePoppedCommand;
-	} params;
+	AGameAIController_PopCommand_Params params;
 	params.ToBePoppedCommand = ToBePoppedCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -388,10 +337,7 @@ void AGameAIController::PushCommand(class UGameAICommand* NewCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.PushCommand");
 
-	struct
-	{
-		class UGameAICommand*          NewCommand;
-	} params;
+	AGameAIController_PushCommand_Params params;
 	params.NewCommand = NewCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -413,11 +359,7 @@ void AGameAIController::AllCommands(class UClass* BaseClass, class UGameAIComman
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.AllCommands");
 
-	struct
-	{
-		class UClass*                  BaseClass;
-		class UGameAICommand*          Cmd;
-	} params;
+	AGameAIController_AllCommands_Params params;
 	params.BaseClass = BaseClass;
 
 	auto flags = fn->FunctionFlags;
@@ -442,11 +384,7 @@ bool UGameAICommand::HandlePathObstruction(class AActor* BlockedBy)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.HandlePathObstruction");
 
-	struct
-	{
-		class AActor*                  BlockedBy;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_HandlePathObstruction_Params params;
 	params.BlockedBy = BlockedBy;
 
 	auto flags = fn->FunctionFlags;
@@ -470,12 +408,7 @@ bool UGameAICommand::MoveUnreachable(const struct FVector& AttemptedDest, class 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.MoveUnreachable");
 
-	struct
-	{
-		struct FVector                 AttemptedDest;
-		class AActor*                  AttemptedTarget;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_MoveUnreachable_Params params;
 	params.AttemptedDest = AttemptedDest;
 	params.AttemptedTarget = AttemptedTarget;
 
@@ -496,9 +429,7 @@ void UGameAICommand::NotifyNeedRepath()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.NotifyNeedRepath");
 
-	struct
-	{
-	} params;
+	UGameAICommand_NotifyNeedRepath_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -517,10 +448,7 @@ struct FString UGameAICommand::GetDebugVerboseText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.GetDebugVerboseText");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameAICommand_GetDebugVerboseText_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -542,11 +470,7 @@ void UGameAICommand::GetDebugOverheadText(class APlayerController* PC, TArray<st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.GetDebugOverheadText");
 
-	struct
-	{
-		class APlayerController*       PC;
-		TArray<struct FString>         OutText;
-	} params;
+	UGameAICommand_GetDebugOverheadText_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -570,11 +494,7 @@ void UGameAICommand::DrawDebug(class AHUD* H, const struct FName& Category)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DrawDebug");
 
-	struct
-	{
-		class AHUD*                    H;
-		struct FName                   Category;
-	} params;
+	UGameAICommand_DrawDebug_Params params;
 	params.H = H;
 	params.Category = Category;
 
@@ -595,10 +515,7 @@ struct FString UGameAICommand::GetDumpString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.GetDumpString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameAICommand_GetDumpString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -619,10 +536,7 @@ void UGameAICommand::Resumed(const struct FName& OldCommandName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.Resumed");
 
-	struct
-	{
-		struct FName                   OldCommandName;
-	} params;
+	UGameAICommand_Resumed_Params params;
 	params.OldCommandName = OldCommandName;
 
 	auto flags = fn->FunctionFlags;
@@ -642,10 +556,7 @@ void UGameAICommand::Paused(class UGameAICommand* NewCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.Paused");
 
-	struct
-	{
-		class UGameAICommand*          NewCommand;
-	} params;
+	UGameAICommand_Paused_Params params;
 	params.NewCommand = NewCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -663,9 +574,7 @@ void UGameAICommand::Popped()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.Popped");
 
-	struct
-	{
-	} params;
+	UGameAICommand_Popped_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -682,9 +591,7 @@ void UGameAICommand::Pushed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.Pushed");
 
-	struct
-	{
-	} params;
+	UGameAICommand_Pushed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -701,9 +608,7 @@ void UGameAICommand::PostPopped()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.PostPopped");
 
-	struct
-	{
-	} params;
+	UGameAICommand_PostPopped_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -722,10 +627,7 @@ void UGameAICommand::PrePushed(class AGameAIController* AI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.PrePushed");
 
-	struct
-	{
-		class AGameAIController*       AI;
-	} params;
+	UGameAICommand_PrePushed_Params params;
 	params.AI = AI;
 
 	auto flags = fn->FunctionFlags;
@@ -746,11 +648,7 @@ bool UGameAICommand::AllowStateTransitionTo(const struct FName& StateName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.AllowStateTransitionTo");
 
-	struct
-	{
-		struct FName                   StateName;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_AllowStateTransitionTo_Params params;
 	params.StateName = StateName;
 
 	auto flags = fn->FunctionFlags;
@@ -773,11 +671,7 @@ bool UGameAICommand::AllowTransitionTo(class UClass* AttemptCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.AllowTransitionTo");
 
-	struct
-	{
-		class UClass*                  AttemptCommand;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_AllowTransitionTo_Params params;
 	params.AttemptCommand = AttemptCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -799,10 +693,7 @@ void UGameAICommand::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGameAICommand_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -822,10 +713,7 @@ bool UGameAICommand::ShouldIgnoreNotifies()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.ShouldIgnoreNotifies");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_ShouldIgnoreNotifies_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -847,10 +735,7 @@ void UGameAICommand::InternalTick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalTick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGameAICommand_InternalTick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -870,10 +755,7 @@ void UGameAICommand::InternalResumed(const struct FName& OldCommandName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalResumed");
 
-	struct
-	{
-		struct FName                   OldCommandName;
-	} params;
+	UGameAICommand_InternalResumed_Params params;
 	params.OldCommandName = OldCommandName;
 
 	auto flags = fn->FunctionFlags;
@@ -893,10 +775,7 @@ void UGameAICommand::InternalPaused(class UGameAICommand* NewCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalPaused");
 
-	struct
-	{
-		class UGameAICommand*          NewCommand;
-	} params;
+	UGameAICommand_InternalPaused_Params params;
 	params.NewCommand = NewCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -914,9 +793,7 @@ void UGameAICommand::InternalPopped()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalPopped");
 
-	struct
-	{
-	} params;
+	UGameAICommand_InternalPopped_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -933,9 +810,7 @@ void UGameAICommand::InternalPushed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalPushed");
 
-	struct
-	{
-	} params;
+	UGameAICommand_InternalPushed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -954,10 +829,7 @@ void UGameAICommand::InternalPrePushed(class AGameAIController* AI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InternalPrePushed");
 
-	struct
-	{
-		class AGameAIController*       AI;
-	} params;
+	UGameAICommand_InternalPrePushed_Params params;
 	params.AI = AI;
 
 	auto flags = fn->FunctionFlags;
@@ -978,11 +850,7 @@ bool UGameAICommand::STATIC_InitCommand(class AGameAIController* AI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InitCommand");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_InitCommand_Params params;
 	params.AI = AI;
 
 	auto flags = fn->FunctionFlags;
@@ -1006,12 +874,7 @@ bool UGameAICommand::STATIC_InitCommandUserActor(class AGameAIController* AI, cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.InitCommandUserActor");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		class AActor*                  UserActor;
-		bool                           ReturnValue;
-	} params;
+	UGameAICommand_InitCommandUserActor_Params params;
 	params.AI = AI;
 	params.UserActor = UserActor;
 
@@ -1037,13 +900,7 @@ void AGamePlayerController::ClientColorFade(const struct FColor& FadeColor, unsi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ClientColorFade");
 
-	struct
-	{
-		struct FColor                  FadeColor;
-		unsigned char                  FromAlpha;
-		unsigned char                  ToAlpha;
-		float                          FadeTime;
-	} params;
+	AGamePlayerController_ClientColorFade_Params params;
 	params.FadeColor = FadeColor;
 	params.FromAlpha = FromAlpha;
 	params.ToAlpha = ToAlpha;
@@ -1066,10 +923,7 @@ void AGamePlayerController::WarmupPause(bool bDesiredPauseState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.WarmupPause");
 
-	struct
-	{
-		bool                           bDesiredPauseState;
-	} params;
+	AGamePlayerController_WarmupPause_Params params;
 	params.bDesiredPauseState = bDesiredPauseState;
 
 	auto flags = fn->FunctionFlags;
@@ -1089,10 +943,7 @@ bool AGamePlayerController::CanUnpauseWarmup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.CanUnpauseWarmup");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGamePlayerController_CanUnpauseWarmup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1113,10 +964,7 @@ void AGamePlayerController::GetCurrentMovie(struct FString* MovieName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.GetCurrentMovie");
 
-	struct
-	{
-		struct FString                 MovieName;
-	} params;
+	AGamePlayerController_GetCurrentMovie_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1142,13 +990,7 @@ void AGamePlayerController::ClientStopMovie(float DelayInSeconds, bool bAllowMov
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ClientStopMovie");
 
-	struct
-	{
-		float                          DelayInSeconds;
-		bool                           bAllowMovieToFinish;
-		bool                           bForceStopNonSkippable;
-		bool                           bForceStopLoadingMovie;
-	} params;
+	AGamePlayerController_ClientStopMovie_Params params;
 	params.DelayInSeconds = DelayInSeconds;
 	params.bAllowMovieToFinish = bAllowMovieToFinish;
 	params.bForceStopNonSkippable = bForceStopNonSkippable;
@@ -1177,15 +1019,7 @@ void AGamePlayerController::ClientPlayMovie(const struct FString& MovieName, int
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ClientPlayMovie");
 
-	struct
-	{
-		struct FString                 MovieName;
-		int                            InStartOfRenderingMovieFrame;
-		int                            InEndOfRenderingMovieFrame;
-		bool                           bRestrictPausing;
-		bool                           bPlayOnceFromStream;
-		bool                           bOnlyBackButtonSkipsMovie;
-	} params;
+	AGamePlayerController_ClientPlayMovie_Params params;
 	params.MovieName = MovieName;
 	params.InStartOfRenderingMovieFrame = InStartOfRenderingMovieFrame;
 	params.InEndOfRenderingMovieFrame = InEndOfRenderingMovieFrame;
@@ -1209,9 +1043,7 @@ void AGamePlayerController::STATIC_KeepPlayingLoadingMovie()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.KeepPlayingLoadingMovie");
 
-	struct
-	{
-	} params;
+	AGamePlayerController_KeepPlayingLoadingMovie_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1235,14 +1067,7 @@ void AGamePlayerController::STATIC_ShowLoadingMovie(bool bShowMovie, bool bPause
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.ShowLoadingMovie");
 
-	struct
-	{
-		bool                           bShowMovie;
-		bool                           bPauseAfterHide;
-		float                          PauseDuration;
-		float                          KeepPlayingDuration;
-		bool                           bOverridePreviousDelays;
-	} params;
+	AGamePlayerController_ShowLoadingMovie_Params params;
 	params.bShowMovie = bShowMovie;
 	params.bPauseAfterHide = bPauseAfterHide;
 	params.PauseDuration = PauseDuration;
@@ -1267,10 +1092,7 @@ void AGamePlayerController::SetSoundMode(const struct FName& InSoundModeName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.SetSoundMode");
 
-	struct
-	{
-		struct FName                   InSoundModeName;
-	} params;
+	AGamePlayerController_SetSoundMode_Params params;
 	params.InSoundModeName = InSoundModeName;
 
 	auto flags = fn->FunctionFlags;
@@ -1291,11 +1113,7 @@ void AGamePlayerController::DoForceFeedbackForScreenShake(class UCameraShake* Sh
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.DoForceFeedbackForScreenShake");
 
-	struct
-	{
-		class UCameraShake*            ShakeData;
-		float                          Scale;
-	} params;
+	AGamePlayerController_DoForceFeedbackForScreenShake_Params params;
 	params.ShakeData = ShakeData;
 	params.Scale = Scale;
 
@@ -1316,10 +1134,7 @@ void AGamePlayerController::NotifyCrowdAgentInRadius(class AGameCrowdAgent* Agen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.NotifyCrowdAgentInRadius");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	AGamePlayerController_NotifyCrowdAgentInRadius_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -1337,9 +1152,7 @@ void AGamePlayerController::NotifyCrowdAgentRefresh()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.NotifyCrowdAgentRefresh");
 
-	struct
-	{
-	} params;
+	AGamePlayerController_NotifyCrowdAgentRefresh_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1358,10 +1171,7 @@ void AGamePlayerController::CrowdDebug(bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.CrowdDebug");
 
-	struct
-	{
-		bool                           bEnabled;
-	} params;
+	AGamePlayerController_CrowdDebug_Params params;
 	params.bEnabled = bEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -1381,10 +1191,7 @@ int AGamePlayerController::GetUIPlayerIndex()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.GetUIPlayerIndex");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	AGamePlayerController_GetUIPlayerIndex_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1406,10 +1213,7 @@ void AGamePlayerController::OnToggleMouseCursor(class USeqAct_ToggleMouseCursor*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerController.OnToggleMouseCursor");
 
-	struct
-	{
-		class USeqAct_ToggleMouseCursor* inAction;
-	} params;
+	AGamePlayerController_OnToggleMouseCursor_Params params;
 	params.inAction = inAction;
 
 	auto flags = fn->FunctionFlags;
@@ -1431,12 +1235,7 @@ void UGameCheatManager::OnRequestComplete(class UHttpRequestInterface* OriginalR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.OnRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UGameCheatManager_OnRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -1461,13 +1260,7 @@ void UGameCheatManager::TestHttp(const struct FString& Verb, const struct FStrin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.TestHttp");
 
-	struct
-	{
-		struct FString                 Verb;
-		struct FString                 Payload;
-		struct FString                 URL;
-		bool                           bSendParallelRequest;
-	} params;
+	UGameCheatManager_TestHttp_Params params;
 	params.Verb = Verb;
 	params.Payload = Payload;
 	params.URL = URL;
@@ -1490,10 +1283,7 @@ void UGameCheatManager::EnableDebugCamera(bool bEnableDebugText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.EnableDebugCamera");
 
-	struct
-	{
-		bool                           bEnableDebugText;
-	} params;
+	UGameCheatManager_EnableDebugCamera_Params params;
 	params.bEnableDebugText = bEnableDebugText;
 
 	auto flags = fn->FunctionFlags;
@@ -1513,10 +1303,7 @@ void UGameCheatManager::TeleportPawnToCamera(bool bToggleDebugCameraOff)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.TeleportPawnToCamera");
 
-	struct
-	{
-		bool                           bToggleDebugCameraOff;
-	} params;
+	UGameCheatManager_TeleportPawnToCamera_Params params;
 	params.bToggleDebugCameraOff = bToggleDebugCameraOff;
 
 	auto flags = fn->FunctionFlags;
@@ -1536,10 +1323,7 @@ void UGameCheatManager::ToggleDebugCamera(bool bDrawDebugText)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.ToggleDebugCamera");
 
-	struct
-	{
-		bool                           bDrawDebugText;
-	} params;
+	UGameCheatManager_ToggleDebugCamera_Params params;
 	params.bDrawDebugText = bDrawDebugText;
 
 	auto flags = fn->FunctionFlags;
@@ -1557,9 +1341,7 @@ void UGameCheatManager::PatchDebugCameraController()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCheatManager.PatchDebugCameraController");
 
-	struct
-	{
-	} params;
+	UGameCheatManager_PatchDebugCameraController_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1576,9 +1358,7 @@ void AGameCrowdAgent::InitDebugColor()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.InitDebugColor");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_InitDebugColor_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1597,10 +1377,7 @@ struct FString AGameCrowdAgent::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	AGameCrowdAgent_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1621,10 +1398,7 @@ struct FString AGameCrowdAgent::GetDestString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GetDestString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	AGameCrowdAgent_GetDestString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1648,13 +1422,7 @@ void AGameCrowdAgent::PostRenderFor(class APlayerController* PC, class UCanvas* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PostRenderFor");
 
-	struct
-	{
-		class APlayerController*       PC;
-		class UCanvas*                 Canvas;
-		struct FVector                 CameraPosition;
-		struct FVector                 CameraDir;
-	} params;
+	AGameCrowdAgent_PostRenderFor_Params params;
 	params.PC = PC;
 	params.Canvas = Canvas;
 	params.CameraPosition = CameraPosition;
@@ -1680,13 +1448,7 @@ void AGameCrowdAgent::NativePostRenderFor(class APlayerController* PC, class UCa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.NativePostRenderFor");
 
-	struct
-	{
-		class APlayerController*       PC;
-		class UCanvas*                 Canvas;
-		struct FVector                 CameraPosition;
-		struct FVector                 CameraDir;
-	} params;
+	AGameCrowdAgent_NativePostRenderFor_Params params;
 	params.PC = PC;
 	params.Canvas = Canvas;
 	params.CameraPosition = CameraPosition;
@@ -1713,13 +1475,7 @@ struct FVector AGameCrowdAgent::GeneratePathToActor(class AActor* Goal, float Wi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GeneratePathToActor");
 
-	struct
-	{
-		class AActor*                  Goal;
-		float                          WithinDistance;
-		bool                           bAllowPartialPath;
-		struct FVector                 ReturnValue;
-	} params;
+	AGameCrowdAgent_GeneratePathToActor_Params params;
 	params.Goal = Goal;
 	params.WithinDistance = WithinDistance;
 	params.bAllowPartialPath = bAllowPartialPath;
@@ -1741,9 +1497,7 @@ void AGameCrowdAgent::InitNavigationHandle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.InitNavigationHandle");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_InitNavigationHandle_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1762,10 +1516,7 @@ void AGameCrowdAgent::OverlappedActorEvent(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.OverlappedActorEvent");
 
-	struct
-	{
-		class AActor*                  A;
-	} params;
+	AGameCrowdAgent_OverlappedActorEvent_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -1791,16 +1542,7 @@ void AGameCrowdAgent::TakeDamage(int DamageAmount, class AController* EventInsti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.TakeDamage");
 
-	struct
-	{
-		int                            DamageAmount;
-		class AController*             EventInstigator;
-		struct FVector                 HitLocation;
-		struct FVector                 Momentum;
-		class UClass*                  DamageType;
-		struct FTraceHitInfo           HitInfo;
-		class AActor*                  DamageCauser;
-	} params;
+	AGameCrowdAgent_TakeDamage_Params params;
 	params.DamageAmount = DamageAmount;
 	params.EventInstigator = EventInstigator;
 	params.HitLocation = HitLocation;
@@ -1824,9 +1566,7 @@ void AGameCrowdAgent::FireDeathEvent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.FireDeathEvent");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_FireDeathEvent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1845,10 +1585,7 @@ void AGameCrowdAgent::PlayDeath(const struct FVector& KillMomentum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PlayDeath");
 
-	struct
-	{
-		struct FVector                 KillMomentum;
-	} params;
+	AGameCrowdAgent_PlayDeath_Params params;
 	params.KillMomentum = KillMomentum;
 
 	auto flags = fn->FunctionFlags;
@@ -1869,10 +1606,7 @@ void AGameCrowdAgent::UpdateIntermediatePoint(class AActor* DestinationActor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.UpdateIntermediatePoint");
 
-	struct
-	{
-		class AActor*                  DestinationActor;
-	} params;
+	AGameCrowdAgent_UpdateIntermediatePoint_Params params;
 	params.DestinationActor = DestinationActor;
 
 	auto flags = fn->FunctionFlags;
@@ -1896,14 +1630,7 @@ bool AGameCrowdAgent::CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.CalcCamera");
 
-	struct
-	{
-		float                          fDeltaTime;
-		struct FVector                 out_CamLoc;
-		struct FRotator                out_CamRot;
-		float                          out_FOV;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdAgent_CalcCamera_Params params;
 	params.fDeltaTime = fDeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -1932,10 +1659,7 @@ bool AGameCrowdAgent::IsIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.IsIdle");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdAgent_IsIdle_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1957,10 +1681,7 @@ void AGameCrowdAgent::SetCurrentBehavior(class UGameCrowdAgentBehavior* Behavior
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetCurrentBehavior");
 
-	struct
-	{
-		class UGameCrowdAgentBehavior* BehaviorArchetype;
-	} params;
+	AGameCrowdAgent_SetCurrentBehavior_Params params;
 	params.BehaviorArchetype = BehaviorArchetype;
 
 	auto flags = fn->FunctionFlags;
@@ -1979,9 +1700,7 @@ void AGameCrowdAgent::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.StopBehavior");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2003,13 +1722,7 @@ void AGameCrowdAgent::HandleBehaviorEvent(TEnumAsByte<enum class ECrowdBehaviorE
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.HandleBehaviorEvent");
 
-	struct
-	{
-		TEnumAsByte<enum class ECrowdBehaviorEvent> EventType;
-		class AActor*                  InInstigator;
-		bool                           bViralCause;
-		bool                           bPropagateViralFlag;
-	} params;
+	AGameCrowdAgent_HandleBehaviorEvent_Params params;
 	params.EventType = EventType;
 	params.InInstigator = InInstigator;
 	params.bViralCause = bViralCause;
@@ -2032,10 +1745,7 @@ void AGameCrowdAgent::ActivateInstancedBehavior(class UGameCrowdAgentBehavior* N
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.ActivateInstancedBehavior");
 
-	struct
-	{
-		class UGameCrowdAgentBehavior* NewBehaviorObject;
-	} params;
+	AGameCrowdAgent_ActivateInstancedBehavior_Params params;
 	params.NewBehaviorObject = NewBehaviorObject;
 
 	auto flags = fn->FunctionFlags;
@@ -2056,11 +1766,7 @@ void AGameCrowdAgent::ActivateBehavior(class UGameCrowdAgentBehavior* NewBehavio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.ActivateBehavior");
 
-	struct
-	{
-		class UGameCrowdAgentBehavior* NewBehaviorArchetype;
-		class AActor*                  LookAtActor;
-	} params;
+	AGameCrowdAgent_ActivateBehavior_Params params;
 	params.NewBehaviorArchetype = NewBehaviorArchetype;
 	params.LookAtActor = LookAtActor;
 
@@ -2079,9 +1785,7 @@ void AGameCrowdAgent::ResetSeePlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.ResetSeePlayer");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_ResetSeePlayer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2098,9 +1802,7 @@ void AGameCrowdAgent::TryRandomBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.TryRandomBehavior");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_TryRandomBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2119,10 +1821,7 @@ void AGameCrowdAgent::NotifySeePlayer(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.NotifySeePlayer");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	AGameCrowdAgent_NotifySeePlayer_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -2140,9 +1839,7 @@ void AGameCrowdAgent::PlaySpawnBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PlaySpawnBehavior");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_PlaySpawnBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2159,9 +1856,7 @@ void AGameCrowdAgent::HandlePotentialAgentEncounter()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.HandlePotentialAgentEncounter");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_HandlePotentialAgentEncounter_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2178,9 +1873,7 @@ void AGameCrowdAgent::StopIdleAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.StopIdleAnimation");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_StopIdleAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2197,9 +1890,7 @@ void AGameCrowdAgent::PlayIdleAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PlayIdleAnimation");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_PlayIdleAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2218,10 +1909,7 @@ void AGameCrowdAgent::OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Act
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.OnPlayAgentAnimation");
 
-	struct
-	{
-		class USeqAct_PlayAgentAnimation* Action;
-	} params;
+	AGameCrowdAgent_OnPlayAgentAnimation_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -2247,16 +1935,7 @@ void AGameCrowdAgent::InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.InitializeAgent");
 
-	struct
-	{
-		class AActor*                  SpawnLoc;
-		TArray<struct FCrowdSpawnerPlayerInfo> PlayerInfo;
-		class AGameCrowdAgent*         AgentTemplate;
-		class UGameCrowdGroup*         NewGroup;
-		float                          AgentWarmupTime;
-		bool                           bWarmupPosition;
-		bool                           bCheckWarmupVisibility;
-	} params;
+	AGameCrowdAgent_InitializeAgent_Params params;
 	params.SpawnLoc = SpawnLoc;
 	params.AgentTemplate = AgentTemplate;
 	params.NewGroup = NewGroup;
@@ -2289,15 +1968,7 @@ struct FVector AGameCrowdAgent::GetAttemptedSpawnLocation(float Pct, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GetAttemptedSpawnLocation");
 
-	struct
-	{
-		float                          Pct;
-		struct FVector                 CurPos;
-		float                          CurRadius;
-		struct FVector                 DestPos;
-		float                          DestRadius;
-		struct FVector                 ReturnValue;
-	} params;
+	AGameCrowdAgent_GetAttemptedSpawnLocation_Params params;
 	params.Pct = Pct;
 	params.CurPos = CurPos;
 	params.CurRadius = CurRadius;
@@ -2325,12 +1996,7 @@ void AGameCrowdAgent::SetLighting(bool bEnableLightEnvironment, const struct FLi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetLighting");
 
-	struct
-	{
-		bool                           bEnableLightEnvironment;
-		struct FLightingChannelContainer AgentLightingChannel;
-		bool                           bCastShadows;
-	} params;
+	AGameCrowdAgent_SetLighting_Params params;
 	params.bEnableLightEnvironment = bEnableLightEnvironment;
 	params.AgentLightingChannel = AgentLightingChannel;
 	params.bCastShadows = bCastShadows;
@@ -2354,12 +2020,7 @@ void AGameCrowdAgent::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.DisplayDebug");
 
-	struct
-	{
-		class AHUD*                    HUD;
-		float                          out_YL;
-		float                          out_YPos;
-	} params;
+	AGameCrowdAgent_DisplayDebug_Params params;
 	params.HUD = HUD;
 
 	auto flags = fn->FunctionFlags;
@@ -2382,9 +2043,7 @@ void AGameCrowdAgent::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.Destroyed");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2401,9 +2060,7 @@ void AGameCrowdAgent::ResetPooledAgent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.ResetPooledAgent");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_ResetPooledAgent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2420,9 +2077,7 @@ void AGameCrowdAgent::KillAgent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.KillAgent");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_KillAgent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2439,9 +2094,7 @@ void AGameCrowdAgent::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2458,9 +2111,7 @@ void AGameCrowdAgent::SetMaxSpeed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetMaxSpeed");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_SetMaxSpeed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2479,10 +2130,7 @@ void AGameCrowdAgent::SetCurrentDestination(class AGameCrowdDestination* NewDest
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.SetCurrentDestination");
 
-	struct
-	{
-		class AGameCrowdDestination*   NewDest;
-	} params;
+	AGameCrowdAgent_SetCurrentDestination_Params params;
 	params.NewDest = NewDest;
 
 	auto flags = fn->FunctionFlags;
@@ -2500,9 +2148,7 @@ void AGameCrowdAgent::WaitForGroupMembers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.WaitForGroupMembers");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgent_WaitForGroupMembers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2523,12 +2169,7 @@ bool AGameCrowdAgent::PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorLis
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.PickBehaviorFrom");
 
-	struct
-	{
-		TArray<struct FBehaviorEntry>  BehaviorList;
-		struct FVector                 BestCameraLoc;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdAgent_PickBehaviorFrom_Params params;
 	params.BehaviorList = BehaviorList;
 	params.BestCameraLoc = BestCameraLoc;
 
@@ -2551,10 +2192,7 @@ bool AGameCrowdAgent::IsPanicked()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.IsPanicked");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdAgent_IsPanicked_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2576,10 +2214,7 @@ void AGameCrowdAgent::FellOutOfWorld(class UClass* dmgType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.FellOutOfWorld");
 
-	struct
-	{
-		class UClass*                  dmgType;
-	} params;
+	AGameCrowdAgent_FellOutOfWorld_Params params;
 	params.dmgType = dmgType;
 
 	auto flags = fn->FunctionFlags;
@@ -2599,10 +2234,7 @@ struct FVector AGameCrowdAgent::GetCollisionExtent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgent.GetCollisionExtent");
 
-	struct
-	{
-		struct FVector                 ReturnValue;
-	} params;
+	AGameCrowdAgent_GetCollisionExtent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2622,9 +2254,7 @@ void AGameCrowdAgentSkeletal::CreateAttachments()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.CreateAttachments");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSkeletal_CreateAttachments_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2645,12 +2275,7 @@ void AGameCrowdAgentSkeletal::OnAnimEnd(class UAnimNodeSequence* SeqNode, float 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.OnAnimEnd");
 
-	struct
-	{
-		class UAnimNodeSequence*       SeqNode;
-		float                          PlayedTime;
-		float                          ExcessTime;
-	} params;
+	AGameCrowdAgentSkeletal_OnAnimEnd_Params params;
 	params.SeqNode = SeqNode;
 	params.PlayedTime = PlayedTime;
 	params.ExcessTime = ExcessTime;
@@ -2670,9 +2295,7 @@ void AGameCrowdAgentSkeletal::StopIdleAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.StopIdleAnimation");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSkeletal_StopIdleAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2689,9 +2312,7 @@ void AGameCrowdAgentSkeletal::PlayIdleAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.PlayIdleAnimation");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSkeletal_PlayIdleAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2708,9 +2329,7 @@ void AGameCrowdAgentSkeletal::ClearLatentAnimation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.ClearLatentAnimation");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSkeletal_ClearLatentAnimation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2729,10 +2348,7 @@ void AGameCrowdAgentSkeletal::OnPlayAgentAnimation(class USeqAct_PlayAgentAnimat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.OnPlayAgentAnimation");
 
-	struct
-	{
-		class USeqAct_PlayAgentAnimation* Action;
-	} params;
+	AGameCrowdAgentSkeletal_OnPlayAgentAnimation_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -2752,10 +2368,7 @@ void AGameCrowdAgentSkeletal::SetRootMotion(bool bRootMotionEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.SetRootMotion");
 
-	struct
-	{
-		bool                           bRootMotionEnabled;
-	} params;
+	AGameCrowdAgentSkeletal_SetRootMotion_Params params;
 	params.bRootMotionEnabled = bRootMotionEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -2776,10 +2389,7 @@ void AGameCrowdAgentSkeletal::PlayDeath(const struct FVector& KillMomentum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.PlayDeath");
 
-	struct
-	{
-		struct FVector                 KillMomentum;
-	} params;
+	AGameCrowdAgentSkeletal_PlayDeath_Params params;
 	params.KillMomentum = KillMomentum;
 
 	auto flags = fn->FunctionFlags;
@@ -2802,12 +2412,7 @@ void AGameCrowdAgentSkeletal::SetLighting(bool bEnableLightEnvironment, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.SetLighting");
 
-	struct
-	{
-		bool                           bEnableLightEnvironment;
-		struct FLightingChannelContainer AgentLightingChannel;
-		bool                           bCastShadows;
-	} params;
+	AGameCrowdAgentSkeletal_SetLighting_Params params;
 	params.bEnableLightEnvironment = bEnableLightEnvironment;
 	params.AgentLightingChannel = AgentLightingChannel;
 	params.bCastShadows = bCastShadows;
@@ -2827,9 +2432,7 @@ void AGameCrowdAgentSkeletal::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSkeletal.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSkeletal_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2846,9 +2449,7 @@ void AGameCrowdAgentSM::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSM.StopBehavior");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSM_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2868,11 +2469,7 @@ void AGameCrowdAgentSM::ActivateBehavior(class UGameCrowdAgentBehavior* NewBehav
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSM.ActivateBehavior");
 
-	struct
-	{
-		class UGameCrowdAgentBehavior* NewBehaviorArchetype;
-		class AActor*                  LookAtActor;
-	} params;
+	AGameCrowdAgentSM_ActivateBehavior_Params params;
 	params.NewBehaviorArchetype = NewBehaviorArchetype;
 	params.LookAtActor = LookAtActor;
 
@@ -2893,10 +2490,7 @@ void AGameCrowdAgentSM::ChangeDebugColor(const struct FColor& InC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSM.ChangeDebugColor");
 
-	struct
-	{
-		struct FColor                  InC;
-	} params;
+	AGameCrowdAgentSM_ChangeDebugColor_Params params;
 	params.InC = InC;
 
 	auto flags = fn->FunctionFlags;
@@ -2914,9 +2508,7 @@ void AGameCrowdAgentSM::InitDebugColor()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSM.InitDebugColor");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSM_InitDebugColor_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2933,9 +2525,7 @@ void AGameCrowdAgentSM::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentSM.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdAgentSM_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2955,11 +2545,7 @@ bool UGameCrowdAgentBehavior::AllowBehaviorAt(class AGameCrowdDestination* Desti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.AllowBehaviorAt");
 
-	struct
-	{
-		class AGameCrowdDestination*   Destination;
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_AllowBehaviorAt_Params params;
 	params.Destination = Destination;
 
 	auto flags = fn->FunctionFlags;
@@ -2982,11 +2568,7 @@ bool UGameCrowdAgentBehavior::AllowThisDestination(class AGameCrowdDestination* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.AllowThisDestination");
 
-	struct
-	{
-		class AGameCrowdDestination*   Destination;
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_AllowThisDestination_Params params;
 	params.Destination = Destination;
 
 	auto flags = fn->FunctionFlags;
@@ -3008,10 +2590,7 @@ void UGameCrowdAgentBehavior::PropagateViralBehaviorTo(class AGameCrowdAgent* Ot
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.PropagateViralBehaviorTo");
 
-	struct
-	{
-		class AGameCrowdAgent*         OtherAgent;
-	} params;
+	UGameCrowdAgentBehavior_PropagateViralBehaviorTo_Params params;
 	params.OtherAgent = OtherAgent;
 
 	auto flags = fn->FunctionFlags;
@@ -3031,10 +2610,7 @@ class AActor* UGameCrowdAgentBehavior::GetBehaviorInstigator()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.GetBehaviorInstigator");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_GetBehaviorInstigator_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3055,10 +2631,7 @@ void UGameCrowdAgentBehavior::ActivatedBy(class AActor* NewActionTarget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.ActivatedBy");
 
-	struct
-	{
-		class AActor*                  NewActionTarget;
-	} params;
+	UGameCrowdAgentBehavior_ActivatedBy_Params params;
 	params.NewActionTarget = NewActionTarget;
 
 	auto flags = fn->FunctionFlags;
@@ -3078,10 +2651,7 @@ class AActor* UGameCrowdAgentBehavior::GetDestinationActor()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.GetDestinationActor");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_GetDestinationActor_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3102,10 +2672,7 @@ void UGameCrowdAgentBehavior::ChangingDestination(class AGameCrowdDestination* N
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.ChangingDestination");
 
-	struct
-	{
-		class AGameCrowdDestination*   NewDest;
-	} params;
+	UGameCrowdAgentBehavior_ChangingDestination_Params params;
 	params.NewDest = NewDest;
 
 	auto flags = fn->FunctionFlags;
@@ -3125,10 +2692,7 @@ struct FString UGameCrowdAgentBehavior::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3151,12 +2715,7 @@ void UGameCrowdAgentBehavior::OnAnimEnd(class UAnimNodeSequence* SeqNode, float 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.OnAnimEnd");
 
-	struct
-	{
-		class UAnimNodeSequence*       SeqNode;
-		float                          PlayedTime;
-		float                          ExcessTime;
-	} params;
+	UGameCrowdAgentBehavior_OnAnimEnd_Params params;
 	params.SeqNode = SeqNode;
 	params.PlayedTime = PlayedTime;
 	params.ExcessTime = ExcessTime;
@@ -3176,9 +2735,7 @@ void UGameCrowdAgentBehavior::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.StopBehavior");
 
-	struct
-	{
-	} params;
+	UGameCrowdAgentBehavior_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3197,10 +2754,7 @@ void UGameCrowdAgentBehavior::InitBehavior(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.InitBehavior");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdAgentBehavior_InitBehavior_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -3220,10 +2774,7 @@ bool UGameCrowdAgentBehavior::HandleMovement()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.HandleMovement");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_HandleMovement_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3243,9 +2794,7 @@ void UGameCrowdAgentBehavior::FinishedTargetRotation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.FinishedTargetRotation");
 
-	struct
-	{
-	} params;
+	UGameCrowdAgentBehavior_FinishedTargetRotation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3266,12 +2815,7 @@ bool UGameCrowdAgentBehavior::CanBeUsedBy(class AGameCrowdAgent* Agent, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.CanBeUsedBy");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-		struct FVector                 CameraLoc;
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_CanBeUsedBy_Params params;
 	params.Agent = Agent;
 	params.CameraLoc = CameraLoc;
 
@@ -3294,10 +2838,7 @@ void UGameCrowdAgentBehavior::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGameCrowdAgentBehavior_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -3318,10 +2859,7 @@ bool UGameCrowdAgentBehavior::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.ShouldEndIdle");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_ShouldEndIdle_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3350,17 +2888,7 @@ class AGameCrowdBehaviorPoint* UGameCrowdAgentBehavior::STATIC_TriggerCrowdBehav
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdAgentBehavior.TriggerCrowdBehavior");
 
-	struct
-	{
-		TEnumAsByte<enum class ECrowdBehaviorEvent> EventType;
-		class AActor*                  Instigator;
-		struct FVector                 AtLocation;
-		float                          InRange;
-		float                          InDuration;
-		class AActor*                  BaseActor;
-		bool                           bRequireLOS;
-		class AGameCrowdBehaviorPoint* ReturnValue;
-	} params;
+	UGameCrowdAgentBehavior_TriggerCrowdBehavior_Params params;
 	params.EventType = EventType;
 	params.Instigator = Instigator;
 	params.AtLocation = AtLocation;
@@ -3389,10 +2917,7 @@ struct FString UGameCrowdBehavior_PlayAnimation::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameCrowdBehavior_PlayAnimation_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3411,9 +2936,7 @@ void UGameCrowdBehavior_PlayAnimation::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.StopBehavior");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_PlayAnimation_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3430,9 +2953,7 @@ void UGameCrowdBehavior_PlayAnimation::PlayAgentAnimationNow()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.PlayAgentAnimationNow");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_PlayAnimation_PlayAgentAnimationNow_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3453,12 +2974,7 @@ void UGameCrowdBehavior_PlayAnimation::OnAnimEnd(class UAnimNodeSequence* SeqNod
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.OnAnimEnd");
 
-	struct
-	{
-		class UAnimNodeSequence*       SeqNode;
-		float                          PlayedTime;
-		float                          ExcessTime;
-	} params;
+	UGameCrowdBehavior_PlayAnimation_OnAnimEnd_Params params;
 	params.SeqNode = SeqNode;
 	params.PlayedTime = PlayedTime;
 	params.ExcessTime = ExcessTime;
@@ -3478,9 +2994,7 @@ void UGameCrowdBehavior_PlayAnimation::SetSequenceOutput()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.SetSequenceOutput");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_PlayAnimation_SetSequenceOutput_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3498,9 +3012,7 @@ void UGameCrowdBehavior_PlayAnimation::FinishedTargetRotation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.FinishedTargetRotation");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_PlayAnimation_FinishedTargetRotation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3519,10 +3031,7 @@ void UGameCrowdBehavior_PlayAnimation::InitBehavior(class AGameCrowdAgent* Agent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_PlayAnimation.InitBehavior");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdBehavior_PlayAnimation_InitBehavior_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -3542,10 +3051,7 @@ struct FString UGameCrowdBehavior_RunFromPanic::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3567,11 +3073,7 @@ bool UGameCrowdBehavior_RunFromPanic::AllowBehaviorAt(class AGameCrowdDestinatio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.AllowBehaviorAt");
 
-	struct
-	{
-		class AGameCrowdDestination*   Destination;
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_AllowBehaviorAt_Params params;
 	params.Destination = Destination;
 
 	auto flags = fn->FunctionFlags;
@@ -3594,11 +3096,7 @@ bool UGameCrowdBehavior_RunFromPanic::AllowThisDestination(class AGameCrowdDesti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.AllowThisDestination");
 
-	struct
-	{
-		class AGameCrowdDestination*   Destination;
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_AllowThisDestination_Params params;
 	params.Destination = Destination;
 
 	auto flags = fn->FunctionFlags;
@@ -3620,10 +3118,7 @@ class AActor* UGameCrowdBehavior_RunFromPanic::GetBehaviorInstigator()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.GetBehaviorInstigator");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_GetBehaviorInstigator_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3642,9 +3137,7 @@ void UGameCrowdBehavior_RunFromPanic::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.StopBehavior");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_RunFromPanic_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3663,10 +3156,7 @@ void UGameCrowdBehavior_RunFromPanic::InitBehavior(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.InitBehavior");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_InitBehavior_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -3686,10 +3176,7 @@ void UGameCrowdBehavior_RunFromPanic::ActivatedBy(class AActor* NewActionTarget)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_RunFromPanic.ActivatedBy");
 
-	struct
-	{
-		class AActor*                  NewActionTarget;
-	} params;
+	UGameCrowdBehavior_RunFromPanic_ActivatedBy_Params params;
 	params.NewActionTarget = NewActionTarget;
 
 	auto flags = fn->FunctionFlags;
@@ -3707,9 +3194,7 @@ void UGameCrowdBehavior_WaitForGroup::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitForGroup.StopBehavior");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_WaitForGroup_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3728,10 +3213,7 @@ bool UGameCrowdBehavior_WaitForGroup::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitForGroup.ShouldEndIdle");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitForGroup_ShouldEndIdle_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3753,10 +3235,7 @@ struct FString UGameCrowdBehavior_WaitForGroup::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitForGroup.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitForGroup_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3777,10 +3256,7 @@ void UGameCrowdBehavior_WaitForGroup::InitBehavior(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitForGroup.InitBehavior");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdBehavior_WaitForGroup_InitBehavior_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -3798,9 +3274,7 @@ void UGameCrowdBehavior_WaitInQueue::StopBehavior()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.StopBehavior");
 
-	struct
-	{
-	} params;
+	UGameCrowdBehavior_WaitInQueue_StopBehavior_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3819,10 +3293,7 @@ bool UGameCrowdBehavior_WaitInQueue::ShouldEndIdle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.ShouldEndIdle");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitInQueue_ShouldEndIdle_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3844,10 +3315,7 @@ struct FString UGameCrowdBehavior_WaitInQueue::GetBehaviorString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.GetBehaviorString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitInQueue_GetBehaviorString_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3868,10 +3336,7 @@ class AActor* UGameCrowdBehavior_WaitInQueue::GetDestinationActor()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.GetDestinationActor");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitInQueue_GetDestinationActor_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3892,10 +3357,7 @@ void UGameCrowdBehavior_WaitInQueue::ChangingDestination(class AGameCrowdDestina
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.ChangingDestination");
 
-	struct
-	{
-		class AGameCrowdDestination*   NewDest;
-	} params;
+	UGameCrowdBehavior_WaitInQueue_ChangingDestination_Params params;
 	params.NewDest = NewDest;
 
 	auto flags = fn->FunctionFlags;
@@ -3915,10 +3377,7 @@ bool UGameCrowdBehavior_WaitInQueue::HandleMovement()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehavior_WaitInQueue.HandleMovement");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameCrowdBehavior_WaitInQueue_HandleMovement_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3940,10 +3399,7 @@ void UGameCrowdGroup::UpdateDestinations(class AGameCrowdDestination* NewDestina
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdGroup.UpdateDestinations");
 
-	struct
-	{
-		class AGameCrowdDestination*   NewDestination;
-	} params;
+	UGameCrowdGroup_UpdateDestinations_Params params;
 	params.NewDestination = NewDestination;
 
 	auto flags = fn->FunctionFlags;
@@ -3963,10 +3419,7 @@ void UGameCrowdGroup::RemoveMember(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdGroup.RemoveMember");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdGroup_RemoveMember_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -3986,10 +3439,7 @@ void UGameCrowdGroup::AddMember(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdGroup.AddMember");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdGroup_AddMember_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -4009,10 +3459,7 @@ void AGameCrowdInfoVolume::UnTouch(class AActor* Other)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdInfoVolume.UnTouch");
 
-	struct
-	{
-		class AActor*                  Other;
-	} params;
+	AGameCrowdInfoVolume_UnTouch_Params params;
 	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
@@ -4035,13 +3482,7 @@ void AGameCrowdInfoVolume::Touch(class AActor* Other, class UPrimitiveComponent*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdInfoVolume.Touch");
 
-	struct
-	{
-		class AActor*                  Other;
-		class UPrimitiveComponent*     OtherComp;
-		struct FVector                 HitLocation;
-		struct FVector                 HitNormal;
-	} params;
+	AGameCrowdInfoVolume_Touch_Params params;
 	params.Other = Other;
 	params.OtherComp = OtherComp;
 	params.HitLocation = HitLocation;
@@ -4064,10 +3505,7 @@ void AGameCrowdInteractionPoint::OnToggle(class USeqAct_Toggle* Action)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdInteractionPoint.OnToggle");
 
-	struct
-	{
-		class USeqAct_Toggle*          Action;
-	} params;
+	AGameCrowdInteractionPoint_OnToggle_Params params;
 	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
@@ -4090,13 +3528,7 @@ void AGameCrowdBehaviorPoint::Touch(class AActor* Other, class UPrimitiveCompone
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehaviorPoint.Touch");
 
-	struct
-	{
-		class AActor*                  Other;
-		class UPrimitiveComponent*     OtherComp;
-		struct FVector                 HitLocation;
-		struct FVector                 HitNormal;
-	} params;
+	AGameCrowdBehaviorPoint_Touch_Params params;
 	params.Other = Other;
 	params.OtherComp = OtherComp;
 	params.HitLocation = HitLocation;
@@ -4117,9 +3549,7 @@ void AGameCrowdBehaviorPoint::DestroySelf()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehaviorPoint.DestroySelf");
 
-	struct
-	{
-	} params;
+	AGameCrowdBehaviorPoint_DestroySelf_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4136,9 +3566,7 @@ void AGameCrowdBehaviorPoint::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdBehaviorPoint.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdBehaviorPoint_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4158,11 +3586,7 @@ void AGameCrowdDestination::DrawDebug(bool bPresistent, TArray<struct FCrowdSpaw
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.DrawDebug");
 
-	struct
-	{
-		TArray<struct FCrowdSpawnerPlayerInfo> PlayerInfo;
-		bool                           bPresistent;
-	} params;
+	AGameCrowdDestination_DrawDebug_Params params;
 	params.bPresistent = bPresistent;
 
 	auto flags = fn->FunctionFlags;
@@ -4185,10 +3609,7 @@ float AGameCrowdDestination::GetDestinationRadius()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.GetDestinationRadius");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	AGameCrowdDestination_GetDestinationRadius_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4210,11 +3631,7 @@ void AGameCrowdDestination::PrioritizeSpawnPoint(float MaxSpawnDist, TArray<stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.PrioritizeSpawnPoint");
 
-	struct
-	{
-		TArray<struct FCrowdSpawnerPlayerInfo> PlayerInfo;
-		float                          MaxSpawnDist;
-	} params;
+	AGameCrowdDestination_PrioritizeSpawnPoint_Params params;
 	params.MaxSpawnDist = MaxSpawnDist;
 
 	auto flags = fn->FunctionFlags;
@@ -4241,14 +3658,7 @@ bool AGameCrowdDestination::AnalyzeSpawnPoint(float MaxSpawnDistSq, bool bForceN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.AnalyzeSpawnPoint");
 
-	struct
-	{
-		TArray<struct FCrowdSpawnerPlayerInfo> PlayerInfo;
-		float                          MaxSpawnDistSq;
-		bool                           bForceNavMeshPathing;
-		class UNavigationHandle*       NavHandle;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestination_AnalyzeSpawnPoint_Params params;
 	params.MaxSpawnDistSq = MaxSpawnDistSq;
 	params.bForceNavMeshPathing = bForceNavMeshPathing;
 	params.NavHandle = NavHandle;
@@ -4277,12 +3687,7 @@ void AGameCrowdDestination::GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.GetSpawnPosition");
 
-	struct
-	{
-		class USeqAct_GameCrowdSpawner* Spawner;
-		struct FVector                 SpawnPos;
-		struct FRotator                SpawnRot;
-	} params;
+	AGameCrowdDestination_GetSpawnPosition_Params params;
 	params.Spawner = Spawner;
 
 	auto flags = fn->FunctionFlags;
@@ -4307,10 +3712,7 @@ float AGameCrowdDestination::GetSpawnRadius()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.GetSpawnRadius");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	AGameCrowdDestination_GetSpawnRadius_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4332,11 +3734,7 @@ bool AGameCrowdDestination::AllowableDestinationFor(class AGameCrowdAgent* Agent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.AllowableDestinationFor");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestination_AllowableDestinationFor_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -4359,11 +3757,7 @@ bool AGameCrowdDestination::AtCapacity(unsigned char CheckCnt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.AtCapacity");
 
-	struct
-	{
-		unsigned char                  CheckCnt;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestination_AtCapacity_Params params;
 	params.CheckCnt = CheckCnt;
 
 	auto flags = fn->FunctionFlags;
@@ -4385,10 +3779,7 @@ void AGameCrowdDestination::IncrementCustomerCount(class AGameCrowdAgent* Arrivi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.IncrementCustomerCount");
 
-	struct
-	{
-		class AGameCrowdAgent*         ArrivingAgent;
-	} params;
+	AGameCrowdDestination_IncrementCustomerCount_Params params;
 	params.ArrivingAgent = ArrivingAgent;
 
 	auto flags = fn->FunctionFlags;
@@ -4408,10 +3799,7 @@ void AGameCrowdDestination::DecrementCustomerCount(class AGameCrowdAgent* Depart
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.DecrementCustomerCount");
 
-	struct
-	{
-		class AGameCrowdAgent*         DepartingAgent;
-	} params;
+	AGameCrowdDestination_DecrementCustomerCount_Params params;
 	params.DepartingAgent = DepartingAgent;
 
 	auto flags = fn->FunctionFlags;
@@ -4432,11 +3820,7 @@ void AGameCrowdDestination::PickNewDestinationFor(class AGameCrowdAgent* Agent, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.PickNewDestinationFor");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-		bool                           bIgnoreRestrictions;
-	} params;
+	AGameCrowdDestination_PickNewDestinationFor_Params params;
 	params.Agent = Agent;
 	params.bIgnoreRestrictions = bIgnoreRestrictions;
 
@@ -4457,10 +3841,7 @@ void AGameCrowdDestination::ReachedDestination(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.ReachedDestination");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	AGameCrowdDestination_ReachedDestination_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -4478,9 +3859,7 @@ void AGameCrowdDestination::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.Destroyed");
 
-	struct
-	{
-	} params;
+	AGameCrowdDestination_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4497,9 +3876,7 @@ void AGameCrowdDestination::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdDestination_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4521,13 +3898,7 @@ bool AGameCrowdDestination::ReachedByAgent(class AGameCrowdAgent* Agent, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestination.ReachedByAgent");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-		struct FVector                 TestPosition;
-		bool                           bTestExactly;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestination_ReachedByAgent_Params params;
 	params.Agent = Agent;
 	params.TestPosition = TestPosition;
 	params.bTestExactly = bTestExactly;
@@ -4552,10 +3923,7 @@ bool AGameCrowdDestinationQueuePoint::HasCustomer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.HasCustomer");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestinationQueuePoint_HasCustomer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4576,10 +3944,7 @@ void AGameCrowdDestinationQueuePoint::ClearQueue(class AGameCrowdAgent* OldCusto
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.ClearQueue");
 
-	struct
-	{
-		class AGameCrowdAgent*         OldCustomer;
-	} params;
+	AGameCrowdDestinationQueuePoint_ClearQueue_Params params;
 	params.OldCustomer = OldCustomer;
 
 	auto flags = fn->FunctionFlags;
@@ -4600,11 +3965,7 @@ void AGameCrowdDestinationQueuePoint::AddCustomer(class AGameCrowdAgent* NewCust
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.AddCustomer");
 
-	struct
-	{
-		class AGameCrowdAgent*         NewCustomer;
-		class AGameCrowdInteractionPoint* PreviousPosition;
-	} params;
+	AGameCrowdDestinationQueuePoint_AddCustomer_Params params;
 	params.NewCustomer = NewCustomer;
 	params.PreviousPosition = PreviousPosition;
 
@@ -4623,9 +3984,7 @@ void AGameCrowdDestinationQueuePoint::ActuallyAdvance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.ActuallyAdvance");
 
-	struct
-	{
-	} params;
+	AGameCrowdDestinationQueuePoint_ActuallyAdvance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4644,10 +4003,7 @@ void AGameCrowdDestinationQueuePoint::AdvanceCustomerTo(class AGameCrowdInteract
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.AdvanceCustomerTo");
 
-	struct
-	{
-		class AGameCrowdInteractionPoint* FrontPosition;
-	} params;
+	AGameCrowdDestinationQueuePoint_AdvanceCustomerTo_Params params;
 	params.FrontPosition = FrontPosition;
 
 	auto flags = fn->FunctionFlags;
@@ -4667,10 +4023,7 @@ void AGameCrowdDestinationQueuePoint::ReachedDestination(class AGameCrowdAgent* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.ReachedDestination");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	AGameCrowdDestinationQueuePoint_ReachedDestination_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -4690,10 +4043,7 @@ bool AGameCrowdDestinationQueuePoint::HasSpace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.HasSpace");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestinationQueuePoint_HasSpace_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4716,12 +4066,7 @@ bool AGameCrowdDestinationQueuePoint::QueueReachedBy(class AGameCrowdAgent* Agen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdDestinationQueuePoint.QueueReachedBy");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-		struct FVector                 TestPosition;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdDestinationQueuePoint_QueueReachedBy_Params params;
 	params.Agent = Agent;
 	params.TestPosition = TestPosition;
 
@@ -4749,14 +4094,7 @@ class AGameCrowdAgent* AGameCrowdPopulationManager::CreateNewAgent(class AGameCr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.CreateNewAgent");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		class AGameCrowdDestination*   SpawnLoc;
-		class AGameCrowdAgent*         AgentTemplate;
-		class UGameCrowdGroup*         NewGroup;
-		class AGameCrowdAgent*         ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_CreateNewAgent_Params params;
 	params.SpawnLoc = SpawnLoc;
 	params.AgentTemplate = AgentTemplate;
 	params.NewGroup = NewGroup;
@@ -4785,12 +4123,7 @@ bool AGameCrowdPopulationManager::Warmup(int WarmupNum, struct FCrowdSpawnInfoIt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.Warmup");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		int                            WarmupNum;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_Warmup_Params params;
 	params.WarmupNum = WarmupNum;
 
 	auto flags = fn->FunctionFlags;
@@ -4818,12 +4151,7 @@ class AGameCrowdAgent* AGameCrowdPopulationManager::SpawnAgent(class AGameCrowdD
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.SpawnAgent");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		class AGameCrowdDestination*   SpawnLoc;
-		class AGameCrowdAgent*         ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_SpawnAgent_Params params;
 	params.SpawnLoc = SpawnLoc;
 
 	auto flags = fn->FunctionFlags;
@@ -4851,12 +4179,7 @@ class AGameCrowdAgent* AGameCrowdPopulationManager::SpawnAgentByIdx(int SpawnerI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.SpawnAgentByIdx");
 
-	struct
-	{
-		int                            SpawnerIdx;
-		class AGameCrowdDestination*   SpawnLoc;
-		class AGameCrowdAgent*         ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_SpawnAgentByIdx_Params params;
 	params.SpawnerIdx = SpawnerIdx;
 	params.SpawnLoc = SpawnLoc;
 
@@ -4882,12 +4205,7 @@ bool AGameCrowdPopulationManager::ValidateSpawnAt(class AGameCrowdDestination* C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.ValidateSpawnAt");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		class AGameCrowdDestination*   Candidate;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_ValidateSpawnAt_Params params;
 	params.Candidate = Candidate;
 
 	auto flags = fn->FunctionFlags;
@@ -4913,11 +4231,7 @@ void AGameCrowdPopulationManager::AddPrioritizedSpawnPoint(class AGameCrowdDesti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.AddPrioritizedSpawnPoint");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		class AGameCrowdDestination*   GCD;
-	} params;
+	AGameCrowdPopulationManager_AddPrioritizedSpawnPoint_Params params;
 	params.GCD = GCD;
 
 	auto flags = fn->FunctionFlags;
@@ -4942,12 +4256,7 @@ void AGameCrowdPopulationManager::AnalyzeSpawnPoints(int StartIndex, int NumToUp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.AnalyzeSpawnPoints");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		int                            StartIndex;
-		int                            NumToUpdate;
-	} params;
+	AGameCrowdPopulationManager_AnalyzeSpawnPoints_Params params;
 	params.StartIndex = StartIndex;
 	params.NumToUpdate = NumToUpdate;
 
@@ -4972,11 +4281,7 @@ void AGameCrowdPopulationManager::PrioritizeSpawnPoints(float DeltaTime, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.PrioritizeSpawnPoints");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		float                          DeltaTime;
-	} params;
+	AGameCrowdPopulationManager_PrioritizeSpawnPoints_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -5000,11 +4305,7 @@ bool AGameCrowdPopulationManager::STATIC_StaticGetPlayerInfo(TArray<struct FCrow
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.StaticGetPlayerInfo");
 
-	struct
-	{
-		TArray<struct FCrowdSpawnerPlayerInfo> out_PlayerInfo;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_StaticGetPlayerInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5029,10 +4330,7 @@ bool AGameCrowdPopulationManager::GetPlayerInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.GetPlayerInfo");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_GetPlayerInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5055,11 +4353,7 @@ class AGameCrowdDestination* AGameCrowdPopulationManager::PickSpawnPoint(struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.PickSpawnPoint");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		class AGameCrowdDestination*   ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_PickSpawnPoint_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5085,12 +4379,7 @@ bool AGameCrowdPopulationManager::UpdateSpawner(float DeltaTime, struct FCrowdSp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.UpdateSpawner");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_UpdateSpawner_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -5115,10 +4404,7 @@ void AGameCrowdPopulationManager::UpdateAllSpawners(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.UpdateAllSpawners");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	AGameCrowdPopulationManager_UpdateAllSpawners_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -5139,10 +4425,7 @@ void AGameCrowdPopulationManager::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	AGameCrowdPopulationManager_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -5162,10 +4445,7 @@ bool AGameCrowdPopulationManager::ShouldDebugDestinations()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.ShouldDebugDestinations");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_ShouldDebugDestinations_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5186,10 +4466,7 @@ bool AGameCrowdPopulationManager::IsSpawningActive()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.IsSpawningActive");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_IsSpawningActive_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5212,12 +4489,7 @@ void AGameCrowdPopulationManager::DisplayDebug(class AHUD* HUD, float* out_YL, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.DisplayDebug");
 
-	struct
-	{
-		class AHUD*                    HUD;
-		float                          out_YL;
-		float                          out_YPos;
-	} params;
+	AGameCrowdPopulationManager_DisplayDebug_Params params;
 	params.HUD = HUD;
 
 	auto flags = fn->FunctionFlags;
@@ -5242,10 +4514,7 @@ void AGameCrowdPopulationManager::AgentDestroyed(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.AgentDestroyed");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	AGameCrowdPopulationManager_AgentDestroyed_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -5263,9 +4532,7 @@ void AGameCrowdPopulationManager::FlushAllAgents()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.FlushAllAgents");
 
-	struct
-	{
-	} params;
+	AGameCrowdPopulationManager_FlushAllAgents_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5284,10 +4551,7 @@ void AGameCrowdPopulationManager::FlushAgents(const struct FCrowdSpawnInfoItem& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.FlushAgents");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     Item;
-	} params;
+	AGameCrowdPopulationManager_FlushAgents_Params params;
 	params.Item = Item;
 
 	auto flags = fn->FunctionFlags;
@@ -5308,11 +4572,7 @@ int AGameCrowdPopulationManager::CreateSpawner(class USeqAct_GameCrowdPopulation
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.CreateSpawner");
 
-	struct
-	{
-		class USeqAct_GameCrowdPopulationManagerToggle* inAction;
-		int                            ReturnValue;
-	} params;
+	AGameCrowdPopulationManager_CreateSpawner_Params params;
 	params.inAction = inAction;
 
 	auto flags = fn->FunctionFlags;
@@ -5334,10 +4594,7 @@ void AGameCrowdPopulationManager::SetCrowdInfoVolume(class AGameCrowdInfoVolume*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.SetCrowdInfoVolume");
 
-	struct
-	{
-		class AGameCrowdInfoVolume*    Vol;
-	} params;
+	AGameCrowdPopulationManager_SetCrowdInfoVolume_Params params;
 	params.Vol = Vol;
 
 	auto flags = fn->FunctionFlags;
@@ -5357,10 +4614,7 @@ void AGameCrowdPopulationManager::RemoveSpawnPoint(class AGameCrowdDestination* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.RemoveSpawnPoint");
 
-	struct
-	{
-		class AGameCrowdDestination*   GCD;
-	} params;
+	AGameCrowdPopulationManager_RemoveSpawnPoint_Params params;
 	params.GCD = GCD;
 
 	auto flags = fn->FunctionFlags;
@@ -5380,10 +4634,7 @@ void AGameCrowdPopulationManager::AddSpawnPoint(class AGameCrowdDestination* GCD
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.AddSpawnPoint");
 
-	struct
-	{
-		class AGameCrowdDestination*   GCD;
-	} params;
+	AGameCrowdPopulationManager_AddSpawnPoint_Params params;
 	params.GCD = GCD;
 
 	auto flags = fn->FunctionFlags;
@@ -5401,9 +4652,7 @@ void AGameCrowdPopulationManager::NotifyPathChanged()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.NotifyPathChanged");
 
-	struct
-	{
-	} params;
+	AGameCrowdPopulationManager_NotifyPathChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5420,9 +4669,7 @@ void AGameCrowdPopulationManager::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdPopulationManager.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameCrowdPopulationManager_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5441,10 +4688,7 @@ void AGameCrowdReplicationActor::ReplicatedEvent(const struct FName& VarName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdReplicationActor.ReplicatedEvent");
 
-	struct
-	{
-		struct FName                   VarName;
-	} params;
+	AGameCrowdReplicationActor_ReplicatedEvent_Params params;
 	params.VarName = VarName;
 
 	auto flags = fn->FunctionFlags;
@@ -5466,12 +4710,7 @@ class UCameraShake* AGameExplosionActor::ChooseCameraShake(const struct FVector&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.ChooseCameraShake");
 
-	struct
-	{
-		struct FVector                 Epicenter;
-		class APlayerController*       PC;
-		class UCameraShake*            ReturnValue;
-	} params;
+	AGameExplosionActor_ChooseCameraShake_Params params;
 	params.Epicenter = Epicenter;
 	params.PC = PC;
 
@@ -5492,9 +4731,7 @@ void AGameExplosionActor::SpawnCameraLensEffects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpawnCameraLensEffects");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_SpawnCameraLensEffects_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5511,9 +4748,7 @@ void AGameExplosionActor::DoExplosionCameraEffects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DoExplosionCameraEffects");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_DoExplosionCameraEffects_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5530,9 +4765,7 @@ void AGameExplosionActor::DrawDebug()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DrawDebug");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_DrawDebug_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5549,9 +4782,7 @@ void AGameExplosionActor::DelayedExplosionDamage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DelayedExplosionDamage");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_DelayedExplosionDamage_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5571,11 +4802,7 @@ void AGameExplosionActor::Explode(class UGameExplosion* NewExplosionTemplate, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.Explode");
 
-	struct
-	{
-		class UGameExplosion*          NewExplosionTemplate;
-		struct FVector                 Direction;
-	} params;
+	AGameExplosionActor_Explode_Params params;
 	params.NewExplosionTemplate = NewExplosionTemplate;
 	params.Direction = Direction;
 
@@ -5594,9 +4821,7 @@ void AGameExplosionActor::SpawnExplosionFogVolume()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpawnExplosionFogVolume");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_SpawnExplosionFogVolume_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5613,9 +4838,7 @@ void AGameExplosionActor::SpawnExplosionDecal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpawnExplosionDecal");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_SpawnExplosionDecal_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5634,10 +4857,7 @@ void AGameExplosionActor::SpawnExplosionParticleSystem(class UParticleSystem* Te
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpawnExplosionParticleSystem");
 
-	struct
-	{
-		class UParticleSystem*         Template;
-	} params;
+	AGameExplosionActor_SpawnExplosionParticleSystem_Params params;
 	params.Template = Template;
 
 	auto flags = fn->FunctionFlags;
@@ -5657,10 +4877,7 @@ void AGameExplosionActor::UpdateExplosionTemplateWithPerMaterialFX(class UPhysic
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.UpdateExplosionTemplateWithPerMaterialFX");
 
-	struct
-	{
-		class UPhysicalMaterial*       PhysMaterial;
-	} params;
+	AGameExplosionActor_UpdateExplosionTemplateWithPerMaterialFX_Params params;
 	params.PhysMaterial = PhysMaterial;
 
 	auto flags = fn->FunctionFlags;
@@ -5681,11 +4898,7 @@ void AGameExplosionActor::SpecialCringeEffectsFor(class AActor* Victim, float Vi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpecialCringeEffectsFor");
 
-	struct
-	{
-		class AActor*                  Victim;
-		float                          VictimDist;
-	} params;
+	AGameExplosionActor_SpecialCringeEffectsFor_Params params;
 	params.Victim = Victim;
 	params.VictimDist = VictimDist;
 
@@ -5707,11 +4920,7 @@ void AGameExplosionActor::SpecialPawnEffectsFor(class AGamePawn* VictimPawn, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.SpecialPawnEffectsFor");
 
-	struct
-	{
-		class AGamePawn*               VictimPawn;
-		float                          VictimDist;
-	} params;
+	AGameExplosionActor_SpecialPawnEffectsFor_Params params;
 	params.VictimPawn = VictimPawn;
 	params.VictimDist = VictimDist;
 
@@ -5735,13 +4944,7 @@ float AGameExplosionActor::GetEffectCheckRadius(bool bCauseDamage, bool bCauseFr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.GetEffectCheckRadius");
 
-	struct
-	{
-		bool                           bCauseDamage;
-		bool                           bCauseFractureEffects;
-		bool                           bCauseEffects;
-		float                          ReturnValue;
-	} params;
+	AGameExplosionActor_GetEffectCheckRadius_Params params;
 	params.bCauseDamage = bCauseDamage;
 	params.bCauseFractureEffects = bCauseFractureEffects;
 	params.bCauseEffects = bCauseEffects;
@@ -5767,12 +4970,7 @@ bool AGameExplosionActor::DoExplosionDamage(bool bCauseDamage, bool bCauseEffect
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DoExplosionDamage");
 
-	struct
-	{
-		bool                           bCauseDamage;
-		bool                           bCauseEffects;
-		bool                           ReturnValue;
-	} params;
+	AGameExplosionActor_DoExplosionDamage_Params params;
 	params.bCauseDamage = bCauseDamage;
 	params.bCauseEffects = bCauseEffects;
 
@@ -5797,12 +4995,7 @@ float AGameExplosionActor::STATIC_BoxDistanceToPoint(const struct FVector& Start
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.BoxDistanceToPoint");
 
-	struct
-	{
-		struct FVector                 Start;
-		struct FBox                    BBox;
-		float                          ReturnValue;
-	} params;
+	AGameExplosionActor_BoxDistanceToPoint_Params params;
 	params.Start = Start;
 	params.BBox = BBox;
 
@@ -5827,11 +5020,7 @@ bool AGameExplosionActor::IsBehindExplosion(class AActor* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.IsBehindExplosion");
 
-	struct
-	{
-		class AActor*                  A;
-		bool                           ReturnValue;
-	} params;
+	AGameExplosionActor_IsBehindExplosion_Params params;
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
@@ -5854,11 +5043,7 @@ bool AGameExplosionActor::DoFullDamageToActor(class AActor* Victim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.DoFullDamageToActor");
 
-	struct
-	{
-		class AActor*                  Victim;
-		bool                           ReturnValue;
-	} params;
+	AGameExplosionActor_DoFullDamageToActor_Params params;
 	params.Victim = Victim;
 
 	auto flags = fn->FunctionFlags;
@@ -5880,10 +5065,7 @@ class UPhysicalMaterial* AGameExplosionActor::GetPhysicalMaterial()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.GetPhysicalMaterial");
 
-	struct
-	{
-		class UPhysicalMaterial*       ReturnValue;
-	} params;
+	AGameExplosionActor_GetPhysicalMaterial_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5902,9 +5084,7 @@ void AGameExplosionActor::PreBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameExplosionActor.PreBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameExplosionActor_PreBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5921,9 +5101,7 @@ void AGamePawn::ReattachMeshWithoutBeingSeen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePawn.ReattachMeshWithoutBeingSeen");
 
-	struct
-	{
-	} params;
+	AGamePawn_ReattachMeshWithoutBeingSeen_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5940,9 +5118,7 @@ void AGamePawn::ReattachMesh()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePawn.ReattachMesh");
 
-	struct
-	{
-	} params;
+	AGamePawn_ReattachMesh_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5961,10 +5137,7 @@ void AGamePawn::UpdateShadowSettings(bool bInWantShadow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePawn.UpdateShadowSettings");
 
-	struct
-	{
-		bool                           bInWantShadow;
-	} params;
+	AGamePawn_UpdateShadowSettings_Params params;
 	params.bInWantShadow = bInWantShadow;
 
 	auto flags = fn->FunctionFlags;
@@ -5986,12 +5159,7 @@ struct FString ADebugCameraController::ConsoleCommand(const struct FString& Comm
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.ConsoleCommand");
 
-	struct
-	{
-		struct FString                 Command;
-		bool                           bWriteToLog;
-		struct FString                 ReturnValue;
-	} params;
+	ADebugCameraController_ConsoleCommand_Params params;
 	params.Command = Command;
 	params.bWriteToLog = bWriteToLog;
 
@@ -6013,9 +5181,7 @@ void ADebugCameraController::ShowDebugSelectedInfo()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.ShowDebugSelectedInfo");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_ShowDebugSelectedInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6039,15 +5205,7 @@ bool ADebugCameraController::NativeInputKey(int ControllerId, const struct FName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.NativeInputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	ADebugCameraController_NativeInputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Event = Event;
@@ -6071,9 +5229,7 @@ void ADebugCameraController::InitDebugInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.InitDebugInputSystem");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_InitDebugInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6090,9 +5246,7 @@ void ADebugCameraController::DisableDebugCamera()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.DisableDebugCamera");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_DisableDebugCamera_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6109,9 +5263,7 @@ void ADebugCameraController::NormalSpeed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.NormalSpeed");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_NormalSpeed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6128,9 +5280,7 @@ void ADebugCameraController::MoreSpeed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.MoreSpeed");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_MoreSpeed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6147,9 +5297,7 @@ void ADebugCameraController::SetFreezeRendering()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.SetFreezeRendering");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_SetFreezeRendering_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6168,10 +5316,7 @@ void ADebugCameraController::OnDeactivate(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.OnDeactivate");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	ADebugCameraController_OnDeactivate_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -6191,10 +5336,7 @@ void ADebugCameraController::OnActivate(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.OnActivate");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	ADebugCameraController_OnActivate_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -6212,9 +5354,7 @@ void ADebugCameraController::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6231,9 +5371,7 @@ void ADebugCameraController::Unselect()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.Unselect");
 
-	struct
-	{
-	} params;
+	ADebugCameraController_Unselect_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6255,12 +5393,7 @@ void ADebugCameraController::SecondarySelect(const struct FVector& HitLoc, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.SecondarySelect");
 
-	struct
-	{
-		struct FVector                 HitLoc;
-		struct FVector                 HitNormal;
-		struct FTraceHitInfo           HitInfo;
-	} params;
+	ADebugCameraController_SecondarySelect_Params params;
 	params.HitLoc = HitLoc;
 	params.HitNormal = HitNormal;
 	params.HitInfo = HitInfo;
@@ -6285,12 +5418,7 @@ void ADebugCameraController::PrimarySelect(const struct FVector& HitLoc, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.PrimarySelect");
 
-	struct
-	{
-		struct FVector                 HitLoc;
-		struct FVector                 HitNormal;
-		struct FTraceHitInfo           HitInfo;
-	} params;
+	ADebugCameraController_PrimarySelect_Params params;
 	params.HitLoc = HitLoc;
 	params.HitNormal = HitNormal;
 	params.HitInfo = HitInfo;
@@ -6311,9 +5439,7 @@ void AMobileHUD::RenderKismetHud()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.RenderKismetHud");
 
-	struct
-	{
-	} params;
+	AMobileHUD_RenderKismetHud_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6332,10 +5458,7 @@ void AMobileHUD::AddKismetRenderEvent(class USeqEvent_HudRender* NewEvent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.AddKismetRenderEvent");
 
-	struct
-	{
-		class USeqEvent_HudRender*     NewEvent;
-	} params;
+	AMobileHUD_AddKismetRenderEvent_Params params;
 	params.NewEvent = NewEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -6353,9 +5476,7 @@ void AMobileHUD::RefreshKismetLinks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.RefreshKismetLinks");
 
-	struct
-	{
-	} params;
+	AMobileHUD_RefreshKismetLinks_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6374,10 +5495,7 @@ void AMobileHUD::DrawMobileZone_Slider(class UMobileInputZone* Zone)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileZone_Slider");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-	} params;
+	AMobileHUD_DrawMobileZone_Slider_Params params;
 	params.Zone = Zone;
 
 	auto flags = fn->FunctionFlags;
@@ -6397,10 +5515,7 @@ void AMobileHUD::DrawMobileTilt(class UMobilePlayerInput* MobileInput)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileTilt");
 
-	struct
-	{
-		class UMobilePlayerInput*      MobileInput;
-	} params;
+	AMobileHUD_DrawMobileTilt_Params params;
 	params.MobileInput = MobileInput;
 
 	auto flags = fn->FunctionFlags;
@@ -6420,10 +5535,7 @@ void AMobileHUD::DrawMobileZone_Trackball(class UMobileInputZone* Zone)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileZone_Trackball");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-	} params;
+	AMobileHUD_DrawMobileZone_Trackball_Params params;
 	params.Zone = Zone;
 
 	auto flags = fn->FunctionFlags;
@@ -6443,10 +5555,7 @@ void AMobileHUD::DrawMobileZone_Joystick(class UMobileInputZone* Zone)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileZone_Joystick");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-	} params;
+	AMobileHUD_DrawMobileZone_Joystick_Params params;
 	params.Zone = Zone;
 
 	auto flags = fn->FunctionFlags;
@@ -6466,10 +5575,7 @@ void AMobileHUD::DrawMobileZone_Button(class UMobileInputZone* Zone)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileZone_Button");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-	} params;
+	AMobileHUD_DrawMobileZone_Button_Params params;
 	params.Zone = Zone;
 
 	auto flags = fn->FunctionFlags;
@@ -6487,9 +5593,7 @@ void AMobileHUD::DrawInputZoneOverlays()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawInputZoneOverlays");
 
-	struct
-	{
-	} params;
+	AMobileHUD_DrawInputZoneOverlays_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6506,9 +5610,7 @@ void AMobileHUD::RenderMobileMenu()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.RenderMobileMenu");
 
-	struct
-	{
-	} params;
+	AMobileHUD_RenderMobileMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6527,10 +5629,7 @@ bool AMobileHUD::ShowMobileHud()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.ShowMobileHud");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AMobileHUD_ShowMobileHud_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6553,12 +5652,7 @@ void AMobileHUD::DrawMobileDebugString(float XPos, float YPos, const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.DrawMobileDebugString");
 
-	struct
-	{
-		float                          XPos;
-		float                          YPos;
-		struct FString                 Str;
-	} params;
+	AMobileHUD_DrawMobileDebugString_Params params;
 	params.XPos = XPos;
 	params.YPos = YPos;
 	params.Str = Str;
@@ -6578,9 +5672,7 @@ void AMobileHUD::PostRender()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.PostRender");
 
-	struct
-	{
-	} params;
+	AMobileHUD_PostRender_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6597,9 +5689,7 @@ void AMobileHUD::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileHUD.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AMobileHUD_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -6618,10 +5708,7 @@ void UMobileInputZone::AddKismetEventHandler(class USeqEvent_MobileZoneBase* New
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.AddKismetEventHandler");
 
-	struct
-	{
-		class USeqEvent_MobileZoneBase* NewHandler;
-	} params;
+	UMobileInputZone_AddKismetEventHandler_Params params;
 	params.NewHandler = NewHandler;
 
 	auto flags = fn->FunctionFlags;
@@ -6642,11 +5729,7 @@ void UMobileInputZone::OnPostDrawZone(class UMobileInputZone* Zone, class UCanva
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPostDrawZone");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		class UCanvas*                 Canvas;
-	} params;
+	UMobileInputZone_OnPostDrawZone_Params params;
 	params.Zone = Zone;
 	params.Canvas = Canvas;
 
@@ -6669,12 +5752,7 @@ bool UMobileInputZone::OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPreDrawZone");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		class UCanvas*                 Canvas;
-		bool                           ReturnValue;
-	} params;
+	UMobileInputZone_OnPreDrawZone_Params params;
 	params.Zone = Zone;
 	params.Canvas = Canvas;
 
@@ -6701,14 +5779,7 @@ bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessSlide");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		TEnumAsByte<enum class ETouchType> EventType;
-		int                            SlideValue;
-		struct FVector2D               ViewportSize;
-		bool                           ReturnValue;
-	} params;
+	UMobileInputZone_OnProcessSlide_Params params;
 	params.Zone = Zone;
 	params.EventType = EventType;
 	params.SlideValue = SlideValue;
@@ -6736,13 +5807,7 @@ bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnDoubleTapDelegate");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		TEnumAsByte<enum class ETouchType> EventType;
-		struct FVector2D               TouchLocation;
-		bool                           ReturnValue;
-	} params;
+	UMobileInputZone_OnDoubleTapDelegate_Params params;
 	params.Zone = Zone;
 	params.EventType = EventType;
 	params.TouchLocation = TouchLocation;
@@ -6769,13 +5834,7 @@ bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<e
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnTapDelegate");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		TEnumAsByte<enum class ETouchType> EventType;
-		struct FVector2D               TouchLocation;
-		bool                           ReturnValue;
-	} params;
+	UMobileInputZone_OnTapDelegate_Params params;
 	params.Zone = Zone;
 	params.EventType = EventType;
 	params.TouchLocation = TouchLocation;
@@ -6804,15 +5863,7 @@ bool UMobileInputZone::OnProcessInputDelegate(class UMobileInputZone* Zone, floa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessInputDelegate");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		float                          DeltaTime;
-		int                            Handle;
-		TEnumAsByte<enum class ETouchType> EventType;
-		struct FVector2D               TouchLocation;
-		bool                           ReturnValue;
-	} params;
+	UMobileInputZone_OnProcessInputDelegate_Params params;
 	params.Zone = Zone;
 	params.DeltaTime = DeltaTime;
 	params.Handle = Handle;
@@ -6836,9 +5887,7 @@ void UMobileInputZone::DeactivateZone()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.DeactivateZone");
 
-	struct
-	{
-	} params;
+	UMobileInputZone_DeactivateZone_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6856,9 +5905,7 @@ void UMobileInputZone::ActivateZone()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.ActivateZone");
 
-	struct
-	{
-	} params;
+	UMobileInputZone_ActivateZone_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6879,11 +5926,7 @@ void UMobileMenuObject::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuObject_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -6906,12 +5949,7 @@ void UMobileMenuObject::SetCanvasPos(class UCanvas* Canvas, float OffsetX, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.SetCanvasPos");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          OffsetX;
-		float                          OffsetY;
-	} params;
+	UMobileMenuObject_SetCanvasPos_Params params;
 	params.Canvas = Canvas;
 	params.OffsetX = OffsetX;
 	params.OffsetY = OffsetY;
@@ -6937,14 +5975,7 @@ void UMobileMenuObject::InitMenuObject(class UMobilePlayerInput* PlayerInput, cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.InitMenuObject");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		class UMobileMenuScene*        Scene;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuObject_InitMenuObject_Params params;
 	params.PlayerInput = PlayerInput;
 	params.Scene = Scene;
 	params.ScreenWidth = ScreenWidth;
@@ -6969,11 +6000,7 @@ void UMobileMenuObject::GetRealPosition(float* PosX, float* PosY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.GetRealPosition");
 
-	struct
-	{
-		float                          PosX;
-		float                          PosY;
-	} params;
+	UMobileMenuObject_GetRealPosition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7002,15 +6029,7 @@ bool UMobileMenuObject::OnTouch(TEnumAsByte<enum class ETouchType> EventType, fl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObject.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuObject_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -7037,11 +6056,7 @@ void UMobileMenuImage::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuImage.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuImage_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -7063,11 +6078,7 @@ bool UMobileMenuScene::MobileMenuCommand(const struct FString& Command)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.MobileMenuCommand");
 
-	struct
-	{
-		struct FString                 Command;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuScene_MobileMenuCommand_Params params;
 	params.Command = Command;
 
 	auto flags = fn->FunctionFlags;
@@ -7090,11 +6101,7 @@ class UMobileMenuObject* UMobileMenuScene::FindMenuObject(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.FindMenuObject");
 
-	struct
-	{
-		struct FString                 Tag;
-		class UMobileMenuObject*       ReturnValue;
-	} params;
+	UMobileMenuScene_FindMenuObject_Params params;
 	params.Tag = Tag;
 
 	auto flags = fn->FunctionFlags;
@@ -7114,9 +6121,7 @@ void UMobileMenuScene::CleanUpScene()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.CleanUpScene");
 
-	struct
-	{
-	} params;
+	UMobileMenuScene_CleanUpScene_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7134,9 +6139,7 @@ void UMobileMenuScene::Closed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.Closed");
 
-	struct
-	{
-	} params;
+	UMobileMenuScene_Closed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7155,10 +6158,7 @@ bool UMobileMenuScene::Closing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.Closing");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuScene_Closing_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7177,9 +6177,7 @@ void UMobileMenuScene::MadeTopMenu()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.MadeTopMenu");
 
-	struct
-	{
-	} params;
+	UMobileMenuScene_MadeTopMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7198,10 +6196,7 @@ void UMobileMenuScene::Opened(const struct FString& Mode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.Opened");
 
-	struct
-	{
-		struct FString                 Mode;
-	} params;
+	UMobileMenuScene_Opened_Params params;
 	params.Mode = Mode;
 
 	auto flags = fn->FunctionFlags;
@@ -7225,14 +6220,7 @@ bool UMobileMenuScene::OnSceneTouch(TEnumAsByte<enum class ETouchType> EventType
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.OnSceneTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		bool                           bInside;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuScene_OnSceneTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -7260,13 +6248,7 @@ void UMobileMenuScene::OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<enum
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.OnTouch");
 
-	struct
-	{
-		class UMobileMenuObject*       Sender;
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-	} params;
+	UMobileMenuScene_OnTouch_Params params;
 	params.Sender = Sender;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
@@ -7291,12 +6273,7 @@ void UMobileMenuScene::PreRenderMenuObject(class UMobileMenuObject* MenuObject, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.PreRenderMenuObject");
 
-	struct
-	{
-		class UMobileMenuObject*       MenuObject;
-		class UCanvas*                 Canvas;
-		float                          RenderDelta;
-	} params;
+	UMobileMenuScene_PreRenderMenuObject_Params params;
 	params.MenuObject = MenuObject;
 	params.Canvas = Canvas;
 	params.RenderDelta = RenderDelta;
@@ -7319,11 +6296,7 @@ void UMobileMenuScene::RenderScene(class UCanvas* Canvas, float RenderDelta)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.RenderScene");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          RenderDelta;
-	} params;
+	UMobileMenuScene_RenderScene_Params params;
 	params.Canvas = Canvas;
 	params.RenderDelta = RenderDelta;
 
@@ -7344,10 +6317,7 @@ class UFont* UMobileMenuScene::GetSceneFont()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.GetSceneFont");
 
-	struct
-	{
-		class UFont*                   ReturnValue;
-	} params;
+	UMobileMenuScene_GetSceneFont_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7371,13 +6341,7 @@ void UMobileMenuScene::InitMenuScene(class UMobilePlayerInput* PlayerInput, int 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.InitMenuScene");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuScene_InitMenuScene_Params params;
 	params.PlayerInput = PlayerInput;
 	params.ScreenWidth = ScreenWidth;
 	params.ScreenHeight = ScreenHeight;
@@ -7400,10 +6364,7 @@ float UMobileMenuScene::STATIC_GetGlobalScaleY()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.GetGlobalScaleY");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UMobileMenuScene_GetGlobalScaleY_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7425,10 +6386,7 @@ float UMobileMenuScene::STATIC_GetGlobalScaleX()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuScene.GetGlobalScaleX");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UMobileMenuScene_GetGlobalScaleX_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7452,12 +6410,7 @@ class UMobileMenuScene* UMobilePlayerInput::OpenMobileMenuMode(const struct FStr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OpenMobileMenuMode");
 
-	struct
-	{
-		struct FString                 MenuClassName;
-		struct FString                 Mode;
-		class UMobileMenuScene*        ReturnValue;
-	} params;
+	UMobilePlayerInput_OpenMobileMenuMode_Params params;
 	params.MenuClassName = MenuClassName;
 	params.Mode = Mode;
 
@@ -7481,11 +6434,7 @@ class UMobileMenuScene* UMobilePlayerInput::OpenMobileMenu(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OpenMobileMenu");
 
-	struct
-	{
-		struct FString                 MenuClassName;
-		class UMobileMenuScene*        ReturnValue;
-	} params;
+	UMobilePlayerInput_OpenMobileMenu_Params params;
 	params.MenuClassName = MenuClassName;
 
 	auto flags = fn->FunctionFlags;
@@ -7507,10 +6456,7 @@ void UMobilePlayerInput::MobileMenuCommand(const struct FString& MenuCommand)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.MobileMenuCommand");
 
-	struct
-	{
-		struct FString                 MenuCommand;
-	} params;
+	UMobilePlayerInput_MobileMenuCommand_Params params;
 	params.MenuCommand = MenuCommand;
 
 	auto flags = fn->FunctionFlags;
@@ -7528,9 +6474,7 @@ void UMobilePlayerInput::SceneRenderToggle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SceneRenderToggle");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_SceneRenderToggle_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7551,12 +6495,7 @@ void UMobilePlayerInput::PreClientTravel(const struct FString& PendingURL, TEnum
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.PreClientTravel");
 
-	struct
-	{
-		struct FString                 PendingURL;
-		TEnumAsByte<enum class ETravelType> TravelType;
-		bool                           bIsSeamlessTravel;
-	} params;
+	UMobilePlayerInput_PreClientTravel_Params params;
 	params.PendingURL = PendingURL;
 	params.TravelType = TravelType;
 	params.bIsSeamlessTravel = bIsSeamlessTravel;
@@ -7579,11 +6518,7 @@ void UMobilePlayerInput::RenderMenus(class UCanvas* Canvas, float RenderDelta)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.RenderMenus");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          RenderDelta;
-	} params;
+	UMobilePlayerInput_RenderMenus_Params params;
 	params.Canvas = Canvas;
 	params.RenderDelta = RenderDelta;
 
@@ -7602,9 +6537,7 @@ void UMobilePlayerInput::CloseAllMenus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.CloseAllMenus");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_CloseAllMenus_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7623,10 +6556,7 @@ void UMobilePlayerInput::CloseMenuScene(class UMobileMenuScene* SceneToClose)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.CloseMenuScene");
 
-	struct
-	{
-		class UMobileMenuScene*        SceneToClose;
-	} params;
+	UMobilePlayerInput_CloseMenuScene_Params params;
 	params.SceneToClose = SceneToClose;
 
 	auto flags = fn->FunctionFlags;
@@ -7648,12 +6578,7 @@ class UMobileMenuScene* UMobilePlayerInput::OpenMenuScene(class UClass* SceneCla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OpenMenuScene");
 
-	struct
-	{
-		class UClass*                  SceneClass;
-		struct FString                 Mode;
-		class UMobileMenuScene*        ReturnValue;
-	} params;
+	UMobilePlayerInput_OpenMenuScene_Params params;
 	params.SceneClass = SceneClass;
 	params.Mode = Mode;
 
@@ -7676,10 +6601,7 @@ void UMobilePlayerInput::SetMobileInputConfig(const struct FString& GroupName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SetMobileInputConfig");
 
-	struct
-	{
-		struct FString                 GroupName;
-	} params;
+	UMobilePlayerInput_SetMobileInputConfig_Params params;
 	params.GroupName = GroupName;
 
 	auto flags = fn->FunctionFlags;
@@ -7699,10 +6621,7 @@ void UMobilePlayerInput::ActivateInputGroup(const struct FString& GroupName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ActivateInputGroup");
 
-	struct
-	{
-		struct FString                 GroupName;
-	} params;
+	UMobilePlayerInput_ActivateInputGroup_Params params;
 	params.GroupName = GroupName;
 
 	auto flags = fn->FunctionFlags;
@@ -7722,10 +6641,7 @@ TArray<class UMobileInputZone*> UMobilePlayerInput::GetCurrentZones()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.GetCurrentZones");
 
-	struct
-	{
-		TArray<class UMobileInputZone*> ReturnValue;
-	} params;
+	UMobilePlayerInput_GetCurrentZones_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7746,10 +6662,7 @@ bool UMobilePlayerInput::HasZones()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.HasZones");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMobilePlayerInput_HasZones_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7771,11 +6684,7 @@ class UMobileInputZone* UMobilePlayerInput::FindorAddZone(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.FindorAddZone");
 
-	struct
-	{
-		struct FString                 ZoneName;
-		class UMobileInputZone*        ReturnValue;
-	} params;
+	UMobilePlayerInput_FindorAddZone_Params params;
 	params.ZoneName = ZoneName;
 
 	auto flags = fn->FunctionFlags;
@@ -7798,11 +6707,7 @@ class UMobileInputZone* UMobilePlayerInput::FindZone(const struct FString& ZoneN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.FindZone");
 
-	struct
-	{
-		struct FString                 ZoneName;
-		class UMobileInputZone*        ReturnValue;
-	} params;
+	UMobilePlayerInput_FindZone_Params params;
 	params.ZoneName = ZoneName;
 
 	auto flags = fn->FunctionFlags;
@@ -7824,10 +6729,7 @@ void UMobilePlayerInput::AddKismetRawInputEventHandler(class USeqEvent_MobileRaw
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.AddKismetRawInputEventHandler");
 
-	struct
-	{
-		class USeqEvent_MobileRawInput* NewHandler;
-	} params;
+	UMobilePlayerInput_AddKismetRawInputEventHandler_Params params;
 	params.NewHandler = NewHandler;
 
 	auto flags = fn->FunctionFlags;
@@ -7847,10 +6749,7 @@ void UMobilePlayerInput::AddKismetEventHandler(class USeqEvent_MobileBase* NewHa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.AddKismetEventHandler");
 
-	struct
-	{
-		class USeqEvent_MobileBase*    NewHandler;
-	} params;
+	UMobilePlayerInput_AddKismetEventHandler_Params params;
 	params.NewHandler = NewHandler;
 
 	auto flags = fn->FunctionFlags;
@@ -7868,9 +6767,7 @@ void UMobilePlayerInput::RefreshKismetLinks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.RefreshKismetLinks");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_RefreshKismetLinks_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7887,9 +6784,7 @@ void UMobilePlayerInput::SwapZoneOwners()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SwapZoneOwners");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_SwapZoneOwners_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7906,9 +6801,7 @@ void UMobilePlayerInput::InitializeInputZones()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.InitializeInputZones");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_InitializeInputZones_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7925,9 +6818,7 @@ void UMobilePlayerInput::InitTouchSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.InitTouchSystem");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_InitTouchSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7944,9 +6835,7 @@ void UMobilePlayerInput::ClientInitInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ClientInitInputSystem");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_ClientInitInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7963,9 +6852,7 @@ void UMobilePlayerInput::InitInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.InitInputSystem");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_InitInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7987,13 +6874,7 @@ bool UMobilePlayerInput::ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAs
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ProcessWorldTouch");
 
-	struct
-	{
-		class UMobileInputZone*        Zone;
-		TEnumAsByte<enum class ETouchType> EventType;
-		struct FVector2D               TouchLocation;
-		bool                           ReturnValue;
-	} params;
+	UMobilePlayerInput_ProcessWorldTouch_Params params;
 	params.Zone = Zone;
 	params.EventType = EventType;
 	params.TouchLocation = TouchLocation;
@@ -8020,12 +6901,7 @@ void UMobilePlayerInput::SendInputAxis(const struct FName& Key, float Delta, flo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SendInputAxis");
 
-	struct
-	{
-		struct FName                   Key;
-		float                          Delta;
-		float                          DeltaTime;
-	} params;
+	UMobilePlayerInput_SendInputAxis_Params params;
 	params.Key = Key;
 	params.Delta = Delta;
 	params.DeltaTime = DeltaTime;
@@ -8050,12 +6926,7 @@ void UMobilePlayerInput::SendInputKey(const struct FName& Key, TEnumAsByte<enum 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.SendInputKey");
 
-	struct
-	{
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-	} params;
+	UMobilePlayerInput_SendInputKey_Params params;
 	params.Key = Key;
 	params.Event = Event;
 	params.AmountDepressed = AmountDepressed;
@@ -8081,13 +6952,7 @@ void UMobilePlayerInput::ConditionalUpdateInputZones(int NewViewportX, int NewVi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ConditionalUpdateInputZones");
 
-	struct
-	{
-		int                            NewViewportX;
-		int                            NewViewportY;
-		int                            NewViewportSizeX;
-		int                            NewViewportSizeY;
-	} params;
+	UMobilePlayerInput_ConditionalUpdateInputZones_Params params;
 	params.NewViewportX = NewViewportX;
 	params.NewViewportY = NewViewportY;
 	params.NewViewportSizeX = NewViewportSizeX;
@@ -8111,10 +6976,7 @@ void UMobilePlayerInput::NativeInitializeInputZones(bool bIsFirstInitialize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.NativeInitializeInputZones");
 
-	struct
-	{
-		bool                           bIsFirstInitialize;
-	} params;
+	UMobilePlayerInput_NativeInitializeInputZones_Params params;
 	params.bIsFirstInitialize = bIsFirstInitialize;
 
 	auto flags = fn->FunctionFlags;
@@ -8133,9 +6995,7 @@ void UMobilePlayerInput::NativeInitializeInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.NativeInitializeInputSystem");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_NativeInitializeInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8159,14 +7019,7 @@ void UMobilePlayerInput::OnInputTouch(int Handle, TEnumAsByte<enum class ETouchT
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OnInputTouch");
 
-	struct
-	{
-		int                            Handle;
-		TEnumAsByte<enum class ETouchType> Type;
-		struct FVector2D               TouchLocation;
-		float                          DeviceTimestamp;
-		int                            TouchpadIndex;
-	} params;
+	UMobilePlayerInput_OnInputTouch_Params params;
 	params.Handle = Handle;
 	params.Type = Type;
 	params.TouchLocation = TouchLocation;
@@ -8193,13 +7046,7 @@ bool UMobilePlayerInput::OnPreviewTouch(float X, float Y, int TouchpadIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OnPreviewTouch");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		int                            TouchpadIndex;
-		bool                           ReturnValue;
-	} params;
+	UMobilePlayerInput_OnPreviewTouch_Params params;
 	params.X = X;
 	params.Y = Y;
 	params.TouchpadIndex = TouchpadIndex;
@@ -8221,9 +7068,7 @@ void UMobilePlayerInput::OnTouchNotHandledInMenu()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.OnTouchNotHandledInMenu");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_OnTouchNotHandledInMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8242,10 +7087,7 @@ void UMobilePlayerInput::PlayerInput(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.PlayerInput");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UMobilePlayerInput_PlayerInput_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -8263,9 +7105,7 @@ void UMobilePlayerInput::CancelMobileInput()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.CancelMobileInput");
 
-	struct
-	{
-	} params;
+	UMobilePlayerInput_CancelMobileInput_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8285,10 +7125,7 @@ void UMobilePlayerInput::ProcessMobileInput(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobilePlayerInput.ProcessMobileInput");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UMobilePlayerInput_ProcessMobileInput_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -8307,9 +7144,7 @@ void UNavMeshGoal_OutOfViewFrom::Recycle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshGoal_OutOfViewFrom.Recycle");
 
-	struct
-	{
-	} params;
+	UNavMeshGoal_OutOfViewFrom_Recycle_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8330,12 +7165,7 @@ bool UNavMeshGoal_OutOfViewFrom::STATIC_MustBeHiddenFromThisPoint(class UNavigat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshGoal_OutOfViewFrom.MustBeHiddenFromThisPoint");
 
-	struct
-	{
-		class UNavigationHandle*       NavHandle;
-		struct FVector                 InOutOfViewLocation;
-		bool                           ReturnValue;
-	} params;
+	UNavMeshGoal_OutOfViewFrom_MustBeHiddenFromThisPoint_Params params;
 	params.NavHandle = NavHandle;
 	params.InOutOfViewLocation = InOutOfViewLocation;
 
@@ -8356,9 +7186,7 @@ void UNavMeshGoal_OutOfViewFrom::RecycleNative()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshGoal_OutOfViewFrom.RecycleNative");
 
-	struct
-	{
-	} params;
+	UNavMeshGoal_OutOfViewFrom_RecycleNative_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8376,9 +7204,7 @@ void UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations::Recycle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshPath_BiasAgainstPolysWithinDistanceOfLocations.Recycle");
 
-	struct
-	{
-	} params;
+	UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations_Recycle_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8402,15 +7228,7 @@ bool UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations::STATIC_BiasAgainstP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.NavMeshPath_BiasAgainstPolysWithinDistanceOfLocations.BiasAgainstPolysWithinDistanceOfLocations");
 
-	struct
-	{
-		class UNavigationHandle*       NavHandle;
-		struct FVector                 InLocation;
-		struct FRotator                InRotation;
-		float                          InDistanceToCheck;
-		TArray<struct FVector>         InLocationsToCheck;
-		bool                           ReturnValue;
-	} params;
+	UNavMeshPath_BiasAgainstPolysWithinDistanceOfLocations_BiasAgainstPolysWithinDistanceOfLocations_Params params;
 	params.NavHandle = NavHandle;
 	params.InLocation = InLocation;
 	params.InRotation = InRotation;
@@ -8436,10 +7254,7 @@ void USecondaryViewportClient::PostRender(class UCanvas* Canvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SecondaryViewportClient.PostRender");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-	} params;
+	USecondaryViewportClient_PostRender_Params params;
 	params.Canvas = Canvas;
 
 	auto flags = fn->FunctionFlags;
@@ -8459,10 +7274,7 @@ void UMobileSecondaryViewportClient::PostRender(class UCanvas* Canvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileSecondaryViewportClient.PostRender");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-	} params;
+	UMobileSecondaryViewportClient_PostRender_Params params;
 	params.Canvas = Canvas;
 
 	auto flags = fn->FunctionFlags;
@@ -8482,10 +7294,7 @@ void USeqAct_GameCrowdPopulationManagerToggle::AgentDestroyed(class AGameCrowdAg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_GameCrowdPopulationManagerToggle.AgentDestroyed");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	USeqAct_GameCrowdPopulationManagerToggle_AgentDestroyed_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -8505,10 +7314,7 @@ float USeqAct_GameCrowdPopulationManagerToggle::GetMaxSpawnDist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_GameCrowdPopulationManagerToggle.GetMaxSpawnDist");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	USeqAct_GameCrowdPopulationManagerToggle_GetMaxSpawnDist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8530,11 +7336,7 @@ void USeqAct_GameCrowdPopulationManagerToggle::FillCrowdSpawnInfoItem(class AGam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_GameCrowdPopulationManagerToggle.FillCrowdSpawnInfoItem");
 
-	struct
-	{
-		struct FCrowdSpawnInfoItem     out_Item;
-		class AGameCrowdPopulationManager* PopMgr;
-	} params;
+	USeqAct_GameCrowdPopulationManagerToggle_FillCrowdSpawnInfoItem_Params params;
 	params.PopMgr = PopMgr;
 
 	auto flags = fn->FunctionFlags;
@@ -8557,10 +7359,7 @@ int USeqAct_GameCrowdPopulationManagerToggle::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_GameCrowdPopulationManagerToggle.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqAct_GameCrowdPopulationManagerToggle_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8581,10 +7380,7 @@ int USeqAct_GameCrowdSpawner::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_GameCrowdSpawner.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqAct_GameCrowdSpawner_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8605,10 +7401,7 @@ int USeqAct_MobileSaveLoadValue::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_MobileSaveLoadValue.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqAct_MobileSaveLoadValue_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8629,10 +7422,7 @@ void USeqAct_PlayAgentAnimation::SetCurrentAnimationActionFor(class AGameCrowdAg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_PlayAgentAnimation.SetCurrentAnimationActionFor");
 
-	struct
-	{
-		class AGameCrowdAgentSkeletal* Agent;
-	} params;
+	USeqAct_PlayAgentAnimation_SetCurrentAnimationActionFor_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -8652,10 +7442,7 @@ int USeqAct_PlayAgentAnimation::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqAct_PlayAgentAnimation.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqAct_PlayAgentAnimation_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8677,11 +7464,7 @@ void USeqEvent_HudRender::Render(class UCanvas* TargetCanvas, class AHUD* Target
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_HudRender.Render");
 
-	struct
-	{
-		class UCanvas*                 TargetCanvas;
-		class AHUD*                    TargetHud;
-	} params;
+	USeqEvent_HudRender_Render_Params params;
 	params.TargetCanvas = TargetCanvas;
 	params.TargetHud = TargetHud;
 
@@ -8700,9 +7483,7 @@ void USeqEvent_HudRender::RegisterEvent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_HudRender.RegisterEvent");
 
-	struct
-	{
-	} params;
+	USeqEvent_HudRender_RegisterEvent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8721,10 +7502,7 @@ void USeqEvent_MobileBase::AddToMobileInput(class UMobilePlayerInput* MPI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_MobileBase.AddToMobileInput");
 
-	struct
-	{
-		class UMobilePlayerInput*      MPI;
-	} params;
+	USeqEvent_MobileBase_AddToMobileInput_Params params;
 	params.MPI = MPI;
 
 	auto flags = fn->FunctionFlags;
@@ -8742,9 +7520,7 @@ void USeqEvent_MobileBase::RegisterEvent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_MobileBase.RegisterEvent");
 
-	struct
-	{
-	} params;
+	USeqEvent_MobileBase_RegisterEvent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8763,10 +7539,7 @@ int USeqEvent_MobileMotion::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_MobileMotion.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqEvent_MobileMotion_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8787,10 +7560,7 @@ void USeqEvent_MobileZoneBase::AddToMobileInput(class UMobilePlayerInput* MPI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_MobileZoneBase.AddToMobileInput");
 
-	struct
-	{
-		class UMobilePlayerInput*      MPI;
-	} params;
+	USeqEvent_MobileZoneBase_AddToMobileInput_Params params;
 	params.MPI = MPI;
 
 	auto flags = fn->FunctionFlags;
@@ -8808,9 +7578,7 @@ void USeqEvent_MobileRawInput::RegisterEvent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_MobileRawInput.RegisterEvent");
 
-	struct
-	{
-	} params;
+	USeqEvent_MobileRawInput_RegisterEvent_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8829,10 +7597,7 @@ void UGameCameraBase::ModifyPostProcessSettings(struct FPostProcessSettings* PP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.ModifyPostProcessSettings");
 
-	struct
-	{
-		struct FPostProcessSettings    PP;
-	} params;
+	UGameCameraBase_ModifyPostProcessSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8852,9 +7617,7 @@ void UGameCameraBase::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.Init");
 
-	struct
-	{
-	} params;
+	UGameCameraBase_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8875,12 +7638,7 @@ void UGameCameraBase::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YP
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.DisplayDebug");
 
-	struct
-	{
-		class AHUD*                    HUD;
-		float                          out_YL;
-		float                          out_YPos;
-	} params;
+	UGameCameraBase_DisplayDebug_Params params;
 	params.HUD = HUD;
 
 	auto flags = fn->FunctionFlags;
@@ -8908,13 +7666,7 @@ void UGameCameraBase::ProcessViewRotation(float DeltaTime, class AActor* ViewTar
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		class AActor*                  ViewTarget;
-		struct FRotator                out_ViewRotation;
-		struct FRotator                out_DeltaRot;
-	} params;
+	UGameCameraBase_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 	params.ViewTarget = ViewTarget;
 
@@ -8943,13 +7695,7 @@ void UGameCameraBase::UpdateCamera(class APawn* P, class AGamePlayerCamera* Came
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.UpdateCamera");
 
-	struct
-	{
-		class APawn*                   P;
-		class AGamePlayerCamera*       CameraActor;
-		float                          DeltaTime;
-		struct FTViewTarget            OutVT;
-	} params;
+	UGameCameraBase_UpdateCamera_Params params;
 	params.P = P;
 	params.CameraActor = CameraActor;
 	params.DeltaTime = DeltaTime;
@@ -8972,9 +7718,7 @@ void UGameCameraBase::ResetInterpolation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.ResetInterpolation");
 
-	struct
-	{
-	} params;
+	UGameCameraBase_ResetInterpolation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8993,10 +7737,7 @@ void UGameCameraBase::OnBecomeInActive(class UGameCameraBase* NewCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.OnBecomeInActive");
 
-	struct
-	{
-		class UGameCameraBase*         NewCamera;
-	} params;
+	UGameCameraBase_OnBecomeInActive_Params params;
 	params.NewCamera = NewCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -9016,10 +7757,7 @@ void UGameCameraBase::OnBecomeActive(class UGameCameraBase* OldCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCameraBase.OnBecomeActive");
 
-	struct
-	{
-		class UGameCameraBase*         OldCamera;
-	} params;
+	UGameCameraBase_OnBecomeActive_Params params;
 	params.OldCamera = OldCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -9037,9 +7775,7 @@ void UGameThirdPersonCamera::ResetInterpolation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.ResetInterpolation");
 
-	struct
-	{
-	} params;
+	UGameThirdPersonCamera_ResetInterpolation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9058,10 +7794,7 @@ void UGameThirdPersonCamera::ModifyPostProcessSettings(struct FPostProcessSettin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.ModifyPostProcessSettings");
 
-	struct
-	{
-		struct FPostProcessSettings    PP;
-	} params;
+	UGameThirdPersonCamera_ModifyPostProcessSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9083,10 +7816,7 @@ void UGameThirdPersonCamera::OnBecomeActive(class UGameCameraBase* OldCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.OnBecomeActive");
 
-	struct
-	{
-		class UGameCameraBase*         OldCamera;
-	} params;
+	UGameThirdPersonCamera_OnBecomeActive_Params params;
 	params.OldCamera = OldCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -9109,13 +7839,7 @@ void UGameThirdPersonCamera::ProcessViewRotation(float DeltaTime, class AActor* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		class AActor*                  ViewTarget;
-		struct FRotator                out_ViewRotation;
-		struct FRotator                out_DeltaRot;
-	} params;
+	UGameThirdPersonCamera_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 	params.ViewTarget = ViewTarget;
 
@@ -9141,10 +7865,7 @@ void UGameThirdPersonCamera::UpdateCameraMode(class APawn* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.UpdateCameraMode");
 
-	struct
-	{
-		class APawn*                   P;
-	} params;
+	UGameThirdPersonCamera_UpdateCameraMode_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -9165,11 +7886,7 @@ class UGameThirdPersonCameraMode* UGameThirdPersonCamera::FindBestCameraMode(cla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.FindBestCameraMode");
 
-	struct
-	{
-		class APawn*                   P;
-		class UGameThirdPersonCameraMode* ReturnValue;
-	} params;
+	UGameThirdPersonCamera_FindBestCameraMode_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -9191,10 +7908,7 @@ void UGameThirdPersonCamera::AdjustFocusPointInterpolation(const struct FRotator
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.AdjustFocusPointInterpolation");
 
-	struct
-	{
-		struct FRotator                Delta;
-	} params;
+	UGameThirdPersonCamera_AdjustFocusPointInterpolation_Params params;
 	params.Delta = Delta;
 
 	auto flags = fn->FunctionFlags;
@@ -9214,10 +7928,7 @@ struct FVector UGameThirdPersonCamera::GetActualFocusLocation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.GetActualFocusLocation");
 
-	struct
-	{
-		struct FVector                 ReturnValue;
-	} params;
+	UGameThirdPersonCamera_GetActualFocusLocation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9238,10 +7949,7 @@ void UGameThirdPersonCamera::UpdateFocusPoint(class APawn* P)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.UpdateFocusPoint");
 
-	struct
-	{
-		class APawn*                   P;
-	} params;
+	UGameThirdPersonCamera_UpdateFocusPoint_Params params;
 	params.P = P;
 
 	auto flags = fn->FunctionFlags;
@@ -9261,10 +7969,7 @@ void UGameThirdPersonCamera::ClearFocusPoint(bool bLeaveCameraRotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.ClearFocusPoint");
 
-	struct
-	{
-		bool                           bLeaveCameraRotation;
-	} params;
+	UGameThirdPersonCamera_ClearFocusPoint_Params params;
 	params.bLeaveCameraRotation = bLeaveCameraRotation;
 
 	auto flags = fn->FunctionFlags;
@@ -9284,10 +7989,7 @@ class AActor* UGameThirdPersonCamera::GetFocusActor()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.GetFocusActor");
 
-	struct
-	{
-		class AActor*                  ReturnValue;
-	} params;
+	UGameThirdPersonCamera_GetFocusActor_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9316,18 +8018,7 @@ void UGameThirdPersonCamera::SetFocusOnActor(class AActor* FocusActor, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.SetFocusOnActor");
 
-	struct
-	{
-		class AActor*                  FocusActor;
-		struct FName                   FocusBoneName;
-		struct FVector2D               InterpSpeedRange;
-		struct FVector2D               InFocusFOV;
-		float                          CameraFOV;
-		bool                           bAlwaysFocus;
-		bool                           bAdjustCamera;
-		bool                           bIgnoreTrace;
-		float                          FocusPitchOffsetDeg;
-	} params;
+	UGameThirdPersonCamera_SetFocusOnActor_Params params;
 	params.FocusActor = FocusActor;
 	params.FocusBoneName = FocusBoneName;
 	params.InterpSpeedRange = InterpSpeedRange;
@@ -9362,17 +8053,7 @@ void UGameThirdPersonCamera::SetFocusOnLoc(const struct FVector& FocusWorldLoc, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.SetFocusOnLoc");
 
-	struct
-	{
-		struct FVector                 FocusWorldLoc;
-		struct FVector2D               InterpSpeedRange;
-		struct FVector2D               InFocusFOV;
-		float                          CameraFOV;
-		bool                           bAlwaysFocus;
-		bool                           bAdjustCamera;
-		bool                           bIgnoreTrace;
-		float                          FocusPitchOffsetDeg;
-	} params;
+	UGameThirdPersonCamera_SetFocusOnLoc_Params params;
 	params.FocusWorldLoc = FocusWorldLoc;
 	params.InterpSpeedRange = InterpSpeedRange;
 	params.InFocusFOV = InFocusFOV;
@@ -9399,10 +8080,7 @@ void UGameThirdPersonCamera::AdjustTurn(int AngleOffset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.AdjustTurn");
 
-	struct
-	{
-		int                            AngleOffset;
-	} params;
+	UGameThirdPersonCamera_AdjustTurn_Params params;
 	params.AngleOffset = AngleOffset;
 
 	auto flags = fn->FunctionFlags;
@@ -9420,9 +8098,7 @@ void UGameThirdPersonCamera::EndTurn()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.EndTurn");
 
-	struct
-	{
-	} params;
+	UGameThirdPersonCamera_EndTurn_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9446,14 +8122,7 @@ void UGameThirdPersonCamera::BeginTurn(int StartAngle, int EndAngle, float TimeS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.BeginTurn");
 
-	struct
-	{
-		int                            StartAngle;
-		int                            EndAngle;
-		float                          TimeSec;
-		float                          DelaySec;
-		bool                           bAlignTargetWhenFinished;
-	} params;
+	UGameThirdPersonCamera_BeginTurn_Params params;
 	params.StartAngle = StartAngle;
 	params.EndAngle = EndAngle;
 	params.TimeSec = TimeSec;
@@ -9480,13 +8149,7 @@ void UGameThirdPersonCamera::PlayerUpdateCamera(class APawn* P, class AGamePlaye
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.PlayerUpdateCamera");
 
-	struct
-	{
-		class APawn*                   P;
-		class AGamePlayerCamera*       CameraActor;
-		float                          DeltaTime;
-		struct FTViewTarget            OutVT;
-	} params;
+	UGameThirdPersonCamera_PlayerUpdateCamera_Params params;
 	params.P = P;
 	params.CameraActor = CameraActor;
 	params.DeltaTime = DeltaTime;
@@ -9515,13 +8178,7 @@ void UGameThirdPersonCamera::UpdateCamera(class APawn* P, class AGamePlayerCamer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.UpdateCamera");
 
-	struct
-	{
-		class APawn*                   P;
-		class AGamePlayerCamera*       CameraActor;
-		float                          DeltaTime;
-		struct FTViewTarget            OutVT;
-	} params;
+	UGameThirdPersonCamera_UpdateCamera_Params params;
 	params.P = P;
 	params.CameraActor = CameraActor;
 	params.DeltaTime = DeltaTime;
@@ -9547,11 +8204,7 @@ float UGameThirdPersonCamera::GetDesiredFOV(class APawn* ViewedPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.GetDesiredFOV");
 
-	struct
-	{
-		class APawn*                   ViewedPawn;
-		float                          ReturnValue;
-	} params;
+	UGameThirdPersonCamera_GetDesiredFOV_Params params;
 	params.ViewedPawn = ViewedPawn;
 
 	auto flags = fn->FunctionFlags;
@@ -9571,9 +8224,7 @@ void UGameThirdPersonCamera::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.Init");
 
-	struct
-	{
-	} params;
+	UGameThirdPersonCamera_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9590,9 +8241,7 @@ void UGameThirdPersonCamera::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.Reset");
 
-	struct
-	{
-	} params;
+	UGameThirdPersonCamera_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9612,11 +8261,7 @@ class UGameThirdPersonCameraMode* UGameThirdPersonCamera::CreateCameraMode(class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCamera.CreateCameraMode");
 
-	struct
-	{
-		class UClass*                  ModeClass;
-		class UGameThirdPersonCameraMode* ReturnValue;
-	} params;
+	UGameThirdPersonCamera_CreateCameraMode_Params params;
 	params.ModeClass = ModeClass;
 
 	auto flags = fn->FunctionFlags;
@@ -9640,12 +8285,7 @@ float AGamePlayerCamera::AdjustFOVForViewport(float inHorizFOV, class APawn* Cam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.AdjustFOVForViewport");
 
-	struct
-	{
-		float                          inHorizFOV;
-		class APawn*                   CameraTargetPawn;
-		float                          ReturnValue;
-	} params;
+	AGamePlayerCamera_AdjustFOVForViewport_Params params;
 	params.inHorizFOV = inHorizFOV;
 	params.CameraTargetPawn = CameraTargetPawn;
 
@@ -9671,12 +8311,7 @@ void AGamePlayerCamera::ProcessViewRotation(float DeltaTime, struct FRotator* ou
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		struct FRotator                out_ViewRotation;
-		struct FRotator                out_DeltaRot;
-	} params;
+	AGamePlayerCamera_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -9699,9 +8334,7 @@ void AGamePlayerCamera::ResetInterpolation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.ResetInterpolation");
 
-	struct
-	{
-	} params;
+	AGamePlayerCamera_ResetInterpolation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9720,10 +8353,7 @@ void AGamePlayerCamera::SetColorScale(const struct FVector& NewColorScale)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.SetColorScale");
 
-	struct
-	{
-		struct FVector                 NewColorScale;
-	} params;
+	AGamePlayerCamera_SetColorScale_Params params;
 	params.NewColorScale = NewColorScale;
 
 	auto flags = fn->FunctionFlags;
@@ -9745,12 +8375,7 @@ void AGamePlayerCamera::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.DisplayDebug");
 
-	struct
-	{
-		class AHUD*                    HUD;
-		float                          out_YL;
-		float                          out_YPos;
-	} params;
+	AGamePlayerCamera_DisplayDebug_Params params;
 	params.HUD = HUD;
 
 	auto flags = fn->FunctionFlags;
@@ -9775,10 +8400,7 @@ void AGamePlayerCamera::UpdateCameraLensEffects(struct FTViewTarget* OutVT)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.UpdateCameraLensEffects");
 
-	struct
-	{
-		struct FTViewTarget            OutVT;
-	} params;
+	AGamePlayerCamera_UpdateCameraLensEffects_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9801,11 +8423,7 @@ void AGamePlayerCamera::UpdateViewTarget(float DeltaTime, struct FTViewTarget* O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.UpdateViewTarget");
 
-	struct
-	{
-		struct FTViewTarget            OutVT;
-		float                          DeltaTime;
-	} params;
+	AGamePlayerCamera_UpdateViewTarget_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -9828,10 +8446,7 @@ bool AGamePlayerCamera::ShouldConstrainAspectRatio()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.ShouldConstrainAspectRatio");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AGamePlayerCamera_ShouldConstrainAspectRatio_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9853,11 +8468,7 @@ class UGameCameraBase* AGamePlayerCamera::FindBestCameraType(class AActor* Camer
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.FindBestCameraType");
 
-	struct
-	{
-		class AActor*                  CameraTarget;
-		class UGameCameraBase*         ReturnValue;
-	} params;
+	AGamePlayerCamera_FindBestCameraType_Params params;
 	params.CameraTarget = CameraTarget;
 
 	auto flags = fn->FunctionFlags;
@@ -9877,9 +8488,7 @@ void AGamePlayerCamera::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.Reset");
 
-	struct
-	{
-	} params;
+	AGamePlayerCamera_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9896,9 +8505,7 @@ void AGamePlayerCamera::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGamePlayerCamera_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9917,10 +8524,7 @@ void AGamePlayerCamera::CacheLastTargetBaseInfo(class AActor* TargetBase)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.CacheLastTargetBaseInfo");
 
-	struct
-	{
-		class AActor*                  TargetBase;
-	} params;
+	AGamePlayerCamera_CacheLastTargetBaseInfo_Params params;
 	params.TargetBase = TargetBase;
 
 	auto flags = fn->FunctionFlags;
@@ -9942,11 +8546,7 @@ class UGameCameraBase* AGamePlayerCamera::CreateCamera(class UClass* CameraClass
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GamePlayerCamera.CreateCamera");
 
-	struct
-	{
-		class UClass*                  CameraClass;
-		class UGameCameraBase*         ReturnValue;
-	} params;
+	AGamePlayerCamera_CreateCamera_Params params;
 	params.CameraClass = CameraClass;
 
 	auto flags = fn->FunctionFlags;
@@ -9968,10 +8568,7 @@ void UGameThirdPersonCameraMode::SetViewOffset(struct FViewOffsetData* NewViewOf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.SetViewOffset");
 
-	struct
-	{
-		struct FViewOffsetData         NewViewOffset;
-	} params;
+	UGameThirdPersonCameraMode_SetViewOffset_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -9994,10 +8591,7 @@ void UGameThirdPersonCameraMode::ModifyPostProcessSettings(struct FPostProcessSe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.ModifyPostProcessSettings");
 
-	struct
-	{
-		struct FPostProcessSettings    PP;
-	} params;
+	UGameThirdPersonCameraMode_ModifyPostProcessSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10020,11 +8614,7 @@ void UGameThirdPersonCameraMode::UpdatePostProcess(float DeltaTime, struct FTVie
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.UpdatePostProcess");
 
-	struct
-	{
-		struct FTViewTarget            VT;
-		float                          DeltaTime;
-	} params;
+	UGameThirdPersonCameraMode_UpdatePostProcess_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -10050,13 +8640,7 @@ struct FVector UGameThirdPersonCameraMode::DOFTrace(class AActor* TraceOwner, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.DOFTrace");
 
-	struct
-	{
-		class AActor*                  TraceOwner;
-		struct FVector                 StartTrace;
-		struct FVector                 EndTrace;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_DOFTrace_Params params;
 	params.TraceOwner = TraceOwner;
 	params.StartTrace = StartTrace;
 	params.EndTrace = EndTrace;
@@ -10083,13 +8667,7 @@ struct FVector UGameThirdPersonCameraMode::GetDOFFocusLoc(class AActor* TraceOwn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.GetDOFFocusLoc");
 
-	struct
-	{
-		class AActor*                  TraceOwner;
-		struct FVector                 StartTrace;
-		struct FVector                 EndTrace;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_GetDOFFocusLoc_Params params;
 	params.TraceOwner = TraceOwner;
 	params.StartTrace = StartTrace;
 	params.EndTrace = EndTrace;
@@ -10116,13 +8694,7 @@ void UGameThirdPersonCameraMode::ProcessViewRotation(float DeltaTime, class AAct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.ProcessViewRotation");
 
-	struct
-	{
-		float                          DeltaTime;
-		class AActor*                  ViewTarget;
-		struct FRotator                out_ViewRotation;
-		struct FRotator                out_DeltaRot;
-	} params;
+	UGameThirdPersonCameraMode_ProcessViewRotation_Params params;
 	params.DeltaTime = DeltaTime;
 	params.ViewTarget = ViewTarget;
 
@@ -10149,11 +8721,7 @@ bool UGameThirdPersonCameraMode::SetFocusPoint(class APawn* ViewedPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.SetFocusPoint");
 
-	struct
-	{
-		class APawn*                   ViewedPawn;
-		bool                           ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_SetFocusPoint_Params params;
 	params.ViewedPawn = ViewedPawn;
 
 	auto flags = fn->FunctionFlags;
@@ -10177,12 +8745,7 @@ struct FVector UGameThirdPersonCameraMode::GetCameraWorstCaseLoc(class APawn* Ta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.GetCameraWorstCaseLoc");
 
-	struct
-	{
-		class APawn*                   TargetPawn;
-		struct FTViewTarget            CurrentViewTarget;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_GetCameraWorstCaseLoc_Params params;
 	params.TargetPawn = TargetPawn;
 	params.CurrentViewTarget = CurrentViewTarget;
 
@@ -10206,11 +8769,7 @@ float UGameThirdPersonCameraMode::GetDesiredFOV(class APawn* ViewedPawn)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.GetDesiredFOV");
 
-	struct
-	{
-		class APawn*                   ViewedPawn;
-		float                          ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_GetDesiredFOV_Params params;
 	params.ViewedPawn = ViewedPawn;
 
 	auto flags = fn->FunctionFlags;
@@ -10234,12 +8793,7 @@ struct FVector UGameThirdPersonCameraMode::AdjustViewOffset(class APawn* P, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.AdjustViewOffset");
 
-	struct
-	{
-		class APawn*                   P;
-		struct FVector                 Offset;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameThirdPersonCameraMode_AdjustViewOffset_Params params;
 	params.P = P;
 	params.Offset = Offset;
 
@@ -10263,11 +8817,7 @@ void UGameThirdPersonCameraMode::OnBecomeInActive(class APawn* TargetPawn, class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.OnBecomeInActive");
 
-	struct
-	{
-		class APawn*                   TargetPawn;
-		class UGameThirdPersonCameraMode* NewMode;
-	} params;
+	UGameThirdPersonCameraMode_OnBecomeInActive_Params params;
 	params.TargetPawn = TargetPawn;
 	params.NewMode = NewMode;
 
@@ -10289,11 +8839,7 @@ void UGameThirdPersonCameraMode::OnBecomeActive(class APawn* TargetPawn, class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.OnBecomeActive");
 
-	struct
-	{
-		class APawn*                   TargetPawn;
-		class UGameThirdPersonCameraMode* PrevMode;
-	} params;
+	UGameThirdPersonCameraMode_OnBecomeActive_Params params;
 	params.TargetPawn = TargetPawn;
 	params.PrevMode = PrevMode;
 
@@ -10312,9 +8858,7 @@ void UGameThirdPersonCameraMode::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameThirdPersonCameraMode.Init");
 
-	struct
-	{
-	} params;
+	UGameThirdPersonCameraMode_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10335,12 +8879,7 @@ struct FVector UGameSpecialMove::RelativeToWorldOffset(const struct FRotator& In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.RelativeToWorldOffset");
 
-	struct
-	{
-		struct FRotator                InRotation;
-		struct FVector                 RelativeSpaceOffset;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameSpecialMove_RelativeToWorldOffset_Params params;
 	params.InRotation = InRotation;
 	params.RelativeSpaceOffset = RelativeSpaceOffset;
 
@@ -10366,12 +8905,7 @@ struct FVector UGameSpecialMove::WorldToRelativeOffset(const struct FRotator& In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.WorldToRelativeOffset");
 
-	struct
-	{
-		struct FRotator                InRotation;
-		struct FVector                 WorldSpaceOffset;
-		struct FVector                 ReturnValue;
-	} params;
+	UGameSpecialMove_WorldToRelativeOffset_Params params;
 	params.InRotation = InRotation;
 	params.WorldSpaceOffset = WorldSpaceOffset;
 
@@ -10396,11 +8930,7 @@ void UGameSpecialMove::ForcePawnRotation(class APawn* P, const struct FRotator& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ForcePawnRotation");
 
-	struct
-	{
-		class APawn*                   P;
-		struct FRotator                NewRotation;
-	} params;
+	UGameSpecialMove_ForcePawnRotation_Params params;
 	params.P = P;
 	params.NewRotation = NewRotation;
 
@@ -10424,12 +8954,7 @@ bool UGameSpecialMove::MessageEvent(const struct FName& EventName, class UObject
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.MessageEvent");
 
-	struct
-	{
-		struct FName                   EventName;
-		class UObject*                 Sender;
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_MessageEvent_Params params;
 	params.EventName = EventName;
 	params.Sender = Sender;
 
@@ -10450,9 +8975,7 @@ void UGameSpecialMove::ResetFacePreciseRotation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ResetFacePreciseRotation");
 
-	struct
-	{
-	} params;
+	UGameSpecialMove_ResetFacePreciseRotation_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10470,9 +8993,7 @@ void UGameSpecialMove::ReachedPrecisePosition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ReachedPrecisePosition");
 
-	struct
-	{
-	} params;
+	UGameSpecialMove_ReachedPrecisePosition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10492,11 +9013,7 @@ void UGameSpecialMove::SetFacePreciseRotation(const struct FRotator& RotationToF
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SetFacePreciseRotation");
 
-	struct
-	{
-		struct FRotator                RotationToFace;
-		float                          InterpolationTime;
-	} params;
+	UGameSpecialMove_SetFacePreciseRotation_Params params;
 	params.RotationToFace = RotationToFace;
 	params.InterpolationTime = InterpolationTime;
 
@@ -10519,11 +9036,7 @@ void UGameSpecialMove::SetReachPreciseDestination(const struct FVector& Destinat
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SetReachPreciseDestination");
 
-	struct
-	{
-		struct FVector                 DestinationToReach;
-		bool                           bCancel;
-	} params;
+	UGameSpecialMove_SetReachPreciseDestination_Params params;
 	params.DestinationToReach = DestinationToReach;
 	params.bCancel = bCancel;
 
@@ -10545,10 +9058,7 @@ bool UGameSpecialMove::ShouldReplicate()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ShouldReplicate");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_ShouldReplicate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10567,9 +9077,7 @@ void UGameSpecialMove::SpecialMoveFlagsUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SpecialMoveFlagsUpdated");
 
-	struct
-	{
-	} params;
+	UGameSpecialMove_SpecialMoveFlagsUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10588,10 +9096,7 @@ void UGameSpecialMove::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGameSpecialMove_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -10612,11 +9117,7 @@ void UGameSpecialMove::SpecialMoveEnded(const struct FName& PrevMove, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SpecialMoveEnded");
 
-	struct
-	{
-		struct FName                   PrevMove;
-		struct FName                   NextMove;
-	} params;
+	UGameSpecialMove_SpecialMoveEnded_Params params;
 	params.PrevMove = PrevMove;
 	params.NextMove = NextMove;
 
@@ -10638,11 +9139,7 @@ void UGameSpecialMove::SpecialMoveStarted(bool bForced, const struct FName& Prev
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.SpecialMoveStarted");
 
-	struct
-	{
-		bool                           bForced;
-		struct FName                   PrevMove;
-	} params;
+	UGameSpecialMove_SpecialMoveStarted_Params params;
 	params.bForced = bForced;
 	params.PrevMove = PrevMove;
 
@@ -10663,10 +9160,7 @@ bool UGameSpecialMove::InternalCanDoSpecialMove()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.InternalCanDoSpecialMove");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_InternalCanDoSpecialMove_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10688,11 +9182,7 @@ bool UGameSpecialMove::CanDoSpecialMove(bool bForceCheck)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanDoSpecialMove");
 
-	struct
-	{
-		bool                           bForceCheck;
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_CanDoSpecialMove_Params params;
 	params.bForceCheck = bForceCheck;
 
 	auto flags = fn->FunctionFlags;
@@ -10715,11 +9205,7 @@ bool UGameSpecialMove::CanOverrideSpecialMove(const struct FName& InMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanOverrideSpecialMove");
 
-	struct
-	{
-		struct FName                   InMove;
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_CanOverrideSpecialMove_Params params;
 	params.InMove = InMove;
 
 	auto flags = fn->FunctionFlags;
@@ -10742,11 +9228,7 @@ bool UGameSpecialMove::CanOverrideMoveWith(const struct FName& NewMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanOverrideMoveWith");
 
-	struct
-	{
-		struct FName                   NewMove;
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_CanOverrideMoveWith_Params params;
 	params.NewMove = NewMove;
 
 	auto flags = fn->FunctionFlags;
@@ -10769,11 +9251,7 @@ bool UGameSpecialMove::CanChainMove(const struct FName& NextMove)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.CanChainMove");
 
-	struct
-	{
-		struct FName                   NextMove;
-		bool                           ReturnValue;
-	} params;
+	UGameSpecialMove_CanChainMove_Params params;
 	params.NextMove = NextMove;
 
 	auto flags = fn->FunctionFlags;
@@ -10795,10 +9273,7 @@ void UGameSpecialMove::ExtractSpecialMoveFlags(int Flags)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.ExtractSpecialMoveFlags");
 
-	struct
-	{
-		int                            Flags;
-	} params;
+	UGameSpecialMove_ExtractSpecialMoveFlags_Params params;
 	params.Flags = Flags;
 
 	auto flags = fn->FunctionFlags;
@@ -10818,10 +9293,7 @@ void UGameSpecialMove::InitSpecialMoveFlags(int* out_Flags)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.InitSpecialMoveFlags");
 
-	struct
-	{
-		int                            out_Flags;
-	} params;
+	UGameSpecialMove_InitSpecialMoveFlags_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10844,11 +9316,7 @@ void UGameSpecialMove::InitSpecialMove(class AGamePawn* inPawn, const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameSpecialMove.InitSpecialMove");
 
-	struct
-	{
-		class AGamePawn*               inPawn;
-		struct FName                   InHandle;
-	} params;
+	UGameSpecialMove_InitSpecialMove_Params params;
 	params.inPawn = inPawn;
 	params.InHandle = InHandle;
 
@@ -10867,9 +9335,7 @@ void UGameStateObject::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStateObject.Reset");
 
-	struct
-	{
-	} params;
+	UGameStateObject_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10887,9 +9353,7 @@ void UGameStateObject::PreProcessStream()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStateObject.PreProcessStream");
 
-	struct
-	{
-	} params;
+	UGameStateObject_PreProcessStream_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10912,13 +9376,7 @@ bool UGameStatsAggregator::GetAggregateMappingIDs(int EventID, int* AggregateID,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStatsAggregator.GetAggregateMappingIDs");
 
-	struct
-	{
-		int                            EventID;
-		int                            AggregateID;
-		int                            TargetAggregateID;
-		bool                           ReturnValue;
-	} params;
+	UGameStatsAggregator_GetAggregateMappingIDs_Params params;
 	params.EventID = EventID;
 
 	auto flags = fn->FunctionFlags;
@@ -10944,9 +9402,7 @@ void UGameStatsAggregator::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStatsAggregator.Reset");
 
-	struct
-	{
-	} params;
+	UGameStatsAggregator_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10964,9 +9420,7 @@ void UGameStatsAggregator::PostProcessStream()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStatsAggregator.PostProcessStream");
 
-	struct
-	{
-	} params;
+	UGameStatsAggregator_PostProcessStream_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10984,9 +9438,7 @@ void UGameStatsAggregator::PreProcessStream()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameStatsAggregator.PreProcessStream");
 
-	struct
-	{
-	} params;
+	UGameStatsAggregator_PreProcessStream_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11004,9 +9456,7 @@ void ADebugCameraHUD::PostRender()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraHUD.PostRender");
 
-	struct
-	{
-	} params;
+	ADebugCameraHUD_PostRender_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11029,14 +9479,7 @@ bool ADebugCameraHUD::DisplayMaterials(float X, float DY, class UMeshComponent* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraHUD.DisplayMaterials");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		float                          DY;
-		class UMeshComponent*          MeshComp;
-		bool                           ReturnValue;
-	} params;
+	ADebugCameraHUD_DisplayMaterials_Params params;
 	params.X = X;
 	params.DY = DY;
 	params.MeshComp = MeshComp;
@@ -11061,9 +9504,7 @@ void ADebugCameraHUD::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraHUD.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	ADebugCameraHUD_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11087,15 +9528,7 @@ bool UDebugCameraInput::InputKey(int ControllerId, const struct FName& Key, TEnu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraInput.InputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UDebugCameraInput_InputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Event = Event;
@@ -11121,10 +9554,7 @@ float UGameCrowdSpawnerInterface::GetMaxSpawnDist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdSpawnerInterface.GetMaxSpawnDist");
 
-	struct
-	{
-		float                          ReturnValue;
-	} params;
+	UGameCrowdSpawnerInterface_GetMaxSpawnDist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11145,10 +9575,7 @@ void UGameCrowdSpawnerInterface::AgentDestroyed(class AGameCrowdAgent* Agent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdSpawnerInterface.AgentDestroyed");
 
-	struct
-	{
-		class AGameCrowdAgent*         Agent;
-	} params;
+	UGameCrowdSpawnerInterface_AgentDestroyed_Params params;
 	params.Agent = Agent;
 
 	auto flags = fn->FunctionFlags;
@@ -11170,12 +9597,7 @@ void UGameCrowdSpawnInterface::GetSpawnPosition(class USeqAct_GameCrowdSpawner* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdSpawnInterface.GetSpawnPosition");
 
-	struct
-	{
-		class USeqAct_GameCrowdSpawner* Spawner;
-		struct FVector                 SpawnPos;
-		struct FRotator                SpawnRot;
-	} params;
+	UGameCrowdSpawnInterface_GetSpawnPosition_Params params;
 	params.Spawner = Spawner;
 
 	auto flags = fn->FunctionFlags;
@@ -11201,11 +9623,7 @@ bool UGameAICmd_Hover_MoveToGoal::IsEnemyBasedOnInterpActor(class APawn* InEnemy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.IsEnemyBasedOnInterpActor");
 
-	struct
-	{
-		class APawn*                   InEnemy;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_IsEnemyBasedOnInterpActor_Params params;
 	params.InEnemy = InEnemy;
 
 	auto flags = fn->FunctionFlags;
@@ -11228,11 +9646,7 @@ bool UGameAICmd_Hover_MoveToGoal::HandlePathObstruction(class AActor* BlockedBy)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.HandlePathObstruction");
 
-	struct
-	{
-		class AActor*                  BlockedBy;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_HandlePathObstruction_Params params;
 	params.BlockedBy = BlockedBy;
 
 	auto flags = fn->FunctionFlags;
@@ -11252,9 +9666,7 @@ void UGameAICmd_Hover_MoveToGoal::Pushed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.Pushed");
 
-	struct
-	{
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Pushed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11277,14 +9689,7 @@ bool UGameAICmd_Hover_MoveToGoal::STATIC_MoveToGoal(class AGameAIController* AI,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.MoveToGoal");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		class AActor*                  InGoal;
-		float                          InGoalDistance;
-		float                          InHoverHeight;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_MoveToGoal_Params params;
 	params.AI = AI;
 	params.InGoal = InGoal;
 	params.InGoalDistance = InGoalDistance;
@@ -11310,11 +9715,7 @@ void UGameAICmd_Hover_MoveToGoal_Mesh::DrawDebug(class AHUD* H, const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DrawDebug");
 
-	struct
-	{
-		class AHUD*                    H;
-		struct FName                   Category;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_DrawDebug_Params params;
 	params.H = H;
 	params.Category = Category;
 
@@ -11336,11 +9737,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::IsEnemyBasedOnInterpActor(class APawn* In
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.IsEnemyBasedOnInterpActor");
 
-	struct
-	{
-		class APawn*                   InEnemy;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_IsEnemyBasedOnInterpActor_Params params;
 	params.InEnemy = InEnemy;
 
 	auto flags = fn->FunctionFlags;
@@ -11362,10 +9759,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::ShouldUpdateBreadCrumbs()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.ShouldUpdateBreadCrumbs");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_ShouldUpdateBreadCrumbs_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11386,10 +9780,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::HasReachedGoal()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.HasReachedGoal");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_HasReachedGoal_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11408,9 +9799,7 @@ void UGameAICmd_Hover_MoveToGoal_Mesh::ReEvaluatePath()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.ReEvaluatePath");
 
-	struct
-	{
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_ReEvaluatePath_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11430,11 +9819,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::HandlePathObstruction(class AActor* Block
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.HandlePathObstruction");
 
-	struct
-	{
-		class AActor*                  BlockedBy;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_HandlePathObstruction_Params params;
 	params.BlockedBy = BlockedBy;
 
 	auto flags = fn->FunctionFlags;
@@ -11456,10 +9841,7 @@ void UGameAICmd_Hover_MoveToGoal_Mesh::Tick(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Tick");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_Tick_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -11477,9 +9859,7 @@ void UGameAICmd_Hover_MoveToGoal_Mesh::Popped()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Popped");
 
-	struct
-	{
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_Popped_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11496,9 +9876,7 @@ void UGameAICmd_Hover_MoveToGoal_Mesh::Pushed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Pushed");
 
-	struct
-	{
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_Pushed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11518,11 +9896,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::STATIC_HoverBackToMesh(class AGameAIContr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.HoverBackToMesh");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_HoverBackToMesh_Params params;
 	params.AI = AI;
 
 	auto flags = fn->FunctionFlags;
@@ -11548,14 +9922,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::STATIC_HoverToPoint(class AGameAIControll
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.HoverToPoint");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		struct FVector                 InPoint;
-		float                          InGoalDistance;
-		float                          InHoverHeight;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_HoverToPoint_Params params;
 	params.AI = AI;
 	params.InPoint = InPoint;
 	params.InGoalDistance = InGoalDistance;
@@ -11584,14 +9951,7 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::STATIC_HoverToGoal(class AGameAIControlle
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.HoverToGoal");
 
-	struct
-	{
-		class AGameAIController*       AI;
-		class AActor*                  InGoal;
-		float                          InGoalDistance;
-		float                          InHoverHeight;
-		bool                           ReturnValue;
-	} params;
+	UGameAICmd_Hover_MoveToGoal_Mesh_HoverToGoal_Params params;
 	params.AI = AI;
 	params.InGoal = InGoal;
 	params.InGoalDistance = InGoalDistance;
@@ -11616,10 +9976,7 @@ void UGameFixedCamera::OnBecomeActive(class UGameCameraBase* OldCamera)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameFixedCamera.OnBecomeActive");
 
-	struct
-	{
-		class UGameCameraBase*         OldCamera;
-	} params;
+	UGameFixedCamera_OnBecomeActive_Params params;
 	params.OldCamera = OldCamera;
 
 	auto flags = fn->FunctionFlags;
@@ -11642,13 +9999,7 @@ void UGameFixedCamera::UpdateCamera(class APawn* P, class AGamePlayerCamera* Cam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameFixedCamera.UpdateCamera");
 
-	struct
-	{
-		class APawn*                   P;
-		class AGamePlayerCamera*       CameraActor;
-		float                          DeltaTime;
-		struct FTViewTarget            OutVT;
-	} params;
+	UGameFixedCamera_UpdateCamera_Params params;
 	params.P = P;
 	params.CameraActor = CameraActor;
 	params.DeltaTime = DeltaTime;
@@ -11671,9 +10022,7 @@ void AGameKActorSpawnableEffect::StartScalingDown()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameKActorSpawnableEffect.StartScalingDown");
 
-	struct
-	{
-	} params;
+	AGameKActorSpawnableEffect_StartScalingDown_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11692,10 +10041,7 @@ void AGameKActorSpawnableEffect::FellOutOfWorld(class UClass* dmgType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameKActorSpawnableEffect.FellOutOfWorld");
 
-	struct
-	{
-		class UClass*                  dmgType;
-	} params;
+	AGameKActorSpawnableEffect_FellOutOfWorld_Params params;
 	params.dmgType = dmgType;
 
 	auto flags = fn->FunctionFlags;
@@ -11713,9 +10059,7 @@ void AGameKActorSpawnableEffect::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameKActorSpawnableEffect.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AGameKActorSpawnableEffect_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11732,9 +10076,7 @@ void AMobileDebugCameraController::SetupDebugZones()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraController.SetupDebugZones");
 
-	struct
-	{
-	} params;
+	AMobileDebugCameraController_SetupDebugZones_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11751,9 +10093,7 @@ void AMobileDebugCameraController::InitInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraController.InitInputSystem");
 
-	struct
-	{
-	} params;
+	AMobileDebugCameraController_InitInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11772,10 +10112,7 @@ void AMobileDebugCameraController::OnDeactivate(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraController.OnDeactivate");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	AMobileDebugCameraController_OnDeactivate_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -11793,9 +10130,7 @@ void AMobileDebugCameraController::InitDebugInputSystem()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraController.InitDebugInputSystem");
 
-	struct
-	{
-	} params;
+	AMobileDebugCameraController_InitDebugInputSystem_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11814,10 +10149,7 @@ void AMobileDebugCameraController::OnActivate(class APlayerController* PC)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraController.OnActivate");
 
-	struct
-	{
-		class APlayerController*       PC;
-	} params;
+	AMobileDebugCameraController_OnActivate_Params params;
 	params.PC = PC;
 
 	auto flags = fn->FunctionFlags;
@@ -11842,15 +10174,7 @@ bool UMobileDebugCameraInput::InputKey(int ControllerId, const struct FName& Key
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraInput.InputKey");
 
-	struct
-	{
-		int                            ControllerId;
-		struct FName                   Key;
-		TEnumAsByte<enum class EInputEvent> Event;
-		float                          AmountDepressed;
-		bool                           bGamepad;
-		bool                           ReturnValue;
-	} params;
+	UMobileDebugCameraInput_InputKey_Params params;
 	params.ControllerId = ControllerId;
 	params.Key = Key;
 	params.Event = Event;
@@ -11874,9 +10198,7 @@ void AMobileDebugCameraHUD::PostRender()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraHUD.PostRender");
 
-	struct
-	{
-	} params;
+	AMobileDebugCameraHUD_PostRender_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11899,14 +10221,7 @@ bool AMobileDebugCameraHUD::DisplayMaterials(float X, float DY, class UMeshCompo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraHUD.DisplayMaterials");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		float                          DY;
-		class UMeshComponent*          MeshComp;
-		bool                           ReturnValue;
-	} params;
+	AMobileDebugCameraHUD_DisplayMaterials_Params params;
 	params.X = X;
 	params.DY = DY;
 	params.MeshComp = MeshComp;
@@ -11931,9 +10246,7 @@ void AMobileDebugCameraHUD::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileDebugCameraHUD.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AMobileDebugCameraHUD_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11950,9 +10263,7 @@ void UMobileMenuBar::UpdateItemViewports()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.UpdateItemViewports");
 
-	struct
-	{
-	} params;
+	UMobileMenuBar_UpdateItemViewports_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11971,10 +10282,7 @@ void UMobileMenuBar::SetFirstItem(int First)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.SetFirstItem");
 
-	struct
-	{
-		int                            First;
-	} params;
+	UMobileMenuBar_SetFirstItem_Params params;
 	params.First = First;
 
 	auto flags = fn->FunctionFlags;
@@ -11996,12 +10304,7 @@ void UMobileMenuBar::RenderItem(class UCanvas* Canvas, float DeltaTime, int Item
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.RenderItem");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-		int                            ItemIndex;
-	} params;
+	UMobileMenuBar_RenderItem_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 	params.ItemIndex = ItemIndex;
@@ -12024,11 +10327,7 @@ void UMobileMenuBar::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuBar_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12054,15 +10353,7 @@ bool UMobileMenuBar::OnTouch(TEnumAsByte<enum class ETouchType> EventType, float
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuBar_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -12088,10 +10379,7 @@ class UMobileMenuBarItem* UMobileMenuBar::GetSelected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.GetSelected");
 
-	struct
-	{
-		class UMobileMenuBarItem*      ReturnValue;
-	} params;
+	UMobileMenuBar_GetSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12112,10 +10400,7 @@ int UMobileMenuBar::Num()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.Num");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UMobileMenuBar_Num_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12137,11 +10422,7 @@ void UMobileMenuBar::AddItem(class UMobileMenuBarItem* Item, int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.AddItem");
 
-	struct
-	{
-		class UMobileMenuBarItem*      Item;
-		int                            Index;
-	} params;
+	UMobileMenuBar_AddItem_Params params;
 	params.Item = Item;
 	params.Index = Index;
 
@@ -12166,14 +10447,7 @@ void UMobileMenuBar::InitMenuObject(class UMobilePlayerInput* PlayerInput, class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBar.InitMenuObject");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		class UMobileMenuScene*        Scene;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuBar_InitMenuObject_Params params;
 	params.PlayerInput = PlayerInput;
 	params.Scene = Scene;
 	params.ScreenWidth = ScreenWidth;
@@ -12199,12 +10473,7 @@ void UMobileMenuBarItem::RenderItem(class UMobileMenuBar* Bar, class UCanvas* Ca
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuBarItem.RenderItem");
 
-	struct
-	{
-		class UMobileMenuBar*          Bar;
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuBarItem_RenderItem_Params params;
 	params.Bar = Bar;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
@@ -12226,10 +10495,7 @@ void UMobileMenuButton::RenderCaption(class UCanvas* Canvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuButton.RenderCaption");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-	} params;
+	UMobileMenuButton_RenderCaption_Params params;
 	params.Canvas = Canvas;
 
 	auto flags = fn->FunctionFlags;
@@ -12250,11 +10516,7 @@ void UMobileMenuButton::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuButton.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuButton_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12279,14 +10541,7 @@ void UMobileMenuButton::InitMenuObject(class UMobilePlayerInput* PlayerInput, cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuButton.InitMenuObject");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		class UMobileMenuScene*        Scene;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuButton_InitMenuObject_Params params;
 	params.PlayerInput = PlayerInput;
 	params.Scene = Scene;
 	params.ScreenWidth = ScreenWidth;
@@ -12313,13 +10568,7 @@ void UMobileMenuElement::RenderElement(class UMobileMenuObject* Owner, class UCa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuElement.RenderElement");
 
-	struct
-	{
-		class UMobileMenuObject*       Owner;
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-		float                          Opacity;
-	} params;
+	UMobileMenuElement_RenderElement_Params params;
 	params.Owner = Owner;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
@@ -12346,14 +10595,7 @@ bool UMobileMenuElement::OnTouch(TEnumAsByte<enum class ETouchType> EventType, f
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuElement.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuElement_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -12378,10 +10620,7 @@ void AMobileMenuGame::RestartPlayer(class AController* NewPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuGame.RestartPlayer");
 
-	struct
-	{
-		class AController*             NewPlayer;
-	} params;
+	AMobileMenuGame_RestartPlayer_Params params;
 	params.NewPlayer = NewPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -12399,9 +10638,7 @@ void AMobileMenuGame::StartMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuGame.StartMatch");
 
-	struct
-	{
-	} params;
+	AMobileMenuGame_StartMatch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12420,10 +10657,7 @@ void AMobileMenuGame::PostLogin(class APlayerController* NewPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuGame.PostLogin");
 
-	struct
-	{
-		class APlayerController*       NewPlayer;
-	} params;
+	AMobileMenuGame_PostLogin_Params params;
 	params.NewPlayer = NewPlayer;
 
 	auto flags = fn->FunctionFlags;
@@ -12444,11 +10678,7 @@ void UMobileMenuInventory::RenderDragItem(class UCanvas* Canvas, float DeltaTime
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.RenderDragItem");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuInventory_RenderDragItem_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12470,11 +10700,7 @@ void UMobileMenuInventory::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuInventory_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12496,11 +10722,7 @@ int UMobileMenuInventory::GetIndexOfItem(class UMobileMenuElement* Item)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.GetIndexOfItem");
 
-	struct
-	{
-		class UMobileMenuElement*      Item;
-		int                            ReturnValue;
-	} params;
+	UMobileMenuInventory_GetIndexOfItem_Params params;
 	params.Item = Item;
 
 	auto flags = fn->FunctionFlags;
@@ -12524,12 +10746,7 @@ int UMobileMenuInventory::FindSlotIndexAt(float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.FindSlotIndexAt");
 
-	struct
-	{
-		float                          X;
-		float                          Y;
-		int                            ReturnValue;
-	} params;
+	UMobileMenuInventory_FindSlotIndexAt_Params params;
 	params.X = X;
 	params.Y = Y;
 
@@ -12553,11 +10770,7 @@ void UMobileMenuInventory::InitDragAt(int TouchX, int TouchY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.InitDragAt");
 
-	struct
-	{
-		int                            TouchX;
-		int                            TouchY;
-	} params;
+	UMobileMenuInventory_InitDragAt_Params params;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
 
@@ -12578,10 +10791,7 @@ void UMobileMenuInventory::UpdateItemInSlot(int InSlot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.UpdateItemInSlot");
 
-	struct
-	{
-		int                            InSlot;
-	} params;
+	UMobileMenuInventory_UpdateItemInSlot_Params params;
 	params.InSlot = InSlot;
 
 	auto flags = fn->FunctionFlags;
@@ -12603,12 +10813,7 @@ class UMobileMenuElement* UMobileMenuInventory::AddItemToSlot(class UMobileMenuE
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.AddItemToSlot");
 
-	struct
-	{
-		class UMobileMenuElement*      Element;
-		int                            ToSlot;
-		class UMobileMenuElement*      ReturnValue;
-	} params;
+	UMobileMenuInventory_AddItemToSlot_Params params;
 	params.Element = Element;
 	params.ToSlot = ToSlot;
 
@@ -12633,12 +10838,7 @@ bool UMobileMenuInventory::SwapItemsInSlots(int Slot0, int Slot1)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.SwapItemsInSlots");
 
-	struct
-	{
-		int                            Slot0;
-		int                            Slot1;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuInventory_SwapItemsInSlots_Params params;
 	params.Slot0 = Slot0;
 	params.Slot1 = Slot1;
 
@@ -12666,15 +10866,7 @@ bool UMobileMenuInventory::OnTouch(TEnumAsByte<enum class ETouchType> EventType,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuInventory_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -12704,14 +10896,7 @@ bool UMobileMenuInventory::CanPutItemInSlot(class UMobileMenuElement* Item, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.CanPutItemInSlot");
 
-	struct
-	{
-		class UMobileMenuElement*      Item;
-		class UMobileMenuElement*      ToSlot;
-		int                            ToIdx;
-		int                            FromIdx;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuInventory_CanPutItemInSlot_Params params;
 	params.Item = Item;
 	params.ToSlot = ToSlot;
 	params.ToIdx = ToIdx;
@@ -12736,10 +10921,7 @@ void UMobileMenuInventory::ScaleSlot(class UMobileMenuElement* Slot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.ScaleSlot");
 
-	struct
-	{
-		class UMobileMenuElement*      Slot;
-	} params;
+	UMobileMenuInventory_ScaleSlot_Params params;
 	params.Slot = Slot;
 
 	auto flags = fn->FunctionFlags;
@@ -12760,11 +10942,7 @@ int UMobileMenuInventory::AddSlot(class UMobileMenuElement* Slot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.AddSlot");
 
-	struct
-	{
-		class UMobileMenuElement*      Slot;
-		int                            ReturnValue;
-	} params;
+	UMobileMenuInventory_AddSlot_Params params;
 	params.Slot = Slot;
 
 	auto flags = fn->FunctionFlags;
@@ -12790,14 +10968,7 @@ void UMobileMenuInventory::InitMenuObject(class UMobilePlayerInput* PlayerInput,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.InitMenuObject");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		class UMobileMenuScene*        Scene;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuInventory_InitMenuObject_Params params;
 	params.PlayerInput = PlayerInput;
 	params.Scene = Scene;
 	params.ScreenWidth = ScreenWidth;
@@ -12822,11 +10993,7 @@ void UMobileMenuInventory::OnUpdateDrag(struct FDragElementInfo* Before, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.OnUpdateDrag");
 
-	struct
-	{
-		struct FDragElementInfo        Before;
-		struct FDragElementInfo        After;
-	} params;
+	UMobileMenuInventory_OnUpdateDrag_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12855,15 +11022,7 @@ bool UMobileMenuInventory::DoCanPutItemInSlot(class UMobileMenuInventory* FromIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.DoCanPutItemInSlot");
 
-	struct
-	{
-		class UMobileMenuInventory*    FromInv;
-		class UMobileMenuElement*      Item;
-		class UMobileMenuElement*      ToSlot;
-		int                            ToIdx;
-		int                            FromIdx;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuInventory_DoCanPutItemInSlot_Params params;
 	params.FromInv = FromInv;
 	params.Item = Item;
 	params.ToSlot = ToSlot;
@@ -12890,11 +11049,7 @@ void UMobileMenuInventory::OnUpdateItemInSlot(class UMobileMenuInventory* FromIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuInventory.OnUpdateItemInSlot");
 
-	struct
-	{
-		class UMobileMenuInventory*    FromInv;
-		int                            SlotIndex;
-	} params;
+	UMobileMenuInventory_OnUpdateItemInSlot_Params params;
 	params.FromInv = FromInv;
 	params.SlotIndex = SlotIndex;
 
@@ -12916,11 +11071,7 @@ void UMobileMenuLabel::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuLabel.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuLabel_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12942,11 +11093,7 @@ int UMobileMenuList::ItemScrollSize(class UMobileMenuListItem* Item)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.ItemScrollSize");
 
-	struct
-	{
-		class UMobileMenuListItem*     Item;
-		int                            ReturnValue;
-	} params;
+	UMobileMenuList_ItemScrollSize_Params params;
 	params.Item = Item;
 
 	auto flags = fn->FunctionFlags;
@@ -12969,11 +11116,7 @@ void UMobileMenuList::RenderObject(class UCanvas* Canvas, float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuList_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -12994,10 +11137,7 @@ void UMobileMenuList::UpdateScroll(float DeltaTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.UpdateScroll");
 
-	struct
-	{
-		float                          DeltaTime;
-	} params;
+	UMobileMenuList_UpdateScroll_Params params;
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
@@ -13020,13 +11160,7 @@ float UMobileMenuList::CalculateSelectedItem(float ScrollAmount, bool bForceZero
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.CalculateSelectedItem");
 
-	struct
-	{
-		struct FSelectedMenuItem       Selected;
-		float                          ScrollAmount;
-		bool                           bForceZeroAdjustment;
-		float                          ReturnValue;
-	} params;
+	UMobileMenuList_CalculateSelectedItem_Params params;
 	params.ScrollAmount = ScrollAmount;
 	params.bForceZeroAdjustment = bForceZeroAdjustment;
 
@@ -13054,12 +11188,7 @@ class UMobileMenuListItem* UMobileMenuList::GetItemClickPosition(float* MouseX, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.GetItemClickPosition");
 
-	struct
-	{
-		float                          MouseX;
-		float                          MouseY;
-		class UMobileMenuListItem*     ReturnValue;
-	} params;
+	UMobileMenuList_GetItemClickPosition_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13090,15 +11219,7 @@ bool UMobileMenuList::OnTouch(TEnumAsByte<enum class ETouchType> EventType, floa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuList_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -13126,12 +11247,7 @@ bool UMobileMenuList::SetSelectedItem(int ItemIndex, bool bForceAll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.SetSelectedItem");
 
-	struct
-	{
-		int                            ItemIndex;
-		bool                           bForceAll;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuList_SetSelectedItem_Params params;
 	params.ItemIndex = ItemIndex;
 	params.bForceAll = bForceAll;
 
@@ -13154,10 +11270,7 @@ int UMobileMenuList::GetNumVisible()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.GetNumVisible");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UMobileMenuList_GetNumVisible_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13179,11 +11292,7 @@ int UMobileMenuList::SetSelectedToVisibleIndex(int VisibleIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.SetSelectedToVisibleIndex");
 
-	struct
-	{
-		int                            VisibleIndex;
-		int                            ReturnValue;
-	} params;
+	UMobileMenuList_SetSelectedToVisibleIndex_Params params;
 	params.VisibleIndex = VisibleIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -13205,10 +11314,7 @@ int UMobileMenuList::GetVisibleIndexOfSelected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.GetVisibleIndexOfSelected");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UMobileMenuList_GetVisibleIndexOfSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13230,11 +11336,7 @@ float UMobileMenuList::GetAmountSelected(class UMobileMenuListItem* Item)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.GetAmountSelected");
 
-	struct
-	{
-		class UMobileMenuListItem*     Item;
-		float                          ReturnValue;
-	} params;
+	UMobileMenuList_GetAmountSelected_Params params;
 	params.Item = Item;
 
 	auto flags = fn->FunctionFlags;
@@ -13256,10 +11358,7 @@ class UMobileMenuListItem* UMobileMenuList::GetSelected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.GetSelected");
 
-	struct
-	{
-		class UMobileMenuListItem*     ReturnValue;
-	} params;
+	UMobileMenuList_GetSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13280,10 +11379,7 @@ int UMobileMenuList::Num()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.Num");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UMobileMenuList_Num_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13305,11 +11401,7 @@ void UMobileMenuList::AddItem(class UMobileMenuListItem* Item, int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.AddItem");
 
-	struct
-	{
-		class UMobileMenuListItem*     Item;
-		int                            Index;
-	} params;
+	UMobileMenuList_AddItem_Params params;
 	params.Item = Item;
 	params.Index = Index;
 
@@ -13334,14 +11426,7 @@ void UMobileMenuList::InitMenuObject(class UMobilePlayerInput* PlayerInput, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuList.InitMenuObject");
 
-	struct
-	{
-		class UMobilePlayerInput*      PlayerInput;
-		class UMobileMenuScene*        Scene;
-		int                            ScreenWidth;
-		int                            ScreenHeight;
-		bool                           bIsFirstInitialization;
-	} params;
+	UMobileMenuList_InitMenuObject_Params params;
 	params.PlayerInput = PlayerInput;
 	params.Scene = Scene;
 	params.ScreenWidth = ScreenWidth;
@@ -13367,12 +11452,7 @@ void UMobileMenuListItem::RenderItem(class UMobileMenuList* List, class UCanvas*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuListItem.RenderItem");
 
-	struct
-	{
-		class UMobileMenuList*         List;
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuListItem_RenderItem_Params params;
 	params.List = List;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
@@ -13395,11 +11475,7 @@ void UMobileMenuObjectProxy::RenderObject(class UCanvas* Canvas, float DeltaTime
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.RenderObject");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuObjectProxy_RenderObject_Params params;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
 
@@ -13425,15 +11501,7 @@ bool UMobileMenuObjectProxy::OnTouch(TEnumAsByte<enum class ETouchType> EventTyp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.OnTouch");
 
-	struct
-	{
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuObjectProxy_OnTouch_Params params;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
 	params.TouchY = TouchY;
@@ -13461,12 +11529,7 @@ void UMobileMenuObjectProxy::OnRenderObject(class UMobileMenuObjectProxy* Proxy,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.OnRenderObject");
 
-	struct
-	{
-		class UMobileMenuObjectProxy*  Proxy;
-		class UCanvas*                 Canvas;
-		float                          DeltaTime;
-	} params;
+	UMobileMenuObjectProxy_OnRenderObject_Params params;
 	params.Proxy = Proxy;
 	params.Canvas = Canvas;
 	params.DeltaTime = DeltaTime;
@@ -13494,16 +11557,7 @@ bool UMobileMenuObjectProxy::OnTouchEvent(class UMobileMenuObjectProxy* Proxy, T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileMenuObjectProxy.OnTouchEvent");
 
-	struct
-	{
-		class UMobileMenuObjectProxy*  Proxy;
-		TEnumAsByte<enum class ETouchType> EventType;
-		float                          TouchX;
-		float                          TouchY;
-		class UMobileMenuObject*       ObjectOver;
-		float                          DeltaTime;
-		bool                           ReturnValue;
-	} params;
+	UMobileMenuObjectProxy_OnTouchEvent_Params params;
 	params.Proxy = Proxy;
 	params.EventType = EventType;
 	params.TouchX = TouchX;
@@ -13528,9 +11582,7 @@ void AMobileTouchInputVolume::HandleDragOver()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileTouchInputVolume.HandleDragOver");
 
-	struct
-	{
-	} params;
+	AMobileTouchInputVolume_HandleDragOver_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13547,9 +11599,7 @@ void AMobileTouchInputVolume::HandleDoubleClick()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileTouchInputVolume.HandleDoubleClick");
 
-	struct
-	{
-	} params;
+	AMobileTouchInputVolume_HandleDoubleClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13566,9 +11616,7 @@ void AMobileTouchInputVolume::HandleClick()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileTouchInputVolume.HandleClick");
 
-	struct
-	{
-	} params;
+	AMobileTouchInputVolume_HandleClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13587,10 +11635,7 @@ void AMobileTouchInputVolume::OnToggle(class USeqAct_Toggle* inAction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileTouchInputVolume.OnToggle");
 
-	struct
-	{
-		class USeqAct_Toggle*          inAction;
-	} params;
+	AMobileTouchInputVolume_OnToggle_Params params;
 	params.inAction = inAction;
 
 	auto flags = fn->FunctionFlags;
@@ -13608,9 +11653,7 @@ void UTouchableElement3D::HandleDragOver()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.TouchableElement3D.HandleDragOver");
 
-	struct
-	{
-	} params;
+	UTouchableElement3D_HandleDragOver_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13627,9 +11670,7 @@ void UTouchableElement3D::HandleDoubleClick()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.TouchableElement3D.HandleDoubleClick");
 
-	struct
-	{
-	} params;
+	UTouchableElement3D_HandleDoubleClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13646,9 +11687,7 @@ void UTouchableElement3D::HandleClick()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.TouchableElement3D.HandleClick");
 
-	struct
-	{
-	} params;
+	UTouchableElement3D_HandleClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13668,11 +11707,7 @@ void APlayerCollectorGame::GetSeamlessTravelActorList(bool bToEntry, TArray<clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.PlayerCollectorGame.GetSeamlessTravelActorList");
 
-	struct
-	{
-		bool                           bToEntry;
-		TArray<class AActor*>          ActorList;
-	} params;
+	APlayerCollectorGame_GetSeamlessTravelActorList_Params params;
 	params.bToEntry = bToEntry;
 
 	auto flags = fn->FunctionFlags;
@@ -13699,14 +11734,7 @@ class APlayerController* APlayerCollectorGame::Login(const struct FString& Porta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.PlayerCollectorGame.Login");
 
-	struct
-	{
-		struct FString                 Portal;
-		struct FString                 Options;
-		struct FUniqueNetId            UniqueId;
-		struct FString                 ErrorMessage;
-		class APlayerController*       ReturnValue;
-	} params;
+	APlayerCollectorGame_Login_Params params;
 	params.Portal = Portal;
 	params.Options = Options;
 	params.UniqueId = UniqueId;
@@ -13734,11 +11762,7 @@ void USeqEvent_HudRenderImage::Render(class UCanvas* TargetCanvas, class AHUD* T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_HudRenderImage.Render");
 
-	struct
-	{
-		class UCanvas*                 TargetCanvas;
-		class AHUD*                    TargetHud;
-	} params;
+	USeqEvent_HudRenderImage_Render_Params params;
 	params.TargetCanvas = TargetCanvas;
 	params.TargetHud = TargetHud;
 
@@ -13759,10 +11783,7 @@ int USeqEvent_HudRenderText::STATIC_GetObjClassVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_HudRenderText.GetObjClassVersion");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	USeqEvent_HudRenderText_GetObjClassVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13784,11 +11805,7 @@ void USeqEvent_HudRenderText::Render(class UCanvas* TargetCanvas, class AHUD* Ta
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.SeqEvent_HudRenderText.Render");
 
-	struct
-	{
-		class UCanvas*                 TargetCanvas;
-		class AHUD*                    TargetHud;
-	} params;
+	USeqEvent_HudRenderText_Render_Params params;
 	params.TargetCanvas = TargetCanvas;
 	params.TargetHud = TargetHud;
 

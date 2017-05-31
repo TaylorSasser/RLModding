@@ -1,5 +1,6 @@
 #include "Utils.h"
 #include "PatternFinder.h"
+#include "RL/SDK.hpp"
 
 
 namespace Utils {
@@ -29,6 +30,5 @@ namespace Utils {
 			}
 		}
 		return ObjectInstance;
-	};
-
-}
+	}
+};

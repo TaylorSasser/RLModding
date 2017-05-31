@@ -1,5 +1,3 @@
-#pragma once
-
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -23,10 +21,7 @@ bool UHttpRequestCurl::ProcessRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.ProcessRequest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UHttpRequestCurl_ProcessRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -50,12 +45,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetHeader(const struct FString& H
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.SetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 HeaderValue;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestCurl_SetHeader_Params params;
 	params.HeaderName = HeaderName;
 	params.HeaderValue = HeaderValue;
 
@@ -80,11 +70,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetContentAsString(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.SetContentAsString");
 
-	struct
-	{
-		struct FString                 ContentString;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestCurl_SetContentAsString_Params params;
 	params.ContentString = ContentString;
 
 	auto flags = fn->FunctionFlags;
@@ -108,11 +94,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetContent(TArray<unsigned char>*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.SetContent");
 
-	struct
-	{
-		TArray<unsigned char>          ContentPayload;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestCurl_SetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -138,11 +120,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetURL(const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.SetURL");
 
-	struct
-	{
-		struct FString                 URL;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestCurl_SetURL_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -166,11 +144,7 @@ class UHttpRequestInterface* UHttpRequestCurl::SetVerb(const struct FString& Ver
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.SetVerb");
 
-	struct
-	{
-		struct FString                 Verb;
-		class UHttpRequestInterface*   ReturnValue;
-	} params;
+	UHttpRequestCurl_SetVerb_Params params;
 	params.Verb = Verb;
 
 	auto flags = fn->FunctionFlags;
@@ -193,10 +167,7 @@ struct FString UHttpRequestCurl::GetVerb()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetVerb");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestCurl_GetVerb_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -218,10 +189,7 @@ void UHttpRequestCurl::GetContent(TArray<unsigned char>* Content)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetContent");
 
-	struct
-	{
-		TArray<unsigned char>          Content;
-	} params;
+	UHttpRequestCurl_GetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -244,10 +212,7 @@ struct FString UHttpRequestCurl::GetURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestCurl_GetURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -269,10 +234,7 @@ int UHttpRequestCurl::GetContentLength()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetContentLength");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpRequestCurl_GetContentLength_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -294,10 +256,7 @@ struct FString UHttpRequestCurl::GetContentType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetContentType");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestCurl_GetContentType_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -320,11 +279,7 @@ struct FString UHttpRequestCurl::GetURLParameter(const struct FString& Parameter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetURLParameter");
 
-	struct
-	{
-		struct FString                 ParameterName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestCurl_GetURLParameter_Params params;
 	params.ParameterName = ParameterName;
 
 	auto flags = fn->FunctionFlags;
@@ -347,10 +302,7 @@ TArray<struct FString> UHttpRequestCurl::GetHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetHeaders");
 
-	struct
-	{
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UHttpRequestCurl_GetHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -373,11 +325,7 @@ struct FString UHttpRequestCurl::GetHeader(const struct FString& HeaderName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpRequestCurl.GetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpRequestCurl_GetHeader_Params params;
 	params.HeaderName = HeaderName;
 
 	auto flags = fn->FunctionFlags;
@@ -400,10 +348,7 @@ int UHttpResponseCurl::GetResponseCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetResponseCode");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpResponseCurl_GetResponseCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -425,10 +370,7 @@ struct FString UHttpResponseCurl::GetContentAsString()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetContentAsString");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseCurl_GetContentAsString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -450,10 +392,7 @@ void UHttpResponseCurl::GetContent(TArray<unsigned char>* Content)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetContent");
 
-	struct
-	{
-		TArray<unsigned char>          Content;
-	} params;
+	UHttpResponseCurl_GetContent_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -476,10 +415,7 @@ struct FString UHttpResponseCurl::GetURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseCurl_GetURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -501,10 +437,7 @@ int UHttpResponseCurl::GetContentLength()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetContentLength");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UHttpResponseCurl_GetContentLength_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -526,10 +459,7 @@ struct FString UHttpResponseCurl::GetContentType()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetContentType");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseCurl_GetContentType_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -552,11 +482,7 @@ struct FString UHttpResponseCurl::GetURLParameter(const struct FString& Paramete
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetURLParameter");
 
-	struct
-	{
-		struct FString                 ParameterName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseCurl_GetURLParameter_Params params;
 	params.ParameterName = ParameterName;
 
 	auto flags = fn->FunctionFlags;
@@ -579,10 +505,7 @@ TArray<struct FString> UHttpResponseCurl::GetHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetHeaders");
 
-	struct
-	{
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UHttpResponseCurl_GetHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -605,11 +528,7 @@ struct FString UHttpResponseCurl::GetHeader(const struct FString& HeaderName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HttpResponseCurl.GetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 ReturnValue;
-	} params;
+	UHttpResponseCurl_GetHeader_Params params;
 	params.HeaderName = HeaderName;
 
 	auto flags = fn->FunctionFlags;
@@ -630,9 +549,7 @@ void AInternetLink::ResolveFailed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.ResolveFailed");
 
-	struct
-	{
-	} params;
+	AInternetLink_ResolveFailed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -651,10 +568,7 @@ void AInternetLink::Resolved(const struct FIpAddr& Addr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.Resolved");
 
-	struct
-	{
-		struct FIpAddr                 Addr;
-	} params;
+	AInternetLink_Resolved_Params params;
 	params.Addr = Addr;
 
 	auto flags = fn->FunctionFlags;
@@ -674,10 +588,7 @@ void AInternetLink::GetLocalIP(struct FIpAddr* Arg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.GetLocalIP");
 
-	struct
-	{
-		struct FIpAddr                 Arg;
-	} params;
+	AInternetLink_GetLocalIP_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -702,12 +613,7 @@ bool AInternetLink::StringToIpAddr(const struct FString& Str, struct FIpAddr* Ad
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.StringToIpAddr");
 
-	struct
-	{
-		struct FString                 Str;
-		struct FIpAddr                 Addr;
-		bool                           ReturnValue;
-	} params;
+	AInternetLink_StringToIpAddr_Params params;
 	params.Str = Str;
 
 	auto flags = fn->FunctionFlags;
@@ -734,11 +640,7 @@ struct FString AInternetLink::IpAddrToString(const struct FIpAddr& Arg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.IpAddrToString");
 
-	struct
-	{
-		struct FIpAddr                 Arg;
-		struct FString                 ReturnValue;
-	} params;
+	AInternetLink_IpAddrToString_Params params;
 	params.Arg = Arg;
 
 	auto flags = fn->FunctionFlags;
@@ -761,10 +663,7 @@ int AInternetLink::GetLastError()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.GetLastError");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	AInternetLink_GetLastError_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -786,10 +685,7 @@ void AInternetLink::Resolve(const struct FString& Domain)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.Resolve");
 
-	struct
-	{
-		struct FString                 Domain;
-	} params;
+	AInternetLink_Resolve_Params params;
 	params.Domain = Domain;
 
 	auto flags = fn->FunctionFlags;
@@ -815,15 +711,7 @@ bool AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, in
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.ParseURL");
 
-	struct
-	{
-		struct FString                 URL;
-		struct FString                 Addr;
-		int                            PortNum;
-		struct FString                 LevelName;
-		struct FString                 EntryName;
-		bool                           ReturnValue;
-	} params;
+	AInternetLink_ParseURL_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -855,10 +743,7 @@ bool AInternetLink::IsDataPending()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.InternetLink.IsDataPending");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AInternetLink_IsDataPending_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -881,11 +766,7 @@ void ATcpLink::ReceivedBinary(int Count, unsigned char B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.ReceivedBinary");
 
-	struct
-	{
-		int                            Count;
-		unsigned char                  B;
-	} params;
+	ATcpLink_ReceivedBinary_Params params;
 	params.Count = Count;
 	params.B = B;
 
@@ -906,10 +787,7 @@ void ATcpLink::ReceivedLine(const struct FString& Line)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.ReceivedLine");
 
-	struct
-	{
-		struct FString                 Line;
-	} params;
+	ATcpLink_ReceivedLine_Params params;
 	params.Line = Line;
 
 	auto flags = fn->FunctionFlags;
@@ -929,10 +807,7 @@ void ATcpLink::ReceivedText(const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.ReceivedText");
 
-	struct
-	{
-		struct FString                 Text;
-	} params;
+	ATcpLink_ReceivedText_Params params;
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
@@ -950,9 +825,7 @@ void ATcpLink::Closed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Closed");
 
-	struct
-	{
-	} params;
+	ATcpLink_Closed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -969,9 +842,7 @@ void ATcpLink::Opened()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Opened");
 
-	struct
-	{
-	} params;
+	ATcpLink_Opened_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -988,9 +859,7 @@ void ATcpLink::Accepted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Accepted");
 
-	struct
-	{
-	} params;
+	ATcpLink_Accepted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1011,12 +880,7 @@ int ATcpLink::ReadBinary(int Count, unsigned char* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.ReadBinary");
 
-	struct
-	{
-		int                            Count;
-		unsigned char                  B;
-		int                            ReturnValue;
-	} params;
+	ATcpLink_ReadBinary_Params params;
 	params.Count = Count;
 
 	auto flags = fn->FunctionFlags;
@@ -1043,11 +907,7 @@ int ATcpLink::ReadText(struct FString* Str)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.ReadText");
 
-	struct
-	{
-		struct FString                 Str;
-		int                            ReturnValue;
-	} params;
+	ATcpLink_ReadText_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1074,12 +934,7 @@ int ATcpLink::SendBinary(int Count, unsigned char B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.SendBinary");
 
-	struct
-	{
-		int                            Count;
-		unsigned char                  B;
-		int                            ReturnValue;
-	} params;
+	ATcpLink_SendBinary_Params params;
 	params.Count = Count;
 	params.B = B;
 
@@ -1104,11 +959,7 @@ int ATcpLink::SendText(const struct FString& Str)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.SendText");
 
-	struct
-	{
-		struct FString                 Str;
-		int                            ReturnValue;
-	} params;
+	ATcpLink_SendText_Params params;
 	params.Str = Str;
 
 	auto flags = fn->FunctionFlags;
@@ -1131,10 +982,7 @@ bool ATcpLink::IsConnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.IsConnected");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	ATcpLink_IsConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1156,10 +1004,7 @@ bool ATcpLink::Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Close");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	ATcpLink_Close_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1182,11 +1027,7 @@ bool ATcpLink::Open(const struct FIpAddr& Addr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Open");
 
-	struct
-	{
-		struct FIpAddr                 Addr;
-		bool                           ReturnValue;
-	} params;
+	ATcpLink_Open_Params params;
 	params.Addr = Addr;
 
 	auto flags = fn->FunctionFlags;
@@ -1209,10 +1050,7 @@ bool ATcpLink::Listen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Listen");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	ATcpLink_Listen_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -1236,12 +1074,7 @@ int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.BindPort");
 
-	struct
-	{
-		int                            PortNum;
-		bool                           bUseNextAvailable;
-		int                            ReturnValue;
-	} params;
+	ATcpLink_BindPort_Params params;
 	params.PortNum = PortNum;
 	params.bUseNextAvailable = bUseNextAvailable;
 
@@ -1266,11 +1099,7 @@ struct FString UMcpServiceBase::GetUserAuthURL(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServiceBase.GetUserAuthURL");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServiceBase_GetUserAuthURL_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -1292,10 +1121,7 @@ struct FString UMcpServiceBase::GetAppAccessURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServiceBase.GetAppAccessURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServiceBase_GetAppAccessURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1316,10 +1142,7 @@ struct FString UMcpServiceBase::GetBaseURL()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServiceBase.GetBaseURL");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServiceBase_GetBaseURL_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1338,9 +1161,7 @@ void UMcpServiceBase::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServiceBase.Init");
 
-	struct
-	{
-	} params;
+	UMcpServiceBase_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1361,12 +1182,7 @@ bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadMatchmakingStats");
 
-	struct
-	{
-		struct FUniqueNetId            UniqueId;
-		class UOnlineMatchmakingStats* MMStats;
-		bool                           ReturnValue;
-	} params;
+	UOnlineEventsInterfaceMcp_UploadMatchmakingStats_Params params;
 	params.UniqueId = UniqueId;
 	params.MMStats = MMStats;
 
@@ -1392,12 +1208,7 @@ bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int PlaylistId, int Num
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UpdatePlaylistPopulation");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            NumPlayers;
-		bool                           ReturnValue;
-	} params;
+	UOnlineEventsInterfaceMcp_UpdatePlaylistPopulation_Params params;
 	params.PlaylistId = PlaylistId;
 	params.NumPlayers = NumPlayers;
 
@@ -1423,12 +1234,7 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNet
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData");
 
-	struct
-	{
-		struct FUniqueNetId            UniqueId;
-		TArray<unsigned char>          Payload;
-		bool                           ReturnValue;
-	} params;
+	UOnlineEventsInterfaceMcp_UploadGameplayEventsData_Params params;
 	params.UniqueId = UniqueId;
 
 	auto flags = fn->FunctionFlags;
@@ -1458,14 +1264,7 @@ bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& Uniq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadPlayerData");
 
-	struct
-	{
-		struct FUniqueNetId            UniqueId;
-		struct FString                 PlayerNick;
-		class UOnlineProfileSettings*  ProfileSettings;
-		class UOnlinePlayerStorage*    PlayerStorage;
-		bool                           ReturnValue;
-	} params;
+	UOnlineEventsInterfaceMcp_UploadPlayerData_Params params;
 	params.UniqueId = UniqueId;
 	params.PlayerNick = PlayerNick;
 	params.ProfileSettings = ProfileSettings;
@@ -1493,12 +1292,7 @@ struct FString UOnlineNewsInterfaceMcp::GetNews(unsigned char LocalUserNum, TEnu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.GetNews");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		TEnumAsByte<enum class EOnlineNewsType> NewsType;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineNewsInterfaceMcp_GetNews_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.NewsType = NewsType;
 
@@ -1521,10 +1315,7 @@ void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.ClearReadNewsCompletedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadGameNewsDelegate;
-	} params;
+	UOnlineNewsInterfaceMcp_ClearReadNewsCompletedDelegate_Params params;
 	params.ReadGameNewsDelegate = ReadGameNewsDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1544,10 +1335,7 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptD
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.AddReadNewsCompletedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadNewsDelegate;
-	} params;
+	UOnlineNewsInterfaceMcp_AddReadNewsCompletedDelegate_Params params;
 	params.ReadNewsDelegate = ReadNewsDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1568,11 +1356,7 @@ void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsBy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		TEnumAsByte<enum class EOnlineNewsType> NewsType;
-	} params;
+	UOnlineNewsInterfaceMcp_OnReadNewsCompleted_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.NewsType = NewsType;
 
@@ -1595,12 +1379,7 @@ bool UOnlineNewsInterfaceMcp::ReadNews(unsigned char LocalUserNum, TEnumAsByte<e
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.ReadNews");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		TEnumAsByte<enum class EOnlineNewsType> NewsType;
-		bool                           ReturnValue;
-	} params;
+	UOnlineNewsInterfaceMcp_ReadNews_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.NewsType = NewsType;
 
@@ -1625,11 +1404,7 @@ struct FString UOnlineTitleFileDownloadBase::GetUrlForFile(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetUrlForFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_GetUrlForFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -1652,10 +1427,7 @@ void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ClearRequestTitleFileListCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RequestTitleFileListDelegate;
-	} params;
+	UOnlineTitleFileDownloadBase_ClearRequestTitleFileListCompleteDelegate_Params params;
 	params.RequestTitleFileListDelegate = RequestTitleFileListDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1675,10 +1447,7 @@ void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.AddRequestTitleFileListCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RequestTitleFileListDelegate;
-	} params;
+	UOnlineTitleFileDownloadBase_AddRequestTitleFileListCompleteDelegate_Params params;
 	params.RequestTitleFileListDelegate = RequestTitleFileListDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1699,11 +1468,7 @@ void UOnlineTitleFileDownloadBase::OnRequestTitleFileListComplete(bool bWasSucce
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.OnRequestTitleFileListComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		TArray<struct FString>         ResultStr;
-	} params;
+	UOnlineTitleFileDownloadBase_OnRequestTitleFileListComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.ResultStr = ResultStr;
 
@@ -1724,10 +1489,7 @@ bool UOnlineTitleFileDownloadBase::RequestTitleFileList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.RequestTitleFileList");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_RequestTitleFileList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1749,11 +1511,7 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFile(const struct FString& Fil
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_ClearDownloadedFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -1775,10 +1533,7 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFiles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFiles");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -1800,11 +1555,7 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileState");
 
-	struct
-	{
-		struct FString                 Filename;
-		TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_GetTitleFileState_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -1828,12 +1579,7 @@ bool UOnlineTitleFileDownloadBase::GetTitleFileContents(const struct FString& Fi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents");
 
-	struct
-	{
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_GetTitleFileContents_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -1858,10 +1604,7 @@ void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ClearReadTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadTitleFileCompleteDelegate;
-	} params;
+	UOnlineTitleFileDownloadBase_ClearReadTitleFileCompleteDelegate_Params params;
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1881,10 +1624,7 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.AddReadTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadTitleFileCompleteDelegate;
-	} params;
+	UOnlineTitleFileDownloadBase_AddReadTitleFileCompleteDelegate_Params params;
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -1906,12 +1646,7 @@ bool UOnlineTitleFileDownloadBase::ReadTitleFile(const struct FString& FileToRea
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.ReadTitleFile");
 
-	struct
-	{
-		struct FString                 FileToRead;
-		TEnumAsByte<enum class EOnlineFileType> FileType;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadBase_ReadTitleFile_Params params;
 	params.FileToRead = FileToRead;
 	params.FileType = FileType;
 
@@ -1935,11 +1670,7 @@ void UOnlineTitleFileDownloadBase::OnReadTitleFileComplete(bool bWasSuccessful, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.OnReadTitleFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UOnlineTitleFileDownloadBase_OnReadTitleFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -1961,11 +1692,7 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(const struct FString& File
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadMcp_ClearDownloadedFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -1988,10 +1715,7 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadMcp_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2014,11 +1738,7 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp:
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState");
 
-	struct
-	{
-		struct FString                 Filename;
-		TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadMcp_GetTitleFileState_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2042,12 +1762,7 @@ bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(const struct FString& Fil
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents");
 
-	struct
-	{
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadMcp_GetTitleFileContents_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2075,12 +1790,7 @@ bool UOnlineTitleFileDownloadMcp::ReadTitleFile(const struct FString& FileToRead
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile");
 
-	struct
-	{
-		struct FString                 FileToRead;
-		TEnumAsByte<enum class EOnlineFileType> FileType;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadMcp_ReadTitleFile_Params params;
 	params.FileToRead = FileToRead;
 	params.FileType = FileType;
 
@@ -2105,11 +1815,7 @@ struct FString UOnlineTitleFileDownloadWeb::GetUrlForFile(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetUrlForFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_GetUrlForFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2133,12 +1839,7 @@ void UOnlineTitleFileDownloadWeb::OnFileListReceived(class UHttpRequestInterface
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.OnFileListReceived");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UOnlineTitleFileDownloadWeb_OnFileListReceived_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -2160,10 +1861,7 @@ bool UOnlineTitleFileDownloadWeb::RequestTitleFileList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.RequestTitleFileList");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_RequestTitleFileList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -2185,11 +1883,7 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(const struct FString& File
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_ClearDownloadedFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2212,10 +1906,7 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFiles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFiles");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2238,11 +1929,7 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb:
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState");
 
-	struct
-	{
-		struct FString                 Filename;
-		TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_GetTitleFileState_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2266,12 +1953,7 @@ bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(const struct FString& Fil
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileContents");
 
-	struct
-	{
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_GetTitleFileContents_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2298,11 +1980,7 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.TriggerDelegates");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 FileRead;
-	} params;
+	UOnlineTitleFileDownloadWeb_TriggerDelegates_Params params;
 	params.bSuccess = bSuccess;
 	params.FileRead = FileRead;
 
@@ -2326,12 +2004,7 @@ void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete(class UHttpRequestInter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.OnFileDownloadComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UOnlineTitleFileDownloadWeb_OnFileDownloadComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -2355,12 +2028,7 @@ bool UOnlineTitleFileDownloadWeb::ReadTitleFile(const struct FString& FileToRead
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.ReadTitleFile");
 
-	struct
-	{
-		struct FString                 FileToRead;
-		TEnumAsByte<enum class EOnlineFileType> FileType;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_ReadTitleFile_Params params;
 	params.FileToRead = FileToRead;
 	params.FileType = FileType;
 
@@ -2386,13 +2054,7 @@ bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(TEnumAsByte<enum c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.UncompressTitleFileContents");
 
-	struct
-	{
-		TEnumAsByte<enum class EMcpFileCompressionType> FileCompressionType;
-		TArray<unsigned char>          CompressedFileContents;
-		TArray<unsigned char>          UncompressedFileContents;
-		bool                           ReturnValue;
-	} params;
+	UOnlineTitleFileDownloadWeb_UncompressTitleFileContents_Params params;
 	params.FileCompressionType = FileCompressionType;
 
 	auto flags = fn->FunctionFlags;
@@ -2421,11 +2083,7 @@ bool UTitleFileDownloadCache::DeleteTitleFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.DeleteTitleFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_DeleteTitleFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2449,11 +2107,7 @@ bool UTitleFileDownloadCache::DeleteTitleFiles(float MaxAgeSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.DeleteTitleFiles");
 
-	struct
-	{
-		float                          MaxAgeSeconds;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_DeleteTitleFiles_Params params;
 	params.MaxAgeSeconds = MaxAgeSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -2477,11 +2131,7 @@ bool UTitleFileDownloadCache::ClearCachedFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.ClearCachedFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_ClearCachedFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2504,10 +2154,7 @@ bool UTitleFileDownloadCache::ClearCachedFiles()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.ClearCachedFiles");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_ClearCachedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -2530,11 +2177,7 @@ struct FString UTitleFileDownloadCache::GetTitleFileLogicalName(const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileLogicalName");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UTitleFileDownloadCache_GetTitleFileLogicalName_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2558,11 +2201,7 @@ struct FString UTitleFileDownloadCache::GetTitleFileHash(const struct FString& F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileHash");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UTitleFileDownloadCache_GetTitleFileHash_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2586,11 +2225,7 @@ TEnumAsByte<enum class EOnlineEnumerationReadState> UTitleFileDownloadCache::Get
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileState");
 
-	struct
-	{
-		struct FString                 Filename;
-		TEnumAsByte<enum class EOnlineEnumerationReadState> ReturnValue;
-	} params;
+	UTitleFileDownloadCache_GetTitleFileState_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2615,12 +2250,7 @@ bool UTitleFileDownloadCache::GetTitleFileContents(const struct FString& Filenam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileContents");
 
-	struct
-	{
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_GetTitleFileContents_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2646,10 +2276,7 @@ void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.ClearSaveTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         SaveCompleteDelegate;
-	} params;
+	UTitleFileDownloadCache_ClearSaveTitleFileCompleteDelegate_Params params;
 	params.SaveCompleteDelegate = SaveCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -2669,10 +2296,7 @@ void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.AddSaveTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         SaveCompleteDelegate;
-	} params;
+	UTitleFileDownloadCache_AddSaveTitleFileCompleteDelegate_Params params;
 	params.SaveCompleteDelegate = SaveCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -2693,11 +2317,7 @@ void UTitleFileDownloadCache::OnSaveTitleFileComplete(bool bWasSuccessful, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.OnSaveTitleFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UTitleFileDownloadCache_OnSaveTitleFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -2721,13 +2341,7 @@ bool UTitleFileDownloadCache::SaveTitleFile(const struct FString& Filename, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.SaveTitleFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 LogicalName;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_SaveTitleFile_Params params;
 	params.Filename = Filename;
 	params.LogicalName = LogicalName;
 	params.FileContents = FileContents;
@@ -2752,10 +2366,7 @@ void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.ClearLoadTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LoadCompleteDelegate;
-	} params;
+	UTitleFileDownloadCache_ClearLoadTitleFileCompleteDelegate_Params params;
 	params.LoadCompleteDelegate = LoadCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -2775,10 +2386,7 @@ void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.AddLoadTitleFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LoadCompleteDelegate;
-	} params;
+	UTitleFileDownloadCache_AddLoadTitleFileCompleteDelegate_Params params;
 	params.LoadCompleteDelegate = LoadCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -2799,11 +2407,7 @@ void UTitleFileDownloadCache::OnLoadTitleFileComplete(bool bWasSuccessful, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.OnLoadTitleFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UTitleFileDownloadCache_OnLoadTitleFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -2825,11 +2429,7 @@ bool UTitleFileDownloadCache::LoadTitleFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.LoadTitleFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UTitleFileDownloadCache_LoadTitleFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -2854,12 +2454,7 @@ bool UMcpMessageBase::CacheMessageContents(const struct FString& MessageId, TArr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CacheMessageContents");
 
-	struct
-	{
-		TArray<unsigned char>          MessageContents;
-		struct FString                 MessageId;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageBase_CacheMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -2884,10 +2479,7 @@ void UMcpMessageBase::CacheMessage(const struct FMcpMessage& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CacheMessage");
 
-	struct
-	{
-		struct FMcpMessage             Message;
-	} params;
+	UMcpMessageBase_CacheMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -2909,12 +2501,7 @@ bool UMcpMessageBase::GetMessageContents(const struct FString& MessageId, TArray
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.GetMessageContents");
 
-	struct
-	{
-		struct FString                 MessageId;
-		TArray<unsigned char>          MessageContents;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageBase_GetMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -2941,12 +2528,7 @@ void UMcpMessageBase::OnQueryMessageContentsComplete(const struct FString& Messa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.OnQueryMessageContentsComplete");
 
-	struct
-	{
-		struct FString                 MessageId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpMessageBase_OnQueryMessageContentsComplete_Params params;
 	params.MessageId = MessageId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -2968,10 +2550,7 @@ void UMcpMessageBase::QueryMessageContents(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.QueryMessageContents");
 
-	struct
-	{
-		struct FString                 MessageId;
-	} params;
+	UMcpMessageBase_QueryMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -2992,11 +2571,7 @@ void UMcpMessageBase::GetMessageList(const struct FString& ToUniqueUserId, struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.GetMessageList");
 
-	struct
-	{
-		struct FString                 ToUniqueUserId;
-		struct FMcpMessageList         MessageList;
-	} params;
+	UMcpMessageBase_GetMessageList_Params params;
 	params.ToUniqueUserId = ToUniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -3021,12 +2596,7 @@ void UMcpMessageBase::OnQueryMessagesComplete(const struct FString& UserId, bool
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.OnQueryMessagesComplete");
 
-	struct
-	{
-		struct FString                 UserId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpMessageBase_OnQueryMessagesComplete_Params params;
 	params.UserId = UserId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -3048,10 +2618,7 @@ void UMcpMessageBase::QueryMessages(const struct FString& ToUniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.QueryMessages");
 
-	struct
-	{
-		struct FString                 ToUniqueUserId;
-	} params;
+	UMcpMessageBase_QueryMessages_Params params;
 	params.ToUniqueUserId = ToUniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -3073,12 +2640,7 @@ void UMcpMessageBase::OnDeleteMessageComplete(const struct FString& MessageId, b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.OnDeleteMessageComplete");
 
-	struct
-	{
-		struct FString                 MessageId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpMessageBase_OnDeleteMessageComplete_Params params;
 	params.MessageId = MessageId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -3100,10 +2662,7 @@ void UMcpMessageBase::DeleteMessage(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.DeleteMessage");
 
-	struct
-	{
-		struct FString                 MessageId;
-	} params;
+	UMcpMessageBase_DeleteMessage_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3125,12 +2684,7 @@ void UMcpMessageBase::OnCreateMessageComplete(const struct FMcpMessage& Message,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.OnCreateMessageComplete");
 
-	struct
-	{
-		struct FMcpMessage             Message;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpMessageBase_OnCreateMessageComplete_Params params;
 	params.Message = Message;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -3158,16 +2712,7 @@ void UMcpMessageBase::CreateMessage(const struct FString& FromUniqueUserId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CreateMessage");
 
-	struct
-	{
-		TArray<struct FString>         ToUniqueUserIds;
-		struct FString                 FromUniqueUserId;
-		struct FString                 FromFriendlyName;
-		struct FString                 MessageType;
-		struct FString                 PushMessage;
-		struct FString                 ValidUntil;
-		TArray<unsigned char>          MessageContents;
-	} params;
+	UMcpMessageBase_CreateMessage_Params params;
 	params.FromUniqueUserId = FromUniqueUserId;
 	params.FromFriendlyName = FromFriendlyName;
 	params.MessageType = MessageType;
@@ -3196,10 +2741,7 @@ class UMcpMessageBase* UMcpMessageBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CreateInstance");
 
-	struct
-	{
-		class UMcpMessageBase*         ReturnValue;
-	} params;
+	UMcpMessageBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3222,12 +2764,7 @@ bool UMcpMessageManager::CacheMessageContents(const struct FString& MessageId, T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CacheMessageContents");
 
-	struct
-	{
-		TArray<unsigned char>          MessageContents;
-		struct FString                 MessageId;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageManager_CacheMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3254,12 +2791,7 @@ bool UMcpMessageManager::GetMessageById(const struct FString& MessageId, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.GetMessageById");
 
-	struct
-	{
-		struct FString                 MessageId;
-		struct FMcpMessage             Message;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageManager_GetMessageById_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3284,10 +2816,7 @@ void UMcpMessageManager::CacheMessage(const struct FMcpMessage& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CacheMessage");
 
-	struct
-	{
-		struct FMcpMessage             Message;
-	} params;
+	UMcpMessageManager_CacheMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -3309,12 +2838,7 @@ bool UMcpMessageManager::GetMessageContents(const struct FString& MessageId, TAr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.GetMessageContents");
 
-	struct
-	{
-		struct FString                 MessageId;
-		TArray<unsigned char>          MessageContents;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageManager_GetMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3341,12 +2865,7 @@ void UMcpMessageManager::OnQueryMessageContentsRequestComplete(class UHttpReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.OnQueryMessageContentsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpMessageManager_OnQueryMessageContentsRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -3368,10 +2887,7 @@ void UMcpMessageManager::QueryMessageContents(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.QueryMessageContents");
 
-	struct
-	{
-		struct FString                 MessageId;
-	} params;
+	UMcpMessageManager_QueryMessageContents_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3392,11 +2908,7 @@ void UMcpMessageManager::GetMessageList(const struct FString& ToUniqueUserId, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.GetMessageList");
 
-	struct
-	{
-		struct FString                 ToUniqueUserId;
-		struct FMcpMessageList         MessageList;
-	} params;
+	UMcpMessageManager_GetMessageList_Params params;
 	params.ToUniqueUserId = ToUniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -3421,12 +2933,7 @@ void UMcpMessageManager::OnQueryMessagesRequestComplete(class UHttpRequestInterf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.OnQueryMessagesRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpMessageManager_OnQueryMessagesRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -3448,10 +2955,7 @@ void UMcpMessageManager::QueryMessages(const struct FString& ToUniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.QueryMessages");
 
-	struct
-	{
-		struct FString                 ToUniqueUserId;
-	} params;
+	UMcpMessageManager_QueryMessages_Params params;
 	params.ToUniqueUserId = ToUniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -3473,12 +2977,7 @@ void UMcpMessageManager::OnDeleteMessageRequestComplete(class UHttpRequestInterf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.OnDeleteMessageRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpMessageManager_OnDeleteMessageRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -3500,10 +2999,7 @@ void UMcpMessageManager::DeleteMessage(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.DeleteMessage");
 
-	struct
-	{
-		struct FString                 MessageId;
-	} params;
+	UMcpMessageManager_DeleteMessage_Params params;
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
@@ -3525,12 +3021,7 @@ void UMcpMessageManager::OnCreateMessageRequestComplete(class UHttpRequestInterf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.OnCreateMessageRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   CreateMessageRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpMessageManager_OnCreateMessageRequestComplete_Params params;
 	params.CreateMessageRequest = CreateMessageRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -3558,16 +3049,7 @@ void UMcpMessageManager::CreateMessage(const struct FString& FromUniqueUserId, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CreateMessage");
 
-	struct
-	{
-		TArray<struct FString>         ToUniqueUserIds;
-		struct FString                 FromUniqueUserId;
-		struct FString                 FromFriendlyName;
-		struct FString                 MessageType;
-		struct FString                 PushMessage;
-		struct FString                 ValidUntil;
-		TArray<unsigned char>          MessageContents;
-	} params;
+	UMcpMessageManager_CreateMessage_Params params;
 	params.FromUniqueUserId = FromUniqueUserId;
 	params.FromFriendlyName = FromFriendlyName;
 	params.MessageType = MessageType;
@@ -3598,12 +3080,7 @@ void UMcpMessageManager::FinishedAsyncUncompression(bool bWasSuccessful, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.FinishedAsyncUncompression");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		TArray<unsigned char>          UncompressedMessageContents;
-		struct FString                 MessageId;
-	} params;
+	UMcpMessageManager_FinishedAsyncUncompression_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.MessageId = MessageId;
 
@@ -3630,13 +3107,7 @@ bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.StartAsyncUncompression");
 
-	struct
-	{
-		struct FString                 MessageId;
-		TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType;
-		TArray<unsigned char>          MessageContent;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageManager_StartAsyncUncompression_Params params;
 	params.MessageId = MessageId;
 	params.MessageCompressionType = MessageCompressionType;
 
@@ -3666,13 +3137,7 @@ bool UMcpMessageManager::StartAsyncCompression(TEnumAsByte<enum class EMcpMessag
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.StartAsyncCompression");
 
-	struct
-	{
-		TEnumAsByte<enum class EMcpMessageCompressionType> MessageCompressionType;
-		TArray<unsigned char>          MessageContent;
-		class UHttpRequestInterface*   Request;
-		bool                           ReturnValue;
-	} params;
+	UMcpMessageManager_StartAsyncCompression_Params params;
 	params.MessageCompressionType = MessageCompressionType;
 	params.Request = Request;
 
@@ -3697,9 +3162,7 @@ void UMcpUserCloudFileDownload::ClearAllDelegates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearAllDelegates");
 
-	struct
-	{
-	} params;
+	UMcpUserCloudFileDownload_ClearAllDelegates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3718,10 +3181,7 @@ void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearDeleteUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         DeleteUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_ClearDeleteUserFileCompleteDelegate_Params params;
 	params.DeleteUserFileCompleteDelegate = DeleteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -3741,10 +3201,7 @@ void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddDeleteUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         DeleteUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_AddDeleteUserFileCompleteDelegate_Params params;
 	params.DeleteUserFileCompleteDelegate = DeleteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -3766,12 +3223,7 @@ void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallDeleteUserFileCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_CallDeleteUserFileCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -3795,12 +3247,7 @@ void UMcpUserCloudFileDownload::OnDeleteUserFileComplete(bool bWasSuccessful, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnDeleteUserFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_OnDeleteUserFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -3824,12 +3271,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestDeleteUserFileComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserCloudFileDownload_OnHTTPRequestDeleteUserFileComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -3855,14 +3297,7 @@ bool UMcpUserCloudFileDownload::DeleteUserFile(const struct FString& UserId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.DeleteUserFile");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FString                 Filename;
-		bool                           bShouldCloudDelete;
-		bool                           bShouldLocallyDelete;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_DeleteUserFile_Params params;
 	params.UserId = UserId;
 	params.Filename = Filename;
 	params.bShouldCloudDelete = bShouldCloudDelete;
@@ -3887,10 +3322,7 @@ void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearWriteUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         WriteUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_ClearWriteUserFileCompleteDelegate_Params params;
 	params.WriteUserFileCompleteDelegate = WriteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -3910,10 +3342,7 @@ void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddWriteUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         WriteUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_AddWriteUserFileCompleteDelegate_Params params;
 	params.WriteUserFileCompleteDelegate = WriteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -3935,12 +3364,7 @@ void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSucc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallWriteUserFileCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_CallWriteUserFileCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -3964,12 +3388,7 @@ void UMcpUserCloudFileDownload::OnWriteUserFileComplete(bool bWasSuccessful, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnWriteUserFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_OnWriteUserFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -3993,12 +3412,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestWriteUserFileComplete(class UHttpRe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestWriteUserFileComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserCloudFileDownload_OnHTTPRequestWriteUserFileComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -4022,12 +3436,7 @@ void UMcpUserCloudFileDownload::GetUserFileIndexForRequest(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.GetUserFileIndexForRequest");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		int                            UserIdx;
-		int                            FileIdx;
-	} params;
+	UMcpUserCloudFileDownload_GetUserFileIndexForRequest_Params params;
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
@@ -4055,13 +3464,7 @@ bool UMcpUserCloudFileDownload::WriteUserFile(const struct FString& UserId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.WriteUserFile");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_WriteUserFile_Params params;
 	params.UserId = UserId;
 	params.Filename = Filename;
 
@@ -4087,10 +3490,7 @@ void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearReadUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_ClearReadUserFileCompleteDelegate_Params params;
 	params.ReadUserFileCompleteDelegate = ReadUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -4110,10 +3510,7 @@ void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddReadUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ReadUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_AddReadUserFileCompleteDelegate_Params params;
 	params.ReadUserFileCompleteDelegate = ReadUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -4135,12 +3532,7 @@ void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSucce
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallReadUserFileCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_CallReadUserFileCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -4164,12 +3556,7 @@ void UMcpUserCloudFileDownload::OnReadUserFileComplete(bool bWasSuccessful, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnReadUserFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-		struct FString                 Filename;
-	} params;
+	UMcpUserCloudFileDownload_OnReadUserFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 	params.Filename = Filename;
@@ -4193,12 +3580,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete(class UHttpReq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestReadUserFileComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserCloudFileDownload_OnHTTPRequestReadUserFileComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -4222,12 +3604,7 @@ bool UMcpUserCloudFileDownload::ReadUserFile(const struct FString& UserId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ReadUserFile");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_ReadUserFile_Params params;
 	params.UserId = UserId;
 	params.Filename = Filename;
 
@@ -4251,11 +3628,7 @@ void UMcpUserCloudFileDownload::GetUserFileList(const struct FString& UserId, TA
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.GetUserFileList");
 
-	struct
-	{
-		struct FString                 UserId;
-		TArray<struct FEmsFile>        UserFiles;
-	} params;
+	UMcpUserCloudFileDownload_GetUserFileList_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -4278,10 +3651,7 @@ void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearEnumerateUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         EnumerateUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_ClearEnumerateUserFileCompleteDelegate_Params params;
 	params.EnumerateUserFileCompleteDelegate = EnumerateUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -4301,10 +3671,7 @@ void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddEnumerateUserFileCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         EnumerateUserFileCompleteDelegate;
-	} params;
+	UMcpUserCloudFileDownload_AddEnumerateUserFileCompleteDelegate_Params params;
 	params.EnumerateUserFileCompleteDelegate = EnumerateUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -4325,11 +3692,7 @@ void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates(bool bWas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-	} params;
+	UMcpUserCloudFileDownload_CallEnumerateUserFileCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 
@@ -4351,11 +3714,7 @@ void UMcpUserCloudFileDownload::OnEnumerateUserFilesComplete(bool bWasSuccessful
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnEnumerateUserFilesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UserId;
-	} params;
+	UMcpUserCloudFileDownload_OnEnumerateUserFilesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UserId = UserId;
 
@@ -4378,12 +3737,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete(class UH
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestEnumerateUserFilesComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserCloudFileDownload_OnHTTPRequestEnumerateUserFilesComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -4405,10 +3759,7 @@ void UMcpUserCloudFileDownload::EnumerateUserFiles(const struct FString& UserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.EnumerateUserFiles");
 
-	struct
-	{
-		struct FString                 UserId;
-	} params;
+	UMcpUserCloudFileDownload_EnumerateUserFiles_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -4430,12 +3781,7 @@ bool UMcpUserCloudFileDownload::ClearFile(const struct FString& UserId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearFile");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_ClearFile_Params params;
 	params.UserId = UserId;
 	params.Filename = Filename;
 
@@ -4459,11 +3805,7 @@ bool UMcpUserCloudFileDownload::ClearFiles(const struct FString& UserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.ClearFiles");
 
-	struct
-	{
-		struct FString                 UserId;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_ClearFiles_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -4488,13 +3830,7 @@ bool UMcpUserCloudFileDownload::GetFileContents(const struct FString& UserId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.GetFileContents");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FString                 Filename;
-		TArray<unsigned char>          FileContents;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserCloudFileDownload_GetFileContents_Params params;
 	params.UserId = UserId;
 	params.Filename = Filename;
 
@@ -4518,9 +3854,7 @@ void UMeshBeacon::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeacon.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UMeshBeacon_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4544,14 +3878,7 @@ bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconClient_SendHostNewGameSessionResponse_Params params;
 	params.bSuccess = bSuccess;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
@@ -4581,12 +3908,7 @@ void UMeshBeaconClient::OnCreateNewSessionRequestReceived(const struct FName& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnCreateNewSessionRequestReceived");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		TArray<struct FPlayerMember>   Players;
-	} params;
+	UMeshBeaconClient_OnCreateNewSessionRequestReceived_Params params;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
 
@@ -4612,12 +3934,7 @@ void UMeshBeaconClient::OnTravelRequestReceived(const struct FName& SessionName,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnTravelRequestReceived");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-	} params;
+	UMeshBeaconClient_OnTravelRequestReceived_Params params;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
 
@@ -4643,12 +3960,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestResults(TEnumAsByte<enum class EM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestResults");
 
-	struct
-	{
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult;
-		struct FConnectionBandwidthStats BandwidthStats;
-	} params;
+	UMeshBeaconClient_OnReceivedBandwidthTestResults_Params params;
 	params.TestType = TestType;
 	params.TestResult = TestResult;
 
@@ -4672,10 +3984,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestRequest(TEnumAsByte<enum class EM
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestRequest");
 
-	struct
-	{
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-	} params;
+	UMeshBeaconClient_OnReceivedBandwidthTestRequest_Params params;
 	params.TestType = TestType;
 
 	auto flags = fn->FunctionFlags;
@@ -4695,10 +4004,7 @@ void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<enum class EMeshBe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.OnConnectionRequestResult");
 
-	struct
-	{
-		TEnumAsByte<enum class EMeshBeaconConnectionResult> ConnectionResult;
-	} params;
+	UMeshBeaconClient_OnConnectionRequestResult_Params params;
 	params.ConnectionResult = ConnectionResult;
 
 	auto flags = fn->FunctionFlags;
@@ -4720,12 +4026,7 @@ bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<enum class EMeshBeaconBan
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.BeginBandwidthTest");
 
-	struct
-	{
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-		int                            TestBufferSize;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconClient_BeginBandwidthTest_Params params;
 	params.TestType = TestType;
 	params.TestBufferSize = TestBufferSize;
 
@@ -4752,13 +4053,7 @@ bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FO
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.RequestConnection");
 
-	struct
-	{
-		struct FOnlineGameSearchResult DesiredHost;
-		struct FClientConnectionRequest ClientRequest;
-		bool                           bRegisterSecureAddress;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconClient_RequestConnection_Params params;
 	params.bRegisterSecureAddress = bRegisterSecureAddress;
 
 	auto flags = fn->FunctionFlags;
@@ -4784,9 +4079,7 @@ void UMeshBeaconClient::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UMeshBeaconClient_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4809,13 +4102,7 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult");
 
-	struct
-	{
-		bool                           bSucceeded;
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-	} params;
+	UMeshBeaconHost_OnReceivedClientCreateNewSessionResult_Params params;
 	params.bSucceeded = bSucceeded;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
@@ -4844,14 +4131,7 @@ bool UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.RequestClientCreateNewSession");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		TArray<struct FPlayerMember>   Players;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_RequestClientCreateNewSession_Params params;
 	params.PlayerNetId = PlayerNetId;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
@@ -4881,12 +4161,7 @@ void UMeshBeaconHost::TellClientsToTravel(const struct FName& SessionName, class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.TellClientsToTravel");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-	} params;
+	UMeshBeaconHost_TellClientsToTravel_Params params;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
 
@@ -4909,9 +4184,7 @@ void UMeshBeaconHost::OnAllPendingPlayersConnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnAllPendingPlayersConnected");
 
-	struct
-	{
-	} params;
+	UMeshBeaconHost_OnAllPendingPlayersConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4931,11 +4204,7 @@ bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllPlayersConnected");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_AllPlayersConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -4961,11 +4230,7 @@ int UMeshBeaconHost::GetConnectionIndexForPlayer(const struct FUniqueNetId& Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.GetConnectionIndexForPlayer");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		int                            ReturnValue;
-	} params;
+	UMeshBeaconHost_GetConnectionIndexForPlayer_Params params;
 	params.PlayerNetId = PlayerNetId;
 
 	auto flags = fn->FunctionFlags;
@@ -4988,10 +4253,7 @@ void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>* P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.SetPendingPlayerConnections");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-	} params;
+	UMeshBeaconHost_SetPendingPlayerConnections_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5016,13 +4278,7 @@ void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnFinishedBandwidthTest");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestResult> TestResult;
-		struct FConnectionBandwidthStats BandwidthStats;
-	} params;
+	UMeshBeaconHost_OnFinishedBandwidthTest_Params params;
 	params.PlayerNetId = PlayerNetId;
 	params.TestType = TestType;
 	params.TestResult = TestResult;
@@ -5048,11 +4304,7 @@ void UMeshBeaconHost::OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnStartedBandwidthTest");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-	} params;
+	UMeshBeaconHost_OnStartedBandwidthTest_Params params;
 	params.PlayerNetId = PlayerNetId;
 	params.TestType = TestType;
 
@@ -5073,10 +4325,7 @@ void UMeshBeaconHost::OnReceivedClientConnectionRequest(struct FClientMeshBeacon
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.OnReceivedClientConnectionRequest");
 
-	struct
-	{
-		struct FClientMeshBeaconConnection NewClientConnection;
-	} params;
+	UMeshBeaconHost_OnReceivedClientConnectionRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5098,10 +4347,7 @@ void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllowBandwidthTesting");
 
-	struct
-	{
-		bool                           bEnabled;
-	} params;
+	UMeshBeaconHost_AllowBandwidthTesting_Params params;
 	params.bEnabled = bEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -5119,9 +4365,7 @@ void UMeshBeaconHost::CancelPendingBandwidthTests()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.CancelPendingBandwidthTests");
 
-	struct
-	{
-	} params;
+	UMeshBeaconHost_CancelPendingBandwidthTests_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5141,10 +4385,7 @@ bool UMeshBeaconHost::HasPendingBandwidthTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_HasPendingBandwidthTest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5164,9 +4405,7 @@ void UMeshBeaconHost::CancelInProgressBandwidthTests()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.CancelInProgressBandwidthTests");
 
-	struct
-	{
-	} params;
+	UMeshBeaconHost_CancelInProgressBandwidthTests_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5186,10 +4425,7 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_HasInProgressBandwidthTest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5214,13 +4450,7 @@ bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& Play
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerNetId;
-		TEnumAsByte<enum class EMeshBeaconBandwidthTestType> TestType;
-		int                            TestBufferSize;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_RequestClientBandwidthTest_Params params;
 	params.PlayerNetId = PlayerNetId;
 	params.TestType = TestType;
 	params.TestBufferSize = TestBufferSize;
@@ -5243,9 +4473,7 @@ void UMeshBeaconHost::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UMeshBeaconHost_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5266,11 +4494,7 @@ bool UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.InitHostBeacon");
 
-	struct
-	{
-		struct FUniqueNetId            InOwningPlayerId;
-		bool                           ReturnValue;
-	} params;
+	UMeshBeaconHost_InitHostBeacon_Params params;
 	params.InOwningPlayerId = InOwningPlayerId;
 
 	auto flags = fn->FunctionFlags;
@@ -5294,11 +4518,7 @@ void UOnlineSubsystemCommonImpl::GetRegisteredPlayers(const struct FName& Sessio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.GetRegisteredPlayers");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FUniqueNetId>    OutRegisteredPlayers;
-	} params;
+	UOnlineSubsystemCommonImpl_GetRegisteredPlayers_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -5323,12 +4543,7 @@ bool UOnlineSubsystemCommonImpl::IsPlayerInSession(const struct FName& SessionNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.IsPlayerInSession");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineSubsystemCommonImpl_IsPlayerInSession_Params params;
 	params.SessionName = SessionName;
 	params.PlayerID = PlayerID;
 
@@ -5353,11 +4568,7 @@ struct FString UOnlineSubsystemCommonImpl::GetPlayerNicknameFromIndex(int UserIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.GetPlayerNicknameFromIndex");
 
-	struct
-	{
-		int                            UserIndex;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlineSubsystemCommonImpl_GetPlayerNicknameFromIndex_Params params;
 	params.UserIndex = UserIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -5380,11 +4591,7 @@ void UOnlineSubsystemCommonImpl::OnPlayerCountryRetrieved(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.OnPlayerCountryRetrieved");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FString                 Country;
-	} params;
+	UOnlineSubsystemCommonImpl_OnPlayerCountryRetrieved_Params params;
 	params.PlayerID = PlayerID;
 	params.Country = Country;
 
@@ -5406,11 +4613,7 @@ void UOnlineSubsystemCommonImpl::OnSanitizeStringComplete(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.OnSanitizeStringComplete");
 
-	struct
-	{
-		struct FString                 Original;
-		struct FString                 Sanitized;
-	} params;
+	UOnlineSubsystemCommonImpl_OnSanitizeStringComplete_Params params;
 	params.Original = Original;
 	params.Sanitized = Sanitized;
 
@@ -5431,10 +4634,7 @@ bool UOnlineAuthInterfaceImpl::RequiresMTXAuthorizationCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.RequiresMTXAuthorizationCode");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_RequiresMTXAuthorizationCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5455,10 +4655,7 @@ bool UOnlineAuthInterfaceImpl::RequiresAuthorizationCode()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.RequiresAuthorizationCode");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_RequiresAuthorizationCode_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5481,12 +4678,7 @@ bool UOnlineAuthInterfaceImpl::IsRequestingAuthorizationCode(const struct FUniqu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.IsRequestingAuthorizationCode");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         Callback;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_IsRequestingAuthorizationCode_Params params;
 	params.PlayerID = PlayerID;
 	params.Callback = Callback;
 
@@ -5511,12 +4703,7 @@ bool UOnlineAuthInterfaceImpl::RequestAuthorizationCode(const struct FUniqueNetI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.RequestAuthorizationCode");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		struct FScriptDelegate         Callback;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_RequestAuthorizationCode_Params params;
 	params.PlayerID = PlayerID;
 	params.Callback = Callback;
 
@@ -5542,13 +4729,7 @@ void UOnlineAuthInterfaceImpl::OnReceivedAuthorizationCode(bool bSuccess, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnReceivedAuthorizationCode");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FString                 AuthorizationCode;
-		struct FString                 EncryptedTicket;
-		int                            IssuerID;
-	} params;
+	UOnlineAuthInterfaceImpl_OnReceivedAuthorizationCode_Params params;
 	params.bSuccess = bSuccess;
 	params.AuthorizationCode = AuthorizationCode;
 	params.EncryptedTicket = EncryptedTicket;
@@ -5573,12 +4754,7 @@ bool UOnlineAuthInterfaceImpl::GetServerAddr(struct FIpAddr* OutServerIP, int* O
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.GetServerAddr");
 
-	struct
-	{
-		struct FIpAddr                 OutServerIP;
-		int                            OutServerPort;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_GetServerAddr_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5605,11 +4781,7 @@ bool UOnlineAuthInterfaceImpl::GetServerUniqueId(struct FUniqueNetId* OutServerU
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.GetServerUniqueId");
 
-	struct
-	{
-		struct FUniqueNetId            OutServerUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_GetServerUniqueId_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -5635,12 +4807,7 @@ bool UOnlineAuthInterfaceImpl::FindLocalServerAuthSession(class UPlayer* ClientC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindLocalServerAuthSession");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		struct FLocalAuthSession       OutSessionInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_FindLocalServerAuthSession_Params params;
 	params.ClientConnection = ClientConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -5668,12 +4835,7 @@ bool UOnlineAuthInterfaceImpl::FindServerAuthSession(class UPlayer* ServerConnec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindServerAuthSession");
 
-	struct
-	{
-		class UPlayer*                 ServerConnection;
-		struct FAuthSession            OutSessionInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_FindServerAuthSession_Params params;
 	params.ServerConnection = ServerConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -5701,12 +4863,7 @@ bool UOnlineAuthInterfaceImpl::FindLocalClientAuthSession(class UPlayer* ServerC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindLocalClientAuthSession");
 
-	struct
-	{
-		class UPlayer*                 ServerConnection;
-		struct FLocalAuthSession       OutSessionInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_FindLocalClientAuthSession_Params params;
 	params.ServerConnection = ServerConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -5734,12 +4891,7 @@ bool UOnlineAuthInterfaceImpl::FindClientAuthSession(class UPlayer* ClientConnec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindClientAuthSession");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		struct FAuthSession            OutSessionInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_FindClientAuthSession_Params params;
 	params.ClientConnection = ClientConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -5765,10 +4917,7 @@ void UOnlineAuthInterfaceImpl::AllLocalServerAuthSessions(struct FLocalAuthSessi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllLocalServerAuthSessions");
 
-	struct
-	{
-		struct FLocalAuthSession       OutSessionInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_AllLocalServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5791,10 +4940,7 @@ void UOnlineAuthInterfaceImpl::AllServerAuthSessions(struct FAuthSession* OutSes
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllServerAuthSessions");
 
-	struct
-	{
-		struct FAuthSession            OutSessionInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_AllServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5817,10 +4963,7 @@ void UOnlineAuthInterfaceImpl::AllLocalClientAuthSessions(struct FLocalAuthSessi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllLocalClientAuthSessions");
 
-	struct
-	{
-		struct FLocalAuthSession       OutSessionInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_AllLocalClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5843,10 +4986,7 @@ void UOnlineAuthInterfaceImpl::AllClientAuthSessions(struct FAuthSession* OutSes
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllClientAuthSessions");
 
-	struct
-	{
-		struct FAuthSession            OutSessionInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_AllClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5867,9 +5007,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteServerAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteServerAuthSessions");
 
-	struct
-	{
-	} params;
+	UOnlineAuthInterfaceImpl_EndAllRemoteServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5887,9 +5025,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalServerAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalServerAuthSessions");
 
-	struct
-	{
-	} params;
+	UOnlineAuthInterfaceImpl_EndAllLocalServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5910,11 +5046,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteServerAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-	} params;
+	UOnlineAuthInterfaceImpl_EndRemoteServerAuthSession_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 
@@ -5937,11 +5069,7 @@ void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(const struct FUniqueNet
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndLocalServerAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-	} params;
+	UOnlineAuthInterfaceImpl_EndLocalServerAuthSession_Params params;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
 
@@ -5966,13 +5094,7 @@ bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.VerifyServerAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-		int                            AuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_VerifyServerAuthSession_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 	params.AuthTicketUID = AuthTicketUID;
@@ -6000,14 +5122,7 @@ bool UOnlineAuthInterfaceImpl::CreateServerAuthSession(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.CreateServerAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-		int                            ClientPort;
-		int                            OutAuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_CreateServerAuthSession_Params params;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
 	params.ClientPort = ClientPort;
@@ -6032,9 +5147,7 @@ void UOnlineAuthInterfaceImpl::EndAllRemoteClientAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteClientAuthSessions");
 
-	struct
-	{
-	} params;
+	UOnlineAuthInterfaceImpl_EndAllRemoteClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6052,9 +5165,7 @@ void UOnlineAuthInterfaceImpl::EndAllLocalClientAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalClientAuthSessions");
 
-	struct
-	{
-	} params;
+	UOnlineAuthInterfaceImpl_EndAllLocalClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6075,11 +5186,7 @@ void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(const struct FUniqueNe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteClientAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-	} params;
+	UOnlineAuthInterfaceImpl_EndRemoteClientAuthSession_Params params;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
 
@@ -6103,12 +5210,7 @@ void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(const struct FUniqueNet
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndLocalClientAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-		int                            ServerPort;
-	} params;
+	UOnlineAuthInterfaceImpl_EndLocalClientAuthSession_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 	params.ServerPort = ServerPort;
@@ -6135,14 +5237,7 @@ bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.VerifyClientAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-		int                            ClientPort;
-		int                            AuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_VerifyClientAuthSession_Params params;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
 	params.ClientPort = ClientPort;
@@ -6172,15 +5267,7 @@ bool UOnlineAuthInterfaceImpl::CreateClientAuthSession(const struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.CreateClientAuthSession");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-		int                            ServerPort;
-		bool                           bSecure;
-		int                            OutAuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_CreateClientAuthSession_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 	params.ServerPort = ServerPort;
@@ -6208,10 +5295,7 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRetryRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRetryRequest");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendServerAuthRetryRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -6234,11 +5318,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthEndSessionRequest(class UPlayer* Cl
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthEndSessionRequest");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendClientAuthEndSessionRequest_Params params;
 	params.ClientConnection = ClientConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -6263,12 +5343,7 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthResponse(class UPlayer* ClientConne
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthResponse");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		int                            AuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendServerAuthResponse_Params params;
 	params.ClientConnection = ClientConnection;
 	params.AuthTicketUID = AuthTicketUID;
 
@@ -6293,11 +5368,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthResponse(int AuthTicketUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthResponse");
 
-	struct
-	{
-		int                            AuthTicketUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendClientAuthResponse_Params params;
 	params.AuthTicketUID = AuthTicketUID;
 
 	auto flags = fn->FunctionFlags;
@@ -6321,11 +5392,7 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRequest");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendServerAuthRequest_Params params;
 	params.ServerUID = ServerUID;
 
 	auto flags = fn->FunctionFlags;
@@ -6349,12 +5416,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnec
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthRequest");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		struct FUniqueNetId            ClientUID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_SendClientAuthRequest_Params params;
 	params.ClientConnection = ClientConnection;
 	params.ClientUID = ClientUID;
 
@@ -6377,10 +5439,7 @@ void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearServerConnectionCloseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerConnectionCloseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearServerConnectionCloseDelegate_Params params;
 	params.ServerConnectionCloseDelegate = ServerConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6400,10 +5459,7 @@ void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerConnectionCloseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerConnectionCloseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddServerConnectionCloseDelegate_Params params;
 	params.ServerConnectionCloseDelegate = ServerConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6423,10 +5479,7 @@ void UOnlineAuthInterfaceImpl::OnServerConnectionClose(class UPlayer* ServerConn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnServerConnectionClose");
 
-	struct
-	{
-		class UPlayer*                 ServerConnection;
-	} params;
+	UOnlineAuthInterfaceImpl_OnServerConnectionClose_Params params;
 	params.ServerConnection = ServerConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -6446,10 +5499,7 @@ void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearClientConnectionCloseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientConnectionCloseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearClientConnectionCloseDelegate_Params params;
 	params.ClientConnectionCloseDelegate = ClientConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6469,10 +5519,7 @@ void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientConnectionCloseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientConnectionCloseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddClientConnectionCloseDelegate_Params params;
 	params.ClientConnectionCloseDelegate = ClientConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6492,10 +5539,7 @@ void UOnlineAuthInterfaceImpl::OnClientConnectionClose(class UPlayer* ClientConn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnClientConnectionClose");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-	} params;
+	UOnlineAuthInterfaceImpl_OnClientConnectionClose_Params params;
 	params.ClientConnection = ClientConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -6515,10 +5559,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthRetryRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthRetryRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearServerAuthRetryRequestDelegate_Params params;
 	params.ServerAuthRetryRequestDelegate = ServerAuthRetryRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6538,10 +5579,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRetryRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthRetryRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddServerAuthRetryRequestDelegate_Params params;
 	params.ServerAuthRetryRequestDelegate = ServerAuthRetryRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6561,10 +5599,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRetryRequest(class UPlayer* ClientCon
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthRetryRequest");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-	} params;
+	UOnlineAuthInterfaceImpl_OnServerAuthRetryRequest_Params params;
 	params.ClientConnection = ClientConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -6584,10 +5619,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate(const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthEndSessionRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthEndSessionRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearClientAuthEndSessionRequestDelegate_Params params;
 	params.ClientAuthEndSessionRequestDelegate = ClientAuthEndSessionRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6607,10 +5639,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthEndSessionRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthEndSessionRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddClientAuthEndSessionRequestDelegate_Params params;
 	params.ClientAuthEndSessionRequestDelegate = ClientAuthEndSessionRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6630,10 +5659,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthEndSessionRequest(class UPlayer* Serv
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthEndSessionRequest");
 
-	struct
-	{
-		class UPlayer*                 ServerConnection;
-	} params;
+	UOnlineAuthInterfaceImpl_OnClientAuthEndSessionRequest_Params params;
 	params.ServerConnection = ServerConnection;
 
 	auto flags = fn->FunctionFlags;
@@ -6653,10 +5679,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthCompleteDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearServerAuthCompleteDelegate_Params params;
 	params.ServerAuthCompleteDelegate = ServerAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6676,10 +5699,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthCompleteDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddServerAuthCompleteDelegate_Params params;
 	params.ServerAuthCompleteDelegate = ServerAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6702,13 +5722,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FUniqueNetId            ServerUID;
-		class UPlayer*                 ServerConnection;
-		struct FString                 ExtraInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_OnServerAuthComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.ServerUID = ServerUID;
 	params.ServerConnection = ServerConnection;
@@ -6731,10 +5745,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthCompleteDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearClientAuthCompleteDelegate_Params params;
 	params.ClientAuthCompleteDelegate = ClientAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6754,10 +5765,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthCompleteDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddClientAuthCompleteDelegate_Params params;
 	params.ClientAuthCompleteDelegate = ClientAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6780,13 +5788,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthComplete");
 
-	struct
-	{
-		bool                           bSuccess;
-		struct FUniqueNetId            ClientUID;
-		class UPlayer*                 ClientConnection;
-		struct FString                 ExtraInfo;
-	} params;
+	UOnlineAuthInterfaceImpl_OnClientAuthComplete_Params params;
 	params.bSuccess = bSuccess;
 	params.ClientUID = ClientUID;
 	params.ClientConnection = ClientConnection;
@@ -6809,10 +5811,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthResponseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearServerAuthResponseDelegate_Params params;
 	params.ServerAuthResponseDelegate = ServerAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6832,10 +5831,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthResponseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddServerAuthResponseDelegate_Params params;
 	params.ServerAuthResponseDelegate = ServerAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6857,12 +5853,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthResponse(const struct FUniqueNetId& S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthResponse");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-		int                            AuthTicketUID;
-	} params;
+	UOnlineAuthInterfaceImpl_OnServerAuthResponse_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 	params.AuthTicketUID = AuthTicketUID;
@@ -6884,10 +5875,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthResponseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearClientAuthResponseDelegate_Params params;
 	params.ClientAuthResponseDelegate = ClientAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6907,10 +5895,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthResponseDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddClientAuthResponseDelegate_Params params;
 	params.ClientAuthResponseDelegate = ClientAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6932,12 +5917,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthResponse(const struct FUniqueNetId& C
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthResponse");
 
-	struct
-	{
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-		int                            AuthTicketUID;
-	} params;
+	UOnlineAuthInterfaceImpl_OnClientAuthResponse_Params params;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
 	params.AuthTicketUID = AuthTicketUID;
@@ -6959,10 +5939,7 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(const struct FScri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearServerAuthRequestDelegate_Params params;
 	params.ServerAuthRequestDelegate = ServerAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -6982,10 +5959,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(const struct FScript
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ServerAuthRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddServerAuthRequestDelegate_Params params;
 	params.ServerAuthRequestDelegate = ServerAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7008,13 +5982,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnecti
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthRequest");
 
-	struct
-	{
-		class UPlayer*                 ClientConnection;
-		struct FUniqueNetId            ClientUID;
-		struct FIpAddr                 ClientIP;
-		int                            ClientPort;
-	} params;
+	UOnlineAuthInterfaceImpl_OnServerAuthRequest_Params params;
 	params.ClientConnection = ClientConnection;
 	params.ClientUID = ClientUID;
 	params.ClientIP = ClientIP;
@@ -7037,10 +6005,7 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate(const struct FScri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearClientAuthRequestDelegate_Params params;
 	params.ClientAuthRequestDelegate = ClientAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7060,10 +6025,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(const struct FScript
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthRequestDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ClientAuthRequestDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddClientAuthRequestDelegate_Params params;
 	params.ClientAuthRequestDelegate = ClientAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7086,13 +6048,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthRequest(const struct FUniqueNetId& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthRequest");
 
-	struct
-	{
-		struct FUniqueNetId            ServerUID;
-		struct FIpAddr                 ServerIP;
-		int                            ServerPort;
-		bool                           bSecure;
-	} params;
+	UOnlineAuthInterfaceImpl_OnClientAuthRequest_Params params;
 	params.ServerUID = ServerUID;
 	params.ServerIP = ServerIP;
 	params.ServerPort = ServerPort;
@@ -7115,10 +6071,7 @@ void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate(const struct FScriptDelega
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.ClearAuthReadyDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         AuthReadyDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_ClearAuthReadyDelegate_Params params;
 	params.AuthReadyDelegate = AuthReadyDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7138,10 +6091,7 @@ void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(const struct FScriptDelegate
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddAuthReadyDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         AuthReadyDelegate;
-	} params;
+	UOnlineAuthInterfaceImpl_AddAuthReadyDelegate_Params params;
 	params.AuthReadyDelegate = AuthReadyDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7159,9 +6109,7 @@ void UOnlineAuthInterfaceImpl::OnAuthReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnAuthReady");
 
-	struct
-	{
-	} params;
+	UOnlineAuthInterfaceImpl_OnAuthReady_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7180,10 +6128,7 @@ bool UOnlineAuthInterfaceImpl::IsReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.IsReady");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineAuthInterfaceImpl_IsReady_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7204,10 +6149,7 @@ void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearGamePlayersChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         GamePlayersChangedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearGamePlayersChangedDelegate_Params params;
 	params.GamePlayersChangedDelegate = GamePlayersChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7227,10 +6169,7 @@ void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGamePlayersChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         GamePlayersChangedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddGamePlayersChangedDelegate_Params params;
 	params.GamePlayersChangedDelegate = GamePlayersChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7251,11 +6190,7 @@ void UOnlineGameInterfaceImpl::OnGamePlayersChanged(const struct FName& SessionN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnGamePlayersChanged");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FUniqueNetId>    Players;
-	} params;
+	UOnlineGameInterfaceImpl_OnGamePlayersChanged_Params params;
 	params.SessionName = SessionName;
 	params.Players = Players;
 
@@ -7278,12 +6213,7 @@ void UOnlineGameInterfaceImpl::SetFriendJoinLocation(const struct FUniqueNetId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetFriendJoinLocation");
 
-	struct
-	{
-		struct FUniqueNetId            JoinablePlayerID;
-		struct FString                 ServerAddress;
-		TEnumAsByte<enum class ELobbyVisibility> Visibility;
-	} params;
+	UOnlineGameInterfaceImpl_SetFriendJoinLocation_Params params;
 	params.JoinablePlayerID = JoinablePlayerID;
 	params.ServerAddress = ServerAddress;
 	params.Visibility = Visibility;
@@ -7305,10 +6235,7 @@ void UOnlineGameInterfaceImpl::ClearReportMatchmakingInfoDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearReportMatchmakingInfoDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         OldDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearReportMatchmakingInfoDelegate_Params params;
 	params.OldDelegate = OldDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7328,10 +6255,7 @@ void UOnlineGameInterfaceImpl::AddReportMatchmakingInfoDelegate(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddReportMatchmakingInfoDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         NewDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddReportMatchmakingInfoDelegate_Params params;
 	params.NewDelegate = NewDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7351,10 +6275,7 @@ void UOnlineGameInterfaceImpl::EventReportMatchmakingInfo(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.EventReportMatchmakingInfo");
 
-	struct
-	{
-		struct FString                 NewInfo;
-	} params;
+	UOnlineGameInterfaceImpl_EventReportMatchmakingInfo_Params params;
 	params.NewInfo = NewInfo;
 
 	auto flags = fn->FunctionFlags;
@@ -7374,10 +6295,7 @@ void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearQosStatusChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         QosStatusChangedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearQosStatusChangedDelegate_Params params;
 	params.QosStatusChangedDelegate = QosStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7397,10 +6315,7 @@ void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(const struct FScriptD
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddQosStatusChangedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         QosStatusChangedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddQosStatusChangedDelegate_Params params;
 	params.QosStatusChangedDelegate = QosStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7421,11 +6336,7 @@ void UOnlineGameInterfaceImpl::OnQosStatusChanged(int NumComplete, int NumTotal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnQosStatusChanged");
 
-	struct
-	{
-		int                            NumComplete;
-		int                            NumTotal;
-	} params;
+	UOnlineGameInterfaceImpl_OnQosStatusChanged_Params params;
 	params.NumComplete = NumComplete;
 	params.NumTotal = NumTotal;
 
@@ -7449,13 +6360,7 @@ bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(unsigned char
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.BindPlatformSpecificSessionToSearch");
 
-	struct
-	{
-		unsigned char                  SearchingPlayerNum;
-		class UOnlineGameSearch*       SearchSettings;
-		unsigned char                  PlatformSpecificInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_BindPlatformSpecificSessionToSearch_Params params;
 	params.SearchingPlayerNum = SearchingPlayerNum;
 	params.SearchSettings = SearchSettings;
 	params.PlatformSpecificInfo = PlatformSpecificInfo;
@@ -7482,12 +6387,7 @@ bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfoBySessionName(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfoBySessionName");
 
-	struct
-	{
-		struct FName                   SessionName;
-		unsigned char                  PlatformSpecificInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_ReadPlatformSpecificSessionInfoBySessionName_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -7514,12 +6414,7 @@ bool UOnlineGameInterfaceImpl::ReadPlatformSpecificSessionInfo(struct FOnlineGam
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfo");
 
-	struct
-	{
-		struct FOnlineGameSearchResult DesiredGame;
-		unsigned char                  PlatformSpecificInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_ReadPlatformSpecificSessionInfo_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7548,12 +6443,7 @@ bool UOnlineGameInterfaceImpl::QueryNonAdvertisedData(int StartAt, int NumberToQ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.QueryNonAdvertisedData");
 
-	struct
-	{
-		int                            StartAt;
-		int                            NumberToQuery;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_QueryNonAdvertisedData_Params params;
 	params.StartAt = StartAt;
 	params.NumberToQuery = NumberToQuery;
 
@@ -7576,10 +6466,7 @@ void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearJoinMigratedOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearJoinMigratedOnlineGameCompleteDelegate_Params params;
 	params.JoinMigratedOnlineGameCompleteDelegate = JoinMigratedOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7599,10 +6486,7 @@ void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddJoinMigratedOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddJoinMigratedOnlineGameCompleteDelegate_Params params;
 	params.JoinMigratedOnlineGameCompleteDelegate = JoinMigratedOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7623,11 +6507,7 @@ void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete(const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnJoinMigratedOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnJoinMigratedOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -7651,13 +6531,7 @@ bool UOnlineGameInterfaceImpl::JoinMigratedOnlineGame(unsigned char PlayerNum, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinMigratedOnlineGame");
 
-	struct
-	{
-		unsigned char                  PlayerNum;
-		struct FName                   SessionName;
-		struct FOnlineGameSearchResult DesiredGame;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_JoinMigratedOnlineGame_Params params;
 	params.PlayerNum = PlayerNum;
 	params.SessionName = SessionName;
 
@@ -7683,10 +6557,7 @@ void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearMigrateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         MigrateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearMigrateOnlineGameCompleteDelegate_Params params;
 	params.MigrateOnlineGameCompleteDelegate = MigrateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7706,10 +6577,7 @@ void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddMigrateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         MigrateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddMigrateOnlineGameCompleteDelegate_Params params;
 	params.MigrateOnlineGameCompleteDelegate = MigrateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7730,11 +6598,7 @@ void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete(const struct FName& S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnMigrateOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnMigrateOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -7757,12 +6621,7 @@ bool UOnlineGameInterfaceImpl::MigrateOnlineGame(unsigned char HostingPlayerNum,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.MigrateOnlineGame");
 
-	struct
-	{
-		unsigned char                  HostingPlayerNum;
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_MigrateOnlineGame_Params params;
 	params.HostingPlayerNum = HostingPlayerNum;
 	params.SessionName = SessionName;
 
@@ -7785,10 +6644,7 @@ void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearRecalculateSkillRatingCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RecalculateSkillRatingGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearRecalculateSkillRatingCompleteDelegate_Params params;
 	params.RecalculateSkillRatingGameCompleteDelegate = RecalculateSkillRatingGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7808,10 +6664,7 @@ void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddRecalculateSkillRatingCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RecalculateSkillRatingCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddRecalculateSkillRatingCompleteDelegate_Params params;
 	params.RecalculateSkillRatingCompleteDelegate = RecalculateSkillRatingCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -7832,11 +6685,7 @@ void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete(const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnRecalculateSkillRatingComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnRecalculateSkillRatingComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -7859,12 +6708,7 @@ bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& Sessio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FUniqueNetId>    Players;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_RecalculateSkillRating_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -7891,12 +6735,7 @@ bool UOnlineGameInterfaceImpl::AcceptGameInvite(unsigned char LocalUserNum, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_AcceptGameInvite_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.SessionName = SessionName;
 
@@ -7920,11 +6759,7 @@ void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(unsigned char Loc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearGameInviteAcceptedDelegate");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		struct FScriptDelegate         GameInviteAcceptedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearGameInviteAcceptedDelegate_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.GameInviteAcceptedDelegate = GameInviteAcceptedDelegate;
 
@@ -7946,11 +6781,7 @@ void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(unsigned char Local
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGameInviteAcceptedDelegate");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		struct FScriptDelegate         GameInviteAcceptedDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddGameInviteAcceptedDelegate_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.GameInviteAcceptedDelegate = GameInviteAcceptedDelegate;
 
@@ -7972,11 +6803,7 @@ void UOnlineGameInterfaceImpl::OnGameInviteAccepted(const struct FString& ErrorS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnGameInviteAccepted");
 
-	struct
-	{
-		struct FOnlineGameSearchResult InviteResult;
-		struct FString                 ErrorString;
-	} params;
+	UOnlineGameInterfaceImpl_OnGameInviteAccepted_Params params;
 	params.ErrorString = ErrorString;
 
 	auto flags = fn->FunctionFlags;
@@ -8000,11 +6827,7 @@ TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::GetArbitra
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetArbitratedPlayers");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FOnlineArbitrationRegistrant> ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_GetArbitratedPlayers_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8026,10 +6849,7 @@ void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate(cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearArbitrationRegistrationCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearArbitrationRegistrationCompleteDelegate_Params params;
 	params.ArbitrationRegistrationCompleteDelegate = ArbitrationRegistrationCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8049,10 +6869,7 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddArbitrationRegistrationCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddArbitrationRegistrationCompleteDelegate_Params params;
 	params.ArbitrationRegistrationCompleteDelegate = ArbitrationRegistrationCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8073,11 +6890,7 @@ void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const struct FN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnArbitrationRegistrationComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnArbitrationRegistrationComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -8099,11 +6912,7 @@ bool UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& Sessio
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_RegisterForArbitration_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8125,10 +6934,7 @@ void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearEndOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         EndOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearEndOnlineGameCompleteDelegate_Params params;
 	params.EndOnlineGameCompleteDelegate = EndOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8148,10 +6954,7 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FSc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddEndOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         EndOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddEndOnlineGameCompleteDelegate_Params params;
 	params.EndOnlineGameCompleteDelegate = EndOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8172,11 +6975,7 @@ void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const struct FName& Sessi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnEndOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnEndOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -8198,11 +6997,7 @@ bool UOnlineGameInterfaceImpl::EndOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_EndOnlineGame_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8225,10 +7020,7 @@ void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearStartOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         StartOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearStartOnlineGameCompleteDelegate_Params params;
 	params.StartOnlineGameCompleteDelegate = StartOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8248,10 +7040,7 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddStartOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         StartOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddStartOnlineGameCompleteDelegate_Params params;
 	params.StartOnlineGameCompleteDelegate = StartOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8272,11 +7061,7 @@ void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const struct FName& Ses
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnStartOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnStartOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -8298,11 +7083,7 @@ bool UOnlineGameInterfaceImpl::StartOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_StartOnlineGame_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8325,10 +7106,7 @@ void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearUnregisterPlayerCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         UnregisterPlayerCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearUnregisterPlayerCompleteDelegate_Params params;
 	params.UnregisterPlayerCompleteDelegate = UnregisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8348,10 +7126,7 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddUnregisterPlayerCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         UnregisterPlayerCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddUnregisterPlayerCompleteDelegate_Params params;
 	params.UnregisterPlayerCompleteDelegate = UnregisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8373,12 +7148,7 @@ void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const struct FName& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnUnregisterPlayerComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FUniqueNetId            PlayerID;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnUnregisterPlayerComplete_Params params;
 	params.SessionName = SessionName;
 	params.PlayerID = PlayerID;
 	params.bWasSuccessful = bWasSuccessful;
@@ -8402,12 +7172,7 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayers(const struct FName& SessionName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayers");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FUniqueNetId>    Players;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_UnregisterPlayers_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8434,12 +7199,7 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayer(const struct FName& SessionName,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_UnregisterPlayer_Params params;
 	params.SessionName = SessionName;
 	params.PlayerID = PlayerID;
 
@@ -8462,10 +7222,7 @@ void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearRegisterPlayerCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RegisterPlayerCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearRegisterPlayerCompleteDelegate_Params params;
 	params.RegisterPlayerCompleteDelegate = RegisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8485,10 +7242,7 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddRegisterPlayerCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         RegisterPlayerCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddRegisterPlayerCompleteDelegate_Params params;
 	params.RegisterPlayerCompleteDelegate = RegisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8510,12 +7264,7 @@ void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const struct FName& Sess
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnRegisterPlayerComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FUniqueNetId            PlayerID;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnRegisterPlayerComplete_Params params;
 	params.SessionName = SessionName;
 	params.PlayerID = PlayerID;
 	params.bWasSuccessful = bWasSuccessful;
@@ -8539,12 +7288,7 @@ bool UOnlineGameInterfaceImpl::RegisterPlayers(const struct FName& SessionName, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayers");
 
-	struct
-	{
-		struct FName                   SessionName;
-		TArray<struct FUniqueNetId>    Players;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_RegisterPlayers_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8572,13 +7316,7 @@ bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FUniqueNetId            PlayerID;
-		bool                           bWasInvited;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_RegisterPlayer_Params params;
 	params.SessionName = SessionName;
 	params.PlayerID = PlayerID;
 	params.bWasInvited = bWasInvited;
@@ -8604,12 +7342,7 @@ bool UOnlineGameInterfaceImpl::GetResolvedConnectString(const struct FName& Sess
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString");
 
-	struct
-	{
-		struct FName                   SessionName;
-		struct FString                 ConnectInfo;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_GetResolvedConnectString_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -8635,10 +7368,7 @@ void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearJoinOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearJoinOnlineGameCompleteDelegate_Params params;
 	params.JoinOnlineGameCompleteDelegate = JoinOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8658,10 +7388,7 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddJoinOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddJoinOnlineGameCompleteDelegate_Params params;
 	params.JoinOnlineGameCompleteDelegate = JoinOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8682,11 +7409,7 @@ void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const struct FName& Sess
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnJoinOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnJoinOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -8710,13 +7433,7 @@ bool UOnlineGameInterfaceImpl::JoinOnlineGame(unsigned char PlayerNum, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame");
 
-	struct
-	{
-		unsigned char                  PlayerNum;
-		struct FName                   SessionName;
-		struct FOnlineGameSearchResult DesiredGame;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_JoinOnlineGame_Params params;
 	params.PlayerNum = PlayerNum;
 	params.SessionName = SessionName;
 
@@ -8744,11 +7461,7 @@ bool UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults");
 
-	struct
-	{
-		class UOnlineGameSearch*       Search;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_FreeSearchResults_Params params;
 	params.Search = Search;
 
 	auto flags = fn->FunctionFlags;
@@ -8771,10 +7484,7 @@ void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate(const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearCancelFindOnlineGamesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearCancelFindOnlineGamesCompleteDelegate_Params params;
 	params.CancelFindOnlineGamesCompleteDelegate = CancelFindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8794,10 +7504,7 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddCancelFindOnlineGamesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddCancelFindOnlineGamesCompleteDelegate_Params params;
 	params.CancelFindOnlineGamesCompleteDelegate = CancelFindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8817,10 +7524,7 @@ void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(bool bWasSuccessf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnCancelFindOnlineGamesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -8840,10 +7544,7 @@ bool UOnlineGameInterfaceImpl::CancelFindOnlineGames()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_CancelFindOnlineGames_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8865,10 +7566,7 @@ void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearFindOnlineGamesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         FindOnlineGamesCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearFindOnlineGamesCompleteDelegate_Params params;
 	params.FindOnlineGamesCompleteDelegate = FindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8888,10 +7586,7 @@ void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddFindOnlineGamesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         FindOnlineGamesCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddFindOnlineGamesCompleteDelegate_Params params;
 	params.FindOnlineGamesCompleteDelegate = FindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8913,12 +7608,7 @@ bool UOnlineGameInterfaceImpl::FindOnlineGames(unsigned char SearchingPlayerNum,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FindOnlineGames");
 
-	struct
-	{
-		unsigned char                  SearchingPlayerNum;
-		class UOnlineGameSearch*       SearchSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_FindOnlineGames_Params params;
 	params.SearchingPlayerNum = SearchingPlayerNum;
 	params.SearchSettings = SearchSettings;
 
@@ -8942,10 +7632,7 @@ void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearDestroyOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         DestroyOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearDestroyOnlineGameCompleteDelegate_Params params;
 	params.DestroyOnlineGameCompleteDelegate = DestroyOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8965,10 +7652,7 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddDestroyOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         DestroyOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddDestroyOnlineGameCompleteDelegate_Params params;
 	params.DestroyOnlineGameCompleteDelegate = DestroyOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -8989,11 +7673,7 @@ void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const struct FName& S
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnDestroyOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnDestroyOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -9015,11 +7695,7 @@ bool UOnlineGameInterfaceImpl::DestroyOnlineGame(const struct FName& SessionName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_DestroyOnlineGame_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -9042,10 +7718,7 @@ void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearUpdateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         UpdateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearUpdateOnlineGameCompleteDelegate_Params params;
 	params.UpdateOnlineGameCompleteDelegate = UpdateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9065,10 +7738,7 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddUpdateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         UpdateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddUpdateOnlineGameCompleteDelegate_Params params;
 	params.UpdateOnlineGameCompleteDelegate = UpdateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9089,11 +7759,7 @@ void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const struct FName& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnUpdateOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnUpdateOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -9117,13 +7783,7 @@ bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UOnlineGameSettings*     UpdatedGameSettings;
-		bool                           bShouldRefreshOnlineData;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_UpdateOnlineGame_Params params;
 	params.SessionName = SessionName;
 	params.UpdatedGameSettings = UpdatedGameSettings;
 	params.bShouldRefreshOnlineData = bShouldRefreshOnlineData;
@@ -9147,10 +7807,7 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.ClearCreateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CreateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_ClearCreateOnlineGameCompleteDelegate_Params params;
 	params.CreateOnlineGameCompleteDelegate = CreateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9170,10 +7827,7 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddCreateOnlineGameCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CreateOnlineGameCompleteDelegate;
-	} params;
+	UOnlineGameInterfaceImpl_AddCreateOnlineGameCompleteDelegate_Params params;
 	params.CreateOnlineGameCompleteDelegate = CreateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9194,11 +7848,7 @@ void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(const struct FName& Se
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnCreateOnlineGameComplete");
 
-	struct
-	{
-		struct FName                   SessionName;
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnCreateOnlineGameComplete_Params params;
 	params.SessionName = SessionName;
 	params.bWasSuccessful = bWasSuccessful;
 
@@ -9222,13 +7872,7 @@ bool UOnlineGameInterfaceImpl::CreateOnlineGame(unsigned char HostingPlayerNum, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGame");
 
-	struct
-	{
-		unsigned char                  HostingPlayerNum;
-		struct FName                   SessionName;
-		class UOnlineGameSettings*     NewGameSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_CreateOnlineGame_Params params;
 	params.HostingPlayerNum = HostingPlayerNum;
 	params.SessionName = SessionName;
 	params.NewGameSettings = NewGameSettings;
@@ -9253,10 +7897,7 @@ class UOnlineGameSearch* UOnlineGameInterfaceImpl::GetGameSearch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetGameSearch");
 
-	struct
-	{
-		class UOnlineGameSearch*       ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_GetGameSearch_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9278,11 +7919,7 @@ class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetGameSettings");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UOnlineGameSettings*     ReturnValue;
-	} params;
+	UOnlineGameInterfaceImpl_GetGameSettings_Params params;
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
@@ -9304,10 +7941,7 @@ void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineGameInterfaceImpl_OnFindOnlineGamesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -9327,10 +7961,7 @@ void UOnlineLobbyInterfaceImpl::ClearHostStartPlayTogetherDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearHostStartPlayTogetherDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         InDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearHostStartPlayTogetherDelegate_Params params;
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9350,10 +7981,7 @@ void UOnlineLobbyInterfaceImpl::AddHostStartPlayTogetherDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddHostStartPlayTogetherDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         InDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddHostStartPlayTogetherDelegate_Params params;
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9373,10 +8001,7 @@ void UOnlineLobbyInterfaceImpl::OnHostStartPlayTogether(unsigned char LocalUserN
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnHostStartPlayTogether");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnHostStartPlayTogether_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -9396,10 +8021,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyErrorDelegate(const struct FScriptDele
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyErrorDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyErrorDelegate_Params params;
 	params.LobbyErrorDelegate = LobbyErrorDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9419,10 +8041,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyErrorDelegate(const struct FScriptDelega
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyErrorDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyErrorDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyErrorDelegate_Params params;
 	params.LobbyErrorDelegate = LobbyErrorDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9442,10 +8061,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyError(const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyError");
 
-	struct
-	{
-		struct FString                 Error;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyError_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -9467,12 +8083,7 @@ bool UOnlineLobbyInterfaceImpl::GetLobbyMembers(struct FUniqueLobbyId* LobbyId, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.GetLobbyMembers");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		TArray<struct FLobbyMember>    Members;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_GetLobbyMembers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9498,10 +8109,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySessionCretedeDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbySessionCretedeDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbySessionCreatedDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbySessionCretedeDelegate_Params params;
 	params.LobbySessionCreatedDelegate = LobbySessionCreatedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9521,10 +8129,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbySessionCreatedDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbySessionCreatedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbySessionCreatedDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbySessionCreatedDelegate_Params params;
 	params.LobbySessionCreatedDelegate = LobbySessionCreatedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9542,9 +8147,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbySessionCreatedDelegates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbySessionCreatedDelegates");
 
-	struct
-	{
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbySessionCreatedDelegates_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9561,9 +8164,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbySessionCreated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbySessionCreated");
 
-	struct
-	{
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbySessionCreated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9583,11 +8184,7 @@ int UOnlineLobbyInterfaceImpl::GetLobbyIndex(struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.GetLobbyIndex");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		int                            ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_GetLobbyIndex_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9611,10 +8208,7 @@ void UOnlineLobbyInterfaceImpl::RemoveLocalPlayerFromSession(struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.RemoveLocalPlayerFromSession");
 
-	struct
-	{
-		struct FUniqueNetId            PartyMember;
-	} params;
+	UOnlineLobbyInterfaceImpl_RemoveLocalPlayerFromSession_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9636,10 +8230,7 @@ void UOnlineLobbyInterfaceImpl::AddLocalPartyMemberToSession(struct FUniqueNetId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLocalPartyMemberToSession");
 
-	struct
-	{
-		struct FUniqueNetId            NewPartyMember;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLocalPartyMemberToSession_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9664,13 +8255,7 @@ bool UOnlineLobbyInterfaceImpl::KickPlayer(TEnumAsByte<enum class ELobbyKickReas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.KickPlayer");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            PlayerID;
-		TEnumAsByte<enum class ELobbyKickReason> Reason;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_KickPlayer_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -9698,11 +8283,7 @@ void UOnlineLobbyInterfaceImpl::PlayTogether_Invite(const struct FString& Invite
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.PlayTogether_Invite");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 InviteMessage;
-	} params;
+	UOnlineLobbyInterfaceImpl_PlayTogether_Invite_Params params;
 	params.InviteMessage = InviteMessage;
 
 	auto flags = fn->FunctionFlags;
@@ -9727,12 +8308,7 @@ bool UOnlineLobbyInterfaceImpl::ShowInviteUI(unsigned char LocalUserNum, struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ShowInviteUI");
 
-	struct
-	{
-		unsigned char                  LocalUserNum;
-		struct FUniqueLobbyId          LobbyId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_ShowInviteUI_Params params;
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
@@ -9758,11 +8334,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyDestroyedDelegates(int LobbyIndex, T
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyDestroyedDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		TEnumAsByte<enum class ELobbyKickReason> Reason;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyDestroyedDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.Reason = Reason;
 
@@ -9783,10 +8355,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyDestroyedDelegate(const struct FScript
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyDestroyedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyDestroyedDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyDestroyedDelegate_Params params;
 	params.LobbyDestroyedDelegate = LobbyDestroyedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9806,10 +8375,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyDestroyedDelegate(const struct FScriptDe
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyDestroyedDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyDestroyedDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyDestroyedDelegate_Params params;
 	params.LobbyDestroyedDelegate = LobbyDestroyedDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9830,11 +8396,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyDestroyed(TEnumAsByte<enum class ELobbyKi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyDestroyed");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		TEnumAsByte<enum class ELobbyKickReason> Reason;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyDestroyed_Params params;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -9857,10 +8419,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyInviteDelegate(const struct FScriptDel
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyInviteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyInviteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyInviteDelegate_Params params;
 	params.LobbyInviteDelegate = LobbyInviteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9880,10 +8439,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyInviteDelegate(const struct FScriptDeleg
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyInviteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyInviteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyInviteDelegate_Params params;
 	params.LobbyInviteDelegate = LobbyInviteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -9905,12 +8461,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyInvite(bool bAccepted, struct FUniqueLobb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyInvite");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            FriendId;
-		bool                           bAccepted;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyInvite_Params params;
 	params.bAccepted = bAccepted;
 
 	auto flags = fn->FunctionFlags;
@@ -9937,12 +8488,7 @@ bool UOnlineLobbyInterfaceImpl::InviteToLobby(struct FUniqueLobbyId* LobbyId, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.InviteToLobby");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            PlayerID;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_InviteToLobby_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9970,12 +8516,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyOwner(struct FUniqueLobbyId* LobbyId, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyOwner");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            NewOwner;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SetLobbyOwner_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10003,12 +8544,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyLock(bool bLocked, struct FUniqueLobbyId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyLock");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		bool                           bLocked;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SetLobbyLock_Params params;
 	params.bLocked = bLocked;
 
 	auto flags = fn->FunctionFlags;
@@ -10036,13 +8572,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyServer(const struct FString& ServerIP, s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyServer");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            ServerUID;
-		struct FString                 ServerIP;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SetLobbyServer_Params params;
 	params.ServerIP = ServerIP;
 
 	auto flags = fn->FunctionFlags;
@@ -10071,12 +8601,7 @@ bool UOnlineLobbyInterfaceImpl::RemoveLobbySetting(const struct FString& Key, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.RemoveLobbySetting");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 Key;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_RemoveLobbySetting_Params params;
 	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
@@ -10104,13 +8629,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbySetting(const struct FString& Key, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbySetting");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 Key;
-		struct FString                 Value;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SetLobbySetting_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -10138,12 +8657,7 @@ bool UOnlineLobbyInterfaceImpl::GetLobbyAdmin(struct FUniqueLobbyId* LobbyId, st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.GetLobbyAdmin");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FUniqueNetId            AdminId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_GetLobbyAdmin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10169,10 +8683,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyJoinGameDelegate(const struct FScriptD
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyJoinGameDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyJoinGameDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyJoinGameDelegate_Params params;
 	params.LobbyJoinGameDelegate = LobbyJoinGameDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10192,10 +8703,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyJoinGameDelegate(const struct FScriptDel
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyJoinGameDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyJoinGameDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyJoinGameDelegate_Params params;
 	params.LobbyJoinGameDelegate = LobbyJoinGameDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10217,12 +8725,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyJoinGameDelegates(int LobbyIndex, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyJoinGameDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		struct FUniqueNetId            ServerID;
-		struct FString                 ServerIP;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyJoinGameDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.ServerIP = ServerIP;
 
@@ -10248,12 +8751,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyJoinGame(const struct FString& ServerIP, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyJoinGame");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		struct FUniqueNetId            ServerID;
-		struct FString                 ServerIP;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyJoinGame_Params params;
 	params.ServerIP = ServerIP;
 
 	auto flags = fn->FunctionFlags;
@@ -10278,10 +8776,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveBinaryDataDelegate(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyReceiveBinaryDataDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyReceiveBinaryDataDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyReceiveBinaryDataDelegate_Params params;
 	params.LobbyReceiveBinaryDataDelegate = LobbyReceiveBinaryDataDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10301,10 +8796,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyReceiveBinaryDataDelegate(const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyReceiveBinaryDataDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyReceiveBinaryDataDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyReceiveBinaryDataDelegate_Params params;
 	params.LobbyReceiveBinaryDataDelegate = LobbyReceiveBinaryDataDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10325,11 +8817,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyReceiveBinaryDataDelegates(int Lobby
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyReceiveBinaryDataDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		int                            MemberIndex;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyReceiveBinaryDataDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.MemberIndex = MemberIndex;
 
@@ -10352,12 +8840,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyReceiveBinaryData(int MemberIndex, struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyReceiveBinaryData");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-		TArray<unsigned char>          Data;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyReceiveBinaryData_Params params;
 	params.MemberIndex = MemberIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -10384,12 +8867,7 @@ bool UOnlineLobbyInterfaceImpl::SendLobbyBinaryData(struct FUniqueLobbyId* Lobby
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SendLobbyBinaryData");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		TArray<unsigned char>          Data;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SendLobbyBinaryData_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10415,10 +8893,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyReceiveMessageDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyReceiveMessageDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyReceiveMessageDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyReceiveMessageDelegate_Params params;
 	params.LobbyReceiveMessageDelegate = LobbyReceiveMessageDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10438,10 +8913,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyReceiveMessageDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyReceiveMessageDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyReceiveMessageDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyReceiveMessageDelegate_Params params;
 	params.LobbyReceiveMessageDelegate = LobbyReceiveMessageDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10464,13 +8936,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyReceiveMessageDelegates(int LobbyInd
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyReceiveMessageDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		int                            MemberIndex;
-		struct FString                 Type;
-		struct FString                 Message;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyReceiveMessageDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.MemberIndex = MemberIndex;
 	params.Type = Type;
@@ -10496,13 +8962,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyReceiveMessage(int MemberIndex, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyReceiveMessage");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-		struct FString                 Type;
-		struct FString                 Message;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyReceiveMessage_Params params;
 	params.MemberIndex = MemberIndex;
 	params.Type = Type;
 	params.Message = Message;
@@ -10529,12 +8989,7 @@ bool UOnlineLobbyInterfaceImpl::SendLobbyMessage(const struct FString& Message, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SendLobbyMessage");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 Message;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SendLobbyMessage_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -10559,10 +9014,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyMemberStatusUpdateDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyMemberStatusUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyMemberStatusUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyMemberStatusUpdateDelegate_Params params;
 	params.LobbyMemberStatusUpdateDelegate = LobbyMemberStatusUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10582,10 +9034,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyMemberStatusUpdateDelegate(const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyMemberStatusUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyMemberStatusUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyMemberStatusUpdateDelegate_Params params;
 	params.LobbyMemberStatusUpdateDelegate = LobbyMemberStatusUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10608,13 +9057,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyMemberStatusUpdateDelegates(int Lobb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyMemberStatusUpdateDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		int                            MemberIndex;
-		int                            InstigatorIndex;
-		struct FString                 Status;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyMemberStatusUpdateDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.MemberIndex = MemberIndex;
 	params.InstigatorIndex = InstigatorIndex;
@@ -10640,13 +9083,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyMemberStatusUpdate(int MemberIndex, int I
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyMemberStatusUpdate");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-		int                            InstigatorIndex;
-		struct FString                 Status;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyMemberStatusUpdate_Params params;
 	params.MemberIndex = MemberIndex;
 	params.InstigatorIndex = InstigatorIndex;
 	params.Status = Status;
@@ -10671,10 +9108,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbyMemberSettingsUpdateDelegate(const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbyMemberSettingsUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyMemberSettingsUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbyMemberSettingsUpdateDelegate_Params params;
 	params.LobbyMemberSettingsUpdateDelegate = LobbyMemberSettingsUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10694,10 +9128,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbyMemberSettingsUpdateDelegate(const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbyMemberSettingsUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbyMemberSettingsUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbyMemberSettingsUpdateDelegate_Params params;
 	params.LobbyMemberSettingsUpdateDelegate = LobbyMemberSettingsUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10718,11 +9149,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbyMemberSettingsUpdateDelegates(int Lo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbyMemberSettingsUpdateDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-		int                            MemberIndex;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbyMemberSettingsUpdateDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 	params.MemberIndex = MemberIndex;
 
@@ -10744,11 +9171,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbyMemberSettingsUpdate(int MemberIndex, str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbyMemberSettingsUpdate");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-		int                            MemberIndex;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbyMemberSettingsUpdate_Params params;
 	params.MemberIndex = MemberIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -10771,10 +9194,7 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySettingsUpdateDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbySettingsUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbySettingsUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearLobbySettingsUpdateDelegate_Params params;
 	params.LobbySettingsUpdateDelegate = LobbySettingsUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10794,10 +9214,7 @@ void UOnlineLobbyInterfaceImpl::AddLobbySettingsUpdateDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbySettingsUpdateDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         LobbySettingsUpdateDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddLobbySettingsUpdateDelegate_Params params;
 	params.LobbySettingsUpdateDelegate = LobbySettingsUpdateDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10817,10 +9234,7 @@ void UOnlineLobbyInterfaceImpl::TriggerLobbySettingsUpdateDelegates(int LobbyInd
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerLobbySettingsUpdateDelegates");
 
-	struct
-	{
-		int                            LobbyIndex;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerLobbySettingsUpdateDelegates_Params params;
 	params.LobbyIndex = LobbyIndex;
 
 	auto flags = fn->FunctionFlags;
@@ -10840,10 +9254,7 @@ void UOnlineLobbyInterfaceImpl::OnLobbySettingsUpdate(struct FActiveLobbyInfo* L
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnLobbySettingsUpdate");
 
-	struct
-	{
-		struct FActiveLobbyInfo        LobbyInfo;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnLobbySettingsUpdate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10868,13 +9279,7 @@ bool UOnlineLobbyInterfaceImpl::SetLobbyUserSetting(const struct FString& Key, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.SetLobbyUserSetting");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 Key;
-		struct FString                 Value;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_SetLobbyUserSetting_Params params;
 	params.Key = Key;
 	params.Value = Value;
 
@@ -10901,11 +9306,7 @@ bool UOnlineLobbyInterfaceImpl::LeaveLobby(struct FUniqueLobbyId* LobbyId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.LeaveLobby");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_LeaveLobby_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10929,10 +9330,7 @@ void UOnlineLobbyInterfaceImpl::ClearJoinLobbyCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearJoinLobbyCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinLobbyCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearJoinLobbyCompleteDelegate_Params params;
 	params.JoinLobbyCompleteDelegate = JoinLobbyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10952,10 +9350,7 @@ void UOnlineLobbyInterfaceImpl::AddJoinLobbyCompleteDelegate(const struct FScrip
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddJoinLobbyCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         JoinLobbyCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddJoinLobbyCompleteDelegate_Params params;
 	params.JoinLobbyCompleteDelegate = JoinLobbyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -10978,13 +9373,7 @@ void UOnlineLobbyInterfaceImpl::TriggerJoinLobbyCompleteDelegates(bool bWasSucce
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerJoinLobbyCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FActiveLobbyInfo        LobbyInfo;
-		struct FUniqueLobbyId          LobbyUID;
-		struct FString                 Error;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerJoinLobbyCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -11013,13 +9402,7 @@ void UOnlineLobbyInterfaceImpl::OnJoinLobbyComplete(bool bWasSuccessful, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnJoinLobbyComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FActiveLobbyInfo        LobbyInfo;
-		struct FUniqueLobbyId          LobbyUID;
-		struct FString                 Error;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnJoinLobbyComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -11047,12 +9430,7 @@ bool UOnlineLobbyInterfaceImpl::JoinLobby(int LocalPlayerNum, struct FUniqueLobb
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.JoinLobby");
 
-	struct
-	{
-		int                            LocalPlayerNum;
-		struct FUniqueLobbyId          LobbyId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_JoinLobby_Params params;
 	params.LocalPlayerNum = LocalPlayerNum;
 
 	auto flags = fn->FunctionFlags;
@@ -11077,10 +9455,7 @@ void UOnlineLobbyInterfaceImpl::ClearFindLobbiesCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearFindLobbiesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         FindLobbiesCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearFindLobbiesCompleteDelegate_Params params;
 	params.FindLobbiesCompleteDelegate = FindLobbiesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -11100,10 +9475,7 @@ void UOnlineLobbyInterfaceImpl::AddFindLobbiesCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddFindLobbiesCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         FindLobbiesCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddFindLobbiesCompleteDelegate_Params params;
 	params.FindLobbiesCompleteDelegate = FindLobbiesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -11123,10 +9495,7 @@ void UOnlineLobbyInterfaceImpl::TriggerFindLobbiesCompleteDelegates(bool bWasSuc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.TriggerFindLobbiesCompleteDelegates");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlineLobbyInterfaceImpl_TriggerFindLobbiesCompleteDelegates_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -11147,11 +9516,7 @@ void UOnlineLobbyInterfaceImpl::OnFindLobbiesComplete(bool bWasSuccessful, TArra
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnFindLobbiesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		TArray<struct FBasicLobbyInfo> LobbyList;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnFindLobbiesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -11175,11 +9540,7 @@ bool UOnlineLobbyInterfaceImpl::UpdateFoundLobbies(const struct FUniqueLobbyId& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.UpdateFoundLobbies");
 
-	struct
-	{
-		struct FUniqueLobbyId          LobbyId;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_UpdateFoundLobbies_Params params;
 	params.LobbyId = LobbyId;
 
 	auto flags = fn->FunctionFlags;
@@ -11206,15 +9567,7 @@ bool UOnlineLobbyInterfaceImpl::FindLobbies(int MaxResults, TArray<struct FLobby
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.FindLobbies");
 
-	struct
-	{
-		int                            MaxResults;
-		TArray<struct FLobbyFilter>    Filters;
-		TArray<struct FLobbySortFilter> SortFilters;
-		int                            MinSlots;
-		TEnumAsByte<enum class ELobbyDistance> Distance;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_FindLobbies_Params params;
 	params.MaxResults = MaxResults;
 	params.Filters = Filters;
 	params.SortFilters = SortFilters;
@@ -11240,10 +9593,7 @@ void UOnlineLobbyInterfaceImpl::ClearCreateLobbyCompleteDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearCreateLobbyCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CreateLobbyCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_ClearCreateLobbyCompleteDelegate_Params params;
 	params.CreateLobbyCompleteDelegate = CreateLobbyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -11263,10 +9613,7 @@ void UOnlineLobbyInterfaceImpl::AddCreateLobbyCompleteDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.AddCreateLobbyCompleteDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         CreateLobbyCompleteDelegate;
-	} params;
+	UOnlineLobbyInterfaceImpl_AddCreateLobbyCompleteDelegate_Params params;
 	params.CreateLobbyCompleteDelegate = CreateLobbyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -11288,12 +9635,7 @@ void UOnlineLobbyInterfaceImpl::OnCreateLobbyComplete(bool bWasSuccessful, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.OnCreateLobbyComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FUniqueLobbyId          LobbyId;
-		struct FString                 Error;
-	} params;
+	UOnlineLobbyInterfaceImpl_OnCreateLobbyComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -11321,14 +9663,7 @@ bool UOnlineLobbyInterfaceImpl::CreateLobby(int LocalPlayerNum, int MaxPlayers, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.CreateLobby");
 
-	struct
-	{
-		int                            LocalPlayerNum;
-		int                            MaxPlayers;
-		TEnumAsByte<enum class ELobbyVisibility> Type;
-		TArray<struct FLobbyMetaData>  InitialSettings;
-		bool                           ReturnValue;
-	} params;
+	UOnlineLobbyInterfaceImpl_CreateLobby_Params params;
 	params.LocalPlayerNum = LocalPlayerNum;
 	params.MaxPlayers = MaxPlayers;
 	params.Type = Type;
@@ -11353,10 +9688,7 @@ void UOnlinePlaylistManager::ParseDataCenterId(TArray<unsigned char>* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.ParseDataCenterId");
 
-	struct
-	{
-		TArray<unsigned char>          Data;
-	} params;
+	UOnlinePlaylistManager_ParseDataCenterId_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11380,11 +9712,7 @@ void UOnlinePlaylistManager::OnReadDataCenterIdComplete(bool bWasSuccessful, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.OnReadDataCenterIdComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UOnlinePlaylistManager_OnReadDataCenterIdComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -11403,9 +9731,7 @@ void UOnlinePlaylistManager::ReadDataCenterId()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.ReadDataCenterId");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_ReadDataCenterId_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11424,10 +9750,7 @@ void UOnlinePlaylistManager::SendPlaylistPopulationUpdate(int NumPlayers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.SendPlaylistPopulationUpdate");
 
-	struct
-	{
-		int                            NumPlayers;
-	} params;
+	UOnlinePlaylistManager_SendPlaylistPopulationUpdate_Params params;
 	params.NumPlayers = NumPlayers;
 
 	auto flags = fn->FunctionFlags;
@@ -11449,12 +9772,7 @@ void UOnlinePlaylistManager::GetPopulationInfoFromPlaylist(int PlaylistId, int* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetPopulationInfoFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            WorldwideTotal;
-		int                            RegionTotal;
-	} params;
+	UOnlinePlaylistManager_GetPopulationInfoFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11479,10 +9797,7 @@ void UOnlinePlaylistManager::ParsePlaylistPopulationData(TArray<unsigned char>* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.ParsePlaylistPopulationData");
 
-	struct
-	{
-		TArray<unsigned char>          Data;
-	} params;
+	UOnlinePlaylistManager_ParsePlaylistPopulationData_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11503,9 +9818,7 @@ void UOnlinePlaylistManager::OnPlaylistPopulationDataUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.OnPlaylistPopulationDataUpdated");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_OnPlaylistPopulationDataUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11525,11 +9838,7 @@ void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete(bool bWasSuccessfu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.OnReadPlaylistPopulationComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UOnlinePlaylistManager_OnReadPlaylistPopulationComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -11548,9 +9857,7 @@ void UOnlinePlaylistManager::ReadPlaylistPopulation()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.ReadPlaylistPopulation");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_ReadPlaylistPopulation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11567,9 +9874,7 @@ void UOnlinePlaylistManager::Reset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.Reset");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_Reset_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11589,11 +9894,7 @@ void UOnlinePlaylistManager::GetContentIdsFromPlaylist(int PlaylistId, TArray<in
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetContentIdsFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		TArray<int>                    ContentIds;
-	} params;
+	UOnlinePlaylistManager_GetContentIdsFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11618,12 +9919,7 @@ class UClass* UOnlinePlaylistManager::GetInventorySwapFromPlaylist(int PlaylistI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetInventorySwapFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		class UClass*                  SourceInventory;
-		class UClass*                  ReturnValue;
-	} params;
+	UOnlinePlaylistManager_GetInventorySwapFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 	params.SourceInventory = SourceInventory;
 
@@ -11647,11 +9943,7 @@ void UOnlinePlaylistManager::GetMapCycleFromPlaylist(int PlaylistId, TArray<stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetMapCycleFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		TArray<struct FName>           MapCycle;
-	} params;
+	UOnlinePlaylistManager_GetMapCycleFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11675,11 +9967,7 @@ struct FString UOnlinePlaylistManager::GetUrlFromPlaylist(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetUrlFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePlaylistManager_GetUrlFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11702,11 +9990,7 @@ int UOnlinePlaylistManager::GetMatchType(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetMatchType");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            ReturnValue;
-	} params;
+	UOnlinePlaylistManager_GetMatchType_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11729,11 +10013,7 @@ bool UOnlinePlaylistManager::IsPlaylistArbitrated(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.IsPlaylistArbitrated");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlaylistManager_IsPlaylistArbitrated_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11756,11 +10036,7 @@ void UOnlinePlaylistManager::GetLoadBalanceIdFromPlaylist(int PlaylistId, int* L
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetLoadBalanceIdFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            LoadBalanceId;
-	} params;
+	UOnlinePlaylistManager_GetLoadBalanceIdFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11786,13 +10062,7 @@ void UOnlinePlaylistManager::GetTeamInfoFromPlaylist(int PlaylistId, int* TeamSi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetTeamInfoFromPlaylist");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            TeamSize;
-		int                            TeamCount;
-		int                            MaxPartySize;
-	} params;
+	UOnlinePlaylistManager_GetTeamInfoFromPlaylist_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11820,11 +10090,7 @@ bool UOnlinePlaylistManager::PlaylistSupportsDedicatedServers(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.PlaylistSupportsDedicatedServers");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlaylistManager_PlaylistSupportsDedicatedServers_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11847,11 +10113,7 @@ bool UOnlinePlaylistManager::HasAnyGameSettings(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.HasAnyGameSettings");
 
-	struct
-	{
-		int                            PlaylistId;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlaylistManager_HasAnyGameSettings_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -11875,12 +10137,7 @@ class UOnlineGameSettings* UOnlinePlaylistManager::GetGameSettings(int PlaylistI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetGameSettings");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            GameSettingsId;
-		class UOnlineGameSettings*     ReturnValue;
-	} params;
+	UOnlinePlaylistManager_GetGameSettings_Params params;
 	params.PlaylistId = PlaylistId;
 	params.GameSettingsId = GameSettingsId;
 
@@ -11901,9 +10158,7 @@ void UOnlinePlaylistManager::FinalizePlaylistObjects()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.FinalizePlaylistObjects");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_FinalizePlaylistObjects_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11924,11 +10179,7 @@ void UOnlinePlaylistManager::OnReadTitleFileComplete(bool bWasSuccessful, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.OnReadTitleFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Filename;
-	} params;
+	UOnlinePlaylistManager_OnReadTitleFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Filename = Filename;
 
@@ -11949,10 +10200,7 @@ bool UOnlinePlaylistManager::ShouldRefreshPlaylists()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.ShouldRefreshPlaylists");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UOnlinePlaylistManager_ShouldRefreshPlaylists_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11972,9 +10220,7 @@ void UOnlinePlaylistManager::DetermineFilesToDownload()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.DetermineFilesToDownload");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_DetermineFilesToDownload_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -11992,9 +10238,7 @@ void UOnlinePlaylistManager::DownloadPlaylist()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.DownloadPlaylist");
 
-	struct
-	{
-	} params;
+	UOnlinePlaylistManager_DownloadPlaylist_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12013,10 +10257,7 @@ void UOnlinePlaylistManager::OnReadPlaylistComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.OnReadPlaylistComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-	} params;
+	UOnlinePlaylistManager_OnReadPlaylistComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
@@ -12036,10 +10277,7 @@ void UOnlinePurchaseInterfaceImpl::ClearMicroTxnResponseDelegate(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.ClearMicroTxnResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ResponseMicroTxnDelegate;
-	} params;
+	UOnlinePurchaseInterfaceImpl_ClearMicroTxnResponseDelegate_Params params;
 	params.ResponseMicroTxnDelegate = ResponseMicroTxnDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -12059,10 +10297,7 @@ void UOnlinePurchaseInterfaceImpl::AddMicroTxnResponseDelegate(const struct FScr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.AddMicroTxnResponseDelegate");
 
-	struct
-	{
-		struct FScriptDelegate         ResponseMicroTxnDelegate;
-	} params;
+	UOnlinePurchaseInterfaceImpl_AddMicroTxnResponseDelegate_Params params;
 	params.ResponseMicroTxnDelegate = ResponseMicroTxnDelegate;
 
 	auto flags = fn->FunctionFlags;
@@ -12082,10 +10317,7 @@ void UOnlinePurchaseInterfaceImpl::OnMicroTxnResponse(bool bAuthorized)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.OnMicroTxnResponse");
 
-	struct
-	{
-		bool                           bAuthorized;
-	} params;
+	UOnlinePurchaseInterfaceImpl_OnMicroTxnResponse_Params params;
 	params.bAuthorized = bAuthorized;
 
 	auto flags = fn->FunctionFlags;
@@ -12107,12 +10339,7 @@ struct FString UOnlinePurchaseInterfaceImpl::FormatCurrency(const struct FString
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.FormatCurrency");
 
-	struct
-	{
-		struct FString                 Currency;
-		int                            Price;
-		struct FString                 ReturnValue;
-	} params;
+	UOnlinePurchaseInterfaceImpl_FormatCurrency_Params params;
 	params.Currency = Currency;
 	params.Price = Price;
 
@@ -12138,13 +10365,7 @@ bool UOnlinePurchaseInterfaceImpl::GetAppPriceInfo(const struct FScriptDelegate&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.GetAppPriceInfo");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		TArray<struct FName>           AppNames;
-		struct FScriptDelegate         Callback;
-		bool                           ReturnValue;
-	} params;
+	UOnlinePurchaseInterfaceImpl_GetAppPriceInfo_Params params;
 	params.Callback = Callback;
 
 	auto flags = fn->FunctionFlags;
@@ -12174,13 +10395,7 @@ void UOnlinePurchaseInterfaceImpl::EventGetAppPriceInfoComplete(const struct FNa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePurchaseInterfaceImpl.EventGetAppPriceInfoComplete");
 
-	struct
-	{
-		struct FName                   AppName;
-		struct FString                 Price;
-		struct FString                 DiscountPrice;
-		int                            DiscountPercentage;
-	} params;
+	UOnlinePurchaseInterfaceImpl_EventGetAppPriceInfoComplete_Params params;
 	params.AppName = AppName;
 	params.Price = Price;
 	params.DiscountPrice = DiscountPrice;
@@ -12201,9 +10416,7 @@ void UPartyBeacon::OnDestroyComplete()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeacon.OnDestroyComplete");
 
-	struct
-	{
-	} params;
+	UPartyBeacon_OnDestroyComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12220,9 +10433,7 @@ void UPartyBeacon::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeacon.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UPartyBeacon_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12240,9 +10451,7 @@ void UPartyBeaconClient::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UPartyBeaconClient_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12263,11 +10472,7 @@ bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& Cancelling
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.CancelReservation");
 
-	struct
-	{
-		struct FUniqueNetId            CancellingPartyLeader;
-		bool                           ReturnValue;
-	} params;
+	UPartyBeaconClient_CancelReservation_Params params;
 	params.CancellingPartyLeader = CancellingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12293,13 +10498,7 @@ bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& Req
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.RequestReservationUpdate");
 
-	struct
-	{
-		struct FOnlineGameSearchResult DesiredHost;
-		struct FUniqueNetId            RequestingPartyLeader;
-		TArray<struct FPlayerReservation> PlayersToAdd;
-		bool                           ReturnValue;
-	} params;
+	UPartyBeaconClient_RequestReservationUpdate_Params params;
 	params.RequestingPartyLeader = RequestingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12330,13 +10529,7 @@ bool UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& Requestin
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.RequestReservation");
 
-	struct
-	{
-		struct FOnlineGameSearchResult DesiredHost;
-		struct FUniqueNetId            RequestingPartyLeader;
-		TArray<struct FPlayerReservation> Players;
-		bool                           ReturnValue;
-	} params;
+	UPartyBeaconClient_RequestReservation_Params params;
 	params.RequestingPartyLeader = RequestingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12362,9 +10555,7 @@ void UPartyBeaconClient::OnHostHasCancelled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnHostHasCancelled");
 
-	struct
-	{
-	} params;
+	UPartyBeaconClient_OnHostHasCancelled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12381,9 +10572,7 @@ void UPartyBeaconClient::OnHostIsReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnHostIsReady");
 
-	struct
-	{
-	} params;
+	UPartyBeaconClient_OnHostIsReady_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12404,12 +10593,7 @@ void UPartyBeaconClient::OnTravelRequestReceived(const struct FName& SessionName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnTravelRequestReceived");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-	} params;
+	UPartyBeaconClient_OnTravelRequestReceived_Params params;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
 	params.PlatformSpecificInfo = PlatformSpecificInfo;
@@ -12431,10 +10615,7 @@ void UPartyBeaconClient::OnReservationCountUpdated(int ReservationRemaining)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnReservationCountUpdated");
 
-	struct
-	{
-		int                            ReservationRemaining;
-	} params;
+	UPartyBeaconClient_OnReservationCountUpdated_Params params;
 	params.ReservationRemaining = ReservationRemaining;
 
 	auto flags = fn->FunctionFlags;
@@ -12454,10 +10635,7 @@ void UPartyBeaconClient::OnReservationRequestComplete(TEnumAsByte<enum class EPa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.OnReservationRequestComplete");
 
-	struct
-	{
-		TEnumAsByte<enum class EPartyReservationResult> ReservationResult;
-	} params;
+	UPartyBeaconClient_OnReservationRequestComplete_Params params;
 	params.ReservationResult = ReservationResult;
 
 	auto flags = fn->FunctionFlags;
@@ -12477,10 +10655,7 @@ int UPartyBeaconHost::GetMaxAvailableTeamSize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.GetMaxAvailableTeamSize");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UPartyBeaconHost_GetMaxAvailableTeamSize_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12502,10 +10677,7 @@ void UPartyBeaconHost::GetPartyLeaders(TArray<struct FUniqueNetId>* PartyLeaders
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.GetPartyLeaders");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    PartyLeaders;
-	} params;
+	UPartyBeaconHost_GetPartyLeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12527,10 +10699,7 @@ void UPartyBeaconHost::GetPlayers(TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.GetPlayers");
 
-	struct
-	{
-		TArray<struct FUniqueNetId>    Players;
-	} params;
+	UPartyBeaconHost_GetPlayers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12552,10 +10721,7 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AppendReservationSkillsToSearch");
 
-	struct
-	{
-		class UOnlineGameSearch*       Search;
-	} params;
+	UPartyBeaconHost_AppendReservationSkillsToSearch_Params params;
 	params.Search = Search;
 
 	auto flags = fn->FunctionFlags;
@@ -12576,10 +10742,7 @@ void UPartyBeaconHost::UnregisterParty(const struct FUniqueNetId& PartyLeader)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.UnregisterParty");
 
-	struct
-	{
-		struct FUniqueNetId            PartyLeader;
-	} params;
+	UPartyBeaconHost_UnregisterParty_Params params;
 	params.PartyLeader = PartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12597,9 +10760,7 @@ void UPartyBeaconHost::UnregisterPartyMembers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.UnregisterPartyMembers");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_UnregisterPartyMembers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12616,9 +10777,7 @@ void UPartyBeaconHost::RegisterPartyMembers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.RegisterPartyMembers");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_RegisterPartyMembers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12637,10 +10796,7 @@ bool UPartyBeaconHost::AreReservationsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AreReservationsFull");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UPartyBeaconHost_AreReservationsFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12659,9 +10815,7 @@ void UPartyBeaconHost::TellClientsHostHasCancelled()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.TellClientsHostHasCancelled");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_TellClientsHostHasCancelled_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12679,9 +10833,7 @@ void UPartyBeaconHost::TellClientsHostIsReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.TellClientsHostIsReady");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_TellClientsHostIsReady_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12703,12 +10855,7 @@ void UPartyBeaconHost::TellClientsToTravel(const struct FName& SessionName, clas
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.TellClientsToTravel");
 
-	struct
-	{
-		struct FName                   SessionName;
-		class UClass*                  SearchClass;
-		unsigned char                  PlatformSpecificInfo;
-	} params;
+	UPartyBeaconHost_TellClientsToTravel_Params params;
 	params.SessionName = SessionName;
 	params.SearchClass = SearchClass;
 	params.PlatformSpecificInfo = PlatformSpecificInfo;
@@ -12729,9 +10876,7 @@ void UPartyBeaconHost::DestroyBeacon()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.DestroyBeacon");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_DestroyBeacon_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12751,10 +10896,7 @@ void UPartyBeaconHost::OnClientCancellationReceived(const struct FUniqueNetId& P
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.OnClientCancellationReceived");
 
-	struct
-	{
-		struct FUniqueNetId            PartyLeader;
-	} params;
+	UPartyBeaconHost_OnClientCancellationReceived_Params params;
 	params.PartyLeader = PartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12772,9 +10914,7 @@ void UPartyBeaconHost::OnReservationsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.OnReservationsFull");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_OnReservationsFull_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12791,9 +10931,7 @@ void UPartyBeaconHost::OnReservationChange()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.OnReservationChange");
 
-	struct
-	{
-	} params;
+	UPartyBeaconHost_OnReservationChange_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12813,11 +10951,7 @@ void UPartyBeaconHost::HandlePlayerLogout(const struct FUniqueNetId& PlayerID, b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.HandlePlayerLogout");
 
-	struct
-	{
-		struct FUniqueNetId            PlayerID;
-		bool                           bMaintainParty;
-	} params;
+	UPartyBeaconHost_HandlePlayerLogout_Params params;
 	params.PlayerID = PlayerID;
 	params.bMaintainParty = bMaintainParty;
 
@@ -12840,11 +10974,7 @@ int UPartyBeaconHost::GetExistingReservation(struct FUniqueNetId* PartyLeader)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.GetExistingReservation");
 
-	struct
-	{
-		struct FUniqueNetId            PartyLeader;
-		int                            ReturnValue;
-	} params;
+	UPartyBeaconHost_GetExistingReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12871,12 +11001,7 @@ TEnumAsByte<enum class EPartyReservationResult> UPartyBeaconHost::UpdatePartyRes
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.UpdatePartyReservationEntry");
 
-	struct
-	{
-		struct FUniqueNetId            PartyLeader;
-		TArray<struct FPlayerReservation> PlayerMembers;
-		TEnumAsByte<enum class EPartyReservationResult> ReturnValue;
-	} params;
+	UPartyBeaconHost_UpdatePartyReservationEntry_Params params;
 	params.PartyLeader = PartyLeader;
 
 	auto flags = fn->FunctionFlags;
@@ -12906,14 +11031,7 @@ TEnumAsByte<enum class EPartyReservationResult> UPartyBeaconHost::AddPartyReserv
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AddPartyReservationEntry");
 
-	struct
-	{
-		struct FUniqueNetId            PartyLeader;
-		TArray<struct FPlayerReservation> PlayerMembers;
-		int                            TeamNum;
-		bool                           bIsHost;
-		TEnumAsByte<enum class EPartyReservationResult> ReturnValue;
-	} params;
+	UPartyBeaconHost_AddPartyReservationEntry_Params params;
 	params.PartyLeader = PartyLeader;
 	params.TeamNum = TeamNum;
 	params.bIsHost = bIsHost;
@@ -12946,15 +11064,7 @@ bool UPartyBeaconHost::InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, i
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.InitHostBeacon");
 
-	struct
-	{
-		int                            InNumTeams;
-		int                            InNumPlayersPerTeam;
-		int                            InNumReservations;
-		struct FName                   InSessionName;
-		int                            InForceTeamNum;
-		bool                           ReturnValue;
-	} params;
+	UPartyBeaconHost_InitHostBeacon_Params params;
 	params.InNumTeams = InNumTeams;
 	params.InNumPlayersPerTeam = InNumPlayersPerTeam;
 	params.InNumReservations = InNumReservations;
@@ -12981,10 +11091,7 @@ void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.PauseReservationRequests");
 
-	struct
-	{
-		bool                           bPause;
-	} params;
+	UPartyBeaconHost_PauseReservationRequests_Params params;
 	params.bPause = bPause;
 
 	auto flags = fn->FunctionFlags;
@@ -13006,11 +11113,7 @@ int UWebRequest::GetHexDigit(const struct FString& D)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetHexDigit");
 
-	struct
-	{
-		struct FString                 D;
-		int                            ReturnValue;
-	} params;
+	UWebRequest_GetHexDigit_Params params;
 	params.D = D;
 
 	auto flags = fn->FunctionFlags;
@@ -13032,10 +11135,7 @@ void UWebRequest::DecodeFormData(const struct FString& Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.DecodeFormData");
 
-	struct
-	{
-		struct FString                 Data;
-	} params;
+	UWebRequest_DecodeFormData_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -13055,10 +11155,7 @@ void UWebRequest::ProcessHeaderString(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.ProcessHeaderString");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	UWebRequest_ProcessHeaderString_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -13076,9 +11173,7 @@ void UWebRequest::Dump()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.Dump");
 
-	struct
-	{
-	} params;
+	UWebRequest_Dump_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13098,10 +11193,7 @@ void UWebRequest::GetVariables(TArray<struct FString>* varNames)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariables");
 
-	struct
-	{
-		TArray<struct FString>         varNames;
-	} params;
+	UWebRequest_GetVariables_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13127,13 +11219,7 @@ struct FString UWebRequest::GetVariableNumber(const struct FString& VariableName
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariableNumber");
 
-	struct
-	{
-		struct FString                 VariableName;
-		int                            Number;
-		struct FString                 DefaultValue;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_GetVariableNumber_Params params;
 	params.VariableName = VariableName;
 	params.Number = Number;
 	params.DefaultValue = DefaultValue;
@@ -13159,11 +11245,7 @@ int UWebRequest::GetVariableCount(const struct FString& VariableName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariableCount");
 
-	struct
-	{
-		struct FString                 VariableName;
-		int                            ReturnValue;
-	} params;
+	UWebRequest_GetVariableCount_Params params;
 	params.VariableName = VariableName;
 
 	auto flags = fn->FunctionFlags;
@@ -13188,12 +11270,7 @@ struct FString UWebRequest::GetVariable(const struct FString& VariableName, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariable");
 
-	struct
-	{
-		struct FString                 VariableName;
-		struct FString                 DefaultValue;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_GetVariable_Params params;
 	params.VariableName = VariableName;
 	params.DefaultValue = DefaultValue;
 
@@ -13218,11 +11295,7 @@ void UWebRequest::AddVariable(const struct FString& VariableName, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.AddVariable");
 
-	struct
-	{
-		struct FString                 VariableName;
-		struct FString                 Value;
-	} params;
+	UWebRequest_AddVariable_Params params;
 	params.VariableName = VariableName;
 	params.Value = Value;
 
@@ -13244,10 +11317,7 @@ void UWebRequest::GetHeaders(TArray<struct FString>* Headers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetHeaders");
 
-	struct
-	{
-		TArray<struct FString>         Headers;
-	} params;
+	UWebRequest_GetHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13272,12 +11342,7 @@ struct FString UWebRequest::GetHeader(const struct FString& HeaderName, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 DefaultValue;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_GetHeader_Params params;
 	params.HeaderName = HeaderName;
 	params.DefaultValue = DefaultValue;
 
@@ -13302,11 +11367,7 @@ void UWebRequest::AddHeader(const struct FString& HeaderName, const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.AddHeader");
 
-	struct
-	{
-		struct FString                 HeaderName;
-		struct FString                 Value;
-	} params;
+	UWebRequest_AddHeader_Params params;
 	params.HeaderName = HeaderName;
 	params.Value = Value;
 
@@ -13329,11 +11390,7 @@ struct FString UWebRequest::STATIC_EncodeBase64(const struct FString& Decoded)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.EncodeBase64");
 
-	struct
-	{
-		struct FString                 Decoded;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_EncodeBase64_Params params;
 	params.Decoded = Decoded;
 
 	auto flags = fn->FunctionFlags;
@@ -13357,11 +11414,7 @@ struct FString UWebRequest::STATIC_DecodeBase64(const struct FString& Encoded)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.DecodeBase64");
 
-	struct
-	{
-		struct FString                 Encoded;
-		struct FString                 ReturnValue;
-	} params;
+	UWebRequest_DecodeBase64_Params params;
 	params.Encoded = Encoded;
 
 	auto flags = fn->FunctionFlags;
@@ -13384,10 +11437,7 @@ bool UWebResponse::SentResponse()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentResponse");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_SentResponse_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13408,10 +11458,7 @@ bool UWebResponse::SentText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentText");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_SentText_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13432,10 +11479,7 @@ void UWebResponse::Redirect(const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.Redirect");
 
-	struct
-	{
-		struct FString                 URL;
-	} params;
+	UWebResponse_Redirect_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -13456,11 +11500,7 @@ void UWebResponse::SendStandardHeaders(const struct FString& ContentType, bool b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendStandardHeaders");
 
-	struct
-	{
-		struct FString                 ContentType;
-		bool                           bCache;
-	} params;
+	UWebResponse_SendStandardHeaders_Params params;
 	params.ContentType = ContentType;
 	params.bCache = bCache;
 
@@ -13482,11 +11522,7 @@ void UWebResponse::HTTPError(int ErrorNum, const struct FString& Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.HTTPError");
 
-	struct
-	{
-		int                            ErrorNum;
-		struct FString                 Data;
-	} params;
+	UWebResponse_HTTPError_Params params;
 	params.ErrorNum = ErrorNum;
 	params.Data = Data;
 
@@ -13505,9 +11541,7 @@ void UWebResponse::SendHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendHeaders");
 
-	struct
-	{
-	} params;
+	UWebResponse_SendHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13527,11 +11561,7 @@ void UWebResponse::AddHeader(const struct FString& Header, bool bReplace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.AddHeader");
 
-	struct
-	{
-		struct FString                 Header;
-		bool                           bReplace;
-	} params;
+	UWebResponse_AddHeader_Params params;
 	params.Header = Header;
 	params.bReplace = bReplace;
 
@@ -13552,10 +11582,7 @@ void UWebResponse::HTTPHeader(const struct FString& Header)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.HTTPHeader");
 
-	struct
-	{
-		struct FString                 Header;
-	} params;
+	UWebResponse_HTTPHeader_Params params;
 	params.Header = Header;
 
 	auto flags = fn->FunctionFlags;
@@ -13575,10 +11602,7 @@ void UWebResponse::HttpResponse(const struct FString& Header)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.HttpResponse");
 
-	struct
-	{
-		struct FString                 Header;
-	} params;
+	UWebResponse_HttpResponse_Params params;
 	params.Header = Header;
 
 	auto flags = fn->FunctionFlags;
@@ -13598,10 +11622,7 @@ void UWebResponse::FailAuthentication(const struct FString& Realm)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.FailAuthentication");
 
-	struct
-	{
-		struct FString                 Realm;
-	} params;
+	UWebResponse_FailAuthentication_Params params;
 	params.Realm = Realm;
 
 	auto flags = fn->FunctionFlags;
@@ -13623,12 +11644,7 @@ bool UWebResponse::SendCachedFile(const struct FString& Filename, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendCachedFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ContentType;
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_SendCachedFile_Params params;
 	params.Filename = Filename;
 	params.ContentType = ContentType;
 
@@ -13652,11 +11668,7 @@ void UWebResponse::SendBinary(int Count, unsigned char B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendBinary");
 
-	struct
-	{
-		int                            Count;
-		unsigned char                  B;
-	} params;
+	UWebResponse_SendBinary_Params params;
 	params.Count = Count;
 	params.B = B;
 
@@ -13678,11 +11690,7 @@ void UWebResponse::SendText(const struct FString& Text, bool bNoCRLF)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendText");
 
-	struct
-	{
-		struct FString                 Text;
-		bool                           bNoCRLF;
-	} params;
+	UWebResponse_SendText_Params params;
 	params.Text = Text;
 	params.bNoCRLF = bNoCRLF;
 
@@ -13701,9 +11709,7 @@ void UWebResponse::Dump()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.Dump");
 
-	struct
-	{
-	} params;
+	UWebResponse_Dump_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13724,11 +11730,7 @@ struct FString UWebResponse::GetHTTPExpiration(int OffsetSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.GetHTTPExpiration");
 
-	struct
-	{
-		int                            OffsetSeconds;
-		struct FString                 ReturnValue;
-	} params;
+	UWebResponse_GetHTTPExpiration_Params params;
 	params.OffsetSeconds = OffsetSeconds;
 
 	auto flags = fn->FunctionFlags;
@@ -13752,11 +11754,7 @@ struct FString UWebResponse::LoadParsedUHTM(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.LoadParsedUHTM");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UWebResponse_LoadParsedUHTM_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -13780,11 +11778,7 @@ bool UWebResponse::IncludeBinaryFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.IncludeBinaryFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_IncludeBinaryFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -13808,11 +11802,7 @@ bool UWebResponse::IncludeUHTM(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.IncludeUHTM");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_IncludeUHTM_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -13833,9 +11823,7 @@ void UWebResponse::ClearSubst()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.ClearSubst");
 
-	struct
-	{
-	} params;
+	UWebResponse_ClearSubst_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13857,12 +11845,7 @@ void UWebResponse::Subst(const struct FString& Variable, const struct FString& V
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.Subst");
 
-	struct
-	{
-		struct FString                 Variable;
-		struct FString                 Value;
-		bool                           bClear;
-	} params;
+	UWebResponse_Subst_Params params;
 	params.Variable = Variable;
 	params.Value = Value;
 	params.bClear = bClear;
@@ -13886,11 +11869,7 @@ bool UWebResponse::FileExists(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.FileExists");
 
-	struct
-	{
-		struct FString                 Filename;
-		bool                           ReturnValue;
-	} params;
+	UWebResponse_FileExists_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -13914,11 +11893,7 @@ int UUIDataStore_OnlinePlaylists::GetMatchTypeForPlaylistId(int PlaylistId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.GetMatchTypeForPlaylistId");
 
-	struct
-	{
-		int                            PlaylistId;
-		int                            ReturnValue;
-	} params;
+	UUIDataStore_OnlinePlaylists_GetMatchTypeForPlaylistId_Params params;
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
@@ -13943,13 +11918,7 @@ class UOnlinePlaylistProvider* UUIDataStore_OnlinePlaylists::STATIC_GetOnlinePla
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.GetOnlinePlaylistProvider");
 
-	struct
-	{
-		struct FName                   ProviderTag;
-		int                            PlaylistId;
-		int                            ProviderIndex;
-		class UOnlinePlaylistProvider* ReturnValue;
-	} params;
+	UUIDataStore_OnlinePlaylists_GetOnlinePlaylistProvider_Params params;
 	params.ProviderTag = ProviderTag;
 	params.PlaylistId = PlaylistId;
 
@@ -13978,13 +11947,7 @@ bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(const struct FName& Provi
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.GetPlaylistProvider");
 
-	struct
-	{
-		struct FName                   ProviderTag;
-		int                            ProviderIndex;
-		class UUIResourceDataProvider* out_Provider;
-		bool                           ReturnValue;
-	} params;
+	UUIDataStore_OnlinePlaylists_GetPlaylistProvider_Params params;
 	params.ProviderTag = ProviderTag;
 	params.ProviderIndex = ProviderIndex;
 
@@ -14013,12 +11976,7 @@ bool UUIDataStore_OnlinePlaylists::GetResourceProviders(const struct FName& Prov
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.GetResourceProviders");
 
-	struct
-	{
-		struct FName                   ProviderTag;
-		TArray<class UUIResourceDataProvider*> out_Providers;
-		bool                           ReturnValue;
-	} params;
+	UUIDataStore_OnlinePlaylists_GetResourceProviders_Params params;
 	params.ProviderTag = ProviderTag;
 
 	auto flags = fn->FunctionFlags;
@@ -14042,9 +12000,7 @@ void UUIDataStore_OnlinePlaylists::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.Init");
 
-	struct
-	{
-	} params;
+	UUIDataStore_OnlinePlaylists_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14064,11 +12020,7 @@ void UWebApplication::PostQuery(class UWebRequest* Request, class UWebResponse* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.PostQuery");
 
-	struct
-	{
-		class UWebRequest*             Request;
-		class UWebResponse*            Response;
-	} params;
+	UWebApplication_PostQuery_Params params;
 	params.Request = Request;
 	params.Response = Response;
 
@@ -14090,11 +12042,7 @@ void UWebApplication::Query(class UWebRequest* Request, class UWebResponse* Resp
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.Query");
 
-	struct
-	{
-		class UWebRequest*             Request;
-		class UWebResponse*            Response;
-	} params;
+	UWebApplication_Query_Params params;
 	params.Request = Request;
 	params.Response = Response;
 
@@ -14117,12 +12065,7 @@ bool UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.PreQuery");
 
-	struct
-	{
-		class UWebRequest*             Request;
-		class UWebResponse*            Response;
-		bool                           ReturnValue;
-	} params;
+	UWebApplication_PreQuery_Params params;
 	params.Request = Request;
 	params.Response = Response;
 
@@ -14143,9 +12086,7 @@ void UWebApplication::CleanupApp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.CleanupApp");
 
-	struct
-	{
-	} params;
+	UWebApplication_CleanupApp_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14162,9 +12103,7 @@ void UWebApplication::Cleanup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.Cleanup");
 
-	struct
-	{
-	} params;
+	UWebApplication_Cleanup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14181,9 +12120,7 @@ void UWebApplication::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.Init");
 
-	struct
-	{
-	} params;
+	UWebApplication_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14204,12 +12141,7 @@ class UWebApplication* AWebServer::GetApplication(const struct FString& URI, str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebServer.GetApplication");
 
-	struct
-	{
-		struct FString                 URI;
-		struct FString                 SubURI;
-		class UWebApplication*         ReturnValue;
-	} params;
+	AWebServer_GetApplication_Params params;
 	params.URI = URI;
 
 	auto flags = fn->FunctionFlags;
@@ -14234,10 +12166,7 @@ void AWebServer::LostChild(class AActor* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebServer.LostChild");
 
-	struct
-	{
-		class AActor*                  C;
-	} params;
+	AWebServer_LostChild_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -14257,10 +12186,7 @@ void AWebServer::GainedChild(class AActor* C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebServer.GainedChild");
 
-	struct
-	{
-		class AActor*                  C;
-	} params;
+	AWebServer_GainedChild_Params params;
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
@@ -14278,9 +12204,7 @@ void AWebServer::Destroyed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebServer.Destroyed");
 
-	struct
-	{
-	} params;
+	AWebServer_Destroyed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14297,9 +12221,7 @@ void AWebServer::PostBeginPlay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebServer.PostBeginPlay");
 
-	struct
-	{
-	} params;
+	AWebServer_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14319,11 +12241,7 @@ void UHelloWeb::Query(class UWebRequest* Request, class UWebResponse* Response)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HelloWeb.Query");
 
-	struct
-	{
-		class UWebRequest*             Request;
-		class UWebResponse*            Response;
-	} params;
+	UHelloWeb_Query_Params params;
 	params.Request = Request;
 	params.Response = Response;
 
@@ -14342,9 +12260,7 @@ void UHelloWeb::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.HelloWeb.Init");
 
-	struct
-	{
-	} params;
+	UHelloWeb_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14364,11 +12280,7 @@ void UImageServer::Query(class UWebRequest* Request, class UWebResponse* Respons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.ImageServer.Query");
 
-	struct
-	{
-		class UWebRequest*             Request;
-		class UWebResponse*            Response;
-	} params;
+	UImageServer_Query_Params params;
 	params.Request = Request;
 	params.Response = Response;
 
@@ -14390,11 +12302,7 @@ struct FString UMcpServiceConfig::GetUserAuthTicket(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServiceConfig.GetUserAuthTicket");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServiceConfig_GetUserAuthTicket_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -14418,12 +12326,7 @@ void UMcpClashMobBase::UpdateChallengeUserReward(const struct FString& UniqueCha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.UpdateChallengeUserReward");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		int                            UserReward;
-	} params;
+	UMcpClashMobBase_UpdateChallengeUserReward_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 	params.UserReward = UserReward;
@@ -14448,13 +12351,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnUpdateChallengeUserRewardComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnUpdateChallengeUserRewardComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
@@ -14480,13 +12377,7 @@ void UMcpClashMobBase::UpdateChallengeUserProgress(const struct FString& UniqueC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.UpdateChallengeUserProgress");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		bool                           bDidComplete;
-		int                            GoalProgress;
-	} params;
+	UMcpClashMobBase_UpdateChallengeUserProgress_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 	params.bDidComplete = bDidComplete;
@@ -14512,13 +12403,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnUpdateChallengeUserProgressComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnUpdateChallengeUserProgressComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
@@ -14543,12 +12428,7 @@ void UMcpClashMobBase::GetChallengeUserStatus(const struct FString& UniqueChalle
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.GetChallengeUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FMcpClashMobChallengeUserStatus OutChallengeUserStatus;
-	} params;
+	UMcpClashMobBase_GetChallengeUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -14574,12 +12454,7 @@ void UMcpClashMobBase::QueryChallengeMultiUserStatus(const struct FString& Uniqu
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.QueryChallengeMultiUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		TArray<struct FString>         UserIdsToRead;
-	} params;
+	UMcpClashMobBase_QueryChallengeMultiUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -14604,11 +12479,7 @@ void UMcpClashMobBase::QueryChallengeUserStatus(const struct FString& UniqueChal
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.QueryChallengeUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpClashMobBase_QueryChallengeUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -14632,13 +12503,7 @@ void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnQueryChallengeUserStatusComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnQueryChallengeUserStatusComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
@@ -14662,11 +12527,7 @@ void UMcpClashMobBase::AcceptChallenge(const struct FString& UniqueChallengeId, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.AcceptChallenge");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpClashMobBase_AcceptChallenge_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -14690,13 +12551,7 @@ void UMcpClashMobBase::OnAcceptChallengeComplete(bool bWasSuccessful, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnAcceptChallengeComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnAcceptChallengeComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
@@ -14720,11 +12575,7 @@ void UMcpClashMobBase::DeleteCachedChallengeFile(const struct FString& UniqueCha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.DeleteCachedChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobBase_DeleteCachedChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -14746,11 +12597,7 @@ void UMcpClashMobBase::ClearCachedChallengeFile(const struct FString& UniqueChal
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.ClearCachedChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobBase_ClearCachedChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -14773,12 +12620,7 @@ void UMcpClashMobBase::GetChallengeFileContents(const struct FString& UniqueChal
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.GetChallengeFileContents");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-		TArray<unsigned char>          OutFileContents;
-	} params;
+	UMcpClashMobBase_GetChallengeFileContents_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -14803,11 +12645,7 @@ void UMcpClashMobBase::DownloadChallengeFile(const struct FString& UniqueChallen
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.DownloadChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobBase_DownloadChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -14829,11 +12667,7 @@ void UMcpClashMobBase::GetChallengeFileList(const struct FString& UniqueChalleng
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.GetChallengeFileList");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles;
-	} params;
+	UMcpClashMobBase_GetChallengeFileList_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 
 	auto flags = fn->FunctionFlags;
@@ -14860,14 +12694,7 @@ void UMcpClashMobBase::OnDownloadChallengeFileComplete(bool bWasSuccessful, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnDownloadChallengeFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-		struct FString                 Filename;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnDownloadChallengeFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
@@ -14891,10 +12718,7 @@ void UMcpClashMobBase::GetChallengeList(TArray<struct FMcpClashMobChallengeEvent
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.GetChallengeList");
 
-	struct
-	{
-		TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents;
-	} params;
+	UMcpClashMobBase_GetChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14914,9 +12738,7 @@ void UMcpClashMobBase::QueryChallengeList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.QueryChallengeList");
 
-	struct
-	{
-	} params;
+	UMcpClashMobBase_QueryChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14936,11 +12758,7 @@ void UMcpClashMobBase::OnQueryChallengeListComplete(bool bWasSuccessful, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.OnQueryChallengeListComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpClashMobBase_OnQueryChallengeListComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -14961,10 +12779,7 @@ class UMcpClashMobBase* UMcpClashMobBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.CreateInstance");
 
-	struct
-	{
-		class UMcpClashMobBase*        ReturnValue;
-	} params;
+	UMcpClashMobBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14986,11 +12801,7 @@ struct FString UMcpClashMobFileDownload::GetUrlForFile(const struct FString& Fil
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobFileDownload.GetUrlForFile");
 
-	struct
-	{
-		struct FString                 Filename;
-		struct FString                 ReturnValue;
-	} params;
+	UMcpClashMobFileDownload_GetUrlForFile_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -15014,12 +12825,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete(class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnUpdateChallengeUserRewardHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnUpdateChallengeUserRewardHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15043,12 +12849,7 @@ void UMcpClashMobManager::UpdateChallengeUserReward(const struct FString& Unique
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.UpdateChallengeUserReward");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		int                            UserReward;
-	} params;
+	UMcpClashMobManager_UpdateChallengeUserReward_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 	params.UserReward = UserReward;
@@ -15072,12 +12873,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete(class
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnUpdateChallengeUserProgressHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnUpdateChallengeUserProgressHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15102,13 +12898,7 @@ void UMcpClashMobManager::UpdateChallengeUserProgress(const struct FString& Uniq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.UpdateChallengeUserProgress");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		bool                           bDidComplete;
-		int                            GoalProgress;
-	} params;
+	UMcpClashMobManager_UpdateChallengeUserProgress_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 	params.bDidComplete = bDidComplete;
@@ -15133,12 +12923,7 @@ void UMcpClashMobManager::GetChallengeUserStatus(const struct FString& UniqueCha
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.GetChallengeUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		struct FMcpClashMobChallengeUserStatus OutChallengeUserStatus;
-	} params;
+	UMcpClashMobManager_GetChallengeUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -15164,12 +12949,7 @@ void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete(class U
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnQueryChallengeMultiStatusHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnQueryChallengeMultiStatusHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15193,12 +12973,7 @@ void UMcpClashMobManager::QueryChallengeMultiUserStatus(const struct FString& Un
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.QueryChallengeMultiUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-		TArray<struct FString>         UserIdsToRead;
-	} params;
+	UMcpClashMobManager_QueryChallengeMultiUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -15224,12 +12999,7 @@ void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete(class UHttpR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnQueryChallengeStatusHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnQueryChallengeStatusHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15252,11 +13022,7 @@ void UMcpClashMobManager::QueryChallengeUserStatus(const struct FString& UniqueC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.QueryChallengeUserStatus");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpClashMobManager_QueryChallengeUserStatus_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -15279,12 +13045,7 @@ void UMcpClashMobManager::OnAcceptChallengeHTTPRequestComplete(class UHttpReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnAcceptChallengeHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnAcceptChallengeHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15307,11 +13068,7 @@ void UMcpClashMobManager::AcceptChallenge(const struct FString& UniqueChallengeI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.AcceptChallenge");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpClashMobManager_AcceptChallenge_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.UniqueUserId = UniqueUserId;
 
@@ -15333,11 +13090,7 @@ void UMcpClashMobManager::DeleteCachedChallengeFile(const struct FString& Unique
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.DeleteCachedChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobManager_DeleteCachedChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -15359,11 +13112,7 @@ void UMcpClashMobManager::ClearCachedChallengeFile(const struct FString& UniqueC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.ClearCachedChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobManager_ClearCachedChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -15386,12 +13135,7 @@ void UMcpClashMobManager::GetChallengeFileContents(const struct FString& UniqueC
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.GetChallengeFileContents");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-		TArray<unsigned char>          OutFileContents;
-	} params;
+	UMcpClashMobManager_GetChallengeFileContents_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -15416,11 +13160,7 @@ void UMcpClashMobManager::OnDownloadMcpFileComplete(bool bWasSuccessful, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnDownloadMcpFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobManager_OnDownloadMcpFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.DLName = DLName;
 
@@ -15442,11 +13182,7 @@ void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnLoadCachedFileComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobManager_OnLoadCachedFileComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.DLName = DLName;
 
@@ -15468,11 +13204,7 @@ void UMcpClashMobManager::DownloadChallengeFile(const struct FString& UniqueChal
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.DownloadChallengeFile");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		struct FString                 DLName;
-	} params;
+	UMcpClashMobManager_DownloadChallengeFile_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 	params.DLName = DLName;
 
@@ -15494,11 +13226,7 @@ void UMcpClashMobManager::GetChallengeFileList(const struct FString& UniqueChall
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.GetChallengeFileList");
 
-	struct
-	{
-		struct FString                 UniqueChallengeId;
-		TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles;
-	} params;
+	UMcpClashMobManager_GetChallengeFileList_Params params;
 	params.UniqueChallengeId = UniqueChallengeId;
 
 	auto flags = fn->FunctionFlags;
@@ -15521,10 +13249,7 @@ void UMcpClashMobManager::GetChallengeList(TArray<struct FMcpClashMobChallengeEv
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.GetChallengeList");
 
-	struct
-	{
-		TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents;
-	} params;
+	UMcpClashMobManager_GetChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15548,12 +13273,7 @@ void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete(class UHttpReq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.OnQueryChallengeListHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpClashMobManager_OnQueryChallengeListHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -15573,9 +13293,7 @@ void UMcpClashMobManager::QueryChallengeList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.QueryChallengeList");
 
-	struct
-	{
-	} params;
+	UMcpClashMobManager_QueryChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15592,9 +13310,7 @@ void UMcpClashMobManager::Init()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.Init");
 
-	struct
-	{
-	} params;
+	UMcpClashMobManager_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -15615,12 +13331,7 @@ void UMcpGroupsBase::OnAcceptGroupInviteComplete(const struct FString& GroupID, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnAcceptGroupInviteComplete");
 
-	struct
-	{
-		struct FString                 GroupID;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnAcceptGroupInviteComplete_Params params;
 	params.GroupID = GroupID;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -15644,12 +13355,7 @@ void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AcceptGroupInvite");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-		bool                           bShouldAccept;
-	} params;
+	UMcpGroupsBase_AcceptGroupInvite_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 	params.bShouldAccept = bShouldAccept;
@@ -15672,11 +13378,7 @@ void UMcpGroupsBase::GetGroupInviteList(const struct FString& UserId, struct FMc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.GetGroupInviteList");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FMcpGroupList           InviteList;
-	} params;
+	UMcpGroupsBase_GetGroupInviteList_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -15700,11 +13402,7 @@ void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnQueryGroupInvitesComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnQueryGroupInvitesComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -15725,10 +13423,7 @@ void UMcpGroupsBase::QueryGroupInvites(const struct FString& UniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.QueryGroupInvites");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpGroupsBase_QueryGroupInvites_Params params;
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -15750,12 +13445,7 @@ void UMcpGroupsBase::OnDeleteAllGroupsComplete(const struct FString& RequesterId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnDeleteAllGroupsComplete");
 
-	struct
-	{
-		struct FString                 RequesterId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnDeleteAllGroupsComplete_Params params;
 	params.RequesterId = RequesterId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -15777,10 +13467,7 @@ void UMcpGroupsBase::DeleteAllGroups(const struct FString& OwnerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.DeleteAllGroups");
 
-	struct
-	{
-		struct FString                 OwnerId;
-	} params;
+	UMcpGroupsBase_DeleteAllGroups_Params params;
 	params.OwnerId = OwnerId;
 
 	auto flags = fn->FunctionFlags;
@@ -15802,12 +13489,7 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupID,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnRemoveGroupMembersComplete");
 
-	struct
-	{
-		struct FString                 GroupID;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnRemoveGroupMembersComplete_Params params;
 	params.GroupID = GroupID;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -15831,12 +13513,7 @@ void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.RemoveGroupMembers");
 
-	struct
-	{
-		struct FString                 OwnerId;
-		struct FString                 GroupID;
-		TArray<struct FString>         MemberIds;
-	} params;
+	UMcpGroupsBase_RemoveGroupMembers_Params params;
 	params.OwnerId = OwnerId;
 	params.GroupID = GroupID;
 
@@ -15862,12 +13539,7 @@ void UMcpGroupsBase::OnAddGroupMembersComplete(const struct FString& GroupID, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnAddGroupMembersComplete");
 
-	struct
-	{
-		struct FString                 GroupID;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnAddGroupMembersComplete_Params params;
 	params.GroupID = GroupID;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -15892,13 +13564,7 @@ void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AddGroupMembers");
 
-	struct
-	{
-		struct FString                 OwnerId;
-		struct FString                 GroupID;
-		TArray<struct FString>         MemberIds;
-		bool                           bRequiresAcceptance;
-	} params;
+	UMcpGroupsBase_AddGroupMembers_Params params;
 	params.OwnerId = OwnerId;
 	params.GroupID = GroupID;
 	params.bRequiresAcceptance = bRequiresAcceptance;
@@ -15924,11 +13590,7 @@ void UMcpGroupsBase::GetGroupMembers(const struct FString& GroupID, TArray<struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.GetGroupMembers");
 
-	struct
-	{
-		struct FString                 GroupID;
-		TArray<struct FMcpGroupMember> GroupMembers;
-	} params;
+	UMcpGroupsBase_GetGroupMembers_Params params;
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
@@ -15953,12 +13615,7 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupID, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnQueryGroupMembersComplete");
 
-	struct
-	{
-		struct FString                 GroupID;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnQueryGroupMembersComplete_Params params;
 	params.GroupID = GroupID;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -15981,11 +13638,7 @@ void UMcpGroupsBase::QueryGroupMembers(const struct FString& UniqueUserId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.QueryGroupMembers");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-	} params;
+	UMcpGroupsBase_QueryGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 
@@ -16007,11 +13660,7 @@ void UMcpGroupsBase::GetGroupList(const struct FString& UserId, struct FMcpGroup
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.GetGroupList");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FMcpGroupList           GroupList;
-	} params;
+	UMcpGroupsBase_GetGroupList_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -16036,12 +13685,7 @@ void UMcpGroupsBase::OnQueryGroupsComplete(const struct FString& UserId, bool bW
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnQueryGroupsComplete");
 
-	struct
-	{
-		struct FString                 UserId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnQueryGroupsComplete_Params params;
 	params.UserId = UserId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -16063,10 +13707,7 @@ void UMcpGroupsBase::QueryGroups(const struct FString& RequesterId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.QueryGroups");
 
-	struct
-	{
-		struct FString                 RequesterId;
-	} params;
+	UMcpGroupsBase_QueryGroups_Params params;
 	params.RequesterId = RequesterId;
 
 	auto flags = fn->FunctionFlags;
@@ -16088,12 +13729,7 @@ void UMcpGroupsBase::OnDeleteGroupComplete(const struct FString& GroupID, bool b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnDeleteGroupComplete");
 
-	struct
-	{
-		struct FString                 GroupID;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnDeleteGroupComplete_Params params;
 	params.GroupID = GroupID;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -16116,11 +13752,7 @@ void UMcpGroupsBase::DeleteGroup(const struct FString& UniqueUserId, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.DeleteGroup");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-	} params;
+	UMcpGroupsBase_DeleteGroup_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 
@@ -16143,12 +13775,7 @@ void UMcpGroupsBase::OnCreateGroupComplete(const struct FMcpGroup& Group, bool b
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnCreateGroupComplete");
 
-	struct
-	{
-		struct FMcpGroup               Group;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpGroupsBase_OnCreateGroupComplete_Params params;
 	params.Group = Group;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -16171,11 +13798,7 @@ void UMcpGroupsBase::CreateGroup(const struct FString& OwnerId, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.CreateGroup");
 
-	struct
-	{
-		struct FString                 OwnerId;
-		struct FString                 GroupName;
-	} params;
+	UMcpGroupsBase_CreateGroup_Params params;
 	params.OwnerId = OwnerId;
 	params.GroupName = GroupName;
 
@@ -16196,10 +13819,7 @@ class UMcpGroupsBase* UMcpGroupsBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.CreateInstance");
 
-	struct
-	{
-		class UMcpGroupsBase*          ReturnValue;
-	} params;
+	UMcpGroupsBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16222,12 +13842,7 @@ void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroupMember");
 
-	struct
-	{
-		struct FString                 MemberId;
-		struct FString                 GroupID;
-		TEnumAsByte<enum class EMcpGroupAcceptState> AcceptState;
-	} params;
+	UMcpGroupsManager_CacheGroupMember_Params params;
 	params.MemberId = MemberId;
 	params.GroupID = GroupID;
 	params.AcceptState = AcceptState;
@@ -16250,11 +13865,7 @@ void UMcpGroupsManager::CacheGroup(const struct FString& RequesterId, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroup");
 
-	struct
-	{
-		struct FString                 RequesterId;
-		struct FMcpGroup               Group;
-	} params;
+	UMcpGroupsManager_CacheGroup_Params params;
 	params.RequesterId = RequesterId;
 	params.Group = Group;
 
@@ -16277,12 +13888,7 @@ void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnAcceptGroupInviteRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnAcceptGroupInviteRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16306,12 +13912,7 @@ void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AcceptGroupInvite");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-		bool                           bShouldAccept;
-	} params;
+	UMcpGroupsManager_AcceptGroupInvite_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 	params.bShouldAccept = bShouldAccept;
@@ -16335,12 +13936,7 @@ void UMcpGroupsManager::OnDeleteAllGroupsRequestComplete(class UHttpRequestInter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnDeleteAllGroupsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnDeleteAllGroupsRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16362,10 +13958,7 @@ void UMcpGroupsManager::DeleteAllGroups(const struct FString& UniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.DeleteAllGroups");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-	} params;
+	UMcpGroupsManager_DeleteAllGroups_Params params;
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
@@ -16387,12 +13980,7 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnRemoveGroupMembersRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnRemoveGroupMembersRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16416,12 +14004,7 @@ void UMcpGroupsManager::RemoveGroupMembers(const struct FString& UniqueUserId, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.RemoveGroupMembers");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-		TArray<struct FString>         MemberIds;
-	} params;
+	UMcpGroupsManager_RemoveGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 
@@ -16447,12 +14030,7 @@ void UMcpGroupsManager::OnAddGroupMembersRequestComplete(class UHttpRequestInter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnAddGroupMembersRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnAddGroupMembersRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16477,13 +14055,7 @@ void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AddGroupMembers");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-		TArray<struct FString>         MemberIds;
-		bool                           bRequiresAcceptance;
-	} params;
+	UMcpGroupsManager_AddGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 	params.bRequiresAcceptance = bRequiresAcceptance;
@@ -16509,11 +14081,7 @@ void UMcpGroupsManager::GetGroupMembers(const struct FString& GroupID, TArray<st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.GetGroupMembers");
 
-	struct
-	{
-		struct FString                 GroupID;
-		TArray<struct FMcpGroupMember> GroupMembers;
-	} params;
+	UMcpGroupsManager_GetGroupMembers_Params params;
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
@@ -16538,12 +14106,7 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnQueryGroupMembersRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnQueryGroupMembersRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16566,11 +14129,7 @@ void UMcpGroupsManager::QueryGroupMembers(const struct FString& UniqueUserId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.QueryGroupMembers");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-	} params;
+	UMcpGroupsManager_QueryGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 
@@ -16592,11 +14151,7 @@ void UMcpGroupsManager::GetGroupList(const struct FString& UserId, struct FMcpGr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.GetGroupList");
 
-	struct
-	{
-		struct FString                 UserId;
-		struct FMcpGroupList           GroupList;
-	} params;
+	UMcpGroupsManager_GetGroupList_Params params;
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
@@ -16621,12 +14176,7 @@ void UMcpGroupsManager::OnQueryGroupsRequestComplete(class UHttpRequestInterface
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnQueryGroupsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnQueryGroupsRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16648,10 +14198,7 @@ void UMcpGroupsManager::QueryGroups(const struct FString& RequesterId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.QueryGroups");
 
-	struct
-	{
-		struct FString                 RequesterId;
-	} params;
+	UMcpGroupsManager_QueryGroups_Params params;
 	params.RequesterId = RequesterId;
 
 	auto flags = fn->FunctionFlags;
@@ -16673,12 +14220,7 @@ void UMcpGroupsManager::OnDeleteGroupRequestComplete(class UHttpRequestInterface
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnDeleteGroupRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnDeleteGroupRequestComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16701,11 +14243,7 @@ void UMcpGroupsManager::DeleteGroup(const struct FString& UniqueUserId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.DeleteGroup");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupID;
-	} params;
+	UMcpGroupsManager_DeleteGroup_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupID = GroupID;
 
@@ -16728,12 +14266,7 @@ void UMcpGroupsManager::OnCreateGroupRequestComplete(class UHttpRequestInterface
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.OnCreateGroupRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   CreateGroupRequest;
-		class UHttpResponseInterface*  HttpResponse;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpGroupsManager_OnCreateGroupRequestComplete_Params params;
 	params.CreateGroupRequest = CreateGroupRequest;
 	params.HttpResponse = HttpResponse;
 	params.bWasSuccessful = bWasSuccessful;
@@ -16756,11 +14289,7 @@ void UMcpGroupsManager::CreateGroup(const struct FString& UniqueUserId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CreateGroup");
 
-	struct
-	{
-		struct FString                 UniqueUserId;
-		struct FString                 GroupName;
-	} params;
+	UMcpGroupsManager_CreateGroup_Params params;
 	params.UniqueUserId = UniqueUserId;
 	params.GroupName = GroupName;
 
@@ -16782,11 +14311,7 @@ void UMcpIdMappingBase::GetIdMappings(const struct FString& ExternalType, TArray
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.GetIdMappings");
 
-	struct
-	{
-		struct FString                 ExternalType;
-		TArray<struct FMcpIdMapping>   IDMappings;
-	} params;
+	UMcpIdMappingBase_GetIdMappings_Params params;
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
@@ -16811,12 +14336,7 @@ void UMcpIdMappingBase::OnQueryMappingsComplete(const struct FString& ExternalTy
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.OnQueryMappingsComplete");
 
-	struct
-	{
-		struct FString                 ExternalType;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpIdMappingBase_OnQueryMappingsComplete_Params params;
 	params.ExternalType = ExternalType;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -16839,11 +14359,7 @@ void UMcpIdMappingBase::QueryMappings(const struct FString& ExternalType, TArray
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.QueryMappings");
 
-	struct
-	{
-		TArray<struct FString>         ExternalIds;
-		struct FString                 ExternalType;
-	} params;
+	UMcpIdMappingBase_QueryMappings_Params params;
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
@@ -16870,14 +14386,7 @@ void UMcpIdMappingBase::OnAddMappingComplete(const struct FString& McpId, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.OnAddMappingComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ExternalId;
-		struct FString                 ExternalType;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpIdMappingBase_OnAddMappingComplete_Params params;
 	params.McpId = McpId;
 	params.ExternalId = ExternalId;
 	params.ExternalType = ExternalType;
@@ -16903,12 +14412,7 @@ void UMcpIdMappingBase::AddMapping(const struct FString& McpId, const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.AddMapping");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ExternalId;
-		struct FString                 ExternalType;
-	} params;
+	UMcpIdMappingBase_AddMapping_Params params;
 	params.McpId = McpId;
 	params.ExternalId = ExternalId;
 	params.ExternalType = ExternalType;
@@ -16930,10 +14434,7 @@ class UMcpIdMappingBase* UMcpIdMappingBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.CreateInstance");
 
-	struct
-	{
-		class UMcpIdMappingBase*       ReturnValue;
-	} params;
+	UMcpIdMappingBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -16955,11 +14456,7 @@ void UMcpIdMappingManager::GetIdMappings(const struct FString& ExternalType, TAr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.GetIdMappings");
 
-	struct
-	{
-		struct FString                 ExternalType;
-		TArray<struct FMcpIdMapping>   IDMappings;
-	} params;
+	UMcpIdMappingManager_GetIdMappings_Params params;
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
@@ -16984,12 +14481,7 @@ void UMcpIdMappingManager::OnQueryMappingsRequestComplete(class UHttpRequestInte
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.OnQueryMappingsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpIdMappingManager_OnQueryMappingsRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17012,11 +14504,7 @@ void UMcpIdMappingManager::QueryMappings(const struct FString& ExternalType, TAr
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.QueryMappings");
 
-	struct
-	{
-		TArray<struct FString>         ExternalIds;
-		struct FString                 ExternalType;
-	} params;
+	UMcpIdMappingManager_QueryMappings_Params params;
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
@@ -17041,12 +14529,7 @@ void UMcpIdMappingManager::OnAddMappingRequestComplete(class UHttpRequestInterfa
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.OnAddMappingRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpIdMappingManager_OnAddMappingRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17070,12 +14553,7 @@ void UMcpIdMappingManager::AddMapping(const struct FString& McpId, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.AddMapping");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ExternalId;
-		struct FString                 ExternalType;
-	} params;
+	UMcpIdMappingManager_AddMapping_Params params;
 	params.McpId = McpId;
 	params.ExternalId = ExternalId;
 	params.ExternalType = ExternalType;
@@ -17101,14 +14579,7 @@ void UMcpManagedValueManagerBase::OnDeleteValueComplete(const struct FString& Mc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.OnDeleteValueComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpManagedValueManagerBase_OnDeleteValueComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17134,12 +14605,7 @@ void UMcpManagedValueManagerBase::DeleteValue(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.DeleteValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-	} params;
+	UMcpManagedValueManagerBase_DeleteValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17166,15 +14632,7 @@ void UMcpManagedValueManagerBase::OnUpdateValueComplete(const struct FString& Mc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.OnUpdateValueComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		int                            Value;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpManagedValueManagerBase_OnUpdateValueComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17202,13 +14660,7 @@ void UMcpManagedValueManagerBase::UpdateValue(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.UpdateValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		int                            Value;
-	} params;
+	UMcpManagedValueManagerBase_UpdateValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17234,13 +14686,7 @@ int UMcpManagedValueManagerBase::GetValue(const struct FString& McpId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.GetValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		int                            ReturnValue;
-	} params;
+	UMcpManagedValueManagerBase_GetValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17266,12 +14712,7 @@ TArray<struct FManagedValue> UMcpManagedValueManagerBase::GetValues(const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.GetValues");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		TArray<struct FManagedValue>   ReturnValue;
-	} params;
+	UMcpManagedValueManagerBase_GetValues_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17297,13 +14738,7 @@ void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(const struct FString& M
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.OnReadSaveSlotComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpManagedValueManagerBase_OnReadSaveSlotComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17327,11 +14762,7 @@ void UMcpManagedValueManagerBase::ReadSaveSlot(const struct FString& McpId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.ReadSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-	} params;
+	UMcpManagedValueManagerBase_ReadSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17355,13 +14786,7 @@ void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete(const struct FString&
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.OnCreateSaveSlotComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpManagedValueManagerBase_OnCreateSaveSlotComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17385,11 +14810,7 @@ void UMcpManagedValueManagerBase::CreateSaveSlot(const struct FString& McpId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.CreateSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-	} params;
+	UMcpManagedValueManagerBase_CreateSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17410,10 +14831,7 @@ class UMcpManagedValueManagerBase* UMcpManagedValueManagerBase::STATIC_CreateIns
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.CreateInstance");
 
-	struct
-	{
-		class UMcpManagedValueManagerBase* ReturnValue;
-	} params;
+	UMcpManagedValueManagerBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17436,12 +14854,7 @@ void UMcpManagedValueManager::OnDeleteValueRequestComplete(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.OnDeleteValueRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpManagedValueManager_OnDeleteValueRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17465,12 +14878,7 @@ void UMcpManagedValueManager::DeleteValue(const struct FString& McpId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.DeleteValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-	} params;
+	UMcpManagedValueManager_DeleteValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17494,12 +14902,7 @@ void UMcpManagedValueManager::OnUpdateValueRequestComplete(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.OnUpdateValueRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpManagedValueManager_OnUpdateValueRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17524,13 +14927,7 @@ void UMcpManagedValueManager::UpdateValue(const struct FString& McpId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.UpdateValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		int                            Value;
-	} params;
+	UMcpManagedValueManager_UpdateValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17556,13 +14953,7 @@ int UMcpManagedValueManager::GetValue(const struct FString& McpId, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.GetValue");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FName                   ValueId;
-		int                            ReturnValue;
-	} params;
+	UMcpManagedValueManager_GetValue_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.ValueId = ValueId;
@@ -17588,12 +14979,7 @@ TArray<struct FManagedValue> UMcpManagedValueManager::GetValues(const struct FSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.GetValues");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		TArray<struct FManagedValue>   ReturnValue;
-	} params;
+	UMcpManagedValueManager_GetValues_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17618,12 +15004,7 @@ void UMcpManagedValueManager::OnReadSaveSlotRequestComplete(class UHttpRequestIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.OnReadSaveSlotRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpManagedValueManager_OnReadSaveSlotRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17646,11 +15027,7 @@ void UMcpManagedValueManager::ReadSaveSlot(const struct FString& McpId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.ReadSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-	} params;
+	UMcpManagedValueManager_ReadSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17673,12 +15050,7 @@ void UMcpManagedValueManager::ParseValuesForSaveSlot(const struct FString& McpId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.ParseValuesForSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		struct FString                 JsonPayload;
-	} params;
+	UMcpManagedValueManager_ParseValuesForSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 	params.JsonPayload = JsonPayload;
@@ -17702,12 +15074,7 @@ int UMcpManagedValueManager::FindSaveSlotIndex(const struct FString& McpId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.FindSaveSlotIndex");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-		int                            ReturnValue;
-	} params;
+	UMcpManagedValueManager_FindSaveSlotIndex_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17732,12 +15099,7 @@ void UMcpManagedValueManager::OnCreateSaveSlotRequestComplete(class UHttpRequest
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.OnCreateSaveSlotRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpManagedValueManager_OnCreateSaveSlotRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17760,11 +15122,7 @@ void UMcpManagedValueManager::CreateSaveSlot(const struct FString& McpId, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.CreateSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlot;
-	} params;
+	UMcpManagedValueManager_CreateSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlot = SaveSlot;
 
@@ -17785,10 +15143,7 @@ struct FString UMcpServerTimeBase::GetLastServerTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeBase.GetLastServerTime");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServerTimeBase_GetLastServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17811,12 +15166,7 @@ void UMcpServerTimeBase::OnQueryServerTimeComplete(bool bWasSuccessful, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeBase.OnQueryServerTimeComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 DateTimeStr;
-		struct FString                 Error;
-	} params;
+	UMcpServerTimeBase_OnQueryServerTimeComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.DateTimeStr = DateTimeStr;
 	params.Error = Error;
@@ -17836,9 +15186,7 @@ void UMcpServerTimeBase::QueryServerTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeBase.QueryServerTime");
 
-	struct
-	{
-	} params;
+	UMcpServerTimeBase_QueryServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17857,10 +15205,7 @@ class UMcpServerTimeBase* UMcpServerTimeBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeBase.CreateInstance");
 
-	struct
-	{
-		class UMcpServerTimeBase*      ReturnValue;
-	} params;
+	UMcpServerTimeBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17881,10 +15226,7 @@ struct FString UMcpServerTimeManager::GetLastServerTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeManager.GetLastServerTime");
 
-	struct
-	{
-		struct FString                 ReturnValue;
-	} params;
+	UMcpServerTimeManager_GetLastServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17907,12 +15249,7 @@ void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete(class UHttpRequ
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeManager.OnQueryServerTimeHTTPRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpServerTimeManager_OnQueryServerTimeHTTPRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -17932,9 +15269,7 @@ void UMcpServerTimeManager::QueryServerTime()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeManager.QueryServerTime");
 
-	struct
-	{
-	} params;
+	UMcpServerTimeManager_QueryServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17957,14 +15292,7 @@ void UMcpUserInventoryBase::OnRecordIapComplete(const struct FString& McpId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnRecordIapComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		TArray<struct FString>         UpdatedItemIds;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnRecordIapComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.UpdatedItemIds = UpdatedItemIds;
@@ -17990,12 +15318,7 @@ void UMcpUserInventoryBase::RecordIap(const struct FString& McpId, const struct 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.RecordIap");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 Receipt;
-	} params;
+	UMcpUserInventoryBase_RecordIap_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.Receipt = Receipt;
@@ -18021,14 +15344,7 @@ void UMcpUserInventoryBase::OnDeleteItemComplete(const struct FString& McpId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnDeleteItemComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnDeleteItemComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18055,13 +15371,7 @@ void UMcpUserInventoryBase::DeleteItem(const struct FString& McpId, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.DeleteItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryBase_DeleteItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18089,15 +15399,7 @@ void UMcpUserInventoryBase::OnConsumeItemComplete(const struct FString& McpId, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnConsumeItemComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		TArray<struct FString>         UpdatedItemIds;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnConsumeItemComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18126,14 +15428,7 @@ void UMcpUserInventoryBase::ConsumeItem(const struct FString& McpId, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.ConsumeItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryBase_ConsumeItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18162,15 +15457,7 @@ void UMcpUserInventoryBase::OnEarnItemComplete(const struct FString& McpId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnEarnItemComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		TArray<struct FString>         UpdatedItemIds;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnEarnItemComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -18199,14 +15486,7 @@ void UMcpUserInventoryBase::EarnItem(const struct FString& McpId, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.EarnItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryBase_EarnItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -18235,15 +15515,7 @@ void UMcpUserInventoryBase::OnSellItemComplete(const struct FString& McpId, cons
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnSellItemComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		TArray<struct FString>         UpdatedItemIds;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnSellItemComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18273,15 +15545,7 @@ void UMcpUserInventoryBase::SellItem(const struct FString& McpId, const struct F
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.SellItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-		TArray<struct FMcpInventoryItemContainer> ExpectedResultItems;
-	} params;
+	UMcpUserInventoryBase_SellItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18313,15 +15577,7 @@ void UMcpUserInventoryBase::OnPurchaseItemComplete(const struct FString& McpId, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnPurchaseItemComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		TArray<struct FString>         UpdatedItemIds;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnPurchaseItemComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -18352,16 +15608,7 @@ void UMcpUserInventoryBase::PurchaseItem(const struct FString& McpId, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.PurchaseItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		TArray<struct FString>         PurchaseItemIds;
-		int                            Quantity;
-		int                            StoreVersion;
-		float                          Scalar;
-	} params;
+	UMcpUserInventoryBase_PurchaseItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -18391,14 +15638,7 @@ bool UMcpUserInventoryBase::GetInventoryItem(const struct FString& McpId, const 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.GetInventoryItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		struct FMcpInventoryItem       OutInventoryItem;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserInventoryBase_GetInventoryItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18427,12 +15667,7 @@ void UMcpUserInventoryBase::GetInventoryItems(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.GetInventoryItems");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		TArray<struct FMcpInventoryItem> OutInventoryItems;
-	} params;
+	UMcpUserInventoryBase_GetInventoryItems_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -18459,13 +15694,7 @@ void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(const struct FString& 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnQueryInventoryItemsComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnQueryInventoryItemsComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18489,11 +15718,7 @@ void UMcpUserInventoryBase::QueryInventoryItems(const struct FString& McpId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.QueryInventoryItems");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-	} params;
+	UMcpUserInventoryBase_QueryInventoryItems_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -18516,12 +15741,7 @@ void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(const struct FString& Mc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnQuerySaveSlotListComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnQuerySaveSlotListComplete_Params params;
 	params.McpId = McpId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -18544,11 +15764,7 @@ TArray<struct FString> UMcpUserInventoryBase::GetSaveSlotList(const struct FStri
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.GetSaveSlotList");
 
-	struct
-	{
-		struct FString                 McpId;
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UMcpUserInventoryBase_GetSaveSlotList_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -18570,10 +15786,7 @@ void UMcpUserInventoryBase::QuerySaveSlotList(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.QuerySaveSlotList");
 
-	struct
-	{
-		struct FString                 McpId;
-	} params;
+	UMcpUserInventoryBase_QuerySaveSlotList_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -18596,13 +15809,7 @@ void UMcpUserInventoryBase::OnDeleteSaveSlotComplete(const struct FString& McpId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnDeleteSaveSlotComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnDeleteSaveSlotComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18626,11 +15833,7 @@ void UMcpUserInventoryBase::DeleteSaveSlot(const struct FString& McpId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.DeleteSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-	} params;
+	UMcpUserInventoryBase_DeleteSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -18654,13 +15857,7 @@ void UMcpUserInventoryBase::OnCreateSaveSlotComplete(const struct FString& McpId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.OnCreateSaveSlotComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserInventoryBase_OnCreateSaveSlotComplete_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18685,12 +15882,7 @@ void UMcpUserInventoryBase::CreateSaveSlot(const struct FString& McpId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.CreateSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 ParentSaveSlotId;
-	} params;
+	UMcpUserInventoryBase_CreateSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.ParentSaveSlotId = ParentSaveSlotId;
@@ -18712,10 +15904,7 @@ class UMcpUserInventoryBase* UMcpUserInventoryBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.CreateInstance");
 
-	struct
-	{
-		class UMcpUserInventoryBase*   ReturnValue;
-	} params;
+	UMcpUserInventoryBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -18738,12 +15927,7 @@ void UMcpUserInventoryManager::OnRecordIapRequestComplete(class UHttpRequestInte
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnRecordIapRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnRecordIapRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18767,12 +15951,7 @@ void UMcpUserInventoryManager::RecordIap(const struct FString& McpId, const stru
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.RecordIap");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 Receipt;
-	} params;
+	UMcpUserInventoryManager_RecordIap_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.Receipt = Receipt;
@@ -18796,12 +15975,7 @@ void UMcpUserInventoryManager::OnDeleteItemRequestComplete(class UHttpRequestInt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnDeleteItemRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnDeleteItemRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18826,13 +16000,7 @@ void UMcpUserInventoryManager::DeleteItem(const struct FString& McpId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.DeleteItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryManager_DeleteItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18857,12 +16025,7 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestIn
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnConsumeItemRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnConsumeItemRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18888,14 +16051,7 @@ void UMcpUserInventoryManager::ConsumeItem(const struct FString& McpId, const st
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.ConsumeItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryManager_ConsumeItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -18921,12 +16077,7 @@ void UMcpUserInventoryManager::OnEarnItemRequestComplete(class UHttpRequestInter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnEarnItemRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnEarnItemRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -18952,14 +16103,7 @@ void UMcpUserInventoryManager::EarnItem(const struct FString& McpId, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.EarnItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-	} params;
+	UMcpUserInventoryManager_EarnItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -18985,12 +16129,7 @@ void UMcpUserInventoryManager::OnSellItemRequestComplete(class UHttpRequestInter
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnSellItemRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnSellItemRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19017,15 +16156,7 @@ void UMcpUserInventoryManager::SellItem(const struct FString& McpId, const struc
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.SellItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		int                            Quantity;
-		int                            StoreVersion;
-		TArray<struct FMcpInventoryItemContainer> ExpectedResultItems;
-	} params;
+	UMcpUserInventoryManager_SellItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -19054,12 +16185,7 @@ void UMcpUserInventoryManager::OnPurchaseItemRequestComplete(class UHttpRequestI
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnPurchaseItemRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnPurchaseItemRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19087,16 +16213,7 @@ void UMcpUserInventoryManager::PurchaseItem(const struct FString& McpId, const s
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.PurchaseItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 GlobalItemId;
-		TArray<struct FString>         PurchaseItemIds;
-		int                            Quantity;
-		int                            StoreVersion;
-		float                          Scalar;
-	} params;
+	UMcpUserInventoryManager_PurchaseItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.GlobalItemId = GlobalItemId;
@@ -19126,14 +16243,7 @@ int UMcpUserInventoryManager::FindItemRequest(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.FindItemRequest");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 ItemID;
-		TArray<struct FInventoryItemRequestState> InItemRequests;
-		int                            ReturnValue;
-	} params;
+	UMcpUserInventoryManager_FindItemRequest_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.ItemID = ItemID;
@@ -19163,13 +16273,7 @@ int UMcpUserInventoryManager::FindSaveSlotRequest(const struct FString& McpId, c
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.FindSaveSlotRequest");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState> InSaveSlotRequests;
-		int                            ReturnValue;
-	} params;
+	UMcpUserInventoryManager_FindSaveSlotRequest_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -19197,12 +16301,7 @@ int UMcpUserInventoryManager::FindSaveSlotIndex(const struct FString& McpId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.FindSaveSlotIndex");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		int                            ReturnValue;
-	} params;
+	UMcpUserInventoryManager_FindSaveSlotIndex_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -19226,11 +16325,7 @@ void UMcpUserInventoryManager::ParseSaveSlotList(const struct FString& McpId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.ParseSaveSlotList");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 JsonPayload;
-	} params;
+	UMcpUserInventoryManager_ParseSaveSlotList_Params params;
 	params.McpId = McpId;
 	params.JsonPayload = JsonPayload;
 
@@ -19254,13 +16349,7 @@ TArray<struct FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.ParseInventoryForSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 JsonPayload;
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UMcpUserInventoryManager_ParseInventoryForSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.JsonPayload = JsonPayload;
@@ -19288,14 +16377,7 @@ bool UMcpUserInventoryManager::GetInventoryItem(const struct FString& McpId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.GetInventoryItem");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 InstanceItemId;
-		struct FMcpInventoryItem       OutInventoryItem;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserInventoryManager_GetInventoryItem_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.InstanceItemId = InstanceItemId;
@@ -19324,12 +16406,7 @@ void UMcpUserInventoryManager::GetInventoryItems(const struct FString& McpId, co
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.GetInventoryItems");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		TArray<struct FMcpInventoryItem> OutInventoryItems;
-	} params;
+	UMcpUserInventoryManager_GetInventoryItems_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -19355,12 +16432,7 @@ void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete(class UHttpR
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnQueryInventoryItemsRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnQueryInventoryItemsRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19383,11 +16455,7 @@ void UMcpUserInventoryManager::QueryInventoryItems(const struct FString& McpId, 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.QueryInventoryItems");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-	} params;
+	UMcpUserInventoryManager_QueryInventoryItems_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -19409,11 +16477,7 @@ TArray<struct FString> UMcpUserInventoryManager::GetSaveSlotList(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.GetSaveSlotList");
 
-	struct
-	{
-		struct FString                 McpId;
-		TArray<struct FString>         ReturnValue;
-	} params;
+	UMcpUserInventoryManager_GetSaveSlotList_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -19437,12 +16501,7 @@ void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete(class UHttpReq
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnQuerySaveSlotListRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnQuerySaveSlotListRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19464,10 +16523,7 @@ void UMcpUserInventoryManager::QuerySaveSlotList(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.QuerySaveSlotList");
 
-	struct
-	{
-		struct FString                 McpId;
-	} params;
+	UMcpUserInventoryManager_QuerySaveSlotList_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -19489,12 +16545,7 @@ void UMcpUserInventoryManager::OnDeleteSaveSlotRequestComplete(class UHttpReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnDeleteSaveSlotRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnDeleteSaveSlotRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19517,11 +16568,7 @@ void UMcpUserInventoryManager::DeleteSaveSlot(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.DeleteSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-	} params;
+	UMcpUserInventoryManager_DeleteSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 
@@ -19544,12 +16591,7 @@ void UMcpUserInventoryManager::OnCreateSaveSlotRequestComplete(class UHttpReques
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.OnCreateSaveSlotRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserInventoryManager_OnCreateSaveSlotRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19573,12 +16615,7 @@ void UMcpUserInventoryManager::CreateSaveSlot(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.CreateSaveSlot");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 SaveSlotId;
-		struct FString                 ParentSaveSlotId;
-	} params;
+	UMcpUserInventoryManager_CreateSaveSlot_Params params;
 	params.McpId = McpId;
 	params.SaveSlotId = SaveSlotId;
 	params.ParentSaveSlotId = ParentSaveSlotId;
@@ -19601,11 +16638,7 @@ void UMcpUserManagerBase::OnDeleteUserComplete(bool bWasSuccessful, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.OnDeleteUserComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserManagerBase_OnDeleteUserComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -19626,10 +16659,7 @@ void UMcpUserManagerBase::DeleteUser(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.DeleteUser");
 
-	struct
-	{
-		struct FString                 McpId;
-	} params;
+	UMcpUserManagerBase_DeleteUser_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -19651,12 +16681,7 @@ bool UMcpUserManagerBase::GetUser(const struct FString& McpId, struct FMcpUserSt
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.GetUser");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FMcpUserStatus          User;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserManagerBase_GetUser_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -19681,10 +16706,7 @@ void UMcpUserManagerBase::GetUsers(TArray<struct FMcpUserStatus>* Users)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.GetUsers");
 
-	struct
-	{
-		TArray<struct FMcpUserStatus>  Users;
-	} params;
+	UMcpUserManagerBase_GetUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19707,11 +16729,7 @@ void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, const struct
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.OnQueryUsersComplete");
 
-	struct
-	{
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserManagerBase_OnQueryUsersComplete_Params params;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -19732,10 +16750,7 @@ void UMcpUserManagerBase::QueryUsers(TArray<struct FString>* McpIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.QueryUsers");
 
-	struct
-	{
-		TArray<struct FString>         McpIds;
-	} params;
+	UMcpUserManagerBase_QueryUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19758,11 +16773,7 @@ void UMcpUserManagerBase::QueryUser(const struct FString& McpId, bool bShouldUpd
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.QueryUser");
 
-	struct
-	{
-		struct FString                 McpId;
-		bool                           bShouldUpdateLastActive;
-	} params;
+	UMcpUserManagerBase_QueryUser_Params params;
 	params.McpId = McpId;
 	params.bShouldUpdateLastActive = bShouldUpdateLastActive;
 
@@ -19786,13 +16797,7 @@ void UMcpUserManagerBase::OnAuthenticateUserComplete(const struct FString& McpId
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.OnAuthenticateUserComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 Token;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserManagerBase_OnAuthenticateUserComplete_Params params;
 	params.McpId = McpId;
 	params.Token = Token;
 	params.bWasSuccessful = bWasSuccessful;
@@ -19817,12 +16822,7 @@ void UMcpUserManagerBase::AuthenticateUserMcp(const struct FString& McpId, const
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.AuthenticateUserMcp");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ClientSecret;
-		struct FString                 UDID;
-	} params;
+	UMcpUserManagerBase_AuthenticateUserMcp_Params params;
 	params.McpId = McpId;
 	params.ClientSecret = ClientSecret;
 	params.UDID = UDID;
@@ -19846,12 +16846,7 @@ void UMcpUserManagerBase::AuthenticateUserFacebook(const struct FString& Faceboo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.AuthenticateUserFacebook");
 
-	struct
-	{
-		struct FString                 FacebookId;
-		struct FString                 FacebookToken;
-		struct FString                 UDID;
-	} params;
+	UMcpUserManagerBase_AuthenticateUserFacebook_Params params;
 	params.FacebookId = FacebookId;
 	params.FacebookToken = FacebookToken;
 	params.UDID = UDID;
@@ -19875,12 +16870,7 @@ void UMcpUserManagerBase::OnRegisterUserComplete(const struct FString& McpId, bo
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.OnRegisterUserComplete");
 
-	struct
-	{
-		struct FString                 McpId;
-		bool                           bWasSuccessful;
-		struct FString                 Error;
-	} params;
+	UMcpUserManagerBase_OnRegisterUserComplete_Params params;
 	params.McpId = McpId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
@@ -19903,11 +16893,7 @@ void UMcpUserManagerBase::RegisterUserFacebook(const struct FString& FacebookId,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.RegisterUserFacebook");
 
-	struct
-	{
-		struct FString                 FacebookId;
-		struct FString                 FacebookAuthToken;
-	} params;
+	UMcpUserManagerBase_RegisterUserFacebook_Params params;
 	params.FacebookId = FacebookId;
 	params.FacebookAuthToken = FacebookAuthToken;
 
@@ -19926,9 +16912,7 @@ void UMcpUserManagerBase::RegisterUserGenerated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.RegisterUserGenerated");
 
-	struct
-	{
-	} params;
+	UMcpUserManagerBase_RegisterUserGenerated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19947,10 +16931,7 @@ class UMcpUserManagerBase* UMcpUserManagerBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.CreateInstance");
 
-	struct
-	{
-		class UMcpUserManagerBase*     ReturnValue;
-	} params;
+	UMcpUserManagerBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19973,12 +16954,7 @@ void UMcpUserManager::OnDeleteUserRequestComplete(class UHttpRequestInterface* R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.OnDeleteUserRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserManager_OnDeleteUserRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -20000,10 +16976,7 @@ void UMcpUserManager::DeleteUser(const struct FString& McpId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.DeleteUser");
 
-	struct
-	{
-		struct FString                 McpId;
-	} params;
+	UMcpUserManager_DeleteUser_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -20025,12 +16998,7 @@ bool UMcpUserManager::GetUser(const struct FString& McpId, struct FMcpUserStatus
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.GetUser");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FMcpUserStatus          User;
-		bool                           ReturnValue;
-	} params;
+	UMcpUserManager_GetUser_Params params;
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
@@ -20055,10 +17023,7 @@ void UMcpUserManager::GetUsers(TArray<struct FMcpUserStatus>* Users)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.GetUsers");
 
-	struct
-	{
-		TArray<struct FMcpUserStatus>  Users;
-	} params;
+	UMcpUserManager_GetUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20082,12 +17047,7 @@ void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* R
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.OnQueryUsersRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserManager_OnQueryUsersRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -20109,10 +17069,7 @@ void UMcpUserManager::ParseUsers(const struct FString& JsonPayload)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.ParseUsers");
 
-	struct
-	{
-		struct FString                 JsonPayload;
-	} params;
+	UMcpUserManager_ParseUsers_Params params;
 	params.JsonPayload = JsonPayload;
 
 	auto flags = fn->FunctionFlags;
@@ -20132,10 +17089,7 @@ void UMcpUserManager::QueryUsers(TArray<struct FString>* McpIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.QueryUsers");
 
-	struct
-	{
-		TArray<struct FString>         McpIds;
-	} params;
+	UMcpUserManager_QueryUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20159,12 +17113,7 @@ void UMcpUserManager::OnQueryUserRequestComplete(class UHttpRequestInterface* Re
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.OnQueryUserRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserManager_OnQueryUserRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -20187,11 +17136,7 @@ void UMcpUserManager::QueryUser(const struct FString& McpId, bool bShouldUpdateL
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.QueryUser");
 
-	struct
-	{
-		struct FString                 McpId;
-		bool                           bShouldUpdateLastActive;
-	} params;
+	UMcpUserManager_QueryUser_Params params;
 	params.McpId = McpId;
 	params.bShouldUpdateLastActive = bShouldUpdateLastActive;
 
@@ -20214,12 +17159,7 @@ void UMcpUserManager::OnAuthenticateUserRequestComplete(class UHttpRequestInterf
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.OnAuthenticateUserRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserManager_OnAuthenticateUserRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -20243,12 +17183,7 @@ void UMcpUserManager::AuthenticateUserMcp(const struct FString& McpId, const str
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.AuthenticateUserMcp");
 
-	struct
-	{
-		struct FString                 McpId;
-		struct FString                 ClientSecret;
-		struct FString                 UDID;
-	} params;
+	UMcpUserManager_AuthenticateUserMcp_Params params;
 	params.McpId = McpId;
 	params.ClientSecret = ClientSecret;
 	params.UDID = UDID;
@@ -20272,12 +17207,7 @@ void UMcpUserManager::AuthenticateUserFacebook(const struct FString& FacebookId,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.AuthenticateUserFacebook");
 
-	struct
-	{
-		struct FString                 FacebookId;
-		struct FString                 FacebookToken;
-		struct FString                 UDID;
-	} params;
+	UMcpUserManager_AuthenticateUserFacebook_Params params;
 	params.FacebookId = FacebookId;
 	params.FacebookToken = FacebookToken;
 	params.UDID = UDID;
@@ -20301,12 +17231,7 @@ void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface*
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.OnRegisterUserRequestComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   Request;
-		class UHttpResponseInterface*  Response;
-		bool                           bWasSuccessful;
-	} params;
+	UMcpUserManager_OnRegisterUserRequestComplete_Params params;
 	params.Request = Request;
 	params.Response = Response;
 	params.bWasSuccessful = bWasSuccessful;
@@ -20329,11 +17254,7 @@ int UMcpUserManager::ParseUser(const struct FString& JsonPayload)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.ParseUser");
 
-	struct
-	{
-		struct FString                 JsonPayload;
-		int                            ReturnValue;
-	} params;
+	UMcpUserManager_ParseUser_Params params;
 	params.JsonPayload = JsonPayload;
 
 	auto flags = fn->FunctionFlags;
@@ -20356,11 +17277,7 @@ void UMcpUserManager::RegisterUserFacebook(const struct FString& FacebookId, con
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.RegisterUserFacebook");
 
-	struct
-	{
-		struct FString                 FacebookId;
-		struct FString                 FacebookAuthToken;
-	} params;
+	UMcpUserManager_RegisterUserFacebook_Params params;
 	params.FacebookId = FacebookId;
 	params.FacebookAuthToken = FacebookAuthToken;
 
@@ -20379,9 +17296,7 @@ void UMcpUserManager::RegisterUserGenerated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManager.RegisterUserGenerated");
 
-	struct
-	{
-	} params;
+	UMcpUserManager_RegisterUserGenerated_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20400,10 +17315,7 @@ void UOnlineImageDownloaderWeb::DebugDraw(class UCanvas* Canvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.DebugDraw");
 
-	struct
-	{
-		class UCanvas*                 Canvas;
-	} params;
+	UOnlineImageDownloaderWeb_DebugDraw_Params params;
 	params.Canvas = Canvas;
 
 	auto flags = fn->FunctionFlags;
@@ -20425,12 +17337,7 @@ void UOnlineImageDownloaderWeb::OnDownloadComplete(class UHttpRequestInterface* 
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.OnDownloadComplete");
 
-	struct
-	{
-		class UHttpRequestInterface*   OriginalRequest;
-		class UHttpResponseInterface*  Response;
-		bool                           bDidSucceed;
-	} params;
+	UOnlineImageDownloaderWeb_OnDownloadComplete_Params params;
 	params.OriginalRequest = OriginalRequest;
 	params.Response = Response;
 	params.bDidSucceed = bDidSucceed;
@@ -20450,9 +17357,7 @@ void UOnlineImageDownloaderWeb::DownloadNextImage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.DownloadNextImage");
 
-	struct
-	{
-	} params;
+	UOnlineImageDownloaderWeb_DownloadNextImage_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20469,9 +17374,7 @@ void UOnlineImageDownloaderWeb::ClearAllDownloads()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.ClearAllDownloads");
 
-	struct
-	{
-	} params;
+	UOnlineImageDownloaderWeb_ClearAllDownloads_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20490,10 +17393,7 @@ void UOnlineImageDownloaderWeb::ClearDownloads(TArray<struct FString> URLs)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.ClearDownloads");
 
-	struct
-	{
-		TArray<struct FString>         URLs;
-	} params;
+	UOnlineImageDownloaderWeb_ClearDownloads_Params params;
 	params.URLs = URLs;
 
 	auto flags = fn->FunctionFlags;
@@ -20513,10 +17413,7 @@ int UOnlineImageDownloaderWeb::GetNumPendingDownloads()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.GetNumPendingDownloads");
 
-	struct
-	{
-		int                            ReturnValue;
-	} params;
+	UOnlineImageDownloaderWeb_GetNumPendingDownloads_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20538,11 +17435,7 @@ void UOnlineImageDownloaderWeb::RequestOnlineImages(TArray<struct FString> URLs,
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.RequestOnlineImages");
 
-	struct
-	{
-		TArray<struct FString>         URLs;
-		bool                           bSRGB;
-	} params;
+	UOnlineImageDownloaderWeb_RequestOnlineImages_Params params;
 	params.URLs = URLs;
 	params.bSRGB = bSRGB;
 
@@ -20564,11 +17457,7 @@ class UTexture* UOnlineImageDownloaderWeb::GetOnlineImageTexture(const struct FS
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.GetOnlineImageTexture");
 
-	struct
-	{
-		struct FString                 URL;
-		class UTexture*                ReturnValue;
-	} params;
+	UOnlineImageDownloaderWeb_GetOnlineImageTexture_Params params;
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
@@ -20590,10 +17479,7 @@ void UOnlineImageDownloaderWeb::OnOnlineImageDownloaded(const struct FOnlineImag
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.OnOnlineImageDownloaded");
 
-	struct
-	{
-		struct FOnlineImageDownload    CachedEntry;
-	} params;
+	UOnlineImageDownloaderWeb_OnOnlineImageDownloaded_Params params;
 	params.CachedEntry = CachedEntry;
 
 	auto flags = fn->FunctionFlags;
@@ -20613,10 +17499,7 @@ bool AWebConnection::IsHanging()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.IsHanging");
 
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
+	AWebConnection_IsHanging_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20635,9 +17518,7 @@ void AWebConnection::Cleanup()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.Cleanup");
 
-	struct
-	{
-	} params;
+	AWebConnection_Cleanup_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20654,9 +17535,7 @@ void AWebConnection::CheckRawBytes()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.CheckRawBytes");
 
-	struct
-	{
-	} params;
+	AWebConnection_CheckRawBytes_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20673,9 +17552,7 @@ void AWebConnection::EndOfHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.EndOfHeaders");
 
-	struct
-	{
-	} params;
+	AWebConnection_EndOfHeaders_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20692,9 +17569,7 @@ void AWebConnection::CreateResponseObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.CreateResponseObject");
 
-	struct
-	{
-	} params;
+	AWebConnection_CreateResponseObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20713,10 +17588,7 @@ void AWebConnection::ProcessPost(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.ProcessPost");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	AWebConnection_ProcessPost_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -20736,10 +17608,7 @@ void AWebConnection::ProcessGet(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.ProcessGet");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	AWebConnection_ProcessGet_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -20759,10 +17628,7 @@ void AWebConnection::ProcessHead(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.ProcessHead");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	AWebConnection_ProcessHead_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -20782,10 +17648,7 @@ void AWebConnection::ReceivedLine(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.ReceivedLine");
 
-	struct
-	{
-		struct FString                 S;
-	} params;
+	AWebConnection_ReceivedLine_Params params;
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
@@ -20805,10 +17668,7 @@ void AWebConnection::ReceivedText(const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.ReceivedText");
 
-	struct
-	{
-		struct FString                 Text;
-	} params;
+	AWebConnection_ReceivedText_Params params;
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
@@ -20826,9 +17686,7 @@ void AWebConnection::Timer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.Timer");
 
-	struct
-	{
-	} params;
+	AWebConnection_Timer_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20845,9 +17703,7 @@ void AWebConnection::Closed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.Closed");
 
-	struct
-	{
-	} params;
+	AWebConnection_Closed_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20864,9 +17720,7 @@ void AWebConnection::Accepted()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.Accepted");
 
-	struct
-	{
-	} params;
+	AWebConnection_Accepted_Params params;
 
 	auto flags = fn->FunctionFlags;
 
