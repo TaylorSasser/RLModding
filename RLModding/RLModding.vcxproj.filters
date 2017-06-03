@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -13,29 +9,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{f1faff21-2582-405a-ac56-d125cfbe4d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{b02d639b-8fc7-428d-9a22-0bd9e408568c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{2097a6de-3199-4645-b96a-6cb9e2e46e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Networking">
+      <UniqueIdentifier>{3f266a9b-5992-4c63-88a8-cbaef04f9376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{52dabc7c-33ae-4be7-ab13-a2c895c9cd7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Mods">
+      <UniqueIdentifier>{668e27e9-1deb-4315-8bf6-0fd0860db647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Patterns">
+      <UniqueIdentifier>{02953e2b-fb9e-44d2-994b-e60a9f9dcdd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DllMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HookManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternFinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TFL_HT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LogManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RL\SDK\RL_Basic.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
@@ -69,47 +65,41 @@
     <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
     <ClCompile Include="Wrapper.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="ModHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestClass.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="DllMain.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="EventManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="HookManager.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="TestClass.cpp">
+      <Filter>Modules\Mods</Filter>
+    </ClCompile>
+    <ClCompile Include="ModHandler.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternFinder.cpp">
+      <Filter>Utils\Patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="TFL_HT.cpp">
+      <Filter>Utils\Patterns</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HookManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternFinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TFL_HT.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDKDefines.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="detours.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LogManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectInitializer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp">
       <Filter>Resource Files</Filter>
     </ClInclude>
@@ -209,20 +199,47 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="Wrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TestClass.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Core.h">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="EventManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Wrapper.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectInitializer.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="HookManager.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModHandler.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModBase.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="TestClass.h">
+      <Filter>Modules\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="detours.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="TFL_HT.h">
+      <Filter>Utils\Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternFinder.h">
+      <Filter>Utils\Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="SDKDefines.h">
+      <Filter>Utils\Patterns</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,17 +2,18 @@
 #include <functional>
 #include <unordered_map>
 #include "RL/SDK.hpp"
+#include "ModBase.h"
 
-class EventManager
-{
+typedef void (ModBase::*function)(SDK::UObject**,SDK::UFunction*,void*);
+
+class EventManager {
 public:
-	
 	EventManager();
 	~EventManager();
-	void FunctionProxy(SDK::UObject** object,SDK::UFunction* function,void* params,bool isCallFunc);
-
+	std::function<void(SDK::UObject**,SDK::UFunction*, void*,bool)> FunctionProto;
+	void addFunction(std::string FuncName,function);
 private:
-	typedef std::function<void(void**, void*, void*)> functionType;
-	std::unordered_map<SDK::UFunction*,functionType> hashmap;
+	void FunctionProxy(SDK::UObject** object, SDK::UFunction* function, void* params, bool isCallFunc);
+	std::unordered_map<SDK::UFunction*,function> hashmap;
 };
 

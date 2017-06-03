@@ -6,5 +6,6 @@ class TestClass :
 public:
 	TestClass();
 	~TestClass();
+	void MainMenuTick(SDK::UObject**,SDK::UFunction*,void* params);
 };
 
