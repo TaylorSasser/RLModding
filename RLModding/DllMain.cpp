@@ -5,6 +5,8 @@
 #include "LogManager.h"
 #include "RL/SDK.hpp"
 #include "ObjectInitializer.h"
+#include "TestClass.h"
+#include "Wrapper.h"
 
 
 void TestFunction(SDK::UObject** object,SDK::UFunction* func, void* params, bool isCallFunc);
@@ -27,6 +29,12 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
-	HookManager hkManager(TestFunction);
-	auto* test = ConstructUObject<SDK::ABall_TA>("CustomObject UObject.TestObject");
+	HookManager::Instance()->DetourFunctions(TestFunction); 
+}
+
+void TestFunction(SDK::UObject** object,SDK::UFunction* func,void* params, bool isCallFunc) {
+
+	if (func != nullptr) {	
+		Wrapper::Interfaces::getLogger()->WriteToLog(func->GetName());
+	}
 }

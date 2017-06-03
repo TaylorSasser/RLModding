@@ -11,7 +11,7 @@ T* ConstructUObject(std::string CustomName) {
 	SDK::FNameEntry* objectName = (SDK::FNameEntry*)malloc(sizeof(SDK::FNameEntry));
 	strcpy(objectName->AnsiName,CustomName.c_str());
 	SDK::FName::GNames->Data[nameindex] = objectName;
-	SDK::UObject* UObject = reinterpret_cast<SDK::UObject*>(object);
+	T* UObject = reinterpret_cast<T>(object);
 	UObject->Name.Index = nameindex;
 	UObject->Name.Number = 0;
 	return UObject;

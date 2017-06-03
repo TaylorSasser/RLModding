@@ -24,7 +24,12 @@ VOID ProcessEventProxy();
 
 std::function<void(UObject**, UFunction*, void*, bool isCallFunc)> CallFuncProto;
 
-HookManager::HookManager(std::function<void(UObject**,UFunction*, void*, bool)> function) {
+HookManager::HookManager() {}
+HookManager::~HookManager() {}
+
+HookManager* HookManager::instance = nullptr;
+
+void HookManager::DetourFunctions(std::function<void(UObject**, UFunction*, void*, bool)> function) {
 	CallFunction = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
 	ProcessEvent = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
 	OldCallFunction = (DWORD)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
@@ -32,7 +37,7 @@ HookManager::HookManager(std::function<void(UObject**,UFunction*, void*, bool)> 
 	CallFuncProto = function;
 	printf("HookManager finished \n");
 }
-HookManager::~HookManager() {}
+
 
 VOID __declspec(naked) CallFunctionProxy() {
 	__asm {

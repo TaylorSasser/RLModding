@@ -1,20 +1,18 @@
 #pragma once
-#include "ModBase.h"
-#include "Event.h"
-#include <string>
-#include "RL/SDK.hpp"
+#include <functional>
 #include <unordered_map>
+#include "RL/SDK.hpp"
 
 class EventManager
 {
 public:
+	
 	EventManager();
 	~EventManager();
-	void AddFunction(tEventMethod,SDK::UFunction*);
-	void AddFunction(tEventMethod,std::string);
-	void EventManager::ProxyFunction(SDK::UObject** object,SDK::UFunction* function,void* parameters);
+	void FunctionProxy(SDK::UObject** object,SDK::UFunction* function,void* params,bool isCallFunc);
 
 private:
-	std::unordered_map<SDK::UFunction*,tEventMethod> hashmap;
+	typedef std::function<void(void**, void*, void*)> functionType;
+	std::unordered_map<SDK::UFunction*,functionType> hashmap;
 };
 

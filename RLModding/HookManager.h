@@ -1,15 +1,29 @@
 #pragma once
 
+#include "EventManager.h"
 #include "functional"
 #include "RL/SDK.hpp"
 
 
 
 class HookManager {
-public:
-	//UObject is the object which the function called belongs too, UFunction is the function call, void* is EITHER the FFRAME or the Params, and the bool is for isCallFunction <True = YES> 
-	HookManager(std::function<void(SDK::UObject**,SDK::UFunction*, void*, bool)>);
+private:
+	static HookManager* instance;
+	HookManager();
+	HookManager(const HookManager&) = delete;
 	~HookManager();
+public:	
+	static HookManager* Instance() {
+		if (!instance) instance = new HookManager();
+		return instance;
+	}
+	void HookManager::DetourFunctions(std::function<void(SDK::UObject**, SDK::UFunction*, void*, bool)> function);
 
 };
+
+
+
+
+
+
 
