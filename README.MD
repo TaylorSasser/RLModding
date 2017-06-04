@@ -16,7 +16,8 @@ directories of the 32 bit .lib files you built
 
 
 ### How to create a new module
-Extend ModBase publically, (See testclass.h) and it needs to be added to the ModHandler array list by writing this line in the ModHandler constructor:
+- Extend ModBase publically. See TestClass.h and TestClass.cpp as examples.
+- Add your module to the ModHandler array list by writing this line in the ModHandler constructor:
 ```
 AddMod(new TestClass());
 ```
