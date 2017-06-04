@@ -28,17 +28,19 @@ Copy the name of the function and use the addFunction method to bind a function 
 addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
 ```
 
+Add a definition to ModBase
 ```
 virtual void MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
 ```
 
+Add a definition to your module class (here our module is called TestClass)
 ```
 void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {
 	std::cout << "ModBase mainmenu tick called" << std::endl;
 }
 ```
 So the method call flow looks like:
-main -> ModBase::MainMenuTick -> YourClass::MainMenuTick
+when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
 
 To use the functions inside your custom mod, add the function you want to use into your header class and the eventmanager will call your class along with every other class that also uses that function at the same time
 
