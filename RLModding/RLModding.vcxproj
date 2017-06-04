@@ -149,6 +149,7 @@
     <ClCompile Include="HookManager.cpp" />
     <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="ModHandler.cpp" />
+    <ClCompile Include="PacketHook.cpp" />
     <ClCompile Include="PatternFinder.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
     <ClCompile Include="RL\SDK\RL_Core_functions.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="ModBase.h" />
     <ClInclude Include="ModHandler.h" />
+    <ClInclude Include="PacketHook.h" />
     <ClInclude Include="TestClass.h" />
     <ClInclude Include="Wrapper.h" />
     <ClInclude Include="HookManager.h" />

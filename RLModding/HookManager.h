@@ -20,10 +20,3 @@ public:
 	void HookManager::DetourFunctions(std::function<void(SDK::UObject**, SDK::UFunction*, void*, bool)> function);
 
 };
-
-
-
-
-
-
-
