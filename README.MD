@@ -1,4 +1,4 @@
-Running boost 1.64
+### Running boost 1.64
 Make sure to build boost & the dll in 32 bit mode
 
 the logging directory (as of 5/28/2017) is C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win32
@@ -13,14 +13,21 @@ Next change your linker->General->Additional Library Directories and change your
 directories of the 32 bit .lib files you built 
 
 
-To hook a new function,  copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
+### How to create a new module
+Extend ModBase publically, (See testclass.h) and it needs to be added to the ModHandler array list by writing this line in the ModHandler constructor:
+```
+AddMod(new TestClass());
+```
 
-A new module needs to extend ModBase publically, (See testclass.h) and it needs to be added to the ModHandler array list.
-This can be done by using the addMod(new "yourclass"()) inside of the ModuleHandler constructor.
+### How to hook a new function
+Copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
+```
+addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
+```
 
 To use the functions inside your custom mod, add the function you want to use into your header class and the eventmanager will call your class along with every other class that also uses that function at the same time
 
 
-TODO
-Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
-Add in a way to build raw packets into high level objects (decrypting the packets too)
+## TODO
+- Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
+- Add in a way to build raw packets into high level objects (decrypting the packets too)
