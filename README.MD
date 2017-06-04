@@ -40,10 +40,8 @@ void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) 
 }
 ```
 So the method call flow looks like:
+
 when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
-
-To use the functions inside your custom mod, add the function you want to use into your header class and the eventmanager will call your class along with every other class that also uses that function at the same time
-
 
 ### TODO
 - Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
