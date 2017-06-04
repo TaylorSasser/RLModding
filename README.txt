@@ -11,3 +11,16 @@ Change C:/Boost to your main boost folder, not the path of the of the headers.
 
 Next change your linker->General->Additional Library Directories and change your Library from C:\Boost\Stage\Lib to the
 directories of the 32 bit .lib files you built 
+
+
+To hook a new function,  copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
+
+A new module needs to extend ModBase publically, (See testclass.h) and it needs to be added to the ModHandler array list.
+This can be done by using the addMod(new "yourclass"()) inside of the ModuleHandler constructor.
+
+To use the functions inside your custom mod, add the function you want to use into your header class and the eventmanager will call your class along with every other class that also uses that function at the same time
+
+
+TODO
+Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
+Add in a way to build raw packets into high level objects (decrypting the packets too)
