@@ -14,4 +14,6 @@ public:
 	virtual void GameEventTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//AGameEvent_TA -> Tick(float deltatime)
 	virtual void ReplayTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}			//UReplay_TA or UReplayManager_TA -> Tick(float deltatime)
 	virtual void EventMMRChange(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//UOnlineGameDedicatedServer_X -> EventAverageMMRChanged(UOnlineGameDedicatedServer_X*)
+
+	virtual void ChatSend(SDK::UObject**,SDK::UFunction*,void* parameters) {}
 };

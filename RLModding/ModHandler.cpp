@@ -1,8 +1,10 @@
 #include "ModHandler.h"
 #include "TestClass.h"
+#include "TestClass2.h"
 
 ModHandler::ModHandler()  {
 	AddMod(new TestClass());
+	AddMod(new TestClass2());
 
 }
 

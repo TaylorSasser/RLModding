@@ -10,6 +10,8 @@ TestClass::TestClass(){
 TestClass::~TestClass(){
 }
 
-void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {
-	std::cout << "TestClass MainMenu Tick Called" << std::endl;
+void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
+
+void TestClass::ChatSend(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
+	printf("Address of FString : %p",((SDK::APlayerController_TA_Say_TA_Params*)parameters)->Message);
 }
