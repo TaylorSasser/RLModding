@@ -10,6 +10,7 @@ EventManager::EventManager() {
 	FunctionProto = std::bind(&EventManager::FunctionProxy,this,std::placeholders::_1,std::placeholders::_2,std::placeholders::_3,std::placeholders::_4);
 	addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
 	addFunction("Function TAGame.PlayerControllerBase_TA.Say_TA",&ModBase::ChatSend);
+
 }
 EventManager::~EventManager() {
 	delete this;

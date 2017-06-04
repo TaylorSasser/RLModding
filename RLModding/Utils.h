@@ -28,8 +28,7 @@ namespace Utils {
 	void EditParams(void* oldParam,void* newParam) {
 		T* oldParams = reinterpret_cast<T*>(oldParam);
 		T* newParams = reinterpret_cast<T*>(newParam);
-		memcpy(oldParams,newParams,sizeof(T));
-		delete newParams;
+		memcpy(oldParams,newParams,sizeof(newParams));
 	}
 }
 
