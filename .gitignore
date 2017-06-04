@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -58,3 +58,8 @@
 /.vs/RLModding/v15/ipch/AutoPCH/RLMODDING-4170d2f6/EVENTHANDLER-a7d66152/EVENTHANDLER.ipch
 /.vs/RLModding/v15/ipch/AutoPCH/RLMODDING-4170d2f6/EVENTCORE-f465d0f8/EVENTCORE.ipch
 /.vs/RLModding/v15/ipch/AutoPCH/RLMODDING-4170d2f6/EVENT-b849e2d4/EVENT.ipch
+*.obj
+*.tlog
+*.ipch
+*.pdb
+*.log
