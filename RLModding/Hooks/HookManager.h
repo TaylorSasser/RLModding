@@ -1,9 +1,6 @@
 #pragma once
-
-#include "EventManager.h"
 #include "functional"
-#include "RL/SDK.hpp"
-
+#include "../RL/SDK.hpp"
 
 
 class HookManager {

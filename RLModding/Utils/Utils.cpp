@@ -1,6 +1,6 @@
 #include "Utils.h"
-#include "PatternFinder.h"
-#include "RL/SDK.hpp"
+#include "Pattern/PatternFinder.h"
+#include "../RL/SDK.hpp"
 
 
 namespace Utils {

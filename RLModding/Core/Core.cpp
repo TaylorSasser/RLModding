@@ -1,7 +1,7 @@
 #include "Core.h"
 #include <Windows.h>
-#include "Utils.h"
-#include "RL/SDK.hpp"
+#include "../Utils/Utils.h"
+#include "../RL/SDK.hpp"
 
 namespace Core {
 

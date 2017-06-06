@@ -26,222 +26,111 @@
     <Filter Include="Utils\Patterns">
       <UniqueIdentifier>{02953e2b-fb9e-44d2-994b-e60a9f9dcdd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hooks">
+      <UniqueIdentifier>{d00d9476-6907-4a1e-b9e3-4a628ed764ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RL\SDK\RL_Basic.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_Core_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_Engine_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_GameFramework_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_GFxUI_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_IpDrv_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_OnlineSubsystemSteamworks_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_ProjectX_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_TAGame_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_WinDrv_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="LogManager.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Wrapper.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="DllMain.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Event</Filter>
-    </ClCompile>
-    <ClCompile Include="HookManager.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="TestClass.cpp">
-      <Filter>Modules\Mods</Filter>
-    </ClCompile>
-    <ClCompile Include="ModHandler.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="PatternFinder.cpp">
-      <Filter>Utils\Patterns</Filter>
-    </ClCompile>
-    <ClCompile Include="TFL_HT.cpp">
-      <Filter>Utils\Patterns</Filter>
-    </ClCompile>
-    <ClCompile Include="PacketHook.cpp">
-      <Filter>Networking</Filter>
-    </ClCompile>
+    <ClCompile Include="Core\Core.cpp" />
+    <ClCompile Include="Core\DllMain.cpp" />
+    <ClCompile Include="Events\EventManager.cpp" />
+    <ClCompile Include="Hooks\DX9Hook.cpp" />
+    <ClCompile Include="Hooks\HookManager.cpp" />
+    <ClCompile Include="Hooks\KeyboardHook.cpp" />
+    <ClCompile Include="Hooks\PacketHook.cpp" />
+    <ClCompile Include="Libs\ImGUI\imgui.cpp" />
+    <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
+    <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
+    <ClCompile Include="Mods\ModHandler.cpp" />
+    <ClCompile Include="Mods\Modules\TestClass.cpp" />
+    <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_Basic.cpp" />
+    <ClCompile Include="RL\SDK\RL_Core_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_Engine_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_GameFramework_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_GFxUI_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_IpDrv_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_OnlineSubsystemSteamworks_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_ProjectX_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_TAGame_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_WinDrv_functions.cpp" />
+    <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp" />
+    <ClCompile Include="Utils\Utils.cpp" />
+    <ClCompile Include="Utils\Wrapper.cpp" />
+    <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
+    <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_AkAudio_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_AkAudio_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Basic.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Core_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Core_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Core_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Engine_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Engine_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_Engine_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GameFramework_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GameFramework_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GameFramework_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GFxUI_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GFxUI_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_GFxUI_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_IpDrv_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_IpDrv_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_IpDrv_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_ProjectX_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_ProjectX_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_ProjectX_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_TAGame_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_TAGame_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_TAGame_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_WinDrv_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_WinDrv_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_WinDrv_structs.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Event</Filter>
-    </ClInclude>
-    <ClInclude Include="Wrapper.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectInitializer.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="LogManager.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="HookManager.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModHandler.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModBase.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="TestClass.h">
-      <Filter>Modules\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="detours.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="TFL_HT.h">
-      <Filter>Utils\Patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="PatternFinder.h">
-      <Filter>Utils\Patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="SDKDefines.h">
-      <Filter>Utils\Patterns</Filter>
-    </ClInclude>
-    <ClInclude Include="PacketHook.h">
-      <Filter>Networking</Filter>
-    </ClInclude>
+    <ClInclude Include="Core\Core.h" />
+    <ClInclude Include="Events\EventManager.h" />
+    <ClInclude Include="Hooks\DX9Hook.h" />
+    <ClInclude Include="Hooks\HookManager.h" />
+    <ClInclude Include="Hooks\KeyboardHook.h" />
+    <ClInclude Include="Hooks\PacketHook.h" />
+    <ClInclude Include="Libs\detours.h" />
+    <ClInclude Include="Libs\ImGUI\imconfig.h" />
+    <ClInclude Include="Libs\ImGUI\imgui.h" />
+    <ClInclude Include="Libs\ImGUI\imgui_internal.h" />
+    <ClInclude Include="Libs\ImGUI\stb_rect_pack.h" />
+    <ClInclude Include="Libs\ImGUI\stb_textedit.h" />
+    <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
+    <ClInclude Include="Libs\ImGUI\DX9\imgui_impl_dx9.h" />
+    <ClInclude Include="Mods\ModBase.h" />
+    <ClInclude Include="Mods\ModHandler.h" />
+    <ClInclude Include="Mods\Modules\TestClass.h" />
+    <ClInclude Include="RL\SDK.hpp" />
+    <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_AkAudio_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_AkAudio_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_Basic.hpp" />
+    <ClInclude Include="RL\SDK\RL_Core_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_Core_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_Core_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_Engine_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_Engine_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_Engine_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_GameFramework_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_GameFramework_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_GameFramework_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_GFxUI_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_GFxUI_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_GFxUI_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_IpDrv_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_IpDrv_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_IpDrv_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_OnlineSubsystemSteamworks_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_ProjectX_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_ProjectX_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_ProjectX_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_TAGame_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_TAGame_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_TAGame_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_WinDrv_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_WinDrv_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_WinDrv_structs.hpp" />
+    <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp" />
+    <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
+    <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
+    <ClInclude Include="Utils\ObjectInitializer.h" />
+    <ClInclude Include="Utils\SDKDefines.h" />
+    <ClInclude Include="Utils\Utils.h" />
+    <ClInclude Include="Utils\Wrapper.h" />
+    <ClInclude Include="Utils\Pattern\PatternFinder.h" />
+    <ClInclude Include="Utils\Pattern\TFL_HT.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Libs\detours.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Libs\ImGUI\LICENSE" />
+    <None Include="Libs\ImGUI\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="RL\Generator.log" />
+    <Text Include="RL\NamesDump.txt" />
+    <Text Include="RL\ObjectsDump.txt" />
   </ItemGroup>
 </Project>

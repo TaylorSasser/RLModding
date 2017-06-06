@@ -1,8 +1,9 @@
 #include <Windows.h>
 #include "Core.h"
-#include "HookManager.h"
-#include "Wrapper.h"
-
+#include "../Hooks/HookManager.h"
+#include "../Mods/ModBase.h"
+#include "../Utils/Wrapper.h"
+#include "../Hooks/KeyboardHook.h"
 
 HANDLE MainThread;
 void onAttach(HMODULE hModule);
@@ -21,4 +22,6 @@ void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
 	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto); 
+	KeyboardHook::Instance()->HookKeyboard(&ModBase::onKeyPress);
+
 }

@@ -1,11 +1,14 @@
 #pragma once
-#include "RL/SDK.hpp"
+#include "../RL/SDK.hpp"
+#include <Windows.h>
 
 
 class ModBase
 {
 public:
 	//Ticks
+	virtual bool onKeyPress(WORD ascii,bool isPressed) {return false;}
+
 	virtual void MainMenuTick(SDK::UObject**,SDK::UFunction*, void* parameters) {}					//APlayerController_Menu_TA -> PlayerTick(float deltatime)
 	virtual void InGameTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//APlayerController -> PlayerTick(float deltatime)
 	virtual void AActorTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//AActor_TA -> Tick(float deltatime)
@@ -17,4 +20,5 @@ public:
 
 	//events 
 	virtual void ChatSend(SDK::UObject**,SDK::UFunction*,void* parameters) {}
+	virtual void onActorJump(SDK::UObject**, SDK::UFunction*, void*) {}
 };

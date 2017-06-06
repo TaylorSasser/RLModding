@@ -1,8 +1,7 @@
 #pragma once
 #include <functional>
 #include <unordered_map>
-#include "RL/SDK.hpp"
-#include "ModBase.h"
+#include "../Mods/ModBase.h"
 
 typedef void (ModBase::*function)(SDK::UObject**,SDK::UFunction*,void*);
 
@@ -14,6 +13,6 @@ public:
 	void addFunction(std::string FuncName,function);
 private:
 	void FunctionProxy(SDK::UObject** object, SDK::UFunction* function, void* params, bool isCallFunc);
-	std::unordered_map<SDK::UFunction*,function> hashmap;
+	std::unordered_map<std::string,function> hashmap;
 };
 

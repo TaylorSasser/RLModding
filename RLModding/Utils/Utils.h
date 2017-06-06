@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include "RL/SDK.hpp"
+#include "../RL/SDK.hpp"
 
 
 namespace Utils {
@@ -23,13 +23,16 @@ namespace Utils {
 	bool InitializeNamesStore();
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 
-
 	template<typename T> 
 	void EditParams(void* oldParam,void* newParam) {
-		T* oldParams = reinterpret_cast<T*>(oldParam);
-		T* newParams = reinterpret_cast<T*>(newParam);
-		memcpy(oldParams,newParams,sizeof(newParams));
+		T* oldParam = reinterpret_cast<T*>(oldParam);
+		T* newParam = reinterpret_cast<T*>(newParam);
+		memcpy(oldParam,newParam,sizeof(oldParam));
 	}
-}
 
-  
+	struct Keystate {
+		UINT msg;
+		WPARAM Key;
+	};
+
+}

@@ -1,5 +1,5 @@
 #include "ModHandler.h"
-#include "TestClass.h"
+#include "Modules/TestClass.h"
 
 ModHandler::ModHandler()  {
 	AddMod(new TestClass());

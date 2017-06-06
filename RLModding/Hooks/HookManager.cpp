@@ -1,9 +1,10 @@
 #include "HookManager.h"
 #include <Windows.h>
-#include "TFL_HT.h"
-#include "SDKDefines.h"
-#include "detours.h"
-#include "Utils.h"
+#include "../Utils/Pattern/TFL_HT.h"
+#include "../RL/SDK.hpp"
+#include "../Libs/detours.h"
+#include "../Utils/Utils.h"
+#include "../Utils/SDKDefines.h"
 
 
 using namespace SDK;
