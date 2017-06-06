@@ -25,17 +25,23 @@ AddMod(new TestClass());
 ### How to hook a new function
 Copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
 ```
-addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&TestClass::MainMenuTick);
+addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
 ```
 
+Add a definition to ModBase
+```
+virtual void MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
+```
+
+Add a definition to your module class (here our module is called TestClass)
 ```
 void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {
 	std::cout << "ModBase mainmenu tick called" << std::endl;
 }
 ```
+So the method call flow looks like:
 
-To use the functions inside your custom mod, add the function you want to use into your header class and the eventmanager will call your class along with every other class that also uses that function at the same time
-
+when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
 
 ### TODO
 - Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
