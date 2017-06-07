@@ -9,7 +9,7 @@ public:
 	~ModHandler();
 	std::list<ModBase*> GetMods();
 	size_t GetModListSize();
-	void AddMod(ModBase* Mod);
+	void addMod(ModBase* Mod);
 
 private:
 	std::list<ModBase*> Mods;
