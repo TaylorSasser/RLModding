@@ -14,6 +14,14 @@ Change C:/Boost to your main boost folder, not the path of the of the headers.
 Next change your linker->General->Additional Library Directories and change your Library from C:\Boost\Stage\Lib to the
 directories of the 32 bit .lib files you built 
 
+### Setting up DirectX9 SDK
+Go to https://www.microsoft.com/en-us/download/details.aspx?id=6812 and download and install.
+
+Go to your Configuration Properties for your project, C/C++->General->Additional Include Directories and add the DirectX Include folder.
+Something like C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include
+
+Next change your linker->General->Additional Library Directories and add the DirectX lib folder.
+Something like C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86
 
 ### How to create a new module
 - Extend ModBase publically. See TestClass.h and TestClass.cpp as examples.
