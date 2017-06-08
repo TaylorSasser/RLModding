@@ -2,7 +2,7 @@
 #include "Modules/TestClass.h"
 
 ModHandler::ModHandler()  {
-	AddMod(new TestClass());
+	addMod(new TestClass());
 }
 
 
@@ -20,6 +20,6 @@ size_t ModHandler::GetModListSize() {
 	return Mods.size();
 }
 
-void ModHandler::AddMod(ModBase* mod) {
+void ModHandler::addMod(ModBase* mod) {
 	Mods.push_back(mod);
 }
