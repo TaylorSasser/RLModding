@@ -4,6 +4,7 @@
 #include "../Mods/ModBase.h"
 #include "../Utils/Wrapper.h"
 #include "../Hooks/KeyboardHook.h"
+#include "../Hooks/DX9Hook.h"
 
 HANDLE MainThread;
 void onAttach(HMODULE hModule);
@@ -23,5 +24,6 @@ void onAttach(HMODULE hModule) {
 	Core::Initialize();
 	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto); 
 	KeyboardHook::Instance()->HookKeyboard(&ModBase::onKeyPress);
+	DX9Hook::Instance()->InitGUI();
 
 }

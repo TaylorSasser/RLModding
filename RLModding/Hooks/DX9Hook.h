@@ -1,6 +1,6 @@
 #pragma once
 #include <Windows.h>
-#include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
+#include <d3d9.h>
 
 
 
@@ -16,6 +16,6 @@ public:
 		if (!instance) instance = new DX9Hook();
 		return instance;
 	}
-	void InitGUI(IDirect3DDevice9* pDevice);
+	void InitGUI();
 };
 

@@ -63,3 +63,10 @@
 *.ipch
 *.pdb
 *.log
+.vs/RLModding/v15/Solution.VC.db
+.vs/RLModding/v15/Solution.VC.db-shm
+.vs/RLModding/v15/Solution.VC.db-wal
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+Build/RLModding.iobj
+Build/RLModding.ipdb
