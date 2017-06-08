@@ -14,9 +14,10 @@ DWORD FindPattern(DWORD dwAddress,DWORD dwLen,BYTE* bMask,const char* szMask);
 void* DetourFunction(std::uint8_t* OrigFunc,std::uint8_t* HookFunc,int JumpLen);
 DWORD WINAPI VTableRepatch();
 
-HRESULT __stdcall DXI_EndScene(IDirect3DSurface9* SURFACE) {
-	MessageBox(NULL,L"End Scene hook",L"DXI_EndScene",0);
-	return o_EndScene(SURFACE);
+//RUN Custom GUI and stuffs here	
+HRESULT __stdcall DX9_EndScene(IDirect3DSurface9* surface) {
+	MessageBox(NULL,L"End Scene hook",L"DX9_EndScene",0);
+	return o_EndScene(surface);
 }
 
 void DX9Hook::InitGUI() {
@@ -32,14 +33,14 @@ void DX9Hook::InitGUI() {
 	memcpy(&VTable,reinterpret_cast<void*>(Address+2),4);
 	
 	o_EndScene = reinterpret_cast<EndScene_t>(VTable[42]);
-	DetourFunction(reinterpret_cast<std::uint8_t*>(o_EndScene), reinterpret_cast<std::uint8_t*>(&DXI_EndScene), 5);
+	DetourFunction(reinterpret_cast<std::uint8_t*>(o_EndScene), reinterpret_cast<std::uint8_t*>(&DX9_EndScene), 5);
 	std::thread([&] {VTableRepatch(); }).detach();
 }
 
 DWORD WINAPI VTableRepatch() {
 	while (true) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		DetourFunction(reinterpret_cast<std::uint8_t*>(o_EndScene), reinterpret_cast<std::uint8_t*>(&DXI_EndScene), 5);
+		DetourFunction(reinterpret_cast<std::uint8_t*>(o_EndScene), reinterpret_cast<std::uint8_t*>(&DX9_EndScene), 5);
 	}
 	return 0;
 }
