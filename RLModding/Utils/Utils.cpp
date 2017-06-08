@@ -31,4 +31,13 @@ namespace Utils {
 		}
 		return ObjectInstance;
 	}
+
+	SDK::FString to_fstring(std::string s) {
+		wchar_t *p = new wchar_t[s.size() + 1];
+		for (std::string::size_type i = 0; i < s.size(); ++i)
+			p[i] = s[i];
+
+		p[s.size()] = '\0';
+		return SDK::FString(p);
+	}
 };

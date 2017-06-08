@@ -22,6 +22,7 @@ namespace Utils {
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
+	SDK::FString to_fstring(std::string s);
 
 	template<typename T> 
 	void EditParams(void* oldParam,void* newParam) {

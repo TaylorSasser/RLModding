@@ -1,0 +1,13 @@
+Rocket League SDK TODO List
+
+When you finish something move it to the completed list.
+
+TODO:
+	- Add ablility to pause game
+	- Add car acceleration to car mod class
+
+Completed:
+	- Car Mod class
+	- Ball Mod class
+	- Menu Mod class
+	- Map Loader class
