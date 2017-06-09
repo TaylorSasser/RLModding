@@ -31,6 +31,10 @@
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
+    <ClCompile Include="Mods\Modules\BallMod.cpp" />
+    <ClCompile Include="Mods\Modules\CarMod.cpp" />
+    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
+    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
@@ -66,6 +70,10 @@
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
+    <ClInclude Include="Mods\Modules\BallMod.h" />
+    <ClInclude Include="Mods\Modules\CarMod.h" />
+    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
+    <ClInclude Include="Mods\Modules\MapLoader.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
