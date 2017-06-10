@@ -57,6 +57,17 @@
     <ClInclude Include="Hooks\KeyboardHook.h" />
     <ClInclude Include="Hooks\PacketHook.h" />
     <ClInclude Include="Libs\detours.h" />
+    <ClInclude Include="Libs\DirectX9\d3d9.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9anim.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9core.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9effect.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9math.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9mesh.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9shader.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9shape.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9tex.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9xof.h" />
     <ClInclude Include="Libs\ImGUI\DX9\imgui_impl_dx9.h" />
     <ClInclude Include="Libs\ImGUI\imconfig.h" />
     <ClInclude Include="Libs\ImGUI\imgui.h" />
@@ -111,8 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
+    <Library Include="Libs\DirectX9\d3d9.lib" />
+    <Library Include="Libs\DirectX9\d3dx9.lib" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Libs\DirectX9\d3dx9math.inl" />
     <None Include="Libs\ImGUI\LICENSE" />
     <None Include="Libs\ImGUI\README.md" />
   </ItemGroup>
@@ -228,7 +242,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>C:\boost\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\boost\stage\lib;$(ProjectDir)Libs\DirectX9\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

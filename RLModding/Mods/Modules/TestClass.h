@@ -10,5 +10,6 @@ public:
 	void MainMenuTick(SDK::UObject**,SDK::UFunction*,void* params);
 	void ChatSend(SDK::UObject**,SDK::UFunction*,void* params);
 	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms);
+	void DX9RenderTick(IDirect3DSurface9* device);
 };
 

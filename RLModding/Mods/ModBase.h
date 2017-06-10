@@ -1,6 +1,7 @@
 #pragma once
 #include "../RL/SDK.hpp"
 #include <Windows.h>
+#include <d3d9.h>
 
 
 class ModBase
@@ -17,6 +18,7 @@ public:
 	virtual void GameEventTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//AGameEvent_TA -> Tick(float deltatime)
 	virtual void ReplayTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//UReplay_TA or UReplayManager_TA -> Tick(float deltatime)
 	virtual void EventMMRChange(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//UOnlineGameDedicatedServer_X -> EventAverageMMRChanged(UOnlineGameDedicatedServer_X*)
+	virtual void DX9RenderTick(IDirect3DSurface9*) {}
 
 	//events 
 	virtual void ChatSend(SDK::UObject**,SDK::UFunction*,void* parameters) {}

@@ -4,35 +4,26 @@
 
 
 namespace Utils {
-	struct FOutParmRec {
-		class UProperty*								   Property;
-		unsigned char*				 					   PropAddr;
-		struct FOutParmRec*		 						   NextOutParm;
+	struct FOutParamRec {
+		class uProperty*	Property;
+		unsigned char*		PropertyAddr;
+		struct FOutParamRec*	NextOutParam;
 	};
 
 	struct FFrame {
-		unsigned char 									   UnknownData00[0xC];
-		class UStruct*									   Node;
-		class UObject*									   Object;
-		BYTE*											   Code;
-		BYTE* 											   Locals;
-		struct FFrame* 									   PreviousFrame;
+		unsigned char		UnknownData00[0xC];
+		class UStruct*		Node;
+		BYTE*				Code;
+		BYTE*				Locals;
+		struct FFrame*		PreviousFrame;
 	};
-
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 
-	template<typename T> 
-	void EditParams(void* oldParam,void* newParam) {
-		T* oldParam = reinterpret_cast<T*>(oldParam);
-		T* newParam = reinterpret_cast<T*>(newParam);
-		memcpy(oldParam,newParam,sizeof(oldParam));
+	template<typename T>
+	void EditParams(T* newParams,T* oldParams) {
+		delete[] oldParams;
+		oldParams = &newParams;
 	}
-
-	struct Keystate {
-		UINT msg;
-		WPARAM Key;
-	};
-
 }
