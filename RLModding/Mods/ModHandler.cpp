@@ -1,8 +1,17 @@
 #include "ModHandler.h"
+#include "Modules/BallMod.h"
+#include "Modules/CarMod.h"
+#include "Modules/BallMod.h"
+#include "Modules/MainMenuMod.h"
+#include "Modules/MapLoader.h"
 #include "Modules/TestClass.h"
 
 ModHandler::ModHandler()  {
 	addMod(new TestClass());
+	addMod(new BallMod());
+	addMod(new CarMod());
+	addMod(new MainMenuMod());
+	addMod(new MapLoader());
 }
 
 

@@ -60,6 +60,10 @@
     <ClCompile Include="Utils\Wrapper.cpp" />
     <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
+    <ClCompile Include="Mods\Modules\BallMod.cpp" />
+    <ClCompile Include="Mods\Modules\CarMod.cpp" />
+    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
+    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -120,6 +124,7 @@
     <ClInclude Include="Utils\Wrapper.h" />
     <ClInclude Include="Utils\Pattern\PatternFinder.h" />
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
+<<<<<<< HEAD
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9anim.h" />
@@ -131,6 +136,12 @@
     <ClInclude Include="Libs\DirectX9\d3dx9shape.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9tex.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9xof.h" />
+=======
+    <ClInclude Include="Mods\Modules\BallMod.h" />
+    <ClInclude Include="Mods\Modules\CarMod.h" />
+    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
+    <ClInclude Include="Mods\Modules\MapLoader.h" />
+>>>>>>> 3ed13480c56effb72358aa6d2155040c17ca4832
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
