@@ -18,7 +18,7 @@ BallMod::~BallMod() {
 void BallMod::BallTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
 	//Need to check for freeplay
 	//AGameEvent_Tutorial_TA->GetGameBall()
-	if (GetAsyncKeyState(VK_F2)) {
+	if (GetAsyncKeyState(gameHotkey) || GetAsyncKeyState(VK_F2)) {
 		readSettingsFile();
 		((SDK::ABall_TA*)object)->SetBallScale(ballScale);
 		((SDK::ABall_TA*)object)->SetBallGravityScale(gravityScale);

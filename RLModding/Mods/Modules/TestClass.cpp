@@ -16,7 +16,7 @@ void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void*
 	((SDK::ACar_TA*)object)->bDoubleJumped = 0;
 }
 
-void TestClass::DX9RenderTick(IDirect3DSurface9* Device) {
+/*void TestClass::DX9RenderTick(IDirect3DSurface9* Device) {
 
 
-}
+}*/

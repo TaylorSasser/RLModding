@@ -16,21 +16,21 @@ MapLoader::~MapLoader() {
 }
 
 void MapLoader::FreeplayTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
-	if (GetAsyncKeyState(VK_F3)) {
+	if (GetAsyncKeyState(mapLoaderHotkey) || GetAsyncKeyState(VK_F3)) {
 		readSettingsFile();
 		loadMap(loadMapCommand);
 	}
 }
 
 void MapLoader::GameEventTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
-	if (GetAsyncKeyState(VK_F3)) {
+	if (GetAsyncKeyState(mapLoaderHotkey) || GetAsyncKeyState(VK_F3)) {
 		readSettingsFile();
 		loadMap(loadMapCommand);
 	}
 }
 
 void MapLoader::MainMenuTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
-	if (GetAsyncKeyState(VK_F3)) {
+	if (GetAsyncKeyState(mapLoaderHotkey) || GetAsyncKeyState(VK_F3)) {
 		readSettingsFile();
 		loadMap(loadMapCommand);
 	}
