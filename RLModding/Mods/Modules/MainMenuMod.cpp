@@ -25,7 +25,7 @@ void MainMenuMod::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* params) {
 		}
 	}
 
-	if (GetAsyncKeyState(VK_F1)) {
+	if (GetAsyncKeyState(menuHotkey) || GetAsyncKeyState(VK_F1)) {
 		readSettingsFile(); //for custom information & get if custom blog is enabled
 		if (bCustomBlog) {
 			community = (SDK::UGFxData_Community_TA*)Utils::GetInstanceOf(SDK::UGFxData_Community_TA::StaticClass());
@@ -44,6 +44,11 @@ void MainMenuMod::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* params) {
 
 		}
 		Sleep(150);
+	}
+
+	if (!bHotkeys) {
+		InitHotkeys();
+		bHotkeys = true;
 	}
 }
 
