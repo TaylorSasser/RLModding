@@ -30,12 +30,7 @@
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
-    <ClCompile Include="Mods\ModBase.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
-    <ClCompile Include="Mods\Modules\BallMod.cpp" />
-    <ClCompile Include="Mods\Modules\CarMod.cpp" />
-    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
-    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
@@ -82,10 +77,6 @@
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
-    <ClInclude Include="Mods\Modules\BallMod.h" />
-    <ClInclude Include="Mods\Modules\CarMod.h" />
-    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
-    <ClInclude Include="Mods\Modules\MapLoader.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
@@ -130,9 +121,9 @@
     <ClInclude Include="Utils\Wrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3d9.lib" />
-    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3dx9.lib" />
     <Library Include="Libs\detours.lib" />
+    <Library Include="Libs\DirectX9\d3d9.lib" />
+    <Library Include="Libs\DirectX9\d3dx9.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libs\DirectX9\d3dx9math.inl" />
@@ -206,8 +197,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)/Build</OutDir>
-    <IntDir>$(SolutionDir)/Build/Intermediate</IntDir>
+    <OutDir>$(SolutionDir)Build</OutDir>
+    <IntDir>$(SolutionDir)Build\Intermediate</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -244,14 +235,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RLMODDING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>"Y:\DirectXSDK\Include";"Y:\RL New SDK %285.28.17%29\boost_1_64_0";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost\include\boost-1_64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>Y:\DirectXSDK\Lib\x86;Y:\RL New SDK %285.28.17%29\boost_1_64_0\stage_x86\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\boost\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

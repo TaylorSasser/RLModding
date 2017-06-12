@@ -13,10 +13,6 @@
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
-    <ClCompile Include="Mods\Modules\BallMod.cpp" />
-    <ClCompile Include="Mods\Modules\CarMod.cpp" />
-    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
-    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
@@ -34,10 +30,6 @@
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Utils\Wrapper.cpp" />
-<<<<<<< HEAD
-=======
-    <ClCompile Include="Mods\ModBase.cpp" />
->>>>>>> 8bda33116af03d0cab858e1201140141fd784703
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -67,10 +59,6 @@
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
-    <ClInclude Include="Mods\Modules\BallMod.h" />
-    <ClInclude Include="Mods\Modules\CarMod.h" />
-    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
-    <ClInclude Include="Mods\Modules\MapLoader.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
@@ -116,13 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
-<<<<<<< HEAD
     <Library Include="Libs\DirectX9\d3d9.lib" />
     <Library Include="Libs\DirectX9\d3dx9.lib" />
-=======
-    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3dx9.lib" />
-    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3d9.lib" />
->>>>>>> 8bda33116af03d0cab858e1201140141fd784703
   </ItemGroup>
   <ItemGroup>
     <None Include="Libs\DirectX9\d3dx9math.inl" />
