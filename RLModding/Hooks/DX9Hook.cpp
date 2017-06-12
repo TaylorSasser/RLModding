@@ -9,7 +9,7 @@ DX9Hook::~DX9Hook(){}
 
 
 
-LRESULT CALLBACK D3D9MsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) { printf("Input detected"); return DefWindowProc(hwnd, uMsg, wParam, lParam); }
+LRESULT CALLBACK D3D9MsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {return DefWindowProc(hwnd, uMsg, wParam, lParam); }
 
 typedef HRESULT(__stdcall* D3D9EndScene_t)(LPDIRECT3DDEVICE9);
 D3D9EndScene_t pD3D9EndScene;
@@ -26,18 +26,10 @@ void DX9Hook::InitGUI() {
 	WNDCLASSEXA wc = {sizeof(WNDCLASSEX),CS_CLASSDC,D3D9MsgProc,0L,0L,GetModuleHandleA(NULL),NULL,NULL,NULL,NULL,"DX",NULL};
 	RegisterClassExA(&wc);
 	HWND hWnd = CreateWindowA("DX",NULL,WS_OVERLAPPEDWINDOW,100,100,300,300,GetDesktopWindow(),NULL,wc.hInstance,NULL);
-
-	//printf("GetModuleHandle : %p \n",GetModuleHandle(TEXT("d3d9.dll")));
-	//printf("GetProcAddress	: %p \n",GetProcAddress(GetModuleHandle(TEXT("d3d9.dll")),"Direct3DCreate9"));
-
 	this->Direct3DCreate9 = (myDirect3DCreate9)GetProcAddress(GetModuleHandle(TEXT("d3d9.dll")),"Direct3DCreate9");
-	//printf("this->Direct3DCreate9 %p \n",this->Direct3DCreate9);
 
 	LPDIRECT3D9 pD3D = Direct3DCreate9(32);
-	//printf("Direct3DCreate9 : %p \n",pD3D);
-	if (pD3D == nullptr) {
-		printf("Device is null");
-	}
+	if (pD3D == nullptr) {printf("Device is null");}
 
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp,sizeof(d3dpp));
