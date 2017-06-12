@@ -1,6 +1,7 @@
 #include "KeyboardHook.h"
 #include <Windows.h>
 #include <iostream>
+#include "../Utils/Wrapper.h"
 
 
 KeyboardHook* KeyboardHook::instance = nullptr;
@@ -15,14 +16,19 @@ onKeyPress onKeyPressCallFunc;
 
 LRESULT __stdcall HookedWindowProc(int code,WPARAM wParam,LPARAM lParam);
 
-void KeyboardHook::HookKeyboard(onKeyPress keypress) {
-	SetWindowsHookEx(WH_KEYBOARD_LL,HookedWindowProc,GetModuleHandle(NULL),GetThreadId(GetCurrentThread()));	
-}
-void KeyboardHook::RestoreKeyboard() {
-}
+void KeyboardHook::HookKeyboard(onKeyPress keypress) {}
+
+void KeyboardHook::RestoreKeyboard() {}
 
 LRESULT __stdcall HookedWindowProc(int code, WPARAM wParam,LPARAM lParam) {
-	printf("Keyboard function was called");
+	
+
+
+	for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
+		if (Mod->getBind() == code) {
+			Mod->Toggle();
+		}
+	}
 	return 0;
 }
 

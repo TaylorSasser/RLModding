@@ -7,7 +7,9 @@ bool isConnected = false;
 SDK::UTcpConnection* Connection;
 D3DRECT rec = { 200, 200, 400, 600 };
 
-TestClass::TestClass(){}TestClass::~TestClass(){}
+TestClass::TestClass(std::string name,int key) : ModBase("Test Class",VK_NUMPAD0) {}
+
+TestClass::~TestClass(){}
 
 void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
 
@@ -21,7 +23,7 @@ void TestClass::DX9RenderTick(IDirect3DDevice9* Device) {
 }
 
 void TestClass::TCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {
-	printf("Connection established at :%d",((SDK::UTcpConnection*)object)->Socket);
+	printf("Connection established at :%d",((SDK::UTcpConnection*)object)->Socket.Dummy);
 	Connection = (SDK::UTcpConnection*)object;
 	bool isConnected = true;
 }

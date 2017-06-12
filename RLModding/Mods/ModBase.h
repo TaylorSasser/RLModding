@@ -7,8 +7,24 @@
 class ModBase
 {
 public:
-	//Ticks
-	virtual bool onKeyPress(WORD ascii,bool isPressed) {return false;}
+	//Tick
+
+	ModBase(std::string ModName,int KeyBind) {
+		this->name = ModName;
+		this->Key = KeyBind;
+	}
+
+	void Toggle() {
+		this->enabled = !enabled;
+		if (this->enabled) {this->onEnable();} else {this->onDisable();}
+		this->onToggle();
+	}
+
+	virtual bool onEnable() {}
+	virtual bool onDisable() {}
+	virtual bool onToggle() {}
+
+	virtual int getBind() { return this->Key;}
 
 	virtual void MainMenuTick(SDK::UObject**,SDK::UFunction*, void* parameters) {}					//APlayerController_Menu_TA -> PlayerTick(float deltatime)
 	virtual void InGameTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//APlayerController -> PlayerTick(float deltatime)
@@ -26,5 +42,12 @@ public:
 	virtual void onActorJump(SDK::UObject**, SDK::UFunction*, void*) {}
 	virtual void TCPConnectionBegin(SDK::UObject**,SDK::UFunction*, void* parameters) {}
 	virtual void TCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void* parameters) {}
+
+private:
+
+	bool enabled = false;
+	std::string name;
+	int Key = -1;
+
 
 };
