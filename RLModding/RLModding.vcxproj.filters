@@ -1,36 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{f1faff21-2582-405a-ac56-d125cfbe4d9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event">
-      <UniqueIdentifier>{b02d639b-8fc7-428d-9a22-0bd9e408568c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules">
-      <UniqueIdentifier>{2097a6de-3199-4645-b96a-6cb9e2e46e9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Networking">
-      <UniqueIdentifier>{3f266a9b-5992-4c63-88a8-cbaef04f9376}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{52dabc7c-33ae-4be7-ab13-a2c895c9cd7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Mods">
-      <UniqueIdentifier>{668e27e9-1deb-4315-8bf6-0fd0860db647}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils\Patterns">
-      <UniqueIdentifier>{02953e2b-fb9e-44d2-994b-e60a9f9dcdd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hooks">
-      <UniqueIdentifier>{d00d9476-6907-4a1e-b9e3-4a628ed764ac}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
     <ClCompile Include="Events\EventManager.cpp" />
@@ -38,11 +8,15 @@
     <ClCompile Include="Hooks\HookManager.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
     <ClCompile Include="Hooks\PacketHook.cpp" />
+    <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
-    <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
+    <ClCompile Include="Mods\Modules\BallMod.cpp" />
+    <ClCompile Include="Mods\Modules\CarMod.cpp" />
+    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
+    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
@@ -56,14 +30,10 @@
     <ClCompile Include="RL\SDK\RL_TAGame_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_WinDrv_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp" />
-    <ClCompile Include="Utils\Utils.cpp" />
-    <ClCompile Include="Utils\Wrapper.cpp" />
     <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
-    <ClCompile Include="Mods\Modules\BallMod.cpp" />
-    <ClCompile Include="Mods\Modules\CarMod.cpp" />
-    <ClCompile Include="Mods\Modules\MainMenuMod.cpp" />
-    <ClCompile Include="Mods\Modules\MapLoader.cpp" />
+    <ClCompile Include="Utils\Utils.cpp" />
+    <ClCompile Include="Utils\Wrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -73,15 +43,30 @@
     <ClInclude Include="Hooks\KeyboardHook.h" />
     <ClInclude Include="Hooks\PacketHook.h" />
     <ClInclude Include="Libs\detours.h" />
+    <ClInclude Include="Libs\DirectX9\d3d9.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9anim.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9core.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9effect.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9math.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9mesh.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9shader.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9shape.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9tex.h" />
+    <ClInclude Include="Libs\DirectX9\d3dx9xof.h" />
+    <ClInclude Include="Libs\ImGUI\DX9\imgui_impl_dx9.h" />
     <ClInclude Include="Libs\ImGUI\imconfig.h" />
     <ClInclude Include="Libs\ImGUI\imgui.h" />
     <ClInclude Include="Libs\ImGUI\imgui_internal.h" />
     <ClInclude Include="Libs\ImGUI\stb_rect_pack.h" />
     <ClInclude Include="Libs\ImGUI\stb_textedit.h" />
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
-    <ClInclude Include="Libs\ImGUI\DX9\imgui_impl_dx9.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
+    <ClInclude Include="Mods\Modules\BallMod.h" />
+    <ClInclude Include="Mods\Modules\CarMod.h" />
+    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
+    <ClInclude Include="Mods\Modules\MapLoader.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
@@ -119,39 +104,21 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
     <ClInclude Include="Utils\ObjectInitializer.h" />
+    <ClInclude Include="Utils\Pattern\PatternFinder.h" />
+    <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Utils\Wrapper.h" />
-    <ClInclude Include="Utils\Pattern\PatternFinder.h" />
-    <ClInclude Include="Utils\Pattern\TFL_HT.h" />
-<<<<<<< HEAD
-    <ClInclude Include="Libs\DirectX9\d3d9.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9anim.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9core.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9effect.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9math.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9mesh.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9shader.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9shape.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9tex.h" />
-    <ClInclude Include="Libs\DirectX9\d3dx9xof.h" />
-=======
-    <ClInclude Include="Mods\Modules\BallMod.h" />
-    <ClInclude Include="Mods\Modules\CarMod.h" />
-    <ClInclude Include="Mods\Modules\MainMenuMod.h" />
-    <ClInclude Include="Mods\Modules\MapLoader.h" />
->>>>>>> 3ed13480c56effb72358aa6d2155040c17ca4832
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
-    <Library Include="Libs\DirectX9\d3dx9.lib" />
     <Library Include="Libs\DirectX9\d3d9.lib" />
+    <Library Include="Libs\DirectX9\d3dx9.lib" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Libs\DirectX9\d3dx9math.inl" />
     <None Include="Libs\ImGUI\LICENSE" />
     <None Include="Libs\ImGUI\README.md" />
-    <None Include="Libs\DirectX9\d3dx9math.inl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="RL\Generator.log" />

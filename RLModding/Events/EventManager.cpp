@@ -13,10 +13,12 @@ EventManager::EventManager() {
 	addFunction("Function TAGame.PlayerControllerBase_TA.Say_TA",&ModBase::ChatSend);
 	addFunction("Function TAGame.Car_TA.OnJumpReleased",&ModBase::onActorJump);
 	addFunction("Function TAGame.Car_TA.Tick", &ModBase::CarTick);
-	addFunction("Function TAGame.Car_TA.OnJumpReleased", &ModBase::OnJump);
 	addFunction("Function TAGame.Ball_TA.Tick", &ModBase::BallTick);
 	addFunction("Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.Tick", &ModBase::FreeplayTick);
 	addFunction("Function TAGame.GameEvent_TA.Tick", &ModBase::GameEventTick);
+	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::TCPConnectionBegin);
+	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::TCPConnectionEnd);
+
 }
 EventManager::~EventManager() {
 	delete this;

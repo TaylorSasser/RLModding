@@ -55,7 +55,9 @@ VOID __declspec(naked) CallFunctionProxy() {
 		pushfd
 		pushad
 	}
-	CallFuncProto(pCallObject, pUFuncCF,pFFrameCF->Locals, true);
+	if (pCallObject != nullptr && pUFuncCF->Func != nullptr && pFFrameCF != nullptr) {
+		CallFuncProto(pCallObject, pUFuncCF, pFFrameCF->Locals, true);
+	}
 	__asm {
 		popad
 		popfd
@@ -76,7 +78,9 @@ VOID __declspec(naked) ProcessEventProxy() {
 		pushad
 
 	}
-	CallFuncProto(pCallObject, pUFuncCF, pParams, false);
+	if (pCallObject != nullptr && pUFuncCF->Func != nullptr && pParams != nullptr) {
+		CallFuncProto(pCallObject, pUFuncCF, pParams, false);
+	}
 	__asm {
 		popad
 		popfd

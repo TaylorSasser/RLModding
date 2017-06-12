@@ -8,7 +8,6 @@
 void loadMap(std::string);
 
 MapLoader::MapLoader() {
-	std::cout << "Map Loader Instantiated\n";
 }
 
 MapLoader::~MapLoader() {

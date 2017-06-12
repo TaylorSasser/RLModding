@@ -7,9 +7,7 @@
 #include <fstream>
 #include <iostream>
 
-CarMod::CarMod() {
-	std::cout << "Instantiated Car Mods.\n";
-}
+CarMod::CarMod() {}
 
 CarMod::~CarMod() {
 

@@ -23,7 +23,6 @@ void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
 	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto); 
-	KeyboardHook::Instance()->HookKeyboard(&ModBase::onKeyPress);
 	DX9Hook::Instance()->InitGUI();
-
+	//KeyboardHook::Instance()->HookKeyboard(&ModBase::onKeyPress);
 }

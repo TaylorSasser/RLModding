@@ -7,13 +7,9 @@
 #include <fstream>
 #include <iostream>
 
-BallMod::BallMod() {
-	std::cout << "Ball Mod Instantiated\n";
-}
+BallMod::BallMod() {}
 
-BallMod::~BallMod() {
-
-}
+BallMod::~BallMod() {}
 
 void BallMod::BallTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
 	//Need to check for freeplay

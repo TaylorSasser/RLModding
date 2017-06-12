@@ -6,9 +6,7 @@
 #include <iostream>
 
 //Constructor
-MainMenuMod::MainMenuMod() {
-	std::cout << "Menu Mod Contructed" << std::endl;
-}
+MainMenuMod::MainMenuMod() {}
 
 //Desctructor
 MainMenuMod::~MainMenuMod() {
