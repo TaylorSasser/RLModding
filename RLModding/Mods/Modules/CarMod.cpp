@@ -30,7 +30,7 @@ void CarMod::MainMenuTick(SDK::UObject** object, SDK::UFunction* func, void* par
 
 void CarMod::CarTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
 
-	if (GetAsyncKeyState(VK_F2)) {
+	if (GetAsyncKeyState(gameHotkey) || GetAsyncKeyState(VK_F2)) {
 		readSettingsFile();
 		if (!bFreeplay) {
 			((SDK::ACar_TA*)object)->SetCarScale(carScale);
@@ -39,7 +39,7 @@ void CarMod::CarTick(SDK::UObject** object, SDK::UFunction* func, void* params) 
 			((SDK::ACar_TA*)object)->SetMaxAngularSpeed(carTorque);
 			if (bStickyCeiling) {
 				((SDK::ACar_TA*)object)->StickyForceWall = 5.0;
-				((SDK::ACar_TA*)object)->StickyForceGround = 1.0;
+				((SDK::ACar_TA*)object)->StickyForceGround = 5.0;
 			}
 		}
 		else {
@@ -49,7 +49,7 @@ void CarMod::CarTick(SDK::UObject** object, SDK::UFunction* func, void* params) 
 			((SDK::ACar_Freeplay_TA*)object)->SetMaxAngularSpeed(carTorque);
 			if (bStickyCeiling) {
 				((SDK::ACar_Freeplay_TA*)object)->StickyForceWall = 5.0;
-				((SDK::ACar_Freeplay_TA*)object)->StickyForceGround = 1.0;
+				((SDK::ACar_Freeplay_TA*)object)->StickyForceGround = 5.0;
 			}
 			
 		}

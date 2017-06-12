@@ -30,6 +30,7 @@
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="Mods\ModBase.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
     <ClCompile Include="Mods\Modules\BallMod.cpp" />
     <ClCompile Include="Mods\Modules\CarMod.cpp" />
@@ -129,9 +130,9 @@
     <ClInclude Include="Utils\Wrapper.h" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3d9.lib" />
+    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3dx9.lib" />
     <Library Include="Libs\detours.lib" />
-    <Library Include="Libs\DirectX9\d3d9.lib" />
-    <Library Include="Libs\DirectX9\d3dx9.lib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Libs\DirectX9\d3dx9math.inl" />
@@ -243,14 +244,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RLMODDING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>"Y:\DirectXSDK\Include";"Y:\RL New SDK %285.28.17%29\boost_1_64_0";%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>C:\boost\stage\lib;$(ProjectDir)Libs\DirectX9\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Y:\DirectXSDK\Lib\x86;Y:\RL New SDK %285.28.17%29\boost_1_64_0\stage_x86\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

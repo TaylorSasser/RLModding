@@ -20,6 +20,10 @@ void TestClass::DX9RenderTick(IDirect3DDevice9* Device) {
 	//Device->Clear(1,&rec,D3DCLEAR_TARGET,D3DCOLOR_XRGB(255,0,0),0,0);
 }
 
+<<<<<<< HEAD
+=======
+/*void TestClass::DX9RenderTick(IDirect3DSurface9* Device) {
+>>>>>>> 8bda33116af03d0cab858e1201140141fd784703
 
 void TestClass::TCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {
 	printf("Connection established at :%d",((SDK::UTcpConnection*)object)->Socket);
@@ -31,6 +35,7 @@ void TestClass::TCPConnectionEnd(SDK::UObject** object,SDK::UFunction* func,void
 	
 }
 
+<<<<<<< HEAD
 void TestClass::InGameTick(SDK::UObject** object, SDK::UFunction* func, void* params) {
 	auto ByteToString = []() -> void {
 		unsigned char* inBytes = Connection->InBytesDecoded.Data;
@@ -41,3 +46,6 @@ void TestClass::InGameTick(SDK::UObject** object, SDK::UFunction* func, void* pa
 	};
 	ByteToString();
 }
+=======
+}*/
+>>>>>>> 8bda33116af03d0cab858e1201140141fd784703

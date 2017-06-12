@@ -15,11 +15,12 @@ class MainMenuMod : public ModBase {
 	private:
 		//Variables for reading and saving the settings
 		const std::string settingsFile = "settings.json";
-		bool bCustomBlog = false, bFoundController = false;
+		bool bCustomBlog = false, bFoundController = false, bHotkeys = false;
 		std::string blogTitle, blogBody, youtubeURL, youtubeTitle, MOTD;
 
 		//Read the settings file
 		void readSettingsFile();
+
 
 		//SDK variables needed
 		SDK::APlayerController_Menu_TA* menuController;

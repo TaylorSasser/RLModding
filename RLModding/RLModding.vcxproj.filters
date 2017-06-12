@@ -34,6 +34,10 @@
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Utils\Wrapper.cpp" />
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Mods\ModBase.cpp" />
+>>>>>>> 8bda33116af03d0cab858e1201140141fd784703
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -112,8 +116,13 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
+<<<<<<< HEAD
     <Library Include="Libs\DirectX9\d3d9.lib" />
     <Library Include="Libs\DirectX9\d3dx9.lib" />
+=======
+    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3dx9.lib" />
+    <Library Include="..\..\..\DirectXSDK\Lib\x86\d3d9.lib" />
+>>>>>>> 8bda33116af03d0cab858e1201140141fd784703
   </ItemGroup>
   <ItemGroup>
     <None Include="Libs\DirectX9\d3dx9math.inl" />

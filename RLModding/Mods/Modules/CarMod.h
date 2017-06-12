@@ -16,7 +16,7 @@ class CarMod : public ModBase {
 		void MainMenuTick(SDK::UObject**, SDK::UFunction*, void*);
 	private:
 		void readSettingsFile();
-		bool enabled = false;
+		
 		bool bUnlJumps = false, bStickyCeiling = false, bFreeplay = false;
 
 		float carScale, jumpTimeout, carTorque, carMaxSpeed;
