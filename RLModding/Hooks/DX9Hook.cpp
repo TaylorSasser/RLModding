@@ -55,7 +55,7 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
 
 	for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
-		std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::DX9RenderTick,Mod,std::placeholders::_1);
+		std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::onDX9RenderTick,Mod,std::placeholders::_1);
 		if (pDevice != nullptr) {
 			renderFunction(pDevice);
 		}

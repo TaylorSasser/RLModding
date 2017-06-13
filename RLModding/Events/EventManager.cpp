@@ -9,15 +9,15 @@ std::function<void(SDK::UObject**,SDK::UFunction*,void*)> functionTEMP;
 
 EventManager::EventManager() {
 	FunctionProto = std::bind(&EventManager::FunctionProxy,this,std::placeholders::_1,std::placeholders::_2,std::placeholders::_3,std::placeholders::_4);
-	addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
-	addFunction("Function TAGame.PlayerControllerBase_TA.Say_TA",&ModBase::ChatSend);
+	addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::onMainMenuTick);
+	addFunction("Function TAGame.PlayerControllerBase_TA.Say_TA",&ModBase::onChatSend);
 	addFunction("Function TAGame.Car_TA.OnJumpReleased",&ModBase::onActorJump);
-	addFunction("Function TAGame.Car_TA.Tick", &ModBase::CarTick);
-	addFunction("Function TAGame.Ball_TA.Tick", &ModBase::BallTick);
-	addFunction("Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.Tick", &ModBase::FreeplayTick);
-	addFunction("Function TAGame.GameEvent_TA.Tick", &ModBase::GameEventTick);
-	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::TCPConnectionBegin);
-	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::TCPConnectionEnd);
+	addFunction("Function TAGame.Car_TA.Tick", &ModBase::onCarTick);
+	addFunction("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
+	addFunction("Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.Tick", &ModBase::onFreeplayTick);
+	addFunction("Function TAGame.GameEvent_TA.Tick", &ModBase::onGameEventTick);
+	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::onTCPConnectionBegin);
+	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::onTCPConnectionEnd);
 
 }
 EventManager::~EventManager() {
@@ -31,9 +31,11 @@ void EventManager::FunctionProxy(SDK::UObject** object,SDK::UFunction* func,void
 	std::unordered_map<std::string, function>::iterator it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
+			if (Mod->isEnabled() == true) {
 			std::function<void(SDK::UObject**, SDK::UFunction*, void*)> tempvar = std::bind(it->second, Mod, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-			if (object != nullptr && func != nullptr && params != nullptr) {
-				tempvar(object, func, params);
+				if (object != nullptr && func != nullptr && params != nullptr) {
+					tempvar(object, func, params);
+				}
 			}
 		}
 	}

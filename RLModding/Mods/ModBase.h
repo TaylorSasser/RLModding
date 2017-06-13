@@ -14,40 +14,39 @@ public:
 		this->Key = KeyBind;
 	}
 
-	void Toggle() {
+	virtual void Toggle() {
 		this->enabled = !enabled;
 		if (this->enabled) {this->onEnable();} else {this->onDisable();}
 		this->onToggle();
 	}
+	virtual bool isEnabled() {return this->enabled;}
+	virtual std::string getName() {return this->name;}
+	virtual int	 getBind() { return this->Key; }
 
 	virtual void onEnable() {}
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual int getBind() { return this->Key;}
 
-	virtual void MainMenuTick(SDK::UObject**,SDK::UFunction*, void* parameters) {}					//APlayerController_Menu_TA -> PlayerTick(float deltatime)
-	virtual void InGameTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//APlayerController -> PlayerTick(float deltatime)
-	virtual void AActorTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//AActor_TA -> Tick(float deltatime)
-	virtual void BallTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}						//ABall_TA -> Tick(float deltatime)
-	virtual void CarTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}						//ACar_TA -> Tick(float deltatime)
-	virtual void GameEventTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//AGameEvent_TA -> Tick(float deltatime)
-	virtual void ReplayTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}					//UReplay_TA or UReplayManager_TA -> Tick(float deltatime)
-	virtual void DX9RenderTick(IDirect3DDevice9*) {}
-	virtual void FreeplayTick(SDK::UObject**, SDK::UFunction*, void*) {}			
+	virtual void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void*)		{}					
+	virtual void onInGameTick(SDK::UObject**,SDK::UFunction*,void*)			{}		
+	virtual void onAActorTick(SDK::UObject**,SDK::UFunction*,void*)			{}					
+	virtual void onBallTick(SDK::UObject**,SDK::UFunction*,void*)			{}						
+	virtual void onCarTick(SDK::UObject**,SDK::UFunction*,void*)			{}						
+	virtual void onGameEventTick(SDK::UObject**,SDK::UFunction*,void*)		{}				
+	virtual void onReplayTick(SDK::UObject**,SDK::UFunction*,void*)			{}
+	virtual void onDX9RenderTick(IDirect3DDevice9*)							{}
+	virtual void onFreeplayTick(SDK::UObject**,SDK::UFunction*,void*)		{}			
 	
 
-	virtual void EventMMRChange(SDK::UObject**, SDK::UFunction*, void* parameters) {}				//UOnlineGameDedicatedServer_X -> EventAverageMMRChanged(UOnlineGameDedicatedServer_X*
-	virtual void ChatSend(SDK::UObject**,SDK::UFunction*,void* parameters) {}
-	virtual void onActorJump(SDK::UObject**, SDK::UFunction*, void*) {}
-	virtual void TCPConnectionBegin(SDK::UObject**,SDK::UFunction*, void* parameters) {}
-	virtual void TCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void* parameters) {}
+	virtual void onEventMMRChange(SDK::UObject**, SDK::UFunction*,void*)	{}		
+	virtual void onChatSend(SDK::UObject**,SDK::UFunction*,void*)			{}
+	virtual void onActorJump(SDK::UObject**, SDK::UFunction*,void*)			{}
+	virtual void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*) {}
+	virtual void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*)	{}
 
 private:
-
 	bool enabled = false;
 	std::string name;
 	int Key = -1;
-
-
 };

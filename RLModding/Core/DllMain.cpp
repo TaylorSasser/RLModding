@@ -25,6 +25,4 @@ void onAttach(HMODULE hModule) {
 	KeyboardHook::Instance()->HookKeyboard();
 	DX9Hook::Instance()->InitGUI();
 	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto); 
-	
-	
 }
