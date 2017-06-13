@@ -25,6 +25,9 @@ public:
 		return instance;
 	}
 	void InitGUI();
+	void RemoveHook();
+
+
 	typedef long(__stdcall* EndScene_t)(IDirect3DDevice9* device);
 	myDirect3DCreate9 Direct3DCreate9;
 };

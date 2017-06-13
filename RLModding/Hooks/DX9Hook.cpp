@@ -51,6 +51,10 @@ void DX9Hook::InitGUI() {
 
 }
 
+void DX9Hook::RemoveHook() {
+	DetourRemove((PBYTE)pD3D9EndScene,(PBYTE)Hooked_EndScene);
+}
+
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
 

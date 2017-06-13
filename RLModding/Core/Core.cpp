@@ -2,6 +2,9 @@
 #include <Windows.h>
 #include "../Utils/Utils.h"
 #include "../RL/SDK.hpp"
+#include "../Hooks/KeyboardHook.h"
+#include "../Hooks/DX9Hook.h"
+#include "../Hooks/HookManager.h"
 
 namespace Core {
 
@@ -16,6 +19,9 @@ namespace Core {
 
 	void Restore() {
 		FreeConsole();
+		KeyboardHook::Instance()->RestoreKeyboard();
+		HookManager::Instance()->RemoveDetours();
+		DX9Hook::Instance()->RemoveHook();
 	}
 
 }

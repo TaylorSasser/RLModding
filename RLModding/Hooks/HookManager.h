@@ -15,5 +15,5 @@ public:
 		return instance;
 	}
 	void HookManager::DetourFunctions(std::function<void(SDK::UObject**, SDK::UFunction*, void*, bool)> function);
-
+	void HookManager::RemoveDetours();
 };

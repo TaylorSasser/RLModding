@@ -39,6 +39,10 @@ void HookManager::DetourFunctions(std::function<void(UObject**, UFunction*, void
 	printf("HookManager finished \n");
 }
 
+void HookManager::RemoveDetours() {
+	DetourRemove((PBYTE)OldCallFunction,(PBYTE)CallFunctionProxy);
+	DetourRemove((PBYTE)OldProcessEvent,(PBYTE)ProcessEventProxy);
+}
 
 VOID __declspec(naked) CallFunctionProxy() {
 	__asm {

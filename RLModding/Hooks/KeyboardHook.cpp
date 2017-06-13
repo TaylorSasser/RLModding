@@ -21,7 +21,9 @@ void KeyboardHook::HookKeyboard() {
 	OldWindow = reinterpret_cast<WNDPROC>(SetWindowLongPtr(RLWindow,GWL_WNDPROC,reinterpret_cast<LONG_PTR>(HookedWindowProc)));
 }
 
-void KeyboardHook::RestoreKeyboard() {}
+void KeyboardHook::RestoreKeyboard() {
+	SetWindowLongPtr(RLWindow,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(OldWindow));
+}
 
 LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code, WPARAM wParam,LPARAM lParam) {
 	if(code == WM_KEYDOWN) {
