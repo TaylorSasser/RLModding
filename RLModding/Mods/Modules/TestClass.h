@@ -7,6 +7,8 @@ class TestClass :
 public:
 	TestClass(std::string name,int key);
 	~TestClass();
+
+
 	void MainMenuTick(SDK::UObject**,SDK::UFunction*,void* params);
 	void ChatSend(SDK::UObject**,SDK::UFunction*,void* params);
 	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms);

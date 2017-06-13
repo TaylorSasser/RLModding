@@ -2,7 +2,7 @@
 #include "Modules/TestClass.h"
 
 ModHandler::ModHandler()  {
-	addMod(new TestClass());
+	addMod(new TestClass(NULL,NULL));
 }
 
 

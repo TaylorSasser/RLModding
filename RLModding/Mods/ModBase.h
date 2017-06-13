@@ -20,9 +20,9 @@ public:
 		this->onToggle();
 	}
 
-	virtual bool onEnable() {}
-	virtual bool onDisable() {}
-	virtual bool onToggle() {}
+	virtual void onEnable() {}
+	virtual void onDisable() {}
+	virtual void onToggle() {}
 
 	virtual int getBind() { return this->Key;}
 

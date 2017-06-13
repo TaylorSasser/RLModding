@@ -2,8 +2,6 @@
 #include "../Mods/ModBase.h"
 
 
-typedef bool (ModBase::*onKeyPress)(WORD,bool);
-
 class KeyboardHook {
 private:
 	static KeyboardHook* instance;
@@ -15,7 +13,7 @@ public:
 		if (!instance) instance = new KeyboardHook();
 		return instance;
 	}
-	void HookKeyboard(onKeyPress keypress);
+	void HookKeyboard();
 	void RestoreKeyboard();
 };
 

@@ -12,23 +12,19 @@ WNDPROC OldWindow;
 HWND	RLWindow;
 HINSTANCE RLModding;
 
-onKeyPress onKeyPressCallFunc;
 
-LRESULT __stdcall HookedWindowProc(int code,WPARAM wParam,LPARAM lParam);
+LRESULT __stdcall HookedWindowProc(HWND hwnd,int code,WPARAM wParam,LPARAM lParam);
 
-void KeyboardHook::HookKeyboard(onKeyPress keypress) {}
+void KeyboardHook::HookKeyboard() {
+	printf("Hook Keyboard called \n");
+	RLWindow = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
+	OldWindow = reinterpret_cast<WNDPROC>(SetWindowLongPtr(RLWindow,GWL_WNDPROC,reinterpret_cast<LONG_PTR>(HookedWindowProc)));
+}
 
 void KeyboardHook::RestoreKeyboard() {}
 
-LRESULT __stdcall HookedWindowProc(int code, WPARAM wParam,LPARAM lParam) {
-	
-
-
-	for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
-		if (Mod->getBind() == code) {
-			Mod->Toggle();
-		}
-	}
-	return 0;
+LRESULT __stdcall HookedWindowProc(HWND hwnd,int code, WPARAM wParam,LPARAM lParam) {
+	printf("Hooked WNDPROC called \n");
+	return CallWindowProc(OldWindow,hwnd,code,wParam,lParam);
 }
 
