@@ -30,7 +30,7 @@ void EventManager::addFunction(std::string funcname,function func) {
 void EventManager::FunctionProxy(SDK::UObject** object,SDK::UFunction* func,void* params,bool isCallFunc) {
 	std::unordered_map<std::string, function>::iterator it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
-		for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
+		for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
 			if (Mod->isEnabled() == true) {
 			std::function<void(SDK::UObject**, SDK::UFunction*, void*)> tempvar = std::bind(it->second, Mod, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
 				if (object != nullptr && func != nullptr && params != nullptr) {

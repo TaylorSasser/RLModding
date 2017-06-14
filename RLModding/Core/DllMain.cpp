@@ -8,11 +8,13 @@
 
 HANDLE MainThread;
 void onAttach(HMODULE hModule);
+static HMODULE RL_HModule;
 
 BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 	switch (dwReason) {
 	case DLL_PROCESS_ATTACH:
 		MainThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)onAttach, hModule, 0, NULL);
+		RL_HModule = hModule;
 	case DLL_PROCESS_DETACH:
 		CloseHandle(MainThread);
 		Core::Restore();

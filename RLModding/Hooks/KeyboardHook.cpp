@@ -27,7 +27,7 @@ void KeyboardHook::RestoreKeyboard() {
 
 LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code, WPARAM wParam,LPARAM lParam) {
 	if(code == WM_KEYDOWN) {
-		for (auto& Mod : Wrapper::Interfaces::getModHandler()->GetMods()) {
+		for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
 			if (Mod->getBind() == wParam && Mod->getBind() != NULL && &Mod != nullptr) {
 				std::function<void()> CallToggle = std::bind(&ModBase::Toggle,Mod);
 				CallToggle();return true;
