@@ -3,8 +3,7 @@
 #include "ModBase.h"
 #include <string>
 
-class ModHandler
-{
+class ModHandler {
 public:
 	ModHandler();
 	~ModHandler();

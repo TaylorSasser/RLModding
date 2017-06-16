@@ -1,4 +1,5 @@
 #pragma once
+#include <Windows.h>
 #include "../Libs/DirectX9/d3d9.h"
 
 
@@ -14,11 +15,13 @@ public:
 		if (!instance) instance = new GUIConsole();
 		return instance;
 	}
-	void ReadKeyBinds();
-	void SetModKeyBinds();
-	void isShowing();
-	void Show();
-	void Hide();
+	//void ReadKeyBinds();
+	//void SetModKeyBinds();
+	//void isShowing();
+	//void Hide();
+
+	bool MouseClickEvent(enum ClickEvent,int x, int y);
+	bool KeyPressEvent(WPARAM);
 
 	void InitDevice(IDirect3DDevice9* pDevice);
 	void DrawGUI();

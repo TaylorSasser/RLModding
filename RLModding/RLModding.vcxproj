@@ -53,6 +53,7 @@
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Events\EventManager.h" />
+    <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Gui\GUIConsole.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\HookManager.h" />

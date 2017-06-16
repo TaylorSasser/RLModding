@@ -103,6 +103,7 @@
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Utils\Wrapper.h" />
     <ClInclude Include="Gui\GUIConsole.h" />
+    <ClInclude Include="Gui\ClickEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

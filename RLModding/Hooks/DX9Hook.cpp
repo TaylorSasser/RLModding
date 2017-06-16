@@ -2,6 +2,7 @@
 #include <thread>
 #include "../Utils/Wrapper.h"
 #include "../Libs/Detours.h"
+#include "../Gui/GUIConsole.h"
 
 DX9Hook* DX9Hook::instance = nullptr;
 DX9Hook::DX9Hook(){}
@@ -57,6 +58,9 @@ void DX9Hook::RemoveHook() {
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
+
+
+	GUIConsole::Instance()->DrawGUI();
 
 	for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
 		std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::onDX9RenderTick,Mod,std::placeholders::_1);

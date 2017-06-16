@@ -19,9 +19,6 @@ namespace Core {
 
 	void Restore() {
 		FreeConsole();
-		KeyboardHook::Instance()->RestoreKeyboard();
-		HookManager::Instance()->RemoveDetours();
-		DX9Hook::Instance()->RemoveHook();
 	}
 
 }
