@@ -22,6 +22,7 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code,WPARAM wParam,LPARAM lPar
 void KeyboardHook::HookKeyboard() {
 	printf("Hook Keyboard called \n");
 	RLWindow = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
+	while (RLWindow == nullptr); Sleep(200);
 	OldWindow = reinterpret_cast<WNDPROC>(SetWindowLongPtr(RLWindow,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(HookedWindowProc)));
 
 }

@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../../Utils/Utils.h"
 #include "../../Libs/DirectX9/d3d9.h"
+#include <functional>
 
 bool isConnected = false;
 SDK::UTcpConnection* Connection;
@@ -10,7 +11,18 @@ D3DRECT rec = { 200, 200, 400, 600 };
 TestClass::TestClass(std::string name,int key) : ModBase(name,key) {}
 TestClass::~TestClass(){}
 
-void TestClass::onEnable() {printf("Test class enabled \n");}
+void TestClass::onEnable() {
+	printf("Test class enabled \n");
+
+	static auto fn = SDK::UObject::FindObject<SDK::UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.BeginState");
+	auto keyProp  = SDK::UObject::FindObject<SDK::UNameProperty>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.BeginState.P");
+
+	struct {
+		SDK::UNameProperty* property;
+	} GenerateKeys;
+	GenerateKeys.property = keyProp;
+
+}
 void TestClass::onDisable() {printf("Test class disabled \n");}
 
 void TestClass::onMainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
