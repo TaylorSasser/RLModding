@@ -46,7 +46,7 @@ void GUIConsole::DrawGUI() {
 }
 
 bool GUIConsole::MouseClickEvent(ClickEvent e,int x, int y) {
-	printf("Mouse move event X:%d Y:%d",x,y);
+	printf("Mouse Click event X:%d Y:%d \n",x,y);
 	return false;
 }
 

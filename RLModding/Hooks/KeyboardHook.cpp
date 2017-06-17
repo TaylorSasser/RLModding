@@ -39,7 +39,13 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code, WPARAM wParam,LPARAM lPa
 		case WM_RBUTTONUP:
 			return (GUIConsole::Instance()->MouseClickEvent(ClickEvent::RightClick, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 		case WM_KEYUP:
-			return (GUIConsole::Instance()->KeyPressEvent(wParam) ? 1 : CallWindowProc(OldWindow,hwnd,code,wParam,lParam));
+			if (GUIConsole::Instance()->KeyPressEvent(wParam) != false) {return true;}
+			for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
+				if (Mod->getBind() == wParam) {
+					Mod->Toggle();
+				}
+			}
+			return CallWindowProc(OldWindow,hwnd,code,wParam,lParam);
 		default:
 			return CallWindowProc(OldWindow, hwnd, code, wParam, lParam);
 	}
