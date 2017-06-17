@@ -13,11 +13,17 @@ DX9Hook::~DX9Hook(){}
 LRESULT CALLBACK D3D9MsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {return DefWindowProc(hwnd, uMsg, wParam, lParam); }
 
 typedef HRESULT(__stdcall* D3D9EndScene_t)(LPDIRECT3DDEVICE9);
+typedef HRESULT(__stdcall* D3D9HookedReset_t)(LPDIRECT3DDEVICE9,D3DPRESENT_PARAMETERS*);
+
 D3D9EndScene_t pD3D9EndScene;
+D3D9HookedReset_t pD3D9HookedReset;
+
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice);
+HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters);
 
 DWORD* D3D9VTable;
 DWORD EndScene = NULL;
+DWORD HookedReset = NULL;
 DWORD Device = NULL;
 
 static bool FirstRun = false;
@@ -47,14 +53,27 @@ void DX9Hook::InitGUI() {
 	DestroyWindow(hWnd);
 
 	EndScene = D3D9VTable[42];
-	pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene,(PBYTE)Hooked_EndScene);
+	HookedReset = D3D9VTable[16];
 
+	pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene,(PBYTE)Hooked_EndScene);
+	pD3D9HookedReset = (D3D9HookedReset_t)DetourFunction((PBYTE)HookedReset,(PBYTE)Hooked_Reset);
 
 }
 
 void DX9Hook::RemoveHook() {
 	DetourRemove((PBYTE)pD3D9EndScene,(PBYTE)Hooked_EndScene);
 }
+HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
+	//ImGui_ImplDX9_InvalidateObjects();			Destruct objects
+	//GUIConsole::InvalidateObjects();				Destruct objects
+
+	HRESULT restore = pD3D9HookedReset(pDevice,pPresentationParameters);
+
+	//ImGui_ImplDX9_CreateDeviceObjects();			Create new objects
+	//GUIConsole::CreateObjects();					Create new objects
+	return restore;
+}
+
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
