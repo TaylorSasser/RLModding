@@ -1,6 +1,8 @@
 #include "Utils.h"
 #include "Pattern/PatternFinder.h"
 #include "../RL/SDK.hpp"
+#include "boost/property_tree/ptree.hpp"
+#include "boost/property_tree/json_parser.hpp"
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -47,33 +49,21 @@ namespace Utils {
 		return SDK::FString(p);
 	}
 
-	std::unordered_map<std::string, char> getKeybinds(string csv) {
-		// initialize keybind map if not initialized yet
-		if (keybindMap.size() == 0) {
-			initializeKeybinds();
-		}
+	std::unordered_map<std::string, int> getKeybinds(string file) {
+		boost::property_tree::ptree pt;
+		boost::property_tree::read_json(file, pt);
+		//Add Hotkeys to map
+		keybindMap["Menu_Hotkey"] = pt.get<int>("Menu_Hotkey", 112); //Default F1 (112)
+		keybindMap["Game_Hotkey"] = pt.get<int>("Game_Hotkey", 113); //Default F2 (113)
+		keybindMap["MapLoader_Hotkey"] = pt.get<int>("MapLoader_Hotkey", 114); //Default F3 (114)
+		keybindMap["Join_Hotkey"] = pt.get<int>("Join_Hotkey", 115); //Default F4 (115)
+		keybindMap["Host_Hotkey"] = pt.get<int>("Host_Hotkey", 116); //Default F5 (116)
 
-		std::unordered_map<std::string, char> keybinds;
+		return keybindMap;
 
-		std::ifstream data("keybinds.csv");
-
-		std::string line;
-		while (std::getline(data, line))
-		{
-			string key;
-			string action;
-			getline(data, key, ',');
-			getline(data, action, ',');
-
-			if (action != "none" && keybindMap[key] != NULL) {
-				keybinds[action] = keybindMap[key];
-			}
-		}
-
-		return keybinds;
 	}
 
-	void initializeKeybinds() {
+	std::unordered_map<std::string, int> initializeKeybinds() {
 		keybindMap["VK_ABNT_C1"] = 0xC1;
 		keybindMap["VK_ABNT_C2"] = 0xC2;
 		keybindMap["VK_ADD"] = 0x6B;
@@ -266,6 +256,7 @@ namespace Utils {
 		keybindMap["VK_VOLUME_UP"] = 0xAF;
 		keybindMap["VK_XBUTTON1"] = 0x05;
 		keybindMap["VK_XBUTTON2"] = 0x06;
+		return keybindMap;
 	}
 
 };

@@ -25,7 +25,7 @@ namespace Utils {
 	SDK::FString to_fstring(std::string s);
 
 
-	static std::unordered_map<std::string, char> keybindMap;
-	std::unordered_map<std::string, char> getKeybinds(string csv);
-	void initializeKeybinds();
+	static std::unordered_map<std::string, int> keybindMap;
+	std::unordered_map<std::string, int> getKeybinds(std::string file);
+	std::unordered_map<std::string, int> initializeKeybinds();
 }
