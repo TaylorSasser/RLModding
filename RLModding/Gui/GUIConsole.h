@@ -21,7 +21,7 @@ public:
 	//void Hide();
 
 	bool MouseClickEvent(enum ClickEvent,int x, int y);
-	bool KeyPressEvent(WPARAM);
+	bool KeyPressEvent(enum KeyEvent, WPARAM);
 
 	void InitDevice();
 	void DrawGUI(IDirect3DDevice9* pDevice);
