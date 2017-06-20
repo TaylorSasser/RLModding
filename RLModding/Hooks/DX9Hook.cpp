@@ -79,7 +79,7 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
 
 
-	GUIConsole::Instance()->DrawGUI();
+	GUIConsole::Instance()->DrawGUI(pDevice);
 
 	for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
 		std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::onDX9RenderTick,Mod,std::placeholders::_1);

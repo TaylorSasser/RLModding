@@ -12,37 +12,24 @@ GUIConsole::GUIConsole(){}
 GUIConsole::~GUIConsole(){}
 GUIConsole* GUIConsole::instance = nullptr;
 
-bool isTestClassEnabled;
+IDirect3DDevice9* RLDevice = nullptr;
 
 
-void GUIConsole::InitDevice(IDirect3DDevice9* pDevice) {
-	
-
+void GUIConsole::InitDevice() {
 	//ImGui_ImplDX9_Init(FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)"),pDevice);
 	//ImGui::GetIO().MouseDrawCursor = true;
 }
 
-void GUIConsole::DrawGUI() {
-	/*
-	ImGui_ImplDX9_NewFrame();
-	
-	ImGui::Begin("Rocket Launcher",NULL,ImVec2(300,250),0.75f); 
-	{
-		if (ImGui::CollapsingHeader("In-Game Mods")) {
-			ImGui::Checkbox("TestClass",&isTestClassEnabled);
-		}
-		if (ImGui::CollapsingHeader("Render Mods")) {
-			ImGui::Checkbox("Example Render Mod",NULL);
-		}
-		if (ImGui::CollapsingHeader("Miscellaneous Mods")) {
-			
-		}
-		if (ImGui::CollapsingHeader("Console")) {
+void GUIConsole::DrawGUI(IDirect3DDevice9* pDevice) {
 
-		}
+
+
+	if (pDevice != nullptr) {
+		D3DRECT aRec = { 200, 200, 400, 600 };
+		pDevice->Clear(1, &aRec, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 0, 0), 0, 0);
+	} else {
+		printf("DX9 Device is nullptr \n");
 	}
-	ImGui::End();
-	*/
 }
 
 bool GUIConsole::MouseClickEvent(ClickEvent e,int x, int y) {

@@ -23,7 +23,7 @@ public:
 	bool MouseClickEvent(enum ClickEvent,int x, int y);
 	bool KeyPressEvent(WPARAM);
 
-	void InitDevice(IDirect3DDevice9* pDevice);
-	void DrawGUI();
+	void InitDevice();
+	void DrawGUI(IDirect3DDevice9* pDevice);
 };
 

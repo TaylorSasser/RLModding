@@ -86,7 +86,7 @@ struct FString : private TArray<wchar_t>
 
 	inline const wchar_t* c_str() const
 	{
-		return Data;
+			return Data;
 	}
 
 	std::string ToString() const

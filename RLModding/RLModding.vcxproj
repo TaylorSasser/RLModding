@@ -22,6 +22,7 @@
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
     <ClCompile Include="Events\EventManager.cpp" />
+    <ClCompile Include="Filesystem\FileManager.cpp" />
     <ClCompile Include="Gui\GUIConsole.cpp" />
     <ClCompile Include="Hooks\DX9Hook.cpp" />
     <ClCompile Include="Hooks\HookManager.cpp" />
@@ -49,10 +50,14 @@
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Utils\Wrapper.cpp" />
+    <ClCompile Include="Vector\Vector2D.cpp" />
+    <ClCompile Include="Vector\Vector3D.cpp" />
+    <ClCompile Include="Vector\VMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Events\EventManager.h" />
+    <ClInclude Include="Filesystem\FileManager.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Gui\GUIConsole.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />
@@ -122,6 +127,9 @@
     <ClInclude Include="Utils\SDKDefines.h" />
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Utils\Wrapper.h" />
+    <ClInclude Include="Vector\Vector2D.h" />
+    <ClInclude Include="Vector\Vector3D.h" />
+    <ClInclude Include="Vector\VMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
