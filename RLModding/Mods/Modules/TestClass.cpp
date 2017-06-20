@@ -10,7 +10,7 @@ bool isConnected = false;
 SDK::UTcpConnection* Connection;
 D3DRECT rec = { 200, 200, 400, 600 };
 
-TestClass::TestClass(std::string name,int key) : ModBase(name,key) {}
+TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
 
 void TestClass::onEnable() {

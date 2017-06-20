@@ -1,7 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include "../RL/SDK.hpp"
-
+#include <unordered_map>
 
 namespace Utils {
 	struct FOutParamRec {
@@ -17,8 +17,15 @@ namespace Utils {
 		BYTE*				Locals;
 		struct FFrame*		PreviousFrame;
 	};
+
+
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 	SDK::FString to_fstring(std::string s);
+
+
+	static std::unordered_map<std::string, int> keybindMap;
+	std::unordered_map<std::string, int> getKeybinds(std::string file);
+	std::unordered_map<std::string, int> initializeKeybinds();
 }
