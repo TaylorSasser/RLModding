@@ -19,7 +19,6 @@ public:
 		if (this->enabled) {this->onEnable();} else {this->onDisable();}
 		this->onToggle();
 	}
-<<<<<<< HEAD
 
 	virtual bool isEnabled() {return this->enabled;}
 
@@ -28,15 +27,6 @@ public:
 
 	virtual int	 getBind() { return this->Key; }
 	virtual void setBind(int keycode) { this->Key = keycode;}
-=======
-	virtual bool isEnabled() { return this->enabled; }
-
-	virtual std::string getName() { return this->name; }
-	virtual void setName(std::string name) { this->name = name; }
-
-	virtual int	 getBind() { return this->Key; }
-	virtual void setBind(int keycode) { this->Key = keycode; }
->>>>>>> fc6b871b39318015a5fe980134bcc2acf4b08903
 
 	virtual void onEnable() {}
 	virtual void onDisable() {}
