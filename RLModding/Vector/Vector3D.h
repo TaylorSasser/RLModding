@@ -12,15 +12,6 @@ namespace Vec {
 
 		Vector3D(vec_t x, vec_t y, vec_t z);
 		Vector3D(SDK::FVector);
-		Vector3D(vec_t* clr);
-
-		void Init(vec_t ix = 0.0f, vec_t iy = 0.0f, vec_t iz = 0.0f);
-
-		vec_t operator[] (int i) const;
-		vec_t& operator[] (int i);
-
-		vec_t* Base();
-		vec_t const* Base() const;
 
 		void Zero();
 

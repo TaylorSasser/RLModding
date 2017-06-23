@@ -22,7 +22,7 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
+	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto);
 	DX9Hook::Instance()->InitGUI();
 	KeyboardHook::Instance()->HookKeyboard();
-	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto);
 }

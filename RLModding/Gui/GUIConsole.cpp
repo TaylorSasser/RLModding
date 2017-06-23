@@ -15,7 +15,7 @@ GUIConsole* GUIConsole::instance = nullptr;
 IDirect3DDevice9* RLDevice = nullptr;
 bool isGUIInit = false;
 HWND g_hWindow = nullptr;
-bool isMenuShowing = true;
+bool isMenuShowing = false;
 
 
 bool show_test_window = false;
@@ -34,8 +34,7 @@ void GUIConsole::InitDevice() {
 }
 
 void GUIConsole::DrawGUI(IDirect3DDevice9* pDevice) {
-
-
+/*
 
 	if (pDevice != nullptr) {
 		//D3DRECT aRec = { 200, 200, 400, 600 };
@@ -110,7 +109,6 @@ void GUIConsole::DrawGUI(IDirect3DDevice9* pDevice) {
 
 
 			}
-			*/
 
 			{
 				ImGui::SetNextWindowPos(ImVec2(420, 20), ImGuiSetCond_FirstUseEver);
@@ -146,6 +144,7 @@ void GUIConsole::DrawGUI(IDirect3DDevice9* pDevice) {
 				ImGui::End();
 
 			}
+			
 		
 
 			ImGui::Render();
@@ -154,8 +153,7 @@ void GUIConsole::DrawGUI(IDirect3DDevice9* pDevice) {
 	else {
 		printf("DX9 Device is nullptr \n");
 	}
-
-
+	*/
 }
 
 bool GUIConsole::MouseClickEvent(ClickEvent e,int x, int y) {

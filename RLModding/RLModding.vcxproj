@@ -50,7 +50,7 @@
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Utils\Wrapper.cpp" />
-    <ClCompile Include="Vector\Vector2D.cpp" />
+    <ClCompile Include="Vector\Vector4D.cpp" />
     <ClCompile Include="Vector\Vector3D.cpp" />
     <ClCompile Include="Vector\VMatrix.cpp" />
   </ItemGroup>
@@ -127,7 +127,7 @@
     <ClInclude Include="Utils\SDKDefines.h" />
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Utils\Wrapper.h" />
-    <ClInclude Include="Vector\Vector2D.h" />
+    <ClInclude Include="Vector\Vector4D.h" />
     <ClInclude Include="Vector\Vector3D.h" />
     <ClInclude Include="Vector\VMatrix.h" />
   </ItemGroup>

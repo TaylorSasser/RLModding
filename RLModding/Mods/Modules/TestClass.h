@@ -14,6 +14,7 @@ public:
 	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms);
 	void onDX9RenderTick(IDirect3DDevice9* device);
 	void onInGameTick(SDK::UObject**, SDK::UFunction*, void*);
+	void onCarTick(SDK::UObject**, SDK::UFunction*, void*);
 
 	void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*);
 	void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*);

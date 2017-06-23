@@ -1,7 +1,9 @@
 #pragma once
 #include <Windows.h>
 #include "../RL/SDK.hpp"
+#include "../Vector/Vector3D.h"
 #include <unordered_map>
+#include "../Libs/DirectX9/d3d9.h"
 
 namespace Utils {
 	struct FOutParamRec {
@@ -24,6 +26,7 @@ namespace Utils {
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 	SDK::FString to_fstring(std::string s);
 
+	Vec::Vector3D WorldToScreen(IDirect3DDevice9*,SDK::FVector,SDK::APlayerController_TA*);
 
 	static std::unordered_map<std::string, int> keybindMap;
 	std::unordered_map<std::string, int> getKeybinds(std::string file);

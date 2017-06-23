@@ -17,44 +17,20 @@ namespace Vec {
 		y = vector.Y;
 		z = vector.Z;
 	}
-	Vector3D::Vector3D(vec_t* clr) {
-		x = clr[0];
-		y = clr[1];
-		z = clr[2];
-	}
-
-	void Vector3D::Init(vec_t ix,vec_t iy,vec_t iz) {
-		x = ix; y = iy; z = iz;
-	}
 
 	Vector3D Vector3D::Normalize() const {
 		Vector3D res = *this;
 		vec_t length = res.Length();
 		if (length != 0.0f) {
-			res /= 1;
-		} else {
-			res.x = res.y = res.z = 0.0f;
+			res.x /= length;
+			res.y /= length;
+			res.z /= length;
 		}
 		return res;
 	}
 
 	void Vector3D::Zero() {
 		x = y = z = 0.0f;
-	}
-
-	vec_t& Vector3D::operator[](int i) {
-		return ((vec_t*)this)[i];
-	}
-	vec_t Vector3D::operator[](int i) const {
-		return ((vec_t*)this)[i];
-	}
-
-	vec_t* Vector3D::Base() {
-		return (vec_t*)this;
-	}
-
-	vec_t const* Vector3D::Base() const {
-		return (vec_t const*)this;
 	}
 
 	Vector3D& Vector3D::operator=(const Vector3D& vOther) {
@@ -65,7 +41,7 @@ namespace Vec {
 
 	bool Vector3D::operator==(const Vector3D& src) const {
 		return (src.x == x) && (src.y == y) && (src.z == z);
-	}
+	}5
 
 	bool Vector3D::operator!=(const Vector3D& src) const {
 		return (src.x != x) || (src.y != y) || (src.z != z);
