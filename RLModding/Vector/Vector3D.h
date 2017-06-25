@@ -91,7 +91,5 @@ namespace Vec {
 		}
 
 		Vector3D Cross(const Vector3D&vOther) const;
-
-
 	};
 }

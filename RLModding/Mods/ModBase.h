@@ -42,7 +42,7 @@ public:
 	virtual void onReplayTick(SDK::UObject**,SDK::UFunction*,void*)			{}
 	virtual void onDX9RenderTick(IDirect3DDevice9*)							{}
 	virtual void onFreeplayTick(SDK::UObject**,SDK::UFunction*,void*)		{}			
-	
+	virtual void onPostRender(SDK::UObject**,SDK::UFunction*,void*)			{}
 
 	virtual void onEventMMRChange(SDK::UObject**, SDK::UFunction*,void*)	{}		
 	virtual void onChatSend(SDK::UObject**,SDK::UFunction*,void*)			{}

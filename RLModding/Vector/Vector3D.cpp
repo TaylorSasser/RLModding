@@ -41,7 +41,7 @@ namespace Vec {
 
 	bool Vector3D::operator==(const Vector3D& src) const {
 		return (src.x == x) && (src.y == y) && (src.z == z);
-	}5
+	}
 
 	bool Vector3D::operator!=(const Vector3D& src) const {
 		return (src.x != x) || (src.y != y) || (src.z != z);
@@ -107,6 +107,4 @@ namespace Vec {
 		res.z = x*vOther.y - y*vOther.x;
 		return res;
 	}
-
-
 }

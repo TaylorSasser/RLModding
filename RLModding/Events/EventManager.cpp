@@ -18,6 +18,7 @@ EventManager::EventManager() {
 	addFunction("Function TAGame.GameEvent_TA.Tick", &ModBase::onGameEventTick);
 	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::onTCPConnectionBegin);
 	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::onTCPConnectionEnd);
+	addFunction("Function Engine.GameViewportClient.PostRender",&ModBase::onPostRender);
 
 }
 EventManager::~EventManager() {

@@ -5,9 +5,10 @@
 #include "../../Libs/DirectX9/d3dx9.h"
 #include <functional>
 #include "../../Vector/Vector3D.h"
-#include "../../Vector/VMatrix.h"
+#include "../../Vector/VecUtils.h"
 
 SDK::ACar_TA* currentCar = nullptr;
+SDK::UCanvas* currentCanvas = nullptr;
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
@@ -16,26 +17,32 @@ void TestClass::onEnable() {printf("Test class enabled \n");}
 void TestClass::onDisable() {printf("Test class disabled \n");}
 
 void TestClass::onMainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
-void TestClass::onChatSend(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
+void TestClass::onChatSend(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
+void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
+
+void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
+	printf("Post Render called \n");
+	currentCanvas = ((SDK::UGameViewportClient_PostRender_Params*)parameters)->Canvas;
+}
+
+void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
+	if (currentCanvas == nullptr || currentCar == nullptr) return;
+	printf("CurrentCar & Canvas not null %p,%p \n",currentCar,currentCanvas);
+
+	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas,currentCar->PlayerController,currentCar->CarMesh->Bounds.Origin);
+	if (&carBoundsOrigin == nullptr) return;
+	printf("Carbounds Vector %p \n",&carBoundsOrigin);
+
+	D3DRECT aRec = {carBoundsOrigin.x,carBoundsOrigin.y,carBoundsOrigin.x - 20,carBoundsOrigin.y - 20};
+
+	Device->Clear(1,&aRec, 0, D3DCOLOR_XRGB(127, 0, 127), 0, 0);
 
 }
-void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
-void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
-
-	if (Device == nullptr) return;
-	printf("Device is not null \n");
-	Vec::Vector3D aVec = Utils::WorldToScreen(Device,currentCar->Mesh->Bounds.Origin,currentCar->PlayerController);
-	Vec::Vector3D aVec1 = Utils::WorldToScreen(Device,currentCar->Mesh->Bounds.BoxExtent,currentCar->PlayerController);
-	
-	if (aVec.x == 0 || aVec.y == 0 || aVec1.x == 0 || aVec1.y == 0) return;
-	printf("2D Vec %ld,%ld,%ld,%ld \n",aVec.x,aVec.y,aVec1.x,aVec1.y);
-	D3DRECT aRec  = {aVec.x,aVec.y,aVec1.x,aVec1.y};
-	Device->Clear(1,&aRec,0,D3DCOLOR_XRGB(127,0,127),0,0);
-}	
 
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onTCPConnectionEnd(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onInGameTick(SDK::UObject** object, SDK::UFunction* func, void* params) {}
 void TestClass::onCarTick(SDK::UObject** object,SDK::UFunction* funct,void* params) {
+	printf("Car tick called \n");
 	currentCar = (SDK::ACar_TA*)*object; 
 }

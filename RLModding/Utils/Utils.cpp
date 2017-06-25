@@ -7,9 +7,6 @@
 #include <sstream>
 #include <fstream>
 #include <string>
-#include "../Vector/VMatrix.h"
-#include <d3d9.h>
-#include <cmath>
 
 using std::string;
 
@@ -261,35 +258,6 @@ namespace Utils {
 		keybindMap["VK_XBUTTON2"] = 0x06;
 		return keybindMap;
 	}
-	D3DDEVICE_CREATION_PARAMETERS cparams;
-	RECT rect;
-
-	Vec::Vector3D WorldToScreen(IDirect3DDevice9* Device, SDK::FVector Location, SDK::APlayerController_TA* playerController){
-		Device->GetCreationParameters(&cparams);
-		GetWindowRect(cparams.hFocusWindow, &rect);
 	
-		Vec::Vector3D Ret(0,0,0);
-		SDK::FVector AxisX, AxisY, AxisZ, Delta, Transformed;
 
-
-		playerController->STATIC_GetAxes(playerController->PlayerCamera->Rotation, &AxisX, &AxisY, &AxisZ);
-		Delta.X = Location.X - playerController->PlayerCamera->Location.X;
-		Delta.Y = Location.Y - playerController->PlayerCamera->Location.Y;
-		Delta.Z = Location.Z - playerController->PlayerCamera->Location.Z;
-
-		Transformed.X = playerController->STATIC_Dot_VectorVector(Delta, AxisY);
-		Transformed.Y = playerController->STATIC_Dot_VectorVector(Delta, AxisZ);
-		Transformed.Z = playerController->STATIC_Dot_VectorVector(Delta, AxisX);
-
-		if (Transformed.Z < 1.00f)
-			Transformed.Z = 1.00f;
-
-		float FOVAngle = playerController->PlayerCamera->GetFOVAngle();
-
-		Ret.x = (float)(rect.right / 2.0f) + Transformed.X * (float)((rect.right / 2.0f) / tan(FOVAngle * (float)CONST_Pi / 360.0f)) / Transformed.Z;
-		Ret.y = (float)(rect.bottom / 2.0f) + -Transformed.Y * (float)((rect.bottom / 2.0f) / tan(FOVAngle * (float)CONST_Pi / 360.0f)) / Transformed.Z;
-		Ret.z = 0;
-
-		return Ret;
-	}
 };
