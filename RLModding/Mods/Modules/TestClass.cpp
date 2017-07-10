@@ -23,23 +23,17 @@ void TestClass::onChatSend(SDK::UObject** object,SDK::UFunction* function,void* 
 void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
 
 void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
-	printf("Post Render called \n");
 	currentCanvas = ((SDK::UGameViewportClient_PostRender_Params*)parameters)->Canvas;
 }
 
 void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
 	if (currentCanvas == nullptr || currentCar == nullptr) return;
-	printf("CurrentCar & Canvas not null %p,%p \n",currentCar,currentCanvas);
-
 	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
 	pPlayerController->GetPlayerViewPoint(&Camera,&Rotator);
 
 	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas,pPlayerController,currentCar->CarMesh->Bounds.Origin);
 	if (&carBoundsOrigin == nullptr) return;
-	printf("Carbounds Vector %p \n",&carBoundsOrigin);
-
 	D3DRECT aRec = {carBoundsOrigin.x,carBoundsOrigin.y,carBoundsOrigin.x - 20,carBoundsOrigin.y - 20};
-
 	Device->Clear(1,&aRec, 0, D3DCOLOR_XRGB(127, 0, 127), 0, 0);
 
 }

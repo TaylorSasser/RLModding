@@ -3,9 +3,9 @@ Rocket League SDK TODO List
 When you finish something move it to the completed list.
 
 TODO:
-	- Add ablility to pause game
-	- Add car acceleration to car mod class
-
+	- World to screen.
+	- Implement all the mods 
+	- DO LAN LAST
 Completed:
 	- Car Mod class
 	- Ball Mod class

@@ -3,12 +3,12 @@
 
 namespace Vec {
 
-	typedef float vec_t;
+	typedef double vec_t;
 
 	class Vector3D {
 
 	public:
-		vec_t x, y, z;
+		double x, y, z;
 
 		Vector3D(vec_t x, vec_t y, vec_t z);
 		Vector3D(SDK::FVector);
@@ -25,7 +25,7 @@ namespace Vec {
 			x += v.x; y += v.y; z += v.z;
 			return *this;
 		}
-		Vector3D& operator+=(float fl) {
+		Vector3D& operator+=(double fl) {
 			x += fl; y += fl; z += fl;
 			return *this;
 		}
@@ -34,7 +34,7 @@ namespace Vec {
 			x -= v.x; y -= v.y; z -= v.z;
 			return *this;
 		}
-		Vector3D& operator-=(float fl) {
+		Vector3D& operator-=(double fl) {
 			x -= fl; y -= fl; z -= fl;
 			return *this;
 		}
@@ -43,7 +43,7 @@ namespace Vec {
 			x *= v.x; y *= v.y; z *= v.z;
 			return *this;
 		}
-		Vector3D& operator*=(float fl) {
+		Vector3D& operator*=(double fl) {
 			x *= fl; y *= fl; z *= fl;
 			return *this;
 		}
@@ -52,7 +52,7 @@ namespace Vec {
 			x /= v.x; y /= v.y; z /= v.z;
 			return *this;
 		}
-		Vector3D& operator/=(float fl) {
+		Vector3D& operator/=(double fl) {
 			x /= fl; y /= fl; z /= fl;
 			return *this;
 		}

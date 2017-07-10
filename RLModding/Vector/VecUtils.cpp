@@ -11,9 +11,9 @@ namespace Vec {
 		double Yaw = rot.Yaw * URotationToRadians;
 		double Pitch = rot.Pitch * URotationToRadians;
 		double cosPitch = cos(Pitch);
-		Vec.x = (float)cos(Yaw) * cosPitch;
-		Vec.y = (float)sin(Yaw) * cosPitch;
-		Vec.z = (float)sin(Pitch);
+		Vec.x = (vec_t)cos(Yaw) * cosPitch;
+		Vec.y = (vec_t)sin(Yaw) * cosPitch;
+		Vec.z = (vec_t)sin(Pitch);
 		return Vec;
 	}
 
@@ -50,9 +50,9 @@ namespace Vec {
 		float FOVAngle = playerController->FOVAngle;
 		printf("FOV Angle %f \n",FOVAngle);
 
-		Return.x = (float)(canvas->ClipX / 2.0f) + Transformed.x * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		Return.y = (float)(canvas->ClipY / 2.0f) + -Transformed.y * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		Return.z = 0.0f;
+		Return.x = (vec_t)(canvas->ClipX / 2.0f) + Transformed.x * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.y = (vec_t)(canvas->ClipY / 2.0f) + -Transformed.y * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.z = (vec_t)0.0f;
 
 		printf("ReturnX :%f \n",Return.x);
 		printf("ReturnY :%f \n",Return.y);
