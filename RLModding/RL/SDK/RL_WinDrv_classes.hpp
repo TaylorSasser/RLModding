@@ -102,22 +102,6 @@ public:
 };
 
 
-// Class WinDrv.SwrveAnalyticsWindows
-// 0x0038 (0x00A4 - 0x006C)
-class USwrveAnalyticsWindows : public UAnalyticEventsBase
-{
-public:
-	unsigned char                                      UnknownData00[0x38];                                      // 0x006C(0x0038) MISSED OFFSET
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class WinDrv.SwrveAnalyticsWindows");
-		return ptr;
-	}
-
-};
-
-
 // Class WinDrv.WindowsClient
 // 0x021C (0x026C - 0x0050)
 class UWindowsClient : public UClient

@@ -6,6 +6,9 @@
 	#pragma pack(push, 0x4)
 #endif
 
+#undef AF_MAX
+#undef PF_MAX
+
 namespace SDK
 {
 //---------------------------------------------------------------------------
@@ -13,6 +16,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 #define CONST_MINFLOORZ                                          0.7
+#define CONST_SecondsInMonth                                     2629743
 #define CONST_ACTORMAXSTEPHEIGHT                                 35.0
 #define CONST_RBSTATE_LINVELSCALE                                10.0
 #define CONST_GAMEEVENT_TEAM_MATCH_WON                           4
@@ -45,6 +49,7 @@ namespace SDK
 #define CONST_BLOCKEDPATHCOST                                    10000000
 #define CONST_MAXPOSITIONERRORSQUARED                            3.0
 #define CONST_CLIENTADJUSTUPDATECOST                             180.0
+#define CONST_EpochYear                                          1970
 #define CONST_NULLCHARACTER                                      127
 #define CONST_MAXVEHICLEPOSITIONERRORSQUARED                     900.0
 #define CONST_GAMEEVENT_FRAMERATE_POLL                           36
@@ -109,9 +114,10 @@ namespace SDK
 #define CONST_NUM_PATHFINDING_PARAMS                             9
 #define CONST_NumBreadCrumbs                                     10
 #define CONST_ROOF_MINZ                                          0.7
-
-#undef AF_MAX
-#undef PF_MAX
+#define CONST_SecondsInMinute                                    60
+#define CONST_SecondsInHour                                      3600
+#define CONST_SecondsInDay                                       86400
+#define CONST_SecondsInYear                                      31556926
 
 //---------------------------------------------------------------------------
 //Enums
@@ -227,6 +233,38 @@ enum class ENetRole
 };
 
 
+// Enum Engine.OnlineSubsystem.AvatarSize
+enum class EAvatarSize
+{
+	AvatarSize_Small               = 0,
+	AvatarSize_Medium              = 1,
+	AvatarSize_Large               = 2,
+	AvatarSize_MAX                 = 3
+};
+
+
+// Enum Engine.OnlineSubsystem.OnlinePlatform
+enum class EOnlinePlatform
+{
+	OnlinePlatform_Unknown         = 0,
+	OnlinePlatform_Steam           = 1,
+	OnlinePlatform_PS4             = 2,
+	OnlinePlatform_PS3             = 3,
+	OnlinePlatform_Dingo           = 4,
+	OnlinePlatform_QQ              = 5,
+	OnlinePlatform_MAX             = 6
+};
+
+
+// Enum Engine.OnlineSubsystem.ECommunicationMethod
+enum class ECommunicationMethod
+{
+	COMM_Text                      = 0,
+	COMM_Voice                     = 1,
+	COMM_MAX                       = 2
+};
+
+
 // Enum Engine.OnlineSubsystem.EFeaturePrivilege
 enum class EFeaturePrivilege
 {
@@ -257,38 +295,6 @@ enum class ELoginStatus
 	LS_UsingLocalProfile           = 1,
 	LS_LoggedIn                    = 2,
 	LS_MAX                         = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.AvatarSize
-enum class EAvatarSize
-{
-	AvatarSize_Small               = 0,
-	AvatarSize_Medium              = 1,
-	AvatarSize_Large               = 2,
-	AvatarSize_MAX                 = 3
-};
-
-
-// Enum Engine.OnlineSubsystem.OnlinePlatform
-enum class EOnlinePlatform
-{
-	OnlinePlatform_Unknown         = 0,
-	OnlinePlatform_Steam           = 1,
-	OnlinePlatform_PS4             = 2,
-	OnlinePlatform_PS3             = 3,
-	OnlinePlatform_Dingo           = 4,
-	OnlinePlatform_QQ              = 5,
-	OnlinePlatform_MAX             = 6
-};
-
-
-// Enum Engine.OnlineSubsystem.ECommunicationMethod
-enum class ECommunicationMethod
-{
-	COMM_Text                      = 0,
-	COMM_Voice                     = 1,
-	COMM_MAX                       = 2
 };
 
 
@@ -605,6 +611,16 @@ enum class ENetworkNotificationPosition
 	NNP_BottomCenter               = 7,
 	NNP_BottomRight                = 8,
 	NNP_MAX                        = 9
+};
+
+
+// Enum Engine.OnlineSubsystem.EWordFilterCensorship
+enum class EWordFilterCensorship
+{
+	WordFilterCensorship_Uncensored = 0,
+	WordFilterCensorship_Censored  = 1,
+	WordFilterCensorship_Evil      = 2,
+	WordFilterCensorship_MAX       = 3
 };
 
 
@@ -991,46 +1007,46 @@ enum class EDebugState
 // Enum Engine.AudioDevice.ESoundClassName
 enum class ESoundClassName
 {
-	WeaponTellSuper                = 0,
-	WeaponTell                     = 1,
-	WeaponMortarIncoming           = 2,
-	WeaponFriend                   = 3,
-	WeaponEnemy                    = 4,
-	WeaponBulletEffects            = 5,
-	Weapon                         = 6,
-	VoiceChat                      = 7,
-	Voice                          = 8,
-	Vehicle                        = 9,
-	UserMusic                      = 10,
-	UI                             = 11,
-	Stinger                        = 12,
-	SoundModeExceptions            = 13,
-	SFX                            = 14,
-	OptionVoice                    = 15,
-	OptionsSFX                     = 16,
-	OptionMusic                    = 17,
-	Music                          = 18,
-	MovieVoice                     = 19,
-	MovieEffects                   = 20,
-	Master                         = 21,
-	Item                           = 22,
-	GameMusic                      = 23,
-	Explosions                     = 24,
-	DialogNoRadio                  = 25,
-	DialogNoDSP                    = 26,
-	DialogMedium                   = 27,
-	DialogLoud                     = 28,
-	DialogDeafening                = 29,
-	Dialog                         = 30,
-	Cinematic                      = 31,
-	ChatterFriend                  = 32,
-	ChatterEnemytell               = 33,
-	ChatterEnemy                   = 34,
-	Chatter                        = 35,
-	CharacterFriend                = 36,
-	CharacterEnemy                 = 37,
-	Character                      = 38,
-	Ambient                        = 39,
+	Ambient                        = 0,
+	Character                      = 1,
+	CharacterEnemy                 = 2,
+	CharacterFriend                = 3,
+	Chatter                        = 4,
+	ChatterEnemy                   = 5,
+	ChatterEnemytell               = 6,
+	ChatterFriend                  = 7,
+	Cinematic                      = 8,
+	Dialog                         = 9,
+	DialogDeafening                = 10,
+	DialogLoud                     = 11,
+	DialogMedium                   = 12,
+	DialogNoDSP                    = 13,
+	DialogNoRadio                  = 14,
+	Explosions                     = 15,
+	GameMusic                      = 16,
+	Item                           = 17,
+	Master                         = 18,
+	MovieEffects                   = 19,
+	MovieVoice                     = 20,
+	Music                          = 21,
+	OptionMusic                    = 22,
+	OptionsSFX                     = 23,
+	OptionVoice                    = 24,
+	SFX                            = 25,
+	SoundModeExceptions            = 26,
+	Stinger                        = 27,
+	UI                             = 28,
+	UserMusic                      = 29,
+	Vehicle                        = 30,
+	Voice                          = 31,
+	VoiceChat                      = 32,
+	Weapon                         = 33,
+	WeaponBulletEffects            = 34,
+	WeaponEnemy                    = 35,
+	WeaponFriend                   = 36,
+	WeaponMortarIncoming           = 37,
+	WeaponTell                     = 38,
+	WeaponTellSuper                = 39,
 	ESoundClassName_MAX            = 40
 };
 
@@ -3669,6 +3685,15 @@ enum class EPitchTekTextureType
 	PitchTek_ColorTexture          = 0,
 	PitchTek_DataTexture           = 1,
 	PitchTek_MAX                   = 2
+};
+
+
+// Enum Engine.DateTime.ETimeZone
+enum class ETimeZone
+{
+	TZ_UTC                         = 0,
+	TZ_Local                       = 1,
+	TZ_MAX                         = 2
 };
 
 
@@ -8050,6 +8075,16 @@ struct FUniqueLobbyId
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0008(0x0001)
 };
 
+// ScriptStruct Engine.OnlineSubsystem.WordFilterResult
+// 0x0028
+struct FWordFilterResult
+{
+	TEnumAsByte<EWordFilterCensorship>                 Censorship;                                               // 0x0000(0x0001)
+	struct FString                                     Original;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Sanitized;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     ErrorMessage;                                             // 0x001C(0x000C) (CPF_NeedCtorLink)
+};
+
 // ScriptStruct Engine.OnlineSubsystem.SocialPostImageFlags
 // 0x0004
 struct FSocialPostImageFlags
@@ -9034,16 +9069,18 @@ struct FLevelStreamingData
 	class ULevelStreaming*                             Level;                                                    // 0x0004(0x0004) (CPF_Edit)
 };
 
-// ScriptStruct Engine.DateTime.DateTimeData
-// 0x0018
-struct FDateTimeData
+// ScriptStruct Engine.DateTime.DateTimeStruct
+// 0x001D
+struct FDateTimeStruct
 {
-	int                                                Years;                                                    // 0x0000(0x0004)
-	int                                                Months;                                                   // 0x0004(0x0004)
-	int                                                Days;                                                     // 0x0008(0x0004)
-	int                                                Hours;                                                    // 0x000C(0x0004)
-	int                                                Minutes;                                                  // 0x0010(0x0004)
-	int                                                Seconds;                                                  // 0x0014(0x0004)
+	int                                                Year;                                                     // 0x0000(0x0004) (CPF_DataBinding)
+	int                                                Month;                                                    // 0x0004(0x0004) (CPF_DataBinding)
+	int                                                Day;                                                      // 0x0008(0x0004) (CPF_DataBinding)
+	int                                                WeekDay;                                                  // 0x000C(0x0004) (CPF_DataBinding)
+	int                                                Hour;                                                     // 0x0010(0x0004) (CPF_DataBinding)
+	int                                                Minute;                                                   // 0x0014(0x0004) (CPF_DataBinding)
+	int                                                Second;                                                   // 0x0018(0x0004) (CPF_DataBinding)
+	TEnumAsByte<ETimeZone>                             TimeZone;                                                 // 0x001C(0x0001) (CPF_DataBinding)
 };
 
 }

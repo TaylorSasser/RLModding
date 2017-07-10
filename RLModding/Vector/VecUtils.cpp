@@ -8,12 +8,13 @@ namespace Vec {
 	
 	Vector3D VecUtils::RotatorToVector(SDK::FRotator rot) {
 		Vector3D Vec(0,0,0);
-		float Yaw = rot.Yaw * URotationToRadians;
-		float Pitch = rot.Pitch * URotationToRadians;
-		float cosPitch = cos(Pitch);
-		Vec.x = cos(Yaw) * cosPitch;
-		Vec.y = sin(Yaw) * cosPitch;
-		Vec.z = sin(Pitch);
+		double Yaw = rot.Yaw * URotationToRadians;
+		double Pitch = rot.Pitch * URotationToRadians;
+		double cosPitch = cos(Pitch);
+		Vec.x = (float)cos(Yaw) * cosPitch;
+		Vec.y = (float)sin(Yaw) * cosPitch;
+		Vec.z = (float)sin(Pitch);
+		return Vec;
 	}
 
 	void VecUtils::GetAxes(SDK::FRotator rotator, Vector3D& xAxis, Vector3D& yAxis, Vector3D& zAxis) {
@@ -21,7 +22,7 @@ namespace Vec {
 		xAxis.Normalize();
 		rotator.Yaw += 16384; // Rotates the yaw 90 Degrees.
 		SDK::FRotator R2 = rotator;
-		R2.Pitch = 0.f;
+		R2.Pitch = 0;
 		yAxis = RotatorToVector(R2);
 		yAxis.Normalize();
 		yAxis.z = 0.f;
@@ -30,26 +31,31 @@ namespace Vec {
 		zAxis = RotatorToVector(rotator);
 		zAxis.Normalize();
 	}
-	Vector3D VecUtils::WorldToScreen(SDK::UCanvas* canvas, SDK::APlayerController_TA* playerController,SDK::FVector Location) {
+	Vector3D VecUtils::WorldToScreen(SDK::UCanvas* canvas, SDK::APlayerController* playerController,SDK::FVector Location) {
 		Vector3D Return(0, 0, 0);
 		Vector3D xAxis(0,0,0), yAxis(0,0,0), zAxis(0,0,0), Delta(0,0,0), Transformed(0,0,0);
-		SDK::FRotator localCamera = playerController->PlayerCamera->GetCameraRotation();
-		printf("Local Camera Rotation %p \n",localCamera);
+		SDK::FVector MyPlayerLocation;
+		SDK::FRotator MyCameraRotator;
+		playerController->GetPlayerViewPoint(&MyPlayerLocation,&MyCameraRotator);
+		VecUtils::GetAxes(MyCameraRotator,xAxis,yAxis,zAxis);
 
-		Delta.x = Location.X - playerController->PlayerCamera->Location.X;
-		Delta.y = Location.Y - playerController->PlayerCamera->Location.Y;
-		Delta.z = Location.Z - playerController->PlayerCamera->Location.Z;
+		Delta.x = Location.X - MyPlayerLocation.X;
+		Delta.y = Location.Y - MyPlayerLocation.Y;
+		Delta.z = Location.Z - MyPlayerLocation.Z;
 
 		Transformed.x = Delta.DotProduct(yAxis);
 		Transformed.y = Delta.DotProduct(zAxis);
 		Transformed.z = Delta.DotProduct(xAxis);
 
-		float FOVAngle = playerController->PlayerCamera->GetFOVAngle();
-		printf("FOV Angle %d \n",FOVAngle);
+		float FOVAngle = playerController->FOVAngle;
+		printf("FOV Angle %f \n",FOVAngle);
 
-		Return.x = (canvas->ClipX / 2.0f) + Transformed.x * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		Return.y = (canvas->ClipY / 2.0f) + -Transformed.y * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		Return.z = 0;
+		Return.x = (float)(canvas->ClipX / 2.0f) + Transformed.x * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.y = (float)(canvas->ClipY / 2.0f) + -Transformed.y * ((canvas->ClipX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.z = 0.0f;
+
+		printf("ReturnX :%f \n",Return.x);
+		printf("ReturnY :%f \n",Return.y);
 		return Return;
 
 	}

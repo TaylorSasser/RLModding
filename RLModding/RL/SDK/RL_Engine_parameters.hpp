@@ -2001,6 +2001,11 @@ struct AActor_ForceUpdateComponents_Params
 	bool                                               bTransformOnly;                                           // (CPF_OptionalParm, CPF_Parm)
 };
 
+// Function Engine.Actor.OnTimer
+struct AActor_OnTimer_Params
+{
+};
+
 // Function Engine.WorldInfo.PrintDebugInfo
 struct AWorldInfo_PrintDebugInfo_Params
 {
@@ -2585,6 +2590,13 @@ struct UEngine_PrintDebugInfo_Params
 	class UDebugDrawer*                                Drawer;                                                   // (CPF_Parm)
 };
 
+// Function Engine.Engine.GetGameVersionForProduct
+struct UEngine_GetGameVersionForProduct_Params
+{
+	struct FName                                       ProductName;                                              // (CPF_Parm)
+	TEnumAsByte<EGameVersion>                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Engine.Engine.GetGameVersion
 struct UEngine_GetGameVersion_Params
 {
@@ -2859,11 +2871,6 @@ struct UEngine_IsEditor_Params
 struct UEngine_UseSecurePackets_Params
 {
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Engine.EventTextArchetypesReloaded
-struct UEngine_EventTextArchetypesReloaded_Params
-{
 };
 
 // Function Engine.GameEngine.HasSecondaryScreenActive
@@ -10830,12 +10837,6 @@ struct APlayerController_ClientSetCameraMode_Params
 	struct FName                                       NewCamMode;                                               // (CPF_Parm)
 };
 
-// Function Engine.PlayerController.Camera
-struct APlayerController_Camera_Params
-{
-	struct FName                                       NewMode;                                                  // (CPF_Parm)
-};
-
 // Function Engine.PlayerController.PreClientTravel
 struct APlayerController_PreClientTravel_Params
 {
@@ -12391,98 +12392,121 @@ struct UDamageType_VehicleDamageScalingFor_Params
 	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.UTCSecondsSince
-struct UDateTime_UTCSecondsSince_Params
+// Function Engine.DateTime.AddSeconds
+struct UDateTime_AddSeconds_Params
 {
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.SetClientTime
-struct UDateTime_SetClientTime_Params
+// Function Engine.DateTime.AddMinutes
+struct UDateTime_AddMinutes_Params
 {
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.DateTimeFromUTCSeconds
-struct UDateTime_DateTimeFromUTCSeconds_Params
+// Function Engine.DateTime.AddHours
+struct UDateTime_AddHours_Params
 {
-	int                                                Year;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                Month;                                                    // (CPF_Parm, CPF_OutParm)
-	int                                                Day;                                                      // (CPF_Parm, CPF_OutParm)
-	int                                                Hour;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                Minute;                                                   // (CPF_Parm, CPF_OutParm)
-	int                                                Second;                                                   // (CPF_Parm, CPF_OutParm)
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.UTCSecondsFromDateTime
-struct UDateTime_UTCSecondsFromDateTime_Params
+// Function Engine.DateTime.AddDays
+struct UDateTime_AddDays_Params
 {
-	int                                                Year;                                                     // (CPF_Parm)
-	int                                                Month;                                                    // (CPF_Parm)
-	int                                                Day;                                                      // (CPF_Parm)
-	int                                                Hour;                                                     // (CPF_Parm)
-	int                                                Minute;                                                   // (CPF_Parm)
-	int                                                Second;                                                   // (CPF_Parm)
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.UtcToLocalTimeString
-struct UDateTime_UtcToLocalTimeString_Params
+// Function Engine.DateTime.AddMonths
+struct UDateTime_AddMonths_Params
+{
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.DateTime.AddYears
+struct UDateTime_AddYears_Params
+{
+	int                                                Amount;                                                   // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.DateTime.ToTimeZone
+struct UDateTime_ToTimeZone_Params
+{
+	TEnumAsByte<ETimeZone>                             InTimeZone;                                               // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.DateTime.ToUTC
+struct UDateTime_ToUTC_Params
+{
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.DateTime.ToLocal
+struct UDateTime_ToLocal_Params
+{
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.DateTime.ToString
+struct UDateTime_ToString_Params
 {
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
-// Function Engine.DateTime.UtcToLocalTime
-struct UDateTime_UtcToLocalTime_Params
+// Function Engine.DateTime.ToStruct
+struct UDateTime_ToStruct_Params
 {
-	struct FDateTimeData                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	struct FDateTimeStruct                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.GetUtcTimeStamp
-struct UDateTime_GetUtcTimeStamp_Params
+// Function Engine.DateTime.FromStruct
+struct UDateTime_FromStruct_Params
 {
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+	struct FDateTimeStruct                             Data;                                                     // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.GetUTCTime
-struct UDateTime_GetUTCTime_Params
+// Function Engine.DateTime.FromDateTime
+struct UDateTime_FromDateTime_Params
 {
-	struct FDateTimeData                               TimeData;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm)
-	bool                                               RemoveEpoch;                                              // (CPF_OptionalParm, CPF_Parm)
+	int                                                InYear;                                                   // (CPF_Parm)
+	int                                                InMonth;                                                  // (CPF_Parm)
+	int                                                InDay;                                                    // (CPF_Parm)
+	int                                                InHour;                                                   // (CPF_Parm)
+	int                                                InMinute;                                                 // (CPF_Parm)
+	int                                                InSecond;                                                 // (CPF_Parm)
+	TEnumAsByte<ETimeZone>                             InTimeZone;                                               // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.GetTimeSpanUTC
-struct UDateTime_GetTimeSpanUTC_Params
+// Function Engine.DateTime.FromString
+struct UDateTime_FromString_Params
 {
-	struct FDateTimeData                               Date1;                                                    // (CPF_Const, CPF_Parm, CPF_OutParm)
-	struct FDateTimeData                               Date2;                                                    // (CPF_Const, CPF_Parm, CPF_OutParm)
+	struct FString                                     TimeStamp;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	TEnumAsByte<ETimeZone>                             InTimeZone;                                               // (CPF_Parm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.GetTimeSpanDateTime
-struct UDateTime_GetTimeSpanDateTime_Params
+// Function Engine.DateTime.FromEpochTime
+struct UDateTime_FromEpochTime_Params
 {
-	struct FDateTimeData                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.GetDateTime
-struct UDateTime_GetDateTime_Params
+// Function Engine.DateTime.Now
+struct UDateTime_Now_Params
 {
-	bool                                               AddEpoch;                                                 // (CPF_OptionalParm, CPF_Parm)
-	struct FDateTimeData                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	class UDateTime*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.DateTime.HasDatePassed
-struct UDateTime_HasDatePassed_Params
-{
-	struct FDateTimeData                               Data;                                                     // (CPF_Const, CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.DateTime.GetUTCSecondsFromString
-struct UDateTime_GetUTCSecondsFromString_Params
-{
-	struct FString                                     DateTime;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.DateTime.GetUTCSeconds
-struct UDateTime_GetUTCSeconds_Params
+// Function Engine.DateTime.EpochNow
+struct UDateTime_EpochNow_Params
 {
 };
 
@@ -13742,6 +13766,12 @@ struct UJsonObject_GetObject_Params
 	class UJsonObject*                                 ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Engine.OnlineAuthInterface.OnLoginChanged
+struct UOnlineAuthInterface_OnLoginChanged_Params
+{
+	bool                                               bLoggedIn;                                                // (CPF_Parm)
+};
+
 // Function Engine.OnlineAuthInterface.RequiresMTXAuthorizationCode
 struct UOnlineAuthInterface_RequiresMTXAuthorizationCode_Params
 {
@@ -14657,6 +14687,13 @@ struct UOnlineStatsWrite_GetStatId_Params
 // Function Engine.OnlineStatsWrite.OnStatsWriteComplete
 struct UOnlineStatsWrite_OnStatsWriteComplete_Params
 {
+};
+
+// Function Engine.OnlineSubsystem.GetPlayerIP
+struct UOnlineSubsystem_GetPlayerIP_Params
+{
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function Engine.OnlineSubsystem.ShowRestrictionMessage
@@ -19659,6 +19696,34 @@ struct UMaterialInstance_SetVectorParameterValue_Params
 struct UMaterialInstance_SetParent_Params
 {
 	class UMaterialInterface*                          NewParent;                                                // (CPF_Parm)
+};
+
+// Function Engine.MaterialInstanceConstant.SetLinearColorParameter
+struct UMaterialInstanceConstant_SetLinearColorParameter_Params
+{
+	struct FName                                       Key;                                                      // (CPF_Parm)
+	struct FLinearColor                                Value;                                                    // (CPF_Parm)
+};
+
+// Function Engine.MaterialInstanceConstant.SetVectorParameter
+struct UMaterialInstanceConstant_SetVectorParameter_Params
+{
+	struct FName                                       Key;                                                      // (CPF_Parm)
+	struct FVector                                     V;                                                        // (CPF_Parm)
+};
+
+// Function Engine.MaterialInstanceConstant.SetFloatParameter
+struct UMaterialInstanceConstant_SetFloatParameter_Params
+{
+	struct FName                                       Key;                                                      // (CPF_Parm)
+	float                                              Value;                                                    // (CPF_Parm)
+};
+
+// Function Engine.MaterialInstanceConstant.SetNameParameter
+struct UMaterialInstanceConstant_SetNameParameter_Params
+{
+	struct FName                                       Key;                                                      // (CPF_Parm)
+	struct FName                                       Value;                                                    // (CPF_Parm)
 };
 
 // Function Engine.MaterialInstanceConstant.ClearParameterValues
@@ -32577,19 +32642,25 @@ struct UOnlineMarketplaceInterface_ReadAvailableProducts_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Engine.OnlinePlayerInterfaceEx.GetPlayerAccountID
+struct UOnlinePlayerInterfaceEx_GetPlayerAccountID_Params
+{
+	struct FUniqueNetId                                NetId;                                                    // (CPF_Const, CPF_Parm)
+};
+
 // Function Engine.OnlinePlayerInterfaceEx.WordFilterSanitizeString
 struct UOnlinePlayerInterfaceEx_WordFilterSanitizeString_Params
 {
 	struct FString                                     Comment;                                                  // (CPF_Const, CPF_Parm, CPF_NeedCtorLink)
 	struct FScriptDelegate                             SanitizeDelegate;                                         // (CPF_Parm, CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.OnlinePlayerInterfaceEx.OnSanitizeStringComplete
 struct UOnlinePlayerInterfaceEx_OnSanitizeStringComplete_Params
 {
-	struct FString                                     Original;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     Sanitized;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	struct FWordFilterResult                           Result;                                                   // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function Engine.OnlinePlayerInterfaceEx.RecordPlayersRecentlyMet

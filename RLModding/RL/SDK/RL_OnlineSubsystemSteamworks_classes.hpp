@@ -227,7 +227,7 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.OnlineSubsystemSteamworks
-// 0x07A8 (0x0978 - 0x01D0)
+// 0x0798 (0x0968 - 0x01D0)
 class UOnlineSubsystemSteamworks : public UOnlineSubsystemCommonImpl
 {
 public:
@@ -335,114 +335,112 @@ public:
 	class UOnlineLobbyInterfaceSteamworks*             LobbyInterfaceImpl;                                       // 0x0604(0x0004)
 	struct FScriptDelegate                             __CanPlayOnlineChanged__Delegate;                         // 0x0608(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0608(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnSanitizeStringComplete__Delegate;                     // 0x0618(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUserSwitchComplete__Delegate;                         // 0x0618(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData01[0x4];                                       // 0x0618(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUserSwitchComplete__Delegate;                         // 0x0628(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUserSignInComplete__Delegate;                         // 0x0628(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData02[0x4];                                       // 0x0628(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUserSignInComplete__Delegate;                         // 0x0638(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLoginChange__Delegate;                                // 0x0638(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData03[0x4];                                       // 0x0638(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLoginChange__Delegate;                                // 0x0648(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLoginCancelled__Delegate;                             // 0x0648(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData04[0x4];                                       // 0x0648(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLoginCancelled__Delegate;                             // 0x0658(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnMutingChange__Delegate;                               // 0x0658(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData05[0x4];                                       // 0x0658(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnMutingChange__Delegate;                               // 0x0668(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFriendsChange__Delegate;                              // 0x0668(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData06[0x4];                                       // 0x0668(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFriendsChange__Delegate;                              // 0x0678(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLoginFailed__Delegate;                                // 0x0678(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData07[0x4];                                       // 0x0678(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLoginFailed__Delegate;                                // 0x0688(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLogoutCompleted__Delegate;                            // 0x0688(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData08[0x4];                                       // 0x0688(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLogoutCompleted__Delegate;                            // 0x0698(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLoginStatusChange__Delegate;                          // 0x0698(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData09[0x4];                                       // 0x0698(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLoginStatusChange__Delegate;                          // 0x06A8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadProfileSettingsComplete__Delegate;                // 0x06A8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData10[0x4];                                       // 0x06A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadProfileSettingsComplete__Delegate;                // 0x06B8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnWriteProfileSettingsComplete__Delegate;               // 0x06B8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData11[0x4];                                       // 0x06B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnWriteProfileSettingsComplete__Delegate;               // 0x06C8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadPlayerStorageComplete__Delegate;                  // 0x06C8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData12[0x4];                                       // 0x06C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadPlayerStorageComplete__Delegate;                  // 0x06D8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadPlayerStorageForNetIdComplete__Delegate;          // 0x06D8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData13[0x4];                                       // 0x06D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadPlayerStorageForNetIdComplete__Delegate;          // 0x06E8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnWritePlayerStorageComplete__Delegate;                 // 0x06E8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData14[0x4];                                       // 0x06E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnWritePlayerStorageComplete__Delegate;                 // 0x06F8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadFriendsComplete__Delegate;                        // 0x06F8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData15[0x4];                                       // 0x06F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadFriendsComplete__Delegate;                        // 0x0708(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnPlayerTalkingStateChange__Delegate;                   // 0x0708(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData16[0x4];                                       // 0x0708(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnPlayerTalkingStateChange__Delegate;                   // 0x0718(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnRecognitionComplete__Delegate;                        // 0x0718(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData17[0x4];                                       // 0x0718(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRecognitionComplete__Delegate;                        // 0x0728(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadOnlineStatsComplete__Delegate;                    // 0x0728(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData18[0x4];                                       // 0x0728(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadOnlineStatsComplete__Delegate;                    // 0x0738(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFlushOnlineStatsComplete__Delegate;                   // 0x0738(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData19[0x4];                                       // 0x0738(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFlushOnlineStatsComplete__Delegate;                   // 0x0748(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnLinkStatusChange__Delegate;                           // 0x0748(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData20[0x4];                                       // 0x0748(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnLinkStatusChange__Delegate;                           // 0x0758(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnExternalUIChange__Delegate;                           // 0x0758(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData21[0x4];                                       // 0x0758(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnExternalUIChange__Delegate;                           // 0x0768(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnControllerChange__Delegate;                           // 0x0768(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData22[0x4];                                       // 0x0768(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnControllerChange__Delegate;                           // 0x0778(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUserOrphaned__Delegate;                               // 0x0778(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData23[0x4];                                       // 0x0778(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUserOrphaned__Delegate;                               // 0x0788(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUserRestored__Delegate;                               // 0x0788(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData24[0x4];                                       // 0x0788(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUserRestored__Delegate;                               // 0x0798(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnConnectionStatusChange__Delegate;                     // 0x0798(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData25[0x4];                                       // 0x0798(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnConnectionStatusChange__Delegate;                     // 0x07A8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnStorageDeviceChange__Delegate;                        // 0x07A8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData26[0x4];                                       // 0x07A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnStorageDeviceChange__Delegate;                        // 0x07B8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadTitleFileComplete__Delegate;                      // 0x07B8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData27[0x4];                                       // 0x07B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadTitleFileComplete__Delegate;                      // 0x07C8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnKeyboardInputComplete__Delegate;                      // 0x07C8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData28[0x4];                                       // 0x07C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnKeyboardInputComplete__Delegate;                      // 0x07D8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnAddFriendByNameComplete__Delegate;                    // 0x07D8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData29[0x4];                                       // 0x07D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnAddFriendByNameComplete__Delegate;                    // 0x07E8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFriendInviteReceived__Delegate;                       // 0x07E8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData30[0x4];                                       // 0x07E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFriendInviteReceived__Delegate;                       // 0x07F8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReceivedGameInvite__Delegate;                         // 0x07F8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData31[0x4];                                       // 0x07F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReceivedGameInvite__Delegate;                         // 0x0808(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnJoinFriendGameComplete__Delegate;                     // 0x0808(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData32[0x4];                                       // 0x0808(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnJoinFriendGameComplete__Delegate;                     // 0x0818(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFriendMessageReceived__Delegate;                      // 0x0818(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData33[0x4];                                       // 0x0818(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnFriendMessageReceived__Delegate;                      // 0x0828(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnRegisterHostStatGuidComplete__Delegate;               // 0x0828(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData34[0x4];                                       // 0x0828(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnRegisterHostStatGuidComplete__Delegate;               // 0x0838(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnDeviceSelectionComplete__Delegate;                    // 0x0838(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData35[0x4];                                       // 0x0838(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeviceSelectionComplete__Delegate;                    // 0x0848(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUnlockAchievementComplete__Delegate;                  // 0x0848(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData36[0x4];                                       // 0x0848(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUnlockAchievementComplete__Delegate;                  // 0x0858(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnProfileDataChanged__Delegate;                         // 0x0858(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData37[0x4];                                       // 0x0858(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnProfileDataChanged__Delegate;                         // 0x0868(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadAchievementsComplete__Delegate;                   // 0x0868(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData38[0x4];                                       // 0x0868(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadAchievementsComplete__Delegate;                   // 0x0878(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnGetNumberOfCurrentPlayersComplete__Delegate;          // 0x0878(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData39[0x4];                                       // 0x0878(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnGetNumberOfCurrentPlayersComplete__Delegate;          // 0x0888(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadCrossTitleProfileSettingsComplete__Delegate;      // 0x0888(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData40[0x4];                                       // 0x0888(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadCrossTitleProfileSettingsComplete__Delegate;      // 0x0898(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnEnumerateUserFilesComplete__Delegate;                 // 0x0898(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData41[0x4];                                       // 0x0898(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnEnumerateUserFilesComplete__Delegate;                 // 0x08A8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadUserFileComplete__Delegate;                       // 0x08A8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData42[0x4];                                       // 0x08A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadUserFileComplete__Delegate;                       // 0x08B8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnWriteUserFileComplete__Delegate;                      // 0x08B8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData43[0x4];                                       // 0x08B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnWriteUserFileComplete__Delegate;                      // 0x08C8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnDeleteUserFileComplete__Delegate;                     // 0x08C8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData44[0x4];                                       // 0x08C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnDeleteUserFileComplete__Delegate;                     // 0x08D8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnReadSharedFileComplete__Delegate;                     // 0x08D8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData45[0x4];                                       // 0x08D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnReadSharedFileComplete__Delegate;                     // 0x08E8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnWriteSharedFileComplete__Delegate;                    // 0x08E8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData46[0x4];                                       // 0x08E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnWriteSharedFileComplete__Delegate;                    // 0x08F8(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUnlockedDLCChange__Delegate;                          // 0x08F8(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData47[0x4];                                       // 0x08F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnUnlockedDLCChange__Delegate;                          // 0x0908(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnTrialStatusChange__Delegate;                          // 0x0908(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData48[0x4];                                       // 0x0908(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnTrialStatusChange__Delegate;                          // 0x0918(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnSaveDataNoSpaceDialogComplete__Delegate;              // 0x0918(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData49[0x4];                                       // 0x0918(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnSaveDataNoSpaceDialogComplete__Delegate;              // 0x0928(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCommerceDialogClosed__Delegate;                       // 0x0928(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData50[0x4];                                       // 0x0928(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnCommerceDialogClosed__Delegate;                       // 0x0938(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnCloseKickPlayerDialog__Delegate;                      // 0x0938(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData51[0x4];                                       // 0x0938(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnCloseKickPlayerDialog__Delegate;                      // 0x0948(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnErrorDialogClosed__Delegate;                          // 0x0948(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData52[0x4];                                       // 0x0948(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnErrorDialogClosed__Delegate;                          // 0x0958(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnSystemUserControllerPairingChanged__Delegate;         // 0x0958(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData53[0x4];                                       // 0x0958(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __OnSystemUserControllerPairingChanged__Delegate;         // 0x0968(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData54[0x4];                                       // 0x0968(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -485,7 +483,8 @@ public:
 	void ClearCommerceDialogClosedDelegate(const struct FScriptDelegate& InDelegate);
 	void AddCommerceDialogClosedDelegate(const struct FScriptDelegate& InDelegate);
 	void OnCommerceDialogClosed();
-	bool WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate);
+	void GetPlayerAccountID(const struct FUniqueNetId& NetId);
+	bool WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate, const struct FUniqueNetId& PlayerID);
 	void RemoveCanPlayOnlineChangedDelegate(const struct FScriptDelegate& Callback);
 	void AddCanPlayOnlineChangedDelegate(const struct FScriptDelegate& Callback);
 	bool RecordPlayersRecentlyMet(unsigned char LocalUserNum, const struct FString& GameDescription, TArray<struct FUniqueNetId>* Players);
@@ -815,7 +814,6 @@ public:
 	void OnUserSwitchComplete(unsigned char LocalUserNum);
 	void Exit();
 	bool Init();
-	void OnSanitizeStringComplete(const struct FString& Original, const struct FString& Sanitized);
 	void CanPlayOnlineChanged(unsigned char LocalUserNum);
 };
 
@@ -864,11 +862,11 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.SteamWorkshopEngine
-// 0x0004 (0x07E0 - 0x07DC)
+// 0x0004 (0x07D0 - 0x07CC)
 class USteamWorkshopEngine : public UGameEngine
 {
 public:
-	unsigned long                                      bHasFinsihed : 1;                                         // 0x07DC(0x0004) (CPF_Transient)
+	unsigned long                                      bHasFinsihed : 1;                                         // 0x07CC(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{

@@ -349,6 +349,12 @@ struct UObject_GetEngineVersion_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.Object.GetAppSeconds
+struct UObject_GetAppSeconds_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Core.Object.GetSystemTime
 struct UObject_GetSystemTime_Params
 {
@@ -1852,6 +1858,15 @@ struct UObject_Construct_Params
 {
 };
 
+// Function Core.Object.ProjectOnToPlane
+struct UObject_ProjectOnToPlane_Params
+{
+	struct FVector                                     InVector;                                                 // (CPF_Parm)
+	struct FVector                                     InNormal;                                                 // (CPF_Parm)
+	float                                              OverBounce;                                               // (CPF_OptionalParm, CPF_Parm)
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Core.Object.IsZero
 struct UObject_IsZero_Params
 {
@@ -2915,6 +2930,52 @@ struct UObject_Not_PreBool_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.Subscription.__Subscription__TriggerAll_1
+struct USubscription___Subscription__TriggerAll_1_Params
+{
+	class USubscription*                               S;                                                        // (CPF_Parm)
+};
+
+// Function Core.Subscription.GetNone
+struct USubscription_GetNone_Params
+{
+	class USubscription*                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Subscription.TriggerAll
+struct USubscription_TriggerAll_Params
+{
+	TArray<class USubscription*>                       Subscriptions;                                            // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Core.Subscription.Create
+struct USubscription_Create_Params
+{
+	struct FScriptDelegate                             InCallback;                                               // (CPF_Parm, CPF_NeedCtorLink)
+	class USubscription*                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Subscription.Dispose
+struct USubscription_Dispose_Params
+{
+};
+
+// Function Core.Subscription.TriggerCallback
+struct USubscription_TriggerCallback_Params
+{
+};
+
+// Function Core.Subscription.SetCallback
+struct USubscription_SetCallback_Params
+{
+	struct FScriptDelegate                             InCallback;                                               // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Core.Subscription.SubscriberCallback
+struct USubscription_SubscriberCallback_Params
+{
+};
+
 // Function Core.ObjectProvider.SetSingleton
 struct UObjectProvider_SetSingleton_Params
 {
@@ -3114,6 +3175,56 @@ struct UFileSystem_GetFilename_Params
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
+// Function Core.ErrorType.CreateError
+struct UErrorType_CreateError_Params
+{
+	struct FString                                     InErrorMessage;                                           // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+	int                                                InErrorCode;                                              // (CPF_OptionalParm, CPF_Parm)
+	class UError*                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.ErrorType.GetLocalizedMessage
+struct UErrorType_GetLocalizedMessage_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Core.ErrorList.GetErrorType
+struct UErrorList_GetErrorType_Params
+{
+	struct FName                                       Error;                                                    // (CPF_Parm)
+	class UErrorType*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.ErrorList.GetResponseError
+struct UErrorList_GetResponseError_Params
+{
+	struct FString                                     Exception;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	class UErrorType*                                  OutType;                                                  // (CPF_Parm, CPF_OutParm)
+	int                                                OutCode;                                                  // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.ErrorList.MatchError
+struct UErrorList_MatchError_Params
+{
+	struct FString                                     Exception;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	struct FString                                     Compare;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Error.GetDebugMessage
+struct UError_GetDebugMessage_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Core.Error.GetLocalizedMessage
+struct UError_GetLocalizedMessage_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
 // Function Core.DebugDrawer.Reset
 struct UDebugDrawer_Reset_Params
 {
@@ -3220,8 +3331,103 @@ struct UHelpCommandlet_Main_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.AsyncTask.CreateError
+struct UAsyncTask_CreateError_Params
+{
+	class UError*                                      InError;                                                  // (CPF_Parm)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.CreateComplete
+struct UAsyncTask_CreateComplete_Params
+{
+	class UObject*                                     InResult;                                                 // (CPF_OptionalParm, CPF_Parm)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.NotifyOnDispose
+struct UAsyncTask_NotifyOnDispose_Params
+{
+	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.Dispose
+struct UAsyncTask_Dispose_Params
+{
+};
+
+// Function Core.AsyncTask.SetComplete
+struct UAsyncTask_SetComplete_Params
+{
+	class UObject*                                     InResult;                                                 // (CPF_OptionalParm, CPF_Parm)
+	class UError*                                      InError;                                                  // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Core.AsyncTask.SetError
+struct UAsyncTask_SetError_Params
+{
+	class UError*                                      InError;                                                  // (CPF_Parm)
+};
+
+// Function Core.AsyncTask.SetResult
+struct UAsyncTask_SetResult_Params
+{
+	class UObject*                                     InResult;                                                 // (CPF_Parm)
+};
+
+// Function Core.AsyncTask.NotifyOnComplete
+struct UAsyncTask_NotifyOnComplete_Params
+{
+	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.NotifyOnFail
+struct UAsyncTask_NotifyOnFail_Params
+{
+	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.NotifyOnSuccess
+struct UAsyncTask_NotifyOnSuccess_Params
+{
+	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.EventDisposed
+struct UAsyncTask_EventDisposed_Params
+{
+};
+
+// Function Core.AsyncTask.EventAsyncTaskComplete
+struct UAsyncTask_EventAsyncTaskComplete_Params
+{
+	class UObject*                                     TaskResult;                                               // (CPF_Parm)
+	class UError*                                      TaskError;                                                // (CPF_Parm)
+};
+
+// Function Core.AsyncTask.EventAsyncTaskFail
+struct UAsyncTask_EventAsyncTaskFail_Params
+{
+	class UError*                                      TaskError;                                                // (CPF_Parm)
+};
+
+// Function Core.AsyncTask.EventAsyncTaskSuccess
+struct UAsyncTask_EventAsyncTaskSuccess_Params
+{
+	class UObject*                                     TaskResult;                                               // (CPF_Parm)
+};
+
 // Function Core._LoggingDoc.TestSpecialLogging
 struct U_LoggingDoc_TestSpecialLogging_Params
+{
+};
+
+// Function Core.IDisposable.Dispose
+struct UIDisposable_Dispose_Params
 {
 };
 

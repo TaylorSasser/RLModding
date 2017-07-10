@@ -9,6 +9,8 @@
 
 SDK::ACar_TA* currentCar = nullptr;
 SDK::UCanvas* currentCanvas = nullptr;
+SDK::FVector Camera;
+SDK::FRotator Rotator;
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
@@ -29,7 +31,10 @@ void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
 	if (currentCanvas == nullptr || currentCar == nullptr) return;
 	printf("CurrentCar & Canvas not null %p,%p \n",currentCar,currentCanvas);
 
-	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas,currentCar->PlayerController,currentCar->CarMesh->Bounds.Origin);
+	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
+	pPlayerController->GetPlayerViewPoint(&Camera,&Rotator);
+
+	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas,pPlayerController,currentCar->CarMesh->Bounds.Origin);
 	if (&carBoundsOrigin == nullptr) return;
 	printf("Carbounds Vector %p \n",&carBoundsOrigin);
 

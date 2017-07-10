@@ -2325,23 +2325,6 @@ void ARBActor_TA::PreAsyncTick(float DeltaTime)
 }
 
 
-// Function TAGame.RBActor_TA.TextArchetypeReloaded
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void ARBActor_TA::TextArchetypeReloaded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RBActor_TA.TextArchetypeReloaded");
-
-	ARBActor_TA_TextArchetypeReloaded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.RBActor_TA.SetWelding
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -2957,39 +2940,21 @@ void ABall_TA::SetEndOfGameHidden()
 }
 
 
-// Function TAGame.Ball_TA.SetOverrideExplosionFX
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AFXActor_X*              InExplosionFX                  (CPF_Parm)
-
-void ABall_TA::SetOverrideExplosionFX(class AFXActor_X* InExplosionFX)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.SetOverrideExplosionFX");
-
-	ABall_TA_SetOverrideExplosionFX_Params params;
-	params.InExplosionFX = InExplosionFX;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.Ball_TA.InitExplosionFX
-// (FUNC_Defined, FUNC_Simulated, FUNC_Protected, FUNC_HasDefaults, FUNC_K2Call)
+// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Protected, FUNC_HasDefaults, FUNC_K2Call)
 // Parameters:
 // class AExplosion_X*            InExplosion                    (CPF_Parm)
 // class UGoal_TA*                ExplosionGoal                  (CPF_Parm, CPF_EditInline)
+// class AFXActor_X*              ExplosionFX                    (CPF_OptionalParm, CPF_Parm)
 
-void ABall_TA::InitExplosionFX(class AExplosion_X* InExplosion, class UGoal_TA* ExplosionGoal)
+void ABall_TA::InitExplosionFX(class AExplosion_X* InExplosion, class UGoal_TA* ExplosionGoal, class AFXActor_X* ExplosionFX)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.InitExplosionFX");
 
 	ABall_TA_InitExplosionFX_Params params;
 	params.InExplosion = InExplosion;
 	params.ExplosionGoal = ExplosionGoal;
+	params.ExplosionFX = ExplosionFX;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3004,14 +2969,16 @@ void ABall_TA::InitExplosionFX(class AExplosion_X* InExplosion, class UGoal_TA* 
 // Parameters:
 // class UGoal_TA*                ExplosionGoal                  (CPF_OptionalParm, CPF_Parm, CPF_EditInline)
 // struct FVector                 ExplodeLocation                (CPF_OptionalParm, CPF_Parm)
+// class APRI_TA*                 Scorer                         (CPF_OptionalParm, CPF_Parm)
 
-void ABall_TA::Explode(class UGoal_TA* ExplosionGoal, const struct FVector& ExplodeLocation)
+void ABall_TA::Explode(class UGoal_TA* ExplosionGoal, const struct FVector& ExplodeLocation, class APRI_TA* Scorer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Ball_TA.Explode");
 
 	ABall_TA_Explode_Params params;
 	params.ExplosionGoal = ExplosionGoal;
 	params.ExplodeLocation = ExplodeLocation;
+	params.Scorer = Scorer;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7539,6 +7506,172 @@ int UDLCPack_TA::GetDLCLabelSlotProductID(int SubIdx)
 }
 
 
+// Function TAGame.EngineAudioBaseComponent_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UEngineAudioBaseComponent_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.PrintDebugInfo");
+
+	UEngineAudioBaseComponent_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.GearChanged
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UEngineAudioBaseComponent_TA::GearChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.GearChanged");
+
+	UEngineAudioBaseComponent_TA_GearChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.HandleSplitScreenTypeChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGameViewportClient_TA*  ViewportClient                 (CPF_Parm)
+
+void UEngineAudioBaseComponent_TA::HandleSplitScreenTypeChanged(class UGameViewportClient_TA* ViewportClient)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.HandleSplitScreenTypeChanged");
+
+	UEngineAudioBaseComponent_TA_HandleSplitScreenTypeChanged_Params params;
+	params.ViewportClient = ViewportClient;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.HandleDisabled
+// (FUNC_Defined, FUNC_Protected)
+
+void UEngineAudioBaseComponent_TA::HandleDisabled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.HandleDisabled");
+
+	UEngineAudioBaseComponent_TA_HandleDisabled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.HandleEnabled
+// (FUNC_Defined, FUNC_Protected)
+
+void UEngineAudioBaseComponent_TA::HandleEnabled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.HandleEnabled");
+
+	UEngineAudioBaseComponent_TA_HandleEnabled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.InitFromAsset
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* EngineAsset                    (CPF_Parm)
+
+void UEngineAudioBaseComponent_TA::InitFromAsset(class UProductAsset_EngineAudio_TA* EngineAsset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.InitFromAsset");
+
+	UEngineAudioBaseComponent_TA_InitFromAsset_Params params;
+	params.EngineAsset = EngineAsset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.Detached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UEngineAudioBaseComponent_TA::Detached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.Detached");
+
+	UEngineAudioBaseComponent_TA_Detached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UEngineAudioBaseComponent_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.Attached");
+
+	UEngineAudioBaseComponent_TA_Attached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBaseComponent_TA.GetNormalizedRpmDelegate
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UEngineAudioBaseComponent_TA::GetNormalizedRpmDelegate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBaseComponent_TA.GetNormalizedRpmDelegate");
+
+	UEngineAudioBaseComponent_TA_GetNormalizedRpmDelegate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.EngineAudioComponent_TA.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -7556,6 +7689,28 @@ void UEngineAudioComponent_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioComponent_TA.GetNormalizedRpm
+// (FUNC_Final, FUNC_Native, FUNC_Protected)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UEngineAudioComponent_TA::GetNormalizedRpm()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.GetNormalizedRpm");
+
+	UEngineAudioComponent_TA_GetNormalizedRpm_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -7599,28 +7754,8 @@ void UEngineAudioComponent_TA::DestroyNativeState()
 }
 
 
-// Function TAGame.EngineAudioComponent_TA.HandleSplitScreenTypeChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UGameViewportClient_TA*  ViewportClient                 (CPF_Parm)
-
-void UEngineAudioComponent_TA::HandleSplitScreenTypeChanged(class UGameViewportClient_TA* ViewportClient)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.HandleSplitScreenTypeChanged");
-
-	UEngineAudioComponent_TA_HandleSplitScreenTypeChanged_Params params;
-	params.ViewportClient = ViewportClient;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.EngineAudioComponent_TA.HandleDisabled
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 
 void UEngineAudioComponent_TA::HandleDisabled()
 {
@@ -7636,14 +7771,58 @@ void UEngineAudioComponent_TA::HandleDisabled()
 }
 
 
-// Function TAGame.EngineAudioComponent_TA.HandleEnabled
+// Function TAGame.EngineAudioComponent_TA.InitFromAsset
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* EngineAsset                    (CPF_Parm)
+
+void UEngineAudioComponent_TA::InitFromAsset(class UProductAsset_EngineAudio_TA* EngineAsset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.InitFromAsset");
+
+	UEngineAudioComponent_TA_InitFromAsset_Params params;
+	params.EngineAsset = EngineAsset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioREVComponent_TA.__EngineAudioREVComponent_TA__InitFromAsset_2
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UEngineAudioComponent_TA::HandleEnabled()
+float UEngineAudioREVComponent_TA::__EngineAudioREVComponent_TA__InitFromAsset_2()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.HandleEnabled");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioREVComponent_TA.__EngineAudioREVComponent_TA__InitFromAsset_2");
 
-	UEngineAudioComponent_TA_HandleEnabled_Params params;
+	UEngineAudioREVComponent_TA___EngineAudioREVComponent_TA__InitFromAsset_2_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioREVComponent_TA.__EngineAudioREVComponent_TA__InitFromAsset_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UAkRevPhysicsSimulation* S                              (CPF_Parm)
+
+void UEngineAudioREVComponent_TA::__EngineAudioREVComponent_TA__InitFromAsset_1(class UAkRevPhysicsSimulation* S)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioREVComponent_TA.__EngineAudioREVComponent_TA__InitFromAsset_1");
+
+	UEngineAudioREVComponent_TA___EngineAudioREVComponent_TA__InitFromAsset_1_Params params;
+	params.S = S;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7653,14 +7832,17 @@ void UEngineAudioComponent_TA::HandleEnabled()
 }
 
 
-// Function TAGame.EngineAudioComponent_TA.Detached
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Function TAGame.EngineAudioREVComponent_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
 
-void UEngineAudioComponent_TA::Detached()
+void UEngineAudioREVComponent_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.Detached");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioREVComponent_TA.PrintDebugInfo");
 
-	UEngineAudioComponent_TA_Detached_Params params;
+	UEngineAudioREVComponent_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
 
@@ -7670,14 +7852,268 @@ void UEngineAudioComponent_TA::Detached()
 }
 
 
-// Function TAGame.EngineAudioComponent_TA.Attached
+// Function TAGame.EngineAudioREVComponent_TA.InitFromAsset
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* EngineAsset                    (CPF_Parm)
+
+void UEngineAudioREVComponent_TA::InitFromAsset(class UProductAsset_EngineAudio_TA* EngineAsset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioREVComponent_TA.InitFromAsset");
+
+	UEngineAudioREVComponent_TA_InitFromAsset_Params params;
+	params.EngineAsset = EngineAsset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioBlowoffComponent_TA.Attached
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 
-void UEngineAudioComponent_TA::Attached()
+void UEngineAudioBlowoffComponent_TA::Attached()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioComponent_TA.Attached");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioBlowoffComponent_TA.Attached");
 
-	UEngineAudioComponent_TA_Attached_Params params;
+	UEngineAudioBlowoffComponent_TA_Attached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewBase_TA.GearChanged
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void UEngineAudioPreviewBase_TA::GearChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewBase_TA.GearChanged");
+
+	UEngineAudioPreviewBase_TA_GearChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewBase_TA.Update
+// (FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UEngineAudioPreviewBase_TA::Update(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewBase_TA.Update");
+
+	UEngineAudioPreviewBase_TA_Update_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewBase_TA.StopPreview
+// (FUNC_Defined, FUNC_Public)
+
+void UEngineAudioPreviewBase_TA::StopPreview()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewBase_TA.StopPreview");
+
+	UEngineAudioPreviewBase_TA_StopPreview_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewBase_TA.StartPreview
+// (FUNC_Defined, FUNC_Public)
+
+void UEngineAudioPreviewBase_TA::StartPreview()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewBase_TA.StartPreview");
+
+	UEngineAudioPreviewBase_TA_StartPreview_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewBase_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* InAsset                        (CPF_Parm)
+// class UAkParamGroup*           InAkParams                     (CPF_Parm, CPF_EditInline)
+
+void UEngineAudioPreviewBase_TA::Init(class UProductAsset_EngineAudio_TA* InAsset, class UAkParamGroup* InAkParams)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewBase_TA.Init");
+
+	UEngineAudioPreviewBase_TA_Init_Params params;
+	params.InAsset = InAsset;
+	params.InAkParams = InAkParams;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreview_TA.DestroyNativeState
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void UEngineAudioPreview_TA::DestroyNativeState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreview_TA.DestroyNativeState");
+
+	UEngineAudioPreview_TA_DestroyNativeState_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreview_TA.UpdateNativeState
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UEngineAudioPreview_TA::UpdateNativeState(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreview_TA.UpdateNativeState");
+
+	UEngineAudioPreview_TA_UpdateNativeState_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreview_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* InAsset                        (CPF_Parm)
+// class UAkParamGroup*           InAkParams                     (CPF_Parm, CPF_EditInline)
+
+void UEngineAudioPreview_TA::Init(class UProductAsset_EngineAudio_TA* InAsset, class UAkParamGroup* InAkParams)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreview_TA.Init");
+
+	UEngineAudioPreview_TA_Init_Params params;
+	params.InAsset = InAsset;
+	params.InAkParams = InAkParams;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioRevSimBoostLevel_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UEngineAudioRevSimBoostLevel_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioRevSimBoostLevel_TA.PrintDebugInfo");
+
+	UEngineAudioRevSimBoostLevel_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioRevSimLimiter_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UEngineAudioRevSimLimiter_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioRevSimLimiter_TA.PrintDebugInfo");
+
+	UEngineAudioRevSimLimiter_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioRevSimResistance_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UEngineAudioRevSimResistance_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioRevSimResistance_TA.PrintDebugInfo");
+
+	UEngineAudioRevSimResistance_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioRevSimVelocitySync_TA.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UEngineAudioRevSimVelocitySync_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioRevSimVelocitySync_TA.PrintDebugInfo");
+
+	UEngineAudioRevSimVelocitySync_TA_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
 
 	auto flags = fn->FunctionFlags;
 
@@ -8193,6 +8629,28 @@ TArray<struct FFpsBucketData> UFpsBucketRecorder_TA::GetAverages()
 }
 
 
+// Function TAGame.FXActor_TA.ApplyPaint
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
+// class UProductPaint_TA*        Paint                          (CPF_Parm)
+
+void AFXActor_TA::ApplyPaint(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.FXActor_TA.ApplyPaint");
+
+	AFXActor_TA_ApplyPaint_Params params;
+	params.PaintSettings = PaintSettings;
+	params.Paint = Paint;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.FXActor_TA.HandleHideWorldUIChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -8273,7 +8731,7 @@ void AFXActor_Boost_TA::HandleCarDemolished(class ACar_TA* Car, const struct FDe
 
 
 // Function TAGame.FXActor_Boost_TA.ApplyPaint
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
@@ -8807,6 +9265,69 @@ void AFXActor_Car_TA::HandleSuperSonicChanged(class ACar_TA* InCar)
 }
 
 
+// Function TAGame.FXActor_Car_TA.CreateTrailFXActor
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProductAsset_SupersonicTrail_TA* TrailAsset                     (CPF_Parm)
+// class AFXActor_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AFXActor_TA* AFXActor_Car_TA::CreateTrailFXActor(class UProductAsset_SupersonicTrail_TA* TrailAsset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.FXActor_Car_TA.CreateTrailFXActor");
+
+	AFXActor_Car_TA_CreateTrailFXActor_Params params;
+	params.TrailAsset = TrailAsset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.FXActor_Car_TA.InitSupersonicFX
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class ACar_TA*                 Car                            (CPF_Parm)
+
+void AFXActor_Car_TA::InitSupersonicFX(class ACar_TA* Car)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.FXActor_Car_TA.InitSupersonicFX");
+
+	AFXActor_Car_TA_InitSupersonicFX_Params params;
+	params.Car = Car;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.FXActor_Car_TA.InitWheelBones
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class ACar_TA*                 Car                            (CPF_Parm)
+
+void AFXActor_Car_TA::InitWheelBones(class ACar_TA* Car)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.FXActor_Car_TA.InitWheelBones");
+
+	AFXActor_Car_TA_InitWheelBones_Params params;
+	params.Car = Car;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.FXActor_Car_TA.HandleVehicleSetup
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -8929,23 +9450,24 @@ void AFXActor_Car_TA::PostBeginPlay()
 }
 
 
-// Function TAGame.FXActor_Car_TA.EventWheelEffectChanged
-// (FUNC_Public, FUNC_Delegate)
+// Function TAGame.GameData_TA.GetDefaultLoadoutSlots
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// int                            WheelIdx                       (CPF_Parm)
+// TArray<class UProductSlot_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-void AFXActor_Car_TA::EventWheelEffectChanged(int WheelIdx)
+TArray<class UProductSlot_TA*> UGameData_TA::STATIC_GetDefaultLoadoutSlots()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.FXActor_Car_TA.EventWheelEffectChanged");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameData_TA.GetDefaultLoadoutSlots");
 
-	AFXActor_Car_TA_EventWheelEffectChanged_Params params;
-	params.WheelIdx = WheelIdx;
+	UGameData_TA_GetDefaultLoadoutSlots_Params params;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -8975,17 +9497,15 @@ bool UGameData_TA::STATIC_CanProductBeInSlot(class UProduct_TA* Product, class U
 
 
 // Function TAGame.GameData_TA.GetProductDB
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// TEnumAsByte<EEdition>          Edition                        (CPF_OptionalParm, CPF_Parm)
 // class UProductDatabase_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UProductDatabase_TA* UGameData_TA::STATIC_GetProductDB(TEnumAsByte<EEdition> Edition)
+class UProductDatabase_TA* UGameData_TA::STATIC_GetProductDB()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameData_TA.GetProductDB");
 
 	UGameData_TA_GetProductDB_Params params;
-	params.Edition = Edition;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10571,6 +11091,23 @@ void AGameEvent_TA::StartCountDown()
 }
 
 
+// Function TAGame.GameEvent_TA.StartInitialCountDown
+// (FUNC_Defined, FUNC_Protected)
+
+void AGameEvent_TA::StartInitialCountDown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TA.StartInitialCountDown");
+
+	AGameEvent_TA_StartInitialCountDown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameEvent_TA.OnGameStateTimeLapsed
 // (FUNC_Protected)
 
@@ -11452,6 +11989,29 @@ void AGameEvent_TA::Init(class APlayerController_TA* InActivator)
 }
 
 
+// Function TAGame.GameEvent_TA.GetMatchTypeFromOptions
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
+// class UClass*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UClass* AGameEvent_TA::GetMatchTypeFromOptions(const struct FString& Options)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TA.GetMatchTypeFromOptions");
+
+	AGameEvent_TA_GetMatchTypeFromOptions_Params params;
+	params.Options = Options;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GameEvent_TA.InitGame
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
@@ -11722,6 +12282,28 @@ class UGameMetrics_TA* AGameEvent_TA::GetMetrics()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function TAGame.GameEvent_TA.AddReportedPlayer
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FReportedPlayerInfo     ReportedPlayer                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void AGameEvent_TA::AddReportedPlayer(struct FReportedPlayerInfo* ReportedPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TA.AddReportedPlayer");
+
+	AGameEvent_TA_AddReportedPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ReportedPlayer != nullptr)
+		*ReportedPlayer = params.ReportedPlayer;
 }
 
 
@@ -12120,6 +12702,26 @@ void AGameEvent_TA::EventGameStateChanged(class AGameEvent_TA* GameEvent)
 }
 
 
+// Function TAGame.GameEvent_TA.EventMatchStarted
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class AGameEvent_TA*           GameEvent                      (CPF_Parm)
+
+void AGameEvent_TA::EventMatchStarted(class AGameEvent_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TA.EventMatchStarted");
+
+	AGameEvent_TA_EventMatchStarted_Params params;
+	params.GameEvent = GameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameModeList_TA.GetGameModeForClass
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
@@ -12221,6 +12823,46 @@ void UGameShare_TA::AddCarPreviewActor(class ACarPreviewActor_TA* PreviewCar)
 
 	UGameShare_TA_AddCarPreviewActor_Params params;
 	params.PreviewCar = PreviewCar;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameShare_TA.RemoveNameplate
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UNameplateComponent_TA*  Nameplate                      (CPF_Parm, CPF_EditInline)
+
+void UGameShare_TA::RemoveNameplate(class UNameplateComponent_TA* Nameplate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameShare_TA.RemoveNameplate");
+
+	UGameShare_TA_RemoveNameplate_Params params;
+	params.Nameplate = Nameplate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameShare_TA.AddNameplate
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UNameplateComponent_TA*  Nameplate                      (CPF_Parm, CPF_EditInline)
+
+void UGameShare_TA::AddNameplate(class UNameplateComponent_TA* Nameplate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameShare_TA.AddNameplate");
+
+	UGameShare_TA_AddNameplate_Params params;
+	params.Nameplate = Nameplate;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12345,6 +12987,50 @@ void UGameShare_TA::EventCarPreviewActorAdded(class UGameShare_TA* GameShare, cl
 	UGameShare_TA_EventCarPreviewActorAdded_Params params;
 	params.GameShare = GameShare;
 	params.PreviewCar = PreviewCar;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameShare_TA.EventNameplateRemoved
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGameShare_TA*           GameShare                      (CPF_Parm)
+// class UNameplateComponent_TA*  NameplateComponent             (CPF_Parm, CPF_EditInline)
+
+void UGameShare_TA::EventNameplateRemoved(class UGameShare_TA* GameShare, class UNameplateComponent_TA* NameplateComponent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameShare_TA.EventNameplateRemoved");
+
+	UGameShare_TA_EventNameplateRemoved_Params params;
+	params.GameShare = GameShare;
+	params.NameplateComponent = NameplateComponent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameShare_TA.EventNameplateAdded
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGameShare_TA*           GameShare                      (CPF_Parm)
+// class UNameplateComponent_TA*  NameplateComponent             (CPF_Parm, CPF_EditInline)
+
+void UGameShare_TA::EventNameplateAdded(class UGameShare_TA* GameShare, class UNameplateComponent_TA* NameplateComponent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameShare_TA.EventNameplateAdded");
+
+	UGameShare_TA_EventNameplateAdded_Params params;
+	params.GameShare = GameShare;
+	params.NameplateComponent = NameplateComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12539,6 +13225,26 @@ void UGFxEngine_TA::OnGameSessionEnded()
 }
 
 
+// Function TAGame.GFxEngine_TA.OnExternalUIChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           bIsOpening                     (CPF_Parm)
+
+void UGFxEngine_TA::OnExternalUIChanged(bool bIsOpening)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxEngine_TA.OnExternalUIChanged");
+
+	UGFxEngine_TA_OnExternalUIChanged_Params params;
+	params.bIsOpening = bIsOpening;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxEngine_TA.GetSoundStatePriority
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -12617,6 +13323,23 @@ void UGFxEngine_TA::PushUISoundState(const struct FName& StateName, class UGFxSh
 	UGFxEngine_TA_PushUISoundState_Params params;
 	params.StateName = StateName;
 	params.Shell = Shell;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxEngine_TA.InitOnlineSub
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UGFxEngine_TA::InitOnlineSub()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxEngine_TA.InitOnlineSub");
+
+	UGFxEngine_TA_InitOnlineSub_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -12798,7 +13521,7 @@ struct FVector UGoal_TA::GetGoalFocusExtentCenter()
 
 
 // Function TAGame.Goal_TA.BeginPlay
-// (FUNC_Defined, FUNC_Event, FUNC_Protected, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
 
 void UGoal_TA::BeginPlay()
 {
@@ -12811,6 +13534,30 @@ void UGoal_TA::BeginPlay()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.IdenticalProductCache_TA.GetKeyProduct
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UOnlineProduct_TA*       Product                        (CPF_Parm)
+// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineProduct_TA* UIdenticalProductCache_TA::GetKeyProduct(class UOnlineProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.IdenticalProductCache_TA.GetKeyProduct");
+
+	UIdenticalProductCache_TA_GetKeyProduct_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -12917,6 +13664,29 @@ void UIdenticalProductCache_TA::Add(class UOnlineProduct_TA* OnlineProduct)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.IdenticalProductCache_TA.Set
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> OnlineProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UIdenticalProductCache_TA::Set(TArray<class UOnlineProduct_TA*>* OnlineProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.IdenticalProductCache_TA.Set");
+
+	UIdenticalProductCache_TA_Set_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OnlineProducts != nullptr)
+		*OnlineProducts = params.OnlineProducts;
 }
 
 
@@ -13661,9 +14431,9 @@ void ULocalPlayer_TA::SetDefaultProfile()
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void ULocalPlayer_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError_X* Error)
+void ULocalPlayer_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LocalPlayer_TA.HandleSaveDataLoaded");
 
@@ -14203,16 +14973,39 @@ class UMapSelector_TA* UMapSet_TA::GetMapSelector()
 }
 
 
-// Function TAGame.MatchBroadcast_TA.ClientAppendLog
+// Function TAGame.MatchBroadcast_TA.__MatchBroadcast_TA__RecordStartEvents_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UMutator_TA*             M                              (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName AMatchBroadcast_TA::__MatchBroadcast_TA__RecordStartEvents_1(class UMutator_TA* M)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.__MatchBroadcast_TA__RecordStartEvents_1");
+
+	AMatchBroadcast_TA___MatchBroadcast_TA__RecordStartEvents_1_Params params;
+	params.M = M;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchBroadcast_TA.ClientLog
 // (FUNC_Final, FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Event, FUNC_Private, FUNC_NetClient)
 // Parameters:
 // struct FString                 EventJson                      (CPF_Parm, CPF_NeedCtorLink)
 
-void AMatchBroadcast_TA::ClientAppendLog(const struct FString& EventJson)
+void AMatchBroadcast_TA::ClientLog(const struct FString& EventJson)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.ClientAppendLog");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.ClientLog");
 
-	AMatchBroadcast_TA_ClientAppendLog_Params params;
+	AMatchBroadcast_TA_ClientLog_Params params;
 	params.EventJson = EventJson;
 
 	auto flags = fn->FunctionFlags;
@@ -14224,9 +15017,9 @@ void AMatchBroadcast_TA::ClientAppendLog(const struct FString& EventJson)
 
 
 // Function TAGame.MatchBroadcast_TA.RecordFunction
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 
-void AMatchBroadcast_TA::STATIC_RecordFunction()
+void AMatchBroadcast_TA::RecordFunction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.RecordFunction");
 
@@ -14527,6 +15320,34 @@ void AMatchBroadcast_TA::RecordLeaveGame(int PlayerID)
 }
 
 
+// Function TAGame.MatchBroadcast_TA.RecordJoinServer
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            PlayerID                       (CPF_Parm)
+// struct FUniqueNetId            PlayerNetId                    (CPF_Parm)
+// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PartyLeaderNetID               (CPF_Parm)
+// struct FString                 IP                             (CPF_Parm, CPF_NeedCtorLink)
+
+void AMatchBroadcast_TA::RecordJoinServer(int PlayerID, const struct FUniqueNetId& PlayerNetId, const struct FString& PlayerName, const struct FUniqueNetId& PartyLeaderNetID, const struct FString& IP)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.RecordJoinServer");
+
+	AMatchBroadcast_TA_RecordJoinServer_Params params;
+	params.PlayerID = PlayerID;
+	params.PlayerNetId = PlayerNetId;
+	params.PlayerName = PlayerName;
+	params.PartyLeaderNetID = PartyLeaderNetID;
+	params.IP = IP;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.MatchBroadcast_TA.RecordJoinGame
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -14551,17 +15372,25 @@ void AMatchBroadcast_TA::RecordJoinGame(int PlayerID, const struct FUniqueNetId&
 }
 
 
-// Function TAGame.MatchBroadcast_TA.RecordStart
+// Function TAGame.MatchBroadcast_TA.RecordMatchStart
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FString                 MapName                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FName                   GameType                       (CPF_Parm)
+// struct FName                   MatchType                      (CPF_Parm)
+// int                            PlaylistId                     (CPF_Parm)
+// TArray<struct FName>           Mutators                       (CPF_Parm, CPF_NeedCtorLink)
 
-void AMatchBroadcast_TA::RecordStart(const struct FString& MapName)
+void AMatchBroadcast_TA::RecordMatchStart(const struct FString& MapName, const struct FName& GameType, const struct FName& MatchType, int PlaylistId, TArray<struct FName> Mutators)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.RecordStart");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.RecordMatchStart");
 
-	AMatchBroadcast_TA_RecordStart_Params params;
+	AMatchBroadcast_TA_RecordMatchStart_Params params;
 	params.MapName = MapName;
+	params.GameType = GameType;
+	params.MatchType = MatchType;
+	params.PlaylistId = PlaylistId;
+	params.Mutators = Mutators;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14648,8 +15477,10 @@ void AMatchBroadcast_TA::RecordInitialPlayers()
 
 // Function TAGame.MatchBroadcast_TA.RecordStartEvents
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<struct FName>           MapLocal_33F5CF34422F78C5B8A892BE7F4807C4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void AMatchBroadcast_TA::RecordStartEvents()
+void AMatchBroadcast_TA::RecordStartEvents(TArray<struct FName>* MapLocal_33F5CF34422F78C5B8A892BE7F4807C4)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.RecordStartEvents");
 
@@ -14660,6 +15491,9 @@ void AMatchBroadcast_TA::RecordStartEvents()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (MapLocal_33F5CF34422F78C5B8A892BE7F4807C4 != nullptr)
+		*MapLocal_33F5CF34422F78C5B8A892BE7F4807C4 = params.MapLocal_33F5CF34422F78C5B8A892BE7F4807C4;
 }
 
 
@@ -14803,6 +15637,52 @@ void AMatchBroadcast_TA::HandlePlayerRemoved(class AGameEvent_TA* G, class APRI_
 }
 
 
+// Function TAGame.MatchBroadcast_TA.GetIP
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class APRI_TA*                 PRI                            (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString AMatchBroadcast_TA::GetIP(class APRI_TA* PRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.GetIP");
+
+	AMatchBroadcast_TA_GetIP_Params params;
+	params.PRI = PRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchBroadcast_TA.GetPartyLeader
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FUniqueNetId            Member                         (CPF_Parm)
+// struct FUniqueNetId            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FUniqueNetId AMatchBroadcast_TA::GetPartyLeader(const struct FUniqueNetId& Member)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.GetPartyLeader");
+
+	AMatchBroadcast_TA_GetPartyLeader_Params params;
+	params.Member = Member;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.MatchBroadcast_TA.HandlePlayerAdded
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -14916,6 +15796,40 @@ void AMatchBroadcast_TA::Destroyed()
 }
 
 
+// Function TAGame.MatchBroadcast_TA.Start
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void AMatchBroadcast_TA::Start()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.Start");
+
+	AMatchBroadcast_TA_Start_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchBroadcast_TA.ServerStart
+// (FUNC_Final, FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Private, FUNC_NetServer)
+
+void AMatchBroadcast_TA::ServerStart()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.ServerStart");
+
+	AMatchBroadcast_TA_ServerStart_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.MatchBroadcast_TA.Init
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -14927,6 +15841,40 @@ void AMatchBroadcast_TA::Init(class AGameEvent_Soccar_TA* InGameEvent)
 
 	AMatchBroadcast_TA_Init_Params params;
 	params.InGameEvent = InGameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchBroadcast_TA.ClientCheckReady
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
+
+void AMatchBroadcast_TA::ClientCheckReady()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.ClientCheckReady");
+
+	AMatchBroadcast_TA_ClientCheckReady_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchBroadcast_TA.OnOwnerChanged
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void AMatchBroadcast_TA::OnOwnerChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcast_TA.OnOwnerChanged");
+
+	AMatchBroadcast_TA_OnOwnerChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14978,16 +15926,16 @@ void AMatchBroadcast_TA::EventLog(class AMatchBroadcast_TA* Broadcast, const str
 }
 
 
-// Function TAGame.MatchLog_TA.Append
+// Function TAGame.MatchBroadcastLog_TA.Append
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 EventJson                      (CPF_Parm, CPF_NeedCtorLink)
 
-void UMatchLog_TA::Append(const struct FString& EventJson)
+void UMatchBroadcastLog_TA::Append(const struct FString& EventJson)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchLog_TA.Append");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastLog_TA.Append");
 
-	UMatchLog_TA_Append_Params params;
+	UMatchBroadcastLog_TA_Append_Params params;
 	params.EventJson = EventJson;
 
 	auto flags = fn->FunctionFlags;
@@ -14999,16 +15947,16 @@ void UMatchLog_TA::Append(const struct FString& EventJson)
 }
 
 
-// Function TAGame.MatchLog_TA.Init
+// Function TAGame.MatchBroadcastLog_TA.Init
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 Filename                       (CPF_Parm, CPF_NeedCtorLink)
 
-void UMatchLog_TA::Init(const struct FString& Filename)
+void UMatchBroadcastLog_TA::Init(const struct FString& Filename)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchLog_TA.Init");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastLog_TA.Init");
 
-	UMatchLog_TA_Init_Params params;
+	UMatchBroadcastLog_TA_Init_Params params;
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
@@ -15538,6 +16486,47 @@ void ANxForceFieldCapsule_TA::DoInitRBPhys()
 }
 
 
+// Function TAGame.OnlineProduct_TA.GetProduct
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* UOnlineProduct_TA::GetProduct()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProduct_TA.GetProduct");
+
+	UOnlineProduct_TA_GetProduct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineProduct_TA.SetProductID
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            InProductID                    (CPF_Parm)
+
+void UOnlineProduct_TA::SetProductID(int InProductID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProduct_TA.SetProductID");
+
+	UOnlineProduct_TA_SetProductID_Params params;
+	params.InProductID = InProductID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.OnlineProduct_TA.SortByTradeHoldAscending
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
@@ -15606,7 +16595,7 @@ bool UOnlineProduct_TA::RequiresDynamicThumbnail()
 
 
 // Function TAGame.OnlineProduct_TA.GetSortLabel
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
@@ -15617,6 +16606,7 @@ struct FString UOnlineProduct_TA::GetSortLabel()
 	UOnlineProduct_TA_GetSortLabel_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15695,7 +16685,7 @@ void UOnlineProduct_TA::GetPaintedColorAttribute(struct FString* ProductPaintCol
 
 
 // Function TAGame.OnlineProduct_TA.GetQuality
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // TEnumAsByte<EProductQuality>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
@@ -15706,6 +16696,7 @@ TEnumAsByte<EProductQuality> UOnlineProduct_TA::GetQuality()
 	UOnlineProduct_TA_GetQuality_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15802,31 +16793,6 @@ class UProductAttribute_TA* UOnlineProduct_TA::GetAttribute(class UClass* Attrib
 }
 
 
-// Function TAGame.OnlineProduct_TA.SortAttributesDelegate
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UProductAttribute_TA*    A                              (CPF_Parm)
-// class UProductAttribute_TA*    B                              (CPF_Parm)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UOnlineProduct_TA::SortAttributesDelegate(class UProductAttribute_TA* A, class UProductAttribute_TA* B)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProduct_TA.SortAttributesDelegate");
-
-	UOnlineProduct_TA_SortAttributesDelegate_Params params;
-	params.A = A;
-	params.B = B;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.OnlineProduct_TA.InstanceOnlineProductData
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -15851,7 +16817,7 @@ struct FOnlineProductData UOnlineProduct_TA::InstanceOnlineProductData(bool bRep
 
 
 // Function TAGame.OnlineProduct_TA.Init
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FOnlineProductData      OnlineData                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
@@ -15862,6 +16828,7 @@ void UOnlineProduct_TA::Init(struct FOnlineProductData* OnlineData)
 	UOnlineProduct_TA_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15898,7 +16865,7 @@ class UOnlineProduct_TA* UOnlineProduct_TA::STATIC_CreateOnlineProduct(struct FO
 
 
 // Function TAGame.OnlineProduct_TA.ProcessOnlineData
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // TArray<class UOnlineProduct_TA*> OutProducts                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // TArray<struct FOnlineProductData> InProductData                  (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
@@ -16474,6 +17441,27 @@ bool APlayerControllerBase_TA::InviteHasEnoughSpace(class UOnlineGameSettings* I
 }
 
 
+// Function TAGame.PlayerControllerBase_TA.ShouldEnableForceFeedback
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APlayerControllerBase_TA::ShouldEnableForceFeedback()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.ShouldEnableForceFeedback");
+
+	APlayerControllerBase_TA_ShouldEnableForceFeedback_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.PlayerControllerBase_TA.GetSaveData
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -16636,6 +17624,46 @@ void APlayerControllerBase_TA::PostBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.PostBeginPlay");
 
 	APlayerControllerBase_TA_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerControllerBase_TA.EventLoadingUnfairMatch
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class APlayerControllerBase_TA* PlayerControllerBase           (CPF_Parm)
+
+void APlayerControllerBase_TA::EventLoadingUnfairMatch(class APlayerControllerBase_TA* PlayerControllerBase)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerControllerBase_TA.EventLoadingUnfairMatch");
+
+	APlayerControllerBase_TA_EventLoadingUnfairMatch_Params params;
+	params.PlayerControllerBase = PlayerControllerBase;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerController_TA.__PlayerController_TA__PostBeginPlay_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UNetworkJitterSettings_TA* O                              (CPF_Parm)
+
+void APlayerController_TA::__PlayerController_TA__PostBeginPlay_1(class UNetworkJitterSettings_TA* O)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.__PlayerController_TA__PostBeginPlay_1");
+
+	APlayerController_TA___PlayerController_TA__PostBeginPlay_1_Params params;
+	params.O = O;
 
 	auto flags = fn->FunctionFlags;
 
@@ -17176,13 +18204,16 @@ void APlayerController_TA::GetHearSoundTransform(struct FVector* OutLocation, st
 
 
 // Function TAGame.PlayerController_TA.ServerReportPlayer
-// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer, FUNC_HasDefaults)
 // Parameters:
 // TEnumAsByte<EReportPlayerReason> Reason                         (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
+// struct FReportedPlayerInfo     StructInitializer_BD04E4B749F545D42847BCB42A48B800 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FReportPlayerData       StructInitializer_77DDC7AA481F5828E095F2A610D77446 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FReportPlayerData       StructInitializer_2484413C4B5F7EE143823E9F58B85A44 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void APlayerController_TA::ServerReportPlayer(TEnumAsByte<EReportPlayerReason> Reason, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
+void APlayerController_TA::ServerReportPlayer(TEnumAsByte<EReportPlayerReason> Reason, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, struct FReportedPlayerInfo* StructInitializer_BD04E4B749F545D42847BCB42A48B800, struct FReportPlayerData* StructInitializer_77DDC7AA481F5828E095F2A610D77446, struct FReportPlayerData* StructInitializer_2484413C4B5F7EE143823E9F58B85A44)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerReportPlayer");
 
@@ -17196,6 +18227,13 @@ void APlayerController_TA::ServerReportPlayer(TEnumAsByte<EReportPlayerReason> R
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (StructInitializer_BD04E4B749F545D42847BCB42A48B800 != nullptr)
+		*StructInitializer_BD04E4B749F545D42847BCB42A48B800 = params.StructInitializer_BD04E4B749F545D42847BCB42A48B800;
+	if (StructInitializer_77DDC7AA481F5828E095F2A610D77446 != nullptr)
+		*StructInitializer_77DDC7AA481F5828E095F2A610D77446 = params.StructInitializer_77DDC7AA481F5828E095F2A610D77446;
+	if (StructInitializer_2484413C4B5F7EE143823E9F58B85A44 != nullptr)
+		*StructInitializer_2484413C4B5F7EE143823E9F58B85A44 = params.StructInitializer_2484413C4B5F7EE143823E9F58B85A44;
 }
 
 
@@ -17729,6 +18767,30 @@ void APlayerController_TA::ChatMessage_TA(class APlayerReplicationInfo* InPRI, c
 
 	APlayerController_TA_ChatMessage_TA_Params params;
 	params.InPRI = InPRI;
+	params.Message = Message;
+	params.ChatChannel = ChatChannel;
+	params.bPreset = bPreset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerController_TA.ServerSayInternal_TA
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
+// TEnumAsByte<EChatChannel>      ChatChannel                    (CPF_Parm)
+// bool                           bPreset                        (CPF_OptionalParm, CPF_Parm)
+
+void APlayerController_TA::ServerSayInternal_TA(const struct FString& Message, TEnumAsByte<EChatChannel> ChatChannel, bool bPreset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ServerSayInternal_TA");
+
+	APlayerController_TA_ServerSayInternal_TA_Params params;
 	params.Message = Message;
 	params.ChatChannel = ChatChannel;
 	params.bPreset = bPreset;
@@ -18576,15 +19638,75 @@ void APlayerController_TA::ZeroMoveInput()
 }
 
 
+// Function TAGame.PlayerController_TA.AddMouseMovementVal
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          VehicleInputVal                (CPF_Parm, CPF_OutParm)
+// float                          CarAirAccelVal                 (CPF_Parm, CPF_OutParm)
+// float                          PositiveInputVal               (CPF_Parm)
+// float                          NegativeInputVal               (CPF_Parm)
+// float                          InputDirVal                    (CPF_Parm)
+// bool                           bUsingMouseForPositiveAxis     (CPF_Parm)
+// bool                           bUsingMouseForNegativeAxis     (CPF_Parm)
+
+void APlayerController_TA::AddMouseMovementVal(float PositiveInputVal, float NegativeInputVal, float InputDirVal, bool bUsingMouseForPositiveAxis, bool bUsingMouseForNegativeAxis, float* VehicleInputVal, float* CarAirAccelVal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.AddMouseMovementVal");
+
+	APlayerController_TA_AddMouseMovementVal_Params params;
+	params.PositiveInputVal = PositiveInputVal;
+	params.NegativeInputVal = NegativeInputVal;
+	params.InputDirVal = InputDirVal;
+	params.bUsingMouseForPositiveAxis = bUsingMouseForPositiveAxis;
+	params.bUsingMouseForNegativeAxis = bUsingMouseForNegativeAxis;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (VehicleInputVal != nullptr)
+		*VehicleInputVal = params.VehicleInputVal;
+	if (CarAirAccelVal != nullptr)
+		*CarAirAccelVal = params.CarAirAccelVal;
+}
+
+
+// Function TAGame.PlayerController_TA.AddInputVal
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          VehicleInputVal                (CPF_Parm, CPF_OutParm)
+// float                          InputVal                       (CPF_Parm)
+// bool                           bAddInputCondition             (CPF_Parm)
+
+void APlayerController_TA::AddInputVal(float InputVal, bool bAddInputCondition, float* VehicleInputVal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.AddInputVal");
+
+	APlayerController_TA_AddInputVal_Params params;
+	params.InputVal = InputVal;
+	params.bAddInputCondition = bAddInputCondition;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (VehicleInputVal != nullptr)
+		*VehicleInputVal = params.VehicleInputVal;
+}
+
+
 // Function TAGame.PlayerController_TA.ModifiedAirRotationByMouseInput
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
 // class UPlayerInput_TA*         InputTA                        (CPF_Parm)
 // float                          DeadZoneX                      (CPF_Parm)
 // float                          DeadZoneY                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool APlayerController_TA::ModifiedAirRotationByMouseInput(class UPlayerInput_TA* InputTA, float DeadZoneX, float DeadZoneY)
+void APlayerController_TA::ModifiedAirRotationByMouseInput(class UPlayerInput_TA* InputTA, float DeadZoneX, float DeadZoneY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ModifiedAirRotationByMouseInput");
 
@@ -18598,8 +19720,6 @@ bool APlayerController_TA::ModifiedAirRotationByMouseInput(class UPlayerInput_TA
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -19249,6 +20369,43 @@ void APlayerController_TA::SetupLightBarTeam()
 }
 
 
+// Function TAGame.PlayerController_TA.ReplicateDodgeInputThreshold
+// (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
+
+void APlayerController_TA::ReplicateDodgeInputThreshold()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.ReplicateDodgeInputThreshold");
+
+	APlayerController_TA_ReplicateDodgeInputThreshold_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerController_TA.HandleDodgeInputThresholdUpdated
+// (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
+// Parameters:
+// class UProfile_TA*             Profile                        (CPF_Parm)
+
+void APlayerController_TA::HandleDodgeInputThresholdUpdated(class UProfile_TA* Profile)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA.HandleDodgeInputThresholdUpdated");
+
+	APlayerController_TA_HandleDodgeInputThresholdUpdated_Params params;
+	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.PlayerController_TA.ReplicateTotalXP
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 
@@ -19572,27 +20729,6 @@ void APlayerController_TA::EventLaunchAccountPicker(int ControllerId)
 }
 
 
-// Function TAGame.ProductAsset_TA.CheckIsPaintable
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UProductAsset_TA::CheckIsPaintable()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAsset_TA.CheckIsPaintable");
-
-	UProductAsset_TA_CheckIsPaintable_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.ProductAsset_TA.ModifyThumbnailScene
 // (FUNC_Event, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
@@ -19660,6 +20796,30 @@ class UProduct_TA* UProductAsset_TA::GetProduct()
 }
 
 
+// Function TAGame.ProductAsset_Body_TA.CanEquip
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             InProduct                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductAsset_Body_TA::CanEquip(class UProduct_TA* InProduct)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAsset_Body_TA.CanEquip");
+
+	UProductAsset_Body_TA_CanEquip_Params params;
+	params.InProduct = InProduct;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.ProductAsset_Body_TA.HasBone
 // (FUNC_Final, FUNC_Native, FUNC_Private)
 // Parameters:
@@ -19699,27 +20859,6 @@ void UProductAsset_Body_TA::FixPhysicsBoxTranslation()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ProductAsset_Body_TA.GetForcedLoadout
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FClientLoadoutData      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FClientLoadoutData UProductAsset_Body_TA::GetForcedLoadout()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAsset_Body_TA.GetForcedLoadout");
-
-	UProductAsset_Body_TA_GetForcedLoadout_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -19954,7 +21093,7 @@ struct FString UProductAsset_Wheel_TA::CheckCanSave()
 
 
 // Function TAGame.ProductAttribute_TA.GetSortLabel
-// (FUNC_Public)
+// (FUNC_Event, FUNC_Public)
 // Parameters:
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
@@ -20160,7 +21299,7 @@ bool UProductAttribute_TA::OnInit(const struct FString& AttributeValue, TArray<s
 
 
 // Function TAGame.ProductAttribute_TA.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 AttributeValue                 (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FOnlineProductAttribute> OtherAttributes                (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
@@ -20400,6 +21539,29 @@ void UProductAttribute_Certified_TA::EventRankedUp(class UProductAttribute_Certi
 }
 
 
+// Function TAGame.ProductAttribute_Painted_TA.__ProductAttribute_Painted_TA__ApplyToSetParameter_1
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// struct FPaintAttributeParameter PaintParam                     (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductAttribute_Painted_TA::STATIC___ProductAttribute_Painted_TA__ApplyToSetParameter_1(const struct FPaintAttributeParameter& PaintParam)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.__ProductAttribute_Painted_TA__ApplyToSetParameter_1");
+
+	UProductAttribute_Painted_TA___ProductAttribute_Painted_TA__ApplyToSetParameter_1_Params params;
+	params.PaintParam = PaintParam;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.ProductAttribute_Painted_TA.GetSortLabel
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -20463,21 +21625,21 @@ struct FString UProductAttribute_Painted_TA::GetTypeHashID()
 }
 
 
-// Function TAGame.ProductAttribute_Painted_TA.ApplyToBoost
+// Function TAGame.ProductAttribute_Painted_TA.ApplyToFXActor
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
-// class AFXActor_Boost_TA*       BoostFX                        (CPF_Parm)
+// class AFXActor_TA*             FXActor                        (CPF_Parm)
 
-void UProductAttribute_Painted_TA::STATIC_ApplyToBoost(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, class AFXActor_Boost_TA* BoostFX)
+void UProductAttribute_Painted_TA::STATIC_ApplyToFXActor(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, class AFXActor_TA* FXActor)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.ApplyToBoost");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.ApplyToFXActor");
 
-	UProductAttribute_Painted_TA_ApplyToBoost_Params params;
+	UProductAttribute_Painted_TA_ApplyToFXActor_Params params;
 	params.PaintSettings = PaintSettings;
 	params.Paint = Paint;
-	params.BoostFX = BoostFX;
+	params.FXActor = FXActor;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20492,17 +21654,17 @@ void UProductAttribute_Painted_TA::STATIC_ApplyToBoost(class UProductAttribute_P
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
-// TEnumAsByte<EPaintAttributeType> PaintType                      (CPF_Parm)
+// TEnumAsByte<EPaintColorVariant> PaintVariant                   (CPF_Parm)
 // struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FLinearColor UProductAttribute_Painted_TA::STATIC_GetPaintColor(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, TEnumAsByte<EPaintAttributeType> PaintType)
+struct FLinearColor UProductAttribute_Painted_TA::STATIC_GetPaintColor(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, TEnumAsByte<EPaintColorVariant> PaintVariant)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.GetPaintColor");
 
 	UProductAttribute_Painted_TA_GetPaintColor_Params params;
 	params.PaintSettings = PaintSettings;
 	params.Paint = Paint;
-	params.PaintType = PaintType;
+	params.PaintVariant = PaintVariant;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20515,13 +21677,14 @@ struct FLinearColor UProductAttribute_Painted_TA::STATIC_GetPaintColor(class UPr
 
 
 // Function TAGame.ProductAttribute_Painted_TA.ApplyToSetParameter
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
 // TScriptInterface<class UISetParameter> Target                         (CPF_Parm)
+// TArray<struct FPaintAttributeParameter> FilterLocal_ECE745FF453AA64C02356FB3C8D9B1B0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UProductAttribute_Painted_TA::STATIC_ApplyToSetParameter(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, const TScriptInterface<class UISetParameter>& Target)
+void UProductAttribute_Painted_TA::STATIC_ApplyToSetParameter(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, const TScriptInterface<class UISetParameter>& Target, TArray<struct FPaintAttributeParameter>* FilterLocal_ECE745FF453AA64C02356FB3C8D9B1B0)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.ApplyToSetParameter");
 
@@ -20535,17 +21698,20 @@ void UProductAttribute_Painted_TA::STATIC_ApplyToSetParameter(class UProductAttr
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (FilterLocal_ECE745FF453AA64C02356FB3C8D9B1B0 != nullptr)
+		*FilterLocal_ECE745FF453AA64C02356FB3C8D9B1B0 = params.FilterLocal_ECE745FF453AA64C02356FB3C8D9B1B0;
 }
 
 
 // Function TAGame.ProductAttribute_Painted_TA.ApplyToBody
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
-// class UMeshComponent*          Mesh                           (CPF_Parm, CPF_EditInline)
+// class UCarMeshComponentBase_TA* Mesh                           (CPF_Parm, CPF_EditInline)
 
-void UProductAttribute_Painted_TA::STATIC_ApplyToBody(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, class UMeshComponent* Mesh)
+void UProductAttribute_Painted_TA::STATIC_ApplyToBody(class UProductAttribute_PaintSettings_TA* PaintSettings, class UProductPaint_TA* Paint, class UCarMeshComponentBase_TA* Mesh)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Painted_TA.ApplyToBody");
 
@@ -20563,7 +21729,7 @@ void UProductAttribute_Painted_TA::STATIC_ApplyToBody(class UProductAttribute_Pa
 
 
 // Function TAGame.ProductAttribute_Painted_TA.ApplyToMesh
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // class UProductAttribute_PaintSettings_TA* PaintSettings                  (CPF_Parm)
 // class UProductPaint_TA*        Paint                          (CPF_Parm)
@@ -20702,6 +21868,54 @@ class UProductAttribute_Painted_TA* UProductAttribute_Painted_TA::STATIC_CreateI
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductAttribute_Quality_TA.GetOnlineProductAttributeValue
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UProductAttribute_Quality_TA::GetOnlineProductAttributeValue()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Quality_TA.GetOnlineProductAttributeValue");
+
+	UProductAttribute_Quality_TA_GetOnlineProductAttributeValue_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductAttribute_Quality_TA.OnInit
+// (FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 AttributeValue                 (CPF_Parm, CPF_NeedCtorLink)
+// TArray<struct FOnlineProductAttribute> Attributes                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductAttribute_Quality_TA::OnInit(const struct FString& AttributeValue, TArray<struct FOnlineProductAttribute>* Attributes)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Quality_TA.OnInit");
+
+	UProductAttribute_Quality_TA_OnInit_Params params;
+	params.AttributeValue = AttributeValue;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Attributes != nullptr)
+		*Attributes = params.Attributes;
 
 	return params.ReturnValue;
 }
@@ -20988,18 +22202,18 @@ int UProductDatabase_TA::ReplaceIncompatibleProduct(int ProductID, TArray<int>* 
 }
 
 
-// Function TAGame.ProductDatabase_TA.IsProductCompatible
+// Function TAGame.ProductDatabase_TA.CanEquip
 // (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            ProductID                      (CPF_Parm)
 // TArray<int>                    EquippedProducts               (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UProductDatabase_TA::IsProductCompatible(int ProductID, TArray<int>* EquippedProducts)
+bool UProductDatabase_TA::CanEquip(int ProductID, TArray<int>* EquippedProducts)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductDatabase_TA.IsProductCompatible");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductDatabase_TA.CanEquip");
 
-	UProductDatabase_TA_IsProductCompatible_Params params;
+	UProductDatabase_TA_CanEquip_Params params;
 	params.ProductID = ProductID;
 
 	auto flags = fn->FunctionFlags;
@@ -21396,22 +22610,27 @@ struct FString UProductFilter_TA::STATIC_GetFilterLogString(const struct FProduc
 
 
 // Function TAGame.ProductFilter_TA.SortProductIDs
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// class UProfile_TA*             Profile                        (CPF_Parm)
+// TArray<class UOnlineProduct_TA*> OnlineProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// struct FScriptDelegate         ProductUnlockedDelegate        (CPF_Parm, CPF_NeedCtorLink)
 
-void UProductFilter_TA::STATIC_SortProductIDs(class UProfile_TA* Profile)
+void UProductFilter_TA::STATIC_SortProductIDs(const struct FScriptDelegate& ProductUnlockedDelegate, TArray<class UOnlineProduct_TA*>* OnlineProducts)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductFilter_TA.SortProductIDs");
 
 	UProductFilter_TA_SortProductIDs_Params params;
-	params.Profile = Profile;
+	params.ProductUnlockedDelegate = ProductUnlockedDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (OnlineProducts != nullptr)
+		*OnlineProducts = params.OnlineProducts;
 }
 
 
@@ -21435,6 +22654,138 @@ void UProductFilter_TA::STATIC_FilterProducts(struct FProductFilter* Filter)
 
 	if (Filter != nullptr)
 		*Filter = params.Filter;
+}
+
+
+// Function TAGame.ProductFilter_TA.ProductUnlocked
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// int                            ProductID                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductFilter_TA::ProductUnlocked(int ProductID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductFilter_TA.ProductUnlocked");
+
+	UProductFilter_TA_ProductUnlocked_Params params;
+	params.ProductID = ProductID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductLoader_TA.__ProductLoader_TA__LoadProducts_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             P                              (CPF_Parm)
+
+void UProductLoader_TA::__ProductLoader_TA__LoadProducts_1(class UProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.__ProductLoader_TA__LoadProducts_1");
+
+	UProductLoader_TA___ProductLoader_TA__LoadProducts_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddForcedProducts_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductAsset_TA*        Asset                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductLoader_TA::__ProductLoader_TA__AddForcedProducts_1(class UProductAsset_TA* Asset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddForcedProducts_1");
+
+	UProductLoader_TA___ProductLoader_TA__AddForcedProducts_1_Params params;
+	params.Asset = Asset;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_3
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+
+void UProductLoader_TA::__ProductLoader_TA__AddMissingSlots_3(class UProductSlot_TA* Slot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_3");
+
+	UProductLoader_TA___ProductLoader_TA__AddMissingSlots_3_Params params;
+	params.Slot = Slot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductLoader_TA::__ProductLoader_TA__AddMissingSlots_2(class UProductSlot_TA* Slot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_2");
+
+	UProductLoader_TA___ProductLoader_TA__AddMissingSlots_2_Params params;
+	params.Slot = Slot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductLoader_TA::__ProductLoader_TA__AddMissingSlots_1(class UProductSlot_TA* Slot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.__ProductLoader_TA__AddMissingSlots_1");
+
+	UProductLoader_TA___ProductLoader_TA__AddMissingSlots_1_Params params;
+	params.Slot = Slot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -21475,14 +22826,14 @@ void UProductLoader_TA::CancelLoad()
 }
 
 
-// Function TAGame.ProductLoader_TA.OnAllProductsLoaded
-// (FUNC_Defined, FUNC_Protected)
+// Function TAGame.ProductLoader_TA.OnAllAssetsLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 
-void UProductLoader_TA::OnAllProductsLoaded()
+void UProductLoader_TA::OnAllAssetsLoaded()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.OnAllProductsLoaded");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.OnAllAssetsLoaded");
 
-	UProductLoader_TA_OnAllProductsLoaded_Params params;
+	UProductLoader_TA_OnAllAssetsLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21492,16 +22843,140 @@ void UProductLoader_TA::OnAllProductsLoaded()
 }
 
 
-// Function TAGame.ProductLoader_TA.HandleProductLoaded
-// (FUNC_Defined, FUNC_Protected)
+// Function TAGame.ProductLoader_TA.HandleRequiredAssetLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FAssetLoadResult        Result                         (CPF_Parm)
 
-void UProductLoader_TA::HandleProductLoaded(const struct FAssetLoadResult& Result)
+void UProductLoader_TA::HandleRequiredAssetLoaded(const struct FAssetLoadResult& Result)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.HandleProductLoaded");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.HandleRequiredAssetLoaded");
 
-	UProductLoader_TA_HandleProductLoaded_Params params;
+	UProductLoader_TA_HandleRequiredAssetLoaded_Params params;
+	params.Result = Result;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.AddEngineAudio
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Call)
+
+void UProductLoader_TA::AddEngineAudio()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.AddEngineAudio");
+
+	UProductLoader_TA_AddEngineAudio_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.AddMissingSlots
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UProductSlot_TA*> FilterLocal_96B29ACC47E5F156A2396DA09166EF10 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProductSlot_TA*> FilterLocal_B78948284A54AA0C3D6A6D81E61A251F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UProductLoader_TA::AddMissingSlots(TArray<class UProductSlot_TA*>* FilterLocal_96B29ACC47E5F156A2396DA09166EF10, TArray<class UProductSlot_TA*>* FilterLocal_B78948284A54AA0C3D6A6D81E61A251F)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.AddMissingSlots");
+
+	UProductLoader_TA_AddMissingSlots_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_96B29ACC47E5F156A2396DA09166EF10 != nullptr)
+		*FilterLocal_96B29ACC47E5F156A2396DA09166EF10 = params.FilterLocal_96B29ACC47E5F156A2396DA09166EF10;
+	if (FilterLocal_B78948284A54AA0C3D6A6D81E61A251F != nullptr)
+		*FilterLocal_B78948284A54AA0C3D6A6D81E61A251F = params.FilterLocal_B78948284A54AA0C3D6A6D81E61A251F;
+}
+
+
+// Function TAGame.ProductLoader_TA.AddForcedProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UProductAsset_TA*> ConcatLocal_0F98BF49451C8D911A13CE8DB2ED4331 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProductAsset_TA*> FilterLocal_851DE31C400900C991DD02A9AED8259E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UProductLoader_TA::AddForcedProducts(TArray<class UProductAsset_TA*>* ConcatLocal_0F98BF49451C8D911A13CE8DB2ED4331, TArray<class UProductAsset_TA*>* FilterLocal_851DE31C400900C991DD02A9AED8259E)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.AddForcedProducts");
+
+	UProductLoader_TA_AddForcedProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ConcatLocal_0F98BF49451C8D911A13CE8DB2ED4331 != nullptr)
+		*ConcatLocal_0F98BF49451C8D911A13CE8DB2ED4331 = params.ConcatLocal_0F98BF49451C8D911A13CE8DB2ED4331;
+	if (FilterLocal_851DE31C400900C991DD02A9AED8259E != nullptr)
+		*FilterLocal_851DE31C400900C991DD02A9AED8259E = params.FilterLocal_851DE31C400900C991DD02A9AED8259E;
+}
+
+
+// Function TAGame.ProductLoader_TA.OnAllLoadoutAssetsLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UProductLoader_TA::OnAllLoadoutAssetsLoaded()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.OnAllLoadoutAssetsLoaded");
+
+	UProductLoader_TA_OnAllLoadoutAssetsLoaded_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.HandleLoadoutAssetLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FAssetLoadResult        Result                         (CPF_Parm)
+
+void UProductLoader_TA::HandleLoadoutAssetLoaded(const struct FAssetLoadResult& Result)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.HandleLoadoutAssetLoaded");
+
+	UProductLoader_TA_HandleLoadoutAssetLoaded_Params params;
+	params.Result = Result;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductLoader_TA.HandleAssetLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FAssetLoadResult        Result                         (CPF_Parm)
+
+void UProductLoader_TA::HandleAssetLoaded(const struct FAssetLoadResult& Result)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.HandleAssetLoaded");
+
+	UProductLoader_TA_HandleAssetLoaded_Params params;
 	params.Result = Result;
 
 	auto flags = fn->FunctionFlags;
@@ -21654,16 +23129,18 @@ void UProductLoader_TA::LoadLoadout(struct FLoadoutData* NewLoadout)
 }
 
 
-// Function TAGame.ProductLoader_TA.FilterItemsForDedicatedServer
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Function TAGame.ProductLoader_TA.ShouldLoadProduct
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// TArray<int>                    ProductIDs                     (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UProductLoader_TA::FilterItemsForDedicatedServer(TArray<int>* ProductIDs)
+bool UProductLoader_TA::ShouldLoadProduct(class UProduct_TA* Product)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.FilterItemsForDedicatedServer");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.ShouldLoadProduct");
 
-	UProductLoader_TA_FilterItemsForDedicatedServer_Params params;
+	UProductLoader_TA_ShouldLoadProduct_Params params;
+	params.Product = Product;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21671,8 +23148,29 @@ void UProductLoader_TA::FilterItemsForDedicatedServer(TArray<int>* ProductIDs)
 
 	fn->FunctionFlags = flags;
 
-	if (ProductIDs != nullptr)
-		*ProductIDs = params.ProductIDs;
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductLoader_TA.LoadProduct
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            ProductID                      (CPF_Parm)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UProductLoader_TA::LoadProduct(int ProductID, const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductLoader_TA.LoadProduct");
+
+	UProductLoader_TA_LoadProduct_Params params;
+	params.ProductID = ProductID;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -21716,29 +23214,6 @@ void UProductLoader_TA::EventAllProductsLoaded(class UProductLoader_TA* Loader)
 }
 
 
-// Function TAGame.ProductPaint_TA.GetPaintColorByType
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EPaintAttributeType> PaintType                      (CPF_Parm)
-// struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FLinearColor UProductPaint_TA::GetPaintColorByType(TEnumAsByte<EPaintAttributeType> PaintType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductPaint_TA.GetPaintColorByType");
-
-	UProductPaint_TA_GetPaintColorByType_Params params;
-	params.PaintType = PaintType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.ProductPaint_TA.GetID
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
@@ -21774,6 +23249,27 @@ int UProductSlot_TA::GetDefaultProductID()
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.Product_TA.IsPaintable
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProduct_TA::IsPaintable()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Product_TA.IsPaintable");
+
+	UProduct_TA_IsPaintable_Params params;
+
+	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -22106,6 +23602,28 @@ struct FString UProduct_TA::GetTrademarkLabel()
 }
 
 
+// Function TAGame.Product_TA.GetAsciiLabel
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UProduct_TA::GetAsciiLabel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Product_TA.GetAsciiLabel");
+
+	UProduct_TA_GetAsciiLabel_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.Product_TA.GetLabel
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
@@ -22262,6 +23780,184 @@ void UProductThumbnailQueue_TA::RenderThumbnail(class UProductAsset_TA* Asset, c
 }
 
 
+// Function TAGame.ProductUtil_TA.RemovingMissingInstanceIDs
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> OnlineProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UProductUtil_TA::STATIC_RemovingMissingInstanceIDs(TArray<class UOnlineProduct_TA*>* OnlineProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.RemovingMissingInstanceIDs");
+
+	UProductUtil_TA_RemovingMissingInstanceIDs_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OnlineProducts != nullptr)
+		*OnlineProducts = params.OnlineProducts;
+}
+
+
+// Function TAGame.ProductUtil_TA.CreateOnlineProduct
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FOnlineProductData      ProductData                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineProduct_TA* UProductUtil_TA::STATIC_CreateOnlineProduct(struct FOnlineProductData* ProductData)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.CreateOnlineProduct");
+
+	UProductUtil_TA_CreateOnlineProduct_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ProductData != nullptr)
+		*ProductData = params.ProductData;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductUtil_TA.ProcessOnlineData
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FOnlineProductData> InProductData                  (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> OutProducts                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UProductUtil_TA::STATIC_ProcessOnlineData(TArray<struct FOnlineProductData>* InProductData, TArray<class UOnlineProduct_TA*>* OutProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.ProcessOnlineData");
+
+	UProductUtil_TA_ProcessOnlineData_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InProductData != nullptr)
+		*InProductData = params.InProductData;
+	if (OutProducts != nullptr)
+		*OutProducts = params.OutProducts;
+}
+
+
+// Function TAGame.ProductUtil_TA.GetProductIDFromOnlineID
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> OnlineProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UProductUtil_TA::STATIC_GetProductIDFromOnlineID(TArray<class UOnlineProduct_TA*>* OnlineProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.GetProductIDFromOnlineID");
+
+	UProductUtil_TA_GetProductIDFromOnlineID_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OnlineProducts != nullptr)
+		*OnlineProducts = params.OnlineProducts;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductUtil_TA.GetOnlineProductByID
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> OnlineProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineProduct_TA* UProductUtil_TA::STATIC_GetOnlineProductByID(TArray<class UOnlineProduct_TA*>* OnlineProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.GetOnlineProductByID");
+
+	UProductUtil_TA_GetOnlineProductByID_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OnlineProducts != nullptr)
+		*OnlineProducts = params.OnlineProducts;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductUtil_TA.GetNewProducts
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> OldProducts                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> NewProducts                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+TArray<class UOnlineProduct_TA*> UProductUtil_TA::STATIC_GetNewProducts(TArray<class UOnlineProduct_TA*>* OldProducts, TArray<class UOnlineProduct_TA*>* NewProducts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.GetNewProducts");
+
+	UProductUtil_TA_GetNewProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OldProducts != nullptr)
+		*OldProducts = params.OldProducts;
+	if (NewProducts != nullptr)
+		*NewProducts = params.NewProducts;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ProductUtil_TA.IsOnlineID
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UProductUtil_TA::STATIC_IsOnlineID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductUtil_TA.IsOnlineID");
+
+	UProductUtil_TA_IsOnlineID_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.Pylon_Soccar_TA.ClampToField
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -22394,7 +24090,7 @@ void ABall_Breakout_TA::Tick(float DeltaTime)
 
 
 // Function TAGame.Ball_Breakout_TA.SetLastTeamTouch
-// (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
 // unsigned char                  InLastTeamTouch                (CPF_Parm)
 
@@ -22712,6 +24408,23 @@ void AVehicle_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 }
 
 
+// Function TAGame.Vehicle_TA.VehicleSettingsUpdated
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void AVehicle_TA::VehicleSettingsUpdated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Vehicle_TA.VehicleSettingsUpdated");
+
+	AVehicle_TA_VehicleSettingsUpdated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.Vehicle_TA.OnSuperSonicChanged
 // (FUNC_Simulated, FUNC_Event, FUNC_Protected)
 
@@ -22866,28 +24579,6 @@ bool AVehicle_TA::IsOnGround()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Vehicle_TA.IsOnGround");
 
 	AVehicle_TA_IsOnGround_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.Vehicle_TA.GetGroundLocation
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector AVehicle_TA::GetGroundLocation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Vehicle_TA.GetGroundLocation");
-
-	AVehicle_TA_GetGroundLocation_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -24237,9 +25928,9 @@ void UReplayManager_TA::EventHeadersLoaded(class UReplayManager_TA* Manager, TAr
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // class UReplay_TA*              Replay                         (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UReplayManager_TA::EventImportFinished(class UReplayManager_TA* Manager, class UReplay_TA* Replay, class UError_X* Error)
+void UReplayManager_TA::EventImportFinished(class UReplayManager_TA* Manager, class UReplay_TA* Replay, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ReplayManager_TA.EventImportFinished");
 
@@ -24261,9 +25952,9 @@ void UReplayManager_TA::EventImportFinished(class UReplayManager_TA* Manager, cl
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // struct FString                 Id                             (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UReplayManager_TA::EventExportFinished(class UReplayManager_TA* Manager, const struct FString& Id, class UError_X* Error)
+void UReplayManager_TA::EventExportFinished(class UReplayManager_TA* Manager, const struct FString& Id, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ReplayManager_TA.EventExportFinished");
 
@@ -24456,9 +26147,9 @@ void USaveGameManager_TA::UserIgnoredLoadFailure(bool bValue)
 // Function TAGame.SaveGameManager_TA.HandleProceedWithDefaultSaveData
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
-// struct FLoadObjectResult       StructInitializer__s_2546F990441F3162C858E79EAA5A7D4F (CPF_Const, CPF_OutParm)
+// struct FLoadObjectResult       StructInitializer_DE45241942B2119678279283D96067EE (CPF_Const, CPF_OutParm)
 
-void USaveGameManager_TA::HandleProceedWithDefaultSaveData(struct FLoadObjectResult* StructInitializer__s_2546F990441F3162C858E79EAA5A7D4F)
+void USaveGameManager_TA::HandleProceedWithDefaultSaveData(struct FLoadObjectResult* StructInitializer_DE45241942B2119678279283D96067EE)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveGameManager_TA.HandleProceedWithDefaultSaveData");
 
@@ -24470,8 +26161,8 @@ void USaveGameManager_TA::HandleProceedWithDefaultSaveData(struct FLoadObjectRes
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_2546F990441F3162C858E79EAA5A7D4F != nullptr)
-		*StructInitializer__s_2546F990441F3162C858E79EAA5A7D4F = params.StructInitializer__s_2546F990441F3162C858E79EAA5A7D4F;
+	if (StructInitializer_DE45241942B2119678279283D96067EE != nullptr)
+		*StructInitializer_DE45241942B2119678279283D96067EE = params.StructInitializer_DE45241942B2119678279283D96067EE;
 }
 
 
@@ -24636,9 +26327,9 @@ struct FString USaveGameManager_TA::GetSaveFilename()
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            MySaveData                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void USaveGameManager_TA::EventDataSaved(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError_X* Error)
+void USaveGameManager_TA::EventDataSaved(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveGameManager_TA.EventDataSaved");
 
@@ -24660,9 +26351,9 @@ void USaveGameManager_TA::EventDataSaved(class USaveGameManager_TA* Manager, cla
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            MySaveData                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void USaveGameManager_TA::EventDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError_X* Error)
+void USaveGameManager_TA::EventDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveGameManager_TA.EventDataLoaded");
 
@@ -24751,9 +26442,9 @@ void USaveObjectManager_TA::SetNewFileSaveCount(int Count)
 // (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // TEnumAsByte<ESaveGameResult>   Result                         (CPF_Parm)
-// struct FSaveObjectResult       StructInitializer__s_327729354958C1690060BB8C078C5770 (CPF_Const, CPF_OutParm)
+// struct FSaveObjectResult       StructInitializer_C377C98348201D25D407539CE9A3BA74 (CPF_Const, CPF_OutParm)
 
-void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<ESaveGameResult> Result, struct FSaveObjectResult* StructInitializer__s_327729354958C1690060BB8C078C5770)
+void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<ESaveGameResult> Result, struct FSaveObjectResult* StructInitializer_C377C98348201D25D407539CE9A3BA74)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.HandleSaveResult");
 
@@ -24766,8 +26457,8 @@ void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<ESaveGameResult> Result
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_327729354958C1690060BB8C078C5770 != nullptr)
-		*StructInitializer__s_327729354958C1690060BB8C078C5770 = params.StructInitializer__s_327729354958C1690060BB8C078C5770;
+	if (StructInitializer_C377C98348201D25D407539CE9A3BA74 != nullptr)
+		*StructInitializer_C377C98348201D25D407539CE9A3BA74 = params.StructInitializer_C377C98348201D25D407539CE9A3BA74;
 }
 
 
@@ -24775,9 +26466,9 @@ void USaveObjectManager_TA::HandleSaveResult(TEnumAsByte<ESaveGameResult> Result
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // TEnumAsByte<ESaveGameResult>   Result                         (CPF_Parm)
-// class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UError*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UError_X* USaveObjectManager_TA::GetSaveError(TEnumAsByte<ESaveGameResult> Result)
+class UError* USaveObjectManager_TA::GetSaveError(TEnumAsByte<ESaveGameResult> Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.GetSaveError");
 
@@ -24798,9 +26489,9 @@ class UError_X* USaveObjectManager_TA::GetSaveError(TEnumAsByte<ESaveGameResult>
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // TEnumAsByte<EBasicLoadResult>  InResult                       (CPF_Parm)
-// class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UError*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UError_X* USaveObjectManager_TA::GetLoadError(TEnumAsByte<EBasicLoadResult> InResult)
+class UError* USaveObjectManager_TA::GetLoadError(TEnumAsByte<EBasicLoadResult> InResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveObjectManager_TA.GetLoadError");
 
@@ -25635,6 +27326,46 @@ void UAntennaComponent_TA::InitAntenna(class USkeletalMeshComponent_TA* AttachTo
 }
 
 
+// Function TAGame.SkeletalMeshActorMAT_Products_TA.HandleAllProductsLoaded
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductLoader_TA*       InProductLoader                (CPF_Parm, CPF_EditInline)
+
+void ASkeletalMeshActorMAT_Products_TA::HandleAllProductsLoaded(class UProductLoader_TA* InProductLoader)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkeletalMeshActorMAT_Products_TA.HandleAllProductsLoaded");
+
+	ASkeletalMeshActorMAT_Products_TA_HandleAllProductsLoaded_Params params;
+	params.InProductLoader = InProductLoader;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SkeletalMeshActorMAT_Products_TA.UpdateWithLoadout
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FLoadoutData            Loadout                        (CPF_Parm, CPF_NeedCtorLink)
+
+void ASkeletalMeshActorMAT_Products_TA::UpdateWithLoadout(const struct FLoadoutData& Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkeletalMeshActorMAT_Products_TA.UpdateWithLoadout");
+
+	ASkeletalMeshActorMAT_Products_TA_UpdateWithLoadout_Params params;
+	params.Loadout = Loadout;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SkeletalMeshActorMAT_Products_TA.AddUnique_AssetID
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
@@ -25684,7 +27415,7 @@ TArray<int> ASkeletalMeshActorMAT_Products_TA::GetAttachedProductIDs()
 
 
 // Function TAGame.SkeletalMeshActorMAT_Products_TA.CreateAttachments
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
 
 void ASkeletalMeshActorMAT_Products_TA::CreateAttachments()
 {
@@ -25718,7 +27449,7 @@ void ASkeletalMeshActorMAT_Products_TA::UpdateBoost()
 
 
 // Function TAGame.SkeletalMeshActorMAT_Products_TA.CreateBoostActor
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
 
 void ASkeletalMeshActorMAT_Products_TA::CreateBoostActor()
 {
@@ -25727,6 +27458,24 @@ void ASkeletalMeshActorMAT_Products_TA::CreateBoostActor()
 	ASkeletalMeshActorMAT_Products_TA_CreateBoostActor_Params params;
 
 	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SkeletalMeshActorMAT_Products_TA.UpdateAllComponents
+// (FUNC_Native, FUNC_Public)
+
+void ASkeletalMeshActorMAT_Products_TA::UpdateAllComponents()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkeletalMeshActorMAT_Products_TA.UpdateAllComponents");
+
+	ASkeletalMeshActorMAT_Products_TA_UpdateAllComponents_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -25937,6 +27686,28 @@ void USkeletalMeshComponent_TA::OnAttached()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarMeshComponentBase_TA.CalculatePresetSuspensionOffset
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector UCarMeshComponentBase_TA::CalculatePresetSuspensionOffset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarMeshComponentBase_TA.CalculatePresetSuspensionOffset");
+
+	UCarMeshComponentBase_TA_CalculatePresetSuspensionOffset_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -27260,14 +29031,14 @@ void UBallIndicator_TA::OnAttached()
 }
 
 
-// Function TAGame.NameplateComponent_TA.TickNameplate
+// Function TAGame.NameplateMeshComponent_TA.TickNameplate
 // (FUNC_Native, FUNC_Public)
 
-void UNameplateComponent_TA::TickNameplate()
+void UNameplateMeshComponent_TA::TickNameplate()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.TickNameplate");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateMeshComponent_TA.TickNameplate");
 
-	UNameplateComponent_TA_TickNameplate_Params params;
+	UNameplateMeshComponent_TA_TickNameplate_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -27278,16 +29049,16 @@ void UNameplateComponent_TA::TickNameplate()
 }
 
 
-// Function TAGame.NameplateComponent_TA.SetPlayerIndex
+// Function TAGame.NameplateMeshComponent_TA.SetPlayerIndex
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // int                            Index                          (CPF_Parm)
 
-void UNameplateComponent_TA::SetPlayerIndex(int Index)
+void UNameplateMeshComponent_TA::SetPlayerIndex(int Index)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.SetPlayerIndex");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateMeshComponent_TA.SetPlayerIndex");
 
-	UNameplateComponent_TA_SetPlayerIndex_Params params;
+	UNameplateMeshComponent_TA_SetPlayerIndex_Params params;
 	params.Index = Index;
 
 	auto flags = fn->FunctionFlags;
@@ -27298,16 +29069,16 @@ void UNameplateComponent_TA::SetPlayerIndex(int Index)
 }
 
 
-// Function TAGame.NameplateComponent_TA.SetRenderTexture
+// Function TAGame.NameplateMeshComponent_TA.SetRenderTexture
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class UTextureRenderTarget2D*  InTex                          (CPF_Parm)
 
-void UNameplateComponent_TA::SetRenderTexture(class UTextureRenderTarget2D* InTex)
+void UNameplateMeshComponent_TA::SetRenderTexture(class UTextureRenderTarget2D* InTex)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.SetRenderTexture");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateMeshComponent_TA.SetRenderTexture");
 
-	UNameplateComponent_TA_SetRenderTexture_Params params;
+	UNameplateMeshComponent_TA_SetRenderTexture_Params params;
 	params.InTex = InTex;
 
 	auto flags = fn->FunctionFlags;
@@ -28220,6 +29991,94 @@ void ATeam_TA::EventMemberAdded(class ATeam_TA* Team, class APRI_TA* Member)
 }
 
 
+// Function TAGame.TeamColorScriptedTexture_TA.RenderColorArray
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// TArray<struct FLinearColor>    ColorArray                     (CPF_Parm, CPF_NeedCtorLink)
+
+void UTeamColorScriptedTexture_TA::RenderColorArray(TArray<struct FLinearColor> ColorArray)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.RenderColorArray");
+
+	UTeamColorScriptedTexture_TA_RenderColorArray_Params params;
+	params.ColorArray = ColorArray;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.TeamColorScriptedTexture_TA.OnRender
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCanvas*                 Canvas                         (CPF_Parm)
+
+void UTeamColorScriptedTexture_TA::OnRender(class UCanvas* Canvas)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.OnRender");
+
+	UTeamColorScriptedTexture_TA_OnRender_Params params;
+	params.Canvas = Canvas;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.TeamColorScriptedTexture_TA.GetFullBrightColor
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FLinearColor            C                              (CPF_Parm)
+// float                          ValueScale                     (CPF_OptionalParm, CPF_Parm)
+// struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FLinearColor UTeamColorScriptedTexture_TA::STATIC_GetFullBrightColor(const struct FLinearColor& C, float ValueScale)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.GetFullBrightColor");
+
+	UTeamColorScriptedTexture_TA_GetFullBrightColor_Params params;
+	params.C = C;
+	params.ValueScale = ValueScale;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.TeamColorScriptedTexture_TA.SetColorsArray
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_K2Call)
+// Parameters:
+// TArray<struct FLinearColor>    ColorList                      (CPF_Parm, CPF_NeedCtorLink)
+// bool                           bAllowMaxBrightness            (CPF_OptionalParm, CPF_Parm)
+
+void UTeamColorScriptedTexture_TA::SetColorsArray(TArray<struct FLinearColor> ColorList, bool bAllowMaxBrightness)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.SetColorsArray");
+
+	UTeamColorScriptedTexture_TA_SetColorsArray_Params params;
+	params.ColorList = ColorList;
+	params.bAllowMaxBrightness = bAllowMaxBrightness;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.ThumbnailRenderer_TA.RenderScene
 // (FUNC_Native, FUNC_Public)
 // Parameters:
@@ -28810,18 +30669,92 @@ void UVehicleSim_TA::OnDetached()
 }
 
 
-// Function TAGame.VehicleSim_TA.SetupAxle
-// (FUNC_Defined, FUNC_Protected)
+// Function TAGame.VehicleSim_TA.SetupWheelPreset
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UWheel_TA*               Wheel                          (CPF_Parm, CPF_EditInline)
+// struct FVehicleAxleData        PresetAxle                     (CPF_Parm)
+// struct FVehicleWheelSettings   WheelSettings                  (CPF_Parm)
+
+void UVehicleSim_TA::SetupWheelPreset(class UWheel_TA* Wheel, const struct FVehicleAxleData& PresetAxle, const struct FVehicleWheelSettings& WheelSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VehicleSim_TA.SetupWheelPreset");
+
+	UVehicleSim_TA_SetupWheelPreset_Params params;
+	params.Wheel = Wheel;
+	params.PresetAxle = PresetAxle;
+	params.WheelSettings = WheelSettings;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.VehicleSim_TA.SetupPresetAxle
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UWheel_TA*               LeftWheel                      (CPF_Parm, CPF_EditInline)
+// class UWheel_TA*               RightWheel                     (CPF_Parm, CPF_EditInline)
+// struct FVehicleAxleSettings    VisualAxle                     (CPF_Parm)
+// struct FVehicleAxleData        PresetAxle                     (CPF_Parm)
+
+void UVehicleSim_TA::SetupPresetAxle(class UWheel_TA* LeftWheel, class UWheel_TA* RightWheel, const struct FVehicleAxleSettings& VisualAxle, const struct FVehicleAxleData& PresetAxle)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VehicleSim_TA.SetupPresetAxle");
+
+	UVehicleSim_TA_SetupPresetAxle_Params params;
+	params.LeftWheel = LeftWheel;
+	params.RightWheel = RightWheel;
+	params.VisualAxle = VisualAxle;
+	params.PresetAxle = PresetAxle;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.VehicleSim_TA.SetupWheelBone
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UWheel_TA*               Wheel                          (CPF_Parm, CPF_EditInline)
+// struct FVehicleAxleSettings    Axle                           (CPF_Parm)
+// struct FVehicleWheelSettings   WheelSettings                  (CPF_Parm)
+
+void UVehicleSim_TA::SetupWheelBone(class UWheel_TA* Wheel, const struct FVehicleAxleSettings& Axle, const struct FVehicleWheelSettings& WheelSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VehicleSim_TA.SetupWheelBone");
+
+	UVehicleSim_TA_SetupWheelBone_Params params;
+	params.Wheel = Wheel;
+	params.Axle = Axle;
+	params.WheelSettings = WheelSettings;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.VehicleSim_TA.SetupBoneAxle
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class UWheel_TA*               LeftWheel                      (CPF_Parm, CPF_EditInline)
 // class UWheel_TA*               RightWheel                     (CPF_Parm, CPF_EditInline)
 // struct FVehicleAxleSettings    Axle                           (CPF_Parm)
 
-void UVehicleSim_TA::SetupAxle(class UWheel_TA* LeftWheel, class UWheel_TA* RightWheel, const struct FVehicleAxleSettings& Axle)
+void UVehicleSim_TA::SetupBoneAxle(class UWheel_TA* LeftWheel, class UWheel_TA* RightWheel, const struct FVehicleAxleSettings& Axle)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VehicleSim_TA.SetupAxle");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.VehicleSim_TA.SetupBoneAxle");
 
-	UVehicleSim_TA_SetupAxle_Params params;
+	UVehicleSim_TA_SetupBoneAxle_Params params;
 	params.LeftWheel = LeftWheel;
 	params.RightWheel = RightWheel;
 	params.Axle = Axle;
@@ -29454,28 +31387,6 @@ struct FVector UWheel_TA::GetLinearVelocity()
 }
 
 
-// Function TAGame.Wheel_TA.GetBoneLocation
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector UWheel_TA::GetBoneLocation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Wheel_TA.GetBoneLocation");
-
-	UWheel_TA_GetBoneLocation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.Wheel_TA.EventContactChanged
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -29487,6 +31398,40 @@ void UWheel_TA::EventContactChanged(class UWheel_TA* Wheel)
 
 	UWheel_TA_EventContactChanged_Params params;
 	params.Wheel = Wheel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.WheelSpeedComponent_TA.Detached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UWheelSpeedComponent_TA::Detached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.WheelSpeedComponent_TA.Detached");
+
+	UWheelSpeedComponent_TA_Detached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.WheelSpeedComponent_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UWheelSpeedComponent_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.WheelSpeedComponent_TA.Attached");
+
+	UWheelSpeedComponent_TA_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -29600,6 +31545,67 @@ void APRI_TA::Destroyed()
 }
 
 
+// Function TAGame.PRI_TA.GetBotName
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString APRI_TA::GetBotName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.GetBotName");
+
+	APRI_TA_GetBotName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.PRI_TA.SetBotProductName
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   InBotProductName               (CPF_Parm)
+
+void APRI_TA::SetBotProductName(const struct FName& InBotProductName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.SetBotProductName");
+
+	APRI_TA_SetBotProductName_Params params;
+	params.InBotProductName = InBotProductName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PRI_TA.BindCarDelegates
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           bBind                          (CPF_Parm)
+
+void APRI_TA::BindCarDelegates(bool bBind)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.BindCarDelegates");
+
+	APRI_TA_BindCarDelegates_Params params;
+	params.bBind = bBind;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.PRI_TA.ClientUnlockAchievement
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
 // Parameters:
@@ -29632,26 +31638,6 @@ void APRI_TA::ServerSetPlayerActivatedFX(class AFXActor_X* FX)
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.ServerSetPlayerActivatedFX");
 
 	APRI_TA_ServerSetPlayerActivatedFX_Params params;
-	params.FX = FX;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.PRI_TA.ServerSetPlayerGoalExplosion
-// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
-// Parameters:
-// class AFXActor_X*              FX                             (CPF_Parm)
-
-void APRI_TA::ServerSetPlayerGoalExplosion(class AFXActor_X* FX)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.ServerSetPlayerGoalExplosion");
-
-	APRI_TA_ServerSetPlayerGoalExplosion_Params params;
 	params.FX = FX;
 
 	auto flags = fn->FunctionFlags;
@@ -29981,6 +31967,46 @@ class UOnlineGame_X* APRI_TA::GetOnlineGame()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function TAGame.PRI_TA.SetDodgeInputThreshold
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// float                          NewDodgeThreshold              (CPF_Parm)
+
+void APRI_TA::SetDodgeInputThreshold(float NewDodgeThreshold)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.SetDodgeInputThreshold");
+
+	APRI_TA_SetDodgeInputThreshold_Params params;
+	params.NewDodgeThreshold = NewDodgeThreshold;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PRI_TA.ServerSetDodgeInputThreshold
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+// Parameters:
+// float                          NewDodgeThreshold              (CPF_Parm)
+
+void APRI_TA::ServerSetDodgeInputThreshold(float NewDodgeThreshold)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.ServerSetDodgeInputThreshold");
+
+	APRI_TA_ServerSetDodgeInputThreshold_Params params;
+	params.NewDodgeThreshold = NewDodgeThreshold;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -30439,24 +32465,23 @@ void APRI_TA::ServerMatchAdminSetScoreAndTime(int NewScoreTeam0, int NewScoreTea
 }
 
 
-// Function TAGame.PRI_TA.IsMatchAdmin
-// (FUNC_Defined, FUNC_Public)
+// Function TAGame.PRI_TA.SetMatchAdmin
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// bool                           bIsMatchAdmin                  (CPF_Parm)
 
-bool APRI_TA::IsMatchAdmin()
+void APRI_TA::SetMatchAdmin(bool bIsMatchAdmin)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.IsMatchAdmin");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.SetMatchAdmin");
 
-	APRI_TA_IsMatchAdmin_Params params;
+	APRI_TA_SetMatchAdmin_Params params;
+	params.bIsMatchAdmin = bIsMatchAdmin;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -31024,6 +33049,26 @@ void APRI_TA::CommitStats()
 }
 
 
+// Function TAGame.PRI_TA.InitProductStats
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
+// Parameters:
+// class UProductLoader_TA*       Loadout                        (CPF_Parm, CPF_EditInline)
+
+void APRI_TA::InitProductStats(class UProductLoader_TA* Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.InitProductStats");
+
+	APRI_TA_InitProductStats_Params params;
+	params.Loadout = Loadout;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.PRI_TA.HandleLoadoutLoaded
 // (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
 // Parameters:
@@ -31044,14 +33089,14 @@ void APRI_TA::HandleLoadoutLoaded(class UProductLoader_TA* Loadout)
 }
 
 
-// Function TAGame.PRI_TA.InitProductStats
+// Function TAGame.PRI_TA.UpdateFromLoadout
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 
-void APRI_TA::InitProductStats()
+void APRI_TA::UpdateFromLoadout()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.InitProductStats");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.UpdateFromLoadout");
 
-	APRI_TA_InitProductStats_Params params;
+	APRI_TA_UpdateFromLoadout_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31188,28 +33233,6 @@ void APRI_TA::SetGameEvent(class AGameEvent_TA* InGameEvent)
 
 	APRI_TA_SetGameEvent_Params params;
 	params.InGameEvent = InGameEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.PRI_TA.HandleGameOwnerUpdated
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class AGameEvent_TA*           InGameEvent                    (CPF_Parm)
-// class APRI_TA*                 NewGameOwner                   (CPF_Parm)
-
-void APRI_TA::HandleGameOwnerUpdated(class AGameEvent_TA* InGameEvent, class APRI_TA* NewGameOwner)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PRI_TA.HandleGameOwnerUpdated");
-
-	APRI_TA_HandleGameOwnerUpdated_Params params;
-	params.InGameEvent = InGameEvent;
-	params.NewGameOwner = NewGameOwner;
 
 	auto flags = fn->FunctionFlags;
 
@@ -33688,23 +35711,6 @@ void ACar_TA::SetCarScale(float NewScale)
 }
 
 
-// Function TAGame.Car_TA.TextArchetypeReloaded
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void ACar_TA::TextArchetypeReloaded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Car_TA.TextArchetypeReloaded");
-
-	ACar_TA_TextArchetypeReloaded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.Car_TA.OnClubColorsChanged
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 
@@ -34209,6 +36215,330 @@ void ACar_TA::EventVehicleSetup(class ACar_TA* Car)
 
 	ACar_TA_EventVehicleSetup_Params params;
 	params.Car = Car;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.__AchievementManager_TA__CheckAllCarSlotsCustomized_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::__AchievementManager_TA__CheckAllCarSlotsCustomized_1(class UProductSlot_TA* Slot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.__AchievementManager_TA__CheckAllCarSlotsCustomized_1");
+
+	UAchievementManager_TA___AchievementManager_TA__CheckAllCarSlotsCustomized_1_Params params;
+	params.Slot = Slot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.__AchievementManager_TA__GetEquippedOnlineProducts_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineProduct_TA*       P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::__AchievementManager_TA__GetEquippedOnlineProducts_1(class UOnlineProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.__AchievementManager_TA__GetEquippedOnlineProducts_1");
+
+	UAchievementManager_TA___AchievementManager_TA__GetEquippedOnlineProducts_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.HandleSkillTierChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class APRI_TA*                 PRI                            (CPF_Parm)
+
+void UAchievementManager_TA::HandleSkillTierChanged(class APRI_TA* PRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleSkillTierChanged");
+
+	UAchievementManager_TA_HandleSkillTierChanged_Params params;
+	params.PRI = PRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.HandleTradeInComplete
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_ProductTradeIn_TA* GFxData                        (CPF_Parm)
+// TArray<class UOnlineProduct_TA*> Given                          (CPF_Parm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> Received                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UAchievementManager_TA::HandleTradeInComplete(class UGFxData_ProductTradeIn_TA* GFxData, TArray<class UOnlineProduct_TA*> Given, TArray<class UOnlineProduct_TA*> Received)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleTradeInComplete");
+
+	UAchievementManager_TA_HandleTradeInComplete_Params params;
+	params.GFxData = GFxData;
+	params.Given = Given;
+	params.Received = Received;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.HandleTradeComplete
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameParty_TA*     P                              (CPF_Parm)
+// class URPC_ProductsTradePlayerStatus_TA* RPC                            (CPF_Parm)
+
+void UAchievementManager_TA::HandleTradeComplete(class UOnlineGameParty_TA* P, class URPC_ProductsTradePlayerStatus_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleTradeComplete");
+
+	UAchievementManager_TA_HandleTradeComplete_Params params;
+	params.P = P;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.HandleTradeStart
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameParty_TA*     P                              (CPF_Parm)
+// struct FGuid                   TradeId                        (CPF_Parm)
+
+void UAchievementManager_TA::HandleTradeStart(class UOnlineGameParty_TA* P, const struct FGuid& TradeId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleTradeStart");
+
+	UAchievementManager_TA_HandleTradeStart_Params params;
+	params.P = P;
+	params.TradeId = TradeId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.IsTournamentMatch
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::IsTournamentMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.IsTournamentMatch");
+
+	UAchievementManager_TA_IsTournamentMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.IsOnlineMatch
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::IsOnlineMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.IsOnlineMatch");
+
+	UAchievementManager_TA_IsOnlineMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.CheckUnlockGoodTimes
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UAchievementManager_TA::CheckUnlockGoodTimes()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.CheckUnlockGoodTimes");
+
+	UAchievementManager_TA_CheckUnlockGoodTimes_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.GetMapData
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UMapData_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UMapData_TA* UAchievementManager_TA::GetMapData()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetMapData");
+
+	UAchievementManager_TA_GetMapData_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.GetWeatherVariant
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TEnumAsByte<EWeatherVariant>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+TEnumAsByte<EWeatherVariant> UAchievementManager_TA::GetWeatherVariant()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetWeatherVariant");
+
+	UAchievementManager_TA_GetWeatherVariant_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.IsTurbulentWeather
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::IsTurbulentWeather()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.IsTurbulentWeather");
+
+	UAchievementManager_TA_IsTurbulentWeather_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.HasItemQualityEquipped
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TEnumAsByte<EProductQuality>   Quality                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::HasItemQualityEquipped(TEnumAsByte<EProductQuality> Quality)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HasItemQualityEquipped");
+
+	UAchievementManager_TA_HasItemQualityEquipped_Params params;
+	params.Quality = Quality;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.GetEquippedOnlineProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UOnlineProduct_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> MapLocal_A2007DBA44F79EBF973116B96184312E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> FilterLocal_68203C98421C36ECE868638266205F2F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<class UOnlineProduct_TA*> UAchievementManager_TA::GetEquippedOnlineProducts(TArray<class UOnlineProduct_TA*>* MapLocal_A2007DBA44F79EBF973116B96184312E, TArray<class UOnlineProduct_TA*>* FilterLocal_68203C98421C36ECE868638266205F2F)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.GetEquippedOnlineProducts");
+
+	UAchievementManager_TA_GetEquippedOnlineProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_A2007DBA44F79EBF973116B96184312E != nullptr)
+		*MapLocal_A2007DBA44F79EBF973116B96184312E = params.MapLocal_A2007DBA44F79EBF973116B96184312E;
+	if (FilterLocal_68203C98421C36ECE868638266205F2F != nullptr)
+		*FilterLocal_68203C98421C36ECE868638266205F2F = params.FilterLocal_68203C98421C36ECE868638266205F2F;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.AchievementManager_TA.CheckUnlockStormTrooper
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UAchievementManager_TA::CheckUnlockStormTrooper()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.CheckUnlockStormTrooper");
+
+	UAchievementManager_TA_CheckUnlockStormTrooper_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -34910,6 +37240,29 @@ bool UAchievementManager_TA::HasRideOrDieRequiredProducts()
 }
 
 
+// Function TAGame.AchievementManager_TA.PlayingMapOrVariant
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FName                   MapName                        (CPF_Parm, CPF_CoerceParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UAchievementManager_TA::PlayingMapOrVariant(const struct FName& MapName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.PlayingMapOrVariant");
+
+	UAchievementManager_TA_PlayingMapOrVariant_Params params;
+	params.MapName = MapName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.AchievementManager_TA.PlayingMap
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -34954,8 +37307,9 @@ void UAchievementManager_TA::CheckUnlockedAllGameAchievements()
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // int                            ProductID                      (CPF_Parm)
+// TArray<class UProductSlot_TA*> FilterLocal_6DF8D8DD4E1000967F00689522664614 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UAchievementManager_TA::CheckAllCarSlotsCustomized(int ProductID)
+void UAchievementManager_TA::CheckAllCarSlotsCustomized(int ProductID, TArray<class UProductSlot_TA*>* FilterLocal_6DF8D8DD4E1000967F00689522664614)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.CheckAllCarSlotsCustomized");
 
@@ -34967,6 +37321,9 @@ void UAchievementManager_TA::CheckAllCarSlotsCustomized(int ProductID)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (FilterLocal_6DF8D8DD4E1000967F00689522664614 != nullptr)
+		*FilterLocal_6DF8D8DD4E1000967F00689522664614 = params.FilterLocal_6DF8D8DD4E1000967F00689522664614;
 }
 
 
@@ -35282,6 +37639,23 @@ void UAchievementManager_TA::UpdateLevelsPlayed()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.UpdateLevelsPlayed");
 
 	UAchievementManager_TA_UpdateLevelsPlayed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.AchievementManager_TA.IncrementComingOnStrong
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UAchievementManager_TA::IncrementComingOnStrong()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.IncrementComingOnStrong");
+
+	UAchievementManager_TA_IncrementComingOnStrong_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -35950,9 +38324,9 @@ void UAchievementManager_TA::SetBaseSaveData(class USaveData_TA* MySaveData)
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            MySaveData                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UAchievementManager_TA::HandleBaseSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError_X* Error)
+void UAchievementManager_TA::HandleBaseSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AchievementManager_TA.HandleBaseSaveDataLoaded");
 
@@ -36710,9 +39084,9 @@ void AGameInfo_Replay_TA::OnLoadReplayRetry(class UGFxModal_X* Modal)
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class UReplay_TA*              InReplay                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void AGameInfo_Replay_TA::HandleReplayImportError(class UReplay_TA* InReplay, class UError_X* Error)
+void AGameInfo_Replay_TA::HandleReplayImportError(class UReplay_TA* InReplay, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_Replay_TA.HandleReplayImportError");
 
@@ -36802,9 +39176,9 @@ class ANavigationPoint* AGameInfo_Replay_TA::FindPlayerStart(class AController* 
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // class UReplay_TA*              InReplay                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void AGameInfo_Replay_TA::HandleReplayImported(class UReplayManager_TA* Manager, class UReplay_TA* InReplay, class UError_X* Error)
+void AGameInfo_Replay_TA::HandleReplayImported(class UReplayManager_TA* Manager, class UReplay_TA* InReplay, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_Replay_TA.HandleReplayImported");
 
@@ -37674,6 +40048,33 @@ void AGameEvent_Team_TA::EventTeamsCreated(class AGameEvent_Team_TA* GameEvent)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameEvent_Soccar_TA.__GameEvent_Soccar_TA__ReportFps_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// struct FFpsBucketData          Bucket                         (CPF_Parm)
+// struct FFPSBucketMetrics       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FFPSBucketMetrics       StructInitializer_303F955547EF42B840FA3F831B60A37F (CPF_Const, CPF_OutParm)
+
+struct FFPSBucketMetrics AGameEvent_Soccar_TA::__GameEvent_Soccar_TA__ReportFps_1(const struct FFpsBucketData& Bucket, struct FFPSBucketMetrics* StructInitializer_303F955547EF42B840FA3F831B60A37F)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_TA.__GameEvent_Soccar_TA__ReportFps_1");
+
+	AGameEvent_Soccar_TA___GameEvent_Soccar_TA__ReportFps_1_Params params;
+	params.Bucket = Bucket;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (StructInitializer_303F955547EF42B840FA3F831B60A37F != nullptr)
+		*StructInitializer_303F955547EF42B840FA3F831B60A37F = params.StructInitializer_303F955547EF42B840FA3F831B60A37F;
+
+	return params.ReturnValue;
 }
 
 
@@ -39382,23 +41783,6 @@ bool AGameEvent_Soccar_TA::HasWinner()
 }
 
 
-// Function TAGame.GameEvent_Soccar_TA.StartCountDown
-// (FUNC_Defined, FUNC_Protected)
-
-void AGameEvent_Soccar_TA::StartCountDown()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_TA.StartCountDown");
-
-	AGameEvent_Soccar_TA_StartCountDown_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.GameEvent_Soccar_TA.SubmitSkillMatch
 // (FUNC_Defined, FUNC_Protected)
 
@@ -39434,16 +41818,18 @@ void AGameEvent_Soccar_TA::SubmitMatch()
 
 
 // Function TAGame.GameEvent_Soccar_TA.CommitPlayerMatchData
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
 // class APRI_TA*                 PRI                            (CPF_Parm)
+// bool                           bCompletedMatch                (CPF_OptionalParm, CPF_Parm)
 
-void AGameEvent_Soccar_TA::CommitPlayerMatchData(class APRI_TA* PRI)
+void AGameEvent_Soccar_TA::CommitPlayerMatchData(class APRI_TA* PRI, bool bCompletedMatch)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_TA.CommitPlayerMatchData");
 
 	AGameEvent_Soccar_TA_CommitPlayerMatchData_Params params;
 	params.PRI = PRI;
+	params.bCompletedMatch = bCompletedMatch;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39716,8 +42102,9 @@ void AGameEvent_Soccar_TA::HandleGaveStat(class AStatFactory_TA* Factory, class 
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 // Parameters:
 // class UFpsBucketRecorder_TA*   Recorder                       (CPF_Parm, CPF_EditInline)
+// TArray<struct FFPSBucketMetrics> MapLocal_E9FFD7164F0AB4350D64BFB571016112 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void AGameEvent_Soccar_TA::ReportFps(class UFpsBucketRecorder_TA* Recorder)
+void AGameEvent_Soccar_TA::ReportFps(class UFpsBucketRecorder_TA* Recorder, TArray<struct FFPSBucketMetrics>* MapLocal_E9FFD7164F0AB4350D64BFB571016112)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Soccar_TA.ReportFps");
 
@@ -39729,6 +42116,9 @@ void AGameEvent_Soccar_TA::ReportFps(class UFpsBucketRecorder_TA* Recorder)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (MapLocal_E9FFD7164F0AB4350D64BFB571016112 != nullptr)
+		*MapLocal_E9FFD7164F0AB4350D64BFB571016112 = params.MapLocal_E9FFD7164F0AB4350D64BFB571016112;
 }
 
 
@@ -41514,6 +43904,26 @@ void AGameInfo_TA::InitGame(const struct FString& Options, struct FString* Error
 }
 
 
+// Function TAGame.GameInfo_TA.EventGameInitialized
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class AGameInfo_TA*            Game                           (CPF_Parm)
+
+void AGameInfo_TA::EventGameInitialized(class AGameInfo_TA* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_TA.EventGameInitialized");
+
+	AGameInfo_TA_EventGameInitialized_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameInfo_Soccar_TA.HasMoreThanOneRemotePlayer
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -41908,17 +44318,17 @@ void AGameInfo_Soccar_TA::PostBeginPlay()
 }
 
 
-// Function TAGame.GameInfo_Soccar_TA.EventGameInitialized
-// (FUNC_Public, FUNC_Delegate)
+// Function TAGame.Profile_TA.SetDodgeInputThreshold
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class AGameInfo_Soccar_TA*     Game                           (CPF_Parm)
+// float                          Value                          (CPF_Parm)
 
-void AGameInfo_Soccar_TA::EventGameInitialized(class AGameInfo_Soccar_TA* Game)
+void UProfile_TA::SetDodgeInputThreshold(float Value)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_Soccar_TA.EventGameInitialized");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.SetDodgeInputThreshold");
 
-	AGameInfo_Soccar_TA_EventGameInitialized_Params params;
-	params.Game = Game;
+	UProfile_TA_SetDodgeInputThreshold_Params params;
+	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41948,33 +44358,6 @@ struct FName UProfile_TA::GetKeyForAction(const struct FName& Action, bool bGame
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.Profile_TA.GetKeyForActionArray
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   Action                         (CPF_Parm)
-// TArray<struct FPlayerBinding>  Bindings                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UProfile_TA::GetKeyForActionArray(const struct FName& Action, TArray<struct FPlayerBinding>* Bindings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.GetKeyForActionArray");
-
-	UProfile_TA_GetKeyForActionArray_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Bindings != nullptr)
-		*Bindings = params.Bindings;
 
 	return params.ReturnValue;
 }
@@ -42747,13 +45130,13 @@ void UProfile_TA::InstanceGameTags()
 
 
 // Function TAGame.Profile_TA.StaticGetXPInfo
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            XPTotal                        (CPF_Parm)
-// int                            Out_XPLevel                    (CPF_Parm, CPF_OutParm)
-// struct FString                 Out_XPTitle                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// int                            Out_XPProgressInCurrentLevel   (CPF_Parm, CPF_OutParm)
-// int                            Out_XPRequiredForNextLevel     (CPF_Parm, CPF_OutParm)
+// int                            Out_XPLevel                    (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// struct FString                 Out_XPTitle                    (CPF_OptionalParm, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// int                            Out_XPProgressInCurrentLevel   (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// int                            Out_XPRequiredForNextLevel     (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
 
 void UProfile_TA::STATIC_StaticGetXPInfo(int XPTotal, int* Out_XPLevel, struct FString* Out_XPTitle, int* Out_XPProgressInCurrentLevel, int* Out_XPRequiredForNextLevel)
 {
@@ -43311,6 +45694,26 @@ void UProfile_TA::Init(class USaveData_TA* InSaveData, const struct FString& InP
 }
 
 
+// Function TAGame.Profile_TA.EventDodgeInputThresholdUpdated
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UProfile_TA*             Profile                        (CPF_Parm)
+
+void UProfile_TA::EventDodgeInputThresholdUpdated(class UProfile_TA* Profile)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.EventDodgeInputThresholdUpdated");
+
+	UProfile_TA_EventDodgeInputThresholdUpdated_Params params;
+	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.Profile_TA.EventUsedAllMapVotes
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -43486,6 +45889,28 @@ void UProfile_TA::EventOnlineProductEquipped(class UProfile_TA* Profile)
 
 	UProfile_TA_EventOnlineProductEquipped_Params params;
 	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Profile_TA.EventPreEquipProductToLoadouts
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UProfile_TA*             Profile                        (CPF_Parm)
+// int                            ProductID                      (CPF_Parm)
+
+void UProfile_TA::EventPreEquipProductToLoadouts(class UProfile_TA* Profile, int ProductID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA.EventPreEquipProductToLoadouts");
+
+	UProfile_TA_EventPreEquipProductToLoadouts_Params params;
+	params.Profile = Profile;
+	params.ProductID = ProductID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44108,16 +46533,37 @@ void USeason_TA::EventWeekSimulated(class USeason_TA* InSeason)
 }
 
 
-// Function TAGame.LoadoutSet_TA.GetBodyProduct
-// (FUNC_Defined, FUNC_Public)
+// Function TAGame.LoadoutSet_TA.LoadBodyAsset
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAsset_Body_TA*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProductAsset_Body_TA* ULoadoutSet_TA::LoadBodyAsset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutSet_TA.LoadBodyAsset");
+
+	ULoadoutSet_TA_LoadBodyAsset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutSet_TA.GetBodyProductID
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int ULoadoutSet_TA::GetBodyProduct()
+int ULoadoutSet_TA::GetBodyProductID()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutSet_TA.GetBodyProduct");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutSet_TA.GetBodyProductID");
 
-	ULoadoutSet_TA_GetBodyProduct_Params params;
+	ULoadoutSet_TA_GetBodyProductID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44130,7 +46576,7 @@ int ULoadoutSet_TA::GetBodyProduct()
 
 
 // Function TAGame.LoadoutSet_TA.HasProduct
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // int                            ProductID                      (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -44315,6 +46761,49 @@ void ULoadoutSet_TA::EventChanged(class ULoadoutSet_TA* LoadoutSet, class ULoado
 }
 
 
+// Function TAGame.SaveData_TA.__SaveData_TA__UpdateSaveDataVersion_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            Id                             (CPF_Parm)
+
+void USaveData_TA::__SaveData_TA__UpdateSaveDataVersion_1(int Id)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.__SaveData_TA__UpdateSaveDataVersion_1");
+
+	USaveData_TA___SaveData_TA__UpdateSaveDataVersion_1_Params params;
+	params.Id = Id;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SaveData_TA.__SaveData_TA__GetNewProducts_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USaveData_TA::__SaveData_TA__GetNewProducts_1(class UProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.__SaveData_TA__GetNewProducts_1");
+
+	USaveData_TA___SaveData_TA__GetNewProducts_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.SaveData_TA.UpdateTrialStatus
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -44466,17 +46955,32 @@ struct FPlaylistSkillData USaveData_TA::GetPlaylistSkillData(int Playlist)
 
 // Function TAGame.SaveData_TA.CheckForSkillDecay
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UOnlineGameSkill_X*      Skill                          (CPF_Parm)
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
 
-void USaveData_TA::CheckForSkillDecay(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID)
+void USaveData_TA::CheckForSkillDecay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.CheckForSkillDecay");
 
 	USaveData_TA_CheckForSkillDecay_Params params;
-	params.Skill = Skill;
-	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SaveData_TA.HandlePlaylistsChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGamePlaylists_X*  Playlists                      (CPF_Parm)
+
+void USaveData_TA::HandlePlaylistsChanged(class UOnlineGamePlaylists_X* Playlists)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HandlePlaylistsChanged");
+
+	USaveData_TA_HandlePlaylistsChanged_Params params;
+	params.Playlists = Playlists;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44491,9 +46995,9 @@ void USaveData_TA::CheckForSkillDecay(class UOnlineGameSkill_X* Skill, const str
 // Parameters:
 // class UOnlineGameSkill_X*      Skill                          (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void USaveData_TA::HandleSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void USaveData_TA::HandleSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HandleSkillSynced");
 
@@ -44544,6 +47048,27 @@ void USaveData_TA::ClearRankedReconnect()
 }
 
 
+// Function TAGame.SaveData_TA.RankedReconnectAvailable
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USaveData_TA::RankedReconnectAvailable()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.RankedReconnectAvailable");
+
+	USaveData_TA_RankedReconnectAvailable_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.SaveData_TA.SetRankedReconnect
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -44587,16 +47112,16 @@ class UOnlineProduct_TA* USaveData_TA::FindFirstOnlineProduct(int InProductID)
 }
 
 
-// Function TAGame.SaveData_TA.GetAllOnlineProducts
+// Function TAGame.SaveData_TA.GetUniqueOnlineProduct
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TArray<class UOnlineProduct_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TArray<class UOnlineProduct_TA*> USaveData_TA::GetAllOnlineProducts()
+class UOnlineProduct_TA* USaveData_TA::GetUniqueOnlineProduct()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetAllOnlineProducts");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetUniqueOnlineProduct");
 
-	USaveData_TA_GetAllOnlineProducts_Params params;
+	USaveData_TA_GetUniqueOnlineProduct_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44713,27 +47238,6 @@ void USaveData_TA::HandleOnlineProductsReceived(class URPC_ProductsPlayerGet_TA*
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.SaveData_TA.GetUnlockableProducts
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// TArray<int>                    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-TArray<int> USaveData_TA::GetUnlockableProducts()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetUnlockableProducts");
-
-	USaveData_TA_GetUnlockableProducts_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -44959,13 +47463,16 @@ void USaveData_TA::SyncOnlineProducts()
 
 
 // Function TAGame.SaveData_TA.SyncCloudData
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UPsyNetSession_X*        Session                        (CPF_Parm, CPF_EditInline)
 
-void USaveData_TA::SyncCloudData()
+void USaveData_TA::SyncCloudData(class UPsyNetSession_X* Session)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.SyncCloudData");
 
 	USaveData_TA_SyncCloudData_Params params;
+	params.Session = Session;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45388,50 +47895,6 @@ void USaveData_TA::RemoveNewProducts()
 }
 
 
-// Function TAGame.SaveData_TA.HasNewOnlineProducts
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USaveData_TA::HasNewOnlineProducts()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HasNewOnlineProducts");
-
-	USaveData_TA_HasNewOnlineProducts_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.SaveData_TA.HasNewProducts
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// TArray<class UProductSlot_TA*> LoadoutSlots                   (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USaveData_TA::HasNewProducts(TArray<class UProductSlot_TA*> LoadoutSlots)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HasNewProducts");
-
-	USaveData_TA_HasNewProducts_Params params;
-	params.LoadoutSlots = LoadoutSlots;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.SaveData_TA.GetUnseenContainerDrops
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 
@@ -45572,16 +48035,16 @@ void USaveData_TA::SetItemDropDisplayed()
 }
 
 
-// Function TAGame.SaveData_TA.BroadcastNewOnlineProduct
+// Function TAGame.SaveData_TA.OnNewOnlineProduct
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class UOnlineProduct_TA*       OnlineProduct                  (CPF_Parm)
 
-void USaveData_TA::BroadcastNewOnlineProduct(class UOnlineProduct_TA* OnlineProduct)
+void USaveData_TA::OnNewOnlineProduct(class UOnlineProduct_TA* OnlineProduct)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.BroadcastNewOnlineProduct");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.OnNewOnlineProduct");
 
-	USaveData_TA_BroadcastNewOnlineProduct_Params params;
+	USaveData_TA_OnNewOnlineProduct_Params params;
 	params.OnlineProduct = OnlineProduct;
 
 	auto flags = fn->FunctionFlags;
@@ -45734,16 +48197,68 @@ class USaveData_TA* USaveData_TA::ClearUnlockedProducts()
 }
 
 
-// Function TAGame.SaveData_TA.GetOnlineProductID
+// Function TAGame.SaveData_TA.GetNewProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// TArray<class UProduct_TA*>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     MapLocal_758EB7444C4D9F9B6128B59AC1C330F1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     FilterLocal_B0009A4A45E38B01559245B0D891629B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     DistinctLocal_A2E954BE43A8C9804A2572B96FEC7F76 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<class UProduct_TA*> USaveData_TA::GetNewProducts(TArray<class UProduct_TA*>* MapLocal_758EB7444C4D9F9B6128B59AC1C330F1, TArray<class UProduct_TA*>* FilterLocal_B0009A4A45E38B01559245B0D891629B, TArray<class UProduct_TA*>* DistinctLocal_A2E954BE43A8C9804A2572B96FEC7F76)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetNewProducts");
+
+	USaveData_TA_GetNewProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_758EB7444C4D9F9B6128B59AC1C330F1 != nullptr)
+		*MapLocal_758EB7444C4D9F9B6128B59AC1C330F1 = params.MapLocal_758EB7444C4D9F9B6128B59AC1C330F1;
+	if (FilterLocal_B0009A4A45E38B01559245B0D891629B != nullptr)
+		*FilterLocal_B0009A4A45E38B01559245B0D891629B = params.FilterLocal_B0009A4A45E38B01559245B0D891629B;
+	if (DistinctLocal_A2E954BE43A8C9804A2572B96FEC7F76 != nullptr)
+		*DistinctLocal_A2E954BE43A8C9804A2572B96FEC7F76 = params.DistinctLocal_A2E954BE43A8C9804A2572B96FEC7F76;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SaveData_TA.GetProductFromOnlineID
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* USaveData_TA::GetProductFromOnlineID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetProductFromOnlineID");
+
+	USaveData_TA_GetProductFromOnlineID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SaveData_TA.GetProductIDFromOnlineID
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int USaveData_TA::GetOnlineProductID()
+int USaveData_TA::GetProductIDFromOnlineID()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetOnlineProductID");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.GetProductIDFromOnlineID");
 
-	USaveData_TA_GetOnlineProductID_Params params;
+	USaveData_TA_GetProductIDFromOnlineID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45797,18 +48312,18 @@ bool USaveData_TA::IsInstanceOwned()
 }
 
 
-// Function TAGame.SaveData_TA.IsPublicProduct
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
+// Function TAGame.SaveData_TA.IsProductUnlockedEx
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// int                            ProductID                      (CPF_Parm)
+// class UProduct_TA*             Product                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool USaveData_TA::IsPublicProduct(int ProductID)
+bool USaveData_TA::IsProductUnlockedEx(class UProduct_TA* Product)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.IsPublicProduct");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.IsProductUnlockedEx");
 
-	USaveData_TA_IsPublicProduct_Params params;
-	params.ProductID = ProductID;
+	USaveData_TA_IsProductUnlockedEx_Params params;
+	params.Product = Product;
 
 	auto flags = fn->FunctionFlags;
 
@@ -45823,14 +48338,37 @@ bool USaveData_TA::IsPublicProduct(int ProductID)
 // Function TAGame.SaveData_TA.IsProductUnlocked
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// int                            ProductID                      (CPF_Parm)
+// class UProduct_TA*             Product                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool USaveData_TA::IsProductUnlocked(int ProductID)
+bool USaveData_TA::IsProductUnlocked(class UProduct_TA* Product)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.IsProductUnlocked");
 
 	USaveData_TA_IsProductUnlocked_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SaveData_TA.IsProductIdUnlocked
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ProductID                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USaveData_TA::IsProductIdUnlocked(int ProductID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.IsProductIdUnlocked");
+
+	USaveData_TA_IsProductIdUnlocked_Params params;
 	params.ProductID = ProductID;
 
 	auto flags = fn->FunctionFlags;
@@ -46473,17 +49011,17 @@ void USaveData_TA::HandleReceivePlayerController(class UPlayer* PlayerRef)
 }
 
 
-// Function TAGame.SaveData_TA.HandlePsyNetLoginChange
+// Function TAGame.SaveData_TA.HandleSessionActive
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+// class UPsyNetSession_X*        Session                        (CPF_Parm, CPF_EditInline)
 
-void USaveData_TA::HandlePsyNetLoginChange(class UOnlinePlayerAuthentication_X* Auth)
+void USaveData_TA::HandleSessionActive(class UPsyNetSession_X* Session)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HandlePsyNetLoginChange");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HandleSessionActive");
 
-	USaveData_TA_HandlePsyNetLoginChange_Params params;
-	params.Auth = Auth;
+	USaveData_TA_HandleSessionActive_Params params;
+	params.Session = Session;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46551,9 +49089,9 @@ void USaveData_TA::UpdateSaveDataVersion(class USaveGameManager_TA* Manager)
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void USaveData_TA::HandleDataLoaded(class USaveGameManager_TA* Manager, class UError_X* Error)
+void USaveData_TA::HandleDataLoaded(class USaveGameManager_TA* Manager, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.HandleDataLoaded");
 
@@ -46593,12 +49131,34 @@ void USaveData_TA::EventSchematicResourcesChanged(class USaveData_TA* Data)
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class USaveData_TA*            Data                           (CPF_Parm)
+// TArray<class UGameSettingPlaylist_X*> InDecayedPlaylists             (CPF_Parm, CPF_NeedCtorLink)
 
-void USaveData_TA::EventSkillDecayed(class USaveData_TA* Data)
+void USaveData_TA::EventSkillDecayed(class USaveData_TA* Data, TArray<class UGameSettingPlaylist_X*> InDecayedPlaylists)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.EventSkillDecayed");
 
 	USaveData_TA_EventSkillDecayed_Params params;
+	params.Data = Data;
+	params.InDecayedPlaylists = InDecayedPlaylists;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SaveData_TA.EventOnlineSavedDataSynced
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class USaveData_TA*            Data                           (CPF_Parm)
+
+void USaveData_TA::EventOnlineSavedDataSynced(class USaveData_TA* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.EventOnlineSavedDataSynced");
+
+	USaveData_TA_EventOnlineSavedDataSynced_Params params;
 	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
@@ -46620,26 +49180,6 @@ void USaveData_TA::EventOnlineProductsSynced(class USaveData_TA* Data)
 
 	USaveData_TA_EventOnlineProductsSynced_Params params;
 	params.Data = Data;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.SaveData_TA.EventUnlockableContainers
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// TArray<int>                    ContainerIds                   (CPF_Parm, CPF_NeedCtorLink)
-
-void USaveData_TA::EventUnlockableContainers(TArray<int> ContainerIds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SaveData_TA.EventUnlockableContainers");
-
-	USaveData_TA_EventUnlockableContainers_Params params;
-	params.ContainerIds = ContainerIds;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46704,6 +49244,26 @@ void USaveData_TA::EventNewProductUnlocked(class USaveData_TA* Data, int Product
 	USaveData_TA_EventNewProductUnlocked_Params params;
 	params.Data = Data;
 	params.ProductID = ProductID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameEvent_Tutorial_TA.SetTutorialTip
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 NewTip                         (CPF_Parm, CPF_NeedCtorLink)
+
+void AGameEvent_Tutorial_TA::SetTutorialTip(const struct FString& NewTip)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_TA.SetTutorialTip");
+
+	AGameEvent_Tutorial_TA_SetTutorialTip_Params params;
+	params.NewTip = NewTip;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46842,6 +49402,23 @@ void AGameEvent_Tutorial_TA::InitDebugSetup(class ACar_TA* Car)
 
 	AGameEvent_Tutorial_TA_InitDebugSetup_Params params;
 	params.Car = Car;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameEvent_Tutorial_TA.SkipTutorial
+// (FUNC_Public)
+
+void AGameEvent_Tutorial_TA::SkipTutorial()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_TA.SkipTutorial");
+
+	AGameEvent_Tutorial_TA_SkipTutorial_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48279,7 +50856,7 @@ struct FVector AGameEvent_Tutorial_TA::GetMaxFieldExtent(const struct FFieldSpaw
 
 
 // Function TAGame.GameEvent_Tutorial_TA.InitGameSetup
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class ACar_TA*                 Car                            (CPF_Parm)
 
@@ -48449,6 +51026,48 @@ void AGameEvent_Tutorial_TA::OnInit()
 }
 
 
+// Function TAGame.GameEvent_Tutorial_TA.EventTutorialTipChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class AGameEvent_Tutorial_TA*  GameEvent                      (CPF_Parm)
+// struct FString                 NewTip                         (CPF_Parm, CPF_NeedCtorLink)
+
+void AGameEvent_Tutorial_TA::EventTutorialTipChanged(class AGameEvent_Tutorial_TA* GameEvent, const struct FString& NewTip)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_TA.EventTutorialTipChanged");
+
+	AGameEvent_Tutorial_TA_EventTutorialTipChanged_Params params;
+	params.GameEvent = GameEvent;
+	params.NewTip = NewTip;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameEvent_Tutorial_TA.EventUseActionsChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class AGameEvent_Tutorial_TA*  GameEvent                      (CPF_Parm)
+
+void AGameEvent_Tutorial_TA::EventUseActionsChanged(class AGameEvent_Tutorial_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_TA.EventUseActionsChanged");
+
+	AGameEvent_Tutorial_TA_EventUseActionsChanged_Params params;
+	params.GameEvent = GameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameEvent_Tutorial_TA.EventShowBoostMeterChanged
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -48565,6 +51184,48 @@ void ULoadout_TA::PrintDebugInfo(class UDebugDrawer* Drawer)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Loadout_TA.LoadBodyAsset
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAsset_Body_TA*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProductAsset_Body_TA* ULoadout_TA::LoadBodyAsset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Loadout_TA.LoadBodyAsset");
+
+	ULoadout_TA_LoadBodyAsset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.Loadout_TA.GetBodyProductID
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int ULoadout_TA::GetBodyProductID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Loadout_TA.GetBodyProductID");
+
+	ULoadout_TA_GetBodyProductID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -48701,19 +51362,17 @@ struct FLoadoutData ULoadout_TA::GetData()
 
 
 // Function TAGame.Loadout_TA.ValidateForcedProducts
-// (FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FLoadoutData            Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class UProfile_TA*             ForProfile                     (CPF_OptionalParm, CPF_Parm)
-// int                            InTeamIndex                    (CPF_OptionalParm, CPF_Parm)
+// int                            TeamIndex                      (CPF_Parm)
 
-void ULoadout_TA::STATIC_ValidateForcedProducts(class UProfile_TA* ForProfile, int InTeamIndex, struct FLoadoutData* Data)
+void ULoadout_TA::STATIC_ValidateForcedProducts(int TeamIndex, struct FLoadoutData* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Loadout_TA.ValidateForcedProducts");
 
 	ULoadout_TA_ValidateForcedProducts_Params params;
-	params.ForProfile = ForProfile;
-	params.InTeamIndex = InTeamIndex;
+	params.TeamIndex = TeamIndex;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48842,15 +51501,15 @@ struct FLoadoutData ULoadout_TA::STATIC_EquipProduct(class ULoadout_TA* ForLoado
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class UProfile_TA*             InProfile                      (CPF_Parm)
-// int                            InTeamIndex                    (CPF_Parm)
+// int                            TeamIndex                      (CPF_Parm)
 
-void ULoadout_TA::Init(class UProfile_TA* InProfile, int InTeamIndex)
+void ULoadout_TA::Init(class UProfile_TA* InProfile, int TeamIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Loadout_TA.Init");
 
 	ULoadout_TA_Init_Params params;
 	params.InProfile = InProfile;
-	params.InTeamIndex = InTeamIndex;
+	params.TeamIndex = TeamIndex;
 
 	auto flags = fn->FunctionFlags;
 
@@ -48941,106 +51600,107 @@ void ULoadout_TA::EventChanged(class ULoadout_TA* Loadout)
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
 // TArray<struct FBindingAction>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B8190A0A48300190730B66BB99BC287B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_6D14F8B440F792B10FF3C9BBBCBC4308 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B636BD02473E65AE9D75CFA564327CAD (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_A6A8C22048157554C7337D9B89AD40C3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_4A3F0B7542A1B5A7FA3C7186E81E0435 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_E76424814C7C4F85B08BDC9D30C9F715 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_1F4408B24C96CCA1430EC387F173AD32 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D7F35F6A4A710A90C0A3019CCE878460 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_3E294A2E40446E474BDE4DA894A4DDF2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_ABFBAC0A49AF001BED4202AECED1E7DD (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_5258E31746F5DAADF3C54AB8E813E462 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_9EB887CB46685C3E039A86AEFB6932BC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B84EEB8B4FF7C759A949B19593DA3869 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_EF66656B4660538822F78CAC36B4C2E9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_A74D72D844751BCF6DBECEAAD0F21F03 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_29FD31174E165EB51067A9BA33FBCE12 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_9D070DDE4B9F3D846B7166B391A302AF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_448C6088484D2B2B00C7FC8412EF8D9A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_62FD123D48DBCEDCF1E8CBA9EFF7D055 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D29F8ADF4FBEEC9D3E51F49F9B0E1864 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_46AEBABA44960FBA5DF988871DDA634C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_5AC37FF34E6E0B09075D1EA9DB97CFBD (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_2E86F8D747F0A3A94DDA9DB684C303F4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_0CB914864FD995EE934993A52387703C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_293AD3AE43E16E4CD98C45880EAA4C93 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_01E6AEE448EA54EA8CF3E19575E02506 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_4E33A42440F5398A4E4714902A525F90 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_DEB90DF04E4D5CE3E95D17AFD989AF49 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_8DA611964951B804CC657EB66A0445F6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_10C8796E4CED4CC6C55A3788807D5A3C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_67AA6BCC4094A04E544144808AA46E5A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_CF28EACE41EFB4E8E0881AA0D0052C8A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_6E5F0F3B40036EE77D644992391AF30A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_66420EBB4E93EFEA32F37E9F9B82EDD4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_1376C65C48C514FB043C19B5B7A68DC6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_4F18E0FA43B62F8BD8B1068B2DCE8C09 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_8FD7E7E54F13BF04E53A2A92F52D494E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_BF07B49A40E8077D64CE8981DB2E2E6E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B25476B247D2C895FF90418A67AC6CA6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_66E1930C4A587E9A655B12AFDDC0C6FB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B7C86B2E48207E674A529C81CEF519F9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_E1AB2D954847BE5A31807B914FB1B195 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_6866AAFE4F6184666694F5A36702424F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_63EF4E924D35627DAACDF5B7232F068F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_A59E67FD4227FE9967CEABB6A1CE3765 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_306487964F4DC09D015226BF06E7C79F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_A29BF0034283E19B571E05AF785F4954 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_2ED7CF324B77A38B85897B989FD8416B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_80374D0B454C107602BD76BF8FA70DCA (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_10619C4A444300716A5B568759412867 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_54CE45DD43C9EE8A1AFFA7978DD2CCD5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_77C04DAA4010F2C5E94EF88096724BEE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_F3F294E34F10AA29D058DA8FFADEA481 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_79FFB8774362DC2AB0D4FF84BD429757 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_FD91E5FA4C04BB35EFC0BD85BCD321D9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_7006B73E4F0C1FE378E23FB239DFD56C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_4B1F9E70419A95B41F30098AD1709D50 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_C60EEE8F4FC30A3940E71EA6A78DF634 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_9FE929EB4F433D0F5D5CFDB0A3869E62 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_56DCF9AE48E557606A6704BF251E5E5E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_282485D3452C2E9D738ADA906B03EA02 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B4A40D504682FE4764FFC380B7932715 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_E226F3CA4EE1D76988178AAA71A72FCF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_7FEFDC034AC0BE47F4CC11804DA92D80 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_5B73ACC445F8FBBAA59C568335B5F662 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_F1641BA840AFD1B9CC797E92079BEE10 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_41EA60FE4D1006F727EE5DA15B713DE1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_91AC75794454C68637E8F79BC2B89E50 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_404601314A5E50EF75CB6E80D1003F4A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D341C0384F7310994A209F9811E27DB1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_EDB1D1C147B16752F00129809B2ED1DF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_91A9812D494BAFCB5E6C30BF78485529 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_525A8F9D4AEEAD6D89D675928FB17CC2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_397CBD1D473151DBF97FB2A6B37D2DF5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_55817CFD42A6FE4C642E649927C96FAB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_0546B0FC4F2B91044E51C7870A7BB157 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_6992161847BA5C3AA8839682AEBD5266 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_CB14AADF48D194D07CC45C914D009459 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_03F0875347A21F4E7B75188B3DF6D465 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_EE64FAF640052DCB44FD88916C6580BC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_03FB900044E27988B20E53809C6FA22C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_78120B4F4DA4237E6F36FCBBAAA31EB7 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_E07B8B7A4E196A82FAAEBAA1402101EB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D01FEA62457A415F95D7A8A37E55BA10 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_B8426BDE4B18D3A44D6AF3B56380BF03 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_36847A984C80E2FE31FA6AB8605E45E1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_3D8226B24B77F01E997559A37620F313 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_C200343E487731742592C1852516E4B4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_A2D5580E40843B1D01E9CCBC62EF91E9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_AB44D8D944382082AF6757AE2BAF91F0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D9A9D6444B20F52732A51B8B16F32524 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_59A4E28546C5CF22EBEFE5A8B90F3D2B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_5EDF9B834F4FC8AB2EE36799C4287005 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_C8372C3F40BF59E3F6D45489E2A992A5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_403B9EE6484E10EE813CAF8D90C01E02 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_D5648990447156430F301DA0F6399EA3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_9986E21C45C3DA6DBF729EA82F7F0A6F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// struct FBindingAction          StructInitializer__s_E0A6E5E34DA9F9BDEC1C9CB96DF931E5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C6BD8F4845BBA4E1013A2BB63E7EC613 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_66DEC3DB4C301DAB11B450A5744DB353 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_6BDC940341519AA489CE6AA07845CC90 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_D15793F94CA83AE7E54E4F869DD177DC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_52337ADD4C88A3844EE1F2B69D80815E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_ABF564E34CC0F5CE4ACE5BBC5944F679 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_7E294AA34AD8BEC38DC51FBC5EDB9025 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_4F6FBDE24FD5C2762D62B4A67444814E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_81E58BB0417CF645125CCE991DA9D078 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_52D8F29C44BC93EBEF5DE48EF7213A4B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_54EB69B34F677648AC201B9ACDC82419 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_865ED5064781F141B0DDCFA5251356C2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_69BF9F7A4BEDEF4CC3BAA0B7CE4C827B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_6C28789040BF775C661CEFB6392933F7 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_B6E3A9C94BD1BEE27666F1B1D5AB582B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_CAA3FAF64A2529460E511CA8F8EF879B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C9B7DAA54AC46766070181827635E754 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_E31EBE9E4E93991E3E6B0D855CBC1511 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_EA5B4DD4420A3CA31EF10E9D074391F8 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_5E7DD80B4F1A087B581715839FE78B37 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_035CD4984809F0B37C0DE592F1C351D2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_05BF939340102B90AEE861A6FC0F6F39 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_9E1569474112EA5C73B355B7647B8022 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_129AE6844BBA8E69A21272BAD6018002 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_2EB804DB4CE3594E8B2743829875E9A4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_94C6B7DF4B7BB08F4AD24FA7929E92F6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_5D1C055B4A429CA3DC2712BFD9DBE0A0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_6661393041652F4C9856809175BC4E38 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_4B9AFA894ACE53DC68CD1CB41CBF1FE9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_F2B3BAF7402F9B86D3490283AC2AD564 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_56E1A5764ED46304D4A669827F595EA1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_A1EFD0FF4FC0145E94A1428F00D9C554 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_40AB17534EEE83CCBEF84387876E758C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_EBDD612A4EB6FAD20B2E998A42B2245F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_E03EB8074884070154332E90BD487B3C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_D3AE3C2B44CFD35D8BB4278AC9787AEE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_BCDC8A034E9E356178193591F85C707F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_487018124B3046F35F20249F6C3F60D1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_61723A9C483FE59ED099F5BCE2CCE280 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_DFDA54074D35C5AA9CC254B3F61BC320 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_B85B905F47C2F9721AEDA5BFD9BF9462 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_A11AC3A0461DFE5C67EE90AC923968F9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_FA24566B4AA4701160E6E7B4C2962EE3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_CB4CC6CC4FC9E1B294AD68A5066E978A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_34FC60E3476C3A1128E91B8B5BDD81DA (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_97E399A24741CB232EB64D89D1E388B1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_123ECCCE4467B1E9B577B6B657A5917B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_77D17E514430BF41A457E9B37261507A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_8262BB32471B8BCDA9421297E711E4A0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_61E4D2F74AF77D9277BA7DB7B3786927 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_28E06F044CDA90868498F5871A4089D0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_ABB42C4741A7E250F0B0A8B4AB33984E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_E6DBFFBD4D597F47C7FD26B0BA446303 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_9F02EF384DC784F8D0C9E1BA0568B9E5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_63C962D14F075E2472102E91F4957B95 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_6299B14A4C7867312DC9E499D38DD8A8 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C600EF5D44B176D1DB9B5BB0920AEBCF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C6CBAB1944A079096B14F4883E2D55E3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_11AAFF1E44C8297B2F41B595AF36F790 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_598DA5F744DE092FA162C4B00FE9F4F4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_35CEC176427260441810E888049B18FC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_3F95951E46D1A9D4FC1DD89470B55837 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_6594F3BF4698F650D04D0B8D8462E442 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_CB3571C24B2678CD6B31CF883F8FE39E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_38DB31E547D3CFF71BC62FB415639B44 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C41AA5B7454873DCAC9A85ACB06A826F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_B00D5181401D64FF1E311CA22C78F1F1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_76A566DC4C8D5AC78488C99529811F61 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_06DEAB8B44ED9E0956264DA040409A01 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_E311AE674F5DA9E50BB99480DDD874C4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_2666E2DA4C4D685CA88BCB8870B2F1BB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_4910DB914507AC1A706EC4A2AA48B8B0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_106C813042BEFF92487F4EB35F03091B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_FFF62F1A4DC8E8A21AAF4A86FE00C9F3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_29A17C27410B95C4FF9DB19A9EC92493 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_B1EB15F544D9F8B4E84D06A207F9A3FA (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_66F6716B4D6CB7BC87D80499E091C517 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_20207A394F5AAFD04BD9B5909A1F411F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_EBB7FA8F4B9F9F3E9D5C34860B4D37E3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_24AD04804775C9BB930FCB8E5455F6F2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_60F3C9554F4642EA7C7C30B4F8E562D3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_013FD9924BB8243FF0591C96D04B2601 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_FEEA67434A0B4330FAB50397F96C5EF5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_7D11BCDD4BD4C833F1323C8F26DB0E7E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_AD0EE54A47FFE8EBA0366C94479D2A8E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_216D851A45845A73B5DC7B9DBDD840D8 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C3A7D52344DE2435CFC39CAEEE3AEE0D (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_1179BC3E4D8ACFDCC65A9C8495E048C6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_87D284004EE3160E6FBB2293288BAFBC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_B8F5B2074D5ECC9692D42CA1B6E329AF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_850C4E3744C76D309390C5A6F0DF16B0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_C86E7E374E2A1623D4D1ED9A076792CB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_1C8F37C543D695E7CE94689F50A44AAB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_53951FC74E280079BD55E5A7FD4EBFAD (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_F13055EF44C7F02D9E7F90BD234D391B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_F253171648A6BACC99BF299DF6E19F4A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_A841D6B640BC98B3E5BE2992FE6863D2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_4434072F419A32F70361809FF178D446 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FBindingAction          StructInitializer_5C3CE504436F1D8E9149998BF724A029 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<struct FBindingAction> UPlayerInput_TA::STATIC_GetDefaultActions(struct FBindingAction* StructInitializer__s_B8190A0A48300190730B66BB99BC287B, struct FBindingAction* StructInitializer__s_6D14F8B440F792B10FF3C9BBBCBC4308, struct FBindingAction* StructInitializer__s_B636BD02473E65AE9D75CFA564327CAD, struct FBindingAction* StructInitializer__s_A6A8C22048157554C7337D9B89AD40C3, struct FBindingAction* StructInitializer__s_4A3F0B7542A1B5A7FA3C7186E81E0435, struct FBindingAction* StructInitializer__s_E76424814C7C4F85B08BDC9D30C9F715, struct FBindingAction* StructInitializer__s_1F4408B24C96CCA1430EC387F173AD32, struct FBindingAction* StructInitializer__s_D7F35F6A4A710A90C0A3019CCE878460, struct FBindingAction* StructInitializer__s_3E294A2E40446E474BDE4DA894A4DDF2, struct FBindingAction* StructInitializer__s_ABFBAC0A49AF001BED4202AECED1E7DD, struct FBindingAction* StructInitializer__s_5258E31746F5DAADF3C54AB8E813E462, struct FBindingAction* StructInitializer__s_9EB887CB46685C3E039A86AEFB6932BC, struct FBindingAction* StructInitializer__s_B84EEB8B4FF7C759A949B19593DA3869, struct FBindingAction* StructInitializer__s_EF66656B4660538822F78CAC36B4C2E9, struct FBindingAction* StructInitializer__s_A74D72D844751BCF6DBECEAAD0F21F03, struct FBindingAction* StructInitializer__s_29FD31174E165EB51067A9BA33FBCE12, struct FBindingAction* StructInitializer__s_9D070DDE4B9F3D846B7166B391A302AF, struct FBindingAction* StructInitializer__s_448C6088484D2B2B00C7FC8412EF8D9A, struct FBindingAction* StructInitializer__s_62FD123D48DBCEDCF1E8CBA9EFF7D055, struct FBindingAction* StructInitializer__s_D29F8ADF4FBEEC9D3E51F49F9B0E1864, struct FBindingAction* StructInitializer__s_46AEBABA44960FBA5DF988871DDA634C, struct FBindingAction* StructInitializer__s_5AC37FF34E6E0B09075D1EA9DB97CFBD, struct FBindingAction* StructInitializer__s_2E86F8D747F0A3A94DDA9DB684C303F4, struct FBindingAction* StructInitializer__s_0CB914864FD995EE934993A52387703C, struct FBindingAction* StructInitializer__s_293AD3AE43E16E4CD98C45880EAA4C93, struct FBindingAction* StructInitializer__s_01E6AEE448EA54EA8CF3E19575E02506, struct FBindingAction* StructInitializer__s_4E33A42440F5398A4E4714902A525F90, struct FBindingAction* StructInitializer__s_DEB90DF04E4D5CE3E95D17AFD989AF49, struct FBindingAction* StructInitializer__s_8DA611964951B804CC657EB66A0445F6, struct FBindingAction* StructInitializer__s_10C8796E4CED4CC6C55A3788807D5A3C, struct FBindingAction* StructInitializer__s_67AA6BCC4094A04E544144808AA46E5A, struct FBindingAction* StructInitializer__s_CF28EACE41EFB4E8E0881AA0D0052C8A, struct FBindingAction* StructInitializer__s_6E5F0F3B40036EE77D644992391AF30A, struct FBindingAction* StructInitializer__s_66420EBB4E93EFEA32F37E9F9B82EDD4, struct FBindingAction* StructInitializer__s_1376C65C48C514FB043C19B5B7A68DC6, struct FBindingAction* StructInitializer__s_4F18E0FA43B62F8BD8B1068B2DCE8C09, struct FBindingAction* StructInitializer__s_8FD7E7E54F13BF04E53A2A92F52D494E, struct FBindingAction* StructInitializer__s_BF07B49A40E8077D64CE8981DB2E2E6E, struct FBindingAction* StructInitializer__s_B25476B247D2C895FF90418A67AC6CA6, struct FBindingAction* StructInitializer__s_66E1930C4A587E9A655B12AFDDC0C6FB, struct FBindingAction* StructInitializer__s_B7C86B2E48207E674A529C81CEF519F9, struct FBindingAction* StructInitializer__s_E1AB2D954847BE5A31807B914FB1B195, struct FBindingAction* StructInitializer__s_6866AAFE4F6184666694F5A36702424F, struct FBindingAction* StructInitializer__s_63EF4E924D35627DAACDF5B7232F068F, struct FBindingAction* StructInitializer__s_A59E67FD4227FE9967CEABB6A1CE3765, struct FBindingAction* StructInitializer__s_306487964F4DC09D015226BF06E7C79F, struct FBindingAction* StructInitializer__s_A29BF0034283E19B571E05AF785F4954, struct FBindingAction* StructInitializer__s_2ED7CF324B77A38B85897B989FD8416B, struct FBindingAction* StructInitializer__s_80374D0B454C107602BD76BF8FA70DCA, struct FBindingAction* StructInitializer__s_10619C4A444300716A5B568759412867, struct FBindingAction* StructInitializer__s_54CE45DD43C9EE8A1AFFA7978DD2CCD5, struct FBindingAction* StructInitializer__s_77C04DAA4010F2C5E94EF88096724BEE, struct FBindingAction* StructInitializer__s_F3F294E34F10AA29D058DA8FFADEA481, struct FBindingAction* StructInitializer__s_79FFB8774362DC2AB0D4FF84BD429757, struct FBindingAction* StructInitializer__s_FD91E5FA4C04BB35EFC0BD85BCD321D9, struct FBindingAction* StructInitializer__s_7006B73E4F0C1FE378E23FB239DFD56C, struct FBindingAction* StructInitializer__s_4B1F9E70419A95B41F30098AD1709D50, struct FBindingAction* StructInitializer__s_C60EEE8F4FC30A3940E71EA6A78DF634, struct FBindingAction* StructInitializer__s_9FE929EB4F433D0F5D5CFDB0A3869E62, struct FBindingAction* StructInitializer__s_56DCF9AE48E557606A6704BF251E5E5E, struct FBindingAction* StructInitializer__s_282485D3452C2E9D738ADA906B03EA02, struct FBindingAction* StructInitializer__s_B4A40D504682FE4764FFC380B7932715, struct FBindingAction* StructInitializer__s_E226F3CA4EE1D76988178AAA71A72FCF, struct FBindingAction* StructInitializer__s_7FEFDC034AC0BE47F4CC11804DA92D80, struct FBindingAction* StructInitializer__s_5B73ACC445F8FBBAA59C568335B5F662, struct FBindingAction* StructInitializer__s_F1641BA840AFD1B9CC797E92079BEE10, struct FBindingAction* StructInitializer__s_41EA60FE4D1006F727EE5DA15B713DE1, struct FBindingAction* StructInitializer__s_91AC75794454C68637E8F79BC2B89E50, struct FBindingAction* StructInitializer__s_404601314A5E50EF75CB6E80D1003F4A, struct FBindingAction* StructInitializer__s_D341C0384F7310994A209F9811E27DB1, struct FBindingAction* StructInitializer__s_EDB1D1C147B16752F00129809B2ED1DF, struct FBindingAction* StructInitializer__s_91A9812D494BAFCB5E6C30BF78485529, struct FBindingAction* StructInitializer__s_525A8F9D4AEEAD6D89D675928FB17CC2, struct FBindingAction* StructInitializer__s_397CBD1D473151DBF97FB2A6B37D2DF5, struct FBindingAction* StructInitializer__s_55817CFD42A6FE4C642E649927C96FAB, struct FBindingAction* StructInitializer__s_0546B0FC4F2B91044E51C7870A7BB157, struct FBindingAction* StructInitializer__s_6992161847BA5C3AA8839682AEBD5266, struct FBindingAction* StructInitializer__s_CB14AADF48D194D07CC45C914D009459, struct FBindingAction* StructInitializer__s_03F0875347A21F4E7B75188B3DF6D465, struct FBindingAction* StructInitializer__s_EE64FAF640052DCB44FD88916C6580BC, struct FBindingAction* StructInitializer__s_03FB900044E27988B20E53809C6FA22C, struct FBindingAction* StructInitializer__s_78120B4F4DA4237E6F36FCBBAAA31EB7, struct FBindingAction* StructInitializer__s_E07B8B7A4E196A82FAAEBAA1402101EB, struct FBindingAction* StructInitializer__s_D01FEA62457A415F95D7A8A37E55BA10, struct FBindingAction* StructInitializer__s_B8426BDE4B18D3A44D6AF3B56380BF03, struct FBindingAction* StructInitializer__s_36847A984C80E2FE31FA6AB8605E45E1, struct FBindingAction* StructInitializer__s_3D8226B24B77F01E997559A37620F313, struct FBindingAction* StructInitializer__s_C200343E487731742592C1852516E4B4, struct FBindingAction* StructInitializer__s_A2D5580E40843B1D01E9CCBC62EF91E9, struct FBindingAction* StructInitializer__s_AB44D8D944382082AF6757AE2BAF91F0, struct FBindingAction* StructInitializer__s_D9A9D6444B20F52732A51B8B16F32524, struct FBindingAction* StructInitializer__s_59A4E28546C5CF22EBEFE5A8B90F3D2B, struct FBindingAction* StructInitializer__s_5EDF9B834F4FC8AB2EE36799C4287005, struct FBindingAction* StructInitializer__s_C8372C3F40BF59E3F6D45489E2A992A5, struct FBindingAction* StructInitializer__s_403B9EE6484E10EE813CAF8D90C01E02, struct FBindingAction* StructInitializer__s_D5648990447156430F301DA0F6399EA3, struct FBindingAction* StructInitializer__s_9986E21C45C3DA6DBF729EA82F7F0A6F, struct FBindingAction* StructInitializer__s_E0A6E5E34DA9F9BDEC1C9CB96DF931E5)
+TArray<struct FBindingAction> UPlayerInput_TA::STATIC_GetDefaultActions(struct FBindingAction* StructInitializer_C6BD8F4845BBA4E1013A2BB63E7EC613, struct FBindingAction* StructInitializer_66DEC3DB4C301DAB11B450A5744DB353, struct FBindingAction* StructInitializer_6BDC940341519AA489CE6AA07845CC90, struct FBindingAction* StructInitializer_D15793F94CA83AE7E54E4F869DD177DC, struct FBindingAction* StructInitializer_52337ADD4C88A3844EE1F2B69D80815E, struct FBindingAction* StructInitializer_ABF564E34CC0F5CE4ACE5BBC5944F679, struct FBindingAction* StructInitializer_7E294AA34AD8BEC38DC51FBC5EDB9025, struct FBindingAction* StructInitializer_4F6FBDE24FD5C2762D62B4A67444814E, struct FBindingAction* StructInitializer_81E58BB0417CF645125CCE991DA9D078, struct FBindingAction* StructInitializer_52D8F29C44BC93EBEF5DE48EF7213A4B, struct FBindingAction* StructInitializer_54EB69B34F677648AC201B9ACDC82419, struct FBindingAction* StructInitializer_865ED5064781F141B0DDCFA5251356C2, struct FBindingAction* StructInitializer_69BF9F7A4BEDEF4CC3BAA0B7CE4C827B, struct FBindingAction* StructInitializer_6C28789040BF775C661CEFB6392933F7, struct FBindingAction* StructInitializer_B6E3A9C94BD1BEE27666F1B1D5AB582B, struct FBindingAction* StructInitializer_CAA3FAF64A2529460E511CA8F8EF879B, struct FBindingAction* StructInitializer_C9B7DAA54AC46766070181827635E754, struct FBindingAction* StructInitializer_E31EBE9E4E93991E3E6B0D855CBC1511, struct FBindingAction* StructInitializer_EA5B4DD4420A3CA31EF10E9D074391F8, struct FBindingAction* StructInitializer_5E7DD80B4F1A087B581715839FE78B37, struct FBindingAction* StructInitializer_035CD4984809F0B37C0DE592F1C351D2, struct FBindingAction* StructInitializer_05BF939340102B90AEE861A6FC0F6F39, struct FBindingAction* StructInitializer_9E1569474112EA5C73B355B7647B8022, struct FBindingAction* StructInitializer_129AE6844BBA8E69A21272BAD6018002, struct FBindingAction* StructInitializer_2EB804DB4CE3594E8B2743829875E9A4, struct FBindingAction* StructInitializer_94C6B7DF4B7BB08F4AD24FA7929E92F6, struct FBindingAction* StructInitializer_5D1C055B4A429CA3DC2712BFD9DBE0A0, struct FBindingAction* StructInitializer_6661393041652F4C9856809175BC4E38, struct FBindingAction* StructInitializer_4B9AFA894ACE53DC68CD1CB41CBF1FE9, struct FBindingAction* StructInitializer_F2B3BAF7402F9B86D3490283AC2AD564, struct FBindingAction* StructInitializer_56E1A5764ED46304D4A669827F595EA1, struct FBindingAction* StructInitializer_A1EFD0FF4FC0145E94A1428F00D9C554, struct FBindingAction* StructInitializer_40AB17534EEE83CCBEF84387876E758C, struct FBindingAction* StructInitializer_EBDD612A4EB6FAD20B2E998A42B2245F, struct FBindingAction* StructInitializer_E03EB8074884070154332E90BD487B3C, struct FBindingAction* StructInitializer_D3AE3C2B44CFD35D8BB4278AC9787AEE, struct FBindingAction* StructInitializer_BCDC8A034E9E356178193591F85C707F, struct FBindingAction* StructInitializer_487018124B3046F35F20249F6C3F60D1, struct FBindingAction* StructInitializer_61723A9C483FE59ED099F5BCE2CCE280, struct FBindingAction* StructInitializer_DFDA54074D35C5AA9CC254B3F61BC320, struct FBindingAction* StructInitializer_B85B905F47C2F9721AEDA5BFD9BF9462, struct FBindingAction* StructInitializer_A11AC3A0461DFE5C67EE90AC923968F9, struct FBindingAction* StructInitializer_FA24566B4AA4701160E6E7B4C2962EE3, struct FBindingAction* StructInitializer_CB4CC6CC4FC9E1B294AD68A5066E978A, struct FBindingAction* StructInitializer_34FC60E3476C3A1128E91B8B5BDD81DA, struct FBindingAction* StructInitializer_97E399A24741CB232EB64D89D1E388B1, struct FBindingAction* StructInitializer_123ECCCE4467B1E9B577B6B657A5917B, struct FBindingAction* StructInitializer_77D17E514430BF41A457E9B37261507A, struct FBindingAction* StructInitializer_8262BB32471B8BCDA9421297E711E4A0, struct FBindingAction* StructInitializer_61E4D2F74AF77D9277BA7DB7B3786927, struct FBindingAction* StructInitializer_28E06F044CDA90868498F5871A4089D0, struct FBindingAction* StructInitializer_ABB42C4741A7E250F0B0A8B4AB33984E, struct FBindingAction* StructInitializer_E6DBFFBD4D597F47C7FD26B0BA446303, struct FBindingAction* StructInitializer_9F02EF384DC784F8D0C9E1BA0568B9E5, struct FBindingAction* StructInitializer_63C962D14F075E2472102E91F4957B95, struct FBindingAction* StructInitializer_6299B14A4C7867312DC9E499D38DD8A8, struct FBindingAction* StructInitializer_C600EF5D44B176D1DB9B5BB0920AEBCF, struct FBindingAction* StructInitializer_C6CBAB1944A079096B14F4883E2D55E3, struct FBindingAction* StructInitializer_11AAFF1E44C8297B2F41B595AF36F790, struct FBindingAction* StructInitializer_598DA5F744DE092FA162C4B00FE9F4F4, struct FBindingAction* StructInitializer_35CEC176427260441810E888049B18FC, struct FBindingAction* StructInitializer_3F95951E46D1A9D4FC1DD89470B55837, struct FBindingAction* StructInitializer_6594F3BF4698F650D04D0B8D8462E442, struct FBindingAction* StructInitializer_CB3571C24B2678CD6B31CF883F8FE39E, struct FBindingAction* StructInitializer_38DB31E547D3CFF71BC62FB415639B44, struct FBindingAction* StructInitializer_C41AA5B7454873DCAC9A85ACB06A826F, struct FBindingAction* StructInitializer_B00D5181401D64FF1E311CA22C78F1F1, struct FBindingAction* StructInitializer_76A566DC4C8D5AC78488C99529811F61, struct FBindingAction* StructInitializer_06DEAB8B44ED9E0956264DA040409A01, struct FBindingAction* StructInitializer_E311AE674F5DA9E50BB99480DDD874C4, struct FBindingAction* StructInitializer_2666E2DA4C4D685CA88BCB8870B2F1BB, struct FBindingAction* StructInitializer_4910DB914507AC1A706EC4A2AA48B8B0, struct FBindingAction* StructInitializer_106C813042BEFF92487F4EB35F03091B, struct FBindingAction* StructInitializer_FFF62F1A4DC8E8A21AAF4A86FE00C9F3, struct FBindingAction* StructInitializer_29A17C27410B95C4FF9DB19A9EC92493, struct FBindingAction* StructInitializer_B1EB15F544D9F8B4E84D06A207F9A3FA, struct FBindingAction* StructInitializer_66F6716B4D6CB7BC87D80499E091C517, struct FBindingAction* StructInitializer_20207A394F5AAFD04BD9B5909A1F411F, struct FBindingAction* StructInitializer_EBB7FA8F4B9F9F3E9D5C34860B4D37E3, struct FBindingAction* StructInitializer_24AD04804775C9BB930FCB8E5455F6F2, struct FBindingAction* StructInitializer_60F3C9554F4642EA7C7C30B4F8E562D3, struct FBindingAction* StructInitializer_013FD9924BB8243FF0591C96D04B2601, struct FBindingAction* StructInitializer_FEEA67434A0B4330FAB50397F96C5EF5, struct FBindingAction* StructInitializer_7D11BCDD4BD4C833F1323C8F26DB0E7E, struct FBindingAction* StructInitializer_AD0EE54A47FFE8EBA0366C94479D2A8E, struct FBindingAction* StructInitializer_216D851A45845A73B5DC7B9DBDD840D8, struct FBindingAction* StructInitializer_C3A7D52344DE2435CFC39CAEEE3AEE0D, struct FBindingAction* StructInitializer_1179BC3E4D8ACFDCC65A9C8495E048C6, struct FBindingAction* StructInitializer_87D284004EE3160E6FBB2293288BAFBC, struct FBindingAction* StructInitializer_B8F5B2074D5ECC9692D42CA1B6E329AF, struct FBindingAction* StructInitializer_850C4E3744C76D309390C5A6F0DF16B0, struct FBindingAction* StructInitializer_C86E7E374E2A1623D4D1ED9A076792CB, struct FBindingAction* StructInitializer_1C8F37C543D695E7CE94689F50A44AAB, struct FBindingAction* StructInitializer_53951FC74E280079BD55E5A7FD4EBFAD, struct FBindingAction* StructInitializer_F13055EF44C7F02D9E7F90BD234D391B, struct FBindingAction* StructInitializer_F253171648A6BACC99BF299DF6E19F4A, struct FBindingAction* StructInitializer_A841D6B640BC98B3E5BE2992FE6863D2, struct FBindingAction* StructInitializer_4434072F419A32F70361809FF178D446, struct FBindingAction* StructInitializer_5C3CE504436F1D8E9149998BF724A029)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.GetDefaultActions");
 
@@ -49052,202 +51712,204 @@ TArray<struct FBindingAction> UPlayerInput_TA::STATIC_GetDefaultActions(struct F
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_B8190A0A48300190730B66BB99BC287B != nullptr)
-		*StructInitializer__s_B8190A0A48300190730B66BB99BC287B = params.StructInitializer__s_B8190A0A48300190730B66BB99BC287B;
-	if (StructInitializer__s_6D14F8B440F792B10FF3C9BBBCBC4308 != nullptr)
-		*StructInitializer__s_6D14F8B440F792B10FF3C9BBBCBC4308 = params.StructInitializer__s_6D14F8B440F792B10FF3C9BBBCBC4308;
-	if (StructInitializer__s_B636BD02473E65AE9D75CFA564327CAD != nullptr)
-		*StructInitializer__s_B636BD02473E65AE9D75CFA564327CAD = params.StructInitializer__s_B636BD02473E65AE9D75CFA564327CAD;
-	if (StructInitializer__s_A6A8C22048157554C7337D9B89AD40C3 != nullptr)
-		*StructInitializer__s_A6A8C22048157554C7337D9B89AD40C3 = params.StructInitializer__s_A6A8C22048157554C7337D9B89AD40C3;
-	if (StructInitializer__s_4A3F0B7542A1B5A7FA3C7186E81E0435 != nullptr)
-		*StructInitializer__s_4A3F0B7542A1B5A7FA3C7186E81E0435 = params.StructInitializer__s_4A3F0B7542A1B5A7FA3C7186E81E0435;
-	if (StructInitializer__s_E76424814C7C4F85B08BDC9D30C9F715 != nullptr)
-		*StructInitializer__s_E76424814C7C4F85B08BDC9D30C9F715 = params.StructInitializer__s_E76424814C7C4F85B08BDC9D30C9F715;
-	if (StructInitializer__s_1F4408B24C96CCA1430EC387F173AD32 != nullptr)
-		*StructInitializer__s_1F4408B24C96CCA1430EC387F173AD32 = params.StructInitializer__s_1F4408B24C96CCA1430EC387F173AD32;
-	if (StructInitializer__s_D7F35F6A4A710A90C0A3019CCE878460 != nullptr)
-		*StructInitializer__s_D7F35F6A4A710A90C0A3019CCE878460 = params.StructInitializer__s_D7F35F6A4A710A90C0A3019CCE878460;
-	if (StructInitializer__s_3E294A2E40446E474BDE4DA894A4DDF2 != nullptr)
-		*StructInitializer__s_3E294A2E40446E474BDE4DA894A4DDF2 = params.StructInitializer__s_3E294A2E40446E474BDE4DA894A4DDF2;
-	if (StructInitializer__s_ABFBAC0A49AF001BED4202AECED1E7DD != nullptr)
-		*StructInitializer__s_ABFBAC0A49AF001BED4202AECED1E7DD = params.StructInitializer__s_ABFBAC0A49AF001BED4202AECED1E7DD;
-	if (StructInitializer__s_5258E31746F5DAADF3C54AB8E813E462 != nullptr)
-		*StructInitializer__s_5258E31746F5DAADF3C54AB8E813E462 = params.StructInitializer__s_5258E31746F5DAADF3C54AB8E813E462;
-	if (StructInitializer__s_9EB887CB46685C3E039A86AEFB6932BC != nullptr)
-		*StructInitializer__s_9EB887CB46685C3E039A86AEFB6932BC = params.StructInitializer__s_9EB887CB46685C3E039A86AEFB6932BC;
-	if (StructInitializer__s_B84EEB8B4FF7C759A949B19593DA3869 != nullptr)
-		*StructInitializer__s_B84EEB8B4FF7C759A949B19593DA3869 = params.StructInitializer__s_B84EEB8B4FF7C759A949B19593DA3869;
-	if (StructInitializer__s_EF66656B4660538822F78CAC36B4C2E9 != nullptr)
-		*StructInitializer__s_EF66656B4660538822F78CAC36B4C2E9 = params.StructInitializer__s_EF66656B4660538822F78CAC36B4C2E9;
-	if (StructInitializer__s_A74D72D844751BCF6DBECEAAD0F21F03 != nullptr)
-		*StructInitializer__s_A74D72D844751BCF6DBECEAAD0F21F03 = params.StructInitializer__s_A74D72D844751BCF6DBECEAAD0F21F03;
-	if (StructInitializer__s_29FD31174E165EB51067A9BA33FBCE12 != nullptr)
-		*StructInitializer__s_29FD31174E165EB51067A9BA33FBCE12 = params.StructInitializer__s_29FD31174E165EB51067A9BA33FBCE12;
-	if (StructInitializer__s_9D070DDE4B9F3D846B7166B391A302AF != nullptr)
-		*StructInitializer__s_9D070DDE4B9F3D846B7166B391A302AF = params.StructInitializer__s_9D070DDE4B9F3D846B7166B391A302AF;
-	if (StructInitializer__s_448C6088484D2B2B00C7FC8412EF8D9A != nullptr)
-		*StructInitializer__s_448C6088484D2B2B00C7FC8412EF8D9A = params.StructInitializer__s_448C6088484D2B2B00C7FC8412EF8D9A;
-	if (StructInitializer__s_62FD123D48DBCEDCF1E8CBA9EFF7D055 != nullptr)
-		*StructInitializer__s_62FD123D48DBCEDCF1E8CBA9EFF7D055 = params.StructInitializer__s_62FD123D48DBCEDCF1E8CBA9EFF7D055;
-	if (StructInitializer__s_D29F8ADF4FBEEC9D3E51F49F9B0E1864 != nullptr)
-		*StructInitializer__s_D29F8ADF4FBEEC9D3E51F49F9B0E1864 = params.StructInitializer__s_D29F8ADF4FBEEC9D3E51F49F9B0E1864;
-	if (StructInitializer__s_46AEBABA44960FBA5DF988871DDA634C != nullptr)
-		*StructInitializer__s_46AEBABA44960FBA5DF988871DDA634C = params.StructInitializer__s_46AEBABA44960FBA5DF988871DDA634C;
-	if (StructInitializer__s_5AC37FF34E6E0B09075D1EA9DB97CFBD != nullptr)
-		*StructInitializer__s_5AC37FF34E6E0B09075D1EA9DB97CFBD = params.StructInitializer__s_5AC37FF34E6E0B09075D1EA9DB97CFBD;
-	if (StructInitializer__s_2E86F8D747F0A3A94DDA9DB684C303F4 != nullptr)
-		*StructInitializer__s_2E86F8D747F0A3A94DDA9DB684C303F4 = params.StructInitializer__s_2E86F8D747F0A3A94DDA9DB684C303F4;
-	if (StructInitializer__s_0CB914864FD995EE934993A52387703C != nullptr)
-		*StructInitializer__s_0CB914864FD995EE934993A52387703C = params.StructInitializer__s_0CB914864FD995EE934993A52387703C;
-	if (StructInitializer__s_293AD3AE43E16E4CD98C45880EAA4C93 != nullptr)
-		*StructInitializer__s_293AD3AE43E16E4CD98C45880EAA4C93 = params.StructInitializer__s_293AD3AE43E16E4CD98C45880EAA4C93;
-	if (StructInitializer__s_01E6AEE448EA54EA8CF3E19575E02506 != nullptr)
-		*StructInitializer__s_01E6AEE448EA54EA8CF3E19575E02506 = params.StructInitializer__s_01E6AEE448EA54EA8CF3E19575E02506;
-	if (StructInitializer__s_4E33A42440F5398A4E4714902A525F90 != nullptr)
-		*StructInitializer__s_4E33A42440F5398A4E4714902A525F90 = params.StructInitializer__s_4E33A42440F5398A4E4714902A525F90;
-	if (StructInitializer__s_DEB90DF04E4D5CE3E95D17AFD989AF49 != nullptr)
-		*StructInitializer__s_DEB90DF04E4D5CE3E95D17AFD989AF49 = params.StructInitializer__s_DEB90DF04E4D5CE3E95D17AFD989AF49;
-	if (StructInitializer__s_8DA611964951B804CC657EB66A0445F6 != nullptr)
-		*StructInitializer__s_8DA611964951B804CC657EB66A0445F6 = params.StructInitializer__s_8DA611964951B804CC657EB66A0445F6;
-	if (StructInitializer__s_10C8796E4CED4CC6C55A3788807D5A3C != nullptr)
-		*StructInitializer__s_10C8796E4CED4CC6C55A3788807D5A3C = params.StructInitializer__s_10C8796E4CED4CC6C55A3788807D5A3C;
-	if (StructInitializer__s_67AA6BCC4094A04E544144808AA46E5A != nullptr)
-		*StructInitializer__s_67AA6BCC4094A04E544144808AA46E5A = params.StructInitializer__s_67AA6BCC4094A04E544144808AA46E5A;
-	if (StructInitializer__s_CF28EACE41EFB4E8E0881AA0D0052C8A != nullptr)
-		*StructInitializer__s_CF28EACE41EFB4E8E0881AA0D0052C8A = params.StructInitializer__s_CF28EACE41EFB4E8E0881AA0D0052C8A;
-	if (StructInitializer__s_6E5F0F3B40036EE77D644992391AF30A != nullptr)
-		*StructInitializer__s_6E5F0F3B40036EE77D644992391AF30A = params.StructInitializer__s_6E5F0F3B40036EE77D644992391AF30A;
-	if (StructInitializer__s_66420EBB4E93EFEA32F37E9F9B82EDD4 != nullptr)
-		*StructInitializer__s_66420EBB4E93EFEA32F37E9F9B82EDD4 = params.StructInitializer__s_66420EBB4E93EFEA32F37E9F9B82EDD4;
-	if (StructInitializer__s_1376C65C48C514FB043C19B5B7A68DC6 != nullptr)
-		*StructInitializer__s_1376C65C48C514FB043C19B5B7A68DC6 = params.StructInitializer__s_1376C65C48C514FB043C19B5B7A68DC6;
-	if (StructInitializer__s_4F18E0FA43B62F8BD8B1068B2DCE8C09 != nullptr)
-		*StructInitializer__s_4F18E0FA43B62F8BD8B1068B2DCE8C09 = params.StructInitializer__s_4F18E0FA43B62F8BD8B1068B2DCE8C09;
-	if (StructInitializer__s_8FD7E7E54F13BF04E53A2A92F52D494E != nullptr)
-		*StructInitializer__s_8FD7E7E54F13BF04E53A2A92F52D494E = params.StructInitializer__s_8FD7E7E54F13BF04E53A2A92F52D494E;
-	if (StructInitializer__s_BF07B49A40E8077D64CE8981DB2E2E6E != nullptr)
-		*StructInitializer__s_BF07B49A40E8077D64CE8981DB2E2E6E = params.StructInitializer__s_BF07B49A40E8077D64CE8981DB2E2E6E;
-	if (StructInitializer__s_B25476B247D2C895FF90418A67AC6CA6 != nullptr)
-		*StructInitializer__s_B25476B247D2C895FF90418A67AC6CA6 = params.StructInitializer__s_B25476B247D2C895FF90418A67AC6CA6;
-	if (StructInitializer__s_66E1930C4A587E9A655B12AFDDC0C6FB != nullptr)
-		*StructInitializer__s_66E1930C4A587E9A655B12AFDDC0C6FB = params.StructInitializer__s_66E1930C4A587E9A655B12AFDDC0C6FB;
-	if (StructInitializer__s_B7C86B2E48207E674A529C81CEF519F9 != nullptr)
-		*StructInitializer__s_B7C86B2E48207E674A529C81CEF519F9 = params.StructInitializer__s_B7C86B2E48207E674A529C81CEF519F9;
-	if (StructInitializer__s_E1AB2D954847BE5A31807B914FB1B195 != nullptr)
-		*StructInitializer__s_E1AB2D954847BE5A31807B914FB1B195 = params.StructInitializer__s_E1AB2D954847BE5A31807B914FB1B195;
-	if (StructInitializer__s_6866AAFE4F6184666694F5A36702424F != nullptr)
-		*StructInitializer__s_6866AAFE4F6184666694F5A36702424F = params.StructInitializer__s_6866AAFE4F6184666694F5A36702424F;
-	if (StructInitializer__s_63EF4E924D35627DAACDF5B7232F068F != nullptr)
-		*StructInitializer__s_63EF4E924D35627DAACDF5B7232F068F = params.StructInitializer__s_63EF4E924D35627DAACDF5B7232F068F;
-	if (StructInitializer__s_A59E67FD4227FE9967CEABB6A1CE3765 != nullptr)
-		*StructInitializer__s_A59E67FD4227FE9967CEABB6A1CE3765 = params.StructInitializer__s_A59E67FD4227FE9967CEABB6A1CE3765;
-	if (StructInitializer__s_306487964F4DC09D015226BF06E7C79F != nullptr)
-		*StructInitializer__s_306487964F4DC09D015226BF06E7C79F = params.StructInitializer__s_306487964F4DC09D015226BF06E7C79F;
-	if (StructInitializer__s_A29BF0034283E19B571E05AF785F4954 != nullptr)
-		*StructInitializer__s_A29BF0034283E19B571E05AF785F4954 = params.StructInitializer__s_A29BF0034283E19B571E05AF785F4954;
-	if (StructInitializer__s_2ED7CF324B77A38B85897B989FD8416B != nullptr)
-		*StructInitializer__s_2ED7CF324B77A38B85897B989FD8416B = params.StructInitializer__s_2ED7CF324B77A38B85897B989FD8416B;
-	if (StructInitializer__s_80374D0B454C107602BD76BF8FA70DCA != nullptr)
-		*StructInitializer__s_80374D0B454C107602BD76BF8FA70DCA = params.StructInitializer__s_80374D0B454C107602BD76BF8FA70DCA;
-	if (StructInitializer__s_10619C4A444300716A5B568759412867 != nullptr)
-		*StructInitializer__s_10619C4A444300716A5B568759412867 = params.StructInitializer__s_10619C4A444300716A5B568759412867;
-	if (StructInitializer__s_54CE45DD43C9EE8A1AFFA7978DD2CCD5 != nullptr)
-		*StructInitializer__s_54CE45DD43C9EE8A1AFFA7978DD2CCD5 = params.StructInitializer__s_54CE45DD43C9EE8A1AFFA7978DD2CCD5;
-	if (StructInitializer__s_77C04DAA4010F2C5E94EF88096724BEE != nullptr)
-		*StructInitializer__s_77C04DAA4010F2C5E94EF88096724BEE = params.StructInitializer__s_77C04DAA4010F2C5E94EF88096724BEE;
-	if (StructInitializer__s_F3F294E34F10AA29D058DA8FFADEA481 != nullptr)
-		*StructInitializer__s_F3F294E34F10AA29D058DA8FFADEA481 = params.StructInitializer__s_F3F294E34F10AA29D058DA8FFADEA481;
-	if (StructInitializer__s_79FFB8774362DC2AB0D4FF84BD429757 != nullptr)
-		*StructInitializer__s_79FFB8774362DC2AB0D4FF84BD429757 = params.StructInitializer__s_79FFB8774362DC2AB0D4FF84BD429757;
-	if (StructInitializer__s_FD91E5FA4C04BB35EFC0BD85BCD321D9 != nullptr)
-		*StructInitializer__s_FD91E5FA4C04BB35EFC0BD85BCD321D9 = params.StructInitializer__s_FD91E5FA4C04BB35EFC0BD85BCD321D9;
-	if (StructInitializer__s_7006B73E4F0C1FE378E23FB239DFD56C != nullptr)
-		*StructInitializer__s_7006B73E4F0C1FE378E23FB239DFD56C = params.StructInitializer__s_7006B73E4F0C1FE378E23FB239DFD56C;
-	if (StructInitializer__s_4B1F9E70419A95B41F30098AD1709D50 != nullptr)
-		*StructInitializer__s_4B1F9E70419A95B41F30098AD1709D50 = params.StructInitializer__s_4B1F9E70419A95B41F30098AD1709D50;
-	if (StructInitializer__s_C60EEE8F4FC30A3940E71EA6A78DF634 != nullptr)
-		*StructInitializer__s_C60EEE8F4FC30A3940E71EA6A78DF634 = params.StructInitializer__s_C60EEE8F4FC30A3940E71EA6A78DF634;
-	if (StructInitializer__s_9FE929EB4F433D0F5D5CFDB0A3869E62 != nullptr)
-		*StructInitializer__s_9FE929EB4F433D0F5D5CFDB0A3869E62 = params.StructInitializer__s_9FE929EB4F433D0F5D5CFDB0A3869E62;
-	if (StructInitializer__s_56DCF9AE48E557606A6704BF251E5E5E != nullptr)
-		*StructInitializer__s_56DCF9AE48E557606A6704BF251E5E5E = params.StructInitializer__s_56DCF9AE48E557606A6704BF251E5E5E;
-	if (StructInitializer__s_282485D3452C2E9D738ADA906B03EA02 != nullptr)
-		*StructInitializer__s_282485D3452C2E9D738ADA906B03EA02 = params.StructInitializer__s_282485D3452C2E9D738ADA906B03EA02;
-	if (StructInitializer__s_B4A40D504682FE4764FFC380B7932715 != nullptr)
-		*StructInitializer__s_B4A40D504682FE4764FFC380B7932715 = params.StructInitializer__s_B4A40D504682FE4764FFC380B7932715;
-	if (StructInitializer__s_E226F3CA4EE1D76988178AAA71A72FCF != nullptr)
-		*StructInitializer__s_E226F3CA4EE1D76988178AAA71A72FCF = params.StructInitializer__s_E226F3CA4EE1D76988178AAA71A72FCF;
-	if (StructInitializer__s_7FEFDC034AC0BE47F4CC11804DA92D80 != nullptr)
-		*StructInitializer__s_7FEFDC034AC0BE47F4CC11804DA92D80 = params.StructInitializer__s_7FEFDC034AC0BE47F4CC11804DA92D80;
-	if (StructInitializer__s_5B73ACC445F8FBBAA59C568335B5F662 != nullptr)
-		*StructInitializer__s_5B73ACC445F8FBBAA59C568335B5F662 = params.StructInitializer__s_5B73ACC445F8FBBAA59C568335B5F662;
-	if (StructInitializer__s_F1641BA840AFD1B9CC797E92079BEE10 != nullptr)
-		*StructInitializer__s_F1641BA840AFD1B9CC797E92079BEE10 = params.StructInitializer__s_F1641BA840AFD1B9CC797E92079BEE10;
-	if (StructInitializer__s_41EA60FE4D1006F727EE5DA15B713DE1 != nullptr)
-		*StructInitializer__s_41EA60FE4D1006F727EE5DA15B713DE1 = params.StructInitializer__s_41EA60FE4D1006F727EE5DA15B713DE1;
-	if (StructInitializer__s_91AC75794454C68637E8F79BC2B89E50 != nullptr)
-		*StructInitializer__s_91AC75794454C68637E8F79BC2B89E50 = params.StructInitializer__s_91AC75794454C68637E8F79BC2B89E50;
-	if (StructInitializer__s_404601314A5E50EF75CB6E80D1003F4A != nullptr)
-		*StructInitializer__s_404601314A5E50EF75CB6E80D1003F4A = params.StructInitializer__s_404601314A5E50EF75CB6E80D1003F4A;
-	if (StructInitializer__s_D341C0384F7310994A209F9811E27DB1 != nullptr)
-		*StructInitializer__s_D341C0384F7310994A209F9811E27DB1 = params.StructInitializer__s_D341C0384F7310994A209F9811E27DB1;
-	if (StructInitializer__s_EDB1D1C147B16752F00129809B2ED1DF != nullptr)
-		*StructInitializer__s_EDB1D1C147B16752F00129809B2ED1DF = params.StructInitializer__s_EDB1D1C147B16752F00129809B2ED1DF;
-	if (StructInitializer__s_91A9812D494BAFCB5E6C30BF78485529 != nullptr)
-		*StructInitializer__s_91A9812D494BAFCB5E6C30BF78485529 = params.StructInitializer__s_91A9812D494BAFCB5E6C30BF78485529;
-	if (StructInitializer__s_525A8F9D4AEEAD6D89D675928FB17CC2 != nullptr)
-		*StructInitializer__s_525A8F9D4AEEAD6D89D675928FB17CC2 = params.StructInitializer__s_525A8F9D4AEEAD6D89D675928FB17CC2;
-	if (StructInitializer__s_397CBD1D473151DBF97FB2A6B37D2DF5 != nullptr)
-		*StructInitializer__s_397CBD1D473151DBF97FB2A6B37D2DF5 = params.StructInitializer__s_397CBD1D473151DBF97FB2A6B37D2DF5;
-	if (StructInitializer__s_55817CFD42A6FE4C642E649927C96FAB != nullptr)
-		*StructInitializer__s_55817CFD42A6FE4C642E649927C96FAB = params.StructInitializer__s_55817CFD42A6FE4C642E649927C96FAB;
-	if (StructInitializer__s_0546B0FC4F2B91044E51C7870A7BB157 != nullptr)
-		*StructInitializer__s_0546B0FC4F2B91044E51C7870A7BB157 = params.StructInitializer__s_0546B0FC4F2B91044E51C7870A7BB157;
-	if (StructInitializer__s_6992161847BA5C3AA8839682AEBD5266 != nullptr)
-		*StructInitializer__s_6992161847BA5C3AA8839682AEBD5266 = params.StructInitializer__s_6992161847BA5C3AA8839682AEBD5266;
-	if (StructInitializer__s_CB14AADF48D194D07CC45C914D009459 != nullptr)
-		*StructInitializer__s_CB14AADF48D194D07CC45C914D009459 = params.StructInitializer__s_CB14AADF48D194D07CC45C914D009459;
-	if (StructInitializer__s_03F0875347A21F4E7B75188B3DF6D465 != nullptr)
-		*StructInitializer__s_03F0875347A21F4E7B75188B3DF6D465 = params.StructInitializer__s_03F0875347A21F4E7B75188B3DF6D465;
-	if (StructInitializer__s_EE64FAF640052DCB44FD88916C6580BC != nullptr)
-		*StructInitializer__s_EE64FAF640052DCB44FD88916C6580BC = params.StructInitializer__s_EE64FAF640052DCB44FD88916C6580BC;
-	if (StructInitializer__s_03FB900044E27988B20E53809C6FA22C != nullptr)
-		*StructInitializer__s_03FB900044E27988B20E53809C6FA22C = params.StructInitializer__s_03FB900044E27988B20E53809C6FA22C;
-	if (StructInitializer__s_78120B4F4DA4237E6F36FCBBAAA31EB7 != nullptr)
-		*StructInitializer__s_78120B4F4DA4237E6F36FCBBAAA31EB7 = params.StructInitializer__s_78120B4F4DA4237E6F36FCBBAAA31EB7;
-	if (StructInitializer__s_E07B8B7A4E196A82FAAEBAA1402101EB != nullptr)
-		*StructInitializer__s_E07B8B7A4E196A82FAAEBAA1402101EB = params.StructInitializer__s_E07B8B7A4E196A82FAAEBAA1402101EB;
-	if (StructInitializer__s_D01FEA62457A415F95D7A8A37E55BA10 != nullptr)
-		*StructInitializer__s_D01FEA62457A415F95D7A8A37E55BA10 = params.StructInitializer__s_D01FEA62457A415F95D7A8A37E55BA10;
-	if (StructInitializer__s_B8426BDE4B18D3A44D6AF3B56380BF03 != nullptr)
-		*StructInitializer__s_B8426BDE4B18D3A44D6AF3B56380BF03 = params.StructInitializer__s_B8426BDE4B18D3A44D6AF3B56380BF03;
-	if (StructInitializer__s_36847A984C80E2FE31FA6AB8605E45E1 != nullptr)
-		*StructInitializer__s_36847A984C80E2FE31FA6AB8605E45E1 = params.StructInitializer__s_36847A984C80E2FE31FA6AB8605E45E1;
-	if (StructInitializer__s_3D8226B24B77F01E997559A37620F313 != nullptr)
-		*StructInitializer__s_3D8226B24B77F01E997559A37620F313 = params.StructInitializer__s_3D8226B24B77F01E997559A37620F313;
-	if (StructInitializer__s_C200343E487731742592C1852516E4B4 != nullptr)
-		*StructInitializer__s_C200343E487731742592C1852516E4B4 = params.StructInitializer__s_C200343E487731742592C1852516E4B4;
-	if (StructInitializer__s_A2D5580E40843B1D01E9CCBC62EF91E9 != nullptr)
-		*StructInitializer__s_A2D5580E40843B1D01E9CCBC62EF91E9 = params.StructInitializer__s_A2D5580E40843B1D01E9CCBC62EF91E9;
-	if (StructInitializer__s_AB44D8D944382082AF6757AE2BAF91F0 != nullptr)
-		*StructInitializer__s_AB44D8D944382082AF6757AE2BAF91F0 = params.StructInitializer__s_AB44D8D944382082AF6757AE2BAF91F0;
-	if (StructInitializer__s_D9A9D6444B20F52732A51B8B16F32524 != nullptr)
-		*StructInitializer__s_D9A9D6444B20F52732A51B8B16F32524 = params.StructInitializer__s_D9A9D6444B20F52732A51B8B16F32524;
-	if (StructInitializer__s_59A4E28546C5CF22EBEFE5A8B90F3D2B != nullptr)
-		*StructInitializer__s_59A4E28546C5CF22EBEFE5A8B90F3D2B = params.StructInitializer__s_59A4E28546C5CF22EBEFE5A8B90F3D2B;
-	if (StructInitializer__s_5EDF9B834F4FC8AB2EE36799C4287005 != nullptr)
-		*StructInitializer__s_5EDF9B834F4FC8AB2EE36799C4287005 = params.StructInitializer__s_5EDF9B834F4FC8AB2EE36799C4287005;
-	if (StructInitializer__s_C8372C3F40BF59E3F6D45489E2A992A5 != nullptr)
-		*StructInitializer__s_C8372C3F40BF59E3F6D45489E2A992A5 = params.StructInitializer__s_C8372C3F40BF59E3F6D45489E2A992A5;
-	if (StructInitializer__s_403B9EE6484E10EE813CAF8D90C01E02 != nullptr)
-		*StructInitializer__s_403B9EE6484E10EE813CAF8D90C01E02 = params.StructInitializer__s_403B9EE6484E10EE813CAF8D90C01E02;
-	if (StructInitializer__s_D5648990447156430F301DA0F6399EA3 != nullptr)
-		*StructInitializer__s_D5648990447156430F301DA0F6399EA3 = params.StructInitializer__s_D5648990447156430F301DA0F6399EA3;
-	if (StructInitializer__s_9986E21C45C3DA6DBF729EA82F7F0A6F != nullptr)
-		*StructInitializer__s_9986E21C45C3DA6DBF729EA82F7F0A6F = params.StructInitializer__s_9986E21C45C3DA6DBF729EA82F7F0A6F;
-	if (StructInitializer__s_E0A6E5E34DA9F9BDEC1C9CB96DF931E5 != nullptr)
-		*StructInitializer__s_E0A6E5E34DA9F9BDEC1C9CB96DF931E5 = params.StructInitializer__s_E0A6E5E34DA9F9BDEC1C9CB96DF931E5;
+	if (StructInitializer_C6BD8F4845BBA4E1013A2BB63E7EC613 != nullptr)
+		*StructInitializer_C6BD8F4845BBA4E1013A2BB63E7EC613 = params.StructInitializer_C6BD8F4845BBA4E1013A2BB63E7EC613;
+	if (StructInitializer_66DEC3DB4C301DAB11B450A5744DB353 != nullptr)
+		*StructInitializer_66DEC3DB4C301DAB11B450A5744DB353 = params.StructInitializer_66DEC3DB4C301DAB11B450A5744DB353;
+	if (StructInitializer_6BDC940341519AA489CE6AA07845CC90 != nullptr)
+		*StructInitializer_6BDC940341519AA489CE6AA07845CC90 = params.StructInitializer_6BDC940341519AA489CE6AA07845CC90;
+	if (StructInitializer_D15793F94CA83AE7E54E4F869DD177DC != nullptr)
+		*StructInitializer_D15793F94CA83AE7E54E4F869DD177DC = params.StructInitializer_D15793F94CA83AE7E54E4F869DD177DC;
+	if (StructInitializer_52337ADD4C88A3844EE1F2B69D80815E != nullptr)
+		*StructInitializer_52337ADD4C88A3844EE1F2B69D80815E = params.StructInitializer_52337ADD4C88A3844EE1F2B69D80815E;
+	if (StructInitializer_ABF564E34CC0F5CE4ACE5BBC5944F679 != nullptr)
+		*StructInitializer_ABF564E34CC0F5CE4ACE5BBC5944F679 = params.StructInitializer_ABF564E34CC0F5CE4ACE5BBC5944F679;
+	if (StructInitializer_7E294AA34AD8BEC38DC51FBC5EDB9025 != nullptr)
+		*StructInitializer_7E294AA34AD8BEC38DC51FBC5EDB9025 = params.StructInitializer_7E294AA34AD8BEC38DC51FBC5EDB9025;
+	if (StructInitializer_4F6FBDE24FD5C2762D62B4A67444814E != nullptr)
+		*StructInitializer_4F6FBDE24FD5C2762D62B4A67444814E = params.StructInitializer_4F6FBDE24FD5C2762D62B4A67444814E;
+	if (StructInitializer_81E58BB0417CF645125CCE991DA9D078 != nullptr)
+		*StructInitializer_81E58BB0417CF645125CCE991DA9D078 = params.StructInitializer_81E58BB0417CF645125CCE991DA9D078;
+	if (StructInitializer_52D8F29C44BC93EBEF5DE48EF7213A4B != nullptr)
+		*StructInitializer_52D8F29C44BC93EBEF5DE48EF7213A4B = params.StructInitializer_52D8F29C44BC93EBEF5DE48EF7213A4B;
+	if (StructInitializer_54EB69B34F677648AC201B9ACDC82419 != nullptr)
+		*StructInitializer_54EB69B34F677648AC201B9ACDC82419 = params.StructInitializer_54EB69B34F677648AC201B9ACDC82419;
+	if (StructInitializer_865ED5064781F141B0DDCFA5251356C2 != nullptr)
+		*StructInitializer_865ED5064781F141B0DDCFA5251356C2 = params.StructInitializer_865ED5064781F141B0DDCFA5251356C2;
+	if (StructInitializer_69BF9F7A4BEDEF4CC3BAA0B7CE4C827B != nullptr)
+		*StructInitializer_69BF9F7A4BEDEF4CC3BAA0B7CE4C827B = params.StructInitializer_69BF9F7A4BEDEF4CC3BAA0B7CE4C827B;
+	if (StructInitializer_6C28789040BF775C661CEFB6392933F7 != nullptr)
+		*StructInitializer_6C28789040BF775C661CEFB6392933F7 = params.StructInitializer_6C28789040BF775C661CEFB6392933F7;
+	if (StructInitializer_B6E3A9C94BD1BEE27666F1B1D5AB582B != nullptr)
+		*StructInitializer_B6E3A9C94BD1BEE27666F1B1D5AB582B = params.StructInitializer_B6E3A9C94BD1BEE27666F1B1D5AB582B;
+	if (StructInitializer_CAA3FAF64A2529460E511CA8F8EF879B != nullptr)
+		*StructInitializer_CAA3FAF64A2529460E511CA8F8EF879B = params.StructInitializer_CAA3FAF64A2529460E511CA8F8EF879B;
+	if (StructInitializer_C9B7DAA54AC46766070181827635E754 != nullptr)
+		*StructInitializer_C9B7DAA54AC46766070181827635E754 = params.StructInitializer_C9B7DAA54AC46766070181827635E754;
+	if (StructInitializer_E31EBE9E4E93991E3E6B0D855CBC1511 != nullptr)
+		*StructInitializer_E31EBE9E4E93991E3E6B0D855CBC1511 = params.StructInitializer_E31EBE9E4E93991E3E6B0D855CBC1511;
+	if (StructInitializer_EA5B4DD4420A3CA31EF10E9D074391F8 != nullptr)
+		*StructInitializer_EA5B4DD4420A3CA31EF10E9D074391F8 = params.StructInitializer_EA5B4DD4420A3CA31EF10E9D074391F8;
+	if (StructInitializer_5E7DD80B4F1A087B581715839FE78B37 != nullptr)
+		*StructInitializer_5E7DD80B4F1A087B581715839FE78B37 = params.StructInitializer_5E7DD80B4F1A087B581715839FE78B37;
+	if (StructInitializer_035CD4984809F0B37C0DE592F1C351D2 != nullptr)
+		*StructInitializer_035CD4984809F0B37C0DE592F1C351D2 = params.StructInitializer_035CD4984809F0B37C0DE592F1C351D2;
+	if (StructInitializer_05BF939340102B90AEE861A6FC0F6F39 != nullptr)
+		*StructInitializer_05BF939340102B90AEE861A6FC0F6F39 = params.StructInitializer_05BF939340102B90AEE861A6FC0F6F39;
+	if (StructInitializer_9E1569474112EA5C73B355B7647B8022 != nullptr)
+		*StructInitializer_9E1569474112EA5C73B355B7647B8022 = params.StructInitializer_9E1569474112EA5C73B355B7647B8022;
+	if (StructInitializer_129AE6844BBA8E69A21272BAD6018002 != nullptr)
+		*StructInitializer_129AE6844BBA8E69A21272BAD6018002 = params.StructInitializer_129AE6844BBA8E69A21272BAD6018002;
+	if (StructInitializer_2EB804DB4CE3594E8B2743829875E9A4 != nullptr)
+		*StructInitializer_2EB804DB4CE3594E8B2743829875E9A4 = params.StructInitializer_2EB804DB4CE3594E8B2743829875E9A4;
+	if (StructInitializer_94C6B7DF4B7BB08F4AD24FA7929E92F6 != nullptr)
+		*StructInitializer_94C6B7DF4B7BB08F4AD24FA7929E92F6 = params.StructInitializer_94C6B7DF4B7BB08F4AD24FA7929E92F6;
+	if (StructInitializer_5D1C055B4A429CA3DC2712BFD9DBE0A0 != nullptr)
+		*StructInitializer_5D1C055B4A429CA3DC2712BFD9DBE0A0 = params.StructInitializer_5D1C055B4A429CA3DC2712BFD9DBE0A0;
+	if (StructInitializer_6661393041652F4C9856809175BC4E38 != nullptr)
+		*StructInitializer_6661393041652F4C9856809175BC4E38 = params.StructInitializer_6661393041652F4C9856809175BC4E38;
+	if (StructInitializer_4B9AFA894ACE53DC68CD1CB41CBF1FE9 != nullptr)
+		*StructInitializer_4B9AFA894ACE53DC68CD1CB41CBF1FE9 = params.StructInitializer_4B9AFA894ACE53DC68CD1CB41CBF1FE9;
+	if (StructInitializer_F2B3BAF7402F9B86D3490283AC2AD564 != nullptr)
+		*StructInitializer_F2B3BAF7402F9B86D3490283AC2AD564 = params.StructInitializer_F2B3BAF7402F9B86D3490283AC2AD564;
+	if (StructInitializer_56E1A5764ED46304D4A669827F595EA1 != nullptr)
+		*StructInitializer_56E1A5764ED46304D4A669827F595EA1 = params.StructInitializer_56E1A5764ED46304D4A669827F595EA1;
+	if (StructInitializer_A1EFD0FF4FC0145E94A1428F00D9C554 != nullptr)
+		*StructInitializer_A1EFD0FF4FC0145E94A1428F00D9C554 = params.StructInitializer_A1EFD0FF4FC0145E94A1428F00D9C554;
+	if (StructInitializer_40AB17534EEE83CCBEF84387876E758C != nullptr)
+		*StructInitializer_40AB17534EEE83CCBEF84387876E758C = params.StructInitializer_40AB17534EEE83CCBEF84387876E758C;
+	if (StructInitializer_EBDD612A4EB6FAD20B2E998A42B2245F != nullptr)
+		*StructInitializer_EBDD612A4EB6FAD20B2E998A42B2245F = params.StructInitializer_EBDD612A4EB6FAD20B2E998A42B2245F;
+	if (StructInitializer_E03EB8074884070154332E90BD487B3C != nullptr)
+		*StructInitializer_E03EB8074884070154332E90BD487B3C = params.StructInitializer_E03EB8074884070154332E90BD487B3C;
+	if (StructInitializer_D3AE3C2B44CFD35D8BB4278AC9787AEE != nullptr)
+		*StructInitializer_D3AE3C2B44CFD35D8BB4278AC9787AEE = params.StructInitializer_D3AE3C2B44CFD35D8BB4278AC9787AEE;
+	if (StructInitializer_BCDC8A034E9E356178193591F85C707F != nullptr)
+		*StructInitializer_BCDC8A034E9E356178193591F85C707F = params.StructInitializer_BCDC8A034E9E356178193591F85C707F;
+	if (StructInitializer_487018124B3046F35F20249F6C3F60D1 != nullptr)
+		*StructInitializer_487018124B3046F35F20249F6C3F60D1 = params.StructInitializer_487018124B3046F35F20249F6C3F60D1;
+	if (StructInitializer_61723A9C483FE59ED099F5BCE2CCE280 != nullptr)
+		*StructInitializer_61723A9C483FE59ED099F5BCE2CCE280 = params.StructInitializer_61723A9C483FE59ED099F5BCE2CCE280;
+	if (StructInitializer_DFDA54074D35C5AA9CC254B3F61BC320 != nullptr)
+		*StructInitializer_DFDA54074D35C5AA9CC254B3F61BC320 = params.StructInitializer_DFDA54074D35C5AA9CC254B3F61BC320;
+	if (StructInitializer_B85B905F47C2F9721AEDA5BFD9BF9462 != nullptr)
+		*StructInitializer_B85B905F47C2F9721AEDA5BFD9BF9462 = params.StructInitializer_B85B905F47C2F9721AEDA5BFD9BF9462;
+	if (StructInitializer_A11AC3A0461DFE5C67EE90AC923968F9 != nullptr)
+		*StructInitializer_A11AC3A0461DFE5C67EE90AC923968F9 = params.StructInitializer_A11AC3A0461DFE5C67EE90AC923968F9;
+	if (StructInitializer_FA24566B4AA4701160E6E7B4C2962EE3 != nullptr)
+		*StructInitializer_FA24566B4AA4701160E6E7B4C2962EE3 = params.StructInitializer_FA24566B4AA4701160E6E7B4C2962EE3;
+	if (StructInitializer_CB4CC6CC4FC9E1B294AD68A5066E978A != nullptr)
+		*StructInitializer_CB4CC6CC4FC9E1B294AD68A5066E978A = params.StructInitializer_CB4CC6CC4FC9E1B294AD68A5066E978A;
+	if (StructInitializer_34FC60E3476C3A1128E91B8B5BDD81DA != nullptr)
+		*StructInitializer_34FC60E3476C3A1128E91B8B5BDD81DA = params.StructInitializer_34FC60E3476C3A1128E91B8B5BDD81DA;
+	if (StructInitializer_97E399A24741CB232EB64D89D1E388B1 != nullptr)
+		*StructInitializer_97E399A24741CB232EB64D89D1E388B1 = params.StructInitializer_97E399A24741CB232EB64D89D1E388B1;
+	if (StructInitializer_123ECCCE4467B1E9B577B6B657A5917B != nullptr)
+		*StructInitializer_123ECCCE4467B1E9B577B6B657A5917B = params.StructInitializer_123ECCCE4467B1E9B577B6B657A5917B;
+	if (StructInitializer_77D17E514430BF41A457E9B37261507A != nullptr)
+		*StructInitializer_77D17E514430BF41A457E9B37261507A = params.StructInitializer_77D17E514430BF41A457E9B37261507A;
+	if (StructInitializer_8262BB32471B8BCDA9421297E711E4A0 != nullptr)
+		*StructInitializer_8262BB32471B8BCDA9421297E711E4A0 = params.StructInitializer_8262BB32471B8BCDA9421297E711E4A0;
+	if (StructInitializer_61E4D2F74AF77D9277BA7DB7B3786927 != nullptr)
+		*StructInitializer_61E4D2F74AF77D9277BA7DB7B3786927 = params.StructInitializer_61E4D2F74AF77D9277BA7DB7B3786927;
+	if (StructInitializer_28E06F044CDA90868498F5871A4089D0 != nullptr)
+		*StructInitializer_28E06F044CDA90868498F5871A4089D0 = params.StructInitializer_28E06F044CDA90868498F5871A4089D0;
+	if (StructInitializer_ABB42C4741A7E250F0B0A8B4AB33984E != nullptr)
+		*StructInitializer_ABB42C4741A7E250F0B0A8B4AB33984E = params.StructInitializer_ABB42C4741A7E250F0B0A8B4AB33984E;
+	if (StructInitializer_E6DBFFBD4D597F47C7FD26B0BA446303 != nullptr)
+		*StructInitializer_E6DBFFBD4D597F47C7FD26B0BA446303 = params.StructInitializer_E6DBFFBD4D597F47C7FD26B0BA446303;
+	if (StructInitializer_9F02EF384DC784F8D0C9E1BA0568B9E5 != nullptr)
+		*StructInitializer_9F02EF384DC784F8D0C9E1BA0568B9E5 = params.StructInitializer_9F02EF384DC784F8D0C9E1BA0568B9E5;
+	if (StructInitializer_63C962D14F075E2472102E91F4957B95 != nullptr)
+		*StructInitializer_63C962D14F075E2472102E91F4957B95 = params.StructInitializer_63C962D14F075E2472102E91F4957B95;
+	if (StructInitializer_6299B14A4C7867312DC9E499D38DD8A8 != nullptr)
+		*StructInitializer_6299B14A4C7867312DC9E499D38DD8A8 = params.StructInitializer_6299B14A4C7867312DC9E499D38DD8A8;
+	if (StructInitializer_C600EF5D44B176D1DB9B5BB0920AEBCF != nullptr)
+		*StructInitializer_C600EF5D44B176D1DB9B5BB0920AEBCF = params.StructInitializer_C600EF5D44B176D1DB9B5BB0920AEBCF;
+	if (StructInitializer_C6CBAB1944A079096B14F4883E2D55E3 != nullptr)
+		*StructInitializer_C6CBAB1944A079096B14F4883E2D55E3 = params.StructInitializer_C6CBAB1944A079096B14F4883E2D55E3;
+	if (StructInitializer_11AAFF1E44C8297B2F41B595AF36F790 != nullptr)
+		*StructInitializer_11AAFF1E44C8297B2F41B595AF36F790 = params.StructInitializer_11AAFF1E44C8297B2F41B595AF36F790;
+	if (StructInitializer_598DA5F744DE092FA162C4B00FE9F4F4 != nullptr)
+		*StructInitializer_598DA5F744DE092FA162C4B00FE9F4F4 = params.StructInitializer_598DA5F744DE092FA162C4B00FE9F4F4;
+	if (StructInitializer_35CEC176427260441810E888049B18FC != nullptr)
+		*StructInitializer_35CEC176427260441810E888049B18FC = params.StructInitializer_35CEC176427260441810E888049B18FC;
+	if (StructInitializer_3F95951E46D1A9D4FC1DD89470B55837 != nullptr)
+		*StructInitializer_3F95951E46D1A9D4FC1DD89470B55837 = params.StructInitializer_3F95951E46D1A9D4FC1DD89470B55837;
+	if (StructInitializer_6594F3BF4698F650D04D0B8D8462E442 != nullptr)
+		*StructInitializer_6594F3BF4698F650D04D0B8D8462E442 = params.StructInitializer_6594F3BF4698F650D04D0B8D8462E442;
+	if (StructInitializer_CB3571C24B2678CD6B31CF883F8FE39E != nullptr)
+		*StructInitializer_CB3571C24B2678CD6B31CF883F8FE39E = params.StructInitializer_CB3571C24B2678CD6B31CF883F8FE39E;
+	if (StructInitializer_38DB31E547D3CFF71BC62FB415639B44 != nullptr)
+		*StructInitializer_38DB31E547D3CFF71BC62FB415639B44 = params.StructInitializer_38DB31E547D3CFF71BC62FB415639B44;
+	if (StructInitializer_C41AA5B7454873DCAC9A85ACB06A826F != nullptr)
+		*StructInitializer_C41AA5B7454873DCAC9A85ACB06A826F = params.StructInitializer_C41AA5B7454873DCAC9A85ACB06A826F;
+	if (StructInitializer_B00D5181401D64FF1E311CA22C78F1F1 != nullptr)
+		*StructInitializer_B00D5181401D64FF1E311CA22C78F1F1 = params.StructInitializer_B00D5181401D64FF1E311CA22C78F1F1;
+	if (StructInitializer_76A566DC4C8D5AC78488C99529811F61 != nullptr)
+		*StructInitializer_76A566DC4C8D5AC78488C99529811F61 = params.StructInitializer_76A566DC4C8D5AC78488C99529811F61;
+	if (StructInitializer_06DEAB8B44ED9E0956264DA040409A01 != nullptr)
+		*StructInitializer_06DEAB8B44ED9E0956264DA040409A01 = params.StructInitializer_06DEAB8B44ED9E0956264DA040409A01;
+	if (StructInitializer_E311AE674F5DA9E50BB99480DDD874C4 != nullptr)
+		*StructInitializer_E311AE674F5DA9E50BB99480DDD874C4 = params.StructInitializer_E311AE674F5DA9E50BB99480DDD874C4;
+	if (StructInitializer_2666E2DA4C4D685CA88BCB8870B2F1BB != nullptr)
+		*StructInitializer_2666E2DA4C4D685CA88BCB8870B2F1BB = params.StructInitializer_2666E2DA4C4D685CA88BCB8870B2F1BB;
+	if (StructInitializer_4910DB914507AC1A706EC4A2AA48B8B0 != nullptr)
+		*StructInitializer_4910DB914507AC1A706EC4A2AA48B8B0 = params.StructInitializer_4910DB914507AC1A706EC4A2AA48B8B0;
+	if (StructInitializer_106C813042BEFF92487F4EB35F03091B != nullptr)
+		*StructInitializer_106C813042BEFF92487F4EB35F03091B = params.StructInitializer_106C813042BEFF92487F4EB35F03091B;
+	if (StructInitializer_FFF62F1A4DC8E8A21AAF4A86FE00C9F3 != nullptr)
+		*StructInitializer_FFF62F1A4DC8E8A21AAF4A86FE00C9F3 = params.StructInitializer_FFF62F1A4DC8E8A21AAF4A86FE00C9F3;
+	if (StructInitializer_29A17C27410B95C4FF9DB19A9EC92493 != nullptr)
+		*StructInitializer_29A17C27410B95C4FF9DB19A9EC92493 = params.StructInitializer_29A17C27410B95C4FF9DB19A9EC92493;
+	if (StructInitializer_B1EB15F544D9F8B4E84D06A207F9A3FA != nullptr)
+		*StructInitializer_B1EB15F544D9F8B4E84D06A207F9A3FA = params.StructInitializer_B1EB15F544D9F8B4E84D06A207F9A3FA;
+	if (StructInitializer_66F6716B4D6CB7BC87D80499E091C517 != nullptr)
+		*StructInitializer_66F6716B4D6CB7BC87D80499E091C517 = params.StructInitializer_66F6716B4D6CB7BC87D80499E091C517;
+	if (StructInitializer_20207A394F5AAFD04BD9B5909A1F411F != nullptr)
+		*StructInitializer_20207A394F5AAFD04BD9B5909A1F411F = params.StructInitializer_20207A394F5AAFD04BD9B5909A1F411F;
+	if (StructInitializer_EBB7FA8F4B9F9F3E9D5C34860B4D37E3 != nullptr)
+		*StructInitializer_EBB7FA8F4B9F9F3E9D5C34860B4D37E3 = params.StructInitializer_EBB7FA8F4B9F9F3E9D5C34860B4D37E3;
+	if (StructInitializer_24AD04804775C9BB930FCB8E5455F6F2 != nullptr)
+		*StructInitializer_24AD04804775C9BB930FCB8E5455F6F2 = params.StructInitializer_24AD04804775C9BB930FCB8E5455F6F2;
+	if (StructInitializer_60F3C9554F4642EA7C7C30B4F8E562D3 != nullptr)
+		*StructInitializer_60F3C9554F4642EA7C7C30B4F8E562D3 = params.StructInitializer_60F3C9554F4642EA7C7C30B4F8E562D3;
+	if (StructInitializer_013FD9924BB8243FF0591C96D04B2601 != nullptr)
+		*StructInitializer_013FD9924BB8243FF0591C96D04B2601 = params.StructInitializer_013FD9924BB8243FF0591C96D04B2601;
+	if (StructInitializer_FEEA67434A0B4330FAB50397F96C5EF5 != nullptr)
+		*StructInitializer_FEEA67434A0B4330FAB50397F96C5EF5 = params.StructInitializer_FEEA67434A0B4330FAB50397F96C5EF5;
+	if (StructInitializer_7D11BCDD4BD4C833F1323C8F26DB0E7E != nullptr)
+		*StructInitializer_7D11BCDD4BD4C833F1323C8F26DB0E7E = params.StructInitializer_7D11BCDD4BD4C833F1323C8F26DB0E7E;
+	if (StructInitializer_AD0EE54A47FFE8EBA0366C94479D2A8E != nullptr)
+		*StructInitializer_AD0EE54A47FFE8EBA0366C94479D2A8E = params.StructInitializer_AD0EE54A47FFE8EBA0366C94479D2A8E;
+	if (StructInitializer_216D851A45845A73B5DC7B9DBDD840D8 != nullptr)
+		*StructInitializer_216D851A45845A73B5DC7B9DBDD840D8 = params.StructInitializer_216D851A45845A73B5DC7B9DBDD840D8;
+	if (StructInitializer_C3A7D52344DE2435CFC39CAEEE3AEE0D != nullptr)
+		*StructInitializer_C3A7D52344DE2435CFC39CAEEE3AEE0D = params.StructInitializer_C3A7D52344DE2435CFC39CAEEE3AEE0D;
+	if (StructInitializer_1179BC3E4D8ACFDCC65A9C8495E048C6 != nullptr)
+		*StructInitializer_1179BC3E4D8ACFDCC65A9C8495E048C6 = params.StructInitializer_1179BC3E4D8ACFDCC65A9C8495E048C6;
+	if (StructInitializer_87D284004EE3160E6FBB2293288BAFBC != nullptr)
+		*StructInitializer_87D284004EE3160E6FBB2293288BAFBC = params.StructInitializer_87D284004EE3160E6FBB2293288BAFBC;
+	if (StructInitializer_B8F5B2074D5ECC9692D42CA1B6E329AF != nullptr)
+		*StructInitializer_B8F5B2074D5ECC9692D42CA1B6E329AF = params.StructInitializer_B8F5B2074D5ECC9692D42CA1B6E329AF;
+	if (StructInitializer_850C4E3744C76D309390C5A6F0DF16B0 != nullptr)
+		*StructInitializer_850C4E3744C76D309390C5A6F0DF16B0 = params.StructInitializer_850C4E3744C76D309390C5A6F0DF16B0;
+	if (StructInitializer_C86E7E374E2A1623D4D1ED9A076792CB != nullptr)
+		*StructInitializer_C86E7E374E2A1623D4D1ED9A076792CB = params.StructInitializer_C86E7E374E2A1623D4D1ED9A076792CB;
+	if (StructInitializer_1C8F37C543D695E7CE94689F50A44AAB != nullptr)
+		*StructInitializer_1C8F37C543D695E7CE94689F50A44AAB = params.StructInitializer_1C8F37C543D695E7CE94689F50A44AAB;
+	if (StructInitializer_53951FC74E280079BD55E5A7FD4EBFAD != nullptr)
+		*StructInitializer_53951FC74E280079BD55E5A7FD4EBFAD = params.StructInitializer_53951FC74E280079BD55E5A7FD4EBFAD;
+	if (StructInitializer_F13055EF44C7F02D9E7F90BD234D391B != nullptr)
+		*StructInitializer_F13055EF44C7F02D9E7F90BD234D391B = params.StructInitializer_F13055EF44C7F02D9E7F90BD234D391B;
+	if (StructInitializer_F253171648A6BACC99BF299DF6E19F4A != nullptr)
+		*StructInitializer_F253171648A6BACC99BF299DF6E19F4A = params.StructInitializer_F253171648A6BACC99BF299DF6E19F4A;
+	if (StructInitializer_A841D6B640BC98B3E5BE2992FE6863D2 != nullptr)
+		*StructInitializer_A841D6B640BC98B3E5BE2992FE6863D2 = params.StructInitializer_A841D6B640BC98B3E5BE2992FE6863D2;
+	if (StructInitializer_4434072F419A32F70361809FF178D446 != nullptr)
+		*StructInitializer_4434072F419A32F70361809FF178D446 = params.StructInitializer_4434072F419A32F70361809FF178D446;
+	if (StructInitializer_5C3CE504436F1D8E9149998BF724A029 != nullptr)
+		*StructInitializer_5C3CE504436F1D8E9149998BF724A029 = params.StructInitializer_5C3CE504436F1D8E9149998BF724A029;
 
 	return params.ReturnValue;
 }
@@ -49298,33 +51960,6 @@ struct FName UPlayerInput_TA::GetKeyForAction(const struct FName& Action, bool b
 }
 
 
-// Function TAGame.PlayerInput_TA.GetKeyForActionArray
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   Action                         (CPF_Parm)
-// TArray<struct FPlayerBinding>  OutBindings                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UPlayerInput_TA::GetKeyForActionArray(const struct FName& Action, TArray<struct FPlayerBinding>* OutBindings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.GetKeyForActionArray");
-
-	UPlayerInput_TA_GetKeyForActionArray_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutBindings != nullptr)
-		*OutBindings = params.OutBindings;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.PlayerInput_TA.GetUIKeyForAction
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -49350,58 +51985,20 @@ struct FString UPlayerInput_TA::GetUIKeyForAction(const struct FName& Action, bo
 }
 
 
-// Function TAGame.PlayerInput_TA.IsUsingMouseAirRoll
+// Function TAGame.PlayerInput_TA.IsUsingMouseInput
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
+// struct FName                   Action                         (CPF_Parm)
+// struct FName                   Key                            (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UPlayerInput_TA::IsUsingMouseAirRoll()
+bool UPlayerInput_TA::IsUsingMouseInput(const struct FName& Action, const struct FName& Key)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.IsUsingMouseAirRoll");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.IsUsingMouseInput");
 
-	UPlayerInput_TA_IsUsingMouseAirRoll_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.PlayerInput_TA.IsUsingMouseAirPitch
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UPlayerInput_TA::IsUsingMouseAirPitch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.IsUsingMouseAirPitch");
-
-	UPlayerInput_TA_IsUsingMouseAirPitch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.PlayerInput_TA.IsUsingMouseAirYaw
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UPlayerInput_TA::IsUsingMouseAirYaw()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA.IsUsingMouseAirYaw");
-
-	UPlayerInput_TA_IsUsingMouseAirYaw_Params params;
+	UPlayerInput_TA_IsUsingMouseInput_Params params;
+	params.Action = Action;
+	params.Key = Key;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49557,6 +52154,2454 @@ void UPlayerInput_TA::InitFromProfile(class UProfile_TA* Profile)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__AchievementManager_TA__HandleTradeInComplete_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UOnlineProduct_TA*       P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__AchievementManager_TA__HandleTradeInComplete_1::LambdaCallback(class UOnlineProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__AchievementManager_TA__HandleTradeInComplete_1.LambdaCallback");
+
+	U__AchievementManager_TA__HandleTradeInComplete_1_LambdaCallback_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.GetProfile
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProfile_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProfile_TA* UGFxData_ProductTradeIn_TA::GetProfile()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.GetProfile");
+
+	UGFxData_ProductTradeIn_TA_GetProfile_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInFailed
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
+
+void UGFxData_ProductTradeIn_TA::OnTradeInFailed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInFailed");
+
+	UGFxData_ProductTradeIn_TA_OnTradeInFailed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInComplete
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
+
+void UGFxData_ProductTradeIn_TA::OnTradeInComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInComplete");
+
+	UGFxData_ProductTradeIn_TA_OnTradeInComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.HandleTradeInComplete
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class URPC_ProductsTradeIn_TA* RPC                            (CPF_Parm)
+// TArray<class UOnlineProduct_TA*> MapLocal_20FDA1E84124AB037210A1AC72AA104B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_ProductTradeIn_TA::HandleTradeInComplete(class URPC_ProductsTradeIn_TA* RPC, TArray<class UOnlineProduct_TA*>* MapLocal_20FDA1E84124AB037210A1AC72AA104B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.HandleTradeInComplete");
+
+	UGFxData_ProductTradeIn_TA_HandleTradeInComplete_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_20FDA1E84124AB037210A1AC72AA104B != nullptr)
+		*MapLocal_20FDA1E84124AB037210A1AC72AA104B = params.MapLocal_20FDA1E84124AB037210A1AC72AA104B;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.TradeIn
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+
+void UGFxData_ProductTradeIn_TA::TradeIn()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.TradeIn");
+
+	UGFxData_ProductTradeIn_TA_TradeIn_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.IsProcessingTrade
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_ProductTradeIn_TA::IsProcessingTrade()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.IsProcessingTrade");
+
+	UGFxData_ProductTradeIn_TA_IsProcessingTrade_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_ProductTradeIn_TA.EventTradeInComplete
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxData_ProductTradeIn_TA* GFxData                        (CPF_Parm)
+// TArray<class UOnlineProduct_TA*> Given                          (CPF_Parm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> Received                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UGFxData_ProductTradeIn_TA::EventTradeInComplete(class UGFxData_ProductTradeIn_TA* GFxData, TArray<class UOnlineProduct_TA*> Given, TArray<class UOnlineProduct_TA*> Received)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.EventTradeInComplete");
+
+	UGFxData_ProductTradeIn_TA_EventTradeInComplete_Params params;
+	params.GFxData = GFxData;
+	params.Given = Given;
+	params.Received = Received;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RPC_ProductsTradePlayerStatus_TA.OnComplete
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void URPC_ProductsTradePlayerStatus_TA::OnComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.OnComplete");
+
+	URPC_ProductsTradePlayerStatus_TA_OnComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RPC_ProductsTradePlayerStatus_TA.HasCompleted
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool URPC_ProductsTradePlayerStatus_TA::HasCompleted()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.HasCompleted");
+
+	URPC_ProductsTradePlayerStatus_TA_HasCompleted_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetTradeId
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FGuid                   InTradeId                      (CPF_Parm)
+// class URPC_ProductsTradePlayerStatus_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_ProductsTradePlayerStatus_TA* URPC_ProductsTradePlayerStatus_TA::SetTradeId(const struct FGuid& InTradeId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetTradeId");
+
+	URPC_ProductsTradePlayerStatus_TA_SetTradeId_Params params;
+	params.InTradeId = InTradeId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetLocalPlayerID
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            InPlayerId                     (CPF_Parm)
+// class URPC_ProductsTradePlayerStatus_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_ProductsTradePlayerStatus_TA* URPC_ProductsTradePlayerStatus_TA::SetLocalPlayerID(const struct FUniqueNetId& InPlayerId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetLocalPlayerID");
+
+	URPC_ProductsTradePlayerStatus_TA_SetLocalPlayerID_Params params;
+	params.InPlayerId = InPlayerId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.RepopulateChatHistory
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::RepopulateChatHistory()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RepopulateChatHistory");
+
+	UOnlineGameParty_TA_RepopulateChatHistory_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleChatMessage
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleChatMessage(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleChatMessage");
+
+	UOnlineGameParty_TA_HandleChatMessage_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SendPartyLobbyMessage
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineGameParty_TA::SendPartyLobbyMessage(const struct FString& Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendPartyLobbyMessage");
+
+	UOnlineGameParty_TA_SendPartyLobbyMessage_Params params;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleTradePlayerComplete
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URPC_ProductsTradePlayerStatus_TA* RPC                            (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleTradePlayerComplete(class URPC_ProductsTradePlayerStatus_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleTradePlayerComplete");
+
+	UOnlineGameParty_TA_HandleTradePlayerComplete_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.CheckTradeStatus
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::CheckTradeStatus()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CheckTradeStatus");
+
+	UOnlineGameParty_TA_CheckTradeStatus_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleStartTradePlayerComplete
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URPC_ProductsTradePlayer_TA* RPC                            (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleStartTradePlayerComplete(class URPC_ProductsTradePlayer_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleStartTradePlayerComplete");
+
+	UOnlineGameParty_TA_HandleStartTradePlayerComplete_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SendTradeToBackEnd
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::SendTradeToBackEnd()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendTradeToBackEnd");
+
+	UOnlineGameParty_TA_SendTradeToBackEnd_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleVerifyTrade
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class URPC_ProductsLoadoutGet_TA* RPC                            (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleVerifyTrade(class URPC_ProductsLoadoutGet_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleVerifyTrade");
+
+	UOnlineGameParty_TA_HandleVerifyTrade_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleVerifyTradeTimeOut
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameParty_TA::HandleVerifyTradeTimeOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleVerifyTradeTimeOut");
+
+	UOnlineGameParty_TA_HandleVerifyTradeTimeOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SendVerifyTradeToBackEnd
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::SendVerifyTradeToBackEnd()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendVerifyTradeToBackEnd");
+
+	UOnlineGameParty_TA_SendVerifyTradeToBackEnd_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleTradeProductUpdate
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleTradeProductUpdate(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleTradeProductUpdate");
+
+	UOnlineGameParty_TA_HandleTradeProductUpdate_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SetPartyMessageHandlerTradeProductUpdate
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           bAddHandler                    (CPF_Parm)
+
+void UOnlineGameParty_TA::SetPartyMessageHandlerTradeProductUpdate(bool bAddHandler)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetPartyMessageHandlerTradeProductUpdate");
+
+	UOnlineGameParty_TA_SetPartyMessageHandlerTradeProductUpdate_Params params;
+	params.bAddHandler = bAddHandler;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.TradeProductUpdate
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FOnlineProductData      ProductData                    (CPF_Parm, CPF_NeedCtorLink)
+// bool                           bAddProduct                    (CPF_Parm)
+
+void UOnlineGameParty_TA::TradeProductUpdate(const struct FOnlineProductData& ProductData, bool bAddProduct)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.TradeProductUpdate");
+
+	UOnlineGameParty_TA_TradeProductUpdate_Params params;
+	params.ProductData = ProductData;
+	params.bAddProduct = bAddProduct;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.IsProcessingTrade
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameParty_TA::IsProcessingTrade()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.IsProcessingTrade");
+
+	UOnlineGameParty_TA_IsProcessingTrade_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.CanAcceptTrade
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameParty_TA::CanAcceptTrade()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CanAcceptTrade");
+
+	UOnlineGameParty_TA_CanAcceptTrade_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.UpdateOnlineProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// struct FPartyMemberLoadout     Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UOnlineGameParty_TA::UpdateOnlineProducts(struct FPartyMemberLoadout* Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UpdateOnlineProducts");
+
+	UOnlineGameParty_TA_UpdateOnlineProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Loadout != nullptr)
+		*Loadout = params.Loadout;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleDisableCrossPlayChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProfile_TA*             P                              (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleDisableCrossPlayChanged(class UProfile_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleDisableCrossPlayChanged");
+
+	UOnlineGameParty_TA_HandleDisableCrossPlayChanged_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.UseGroupMMR
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameParty_TA::UseGroupMMR()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UseGroupMMR");
+
+	UOnlineGameParty_TA_UseGroupMMR_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.UpdateAssetCache
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// int                            PartyMemberIdx                 (CPF_Parm)
+
+void UOnlineGameParty_TA::UpdateAssetCache(int PartyMemberIdx)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UpdateAssetCache");
+
+	UOnlineGameParty_TA_UpdateAssetCache_Params params;
+	params.PartyMemberIdx = PartyMemberIdx;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleGameEventFinished
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class AGameEvent_TA*           GameEvent                      (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleGameEventFinished(class AGameEvent_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleGameEventFinished");
+
+	UOnlineGameParty_TA_HandleGameEventFinished_Params params;
+	params.GameEvent = GameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.WantsToFollowTheLeaderOutOfGame
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameParty_TA::WantsToFollowTheLeaderOutOfGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.WantsToFollowTheLeaderOutOfGame");
+
+	UOnlineGameParty_TA_WantsToFollowTheLeaderOutOfGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.BuildMatchmakingRestrictions
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineGameParty_TA::BuildMatchmakingRestrictions()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BuildMatchmakingRestrictions");
+
+	UOnlineGameParty_TA_BuildMatchmakingRestrictions_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandlePrimaryPlayerSet
+// (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
+// Parameters:
+// class APlayerController_Menu_TA* PC                             (CPF_Parm)
+
+void UOnlineGameParty_TA::HandlePrimaryPlayerSet(class APlayerController_Menu_TA* PC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandlePrimaryPlayerSet");
+
+	UOnlineGameParty_TA_HandlePrimaryPlayerSet_Params params;
+	params.PC = PC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.BroadcastPlayer
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FPartyMemberLoadout     MemberLoadout                  (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineGameParty_TA::BroadcastPlayer(const struct FPartyMemberLoadout& MemberLoadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastPlayer");
+
+	UOnlineGameParty_TA_BroadcastPlayer_Params params;
+	params.MemberLoadout = MemberLoadout;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.CreatePartyMemberLoadout
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class ULocalPlayer_TA*         Player                         (CPF_Parm)
+// struct FPartyMemberLoadout     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FPartyMemberLoadout UOnlineGameParty_TA::CreatePartyMemberLoadout(class ULocalPlayer_TA* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CreatePartyMemberLoadout");
+
+	UOnlineGameParty_TA_CreatePartyMemberLoadout_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.BroadcastAllLocalPlayers
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameParty_TA::BroadcastAllLocalPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastAllLocalPlayers");
+
+	UOnlineGameParty_TA_BroadcastAllLocalPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleLoadoutMessage
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleLoadoutMessage(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLoadoutMessage");
+
+	UOnlineGameParty_TA_HandleLoadoutMessage_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandlePreviewTeamChange
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProfile_TA*             InProfile                      (CPF_Parm)
+// int                            InPreviewTeamIndex             (CPF_Parm)
+
+void UOnlineGameParty_TA::HandlePreviewTeamChange(class UProfile_TA* InProfile, int InPreviewTeamIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandlePreviewTeamChange");
+
+	UOnlineGameParty_TA_HandlePreviewTeamChange_Params params;
+	params.InProfile = InProfile;
+	params.InPreviewTeamIndex = InPreviewTeamIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.BroadcastPendingLocalPlayerLoadouts
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::BroadcastPendingLocalPlayerLoadouts()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastPendingLocalPlayerLoadouts");
+
+	UOnlineGameParty_TA_BroadcastPendingLocalPlayerLoadouts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleLoadoutChange
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class UProfile_TA*             InProfile                      (CPF_Parm)
+// class ULoadout_TA*             Loadout                        (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleLoadoutChange(class UProfile_TA* InProfile, class ULoadout_TA* Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLoadoutChange");
+
+	UOnlineGameParty_TA_HandleLoadoutChange_Params params;
+	params.InProfile = InProfile;
+	params.Loadout = Loadout;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.RemovePartyMemberByLocalPlayer
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class ULocalPlayer*            Player                         (CPF_Parm)
+
+void UOnlineGameParty_TA::RemovePartyMemberByLocalPlayer(class ULocalPlayer* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RemovePartyMemberByLocalPlayer");
+
+	UOnlineGameParty_TA_RemovePartyMemberByLocalPlayer_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleNewLeader
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleNewLeader(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleNewLeader");
+
+	UOnlineGameParty_TA_HandleNewLeader_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SetLeader
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            NewLeader                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameParty_TA::SetLeader(const struct FUniqueNetId& NewLeader)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetLeader");
+
+	UOnlineGameParty_TA_SetLeader_Params params;
+	params.NewLeader = NewLeader;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.OnNewLobby
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameParty_TA::OnNewLobby()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnNewLobby");
+
+	UOnlineGameParty_TA_OnNewLobby_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.RemovePartyMemberByID
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FUniqueNetId            MemberId                       (CPF_Parm)
+
+void UOnlineGameParty_TA::RemovePartyMemberByID(const struct FUniqueNetId& MemberId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RemovePartyMemberByID");
+
+	UOnlineGameParty_TA_RemovePartyMemberByID_Params params;
+	params.MemberId = MemberId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleLocalPlayerLeave
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class ULocalPlayer*            Player                         (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleLocalPlayerLeave(class ULocalPlayer* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLocalPlayerLeave");
+
+	UOnlineGameParty_TA_HandleLocalPlayerLeave_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.OnEditExistingPartyMember
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// int                            MemberIdx                      (CPF_Parm)
+
+void UOnlineGameParty_TA::OnEditExistingPartyMember(int MemberIdx)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnEditExistingPartyMember");
+
+	UOnlineGameParty_TA_OnEditExistingPartyMember_Params params;
+	params.MemberIdx = MemberIdx;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.OnAddNewPartyMember
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// int                            MemberIdx                      (CPF_Parm)
+
+void UOnlineGameParty_TA::OnAddNewPartyMember(int MemberIdx)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnAddNewPartyMember");
+
+	UOnlineGameParty_TA_OnAddNewPartyMember_Params params;
+	params.MemberIdx = MemberIdx;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.RefreshLoadouts
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            MemberIdx                      (CPF_Parm)
+
+void UOnlineGameParty_TA::RefreshLoadouts(int MemberIdx)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RefreshLoadouts");
+
+	UOnlineGameParty_TA_RefreshLoadouts_Params params;
+	params.MemberIdx = MemberIdx;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.ClearPartyChat
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+
+void UOnlineGameParty_TA::ClearPartyChat()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.ClearPartyChat");
+
+	UOnlineGameParty_TA_ClearPartyChat_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.AddPartyServiceLobbyMessage
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineGameParty_TA::AddPartyServiceLobbyMessage(const struct FString& Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.AddPartyServiceLobbyMessage");
+
+	UOnlineGameParty_TA_AddPartyServiceLobbyMessage_Params params;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.LocalPlayerSort
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FPartyMemberLoadout     Left                           (CPF_Parm, CPF_NeedCtorLink)
+// struct FPartyMemberLoadout     Right                          (CPF_Parm, CPF_NeedCtorLink)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineGameParty_TA::LocalPlayerSort(const struct FPartyMemberLoadout& Left, const struct FPartyMemberLoadout& Right)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.LocalPlayerSort");
+
+	UOnlineGameParty_TA_LocalPlayerSort_Params params;
+	params.Left = Left;
+	params.Right = Right;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.SetLoadout
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected, FUNC_HasOutParms)
+// Parameters:
+// struct FPartyMemberLoadout     Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class ULocalPlayer*            Player                         (CPF_OptionalParm, CPF_Parm)
+
+void UOnlineGameParty_TA::SetLoadout(class ULocalPlayer* Player, struct FPartyMemberLoadout* Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetLoadout");
+
+	UOnlineGameParty_TA_SetLoadout_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Loadout != nullptr)
+		*Loadout = params.Loadout;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.HandleProfileSet
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class ULocalPlayer_TA*         P                              (CPF_Parm)
+
+void UOnlineGameParty_TA::HandleProfileSet(class ULocalPlayer_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleProfileSet");
+
+	UOnlineGameParty_TA_HandleProfileSet_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.GetPsyNetSession
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UPsyNetSession_X*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UPsyNetSession_X* UOnlineGameParty_TA::GetPsyNetSession()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.GetPsyNetSession");
+
+	UOnlineGameParty_TA_GetPsyNetSession_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.OnInit
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameParty_TA::OnInit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnInit");
+
+	UOnlineGameParty_TA_OnInit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradePlayerComplete
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
+// class URPC_ProductsTradePlayerStatus_TA* RPC                            (CPF_Parm)
+
+void UOnlineGameParty_TA::EventTradePlayerComplete(class UOnlineGameParty_TA* PartyObject, class URPC_ProductsTradePlayerStatus_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradePlayerComplete");
+
+	UOnlineGameParty_TA_EventTradePlayerComplete_Params params;
+	params.PartyObject = PartyObject;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradePlayerStart
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_TA*     P                              (CPF_Parm)
+// struct FGuid                   TradeId                        (CPF_Parm)
+
+void UOnlineGameParty_TA::EventTradePlayerStart(class UOnlineGameParty_TA* P, const struct FGuid& TradeId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradePlayerStart");
+
+	UOnlineGameParty_TA_EventTradePlayerStart_Params params;
+	params.P = P;
+	params.TradeId = TradeId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradePlayerError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
+// class URPC_TA*                 RPC                            (CPF_Parm)
+
+void UOnlineGameParty_TA::EventTradePlayerError(class UOnlineGameParty_TA* PartyObject, class URPC_TA* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradePlayerError");
+
+	UOnlineGameParty_TA_EventTradePlayerError_Params params;
+	params.PartyObject = PartyObject;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradeVerifyTimeOut
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
+
+void UOnlineGameParty_TA::EventTradeVerifyTimeOut(class UOnlineGameParty_X* PartyObject)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeVerifyTimeOut");
+
+	UOnlineGameParty_TA_EventTradeVerifyTimeOut_Params params;
+	params.PartyObject = PartyObject;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradeVerify
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
+// TArray<class UOnlineProduct_TA*> ProductData                    (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineGameParty_TA::EventTradeVerify(class UOnlineGameParty_X* PartyObject, TArray<class UOnlineProduct_TA*> ProductData)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeVerify");
+
+	UOnlineGameParty_TA_EventTradeVerify_Params params;
+	params.PartyObject = PartyObject;
+	params.ProductData = ProductData;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventTradeProductUpdate
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
+// struct FOnlineProductData      ProductData                    (CPF_Parm, CPF_NeedCtorLink)
+// bool                           bAddProduct                    (CPF_Parm)
+
+void UOnlineGameParty_TA::EventTradeProductUpdate(class UOnlineGameParty_TA* PartyObject, const struct FOnlineProductData& ProductData, bool bAddProduct)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeProductUpdate");
+
+	UOnlineGameParty_TA_EventTradeProductUpdate_Params params;
+	params.PartyObject = PartyObject;
+	params.ProductData = ProductData;
+	params.bAddProduct = bAddProduct;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutRemoved
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// int                            MemberIndex                    (CPF_Parm)
+
+void UOnlineGameParty_TA::EventPartyMemberLoadoutRemoved(int MemberIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutRemoved");
+
+	UOnlineGameParty_TA_EventPartyMemberLoadoutRemoved_Params params;
+	params.MemberIndex = MemberIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutChange
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// int                            MemberIndex                    (CPF_Parm)
+
+void UOnlineGameParty_TA::EventPartyMemberLoadoutChange(int MemberIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutChange");
+
+	UOnlineGameParty_TA_EventPartyMemberLoadoutChange_Params params;
+	params.MemberIndex = MemberIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_TA.AllowMatchAdmin
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::AllowMatchAdmin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AllowMatchAdmin");
+
+	UMatchType_TA_AllowMatchAdmin_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.ChooseTeam
+// (FUNC_Public)
+// Parameters:
+// int                            TeamIndex                      (CPF_Parm)
+// class APlayerController_TA*    Player                         (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::ChooseTeam(int TeamIndex, class APlayerController_TA* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ChooseTeam");
+
+	UMatchType_TA_ChooseTeam_Params params;
+	params.TeamIndex = TeamIndex;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanRestartPlayer
+// (FUNC_Public)
+// Parameters:
+// class AController*             NewPlayer                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanRestartPlayer(class AController* NewPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanRestartPlayer");
+
+	UMatchType_TA_CanRestartPlayer_Params params;
+	params.NewPlayer = NewPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.AutoSelectTeam
+// (FUNC_Public)
+// Parameters:
+// class AController*             NewPlayer                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::AutoSelectTeam(class AController* NewPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AutoSelectTeam");
+
+	UMatchType_TA_AutoSelectTeam_Params params;
+	params.NewPlayer = NewPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.PickTeam
+// (FUNC_Public)
+// Parameters:
+// class AController*             C                              (CPF_Parm)
+// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ATeam_TA* UMatchType_TA::PickTeam(class AController* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.PickTeam");
+
+	UMatchType_TA_PickTeam_Params params;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanCheckForBannedPlayers
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanCheckForBannedPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanCheckForBannedPlayers");
+
+	UMatchType_TA_CanCheckForBannedPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.ShouldSubmitMatchComplete
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::ShouldSubmitMatchComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldSubmitMatchComplete");
+
+	UMatchType_TA_ShouldSubmitMatchComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.UseCustomMatchSettings
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::UseCustomMatchSettings()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.UseCustomMatchSettings");
+
+	UMatchType_TA_UseCustomMatchSettings_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanIncreaseMaxTeamSize
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanIncreaseMaxTeamSize()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanIncreaseMaxTeamSize");
+
+	UMatchType_TA_CanIncreaseMaxTeamSize_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.OnStartWaitingForPlayers
+// (FUNC_Public)
+
+void UMatchType_TA::OnStartWaitingForPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnStartWaitingForPlayers");
+
+	UMatchType_TA_OnStartWaitingForPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_TA.IsOnlineMultiplayer
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::IsOnlineMultiplayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.IsOnlineMultiplayer");
+
+	UMatchType_TA_IsOnlineMultiplayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.ShouldSetGameOwner
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::ShouldSetGameOwner()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldSetGameOwner");
+
+	UMatchType_TA_ShouldSetGameOwner_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanCheckForForfeit
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanCheckForForfeit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanCheckForForfeit");
+
+	UMatchType_TA_CanCheckForForfeit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.ShouldCancelMatch
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::ShouldCancelMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldCancelMatch");
+
+	UMatchType_TA_ShouldCancelMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.ShouldStartMatch
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::ShouldStartMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldStartMatch");
+
+	UMatchType_TA_ShouldStartMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GetMatchTypeName
+// (FUNC_Public)
+// Parameters:
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UMatchType_TA::GetMatchTypeName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetMatchTypeName");
+
+	UMatchType_TA_GetMatchTypeName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.RecordPlayedMap
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::RecordPlayedMap()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.RecordPlayedMap");
+
+	UMatchType_TA_RecordPlayedMap_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.AllowSpectators
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::AllowSpectators()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AllowSpectators");
+
+	UMatchType_TA_AllowSpectators_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.OnPlayerAddedToTeam
+// (FUNC_Public)
+
+void UMatchType_TA::OnPlayerAddedToTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnPlayerAddedToTeam");
+
+	UMatchType_TA_OnPlayerAddedToTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_TA.CanRematchVote
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanRematchVote()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanRematchVote");
+
+	UMatchType_TA_CanRematchVote_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanUpdateStats
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanUpdateStats()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanUpdateStats");
+
+	UMatchType_TA_CanUpdateStats_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GetMaxTeamSize
+// (FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UMatchType_TA::GetMaxTeamSize()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetMaxTeamSize");
+
+	UMatchType_TA_GetMaxTeamSize_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanChangeTeam
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanChangeTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanChangeTeam");
+
+	UMatchType_TA_CanChangeTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GiveExtraXP
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::GiveExtraXP()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GiveExtraXP");
+
+	UMatchType_TA_GiveExtraXP_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.CanIdleKick
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::CanIdleKick()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanIdleKick");
+
+	UMatchType_TA_CanIdleKick_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.OnInitGameEvent
+// (FUNC_Public)
+
+void UMatchType_TA::OnInitGameEvent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnInitGameEvent");
+
+	UMatchType_TA_OnInitGameEvent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_TA.GetOnlineGameLanServer
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UOnlineGameLanServer_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineGameLanServer_X* UMatchType_TA::STATIC_GetOnlineGameLanServer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGameLanServer");
+
+	UMatchType_TA_GetOnlineGameLanServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GetOnlineGameDedicatedServer
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UOnlineGameDedicatedServer_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineGameDedicatedServer_TA* UMatchType_TA::GetOnlineGameDedicatedServer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGameDedicatedServer");
+
+	UMatchType_TA_GetOnlineGameDedicatedServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GetOnlineGame
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UOnlineGame_Base_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineGame_Base_X* UMatchType_TA::GetOnlineGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGame");
+
+	UMatchType_TA_GetOnlineGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.AllPlayersHaveACar
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_TA::AllPlayersHaveACar()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AllPlayersHaveACar");
+
+	UMatchType_TA_AllPlayersHaveACar_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.GetCustomMatchSettings
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FCustomMatchSettings    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FCustomMatchSettings UMatchType_TA::GetCustomMatchSettings()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetCustomMatchSettings");
+
+	UMatchType_TA_GetCustomMatchSettings_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameEvent_TA*           InGameEvent                    (CPF_Parm)
+// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
+
+void UMatchType_TA::Init(class AGameEvent_TA* InGameEvent, const struct FString& Options)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.Init");
+
+	UMatchType_TA_Init_Params params;
+	params.InGameEvent = InGameEvent;
+	params.Options = Options;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_Public_TA.ChooseTeam
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            TeamIndex                      (CPF_Parm)
+// class APlayerController_TA*    Player                         (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::ChooseTeam(int TeamIndex, class APlayerController_TA* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ChooseTeam");
+
+	UMatchType_Public_TA_ChooseTeam_Params params;
+	params.TeamIndex = TeamIndex;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanRestartPlayer
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             NewPlayer                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanRestartPlayer(class AController* NewPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanRestartPlayer");
+
+	UMatchType_Public_TA_CanRestartPlayer_Params params;
+	params.NewPlayer = NewPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.AutoSelectTeam
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             NewPlayer                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::AutoSelectTeam(class AController* NewPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.AutoSelectTeam");
+
+	UMatchType_Public_TA_AutoSelectTeam_Params params;
+	params.NewPlayer = NewPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanCheckForBannedPlayers
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanCheckForBannedPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanCheckForBannedPlayers");
+
+	UMatchType_Public_TA_CanCheckForBannedPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.ShouldSubmitMatchComplete
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::ShouldSubmitMatchComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldSubmitMatchComplete");
+
+	UMatchType_Public_TA_ShouldSubmitMatchComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.IsOnlineMultiplayer
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::IsOnlineMultiplayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.IsOnlineMultiplayer");
+
+	UMatchType_Public_TA_IsOnlineMultiplayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanCheckForForfeit
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanCheckForForfeit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanCheckForForfeit");
+
+	UMatchType_Public_TA_CanCheckForForfeit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanUpdateStats
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanUpdateStats()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanUpdateStats");
+
+	UMatchType_Public_TA_CanUpdateStats_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanRematchVote
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanRematchVote()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanRematchVote");
+
+	UMatchType_Public_TA_CanRematchVote_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.CanIdleKick
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::CanIdleKick()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanIdleKick");
+
+	UMatchType_Public_TA_CanIdleKick_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.PickTeamFromReservations
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AController*             C                              (CPF_Parm)
+// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ATeam_TA* UMatchType_Public_TA::PickTeamFromReservations(class AController* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.PickTeamFromReservations");
+
+	UMatchType_Public_TA_PickTeamFromReservations_Params params;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.PickTeam
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             C                              (CPF_Parm)
+// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ATeam_TA* UMatchType_Public_TA::PickTeam(class AController* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.PickTeam");
+
+	UMatchType_Public_TA_PickTeam_Params params;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.GetMaxTeamSize
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UMatchType_Public_TA::GetMaxTeamSize()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GetMaxTeamSize");
+
+	UMatchType_Public_TA_GetMaxTeamSize_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.ShouldCancelMatch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::ShouldCancelMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldCancelMatch");
+
+	UMatchType_Public_TA_ShouldCancelMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.ShouldStartMatch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::ShouldStartMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldStartMatch");
+
+	UMatchType_Public_TA_ShouldStartMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.OnStartWaitingForPlayers
+// (FUNC_Defined, FUNC_Public)
+
+void UMatchType_Public_TA::OnStartWaitingForPlayers()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.OnStartWaitingForPlayers");
+
+	UMatchType_Public_TA_OnStartWaitingForPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchType_Public_TA.GiveExtraXP
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Public_TA::GiveExtraXP()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GiveExtraXP");
+
+	UMatchType_Public_TA_GiveExtraXP_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Public_TA.GetMatchTypeName
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UMatchType_Public_TA::GetMatchTypeName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GetMatchTypeName");
+
+	UMatchType_Public_TA_GetMatchTypeName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_PublicRanked_TA.ShouldCancelMatch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_PublicRanked_TA::ShouldCancelMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_PublicRanked_TA.ShouldCancelMatch");
+
+	UMatchType_PublicRanked_TA_ShouldCancelMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__AchievementManager_TA__HasItemQualityEquipped_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UOnlineProduct_TA*       P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__AchievementManager_TA__HasItemQualityEquipped_1::LambdaCallback(class UOnlineProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__AchievementManager_TA__HasItemQualityEquipped_1.LambdaCallback");
+
+	U__AchievementManager_TA__HasItemQualityEquipped_1_LambdaCallback_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -49814,8 +54859,9 @@ int UXPManager_TA::CalculatePlayerLevel(int XP, bool bShowLog)
 // Parameters:
 // class UProfile_TA*             Profile                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TArray<class UProductSlot_TA*> ArrayResultLocal_AF462F694F51C1C224A2259532D278C6 (CPF_OutParm, CPF_NeedCtorLink)
 
-bool UXPManager_TA::AllProductsUnlocked(class UProfile_TA* Profile)
+bool UXPManager_TA::AllProductsUnlocked(class UProfile_TA* Profile, TArray<class UProductSlot_TA*>* ArrayResultLocal_AF462F694F51C1C224A2259532D278C6)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.XPManager_TA.AllProductsUnlocked");
 
@@ -49827,6 +54873,9 @@ bool UXPManager_TA::AllProductsUnlocked(class UProfile_TA* Profile)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (ArrayResultLocal_AF462F694F51C1C224A2259532D278C6 != nullptr)
+		*ArrayResultLocal_AF462F694F51C1C224A2259532D278C6 = params.ArrayResultLocal_AF462F694F51C1C224A2259532D278C6;
 
 	return params.ReturnValue;
 }
@@ -49938,8 +54987,10 @@ bool UXPManager_TA::SlotContainsLockedDropProducts(class UProductSlot_TA* Produc
 // Parameters:
 // class UProfile_TA*             Profile                        (CPF_Parm)
 // class UProductSlot_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TArray<class UProductSlot_TA*> ArrayResultLocal_7506B2F44EC4DB1313D23D82B3CE5871 (CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProductSlot_TA*> FilterLocal_050D0E58475C7028BD1459805D0F1B87 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-class UProductSlot_TA* UXPManager_TA::PickRandomSlot(class UProfile_TA* Profile)
+class UProductSlot_TA* UXPManager_TA::PickRandomSlot(class UProfile_TA* Profile, TArray<class UProductSlot_TA*>* ArrayResultLocal_7506B2F44EC4DB1313D23D82B3CE5871, TArray<class UProductSlot_TA*>* FilterLocal_050D0E58475C7028BD1459805D0F1B87)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.XPManager_TA.PickRandomSlot");
 
@@ -49951,6 +55002,11 @@ class UProductSlot_TA* UXPManager_TA::PickRandomSlot(class UProfile_TA* Profile)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (ArrayResultLocal_7506B2F44EC4DB1313D23D82B3CE5871 != nullptr)
+		*ArrayResultLocal_7506B2F44EC4DB1313D23D82B3CE5871 = params.ArrayResultLocal_7506B2F44EC4DB1313D23D82B3CE5871;
+	if (FilterLocal_050D0E58475C7028BD1459805D0F1B87 != nullptr)
+		*FilterLocal_050D0E58475C7028BD1459805D0F1B87 = params.FilterLocal_050D0E58475C7028BD1459805D0F1B87;
 
 	return params.ReturnValue;
 }
@@ -50975,26 +56031,6 @@ void UAdManager_TA::Init()
 }
 
 
-// Function TAGame.AdManager_TA.EventBillboardMeshRequest
-// (FUNC_Final, FUNC_Private, FUNC_Delegate)
-// Parameters:
-// class UStaticMeshComponent*    NewRequest                     (CPF_Parm, CPF_EditInline)
-
-void UAdManager_TA::EventBillboardMeshRequest(class UStaticMeshComponent* NewRequest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.AdManager_TA.EventBillboardMeshRequest");
-
-	UAdManager_TA_EventBillboardMeshRequest_Params params;
-	params.NewRequest = NewRequest;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.RPC_AdsGet_TA.SetLanguage
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -51547,6 +56583,65 @@ void UAIProxy_TA::InitProxy(class AAIManager_TA* AIManager, class AActor* inActo
 }
 
 
+// Function TAGame.CarPreviewActor_TA.EnableTick
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bEnable                        (CPF_Parm)
+
+void ACarPreviewActor_TA::EnableTick(bool bEnable)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.EnableTick");
+
+	ACarPreviewActor_TA_EnableTick_Params params;
+	params.bEnable = bEnable;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewActor_TA.DestroyTurnTableActor
+// (FUNC_Defined, FUNC_Public)
+
+void ACarPreviewActor_TA::DestroyTurnTableActor()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.DestroyTurnTableActor");
+
+	ACarPreviewActor_TA_DestroyTurnTableActor_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewActor_TA.SpawnTurnTableActor
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UClass*                  TurnTableClass                 (CPF_OptionalParm, CPF_Parm)
+// struct FRotator                StartRotation                  (CPF_OptionalParm, CPF_Parm)
+
+void ACarPreviewActor_TA::SpawnTurnTableActor(class UClass* TurnTableClass, const struct FRotator& StartRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.SpawnTurnTableActor");
+
+	ACarPreviewActor_TA_SpawnTurnTableActor_Params params;
+	params.TurnTableClass = TurnTableClass;
+	params.StartRotation = StartRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.CarPreviewActor_TA.ResetColors
 // (FUNC_Defined, FUNC_Public)
 
@@ -51585,7 +56680,7 @@ void ACarPreviewActor_TA::SetLockLoadout(bool bInLock)
 
 
 // Function TAGame.CarPreviewActor_TA.BuildOnlineLoadout
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
 // Parameters:
 // struct FLoadoutData            InLoadout                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FClientLoadoutOnlineData OnlineLoadout                  (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
@@ -51606,6 +56701,23 @@ void ACarPreviewActor_TA::BuildOnlineLoadout(struct FLoadoutData* InLoadout, str
 		*InLoadout = params.InLoadout;
 	if (OnlineLoadout != nullptr)
 		*OnlineLoadout = params.OnlineLoadout;
+}
+
+
+// Function TAGame.CarPreviewActor_TA.UpdateParticlesFakeVelocity
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void ACarPreviewActor_TA::UpdateParticlesFakeVelocity()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.UpdateParticlesFakeVelocity");
+
+	ACarPreviewActor_TA_UpdateParticlesFakeVelocity_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -51631,18 +56743,40 @@ struct FRotator ACarPreviewActor_TA::GetSMRotation()
 
 
 // Function TAGame.CarPreviewActor_TA.SetSMRotation
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// float                          InDirectionMag                 (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
+// float                          YawInput                       (CPF_Parm)
+// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
 
-void ACarPreviewActor_TA::SetSMRotation(float InDirectionMag, float DeltaTime)
+void ACarPreviewActor_TA::SetSMRotation(float DeltaTime, float YawInput, bool bGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.SetSMRotation");
 
 	ACarPreviewActor_TA_SetSMRotation_Params params;
-	params.InDirectionMag = InDirectionMag;
 	params.DeltaTime = DeltaTime;
+	params.YawInput = YawInput;
+	params.bGamepad = bGamepad;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewActor_TA.SetTurnTableActor
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class ATurnTableActor_TA*      InTurnTableActor               (CPF_Parm)
+
+void ACarPreviewActor_TA::SetTurnTableActor(class ATurnTableActor_TA* InTurnTableActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.SetTurnTableActor");
+
+	ACarPreviewActor_TA_SetTurnTableActor_Params params;
+	params.InTurnTableActor = InTurnTableActor;
 
 	auto flags = fn->FunctionFlags;
 
@@ -51653,7 +56787,7 @@ void ACarPreviewActor_TA::SetSMRotation(float InDirectionMag, float DeltaTime)
 
 
 // Function TAGame.CarPreviewActor_TA.FindTurnTableActor
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 
 void ACarPreviewActor_TA::FindTurnTableActor()
 {
@@ -51974,6 +57108,40 @@ void ACarPreviewActor_TA::ClearComponents()
 }
 
 
+// Function TAGame.CarPreviewActor_TA.InitSupersonicFX
+// (FUNC_Defined, FUNC_Protected)
+
+void ACarPreviewActor_TA::InitSupersonicFX()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.InitSupersonicFX");
+
+	ACarPreviewActor_TA_InitSupersonicFX_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewActor_TA.InitEngineAudioFX
+// (FUNC_Defined, FUNC_Protected)
+
+void ACarPreviewActor_TA::InitEngineAudioFX()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.InitEngineAudioFX");
+
+	ACarPreviewActor_TA_InitEngineAudioFX_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.CarPreviewActor_TA.InitBoostFX
 // (FUNC_Defined, FUNC_Protected)
 
@@ -52147,26 +57315,6 @@ void ACarPreviewActor_TA::SetLoadout(struct FLoadoutData* InLoadout)
 
 	if (InLoadout != nullptr)
 		*InLoadout = params.InLoadout;
-}
-
-
-// Function TAGame.CarPreviewActor_TA.SetUsed
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bUsed                          (CPF_Parm)
-
-void ACarPreviewActor_TA::SetUsed(bool bUsed)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_TA.SetUsed");
-
-	ACarPreviewActor_TA_SetUsed_Params params;
-	params.bUsed = bUsed;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -55509,6 +60657,34 @@ void UCameraState_CarPreview_TA::BeginCameraState()
 }
 
 
+// Function TAGame.CameraState_CarPreview_TA.GetAccumulatedOrientation
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 out_Location                   (CPF_Parm, CPF_OutParm)
+// struct FRotator                out_Rotation                   (CPF_Parm, CPF_OutParm)
+// int                            NumPreviewActors               (CPF_Parm, CPF_OutParm)
+
+void UCameraState_CarPreview_TA::GetAccumulatedOrientation(struct FVector* out_Location, struct FRotator* out_Rotation, int* NumPreviewActors)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_CarPreview_TA.GetAccumulatedOrientation");
+
+	UCameraState_CarPreview_TA_GetAccumulatedOrientation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_Location != nullptr)
+		*out_Location = params.out_Location;
+	if (out_Rotation != nullptr)
+		*out_Rotation = params.out_Rotation;
+	if (NumPreviewActors != nullptr)
+		*NumPreviewActors = params.NumPreviewActors;
+}
+
+
 // Function TAGame.CameraState_CarPreview_TA.GetActorOrientation
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
 // Parameters:
@@ -55913,6 +61089,28 @@ void ACamera_TA::InitializeFor(class APlayerController* PC)
 
 	ACamera_TA_InitializeFor_Params params;
 	params.PC = PC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Camera_TA.EventCameraTargetChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class ACamera_TA*              Camera                         (CPF_Parm)
+// class AActor*                  Target                         (CPF_Parm)
+
+void ACamera_TA::EventCameraTargetChanged(class ACamera_TA* Camera, class AActor* Target)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Camera_TA.EventCameraTargetChanged");
+
+	ACamera_TA_EventCameraTargetChanged_Params params;
+	params.Camera = Camera;
+	params.Target = Target;
 
 	auto flags = fn->FunctionFlags;
 
@@ -57444,6 +62642,27 @@ class UCameraState_X* UCameraState_Replay_TA::GetProxyCameraState()
 }
 
 
+// Function TAGame.CameraState_Replay_TA.ShouldClipToField
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UCameraState_Replay_TA::ShouldClipToField()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_Replay_TA.ShouldClipToField");
+
+	UCameraState_Replay_TA_ShouldClipToField_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.CameraState_Replay_TA.AllowSwivel
 // (FUNC_Public)
 // Parameters:
@@ -57477,6 +62696,27 @@ bool UCameraState_Replay_TA::IsDisabled(const struct FString& InFocusActorString
 
 	UCameraState_Replay_TA_IsDisabled_Params params;
 	params.InFocusActorString = InFocusActorString;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraState_TA.GetProfileCameraSettings
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FProfileCameraSettings  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FProfileCameraSettings UCameraState_TA::GetProfileCameraSettings()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_TA.GetProfileCameraSettings");
+
+	UCameraState_TA_GetProfileCameraSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58422,14 +63662,239 @@ void UCameraState_BallCam_TA::Init(class ACamera_X* InCamera)
 }
 
 
-// Function TAGame.GameInfo_GFxMenu_TA.IntroCarsInPosition
+// Function TAGame.CameraState_PremiumGarage_TA.UpdateAllViewTargetRotation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UCameraState_PremiumGarage_TA::UpdateAllViewTargetRotation(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.UpdateAllViewTargetRotation");
+
+	UCameraState_PremiumGarage_TA_UpdateAllViewTargetRotation_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.UpdatePOV
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
+
+void UCameraState_PremiumGarage_TA::UpdatePOV(float DeltaTime, struct FCameraOrientation* OutPOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.UpdatePOV");
+
+	UCameraState_PremiumGarage_TA_UpdatePOV_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutPOV != nullptr)
+		*OutPOV = params.OutPOV;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.AdjustOutPOVCameraRotation
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FRotator                AddedRotator                   (CPF_Parm)
+// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
+
+void UCameraState_PremiumGarage_TA::AdjustOutPOVCameraRotation(const struct FRotator& AddedRotator, struct FCameraOrientation* OutPOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.AdjustOutPOVCameraRotation");
+
+	UCameraState_PremiumGarage_TA_AdjustOutPOVCameraRotation_Params params;
+	params.AddedRotator = AddedRotator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutPOV != nullptr)
+		*OutPOV = params.OutPOV;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.GetCameraCurveSpeed
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UCameraState_PremiumGarage_TA::GetCameraCurveSpeed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetCameraCurveSpeed");
+
+	UCameraState_PremiumGarage_TA_GetCameraCurveSpeed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.ManuallyAdjustCar
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bEnable                        (CPF_Parm)
+
+void UCameraState_PremiumGarage_TA::ManuallyAdjustCar(bool bEnable)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.ManuallyAdjustCar");
+
+	UCameraState_PremiumGarage_TA_ManuallyAdjustCar_Params params;
+	params.bEnable = bEnable;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.BeginCameraState
+// (FUNC_Defined, FUNC_Public)
+
+void UCameraState_PremiumGarage_TA::BeginCameraState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.BeginCameraState");
+
+	UCameraState_PremiumGarage_TA_BeginCameraState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.GetEndBlendParams
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCameraState_X*          NewState                       (CPF_Parm)
+// struct FViewTargetTransitionParams ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FViewTargetTransitionParams UCameraState_PremiumGarage_TA::GetEndBlendParams(class UCameraState_X* NewState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetEndBlendParams");
+
+	UCameraState_PremiumGarage_TA_GetEndBlendParams_Params params;
+	params.NewState = NewState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.GetActorOrientation
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
+// float                          OutSideOffset                  (CPF_Parm, CPF_OutParm)
+
+void UCameraState_PremiumGarage_TA::GetActorOrientation(struct FCameraOrientation* OutPOV, float* OutSideOffset)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetActorOrientation");
+
+	UCameraState_PremiumGarage_TA_GetActorOrientation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutPOV != nullptr)
+		*OutPOV = params.OutPOV;
+	if (OutSideOffset != nullptr)
+		*OutSideOffset = params.OutSideOffset;
+}
+
+
+// Function TAGame.CameraState_PremiumGarage_TA.GetAccumulatedOrientation
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FVector                 out_Location                   (CPF_Parm, CPF_OutParm)
+// struct FRotator                out_Rotation                   (CPF_Parm, CPF_OutParm)
+// int                            NumPreviewActors               (CPF_Parm, CPF_OutParm)
+
+void UCameraState_PremiumGarage_TA::GetAccumulatedOrientation(struct FVector* out_Location, struct FRotator* out_Rotation, int* NumPreviewActors)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetAccumulatedOrientation");
+
+	UCameraState_PremiumGarage_TA_GetAccumulatedOrientation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_Location != nullptr)
+		*out_Location = params.out_Location;
+	if (out_Rotation != nullptr)
+		*out_Rotation = params.out_Rotation;
+	if (NumPreviewActors != nullptr)
+		*NumPreviewActors = params.NumPreviewActors;
+}
+
+
+// Function TAGame.GameInfo_GFxMenu_TA.AllowPausing
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class APlayerController*       PC                             (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool AGameInfo_GFxMenu_TA::AllowPausing(class APlayerController* PC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.AllowPausing");
+
+	AGameInfo_GFxMenu_TA_AllowPausing_Params params;
+	params.PC = PC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GameInfo_GFxMenu_TA.GarageComplexLoaded
 // (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Private)
 
-void AGameInfo_GFxMenu_TA::IntroCarsInPosition()
+void AGameInfo_GFxMenu_TA::GarageComplexLoaded()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.IntroCarsInPosition");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.GarageComplexLoaded");
 
-	AGameInfo_GFxMenu_TA_IntroCarsInPosition_Params params;
+	AGameInfo_GFxMenu_TA_GarageComplexLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -58667,6 +64132,23 @@ void AGameInfo_GFxMenu_TA::Destroyed()
 }
 
 
+// Function TAGame.GameInfo_GFxMenu_TA.InitMenuSequencer
+// (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
+
+void AGameInfo_GFxMenu_TA::InitMenuSequencer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.InitMenuSequencer");
+
+	AGameInfo_GFxMenu_TA_InitMenuSequencer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameInfo_GFxMenu_TA.InitCarPreviews
 // (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
 
@@ -58692,6 +64174,26 @@ void AGameInfo_GFxMenu_TA::PreBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.PreBeginPlay");
 
 	AGameInfo_GFxMenu_TA_PreBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameInfo_GFxMenu_TA.EventGarageComplexLoaded
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class AGameInfo_GFxMenu_TA*    GameInfoMenu                   (CPF_Parm)
+
+void AGameInfo_GFxMenu_TA::EventGarageComplexLoaded(class AGameInfo_GFxMenu_TA* GameInfoMenu)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_GFxMenu_TA.EventGarageComplexLoaded");
+
+	AGameInfo_GFxMenu_TA_EventGarageComplexLoaded_Params params;
+	params.GameInfoMenu = GameInfoMenu;
 
 	auto flags = fn->FunctionFlags;
 
@@ -59147,187 +64649,6 @@ void UCarPreviewSet_TA::EventPreviewActorsChanged(class UCarPreviewSet_TA* G)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.UpdatePOV
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
-
-void UCameraState_PremiumGarage_TA::UpdatePOV(float DeltaTime, struct FCameraOrientation* OutPOV)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.UpdatePOV");
-
-	UCameraState_PremiumGarage_TA_UpdatePOV_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPOV != nullptr)
-		*OutPOV = params.OutPOV;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.AdjustOutPOVCameraRotation
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FRotator                AddedRotator                   (CPF_Parm)
-// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
-
-void UCameraState_PremiumGarage_TA::AdjustOutPOVCameraRotation(const struct FRotator& AddedRotator, struct FCameraOrientation* OutPOV)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.AdjustOutPOVCameraRotation");
-
-	UCameraState_PremiumGarage_TA_AdjustOutPOVCameraRotation_Params params;
-	params.AddedRotator = AddedRotator;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPOV != nullptr)
-		*OutPOV = params.OutPOV;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.GetCameraCurveSpeed
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UCameraState_PremiumGarage_TA::GetCameraCurveSpeed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetCameraCurveSpeed");
-
-	UCameraState_PremiumGarage_TA_GetCameraCurveSpeed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.ManuallyAdjustCar
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bInManualAdjust                (CPF_Parm)
-
-void UCameraState_PremiumGarage_TA::ManuallyAdjustCar(bool bInManualAdjust)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.ManuallyAdjustCar");
-
-	UCameraState_PremiumGarage_TA_ManuallyAdjustCar_Params params;
-	params.bInManualAdjust = bInManualAdjust;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.BeginCameraState
-// (FUNC_Defined, FUNC_Public)
-
-void UCameraState_PremiumGarage_TA::BeginCameraState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.BeginCameraState");
-
-	UCameraState_PremiumGarage_TA_BeginCameraState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.GetEndBlendParams
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCameraState_X*          NewState                       (CPF_Parm)
-// struct FViewTargetTransitionParams ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FViewTargetTransitionParams UCameraState_PremiumGarage_TA::GetEndBlendParams(class UCameraState_X* NewState)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetEndBlendParams");
-
-	UCameraState_PremiumGarage_TA_GetEndBlendParams_Params params;
-	params.NewState = NewState;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.GetActorOrientation
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
-// float                          OutSideOffset                  (CPF_Parm, CPF_OutParm)
-
-void UCameraState_PremiumGarage_TA::GetActorOrientation(struct FCameraOrientation* OutPOV, float* OutSideOffset)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetActorOrientation");
-
-	UCameraState_PremiumGarage_TA_GetActorOrientation_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPOV != nullptr)
-		*OutPOV = params.OutPOV;
-	if (OutSideOffset != nullptr)
-		*OutSideOffset = params.OutSideOffset;
-}
-
-
-// Function TAGame.CameraState_PremiumGarage_TA.GetSingleActorOrientation
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class ACarPreviewActor_TA*     ViewTarget                     (CPF_Parm)
-// struct FVector                 OutLoc                         (CPF_Parm, CPF_OutParm)
-// struct FRotator                OutRot                         (CPF_Parm, CPF_OutParm)
-
-void UCameraState_PremiumGarage_TA::GetSingleActorOrientation(class ACarPreviewActor_TA* ViewTarget, struct FVector* OutLoc, struct FRotator* OutRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_PremiumGarage_TA.GetSingleActorOrientation");
-
-	UCameraState_PremiumGarage_TA_GetSingleActorOrientation_Params params;
-	params.ViewTarget = ViewTarget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutLoc != nullptr)
-		*OutLoc = params.OutLoc;
-	if (OutRot != nullptr)
-		*OutRot = params.OutRot;
 }
 
 
@@ -61844,7 +67165,7 @@ bool UCameraState_Waiting_TA::ShouldExecute()
 
 
 // Function TAGame.Cannon_TA.Fire
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// (FUNC_Defined, FUNC_Public)
 
 void ACannon_TA::Fire()
 {
@@ -61878,7 +67199,7 @@ void ACannon_TA::DoSimulatedFire()
 
 
 // Function TAGame.Cannon_TA.PlayFullBodyAnim
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FName                   AnimName                       (CPF_Parm)
 // float                          Rate                           (CPF_OptionalParm, CPF_Parm)
@@ -61906,16 +67227,16 @@ void ACannon_TA::PlayFullBodyAnim(const struct FName& AnimName, float Rate, floa
 
 
 // Function TAGame.Cannon_TA.SetPitch
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
-// float                          Pitch                          (CPF_Parm)
+// float                          InPitch                        (CPF_Parm)
 
-void ACannon_TA::SetPitch(float Pitch)
+void ACannon_TA::SetPitch(float InPitch)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Cannon_TA.SetPitch");
 
 	ACannon_TA_SetPitch_Params params;
-	params.Pitch = Pitch;
+	params.InPitch = InPitch;
 
 	auto flags = fn->FunctionFlags;
 
@@ -61926,7 +67247,7 @@ void ACannon_TA::SetPitch(float Pitch)
 
 
 // Function TAGame.Cannon_TA.PostBeginPlay
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 
 void ACannon_TA::PostBeginPlay()
 {
@@ -61953,26 +67274,6 @@ void ACannon_TA::ReplicatedEvent(const struct FName& VarName)
 
 	ACannon_TA_ReplicatedEvent_Params params;
 	params.VarName = VarName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_LocalPlayer_TA.HandleAuthenticatedNameChanged
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
-
-void UGFxData_LocalPlayer_TA::HandleAuthenticatedNameChanged(class UOnlinePlayerAuthentication_X* Auth)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalPlayer_TA.HandleAuthenticatedNameChanged");
-
-	UGFxData_LocalPlayer_TA_HandleAuthenticatedNameChanged_Params params;
-	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
 
@@ -62275,16 +67576,16 @@ void UGFxData_LocalPlayer_TA::HandleLocalPlayerChanged(class ULocalPlayer* NewPl
 }
 
 
-// Function TAGame.GFxData_LocalPlayer_TA.ClearPrivateMatchGameOwnerUpdated
+// Function TAGame.GFxData_LocalPlayer_TA.ClearLocalPlayerData
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class AGameEvent_TA*           GameEvent                      (CPF_Parm)
 
-void UGFxData_LocalPlayer_TA::ClearPrivateMatchGameOwnerUpdated(class AGameEvent_TA* GameEvent)
+void UGFxData_LocalPlayer_TA::ClearLocalPlayerData(class AGameEvent_TA* GameEvent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalPlayer_TA.ClearPrivateMatchGameOwnerUpdated");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalPlayer_TA.ClearLocalPlayerData");
 
-	UGFxData_LocalPlayer_TA_ClearPrivateMatchGameOwnerUpdated_Params params;
+	UGFxData_LocalPlayer_TA_ClearLocalPlayerData_Params params;
 	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -62678,6 +67979,26 @@ void UGFxData_LocalPlayer_TA::CheckBootMessages()
 }
 
 
+// Function TAGame.GFxData_LocalPlayer_TA.HandleAuthenticatedNameChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UGFxData_LocalPlayer_TA::HandleAuthenticatedNameChanged(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalPlayer_TA.HandleAuthenticatedNameChanged");
+
+	UGFxData_LocalPlayer_TA_HandleAuthenticatedNameChanged_Params params;
+	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_LocalPlayer_TA.HandlePsyWebLoginChanged
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -62817,9 +68138,9 @@ void UGFxData_LocalPlayer_TA::UpdateName()
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_LocalPlayer_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError_X* Error)
+void UGFxData_LocalPlayer_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalPlayer_TA.HandleSaveDataLoaded");
 
@@ -63042,14 +68363,51 @@ void UProductAsset_Attachment_TA::ModifyThumbnailScene(class UThumbnailScene_TA*
 }
 
 
-// Function TAGame.CarLoadout_TA.OnAllProductsLoaded
-// (FUNC_Defined, FUNC_Protected)
+// Function TAGame.ThrottleStateComponent_TA.Tick
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
 
-void UCarLoadout_TA::OnAllProductsLoaded()
+void UThrottleStateComponent_TA::Tick(float DeltaTime)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarLoadout_TA.OnAllProductsLoaded");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ThrottleStateComponent_TA.Tick");
 
-	UCarLoadout_TA_OnAllProductsLoaded_Params params;
+	UThrottleStateComponent_TA_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ThrottleStateComponent_TA.Detached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UThrottleStateComponent_TA::Detached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ThrottleStateComponent_TA.Detached");
+
+	UThrottleStateComponent_TA_Detached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ThrottleStateComponent_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UThrottleStateComponent_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ThrottleStateComponent_TA.Attached");
+
+	UThrottleStateComponent_TA_Attached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -63416,6 +68774,271 @@ void UCarTrajectoryComponent_TA::SetEnabled(bool bEnable)
 }
 
 
+// Function TAGame.NameplateComponent_TA.IsReady
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UNameplateComponent_TA::IsReady()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.IsReady");
+
+	UNameplateComponent_TA_IsReady_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponent_TA.IsLocalPlayer
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APRI_TA*                 LocalPRI                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UNameplateComponent_TA::IsLocalPlayer(class APRI_TA* LocalPRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.IsLocalPlayer");
+
+	UNameplateComponent_TA_IsLocalPlayer_Params params;
+	params.LocalPRI = LocalPRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponent_TA.GetPlayerTeam
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UNameplateComponent_TA::GetPlayerTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.GetPlayerTeam");
+
+	UNameplateComponent_TA_GetPlayerTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponent_TA.GetPlayerName
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UNameplateComponent_TA::GetPlayerName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.GetPlayerName");
+
+	UNameplateComponent_TA_GetPlayerName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponent_TA.GetPRI
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APRI_TA*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class APRI_TA* UNameplateComponent_TA::GetPRI()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.GetPRI");
+
+	UNameplateComponent_TA_GetPRI_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponent_TA.Detached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UNameplateComponent_TA::Detached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.Detached");
+
+	UNameplateComponent_TA_Detached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.NameplateComponent_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UNameplateComponent_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponent_TA.Attached");
+
+	UNameplateComponent_TA_Attached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.IsReady
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UNameplateComponentCar_TA::IsReady()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.IsReady");
+
+	UNameplateComponentCar_TA_IsReady_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.IsLocalPlayer
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APRI_TA*                 LocalPRI                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UNameplateComponentCar_TA::IsLocalPlayer(class APRI_TA* LocalPRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.IsLocalPlayer");
+
+	UNameplateComponentCar_TA_IsLocalPlayer_Params params;
+	params.LocalPRI = LocalPRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.GetPlayerTeam
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UNameplateComponentCar_TA::GetPlayerTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.GetPlayerTeam");
+
+	UNameplateComponentCar_TA_GetPlayerTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.GetPlayerName
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UNameplateComponentCar_TA::GetPlayerName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.GetPlayerName");
+
+	UNameplateComponentCar_TA_GetPlayerName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.GetPRI
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APRI_TA*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class APRI_TA* UNameplateComponentCar_TA::GetPRI()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.GetPRI");
+
+	UNameplateComponentCar_TA_GetPRI_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.NameplateComponentCar_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UNameplateComponentCar_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.NameplateComponentCar_TA.Attached");
+
+	UNameplateComponentCar_TA_Attached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.Car_Season_TA.HandleLogoChanged
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
@@ -63491,8 +69114,85 @@ struct FString UProductAsset_Boost_TA::CheckCanSave()
 }
 
 
+// Function TAGame.CarPreviewAnim_TA.SetRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FRotator                Rotation                       (CPF_Parm)
+
+void UCarPreviewAnim_TA::SetRotation(const struct FRotator& Rotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewAnim_TA.SetRotation");
+
+	UCarPreviewAnim_TA_SetRotation_Params params;
+	params.Rotation = Rotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewAnim_TA.SetTranslation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FVector                 Translation                    (CPF_Parm)
+
+void UCarPreviewAnim_TA::SetTranslation(const struct FVector& Translation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewAnim_TA.SetTranslation");
+
+	UCarPreviewAnim_TA_SetTranslation_Params params;
+	params.Translation = Translation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewAnim_TA.UpdateAnim
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+
+void UCarPreviewAnim_TA::UpdateAnim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewAnim_TA.UpdateAnim");
+
+	UCarPreviewAnim_TA_UpdateAnim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewAnim_TA.UpdateKeyframeIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UCarPreviewAnim_TA::UpdateKeyframeIndex(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewAnim_TA.UpdateKeyframeIndex");
+
+	UCarPreviewAnim_TA_UpdateKeyframeIndex_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.CarPreviewAnim_TA.Tick
-// (FUNC_Defined, FUNC_Event, FUNC_Protected, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
 // float                          DeltaTime                      (CPF_Parm)
 
@@ -63502,6 +69202,23 @@ void UCarPreviewAnim_TA::Tick(float DeltaTime)
 
 	UCarPreviewAnim_TA_Tick_Params params;
 	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CarPreviewAnim_TA.Detached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UCarPreviewAnim_TA::Detached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewAnim_TA.Detached");
+
+	UCarPreviewAnim_TA_Detached_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -63533,91 +69250,25 @@ void UCarPreviewAnim_TA::Start(class ACarPreviewActor_TA* InOwner, class UPrimit
 }
 
 
-// Function TAGame.OnlineProductStore_TA.FindProduct
+// Function TAGame.TurnTableActor_TA.StopMovement
 // (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UOnlineProduct_TA* UOnlineProductStore_TA::FindProduct()
+void ATurnTableActor_TA::StopMovement()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.FindProduct");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.StopMovement");
 
-	UOnlineProductStore_TA_FindProduct_Params params;
+	ATurnTableActor_TA_StopMovement_Params params;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineProductStore_TA.RemoveSet
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineProductStoreSet_TA* Set                            (CPF_Parm)
-
-void UOnlineProductStore_TA::RemoveSet(class UOnlineProductStoreSet_TA* Set)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.RemoveSet");
-
-	UOnlineProductStore_TA_RemoveSet_Params params;
-	params.Set = Set;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineProductStore_TA.CreateSet
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineProductStoreSet_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineProductStoreSet_TA* UOnlineProductStore_TA::CreateSet()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.CreateSet");
-
-	UOnlineProductStore_TA_CreateSet_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineProductStore_TA.GetInstance
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineProductStore_TA*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineProductStore_TA* UOnlineProductStore_TA::STATIC_GetInstance()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.GetInstance");
-
-	UOnlineProductStore_TA_GetInstance_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
 // Function TAGame.TurnTableActor_TA.GetDiscRotation
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
@@ -63637,48 +69288,39 @@ struct FRotator ATurnTableActor_TA::GetDiscRotation()
 }
 
 
-// Function TAGame.TurnTableActor_TA.DontStartSound
-// (FUNC_Public)
-
-void ATurnTableActor_TA::DontStartSound()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.DontStartSound");
-
-	ATurnTableActor_TA_DontStartSound_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.TurnTableActor_TA.DontPlayReverse
-// (FUNC_Public)
-
-void ATurnTableActor_TA::DontPlayReverse()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.DontPlayReverse");
-
-	ATurnTableActor_TA_DontPlayReverse_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.TurnTableActor_TA.StopRotatingSound
+// Function TAGame.TurnTableActor_TA.SetBoneRotation
 // (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRot                         (CPF_Parm)
 
-void ATurnTableActor_TA::StopRotatingSound()
+void ATurnTableActor_TA::SetBoneRotation(const struct FRotator& NewRot)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.StopRotatingSound");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.SetBoneRotation");
 
-	ATurnTableActor_TA_StopRotatingSound_Params params;
+	ATurnTableActor_TA_SetBoneRotation_Params params;
+	params.NewRot = NewRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.TurnTableActor_TA.HandleRotationChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URotateComponent_TA*     InRotateComponent              (CPF_Parm, CPF_EditInline)
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void ATurnTableActor_TA::HandleRotationChanged(class URotateComponent_TA* InRotateComponent, const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.HandleRotationChanged");
+
+	ATurnTableActor_TA_HandleRotationChanged_Params params;
+	params.InRotateComponent = InRotateComponent;
+	params.NewRotation = NewRotation;
 
 	auto flags = fn->FunctionFlags;
 
@@ -63689,7 +69331,7 @@ void ATurnTableActor_TA::StopRotatingSound()
 
 
 // Function TAGame.TurnTableActor_TA.SetDiscRotation
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
 // float                          InDirectionMag                 (CPF_Parm)
 // float                          DeltaTime                      (CPF_Parm)
@@ -63866,6 +69508,40 @@ void ATurnTableActor_TA::SwapCars(bool bReverse)
 }
 
 
+// Function TAGame.TurnTableActor_TA.Destroyed
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void ATurnTableActor_TA::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.Destroyed");
+
+	ATurnTableActor_TA_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.TurnTableActor_TA.PostBeginPlay
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void ATurnTableActor_TA::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TurnTableActor_TA.PostBeginPlay");
+
+	ATurnTableActor_TA_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.TurnTableActor_TA.EventRevealComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -63903,267 +69579,16 @@ void ATurnTableActor_TA::EventCarSwapComplete()
 }
 
 
-// Function TAGame.OnlineGameParty_TA.RepopulateChatHistory
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::RepopulateChatHistory()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RepopulateChatHistory");
-
-	UOnlineGameParty_TA_RepopulateChatHistory_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleChatMessage
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
-// class UObject*                 Message                        (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleChatMessage(class UOnlineMessageComponent_X* Component, class UObject* Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleChatMessage");
-
-	UOnlineGameParty_TA_HandleChatMessage_Params params;
-	params.Component = Component;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SendPartyLobbyMessage
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameParty_TA::SendPartyLobbyMessage(const struct FString& Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendPartyLobbyMessage");
-
-	UOnlineGameParty_TA_SendPartyLobbyMessage_Params params;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleTradePlayerComplete
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class URPC_ProductsTradePlayerStatus_TA* RPC                            (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleTradePlayerComplete(class URPC_ProductsTradePlayerStatus_TA* RPC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleTradePlayerComplete");
-
-	UOnlineGameParty_TA_HandleTradePlayerComplete_Params params;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.CheckTradeStatus
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::CheckTradeStatus()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CheckTradeStatus");
-
-	UOnlineGameParty_TA_CheckTradeStatus_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleStartTradePlayerComplete
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class URPC_ProductsTradePlayer_TA* RPC                            (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleStartTradePlayerComplete(class URPC_ProductsTradePlayer_TA* RPC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleStartTradePlayerComplete");
-
-	UOnlineGameParty_TA_HandleStartTradePlayerComplete_Params params;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SendTradeToBackEnd
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::SendTradeToBackEnd()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendTradeToBackEnd");
-
-	UOnlineGameParty_TA_SendTradeToBackEnd_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleVerifyTrade
+// Function TAGame.OnlineProductStore_TA.FindProduct
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// class URPC_ProductsLoadoutGet_TA* RPC                            (CPF_Parm)
+// class UOnlineProduct_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UOnlineGameParty_TA::HandleVerifyTrade(class URPC_ProductsLoadoutGet_TA* RPC)
+class UOnlineProduct_TA* UOnlineProductStore_TA::FindProduct()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleVerifyTrade");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.FindProduct");
 
-	UOnlineGameParty_TA_HandleVerifyTrade_Params params;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleVerifyTradeTimeOut
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameParty_TA::HandleVerifyTradeTimeOut()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleVerifyTradeTimeOut");
-
-	UOnlineGameParty_TA_HandleVerifyTradeTimeOut_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SendVerifyTradeToBackEnd
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::SendVerifyTradeToBackEnd()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SendVerifyTradeToBackEnd");
-
-	UOnlineGameParty_TA_SendVerifyTradeToBackEnd_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleTradeProductUpdate
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
-// class UObject*                 Message                        (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleTradeProductUpdate(class UOnlineMessageComponent_X* Component, class UObject* Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleTradeProductUpdate");
-
-	UOnlineGameParty_TA_HandleTradeProductUpdate_Params params;
-	params.Component = Component;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SetPartyMessageHandlerTradeProductUpdate
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           bAddHandler                    (CPF_Parm)
-
-void UOnlineGameParty_TA::SetPartyMessageHandlerTradeProductUpdate(bool bAddHandler)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetPartyMessageHandlerTradeProductUpdate");
-
-	UOnlineGameParty_TA_SetPartyMessageHandlerTradeProductUpdate_Params params;
-	params.bAddHandler = bAddHandler;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.TradeProductUpdate
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FOnlineProductData      ProductData                    (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bAddProduct                    (CPF_Parm)
-
-void UOnlineGameParty_TA::TradeProductUpdate(const struct FOnlineProductData& ProductData, bool bAddProduct)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.TradeProductUpdate");
-
-	UOnlineGameParty_TA_TradeProductUpdate_Params params;
-	params.ProductData = ProductData;
-	params.bAddProduct = bAddProduct;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.IsProcessingTrade
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameParty_TA::IsProcessingTrade()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.IsProcessingTrade");
-
-	UOnlineGameParty_TA_IsProcessingTrade_Params params;
+	UOnlineProductStore_TA_FindProduct_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -64175,389 +69600,36 @@ bool UOnlineGameParty_TA::IsProcessingTrade()
 }
 
 
-// Function TAGame.OnlineGameParty_TA.CanAcceptTrade
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameParty_TA::CanAcceptTrade()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CanAcceptTrade");
-
-	UOnlineGameParty_TA_CanAcceptTrade_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.UpdateOnlineProducts
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
-// Parameters:
-// struct FPartyMemberLoadout     Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UOnlineGameParty_TA::UpdateOnlineProducts(struct FPartyMemberLoadout* Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UpdateOnlineProducts");
-
-	UOnlineGameParty_TA_UpdateOnlineProducts_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Loadout != nullptr)
-		*Loadout = params.Loadout;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleDisableCrossPlayChanged
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UProfile_TA*             P                              (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleDisableCrossPlayChanged(class UProfile_TA* P)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleDisableCrossPlayChanged");
-
-	UOnlineGameParty_TA_HandleDisableCrossPlayChanged_Params params;
-	params.P = P;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.UseGroupMMR
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameParty_TA::UseGroupMMR()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UseGroupMMR");
-
-	UOnlineGameParty_TA_UseGroupMMR_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.UpdateAssetCache
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-// Parameters:
-// int                            PartyMemberIdx                 (CPF_Parm)
-
-void UOnlineGameParty_TA::UpdateAssetCache(int PartyMemberIdx)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.UpdateAssetCache");
-
-	UOnlineGameParty_TA_UpdateAssetCache_Params params;
-	params.PartyMemberIdx = PartyMemberIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleGameEventFinished
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class AGameEvent_TA*           GameEvent                      (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleGameEventFinished(class AGameEvent_TA* GameEvent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleGameEventFinished");
-
-	UOnlineGameParty_TA_HandleGameEventFinished_Params params;
-	params.GameEvent = GameEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.WantsToFollowTheLeaderOutOfGame
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameParty_TA::WantsToFollowTheLeaderOutOfGame()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.WantsToFollowTheLeaderOutOfGame");
-
-	UOnlineGameParty_TA_WantsToFollowTheLeaderOutOfGame_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.BuildMatchmakingRestrictions
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UOnlineGameParty_TA::BuildMatchmakingRestrictions()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BuildMatchmakingRestrictions");
-
-	UOnlineGameParty_TA_BuildMatchmakingRestrictions_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandlePrimaryPlayerSet
-// (FUNC_Defined, FUNC_Protected, FUNC_K2Call)
-// Parameters:
-// class APlayerController_Menu_TA* PC                             (CPF_Parm)
-
-void UOnlineGameParty_TA::HandlePrimaryPlayerSet(class APlayerController_Menu_TA* PC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandlePrimaryPlayerSet");
-
-	UOnlineGameParty_TA_HandlePrimaryPlayerSet_Params params;
-	params.PC = PC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.BroadcastPlayer
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FPartyMemberLoadout     MemberLoadout                  (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameParty_TA::BroadcastPlayer(const struct FPartyMemberLoadout& MemberLoadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastPlayer");
-
-	UOnlineGameParty_TA_BroadcastPlayer_Params params;
-	params.MemberLoadout = MemberLoadout;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.CreatePartyMemberLoadout
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class ULocalPlayer_TA*         Player                         (CPF_Parm)
-// struct FPartyMemberLoadout     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FPartyMemberLoadout UOnlineGameParty_TA::CreatePartyMemberLoadout(class ULocalPlayer_TA* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.CreatePartyMemberLoadout");
-
-	UOnlineGameParty_TA_CreatePartyMemberLoadout_Params params;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.BroadcastAllLocalPlayers
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameParty_TA::BroadcastAllLocalPlayers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastAllLocalPlayers");
-
-	UOnlineGameParty_TA_BroadcastAllLocalPlayers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleLoadoutMessage
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
-// class UObject*                 Message                        (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleLoadoutMessage(class UOnlineMessageComponent_X* Component, class UObject* Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLoadoutMessage");
-
-	UOnlineGameParty_TA_HandleLoadoutMessage_Params params;
-	params.Component = Component;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandlePreviewTeamChange
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UProfile_TA*             InProfile                      (CPF_Parm)
-// int                            InPreviewTeamIndex             (CPF_Parm)
-
-void UOnlineGameParty_TA::HandlePreviewTeamChange(class UProfile_TA* InProfile, int InPreviewTeamIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandlePreviewTeamChange");
-
-	UOnlineGameParty_TA_HandlePreviewTeamChange_Params params;
-	params.InProfile = InProfile;
-	params.InPreviewTeamIndex = InPreviewTeamIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.BroadcastPendingLocalPlayerLoadouts
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::BroadcastPendingLocalPlayerLoadouts()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.BroadcastPendingLocalPlayerLoadouts");
-
-	UOnlineGameParty_TA_BroadcastPendingLocalPlayerLoadouts_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleLoadoutChange
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UProfile_TA*             InProfile                      (CPF_Parm)
-// class ULoadout_TA*             Loadout                        (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleLoadoutChange(class UProfile_TA* InProfile, class ULoadout_TA* Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLoadoutChange");
-
-	UOnlineGameParty_TA_HandleLoadoutChange_Params params;
-	params.InProfile = InProfile;
-	params.Loadout = Loadout;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.RemovePartyMemberByLocalPlayer
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class ULocalPlayer*            Player                         (CPF_Parm)
-
-void UOnlineGameParty_TA::RemovePartyMemberByLocalPlayer(class ULocalPlayer* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RemovePartyMemberByLocalPlayer");
-
-	UOnlineGameParty_TA_RemovePartyMemberByLocalPlayer_Params params;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleNewLeader
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
-// class UObject*                 Message                        (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleNewLeader(class UOnlineMessageComponent_X* Component, class UObject* Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleNewLeader");
-
-	UOnlineGameParty_TA_HandleNewLeader_Params params;
-	params.Component = Component;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SetLeader
+// Function TAGame.OnlineProductStore_TA.RemoveSet
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// struct FUniqueNetId            NewLeader                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UOnlineProductStoreSet_TA* Set                            (CPF_Parm)
 
-bool UOnlineGameParty_TA::SetLeader(const struct FUniqueNetId& NewLeader)
+void UOnlineProductStore_TA::RemoveSet(class UOnlineProductStoreSet_TA* Set)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetLeader");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.RemoveSet");
 
-	UOnlineGameParty_TA_SetLeader_Params params;
-	params.NewLeader = NewLeader;
+	UOnlineProductStore_TA_RemoveSet_Params params;
+	params.Set = Set;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineProductStore_TA.CreateSet
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UOnlineProductStoreSet_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UOnlineProductStoreSet_TA* UOnlineProductStore_TA::CreateSet()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.CreateSet");
+
+	UOnlineProductStore_TA_CreateSet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -64569,174 +69641,79 @@ bool UOnlineGameParty_TA::SetLeader(const struct FUniqueNetId& NewLeader)
 }
 
 
-// Function TAGame.OnlineGameParty_TA.OnNewLobby
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameParty_TA::OnNewLobby()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnNewLobby");
-
-	UOnlineGameParty_TA_OnNewLobby_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.RemovePartyMemberByID
-// (FUNC_Defined, FUNC_Protected)
+// Function TAGame.OnlineProductStore_TA.GetInstance
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// struct FUniqueNetId            MemberId                       (CPF_Parm)
+// class UOnlineProductStore_TA*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UOnlineGameParty_TA::RemovePartyMemberByID(const struct FUniqueNetId& MemberId)
+class UOnlineProductStore_TA* UOnlineProductStore_TA::STATIC_GetInstance()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RemovePartyMemberByID");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineProductStore_TA.GetInstance");
 
-	UOnlineGameParty_TA_RemovePartyMemberByID_Params params;
-	params.MemberId = MemberId;
+	UOnlineProductStore_TA_GetInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function TAGame.OnlineGameParty_TA.HandleLocalPlayerLeave
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class ULocalPlayer*            Player                         (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleLocalPlayerLeave(class ULocalPlayer* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleLocalPlayerLeave");
-
-	UOnlineGameParty_TA_HandleLocalPlayerLeave_Params params;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.OnEditExistingPartyMember
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// int                            MemberIdx                      (CPF_Parm)
-
-void UOnlineGameParty_TA::OnEditExistingPartyMember(int MemberIdx)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnEditExistingPartyMember");
-
-	UOnlineGameParty_TA_OnEditExistingPartyMember_Params params;
-	params.MemberIdx = MemberIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.OnAddNewPartyMember
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// int                            MemberIdx                      (CPF_Parm)
-
-void UOnlineGameParty_TA::OnAddNewPartyMember(int MemberIdx)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnAddNewPartyMember");
-
-	UOnlineGameParty_TA_OnAddNewPartyMember_Params params;
-	params.MemberIdx = MemberIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.RefreshLoadouts
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            MemberIdx                      (CPF_Parm)
-
-void UOnlineGameParty_TA::RefreshLoadouts(int MemberIdx)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.RefreshLoadouts");
-
-	UOnlineGameParty_TA_RefreshLoadouts_Params params;
-	params.MemberIdx = MemberIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.ClearPartyChat
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-
-void UOnlineGameParty_TA::ClearPartyChat()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.ClearPartyChat");
-
-	UOnlineGameParty_TA_ClearPartyChat_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.AddPartyServiceLobbyMessage
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-// Parameters:
-// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameParty_TA::AddPartyServiceLobbyMessage(const struct FString& Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.AddPartyServiceLobbyMessage");
-
-	UOnlineGameParty_TA_AddPartyServiceLobbyMessage_Params params;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.LocalPlayerSort
+// Function TAGame.EngineAudioPreviewRev_TA.__EngineAudioPreviewRev_TA__Init_1
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// struct FPartyMemberLoadout     Left                           (CPF_Parm, CPF_NeedCtorLink)
-// struct FPartyMemberLoadout     Right                          (CPF_Parm, CPF_NeedCtorLink)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UAkRevPhysicsSimulation* S                              (CPF_Parm)
 
-int UOnlineGameParty_TA::LocalPlayerSort(const struct FPartyMemberLoadout& Left, const struct FPartyMemberLoadout& Right)
+void UEngineAudioPreviewRev_TA::__EngineAudioPreviewRev_TA__Init_1(class UAkRevPhysicsSimulation* S)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.LocalPlayerSort");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewRev_TA.__EngineAudioPreviewRev_TA__Init_1");
 
-	UOnlineGameParty_TA_LocalPlayerSort_Params params;
-	params.Left = Left;
-	params.Right = Right;
+	UEngineAudioPreviewRev_TA___EngineAudioPreviewRev_TA__Init_1_Params params;
+	params.S = S;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioPreviewRev_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductAsset_EngineAudio_TA* InAsset                        (CPF_Parm)
+// class UAkParamGroup*           InAkParams                     (CPF_Parm, CPF_EditInline)
+
+void UEngineAudioPreviewRev_TA::Init(class UProductAsset_EngineAudio_TA* InAsset, class UAkParamGroup* InAkParams)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioPreviewRev_TA.Init");
+
+	UEngineAudioPreviewRev_TA_Init_Params params;
+	params.InAsset = InAsset;
+	params.InAkParams = InAkParams;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerController_Menu_TA.ShouldEnableForceFeedback
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APlayerController_Menu_TA::ShouldEnableForceFeedback()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_Menu_TA.ShouldEnableForceFeedback");
+
+	APlayerController_Menu_TA_ShouldEnableForceFeedback_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -64745,217 +69722,6 @@ int UOnlineGameParty_TA::LocalPlayerSort(const struct FPartyMemberLoadout& Left,
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.SetLoadout
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// struct FPartyMemberLoadout     Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class ULocalPlayer*            Player                         (CPF_OptionalParm, CPF_Parm)
-
-void UOnlineGameParty_TA::SetLoadout(class ULocalPlayer* Player, struct FPartyMemberLoadout* Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.SetLoadout");
-
-	UOnlineGameParty_TA_SetLoadout_Params params;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Loadout != nullptr)
-		*Loadout = params.Loadout;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.HandleProfileSet
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class ULocalPlayer_TA*         P                              (CPF_Parm)
-
-void UOnlineGameParty_TA::HandleProfileSet(class ULocalPlayer_TA* P)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.HandleProfileSet");
-
-	UOnlineGameParty_TA_HandleProfileSet_Params params;
-	params.P = P;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.OnInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameParty_TA::OnInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.OnInit");
-
-	UOnlineGameParty_TA_OnInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventTradePlayerComplete
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
-// class URPC_ProductsTradePlayerStatus_TA* RPC                            (CPF_Parm)
-
-void UOnlineGameParty_TA::EventTradePlayerComplete(class UOnlineGameParty_TA* PartyObject, class URPC_ProductsTradePlayerStatus_TA* RPC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradePlayerComplete");
-
-	UOnlineGameParty_TA_EventTradePlayerComplete_Params params;
-	params.PartyObject = PartyObject;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventTradePlayerError
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
-// class URPC_TA*                 RPC                            (CPF_Parm)
-
-void UOnlineGameParty_TA::EventTradePlayerError(class UOnlineGameParty_TA* PartyObject, class URPC_TA* RPC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradePlayerError");
-
-	UOnlineGameParty_TA_EventTradePlayerError_Params params;
-	params.PartyObject = PartyObject;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventTradeVerifyTimeOut
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
-
-void UOnlineGameParty_TA::EventTradeVerifyTimeOut(class UOnlineGameParty_X* PartyObject)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeVerifyTimeOut");
-
-	UOnlineGameParty_TA_EventTradeVerifyTimeOut_Params params;
-	params.PartyObject = PartyObject;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventTradeVerify
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
-// TArray<class UOnlineProduct_TA*> ProductData                    (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameParty_TA::EventTradeVerify(class UOnlineGameParty_X* PartyObject, TArray<class UOnlineProduct_TA*> ProductData)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeVerify");
-
-	UOnlineGameParty_TA_EventTradeVerify_Params params;
-	params.PartyObject = PartyObject;
-	params.ProductData = ProductData;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventTradeProductUpdate
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineGameParty_TA*     PartyObject                    (CPF_Parm)
-// struct FOnlineProductData      ProductData                    (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bAddProduct                    (CPF_Parm)
-
-void UOnlineGameParty_TA::EventTradeProductUpdate(class UOnlineGameParty_TA* PartyObject, const struct FOnlineProductData& ProductData, bool bAddProduct)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventTradeProductUpdate");
-
-	UOnlineGameParty_TA_EventTradeProductUpdate_Params params;
-	params.PartyObject = PartyObject;
-	params.ProductData = ProductData;
-	params.bAddProduct = bAddProduct;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutRemoved
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// int                            MemberIndex                    (CPF_Parm)
-
-void UOnlineGameParty_TA::EventPartyMemberLoadoutRemoved(int MemberIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutRemoved");
-
-	UOnlineGameParty_TA_EventPartyMemberLoadoutRemoved_Params params;
-	params.MemberIndex = MemberIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutChange
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// int                            MemberIndex                    (CPF_Parm)
-
-void UOnlineGameParty_TA::EventPartyMemberLoadoutChange(int MemberIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameParty_TA.EventPartyMemberLoadoutChange");
-
-	UOnlineGameParty_TA_EventPartyMemberLoadoutChange_Params params;
-	params.MemberIndex = MemberIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -64967,6 +69733,23 @@ void APlayerController_Menu_TA::ShowAccountPicker()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_Menu_TA.ShowAccountPicker");
 
 	APlayerController_Menu_TA_ShowAccountPicker_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.PlayerController_Menu_TA.MusicTogglePlaylistSelection
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void APlayerController_Menu_TA::MusicTogglePlaylistSelection()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_Menu_TA.MusicTogglePlaylistSelection");
+
+	APlayerController_Menu_TA_MusicTogglePlaylistSelection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -65350,6 +70133,173 @@ void UOnlineProductStoreSet_TA::InitLocal(class ULocalPlayer* InPlayer)
 
 	UOnlineProductStoreSet_TA_InitLocal_Params params;
 	params.InPlayer = InPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.StopExplosion
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<int>                    ArrayInitializer_44156ACB48741F06A08F539CF0F463F1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UExplosionPreviewer_TA::StopExplosion(TArray<int>* ArrayInitializer_44156ACB48741F06A08F539CF0F463F1)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.StopExplosion");
+
+	UExplosionPreviewer_TA_StopExplosion_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_44156ACB48741F06A08F539CF0F463F1 != nullptr)
+		*ArrayInitializer_44156ACB48741F06A08F539CF0F463F1 = params.ArrayInitializer_44156ACB48741F06A08F539CF0F463F1;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.PlayExplosion
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<int>                    ArrayInitializer_DAB2D31E41957BD08E0CFAB3F6D62EB7 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UExplosionPreviewer_TA::PlayExplosion(TArray<int>* ArrayInitializer_DAB2D31E41957BD08E0CFAB3F6D62EB7)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.PlayExplosion");
+
+	UExplosionPreviewer_TA_PlayExplosion_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_DAB2D31E41957BD08E0CFAB3F6D62EB7 != nullptr)
+		*ArrayInitializer_DAB2D31E41957BD08E0CFAB3F6D62EB7 = params.ArrayInitializer_DAB2D31E41957BD08E0CFAB3F6D62EB7;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.HandleProductLoaded
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UProductLoader_TA*       InLoader                       (CPF_Parm, CPF_EditInline)
+
+void UExplosionPreviewer_TA::HandleProductLoaded(class UProductLoader_TA* InLoader)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.HandleProductLoaded");
+
+	UExplosionPreviewer_TA_HandleProductLoaded_Params params;
+	params.InLoader = InLoader;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.SetProduct
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            ProductID                      (CPF_Parm)
+// TArray<int>                    ArrayInitializer_D2E143024458E4F13E12D79E68502AC2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UExplosionPreviewer_TA::SetProduct(int ProductID, TArray<int>* ArrayInitializer_D2E143024458E4F13E12D79E68502AC2)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.SetProduct");
+
+	UExplosionPreviewer_TA_SetProduct_Params params;
+	params.ProductID = ProductID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_D2E143024458E4F13E12D79E68502AC2 != nullptr)
+		*ArrayInitializer_D2E143024458E4F13E12D79E68502AC2 = params.ArrayInitializer_D2E143024458E4F13E12D79E68502AC2;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.SetLoadout
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FLoadoutData            InLoadout                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UExplosionPreviewer_TA::SetLoadout(struct FLoadoutData* InLoadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.SetLoadout");
+
+	UExplosionPreviewer_TA_SetLoadout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InLoadout != nullptr)
+		*InLoadout = params.InLoadout;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.UpdateExplosion
+// (FUNC_Defined, FUNC_Protected)
+
+void UExplosionPreviewer_TA::UpdateExplosion()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.UpdateExplosion");
+
+	UExplosionPreviewer_TA_UpdateExplosion_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.SetPreviewSlot
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProductSlot_TA*         InSlot                         (CPF_Parm)
+
+void UExplosionPreviewer_TA::SetPreviewSlot(class UProductSlot_TA* InSlot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.SetPreviewSlot");
+
+	UExplosionPreviewer_TA_SetPreviewSlot_Params params;
+	params.InSlot = InSlot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ExplosionPreviewer_TA.SetPreviewSlotIndex
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            InSlotIndex                    (CPF_Parm)
+
+void UExplosionPreviewer_TA::SetPreviewSlotIndex(int InSlotIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ExplosionPreviewer_TA.SetPreviewSlotIndex");
+
+	UExplosionPreviewer_TA_SetPreviewSlotIndex_Params params;
+	params.InSlotIndex = InSlotIndex;
 
 	auto flags = fn->FunctionFlags;
 
@@ -66025,6 +70975,28 @@ void ACrowdActor_TA::ReplicatedEvent(const struct FName& VarName)
 
 	ACrowdActor_TA_ReplicatedEvent_Params params;
 	params.VarName = VarName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.StatFactory_TA.OnBallAdded
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGameEvent_Soccar_TA*    GameEventSoccar                (CPF_Parm)
+// class ABall_TA*                Ball                           (CPF_Parm)
+
+void AStatFactory_TA::OnBallAdded(class AGameEvent_Soccar_TA* GameEventSoccar, class ABall_TA* Ball)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.StatFactory_TA.OnBallAdded");
+
+	AStatFactory_TA_OnBallAdded_Params params;
+	params.GameEventSoccar = GameEventSoccar;
+	params.Ball = Ball;
 
 	auto flags = fn->FunctionFlags;
 
@@ -67070,1031 +72042,16 @@ void ACrowdManager_TA::ReplicatedEvent(const struct FName& VarName)
 }
 
 
-// Function TAGame.MatchType_TA.ChooseTeam
-// (FUNC_Public)
-// Parameters:
-// int                            TeamIndex                      (CPF_Parm)
-// class APlayerController_TA*    Player                         (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::ChooseTeam(int TeamIndex, class APlayerController_TA* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ChooseTeam");
-
-	UMatchType_TA_ChooseTeam_Params params;
-	params.TeamIndex = TeamIndex;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanRestartPlayer
-// (FUNC_Public)
-// Parameters:
-// class AController*             NewPlayer                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanRestartPlayer(class AController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanRestartPlayer");
-
-	UMatchType_TA_CanRestartPlayer_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.AutoSelectTeam
-// (FUNC_Public)
-// Parameters:
-// class AController*             NewPlayer                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::AutoSelectTeam(class AController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AutoSelectTeam");
-
-	UMatchType_TA_AutoSelectTeam_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.PickTeam
-// (FUNC_Public)
-// Parameters:
-// class AController*             C                              (CPF_Parm)
-// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ATeam_TA* UMatchType_TA::PickTeam(class AController* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.PickTeam");
-
-	UMatchType_TA_PickTeam_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanCheckForBannedPlayers
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanCheckForBannedPlayers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanCheckForBannedPlayers");
-
-	UMatchType_TA_CanCheckForBannedPlayers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.ShouldSubmitMatchComplete
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::ShouldSubmitMatchComplete()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldSubmitMatchComplete");
-
-	UMatchType_TA_ShouldSubmitMatchComplete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.UseCustomMatchSettings
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::UseCustomMatchSettings()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.UseCustomMatchSettings");
-
-	UMatchType_TA_UseCustomMatchSettings_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanIncreaseMaxTeamSize
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanIncreaseMaxTeamSize()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanIncreaseMaxTeamSize");
-
-	UMatchType_TA_CanIncreaseMaxTeamSize_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.OnStartWaitingForPlayers
-// (FUNC_Public)
-
-void UMatchType_TA::OnStartWaitingForPlayers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnStartWaitingForPlayers");
-
-	UMatchType_TA_OnStartWaitingForPlayers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.MatchType_TA.IsOnlineMultiplayer
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::IsOnlineMultiplayer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.IsOnlineMultiplayer");
-
-	UMatchType_TA_IsOnlineMultiplayer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.ShouldSetGameOwner
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::ShouldSetGameOwner()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldSetGameOwner");
-
-	UMatchType_TA_ShouldSetGameOwner_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanCheckForForfeit
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanCheckForForfeit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanCheckForForfeit");
-
-	UMatchType_TA_CanCheckForForfeit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.ShouldCancelMatch
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::ShouldCancelMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldCancelMatch");
-
-	UMatchType_TA_ShouldCancelMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.ShouldStartMatch
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::ShouldStartMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.ShouldStartMatch");
-
-	UMatchType_TA_ShouldStartMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GetMatchTypeName
-// (FUNC_Public)
-// Parameters:
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UMatchType_TA::GetMatchTypeName()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetMatchTypeName");
-
-	UMatchType_TA_GetMatchTypeName_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.RecordPlayedMap
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::RecordPlayedMap()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.RecordPlayedMap");
-
-	UMatchType_TA_RecordPlayedMap_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.AllowSpectators
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::AllowSpectators()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AllowSpectators");
-
-	UMatchType_TA_AllowSpectators_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.OnPlayerAddedToTeam
-// (FUNC_Public)
-
-void UMatchType_TA::OnPlayerAddedToTeam()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnPlayerAddedToTeam");
-
-	UMatchType_TA_OnPlayerAddedToTeam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.MatchType_TA.CanRematchVote
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanRematchVote()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanRematchVote");
-
-	UMatchType_TA_CanRematchVote_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanUpdateStats
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanUpdateStats()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanUpdateStats");
-
-	UMatchType_TA_CanUpdateStats_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GetMaxTeamSize
-// (FUNC_Public)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UMatchType_TA::GetMaxTeamSize()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetMaxTeamSize");
-
-	UMatchType_TA_GetMaxTeamSize_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanChangeTeam
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanChangeTeam()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanChangeTeam");
-
-	UMatchType_TA_CanChangeTeam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GiveExtraXP
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::GiveExtraXP()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GiveExtraXP");
-
-	UMatchType_TA_GiveExtraXP_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.CanIdleKick
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::CanIdleKick()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.CanIdleKick");
-
-	UMatchType_TA_CanIdleKick_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.OnInitGameEvent
-// (FUNC_Public)
-
-void UMatchType_TA::OnInitGameEvent()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.OnInitGameEvent");
-
-	UMatchType_TA_OnInitGameEvent_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.MatchType_TA.GetOnlineGameLanServer
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineGameLanServer_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGameLanServer_X* UMatchType_TA::STATIC_GetOnlineGameLanServer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGameLanServer");
-
-	UMatchType_TA_GetOnlineGameLanServer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GetOnlineGameDedicatedServer
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineGameDedicatedServer_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGameDedicatedServer_TA* UMatchType_TA::GetOnlineGameDedicatedServer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGameDedicatedServer");
-
-	UMatchType_TA_GetOnlineGameDedicatedServer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GetOnlineGame
-// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class UOnlineGame_Base_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGame_Base_X* UMatchType_TA::GetOnlineGame()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetOnlineGame");
-
-	UMatchType_TA_GetOnlineGame_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.AllPlayersHaveACar
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_TA::AllPlayersHaveACar()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.AllPlayersHaveACar");
-
-	UMatchType_TA_AllPlayersHaveACar_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.GetCustomMatchSettings
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FCustomMatchSettings    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FCustomMatchSettings UMatchType_TA::GetCustomMatchSettings()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.GetCustomMatchSettings");
-
-	UMatchType_TA_GetCustomMatchSettings_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_TA.Init
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AGameEvent_TA*           InGameEvent                    (CPF_Parm)
-// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UMatchType_TA::Init(class AGameEvent_TA* InGameEvent, const struct FString& Options)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_TA.Init");
-
-	UMatchType_TA_Init_Params params;
-	params.InGameEvent = InGameEvent;
-	params.Options = Options;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.MatchType_Public_TA.ChooseTeam
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            TeamIndex                      (CPF_Parm)
-// class APlayerController_TA*    Player                         (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::ChooseTeam(int TeamIndex, class APlayerController_TA* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ChooseTeam");
-
-	UMatchType_Public_TA_ChooseTeam_Params params;
-	params.TeamIndex = TeamIndex;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanRestartPlayer
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             NewPlayer                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::CanRestartPlayer(class AController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanRestartPlayer");
-
-	UMatchType_Public_TA_CanRestartPlayer_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.AutoSelectTeam
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             NewPlayer                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::AutoSelectTeam(class AController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.AutoSelectTeam");
-
-	UMatchType_Public_TA_AutoSelectTeam_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanCheckForBannedPlayers
+// Function TAGame.MatchType_Private_TA.AllowMatchAdmin
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMatchType_Public_TA::CanCheckForBannedPlayers()
+bool UMatchType_Private_TA::AllowMatchAdmin()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanCheckForBannedPlayers");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Private_TA.AllowMatchAdmin");
 
-	UMatchType_Public_TA_CanCheckForBannedPlayers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.ShouldSubmitMatchComplete
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::ShouldSubmitMatchComplete()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldSubmitMatchComplete");
-
-	UMatchType_Public_TA_ShouldSubmitMatchComplete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.IsOnlineMultiplayer
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::IsOnlineMultiplayer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.IsOnlineMultiplayer");
-
-	UMatchType_Public_TA_IsOnlineMultiplayer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanCheckForForfeit
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::CanCheckForForfeit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanCheckForForfeit");
-
-	UMatchType_Public_TA_CanCheckForForfeit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanUpdateStats
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::CanUpdateStats()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanUpdateStats");
-
-	UMatchType_Public_TA_CanUpdateStats_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanRematchVote
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::CanRematchVote()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanRematchVote");
-
-	UMatchType_Public_TA_CanRematchVote_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.CanIdleKick
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::CanIdleKick()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.CanIdleKick");
-
-	UMatchType_Public_TA_CanIdleKick_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.PickTeamFromReservations
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class AController*             C                              (CPF_Parm)
-// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ATeam_TA* UMatchType_Public_TA::PickTeamFromReservations(class AController* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.PickTeamFromReservations");
-
-	UMatchType_Public_TA_PickTeamFromReservations_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.PickTeam
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             C                              (CPF_Parm)
-// class ATeam_TA*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ATeam_TA* UMatchType_Public_TA::PickTeam(class AController* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.PickTeam");
-
-	UMatchType_Public_TA_PickTeam_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.GetMaxTeamSize
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UMatchType_Public_TA::GetMaxTeamSize()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GetMaxTeamSize");
-
-	UMatchType_Public_TA_GetMaxTeamSize_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.ShouldCancelMatch
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::ShouldCancelMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldCancelMatch");
-
-	UMatchType_Public_TA_ShouldCancelMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.ShouldStartMatch
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::ShouldStartMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.ShouldStartMatch");
-
-	UMatchType_Public_TA_ShouldStartMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.OnStartWaitingForPlayers
-// (FUNC_Defined, FUNC_Public)
-
-void UMatchType_Public_TA::OnStartWaitingForPlayers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.OnStartWaitingForPlayers");
-
-	UMatchType_Public_TA_OnStartWaitingForPlayers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.MatchType_Public_TA.GiveExtraXP
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMatchType_Public_TA::GiveExtraXP()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GiveExtraXP");
-
-	UMatchType_Public_TA_GiveExtraXP_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.MatchType_Public_TA.GetMatchTypeName
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UMatchType_Public_TA::GetMatchTypeName()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Public_TA.GetMatchTypeName");
-
-	UMatchType_Public_TA_GetMatchTypeName_Params params;
+	UMatchType_Private_TA_AllowMatchAdmin_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -68758,6 +72715,27 @@ void UMatchType_Offline_TA::Init(class AGameEvent_TA* InGameEvent, const struct 
 }
 
 
+// Function TAGame.MatchType_Tutorial_TA.AllowMatchAdmin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchType_Tutorial_TA::AllowMatchAdmin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Tutorial_TA.AllowMatchAdmin");
+
+	UMatchType_Tutorial_TA_AllowMatchAdmin_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.MatchType_Tutorial_TA.GetCustomMatchSettings
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -69277,17 +73255,17 @@ void UFloppyBits_TA::OnInit()
 }
 
 
-// Function TAGame.TeamColorScriptedTexture_TA.OnRender
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Function TAGame.__FXActor_TA__ApplyPaint_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class UCanvas*                 Canvas                         (CPF_Parm)
+// struct FFXAttachment           FXAttach                       (CPF_Parm, CPF_NeedCtorLink)
 
-void UTeamColorScriptedTexture_TA::OnRender(class UCanvas* Canvas)
+void U__FXActor_TA__ApplyPaint_1::LambdaCallback(const struct FFXAttachment& FXAttach)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.OnRender");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__FXActor_TA__ApplyPaint_1.LambdaCallback");
 
-	UTeamColorScriptedTexture_TA_OnRender_Params params;
-	params.Canvas = Canvas;
+	U__FXActor_TA__ApplyPaint_1_LambdaCallback_Params params;
+	params.FXAttach = FXAttach;
 
 	auto flags = fn->FunctionFlags;
 
@@ -69297,20 +73275,18 @@ void UTeamColorScriptedTexture_TA::OnRender(class UCanvas* Canvas)
 }
 
 
-// Function TAGame.TeamColorScriptedTexture_TA.GetFullBrightColor
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// Function TAGame.__XPManager_TA__PickRandomSlot_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// struct FLinearColor            C                              (CPF_Parm)
-// float                          ValueScale                     (CPF_OptionalParm, CPF_Parm)
-// struct FLinearColor            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FLinearColor UTeamColorScriptedTexture_TA::STATIC_GetFullBrightColor(const struct FLinearColor& C, float ValueScale)
+bool U__XPManager_TA__PickRandomSlot_1::LambdaCallback(class UProductSlot_TA* Slot)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.GetFullBrightColor");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__XPManager_TA__PickRandomSlot_1.LambdaCallback");
 
-	UTeamColorScriptedTexture_TA_GetFullBrightColor_Params params;
-	params.C = C;
-	params.ValueScale = ValueScale;
+	U__XPManager_TA__PickRandomSlot_1_LambdaCallback_Params params;
+	params.Slot = Slot;
 
 	auto flags = fn->FunctionFlags;
 
@@ -69322,25 +73298,26 @@ struct FLinearColor UTeamColorScriptedTexture_TA::STATIC_GetFullBrightColor(cons
 }
 
 
-// Function TAGame.TeamColorScriptedTexture_TA.SetColorsArray
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_K2Call)
+// Function TAGame.__XPManager_TA__AllProductsUnlocked_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// TArray<struct FLinearColor>    ColorList                      (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bAllowMaxBrightness            (CPF_OptionalParm, CPF_Parm)
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UTeamColorScriptedTexture_TA::SetColorsArray(TArray<struct FLinearColor> ColorList, bool bAllowMaxBrightness)
+bool U__XPManager_TA__AllProductsUnlocked_1::LambdaCallback(class UProductSlot_TA* Slot)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.TeamColorScriptedTexture_TA.SetColorsArray");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__XPManager_TA__AllProductsUnlocked_1.LambdaCallback");
 
-	UTeamColorScriptedTexture_TA_SetColorsArray_Params params;
-	params.ColorList = ColorList;
-	params.bAllowMaxBrightness = bAllowMaxBrightness;
+	U__XPManager_TA__AllProductsUnlocked_1_LambdaCallback_Params params;
+	params.Slot = Slot;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -69942,54 +73919,6 @@ void ATeam_Soccar_TA::SetGameEvent(class AGameEvent_Team_TA* InGameEvent)
 }
 
 
-// Function TAGame.ProductAttribute_Quality_TA.GetOnlineProductAttributeValue
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UProductAttribute_Quality_TA::GetOnlineProductAttributeValue()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Quality_TA.GetOnlineProductAttributeValue");
-
-	UProductAttribute_Quality_TA_GetOnlineProductAttributeValue_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.ProductAttribute_Quality_TA.OnInit
-// (FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 AttributeValue                 (CPF_Parm, CPF_NeedCtorLink)
-// TArray<struct FOnlineProductAttribute> Attributes                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UProductAttribute_Quality_TA::OnInit(const struct FString& AttributeValue, TArray<struct FOnlineProductAttribute>* Attributes)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductAttribute_Quality_TA.OnInit");
-
-	UProductAttribute_Quality_TA_OnInit_Params params;
-	params.AttributeValue = AttributeValue;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Attributes != nullptr)
-		*Attributes = params.Attributes;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.ProductAttribute_ProductLink_TA.OnInit
 // (FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
 // Parameters:
@@ -70153,16 +74082,18 @@ void UMutator_TA::Init(class AGameEvent_TA* GameEvent)
 }
 
 
-// Function TAGame.MatchType_PublicRanked_TA.ShouldCancelMatch
-// (FUNC_Defined, FUNC_Public)
+// Function TAGame.MatchAdminComponent_TA.IsMatchAdmin
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
+// class APRI_TA*                 PRI                            (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMatchType_PublicRanked_TA::ShouldCancelMatch()
+bool UMatchAdminComponent_TA::IsMatchAdmin(class APRI_TA* PRI)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_PublicRanked_TA.ShouldCancelMatch");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.IsMatchAdmin");
 
-	UMatchType_PublicRanked_TA_ShouldCancelMatch_Params params;
+	UMatchAdminComponent_TA_IsMatchAdmin_Params params;
+	params.PRI = PRI;
 
 	auto flags = fn->FunctionFlags;
 
@@ -70174,16 +74105,568 @@ bool UMatchType_PublicRanked_TA::ShouldCancelMatch()
 }
 
 
-// Function TAGame.MatchType_Lan_TA.GetMatchTypeName
+// Function TAGame.MatchAdminComponent_TA.UpdateAll
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UMatchAdminComponent_TA::UpdateAll()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.UpdateAll");
+
+	UMatchAdminComponent_TA_UpdateAll_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchAdminComponent_TA.UpdatePlayer
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class APRI_TA*                 PRI                            (CPF_Parm)
+
+void UMatchAdminComponent_TA::UpdatePlayer(class APRI_TA* PRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.UpdatePlayer");
+
+	UMatchAdminComponent_TA_UpdatePlayer_Params params;
+	params.PRI = PRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchAdminComponent_TA.HandlePermissionsUpdated
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayerPermissions_X* P                              (CPF_Parm)
+
+void UMatchAdminComponent_TA::HandlePermissionsUpdated(class UOnlinePlayerPermissions_X* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.HandlePermissionsUpdated");
+
+	UMatchAdminComponent_TA_HandlePermissionsUpdated_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchAdminComponent_TA.HandleGameOwnerUpdated
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameEvent_TA*           G                              (CPF_Parm)
+// class APRI_TA*                 PRI                            (CPF_Parm)
+
+void UMatchAdminComponent_TA::HandleGameOwnerUpdated(class AGameEvent_TA* G, class APRI_TA* PRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.HandleGameOwnerUpdated");
+
+	UMatchAdminComponent_TA_HandleGameOwnerUpdated_Params params;
+	params.G = G;
+	params.PRI = PRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchAdminComponent_TA.HandlePlayerAdded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameEvent_TA*           G                              (CPF_Parm)
+// class APRI_TA*                 PRI                            (CPF_Parm)
+
+void UMatchAdminComponent_TA::HandlePlayerAdded(class AGameEvent_TA* G, class APRI_TA* PRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.HandlePlayerAdded");
+
+	UMatchAdminComponent_TA_HandlePlayerAdded_Params params;
+	params.G = G;
+	params.PRI = PRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchAdminComponent_TA.Init
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
+// class AGameEvent_TA*           InGameEvent                    (CPF_Parm)
+
+void UMatchAdminComponent_TA::Init(class AGameEvent_TA* InGameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchAdminComponent_TA.Init");
+
+	UMatchAdminComponent_TA_Init_Params params;
+	params.InGameEvent = InGameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.CanStartMatch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameDedicatedServer_TA::CanStartMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.CanStartMatch");
+
+	UOnlineGameDedicatedServer_TA_CanStartMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.AllowSplitscreenJoin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APlayerReplicationInfo*  PrimaryPRI                     (CPF_Parm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameDedicatedServer_TA::AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.AllowSplitscreenJoin");
+
+	UOnlineGameDedicatedServer_TA_AllowSplitscreenJoin_Params params;
+	params.PrimaryPRI = PrimaryPRI;
+	params.PlayerID = PlayerID;
+	params.PlayerName = PlayerName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.AllowPlayerLogin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameDedicatedServer_TA::AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.AllowPlayerLogin");
+
+	UOnlineGameDedicatedServer_TA_AllowPlayerLogin_Params params;
+	params.Options = Options;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GoToNextMap
+// (FUNC_Defined, FUNC_Public)
+
+void UOnlineGameDedicatedServer_TA::GoToNextMap()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GoToNextMap");
+
+	UOnlineGameDedicatedServer_TA_GoToNextMap_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GetNextRandomMapName
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// int                            GameMode                       (CPF_Parm)
 // struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FName UMatchType_Lan_TA::GetMatchTypeName()
+struct FName UOnlineGameDedicatedServer_TA::GetNextRandomMapName(int GameMode)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Lan_TA.GetMatchTypeName");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetNextRandomMapName");
 
-	UMatchType_Lan_TA_GetMatchTypeName_Params params;
+	UOnlineGameDedicatedServer_TA_GetNextRandomMapName_Params params;
+	params.GameMode = GameMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GotoPrivateMatchMap
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   MapName                        (CPF_Parm)
+// int                            GameMode                       (CPF_Parm)
+
+void UOnlineGameDedicatedServer_TA::GotoPrivateMatchMap(const struct FName& MapName, int GameMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GotoPrivateMatchMap");
+
+	UOnlineGameDedicatedServer_TA_GotoPrivateMatchMap_Params params;
+	params.MapName = MapName;
+	params.GameMode = GameMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GetTeamNum
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+unsigned char UOnlineGameDedicatedServer_TA::GetTeamNum(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetTeamNum");
+
+	UOnlineGameDedicatedServer_TA_GetTeamNum_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.ReportLowFPS
+// (FUNC_Defined, FUNC_Public)
+
+void UOnlineGameDedicatedServer_TA::ReportLowFPS()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.ReportLowFPS");
+
+	UOnlineGameDedicatedServer_TA_ReportLowFPS_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GetPlaylistPlayerCount
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UGameSettingPlaylist_X*  Playlist                       (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineGameDedicatedServer_TA::GetPlaylistPlayerCount(class UGameSettingPlaylist_X* Playlist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetPlaylistPlayerCount");
+
+	UOnlineGameDedicatedServer_TA_GetPlaylistPlayerCount_Params params;
+	params.Playlist = Playlist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.SetPlaylist
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            PlaylistId                     (CPF_Parm)
+
+void UOnlineGameDedicatedServer_TA::SetPlaylist(int PlaylistId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.SetPlaylist");
+
+	UOnlineGameDedicatedServer_TA_SetPlaylist_Params params;
+	params.PlaylistId = PlaylistId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.OnMainEventDestroyed
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+
+void UOnlineGameDedicatedServer_TA::OnMainEventDestroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.OnMainEventDestroyed");
+
+	UOnlineGameDedicatedServer_TA_OnMainEventDestroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.HandleMigrationJoin
+// (FUNC_Protected)
+
+void UOnlineGameDedicatedServer_TA::HandleMigrationJoin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleMigrationJoin");
+
+	UOnlineGameDedicatedServer_TA_HandleMigrationJoin_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.ClearSettings
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameDedicatedServer_TA::ClearSettings()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.ClearSettings");
+
+	UOnlineGameDedicatedServer_TA_ClearSettings_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.HandleGameEventEnded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
+
+void UOnlineGameDedicatedServer_TA::HandleGameEventEnded(class AGameEvent_Soccar_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleGameEventEnded");
+
+	UOnlineGameDedicatedServer_TA_HandleGameEventEnded_Params params;
+	params.GameEvent = GameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.HandleGameInitialized
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameInfo_TA*            Game                           (CPF_Parm)
+
+void UOnlineGameDedicatedServer_TA::HandleGameInitialized(class AGameInfo_TA* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleGameInitialized");
+
+	UOnlineGameDedicatedServer_TA_HandleGameInitialized_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.StartMatch
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameDedicatedServer_TA::StartMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.StartMatch");
+
+	UOnlineGameDedicatedServer_TA_StartMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.GetCurrentGameEvent
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameEvent_TA*           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AGameEvent_TA* UOnlineGameDedicatedServer_TA::GetCurrentGameEvent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetCurrentGameEvent");
+
+	UOnlineGameDedicatedServer_TA_GetCurrentGameEvent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.LoadAllRelevantProducts
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameDedicatedServer_TA::LoadAllRelevantProducts()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.LoadAllRelevantProducts");
+
+	UOnlineGameDedicatedServer_TA_LoadAllRelevantProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGameDedicatedServer_TA.OnInit
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameDedicatedServer_TA::OnInit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.OnInit");
+
+	UOnlineGameDedicatedServer_TA_OnInit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RPC_ReportPlayer_TA.SetGameID
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 InGameID                       (CPF_Parm, CPF_NeedCtorLink)
+// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetGameID(const struct FString& InGameID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetGameID");
+
+	URPC_ReportPlayer_TA_SetGameID_Params params;
+	params.InGameID = InGameID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_ReportPlayer_TA.SetMessages
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FPlayerChatMessage> InMessages                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetMessages(TArray<struct FPlayerChatMessage>* InMessages)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetMessages");
+
+	URPC_ReportPlayer_TA_SetMessages_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InMessages != nullptr)
+		*InMessages = params.InMessages;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_ReportPlayer_TA.SetReports
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// TArray<struct FReportedPlayerInfo> InReports                      (CPF_Parm, CPF_NeedCtorLink)
+// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetReports(TArray<struct FReportedPlayerInfo> InReports)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetReports");
+
+	URPC_ReportPlayer_TA_SetReports_Params params;
+	params.InReports = InReports;
 
 	auto flags = fn->FunctionFlags;
 
@@ -70920,26 +75403,6 @@ void AGFxHUD_TA::HandleInternetConnectionChanged(bool bConnected)
 
 	AGFxHUD_TA_HandleInternetConnectionChanged_Params params;
 	params.bConnected = bConnected;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxHUD_TA.HandleTyping
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UGFxShell_X*             InShell                        (CPF_Parm)
-
-void AGFxHUD_TA::HandleTyping(class UGFxShell_X* InShell)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxHUD_TA.HandleTyping");
-
-	AGFxHUD_TA_HandleTyping_Params params;
-	params.InShell = InShell;
 
 	auto flags = fn->FunctionFlags;
 
@@ -72198,364 +76661,6 @@ void AGFxHUD_TA::PostBeginPlay()
 }
 
 
-// Function TAGame.OnlineGameDedicatedServer_TA.CanStartMatch
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameDedicatedServer_TA::CanStartMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.CanStartMatch");
-
-	UOnlineGameDedicatedServer_TA_CanStartMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.AllowSplitscreenJoin
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class APlayerReplicationInfo*  PrimaryPRI                     (CPF_Parm)
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameDedicatedServer_TA::AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.AllowSplitscreenJoin");
-
-	UOnlineGameDedicatedServer_TA_AllowSplitscreenJoin_Params params;
-	params.PrimaryPRI = PrimaryPRI;
-	params.PlayerID = PlayerID;
-	params.PlayerName = PlayerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.AllowPlayerLogin
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameDedicatedServer_TA::AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.AllowPlayerLogin");
-
-	UOnlineGameDedicatedServer_TA_AllowPlayerLogin_Params params;
-	params.Options = Options;
-	params.PlayerID = PlayerID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.GoToNextMap
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameDedicatedServer_TA::GoToNextMap()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GoToNextMap");
-
-	UOnlineGameDedicatedServer_TA_GoToNextMap_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.GetNextRandomMapName
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// int                            GameMode                       (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UOnlineGameDedicatedServer_TA::GetNextRandomMapName(int GameMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetNextRandomMapName");
-
-	UOnlineGameDedicatedServer_TA_GetNextRandomMapName_Params params;
-	params.GameMode = GameMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.GotoPrivateMatchMap
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   MapName                        (CPF_Parm)
-// int                            GameMode                       (CPF_Parm)
-
-void UOnlineGameDedicatedServer_TA::GotoPrivateMatchMap(const struct FName& MapName, int GameMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GotoPrivateMatchMap");
-
-	UOnlineGameDedicatedServer_TA_GotoPrivateMatchMap_Params params;
-	params.MapName = MapName;
-	params.GameMode = GameMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.GetTeamNum
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-unsigned char UOnlineGameDedicatedServer_TA::GetTeamNum(const struct FUniqueNetId& PlayerID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetTeamNum");
-
-	UOnlineGameDedicatedServer_TA_GetTeamNum_Params params;
-	params.PlayerID = PlayerID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.ReportLowFPS
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameDedicatedServer_TA::ReportLowFPS()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.ReportLowFPS");
-
-	UOnlineGameDedicatedServer_TA_ReportLowFPS_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.SetPlaylist
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            PlaylistId                     (CPF_Parm)
-
-void UOnlineGameDedicatedServer_TA::SetPlaylist(int PlaylistId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.SetPlaylist");
-
-	UOnlineGameDedicatedServer_TA_SetPlaylist_Params params;
-	params.PlaylistId = PlaylistId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.OnMainEventDestroyed
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UOnlineGameDedicatedServer_TA::OnMainEventDestroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.OnMainEventDestroyed");
-
-	UOnlineGameDedicatedServer_TA_OnMainEventDestroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.HandleMigrationJoin
-// (FUNC_Protected)
-
-void UOnlineGameDedicatedServer_TA::HandleMigrationJoin()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleMigrationJoin");
-
-	UOnlineGameDedicatedServer_TA_HandleMigrationJoin_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.ClearSettings
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameDedicatedServer_TA::ClearSettings()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.ClearSettings");
-
-	UOnlineGameDedicatedServer_TA_ClearSettings_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.HandleGameEventEnded
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
-
-void UOnlineGameDedicatedServer_TA::HandleGameEventEnded(class AGameEvent_Soccar_TA* GameEvent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleGameEventEnded");
-
-	UOnlineGameDedicatedServer_TA_HandleGameEventEnded_Params params;
-	params.GameEvent = GameEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.HandleGameInitialized
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class AGameInfo_Soccar_TA*     Game                           (CPF_Parm)
-
-void UOnlineGameDedicatedServer_TA::HandleGameInitialized(class AGameInfo_Soccar_TA* Game)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.HandleGameInitialized");
-
-	UOnlineGameDedicatedServer_TA_HandleGameInitialized_Params params;
-	params.Game = Game;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.StartMatch
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameDedicatedServer_TA::StartMatch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.StartMatch");
-
-	UOnlineGameDedicatedServer_TA_StartMatch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.GetCurrentGameEvent
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AGameEvent_TA*           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AGameEvent_TA* UOnlineGameDedicatedServer_TA::GetCurrentGameEvent()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.GetCurrentGameEvent");
-
-	UOnlineGameDedicatedServer_TA_GetCurrentGameEvent_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.LoadAllRelevantProducts
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameDedicatedServer_TA::LoadAllRelevantProducts()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.LoadAllRelevantProducts");
-
-	UOnlineGameDedicatedServer_TA_LoadAllRelevantProducts_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.OnlineGameDedicatedServer_TA.OnInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameDedicatedServer_TA::OnInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameDedicatedServer_TA.OnInit");
-
-	UOnlineGameDedicatedServer_TA_OnInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.RPC_GetBanStatus_TA.SetPlayers
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -72568,6 +76673,27 @@ class URPC_GetBanStatus_TA* URPC_GetBanStatus_TA::SetPlayers(TArray<struct FUniq
 
 	URPC_GetBanStatus_TA_SetPlayers_Params params;
 	params.InPlayers = InPlayers;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchType_Lan_TA.GetMatchTypeName
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UMatchType_Lan_TA::GetMatchTypeName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchType_Lan_TA.GetMatchTypeName");
+
+	UMatchType_Lan_TA_GetMatchTypeName_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -73747,6 +77873,26 @@ class URPC_Challenge_PlayedGame_TA* URPC_Challenge_PlayedGame_TA::AddPlayerID(co
 }
 
 
+// Function TAGame.__GameEvent_Soccar_TA__ReportFps_2.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FFPSBucketMetrics       Bucket                         (CPF_Parm)
+
+void U__GameEvent_Soccar_TA__ReportFps_2::LambdaCallback(const struct FFPSBucketMetrics& Bucket)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GameEvent_Soccar_TA__ReportFps_2.LambdaCallback");
+
+	U__GameEvent_Soccar_TA__ReportFps_2_LambdaCallback_Params params;
+	params.Bucket = Bucket;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.PerfMetrics_TA.ClientFPS
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -73791,17 +77937,17 @@ void UPerfMetrics_TA::ServerFPS(int TotalFrames, TArray<struct FFPSBucketMetrics
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.AppendBroadcastLog
+// Function TAGame.MatchBroadcastComponent_TA.AppendBroadcastLog
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class AMatchBroadcast_TA*      Broadcast                      (CPF_Parm)
 // struct FString                 EventJson                      (CPF_Parm, CPF_NeedCtorLink)
 
-void UMatchBroadcastRedirector_TA::AppendBroadcastLog(class AMatchBroadcast_TA* Broadcast, const struct FString& EventJson)
+void UMatchBroadcastComponent_TA::AppendBroadcastLog(class AMatchBroadcast_TA* Broadcast, const struct FString& EventJson)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.AppendBroadcastLog");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.AppendBroadcastLog");
 
-	UMatchBroadcastRedirector_TA_AppendBroadcastLog_Params params;
+	UMatchBroadcastComponent_TA_AppendBroadcastLog_Params params;
 	params.Broadcast = Broadcast;
 	params.EventJson = EventJson;
 
@@ -73813,16 +77959,16 @@ void UMatchBroadcastRedirector_TA::AppendBroadcastLog(class AMatchBroadcast_TA* 
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.SetBroadcast
+// Function TAGame.MatchBroadcastComponent_TA.SetBroadcast
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class AMatchBroadcast_TA*      Broadcast                      (CPF_Parm)
 
-void UMatchBroadcastRedirector_TA::SetBroadcast(class AMatchBroadcast_TA* Broadcast)
+void UMatchBroadcastComponent_TA::SetBroadcast(class AMatchBroadcast_TA* Broadcast)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.SetBroadcast");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.SetBroadcast");
 
-	UMatchBroadcastRedirector_TA_SetBroadcast_Params params;
+	UMatchBroadcastComponent_TA_SetBroadcast_Params params;
 	params.Broadcast = Broadcast;
 
 	auto flags = fn->FunctionFlags;
@@ -73833,16 +77979,16 @@ void UMatchBroadcastRedirector_TA::SetBroadcast(class AMatchBroadcast_TA* Broadc
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.InitServer
+// Function TAGame.MatchBroadcastComponent_TA.InitServer
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
 
-void UMatchBroadcastRedirector_TA::InitServer(class AGameEvent_Soccar_TA* GameEvent)
+void UMatchBroadcastComponent_TA::InitServer(class AGameEvent_Soccar_TA* GameEvent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.InitServer");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.InitServer");
 
-	UMatchBroadcastRedirector_TA_InitServer_Params params;
+	UMatchBroadcastComponent_TA_InitServer_Params params;
 	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -73853,16 +77999,16 @@ void UMatchBroadcastRedirector_TA::InitServer(class AGameEvent_Soccar_TA* GameEv
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.HandleLocalPlayersChanged
+// Function TAGame.MatchBroadcastComponent_TA.HandleLocalPlayersChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class AGameEvent_TA*           GameEvent                      (CPF_Parm)
 
-void UMatchBroadcastRedirector_TA::HandleLocalPlayersChanged(class AGameEvent_TA* GameEvent)
+void UMatchBroadcastComponent_TA::HandleLocalPlayersChanged(class AGameEvent_TA* GameEvent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.HandleLocalPlayersChanged");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.HandleLocalPlayersChanged");
 
-	UMatchBroadcastRedirector_TA_HandleLocalPlayersChanged_Params params;
+	UMatchBroadcastComponent_TA_HandleLocalPlayersChanged_Params params;
 	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -73873,16 +78019,16 @@ void UMatchBroadcastRedirector_TA::HandleLocalPlayersChanged(class AGameEvent_TA
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.InitClient
+// Function TAGame.MatchBroadcastComponent_TA.InitClient
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
 
-void UMatchBroadcastRedirector_TA::InitClient(class AGameEvent_Soccar_TA* GameEvent)
+void UMatchBroadcastComponent_TA::InitClient(class AGameEvent_Soccar_TA* GameEvent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.InitClient");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.InitClient");
 
-	UMatchBroadcastRedirector_TA_InitClient_Params params;
+	UMatchBroadcastComponent_TA_InitClient_Params params;
 	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -73893,14 +78039,14 @@ void UMatchBroadcastRedirector_TA::InitClient(class AGameEvent_Soccar_TA* GameEv
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.CreateMatchLog
+// Function TAGame.MatchBroadcastComponent_TA.SendMatchRPC
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 
-void UMatchBroadcastRedirector_TA::CreateMatchLog()
+void UMatchBroadcastComponent_TA::SendMatchRPC()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.CreateMatchLog");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.SendMatchRPC");
 
-	UMatchBroadcastRedirector_TA_CreateMatchLog_Params params;
+	UMatchBroadcastComponent_TA_SendMatchRPC_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -73910,16 +78056,38 @@ void UMatchBroadcastRedirector_TA::CreateMatchLog()
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.GetLogFileName
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Function TAGame.MatchBroadcastComponent_TA.HandleMatchEndedForRPC
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// class AGameEvent_Soccar_TA*    G                              (CPF_Parm)
 
-struct FString UMatchBroadcastRedirector_TA::GetLogFileName()
+void UMatchBroadcastComponent_TA::HandleMatchEndedForRPC(class AGameEvent_Soccar_TA* G)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.GetLogFileName");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.HandleMatchEndedForRPC");
 
-	UMatchBroadcastRedirector_TA_GetLogFileName_Params params;
+	UMatchBroadcastComponent_TA_HandleMatchEndedForRPC_Params params;
+	params.G = G;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MatchBroadcastComponent_TA.CreateMatchRPC
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchBroadcastComponent_TA::CreateMatchRPC(class AGameEvent_Soccar_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.CreateMatchRPC");
+
+	UMatchBroadcastComponent_TA_CreateMatchRPC_Params params;
+	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -73931,16 +78099,16 @@ struct FString UMatchBroadcastRedirector_TA::GetLogFileName()
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.IsCommandlineEnabled
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Function TAGame.MatchBroadcastComponent_TA.CreateMatchLog
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UMatchBroadcastRedirector_TA::IsCommandlineEnabled()
+bool UMatchBroadcastComponent_TA::CreateMatchLog()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.IsCommandlineEnabled");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.CreateMatchLog");
 
-	UMatchBroadcastRedirector_TA_IsCommandlineEnabled_Params params;
+	UMatchBroadcastComponent_TA_CreateMatchLog_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -73952,16 +78120,58 @@ bool UMatchBroadcastRedirector_TA::IsCommandlineEnabled()
 }
 
 
-// Function TAGame.MatchBroadcastRedirector_TA.Init
+// Function TAGame.MatchBroadcastComponent_TA.GetLogFileName
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UMatchBroadcastComponent_TA::GetLogFileName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.GetLogFileName");
+
+	UMatchBroadcastComponent_TA_GetLogFileName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchBroadcastComponent_TA.IsCommandlineEnabled
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMatchBroadcastComponent_TA::IsCommandlineEnabled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.IsCommandlineEnabled");
+
+	UMatchBroadcastComponent_TA_IsCommandlineEnabled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MatchBroadcastComponent_TA.Init
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // class AGameEvent_Soccar_TA*    GameEvent                      (CPF_Parm)
 
-void UMatchBroadcastRedirector_TA::Init(class AGameEvent_Soccar_TA* GameEvent)
+void UMatchBroadcastComponent_TA::Init(class AGameEvent_Soccar_TA* GameEvent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastRedirector_TA.Init");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MatchBroadcastComponent_TA.Init");
 
-	UMatchBroadcastRedirector_TA_Init_Params params;
+	UMatchBroadcastComponent_TA_Init_Params params;
 	params.GameEvent = GameEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -74083,6 +78293,81 @@ void UGameEvent_Soccar_SubRules_Basketball_TA::OnGetBallModifiedScore(class ABal
 
 	if (BallScore != nullptr)
 		*BallScore = params.BallScore;
+}
+
+
+// Function TAGame.Tutorial_TA.GetTutorialName
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UTutorial_TA::GetTutorialName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.GetTutorialName");
+
+	UTutorial_TA_GetTutorialName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.Tutorial_TA.SkipTutorial_Confirm
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UGFxModal_X*             Modal                          (CPF_Parm)
+
+void UTutorial_TA::SkipTutorial_Confirm(class UGFxModal_X* Modal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.SkipTutorial_Confirm");
+
+	UTutorial_TA_SkipTutorial_Confirm_Params params;
+	params.Modal = Modal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Tutorial_TA.SkipTutorial
+// (FUNC_Defined, FUNC_Public)
+
+void UTutorial_TA::SkipTutorial()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.SkipTutorial");
+
+	UTutorial_TA_SkipTutorial_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Tutorial_TA.ResetTutorial
+// (FUNC_Defined, FUNC_Public)
+
+void UTutorial_TA::ResetTutorial()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.ResetTutorial");
+
+	UTutorial_TA_ResetTutorial_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -74418,6 +78703,28 @@ void UTutorial_TA::EndTutorial()
 }
 
 
+// Function TAGame.Tutorial_TA.ShowGameMessage
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   Type                           (CPF_Parm)
+// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
+
+void UTutorial_TA::ShowGameMessage(const struct FName& Type, const struct FString& Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.ShowGameMessage");
+
+	UTutorial_TA_ShowGameMessage_Params params;
+	params.Type = Type;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.Tutorial_TA.FailedTutorial
 // (FUNC_Defined, FUNC_Public)
 
@@ -74449,27 +78756,6 @@ void UTutorial_TA::CompletedTutorial()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.Tutorial_TA.CanResetTutorial
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UTutorial_TA::CanResetTutorial()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.CanResetTutorial");
-
-	UTutorial_TA_CanResetTutorial_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -75213,6 +79499,26 @@ void UTutorial_TA::Init(class APlayerController_TA* InPC, class AGameEvent_Tutor
 }
 
 
+// Function TAGame.Tutorial_TA.EventTutorialEnded
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UTutorial_TA*            Tutorial                       (CPF_Parm)
+
+void UTutorial_TA::EventTutorialEnded(class UTutorial_TA* Tutorial)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Tutorial_TA.EventTutorialEnded");
+
+	UTutorial_TA_EventTutorialEnded_Params params;
+	params.Tutorial = Tutorial;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameEvent_Training_Goalie_TA.CommitRedoRound
 // (FUNC_Defined, FUNC_Protected)
 
@@ -75499,6 +79805,48 @@ bool UTutorialSave_TA::HasPlayedTraining(const struct FString& EventName)
 }
 
 
+// Function TAGame.GFxShell_TA.__GFxShell_TA__OnStart_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGamePlaylists_X*  Playlists                      (CPF_Parm)
+
+void UGFxShell_TA::__GFxShell_TA__OnStart_1(class UOnlineGamePlaylists_X* Playlists)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.__GFxShell_TA__OnStart_1");
+
+	UGFxShell_TA___GFxShell_TA__OnStart_1_Params params;
+	params.Playlists = Playlists;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxShell_TA.AlertError
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 Title                          (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+
+void UGFxShell_TA::AlertError(const struct FString& Error, const struct FString& Title)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.AlertError");
+
+	UGFxShell_TA_AlertError_Params params;
+	params.Error = Error;
+	params.Title = Title;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxShell_TA.UpdateAprilConfig
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 
@@ -75593,26 +79941,6 @@ struct FString UGFxShell_TA::GetEULA()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxShell_TA.HandleSkillDecayed
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class USaveData_TA*            SaveData                       (CPF_Parm)
-
-void UGFxShell_TA::HandleSkillDecayed(class USaveData_TA* SaveData)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.HandleSkillDecayed");
-
-	UGFxShell_TA_HandleSkillDecayed_Params params;
-	params.SaveData = SaveData;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -75899,10 +80227,10 @@ void UGFxShell_TA::HandlePrivilegeCheckRestriction(class UPrivilegeCheck_X* Priv
 // Function TAGame.GFxShell_TA.HandleOnlineGameConnectionError
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 // class UOnlinePlayer_X*         OnlinePlayer                   (CPF_OptionalParm, CPF_Parm)
 
-void UGFxShell_TA::HandleOnlineGameConnectionError(class UError_X* Error, class UOnlinePlayer_X* OnlinePlayer)
+void UGFxShell_TA::HandleOnlineGameConnectionError(class UError* Error, class UOnlinePlayer_X* OnlinePlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.HandleOnlineGameConnectionError");
 
@@ -75929,6 +80257,23 @@ void UGFxShell_TA::HandleBanned(class UOnlinePlayerAuthentication_X* Auth)
 
 	UGFxShell_TA_HandleBanned_Params params;
 	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxShell_TA.HandlePauseChanged
+// (FUNC_Defined, FUNC_Protected)
+
+void UGFxShell_TA::HandlePauseChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.HandlePauseChanged");
+
+	UGFxShell_TA_HandlePauseChanged_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -76374,9 +80719,9 @@ void UGFxShell_TA::OnRetrySaveSaveData(class UGFxModal_X* Modal)
 // Parameters:
 // class USaveGameManager_TA*     SaveManager                    (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxShell_TA::HandleSaveDataSaved(class USaveGameManager_TA* SaveManager, class USaveData_TA* SaveData, class UError_X* Error)
+void UGFxShell_TA::HandleSaveDataSaved(class USaveGameManager_TA* SaveManager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.HandleSaveDataSaved");
 
@@ -76498,9 +80843,9 @@ void UGFxShell_TA::OnRetryLoadSaveData(class UGFxModal_X* Modal)
 // Parameters:
 // class USaveGameManager_TA*     SaveManager                    (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxShell_TA::HandleSaveDataLoaded(class USaveGameManager_TA* SaveManager, class USaveData_TA* SaveData, class UError_X* Error)
+void UGFxShell_TA::HandleSaveDataLoaded(class USaveGameManager_TA* SaveManager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA.HandleSaveDataLoaded");
 
@@ -77490,6 +81835,23 @@ void AGameEvent_Tutorial_Basic_TA::StartRound()
 }
 
 
+// Function TAGame.GameEvent_Tutorial_Basic_TA.SkipTutorial
+// (FUNC_Defined, FUNC_Public)
+
+void AGameEvent_Tutorial_Basic_TA::SkipTutorial()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_Basic_TA.SkipTutorial");
+
+	AGameEvent_Tutorial_Basic_TA_SkipTutorial_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameEvent_Tutorial_Basic_TA.RedoRound
 // (FUNC_Defined, FUNC_Public)
 
@@ -77744,6 +82106,70 @@ void AGameEvent_Tutorial_FreePlay_TA::RedoRound()
 }
 
 
+// Function TAGame.GameEvent_Tutorial_FreePlay_TA.OnBallSpawned
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class ABall_TA*                NewBall                        (CPF_Parm)
+
+void AGameEvent_Tutorial_FreePlay_TA::OnBallSpawned(class ABall_TA* NewBall)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_FreePlay_TA.OnBallSpawned");
+
+	AGameEvent_Tutorial_FreePlay_TA_OnBallSpawned_Params params;
+	params.NewBall = NewBall;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GameEvent_Tutorial_FreePlay_TA.GetSpawnLocation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FFieldSpawnInfo         SpawnInfo                      (CPF_Parm)
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector AGameEvent_Tutorial_FreePlay_TA::GetSpawnLocation(const struct FFieldSpawnInfo& SpawnInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_FreePlay_TA.GetSpawnLocation");
+
+	AGameEvent_Tutorial_FreePlay_TA_GetSpawnLocation_Params params;
+	params.SpawnInfo = SpawnInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GameEvent_Tutorial_FreePlay_TA.GetRandomBallSpawnInfo
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FFieldSpawnInfo         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FFieldSpawnInfo AGameEvent_Tutorial_FreePlay_TA::GetRandomBallSpawnInfo()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_Tutorial_FreePlay_TA.GetRandomBallSpawnInfo");
+
+	AGameEvent_Tutorial_FreePlay_TA_GetRandomBallSpawnInfo_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GameInfo_BotPerfTest_TA.HandleMainEventDestroyed
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -77948,6 +82374,125 @@ void APlayerController_Cinematic_TA::ReceivedPlayer()
 }
 
 
+// Function TAGame.GFxData_MenuSequence_TA.OnSequenceChange
+// (FUNC_Defined, FUNC_Public, FUNC_K2Pure)
+// Parameters:
+// struct FName                   NewSequence                    (CPF_Parm)
+
+void UGFxData_MenuSequence_TA::OnSequenceChange(const struct FName& NewSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.OnSequenceChange");
+
+	UGFxData_MenuSequence_TA_OnSequenceChange_Params params;
+	params.NewSequence = NewSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MenuSequence_TA.HandleSequenceChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        NewSequence                    (CPF_Parm)
+
+void UGFxData_MenuSequence_TA::HandleSequenceChanged(class UMenuSequence_TA* NewSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.HandleSequenceChanged");
+
+	UGFxData_MenuSequence_TA_HandleSequenceChanged_Params params;
+	params.NewSequence = NewSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MenuSequence_TA.SetMenuSequence
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FName                   MenuSequence                   (CPF_Parm)
+
+void UGFxData_MenuSequence_TA::SetMenuSequence(const struct FName& MenuSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.SetMenuSequence");
+
+	UGFxData_MenuSequence_TA_SetMenuSequence_Params params;
+	params.MenuSequence = MenuSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MenuSequence_TA.PopMenuSequence
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FName                   MenuID                         (CPF_Parm)
+
+void UGFxData_MenuSequence_TA::PopMenuSequence(const struct FName& MenuID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.PopMenuSequence");
+
+	UGFxData_MenuSequence_TA_PopMenuSequence_Params params;
+	params.MenuID = MenuID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MenuSequence_TA.PushMenuSequence
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
+// Parameters:
+// struct FName                   MenuSequence                   (CPF_Parm)
+// struct FName                   MenuID                         (CPF_Parm)
+
+void UGFxData_MenuSequence_TA::PushMenuSequence(const struct FName& MenuSequence, const struct FName& MenuID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.PushMenuSequence");
+
+	UGFxData_MenuSequence_TA_PushMenuSequence_Params params;
+	params.MenuSequence = MenuSequence;
+	params.MenuID = MenuID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MenuSequence_TA.OnShellSet
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UGFxData_MenuSequence_TA::OnShellSet()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MenuSequence_TA.OnShellSet");
+
+	UGFxData_MenuSequence_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_System_TA.HandleSafeZoneRatioUpdated
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -78073,9 +82618,9 @@ void UGFxData_System_TA::SetSharedUIState(const struct FString& NewSharedUIState
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_System_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError_X* Error)
+void UGFxData_System_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_System_TA.HandleSaveDataLoaded");
 
@@ -78140,6 +82685,268 @@ void UGFxData_System_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_System_TA.OnShellSet");
 
 	UGFxData_System_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.GetLocalPlayerController
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APlayerController*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class APlayerController* UMenuSequencer_TA::GetLocalPlayerController()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.GetLocalPlayerController");
+
+	UMenuSequencer_TA_GetLocalPlayerController_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MenuSequencer_TA.Tick
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UMenuSequencer_TA::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.Tick");
+
+	UMenuSequencer_TA_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.HandleSequenceEntered
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        Sequence                       (CPF_Parm)
+
+void UMenuSequencer_TA::HandleSequenceEntered(class UMenuSequence_TA* Sequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.HandleSequenceEntered");
+
+	UMenuSequencer_TA_HandleSequenceEntered_Params params;
+	params.Sequence = Sequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.InternalSequenceEnter
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        NewSequence                    (CPF_Parm)
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequencer_TA::InternalSequenceEnter(class UMenuSequence_TA* NewSequence, class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.InternalSequenceEnter");
+
+	UMenuSequencer_TA_InternalSequenceEnter_Params params;
+	params.NewSequence = NewSequence;
+	params.PrevSequence = PrevSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.InternalSequenceLeave
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        NewSequence                    (CPF_Parm)
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequencer_TA::InternalSequenceLeave(class UMenuSequence_TA* NewSequence, class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.InternalSequenceLeave");
+
+	UMenuSequencer_TA_InternalSequenceLeave_Params params;
+	params.NewSequence = NewSequence;
+	params.PrevSequence = PrevSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.HandleSequenceLeft
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        FromSequence                   (CPF_Parm)
+
+void UMenuSequencer_TA::HandleSequenceLeft(class UMenuSequence_TA* FromSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.HandleSequenceLeft");
+
+	UMenuSequencer_TA_HandleSequenceLeft_Params params;
+	params.FromSequence = FromSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.TryEnterNextSequence
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequencer_TA::TryEnterNextSequence()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.TryEnterNextSequence");
+
+	UMenuSequencer_TA_TryEnterNextSequence_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.SetSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   SequenceName                   (CPF_Parm)
+
+void UMenuSequencer_TA::SetSequence(const struct FName& SequenceName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.SetSequence");
+
+	UMenuSequencer_TA_SetSequence_Params params;
+	params.SequenceName = SequenceName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.GetSequence
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FName                   SequenceName                   (CPF_Parm)
+// class UMenuSequence_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UMenuSequence_TA* UMenuSequencer_TA::GetSequence(const struct FName& SequenceName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.GetSequence");
+
+	UMenuSequencer_TA_GetSequence_Params params;
+	params.SequenceName = SequenceName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MenuSequencer_TA.InstanceSequence
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UMenuSequence_TA*        Archetype                      (CPF_Parm)
+// class UMenuSequence_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UMenuSequence_TA* UMenuSequencer_TA::InstanceSequence(class UMenuSequence_TA* Archetype)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.InstanceSequence");
+
+	UMenuSequencer_TA_InstanceSequence_Params params;
+	params.Archetype = Archetype;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MenuSequencer_TA.InstanceSequences
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequencer_TA::InstanceSequences()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.InstanceSequences");
+
+	UMenuSequencer_TA_InstanceSequences_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.Attached
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UMenuSequencer_TA::Attached()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.Attached");
+
+	UMenuSequencer_TA_Attached_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequencer_TA.EventSequenceChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMenuSequence_TA*        NewSequence                    (CPF_Parm)
+
+void UMenuSequencer_TA::EventSequenceChanged(class UMenuSequence_TA* NewSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequencer_TA.EventSequenceChanged");
+
+	UMenuSequencer_TA_EventSequenceChanged_Params params;
+	params.NewSequence = NewSequence;
 
 	auto flags = fn->FunctionFlags;
 
@@ -78808,6 +83615,23 @@ void AGRI_TA::PostBeginPlay()
 }
 
 
+// Function TAGame.GameInfo_Tutorial_TA.SkipTutorial
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void AGameInfo_Tutorial_TA::SkipTutorial()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_Tutorial_TA.SkipTutorial");
+
+	AGameInfo_Tutorial_TA_SkipTutorial_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GameInfo_Tutorial_TA.ResetTraining
 // (FUNC_Defined, FUNC_Exec, FUNC_Public)
 
@@ -79093,8 +83917,30 @@ void UGFxData_Chat_TA::DispatchChatMessage(const struct FString& Message, TEnumA
 }
 
 
+// Function TAGame.GFxData_Chat_TA.HandleMessageSanitizeError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 OriginalPhrase                 (CPF_Parm, CPF_NeedCtorLink)
+// class UError*                  Error                          (CPF_Parm)
+
+void UGFxData_Chat_TA::HandleMessageSanitizeError(const struct FString& OriginalPhrase, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.HandleMessageSanitizeError");
+
+	UGFxData_Chat_TA_HandleMessageSanitizeError_Params params;
+	params.OriginalPhrase = OriginalPhrase;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_Chat_TA.HandleMessageSanitized
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
@@ -79106,26 +83952,6 @@ void UGFxData_Chat_TA::HandleMessageSanitized(const struct FString& Original, co
 	UGFxData_Chat_TA_HandleMessageSanitized_Params params;
 	params.Original = Original;
 	params.Sanitized = Sanitized;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_Chat_TA.SendLocalChatMessage
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UGFxData_Chat_TA::SendLocalChatMessage(const struct FString& Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Chat_TA.SendLocalChatMessage");
-
-	UGFxData_Chat_TA_SendLocalChatMessage_Params params;
-	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
 
@@ -79839,6 +84665,23 @@ void UGFxData_Controls_TA::OnBindingSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.OnBindingSet");
 
 	UGFxData_Controls_TA_OnBindingSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Controls_TA.OnRecordBindingCanceled
+// (FUNC_Defined, FUNC_Public, FUNC_K2Pure)
+
+void UGFxData_Controls_TA::OnRecordBindingCanceled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Controls_TA.OnRecordBindingCanceled");
+
+	UGFxData_Controls_TA_OnRecordBindingCanceled_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -80617,6 +85460,51 @@ void UGFxData_GameEvent_TA::SetReadyToPlay(bool bReady, bool bReadyAllLocalPlaye
 }
 
 
+// Function TAGame.GFxData_Garage_TA.__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_Garage_TA::__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_2(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Garage_TA.__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_2");
+
+	UGFxData_Garage_TA___GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_2_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Garage_TA.SetPreviewLoadout
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// struct FLoadoutData            InLoadout                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_Garage_TA::SetPreviewLoadout(struct FLoadoutData* InLoadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Garage_TA.SetPreviewLoadout");
+
+	UGFxData_Garage_TA_SetPreviewLoadout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InLoadout != nullptr)
+		*InLoadout = params.InLoadout;
+}
+
+
 // Function TAGame.GFxData_Garage_TA.HasNewProducts
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
@@ -81107,15 +85995,15 @@ void UGFxData_Garage_TA::RefreshEnabledProductSlots()
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // int                            SlotIndex                      (CPF_Parm)
-// int                            InEquipAction                  (CPF_OptionalParm, CPF_Parm)
+// TEnumAsByte<EEquipAction>      EquipAction                    (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Garage_TA::EquipProduct(int SlotIndex, int InEquipAction)
+void UGFxData_Garage_TA::EquipProduct(int SlotIndex, TEnumAsByte<EEquipAction> EquipAction)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Garage_TA.EquipProduct");
 
 	UGFxData_Garage_TA_EquipProduct_Params params;
 	params.SlotIndex = SlotIndex;
-	params.InEquipAction = InEquipAction;
+	params.EquipAction = EquipAction;
 
 	auto flags = fn->FunctionFlags;
 
@@ -81257,8 +86145,34 @@ void UGFxData_Garage_TA::InitColors()
 }
 
 
+// Function TAGame.GFxData_Garage_TA.UpdateProductSlotNewItemsForIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UProduct_TA*>     NewProducts                    (CPF_Parm, CPF_NeedCtorLink)
+// int                            UISlotIdx                      (CPF_Parm)
+// TArray<class UProduct_TA*>     FilterLocal_D96BB35640A5FC3B663EEE9762D53CB3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_Garage_TA::UpdateProductSlotNewItemsForIndex(TArray<class UProduct_TA*> NewProducts, int UISlotIdx, TArray<class UProduct_TA*>* FilterLocal_D96BB35640A5FC3B663EEE9762D53CB3)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Garage_TA.UpdateProductSlotNewItemsForIndex");
+
+	UGFxData_Garage_TA_UpdateProductSlotNewItemsForIndex_Params params;
+	params.NewProducts = NewProducts;
+	params.UISlotIdx = UISlotIdx;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_D96BB35640A5FC3B663EEE9762D53CB3 != nullptr)
+		*FilterLocal_D96BB35640A5FC3B663EEE9762D53CB3 = params.FilterLocal_D96BB35640A5FC3B663EEE9762D53CB3;
+}
+
+
 // Function TAGame.GFxData_Garage_TA.UpdateProductSlotNewItems
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 
 void UGFxData_Garage_TA::UpdateProductSlotNewItems()
 {
@@ -81433,6 +86347,118 @@ void UGFxData_Garage_TA::OnShellSet()
 }
 
 
+// Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__ClearAttributes_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UClass*                  GFxClass                       (CPF_Parm)
+
+void UGFxData_Products_TA::__GFxData_Products_TA__ClearAttributes_1(class UClass* GFxClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__ClearAttributes_1");
+
+	UGFxData_Products_TA___GFxData_Products_TA__ClearAttributes_1_Params params;
+	params.GFxClass = GFxClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__InstanceAttributes_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UClass*                  GFxClass                       (CPF_Parm)
+// class UGFxData_ProductAttribute_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UGFxData_ProductAttribute_TA* UGFxData_Products_TA::__GFxData_Products_TA__InstanceAttributes_2(class UClass* GFxClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__InstanceAttributes_2");
+
+	UGFxData_Products_TA___GFxData_Products_TA__InstanceAttributes_2_Params params;
+	params.GFxClass = GFxClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__InstanceAttributes_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProductAttribute_TA*    Attribute                      (CPF_Parm)
+// class UClass*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UClass* UGFxData_Products_TA::__GFxData_Products_TA__InstanceAttributes_1(class UProductAttribute_TA* Attribute)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__InstanceAttributes_1");
+
+	UGFxData_Products_TA___GFxData_Products_TA__InstanceAttributes_1_Params params;
+	params.Attribute = Attribute;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__BuildAttributeTableStr_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_ProductAttribute_TA* GFxAttribute                   (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UGFxData_Products_TA::__GFxData_Products_TA__BuildAttributeTableStr_1(class UGFxData_ProductAttribute_TA* GFxAttribute)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__BuildAttributeTableStr_1");
+
+	UGFxData_Products_TA___GFxData_Products_TA__BuildAttributeTableStr_1_Params params;
+	params.GFxAttribute = GFxAttribute;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__FolderContainsNewProducts_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_Products_TA::__GFxData_Products_TA__FolderContainsNewProducts_1(class UProduct_TA* P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.__GFxData_Products_TA__FolderContainsNewProducts_1");
+
+	UGFxData_Products_TA___GFxData_Products_TA__FolderContainsNewProducts_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_Products_TA.OnSchematicResourcesChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
 
@@ -81546,6 +86572,23 @@ void UGFxData_Products_TA::HandleOnlineProductsSynced(class USaveData_TA* SaveDa
 }
 
 
+// Function TAGame.GFxData_Products_TA.TimerRefreshProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UGFxData_Products_TA::TimerRefreshProducts()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.TimerRefreshProducts");
+
+	UGFxData_Products_TA_TimerRefreshProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_Products_TA.RefreshProducts
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 
@@ -81648,8 +86691,9 @@ void UGFxData_Products_TA::UpdateAllProductData()
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 // Parameters:
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TArray<class UProduct_TA*>     ArrayResultLocal_B69265DF41BB6C8CE853EFBF476E3542 (CPF_OutParm, CPF_NeedCtorLink)
 
-bool UGFxData_Products_TA::FolderContainsNewProducts()
+bool UGFxData_Products_TA::FolderContainsNewProducts(TArray<class UProduct_TA*>* ArrayResultLocal_B69265DF41BB6C8CE853EFBF476E3542)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.FolderContainsNewProducts");
 
@@ -81660,6 +86704,9 @@ bool UGFxData_Products_TA::FolderContainsNewProducts()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (ArrayResultLocal_B69265DF41BB6C8CE853EFBF476E3542 != nullptr)
+		*ArrayResultLocal_B69265DF41BB6C8CE853EFBF476E3542 = params.ArrayResultLocal_B69265DF41BB6C8CE853EFBF476E3542;
 
 	return params.ReturnValue;
 }
@@ -81675,6 +86722,27 @@ bool UGFxData_Products_TA::HasNewOnlineProducts()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.HasNewOnlineProducts");
 
 	UGFxData_Products_TA_HasNewOnlineProducts_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Products_TA.GetBaseProductID
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UGFxData_Products_TA::GetBaseProductID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.GetBaseProductID");
+
+	UGFxData_Products_TA_GetBaseProductID_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -81803,9 +86871,9 @@ void UGFxData_Products_TA::OnProductLoaded(int ThumbnailSize)
 // Parameters:
 // TArray<class UGFxData_ProductAttribute_TA*> Attributes                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<struct FName>           MapLocal_58CF0E374C123E683361BB9B5E804C58 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FName>           MapLocal_64CB39C9497EE4AD47BF04A40605BD8F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-struct FString UGFxData_Products_TA::BuildAttributeTableStr(TArray<class UGFxData_ProductAttribute_TA*>* Attributes, TArray<struct FName>* MapLocal_58CF0E374C123E683361BB9B5E804C58)
+struct FString UGFxData_Products_TA::BuildAttributeTableStr(TArray<class UGFxData_ProductAttribute_TA*>* Attributes, TArray<struct FName>* MapLocal_64CB39C9497EE4AD47BF04A40605BD8F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.BuildAttributeTableStr");
 
@@ -81819,8 +86887,8 @@ struct FString UGFxData_Products_TA::BuildAttributeTableStr(TArray<class UGFxDat
 
 	if (Attributes != nullptr)
 		*Attributes = params.Attributes;
-	if (MapLocal_58CF0E374C123E683361BB9B5E804C58 != nullptr)
-		*MapLocal_58CF0E374C123E683361BB9B5E804C58 = params.MapLocal_58CF0E374C123E683361BB9B5E804C58;
+	if (MapLocal_64CB39C9497EE4AD47BF04A40605BD8F != nullptr)
+		*MapLocal_64CB39C9497EE4AD47BF04A40605BD8F = params.MapLocal_64CB39C9497EE4AD47BF04A40605BD8F;
 
 	return params.ReturnValue;
 }
@@ -81831,10 +86899,10 @@ struct FString UGFxData_Products_TA::BuildAttributeTableStr(TArray<class UGFxDat
 // Parameters:
 // TScriptInterface<class UIProductAttributeProvider_TA> AttributeProvider              (CPF_Parm)
 // TArray<class UGFxData_ProductAttribute_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<class UClass*>          MapLocal_F7EC1C18468C6EE0323BD088207A248B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// TArray<class UGFxData_ProductAttribute_TA*> MapLocal_991D92204F057674FC48F589D91D413A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UClass*>          MapLocal_5318BCF4487ADA8410410EA35F3393B3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UGFxData_ProductAttribute_TA*> MapLocal_08DA065F428F545B646F37BD45CD9225 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<class UGFxData_ProductAttribute_TA*> UGFxData_Products_TA::InstanceAttributes(const TScriptInterface<class UIProductAttributeProvider_TA>& AttributeProvider, TArray<class UClass*>* MapLocal_F7EC1C18468C6EE0323BD088207A248B, TArray<class UGFxData_ProductAttribute_TA*>* MapLocal_991D92204F057674FC48F589D91D413A)
+TArray<class UGFxData_ProductAttribute_TA*> UGFxData_Products_TA::InstanceAttributes(const TScriptInterface<class UIProductAttributeProvider_TA>& AttributeProvider, TArray<class UClass*>* MapLocal_5318BCF4487ADA8410410EA35F3393B3, TArray<class UGFxData_ProductAttribute_TA*>* MapLocal_08DA065F428F545B646F37BD45CD9225)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.InstanceAttributes");
 
@@ -81847,10 +86915,10 @@ TArray<class UGFxData_ProductAttribute_TA*> UGFxData_Products_TA::InstanceAttrib
 
 	fn->FunctionFlags = flags;
 
-	if (MapLocal_F7EC1C18468C6EE0323BD088207A248B != nullptr)
-		*MapLocal_F7EC1C18468C6EE0323BD088207A248B = params.MapLocal_F7EC1C18468C6EE0323BD088207A248B;
-	if (MapLocal_991D92204F057674FC48F589D91D413A != nullptr)
-		*MapLocal_991D92204F057674FC48F589D91D413A = params.MapLocal_991D92204F057674FC48F589D91D413A;
+	if (MapLocal_5318BCF4487ADA8410410EA35F3393B3 != nullptr)
+		*MapLocal_5318BCF4487ADA8410410EA35F3393B3 = params.MapLocal_5318BCF4487ADA8410410EA35F3393B3;
+	if (MapLocal_08DA065F428F545B646F37BD45CD9225 != nullptr)
+		*MapLocal_08DA065F428F545B646F37BD45CD9225 = params.MapLocal_08DA065F428F545B646F37BD45CD9225;
 
 	return params.ReturnValue;
 }
@@ -81877,10 +86945,11 @@ void UGFxData_Products_TA::ClearAttributes()
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // struct FLoadingProduct         ProductData                    (CPF_Parm, CPF_NeedCtorLink)
-// TArray<class UGFxData_ProductAttribute_TA*> ConcatLocal_12920DDF455782C34B5354AAFBA4A8D8 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// TArray<class UGFxData_ProductAttribute_TA*> ConcatLocal_5C881BA9474F7D59C6B5C1AD404C72B8 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UGFxData_ProductAttribute_TA*> ConcatLocal_4F54E0A64A2B5AA102CA7AACCE206CF7 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UGFxData_ProductAttribute_TA*> ConcatLocal_4EF6D3D84A7BBD1281DF3481AE75FA1F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     ArrayResultLocal_3AE713A3440975DE099D3985A46AC947 (CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_Products_TA::UpdateProductData(const struct FLoadingProduct& ProductData, TArray<class UGFxData_ProductAttribute_TA*>* ConcatLocal_12920DDF455782C34B5354AAFBA4A8D8, TArray<class UGFxData_ProductAttribute_TA*>* ConcatLocal_5C881BA9474F7D59C6B5C1AD404C72B8)
+void UGFxData_Products_TA::UpdateProductData(const struct FLoadingProduct& ProductData, TArray<class UGFxData_ProductAttribute_TA*>* ConcatLocal_4F54E0A64A2B5AA102CA7AACCE206CF7, TArray<class UGFxData_ProductAttribute_TA*>* ConcatLocal_4EF6D3D84A7BBD1281DF3481AE75FA1F, TArray<class UProduct_TA*>* ArrayResultLocal_3AE713A3440975DE099D3985A46AC947)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.UpdateProductData");
 
@@ -81893,10 +86962,12 @@ void UGFxData_Products_TA::UpdateProductData(const struct FLoadingProduct& Produ
 
 	fn->FunctionFlags = flags;
 
-	if (ConcatLocal_12920DDF455782C34B5354AAFBA4A8D8 != nullptr)
-		*ConcatLocal_12920DDF455782C34B5354AAFBA4A8D8 = params.ConcatLocal_12920DDF455782C34B5354AAFBA4A8D8;
-	if (ConcatLocal_5C881BA9474F7D59C6B5C1AD404C72B8 != nullptr)
-		*ConcatLocal_5C881BA9474F7D59C6B5C1AD404C72B8 = params.ConcatLocal_5C881BA9474F7D59C6B5C1AD404C72B8;
+	if (ConcatLocal_4F54E0A64A2B5AA102CA7AACCE206CF7 != nullptr)
+		*ConcatLocal_4F54E0A64A2B5AA102CA7AACCE206CF7 = params.ConcatLocal_4F54E0A64A2B5AA102CA7AACCE206CF7;
+	if (ConcatLocal_4EF6D3D84A7BBD1281DF3481AE75FA1F != nullptr)
+		*ConcatLocal_4EF6D3D84A7BBD1281DF3481AE75FA1F = params.ConcatLocal_4EF6D3D84A7BBD1281DF3481AE75FA1F;
+	if (ArrayResultLocal_3AE713A3440975DE099D3985A46AC947 != nullptr)
+		*ArrayResultLocal_3AE713A3440975DE099D3985A46AC947 = params.ArrayResultLocal_3AE713A3440975DE099D3985A46AC947;
 }
 
 
@@ -82021,6 +87092,27 @@ void UGFxData_Products_TA::HandleProductLoaded(const struct FAssetLoadResult& Re
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Products_TA.GetProduct
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* UGFxData_Products_TA::GetProduct()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.GetProduct");
+
+	UGFxData_Products_TA_GetProduct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -82358,20 +87450,19 @@ void UGFxData_Products_TA::GetUnlockedProductIDs(int SlotIndex)
 
 
 // Function TAGame.GFxData_Products_TA.ShouldShowProduct
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// class UProfile_TA*             Profile                        (CPF_Parm)
+// class ULoadout_TA*             Loadout                        (CPF_Parm)
 // class UProduct_TA*             Product                        (CPF_Parm)
-// TArray<int>                    ForcedProducts                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // int                            PackID                         (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxData_Products_TA::STATIC_ShouldShowProduct(class UProfile_TA* Profile, class UProduct_TA* Product, int PackID, TArray<int>* ForcedProducts)
+bool UGFxData_Products_TA::STATIC_ShouldShowProduct(class ULoadout_TA* Loadout, class UProduct_TA* Product, int PackID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.ShouldShowProduct");
 
 	UGFxData_Products_TA_ShouldShowProduct_Params params;
-	params.Profile = Profile;
+	params.Loadout = Loadout;
 	params.Product = Product;
 	params.PackID = PackID;
 
@@ -82381,36 +87472,7 @@ bool UGFxData_Products_TA::STATIC_ShouldShowProduct(class UProfile_TA* Profile, 
 
 	fn->FunctionFlags = flags;
 
-	if (ForcedProducts != nullptr)
-		*ForcedProducts = params.ForcedProducts;
-
 	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA.GetForcedProducts
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class UProfile_TA*             Profile                        (CPF_Parm)
-// int                            SlotIndex                      (CPF_Parm)
-// TArray<int>                    OutForcedProducts              (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UGFxData_Products_TA::STATIC_GetForcedProducts(class UProfile_TA* Profile, int SlotIndex, TArray<int>* OutForcedProducts)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA.GetForcedProducts");
-
-	UGFxData_Products_TA_GetForcedProducts_Params params;
-	params.Profile = Profile;
-	params.SlotIndex = SlotIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutForcedProducts != nullptr)
-		*OutForcedProducts = params.OutForcedProducts;
 }
 
 
@@ -82466,6 +87528,29 @@ void UGFxData_Products_TA::OnShellSet()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_1::LambdaCallback(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_1.LambdaCallback");
+
+	U__GFxData_Garage_TA__UpdateProductSlotNewItemsForIndex_1_LambdaCallback_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -82741,9 +87826,9 @@ void UGFxData_ItemDrops_TA::AddDrop(const struct FGFxItemDrop& Drop)
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            MySaveData                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_ItemDrops_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError_X* Error)
+void UGFxData_ItemDrops_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ItemDrops_TA.HandleSaveDataLoaded");
 
@@ -82788,6 +87873,28 @@ void UGFxData_Leaderboards_TA::ViewProfile(int RowIndex)
 
 	UGFxData_Leaderboards_TA_ViewProfile_Params params;
 	params.RowIndex = RowIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Leaderboards_TA.HandleSanitizeError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 OriginalPhrase                 (CPF_Parm, CPF_NeedCtorLink)
+// class UError*                  Error                          (CPF_Parm)
+
+void UGFxData_Leaderboards_TA::HandleSanitizeError(const struct FString& OriginalPhrase, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Leaderboards_TA.HandleSanitizeError");
+
+	UGFxData_Leaderboards_TA_HandleSanitizeError_Params params;
+	params.OriginalPhrase = OriginalPhrase;
+	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
 
@@ -82867,9 +87974,9 @@ void UGFxData_Leaderboards_TA::GetLeaderboardFriends(const struct FName& Leaderb
 // class UOnlineGameLeaderboards_X* LeaderboardsRef                (CPF_Parm)
 // struct FLeaderboardData        PlayerLeaderboardData          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FName                   LeaderboardId                  (CPF_Parm)
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Leaderboards_TA::HandlePlayerFriendLeaderboardRecieved(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError_X* Error, struct FLeaderboardData* PlayerLeaderboardData)
+void UGFxData_Leaderboards_TA::HandlePlayerFriendLeaderboardRecieved(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError* Error, struct FLeaderboardData* PlayerLeaderboardData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Leaderboards_TA.HandlePlayerFriendLeaderboardRecieved");
 
@@ -82895,9 +88002,9 @@ void UGFxData_Leaderboards_TA::HandlePlayerFriendLeaderboardRecieved(class UOnli
 // class UOnlineGameLeaderboards_X* LeaderboardsRef                (CPF_Parm)
 // struct FLeaderboardData        PlayerLeaderboardData          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FName                   LeaderboardId                  (CPF_Parm)
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm)
 
-void UGFxData_Leaderboards_TA::HandlePlayerLeaderboardRecieved(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError_X* Error, struct FLeaderboardData* PlayerLeaderboardData)
+void UGFxData_Leaderboards_TA::HandlePlayerLeaderboardRecieved(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError* Error, struct FLeaderboardData* PlayerLeaderboardData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Leaderboards_TA.HandlePlayerLeaderboardRecieved");
 
@@ -83025,9 +88132,9 @@ void UGFxData_Leaderboards_TA::OnLeaderboardLoaded()
 // Function TAGame.GFxData_Leaderboards_TA.HandleLeaderboardError
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Leaderboards_TA::HandleLeaderboardError(class UError_X* Error)
+void UGFxData_Leaderboards_TA::HandleLeaderboardError(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Leaderboards_TA.HandleLeaderboardError");
 
@@ -83179,26 +88286,6 @@ class UOnlineGame_X* UGFxData_Leaderboards_TA::GetOnlineGame()
 }
 
 
-// Function TAGame.GFxData_LocalCar_TA.HandleCameraChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class APlayerController_X*     PlayerController               (CPF_Parm)
-
-void UGFxData_LocalCar_TA::HandleCameraChanged(class APlayerController_X* PlayerController)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalCar_TA.HandleCameraChanged");
-
-	UGFxData_LocalCar_TA_HandleCameraChanged_Params params;
-	params.PlayerController = PlayerController;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.GFxData_LocalCar_TA.SetItemTargetScreenPosition
 // (FUNC_Defined, FUNC_Public, FUNC_K2Pure)
 // Parameters:
@@ -83223,28 +88310,6 @@ void UGFxData_LocalCar_TA::SetItemTargetScreenPosition(float ScreenX, float Scre
 }
 
 
-// Function TAGame.GFxData_LocalCar_TA.HandleCameraStateChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class ACamera_X*               Camera                         (CPF_Parm)
-// class UCameraState_X*          CameraState                    (CPF_Parm)
-
-void UGFxData_LocalCar_TA::HandleCameraStateChanged(class ACamera_X* Camera, class UCameraState_X* CameraState)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalCar_TA.HandleCameraStateChanged");
-
-	UGFxData_LocalCar_TA_HandleCameraStateChanged_Params params;
-	params.Camera = Camera;
-	params.CameraState = CameraState;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.GFxData_LocalCar_TA.SetOnBack
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -83256,6 +88321,48 @@ void UGFxData_LocalCar_TA::SetOnBack(bool bIsInBack)
 
 	UGFxData_LocalCar_TA_SetOnBack_Params params;
 	params.bIsInBack = bIsInBack;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_LocalCar_TA.HandleCameraTargetChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class ACamera_TA*              Camera                         (CPF_Parm)
+// class AActor*                  Target                         (CPF_Parm)
+
+void UGFxData_LocalCar_TA::HandleCameraTargetChanged(class ACamera_TA* Camera, class AActor* Target)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalCar_TA.HandleCameraTargetChanged");
+
+	UGFxData_LocalCar_TA_HandleCameraTargetChanged_Params params;
+	params.Camera = Camera;
+	params.Target = Target;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_LocalCar_TA.HandleCameraChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class APlayerController_X*     PlayerController               (CPF_Parm)
+
+void UGFxData_LocalCar_TA::HandleCameraChanged(class APlayerController_X* PlayerController)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_LocalCar_TA.HandleCameraChanged");
+
+	UGFxData_LocalCar_TA_HandleCameraChanged_Params params;
+	params.PlayerController = PlayerController;
 
 	auto flags = fn->FunctionFlags;
 
@@ -83346,6 +88453,23 @@ bool UGFxData_MainMenu_TA::SetPreviewProduct(int SlotIndex)
 }
 
 
+// Function TAGame.GFxData_MainMenu_TA.SetPreviewBaseLoadout
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+
+void UGFxData_MainMenu_TA::SetPreviewBaseLoadout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.SetPreviewBaseLoadout");
+
+	UGFxData_MainMenu_TA_SetPreviewBaseLoadout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_MainMenu_TA.ResetInvalidAssets
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -83429,40 +88553,6 @@ void UGFxData_MainMenu_TA::RotatePreviewCamera(float X, float Y)
 }
 
 
-// Function TAGame.GFxData_MainMenu_TA.OnPremiumGarageExit
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Pure)
-
-void UGFxData_MainMenu_TA::OnPremiumGarageExit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.OnPremiumGarageExit");
-
-	UGFxData_MainMenu_TA_OnPremiumGarageExit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.OnPremiumGarageReady
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Pure)
-
-void UGFxData_MainMenu_TA::OnPremiumGarageReady()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.OnPremiumGarageReady");
-
-	UGFxData_MainMenu_TA_OnPremiumGarageReady_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.GFxData_MainMenu_TA.OnPremiumCarFinished
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Pure)
 
@@ -83515,102 +88605,6 @@ void UGFxData_MainMenu_TA::SetPremiumDLCPack(const struct FName& PackID, int Sub
 	UGFxData_MainMenu_TA_SetPremiumDLCPack_Params params;
 	params.PackID = PackID;
 	params.SubIdx = SubIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.ExitPremiumGarage
-// (FUNC_Defined, FUNC_Public)
-
-void UGFxData_MainMenu_TA::ExitPremiumGarage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.ExitPremiumGarage");
-
-	UGFxData_MainMenu_TA_ExitPremiumGarage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.EnterPremiumGarage
-// (FUNC_Defined, FUNC_Public)
-
-void UGFxData_MainMenu_TA::EnterPremiumGarage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.EnterPremiumGarage");
-
-	UGFxData_MainMenu_TA_EnterPremiumGarage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.PopCameraState
-// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
-// Parameters:
-// struct FName                   MenuID                         (CPF_Parm)
-
-void UGFxData_MainMenu_TA::PopCameraState(const struct FName& MenuID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.PopCameraState");
-
-	UGFxData_MainMenu_TA_PopCameraState_Params params;
-	params.MenuID = MenuID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.PushCameraState
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
-// Parameters:
-// struct FName                   CameraState                    (CPF_Parm)
-// struct FName                   MenuID                         (CPF_Parm)
-
-void UGFxData_MainMenu_TA::PushCameraState(const struct FName& CameraState, const struct FName& MenuID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.PushCameraState");
-
-	UGFxData_MainMenu_TA_PushCameraState_Params params;
-	params.CameraState = CameraState;
-	params.MenuID = MenuID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_MainMenu_TA.SetCameraState
-// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
-// Parameters:
-// struct FName                   NewCameraStateName             (CPF_Parm)
-
-void UGFxData_MainMenu_TA::SetCameraState(const struct FName& NewCameraStateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MainMenu_TA.SetCameraState");
-
-	UGFxData_MainMenu_TA_SetCameraState_Params params;
-	params.NewCameraStateName = NewCameraStateName;
 
 	auto flags = fn->FunctionFlags;
 
@@ -83728,6 +88722,107 @@ void UGFxData_TeamInfo_TA::SetTeam(class ATeam_TA* InTeam)
 
 	UGFxData_TeamInfo_TA_SetTeam_Params params;
 	params.InTeam = InTeam;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SkillDecayMessageHandler_TA.__SkillDecayMessageHandler_TA__GetDecayedPlaylistsString_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGameSettingPlaylist_X*  DecayedPlaylist                (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USkillDecayMessageHandler_TA::__SkillDecayMessageHandler_TA__GetDecayedPlaylistsString_1(class UGameSettingPlaylist_X* DecayedPlaylist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkillDecayMessageHandler_TA.__SkillDecayMessageHandler_TA__GetDecayedPlaylistsString_1");
+
+	USkillDecayMessageHandler_TA___SkillDecayMessageHandler_TA__GetDecayedPlaylistsString_1_Params params;
+	params.DecayedPlaylist = DecayedPlaylist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SkillDecayMessageHandler_TA.GetDecayedPlaylistsString
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UGameSettingPlaylist_X*> DecayedPlaylists               (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<struct FString>         MapLocal_05C4BE3549EB63BB38173292C0634762 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+struct FString USkillDecayMessageHandler_TA::GetDecayedPlaylistsString(TArray<class UGameSettingPlaylist_X*> DecayedPlaylists, TArray<struct FString>* MapLocal_05C4BE3549EB63BB38173292C0634762)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkillDecayMessageHandler_TA.GetDecayedPlaylistsString");
+
+	USkillDecayMessageHandler_TA_GetDecayedPlaylistsString_Params params;
+	params.DecayedPlaylists = DecayedPlaylists;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_05C4BE3549EB63BB38173292C0634762 != nullptr)
+		*MapLocal_05C4BE3549EB63BB38173292C0634762 = params.MapLocal_05C4BE3549EB63BB38173292C0634762;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SkillDecayMessageHandler_TA.HandleSkillDecayed
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class USaveData_TA*            InSaveData                     (CPF_Parm)
+// TArray<class UGameSettingPlaylist_X*> DecayedPlaylists               (CPF_Parm, CPF_NeedCtorLink)
+// TArray<class UGameSettingPlaylist_X*> FilterLocal_95840F4B44216792A29B4B8F0C9BD8D6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UGameSettingPlaylist_X*> ConcatLocal_5C8B39E947506433DBA2C0B07858CBF1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void USkillDecayMessageHandler_TA::HandleSkillDecayed(class USaveData_TA* InSaveData, TArray<class UGameSettingPlaylist_X*> DecayedPlaylists, TArray<class UGameSettingPlaylist_X*>* FilterLocal_95840F4B44216792A29B4B8F0C9BD8D6, TArray<class UGameSettingPlaylist_X*>* ConcatLocal_5C8B39E947506433DBA2C0B07858CBF1)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkillDecayMessageHandler_TA.HandleSkillDecayed");
+
+	USkillDecayMessageHandler_TA_HandleSkillDecayed_Params params;
+	params.InSaveData = InSaveData;
+	params.DecayedPlaylists = DecayedPlaylists;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_95840F4B44216792A29B4B8F0C9BD8D6 != nullptr)
+		*FilterLocal_95840F4B44216792A29B4B8F0C9BD8D6 = params.FilterLocal_95840F4B44216792A29B4B8F0C9BD8D6;
+	if (ConcatLocal_5C8B39E947506433DBA2C0B07858CBF1 != nullptr)
+		*ConcatLocal_5C8B39E947506433DBA2C0B07858CBF1 = params.ConcatLocal_5C8B39E947506433DBA2C0B07858CBF1;
+}
+
+
+// Function TAGame.SkillDecayMessageHandler_TA.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USaveData_TA*            InSaveData                     (CPF_Parm)
+// class UGFxShell_TA*            InGFxShell                     (CPF_Parm)
+
+void USkillDecayMessageHandler_TA::Init(class USaveData_TA* InSaveData, class UGFxShell_TA* InGFxShell)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SkillDecayMessageHandler_TA.Init");
+
+	USkillDecayMessageHandler_TA_Init_Params params;
+	params.InSaveData = InSaveData;
+	params.InGFxShell = InGFxShell;
 
 	auto flags = fn->FunctionFlags;
 
@@ -84302,6 +89397,26 @@ void UGFxData_Map_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Map_TA.OnShellSet");
 
 	UGFxData_Map_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Map_TA.EventMapListChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxData_Map_TA*         Maps                           (CPF_Parm)
+
+void UGFxData_Map_TA::EventMapListChanged(class UGFxData_Map_TA* Maps)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Map_TA.EventMapListChanged");
+
+	UGFxData_Map_TA_EventMapListChanged_Params params;
+	params.Maps = Maps;
 
 	auto flags = fn->FunctionFlags;
 
@@ -85096,25 +90211,23 @@ void UGFxData_OnlineMatchStatus_TA::OnShellSet()
 
 
 // Function TAGame.GFxData_Regions_TA.SelectRegions
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
-// TArray<struct FString>         SelectedRegions                (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FString>         SelectedRegions                (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FGFxRegion>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-TArray<struct FGFxRegion> UGFxData_Regions_TA::SelectRegions(TArray<struct FString>* SelectedRegions)
+TArray<struct FGFxRegion> UGFxData_Regions_TA::SelectRegions(TArray<struct FString> SelectedRegions)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Regions_TA.SelectRegions");
 
 	UGFxData_Regions_TA_SelectRegions_Params params;
+	params.SelectedRegions = SelectedRegions;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	if (SelectedRegions != nullptr)
-		*SelectedRegions = params.SelectedRegions;
 
 	return params.ReturnValue;
 }
@@ -85248,6 +90361,29 @@ void UOnlineGame_TA::OnInit()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Matchmaking_TA.__GFxData_Matchmaking_TA__GetAccessiblePlaylists_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FName                   AccessiblePlaylist             (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_Matchmaking_TA::__GFxData_Matchmaking_TA__GetAccessiblePlaylists_1(const struct FName& AccessiblePlaylist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.__GFxData_Matchmaking_TA__GetAccessiblePlaylists_1");
+
+	UGFxData_Matchmaking_TA___GFxData_Matchmaking_TA__GetAccessiblePlaylists_1_Params params;
+	params.AccessiblePlaylist = AccessiblePlaylist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -85399,6 +90535,34 @@ void UGFxData_Matchmaking_TA::PopulateMessageUpdates()
 }
 
 
+// Function TAGame.GFxData_Matchmaking_TA.GetAccessiblePlaylists
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<struct FName>           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<struct FName>           FilterLocal_66CDC9BA4F1A7E2670C44E8898E282AA (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FName>           FilterLocal_33A84E994B2CF8DB9200B78E69CD38F6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<struct FName> UGFxData_Matchmaking_TA::GetAccessiblePlaylists(TArray<struct FName>* FilterLocal_66CDC9BA4F1A7E2670C44E8898E282AA, TArray<struct FName>* FilterLocal_33A84E994B2CF8DB9200B78E69CD38F6)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.GetAccessiblePlaylists");
+
+	UGFxData_Matchmaking_TA_GetAccessiblePlaylists_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_66CDC9BA4F1A7E2670C44E8898E282AA != nullptr)
+		*FilterLocal_66CDC9BA4F1A7E2670C44E8898E282AA = params.FilterLocal_66CDC9BA4F1A7E2670C44E8898E282AA;
+	if (FilterLocal_33A84E994B2CF8DB9200B78E69CD38F6 != nullptr)
+		*FilterLocal_33A84E994B2CF8DB9200B78E69CD38F6 = params.FilterLocal_33A84E994B2CF8DB9200B78E69CD38F6;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_Matchmaking_TA.StartMatchmaking
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
 
@@ -85407,6 +90571,26 @@ void UGFxData_Matchmaking_TA::StartMatchmaking()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.StartMatchmaking");
 
 	UGFxData_Matchmaking_TA_StartMatchmaking_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Matchmaking_TA.SetMatchmakingViewTab
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// TEnumAsByte<EMatchmakingViewTab> InMatchmakingViewTab           (CPF_Parm)
+
+void UGFxData_Matchmaking_TA::SetMatchmakingViewTab(TEnumAsByte<EMatchmakingViewTab> InMatchmakingViewTab)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.SetMatchmakingViewTab");
+
+	UGFxData_Matchmaking_TA_SetMatchmakingViewTab_Params params;
+	params.InMatchmakingViewTab = InMatchmakingViewTab;
 
 	auto flags = fn->FunctionFlags;
 
@@ -85429,6 +90613,23 @@ void UGFxData_Matchmaking_TA::SetRegionSelection(int Row, bool bSelected)
 	UGFxData_Matchmaking_TA_SetRegionSelection_Params params;
 	params.Row = Row;
 	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Matchmaking_TA.DeselectAllRegions
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
+
+void UGFxData_Matchmaking_TA::DeselectAllRegions()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Matchmaking_TA.DeselectAllRegions");
+
+	UGFxData_Matchmaking_TA_DeselectAllRegions_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -85776,9 +90977,9 @@ void UGFxData_Playlist_TA::HandlePartyChanged(class UOnlineGameParty_X* P)
 // Parameters:
 // class UOnlineGameSkillGroups_X* Skill                          (CPF_Parm)
 // TArray<struct FUniqueNetId>    PlayerIDs                      (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Playlist_TA::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* Skill, TArray<struct FUniqueNetId> PlayerIDs, class UError_X* Error)
+void UGFxData_Playlist_TA::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* Skill, TArray<struct FUniqueNetId> PlayerIDs, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Playlist_TA.HandleGroupSkillSynced");
 
@@ -85800,9 +91001,9 @@ void UGFxData_Playlist_TA::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X
 // Parameters:
 // class UOnlineGameSkill_X*      Skill                          (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Playlist_TA::HandleSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void UGFxData_Playlist_TA::HandleSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Playlist_TA.HandleSkillSynced");
 
@@ -85976,17 +91177,111 @@ class UOnlineGameSkill_X* UGFxData_Playlist_TA::GetOnlineGameSkill()
 }
 
 
-// Function TAGame.GFxData_MusicPlayer_TA.ActivatePlaylist
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_3
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UMusicPlaylist_TA*       InPlaylist                     (CPF_Parm)
+// class UMusicPlaylist_TA*       P                              (CPF_Parm)
+// struct FGFxMusicPlaylist       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-void UGFxData_MusicPlayer_TA::ActivatePlaylist(class UMusicPlaylist_TA* InPlaylist)
+struct FGFxMusicPlaylist UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__OnShellSet_3(class UMusicPlaylist_TA* P)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.ActivatePlaylist");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_3");
 
-	UGFxData_MusicPlayer_TA_ActivatePlaylist_Params params;
-	params.InPlaylist = InPlaylist;
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__OnShellSet_3_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGameVersionMusicTheme  Theme                          (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__OnShellSet_2(const struct FGameVersionMusicTheme& Theme)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_2");
+
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__OnShellSet_2_Params params;
+	params.Theme = Theme;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGameVersionMusicTheme  Left                           (CPF_Parm, CPF_NeedCtorLink)
+// struct FGameVersionMusicTheme  Right                          (CPF_Parm, CPF_NeedCtorLink)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__OnShellSet_1(const struct FGameVersionMusicTheme& Left, const struct FGameVersionMusicTheme& Right)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__OnShellSet_1");
+
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__OnShellSet_1_Params params;
+	params.Left = Left;
+	params.Right = Right;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMusicPlaylist       P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_2(const struct FGFxMusicPlaylist& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_2");
+
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__HandleSaveDataLoaded_2_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FPlaylistState          P                              (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_1(const struct FPlaylistState& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleSaveDataLoaded_1");
+
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__HandleSaveDataLoaded_1_Params params;
+	params.P = P;
 
 	auto flags = fn->FunctionFlags;
 
@@ -85996,14 +91291,194 @@ void UGFxData_MusicPlayer_TA::ActivatePlaylist(class UMusicPlaylist_TA* InPlayli
 }
 
 
-// Function TAGame.GFxData_MusicPlayer_TA.NextPlaylist
-// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleTrackStart_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMusicPlaylist       P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UGFxData_MusicPlayer_TA::NextPlaylist()
+bool UGFxData_MusicPlayer_TA::__GFxData_MusicPlayer_TA__HandleTrackStart_1(const struct FGFxMusicPlaylist& P)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.NextPlaylist");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__HandleTrackStart_1");
 
-	UGFxData_MusicPlayer_TA_NextPlaylist_Params params;
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__HandleTrackStart_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__BuildTracklist_1
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// struct FGFxMusicPlaylist       P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_MusicPlayer_TA::STATIC___GFxData_MusicPlayer_TA__BuildTracklist_1(const struct FGFxMusicPlaylist& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.__GFxData_MusicPlayer_TA__BuildTracklist_1");
+
+	UGFxData_MusicPlayer_TA___GFxData_MusicPlayer_TA__BuildTracklist_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.HandlePlaylistsToggled
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UPlayerInput_X*          PlayerInput                    (CPF_Parm)
+// struct FName                   ActionName                     (CPF_Parm)
+// bool                           bEnabled                       (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::HandlePlaylistsToggled(class UPlayerInput_X* PlayerInput, const struct FName& ActionName, bool bEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.HandlePlaylistsToggled");
+
+	UGFxData_MusicPlayer_TA_HandlePlaylistsToggled_Params params;
+	params.PlayerInput = PlayerInput;
+	params.ActionName = ActionName;
+	params.bEnabled = bEnabled;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.PrintPlaylist
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UAkSoundCue*>     Tracks                         (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UGFxData_MusicPlayer_TA::PrintPlaylist(TArray<class UAkSoundCue*>* Tracks)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.PrintPlaylist");
+
+	UGFxData_MusicPlayer_TA_PrintPlaylist_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Tracks != nullptr)
+		*Tracks = params.Tracks;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.AppendTracks
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Private)
+// Parameters:
+// TArray<class UAkSoundCue*>     Tracks                         (CPF_Parm, CPF_NeedCtorLink)
+// struct FGFxMusicPlaylist       GFxPlaylist                    (CPF_Parm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     ConcatLocal_1B80BFA84EBE2CEF5D25B39A64C3B5E9 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<class UAkSoundCue*> UGFxData_MusicPlayer_TA::STATIC_AppendTracks(TArray<class UAkSoundCue*> Tracks, const struct FGFxMusicPlaylist& GFxPlaylist, TArray<class UAkSoundCue*>* ConcatLocal_1B80BFA84EBE2CEF5D25B39A64C3B5E9)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.AppendTracks");
+
+	UGFxData_MusicPlayer_TA_AppendTracks_Params params;
+	params.Tracks = Tracks;
+	params.GFxPlaylist = GFxPlaylist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ConcatLocal_1B80BFA84EBE2CEF5D25B39A64C3B5E9 != nullptr)
+		*ConcatLocal_1B80BFA84EBE2CEF5D25B39A64C3B5E9 = params.ConcatLocal_1B80BFA84EBE2CEF5D25B39A64C3B5E9;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.BuildTracklist
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FGFxMusicPlaylist> InGFxPlaylists                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<struct FGFxMusicPlaylist> FilterLocal_6EAA59BB43A56F8CAE5A6C97A5F39B0F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     ReduceLocal_1E47839D42B1FCE3946155A60478920A (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     DistinctLocal_1B1B2B2A4D68FC8843E350AA12430C41 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<class UAkSoundCue*> UGFxData_MusicPlayer_TA::STATIC_BuildTracklist(TArray<struct FGFxMusicPlaylist>* InGFxPlaylists, TArray<struct FGFxMusicPlaylist>* FilterLocal_6EAA59BB43A56F8CAE5A6C97A5F39B0F, TArray<class UAkSoundCue*>* ReduceLocal_1E47839D42B1FCE3946155A60478920A, TArray<class UAkSoundCue*>* DistinctLocal_1B1B2B2A4D68FC8843E350AA12430C41)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.BuildTracklist");
+
+	UGFxData_MusicPlayer_TA_BuildTracklist_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InGFxPlaylists != nullptr)
+		*InGFxPlaylists = params.InGFxPlaylists;
+	if (FilterLocal_6EAA59BB43A56F8CAE5A6C97A5F39B0F != nullptr)
+		*FilterLocal_6EAA59BB43A56F8CAE5A6C97A5F39B0F = params.FilterLocal_6EAA59BB43A56F8CAE5A6C97A5F39B0F;
+	if (ReduceLocal_1E47839D42B1FCE3946155A60478920A != nullptr)
+		*ReduceLocal_1E47839D42B1FCE3946155A60478920A = params.ReduceLocal_1E47839D42B1FCE3946155A60478920A;
+	if (DistinctLocal_1B1B2B2A4D68FC8843E350AA12430C41 != nullptr)
+		*DistinctLocal_1B1B2B2A4D68FC8843E350AA12430C41 = params.DistinctLocal_1B1B2B2A4D68FC8843E350AA12430C41;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.ValidateCurrentTrack
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UGFxData_MusicPlayer_TA::ValidateCurrentTrack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.ValidateCurrentTrack");
+
+	UGFxData_MusicPlayer_TA_ValidateCurrentTrack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.SetPlaylistSelected
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// int                            Row                            (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::SetPlaylistSelected(int Row, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.SetPlaylistSelected");
+
+	UGFxData_MusicPlayer_TA_SetPlaylistSelected_Params params;
+	params.Row = Row;
+	params.bSelected = bSelected;
 
 	auto flags = fn->FunctionFlags;
 
@@ -86055,7 +91530,7 @@ void UGFxData_MusicPlayer_TA::HandleTrackEnd(int PlayingID)
 
 
 // Function TAGame.GFxData_MusicPlayer_TA.HandleTrackStart
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // int                            PlayingID                      (CPF_Parm)
 // struct FString                 FileMarker                     (CPF_Parm, CPF_NeedCtorLink)
@@ -86078,12 +91553,88 @@ void UGFxData_MusicPlayer_TA::HandleTrackStart(int PlayingID, const struct FStri
 
 // Function TAGame.GFxData_MusicPlayer_TA.PlayKonamiTheme
 // (FUNC_Defined, FUNC_Public)
+// Parameters:
+// TArray<class UAkSoundCue*>     ArrayInitializer_2E4F2AFE4F0FCCE67C7904AE0E3B5CDD (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_MusicPlayer_TA::PlayKonamiTheme()
+void UGFxData_MusicPlayer_TA::PlayKonamiTheme(TArray<class UAkSoundCue*>* ArrayInitializer_2E4F2AFE4F0FCCE67C7904AE0E3B5CDD)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.PlayKonamiTheme");
 
 	UGFxData_MusicPlayer_TA_PlayKonamiTheme_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_2E4F2AFE4F0FCCE67C7904AE0E3B5CDD != nullptr)
+		*ArrayInitializer_2E4F2AFE4F0FCCE67C7904AE0E3B5CDD = params.ArrayInitializer_2E4F2AFE4F0FCCE67C7904AE0E3B5CDD;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.PlayTrack
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UAkSoundCue*             Track                          (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::PlayTrack(class UAkSoundCue* Track)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.PlayTrack");
+
+	UGFxData_MusicPlayer_TA_PlayTrack_Params params;
+	params.Track = Track;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.StopCurrentTrack
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UGFxData_MusicPlayer_TA::StopCurrentTrack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.StopCurrentTrack");
+
+	UGFxData_MusicPlayer_TA_StopCurrentTrack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.OnTogglePlaylistSelection
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
+
+void UGFxData_MusicPlayer_TA::OnTogglePlaylistSelection()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.OnTogglePlaylistSelection");
+
+	UGFxData_MusicPlayer_TA_OnTogglePlaylistSelection_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.TogglePlaylistSelection
+// (FUNC_Defined, FUNC_Public)
+
+void UGFxData_MusicPlayer_TA::TogglePlaylistSelection()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.TogglePlaylistSelection");
+
+	UGFxData_MusicPlayer_TA_TogglePlaylistSelection_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -86112,10 +91663,8 @@ void UGFxData_MusicPlayer_TA::NextTrack()
 
 // Function TAGame.GFxData_MusicPlayer_TA.PlayCreditsTheme
 // (FUNC_Defined, FUNC_Public, FUNC_K2Override)
-// Parameters:
-// TArray<class UAkSoundCue*>     ArrayInitializer__s_FA23D8FE4AC9E30568E874A1D3C1ADDE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_MusicPlayer_TA::PlayCreditsTheme(TArray<class UAkSoundCue*>* ArrayInitializer__s_FA23D8FE4AC9E30568E874A1D3C1ADDE)
+void UGFxData_MusicPlayer_TA::PlayCreditsTheme()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.PlayCreditsTheme");
 
@@ -86126,9 +91675,79 @@ void UGFxData_MusicPlayer_TA::PlayCreditsTheme(TArray<class UAkSoundCue*>* Array
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
 
-	if (ArrayInitializer__s_FA23D8FE4AC9E30568E874A1D3C1ADDE != nullptr)
-		*ArrayInitializer__s_FA23D8FE4AC9E30568E874A1D3C1ADDE = params.ArrayInitializer__s_FA23D8FE4AC9E30568E874A1D3C1ADDE;
+
+// Function TAGame.GFxData_MusicPlayer_TA.SetPlaylistSelectedByName
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FName                   PlaylistName                   (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::SetPlaylistSelectedByName(const struct FName& PlaylistName, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.SetPlaylistSelectedByName");
+
+	UGFxData_MusicPlayer_TA_SetPlaylistSelectedByName_Params params;
+	params.PlaylistName = PlaylistName;
+	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.HandleSaveDataLoaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class USaveGameManager_TA*     Manager                        (CPF_Parm)
+// class USaveData_TA*            SaveData                       (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UGFxData_MusicPlayer_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.HandleSaveDataLoaded");
+
+	UGFxData_MusicPlayer_TA_HandleSaveDataLoaded_Params params;
+	params.Manager = Manager;
+	params.SaveData = SaveData;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MusicPlayer_TA.PlaylistToGFxData
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// class UMusicPlaylist_TA*       P                              (CPF_Parm)
+// struct FGFxMusicPlaylist       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// struct FGFxMusicPlaylist       StructInitializer_E292E11748591ECE60815EB5FB1D1DCF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+struct FGFxMusicPlaylist UGFxData_MusicPlayer_TA::PlaylistToGFxData(class UMusicPlaylist_TA* P, struct FGFxMusicPlaylist* StructInitializer_E292E11748591ECE60815EB5FB1D1DCF)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.PlaylistToGFxData");
+
+	UGFxData_MusicPlayer_TA_PlaylistToGFxData_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (StructInitializer_E292E11748591ECE60815EB5FB1D1DCF != nullptr)
+		*StructInitializer_E292E11748591ECE60815EB5FB1D1DCF = params.StructInitializer_E292E11748591ECE60815EB5FB1D1DCF;
+
+	return params.ReturnValue;
 }
 
 
@@ -86150,11 +91769,12 @@ void UGFxData_MusicPlayer_TA::OnRemoved()
 
 
 // Function TAGame.GFxData_MusicPlayer_TA.OnShellSet
-// (FUNC_Defined, FUNC_Event, FUNC_Protected, FUNC_HasDefaults)
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// TArray<class UAkSoundCue*>     ArrayInitializer__s_48CE6B344BDC2C137AE9C0B882E490F7 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FGFxMusicPlaylist> MapLocal_E60E807F49C74E965C99E6867DF2C1F3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UAkSoundCue*>     ArrayInitializer_C9B738AC4DD4214D21789B9E60EAF813 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_MusicPlayer_TA::OnShellSet(TArray<class UAkSoundCue*>* ArrayInitializer__s_48CE6B344BDC2C137AE9C0B882E490F7)
+void UGFxData_MusicPlayer_TA::OnShellSet(TArray<struct FGFxMusicPlaylist>* MapLocal_E60E807F49C74E965C99E6867DF2C1F3, TArray<class UAkSoundCue*>* ArrayInitializer_C9B738AC4DD4214D21789B9E60EAF813)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA.OnShellSet");
 
@@ -86166,102 +91786,10 @@ void UGFxData_MusicPlayer_TA::OnShellSet(TArray<class UAkSoundCue*>* ArrayInitia
 
 	fn->FunctionFlags = flags;
 
-	if (ArrayInitializer__s_48CE6B344BDC2C137AE9C0B882E490F7 != nullptr)
-		*ArrayInitializer__s_48CE6B344BDC2C137AE9C0B882E490F7 = params.ArrayInitializer__s_48CE6B344BDC2C137AE9C0B882E490F7;
-}
-
-
-// Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FGameVersionMusicTheme  Left                           (CPF_Parm, CPF_NeedCtorLink)
-// struct FGameVersionMusicTheme  Right                          (CPF_Parm, CPF_NeedCtorLink)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432::LambdaCallback(const struct FGameVersionMusicTheme& Left, const struct FGameVersionMusicTheme& Right)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432.LambdaCallback");
-
-	UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432_LambdaCallback_Params params;
-	params.Left = Left;
-	params.Right = Right;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_MusicPlayer_TA* InOuter                        (CPF_Parm)
-// class UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432* UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432::STATIC_StaticConstruct(class UGFxData_MusicPlayer_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432.StaticConstruct");
-
-	UGFxData_MusicPlayer_TA__OnShellSet__C7E85E654528A95DE78E11B5F6673432_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FGameVersionMusicTheme  Theme                          (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E::LambdaCallback(const struct FGameVersionMusicTheme& Theme)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E.LambdaCallback");
-
-	UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E_LambdaCallback_Params params;
-	params.Theme = Theme;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_MusicPlayer_TA* InOuter                        (CPF_Parm)
-// class UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E* UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E::STATIC_StaticConstruct(class UGFxData_MusicPlayer_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E.StaticConstruct");
-
-	UGFxData_MusicPlayer_TA__OnShellSet__934FCA484AE1BE811431B0B80AAE3C4E_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
+	if (MapLocal_E60E807F49C74E965C99E6867DF2C1F3 != nullptr)
+		*MapLocal_E60E807F49C74E965C99E6867DF2C1F3 = params.MapLocal_E60E807F49C74E965C99E6867DF2C1F3;
+	if (ArrayInitializer_C9B738AC4DD4214D21789B9E60EAF813 != nullptr)
+		*ArrayInitializer_C9B738AC4DD4214D21789B9E60EAF813 = params.ArrayInitializer_C9B738AC4DD4214D21789B9E60EAF813;
 }
 
 
@@ -86346,6 +91874,50 @@ float UMusicMetrics_TA::GetMusicVolume()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function TAGame.MusicMetrics_TA.PlaylistSelected
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FName                   Playlist                       (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UMusicMetrics_TA::PlaylistSelected(const struct FName& Playlist, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MusicMetrics_TA.PlaylistSelected");
+
+	UMusicMetrics_TA_PlaylistSelected_Params params;
+	params.Playlist = Playlist;
+	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MusicMetrics_TA.RecordPlaylistSelected
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMusicPlaylist_TA*       Playlist                       (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UMusicMetrics_TA::RecordPlaylistSelected(class UMusicPlaylist_TA* Playlist, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MusicMetrics_TA.RecordPlaylistSelected");
+
+	UMusicMetrics_TA_RecordPlaylistSelected_Params params;
+	params.Playlist = Playlist;
+	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -86477,6 +92049,71 @@ void UMusicMetrics_TA::RecordTrackStart(class UAkSoundCue* Cue)
 }
 
 
+// Function TAGame.MusicPlayerSave_TA.SetSelected
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   Playlist                       (CPF_Parm)
+// bool                           bEnabled                       (CPF_Parm)
+
+void UMusicPlayerSave_TA::SetSelected(const struct FName& Playlist, bool bEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MusicPlayerSave_TA.SetSelected");
+
+	UMusicPlayerSave_TA_SetSelected_Params params;
+	params.Playlist = Playlist;
+	params.bEnabled = bEnabled;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MusicPlayerSave_TA.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USaveData_TA*            InSaveData                     (CPF_Parm)
+
+void UMusicPlayerSave_TA::Init(class USaveData_TA* InSaveData)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MusicPlayerSave_TA.Init");
+
+	UMusicPlayerSave_TA_Init_Params params;
+	params.InSaveData = InSaveData;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__GFxData_MusicPlayer_TA__SetPlaylistSelectedByName_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FGFxMusicPlaylist       P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__GFxData_MusicPlayer_TA__SetPlaylistSelectedByName_1::LambdaCallback(const struct FGFxMusicPlaylist& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxData_MusicPlayer_TA__SetPlaylistSelectedByName_1.LambdaCallback");
+
+	U__GFxData_MusicPlayer_TA__SetPlaylistSelectedByName_1_LambdaCallback_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_Nameplate_TA.Tick
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 
@@ -86557,17 +92194,17 @@ class UOnlineGame_X* UGFxData_Nameplate_TA::GetOnlineGame()
 }
 
 
-// Function TAGame.GFxData_Nameplate_TA.SetCar
+// Function TAGame.GFxData_Nameplate_TA.SetNameplateComponent
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// class ACar_TA*                 InCar                          (CPF_Parm)
+// class UNameplateComponent_TA*  InNameplateComponent           (CPF_Parm, CPF_EditInline)
 
-void UGFxData_Nameplate_TA::SetCar(class ACar_TA* InCar)
+void UGFxData_Nameplate_TA::SetNameplateComponent(class UNameplateComponent_TA* InNameplateComponent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Nameplate_TA.SetCar");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Nameplate_TA.SetNameplateComponent");
 
-	UGFxData_Nameplate_TA_SetCar_Params params;
-	params.InCar = InCar;
+	UGFxData_Nameplate_TA_SetNameplateComponent_Params params;
+	params.InNameplateComponent = InNameplateComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -86760,9 +92397,9 @@ struct FUniqueNetId UGFxData_Party_TA::FindPartyMemberNetID(const struct FString
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Party_TA::HandlePartyError(class UOnlineGameParty_X* PartyObject, class UError_X* Error)
+void UGFxData_Party_TA::HandlePartyError(class UOnlineGameParty_X* PartyObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Party_TA.HandlePartyError");
 
@@ -88468,11 +94105,13 @@ void UGFxData_PrivateMatch_TA::SetRegionSelection(int Row, bool bSelected)
 
 
 // Function TAGame.GFxData_PrivateMatch_TA.HandleRegionsSynced
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
 // class UGFxData_Regions_TA*     RegionsData                    (CPF_Parm)
+// TArray<struct FString>         ArrayInitializer_FB8678B1482A6A466B111BBE0ECF856C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FGFxRegion              StructInitializer_63419D454ED80A2C9B4352AF52EB3FF0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_PrivateMatch_TA::HandleRegionsSynced(class UGFxData_Regions_TA* RegionsData)
+void UGFxData_PrivateMatch_TA::HandleRegionsSynced(class UGFxData_Regions_TA* RegionsData, TArray<struct FString>* ArrayInitializer_FB8678B1482A6A466B111BBE0ECF856C, struct FGFxRegion* StructInitializer_63419D454ED80A2C9B4352AF52EB3FF0)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_PrivateMatch_TA.HandleRegionsSynced");
 
@@ -88484,6 +94123,11 @@ void UGFxData_PrivateMatch_TA::HandleRegionsSynced(class UGFxData_Regions_TA* Re
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_FB8678B1482A6A466B111BBE0ECF856C != nullptr)
+		*ArrayInitializer_FB8678B1482A6A466B111BBE0ECF856C = params.ArrayInitializer_FB8678B1482A6A466B111BBE0ECF856C;
+	if (StructInitializer_63419D454ED80A2C9B4352AF52EB3FF0 != nullptr)
+		*StructInitializer_63419D454ED80A2C9B4352AF52EB3FF0 = params.StructInitializer_63419D454ED80A2C9B4352AF52EB3FF0;
 }
 
 
@@ -88862,52 +94506,6 @@ void UGFxData_Privileges_TA::OnShellSet()
 }
 
 
-// Function TAGame.GFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UGFxData_ProductAttribute_TA* GFxAttribute                   (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0::LambdaCallback(class UGFxData_ProductAttribute_TA* GFxAttribute)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0.LambdaCallback");
-
-	UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0_LambdaCallback_Params params;
-	params.GFxAttribute = GFxAttribute;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_Products_TA*    InOuter                        (CPF_Parm)
-// class UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0* UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0::STATIC_StaticConstruct(class UGFxData_Products_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0.StaticConstruct");
-
-	UGFxData_Products_TA__BuildAttributeTableStr__6BE2DCDF42430D853AE5CBA72ACA66D0_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.GFxData_ProductAttribute_TA.OnReceivedAttribute
 // (FUNC_Protected)
 // Parameters:
@@ -88939,6 +94537,47 @@ void UGFxData_ProductAttribute_TA::Init(const TScriptInterface<class UIProductAt
 
 	UGFxData_ProductAttribute_TA_Init_Params params;
 	params.InProvider = InProvider;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__GFxData_Products_TA__HasNewOnlineProducts_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__GFxData_Products_TA__HasNewOnlineProducts_1::LambdaCallback()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxData_Products_TA__HasNewOnlineProducts_1.LambdaCallback");
+
+	U__GFxData_Products_TA__HasNewOnlineProducts_1_LambdaCallback_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__GFxData_Products_TA__InstanceAttributes_3.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_ProductAttribute_TA* GFxAttribute                   (CPF_Parm)
+
+void U__GFxData_Products_TA__InstanceAttributes_3::LambdaCallback(class UGFxData_ProductAttribute_TA* GFxAttribute)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxData_Products_TA__InstanceAttributes_3.LambdaCallback");
+
+	U__GFxData_Products_TA__InstanceAttributes_3_LambdaCallback_Params params;
+	params.GFxAttribute = GFxAttribute;
 
 	auto flags = fn->FunctionFlags;
 
@@ -88992,18 +94631,18 @@ TArray<class UProductAttribute_TA*> UIProductAttributeProvider_TA::GetAttributes
 }
 
 
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Function TAGame.GFxProductAttributeMap_TA.__GFxProductAttributeMap_TA__MapAttributes_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UProductAttribute_TA*    Attribute                      (CPF_Parm)
-// class UClass*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UClass*                  GFxAttribute                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UClass* UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC::LambdaCallback(class UProductAttribute_TA* Attribute)
+bool UGFxProductAttributeMap_TA::__GFxProductAttributeMap_TA__MapAttributes_2(class UClass* GFxAttribute)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC.LambdaCallback");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA.__GFxProductAttributeMap_TA__MapAttributes_2");
 
-	UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC_LambdaCallback_Params params;
-	params.Attribute = Attribute;
+	UGFxProductAttributeMap_TA___GFxProductAttributeMap_TA__MapAttributes_2_Params params;
+	params.GFxAttribute = GFxAttribute;
 
 	auto flags = fn->FunctionFlags;
 
@@ -89015,18 +94654,18 @@ class UClass* UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A
 }
 
 
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Function TAGame.GFxProductAttributeMap_TA.__GFxProductAttributeMap_TA__MapAttributes_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UGFxData_Products_TA*    InOuter                        (CPF_Parm)
-// class UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UClass*                  Attribute                      (CPF_Parm)
+// class UClass*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC* UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC::STATIC_StaticConstruct(class UGFxData_Products_TA* InOuter)
+class UClass* UGFxProductAttributeMap_TA::__GFxProductAttributeMap_TA__MapAttributes_1(class UClass* Attribute)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC.StaticConstruct");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA.__GFxProductAttributeMap_TA__MapAttributes_1");
 
-	UGFxData_Products_TA__InstanceAttributes__7CD0D74F43A8A57604D8179A477E26FC_StaticConstruct_Params params;
-	params.InOuter = InOuter;
+	UGFxProductAttributeMap_TA___GFxProductAttributeMap_TA__MapAttributes_1_Params params;
+	params.Attribute = Attribute;
 
 	auto flags = fn->FunctionFlags;
 
@@ -89066,10 +94705,10 @@ class UClass* UGFxProductAttributeMap_TA::MapAttribute(class UClass* AttributeCl
 // Parameters:
 // TArray<class UClass*>          Attributes                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // TArray<class UClass*>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<class UClass*>          MapLocal_D8C3CF3F44472365051799A2C07BD26C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-// TArray<class UClass*>          FilterLocal_52BF45E94DD00FF46DA7E5826A03034B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UClass*>          MapLocal_187F8A7C4C9B123705C1C984997B16A1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UClass*>          FilterLocal_6474647C4E7599E9885D2184EA844E53 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<class UClass*> UGFxProductAttributeMap_TA::MapAttributes(TArray<class UClass*>* Attributes, TArray<class UClass*>* MapLocal_D8C3CF3F44472365051799A2C07BD26C, TArray<class UClass*>* FilterLocal_52BF45E94DD00FF46DA7E5826A03034B)
+TArray<class UClass*> UGFxProductAttributeMap_TA::MapAttributes(TArray<class UClass*>* Attributes, TArray<class UClass*>* MapLocal_187F8A7C4C9B123705C1C984997B16A1, TArray<class UClass*>* FilterLocal_6474647C4E7599E9885D2184EA844E53)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA.MapAttributes");
 
@@ -89083,159 +94722,27 @@ TArray<class UClass*> UGFxProductAttributeMap_TA::MapAttributes(TArray<class UCl
 
 	if (Attributes != nullptr)
 		*Attributes = params.Attributes;
-	if (MapLocal_D8C3CF3F44472365051799A2C07BD26C != nullptr)
-		*MapLocal_D8C3CF3F44472365051799A2C07BD26C = params.MapLocal_D8C3CF3F44472365051799A2C07BD26C;
-	if (FilterLocal_52BF45E94DD00FF46DA7E5826A03034B != nullptr)
-		*FilterLocal_52BF45E94DD00FF46DA7E5826A03034B = params.FilterLocal_52BF45E94DD00FF46DA7E5826A03034B;
+	if (MapLocal_187F8A7C4C9B123705C1C984997B16A1 != nullptr)
+		*MapLocal_187F8A7C4C9B123705C1C984997B16A1 = params.MapLocal_187F8A7C4C9B123705C1C984997B16A1;
+	if (FilterLocal_6474647C4E7599E9885D2184EA844E53 != nullptr)
+		*FilterLocal_6474647C4E7599E9885D2184EA844E53 = params.FilterLocal_6474647C4E7599E9885D2184EA844E53;
 
 	return params.ReturnValue;
 }
 
 
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8.LambdaCallback
+// Function TAGame.__GFxData_Products_TA__UpdateProductData_1.LambdaCallback
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class UClass*                  GFxClass                       (CPF_Parm)
-// class UGFxData_ProductAttribute_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UProduct_TA*             P                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UGFxData_ProductAttribute_TA* UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8::LambdaCallback(class UClass* GFxClass)
+bool U__GFxData_Products_TA__UpdateProductData_1::LambdaCallback(class UProduct_TA* P)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8.LambdaCallback");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxData_Products_TA__UpdateProductData_1.LambdaCallback");
 
-	UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8_LambdaCallback_Params params;
-	params.GFxClass = GFxClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_Products_TA*    InOuter                        (CPF_Parm)
-// class UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8* UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8::STATIC_StaticConstruct(class UGFxData_Products_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8.StaticConstruct");
-
-	UGFxData_Products_TA__InstanceAttributes__6915A3594EBCE9CE72DE4EB487EDDED8_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UGFxData_ProductAttribute_TA* GFxAttribute                   (CPF_Parm)
-
-void UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A::LambdaCallback(class UGFxData_ProductAttribute_TA* GFxAttribute)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.LambdaCallback");
-
-	UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A_LambdaCallback_Params params;
-	params.GFxAttribute = GFxAttribute;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_Products_TA*    InOuter                        (CPF_Parm)
-// class UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A* UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A::STATIC_StaticConstruct(class UGFxData_Products_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.StaticConstruct");
-
-	UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.SetAttributeProvider
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// TScriptInterface<class UIProductAttributeProvider_TA> Value                          (CPF_Parm)
-// class UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A* UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A::SetAttributeProvider(const TScriptInterface<class UIProductAttributeProvider_TA>& Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A.SetAttributeProvider");
-
-	UGFxData_Products_TA__InstanceAttributes__0D7CAFE54A3F653A634301A175F4255A_SetAttributeProvider_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  GFxClass                       (CPF_Parm)
-
-void UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052::LambdaCallback(class UClass* GFxClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052.LambdaCallback");
-
-	UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052_LambdaCallback_Params params;
-	params.GFxClass = GFxClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_Products_TA*    InOuter                        (CPF_Parm)
-// class UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052* UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052::STATIC_StaticConstruct(class UGFxData_Products_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052.StaticConstruct");
-
-	UGFxData_Products_TA__ClearAttributes__170602EF4EF34B6B46A116B7C5F53052_StaticConstruct_Params params;
-	params.InOuter = InOuter;
+	U__GFxData_Products_TA__UpdateProductData_1_LambdaCallback_Params params;
+	params.P = P;
 
 	auto flags = fn->FunctionFlags;
 
@@ -89538,156 +95045,18 @@ void UProductStat_TA::Init(class APRI_TA* InPRI, int InProductID)
 }
 
 
-// Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.LambdaCallback
+// Function TAGame.__GFxProductAttributeMap_TA__MapAttribute_1.LambdaCallback
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // class UClass*                  GFxClass                       (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8::LambdaCallback(class UClass* GFxClass)
+bool U__GFxProductAttributeMap_TA__MapAttribute_1::LambdaCallback(class UClass* GFxClass)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.LambdaCallback");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__GFxProductAttributeMap_TA__MapAttribute_1.LambdaCallback");
 
-	UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8_LambdaCallback_Params params;
+	U__GFxProductAttributeMap_TA__MapAttribute_1_LambdaCallback_Params params;
 	params.GFxClass = GFxClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxProductAttributeMap_TA* InOuter                        (CPF_Parm)
-// class UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8* UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8::STATIC_StaticConstruct(class UGFxProductAttributeMap_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.StaticConstruct");
-
-	UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.SetAttributeClass
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  Value                          (CPF_Parm)
-// class UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8* UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8::SetAttributeClass(class UClass* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8.SetAttributeClass");
-
-	UGFxProductAttributeMap_TA__MapAttribute__163A3FA04C2878B1A84093BA1475A0A8_SetAttributeClass_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  Attribute                      (CPF_Parm)
-// class UClass*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UClass* UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864::LambdaCallback(class UClass* Attribute)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864.LambdaCallback");
-
-	UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864_LambdaCallback_Params params;
-	params.Attribute = Attribute;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxProductAttributeMap_TA* InOuter                        (CPF_Parm)
-// class UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864* UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864::STATIC_StaticConstruct(class UGFxProductAttributeMap_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864.StaticConstruct");
-
-	UGFxProductAttributeMap_TA__MapAttributes__6D5E505C4867B8ED29CA53ADCB09A864_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  GFxAttribute                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E::LambdaCallback(class UClass* GFxAttribute)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E.LambdaCallback");
-
-	UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E_LambdaCallback_Params params;
-	params.GFxAttribute = GFxAttribute;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxProductAttributeMap_TA* InOuter                        (CPF_Parm)
-// class UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E* UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E::STATIC_StaticConstruct(class UGFxProductAttributeMap_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E.StaticConstruct");
-
-	UGFxProductAttributeMap_TA__MapAttributes__52D4B8A640379D20220C42A28B17AD3E_StaticConstruct_Params params;
-	params.InOuter = InOuter;
 
 	auto flags = fn->FunctionFlags;
 
@@ -89741,9 +95110,9 @@ void UGFxData_ReplayManager_TA::PrintReplays()
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // class UReplay_TA*              InReplay                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_ReplayManager_TA::HandleReplayImported(class UReplayManager_TA* Manager, class UReplay_TA* InReplay, class UError_X* Error)
+void UGFxData_ReplayManager_TA::HandleReplayImported(class UReplayManager_TA* Manager, class UReplay_TA* InReplay, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ReplayManager_TA.HandleReplayImported");
 
@@ -89829,9 +95198,9 @@ void UGFxData_ReplayManager_TA::StartReplay(const struct FString& Map, const str
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // class UReplay_TA*              Replay                         (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_ReplayManager_TA::HandleReplayHeaderLoaded(class UReplayManager_TA* Manager, class UReplay_TA* Replay, class UError_X* Error)
+void UGFxData_ReplayManager_TA::HandleReplayHeaderLoaded(class UReplayManager_TA* Manager, class UReplay_TA* Replay, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ReplayManager_TA.HandleReplayHeaderLoaded");
 
@@ -89989,9 +95358,9 @@ void UGFxData_ReplayManager_TA::LoadReplays()
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // struct FString                 Id                             (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_ReplayManager_TA::HandleReplayExported(class UReplayManager_TA* Manager, const struct FString& Id, class UError_X* Error)
+void UGFxData_ReplayManager_TA::HandleReplayExported(class UReplayManager_TA* Manager, const struct FString& Id, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ReplayManager_TA.HandleReplayExported");
 
@@ -90098,9 +95467,9 @@ bool UGFxData_ReplayManager_TA::ShouldAutoSaveReplay()
 // Parameters:
 // class UReplayManager_TA*       Manager                        (CPF_Parm)
 // struct FString                 Id                             (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_ReplayViewer_TA::HandleReplayExported(class UReplayManager_TA* Manager, const struct FString& Id, class UError_X* Error)
+void UGFxData_ReplayViewer_TA::HandleReplayExported(class UReplayManager_TA* Manager, const struct FString& Id, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ReplayViewer_TA.HandleReplayExported");
 
@@ -92130,6 +97499,96 @@ float UGFxData_Settings_TA::GetMouseYDeadZone(class UGFxData_UserSetting_TA* Use
 }
 
 
+// Function TAGame.GFxData_Settings_TA.SetDodgeInputThreshold
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_UserSetting_TA* UserSetting                    (CPF_Parm)
+// float                          Value                          (CPF_Parm)
+
+void UGFxData_Settings_TA::SetDodgeInputThreshold(class UGFxData_UserSetting_TA* UserSetting, float Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.SetDodgeInputThreshold");
+
+	UGFxData_Settings_TA_SetDodgeInputThreshold_Params params;
+	params.UserSetting = UserSetting;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Settings_TA.GetDodgeInputThreshold
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_UserSetting_TA* UserSetting                    (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UGFxData_Settings_TA::GetDodgeInputThreshold(class UGFxData_UserSetting_TA* UserSetting)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.GetDodgeInputThreshold");
+
+	UGFxData_Settings_TA_GetDodgeInputThreshold_Params params;
+	params.UserSetting = UserSetting;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_Settings_TA.SetKeyboardAxisBlendTime
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_UserSetting_TA* UserSetting                    (CPF_Parm)
+// float                          Value                          (CPF_Parm)
+
+void UGFxData_Settings_TA::SetKeyboardAxisBlendTime(class UGFxData_UserSetting_TA* UserSetting, float Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.SetKeyboardAxisBlendTime");
+
+	UGFxData_Settings_TA_SetKeyboardAxisBlendTime_Params params;
+	params.UserSetting = UserSetting;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Settings_TA.GetKeyboardAxisBlendTime
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_UserSetting_TA* UserSetting                    (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UGFxData_Settings_TA::GetKeyboardAxisBlendTime(class UGFxData_UserSetting_TA* UserSetting)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.GetKeyboardAxisBlendTime");
+
+	UGFxData_Settings_TA_GetKeyboardAxisBlendTime_Params params;
+	params.UserSetting = UserSetting;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_Settings_TA.SetControllerDeadzone
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -92906,9 +98365,9 @@ void UGFxData_Settings_TA::UpdateEnableSavingValue()
 // Parameters:
 // class USaveGameManager_TA*     SaveManager                    (CPF_Parm)
 // class USaveData_TA*            ForSaveData                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Settings_TA::HandleSaveDataPostEnableComplete(class USaveGameManager_TA* SaveManager, class USaveData_TA* ForSaveData, class UError_X* Error)
+void UGFxData_Settings_TA::HandleSaveDataPostEnableComplete(class USaveGameManager_TA* SaveManager, class USaveData_TA* ForSaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.HandleSaveDataPostEnableComplete");
 
@@ -95855,6 +101314,29 @@ void UGFxData_Settings_TA::SetListValue(const struct FName& Id, const struct FSt
 }
 
 
+// Function TAGame.GFxData_Settings_TA.EnumToString
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            Value                          (CPF_Parm, CPF_CoerceParm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UGFxData_Settings_TA::EnumToString(int Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.EnumToString");
+
+	UGFxData_Settings_TA_EnumToString_Params params;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_Settings_TA.BoolToString
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -95940,7 +101422,7 @@ void UGFxData_Settings_TA::Save()
 // Parameters:
 // struct FName                   Group                          (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
-// struct FString                 DefaultValue                   (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+// float                          DefaultValue                   (CPF_Parm)
 // struct FScriptDelegate         GetFunc                        (CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         SetFunc                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // struct FProfileSliderLimits    Limits                         (CPF_OptionalParm, CPF_Parm)
@@ -95948,7 +101430,7 @@ void UGFxData_Settings_TA::Save()
 // bool                           bEnabled                       (CPF_OptionalParm, CPF_Parm)
 // class UGFxData_UserSetting_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateScalarUserSetting(const struct FName& Group, const struct FName& Id, const struct FString& DefaultValue, const struct FScriptDelegate& GetFunc, const struct FScriptDelegate& SetFunc, const struct FProfileSliderLimits& Limits, bool bUserSetting, bool bEnabled)
+class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateScalarUserSetting(const struct FName& Group, const struct FName& Id, float DefaultValue, const struct FScriptDelegate& GetFunc, const struct FScriptDelegate& SetFunc, const struct FProfileSliderLimits& Limits, bool bUserSetting, bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.CreateScalarUserSetting");
 
@@ -95977,14 +101459,14 @@ class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateScalarUserSetting(con
 // Parameters:
 // struct FName                   Group                          (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
-// struct FString                 DefaultValue                   (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+// bool                           DefaultValue                   (CPF_Parm)
 // struct FScriptDelegate         GetFunc                        (CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         SetFunc                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           bUserSetting                   (CPF_OptionalParm, CPF_Parm)
 // bool                           bEnabled                       (CPF_OptionalParm, CPF_Parm)
 // class UGFxData_UserSetting_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateBooleanUserSetting(const struct FName& Group, const struct FName& Id, const struct FString& DefaultValue, const struct FScriptDelegate& GetFunc, const struct FScriptDelegate& SetFunc, bool bUserSetting, bool bEnabled)
+class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateBooleanUserSetting(const struct FName& Group, const struct FName& Id, bool DefaultValue, const struct FScriptDelegate& GetFunc, const struct FScriptDelegate& SetFunc, bool bUserSetting, bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.CreateBooleanUserSetting");
 
@@ -96012,7 +101494,7 @@ class UGFxData_UserSetting_TA* UGFxData_Settings_TA::CreateBooleanUserSetting(co
 // Parameters:
 // struct FName                   Group                          (CPF_Parm)
 // struct FName                   Id                             (CPF_Parm)
-// struct FString                 DefaultValue                   (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+// struct FString                 DefaultValue                   (CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         GetFunc                        (CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         SetFunc                        (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // bool                           bUserSetting                   (CPF_OptionalParm, CPF_Parm)
@@ -96113,6 +101595,191 @@ void UGFxData_Settings_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Settings_TA.OnShellSet");
 
 	UGFxData_Settings_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.__UserSettingObserver_TA__HandleCacheTimeout_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FSettingEvent           E                              (CPF_Parm, CPF_NeedCtorLink)
+
+void UUserSettingObserver_TA::__UserSettingObserver_TA__HandleCacheTimeout_1(const struct FSettingEvent& E)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.__UserSettingObserver_TA__HandleCacheTimeout_1");
+
+	UUserSettingObserver_TA___UserSettingObserver_TA__HandleCacheTimeout_1_Params params;
+	params.E = E;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.HandleScalarValueSet
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_UserSetting_TA* Setting                        (CPF_Parm)
+// float                          Value                          (CPF_Parm)
+
+void UUserSettingObserver_TA::HandleScalarValueSet(class UGFxData_UserSetting_TA* Setting, float Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.HandleScalarValueSet");
+
+	UUserSettingObserver_TA_HandleScalarValueSet_Params params;
+	params.Setting = Setting;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.HandleBooleanValueSet
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_UserSetting_TA* Setting                        (CPF_Parm)
+// bool                           Value                          (CPF_Parm)
+
+void UUserSettingObserver_TA::HandleBooleanValueSet(class UGFxData_UserSetting_TA* Setting, bool Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.HandleBooleanValueSet");
+
+	UUserSettingObserver_TA_HandleBooleanValueSet_Params params;
+	params.Setting = Setting;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.HandleListValueSet
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_UserSetting_TA* Setting                        (CPF_Parm)
+// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
+
+void UUserSettingObserver_TA::HandleListValueSet(class UGFxData_UserSetting_TA* Setting, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.HandleListValueSet");
+
+	UUserSettingObserver_TA_HandleListValueSet_Params params;
+	params.Setting = Setting;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.HandleCacheTimeout
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UUserSettingObserverEventCache_TA* InCache                        (CPF_Parm, CPF_EditInline)
+
+void UUserSettingObserver_TA::HandleCacheTimeout(class UUserSettingObserverEventCache_TA* InCache)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.HandleCacheTimeout");
+
+	UUserSettingObserver_TA_HandleCacheTimeout_Params params;
+	params.InCache = InCache;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.RecordSetting
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGFxData_UserSetting_TA* Setting                        (CPF_Parm)
+
+void UUserSettingObserver_TA::RecordSetting(class UGFxData_UserSetting_TA* Setting)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.RecordSetting");
+
+	UUserSettingObserver_TA_RecordSetting_Params params;
+	params.Setting = Setting;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.AddListener
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_UserSetting_TA* Setting                        (CPF_Parm)
+
+void UUserSettingObserver_TA::AddListener(class UGFxData_UserSetting_TA* Setting)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.AddListener");
+
+	UUserSettingObserver_TA_AddListener_Params params;
+	params.Setting = Setting;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.AddListeners
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UGFxData_UserSetting_TA*> UserSettings                   (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UUserSettingObserver_TA::AddListeners(TArray<class UGFxData_UserSetting_TA*>* UserSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.AddListeners");
+
+	UUserSettingObserver_TA_AddListeners_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (UserSettings != nullptr)
+		*UserSettings = params.UserSettings;
+}
+
+
+// Function TAGame.UserSettingObserver_TA.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+
+void UUserSettingObserver_TA::Init()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserver_TA.Init");
+
+	UUserSettingObserver_TA_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -96261,6 +101928,131 @@ void UPostProcessManager_TA::Init(class APlayerController_X* NewOwner)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingMetrics_TA.Changed
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FName                   Id                             (CPF_Parm)
+// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
+
+void UUserSettingMetrics_TA::Changed(const struct FUniqueNetId& PlayerID, const struct FName& Id, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingMetrics_TA.Changed");
+
+	UUserSettingMetrics_TA_Changed_Params params;
+	params.PlayerID = PlayerID;
+	params.Id = Id;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserverEventCache_TA.__UserSettingObserverEventCache_TA__RecordSetting_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UUserSettingObserverEventCache_TA::__UserSettingObserverEventCache_TA__RecordSetting_2()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserverEventCache_TA.__UserSettingObserverEventCache_TA__RecordSetting_2");
+
+	UUserSettingObserverEventCache_TA___UserSettingObserverEventCache_TA__RecordSetting_2_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserverEventCache_TA.Reset
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+
+void UUserSettingObserverEventCache_TA::Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserverEventCache_TA.Reset");
+
+	UUserSettingObserverEventCache_TA_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserverEventCache_TA.RecordSetting
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FName                   Id                             (CPF_Parm)
+// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
+
+void UUserSettingObserverEventCache_TA::RecordSetting(const struct FUniqueNetId& PlayerID, const struct FName& Id, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserverEventCache_TA.RecordSetting");
+
+	UUserSettingObserverEventCache_TA_RecordSetting_Params params;
+	params.PlayerID = PlayerID;
+	params.Id = Id;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.UserSettingObserverEventCache_TA.EventCacheTimeout
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UUserSettingObserverEventCache_TA* Cache                          (CPF_Parm, CPF_EditInline)
+
+void UUserSettingObserverEventCache_TA::EventCacheTimeout(class UUserSettingObserverEventCache_TA* Cache)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.UserSettingObserverEventCache_TA.EventCacheTimeout");
+
+	UUserSettingObserverEventCache_TA_EventCacheTimeout_Params params;
+	params.Cache = Cache;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__UserSettingObserverEventCache_TA__RecordSetting_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FSettingEvent           E                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__UserSettingObserverEventCache_TA__RecordSetting_1::LambdaCallback(const struct FSettingEvent& E)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__UserSettingObserverEventCache_TA__RecordSetting_1.LambdaCallback");
+
+	U__UserSettingObserverEventCache_TA__RecordSetting_1_LambdaCallback_Params params;
+	params.E = E;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -96423,9 +102215,9 @@ bool UGFxData_StartMenu_TA::MainMenuDisabled()
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            SaveData                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_StartMenu_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError_X* Error)
+void UGFxData_StartMenu_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* SaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_StartMenu_TA.HandleSaveDataLoaded");
 
@@ -96673,6 +102465,26 @@ void UGFxData_StartMenu_TA::OnShellSet()
 }
 
 
+// Function TAGame.GFxData_StartMenu_TA.EventTitleScreenClicked
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxData_StartMenu_TA*   StartMenu                      (CPF_Parm)
+
+void UGFxData_StartMenu_TA::EventTitleScreenClicked(class UGFxData_StartMenu_TA* StartMenu)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_StartMenu_TA.EventTitleScreenClicked");
+
+	UGFxData_StartMenu_TA_EventTitleScreenClicked_Params params;
+	params.StartMenu = StartMenu;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_Stats_TA.SetGFxStatData
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
@@ -96755,6 +102567,70 @@ void UGFxData_Stats_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Stats_TA.OnShellSet");
 
 	UGFxData_Stats_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.SetCurrentPlaylist
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   Playlist                       (CPF_Parm)
+
+void UGFxData_Training_TA::SetCurrentPlaylist(const struct FName& Playlist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.SetCurrentPlaylist");
+
+	UGFxData_Training_TA_SetCurrentPlaylist_Params params;
+	params.Playlist = Playlist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.StartTutorialV2
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 MapName                        (CPF_Parm, CPF_NeedCtorLink)
+// bool                           bAutoEntered                   (CPF_Parm)
+
+void UGFxData_Training_TA::StartTutorialV2(const struct FString& MapName, bool bAutoEntered)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.StartTutorialV2");
+
+	UGFxData_Training_TA_StartTutorialV2_Params params;
+	params.MapName = MapName;
+	params.bAutoEntered = bAutoEntered;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.PlayV2Tutorial
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// TEnumAsByte<EV2TutorialType>   Type                           (CPF_Parm)
+// bool                           bAutoEntered                   (CPF_Parm)
+
+void UGFxData_Training_TA::PlayV2Tutorial(TEnumAsByte<EV2TutorialType> Type, bool bAutoEntered)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.PlayV2Tutorial");
+
+	UGFxData_Training_TA_PlayV2Tutorial_Params params;
+	params.Type = Type;
+	params.bAutoEntered = bAutoEntered;
 
 	auto flags = fn->FunctionFlags;
 
@@ -96997,9 +102873,9 @@ void UGFxData_Training_TA::SetTrainingGameEvent(class AGameEvent_Tutorial_TA* In
 // Parameters:
 // class USaveGameManager_TA*     Manager                        (CPF_Parm)
 // class USaveData_TA*            MySaveData                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_Training_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError_X* Error)
+void UGFxData_Training_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manager, class USaveData_TA* MySaveData, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.HandleSaveDataLoaded");
 
@@ -97007,6 +102883,68 @@ void UGFxData_Training_TA::HandleSaveDataLoaded(class USaveGameManager_TA* Manag
 	params.Manager = Manager;
 	params.MySaveData = MySaveData;
 	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.HandleTutorialTipChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGameEvent_Tutorial_TA*  GameEvent                      (CPF_Parm)
+// struct FString                 NewTip                         (CPF_Parm, CPF_NeedCtorLink)
+
+void UGFxData_Training_TA::HandleTutorialTipChanged(class AGameEvent_Tutorial_TA* GameEvent, const struct FString& NewTip)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.HandleTutorialTipChanged");
+
+	UGFxData_Training_TA_HandleTutorialTipChanged_Params params;
+	params.GameEvent = GameEvent;
+	params.NewTip = NewTip;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.HandleUseActionsChanged
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class AGameEvent_Tutorial_TA*  GameEvent                      (CPF_Parm)
+
+void UGFxData_Training_TA::HandleUseActionsChanged(class AGameEvent_Tutorial_TA* GameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.HandleUseActionsChanged");
+
+	UGFxData_Training_TA_HandleUseActionsChanged_Params params;
+	params.GameEvent = GameEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_Training_TA.HandleTutorialEnded
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTutorial_TA*            Tutorial                       (CPF_Parm)
+
+void UGFxData_Training_TA::HandleTutorialEnded(class UTutorial_TA* Tutorial)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Training_TA.HandleTutorialEnded");
+
+	UGFxData_Training_TA_HandleTutorialEnded_Params params;
+	params.Tutorial = Tutorial;
 
 	auto flags = fn->FunctionFlags;
 
@@ -98611,9 +104549,9 @@ void AGameEvent_TrainingEditor_TA::HandleSaveResult(const struct FSaveObjectResu
 // Function TAGame.GameEvent_TrainingEditor_TA.SaveInternal
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
-// struct FSaveObjectResult       StructInitializer__s_AB63B0B24731BBD06E1441B3818922B9 (CPF_Const, CPF_OutParm)
+// struct FSaveObjectResult       StructInitializer_4EFB7079467897B029F65C810CD78174 (CPF_Const, CPF_OutParm)
 
-void AGameEvent_TrainingEditor_TA::SaveInternal(struct FSaveObjectResult* StructInitializer__s_AB63B0B24731BBD06E1441B3818922B9)
+void AGameEvent_TrainingEditor_TA::SaveInternal(struct FSaveObjectResult* StructInitializer_4EFB7079467897B029F65C810CD78174)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_TrainingEditor_TA.SaveInternal");
 
@@ -98625,8 +104563,8 @@ void AGameEvent_TrainingEditor_TA::SaveInternal(struct FSaveObjectResult* Struct
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_AB63B0B24731BBD06E1441B3818922B9 != nullptr)
-		*StructInitializer__s_AB63B0B24731BBD06E1441B3818922B9 = params.StructInitializer__s_AB63B0B24731BBD06E1441B3818922B9;
+	if (StructInitializer_4EFB7079467897B029F65C810CD78174 != nullptr)
+		*StructInitializer_4EFB7079467897B029F65C810CD78174 = params.StructInitializer_4EFB7079467897B029F65C810CD78174;
 }
 
 
@@ -100092,6 +106030,26 @@ void ULoadingScreen_TA::HandlePostLoadMap()
 }
 
 
+// Function TAGame.LoadingScreen_TA.HandleLoadingUnfairMatch
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class APlayerControllerBase_TA* PlayerControllerBase           (CPF_Parm)
+
+void ULoadingScreen_TA::HandleLoadingUnfairMatch(class APlayerControllerBase_TA* PlayerControllerBase)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadingScreen_TA.HandleLoadingUnfairMatch");
+
+	ULoadingScreen_TA_HandleLoadingUnfairMatch_Params params;
+	params.PlayerControllerBase = PlayerControllerBase;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.LoadingScreen_TA.GetLocalizedMaximumPlayerCounts
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -100825,9 +106783,9 @@ void AGFxHUD_Spectator_TA::PostBeginPlay()
 // Function TAGame.GFxNameplatesManager_TA.DrawDebug
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
-// class UNameplateComponent_TA*  Nameplate                      (CPF_Parm, CPF_EditInline)
+// class UNameplateMeshComponent_TA* Nameplate                      (CPF_Parm, CPF_EditInline)
 
-void UGFxNameplatesManager_TA::DrawDebug(class UNameplateComponent_TA* Nameplate)
+void UGFxNameplatesManager_TA::DrawDebug(class UNameplateMeshComponent_TA* Nameplate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.DrawDebug");
 
@@ -100899,15 +106857,15 @@ void UGFxNameplatesManager_TA::SetHidden(bool bHide)
 // Function TAGame.GFxNameplatesManager_TA.GetNameplate
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// class ACar_TA*                 Car                            (CPF_Parm)
-// class UNameplateComponent_TA*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+// class UNameplateComponent_TA*  InComponent                    (CPF_Parm, CPF_EditInline)
+// class UNameplateMeshComponent_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UNameplateComponent_TA* UGFxNameplatesManager_TA::GetNameplate(class ACar_TA* Car)
+class UNameplateMeshComponent_TA* UGFxNameplatesManager_TA::GetNameplate(class UNameplateComponent_TA* InComponent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.GetNameplate");
 
 	UGFxNameplatesManager_TA_GetNameplate_Params params;
-	params.Car = Car;
+	params.InComponent = InComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -100923,16 +106881,16 @@ class UNameplateComponent_TA* UGFxNameplatesManager_TA::GetNameplate(class ACar_
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // int                            Index                          (CPF_Parm)
-// class ACar_TA*                 Car                            (CPF_Parm)
-// class UNameplateComponent_TA*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+// class UNameplateComponent_TA*  InComponent                    (CPF_Parm, CPF_EditInline)
+// class UNameplateMeshComponent_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-class UNameplateComponent_TA* UGFxNameplatesManager_TA::SetNameplate(int Index, class ACar_TA* Car)
+class UNameplateMeshComponent_TA* UGFxNameplatesManager_TA::SetNameplate(int Index, class UNameplateComponent_TA* InComponent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.SetNameplate");
 
 	UGFxNameplatesManager_TA_SetNameplate_Params params;
 	params.Index = Index;
-	params.Car = Car;
+	params.InComponent = InComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -100948,15 +106906,15 @@ class UNameplateComponent_TA* UGFxNameplatesManager_TA::SetNameplate(int Index, 
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
 // int                            Index                          (CPF_Parm)
-// class ACar_TA*                 Car                            (CPF_Parm)
+// class UNameplateComponent_TA*  InComponent                    (CPF_Parm, CPF_EditInline)
 
-void UGFxNameplatesManager_TA::SetPlayerData(int Index, class ACar_TA* Car)
+void UGFxNameplatesManager_TA::SetPlayerData(int Index, class UNameplateComponent_TA* InComponent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.SetPlayerData");
 
 	UGFxNameplatesManager_TA_SetPlayerData_Params params;
 	params.Index = Index;
-	params.Car = Car;
+	params.InComponent = InComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -101081,14 +107039,14 @@ void UGFxNameplatesManager_TA::HandleCarChanged(class ACar_TA* Car)
 }
 
 
-// Function TAGame.GFxNameplatesManager_TA.UpdatePendingCars
+// Function TAGame.GFxNameplatesManager_TA.UpdatePendingComponents
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 
-void UGFxNameplatesManager_TA::UpdatePendingCars()
+void UGFxNameplatesManager_TA::UpdatePendingComponents()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.UpdatePendingCars");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.UpdatePendingComponents");
 
-	UGFxNameplatesManager_TA_UpdatePendingCars_Params params;
+	UGFxNameplatesManager_TA_UpdatePendingComponents_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -101098,19 +107056,19 @@ void UGFxNameplatesManager_TA::UpdatePendingCars()
 }
 
 
-// Function TAGame.GFxNameplatesManager_TA.HandleCarRemoved
+// Function TAGame.GFxNameplatesManager_TA.HandleNameplateRemoved
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
 // class UGameShare_TA*           G                              (CPF_Parm)
-// class ACar_TA*                 Car                            (CPF_Parm)
+// class UNameplateComponent_TA*  InComponent                    (CPF_Parm, CPF_EditInline)
 
-void UGFxNameplatesManager_TA::HandleCarRemoved(class UGameShare_TA* G, class ACar_TA* Car)
+void UGFxNameplatesManager_TA::HandleNameplateRemoved(class UGameShare_TA* G, class UNameplateComponent_TA* InComponent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.HandleCarRemoved");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.HandleNameplateRemoved");
 
-	UGFxNameplatesManager_TA_HandleCarRemoved_Params params;
+	UGFxNameplatesManager_TA_HandleNameplateRemoved_Params params;
 	params.G = G;
-	params.Car = Car;
+	params.InComponent = InComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -101120,19 +107078,19 @@ void UGFxNameplatesManager_TA::HandleCarRemoved(class UGameShare_TA* G, class AC
 }
 
 
-// Function TAGame.GFxNameplatesManager_TA.HandleCarAdded
+// Function TAGame.GFxNameplatesManager_TA.HandleNameplateAdded
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
 // class UGameShare_TA*           G                              (CPF_Parm)
-// class ACar_TA*                 Car                            (CPF_Parm)
+// class UNameplateComponent_TA*  InComponent                    (CPF_Parm, CPF_EditInline)
 
-void UGFxNameplatesManager_TA::HandleCarAdded(class UGameShare_TA* G, class ACar_TA* Car)
+void UGFxNameplatesManager_TA::HandleNameplateAdded(class UGameShare_TA* G, class UNameplateComponent_TA* InComponent)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.HandleCarAdded");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxNameplatesManager_TA.HandleNameplateAdded");
 
-	UGFxNameplatesManager_TA_HandleCarAdded_Params params;
+	UGFxNameplatesManager_TA_HandleNameplateAdded_Params params;
 	params.G = G;
-	params.Car = Car;
+	params.InComponent = InComponent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -102105,49 +108063,6 @@ void UGFxData_Features_TA::OnShellSet()
 }
 
 
-// Function TAGame.GFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineGamePlaylists_X*  Playlists                      (CPF_Parm)
-
-void UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12::LambdaCallback(class UOnlineGamePlaylists_X* Playlists)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12.LambdaCallback");
-
-	UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12_LambdaCallback_Params params;
-	params.Playlists = Playlists;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxShell_TA*            InOuter                        (CPF_Parm)
-// class UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12* UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12::STATIC_StaticConstruct(class UGFxShell_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12.StaticConstruct");
-
-	UGFxShell_TA__OnStart__00CFEBB34194C4073C596FABB0CEFA12_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.TrialMetrics_TA.CheckPendingPurchase
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 
@@ -102922,6 +108837,106 @@ void UNameplateRenderTarget_TA::Render(class UCanvas* C)
 }
 
 
+// Function TAGame.CDNObject_TA.HandleDataChanged
+// (FUNC_Protected)
+// Parameters:
+// class UOnlineResource_X*       Resource                       (CPF_Parm, CPF_EditInline)
+
+void UCDNObject_TA::HandleDataChanged(class UOnlineResource_X* Resource)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CDNObject_TA.HandleDataChanged");
+
+	UCDNObject_TA_HandleDataChanged_Params params;
+	params.Resource = Resource;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CDNObject_TA.DownloadImage
+// (FUNC_Final, FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FString                 ImageURL                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UCDNObject_TA::DownloadImage(const struct FString& ImageURL, const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CDNObject_TA.DownloadImage");
+
+	UCDNObject_TA_DownloadImage_Params params;
+	params.ImageURL = ImageURL;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CDNObject_TA.HandleCacheExpired
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
+
+void UCDNObject_TA::HandleCacheExpired(class UCacheTimer_X* Timer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CDNObject_TA.HandleCacheExpired");
+
+	UCDNObject_TA_HandleCacheExpired_Params params;
+	params.Timer = Timer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CDNObject_TA.GetCDNURL
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UCDNObject_TA::GetCDNURL()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CDNObject_TA.GetCDNURL");
+
+	UCDNObject_TA_GetCDNURL_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CDNObject_TA.Init
+// (FUNC_Defined, FUNC_Public)
+
+void UCDNObject_TA::Init()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CDNObject_TA.Init");
+
+	UCDNObject_TA_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.ESportEvents_TA.UpdateSoonLiveEvents
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 
@@ -102961,30 +108976,8 @@ void UESportEvents_TA::HandleImageDownloaded(class UOnlineImageDownloaderWeb_X* 
 }
 
 
-// Function TAGame.ESportEvents_TA.DownloadImage
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 ImageURL                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UESportEvents_TA::DownloadImage(const struct FString& ImageURL, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ESportEvents_TA.DownloadImage");
-
-	UESportEvents_TA_DownloadImage_Params params;
-	params.ImageURL = ImageURL;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.ESportEvents_TA.HandleDataChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // class UOnlineResource_X*       Resource                       (CPF_Parm, CPF_EditInline)
 
@@ -102994,64 +108987,6 @@ void UESportEvents_TA::HandleDataChanged(class UOnlineResource_X* Resource)
 
 	UESportEvents_TA_HandleDataChanged_Params params;
 	params.Resource = Resource;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ESportEvents_TA.HandleCacheExpired
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
-
-void UESportEvents_TA::HandleCacheExpired(class UCacheTimer_X* Timer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ESportEvents_TA.HandleCacheExpired");
-
-	UESportEvents_TA_HandleCacheExpired_Params params;
-	params.Timer = Timer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ESportEvents_TA.GetCDNURL
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UESportEvents_TA::GetCDNURL()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ESportEvents_TA.GetCDNURL");
-
-	UESportEvents_TA_GetCDNURL_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.ESportEvents_TA.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UESportEvents_TA::Init()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ESportEvents_TA.Init");
-
-	UESportEvents_TA_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -103072,6 +109007,218 @@ void UESportEvents_TA::EventESportsEventsChanged(class UESportEvents_TA* NewObje
 
 	UESportEvents_TA_EventESportsEventsChanged_Params params;
 	params.NewObject = NewObject;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Upsell_TA.HandleTextureDownloaded
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineImageDownloaderWeb_X* Downloader                     (CPF_Parm)
+// struct FDownloadedImage        Image                          (CPF_Parm, CPF_NeedCtorLink)
+
+void UUpsell_TA::HandleTextureDownloaded(class UOnlineImageDownloaderWeb_X* Downloader, const struct FDownloadedImage& Image)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Upsell_TA.HandleTextureDownloaded");
+
+	UUpsell_TA_HandleTextureDownloaded_Params params;
+	params.Downloader = Downloader;
+	params.Image = Image;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Upsell_TA.HandleDataChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineResource_X*       Resource                       (CPF_Parm, CPF_EditInline)
+
+void UUpsell_TA::HandleDataChanged(class UOnlineResource_X* Resource)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Upsell_TA.HandleDataChanged");
+
+	UUpsell_TA_HandleDataChanged_Params params;
+	params.Resource = Resource;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Upsell_TA.HandleGameInfoChanged
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void UUpsell_TA::HandleGameInfoChanged(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Upsell_TA.HandleGameInfoChanged");
+
+	UUpsell_TA_HandleGameInfoChanged_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.Upsell_TA.Init
+// (FUNC_Defined, FUNC_Public)
+
+void UUpsell_TA::Init()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Upsell_TA.Init");
+
+	UUpsell_TA_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.FinishHostStartPlayTogether
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UOnlineGamePlayTogether_TA::FinishHostStartPlayTogether()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.FinishHostStartPlayTogether");
+
+	UOnlineGamePlayTogether_TA_FinishHostStartPlayTogether_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.OnCreatePlayTogetherParty
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameParty_X*      InParty                        (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
+
+void UOnlineGamePlayTogether_TA::OnCreatePlayTogetherParty(class UOnlineGameParty_X* InParty, bool bWasSuccessful)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.OnCreatePlayTogetherParty");
+
+	UOnlineGamePlayTogether_TA_OnCreatePlayTogetherParty_Params params;
+	params.InParty = InParty;
+	params.bWasSuccessful = bWasSuccessful;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.UpdatePlayTogether
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UOnlineGamePlayTogether_TA::UpdatePlayTogether()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.UpdatePlayTogether");
+
+	UOnlineGamePlayTogether_TA_UpdatePlayTogether_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.HandlePlayTogetherLoginChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UOnlineGamePlayTogether_TA::HandlePlayTogetherLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.HandlePlayTogetherLoginChanged");
+
+	UOnlineGamePlayTogether_TA_HandlePlayTogetherLoginChanged_Params params;
+	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.OnTitleScreenClicked
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_StartMenu_TA*   StartMenu                      (CPF_Parm)
+
+void UOnlineGamePlayTogether_TA::OnTitleScreenClicked(class UGFxData_StartMenu_TA* StartMenu)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.OnTitleScreenClicked");
+
+	UOnlineGamePlayTogether_TA_OnTitleScreenClicked_Params params;
+	params.StartMenu = StartMenu;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.HandleHostStartPlayTogether
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+
+void UOnlineGamePlayTogether_TA::HandleHostStartPlayTogether(unsigned char LocalUserNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.HandleHostStartPlayTogether");
+
+	UOnlineGamePlayTogether_TA_HandleHostStartPlayTogether_Params params;
+	params.LocalUserNum = LocalUserNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.OnlineGamePlayTogether_TA.OnInit
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGamePlayTogether_TA::OnInit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGamePlayTogether_TA.OnInit");
+
+	UOnlineGamePlayTogether_TA_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -103479,90 +109626,6 @@ class UPartyMessage_Chat_TA* UPartyMessage_Chat_TA::SetChatMessage(const struct 
 }
 
 
-// Function TAGame.RPC_ProductsTradePlayerStatus_TA.OnComplete
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void URPC_ProductsTradePlayerStatus_TA::OnComplete()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.OnComplete");
-
-	URPC_ProductsTradePlayerStatus_TA_OnComplete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.RPC_ProductsTradePlayerStatus_TA.HasCompleted
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool URPC_ProductsTradePlayerStatus_TA::HasCompleted()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.HasCompleted");
-
-	URPC_ProductsTradePlayerStatus_TA_HasCompleted_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetTradeId
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FGuid                   InTradeId                      (CPF_Parm)
-// class URPC_ProductsTradePlayerStatus_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ProductsTradePlayerStatus_TA* URPC_ProductsTradePlayerStatus_TA::SetTradeId(const struct FGuid& InTradeId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetTradeId");
-
-	URPC_ProductsTradePlayerStatus_TA_SetTradeId_Params params;
-	params.InTradeId = InTradeId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetLocalPlayerID
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            InPlayerId                     (CPF_Parm)
-// class URPC_ProductsTradePlayerStatus_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ProductsTradePlayerStatus_TA* URPC_ProductsTradePlayerStatus_TA::SetLocalPlayerID(const struct FUniqueNetId& InPlayerId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ProductsTradePlayerStatus_TA.SetLocalPlayerID");
-
-	URPC_ProductsTradePlayerStatus_TA_SetLocalPlayerID_Params params;
-	params.InPlayerId = InPlayerId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.RPC_ProductsTradePlayer_TA.SetRemoteProducts
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
@@ -103853,26 +109916,43 @@ class UPartyMessage_TradeProductUpdate_TA* UPartyMessage_TradeProductUpdate_TA::
 }
 
 
-// Function TAGame.PartyMessage_TradeProductUpdate_TA.SetMemberId
-// (FUNC_Defined, FUNC_Public)
+// Function TAGame.GFxData_TradeLobby_TA.__GFxData_TradeLobby_TA__GetLocalProductOfferings_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_TradeProductUpdate_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UOnlineProduct_TA*       Offering                       (CPF_Parm)
 
-class UPartyMessage_TradeProductUpdate_TA* UPartyMessage_TradeProductUpdate_TA::SetMemberId(const struct FUniqueNetId& InMemberId)
+void UGFxData_TradeLobby_TA::__GFxData_TradeLobby_TA__GetLocalProductOfferings_1(class UOnlineProduct_TA* Offering)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PartyMessage_TradeProductUpdate_TA.SetMemberId");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA.__GFxData_TradeLobby_TA__GetLocalProductOfferings_1");
 
-	UPartyMessage_TradeProductUpdate_TA_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
+	UGFxData_TradeLobby_TA___GFxData_TradeLobby_TA__GetLocalProductOfferings_1_Params params;
+	params.Offering = Offering;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
 
-	return params.ReturnValue;
+
+// Function TAGame.GFxData_TradeLobby_TA.__GFxData_TradeLobby_TA__GetRemoteProductOfferings_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineProduct_TA*       Offering                       (CPF_Parm)
+
+void UGFxData_TradeLobby_TA::__GFxData_TradeLobby_TA__GetRemoteProductOfferings_1(class UOnlineProduct_TA* Offering)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA.__GFxData_TradeLobby_TA__GetRemoteProductOfferings_1");
+
+	UGFxData_TradeLobby_TA___GFxData_TradeLobby_TA__GetRemoteProductOfferings_1_Params params;
+	params.Offering = Offering;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -103944,9 +110024,9 @@ TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetLocalKeyOfferings()
 // Parameters:
 // TArray<class UOnlineProduct_TA*> Offerings                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // TArray<class UOnlineProduct_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<class UOnlineProduct_TA*> FilterLocal_15C5F44C45C231D50BFB1BA5B3767061 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> FilterLocal_08D2EC5446F03BB847CFFCB6266B40EE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetProductOfferings(TArray<class UOnlineProduct_TA*>* Offerings, TArray<class UOnlineProduct_TA*>* FilterLocal_15C5F44C45C231D50BFB1BA5B3767061)
+TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetProductOfferings(TArray<class UOnlineProduct_TA*>* Offerings, TArray<class UOnlineProduct_TA*>* FilterLocal_08D2EC5446F03BB847CFFCB6266B40EE)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA.GetProductOfferings");
 
@@ -103960,8 +110040,8 @@ TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetProductOfferings(TAr
 
 	if (Offerings != nullptr)
 		*Offerings = params.Offerings;
-	if (FilterLocal_15C5F44C45C231D50BFB1BA5B3767061 != nullptr)
-		*FilterLocal_15C5F44C45C231D50BFB1BA5B3767061 = params.FilterLocal_15C5F44C45C231D50BFB1BA5B3767061;
+	if (FilterLocal_08D2EC5446F03BB847CFFCB6266B40EE != nullptr)
+		*FilterLocal_08D2EC5446F03BB847CFFCB6266B40EE = params.FilterLocal_08D2EC5446F03BB847CFFCB6266B40EE;
 
 	return params.ReturnValue;
 }
@@ -103972,9 +110052,9 @@ TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetProductOfferings(TAr
 // Parameters:
 // TArray<class UOnlineProduct_TA*> Offerings                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // TArray<class UOnlineProduct_TA*> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<class UOnlineProduct_TA*> FilterLocal_FC7F40BA436A86C92CD2F0B3157DF2D3 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UOnlineProduct_TA*> FilterLocal_E3B0A867490D6503A1687A960083572B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetKeyOfferings(TArray<class UOnlineProduct_TA*>* Offerings, TArray<class UOnlineProduct_TA*>* FilterLocal_FC7F40BA436A86C92CD2F0B3157DF2D3)
+TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetKeyOfferings(TArray<class UOnlineProduct_TA*>* Offerings, TArray<class UOnlineProduct_TA*>* FilterLocal_E3B0A867490D6503A1687A960083572B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA.GetKeyOfferings");
 
@@ -103988,8 +110068,8 @@ TArray<class UOnlineProduct_TA*> UGFxData_TradeLobby_TA::GetKeyOfferings(TArray<
 
 	if (Offerings != nullptr)
 		*Offerings = params.Offerings;
-	if (FilterLocal_FC7F40BA436A86C92CD2F0B3157DF2D3 != nullptr)
-		*FilterLocal_FC7F40BA436A86C92CD2F0B3157DF2D3 = params.FilterLocal_FC7F40BA436A86C92CD2F0B3157DF2D3;
+	if (FilterLocal_E3B0A867490D6503A1687A960083572B != nullptr)
+		*FilterLocal_E3B0A867490D6503A1687A960083572B = params.FilterLocal_E3B0A867490D6503A1687A960083572B;
 
 	return params.ReturnValue;
 }
@@ -104155,6 +110235,23 @@ void UGFxData_TradeLobby_TA::HandleTradePlayerComplete(class UOnlineGameParty_TA
 	UGFxData_TradeLobby_TA_HandleTradePlayerComplete_Params params;
 	params.PartyObject = PartyObject;
 	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_TradeLobby_TA.RefreshProducts
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UGFxData_TradeLobby_TA::RefreshProducts()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA.RefreshProducts");
+
+	UGFxData_TradeLobby_TA_RefreshProducts_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -104741,35 +110838,14 @@ void UGFxData_TradeLobby_TA::OnShellSet()
 }
 
 
-// Function TAGame.GFxData_ProductTradeIn_TA.GetProfile
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UProfile_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// Function TAGame.OnlineGameRegions_TA.OnInit
+// (FUNC_Defined, FUNC_Protected)
 
-class UProfile_TA* UGFxData_ProductTradeIn_TA::GetProfile()
+void UOnlineGameRegions_TA::OnInit()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.GetProfile");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.OnlineGameRegions_TA.OnInit");
 
-	UGFxData_ProductTradeIn_TA_GetProfile_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInFailed
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
-
-void UGFxData_ProductTradeIn_TA::OnTradeInFailed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInFailed");
-
-	UGFxData_ProductTradeIn_TA_OnTradeInFailed_Params params;
+	UOnlineGameRegions_TA_OnInit_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -104779,70 +110855,16 @@ void UGFxData_ProductTradeIn_TA::OnTradeInFailed()
 }
 
 
-// Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInComplete
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_K2Pure)
-
-void UGFxData_ProductTradeIn_TA::OnTradeInComplete()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.OnTradeInComplete");
-
-	UGFxData_ProductTradeIn_TA_OnTradeInComplete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_ProductTradeIn_TA.HandleTradeInComplete
+// Function TAGame.RegionPingCache_TA.GetSaveFilename
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class URPC_ProductsTradeIn_TA* RPC                            (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-void UGFxData_ProductTradeIn_TA::HandleTradeInComplete(class URPC_ProductsTradeIn_TA* RPC)
+struct FString URegionPingCache_TA::GetSaveFilename()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.HandleTradeInComplete");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RegionPingCache_TA.GetSaveFilename");
 
-	UGFxData_ProductTradeIn_TA_HandleTradeInComplete_Params params;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_ProductTradeIn_TA.TradeIn
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_ProductTradeIn_TA::TradeIn()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.TradeIn");
-
-	UGFxData_ProductTradeIn_TA_TradeIn_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_ProductTradeIn_TA.IsProcessingTrade
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UGFxData_ProductTradeIn_TA::IsProcessingTrade()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ProductTradeIn_TA.IsProcessingTrade");
-
-	UGFxData_ProductTradeIn_TA_IsProcessingTrade_Params params;
+	URegionPingCache_TA_GetSaveFilename_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -104851,6 +110873,70 @@ bool UGFxData_ProductTradeIn_TA::IsProcessingTrade()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function TAGame.RegionPingCache_TA.HandleRegionsPinged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameRegions_X*    RegionsObj                     (CPF_Parm)
+
+void URegionPingCache_TA::HandleRegionsPinged(class UOnlineGameRegions_X* RegionsObj)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RegionPingCache_TA.HandleRegionsPinged");
+
+	URegionPingCache_TA_HandleRegionsPinged_Params params;
+	params.RegionsObj = RegionsObj;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RegionPingCache_TA.HandleImportFinished
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class ULocalCache_X*           Cache                          (CPF_Parm)
+// class URegionPingCache_TA*     CacheObject                    (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void URegionPingCache_TA::HandleImportFinished(class ULocalCache_X* Cache, class URegionPingCache_TA* CacheObject, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RegionPingCache_TA.HandleImportFinished");
+
+	URegionPingCache_TA_HandleImportFinished_Params params;
+	params.Cache = Cache;
+	params.CacheObject = CacheObject;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RegionPingCache_TA.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UOnlineGameRegions_TA*   OnlineGameRegions              (CPF_Parm)
+
+void URegionPingCache_TA::Init(class UOnlineGameRegions_TA* OnlineGameRegions)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RegionPingCache_TA.Init");
+
+	URegionPingCache_TA_Init_Params params;
+	params.OnlineGameRegions = OnlineGameRegions;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -105585,49 +111671,6 @@ void UPlatformMetrics_TA::RecordInput(class UPlayerInput_TA* PlayerInput)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.PlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UNetworkJitterSettings_TA* O                              (CPF_Parm)
-
-void UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8::LambdaCallback(class UNetworkJitterSettings_TA* O)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8.LambdaCallback");
-
-	UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8_LambdaCallback_Params params;
-	params.O = O;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.PlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class APlayerController_TA*    InOuter                        (CPF_Parm)
-// class UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8* UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8::STATIC_StaticConstruct(class APlayerController_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8.StaticConstruct");
-
-	UPlayerController_TA__PostBeginPlay__11E8622343871CF5C08769A2531D38D8_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -107058,125 +113101,6 @@ void UAimAssistComponent_TA::EventAimAssistChanged(class APlayerController_TA* P
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.RPC_ReportPlayer_TA.SetMessages
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// TArray<struct FPlayerChatMessage> InMessages                     (CPF_Parm, CPF_NeedCtorLink)
-// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetMessages(TArray<struct FPlayerChatMessage> InMessages)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetMessages");
-
-	URPC_ReportPlayer_TA_SetMessages_Params params;
-	params.InMessages = InMessages;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ReportPlayer_TA.SetReason
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 InReason                       (CPF_Parm, CPF_NeedCtorLink)
-// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetReason(const struct FString& InReason)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetReason");
-
-	URPC_ReportPlayer_TA_SetReason_Params params;
-	params.InReason = InReason;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ReportPlayer_TA.SetOffender
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
-// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetOffender(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetOffender");
-
-	URPC_ReportPlayer_TA_SetOffender_Params params;
-	params.PlayerID = PlayerID;
-	params.PlayerName = PlayerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ReportPlayer_TA.SetReporter
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
-// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetReporter(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetReporter");
-
-	URPC_ReportPlayer_TA_SetReporter_Params params;
-	params.PlayerID = PlayerID;
-	params.PlayerName = PlayerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.RPC_ReportPlayer_TA.SetGameID
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 InGameID                       (CPF_Parm, CPF_NeedCtorLink)
-// class URPC_ReportPlayer_TA*    ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class URPC_ReportPlayer_TA* URPC_ReportPlayer_TA::SetGameID(const struct FString& InGameID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_ReportPlayer_TA.SetGameID");
-
-	URPC_ReportPlayer_TA_SetGameID_Params params;
-	params.InGameID = InGameID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -109644,75 +115568,6 @@ void UPlayerInput_Game_TA::HandleActiveBindingsChanged(class UProfile_TA* Profil
 }
 
 
-// Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FPlayerBinding          Binding                        (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986::LambdaCallback(const struct FPlayerBinding& Binding)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.LambdaCallback");
-
-	UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986_LambdaCallback_Params params;
-	params.Binding = Binding;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UPlayerInput_TA*         InOuter                        (CPF_Parm)
-// class UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986* UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986::STATIC_StaticConstruct(class UPlayerInput_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.StaticConstruct");
-
-	UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.SetAction
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   Value                          (CPF_Parm)
-// class UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986* UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986::SetAction(const struct FName& Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.PlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986.SetAction");
-
-	UPlayerInput_TA__GetKeyForActionArray__60D29F5B40514E02342CAB8A63650986_SetAction_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.PlayerInput_Replay_TA.HandleActiveBindingsChanged
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -110299,75 +116154,6 @@ void UGameTags_TA::InitTags(const struct FString& AllTags)
 }
 
 
-// Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FPlayerBinding          Binding                        (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1::LambdaCallback(const struct FPlayerBinding& Binding)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.LambdaCallback");
-
-	UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1_LambdaCallback_Params params;
-	params.Binding = Binding;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UProfile_TA*             InOuter                        (CPF_Parm)
-// class UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1* UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1::STATIC_StaticConstruct(class UProfile_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.StaticConstruct");
-
-	UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.SetAction
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   Value                          (CPF_Parm)
-// class UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1* UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1::SetAction(const struct FName& Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.Profile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1.SetAction");
-
-	UProfile_TA__GetKeyForActionArray__5370A1E84153578E446924B4CA9A2CA1_SetAction_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.MapPrefsMetrics_TA.MapPrefs
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
@@ -110635,6 +116421,360 @@ class URPC_SaveDataUpdate_TA* URPC_SaveDataUpdate_TA::SetPlayerID(const struct F
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function TAGame.InitialUserSettingsSender_TA.__InitialUserSettingsSender_TA__TryToSendInitialSettings_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_UserSetting_TA* S                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UInitialUserSettingsSender_TA::__InitialUserSettingsSender_TA__TryToSendInitialSettings_1(class UGFxData_UserSetting_TA* S)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InitialUserSettingsSender_TA.__InitialUserSettingsSender_TA__TryToSendInitialSettings_1");
+
+	UInitialUserSettingsSender_TA___InitialUserSettingsSender_TA__TryToSendInitialSettings_1_Params params;
+	params.S = S;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.InitialUserSettingsSender_TA.TryToSendInitialSettings
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<class UGFxData_UserSetting_TA*> FilterLocal_C2C650A548876873DAA7ABBF93F837AE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UInitialUserSettingsSender_TA::TryToSendInitialSettings(TArray<class UGFxData_UserSetting_TA*>* FilterLocal_C2C650A548876873DAA7ABBF93F837AE)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InitialUserSettingsSender_TA.TryToSendInitialSettings");
+
+	UInitialUserSettingsSender_TA_TryToSendInitialSettings_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_C2C650A548876873DAA7ABBF93F837AE != nullptr)
+		*FilterLocal_C2C650A548876873DAA7ABBF93F837AE = params.FilterLocal_C2C650A548876873DAA7ABBF93F837AE;
+}
+
+
+// Function TAGame.InitialUserSettingsSender_TA.HandlePsyNetLoginChange
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UInitialUserSettingsSender_TA::HandlePsyNetLoginChange(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InitialUserSettingsSender_TA.HandlePsyNetLoginChange");
+
+	UInitialUserSettingsSender_TA_HandlePsyNetLoginChange_Params params;
+	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.InitialUserSettingsSender_TA.HandleGFxShellCreated
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxEngine_X*            Engine                         (CPF_Parm)
+// class UGFxShell_X*             InShell                        (CPF_Parm)
+
+void UInitialUserSettingsSender_TA::HandleGFxShellCreated(class UGFxEngine_X* Engine, class UGFxShell_X* InShell)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InitialUserSettingsSender_TA.HandleGFxShellCreated");
+
+	UInitialUserSettingsSender_TA_HandleGFxShellCreated_Params params;
+	params.Engine = Engine;
+	params.InShell = InShell;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.InitialUserSettingsSender_TA.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ULocalPlayer_TA*         InPlayer                       (CPF_Parm)
+
+void UInitialUserSettingsSender_TA::Init(class ULocalPlayer_TA* InPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InitialUserSettingsSender_TA.Init");
+
+	UInitialUserSettingsSender_TA_Init_Params params;
+	params.InPlayer = InPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_7
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// struct FBodyToEngineAudioPair  Pair                           (CPF_Parm)
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_7(const struct FBodyToEngineAudioPair& Pair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_7");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_7_Params params;
+	params.Pair = Pair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_5
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_5(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_5");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_5_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_4
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_4(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_4");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_4_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_3
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_3(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_3");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_3_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_2
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// int                            Id                             (CPF_Parm)
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_2(int Id)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_2");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_2_Params params;
+	params.Id = Id;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_1
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// class UOnlineProduct_TA*       Product                        (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_1(class UOnlineProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_1");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_1_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__UnlockEnginesForBody_2
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// struct FBodyToEngineAudioPair  Pair                           (CPF_Parm)
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* UEngineAudioUnlocker_TA::STATIC___EngineAudioUnlocker_TA__UnlockEnginesForBody_2(const struct FBodyToEngineAudioPair& Pair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.__EngineAudioUnlocker_TA__UnlockEnginesForBody_2");
+
+	UEngineAudioUnlocker_TA___EngineAudioUnlocker_TA__UnlockEnginesForBody_2_Params params;
+	params.Pair = Pair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.UnlockEnginesForBody
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class USaveData_TA*            SaveData                       (CPF_Parm)
+// class UProduct_TA*             Body                           (CPF_Parm)
+// TArray<struct FBodyToEngineAudioPair> FilterLocal_3BCF1880472765D336B9C990FADB4C5C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     MapLocal_445DF8184BEE854E8AD03598689D92CE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     DistinctLocal_A9088D8B46E9D1D5E288AEB1FE150ADC (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UEngineAudioUnlocker_TA::STATIC_UnlockEnginesForBody(class USaveData_TA* SaveData, class UProduct_TA* Body, TArray<struct FBodyToEngineAudioPair>* FilterLocal_3BCF1880472765D336B9C990FADB4C5C, TArray<class UProduct_TA*>* MapLocal_445DF8184BEE854E8AD03598689D92CE, TArray<class UProduct_TA*>* DistinctLocal_A9088D8B46E9D1D5E288AEB1FE150ADC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.UnlockEnginesForBody");
+
+	UEngineAudioUnlocker_TA_UnlockEnginesForBody_Params params;
+	params.SaveData = SaveData;
+	params.Body = Body;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_3BCF1880472765D336B9C990FADB4C5C != nullptr)
+		*FilterLocal_3BCF1880472765D336B9C990FADB4C5C = params.FilterLocal_3BCF1880472765D336B9C990FADB4C5C;
+	if (MapLocal_445DF8184BEE854E8AD03598689D92CE != nullptr)
+		*MapLocal_445DF8184BEE854E8AD03598689D92CE = params.MapLocal_445DF8184BEE854E8AD03598689D92CE;
+	if (DistinctLocal_A9088D8B46E9D1D5E288AEB1FE150ADC != nullptr)
+		*DistinctLocal_A9088D8B46E9D1D5E288AEB1FE150ADC = params.DistinctLocal_A9088D8B46E9D1D5E288AEB1FE150ADC;
+}
+
+
+// Function TAGame.EngineAudioUnlocker_TA.FixupUnlockedEngineAudio
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class USaveData_TA*            SaveData                       (CPF_Parm)
+// TArray<int>                    MapLocal_20E8B5D942DE3A557273C98DF6CB3C1F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<int>                    ConcatLocal_99C6A0CE47799D2653CCACAFF962D9CF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     MapLocal_1C03A99A44B4C6B32F028684AAB59460 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     FilterLocal_5AD320634C36FB747C9E7A86781CA048 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     DistinctLocal_604893EB4666231D222279B2C9E21B22 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     FilterLocal_329862484706FABFFB6A5FB44F70A18C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     FilterLocal_DA44AAC04674A434C2F60C8249807709 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FBodyToEngineAudioPair> FilterLocal_B9EEB7FA4698C9015BCA14A109FAD7B0 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     MapLocal_1341B1254267A8FC92CAF783A76053C2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     DistinctLocal_B3A659FA43CB4678D5DA3BA365729E47 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<class UProduct_TA*>     FilterLocal_5E404F6A4092179242AF92A13A8E4BC1 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UEngineAudioUnlocker_TA::STATIC_FixupUnlockedEngineAudio(class USaveData_TA* SaveData, TArray<int>* MapLocal_20E8B5D942DE3A557273C98DF6CB3C1F, TArray<int>* ConcatLocal_99C6A0CE47799D2653CCACAFF962D9CF, TArray<class UProduct_TA*>* MapLocal_1C03A99A44B4C6B32F028684AAB59460, TArray<class UProduct_TA*>* FilterLocal_5AD320634C36FB747C9E7A86781CA048, TArray<class UProduct_TA*>* DistinctLocal_604893EB4666231D222279B2C9E21B22, TArray<class UProduct_TA*>* FilterLocal_329862484706FABFFB6A5FB44F70A18C, TArray<class UProduct_TA*>* FilterLocal_DA44AAC04674A434C2F60C8249807709, TArray<struct FBodyToEngineAudioPair>* FilterLocal_B9EEB7FA4698C9015BCA14A109FAD7B0, TArray<class UProduct_TA*>* MapLocal_1341B1254267A8FC92CAF783A76053C2, TArray<class UProduct_TA*>* DistinctLocal_B3A659FA43CB4678D5DA3BA365729E47, TArray<class UProduct_TA*>* FilterLocal_5E404F6A4092179242AF92A13A8E4BC1)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.EngineAudioUnlocker_TA.FixupUnlockedEngineAudio");
+
+	UEngineAudioUnlocker_TA_FixupUnlockedEngineAudio_Params params;
+	params.SaveData = SaveData;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_20E8B5D942DE3A557273C98DF6CB3C1F != nullptr)
+		*MapLocal_20E8B5D942DE3A557273C98DF6CB3C1F = params.MapLocal_20E8B5D942DE3A557273C98DF6CB3C1F;
+	if (ConcatLocal_99C6A0CE47799D2653CCACAFF962D9CF != nullptr)
+		*ConcatLocal_99C6A0CE47799D2653CCACAFF962D9CF = params.ConcatLocal_99C6A0CE47799D2653CCACAFF962D9CF;
+	if (MapLocal_1C03A99A44B4C6B32F028684AAB59460 != nullptr)
+		*MapLocal_1C03A99A44B4C6B32F028684AAB59460 = params.MapLocal_1C03A99A44B4C6B32F028684AAB59460;
+	if (FilterLocal_5AD320634C36FB747C9E7A86781CA048 != nullptr)
+		*FilterLocal_5AD320634C36FB747C9E7A86781CA048 = params.FilterLocal_5AD320634C36FB747C9E7A86781CA048;
+	if (DistinctLocal_604893EB4666231D222279B2C9E21B22 != nullptr)
+		*DistinctLocal_604893EB4666231D222279B2C9E21B22 = params.DistinctLocal_604893EB4666231D222279B2C9E21B22;
+	if (FilterLocal_329862484706FABFFB6A5FB44F70A18C != nullptr)
+		*FilterLocal_329862484706FABFFB6A5FB44F70A18C = params.FilterLocal_329862484706FABFFB6A5FB44F70A18C;
+	if (FilterLocal_DA44AAC04674A434C2F60C8249807709 != nullptr)
+		*FilterLocal_DA44AAC04674A434C2F60C8249807709 = params.FilterLocal_DA44AAC04674A434C2F60C8249807709;
+	if (FilterLocal_B9EEB7FA4698C9015BCA14A109FAD7B0 != nullptr)
+		*FilterLocal_B9EEB7FA4698C9015BCA14A109FAD7B0 = params.FilterLocal_B9EEB7FA4698C9015BCA14A109FAD7B0;
+	if (MapLocal_1341B1254267A8FC92CAF783A76053C2 != nullptr)
+		*MapLocal_1341B1254267A8FC92CAF783A76053C2 = params.MapLocal_1341B1254267A8FC92CAF783A76053C2;
+	if (DistinctLocal_B3A659FA43CB4678D5DA3BA365729E47 != nullptr)
+		*DistinctLocal_B3A659FA43CB4678D5DA3BA365729E47 = params.DistinctLocal_B3A659FA43CB4678D5DA3BA365729E47;
+	if (FilterLocal_5E404F6A4092179242AF92A13A8E4BC1 != nullptr)
+		*FilterLocal_5E404F6A4092179242AF92A13A8E4BC1 = params.FilterLocal_5E404F6A4092179242AF92A13A8E4BC1;
 }
 
 
@@ -112386,6 +118526,175 @@ void AFXActor_BreakoutPlatform_TA::SetAttachmentActor(class AActor* AttachToActo
 }
 
 
+// Function TAGame.__ProductAttribute_Painted_TA__ApplyToSetParameter_2.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FPaintAttributeParameter PaintParam                     (CPF_Parm)
+
+void U__ProductAttribute_Painted_TA__ApplyToSetParameter_2::LambdaCallback(const struct FPaintAttributeParameter& PaintParam)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__ProductAttribute_Painted_TA__ApplyToSetParameter_2.LambdaCallback");
+
+	U__ProductAttribute_Painted_TA__ApplyToSetParameter_2_LambdaCallback_Params params;
+	params.PaintParam = PaintParam;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_6.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FBodyToEngineAudioPair  Pair                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_6::LambdaCallback(const struct FBodyToEngineAudioPair& Pair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_6.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_6_LambdaCallback_Params params;
+	params.Pair = Pair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_8.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_8::LambdaCallback(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_8.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_8_LambdaCallback_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_9.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+
+void U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_9::LambdaCallback(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_9.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_9_LambdaCallback_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_10.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+
+void U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_10::LambdaCallback(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_10.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__FixupUnlockedEngineAudio_10_LambdaCallback_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__UnlockEnginesForBody_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FBodyToEngineAudioPair  Pair                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__EngineAudioUnlocker_TA__UnlockEnginesForBody_1::LambdaCallback(const struct FBodyToEngineAudioPair& Pair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__UnlockEnginesForBody_1.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__UnlockEnginesForBody_1_LambdaCallback_Params params;
+	params.Pair = Pair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__EngineAudioUnlocker_TA__UnlockEnginesForBody_3.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UProduct_TA*             Product                        (CPF_Parm)
+
+void U__EngineAudioUnlocker_TA__UnlockEnginesForBody_3::LambdaCallback(class UProduct_TA* Product)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__EngineAudioUnlocker_TA__UnlockEnginesForBody_3.LambdaCallback");
+
+	U__EngineAudioUnlocker_TA__UnlockEnginesForBody_3_LambdaCallback_Params params;
+	params.Product = Product;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RPC_RecordMatchStats_TA.Append
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Text                           (CPF_Parm, CPF_NeedCtorLink)
+
+void URPC_RecordMatchStats_TA::Append(const struct FString& Text)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_RecordMatchStats_TA.Append");
+
+	URPC_RecordMatchStats_TA_Append_Params params;
+	params.Text = Text;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SpawnPointGroup_TA.RemoveFromSpawnPoints
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -113293,92 +119602,6 @@ class URPC_ProductsTradeIn_TA* URPC_ProductsTradeIn_TA::SetPlayerID(const struct
 }
 
 
-// Function TAGame.GFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineProduct_TA*       Offering                       (CPF_Parm)
-
-void UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F::LambdaCallback(class UOnlineProduct_TA* Offering)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F.LambdaCallback");
-
-	UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F_LambdaCallback_Params params;
-	params.Offering = Offering;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_TradeLobby_TA*  InOuter                        (CPF_Parm)
-// class UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F* UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F::STATIC_StaticConstruct(class UGFxData_TradeLobby_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F.StaticConstruct");
-
-	UGFxData_TradeLobby_TA__GetRemoteProductOfferings__7FE9CC544F60C96D7D0226A12798696F_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineProduct_TA*       Offering                       (CPF_Parm)
-
-void UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363::LambdaCallback(class UOnlineProduct_TA* Offering)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363.LambdaCallback");
-
-	UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363_LambdaCallback_Params params;
-	params.Offering = Offering;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UGFxData_TradeLobby_TA*  InOuter                        (CPF_Parm)
-// class UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363* UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363::STATIC_StaticConstruct(class UGFxData_TradeLobby_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363.StaticConstruct");
-
-	UGFxData_TradeLobby_TA__GetLocalProductOfferings__557823A94BF3D165438D669BBE86D363_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.ProductStat_Baskets_TA.OnStatEvent
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -113389,66 +119612,6 @@ void UProductStat_Baskets_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_Baskets_TA.OnStatEvent");
 
 	UProductStat_Baskets_TA_OnStatEvent_Params params;
-	params.StatEvent = StatEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ProductStat_TurtleGoals_TA.OnStatEvent
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
-
-void UProductStat_TurtleGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_TurtleGoals_TA.OnStatEvent");
-
-	UProductStat_TurtleGoals_TA_OnStatEvent_Params params;
-	params.StatEvent = StatEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ProductStat_BicycleGoals_TA.OnStatEvent
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
-
-void UProductStat_BicycleGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_BicycleGoals_TA.OnStatEvent");
-
-	UProductStat_BicycleGoals_TA_OnStatEvent_Params params;
-	params.StatEvent = StatEvent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.ProductStat_AerialGoals_TA.OnStatEvent
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
-
-void UProductStat_AerialGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_AerialGoals_TA.OnStatEvent");
-
-	UProductStat_AerialGoals_TA_OnStatEvent_Params params;
 	params.StatEvent = StatEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -113479,6 +119642,26 @@ void UProductStat_Assists_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
 }
 
 
+// Function TAGame.ProductStat_AerialGoals_TA.OnStatEvent
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
+
+void UProductStat_AerialGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_AerialGoals_TA.OnStatEvent");
+
+	UProductStat_AerialGoals_TA_OnStatEvent_Params params;
+	params.StatEvent = StatEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.ProductStat_BackwardsGoals_TA.OnStatEvent
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -113489,6 +119672,26 @@ void UProductStat_BackwardsGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_BackwardsGoals_TA.OnStatEvent");
 
 	UProductStat_BackwardsGoals_TA_OnStatEvent_Params params;
+	params.StatEvent = StatEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ProductStat_BicycleGoals_TA.OnStatEvent
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
+
+void UProductStat_BicycleGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_BicycleGoals_TA.OnStatEvent");
+
+	UProductStat_BicycleGoals_TA_OnStatEvent_Params params;
 	params.StatEvent = StatEvent;
 
 	auto flags = fn->FunctionFlags;
@@ -113639,6 +119842,715 @@ void UProductStat_ShotsOnGoal_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
 }
 
 
+// Function TAGame.ProductStat_TurtleGoals_TA.OnStatEvent
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UStatEvent_TA*           StatEvent                      (CPF_Parm)
+
+void UProductStat_TurtleGoals_TA::OnStatEvent(class UStatEvent_TA* StatEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ProductStat_TurtleGoals_TA.OnStatEvent");
+
+	UProductStat_TurtleGoals_TA_OnStatEvent_Params params;
+	params.StatEvent = StatEvent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.GetCamera
+// (FUNC_Final, FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class ACamera_MainMenu_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ACamera_MainMenu_TA* UMenuSequence_TA::GetCamera()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.GetCamera");
+
+	UMenuSequence_TA_GetCamera_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MenuSequence_TA.SetLockPreviewActor
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_TA::SetLockPreviewActor()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.SetLockPreviewActor");
+
+	UMenuSequence_TA_SetLockPreviewActor_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.SetRemotePlayersHidden
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_TA::SetRemotePlayersHidden()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.SetRemotePlayersHidden");
+
+	UMenuSequence_TA_SetRemotePlayersHidden_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.SetCameraState
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_TA::SetCameraState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.SetCameraState");
+
+	UMenuSequence_TA_SetCameraState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.TickSequence
+// (FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UMenuSequence_TA::TickSequence(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.TickSequence");
+
+	UMenuSequence_TA_TickSequence_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.LeaveSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        NextSequence                   (CPF_Parm)
+
+void UMenuSequence_TA::LeaveSequence(class UMenuSequence_TA* NextSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.LeaveSequence");
+
+	UMenuSequence_TA_LeaveSequence_Params params;
+	params.NextSequence = NextSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.EnterSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequence_TA::EnterSequence(class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.EnterSequence");
+
+	UMenuSequence_TA_EnterSequence_Params params;
+	params.PrevSequence = PrevSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequencer_TA*       InComp                         (CPF_Parm, CPF_EditInline)
+
+void UMenuSequence_TA::Init(class UMenuSequencer_TA* InComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.Init");
+
+	UMenuSequence_TA_Init_Params params;
+	params.InComp = InComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.EventLeftSequence
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMenuSequence_TA*        InSequence                     (CPF_Parm)
+
+void UMenuSequence_TA::EventLeftSequence(class UMenuSequence_TA* InSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.EventLeftSequence");
+
+	UMenuSequence_TA_EventLeftSequence_Params params;
+	params.InSequence = InSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_TA.EventEnteredSequence
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMenuSequence_TA*        InSequence                     (CPF_Parm)
+
+void UMenuSequence_TA::EventEnteredSequence(class UMenuSequence_TA* InSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_TA.EventEnteredSequence");
+
+	UMenuSequence_TA_EventEnteredSequence_Params params;
+	params.InSequence = InSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__MenuSequencer_TA__SetSequence_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        S                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__MenuSequencer_TA__SetSequence_1::LambdaCallback(class UMenuSequence_TA* S)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__MenuSequencer_TA__SetSequence_1.LambdaCallback");
+
+	U__MenuSequencer_TA__SetSequence_1_LambdaCallback_Params params;
+	params.S = S;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__MenuSequencer_TA__GetSequence_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        S                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__MenuSequencer_TA__GetSequence_1::LambdaCallback(class UMenuSequence_TA* S)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__MenuSequencer_TA__GetSequence_1.LambdaCallback");
+
+	U__MenuSequencer_TA__GetSequence_1_LambdaCallback_Params params;
+	params.S = S;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.DontStartSound
+// (FUNC_Public)
+
+void URotateComponent_TA::DontStartSound()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.DontStartSound");
+
+	URotateComponent_TA_DontStartSound_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.DontPlayReverse
+// (FUNC_Public)
+
+void URotateComponent_TA::DontPlayReverse()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.DontPlayReverse");
+
+	URotateComponent_TA_DontPlayReverse_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.IsTimerActive
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FName                   FuncName                       (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool URotateComponent_TA::IsTimerActive(const struct FName& FuncName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.IsTimerActive");
+
+	URotateComponent_TA_IsTimerActive_Params params;
+	params.FuncName = FuncName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.SetTimer
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Time                           (CPF_Parm)
+// bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
+// struct FName                   FuncName                       (CPF_OptionalParm, CPF_Parm)
+
+void URotateComponent_TA::SetTimer(float Time, bool bLoop, const struct FName& FuncName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.SetTimer");
+
+	URotateComponent_TA_SetTimer_Params params;
+	params.Time = Time;
+	params.bLoop = bLoop;
+	params.FuncName = FuncName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.ClearTimer
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FName                   FuncName                       (CPF_OptionalParm, CPF_Parm)
+
+void URotateComponent_TA::ClearTimer(const struct FName& FuncName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.ClearTimer");
+
+	URotateComponent_TA_ClearTimer_Params params;
+	params.FuncName = FuncName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.CalculateMomentumFalloff
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float URotateComponent_TA::CalculateMomentumFalloff()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.CalculateMomentumFalloff");
+
+	URotateComponent_TA_CalculateMomentumFalloff_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.SetGrabbed
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bGrab                          (CPF_Parm)
+
+void URotateComponent_TA::SetGrabbed(bool bGrab)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.SetGrabbed");
+
+	URotateComponent_TA_SetGrabbed_Params params;
+	params.bGrab = bGrab;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.DetermineTurnSpeed
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          YawInput                       (CPF_Parm)
+// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float URotateComponent_TA::DetermineTurnSpeed(float YawInput, bool bGamepad)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.DetermineTurnSpeed");
+
+	URotateComponent_TA_DetermineTurnSpeed_Params params;
+	params.YawInput = YawInput;
+	params.bGamepad = bGamepad;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.DetermineSnapRotation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            MoveDirection                  (CPF_Parm)
+
+void URotateComponent_TA::DetermineSnapRotation(int MoveDirection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.DetermineSnapRotation");
+
+	URotateComponent_TA_DetermineSnapRotation_Params params;
+	params.MoveDirection = MoveDirection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.UpdateSpin
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// float                          YawInput                       (CPF_OptionalParm, CPF_Parm)
+// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
+
+void URotateComponent_TA::UpdateSpin(float DeltaTime, float YawInput, bool bGamepad)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.UpdateSpin");
+
+	URotateComponent_TA_UpdateSpin_Params params;
+	params.DeltaTime = DeltaTime;
+	params.YawInput = YawInput;
+	params.bGamepad = bGamepad;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.IncrementSlotIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            InTotalSnaps                   (CPF_Parm)
+// int                            CurrentIndex                   (CPF_Parm)
+// int                            AddAmount                      (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int URotateComponent_TA::STATIC_IncrementSlotIndex(int InTotalSnaps, int CurrentIndex, int AddAmount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.IncrementSlotIndex");
+
+	URotateComponent_TA_IncrementSlotIndex_Params params;
+	params.InTotalSnaps = InTotalSnaps;
+	params.CurrentIndex = CurrentIndex;
+	params.AddAmount = AddAmount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.GetSlotRotation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            SlotIndex                      (CPF_Parm)
+// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FRotator URotateComponent_TA::GetSlotRotation(int SlotIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.GetSlotRotation");
+
+	URotateComponent_TA_GetSlotRotation_Params params;
+	params.SlotIndex = SlotIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.GetClosestSlotInRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 WorldDirection                 (CPF_Parm)
+// struct FRotator                InRotation                     (CPF_Parm)
+// int                            InTotalSnaps                   (CPF_Parm)
+// float                          InSnapAngle                    (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int URotateComponent_TA::STATIC_GetClosestSlotInRotation(const struct FVector& WorldDirection, const struct FRotator& InRotation, int InTotalSnaps, float InSnapAngle)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.GetClosestSlotInRotation");
+
+	URotateComponent_TA_GetClosestSlotInRotation_Params params;
+	params.WorldDirection = WorldDirection;
+	params.InRotation = InRotation;
+	params.InTotalSnaps = InTotalSnaps;
+	params.InSnapAngle = InSnapAngle;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RotateComponent_TA.SetSnap
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FRotator                InSnapStartRotation            (CPF_Parm)
+// int                            InTotalSnaps                   (CPF_Parm)
+// float                          InSnapAngle                    (CPF_Parm)
+// float                          InMinStopMomentum              (CPF_Parm)
+
+void URotateComponent_TA::SetSnap(const struct FRotator& InSnapStartRotation, int InTotalSnaps, float InSnapAngle, float InMinStopMomentum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.SetSnap");
+
+	URotateComponent_TA_SetSnap_Params params;
+	params.InSnapStartRotation = InSnapStartRotation;
+	params.InTotalSnaps = InTotalSnaps;
+	params.InSnapAngle = InSnapAngle;
+	params.InMinStopMomentum = InMinStopMomentum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.StopMovement
+// (FUNC_Defined, FUNC_Public)
+
+void URotateComponent_TA::StopMovement()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.StopMovement");
+
+	URotateComponent_TA_StopMovement_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.StopRotatingSound
+// (FUNC_Defined, FUNC_Public)
+
+void URotateComponent_TA::StopRotatingSound()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.StopRotatingSound");
+
+	URotateComponent_TA_StopRotatingSound_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.SetComponentRotation
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          InDirectionMag                 (CPF_Parm)
+// float                          DeltaTime                      (CPF_Parm)
+
+void URotateComponent_TA::SetComponentRotation(float InDirectionMag, float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.SetComponentRotation");
+
+	URotateComponent_TA_SetComponentRotation_Params params;
+	params.InDirectionMag = InDirectionMag;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.SetCurrentRotation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void URotateComponent_TA::SetCurrentRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.SetCurrentRotation");
+
+	URotateComponent_TA_SetCurrentRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.Tick
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void URotateComponent_TA::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.Tick");
+
+	URotateComponent_TA_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.BeginPlay
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void URotateComponent_TA::BeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.BeginPlay");
+
+	URotateComponent_TA_BeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.RotateComponent_TA.EventRotationChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class URotateComponent_TA*     RotateComponent                (CPF_Parm, CPF_EditInline)
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void URotateComponent_TA::EventRotationChanged(class URotateComponent_TA* RotateComponent, const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RotateComponent_TA.EventRotationChanged");
+
+	URotateComponent_TA_EventRotationChanged_Params params;
+	params.RotateComponent = RotateComponent;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_ProductAttribute_Painted_TA.OnReceivedAttribute
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -113768,9 +120680,9 @@ class URPC_MicroTransactions_ClaimEntitlements_TA* URPC_MicroTransactions_ClaimE
 // Function TAGame.GFxData_MTXGarage_TA.HandleMTXError
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_MTXGarage_TA::HandleMTXError(class UError_X* Error)
+void UGFxData_MTXGarage_TA::HandleMTXError(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MTXGarage_TA.HandleMTXError");
 
@@ -114765,6 +121677,29 @@ void UOnlineGameDLC_TA::EventUpdated(class UOnlineGameDLC_X* DLC)
 }
 
 
+// Function TAGame.__SkillDecayMessageHandler_TA__HandleSkillDecayed_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UGameSettingPlaylist_X*  Playlist                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__SkillDecayMessageHandler_TA__HandleSkillDecayed_1::LambdaCallback(class UGameSettingPlaylist_X* Playlist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__SkillDecayMessageHandler_TA__HandleSkillDecayed_1.LambdaCallback");
+
+	U__SkillDecayMessageHandler_TA__HandleSkillDecayed_1_LambdaCallback_Params params;
+	params.Playlist = Playlist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.RPC_MicroTransactions_FinalizePurchase_TA.SetPlayerID
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -115001,6 +121936,461 @@ class URPC_MicroTransactions_UnlockContainer_TA* URPC_MicroTransactions_UnlockCo
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_MicroTransactions_UnlockContainer_TA.SetContainerID");
 
 	URPC_MicroTransactions_UnlockContainer_TA_SetContainerID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraStateSelector_TA.SelectState
+// (FUNC_Public)
+// Parameters:
+// class UCameraState_X*          InCurrentState                 (CPF_Parm)
+// class UCameraState_X*          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UCameraState_X* UCameraStateSelector_TA::SelectState(class UCameraState_X* InCurrentState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_TA.SelectState");
+
+	UCameraStateSelector_TA_SelectState_Params params;
+	params.InCurrentState = InCurrentState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraStateSelector_TA.SetActive
+// (FUNC_Public)
+
+void UCameraStateSelector_TA::SetActive()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_TA.SetActive");
+
+	UCameraStateSelector_TA_SetActive_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ACamera_X*               InCamera                       (CPF_Parm)
+
+void UCameraStateSelector_TA::Init(class ACamera_X* InCamera)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_TA.Init");
+
+	UCameraStateSelector_TA_Init_Params params;
+	params.InCamera = InCamera;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_Priority_TA.SelectState
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class UCameraState_X*          InCurrentState                 (CPF_Parm)
+// class UCameraState_X*          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UCameraState_X* UCameraStateSelector_Priority_TA::SelectState(class UCameraState_X* InCurrentState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Priority_TA.SelectState");
+
+	UCameraStateSelector_Priority_TA_SelectState_Params params;
+	params.InCurrentState = InCurrentState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraStateSelector_Priority_TA.SetActive
+// (FUNC_Defined, FUNC_Public)
+
+void UCameraStateSelector_Priority_TA::SetActive()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Priority_TA.SetActive");
+
+	UCameraStateSelector_Priority_TA_SetActive_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_Priority_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ACamera_X*               InCamera                       (CPF_Parm)
+
+void UCameraStateSelector_Priority_TA::Init(class ACamera_X* InCamera)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Priority_TA.Init");
+
+	UCameraStateSelector_Priority_TA_Init_Params params;
+	params.InCamera = InCamera;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__CameraStateSelector_Priority_TA__SelectState_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FStateParams            S                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__CameraStateSelector_Priority_TA__SelectState_1::LambdaCallback(const struct FStateParams& S)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__CameraStateSelector_Priority_TA__SelectState_1.LambdaCallback");
+
+	U__CameraStateSelector_Priority_TA__SelectState_1_LambdaCallback_Params params;
+	params.S = S;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__LoadoutCollection_TA__FindPair_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ULoadoutPair_TA*         ComPair                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool U__LoadoutCollection_TA__FindPair_1::LambdaCallback(class ULoadoutPair_TA* ComPair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__LoadoutCollection_TA__FindPair_1.LambdaCallback");
+
+	U__LoadoutCollection_TA__FindPair_1_LambdaCallback_Params params;
+	params.ComPair = ComPair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutPair_TA.CreatePair
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 InPairName                     (CPF_Parm, CPF_NeedCtorLink)
+// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// TArray<class ULoadoutTeam_TA*> ArrayInitializer_99BE68C64CC1F6BCD7782FBC8651513B (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+class ULoadoutPair_TA* ULoadoutPair_TA::STATIC_CreatePair(const struct FString& InPairName, TArray<class ULoadoutTeam_TA*>* ArrayInitializer_99BE68C64CC1F6BCD7782FBC8651513B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutPair_TA.CreatePair");
+
+	ULoadoutPair_TA_CreatePair_Params params;
+	params.InPairName = InPairName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ArrayInitializer_99BE68C64CC1F6BCD7782FBC8651513B != nullptr)
+		*ArrayInitializer_99BE68C64CC1F6BCD7782FBC8651513B = params.ArrayInitializer_99BE68C64CC1F6BCD7782FBC8651513B;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutCollection_TA.FindPair
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 PairName                       (CPF_Parm, CPF_NeedCtorLink)
+// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutPair_TA* ULoadoutCollection_TA::FindPair(const struct FString& PairName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA.FindPair");
+
+	ULoadoutCollection_TA_FindPair_Params params;
+	params.PairName = PairName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutCollection_TA.AddPair
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ULoadoutPair_TA*         Pair                           (CPF_Parm)
+
+void ULoadoutCollection_TA::AddPair(class ULoadoutPair_TA* Pair)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA.AddPair");
+
+	ULoadoutCollection_TA_AddPair_Params params;
+	params.Pair = Pair;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.__LoadoutConverter_TA__SetsToCollection_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ULoadoutSet_TA*          Set                            (CPF_Parm)
+
+void U__LoadoutConverter_TA__SetsToCollection_1::LambdaCallback(class ULoadoutSet_TA* Set)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__LoadoutConverter_TA__SetsToCollection_1.LambdaCallback");
+
+	U__LoadoutConverter_TA__SetsToCollection_1_LambdaCallback_Params params;
+	params.Set = Set;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.SetsToSave
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class ULoadoutSet_TA*>  LoadoutSets                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class ULoadoutSet_TA*          Equipped                       (CPF_Parm)
+// class ULoadoutSave_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutSave_TA* ULoadoutConverter_TA::STATIC_SetsToSave(class ULoadoutSet_TA* Equipped, TArray<class ULoadoutSet_TA*>* LoadoutSets)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetsToSave");
+
+	ULoadoutConverter_TA_SetsToSave_Params params;
+	params.Equipped = Equipped;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (LoadoutSets != nullptr)
+		*LoadoutSets = params.LoadoutSets;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.EquippedToEquipper
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class ULoadoutSet_TA*          Equipped                       (CPF_Parm)
+// class ULoadoutCollection_TA*   Collection                     (CPF_Parm)
+// class ULoadoutEquipper_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutEquipper_TA* ULoadoutConverter_TA::STATIC_EquippedToEquipper(class ULoadoutSet_TA* Equipped, class ULoadoutCollection_TA* Collection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.EquippedToEquipper");
+
+	ULoadoutConverter_TA_EquippedToEquipper_Params params;
+	params.Equipped = Equipped;
+	params.Collection = Collection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.SetsToCollection
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class ULoadoutSet_TA*>  LoadoutSets                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class ULoadoutCollection_TA*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutCollection_TA* ULoadoutConverter_TA::STATIC_SetsToCollection(TArray<class ULoadoutSet_TA*>* LoadoutSets)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetsToCollection");
+
+	ULoadoutConverter_TA_SetsToCollection_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (LoadoutSets != nullptr)
+		*LoadoutSets = params.LoadoutSets;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.SetToPair
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class ULoadoutSet_TA*          Set                            (CPF_Parm)
+// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutPair_TA* ULoadoutConverter_TA::STATIC_SetToPair(class ULoadoutSet_TA* Set)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetToPair");
+
+	ULoadoutConverter_TA_SetToPair_Params params;
+	params.Set = Set;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.Loadout1ToTeam
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// class ULoadout_TA*             Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm)
+// class ULoadoutTeam_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ULoadoutTeam_TA* ULoadoutConverter_TA::STATIC_Loadout1ToTeam(class ULoadout_TA** Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.Loadout1ToTeam");
+
+	ULoadoutConverter_TA_Loadout1ToTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Loadout != nullptr)
+		*Loadout = params.Loadout;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.LoadoutDataToTeam
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FLoadoutData            Loadout                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FLoadoutTeam            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FLoadoutTeam ULoadoutConverter_TA::STATIC_LoadoutDataToTeam(const struct FLoadoutData& Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.LoadoutDataToTeam");
+
+	ULoadoutConverter_TA_LoadoutDataToTeam_Params params;
+	params.Loadout = Loadout;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutConverter_TA.PaintToColor
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FLoadoutTeamPaint       Paint                          (CPF_Const, CPF_Parm, CPF_OutParm)
+// struct FLoadoutTeamColor       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FLoadoutTeamColor       StructInitializer_D6D02DA7464F4653ADE196B96D081957 (CPF_Const, CPF_OutParm)
+
+struct FLoadoutTeamColor ULoadoutConverter_TA::STATIC_PaintToColor(struct FLoadoutTeamPaint* Paint, struct FLoadoutTeamColor* StructInitializer_D6D02DA7464F4653ADE196B96D081957)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.PaintToColor");
+
+	ULoadoutConverter_TA_PaintToColor_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Paint != nullptr)
+		*Paint = params.Paint;
+	if (StructInitializer_D6D02DA7464F4653ADE196B96D081957 != nullptr)
+		*StructInitializer_D6D02DA7464F4653ADE196B96D081957 = params.StructInitializer_D6D02DA7464F4653ADE196B96D081957;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.__SaveData_TA__UnlockItemsAtXPLevel_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+// class UProduct_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UProduct_TA* U__SaveData_TA__UnlockItemsAtXPLevel_1::LambdaCallback(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.__SaveData_TA__UnlockItemsAtXPLevel_1.LambdaCallback");
+
+	U__SaveData_TA__UnlockItemsAtXPLevel_1_LambdaCallback_Params params;
+	params.N = N;
 
 	auto flags = fn->FunctionFlags;
 
@@ -115717,57 +123107,16 @@ struct FVector ACustomFocusTarget_TA::GetFocusLocation(class ACar_TA* ForCar)
 }
 
 
-// Function TAGame.CameraState_GarageComplex_TA.UpdatePOV
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Function TAGame.CameraState_DirectorBallCam_TA.GetProfileCameraSettings
+// (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
+// struct FProfileCameraSettings  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UCameraState_GarageComplex_TA::UpdatePOV(float DeltaTime, struct FCameraOrientation* OutPOV)
+struct FProfileCameraSettings UCameraState_DirectorBallCam_TA::GetProfileCameraSettings()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_GarageComplex_TA.UpdatePOV");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_DirectorBallCam_TA.GetProfileCameraSettings");
 
-	UCameraState_GarageComplex_TA_UpdatePOV_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPOV != nullptr)
-		*OutPOV = params.OutPOV;
-}
-
-
-// Function TAGame.CameraState_GarageComplex_TA.BeginCameraState
-// (FUNC_Defined, FUNC_Public)
-
-void UCameraState_GarageComplex_TA::BeginCameraState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_GarageComplex_TA.BeginCameraState");
-
-	UCameraState_GarageComplex_TA_BeginCameraState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.GetLastLoadedCarIfLoading
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AActor* AGarageComplex_TA::GetLastLoadedCarIfLoading()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.GetLastLoadedCarIfLoading");
-
-	AGarageComplex_TA_GetLastLoadedCarIfLoading_Params params;
+	UCameraState_DirectorBallCam_TA_GetProfileCameraSettings_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -115776,268 +123125,6 @@ class AActor* AGarageComplex_TA::GetLastLoadedCarIfLoading()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function TAGame.GarageComplex_TA.HandleRowFinishedLoadingCars
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class AGarageComplexRow_TA*    Row                            (CPF_Parm)
-
-void AGarageComplex_TA::HandleRowFinishedLoadingCars(class AGarageComplexRow_TA* Row)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.HandleRowFinishedLoadingCars");
-
-	AGarageComplex_TA_HandleRowFinishedLoadingCars_Params params;
-	params.Row = Row;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.PopulateNextRowWithCars
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void AGarageComplex_TA::PopulateNextRowWithCars()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.PopulateNextRowWithCars");
-
-	AGarageComplex_TA_PopulateNextRowWithCars_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.StartPopulatingCars
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void AGarageComplex_TA::StartPopulatingCars()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.StartPopulatingCars");
-
-	AGarageComplex_TA_StartPopulatingCars_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.IsLoadingCars
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool AGarageComplex_TA::IsLoadingCars()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.IsLoadingCars");
-
-	AGarageComplex_TA_IsLoadingCars_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GarageComplex_TA.UpdateRowLocation
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void AGarageComplex_TA::UpdateRowLocation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.UpdateRowLocation");
-
-	AGarageComplex_TA_UpdateRowLocation_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.ShiftCameraVertical
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// int                            Direction                      (CPF_Parm)
-
-void AGarageComplex_TA::ShiftCameraVertical(int Direction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.ShiftCameraVertical");
-
-	AGarageComplex_TA_ShiftCameraVertical_Params params;
-	params.Direction = Direction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.RotateRowRight
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplex_TA::RotateRowRight()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.RotateRowRight");
-
-	AGarageComplex_TA_RotateRowRight_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.RotateRowLeft
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplex_TA::RotateRowLeft()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.RotateRowLeft");
-
-	AGarageComplex_TA_RotateRowLeft_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.ShiftCameraDown
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplex_TA::ShiftCameraDown()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.ShiftCameraDown");
-
-	AGarageComplex_TA_ShiftCameraDown_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.ShiftCameraUp
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplex_TA::ShiftCameraUp()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.ShiftCameraUp");
-
-	AGarageComplex_TA_ShiftCameraUp_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.DestroyRows
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplex_TA::DestroyRows()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.DestroyRows");
-
-	AGarageComplex_TA_DestroyRows_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.SetupRows
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-
-void AGarageComplex_TA::SetupRows()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.SetupRows");
-
-	AGarageComplex_TA_SetupRows_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.CalculateCircleSpawnOrientations
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-// Parameters:
-// int                            InCarsPerRow                   (CPF_Parm)
-// struct FRotator                StartRotation                  (CPF_Parm)
-
-void AGarageComplex_TA::CalculateCircleSpawnOrientations(int InCarsPerRow, const struct FRotator& StartRotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.CalculateCircleSpawnOrientations");
-
-	AGarageComplex_TA_CalculateCircleSpawnOrientations_Params params;
-	params.InCarsPerRow = InCarsPerRow;
-	params.StartRotation = StartRotation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplex_TA.Init
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// int                            InCarsPerRow                   (CPF_OptionalParm, CPF_Parm)
-// int                            InRows                         (CPF_OptionalParm, CPF_Parm)
-// float                          InCarDistanceFromCam           (CPF_OptionalParm, CPF_Parm)
-// float                          InDistanceBetweenRows          (CPF_OptionalParm, CPF_Parm)
-
-void AGarageComplex_TA::Init(int InCarsPerRow, int InRows, float InCarDistanceFromCam, float InDistanceBetweenRows)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplex_TA.Init");
-
-	AGarageComplex_TA_Init_Params params;
-	params.InCarsPerRow = InCarsPerRow;
-	params.InRows = InRows;
-	params.InCarDistanceFromCam = InCarDistanceFromCam;
-	params.InDistanceBetweenRows = InDistanceBetweenRows;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -116095,6 +123182,26 @@ void UCameraState_IntroMenu_TA::SetupFocusActors()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_IntroMenu_TA.SetupFocusActors");
 
 	UCameraState_IntroMenu_TA_SetupFocusActors_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_IntroMenu_TA.SetFocus
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class ASkeletalMeshActorMAT_IntroCar_TA* NewFocus                       (CPF_Parm)
+
+void UCameraState_IntroMenu_TA::SetFocus(class ASkeletalMeshActorMAT_IntroCar_TA* NewFocus)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_IntroMenu_TA.SetFocus");
+
+	UCameraState_IntroMenu_TA_SetFocus_Params params;
+	params.NewFocus = NewFocus;
 
 	auto flags = fn->FunctionFlags;
 
@@ -116190,6 +123297,67 @@ void UCameraState_IntroMenu_TA::BeginCameraState()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_IntroMenu_TA.BeginCameraState");
 
 	UCameraState_IntroMenu_TA_BeginCameraState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_IntroMenu_TA.EventFocusChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UCameraState_IntroMenu_TA* CameraState                    (CPF_Parm)
+
+void UCameraState_IntroMenu_TA::EventFocusChanged(class UCameraState_IntroMenu_TA* CameraState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_IntroMenu_TA.EventFocusChanged");
+
+	UCameraState_IntroMenu_TA_EventFocusChanged_Params params;
+	params.CameraState = CameraState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraState_MenuCamActor_TA.ShouldExecute
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UCameraState_MenuCamActor_TA::ShouldExecute()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_MenuCamActor_TA.ShouldExecute");
+
+	UCameraState_MenuCamActor_TA_ShouldExecute_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraState_MenuCamActor_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ACamera_X*               InCamera                       (CPF_Parm)
+
+void UCameraState_MenuCamActor_TA::Init(class ACamera_X* InCamera)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraState_MenuCamActor_TA.Init");
+
+	UCameraState_MenuCamActor_TA_Init_Params params;
+	params.InCamera = InCamera;
 
 	auto flags = fn->FunctionFlags;
 
@@ -116326,6 +123494,121 @@ bool UCameraState_PrePodiumSpotlight_TA::ShouldExecute()
 }
 
 
+// Function TAGame.CameraStateSelector_Sequence_TA.GetNextStateIndex
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UCameraStateSelector_Sequence_TA::GetNextStateIndex()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Sequence_TA.GetNextStateIndex");
+
+	UCameraStateSelector_Sequence_TA_GetNextStateIndex_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraStateSelector_Sequence_TA.SelectState
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCameraState_X*          InCurrentState                 (CPF_Parm)
+// class UCameraState_X*          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UCameraState_X* UCameraStateSelector_Sequence_TA::SelectState(class UCameraState_X* InCurrentState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Sequence_TA.SelectState");
+
+	UCameraStateSelector_Sequence_TA_SelectState_Params params;
+	params.InCurrentState = InCurrentState;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.CameraStateSelector_Sequence_TA.SetActive
+// (FUNC_Defined, FUNC_Public)
+
+void UCameraStateSelector_Sequence_TA::SetActive()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_Sequence_TA.SetActive");
+
+	UCameraStateSelector_Sequence_TA_SetActive_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_RandomSequence_TA.Reshuffle
+// (FUNC_Defined, FUNC_Protected)
+
+void UCameraStateSelector_RandomSequence_TA::Reshuffle()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_RandomSequence_TA.Reshuffle");
+
+	UCameraStateSelector_RandomSequence_TA_Reshuffle_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_RandomSequence_TA.SetActive
+// (FUNC_Defined, FUNC_Public)
+
+void UCameraStateSelector_RandomSequence_TA::SetActive()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_RandomSequence_TA.SetActive");
+
+	UCameraStateSelector_RandomSequence_TA_SetActive_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.CameraStateSelector_RandomSequence_TA.Init
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ACamera_X*               InCamera                       (CPF_Parm)
+
+void UCameraStateSelector_RandomSequence_TA::Init(class ACamera_X* InCamera)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CameraStateSelector_RandomSequence_TA.Init");
+
+	UCameraStateSelector_RandomSequence_TA_Init_Params params;
+	params.InCamera = InCamera;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.Car_Freeplay_TA.SetCarColor
 // (FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -116436,94 +123719,6 @@ void UCarJointSpinner_TA::Attached()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarJointSpinner_TA.Attached");
 
 	UCarJointSpinner_TA_Attached_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CarPreviewActor_GarageComplex_TA.InitBoostFX
-// (FUNC_Protected)
-
-void ACarPreviewActor_GarageComplex_TA::InitBoostFX()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_GarageComplex_TA.InitBoostFX");
-
-	ACarPreviewActor_GarageComplex_TA_InitBoostFX_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CarPreviewActor_GarageComplex_TA.InitBodyFX
-// (FUNC_Protected)
-
-void ACarPreviewActor_GarageComplex_TA::InitBodyFX()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_GarageComplex_TA.InitBodyFX");
-
-	ACarPreviewActor_GarageComplex_TA_InitBodyFX_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CarPreviewActor_GarageComplex_TA.UpdateBoostFX
-// (FUNC_Protected)
-
-void ACarPreviewActor_GarageComplex_TA::UpdateBoostFX()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_GarageComplex_TA.UpdateBoostFX");
-
-	ACarPreviewActor_GarageComplex_TA_UpdateBoostFX_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CarPreviewActor_GarageComplex_TA.SetBodyFXActor
-// (FUNC_Public)
-// Parameters:
-// class AFXActor_X*              InBodyFX                       (CPF_Parm)
-
-void ACarPreviewActor_GarageComplex_TA::SetBodyFXActor(class AFXActor_X* InBodyFX)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CarPreviewActor_GarageComplex_TA.SetBodyFXActor");
-
-	ACarPreviewActor_GarageComplex_TA_SetBodyFXActor_Params params;
-	params.InBodyFX = InBodyFX;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.CheatGFx_TA.GFxPrintKeys
-// (FUNC_Defined, FUNC_Exec, FUNC_Public, FUNC_HasDefaults)
-
-void UCheatGFx_TA::GFxPrintKeys()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.CheatGFx_TA.GFxPrintKeys");
-
-	UCheatGFx_TA_GFxPrintKeys_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -116941,57 +124136,6 @@ void AFXActor_TrainingEditor_TA::PostBeginPlay()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GameEvent_CarPreview_TA.SpawnBot
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AAIController_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AAIController_TA* AGameEvent_CarPreview_TA::SpawnBot()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_CarPreview_TA.SpawnBot");
-
-	AGameEvent_CarPreview_TA_SpawnBot_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GameEvent_CarPreview_TA.GetSpawnOrientation
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class AController*             ForPlayer                      (CPF_Parm)
-// struct FVector                 out_Location                   (CPF_Parm, CPF_OutParm)
-// struct FRotator                out_Rotation                   (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool AGameEvent_CarPreview_TA::GetSpawnOrientation(class AController* ForPlayer, struct FVector* out_Location, struct FRotator* out_Rotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameEvent_CarPreview_TA.GetSpawnOrientation");
-
-	AGameEvent_CarPreview_TA_GetSpawnOrientation_Params params;
-	params.ForPlayer = ForPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_Location != nullptr)
-		*out_Location = params.out_Location;
-	if (out_Rotation != nullptr)
-		*out_Rotation = params.out_Rotation;
-
-	return params.ReturnValue;
 }
 
 
@@ -118413,46 +125557,6 @@ void AGameEvent_Track_TA::PostBeginPlay()
 }
 
 
-// Function TAGame.GameInfo_CarPreview_TA.RestartPlayer
-// (FUNC_Public)
-// Parameters:
-// class AController*             NewPlayer                      (CPF_Parm)
-
-void AGameInfo_CarPreview_TA::RestartPlayer(class AController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_CarPreview_TA.RestartPlayer");
-
-	AGameInfo_CarPreview_TA_RestartPlayer_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GameInfo_CarPreview_TA.PostLogin
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class APlayerController*       NewPlayer                      (CPF_Parm)
-
-void AGameInfo_CarPreview_TA::PostLogin(class APlayerController* NewPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GameInfo_CarPreview_TA.PostLogin");
-
-	AGameInfo_CarPreview_TA_PostLogin_Params params;
-	params.NewPlayer = NewPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.GameInfo_CollisionTest_TA.SpawnActor
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
@@ -118940,16 +126044,75 @@ void AGameInfo_TrainingEditor_TA::OnCreateCurrentGame()
 }
 
 
-// Function TAGame.GarageComplexRow_TA.GetLastLoadedCar
+// Function TAGame.GFxClubAction_TA.Dispose
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void UGFxClubAction_TA::Dispose()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.Dispose");
+
+	UGFxClubAction_TA_Dispose_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxClubAction_TA.Complete
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
+// Parameters:
+// struct FString                 ErrMsg                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+
+void UGFxClubAction_TA::Complete(const struct FString& ErrMsg)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.Complete");
+
+	UGFxClubAction_TA_Complete_Params params;
+	params.ErrMsg = ErrMsg;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxClubAction_TA.HandleTaskComplete
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UScriptAsyncTask_X*      InTask                         (CPF_Parm)
+
+void UGFxClubAction_TA::HandleTaskComplete(class UScriptAsyncTask_X* InTask)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.HandleTaskComplete");
+
+	UGFxClubAction_TA_HandleTaskComplete_Params params;
+	params.InTask = InTask;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxClubAction_TA.Start
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class AActor*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FScriptDelegate         Action                         (CPF_Parm, CPF_NeedCtorLink)
+// class UGFxClubAction_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class AActor* AGarageComplexRow_TA::GetLastLoadedCar()
+class UGFxClubAction_TA* UGFxClubAction_TA::Start(const struct FScriptDelegate& Action)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.GetLastLoadedCar");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.Start");
 
-	AGarageComplexRow_TA_GetLastLoadedCar_Params params;
+	UGFxClubAction_TA_Start_Params params;
+	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
 
@@ -118961,165 +126124,92 @@ class AActor* AGarageComplexRow_TA::GetLastLoadedCar()
 }
 
 
-// Function TAGame.GarageComplexRow_TA.HandleLoadoutLoaded
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Function TAGame.GFxClubAction_TA.SetError
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// class UProductLoader_TA*       Loader                         (CPF_Parm, CPF_EditInline)
+// class UError*                  InError                        (CPF_Parm)
+// struct FString                 DebugMsg                       (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// class UGFxClubAction_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void AGarageComplexRow_TA::HandleLoadoutLoaded(class UProductLoader_TA* Loader)
+class UGFxClubAction_TA* UGFxClubAction_TA::SetError(class UError* InError, const struct FString& DebugMsg)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.HandleLoadoutLoaded");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.SetError");
 
-	AGarageComplexRow_TA_HandleLoadoutLoaded_Params params;
-	params.Loader = Loader;
+	UGFxClubAction_TA_SetError_Params params;
+	params.InError = InError;
+	params.DebugMsg = DebugMsg;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function TAGame.GarageComplexRow_TA.LoadNextCar
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-
-void AGarageComplexRow_TA::LoadNextCar()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.LoadNextCar");
-
-	AGarageComplexRow_TA_LoadNextCar_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplexRow_TA.PopulateRowWithCarsRandom
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplexRow_TA::PopulateRowWithCarsRandom()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.PopulateRowWithCarsRandom");
-
-	AGarageComplexRow_TA_PopulateRowWithCarsRandom_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplexRow_TA.DestroyCars
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void AGarageComplexRow_TA::DestroyCars()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.DestroyCars");
-
-	AGarageComplexRow_TA_DestroyCars_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplexRow_TA.DestroyRow
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void AGarageComplexRow_TA::DestroyRow()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.DestroyRow");
-
-	AGarageComplexRow_TA_DestroyRow_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplexRow_TA.Tick
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void AGarageComplexRow_TA::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.Tick");
-
-	AGarageComplexRow_TA_Tick_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GarageComplexRow_TA.RotateRow
+// Function TAGame.GFxClubAction_TA.Assert
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// int                            Direction                      (CPF_Parm)
+// bool                           expr                           (CPF_Parm)
+// struct FString                 DebugMsg                       (CPF_Parm, CPF_NeedCtorLink)
+// class UGFxClubAction_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void AGarageComplexRow_TA::RotateRow(int Direction)
+class UGFxClubAction_TA* UGFxClubAction_TA::Assert(bool expr, const struct FString& DebugMsg)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.RotateRow");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.Assert");
 
-	AGarageComplexRow_TA_RotateRow_Params params;
-	params.Direction = Direction;
+	UGFxClubAction_TA_Assert_Params params;
+	params.expr = expr;
+	params.DebugMsg = DebugMsg;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function TAGame.GarageComplexRow_TA.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Function TAGame.GFxClubAction_TA.Create
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// class AGarageComplex_TA*       InGarageComplex                (CPF_Parm)
+// struct FName                   InName                         (CPF_Parm)
+// struct FScriptDelegate         InCallback                     (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// class UGFxClubAction_TA*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void AGarageComplexRow_TA::Init(class AGarageComplex_TA* InGarageComplex)
+class UGFxClubAction_TA* UGFxClubAction_TA::STATIC_Create(const struct FName& InName, const struct FScriptDelegate& InCallback)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.Init");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.Create");
 
-	AGarageComplexRow_TA_Init_Params params;
-	params.InGarageComplex = InGarageComplex;
+	UGFxClubAction_TA_Create_Params params;
+	params.InName = InName;
+	params.InCallback = InCallback;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function TAGame.GarageComplexRow_TA.EventFinishedLoadingCars
+// Function TAGame.GFxClubAction_TA.OnComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// class AGarageComplexRow_TA*    Row                            (CPF_Parm)
+// class UGFxClubAction_TA*       Action                         (CPF_Parm)
 
-void AGarageComplexRow_TA::EventFinishedLoadingCars(class AGarageComplexRow_TA* Row)
+void UGFxClubAction_TA::OnComplete(class UGFxClubAction_TA* Action)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GarageComplexRow_TA.EventFinishedLoadingCars");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.OnComplete");
 
-	AGarageComplexRow_TA_EventFinishedLoadingCars_Params params;
-	params.Row = Row;
+	UGFxClubAction_TA_OnComplete_Params params;
+	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
 
@@ -119129,18 +126219,16 @@ void AGarageComplexRow_TA::EventFinishedLoadingCars(class AGarageComplexRow_TA* 
 }
 
 
-// Function TAGame.LoadoutRandomizer_TA.GetRandomColorID
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Function TAGame.GFxClubAction_TA.StartTaskDelegate
+// (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// class UCarColorSet_TA*         Set                            (CPF_Parm)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int ULoadoutRandomizer_TA::STATIC_GetRandomColorID(class UCarColorSet_TA* Set)
+class UScriptAsyncTask_X* UGFxClubAction_TA::StartTaskDelegate()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.GetRandomColorID");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.StartTaskDelegate");
 
-	ULoadoutRandomizer_TA_GetRandomColorID_Params params;
-	params.Set = Set;
+	UGFxClubAction_TA_StartTaskDelegate_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -119152,113 +126240,17 @@ int ULoadoutRandomizer_TA::STATIC_GetRandomColorID(class UCarColorSet_TA* Set)
 }
 
 
-// Function TAGame.LoadoutRandomizer_TA.RandomizeTeamPaint
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Function TAGame.GFxClubAction_TA.ClubActionCompleteHandler
+// (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FLoadoutData            Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// struct FString                 InError                        (CPF_Parm, CPF_NeedCtorLink)
 
-void ULoadoutRandomizer_TA::STATIC_RandomizeTeamPaint(struct FLoadoutData* Data)
+void UGFxClubAction_TA::ClubActionCompleteHandler(const struct FString& InError)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeTeamPaint");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxClubAction_TA.ClubActionCompleteHandler");
 
-	ULoadoutRandomizer_TA_RandomizeTeamPaint_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function TAGame.LoadoutRandomizer_TA.RandomizeSlot
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FLoadoutData            Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class UProfile_TA*             Profile                        (CPF_Parm)
-// class UProductSlot_TA*         Slot                           (CPF_Parm)
-
-void ULoadoutRandomizer_TA::STATIC_RandomizeSlot(class UProfile_TA* Profile, class UProductSlot_TA* Slot, struct FLoadoutData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeSlot");
-
-	ULoadoutRandomizer_TA_RandomizeSlot_Params params;
-	params.Profile = Profile;
-	params.Slot = Slot;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function TAGame.LoadoutRandomizer_TA.Randomize
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FLoadoutData            Loadouts                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class UProfile_TA*             Profile                        (CPF_Parm)
-
-void ULoadoutRandomizer_TA::STATIC_Randomize(class UProfile_TA* Profile, struct FLoadoutData* Loadouts)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.Randomize");
-
-	ULoadoutRandomizer_TA_Randomize_Params params;
-	params.Profile = Profile;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Loadouts != nullptr)
-		*Loadouts = params.Loadouts;
-}
-
-
-// Function TAGame.LoadoutRandomizer_TA.RandomizeLoadout
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FLoadoutData            Loadout                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class UProfile_TA*             Profile                        (CPF_Parm)
-
-void ULoadoutRandomizer_TA::STATIC_RandomizeLoadout(class UProfile_TA* Profile, struct FLoadoutData* Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeLoadout");
-
-	ULoadoutRandomizer_TA_RandomizeLoadout_Params params;
-	params.Profile = Profile;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Loadout != nullptr)
-		*Loadout = params.Loadout;
-}
-
-
-// Function TAGame.LoadoutRandomizer_TA.RandomizerLog
-// (FUNC_Final, FUNC_Static, FUNC_Private)
-// Parameters:
-// struct FString                 LogStr                         (CPF_Parm, CPF_NeedCtorLink)
-
-void ULoadoutRandomizer_TA::STATIC_RandomizerLog(const struct FString& LogStr)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizerLog");
-
-	ULoadoutRandomizer_TA_RandomizerLog_Params params;
-	params.LogStr = LogStr;
+	UGFxClubAction_TA_ClubActionCompleteHandler_Params params;
+	params.InError = InError;
 
 	auto flags = fn->FunctionFlags;
 
@@ -119322,6 +126314,26 @@ void UGFxData_AuthenticatedName_TA::HandleAuthenticatedNameChanged(class UOnline
 }
 
 
+// Function TAGame.GFxData_AuthenticatedName_TA.HandleLoginChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UGFxData_AuthenticatedName_TA::HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_AuthenticatedName_TA.HandleLoginChanged");
+
+	UGFxData_AuthenticatedName_TA_HandleLoginChanged_Params params;
+	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_AuthenticatedName_TA.Login
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
 
@@ -119341,12 +126353,15 @@ void UGFxData_AuthenticatedName_TA::Login()
 
 // Function TAGame.GFxData_AuthenticatedName_TA.NameRequestFailed
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Pure)
+// Parameters:
+// struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UGFxData_AuthenticatedName_TA::NameRequestFailed()
+void UGFxData_AuthenticatedName_TA::NameRequestFailed(const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_AuthenticatedName_TA.NameRequestFailed");
 
 	UGFxData_AuthenticatedName_TA_NameRequestFailed_Params params;
+	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
 
@@ -119373,16 +126388,16 @@ void UGFxData_AuthenticatedName_TA::NameRequestSuccess()
 }
 
 
-// Function TAGame.GFxData_AuthenticatedName_TA.HandleAuthenticatedNameAvailbleComplete
+// Function TAGame.GFxData_AuthenticatedName_TA.HandleAuthenticatedNameAvailableComplete
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // class URPC_AuthenticatedNameAvailable_TA* RPC                            (CPF_Parm)
 
-void UGFxData_AuthenticatedName_TA::HandleAuthenticatedNameAvailbleComplete(class URPC_AuthenticatedNameAvailable_TA* RPC)
+void UGFxData_AuthenticatedName_TA::HandleAuthenticatedNameAvailableComplete(class URPC_AuthenticatedNameAvailable_TA* RPC)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_AuthenticatedName_TA.HandleAuthenticatedNameAvailbleComplete");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_AuthenticatedName_TA.HandleAuthenticatedNameAvailableComplete");
 
-	UGFxData_AuthenticatedName_TA_HandleAuthenticatedNameAvailbleComplete_Params params;
+	UGFxData_AuthenticatedName_TA_HandleAuthenticatedNameAvailableComplete_Params params;
 	params.RPC = RPC;
 
 	auto flags = fn->FunctionFlags;
@@ -120028,6 +127043,219 @@ void UGFxData_CustomTeams_TA::OnShellSet()
 }
 
 
+// Function TAGame.GFxData_DateTime_TA.AddSeconds
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddSeconds(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddSeconds");
+
+	UGFxData_DateTime_TA_AddSeconds_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.AddMinutes
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddMinutes(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddMinutes");
+
+	UGFxData_DateTime_TA_AddMinutes_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.AddHours
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddHours(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddHours");
+
+	UGFxData_DateTime_TA_AddHours_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.AddDays
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddDays(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddDays");
+
+	UGFxData_DateTime_TA_AddDays_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.AddMonths
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddMonths(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddMonths");
+
+	UGFxData_DateTime_TA_AddMonths_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.AddYears
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         DateTime                       (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::AddYears(const struct FDateTimeStruct& DateTime, int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.AddYears");
+
+	UGFxData_DateTime_TA_AddYears_Params params;
+	params.DateTime = DateTime;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.UtcToLocalTime
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::UtcToLocalTime()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.UtcToLocalTime");
+
+	UGFxData_DateTime_TA_UtcToLocalTime_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.UtcNow
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::UtcNow()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.UtcNow");
+
+	UGFxData_DateTime_TA_UtcNow_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_DateTime_TA.Now
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UGFxData_DateTime_TA::Now()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_DateTime_TA.Now");
+
+	UGFxData_DateTime_TA_Now_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TAGame.GFxData_ESportEvents_TA.OnShellSet
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 
@@ -120036,196 +127264,6 @@ void UGFxData_ESportEvents_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_ESportEvents_TA.OnShellSet");
 
 	UGFxData_ESportEvents_TA_OnShellSet_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.GetProfile
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UProfile_TA*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UProfile_TA* UGFxData_GarageComplex_TA::GetProfile()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.GetProfile");
-
-	UGFxData_GarageComplex_TA_GetProfile_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.SelectCar
-// (FUNC_Final, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_GarageComplex_TA::SelectCar()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.SelectCar");
-
-	UGFxData_GarageComplex_TA_SelectCar_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.RotateRowRight
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_GarageComplex_TA::RotateRowRight()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.RotateRowRight");
-
-	UGFxData_GarageComplex_TA_RotateRowRight_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.RotateRowLeft
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_GarageComplex_TA::RotateRowLeft()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.RotateRowLeft");
-
-	UGFxData_GarageComplex_TA_RotateRowLeft_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.ShiftCameraDown
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_GarageComplex_TA::ShiftCameraDown()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.ShiftCameraDown");
-
-	UGFxData_GarageComplex_TA_ShiftCameraDown_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.ShiftCameraUp
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_K2Override)
-
-void UGFxData_GarageComplex_TA::ShiftCameraUp()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.ShiftCameraUp");
-
-	UGFxData_GarageComplex_TA_ShiftCameraUp_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.GetCameraState
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCameraState_GarageComplex_TA* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UCameraState_GarageComplex_TA* UGFxData_GarageComplex_TA::GetCameraState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.GetCameraState");
-
-	UGFxData_GarageComplex_TA_GetCameraState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.SetCameraState
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FName                   StateName                      (CPF_Parm)
-
-void UGFxData_GarageComplex_TA::SetCameraState(const struct FName& StateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.SetCameraState");
-
-	UGFxData_GarageComplex_TA_SetCameraState_Params params;
-	params.StateName = StateName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.InitCars
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            InCarsPerRow                   (CPF_OptionalParm, CPF_Parm)
-// int                            InRows                         (CPF_OptionalParm, CPF_Parm)
-// float                          InCarDistanceFromCam           (CPF_OptionalParm, CPF_Parm)
-// float                          InDistanceBetweenRows          (CPF_OptionalParm, CPF_Parm)
-
-void UGFxData_GarageComplex_TA::InitCars(int InCarsPerRow, int InRows, float InCarDistanceFromCam, float InDistanceBetweenRows)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.InitCars");
-
-	UGFxData_GarageComplex_TA_InitCars_Params params;
-	params.InCarsPerRow = InCarsPerRow;
-	params.InRows = InRows;
-	params.InCarDistanceFromCam = InCarDistanceFromCam;
-	params.InDistanceBetweenRows = InDistanceBetweenRows;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.GFxData_GarageComplex_TA.OnShellSet
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void UGFxData_GarageComplex_TA::OnShellSet()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_GarageComplex_TA.OnShellSet");
-
-	UGFxData_GarageComplex_TA_OnShellSet_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -120318,6 +127356,26 @@ void UGFxData_IntroMenu_TA::SelectCar()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.SelectCar");
 
 	UGFxData_IntroMenu_TA_SelectCar_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_IntroMenu_TA.HandleFocusChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UCameraState_IntroMenu_TA* CameraState                    (CPF_Parm)
+
+void UGFxData_IntroMenu_TA::HandleFocusChanged(class UCameraState_IntroMenu_TA* CameraState)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.HandleFocusChanged");
+
+	UGFxData_IntroMenu_TA_HandleFocusChanged_Params params;
+	params.CameraState = CameraState;
 
 	auto flags = fn->FunctionFlags;
 
@@ -120422,14 +127480,17 @@ void UGFxData_IntroMenu_TA::HandleIntroCarsInPosition(class AGameInfo_GFxMenu_TA
 }
 
 
-// Function TAGame.GFxData_IntroMenu_TA.InitIntro
+// Function TAGame.GFxData_IntroMenu_TA.ShowIntroLevel
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// bool                           bEnable                        (CPF_Parm)
 
-void UGFxData_IntroMenu_TA::InitIntro()
+void UGFxData_IntroMenu_TA::ShowIntroLevel(bool bEnable)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.InitIntro");
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.ShowIntroLevel");
 
-	UGFxData_IntroMenu_TA_InitIntro_Params params;
+	UGFxData_IntroMenu_TA_ShowIntroLevel_Params params;
+	params.bEnable = bEnable;
 
 	auto flags = fn->FunctionFlags;
 
@@ -120447,6 +127508,23 @@ void UGFxData_IntroMenu_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.OnShellSet");
 
 	UGFxData_IntroMenu_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_IntroMenu_TA.EventIntroCarSelected
+// (FUNC_Public, FUNC_Delegate)
+
+void UGFxData_IntroMenu_TA::EventIntroCarSelected()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_IntroMenu_TA.EventIntroCarSelected");
+
+	UGFxData_IntroMenu_TA_EventIntroCarSelected_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -121132,6 +128210,145 @@ void ULoadoutSequencer_TA::EventSequenceComplete(class ULoadoutSequencer_TA* Seq
 }
 
 
+// Function TAGame.LoadoutRandomizer_TA.GetRandomColorID
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UCarColorSet_TA*         Set                            (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int ULoadoutRandomizer_TA::STATIC_GetRandomColorID(class UCarColorSet_TA* Set)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.GetRandomColorID");
+
+	ULoadoutRandomizer_TA_GetRandomColorID_Params params;
+	params.Set = Set;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.LoadoutRandomizer_TA.RandomizeTeamPaint
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FLoadoutData            Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void ULoadoutRandomizer_TA::STATIC_RandomizeTeamPaint(struct FLoadoutData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeTeamPaint");
+
+	ULoadoutRandomizer_TA_RandomizeTeamPaint_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function TAGame.LoadoutRandomizer_TA.RandomizeSlot
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FLoadoutData            Data                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UProfile_TA*             Profile                        (CPF_Parm)
+// class UProductSlot_TA*         Slot                           (CPF_Parm)
+
+void ULoadoutRandomizer_TA::STATIC_RandomizeSlot(class UProfile_TA* Profile, class UProductSlot_TA* Slot, struct FLoadoutData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeSlot");
+
+	ULoadoutRandomizer_TA_RandomizeSlot_Params params;
+	params.Profile = Profile;
+	params.Slot = Slot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function TAGame.LoadoutRandomizer_TA.Randomize
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FLoadoutData            Loadouts                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UProfile_TA*             Profile                        (CPF_Parm)
+
+void ULoadoutRandomizer_TA::STATIC_Randomize(class UProfile_TA* Profile, struct FLoadoutData* Loadouts)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.Randomize");
+
+	ULoadoutRandomizer_TA_Randomize_Params params;
+	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Loadouts != nullptr)
+		*Loadouts = params.Loadouts;
+}
+
+
+// Function TAGame.LoadoutRandomizer_TA.RandomizeLoadout
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FLoadoutData            Loadout                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UProfile_TA*             Profile                        (CPF_Parm)
+
+void ULoadoutRandomizer_TA::STATIC_RandomizeLoadout(class UProfile_TA* Profile, struct FLoadoutData* Loadout)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizeLoadout");
+
+	ULoadoutRandomizer_TA_RandomizeLoadout_Params params;
+	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Loadout != nullptr)
+		*Loadout = params.Loadout;
+}
+
+
+// Function TAGame.LoadoutRandomizer_TA.RandomizerLog
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// struct FString                 LogStr                         (CPF_Parm, CPF_NeedCtorLink)
+
+void ULoadoutRandomizer_TA::STATIC_RandomizerLog(const struct FString& LogStr)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutRandomizer_TA.RandomizerLog");
+
+	ULoadoutRandomizer_TA_RandomizerLog_Params params;
+	params.LogStr = LogStr;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_MapPrefs_TA.GetProfile
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -121154,12 +128371,12 @@ class UProfile_TA* UGFxData_MapPrefs_TA::GetProfile()
 
 
 // Function TAGame.GFxData_MapPrefs_TA.FilterAndSortMaps
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
 // TArray<class UMapData_TA*>     UnsortedMaps                   (CPF_Parm, CPF_NeedCtorLink)
 // TArray<class UMapData_TA*>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-TArray<class UMapData_TA*> UGFxData_MapPrefs_TA::FilterAndSortMaps(TArray<class UMapData_TA*> UnsortedMaps)
+TArray<class UMapData_TA*> UGFxData_MapPrefs_TA::STATIC_FilterAndSortMaps(TArray<class UMapData_TA*> UnsortedMaps)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapPrefs_TA.FilterAndSortMaps");
 
@@ -121314,7 +128531,7 @@ void UGFxData_MapPrefs_TA::AddPlaylistData(const struct FName& PlaylistId, const
 
 
 // Function TAGame.GFxData_MapPrefs_TA.GetGlobalMaps
-// (FUNC_Defined, FUNC_Protected)
+// (FUNC_Defined, FUNC_Public)
 // Parameters:
 // TArray<class UMapData_TA*>     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
@@ -121414,6 +128631,286 @@ void UGFxData_MapPrefs_TA::OnShellSet()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapPrefs_TA.OnShellSet");
 
 	UGFxData_MapPrefs_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__OnShellSet_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UMapData_TA*             X                              (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UGFxData_MapSelection_TA::__GFxData_MapSelection_TA__OnShellSet_1(class UMapData_TA* X)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__OnShellSet_1");
+
+	UGFxData_MapSelection_TA___GFxData_MapSelection_TA__OnShellSet_1_Params params;
+	params.X = X;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__HandleMapListChanged_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMapData             X                              (CPF_Parm, CPF_NeedCtorLink)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UGFxData_MapSelection_TA::__GFxData_MapSelection_TA__HandleMapListChanged_2(const struct FGFxMapData& X)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__HandleMapListChanged_2");
+
+	UGFxData_MapSelection_TA___GFxData_MapSelection_TA__HandleMapListChanged_2_Params params;
+	params.X = X;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__HandleMapListChanged_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMapData             X                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_MapSelection_TA::__GFxData_MapSelection_TA__HandleMapListChanged_1(const struct FGFxMapData& X)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__HandleMapListChanged_1");
+
+	UGFxData_MapSelection_TA___GFxData_MapSelection_TA__HandleMapListChanged_1_Params params;
+	params.X = X;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__GetDisabledMaps_2
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMapSelectionData    MapItem                        (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UGFxData_MapSelection_TA::__GFxData_MapSelection_TA__GetDisabledMaps_2(const struct FGFxMapSelectionData& MapItem)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__GetDisabledMaps_2");
+
+	UGFxData_MapSelection_TA___GFxData_MapSelection_TA__GetDisabledMaps_2_Params params;
+	params.MapItem = MapItem;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__GetDisabledMaps_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FGFxMapSelectionData    MapItem                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UGFxData_MapSelection_TA::__GFxData_MapSelection_TA__GetDisabledMaps_1(const struct FGFxMapSelectionData& MapItem)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.__GFxData_MapSelection_TA__GetDisabledMaps_1");
+
+	UGFxData_MapSelection_TA___GFxData_MapSelection_TA__GetDisabledMaps_1_Params params;
+	params.MapItem = MapItem;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.SetSelected
+// (FUNC_Defined, FUNC_Public, FUNC_K2Override)
+// Parameters:
+// int                            Row                            (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UGFxData_MapSelection_TA::SetSelected(int Row, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.SetSelected");
+
+	UGFxData_MapSelection_TA_SetSelected_Params params;
+	params.Row = Row;
+	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.SetDisabledMaps
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FName>           MapNames                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_MapSelection_TA::SetDisabledMaps(TArray<struct FName>* MapNames)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.SetDisabledMaps");
+
+	UGFxData_MapSelection_TA_SetDisabledMaps_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapNames != nullptr)
+		*MapNames = params.MapNames;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.GetDisabledMaps
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// TArray<struct FName>           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<struct FGFxMapSelectionData> FilterLocal_614AEE2147FA3A7D415C46BD8CF651AF (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FName>           MapLocal_34E587104F1520609D7DFF9BEBB9D8F4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<struct FName> UGFxData_MapSelection_TA::GetDisabledMaps(TArray<struct FGFxMapSelectionData>* FilterLocal_614AEE2147FA3A7D415C46BD8CF651AF, TArray<struct FName>* MapLocal_34E587104F1520609D7DFF9BEBB9D8F4)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.GetDisabledMaps");
+
+	UGFxData_MapSelection_TA_GetDisabledMaps_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_614AEE2147FA3A7D415C46BD8CF651AF != nullptr)
+		*FilterLocal_614AEE2147FA3A7D415C46BD8CF651AF = params.FilterLocal_614AEE2147FA3A7D415C46BD8CF651AF;
+	if (MapLocal_34E587104F1520609D7DFF9BEBB9D8F4 != nullptr)
+		*MapLocal_34E587104F1520609D7DFF9BEBB9D8F4 = params.MapLocal_34E587104F1520609D7DFF9BEBB9D8F4;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.HandleMapListChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UGFxData_Map_TA*         GFxMaps                        (CPF_Parm)
+// TArray<struct FGFxMapData>     FilterLocal_D04A8B5B4A813ED38A5B9F96A89BAB8D (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FName>           MapLocal_B74E56B045439E70C03F72A50BA0C9FE (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_MapSelection_TA::HandleMapListChanged(class UGFxData_Map_TA* GFxMaps, TArray<struct FGFxMapData>* FilterLocal_D04A8B5B4A813ED38A5B9F96A89BAB8D, TArray<struct FName>* MapLocal_B74E56B045439E70C03F72A50BA0C9FE)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.HandleMapListChanged");
+
+	UGFxData_MapSelection_TA_HandleMapListChanged_Params params;
+	params.GFxMaps = GFxMaps;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (FilterLocal_D04A8B5B4A813ED38A5B9F96A89BAB8D != nullptr)
+		*FilterLocal_D04A8B5B4A813ED38A5B9F96A89BAB8D = params.FilterLocal_D04A8B5B4A813ED38A5B9F96A89BAB8D;
+	if (MapLocal_B74E56B045439E70C03F72A50BA0C9FE != nullptr)
+		*MapLocal_B74E56B045439E70C03F72A50BA0C9FE = params.MapLocal_B74E56B045439E70C03F72A50BA0C9FE;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.OnShellSet
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Parameters:
+// TArray<struct FName>           MapLocal_F85B9A5B49867F52ED7CBCBEC9B21E3E (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+void UGFxData_MapSelection_TA::OnShellSet(TArray<struct FName>* MapLocal_F85B9A5B49867F52ED7CBCBEC9B21E3E)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.OnShellSet");
+
+	UGFxData_MapSelection_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_F85B9A5B49867F52ED7CBCBEC9B21E3E != nullptr)
+		*MapLocal_F85B9A5B49867F52ED7CBCBEC9B21E3E = params.MapLocal_F85B9A5B49867F52ED7CBCBEC9B21E3E;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.EventSelectionChange
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxData_MapSelection_TA* GFxMapSelection                (CPF_Parm)
+// struct FName                   MapName                        (CPF_Parm)
+// bool                           bSelected                      (CPF_Parm)
+
+void UGFxData_MapSelection_TA::EventSelectionChange(class UGFxData_MapSelection_TA* GFxMapSelection, const struct FName& MapName, bool bSelected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.EventSelectionChange");
+
+	UGFxData_MapSelection_TA_EventSelectionChange_Params params;
+	params.GFxMapSelection = GFxMapSelection;
+	params.MapName = MapName;
+	params.bSelected = bSelected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_MapSelection_TA.EventMapListChange
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxData_MapSelection_TA* GFxMapSelection                (CPF_Parm)
+
+void UGFxData_MapSelection_TA::EventMapListChange(class UGFxData_MapSelection_TA* GFxMapSelection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_MapSelection_TA.EventMapListChange");
+
+	UGFxData_MapSelection_TA_EventMapListChange_Params params;
+	params.GFxMapSelection = GFxMapSelection;
 
 	auto flags = fn->FunctionFlags;
 
@@ -123225,6 +130722,84 @@ class URPC_SchematicsTradeIn_TA* URPC_SchematicsTradeIn_TA::SetPlayerID(const st
 }
 
 
+// Function TAGame.GFxData_SeasonReward_TA.Update
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+
+void UGFxData_SeasonReward_TA::Update()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_SeasonReward_TA.Update");
+
+	UGFxData_SeasonReward_TA_Update_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_SeasonReward_TA.HandleLogin
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayer_X*         Player                         (CPF_Parm)
+
+void UGFxData_SeasonReward_TA::HandleLogin(class UOnlinePlayer_X* Player)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_SeasonReward_TA.HandleLogin");
+
+	UGFxData_SeasonReward_TA_HandleLogin_Params params;
+	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_SeasonReward_TA.HandleSkillSynced
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameSkill_X*      InSkill                        (CPF_Parm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UGFxData_SeasonReward_TA::HandleSkillSynced(class UOnlineGameSkill_X* InSkill, const struct FUniqueNetId& PlayerID, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_SeasonReward_TA.HandleSkillSynced");
+
+	UGFxData_SeasonReward_TA_HandleSkillSynced_Params params;
+	params.InSkill = InSkill;
+	params.PlayerID = PlayerID;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.GFxData_SeasonReward_TA.OnShellSet
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UGFxData_SeasonReward_TA::OnShellSet()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_SeasonReward_TA.OnShellSet");
+
+	UGFxData_SeasonReward_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_TrainingMode_TA.UpdateOutOfDate
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 
@@ -123526,6 +131101,28 @@ void UGFxData_TrainingMode_TA::OnDataLoaded(const struct FLoadObjectResult& Resu
 }
 
 
+// Function TAGame.GFxData_TrainingMode_TA.HandleSanitizeError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 OriginalPhrase                 (CPF_Parm, CPF_NeedCtorLink)
+// class UError*                  Error                          (CPF_Parm)
+
+void UGFxData_TrainingMode_TA::HandleSanitizeError(const struct FString& OriginalPhrase, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingMode_TA.HandleSanitizeError");
+
+	UGFxData_TrainingMode_TA_HandleSanitizeError_Params params;
+	params.OriginalPhrase = OriginalPhrase;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_TrainingMode_TA.SetTrainingModeFromSave
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -123670,11 +131267,11 @@ void UGFxData_TrainingMode_TA::HandleSaveResult(const struct FSaveObjectResult& 
 // Function TAGame.GFxData_TrainingMode_TA.NotifySaveErrors
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 // TEnumAsByte<ESaveGameResult>   SaveResult                     (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UGFxData_TrainingMode_TA::NotifySaveErrors(class UError_X* Error, TEnumAsByte<ESaveGameResult> SaveResult)
+bool UGFxData_TrainingMode_TA::NotifySaveErrors(class UError* Error, TEnumAsByte<ESaveGameResult> SaveResult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingMode_TA.NotifySaveErrors");
 
@@ -123721,9 +131318,9 @@ void UGFxData_TrainingMode_TA::SaveTrainingMode(const struct FString& Filename, 
 // Function TAGame.GFxData_TrainingMode_TA.DisplayError
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_TrainingMode_TA::DisplayError(class UError_X* Error)
+void UGFxData_TrainingMode_TA::DisplayError(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingMode_TA.DisplayError");
 
@@ -124210,9 +131807,9 @@ void UGFxData_TrainingModeBrowser_TA::HandleTrainingModeDownloadPlay(class UGFxD
 // Parameters:
 // class UGFxData_TrainingMode_TA* OutTrainingMode                (CPF_Parm)
 // bool                           bAdded                         (CPF_Parm)
-// struct FFavoritedFileMetaData  StructInitializer__s_EA374B4449BF4832C13B09B4A17CB0A6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FFavoritedFileMetaData  StructInitializer_51B00E0A4070050775A3DFB13C8B5136 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeBrowser_TA::HandleTrainingModeFavorited(class UGFxData_TrainingMode_TA* OutTrainingMode, bool bAdded, struct FFavoritedFileMetaData* StructInitializer__s_EA374B4449BF4832C13B09B4A17CB0A6)
+void UGFxData_TrainingModeBrowser_TA::HandleTrainingModeFavorited(class UGFxData_TrainingMode_TA* OutTrainingMode, bool bAdded, struct FFavoritedFileMetaData* StructInitializer_51B00E0A4070050775A3DFB13C8B5136)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleTrainingModeFavorited");
 
@@ -124226,8 +131823,8 @@ void UGFxData_TrainingModeBrowser_TA::HandleTrainingModeFavorited(class UGFxData
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_EA374B4449BF4832C13B09B4A17CB0A6 != nullptr)
-		*StructInitializer__s_EA374B4449BF4832C13B09B4A17CB0A6 = params.StructInitializer__s_EA374B4449BF4832C13B09B4A17CB0A6;
+	if (StructInitializer_51B00E0A4070050775A3DFB13C8B5136 != nullptr)
+		*StructInitializer_51B00E0A4070050775A3DFB13C8B5136 = params.StructInitializer_51B00E0A4070050775A3DFB13C8B5136;
 }
 
 
@@ -124605,9 +132202,9 @@ void UGFxData_TrainingModeBrowser_TA::SetFavoriteUpdatedAtTime(const struct FStr
 // Function TAGame.GFxData_TrainingModeBrowser_TA.SyncFavoritedModes
 // (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults, FUNC_K2Override)
 // Parameters:
-// struct FFavoritedFileMetaData  StructInitializer__s_3A9CE3A64EACECB656FE17BCFD36396C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FFavoritedFileMetaData  StructInitializer_FB6A659D4AA56996B7FA8698F78A6253 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeBrowser_TA::SyncFavoritedModes(struct FFavoritedFileMetaData* StructInitializer__s_3A9CE3A64EACECB656FE17BCFD36396C)
+void UGFxData_TrainingModeBrowser_TA::SyncFavoritedModes(struct FFavoritedFileMetaData* StructInitializer_FB6A659D4AA56996B7FA8698F78A6253)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.SyncFavoritedModes");
 
@@ -124619,8 +132216,8 @@ void UGFxData_TrainingModeBrowser_TA::SyncFavoritedModes(struct FFavoritedFileMe
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_3A9CE3A64EACECB656FE17BCFD36396C != nullptr)
-		*StructInitializer__s_3A9CE3A64EACECB656FE17BCFD36396C = params.StructInitializer__s_3A9CE3A64EACECB656FE17BCFD36396C;
+	if (StructInitializer_FB6A659D4AA56996B7FA8698F78A6253 != nullptr)
+		*StructInitializer_FB6A659D4AA56996B7FA8698F78A6253 = params.StructInitializer_FB6A659D4AA56996B7FA8698F78A6253;
 }
 
 
@@ -124743,9 +132340,9 @@ void UGFxData_TrainingModeBrowser_TA::CreateNew(const struct FString& NewName, T
 // Function TAGame.GFxData_TrainingModeBrowser_TA.DisplayError
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UGFxData_TrainingModeBrowser_TA::DisplayError(class UError_X* Error)
+void UGFxData_TrainingModeBrowser_TA::DisplayError(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.DisplayError");
 
@@ -124827,9 +132424,9 @@ void UGFxData_TrainingModeBrowser_TA::NotifyWhenFavoritesLoaded(const struct FSc
 // Parameters:
 // TArray<struct FString>         Files                          (CPF_Parm, CPF_NeedCtorLink)
 // TEnumAsByte<EBasicLoadResult>  Result                         (CPF_Parm)
-// struct FFavoritedFileMetaData  StructInitializer__s_A77E7F66489416A4903ED0B846182119 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FFavoritedFileMetaData  StructInitializer_9A72D877473B85BEBAF2699CFA9F1FB6 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-void UGFxData_TrainingModeBrowser_TA::HandleFavorites(TArray<struct FString> Files, TEnumAsByte<EBasicLoadResult> Result, struct FFavoritedFileMetaData* StructInitializer__s_A77E7F66489416A4903ED0B846182119)
+void UGFxData_TrainingModeBrowser_TA::HandleFavorites(TArray<struct FString> Files, TEnumAsByte<EBasicLoadResult> Result, struct FFavoritedFileMetaData* StructInitializer_9A72D877473B85BEBAF2699CFA9F1FB6)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_TrainingModeBrowser_TA.HandleFavorites");
 
@@ -124843,8 +132440,8 @@ void UGFxData_TrainingModeBrowser_TA::HandleFavorites(TArray<struct FString> Fil
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_A77E7F66489416A4903ED0B846182119 != nullptr)
-		*StructInitializer__s_A77E7F66489416A4903ED0B846182119 = params.StructInitializer__s_A77E7F66489416A4903ED0B846182119;
+	if (StructInitializer_9A72D877473B85BEBAF2699CFA9F1FB6 != nullptr)
+		*StructInitializer_9A72D877473B85BEBAF2699CFA9F1FB6 = params.StructInitializer_9A72D877473B85BEBAF2699CFA9F1FB6;
 }
 
 
@@ -125484,6 +133081,23 @@ void UGFxData_TrainingModeEditor_TA::OnShellSet()
 }
 
 
+// Function TAGame.GFxData_Upsell_TA.OnShellSet
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UGFxData_Upsell_TA::OnShellSet()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.GFxData_Upsell_TA.OnShellSet");
+
+	UGFxData_Upsell_TA_OnShellSet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.GFxData_Workshop_TA.OnAvatarPersonaHandler
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -125882,26 +133496,6 @@ void AInMapScoreboard_TA::DisableAllSwitches()
 }
 
 
-// Function TAGame.InMapScoreboard_TA.Tick
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void AInMapScoreboard_TA::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InMapScoreboard_TA.Tick");
-
-	AInMapScoreboard_TA_Tick_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TAGame.InMapScoreboard_TA.HandleCountDownTimeUpdated
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 // Parameters:
@@ -125944,6 +133538,46 @@ void AInMapScoreboard_TA::HandleGameStateChanged(class AGameEvent_TA* InEvent)
 }
 
 
+// Function TAGame.InMapScoreboard_TA.HandleScoreUpdated
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
+// Parameters:
+// class ATeam_TA*                Team                           (CPF_Parm)
+
+void AInMapScoreboard_TA::HandleScoreUpdated(class ATeam_TA* Team)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InMapScoreboard_TA.HandleScoreUpdated");
+
+	AInMapScoreboard_TA_HandleScoreUpdated_Params params;
+	params.Team = Team;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.InMapScoreboard_TA.HandleTeams
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Private)
+// Parameters:
+// class AGameEvent_Team_TA*      G                              (CPF_Parm)
+
+void AInMapScoreboard_TA::HandleTeams(class AGameEvent_Team_TA* G)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InMapScoreboard_TA.HandleTeams");
+
+	AInMapScoreboard_TA_HandleTeams_Params params;
+	params.G = G;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.InMapScoreboard_TA.SetUpEvents
 // (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
 
@@ -125952,6 +133586,26 @@ void AInMapScoreboard_TA::SetUpEvents()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InMapScoreboard_TA.SetUpEvents");
 
 	AInMapScoreboard_TA_SetUpEvents_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.InMapScoreboard_TA.HandleGameEvent
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class AGameEvent_TA*           InGameEvent                    (CPF_Parm)
+
+void AInMapScoreboard_TA::HandleGameEvent(class AGameEvent_TA* InGameEvent)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.InMapScoreboard_TA.HandleGameEvent");
+
+	AInMapScoreboard_TA_HandleGameEvent_Params params;
+	params.InGameEvent = InGameEvent;
 
 	auto flags = fn->FunctionFlags;
 
@@ -125975,324 +133629,6 @@ void AInMapScoreboard_TA::PostBeginPlay()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.LoadoutCollection_TA.FindPair
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 PairName                       (CPF_Parm, CPF_NeedCtorLink)
-// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutPair_TA* ULoadoutCollection_TA::FindPair(const struct FString& PairName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA.FindPair");
-
-	ULoadoutCollection_TA_FindPair_Params params;
-	params.PairName = PairName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutCollection_TA.AddPair
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULoadoutPair_TA*         Pair                           (CPF_Parm)
-
-void ULoadoutCollection_TA::AddPair(class ULoadoutPair_TA* Pair)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA.AddPair");
-
-	ULoadoutCollection_TA_AddPair_Params params;
-	params.Pair = Pair;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULoadoutPair_TA*         ComPair                        (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3::LambdaCallback(class ULoadoutPair_TA* ComPair)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.LambdaCallback");
-
-	ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3_LambdaCallback_Params params;
-	params.ComPair = ComPair;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class ULoadoutCollection_TA*   InOuter                        (CPF_Parm)
-// class ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3* ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3::STATIC_StaticConstruct(class ULoadoutCollection_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.StaticConstruct");
-
-	ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.SetPairName
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
-// class ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3* ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3::SetPairName(const struct FString& Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3.SetPairName");
-
-	ULoadoutCollection_TA__FindPair__60C53D834053E9F5CB7E50866C0370B3_SetPairName_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutPair_TA.CreatePair
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 InPairName                     (CPF_Parm, CPF_NeedCtorLink)
-// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-// TArray<class ULoadoutTeam_TA*> ArrayInitializer__s_9A5A553345C52835DEECB3865813CEC5 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-
-class ULoadoutPair_TA* ULoadoutPair_TA::STATIC_CreatePair(const struct FString& InPairName, TArray<class ULoadoutTeam_TA*>* ArrayInitializer__s_9A5A553345C52835DEECB3865813CEC5)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutPair_TA.CreatePair");
-
-	ULoadoutPair_TA_CreatePair_Params params;
-	params.InPairName = InPairName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ArrayInitializer__s_9A5A553345C52835DEECB3865813CEC5 != nullptr)
-		*ArrayInitializer__s_9A5A553345C52835DEECB3865813CEC5 = params.ArrayInitializer__s_9A5A553345C52835DEECB3865813CEC5;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.SetsToSave
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<class ULoadoutSet_TA*>  LoadoutSets                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class ULoadoutSet_TA*          Equipped                       (CPF_Parm)
-// class ULoadoutSave_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutSave_TA* ULoadoutConverter_TA::STATIC_SetsToSave(class ULoadoutSet_TA* Equipped, TArray<class ULoadoutSet_TA*>* LoadoutSets)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetsToSave");
-
-	ULoadoutConverter_TA_SetsToSave_Params params;
-	params.Equipped = Equipped;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (LoadoutSets != nullptr)
-		*LoadoutSets = params.LoadoutSets;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.EquippedToEquipper
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class ULoadoutSet_TA*          Equipped                       (CPF_Parm)
-// class ULoadoutCollection_TA*   Collection                     (CPF_Parm)
-// class ULoadoutEquipper_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutEquipper_TA* ULoadoutConverter_TA::STATIC_EquippedToEquipper(class ULoadoutSet_TA* Equipped, class ULoadoutCollection_TA* Collection)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.EquippedToEquipper");
-
-	ULoadoutConverter_TA_EquippedToEquipper_Params params;
-	params.Equipped = Equipped;
-	params.Collection = Collection;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.SetsToCollection
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<class ULoadoutSet_TA*>  LoadoutSets                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class ULoadoutCollection_TA*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-// TArray<class ULoadoutPair_TA*> MapLocal_871C77054D5A89D1B29427B8A178B1F4 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-
-class ULoadoutCollection_TA* ULoadoutConverter_TA::STATIC_SetsToCollection(TArray<class ULoadoutSet_TA*>* LoadoutSets, TArray<class ULoadoutPair_TA*>* MapLocal_871C77054D5A89D1B29427B8A178B1F4)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetsToCollection");
-
-	ULoadoutConverter_TA_SetsToCollection_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (LoadoutSets != nullptr)
-		*LoadoutSets = params.LoadoutSets;
-	if (MapLocal_871C77054D5A89D1B29427B8A178B1F4 != nullptr)
-		*MapLocal_871C77054D5A89D1B29427B8A178B1F4 = params.MapLocal_871C77054D5A89D1B29427B8A178B1F4;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.SetToPair
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class ULoadoutSet_TA*          Set                            (CPF_Parm)
-// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutPair_TA* ULoadoutConverter_TA::STATIC_SetToPair(class ULoadoutSet_TA* Set)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.SetToPair");
-
-	ULoadoutConverter_TA_SetToPair_Params params;
-	params.Set = Set;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.Loadout1ToTeam
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class ULoadout_TA*             Loadout                        (CPF_Const, CPF_Parm, CPF_OutParm)
-// class ULoadoutTeam_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutTeam_TA* ULoadoutConverter_TA::STATIC_Loadout1ToTeam(class ULoadout_TA** Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.Loadout1ToTeam");
-
-	ULoadoutConverter_TA_Loadout1ToTeam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Loadout != nullptr)
-		*Loadout = params.Loadout;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.LoadoutDataToTeam
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FLoadoutData            Loadout                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FLoadoutTeam            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FLoadoutTeam ULoadoutConverter_TA::STATIC_LoadoutDataToTeam(const struct FLoadoutData& Loadout)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.LoadoutDataToTeam");
-
-	ULoadoutConverter_TA_LoadoutDataToTeam_Params params;
-	params.Loadout = Loadout;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA.PaintToColor
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FLoadoutTeamPaint       Paint                          (CPF_Const, CPF_Parm, CPF_OutParm)
-// struct FLoadoutTeamColor       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-// struct FLoadoutTeamColor       StructInitializer__s_28FE21B149F6129C220ADF8372A9038A (CPF_Const, CPF_OutParm)
-
-struct FLoadoutTeamColor ULoadoutConverter_TA::STATIC_PaintToColor(struct FLoadoutTeamPaint* Paint, struct FLoadoutTeamColor* StructInitializer__s_28FE21B149F6129C220ADF8372A9038A)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA.PaintToColor");
-
-	ULoadoutConverter_TA_PaintToColor_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Paint != nullptr)
-		*Paint = params.Paint;
-	if (StructInitializer__s_28FE21B149F6129C220ADF8372A9038A != nullptr)
-		*StructInitializer__s_28FE21B149F6129C220ADF8372A9038A = params.StructInitializer__s_28FE21B149F6129C220ADF8372A9038A;
-
-	return params.ReturnValue;
 }
 
 
@@ -126362,118 +133698,6 @@ void ULoadoutEquipper_TA::Equip(class ULoadoutPair_TA* Pair)
 }
 
 
-// Function TAGame.LoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULoadoutSet_TA*          Set                            (CPF_Parm)
-// class ULoadoutPair_TA*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutPair_TA* ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661::LambdaCallback(class ULoadoutSet_TA* Set)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661.LambdaCallback");
-
-	ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661_LambdaCallback_Params params;
-	params.Set = Set;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class ULoadoutConverter_TA*    InOuter                        (CPF_Parm)
-// class ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661* ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661::STATIC_StaticConstruct(class ULoadoutConverter_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661.StaticConstruct");
-
-	ULoadoutConverter_TA__SetsToCollection__36CE8C4945D0386A1096489E0B111661_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULoadoutPair_TA*         Pair                           (CPF_Parm)
-
-void ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18::LambdaCallback(class ULoadoutPair_TA* Pair)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.LambdaCallback");
-
-	ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18_LambdaCallback_Params params;
-	params.Pair = Pair;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class ULoadoutConverter_TA*    InOuter                        (CPF_Parm)
-// class ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18* ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18::STATIC_StaticConstruct(class ULoadoutConverter_TA* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.StaticConstruct");
-
-	ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.SetCollection
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULoadoutCollection_TA*   Value                          (CPF_Parm)
-// class ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18* ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18::SetCollection(class ULoadoutCollection_TA* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TAGame.LoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18.SetCollection");
-
-	ULoadoutConverter_TA__SetsToCollection__66FE427B48DDE2C9BA2A738E24346E18_SetCollection_Params params;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function TAGame.LoadoutTeam_TA.SetData
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -126485,6 +133709,232 @@ void ULoadoutTeam_TA::SetData(const struct FLoadoutTeam& InData)
 
 	ULoadoutTeam_TA_SetData_Params params;
 	params.InData = InData;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.GetShowroomMetrics
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UShowroomMetrics_TA*     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UShowroomMetrics_TA* UMenuSequence_PremiumGarage_TA::GetShowroomMetrics()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.GetShowroomMetrics");
+
+	UMenuSequence_PremiumGarage_TA_GetShowroomMetrics_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.LeaveFadeOut
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_PremiumGarage_TA::LeaveFadeOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.LeaveFadeOut");
+
+	UMenuSequence_PremiumGarage_TA_LeaveFadeOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.HandleLeaveComplete
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_PremiumGarage_TA::HandleLeaveComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.HandleLeaveComplete");
+
+	UMenuSequence_PremiumGarage_TA_HandleLeaveComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.EnterFadeOut
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_PremiumGarage_TA::EnterFadeOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.EnterFadeOut");
+
+	UMenuSequence_PremiumGarage_TA_EnterFadeOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.HandleEnterComplete
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_PremiumGarage_TA::HandleEnterComplete()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.HandleEnterComplete");
+
+	UMenuSequence_PremiumGarage_TA_HandleEnterComplete_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.LeaveSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        NextSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarage_TA::LeaveSequence(class UMenuSequence_TA* NextSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.LeaveSequence");
+
+	UMenuSequence_PremiumGarage_TA_LeaveSequence_Params params;
+	params.NextSequence = NextSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarage_TA.EnterSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarage_TA::EnterSequence(class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarage_TA.EnterSequence");
+
+	UMenuSequence_PremiumGarage_TA_EnterSequence_Params params;
+	params.PrevSequence = PrevSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarageReveal_TA.FinishReveal
+// (FUNC_Defined, FUNC_Protected)
+
+void UMenuSequence_PremiumGarageReveal_TA::FinishReveal()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarageReveal_TA.FinishReveal");
+
+	UMenuSequence_PremiumGarageReveal_TA_FinishReveal_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarageReveal_TA.LeaveSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        NextSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarageReveal_TA::LeaveSequence(class UMenuSequence_TA* NextSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarageReveal_TA.LeaveSequence");
+
+	UMenuSequence_PremiumGarageReveal_TA_LeaveSequence_Params params;
+	params.NextSequence = NextSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarageReveal_TA.EnterSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarageReveal_TA::EnterSequence(class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarageReveal_TA.EnterSequence");
+
+	UMenuSequence_PremiumGarageReveal_TA_EnterSequence_Params params;
+	params.PrevSequence = PrevSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarageSnap_TA.LeaveSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        NextSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarageSnap_TA::LeaveSequence(class UMenuSequence_TA* NextSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarageSnap_TA.LeaveSequence");
+
+	UMenuSequence_PremiumGarageSnap_TA_LeaveSequence_Params params;
+	params.NextSequence = NextSequence;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.MenuSequence_PremiumGarageSnap_TA.EnterSequence
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UMenuSequence_TA*        PrevSequence                   (CPF_Parm)
+
+void UMenuSequence_PremiumGarageSnap_TA::EnterSequence(class UMenuSequence_TA* PrevSequence)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.MenuSequence_PremiumGarageSnap_TA.EnterSequence");
+
+	UMenuSequence_PremiumGarageSnap_TA_EnterSequence_Params params;
+	params.PrevSequence = PrevSequence;
 
 	auto flags = fn->FunctionFlags;
 
@@ -127162,6 +134612,507 @@ void URPC_ProductsDebugSetPainted_TA::EventPaintedComplete(class UOnlineProduct_
 }
 
 
+// Function TAGame.RPC_UploadXP_TA.SetXPLevel
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            InXPLevel                      (CPF_Parm)
+// class URPC_UploadXP_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_UploadXP_TA* URPC_UploadXP_TA::SetXPLevel(int InXPLevel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_UploadXP_TA.SetXPLevel");
+
+	URPC_UploadXP_TA_SetXPLevel_Params params;
+	params.InXPLevel = InXPLevel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_UploadXP_TA.SetXPTotal
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          InXPTotal                      (CPF_Parm)
+// class URPC_UploadXP_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_UploadXP_TA* URPC_UploadXP_TA::SetXPTotal(float InXPTotal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_UploadXP_TA.SetXPTotal");
+
+	URPC_UploadXP_TA_SetXPTotal_Params params;
+	params.InXPTotal = InXPTotal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.RPC_UploadXP_TA.SetPlayerID
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            InPlayerId                     (CPF_Parm)
+// class URPC_UploadXP_TA*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_UploadXP_TA* URPC_UploadXP_TA::SetPlayerID(const struct FUniqueNetId& InPlayerId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.RPC_UploadXP_TA.SetPlayerID");
+
+	URPC_UploadXP_TA_SetPlayerID_Params params;
+	params.InPlayerId = InPlayerId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.CalculateMomentumFalloff
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UScrollComponent_TA::CalculateMomentumFalloff()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.CalculateMomentumFalloff");
+
+	UScrollComponent_TA_CalculateMomentumFalloff_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.DetermineMoveSpeed
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
+// Parameters:
+// float                          Input                          (CPF_Parm)
+// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UScrollComponent_TA::DetermineMoveSpeed(float Input, bool bGamepad)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.DetermineMoveSpeed");
+
+	UScrollComponent_TA_DetermineMoveSpeed_Params params;
+	params.Input = Input;
+	params.bGamepad = bGamepad;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.MoveInDirection
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 MoveDirection                  (CPF_Parm)
+
+void UScrollComponent_TA::MoveInDirection(const struct FVector& MoveDirection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.MoveInDirection");
+
+	UScrollComponent_TA_MoveInDirection_Params params;
+	params.MoveDirection = MoveDirection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.SetSnapLocation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            SnapIndex                      (CPF_Parm)
+// float                          BlendSpeed                     (CPF_Parm)
+
+void UScrollComponent_TA::SetSnapLocation(int SnapIndex, float BlendSpeed)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.SetSnapLocation");
+
+	UScrollComponent_TA_SetSnapLocation_Params params;
+	params.SnapIndex = SnapIndex;
+	params.BlendSpeed = BlendSpeed;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.GetSnapIndexLocation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            SnapIndex                      (CPF_Parm)
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector UScrollComponent_TA::GetSnapIndexLocation(int SnapIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.GetSnapIndexLocation");
+
+	UScrollComponent_TA_GetSnapIndexLocation_Params params;
+	params.SnapIndex = SnapIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.CalculateSnapIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UScrollComponent_TA::CalculateSnapIndex()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.CalculateSnapIndex");
+
+	UScrollComponent_TA_CalculateSnapIndex_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.DetermineSnapStopLocation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UScrollComponent_TA::DetermineSnapStopLocation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.DetermineSnapStopLocation");
+
+	UScrollComponent_TA_DetermineSnapStopLocation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.SetActiveSnapIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            NewIndex                       (CPF_Parm)
+
+void UScrollComponent_TA::SetActiveSnapIndex(int NewIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.SetActiveSnapIndex");
+
+	UScrollComponent_TA_SetActiveSnapIndex_Params params;
+	params.NewIndex = NewIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.ClampSnapIndex
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// int                            Index                          (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UScrollComponent_TA::ClampSnapIndex(int Index)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.ClampSnapIndex");
+
+	UScrollComponent_TA_ClampSnapIndex_Params params;
+	params.Index = Index;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.ShiftVerticalToSnap
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            Direction                      (CPF_Parm)
+
+void UScrollComponent_TA::ShiftVerticalToSnap(int Direction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.ShiftVerticalToSnap");
+
+	UScrollComponent_TA_ShiftVerticalToSnap_Params params;
+	params.Direction = Direction;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.FinishMovement
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UScrollComponent_TA::FinishMovement(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.FinishMovement");
+
+	UScrollComponent_TA_FinishMovement_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.ScrollComponent_TA.UpdateLocation
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// float                          Input                          (CPF_OptionalParm, CPF_Parm)
+// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
+
+void UScrollComponent_TA::UpdateLocation(float DeltaTime, float Input, bool bGamepad)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.UpdateLocation");
+
+	UScrollComponent_TA_UpdateLocation_Params params;
+	params.DeltaTime = DeltaTime;
+	params.Input = Input;
+	params.bGamepad = bGamepad;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.SetGrabbed
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bGrab                          (CPF_Parm)
+
+void UScrollComponent_TA::SetGrabbed(bool bGrab)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.SetGrabbed");
+
+	UScrollComponent_TA_SetGrabbed_Params params;
+	params.bGrab = bGrab;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.StopMovement
+// (FUNC_Defined, FUNC_Public)
+
+void UScrollComponent_TA::StopMovement()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.StopMovement");
+
+	UScrollComponent_TA_StopMovement_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.SetScrollPoints
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FVector                 InStartPoint                   (CPF_Parm)
+// float                          InSnapDistance                 (CPF_Parm)
+// int                            InTotalSnaps                   (CPF_Parm)
+// float                          InTotalDistance                (CPF_Parm)
+
+void UScrollComponent_TA::SetScrollPoints(const struct FVector& InStartPoint, float InSnapDistance, int InTotalSnaps, float InTotalDistance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.SetScrollPoints");
+
+	UScrollComponent_TA_SetScrollPoints_Params params;
+	params.InStartPoint = InStartPoint;
+	params.InSnapDistance = InSnapDistance;
+	params.InTotalSnaps = InTotalSnaps;
+	params.InTotalDistance = InTotalDistance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.Tick
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void UScrollComponent_TA::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.Tick");
+
+	UScrollComponent_TA_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.BeginPlay
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UScrollComponent_TA::BeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.BeginPlay");
+
+	UScrollComponent_TA_BeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.ScrollComponent_TA.EventSnapIndexChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UScrollComponent_TA*     ScrollComponent                (CPF_Parm, CPF_EditInline)
+// int                            PreviousSnapIndex              (CPF_Parm)
+
+void UScrollComponent_TA::EventSnapIndexChanged(class UScrollComponent_TA* ScrollComponent, int PreviousSnapIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.ScrollComponent_TA.EventSnapIndexChanged");
+
+	UScrollComponent_TA_EventSnapIndexChanged_Params params;
+	params.ScrollComponent = ScrollComponent;
+	params.PreviousSnapIndex = PreviousSnapIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_CreateAttachComponent_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_CreateAttachComponent_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_CreateAttachComponent_TA.Activated");
+
+	USeqAct_CreateAttachComponent_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_GameURLHasOption_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_GameURLHasOption_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_GameURLHasOption_TA.Activated");
+
+	USeqAct_GameURLHasOption_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_GetGameBall_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_GetGameBall_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_GetGameBall_TA.Activated");
+
+	USeqAct_GetGameBall_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SeqAct_GetPlayerCar_TA.Activated
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 
@@ -127213,6 +135164,100 @@ void USeqAct_InstanceMaterial_TA::Activated()
 }
 
 
+// Function TAGame.SeqAct_IntroMenuCarsInPosition_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_IntroMenuCarsInPosition_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_IntroMenuCarsInPosition_TA.Activated");
+
+	USeqAct_IntroMenuCarsInPosition_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_LoadMap_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_LoadMap_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_LoadMap_TA.Activated");
+
+	USeqAct_LoadMap_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_LookAtActor_TA.SetActorRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void USeqAct_LookAtActor_TA::SetActorRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_LookAtActor_TA.SetActorRotation");
+
+	USeqAct_LookAtActor_TA_SetActorRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_LookAtActor_TA.Update
+// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USeqAct_LookAtActor_TA::Update(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_LookAtActor_TA.Update");
+
+	USeqAct_LookAtActor_TA_Update_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SeqAct_LookAtActor_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_LookAtActor_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_LookAtActor_TA.Activated");
+
+	USeqAct_LookAtActor_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SeqAct_MoveActor_TA.Update
 // (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
@@ -127253,6 +135298,117 @@ void USeqAct_MoveActor_TA::Activated()
 }
 
 
+// Function TAGame.SeqAct_ReinitPhys_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_ReinitPhys_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_ReinitPhys_TA.Activated");
+
+	USeqAct_ReinitPhys_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_RotateActor_TA.SetActorRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void USeqAct_RotateActor_TA::SetActorRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_RotateActor_TA.SetActorRotation");
+
+	USeqAct_RotateActor_TA_SetActorRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_RotateActor_TA.Update
+// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USeqAct_RotateActor_TA::Update(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_RotateActor_TA.Update");
+
+	USeqAct_RotateActor_TA_Update_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SeqAct_RotateActor_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_RotateActor_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_RotateActor_TA.Activated");
+
+	USeqAct_RotateActor_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SetBreakoutBallCharge_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SetBreakoutBallCharge_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetBreakoutBallCharge_TA.Activated");
+
+	USeqAct_SetBreakoutBallCharge_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SetBreakoutTileDamage_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SetBreakoutTileDamage_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetBreakoutTileDamage_TA.Activated");
+
+	USeqAct_SetBreakoutTileDamage_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SeqAct_SetMatInstVectorParam_TA.Activated
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 
@@ -127270,6 +135426,43 @@ void USeqAct_SetMatInstVectorParam_TA::Activated()
 }
 
 
+// Function TAGame.SeqAct_SetMeshMaterialScalarParameter_TA.__SeqAct_SetMeshMaterialScalarParameter_TA__Activated_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UObject*                 Mesh                           (CPF_Parm)
+
+void USeqAct_SetMeshMaterialScalarParameter_TA::__SeqAct_SetMeshMaterialScalarParameter_TA__Activated_1(class UObject* Mesh)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetMeshMaterialScalarParameter_TA.__SeqAct_SetMeshMaterialScalarParameter_TA__Activated_1");
+
+	USeqAct_SetMeshMaterialScalarParameter_TA___SeqAct_SetMeshMaterialScalarParameter_TA__Activated_1_Params params;
+	params.Mesh = Mesh;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SetMeshMaterialScalarParameter_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SetMeshMaterialScalarParameter_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetMeshMaterialScalarParameter_TA.Activated");
+
+	USeqAct_SetMeshMaterialScalarParameter_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TAGame.SeqAct_SetPostProcess_TA.Activated
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 
@@ -127278,6 +135471,95 @@ void USeqAct_SetPostProcess_TA::Activated()
 	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetPostProcess_TA.Activated");
 
 	USeqAct_SetPostProcess_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SetSkelMATLoadout_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SetSkelMATLoadout_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetSkelMATLoadout_TA.Activated");
+
+	USeqAct_SetSkelMATLoadout_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SetTutorialTip_TA.GetStringWithMergedActions
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USeqAct_SetTutorialTip_TA::GetStringWithMergedActions()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetTutorialTip_TA.GetStringWithMergedActions");
+
+	USeqAct_SetTutorialTip_TA_GetStringWithMergedActions_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function TAGame.SeqAct_SetTutorialTip_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SetTutorialTip_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SetTutorialTip_TA.Activated");
+
+	USeqAct_SetTutorialTip_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_SpawnActor_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_SpawnActor_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_SpawnActor_TA.Activated");
+
+	USeqAct_SpawnActor_TA_Activated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TAGame.SeqAct_TermPhys_TA.Activated
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void USeqAct_TermPhys_TA::Activated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TAGame.SeqAct_TermPhys_TA.Activated");
+
+	USeqAct_TermPhys_TA_Activated_Params params;
 
 	auto flags = fn->FunctionFlags;
 

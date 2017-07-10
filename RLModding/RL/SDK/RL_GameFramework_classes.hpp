@@ -33,11 +33,11 @@ public:
 
 
 // Class GameFramework.FrameworkGame
-// 0x000C (0x03C8 - 0x03BC)
+// 0x000C (0x03D8 - 0x03CC)
 class AFrameworkGame : public AGameInfo
 {
 public:
-	TArray<struct FRequiredMobileInputConfig>          RequiredMobileInputConfigs;                               // 0x03BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	TArray<struct FRequiredMobileInputConfig>          RequiredMobileInputConfigs;                               // 0x03CC(0x000C) (CPF_Config, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -49,24 +49,24 @@ public:
 
 
 // Class GameFramework.GameAIController
-// 0x0038 (0x03C0 - 0x0388)
+// 0x0038 (0x03D0 - 0x0398)
 class AGameAIController : public AAIController
 {
 public:
-	class UGameAICommand*                              CommandList;                                              // 0x0388(0x0004) (CPF_Edit, CPF_Const, CPF_Transient, CPF_EditInline)
-	unsigned long                                      bHasRunawayCommandList : 1;                               // 0x038C(0x0004) (CPF_Transient)
-	unsigned long                                      bAILogging : 1;                                           // 0x038C(0x0004) (CPF_Edit, CPF_Config)
-	unsigned long                                      bAILogToWindow : 1;                                       // 0x038C(0x0004) (CPF_Edit, CPF_Config)
-	unsigned long                                      bFlushAILogEachLine : 1;                                  // 0x038C(0x0004) (CPF_Edit, CPF_Config)
-	unsigned long                                      bMapBasedLogName : 1;                                     // 0x038C(0x0004) (CPF_Edit, CPF_Config)
-	unsigned long                                      bAIDrawDebug : 1;                                         // 0x038C(0x0004) (CPF_Edit, CPF_Config)
-	unsigned long                                      bAIBroken : 1;                                            // 0x038C(0x0004) (CPF_Transient)
-	class AFileLog*                                    AILogFile;                                                // 0x0390(0x0004) (CPF_Transient)
-	float                                              DebugTextMaxLen;                                          // 0x0394(0x0004) (CPF_Edit)
-	TArray<struct FAICmdHistoryItem>                   CommandHistory;                                           // 0x0398(0x000C) (CPF_Edit, CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	int                                                CommandHistoryNum;                                        // 0x03A4(0x0004) (CPF_Edit, CPF_Config)
-	TArray<struct FName>                               AILogFilter;                                              // 0x03A8(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     DemoActionString;                                         // 0x03B4(0x000C) (CPF_Net, CPF_NeedCtorLink)
+	class UGameAICommand*                              CommandList;                                              // 0x0398(0x0004) (CPF_Edit, CPF_Const, CPF_Transient, CPF_EditInline)
+	unsigned long                                      bHasRunawayCommandList : 1;                               // 0x039C(0x0004) (CPF_Transient)
+	unsigned long                                      bAILogging : 1;                                           // 0x039C(0x0004) (CPF_Edit, CPF_Config)
+	unsigned long                                      bAILogToWindow : 1;                                       // 0x039C(0x0004) (CPF_Edit, CPF_Config)
+	unsigned long                                      bFlushAILogEachLine : 1;                                  // 0x039C(0x0004) (CPF_Edit, CPF_Config)
+	unsigned long                                      bMapBasedLogName : 1;                                     // 0x039C(0x0004) (CPF_Edit, CPF_Config)
+	unsigned long                                      bAIDrawDebug : 1;                                         // 0x039C(0x0004) (CPF_Edit, CPF_Config)
+	unsigned long                                      bAIBroken : 1;                                            // 0x039C(0x0004) (CPF_Transient)
+	class AFileLog*                                    AILogFile;                                                // 0x03A0(0x0004) (CPF_Transient)
+	float                                              DebugTextMaxLen;                                          // 0x03A4(0x0004) (CPF_Edit)
+	TArray<struct FAICmdHistoryItem>                   CommandHistory;                                           // 0x03A8(0x000C) (CPF_Edit, CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	int                                                CommandHistoryNum;                                        // 0x03B4(0x0004) (CPF_Edit, CPF_Config)
+	TArray<struct FName>                               AILogFilter;                                              // 0x03B8(0x000C) (CPF_Edit, CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     DemoActionString;                                         // 0x03C4(0x000C) (CPF_Net, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -147,7 +147,7 @@ public:
 
 
 // Class GameFramework.GameCameraBlockingVolume
-// 0x0000 (0x021C - 0x021C)
+// 0x0000 (0x022C - 0x022C)
 class AGameCameraBlockingVolume : public ABlockingVolume
 {
 public:
@@ -162,15 +162,15 @@ public:
 
 
 // Class GameFramework.GamePlayerController
-// 0x0010 (0x05C0 - 0x05B0)
+// 0x0010 (0x05D0 - 0x05C0)
 class AGamePlayerController : public APlayerController
 {
 public:
-	unsigned long                                      bWarnCrowdMembers : 1;                                    // 0x05B0(0x0004)
-	unsigned long                                      bDebugCrowdAwareness : 1;                                 // 0x05B0(0x0004) (CPF_Edit)
-	unsigned long                                      bIsWarmupPaused : 1;                                      // 0x05B0(0x0004) (CPF_Transient)
-	float                                              AgentAwareRadius;                                         // 0x05B4(0x0004)
-	struct FName                                       CurrentSoundMode;                                         // 0x05B8(0x0008) (CPF_Transient)
+	unsigned long                                      bWarnCrowdMembers : 1;                                    // 0x05C0(0x0004)
+	unsigned long                                      bDebugCrowdAwareness : 1;                                 // 0x05C0(0x0004) (CPF_Edit)
+	unsigned long                                      bIsWarmupPaused : 1;                                      // 0x05C0(0x0004) (CPF_Transient)
+	float                                              AgentAwareRadius;                                         // 0x05C4(0x0004)
+	struct FName                                       CurrentSoundMode;                                         // 0x05C8(0x0008) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -223,109 +223,109 @@ public:
 
 
 // Class GameFramework.GameCrowdAgent
-// 0x0208 (0x03F8 - 0x01F0)
+// 0x0208 (0x0408 - 0x0200)
 class AGameCrowdAgent : public ACrowdAgentBase
 {
 public:
-	struct FPointer                                    VfTable_IInterface_RVO;                                   // 0x01F0(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	class UGameCrowdGroup*                             MyGroup;                                                  // 0x01F4(0x0004)
-	struct FVector                                     PreferredVelocity;                                        // 0x01F8(0x000C)
-	struct FVector                                     PendingVelocity;                                          // 0x0204(0x000C)
-	class AGameCrowdDestination*                       CurrentDestination;                                       // 0x0210(0x0004)
-	class AGameCrowdDestination*                       BehaviorDestination;                                      // 0x0214(0x0004)
-	class AGameCrowdDestination*                       PreviousDestination;                                      // 0x0218(0x0004)
-	float                                              InterpZTranslation;                                       // 0x021C(0x0004)
-	int                                                Health;                                                   // 0x0220(0x0004) (CPF_Edit)
-	float                                              DeadBodyDuration;                                         // 0x0224(0x0004) (CPF_Edit)
-	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0228(0x0004) (CPF_Const, CPF_ExportObject, CPF_EditConst, CPF_Component, CPF_EditInline)
-	int                                                ConformTraceFrameCount;                                   // 0x022C(0x0004) (CPF_Transient)
-	TArray<struct FNearbyDynamicItem>                  NearbyDynamics;                                           // 0x0230(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned long                                      bUniformScale : 1;                                        // 0x023C(0x0004)
-	unsigned long                                      bCheckForObstacles : 1;                                   // 0x023C(0x0004) (CPF_Edit)
-	unsigned long                                      bUseNavMeshPathing : 1;                                   // 0x023C(0x0004) (CPF_Edit)
-	unsigned long                                      bWantsSeePlayerNotification : 1;                          // 0x023C(0x0004)
-	unsigned long                                      bAllowPitching : 1;                                       // 0x023C(0x0004) (CPF_Edit)
-	unsigned long                                      bHitObstacle : 1;                                         // 0x023C(0x0004)
-	unsigned long                                      bBadHitNormal : 1;                                        // 0x023C(0x0004)
-	unsigned long                                      bSimulateThisTick : 1;                                    // 0x023C(0x0004)
-	unsigned long                                      bPotentialEncounter : 1;                                  // 0x023C(0x0004)
-	unsigned long                                      bIsPanicked : 1;                                          // 0x023C(0x0004)
-	unsigned long                                      bWantsGroupIdle : 1;                                      // 0x023C(0x0004)
-	unsigned long                                      bPreferVisibleDestination : 1;                            // 0x023C(0x0004) (CPF_Edit)
-	unsigned long                                      bPreferVisibleDestinationOnSpawn : 1;                     // 0x023C(0x0004) (CPF_Edit)
-	unsigned long                                      bHasNotifiedSpawner : 1;                                  // 0x023C(0x0004)
-	unsigned long                                      bIsInSpawnPool : 1;                                       // 0x023C(0x0004)
-	unsigned long                                      bPaused : 1;                                              // 0x023C(0x0004) (CPF_Edit)
-	TEnumAsByte<EConformType>                          ConformType;                                              // 0x0240(0x0001) (CPF_Edit)
-	float                                              ConformTraceDist;                                         // 0x0244(0x0004) (CPF_Edit)
-	int                                                ConformTraceInterval;                                     // 0x0248(0x0004) (CPF_Edit)
-	int                                                CurrentConformTraceInterval;                              // 0x024C(0x0004)
-	float                                              LastGroundZ;                                              // 0x0250(0x0004)
-	float                                              AwareRadius;                                              // 0x0254(0x0004) (CPF_Edit)
-	float                                              AvoidOtherRadius;                                         // 0x0258(0x0004) (CPF_Edit)
-	TArray<struct FAvoidOtherSampleItem>               AvoidOtherSampleList;                                     // 0x025C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              PENALTY_COEFF_ANGLETOGOAL;                                // 0x0268(0x0004) (CPF_Edit)
-	float                                              PENALTY_COEFF_ANGLETOVEL;                                 // 0x026C(0x0004) (CPF_Edit)
-	float                                              PENALTY_COEFF_MAG;                                        // 0x0270(0x0004) (CPF_Edit)
-	float                                              MIN_PENALTY_THRESHOLD;                                    // 0x0274(0x0004) (CPF_Edit)
-	float                                              LastProgressTime;                                         // 0x0278(0x0004) (CPF_Edit)
-	float                                              LastFallbackActiveTime;                                   // 0x027C(0x0004) (CPF_Edit)
-	float                                              MaxPathLaneValue;                                         // 0x0280(0x0004) (CPF_Edit)
-	float                                              CurrentPathLaneValue;                                     // 0x0284(0x0004) (CPF_Edit)
-	int                                                ExtraPathCost;                                            // 0x0288(0x0004) (CPF_Edit)
-	float                                              RotateToTargetSpeed;                                      // 0x028C(0x0004) (CPF_Edit)
-	float                                              MaxYawRate;                                               // 0x0290(0x0004) (CPF_Edit)
-	struct FVector                                     MeshMinScale3D;                                           // 0x0294(0x000C) (CPF_Edit)
-	struct FVector                                     MeshMaxScale3D;                                           // 0x02A0(0x000C) (CPF_Edit)
-	float                                              EyeZOffset;                                               // 0x02AC(0x0004)
-	float                                              ProximityLODDist;                                         // 0x02B0(0x0004) (CPF_Edit)
-	float                                              VisibleProximityLODDist;                                  // 0x02B4(0x0004) (CPF_Edit)
-	struct FVector                                     LastKnownGoodPosition;                                    // 0x02B8(0x000C)
-	float                                              GroundOffset;                                             // 0x02C4(0x0004) (CPF_Edit)
-	struct FVector                                     IntermediatePoint;                                        // 0x02C8(0x000C)
-	struct FVector                                     SearchExtent;                                             // 0x02D4(0x000C)
-	class UClass*                                      NavigationHandleClass;                                    // 0x02E0(0x0004)
-	class UNavigationHandle*                           NavigationHandle;                                         // 0x02E4(0x0004)
-	int                                                ObstacleCheckCount;                                       // 0x02E8(0x0004)
-	float                                              WalkableFloorZ;                                           // 0x02EC(0x0004)
-	float                                              LastPathingAttempt;                                       // 0x02F0(0x0004)
-	float                                              LastUpdateTime;                                           // 0x02F4(0x0004)
-	float                                              NotVisibleLifeSpan;                                       // 0x02F8(0x0004) (CPF_Edit)
-	class AGameCrowdAgent*                             MyArchetype;                                              // 0x02FC(0x0004)
-	float                                              MaxWalkingSpeed;                                          // 0x0300(0x0004) (CPF_Edit)
-	float                                              MaxRunningSpeed;                                          // 0x0304(0x0004) (CPF_Edit)
-	float                                              MaxSpeed;                                                 // 0x0308(0x0004)
-	TArray<struct FRecentInteraction>                  RecentInteractions;                                       // 0x030C(0x000C) (CPF_NeedCtorLink)
-	float                                              BeaconMaxDist;                                            // 0x0318(0x0004)
-	struct FVector                                     BeaconOffset;                                             // 0x031C(0x000C)
-	class UTexture2D*                                  BeaconTexture;                                            // 0x0328(0x0004) (CPF_Const)
-	struct FLinearColor                                BeaconColor;                                              // 0x032C(0x0010) (CPF_Const)
-	class USoundCue*                                   AmbientSoundCue;                                          // 0x033C(0x0004) (CPF_Edit)
-	class UAudioComponent*                             AmbientSoundComponent;                                    // 0x0340(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UGameCrowdAgentBehavior*                     CurrentBehavior;                                          // 0x0344(0x0004)
-	float                                              CurrentBehaviorActivationTime;                            // 0x0348(0x0004)
-	TArray<struct FBehaviorEntry>                      EncounterAgentBehaviors;                                  // 0x034C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      SeePlayerBehaviors;                                       // 0x0358(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              MaxSeePlayerDistSq;                                       // 0x0364(0x0004)
-	float                                              SeePlayerInterval;                                        // 0x0368(0x0004) (CPF_Edit)
-	TArray<struct FBehaviorEntry>                      SpawnBehaviors;                                           // 0x036C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      UneasyBehaviors;                                          // 0x0378(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      AlertBehaviors;                                           // 0x0384(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      PanicBehaviors;                                           // 0x0390(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      RandomBehaviors;                                          // 0x039C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FBehaviorEntry>                      TakeDamageBehaviors;                                      // 0x03A8(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              RandomBehaviorInterval;                                   // 0x03B4(0x0004) (CPF_Edit)
-	float                                              ForceUpdateTime;                                          // 0x03B8(0x0004)
-	float                                              ReachThreshold;                                           // 0x03BC(0x0004)
-	TArray<struct FBehaviorEntry>                      GroupWaitingBehaviors;                                    // 0x03C0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              DesiredGroupRadius;                                       // 0x03CC(0x0004) (CPF_Edit)
-	float                                              DesiredGroupRadiusSq;                                     // 0x03D0(0x0004)
-	float                                              MaxLOSLifeDistanceSq;                                     // 0x03D4(0x0004)
-	TScriptInterface<class UGameCrowdSpawnerInterface> MySpawner;                                                // 0x03D8(0x0008)
-	struct FVector                                     SpawnOffset;                                              // 0x03E0(0x000C)
-	float                                              InitialLastRenderTime;                                    // 0x03EC(0x0004)
-	struct FColor                                      DebugAgentColor;                                          // 0x03F0(0x0004) (CPF_Edit)
-	class AGameCrowdDestination*                       DebugSpawnDest;                                           // 0x03F4(0x0004) (CPF_Edit)
+	struct FPointer                                    VfTable_IInterface_RVO;                                   // 0x0200(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	class UGameCrowdGroup*                             MyGroup;                                                  // 0x0204(0x0004)
+	struct FVector                                     PreferredVelocity;                                        // 0x0208(0x000C)
+	struct FVector                                     PendingVelocity;                                          // 0x0214(0x000C)
+	class AGameCrowdDestination*                       CurrentDestination;                                       // 0x0220(0x0004)
+	class AGameCrowdDestination*                       BehaviorDestination;                                      // 0x0224(0x0004)
+	class AGameCrowdDestination*                       PreviousDestination;                                      // 0x0228(0x0004)
+	float                                              InterpZTranslation;                                       // 0x022C(0x0004)
+	int                                                Health;                                                   // 0x0230(0x0004) (CPF_Edit)
+	float                                              DeadBodyDuration;                                         // 0x0234(0x0004) (CPF_Edit)
+	class UDynamicLightEnvironmentComponent*           LightEnvironment;                                         // 0x0238(0x0004) (CPF_Const, CPF_ExportObject, CPF_EditConst, CPF_Component, CPF_EditInline)
+	int                                                ConformTraceFrameCount;                                   // 0x023C(0x0004) (CPF_Transient)
+	TArray<struct FNearbyDynamicItem>                  NearbyDynamics;                                           // 0x0240(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bUniformScale : 1;                                        // 0x024C(0x0004)
+	unsigned long                                      bCheckForObstacles : 1;                                   // 0x024C(0x0004) (CPF_Edit)
+	unsigned long                                      bUseNavMeshPathing : 1;                                   // 0x024C(0x0004) (CPF_Edit)
+	unsigned long                                      bWantsSeePlayerNotification : 1;                          // 0x024C(0x0004)
+	unsigned long                                      bAllowPitching : 1;                                       // 0x024C(0x0004) (CPF_Edit)
+	unsigned long                                      bHitObstacle : 1;                                         // 0x024C(0x0004)
+	unsigned long                                      bBadHitNormal : 1;                                        // 0x024C(0x0004)
+	unsigned long                                      bSimulateThisTick : 1;                                    // 0x024C(0x0004)
+	unsigned long                                      bPotentialEncounter : 1;                                  // 0x024C(0x0004)
+	unsigned long                                      bIsPanicked : 1;                                          // 0x024C(0x0004)
+	unsigned long                                      bWantsGroupIdle : 1;                                      // 0x024C(0x0004)
+	unsigned long                                      bPreferVisibleDestination : 1;                            // 0x024C(0x0004) (CPF_Edit)
+	unsigned long                                      bPreferVisibleDestinationOnSpawn : 1;                     // 0x024C(0x0004) (CPF_Edit)
+	unsigned long                                      bHasNotifiedSpawner : 1;                                  // 0x024C(0x0004)
+	unsigned long                                      bIsInSpawnPool : 1;                                       // 0x024C(0x0004)
+	unsigned long                                      bPaused : 1;                                              // 0x024C(0x0004) (CPF_Edit)
+	TEnumAsByte<EConformType>                          ConformType;                                              // 0x0250(0x0001) (CPF_Edit)
+	float                                              ConformTraceDist;                                         // 0x0254(0x0004) (CPF_Edit)
+	int                                                ConformTraceInterval;                                     // 0x0258(0x0004) (CPF_Edit)
+	int                                                CurrentConformTraceInterval;                              // 0x025C(0x0004)
+	float                                              LastGroundZ;                                              // 0x0260(0x0004)
+	float                                              AwareRadius;                                              // 0x0264(0x0004) (CPF_Edit)
+	float                                              AvoidOtherRadius;                                         // 0x0268(0x0004) (CPF_Edit)
+	TArray<struct FAvoidOtherSampleItem>               AvoidOtherSampleList;                                     // 0x026C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              PENALTY_COEFF_ANGLETOGOAL;                                // 0x0278(0x0004) (CPF_Edit)
+	float                                              PENALTY_COEFF_ANGLETOVEL;                                 // 0x027C(0x0004) (CPF_Edit)
+	float                                              PENALTY_COEFF_MAG;                                        // 0x0280(0x0004) (CPF_Edit)
+	float                                              MIN_PENALTY_THRESHOLD;                                    // 0x0284(0x0004) (CPF_Edit)
+	float                                              LastProgressTime;                                         // 0x0288(0x0004) (CPF_Edit)
+	float                                              LastFallbackActiveTime;                                   // 0x028C(0x0004) (CPF_Edit)
+	float                                              MaxPathLaneValue;                                         // 0x0290(0x0004) (CPF_Edit)
+	float                                              CurrentPathLaneValue;                                     // 0x0294(0x0004) (CPF_Edit)
+	int                                                ExtraPathCost;                                            // 0x0298(0x0004) (CPF_Edit)
+	float                                              RotateToTargetSpeed;                                      // 0x029C(0x0004) (CPF_Edit)
+	float                                              MaxYawRate;                                               // 0x02A0(0x0004) (CPF_Edit)
+	struct FVector                                     MeshMinScale3D;                                           // 0x02A4(0x000C) (CPF_Edit)
+	struct FVector                                     MeshMaxScale3D;                                           // 0x02B0(0x000C) (CPF_Edit)
+	float                                              EyeZOffset;                                               // 0x02BC(0x0004)
+	float                                              ProximityLODDist;                                         // 0x02C0(0x0004) (CPF_Edit)
+	float                                              VisibleProximityLODDist;                                  // 0x02C4(0x0004) (CPF_Edit)
+	struct FVector                                     LastKnownGoodPosition;                                    // 0x02C8(0x000C)
+	float                                              GroundOffset;                                             // 0x02D4(0x0004) (CPF_Edit)
+	struct FVector                                     IntermediatePoint;                                        // 0x02D8(0x000C)
+	struct FVector                                     SearchExtent;                                             // 0x02E4(0x000C)
+	class UClass*                                      NavigationHandleClass;                                    // 0x02F0(0x0004)
+	class UNavigationHandle*                           NavigationHandle;                                         // 0x02F4(0x0004)
+	int                                                ObstacleCheckCount;                                       // 0x02F8(0x0004)
+	float                                              WalkableFloorZ;                                           // 0x02FC(0x0004)
+	float                                              LastPathingAttempt;                                       // 0x0300(0x0004)
+	float                                              LastUpdateTime;                                           // 0x0304(0x0004)
+	float                                              NotVisibleLifeSpan;                                       // 0x0308(0x0004) (CPF_Edit)
+	class AGameCrowdAgent*                             MyArchetype;                                              // 0x030C(0x0004)
+	float                                              MaxWalkingSpeed;                                          // 0x0310(0x0004) (CPF_Edit)
+	float                                              MaxRunningSpeed;                                          // 0x0314(0x0004) (CPF_Edit)
+	float                                              MaxSpeed;                                                 // 0x0318(0x0004)
+	TArray<struct FRecentInteraction>                  RecentInteractions;                                       // 0x031C(0x000C) (CPF_NeedCtorLink)
+	float                                              BeaconMaxDist;                                            // 0x0328(0x0004)
+	struct FVector                                     BeaconOffset;                                             // 0x032C(0x000C)
+	class UTexture2D*                                  BeaconTexture;                                            // 0x0338(0x0004) (CPF_Const)
+	struct FLinearColor                                BeaconColor;                                              // 0x033C(0x0010) (CPF_Const)
+	class USoundCue*                                   AmbientSoundCue;                                          // 0x034C(0x0004) (CPF_Edit)
+	class UAudioComponent*                             AmbientSoundComponent;                                    // 0x0350(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UGameCrowdAgentBehavior*                     CurrentBehavior;                                          // 0x0354(0x0004)
+	float                                              CurrentBehaviorActivationTime;                            // 0x0358(0x0004)
+	TArray<struct FBehaviorEntry>                      EncounterAgentBehaviors;                                  // 0x035C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      SeePlayerBehaviors;                                       // 0x0368(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              MaxSeePlayerDistSq;                                       // 0x0374(0x0004)
+	float                                              SeePlayerInterval;                                        // 0x0378(0x0004) (CPF_Edit)
+	TArray<struct FBehaviorEntry>                      SpawnBehaviors;                                           // 0x037C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      UneasyBehaviors;                                          // 0x0388(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      AlertBehaviors;                                           // 0x0394(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      PanicBehaviors;                                           // 0x03A0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      RandomBehaviors;                                          // 0x03AC(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FBehaviorEntry>                      TakeDamageBehaviors;                                      // 0x03B8(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              RandomBehaviorInterval;                                   // 0x03C4(0x0004) (CPF_Edit)
+	float                                              ForceUpdateTime;                                          // 0x03C8(0x0004)
+	float                                              ReachThreshold;                                           // 0x03CC(0x0004)
+	TArray<struct FBehaviorEntry>                      GroupWaitingBehaviors;                                    // 0x03D0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              DesiredGroupRadius;                                       // 0x03DC(0x0004) (CPF_Edit)
+	float                                              DesiredGroupRadiusSq;                                     // 0x03E0(0x0004)
+	float                                              MaxLOSLifeDistanceSq;                                     // 0x03E4(0x0004)
+	TScriptInterface<class UGameCrowdSpawnerInterface> MySpawner;                                                // 0x03E8(0x0008)
+	struct FVector                                     SpawnOffset;                                              // 0x03F0(0x000C)
+	float                                              InitialLastRenderTime;                                    // 0x03FC(0x0004)
+	struct FColor                                      DebugAgentColor;                                          // 0x0400(0x0004) (CPF_Edit)
+	class AGameCrowdDestination*                       DebugSpawnDest;                                           // 0x0404(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -380,38 +380,38 @@ public:
 
 
 // Class GameFramework.GameCrowdAgentSkeletal
-// 0x0084 (0x047C - 0x03F8)
+// 0x0084 (0x048C - 0x0408)
 class AGameCrowdAgentSkeletal : public AGameCrowdAgent
 {
 public:
-	class USkeletalMeshComponent*                      SkeletalMeshComponent;                                    // 0x03F8(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UAnimNodeBlend*                              SpeedBlendNode;                                           // 0x03FC(0x0004)
-	class UAnimNodeSlot*                               FullBodySlot;                                             // 0x0400(0x0004)
-	class UAnimNodeSequence*                           ActionSeqNode;                                            // 0x0404(0x0004)
-	class UAnimNodeSequence*                           WalkSeqNode;                                              // 0x0408(0x0004)
-	class UAnimNodeSequence*                           RunSeqNode;                                               // 0x040C(0x0004)
-	class UAnimTree*                                   AgentTree;                                                // 0x0410(0x0004)
-	TArray<struct FName>                               WalkAnimNames;                                            // 0x0414(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FName>                               RunAnimNames;                                             // 0x0420(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FName>                               IdleAnimNames;                                            // 0x042C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FName>                               DeathAnimNames;                                           // 0x0438(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              SpeedBlendStart;                                          // 0x0444(0x0004) (CPF_Edit)
-	float                                              SpeedBlendEnd;                                            // 0x0448(0x0004) (CPF_Edit)
-	float                                              AnimVelRate;                                              // 0x044C(0x0004) (CPF_Edit)
-	float                                              MaxSpeedBlendChangeSpeed;                                 // 0x0450(0x0004) (CPF_Edit)
-	struct FName                                       MoveSyncGroupName;                                        // 0x0454(0x0008) (CPF_Edit)
-	TArray<struct FGameCrowdAttachmentList>            Attachments;                                              // 0x045C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              MaxTargetAcquireTime;                                     // 0x0468(0x0004) (CPF_Edit)
-	unsigned long                                      bUseRootMotionVelocity : 1;                               // 0x046C(0x0004) (CPF_Edit)
-	unsigned long                                      bAllowSkeletonUpdateChangeBasedOnTickResult : 1;          // 0x046C(0x0004) (CPF_Edit)
-	unsigned long                                      bTickWhenNotVisible : 1;                                  // 0x046C(0x0004) (CPF_Edit)
-	unsigned long                                      bIsPlayingIdleAnimation : 1;                              // 0x046C(0x0004)
-	unsigned long                                      bIsPlayingDeathAnimation : 1;                             // 0x046C(0x0004)
-	unsigned long                                      bIsPlayingImportantAnimation : 1;                         // 0x046C(0x0004)
-	unsigned long                                      bAnimateThisTick : 1;                                     // 0x046C(0x0004)
-	float                                              NotVisibleDisableTickTime;                                // 0x0470(0x0004) (CPF_Edit)
-	float                                              MaxAnimationDistance;                                     // 0x0474(0x0004) (CPF_Edit)
-	float                                              MaxAnimationDistanceSq;                                   // 0x0478(0x0004)
+	class USkeletalMeshComponent*                      SkeletalMeshComponent;                                    // 0x0408(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UAnimNodeBlend*                              SpeedBlendNode;                                           // 0x040C(0x0004)
+	class UAnimNodeSlot*                               FullBodySlot;                                             // 0x0410(0x0004)
+	class UAnimNodeSequence*                           ActionSeqNode;                                            // 0x0414(0x0004)
+	class UAnimNodeSequence*                           WalkSeqNode;                                              // 0x0418(0x0004)
+	class UAnimNodeSequence*                           RunSeqNode;                                               // 0x041C(0x0004)
+	class UAnimTree*                                   AgentTree;                                                // 0x0420(0x0004)
+	TArray<struct FName>                               WalkAnimNames;                                            // 0x0424(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FName>                               RunAnimNames;                                             // 0x0430(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FName>                               IdleAnimNames;                                            // 0x043C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FName>                               DeathAnimNames;                                           // 0x0448(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              SpeedBlendStart;                                          // 0x0454(0x0004) (CPF_Edit)
+	float                                              SpeedBlendEnd;                                            // 0x0458(0x0004) (CPF_Edit)
+	float                                              AnimVelRate;                                              // 0x045C(0x0004) (CPF_Edit)
+	float                                              MaxSpeedBlendChangeSpeed;                                 // 0x0460(0x0004) (CPF_Edit)
+	struct FName                                       MoveSyncGroupName;                                        // 0x0464(0x0008) (CPF_Edit)
+	TArray<struct FGameCrowdAttachmentList>            Attachments;                                              // 0x046C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              MaxTargetAcquireTime;                                     // 0x0478(0x0004) (CPF_Edit)
+	unsigned long                                      bUseRootMotionVelocity : 1;                               // 0x047C(0x0004) (CPF_Edit)
+	unsigned long                                      bAllowSkeletonUpdateChangeBasedOnTickResult : 1;          // 0x047C(0x0004) (CPF_Edit)
+	unsigned long                                      bTickWhenNotVisible : 1;                                  // 0x047C(0x0004) (CPF_Edit)
+	unsigned long                                      bIsPlayingIdleAnimation : 1;                              // 0x047C(0x0004)
+	unsigned long                                      bIsPlayingDeathAnimation : 1;                             // 0x047C(0x0004)
+	unsigned long                                      bIsPlayingImportantAnimation : 1;                         // 0x047C(0x0004)
+	unsigned long                                      bAnimateThisTick : 1;                                     // 0x047C(0x0004)
+	float                                              NotVisibleDisableTickTime;                                // 0x0480(0x0004) (CPF_Edit)
+	float                                              MaxAnimationDistance;                                     // 0x0484(0x0004) (CPF_Edit)
+	float                                              MaxAnimationDistanceSq;                                   // 0x0488(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -434,12 +434,12 @@ public:
 
 
 // Class GameFramework.GameCrowdAgentSM
-// 0x0008 (0x0400 - 0x03F8)
+// 0x0008 (0x0410 - 0x0408)
 class AGameCrowdAgentSM : public AGameCrowdAgent
 {
 public:
-	class UStaticMeshComponent*                        Mesh;                                                     // 0x03F8(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UMaterialInstanceConstant*                   MeshColor;                                                // 0x03FC(0x0004) (CPF_Edit)
+	class UStaticMeshComponent*                        Mesh;                                                     // 0x0408(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UMaterialInstanceConstant*                   MeshColor;                                                // 0x040C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -630,11 +630,11 @@ public:
 
 
 // Class GameFramework.GameCrowdInfoVolume
-// 0x000C (0x0224 - 0x0218)
+// 0x000C (0x0234 - 0x0228)
 class AGameCrowdInfoVolume : public AVolume
 {
 public:
-	TArray<class AGameCrowdDestination*>               PotentialSpawnPoints;                                     // 0x0218(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class AGameCrowdDestination*>               PotentialSpawnPoints;                                     // 0x0228(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -649,12 +649,12 @@ public:
 
 
 // Class GameFramework.GameCrowdInteractionPoint
-// 0x0008 (0x01F4 - 0x01EC)
+// 0x0008 (0x0204 - 0x01FC)
 class AGameCrowdInteractionPoint : public AActor
 {
 public:
-	unsigned long                                      bIsEnabled : 1;                                           // 0x01EC(0x0004) (CPF_Edit, CPF_Net)
-	class UCylinderComponent*                          CylinderComponent;                                        // 0x01F0(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	unsigned long                                      bIsEnabled : 1;                                           // 0x01FC(0x0004) (CPF_Edit, CPF_Net)
+	class UCylinderComponent*                          CylinderComponent;                                        // 0x0200(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -668,15 +668,15 @@ public:
 
 
 // Class GameFramework.GameCrowdBehaviorPoint
-// 0x0014 (0x0208 - 0x01F4)
+// 0x0014 (0x0218 - 0x0204)
 class AGameCrowdBehaviorPoint : public AGameCrowdInteractionPoint
 {
 public:
-	float                                              RadiusOfBehaviorEvent;                                    // 0x01F4(0x0004) (CPF_Config)
-	float                                              DurationOfBehaviorEvent;                                  // 0x01F8(0x0004) (CPF_Config)
-	TEnumAsByte<ECrowdBehaviorEvent>                   EventType;                                                // 0x01FC(0x0001) (CPF_Edit)
-	unsigned long                                      bRequireLOS : 1;                                          // 0x0200(0x0004) (CPF_Edit)
-	class AActor*                                      Initiator;                                                // 0x0204(0x0004)
+	float                                              RadiusOfBehaviorEvent;                                    // 0x0204(0x0004) (CPF_Config)
+	float                                              DurationOfBehaviorEvent;                                  // 0x0208(0x0004) (CPF_Config)
+	TEnumAsByte<ECrowdBehaviorEvent>                   EventType;                                                // 0x020C(0x0001) (CPF_Edit)
+	unsigned long                                      bRequireLOS : 1;                                          // 0x0210(0x0004) (CPF_Edit)
+	class AActor*                                      Initiator;                                                // 0x0214(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -692,47 +692,47 @@ public:
 
 
 // Class GameFramework.GameCrowdDestination
-// 0x0080 (0x0274 - 0x01F4)
+// 0x0080 (0x0284 - 0x0204)
 class AGameCrowdDestination : public AGameCrowdInteractionPoint
 {
 public:
-	struct FPointer                                    VfTable_IEditorLinkSelectionInterface;                    // 0x01F4(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	unsigned long                                      bKillWhenReached : 1;                                     // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bAllowAsPreviousDestination : 1;                          // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bAvoidWhenPanicked : 1;                                   // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bSkipBehaviorIfPanicked : 1;                              // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bFleeDestination : 1;                                     // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bMustReachExactly : 1;                                    // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bHasRestrictions : 1;                                     // 0x01F8(0x0004)
-	unsigned long                                      bAllowsSpawning : 1;                                      // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bAllowCloudSpawning : 1;                                  // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bAllowVisibleSpawning : 1;                                // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bLineSpawner : 1;                                         // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bSpawnAtEdge : 1;                                         // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bSoftPerimeter : 1;                                       // 0x01F8(0x0004) (CPF_Edit)
-	unsigned long                                      bIsVisible : 1;                                           // 0x01F8(0x0004)
-	unsigned long                                      bWillBeVisible : 1;                                       // 0x01F8(0x0004)
-	unsigned long                                      bCanSpawnHereNow : 1;                                     // 0x01F8(0x0004)
-	unsigned long                                      bIsBeyondSpawnDistance : 1;                               // 0x01F8(0x0004)
-	unsigned long                                      bAdjacentToVisibleNode : 1;                               // 0x01F8(0x0004)
-	unsigned long                                      bHasNavigationMesh : 1;                                   // 0x01F8(0x0004)
-	TArray<class AGameCrowdDestination*>               NextDestinations;                                         // 0x01FC(0x000C) (CPF_Edit, CPF_DuplicateTransient, CPF_NeedCtorLink)
-	class AGameCrowdDestinationQueuePoint*             QueueHead;                                                // 0x0208(0x0004) (CPF_Edit, CPF_DuplicateTransient)
-	int                                                Capacity;                                                 // 0x020C(0x0004) (CPF_Edit)
-	float                                              Frequency;                                                // 0x0210(0x0004) (CPF_Edit)
-	int                                                CustomerCount;                                            // 0x0214(0x0004)
-	TArray<class UClass*>                              SupportedAgentClasses;                                    // 0x0218(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<class UObject*>                             SupportedArchetypes;                                      // 0x0224(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<class UClass*>                              RestrictedAgentClasses;                                   // 0x0230(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<class UObject*>                             RestrictedArchetypes;                                     // 0x023C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              ExactReachTolerance;                                      // 0x0248(0x0004)
-	struct FName                                       InteractionTag;                                           // 0x024C(0x0008) (CPF_Edit)
-	float                                              InteractionDelay;                                         // 0x0254(0x0004) (CPF_Edit)
-	TArray<struct FBehaviorEntry>                      ReachedBehaviors;                                         // 0x0258(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	class AGameCrowdAgent*                             AgentEnRoute;                                             // 0x0264(0x0004)
-	float                                              Priority;                                                 // 0x0268(0x0004)
-	float                                              LastSpawnTime;                                            // 0x026C(0x0004)
-	class AGameCrowdPopulationManager*                 MyPopMgr;                                                 // 0x0270(0x0004) (CPF_Transient)
+	struct FPointer                                    VfTable_IEditorLinkSelectionInterface;                    // 0x0204(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	unsigned long                                      bKillWhenReached : 1;                                     // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bAllowAsPreviousDestination : 1;                          // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bAvoidWhenPanicked : 1;                                   // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bSkipBehaviorIfPanicked : 1;                              // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bFleeDestination : 1;                                     // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bMustReachExactly : 1;                                    // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bHasRestrictions : 1;                                     // 0x0208(0x0004)
+	unsigned long                                      bAllowsSpawning : 1;                                      // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bAllowCloudSpawning : 1;                                  // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bAllowVisibleSpawning : 1;                                // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bLineSpawner : 1;                                         // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bSpawnAtEdge : 1;                                         // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bSoftPerimeter : 1;                                       // 0x0208(0x0004) (CPF_Edit)
+	unsigned long                                      bIsVisible : 1;                                           // 0x0208(0x0004)
+	unsigned long                                      bWillBeVisible : 1;                                       // 0x0208(0x0004)
+	unsigned long                                      bCanSpawnHereNow : 1;                                     // 0x0208(0x0004)
+	unsigned long                                      bIsBeyondSpawnDistance : 1;                               // 0x0208(0x0004)
+	unsigned long                                      bAdjacentToVisibleNode : 1;                               // 0x0208(0x0004)
+	unsigned long                                      bHasNavigationMesh : 1;                                   // 0x0208(0x0004)
+	TArray<class AGameCrowdDestination*>               NextDestinations;                                         // 0x020C(0x000C) (CPF_Edit, CPF_DuplicateTransient, CPF_NeedCtorLink)
+	class AGameCrowdDestinationQueuePoint*             QueueHead;                                                // 0x0218(0x0004) (CPF_Edit, CPF_DuplicateTransient)
+	int                                                Capacity;                                                 // 0x021C(0x0004) (CPF_Edit)
+	float                                              Frequency;                                                // 0x0220(0x0004) (CPF_Edit)
+	int                                                CustomerCount;                                            // 0x0224(0x0004)
+	TArray<class UClass*>                              SupportedAgentClasses;                                    // 0x0228(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class UObject*>                             SupportedArchetypes;                                      // 0x0234(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class UClass*>                              RestrictedAgentClasses;                                   // 0x0240(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class UObject*>                             RestrictedArchetypes;                                     // 0x024C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              ExactReachTolerance;                                      // 0x0258(0x0004)
+	struct FName                                       InteractionTag;                                           // 0x025C(0x0008) (CPF_Edit)
+	float                                              InteractionDelay;                                         // 0x0264(0x0004) (CPF_Edit)
+	TArray<struct FBehaviorEntry>                      ReachedBehaviors;                                         // 0x0268(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class AGameCrowdAgent*                             AgentEnRoute;                                             // 0x0274(0x0004)
+	float                                              Priority;                                                 // 0x0278(0x0004)
+	float                                              LastSpawnTime;                                            // 0x027C(0x0004)
+	class AGameCrowdPopulationManager*                 MyPopMgr;                                                 // 0x0280(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -760,18 +760,18 @@ public:
 
 
 // Class GameFramework.GameCrowdDestinationQueuePoint
-// 0x001C (0x0210 - 0x01F4)
+// 0x001C (0x0220 - 0x0204)
 class AGameCrowdDestinationQueuePoint : public AGameCrowdInteractionPoint
 {
 public:
-	class AGameCrowdDestinationQueuePoint*             NextQueuePosition;                                        // 0x01F4(0x0004) (CPF_Edit)
-	class AGameCrowdInteractionPoint*                  PreviousQueuePosition;                                    // 0x01F8(0x0004)
-	class AGameCrowdAgent*                             QueuedAgent;                                              // 0x01FC(0x0004)
-	class AGameCrowdDestination*                       QueueDestination;                                         // 0x0200(0x0004) (CPF_Transient)
-	unsigned long                                      bClearingQueue : 1;                                       // 0x0204(0x0004)
-	unsigned long                                      bPendingAdvance : 1;                                      // 0x0204(0x0004)
-	float                                              AverageReactionTime;                                      // 0x0208(0x0004) (CPF_Edit)
-	class UClass*                                      QueueBehaviorClass;                                       // 0x020C(0x0004)
+	class AGameCrowdDestinationQueuePoint*             NextQueuePosition;                                        // 0x0204(0x0004) (CPF_Edit)
+	class AGameCrowdInteractionPoint*                  PreviousQueuePosition;                                    // 0x0208(0x0004)
+	class AGameCrowdAgent*                             QueuedAgent;                                              // 0x020C(0x0004)
+	class AGameCrowdDestination*                       QueueDestination;                                         // 0x0210(0x0004) (CPF_Transient)
+	unsigned long                                      bClearingQueue : 1;                                       // 0x0214(0x0004)
+	unsigned long                                      bPendingAdvance : 1;                                      // 0x0214(0x0004)
+	float                                              AverageReactionTime;                                      // 0x0218(0x0004) (CPF_Edit)
+	class UClass*                                      QueueBehaviorClass;                                       // 0x021C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -792,25 +792,25 @@ public:
 
 
 // Class GameFramework.GameCrowdPopulationManager
-// 0x00C8 (0x02B4 - 0x01EC)
+// 0x00C8 (0x02C4 - 0x01FC)
 class AGameCrowdPopulationManager : public ACrowdPopulationManagerBase
 {
 public:
-	struct FPointer                                    VfTable_IInterface_NavigationHandle;                      // 0x01EC(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	struct FCrowdSpawnInfoItem                         CloudSpawnInfo;                                           // 0x01F0(0x007C) (CPF_NeedCtorLink)
-	TArray<struct FCrowdSpawnInfoItem>                 ScriptedSpawnInfo;                                        // 0x026C(0x000C) (CPF_NeedCtorLink)
-	class AGameCrowdInfoVolume*                        ActiveCrowdInfoVolume;                                    // 0x0278(0x0004)
-	TArray<class AGameCrowdDestination*>               GlobalPotentialSpawnPoints;                               // 0x027C(0x000C) (CPF_NeedCtorLink)
-	float                                              SplitScreenNumReduction;                                  // 0x0288(0x0004)
-	float                                              PlayerPositionPredictionTime;                             // 0x028C(0x0004)
-	float                                              HeadVisibilityOffset;                                     // 0x0290(0x0004)
-	class UClass*                                      NavigationHandleClass;                                    // 0x0294(0x0004)
-	class UNavigationHandle*                           NavigationHandle;                                         // 0x0298(0x0004)
-	class AGameCrowdAgent*                             QueryingAgent;                                            // 0x029C(0x0004)
-	TArray<struct FCrowdSpawnerPlayerInfo>             PlayerInfo;                                               // 0x02A0(0x000C) (CPF_NeedCtorLink)
-	float                                              LastPlayerInfoUpdateTime;                                 // 0x02AC(0x0004)
-	unsigned long                                      bDebugSpawns : 1;                                         // 0x02B0(0x0004) (CPF_Edit)
-	unsigned long                                      bPauseCrowd : 1;                                          // 0x02B0(0x0004) (CPF_Edit)
+	struct FPointer                                    VfTable_IInterface_NavigationHandle;                      // 0x01FC(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FCrowdSpawnInfoItem                         CloudSpawnInfo;                                           // 0x0200(0x007C) (CPF_NeedCtorLink)
+	TArray<struct FCrowdSpawnInfoItem>                 ScriptedSpawnInfo;                                        // 0x027C(0x000C) (CPF_NeedCtorLink)
+	class AGameCrowdInfoVolume*                        ActiveCrowdInfoVolume;                                    // 0x0288(0x0004)
+	TArray<class AGameCrowdDestination*>               GlobalPotentialSpawnPoints;                               // 0x028C(0x000C) (CPF_NeedCtorLink)
+	float                                              SplitScreenNumReduction;                                  // 0x0298(0x0004)
+	float                                              PlayerPositionPredictionTime;                             // 0x029C(0x0004)
+	float                                              HeadVisibilityOffset;                                     // 0x02A0(0x0004)
+	class UClass*                                      NavigationHandleClass;                                    // 0x02A4(0x0004)
+	class UNavigationHandle*                           NavigationHandle;                                         // 0x02A8(0x0004)
+	class AGameCrowdAgent*                             QueryingAgent;                                            // 0x02AC(0x0004)
+	TArray<struct FCrowdSpawnerPlayerInfo>             PlayerInfo;                                               // 0x02B0(0x000C) (CPF_NeedCtorLink)
+	float                                              LastPlayerInfoUpdateTime;                                 // 0x02BC(0x0004)
+	unsigned long                                      bDebugSpawns : 1;                                         // 0x02C0(0x0004) (CPF_Edit)
+	unsigned long                                      bPauseCrowd : 1;                                          // 0x02C0(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -849,13 +849,13 @@ public:
 
 
 // Class GameFramework.GameCrowdReplicationActor
-// 0x000C (0x01F8 - 0x01EC)
+// 0x000C (0x0208 - 0x01FC)
 class AGameCrowdReplicationActor : public AActor
 {
 public:
-	class USeqAct_GameCrowdSpawner*                    Spawner;                                                  // 0x01EC(0x0004) (CPF_Net)
-	unsigned long                                      bSpawningActive : 1;                                      // 0x01F0(0x0004) (CPF_Net)
-	int                                                DestroyAllCount;                                          // 0x01F4(0x0004) (CPF_Net)
+	class USeqAct_GameCrowdSpawner*                    Spawner;                                                  // 0x01FC(0x0004) (CPF_Net)
+	unsigned long                                      bSpawningActive : 1;                                      // 0x0200(0x0004) (CPF_Net)
+	int                                                DestroyAllCount;                                          // 0x0204(0x0004) (CPF_Net)
 
 	static UClass* StaticClass()
 	{
@@ -869,7 +869,7 @@ public:
 
 
 // Class GameFramework.GameCrowdSpawnRelativeActor
-// 0x0000 (0x01EC - 0x01EC)
+// 0x0000 (0x01FC - 0x01FC)
 class AGameCrowdSpawnRelativeActor : public AActor
 {
 public:
@@ -965,31 +965,31 @@ public:
 
 
 // Class GameFramework.GameExplosionActor
-// 0x0058 (0x0244 - 0x01EC)
+// 0x0058 (0x0254 - 0x01FC)
 class AGameExplosionActor : public AActor
 {
 public:
-	unsigned long                                      bHasExploded : 1;                                         // 0x01EC(0x0004) (CPF_Transient)
-	unsigned long                                      bExplodeMoreThanOnce : 1;                                 // 0x01EC(0x0004) (CPF_Edit)
-	unsigned long                                      bTrackExplosionParticleSystemLifespan : 1;                // 0x01EC(0x0004)
-	unsigned long                                      bDrawDebug : 1;                                           // 0x01EC(0x0004)
-	class UPointLightComponent*                        ExplosionLight;                                           // 0x01F0(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	class URadialBlurComponent*                        ExplosionRadialBlur;                                      // 0x01F4(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	float                                              LightFadeTime;                                            // 0x01F8(0x0004) (CPF_Transient)
-	float                                              LightFadeTimeRemaining;                                   // 0x01FC(0x0004) (CPF_Transient)
-	float                                              LightInitialBrightness;                                   // 0x0200(0x0004) (CPF_Transient)
-	float                                              RadialBlurFadeTime;                                       // 0x0204(0x0004) (CPF_Transient)
-	float                                              RadialBlurFadeTimeRemaining;                              // 0x0208(0x0004) (CPF_Transient)
-	float                                              RadialBlurMaxBlurAmount;                                  // 0x020C(0x0004) (CPF_Transient)
-	class UGameExplosion*                              ExplosionTemplate;                                        // 0x0210(0x0004)
-	class URB_RadialImpulseComponent*                  RadialImpulseComponent;                                   // 0x0214(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class AController*                                 InstigatorController;                                     // 0x0218(0x0004)
-	class AActor*                                      HitActorFromPhysMaterialTrace;                            // 0x021C(0x0004)
-	struct FVector                                     HitLocationFromPhysMaterialTrace;                         // 0x0220(0x000C)
-	class AActor*                                      Attachee;                                                 // 0x022C(0x0004)
-	class AController*                                 AttacheeController;                                       // 0x0230(0x0004)
-	float                                              DirectionalExplosionMinDot;                               // 0x0234(0x0004) (CPF_Transient)
-	struct FVector                                     ExplosionDirection;                                       // 0x0238(0x000C) (CPF_Net, CPF_Transient)
+	unsigned long                                      bHasExploded : 1;                                         // 0x01FC(0x0004) (CPF_Transient)
+	unsigned long                                      bExplodeMoreThanOnce : 1;                                 // 0x01FC(0x0004) (CPF_Edit)
+	unsigned long                                      bTrackExplosionParticleSystemLifespan : 1;                // 0x01FC(0x0004)
+	unsigned long                                      bDrawDebug : 1;                                           // 0x01FC(0x0004)
+	class UPointLightComponent*                        ExplosionLight;                                           // 0x0200(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
+	class URadialBlurComponent*                        ExplosionRadialBlur;                                      // 0x0204(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
+	float                                              LightFadeTime;                                            // 0x0208(0x0004) (CPF_Transient)
+	float                                              LightFadeTimeRemaining;                                   // 0x020C(0x0004) (CPF_Transient)
+	float                                              LightInitialBrightness;                                   // 0x0210(0x0004) (CPF_Transient)
+	float                                              RadialBlurFadeTime;                                       // 0x0214(0x0004) (CPF_Transient)
+	float                                              RadialBlurFadeTimeRemaining;                              // 0x0218(0x0004) (CPF_Transient)
+	float                                              RadialBlurMaxBlurAmount;                                  // 0x021C(0x0004) (CPF_Transient)
+	class UGameExplosion*                              ExplosionTemplate;                                        // 0x0220(0x0004)
+	class URB_RadialImpulseComponent*                  RadialImpulseComponent;                                   // 0x0224(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class AController*                                 InstigatorController;                                     // 0x0228(0x0004)
+	class AActor*                                      HitActorFromPhysMaterialTrace;                            // 0x022C(0x0004)
+	struct FVector                                     HitLocationFromPhysMaterialTrace;                         // 0x0230(0x000C)
+	class AActor*                                      Attachee;                                                 // 0x023C(0x0004)
+	class AController*                                 AttacheeController;                                       // 0x0240(0x0004)
+	float                                              DirectionalExplosionMinDot;                               // 0x0244(0x0004) (CPF_Transient)
+	struct FVector                                     ExplosionDirection;                                       // 0x0248(0x000C) (CPF_Net, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -1021,12 +1021,12 @@ public:
 
 
 // Class GameFramework.GamePawn
-// 0x0004 (0x0474 - 0x0470)
+// 0x0004 (0x0484 - 0x0480)
 class AGamePawn : public APawn
 {
 public:
-	unsigned long                                      bLastHitWasHeadShot : 1;                                  // 0x0470(0x0004) (CPF_Net, CPF_Transient)
-	unsigned long                                      bRespondToExplosions : 1;                                 // 0x0470(0x0004)
+	unsigned long                                      bLastHitWasHeadShot : 1;                                  // 0x0480(0x0004) (CPF_Net, CPF_Transient)
+	unsigned long                                      bRespondToExplosions : 1;                                 // 0x0480(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -1042,23 +1042,23 @@ public:
 
 
 // Class GameFramework.DebugCameraController
-// 0x0034 (0x05F4 - 0x05C0)
+// 0x0034 (0x0604 - 0x05D0)
 class ADebugCameraController : public AGamePlayerController
 {
 public:
-	struct FName                                       PrimaryKey;                                               // 0x05C0(0x0008) (CPF_Config, CPF_GlobalConfig)
-	struct FName                                       SecondaryKey;                                             // 0x05C8(0x0008) (CPF_Config, CPF_GlobalConfig)
-	struct FName                                       UnselectKey;                                              // 0x05D0(0x0008) (CPF_Config, CPF_GlobalConfig)
-	unsigned long                                      bShowSelectedInfo : 1;                                    // 0x05D8(0x0004) (CPF_Config, CPF_GlobalConfig)
-	unsigned long                                      bDrawDebugText : 1;                                       // 0x05D8(0x0004)
-	unsigned long                                      bIsActive : 1;                                            // 0x05D8(0x0004)
-	unsigned long                                      bIsFrozenRendering : 1;                                   // 0x05D8(0x0004)
-	class UClass*                                      HUDClass;                                                 // 0x05DC(0x0004)
-	class APlayerController*                           OriginalControllerRef;                                    // 0x05E0(0x0004)
-	class UPlayer*                                     OriginalPlayer;                                           // 0x05E4(0x0004)
-	class UDrawFrustumComponent*                       DrawFrustum;                                              // 0x05E8(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class AActor*                                      SelectedActor;                                            // 0x05EC(0x0004)
-	class UPrimitiveComponent*                         SelectedComponent;                                        // 0x05F0(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FName                                       PrimaryKey;                                               // 0x05D0(0x0008) (CPF_Config, CPF_GlobalConfig)
+	struct FName                                       SecondaryKey;                                             // 0x05D8(0x0008) (CPF_Config, CPF_GlobalConfig)
+	struct FName                                       UnselectKey;                                              // 0x05E0(0x0008) (CPF_Config, CPF_GlobalConfig)
+	unsigned long                                      bShowSelectedInfo : 1;                                    // 0x05E8(0x0004) (CPF_Config, CPF_GlobalConfig)
+	unsigned long                                      bDrawDebugText : 1;                                       // 0x05E8(0x0004)
+	unsigned long                                      bIsActive : 1;                                            // 0x05E8(0x0004)
+	unsigned long                                      bIsFrozenRendering : 1;                                   // 0x05E8(0x0004)
+	class UClass*                                      HUDClass;                                                 // 0x05EC(0x0004)
+	class APlayerController*                           OriginalControllerRef;                                    // 0x05F0(0x0004)
+	class UPlayer*                                     OriginalPlayer;                                           // 0x05F4(0x0004)
+	class UDrawFrustumComponent*                       DrawFrustum;                                              // 0x05F8(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class AActor*                                      SelectedActor;                                            // 0x05FC(0x0004)
+	class UPrimitiveComponent*                         SelectedComponent;                                        // 0x0600(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 
 	static UClass* StaticClass()
 	{
@@ -1100,36 +1100,36 @@ public:
 
 
 // Class GameFramework.MobileHUD
-// 0x00EC (0x0560 - 0x0474)
+// 0x00EC (0x0570 - 0x0484)
 class AMobileHUD : public AHUD
 {
 public:
-	unsigned long                                      bShowGameHud : 1;                                         // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bShowMobileHud : 1;                                       // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bForceMobileHUD : 1;                                      // 0x0474(0x0004) (CPF_Config, CPF_GlobalConfig)
-	unsigned long                                      bShowMobileTilt : 1;                                      // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bDebugTouches : 1;                                        // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bDebugZones : 1;                                          // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bDebugZonePresses : 1;                                    // 0x0474(0x0004) (CPF_Config)
-	unsigned long                                      bShowMotionDebug : 1;                                     // 0x0474(0x0004) (CPF_Config)
-	class UTexture2D*                                  JoystickBackground;                                       // 0x0478(0x0004)
-	struct FTextureUVs                                 JoystickBackgroundUVs;                                    // 0x047C(0x0010)
-	class UTexture2D*                                  JoystickHat;                                              // 0x048C(0x0004)
-	struct FTextureUVs                                 JoystickHatUVs;                                           // 0x0490(0x0010)
-	class UTexture2D*                                  ButtonImages[0x2];                                        // 0x04A0(0x0004)
-	struct FTextureUVs                                 ButtonUVs[0x2];                                           // 0x04A8(0x0010)
-	class UFont*                                       ButtonFont;                                               // 0x04C8(0x0004)
-	struct FColor                                      ButtonCaptionColor;                                       // 0x04CC(0x0004)
-	class UTexture2D*                                  TrackballBackground;                                      // 0x04D0(0x0004)
-	struct FTextureUVs                                 TrackballBackgroundUVs;                                   // 0x04D4(0x0010)
-	class UTexture2D*                                  TrackballTouchIndicator;                                  // 0x04E4(0x0004)
-	struct FTextureUVs                                 TrackballTouchIndicatorUVs;                               // 0x04E8(0x0010)
-	class UTexture2D*                                  SliderImages[0x4];                                        // 0x04F8(0x0004)
-	struct FTextureUVs                                 SliderUVs[0x4];                                           // 0x0508(0x0010)
-	float                                              MobileTiltX;                                              // 0x0548(0x0004) (CPF_Config)
-	float                                              MobileTiltY;                                              // 0x054C(0x0004) (CPF_Config)
-	float                                              MobileTiltSize;                                           // 0x0550(0x0004) (CPF_Config)
-	TArray<class USeqEvent_HudRender*>                 KismetRenderEvents;                                       // 0x0554(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bShowGameHud : 1;                                         // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bShowMobileHud : 1;                                       // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bForceMobileHUD : 1;                                      // 0x0484(0x0004) (CPF_Config, CPF_GlobalConfig)
+	unsigned long                                      bShowMobileTilt : 1;                                      // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugTouches : 1;                                        // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugZones : 1;                                          // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugZonePresses : 1;                                    // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bShowMotionDebug : 1;                                     // 0x0484(0x0004) (CPF_Config)
+	class UTexture2D*                                  JoystickBackground;                                       // 0x0488(0x0004)
+	struct FTextureUVs                                 JoystickBackgroundUVs;                                    // 0x048C(0x0010)
+	class UTexture2D*                                  JoystickHat;                                              // 0x049C(0x0004)
+	struct FTextureUVs                                 JoystickHatUVs;                                           // 0x04A0(0x0010)
+	class UTexture2D*                                  ButtonImages[0x2];                                        // 0x04B0(0x0004)
+	struct FTextureUVs                                 ButtonUVs[0x2];                                           // 0x04B8(0x0010)
+	class UFont*                                       ButtonFont;                                               // 0x04D8(0x0004)
+	struct FColor                                      ButtonCaptionColor;                                       // 0x04DC(0x0004)
+	class UTexture2D*                                  TrackballBackground;                                      // 0x04E0(0x0004)
+	struct FTextureUVs                                 TrackballBackgroundUVs;                                   // 0x04E4(0x0010)
+	class UTexture2D*                                  TrackballTouchIndicator;                                  // 0x04F4(0x0004)
+	struct FTextureUVs                                 TrackballTouchIndicatorUVs;                               // 0x04F8(0x0010)
+	class UTexture2D*                                  SliderImages[0x4];                                        // 0x0508(0x0004)
+	struct FTextureUVs                                 SliderUVs[0x4];                                           // 0x0518(0x0010)
+	float                                              MobileTiltX;                                              // 0x0558(0x0004) (CPF_Config)
+	float                                              MobileTiltY;                                              // 0x055C(0x0004) (CPF_Config)
+	float                                              MobileTiltSize;                                           // 0x0560(0x0004) (CPF_Config)
+	TArray<class USeqEvent_HudRender*>                 KismetRenderEvents;                                       // 0x0564(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2130,23 +2130,23 @@ public:
 
 
 // Class GameFramework.GamePlayerCamera
-// 0x0068 (0x0530 - 0x04C8)
+// 0x0068 (0x0540 - 0x04D8)
 class AGamePlayerCamera : public ACamera
 {
 public:
-	class UGameCameraBase*                             ThirdPersonCam;                                           // 0x04C8(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
-	class UClass*                                      ThirdPersonCameraClass;                                   // 0x04CC(0x0004) (CPF_Edit, CPF_Const)
-	class UGameCameraBase*                             FixedCam;                                                 // 0x04D0(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
-	class UClass*                                      FixedCameraClass;                                         // 0x04D4(0x0004) (CPF_Edit, CPF_Const)
-	class UGameCameraBase*                             CurrentCamera;                                            // 0x04D8(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
-	unsigned long                                      bUseForcedCamFOV : 1;                                     // 0x04DC(0x0004) (CPF_Transient)
-	unsigned long                                      bInterpolateCamChanges : 1;                               // 0x04DC(0x0004) (CPF_Transient)
-	unsigned long                                      bResetInterp : 1;                                         // 0x04DC(0x0004) (CPF_Transient)
-	float                                              ForcedCamFOV;                                             // 0x04E0(0x0004) (CPF_Transient)
-	class AActor*                                      LastViewTarget;                                           // 0x04E4(0x0004) (CPF_Transient)
-	float                                              SplitScreenShakeScale;                                    // 0x04E8(0x0004) (CPF_Edit, CPF_Const)
-	class AActor*                                      LastTargetBase;                                           // 0x04EC(0x0004) (CPF_Transient)
-	struct FMatrix                                     LastTargetBaseTM;                                         // 0x04F0(0x0040) (CPF_Transient)
+	class UGameCameraBase*                             ThirdPersonCam;                                           // 0x04D8(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
+	class UClass*                                      ThirdPersonCameraClass;                                   // 0x04DC(0x0004) (CPF_Edit, CPF_Const)
+	class UGameCameraBase*                             FixedCam;                                                 // 0x04E0(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
+	class UClass*                                      FixedCameraClass;                                         // 0x04E4(0x0004) (CPF_Edit, CPF_Const)
+	class UGameCameraBase*                             CurrentCamera;                                            // 0x04E8(0x0004) (CPF_Edit, CPF_Transient, CPF_EditInline)
+	unsigned long                                      bUseForcedCamFOV : 1;                                     // 0x04EC(0x0004) (CPF_Transient)
+	unsigned long                                      bInterpolateCamChanges : 1;                               // 0x04EC(0x0004) (CPF_Transient)
+	unsigned long                                      bResetInterp : 1;                                         // 0x04EC(0x0004) (CPF_Transient)
+	float                                              ForcedCamFOV;                                             // 0x04F0(0x0004) (CPF_Transient)
+	class AActor*                                      LastViewTarget;                                           // 0x04F4(0x0004) (CPF_Transient)
+	float                                              SplitScreenShakeScale;                                    // 0x04F8(0x0004) (CPF_Edit, CPF_Const)
+	class AActor*                                      LastTargetBase;                                           // 0x04FC(0x0004) (CPF_Transient)
+	struct FMatrix                                     LastTargetBaseTM;                                         // 0x0500(0x0040) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -2418,11 +2418,11 @@ public:
 
 
 // Class GameFramework.DebugCameraHUD
-// 0x0004 (0x0478 - 0x0474)
+// 0x0004 (0x0488 - 0x0484)
 class ADebugCameraHUD : public AHUD
 {
 public:
-	unsigned long                                      bDrawDebugText : 1;                                       // 0x0474(0x0004)
+	unsigned long                                      bDrawDebugText : 1;                                       // 0x0484(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2490,7 +2490,7 @@ public:
 
 
 // Class GameFramework.DynamicGameCrowdDestination
-// 0x0000 (0x0274 - 0x0274)
+// 0x0000 (0x0284 - 0x0284)
 class ADynamicGameCrowdDestination : public AGameCrowdDestination
 {
 public:
@@ -2597,7 +2597,7 @@ public:
 
 
 // Class GameFramework.GameCrowdInteractionDestination
-// 0x0000 (0x0274 - 0x0274)
+// 0x0000 (0x0284 - 0x0284)
 class AGameCrowdInteractionDestination : public AGameCrowdDestination
 {
 public:
@@ -2665,7 +2665,7 @@ public:
 
 
 // Class GameFramework.GameKActorSpawnableEffect
-// 0x0000 (0x02E8 - 0x02E8)
+// 0x0000 (0x02F8 - 0x02F8)
 class AGameKActorSpawnableEffect : public AKActor
 {
 public:
@@ -2684,12 +2684,12 @@ public:
 
 
 // Class GameFramework.MobileDebugCameraController
-// 0x0008 (0x05FC - 0x05F4)
+// 0x0008 (0x060C - 0x0604)
 class AMobileDebugCameraController : public ADebugCameraController
 {
 public:
-	int                                                OldMobileGroup;                                           // 0x05F4(0x0004)
-	class UMobilePlayerInput*                          MPI;                                                      // 0x05F8(0x0004)
+	int                                                OldMobileGroup;                                           // 0x0604(0x0004)
+	class UMobilePlayerInput*                          MPI;                                                      // 0x0608(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2724,11 +2724,11 @@ public:
 
 
 // Class GameFramework.MobileDebugCameraHUD
-// 0x0004 (0x0564 - 0x0560)
+// 0x0004 (0x0574 - 0x0570)
 class AMobileDebugCameraHUD : public AMobileHUD
 {
 public:
-	unsigned long                                      bDrawDebugText : 1;                                       // 0x0560(0x0004)
+	unsigned long                                      bDrawDebugText : 1;                                       // 0x0570(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2840,11 +2840,11 @@ public:
 
 
 // Class GameFramework.MobileMenuGame
-// 0x0004 (0x03C0 - 0x03BC)
+// 0x0004 (0x03D0 - 0x03CC)
 class AMobileMenuGame : public AGameInfo
 {
 public:
-	class UClass*                                      InitialSceneToDisplayClass;                               // 0x03BC(0x0004)
+	class UClass*                                      InitialSceneToDisplayClass;                               // 0x03CC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2860,7 +2860,7 @@ public:
 
 
 // Class GameFramework.MobileMenuPlayerController
-// 0x0000 (0x05C0 - 0x05C0)
+// 0x0000 (0x05D0 - 0x05D0)
 class AMobileMenuPlayerController : public AGamePlayerController
 {
 public:
@@ -3035,11 +3035,11 @@ public:
 
 
 // Class GameFramework.MobileTouchInputVolume
-// 0x0004 (0x021C - 0x0218)
+// 0x0004 (0x022C - 0x0228)
 class AMobileTouchInputVolume : public AVolume
 {
 public:
-	unsigned long                                      bEnabled : 1;                                             // 0x0218(0x0004)
+	unsigned long                                      bEnabled : 1;                                             // 0x0228(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -3090,12 +3090,12 @@ public:
 
 
 // Class GameFramework.PlayerCollectorGame
-// 0x0010 (0x03CC - 0x03BC)
+// 0x0010 (0x03DC - 0x03CC)
 class APlayerCollectorGame : public AGameInfo
 {
 public:
-	int                                                NumberOfClientsToWaitFor;                                 // 0x03BC(0x0004)
-	struct FString                                     URLToLoad;                                                // 0x03C0(0x000C) (CPF_NeedCtorLink)
+	int                                                NumberOfClientsToWaitFor;                                 // 0x03CC(0x0004)
+	struct FString                                     URLToLoad;                                                // 0x03D0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

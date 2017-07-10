@@ -84,7 +84,7 @@ public:
 
 	inline void ProcessEvent(class UFunction* function, void* parms)
 	{
-		return GetVFunction<void(__thiscall *)(UObject*, class UFunction*, void*, void*)>(this, 67)(this, function, parms, nullptr);
+		return GetVFunction<void(__thiscall *)(UObject*, class UFunction*, void*, void*)>(this, 66)(this, function, parms, nullptr);
 	}
 
 
@@ -136,6 +136,7 @@ public:
 	int GetRandomOptionSumFrequency(TArray<float>* FreqList);
 	int GetBuildChangelistNumber();
 	int GetEngineVersion();
+	float GetAppSeconds();
 	void GetSystemTime(int* Year, int* Month, int* DayOfWeek, int* Day, int* Hour, int* Min, int* Sec, int* MSec);
 	struct FString TimeStamp();
 	struct FVector TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool bInverse);
@@ -254,7 +255,7 @@ public:
 	struct FString STATIC_PathName(class UObject* CheckObject);
 	TArray<struct FString> STATIC_SplitString(const struct FString& Source, const struct FString& Delimiter, bool bCullEmpty);
 	void STATIC_ParseStringIntoArray(const struct FString& BaseString, const struct FString& delim, bool bCullEmpty, TArray<struct FString>* Pieces);
-	struct FString RepeatString(const struct FString& InValue, int Count);
+	struct FString STATIC_RepeatString(const struct FString& InValue, int Count);
 	struct FString JoinArrayQWord(const struct FString& delim, bool bIgnoreBlanks);
 	struct FString JoinArrayInt(const struct FString& delim, bool bIgnoreBlanks, TArray<int>* IntArray);
 	struct FString JoinArrayName(const struct FString& delim, bool bIgnoreBlanks, TArray<struct FName>* NameArray);
@@ -325,6 +326,7 @@ public:
 	struct FVector STATIC_VInterpConstantTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed);
 	struct FVector STATIC_VInterpTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed);
 	void Construct();
+	struct FVector STATIC_ProjectOnToPlane(const struct FVector& InVector, const struct FVector& InNormal, float OverBounce);
 	bool STATIC_IsZero(const struct FVector& A);
 	struct FVector STATIC_ProjectOnTo(const struct FVector& X, const struct FVector& Y);
 	struct FVector STATIC_MirrorVectorByNormal(const struct FVector& InVect, const struct FVector& InNormal);
@@ -531,6 +533,32 @@ public:
 };
 
 
+// Class Core.Subscription
+// 0x0010 (0x004C - 0x003C)
+class USubscription : public UObject
+{
+public:
+	struct FScriptDelegate                             __SubscriberCallback__Delegate;                           // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.Subscription");
+		return ptr;
+	}
+
+
+	void STATIC___Subscription__TriggerAll_1(class USubscription* S);
+	class USubscription* STATIC_GetNone();
+	void STATIC_TriggerAll(TArray<class USubscription*>* Subscriptions);
+	class USubscription* STATIC_Create(const struct FScriptDelegate& InCallback);
+	void Dispose();
+	void TriggerCallback();
+	void SetCallback(const struct FScriptDelegate& InCallback);
+	void SubscriberCallback();
+};
+
+
 // Class Core.PackageMap
 // 0x0084 (0x00C0 - 0x003C)
 class UPackageMap : public UObject
@@ -586,11 +614,11 @@ class UObjectProvider : public UObject
 public:
 	struct FPointer                                    VfTable_FObjectDestructionSubscriber;                     // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 	TArray<class UObject*>                             Objects;                                                  // 0x0040(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FObjectProviderSubscription>         SubscribedToAdds;                                         // 0x004C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FObjectProviderSubscription>         SubscribedToRemoves;                                      // 0x0058(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
-	TArray<struct FObjectProviderSubscription>         SubscribedToLists;                                        // 0x0064(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FObjectProviderSubscription>         SubscribedToAdds;                                         // 0x004C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FObjectProviderSubscription>         SubscribedToRemoves;                                      // 0x0058(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FObjectProviderSubscription>         SubscribedToLists;                                        // 0x0064(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FObjectPropertyInjection>            Injections;                                               // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                                         // 0x007C(0x000C) (CPF_Const, CPF_Native, CPF_Transient)
+	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                                         // 0x007C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bNeedsCleanup : 1;                                        // 0x0088(0x0004) (CPF_Const, CPF_Transient)
 	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;                   // 0x008C(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x008C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
@@ -1094,73 +1122,87 @@ public:
 
 
 // Class Core.FeatureSystem
-// 0x0180 (0x01BC - 0x003C)
+// 0x01A0 (0x01DC - 0x003C)
 class UFeatureSystem : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x14];                                      // 0x003C(0x0014) MISSED OFFSET
-	unsigned long                                      Matchmaking : 1;                                          // 0x0050(0x0004) (CPF_DataBinding)
-	unsigned long                                      PrivateMatch : 1;                                         // 0x0054(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitscreenMatch : 1;                                     // 0x0058(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitscreenJoin : 1;                                      // 0x005C(0x0004) (CPF_DataBinding)
-	unsigned long                                      SeasonMode : 1;                                           // 0x0060(0x0004) (CPF_DataBinding)
-	unsigned long                                      Tutorial : 1;                                             // 0x0064(0x0004) (CPF_DataBinding)
-	unsigned long                                      Garage : 1;                                               // 0x0068(0x0004) (CPF_DataBinding)
-	unsigned long                                      Options : 1;                                              // 0x006C(0x0004) (CPF_DataBinding)
-	unsigned long                                      ReplaySaves : 1;                                          // 0x0070(0x0004) (CPF_DataBinding)
-	unsigned long                                      MainMenu : 1;                                             // 0x0074(0x0004) (CPF_DataBinding)
-	unsigned long                                      MidgameMenu : 1;                                          // 0x0078(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) MISSED OFFSET
-	unsigned long                                      Party : 1;                                                // 0x0080(0x0004) (CPF_DataBinding)
-	unsigned long                                      Achievements : 1;                                         // 0x0084(0x0004) (CPF_DataBinding)
-	unsigned long                                      Stats : 1;                                                // 0x0088(0x0004) (CPF_DataBinding)
-	unsigned long                                      Leaderboards : 1;                                         // 0x008C(0x0004) (CPF_DataBinding)
-	unsigned long                                      XP : 1;                                                   // 0x0090(0x0004) (CPF_DataBinding)
-	unsigned long                                      Chat : 1;                                                 // 0x0094(0x0004) (CPF_DataBinding)
-	unsigned long                                      FullCredits : 1;                                          // 0x0098(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x009C(0x0004) MISSED OFFSET
-	unsigned long                                      TrainingDifficulties : 1;                                 // 0x00A0(0x0004) (CPF_DataBinding)
-	unsigned long                                      Ads : 1;                                                  // 0x00A4(0x0004) (CPF_DataBinding)
-	unsigned long                                      Microtransactions : 1;                                    // 0x00A8(0x0004) (CPF_DataBinding)
-	unsigned long                                      ItemDrops : 1;                                            // 0x00AC(0x0004) (CPF_DataBinding)
-	unsigned long                                      Spectator : 1;                                            // 0x00B0(0x0004) (CPF_DataBinding)
-	unsigned long                                      CrossPlatformPrivateMatch : 1;                            // 0x00B4(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x00B8(0x0004) MISSED OFFSET
-	unsigned long                                      BuyDLC : 1;                                               // 0x00BC(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData04[0x4];                                       // 0x00C0(0x0004) MISSED OFFSET
-	unsigned long                                      PlayerReporting : 1;                                      // 0x00C4(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData05[0x4];                                       // 0x00C8(0x0004) MISSED OFFSET
-	unsigned long                                      PremiumGarage : 1;                                        // 0x00CC(0x0004) (CPF_DataBinding)
-	unsigned long                                      PodiumSpotlight : 1;                                      // 0x00D0(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData06[0x4];                                       // 0x00D4(0x0004) MISSED OFFSET
-	unsigned long                                      CustomTeamNames : 1;                                      // 0x00D8(0x0004) (CPF_DataBinding)
-	unsigned long                                      CustomTeamColors : 1;                                     // 0x00DC(0x0004) (CPF_DataBinding)
-	unsigned long                                      PlayerTrading : 1;                                        // 0x00E0(0x0004) (CPF_DataBinding)
-	unsigned long                                      GaragePresets : 1;                                        // 0x00E4(0x0004) (CPF_DataBinding)
-	unsigned long                                      PartyChat : 1;                                            // 0x00E8(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData07[0x10];                                      // 0x00EC(0x0010) MISSED OFFSET
-	unsigned long                                      OnlineServices : 1;                                       // 0x00FC(0x0004) (CPF_DataBinding)
-	unsigned long                                      HideUnreleasedDLC : 1;                                    // 0x0100(0x0004) (CPF_DataBinding)
-	unsigned long                                      RemoveCrossPlatformProducts : 1;                          // 0x0104(0x0004) (CPF_DataBinding)
-	unsigned long                                      Mutators : 1;                                             // 0x0108(0x0004) (CPF_DataBinding)
-	unsigned long                                      ProductValidation : 1;                                    // 0x010C(0x0004) (CPF_DataBinding)
-	unsigned long                                      PlayerTitle : 1;                                          // 0x0110(0x0004) (CPF_DataBinding)
-	unsigned long                                      DynamicThumbnails : 1;                                    // 0x0114(0x0004) (CPF_DataBinding)
-	unsigned long                                      MapPrefs : 1;                                             // 0x0118(0x0004) (CPF_DataBinding)
-	unsigned long                                      Workshop : 1;                                             // 0x011C(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData08[0x34];                                      // 0x0120(0x0034) MISSED OFFSET
-	unsigned long                                      Inventory : 1;                                            // 0x0154(0x0004) (CPF_DataBinding)
-	unsigned long                                      TrainingEditor : 1;                                       // 0x0158(0x0004) (CPF_DataBinding)
-	unsigned long                                      RedeemCode : 1;                                           // 0x015C(0x0004) (CPF_DataBinding)
-	unsigned long                                      VoiceChat : 1;                                            // 0x0160(0x0004) (CPF_DataBinding)
-	unsigned long                                      EditBindings : 1;                                         // 0x0164(0x0004) (CPF_DataBinding)
-	unsigned long                                      UIScale : 1;                                              // 0x0168(0x0004) (CPF_DataBinding)
-	unsigned long                                      SplitScreen : 1;                                          // 0x016C(0x0004) (CPF_DataBinding)
-	unsigned long                                      Crossplay : 1;                                            // 0x0170(0x0004) (CPF_DataBinding)
-	unsigned long                                      CompetitiveDivisions : 1;                                 // 0x0174(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData09[0x4];                                       // 0x0178(0x0004) MISSED OFFSET
-	unsigned long                                      ClanforgeReservation : 1;                                 // 0x017C(0x0004) (CPF_DataBinding)
-	unsigned char                                      UnknownData10[0x3C];                                      // 0x0180(0x003C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                                       // 0x003C(0x000C) MISSED OFFSET
+	unsigned long                                      Matchmaking : 1;                                          // 0x0048(0x0004) (CPF_DataBinding)
+	unsigned long                                      PrivateMatch : 1;                                         // 0x004C(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitscreenMatch : 1;                                     // 0x0050(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitscreenJoin : 1;                                      // 0x0054(0x0004) (CPF_DataBinding)
+	unsigned long                                      SeasonMode : 1;                                           // 0x0058(0x0004) (CPF_DataBinding)
+	unsigned long                                      Tutorial : 1;                                             // 0x005C(0x0004) (CPF_DataBinding)
+	unsigned long                                      Garage : 1;                                               // 0x0060(0x0004) (CPF_DataBinding)
+	unsigned long                                      Options : 1;                                              // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      ReplaySaves : 1;                                          // 0x0068(0x0004) (CPF_DataBinding)
+	unsigned long                                      MainMenu : 1;                                             // 0x006C(0x0004) (CPF_DataBinding)
+	unsigned long                                      MidgameMenu : 1;                                          // 0x0070(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) MISSED OFFSET
+	unsigned long                                      Party : 1;                                                // 0x0078(0x0004) (CPF_DataBinding)
+	unsigned long                                      Achievements : 1;                                         // 0x007C(0x0004) (CPF_DataBinding)
+	unsigned long                                      Stats : 1;                                                // 0x0080(0x0004) (CPF_DataBinding)
+	unsigned long                                      Leaderboards : 1;                                         // 0x0084(0x0004) (CPF_DataBinding)
+	unsigned long                                      XP : 1;                                                   // 0x0088(0x0004) (CPF_DataBinding)
+	unsigned long                                      Chat : 1;                                                 // 0x008C(0x0004) (CPF_DataBinding)
+	unsigned long                                      FullCredits : 1;                                          // 0x0090(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) MISSED OFFSET
+	unsigned long                                      TrainingDifficulties : 1;                                 // 0x0098(0x0004) (CPF_DataBinding)
+	unsigned long                                      Ads : 1;                                                  // 0x009C(0x0004) (CPF_DataBinding)
+	unsigned long                                      Microtransactions : 1;                                    // 0x00A0(0x0004) (CPF_DataBinding)
+	unsigned long                                      ItemDrops : 1;                                            // 0x00A4(0x0004) (CPF_DataBinding)
+	unsigned long                                      Spectator : 1;                                            // 0x00A8(0x0004) (CPF_DataBinding)
+	unsigned long                                      CrossPlatformPrivateMatch : 1;                            // 0x00AC(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00B0(0x0004) MISSED OFFSET
+	unsigned long                                      BuyDLC : 1;                                               // 0x00B4(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00B8(0x0004) MISSED OFFSET
+	unsigned long                                      PlayerReporting : 1;                                      // 0x00BC(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00C0(0x0004) MISSED OFFSET
+	unsigned long                                      PremiumGarage : 1;                                        // 0x00C4(0x0004) (CPF_DataBinding)
+	unsigned long                                      PodiumSpotlight : 1;                                      // 0x00C8(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00CC(0x0004) MISSED OFFSET
+	unsigned long                                      CustomTeamNames : 1;                                      // 0x00D0(0x0004) (CPF_DataBinding)
+	unsigned long                                      CustomTeamColors : 1;                                     // 0x00D4(0x0004) (CPF_DataBinding)
+	unsigned long                                      PlayerTrading : 1;                                        // 0x00D8(0x0004) (CPF_DataBinding)
+	unsigned long                                      GaragePresets : 1;                                        // 0x00DC(0x0004) (CPF_DataBinding)
+	unsigned long                                      PartyChat : 1;                                            // 0x00E0(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData07[0x10];                                      // 0x00E4(0x0010) MISSED OFFSET
+	unsigned long                                      OnlineServices : 1;                                       // 0x00F4(0x0004) (CPF_DataBinding)
+	unsigned long                                      RemoveCrossPlatformProducts : 1;                          // 0x00F8(0x0004) (CPF_DataBinding)
+	unsigned long                                      Mutators : 1;                                             // 0x00FC(0x0004) (CPF_DataBinding)
+	unsigned long                                      ProductValidation : 1;                                    // 0x0100(0x0004) (CPF_DataBinding)
+	unsigned long                                      RumbleMode : 1;                                           // 0x0104(0x0004) (CPF_DataBinding)
+	unsigned long                                      PlayerTitle : 1;                                          // 0x0108(0x0004) (CPF_DataBinding)
+	unsigned long                                      DynamicThumbnails : 1;                                    // 0x010C(0x0004) (CPF_DataBinding)
+	unsigned long                                      MapPrefs : 1;                                             // 0x0110(0x0004) (CPF_DataBinding)
+	unsigned long                                      Workshop : 1;                                             // 0x0114(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData08[0x30];                                      // 0x0118(0x0030) MISSED OFFSET
+	unsigned long                                      Inventory : 1;                                            // 0x0148(0x0004) (CPF_DataBinding)
+	unsigned long                                      TrainingEditor : 1;                                       // 0x014C(0x0004) (CPF_DataBinding)
+	unsigned long                                      RedeemCode : 1;                                           // 0x0150(0x0004) (CPF_DataBinding)
+	unsigned long                                      VoiceChat : 1;                                            // 0x0154(0x0004) (CPF_DataBinding)
+	unsigned long                                      EditBindings : 1;                                         // 0x0158(0x0004) (CPF_DataBinding)
+	unsigned long                                      UIScale : 1;                                              // 0x015C(0x0004) (CPF_DataBinding)
+	unsigned long                                      SplitScreen : 1;                                          // 0x0160(0x0004) (CPF_DataBinding)
+	unsigned long                                      Crossplay : 1;                                            // 0x0164(0x0004) (CPF_DataBinding)
+	unsigned long                                      CompetitiveDivisions : 1;                                 // 0x0168(0x0004) (CPF_DataBinding)
+	unsigned long                                      KeySelection : 1;                                         // 0x016C(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData09[0x10];                                      // 0x0170(0x0010) MISSED OFFSET
+	unsigned long                                      FreePlayMapSelection : 1;                                 // 0x0180(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData10[0x8];                                       // 0x0184(0x0008) MISSED OFFSET
+	unsigned long                                      MatchAdmin : 1;                                           // 0x018C(0x0004) (CPF_DataBinding)
+	unsigned long                                      FilterContent : 1;                                        // 0x0190(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData11[0xC];                                       // 0x0194(0x000C) MISSED OFFSET
+	unsigned long                                      GarageSuperSonicTrail : 1;                                // 0x01A0(0x0004) (CPF_DataBinding)
+	unsigned long                                      GarageBallExplosions : 1;                                 // 0x01A4(0x0004) (CPF_DataBinding)
+	unsigned long                                      GarageEngineAudio : 1;                                    // 0x01A8(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData12[0x14];                                      // 0x01AC(0x0014) MISSED OFFSET
+	unsigned long                                      ClanforgeReservation : 1;                                 // 0x01C0(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData13[0x4];                                       // 0x01C4(0x0004) MISSED OFFSET
+	unsigned long                                      UserSettingObserver : 1;                                  // 0x01C8(0x0004) (CPF_DataBinding)
+	unsigned long                                      Metrics : 1;                                              // 0x01CC(0x0004) (CPF_DataBinding)
+	unsigned long                                      MusicPlaylistSelection : 1;                               // 0x01D0(0x0004) (CPF_DataBinding)
+	unsigned char                                      UnknownData14[0x8];                                       // 0x01D4(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1229,6 +1271,66 @@ public:
 		return ptr;
 	}
 
+};
+
+
+// Class Core.ErrorType
+// 0x0000 (0x003C - 0x003C)
+class UErrorType : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.ErrorType");
+		return ptr;
+	}
+
+
+	class UError* CreateError(const struct FString& InErrorMessage, int InErrorCode);
+	struct FString GetLocalizedMessage();
+};
+
+
+// Class Core.ErrorList
+// 0x0018 (0x0054 - 0x003C)
+class UErrorList : public UObject
+{
+public:
+	struct FString                                     LocalizationPackage;                                      // 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
+	struct FString                                     LocalizationSection;                                      // 0x0048(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.ErrorList");
+		return ptr;
+	}
+
+
+	class UErrorType* STATIC_GetErrorType(const struct FName& Error);
+	bool GetResponseError(const struct FString& Exception, class UErrorType** OutType, int* OutCode);
+	bool MatchError(const struct FString& Compare, struct FString* Exception);
+};
+
+
+// Class Core.Error
+// 0x0014 (0x0050 - 0x003C)
+class UError : public UObject
+{
+public:
+	class UErrorType*                                  Type;                                                     // 0x003C(0x0004) (CPF_Const, CPF_Transient)
+	struct FString                                     Message;                                                  // 0x0040(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	int                                                Code;                                                     // 0x004C(0x0004) (CPF_Const, CPF_Transient)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.Error");
+		return ptr;
+	}
+
+
+	struct FString GetDebugMessage();
+	struct FString GetLocalizedMessage();
 };
 
 
@@ -1371,6 +1473,48 @@ public:
 };
 
 
+// Class Core.AsyncTask
+// 0x004C (0x0088 - 0x003C)
+class UAsyncTask : public UObject
+{
+public:
+	unsigned long                                      bComplete : 1;                                            // 0x003C(0x0004)
+	unsigned long                                      bDisposed : 1;                                            // 0x003C(0x0004)
+	class UError*                                      Error;                                                    // 0x0040(0x0004)
+	class UObject*                                     Result;                                                   // 0x0044(0x0004)
+	struct FScriptDelegate                             __EventAsyncTaskSuccess__Delegate;                        // 0x0048(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0048(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAsyncTaskFail__Delegate;                           // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAsyncTaskComplete__Delegate;                       // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisposed__Delegate;                                // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.AsyncTask");
+		return ptr;
+	}
+
+
+	class UAsyncTask* STATIC_CreateError(class UError* InError);
+	class UAsyncTask* STATIC_CreateComplete(class UObject* InResult);
+	class UAsyncTask* NotifyOnDispose(const struct FScriptDelegate& Callback);
+	void Dispose();
+	void SetComplete(class UObject* InResult, class UError* InError);
+	void SetError(class UError* InError);
+	void SetResult(class UObject* InResult);
+	class UAsyncTask* NotifyOnComplete(const struct FScriptDelegate& Callback);
+	class UAsyncTask* NotifyOnFail(const struct FScriptDelegate& Callback);
+	class UAsyncTask* NotifyOnSuccess(const struct FScriptDelegate& Callback);
+	void EventDisposed();
+	void EventAsyncTaskComplete(class UObject* TaskResult, class UError* TaskError);
+	void EventAsyncTaskFail(class UError* TaskError);
+	void EventAsyncTaskSuccess(class UObject* TaskResult);
+};
+
+
 // Class Core.State
 // 0x0048 (0x00D4 - 0x008C)
 class UState : public UStruct
@@ -1467,6 +1611,39 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindClass("Class Core.GameVersion");
+		return ptr;
+	}
+
+};
+
+
+// Class Core.IDisposable
+// 0x0000 (0x003C - 0x003C)
+class UIDisposable : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.IDisposable");
+		return ptr;
+	}
+
+
+	void Dispose();
+};
+
+
+// Class Core.MulticastDelegateSystem
+// 0x000C (0x0048 - 0x003C)
+class UMulticastDelegateSystem : public UObject
+{
+public:
+	unsigned char                                      UnknownData00[0xC];                                       // 0x003C(0x000C) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class Core.MulticastDelegateSystem");
 		return ptr;
 	}
 

@@ -6444,6 +6444,23 @@ void AActor::ForceUpdateComponents(bool bCollisionUpdate, bool bTransformOnly)
 }
 
 
+// Function Engine.Actor.OnTimer
+// (FUNC_Final, FUNC_Private, FUNC_Delegate)
+
+void AActor::OnTimer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Actor.OnTimer");
+
+	AActor_OnTimer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.WorldInfo.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -8486,6 +8503,30 @@ void UEngine::PrintDebugInfo(class UDebugDrawer* Drawer)
 }
 
 
+// Function Engine.Engine.GetGameVersionForProduct
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FName                   ProductName                    (CPF_Parm)
+// TEnumAsByte<EGameVersion>      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+TEnumAsByte<EGameVersion> UEngine::STATIC_GetGameVersionForProduct(const struct FName& ProductName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Engine.GetGameVersionForProduct");
+
+	UEngine_GetGameVersionForProduct_Params params;
+	params.ProductName = ProductName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function Engine.Engine.GetGameVersion
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -9437,23 +9478,6 @@ bool UEngine::STATIC_UseSecurePackets()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function Engine.Engine.EventTextArchetypesReloaded
-// (FUNC_Public, FUNC_Delegate)
-
-void UEngine::EventTextArchetypesReloaded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Engine.EventTextArchetypesReloaded");
-
-	UEngine_EventTextArchetypesReloaded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -11571,7 +11595,7 @@ void AEmitter::OnParticleEventGenerator(class USeqAct_ParticleEventGenerator* Ac
 
 
 // Function Engine.Emitter.OnToggle
-// (FUNC_Defined, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
 // class USeqAct_Toggle*          Action                         (CPF_Parm)
 
@@ -35479,26 +35503,6 @@ void APlayerController::ClientSetCameraMode(const struct FName& NewCamMode)
 }
 
 
-// Function Engine.PlayerController.Camera
-// (FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FName                   NewMode                        (CPF_Parm)
-
-void APlayerController::Camera(const struct FName& NewMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Camera");
-
-	APlayerController_Camera_Params params;
-	params.NewMode = NewMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function Engine.PlayerController.PreClientTravel
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
@@ -40563,56 +40567,18 @@ float UDamageType::STATIC_VehicleDamageScalingFor(class AVehicle* V)
 }
 
 
-// Function Engine.DateTime.UTCSecondsSince
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-
-void UDateTime::STATIC_UTCSecondsSince()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.UTCSecondsSince");
-
-	UDateTime_UTCSecondsSince_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.DateTime.SetClientTime
+// Function Engine.DateTime.AddSeconds
 // (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void UDateTime::SetClientTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.SetClientTime");
-
-	UDateTime_SetClientTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.DateTime.DateTimeFromUTCSeconds
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// int                            Year                           (CPF_Parm, CPF_OutParm)
-// int                            Month                          (CPF_Parm, CPF_OutParm)
-// int                            Day                            (CPF_Parm, CPF_OutParm)
-// int                            Hour                           (CPF_Parm, CPF_OutParm)
-// int                            Minute                         (CPF_Parm, CPF_OutParm)
-// int                            Second                         (CPF_Parm, CPF_OutParm)
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UDateTime::STATIC_DateTimeFromUTCSeconds(int* Year, int* Month, int* Day, int* Hour, int* Minute, int* Second)
+class UDateTime* UDateTime::AddSeconds(int Amount)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.DateTimeFromUTCSeconds");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddSeconds");
 
-	UDateTime_DateTimeFromUTCSeconds_Params params;
+	UDateTime_AddSeconds_Params params;
+	params.Amount = Amount;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40621,42 +40587,22 @@ void UDateTime::STATIC_DateTimeFromUTCSeconds(int* Year, int* Month, int* Day, i
 
 	fn->FunctionFlags = flags;
 
-	if (Year != nullptr)
-		*Year = params.Year;
-	if (Month != nullptr)
-		*Month = params.Month;
-	if (Day != nullptr)
-		*Day = params.Day;
-	if (Hour != nullptr)
-		*Hour = params.Hour;
-	if (Minute != nullptr)
-		*Minute = params.Minute;
-	if (Second != nullptr)
-		*Second = params.Second;
+	return params.ReturnValue;
 }
 
 
-// Function Engine.DateTime.UTCSecondsFromDateTime
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Function Engine.DateTime.AddMinutes
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// int                            Year                           (CPF_Parm)
-// int                            Month                          (CPF_Parm)
-// int                            Day                            (CPF_Parm)
-// int                            Hour                           (CPF_Parm)
-// int                            Minute                         (CPF_Parm)
-// int                            Second                         (CPF_Parm)
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UDateTime::STATIC_UTCSecondsFromDateTime(int Year, int Month, int Day, int Hour, int Minute, int Second)
+class UDateTime* UDateTime::AddMinutes(int Amount)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.UTCSecondsFromDateTime");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddMinutes");
 
-	UDateTime_UTCSecondsFromDateTime_Params params;
-	params.Year = Year;
-	params.Month = Month;
-	params.Day = Day;
-	params.Hour = Hour;
-	params.Minute = Minute;
-	params.Second = Second;
+	UDateTime_AddMinutes_Params params;
+	params.Amount = Amount;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40664,19 +40610,185 @@ void UDateTime::STATIC_UTCSecondsFromDateTime(int Year, int Month, int Day, int 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function Engine.DateTime.UtcToLocalTimeString
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Function Engine.DateTime.AddHours
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::AddHours(int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddHours");
+
+	UDateTime_AddHours_Params params;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.AddDays
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::AddDays(int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddDays");
+
+	UDateTime_AddDays_Params params;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.AddMonths
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::AddMonths(int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddMonths");
+
+	UDateTime_AddMonths_Params params;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.AddYears
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Amount                         (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::AddYears(int Amount)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.AddYears");
+
+	UDateTime_AddYears_Params params;
+	params.Amount = Amount;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.ToTimeZone
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// TEnumAsByte<ETimeZone>         InTimeZone                     (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::ToTimeZone(TEnumAsByte<ETimeZone> InTimeZone)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.ToTimeZone");
+
+	UDateTime_ToTimeZone_Params params;
+	params.InTimeZone = InTimeZone;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.ToUTC
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::ToUTC()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.ToUTC");
+
+	UDateTime_ToUTC_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.ToLocal
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::ToLocal()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.ToLocal");
+
+	UDateTime_ToLocal_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.ToString
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UDateTime::STATIC_UtcToLocalTimeString()
+struct FString UDateTime::ToString()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.UtcToLocalTimeString");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.ToString");
 
-	UDateTime_UtcToLocalTimeString_Params params;
+	UDateTime_ToString_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40689,16 +40801,74 @@ struct FString UDateTime::STATIC_UtcToLocalTimeString()
 }
 
 
-// Function Engine.DateTime.UtcToLocalTime
+// Function Engine.DateTime.ToStruct
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FDateTimeStruct         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FDateTimeStruct UDateTime::ToStruct()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.ToStruct");
+
+	UDateTime_ToStruct_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.FromStruct
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FDateTimeStruct         Data                           (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UDateTime* UDateTime::STATIC_FromStruct(const struct FDateTimeStruct& Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.FromStruct");
+
+	UDateTime_FromStruct_Params params;
+	params.Data = Data;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DateTime.FromDateTime
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// struct FDateTimeData           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// int                            InYear                         (CPF_Parm)
+// int                            InMonth                        (CPF_Parm)
+// int                            InDay                          (CPF_Parm)
+// int                            InHour                         (CPF_Parm)
+// int                            InMinute                       (CPF_Parm)
+// int                            InSecond                       (CPF_Parm)
+// TEnumAsByte<ETimeZone>         InTimeZone                     (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FDateTimeData UDateTime::STATIC_UtcToLocalTime()
+class UDateTime* UDateTime::STATIC_FromDateTime(int InYear, int InMonth, int InDay, int InHour, int InMinute, int InSecond, TEnumAsByte<ETimeZone> InTimeZone)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.UtcToLocalTime");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.FromDateTime");
 
-	UDateTime_UtcToLocalTime_Params params;
+	UDateTime_FromDateTime_Params params;
+	params.InYear = InYear;
+	params.InMonth = InMonth;
+	params.InDay = InDay;
+	params.InHour = InHour;
+	params.InMinute = InMinute;
+	params.InSecond = InSecond;
+	params.InTimeZone = InTimeZone;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40711,16 +40881,20 @@ struct FDateTimeData UDateTime::STATIC_UtcToLocalTime()
 }
 
 
-// Function Engine.DateTime.GetUtcTimeStamp
+// Function Engine.DateTime.FromString
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// struct FString                 TimeStamp                      (CPF_Parm, CPF_NeedCtorLink)
+// TEnumAsByte<ETimeZone>         InTimeZone                     (CPF_Parm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FString UDateTime::STATIC_GetUtcTimeStamp()
+class UDateTime* UDateTime::STATIC_FromString(const struct FString& TimeStamp, TEnumAsByte<ETimeZone> InTimeZone)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetUtcTimeStamp");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.FromString");
 
-	UDateTime_GetUtcTimeStamp_Params params;
+	UDateTime_FromString_Params params;
+	params.TimeStamp = TimeStamp;
+	params.InTimeZone = InTimeZone;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40733,67 +40907,16 @@ struct FString UDateTime::STATIC_GetUtcTimeStamp()
 }
 
 
-// Function Engine.DateTime.GetUTCTime
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FDateTimeData           TimeData                       (CPF_Const, CPF_Parm, CPF_OutParm)
-// bool                           RemoveEpoch                    (CPF_OptionalParm, CPF_Parm)
-
-void UDateTime::STATIC_GetUTCTime(bool RemoveEpoch, struct FDateTimeData* TimeData)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetUTCTime");
-
-	UDateTime_GetUTCTime_Params params;
-	params.RemoveEpoch = RemoveEpoch;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (TimeData != nullptr)
-		*TimeData = params.TimeData;
-}
-
-
-// Function Engine.DateTime.GetTimeSpanUTC
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FDateTimeData           Date1                          (CPF_Const, CPF_Parm, CPF_OutParm)
-// struct FDateTimeData           Date2                          (CPF_Const, CPF_Parm, CPF_OutParm)
-
-void UDateTime::STATIC_GetTimeSpanUTC(struct FDateTimeData* Date1, struct FDateTimeData* Date2)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetTimeSpanUTC");
-
-	UDateTime_GetTimeSpanUTC_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Date1 != nullptr)
-		*Date1 = params.Date1;
-	if (Date2 != nullptr)
-		*Date2 = params.Date2;
-}
-
-
-// Function Engine.DateTime.GetTimeSpanDateTime
+// Function Engine.DateTime.FromEpochTime
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// struct FDateTimeData           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-struct FDateTimeData UDateTime::STATIC_GetTimeSpanDateTime()
+class UDateTime* UDateTime::STATIC_FromEpochTime()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetTimeSpanDateTime");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.FromEpochTime");
 
-	UDateTime_GetTimeSpanDateTime_Params params;
+	UDateTime_FromEpochTime_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40806,67 +40929,16 @@ struct FDateTimeData UDateTime::STATIC_GetTimeSpanDateTime()
 }
 
 
-// Function Engine.DateTime.GetDateTime
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           AddEpoch                       (CPF_OptionalParm, CPF_Parm)
-// struct FDateTimeData           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FDateTimeData UDateTime::STATIC_GetDateTime(bool AddEpoch)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetDateTime");
-
-	UDateTime_GetDateTime_Params params;
-	params.AddEpoch = AddEpoch;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.DateTime.HasDatePassed
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FDateTimeData           Data                           (CPF_Const, CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UDateTime::STATIC_HasDatePassed(struct FDateTimeData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.HasDatePassed");
-
-	UDateTime_HasDatePassed_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.DateTime.GetUTCSecondsFromString
+// Function Engine.DateTime.Now
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
-// struct FString                 DateTime                       (CPF_Parm, CPF_NeedCtorLink)
+// class UDateTime*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-void UDateTime::STATIC_GetUTCSecondsFromString(const struct FString& DateTime)
+class UDateTime* UDateTime::STATIC_Now()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetUTCSecondsFromString");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.Now");
 
-	UDateTime_GetUTCSecondsFromString_Params params;
-	params.DateTime = DateTime;
+	UDateTime_Now_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -40874,17 +40946,19 @@ void UDateTime::STATIC_GetUTCSecondsFromString(const struct FString& DateTime)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
-// Function Engine.DateTime.GetUTCSeconds
+// Function Engine.DateTime.EpochNow
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 
-void UDateTime::STATIC_GetUTCSeconds()
+void UDateTime::STATIC_EpochNow()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.GetUTCSeconds");
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DateTime.EpochNow");
 
-	UDateTime_GetUTCSeconds_Params params;
+	UDateTime_EpochNow_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -45030,6 +45104,26 @@ class UJsonObject* UJsonObject::GetObject(const struct FString& Key)
 }
 
 
+// Function Engine.OnlineAuthInterface.OnLoginChanged
+// (FUNC_Public)
+// Parameters:
+// bool                           bLoggedIn                      (CPF_Parm)
+
+void UOnlineAuthInterface::OnLoginChanged(bool bLoggedIn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineAuthInterface.OnLoginChanged");
+
+	UOnlineAuthInterface_OnLoginChanged_Params params;
+	params.bLoggedIn = bLoggedIn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.OnlineAuthInterface.RequiresMTXAuthorizationCode
 // (FUNC_Public)
 // Parameters:
@@ -48088,6 +48182,30 @@ void UOnlineStatsWrite::OnStatsWriteComplete()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.GetPlayerIP
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineSubsystem::STATIC_GetPlayerIP(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlayerIP");
+
+	UOnlineSubsystem_GetPlayerIP_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -64746,6 +64864,98 @@ void UMaterialInstance::SetParent(class UMaterialInterface* NewParent)
 
 	UMaterialInstance_SetParent_Params params;
 	params.NewParent = NewParent;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.MaterialInstanceConstant.SetLinearColorParameter
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   Key                            (CPF_Parm)
+// struct FLinearColor            Value                          (CPF_Parm)
+
+void UMaterialInstanceConstant::SetLinearColorParameter(const struct FName& Key, const struct FLinearColor& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.MaterialInstanceConstant.SetLinearColorParameter");
+
+	UMaterialInstanceConstant_SetLinearColorParameter_Params params;
+	params.Key = Key;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.MaterialInstanceConstant.SetVectorParameter
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   Key                            (CPF_Parm)
+// struct FVector                 V                              (CPF_Parm)
+
+void UMaterialInstanceConstant::SetVectorParameter(const struct FName& Key, const struct FVector& V)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.MaterialInstanceConstant.SetVectorParameter");
+
+	UMaterialInstanceConstant_SetVectorParameter_Params params;
+	params.Key = Key;
+	params.V = V;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.MaterialInstanceConstant.SetFloatParameter
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   Key                            (CPF_Parm)
+// float                          Value                          (CPF_Parm)
+
+void UMaterialInstanceConstant::SetFloatParameter(const struct FName& Key, float Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.MaterialInstanceConstant.SetFloatParameter");
+
+	UMaterialInstanceConstant_SetFloatParameter_Params params;
+	params.Key = Key;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.MaterialInstanceConstant.SetNameParameter
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   Key                            (CPF_Parm)
+// struct FName                   Value                          (CPF_Parm)
+
+void UMaterialInstanceConstant::SetNameParameter(const struct FName& Key, const struct FName& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.MaterialInstanceConstant.SetNameParameter");
+
+	UMaterialInstanceConstant_SetNameParameter_Params params;
+	params.Key = Key;
+	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -107316,20 +107526,42 @@ bool UOnlineMarketplaceInterface::ReadAvailableProducts(unsigned char LocalUserN
 }
 
 
-// Function Engine.OnlinePlayerInterfaceEx.WordFilterSanitizeString
+// Function Engine.OnlinePlayerInterfaceEx.GetPlayerAccountID
 // (FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            NetId                          (CPF_Const, CPF_Parm)
+
+void UOnlinePlayerInterfaceEx::GetPlayerAccountID(const struct FUniqueNetId& NetId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterfaceEx.GetPlayerAccountID");
+
+	UOnlinePlayerInterfaceEx_GetPlayerAccountID_Params params;
+	params.NetId = NetId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlinePlayerInterfaceEx.WordFilterSanitizeString
+// (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Comment                        (CPF_Const, CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         SanitizeDelegate               (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlinePlayerInterfaceEx::WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate)
+bool UOnlinePlayerInterfaceEx::WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterfaceEx.WordFilterSanitizeString");
 
 	UOnlinePlayerInterfaceEx_WordFilterSanitizeString_Params params;
 	params.Comment = Comment;
 	params.SanitizeDelegate = SanitizeDelegate;
+	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -107344,16 +107576,14 @@ bool UOnlinePlayerInterfaceEx::WordFilterSanitizeString(const struct FString& Co
 // Function Engine.OnlinePlayerInterfaceEx.OnSanitizeStringComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
+// struct FWordFilterResult       Result                         (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlinePlayerInterfaceEx::OnSanitizeStringComplete(const struct FString& Original, const struct FString& Sanitized)
+void UOnlinePlayerInterfaceEx::OnSanitizeStringComplete(const struct FWordFilterResult& Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlinePlayerInterfaceEx.OnSanitizeStringComplete");
 
 	UOnlinePlayerInterfaceEx_OnSanitizeStringComplete_Params params;
-	params.Original = Original;
-	params.Sanitized = Sanitized;
+	params.Result = Result;
 
 	auto flags = fn->FunctionFlags;
 

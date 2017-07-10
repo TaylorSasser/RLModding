@@ -13,13 +13,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class GFxUI.GFxEngine
-// 0x0068 (0x00A4 - 0x003C)
+// 0x0080 (0x00BC - 0x003C)
 class UGFxEngine : public UObject
 {
 public:
 	TArray<struct FGCReference>                        GCReferences;                                             // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                RefCount;                                                 // 0x0048(0x0004) (CPF_Transient)
-	struct FLoadingMovieMapInfo                        LoadingScreenInfo;                                        // 0x004C(0x0058) (CPF_NeedCtorLink)
+	struct FLoadingMovieMapInfo                        LoadingScreenInfo;                                        // 0x004C(0x0070) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -333,7 +333,7 @@ public:
 
 
 // Class GFxUI.SwfMovie
-// 0x0044 (0x00B0 - 0x006C)
+// 0x0050 (0x00BC - 0x006C)
 class USwfMovie : public UGFxRawData
 {
 public:
@@ -347,9 +347,10 @@ public:
 	struct FString                                     TextureFormat;                                            // 0x0084(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
 	struct FString                                     SourceFileTimestamp;                                      // 0x0090(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
 	int                                                SourceFileCRC;                                            // 0x009C(0x0004) (CPF_Edit, CPF_EditConst)
-	int                                                RTTextures;                                               // 0x00A0(0x0004)
-	int                                                RTVideoTextures;                                          // 0x00A4(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
+	TArray<TEnumAsByte<EEdition>>                      Editions;                                                 // 0x00A0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	int                                                RTTextures;                                               // 0x00AC(0x0004)
+	int                                                RTVideoTextures;                                          // 0x00B0(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
 
 	static UClass* StaticClass()
 	{
@@ -361,7 +362,7 @@ public:
 
 
 // Class GFxUI.FlashMovie
-// 0x0000 (0x00B0 - 0x00B0)
+// 0x0000 (0x00BC - 0x00BC)
 class UFlashMovie : public USwfMovie
 {
 public:

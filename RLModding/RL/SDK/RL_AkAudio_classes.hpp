@@ -29,14 +29,14 @@ public:
 
 
 // Class AkAudio.AkAmbientSound
-// 0x0008 (0x01F8 - 0x01F0)
+// 0x0008 (0x0208 - 0x0200)
 class AAkAmbientSound : public AKeypoint
 {
 public:
-	unsigned long                                      bAutoPlay : 1;                                            // 0x01F0(0x0004)
-	unsigned long                                      StopWhenOwnerIsDestroyed : 1;                             // 0x01F0(0x0004) (CPF_Edit)
-	unsigned long                                      bIsPlaying : 1;                                           // 0x01F0(0x0004) (CPF_Transient)
-	class UAkEvent*                                    PlayEvent;                                                // 0x01F4(0x0004) (CPF_Edit)
+	unsigned long                                      bAutoPlay : 1;                                            // 0x0200(0x0004)
+	unsigned long                                      StopWhenOwnerIsDestroyed : 1;                             // 0x0200(0x0004) (CPF_Edit)
+	unsigned long                                      bIsPlaying : 1;                                           // 0x0200(0x0004) (CPF_Transient)
+	class UAkEvent*                                    PlayEvent;                                                // 0x0204(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -128,14 +128,14 @@ public:
 
 
 // Class AkAudio.AkEnvironmentVolume
-// 0x0018 (0x0230 - 0x0218)
+// 0x0018 (0x0240 - 0x0228)
 class AAkEnvironmentVolume : public AVolume
 {
 public:
-	struct FString                                     EnvironmentID;                                            // 0x0218(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	int                                                Priority;                                                 // 0x0224(0x0004) (CPF_Edit)
-	float                                              Value;                                                    // 0x0228(0x0004) (CPF_Edit)
-	struct Fuint                                       HashedEnvID;                                              // 0x022C(0x0004) (CPF_Const, CPF_Transient)
+	struct FString                                     EnvironmentID;                                            // 0x0228(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	int                                                Priority;                                                 // 0x0234(0x0004) (CPF_Edit)
+	float                                              Value;                                                    // 0x0238(0x0004) (CPF_Edit)
+	struct Fuint                                       HashedEnvID;                                              // 0x023C(0x0004) (CPF_Const, CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -205,6 +205,43 @@ public:
 	bool IsPlaying();
 	void Stop();
 	void Play();
+};
+
+
+// Class AkAudio.AkRevPhysicsSimulation
+// 0x0044 (0x0080 - 0x003C)
+class UAkRevPhysicsSimulation : public UObject
+{
+public:
+	float                                              EngineGearRatio;                                          // 0x003C(0x0004) (CPF_Edit)
+	float                                              EngineFriction;                                           // 0x0040(0x0004) (CPF_Edit)
+	float                                              GroundFriction;                                           // 0x0044(0x0004) (CPF_Edit)
+	float                                              WindResistancePerVelocity;                                // 0x0048(0x0004) (CPF_Edit)
+	float                                              UpShiftingRPM;                                            // 0x004C(0x0004) (CPF_Edit)
+	float                                              DownShiftRPM;                                             // 0x0050(0x0004) (CPF_Edit)
+	float                                              ThrottleInterpolationTime;                                // 0x0054(0x0004) (CPF_Edit)
+	float                                              EngineTorque;                                             // 0x0058(0x0004) (CPF_Transient)
+	float                                              BrakingForce;                                             // 0x005C(0x0004) (CPF_Transient)
+	float                                              WindResistance;                                           // 0x0060(0x0004) (CPF_Transient)
+	float                                              FrictionResistance;                                       // 0x0064(0x0004) (CPF_Transient)
+	float                                              EngineResistance;                                         // 0x0068(0x0004) (CPF_Transient)
+	float                                              NetForce;                                                 // 0x006C(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __EventGearChange__Delegate;                              // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class AkAudio.AkRevPhysicsSimulation");
+		return ptr;
+	}
+
+
+	void PrintDebugInfo(class UDebugDrawer* Drawer);
+	float STATIC_GetGearRatio(struct FAkRevSimUpdateParams* SimUpdate);
+	float CalcVelocity(float GearRatio, float RPM);
+	float CalcRPM(float GearRatio, float Velocity);
+	struct FAkRevSimFrame Step(float DeltaTime, struct FAkRevSimUpdateParams* Params);
+	void EventGearChange(class UAkRevPhysicsSimulation* Simulation);
 };
 
 
@@ -509,11 +546,11 @@ public:
 
 
 // Class AkAudio.AkAmbientSoundActor
-// 0x0004 (0x01F4 - 0x01F0)
+// 0x0004 (0x0204 - 0x0200)
 class AAkAmbientSoundActor : public AKeypoint
 {
 public:
-	class UAkPlaySoundComponent*                       PlaySoundComponent;                                       // 0x01F0(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UAkPlaySoundComponent*                       PlaySoundComponent;                                       // 0x0200(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 
 	static UClass* StaticClass()
 	{

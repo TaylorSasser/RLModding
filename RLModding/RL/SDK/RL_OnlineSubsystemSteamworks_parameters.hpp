@@ -872,11 +872,18 @@ struct UOnlineSubsystemSteamworks_OnCommerceDialogClosed_Params
 {
 };
 
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayerAccountID
+struct UOnlineSubsystemSteamworks_GetPlayerAccountID_Params
+{
+	struct FUniqueNetId                                NetId;                                                    // (CPF_Const, CPF_Parm)
+};
+
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WordFilterSanitizeString
 struct UOnlineSubsystemSteamworks_WordFilterSanitizeString_Params
 {
 	struct FString                                     Comment;                                                  // (CPF_Const, CPF_Parm, CPF_NeedCtorLink)
 	struct FScriptDelegate                             SanitizeDelegate;                                         // (CPF_Parm, CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -3244,13 +3251,6 @@ struct UOnlineSubsystemSteamworks_Exit_Params
 struct UOnlineSubsystemSteamworks_Init_Params
 {
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnSanitizeStringComplete
-struct UOnlineSubsystemSteamworks_OnSanitizeStringComplete_Params
-{
-	struct FString                                     Original;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     Sanitized;                                                // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanPlayOnlineChanged

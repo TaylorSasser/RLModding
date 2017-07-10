@@ -113,7 +113,7 @@ struct FGCReference
 };
 
 // ScriptStruct GFxUI.GFxEngine.LoadingMovieMapInfo
-// 0x0058
+// 0x0070
 struct FLoadingMovieMapInfo
 {
 	TEnumAsByte<EInputPlatformType>                    InputType;                                                // 0x0000(0x0001)
@@ -122,11 +122,13 @@ struct FLoadingMovieMapInfo
 	struct FString                                     MapVariantName;                                           // 0x001C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     MaximumPlayerCounts;                                      // 0x0028(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     ProtipMessage;                                            // 0x0034(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     ProtipTitle;                                              // 0x0040(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TEnumAsByte<EWeatherVariant>                       WeatherVariant;                                           // 0x004C(0x0001)
-	class UTexture2D*                                  LargeMapImage;                                            // 0x0050(0x0004)
-	unsigned long                                      bSetBackgroundVisible : 1;                                // 0x0054(0x0004)
-	unsigned long                                      bDisplayGenericBackground : 1;                            // 0x0054(0x0004)
+	struct FString                                     Language;                                                 // 0x0040(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     BuildEdition;                                             // 0x004C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     ProtipTitle;                                              // 0x0058(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	TEnumAsByte<EWeatherVariant>                       WeatherVariant;                                           // 0x0064(0x0001)
+	class UTexture2D*                                  LargeMapImage;                                            // 0x0068(0x0004)
+	unsigned long                                      bSetBackgroundVisible : 1;                                // 0x006C(0x0004)
+	unsigned long                                      bDisplayGenericBackground : 1;                            // 0x006C(0x0004)
 };
 
 // ScriptStruct GFxUI.GFxMoviePlayer.ExternalTexture

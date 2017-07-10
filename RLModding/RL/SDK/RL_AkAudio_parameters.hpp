@@ -271,6 +271,49 @@ struct UAkPlaySoundComponent_Play_Params
 {
 };
 
+// Function AkAudio.AkRevPhysicsSimulation.PrintDebugInfo
+struct UAkRevPhysicsSimulation_PrintDebugInfo_Params
+{
+	class UDebugDrawer*                                Drawer;                                                   // (CPF_Parm)
+};
+
+// Function AkAudio.AkRevPhysicsSimulation.GetGearRatio
+struct UAkRevPhysicsSimulation_GetGearRatio_Params
+{
+	struct FAkRevSimUpdateParams                       SimUpdate;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function AkAudio.AkRevPhysicsSimulation.CalcVelocity
+struct UAkRevPhysicsSimulation_CalcVelocity_Params
+{
+	float                                              GearRatio;                                                // (CPF_Parm)
+	float                                              RPM;                                                      // (CPF_Parm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function AkAudio.AkRevPhysicsSimulation.CalcRPM
+struct UAkRevPhysicsSimulation_CalcRPM_Params
+{
+	float                                              GearRatio;                                                // (CPF_Parm)
+	float                                              Velocity;                                                 // (CPF_Parm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function AkAudio.AkRevPhysicsSimulation.Step
+struct UAkRevPhysicsSimulation_Step_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FAkRevSimUpdateParams                       Params;                                                   // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	struct FAkRevSimFrame                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function AkAudio.AkRevPhysicsSimulation.EventGearChange
+struct UAkRevPhysicsSimulation_EventGearChange_Params
+{
+	class UAkRevPhysicsSimulation*                     Simulation;                                               // (CPF_Parm)
+};
+
 // Function AkAudio.AkSoundSource.IsPlayingAny
 struct UAkSoundSource_IsPlayingAny_Params
 {

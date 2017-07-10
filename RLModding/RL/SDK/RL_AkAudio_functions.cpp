@@ -876,6 +876,152 @@ void UAkPlaySoundComponent::Play()
 }
 
 
+// Function AkAudio.AkRevPhysicsSimulation.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UAkRevPhysicsSimulation::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.PrintDebugInfo");
+
+	UAkRevPhysicsSimulation_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function AkAudio.AkRevPhysicsSimulation.GetGearRatio
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FAkRevSimUpdateParams   SimUpdate                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UAkRevPhysicsSimulation::STATIC_GetGearRatio(struct FAkRevSimUpdateParams* SimUpdate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.GetGearRatio");
+
+	UAkRevPhysicsSimulation_GetGearRatio_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (SimUpdate != nullptr)
+		*SimUpdate = params.SimUpdate;
+
+	return params.ReturnValue;
+}
+
+
+// Function AkAudio.AkRevPhysicsSimulation.CalcVelocity
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// float                          GearRatio                      (CPF_Parm)
+// float                          RPM                            (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UAkRevPhysicsSimulation::CalcVelocity(float GearRatio, float RPM)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.CalcVelocity");
+
+	UAkRevPhysicsSimulation_CalcVelocity_Params params;
+	params.GearRatio = GearRatio;
+	params.RPM = RPM;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function AkAudio.AkRevPhysicsSimulation.CalcRPM
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// float                          GearRatio                      (CPF_Parm)
+// float                          Velocity                       (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UAkRevPhysicsSimulation::CalcRPM(float GearRatio, float Velocity)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.CalcRPM");
+
+	UAkRevPhysicsSimulation_CalcRPM_Params params;
+	params.GearRatio = GearRatio;
+	params.Velocity = Velocity;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function AkAudio.AkRevPhysicsSimulation.Step
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FAkRevSimUpdateParams   Params                         (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// struct FAkRevSimFrame          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FAkRevSimFrame UAkRevPhysicsSimulation::Step(float DeltaTime, struct FAkRevSimUpdateParams* Params)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.Step");
+
+	UAkRevPhysicsSimulation_Step_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Params != nullptr)
+		*Params = params.Params;
+
+	return params.ReturnValue;
+}
+
+
+// Function AkAudio.AkRevPhysicsSimulation.EventGearChange
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UAkRevPhysicsSimulation* Simulation                     (CPF_Parm)
+
+void UAkRevPhysicsSimulation::EventGearChange(class UAkRevPhysicsSimulation* Simulation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkRevPhysicsSimulation.EventGearChange");
+
+	UAkRevPhysicsSimulation_EventGearChange_Params params;
+	params.Simulation = Simulation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function AkAudio.AkSoundSource.IsPlayingAny
 // (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_K2Call)
 // Parameters:

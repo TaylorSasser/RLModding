@@ -399,6 +399,29 @@ void UExplosionComponent_X::Detached()
 }
 
 
+// Function ProjectX.MICParamDispenserComponent_X.__MICParamDispenserComponent_X__Attached_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FFXAttachment           A                              (CPF_Parm, CPF_Component, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMICParamDispenserComponent_X::__MICParamDispenserComponent_X__Attached_1(const struct FFXAttachment& A)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MICParamDispenserComponent_X.__MICParamDispenserComponent_X__Attached_1");
+
+	UMICParamDispenserComponent_X___MICParamDispenserComponent_X__Attached_1_Params params;
+	params.A = A;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.MICParamDispenserComponent_X.Attached
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 
@@ -1194,7 +1217,7 @@ bool AFXActor_X::IsStateActive(class UFXActorEvent_X* InState)
 
 
 // Function ProjectX.FXActor_X.Deactivate
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 
 void AFXActor_X::Deactivate()
 {
@@ -1211,7 +1234,7 @@ void AFXActor_X::Deactivate()
 
 
 // Function ProjectX.FXActor_X.Activate
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 
 void AFXActor_X::Activate()
 {
@@ -2256,6 +2279,27 @@ void ACamera_X::SetViewTarget(class AActor* NewViewTarget, const struct FViewTar
 }
 
 
+// Function ProjectX.Camera_X.IsTransitioning
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool ACamera_X::IsTransitioning()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Camera_X.IsTransitioning");
+
+	ACamera_X_IsTransitioning_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.Camera_X.HandleBlenderStateChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -3016,6 +3060,26 @@ void UCanvasTextureComponent_X::OnDraw(class UCanvas* C)
 }
 
 
+// Function ProjectX.PlayerController_X.ClientSetSeasonReward
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
+// Parameters:
+// struct FPlayerSeasonRewardProgress Reward                         (CPF_Parm)
+
+void APlayerController_X::ClientSetSeasonReward(const struct FPlayerSeasonRewardProgress& Reward)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ClientSetSeasonReward");
+
+	APlayerController_X_ClientSetSeasonReward_Params params;
+	params.Reward = Reward;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.PlayerController_X.ServerUpdateCustomMatchSettings
 // (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
 // Parameters:
@@ -3087,40 +3151,6 @@ void APlayerController_X::ServerDestroy()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerDestroy");
 
 	APlayerController_X_ServerDestroy_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.PlayerController_X.ServerTyping
-// (FUNC_Defined, FUNC_Net, FUNC_Public, FUNC_NetServer)
-
-void APlayerController_X::ServerTyping()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.ServerTyping");
-
-	APlayerController_X_ServerTyping_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.PlayerController_X.NotifyTyping
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void APlayerController_X::NotifyTyping()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.NotifyTyping");
-
-	APlayerController_X_NotifyTyping_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -3902,6 +3932,28 @@ void APlayerController_X::ReplicatedEvent(const struct FName& VarName)
 }
 
 
+// Function ProjectX.PlayerController_X.EventPlayerKicked
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class APlayerController_X*     PC                             (CPF_Parm)
+// struct FString                 Reason                         (CPF_Parm, CPF_NeedCtorLink)
+
+void APlayerController_X::EventPlayerKicked(class APlayerController_X* PC, const struct FString& Reason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.EventPlayerKicked");
+
+	APlayerController_X_EventPlayerKicked_Params params;
+	params.PC = PC;
+	params.Reason = Reason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.PlayerController_X.EventPlayerCameraChange
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -4006,6 +4058,53 @@ void APlayerController_X::EventReceivedPRI(class APlayerController_X* PC)
 }
 
 
+// Function ProjectX.CheatManager_X.GetErrorArray
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
+// Parameters:
+// struct FString                 Error1                         (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 Error2                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 Error3                         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// TArray<struct FString>         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+TArray<struct FString> UCheatManager_X::GetErrorArray(const struct FString& Error1, const struct FString& Error2, const struct FString& Error3)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.GetErrorArray");
+
+	UCheatManager_X_GetErrorArray_Params params;
+	params.Error1 = Error1;
+	params.Error2 = Error2;
+	params.Error3 = Error3;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.CheatManager_X.SetUnderMaintenance
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+// Parameters:
+// bool                           bUnderMaintenance              (CPF_Parm)
+
+void UCheatManager_X::SetUnderMaintenance(bool bUnderMaintenance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.SetUnderMaintenance");
+
+	UCheatManager_X_SetUnderMaintenance_Params params;
+	params.bUnderMaintenance = bUnderMaintenance;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.CheatManager_X.CreateCheatObjects
 // (FUNC_Native, FUNC_Public)
 // Parameters:
@@ -4028,81 +4127,19 @@ TArray<class UObject*> UCheatManager_X::CreateCheatObjects()
 }
 
 
-// Function ProjectX.CheatManager_X.HandleSanitize
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
-
-void UCheatManager_X::HandleSanitize(const struct FString& Comment, const struct FString& Sanitized)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.HandleSanitize");
-
-	UCheatManager_X_HandleSanitize_Params params;
-	params.Comment = Comment;
-	params.Sanitized = Sanitized;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.CheatManager_X.TestWorldFilter
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FString                 Words                          (CPF_Parm, CPF_NeedCtorLink)
-
-void UCheatManager_X::TestWorldFilter(const struct FString& Words)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.TestWorldFilter");
-
-	UCheatManager_X_TestWorldFilter_Params params;
-	params.Words = Words;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.CheatManager_X.LoadOnlineComponents
+// Function ProjectX.CheatManager_X.LoadPsynetStaticData
 // (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Platform                       (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 // struct FString                 Language                       (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
 
-void UCheatManager_X::LoadOnlineComponents(const struct FString& Platform, const struct FString& Language)
+void UCheatManager_X::LoadPsynetStaticData(const struct FString& Platform, const struct FString& Language)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.LoadOnlineComponents");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.LoadPsynetStaticData");
 
-	UCheatManager_X_LoadOnlineComponents_Params params;
+	UCheatManager_X_LoadPsynetStaticData_Params params;
 	params.Platform = Platform;
 	params.Language = Language;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.CheatManager_X.TestUTCTime
-// (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            AdjustSeconds                  (CPF_OptionalParm, CPF_Parm)
-
-void UCheatManager_X::TestUTCTime(int AdjustSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheatManager_X.TestUTCTime");
-
-	UCheatManager_X_TestUTCTime_Params params;
-	params.AdjustSeconds = AdjustSeconds;
 
 	auto flags = fn->FunctionFlags;
 
@@ -4411,6 +4448,64 @@ void UCheatManager_X::EventDelegateTest()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.Compression_X.Uncompress
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<unsigned char>          Compressed                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<unsigned char>          Uncompressed                   (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UCompression_X::Uncompress(TArray<unsigned char>* Compressed, TArray<unsigned char>* Uncompressed)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Compression_X.Uncompress");
+
+	UCompression_X_Uncompress_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Compressed != nullptr)
+		*Compressed = params.Compressed;
+	if (Uncompressed != nullptr)
+		*Uncompressed = params.Uncompressed;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.Compression_X.Compress
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<unsigned char>          Uncompressed                   (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<unsigned char>          Compressed                     (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UCompression_X::Compress(TArray<unsigned char>* Uncompressed, TArray<unsigned char>* Compressed)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Compression_X.Compress");
+
+	UCompression_X_Compress_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Uncompressed != nullptr)
+		*Uncompressed = params.Uncompressed;
+	if (Compressed != nullptr)
+		*Compressed = params.Compressed;
+
+	return params.ReturnValue;
 }
 
 
@@ -5596,139 +5691,15 @@ void UEngineShare_X::EventPreExit()
 }
 
 
-// Function ProjectX.Error_X.GetDebugMessage
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UError_X::GetDebugMessage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Error_X.GetDebugMessage");
-
-	UError_X_GetDebugMessage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.Error_X.GetLocalizedMessage
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UError_X::GetLocalizedMessage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Error_X.GetLocalizedMessage");
-
-	UError_X_GetLocalizedMessage_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.ErrorsList_X.GetErrorType
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FName                   Error                          (CPF_Parm)
-// class UErrorType_X*            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UErrorType_X* UErrorsList_X::STATIC_GetErrorType(const struct FName& Error)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.GetErrorType");
-
-	UErrorsList_X_GetErrorType_Params params;
-	params.Error = Error;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.ErrorsList_X.GetResponseError
-// (FUNC_Event, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 Exception                      (CPF_Parm, CPF_NeedCtorLink)
-// class UErrorType_X*            OutType                        (CPF_Parm, CPF_OutParm)
-// int                            OutCode                        (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UErrorsList_X::GetResponseError(const struct FString& Exception, class UErrorType_X** OutType, int* OutCode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.GetResponseError");
-
-	UErrorsList_X_GetResponseError_Params params;
-	params.Exception = Exception;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutType != nullptr)
-		*OutType = params.OutType;
-	if (OutCode != nullptr)
-		*OutCode = params.OutCode;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.ErrorsList_X.MatchError
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 Exception                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// struct FString                 Compare                        (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UErrorsList_X::MatchError(const struct FString& Compare, struct FString* Exception)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorsList_X.MatchError");
-
-	UErrorsList_X_MatchError_Params params;
-	params.Compare = Compare;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Exception != nullptr)
-		*Exception = params.Exception;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.Errors_X.GetResponseError
 // (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 Exception                      (CPF_Parm, CPF_NeedCtorLink)
-// class UErrorType_X*            OutType                        (CPF_Parm, CPF_OutParm)
+// class UErrorType*              OutType                        (CPF_Parm, CPF_OutParm)
 // int                            OutCode                        (CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UErrors_X::GetResponseError(const struct FString& Exception, class UErrorType_X** OutType, int* OutCode)
+bool UErrors_X::GetResponseError(const struct FString& Exception, class UErrorType** OutType, int* OutCode)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Errors_X.GetResponseError");
 
@@ -5750,20 +5721,164 @@ bool UErrors_X::GetResponseError(const struct FString& Exception, class UErrorTy
 }
 
 
-// Function ProjectX.ErrorType_X.CreateError
-// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Function ProjectX.EventRecorder_X.MetricsFlood
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
 // Parameters:
-// struct FString                 InErrorMessage                 (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// int                            InErrorCode                    (CPF_OptionalParm, CPF_Parm)
-// class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FString                 LastEventName                  (CPF_Parm, CPF_NeedCtorLink)
 
-class UError_X* UErrorType_X::CreateError(const struct FString& InErrorMessage, int InErrorCode)
+void UEventRecorder_X::MetricsFlood(const struct FString& LastEventName)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorType_X.CreateError");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorder_X.MetricsFlood");
 
-	UErrorType_X_CreateError_Params params;
-	params.InErrorMessage = InErrorMessage;
-	params.InErrorCode = InErrorCode;
+	UEventRecorder_X_MetricsFlood_Params params;
+	params.LastEventName = LastEventName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorder_X.SetLevelSessionID
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FGuid                   Id                             (CPF_Parm)
+
+void UEventRecorder_X::SetLevelSessionID(const struct FGuid& Id)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorder_X.SetLevelSessionID");
+
+	UEventRecorder_X_SetLevelSessionID_Params params;
+	params.Id = Id;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorder_X.Send
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void UEventRecorder_X::Send()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorder_X.Send");
+
+	UEventRecorder_X_Send_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorder_X.RecordEvent
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 Category                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FName                   Event                          (CPF_Parm)
+// struct FString                 Data                           (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UEventRecorder_X::RecordEvent(const struct FString& Category, const struct FName& Event, struct FString* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorder_X.RecordEvent");
+
+	UEventRecorder_X_RecordEvent_Params params;
+	params.Category = Category;
+	params.Event = Event;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function ProjectX.EventRecorder_X.RecordFunction
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 Category                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UEventRecorder_X::STATIC_RecordFunction(const struct FString& Category)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorder_X.RecordFunction");
+
+	UEventRecorder_X_RecordFunction_Params params;
+	params.Category = Category;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorderGroup_X.VectorToString
+// (FUNC_Final, FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FVector                 V                              (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UEventRecorderGroup_X::VectorToString(const struct FVector& V)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderGroup_X.VectorToString");
+
+	UEventRecorderGroup_X_VectorToString_Params params;
+	params.V = V;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.EventRecorderGroup_X.RecordFunction
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+
+void UEventRecorderGroup_X::STATIC_RecordFunction()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderGroup_X.RecordFunction");
+
+	UEventRecorderGroup_X_RecordFunction_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorderGroup_X.GetEventRecorder
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UEventRecorder_X*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UEventRecorder_X* UEventRecorderGroup_X::GetEventRecorder()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderGroup_X.GetEventRecorder");
+
+	UEventRecorderGroup_X_GetEventRecorder_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -5776,16 +5891,16 @@ class UError_X* UErrorType_X::CreateError(const struct FString& InErrorMessage, 
 }
 
 
-// Function ProjectX.ErrorType_X.GetLocalizedMessage
-// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Function ProjectX.MetricsGroup_X.GetEventRecorder
+// (FUNC_Native, FUNC_Public)
 // Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// class UEventRecorder_X*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
 
-struct FString UErrorType_X::GetLocalizedMessage()
+class UEventRecorder_X* UMetricsGroup_X::GetEventRecorder()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ErrorType_X.GetLocalizedMessage");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.GetEventRecorder");
 
-	UErrorType_X_GetLocalizedMessage_Params params;
+	UMetricsGroup_X_GetEventRecorder_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8211,6 +8326,74 @@ class UGFxDataRow_X* UGFxDataStore_X::CreateObject(class UClass* ObjClass, int R
 }
 
 
+// Function ProjectX.GFxDataStore_X.RemoveAllObjects
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UClass*                  ObjClass                       (CPF_Parm)
+
+void UGFxDataStore_X::RemoveAllObjects(class UClass* ObjClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.RemoveAllObjects");
+
+	UGFxDataStore_X_RemoveAllObjects_Params params;
+	params.ObjClass = ObjClass;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.GFxDataStore_X.SetObjectCount
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UClass*                  ObjClass                       (CPF_Parm)
+// int                            Count                          (CPF_Parm)
+
+void UGFxDataStore_X::SetObjectCount(class UClass* ObjClass, int Count)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetObjectCount");
+
+	UGFxDataStore_X_SetObjectCount_Params params;
+	params.ObjClass = ObjClass;
+	params.Count = Count;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.GFxDataStore_X.GetObjectCount
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UClass*                  ObjClass                       (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UGFxDataStore_X::GetObjectCount(class UClass* ObjClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.GetObjectCount");
+
+	UGFxDataStore_X_GetObjectCount_Params params;
+	params.ObjClass = ObjClass;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.GFxDataStore_X.EmptyTables
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 
@@ -8263,6 +8446,29 @@ void UGFxDataStore_X::RemoveRow(const struct FName& Table, int Row)
 	UGFxDataStore_X_RemoveRow_Params params;
 	params.Table = Table;
 	params.Row = Row;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.GFxDataStore_X.SetRowCount
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   Table                          (CPF_Parm)
+// int                            Count                          (CPF_Parm)
+
+void UGFxDataStore_X::SetRowCount(const struct FName& Table, int Count)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxDataStore_X.SetRowCount");
+
+	UGFxDataStore_X_SetRowCount_Params params;
+	params.Table = Table;
+	params.Count = Count;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -8900,6 +9106,28 @@ void UGFxEngine_X::EventAvailableGamepadTypeChanged(class UGFxEngine_X* Engine)
 
 	UGFxEngine_X_EventAvailableGamepadTypeChanged_Params params;
 	params.Engine = Engine;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.GFxEngine_X.EventShellCreated
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UGFxEngine_X*            Engine                         (CPF_Parm)
+// class UGFxShell_X*             Shell                          (CPF_Parm)
+
+void UGFxEngine_X::EventShellCreated(class UGFxEngine_X* Engine, class UGFxShell_X* Shell)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.GFxEngine_X.EventShellCreated");
+
+	UGFxEngine_X_EventShellCreated_Params params;
+	params.Engine = Engine;
+	params.Shell = Shell;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9772,9 +10000,9 @@ void ULocalCache_X::ImportObject(class UObject* CacheObject, const struct FStrin
 // Parameters:
 // class ULocalCache_X*           Cache                          (CPF_Parm)
 // class UObject*                 CacheObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void ULocalCache_X::EventExportFinished(class ULocalCache_X* Cache, class UObject* CacheObject, class UError_X* Error)
+void ULocalCache_X::EventExportFinished(class ULocalCache_X* Cache, class UObject* CacheObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.EventExportFinished");
 
@@ -9796,9 +10024,9 @@ void ULocalCache_X::EventExportFinished(class ULocalCache_X* Cache, class UObjec
 // Parameters:
 // class ULocalCache_X*           Cache                          (CPF_Parm)
 // class UObject*                 CacheObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void ULocalCache_X::EventImportFinished(class ULocalCache_X* Cache, class UObject* CacheObject, class UError_X* Error)
+void ULocalCache_X::EventImportFinished(class ULocalCache_X* Cache, class UObject* CacheObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCache_X.EventImportFinished");
 
@@ -10116,176 +10344,6 @@ class UMatchmakingReporter* UMatchmakingReporter::STATIC_GetInstance()
 }
 
 
-// Function ProjectX.MetricsGroup_X.VectorToString
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FVector                 V                              (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UMetricsGroup_X::VectorToString(const struct FVector& V)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.VectorToString");
-
-	UMetricsGroup_X_VectorToString_Params params;
-	params.V = V;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.MetricsGroup_X.RecordFunction
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-
-void UMetricsGroup_X::STATIC_RecordFunction()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.RecordFunction");
-
-	UMetricsGroup_X_RecordFunction_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsGroup_X.GetMetricsSystem
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// class UMetricsSystem_X*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
-
-class UMetricsSystem_X* UMetricsGroup_X::GetMetricsSystem()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsGroup_X.GetMetricsSystem");
-
-	UMetricsGroup_X_GetMetricsSystem_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.MetricsSystem_X.MetricsFlood
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-// Parameters:
-// struct FString                 LastEventName                  (CPF_Parm, CPF_NeedCtorLink)
-
-void UMetricsSystem_X::MetricsFlood(const struct FString& LastEventName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.MetricsFlood");
-
-	UMetricsSystem_X_MetricsFlood_Params params;
-	params.LastEventName = LastEventName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsSystem_X.SetLevelSessionID
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FGuid                   Id                             (CPF_Parm)
-
-void UMetricsSystem_X::SetLevelSessionID(const struct FGuid& Id)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.SetLevelSessionID");
-
-	UMetricsSystem_X_SetLevelSessionID_Params params;
-	params.Id = Id;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsSystem_X.Send
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void UMetricsSystem_X::Send()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.Send");
-
-	UMetricsSystem_X_Send_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsSystem_X.RecordEvent
-// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 Category                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FName                   Event                          (CPF_Parm)
-// struct FString                 Data                           (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UMetricsSystem_X::RecordEvent(const struct FString& Category, const struct FName& Event, struct FString* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.RecordEvent");
-
-	UMetricsSystem_X_RecordEvent_Params params;
-	params.Category = Category;
-	params.Event = Event;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function ProjectX.MetricsSystem_X.RecordFunction
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 Category                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UMetricsSystem_X::STATIC_RecordFunction(const struct FString& Category)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsSystem_X.RecordFunction");
-
-	UMetricsSystem_X_RecordFunction_Params params;
-	params.Category = Category;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.ObjectListComponent_X.GetCount
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
@@ -10466,254 +10524,6 @@ void UObjectListComponent_X::ObjectListenerCallback(class UObject* Obj)
 }
 
 
-// Function ProjectX.OnlineComponents_X.UpdateRegisteredObjects
-// (FUNC_Final, FUNC_Native, FUNC_Private)
-
-void UOnlineComponents_X::UpdateRegisteredObjects()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.UpdateRegisteredObjects");
-
-	UOnlineComponents_X_UpdateRegisteredObjects_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.LoadFromUTF8
-// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<unsigned char>          SignedData                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineComponents_X::LoadFromUTF8(TArray<unsigned char>* SignedData)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.LoadFromUTF8");
-
-	UOnlineComponents_X_LoadFromUTF8_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (SignedData != nullptr)
-		*SignedData = params.SignedData;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineComponents_X.LoadFromSignedUTF8
-// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<unsigned char>          SignedData                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineComponents_X::LoadFromSignedUTF8(TArray<unsigned char>* SignedData)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.LoadFromSignedUTF8");
-
-	UOnlineComponents_X_LoadFromSignedUTF8_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (SignedData != nullptr)
-		*SignedData = params.SignedData;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineComponents_X.CreateComponents
-// (FUNC_Final, FUNC_Native, FUNC_Private)
-
-void UOnlineComponents_X::CreateComponents()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.CreateComponents");
-
-	UOnlineComponents_X_CreateComponents_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.HandleDataChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UOnlineResource_X*       Resource                       (CPF_Parm, CPF_EditInline)
-
-void UOnlineComponents_X::HandleDataChanged(class UOnlineResource_X* Resource)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleDataChanged");
-
-	UOnlineComponents_X_HandleDataChanged_Params params;
-	params.Resource = Resource;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.HandleGetURL
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class URPC_GetStaticDataURL_X* RPC                            (CPF_Parm)
-
-void UOnlineComponents_X::HandleGetURL(class URPC_GetStaticDataURL_X* RPC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleGetURL");
-
-	UOnlineComponents_X_HandleGetURL_Params params;
-	params.RPC = RPC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.Sync
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UOnlineComponents_X::Sync()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.Sync");
-
-	UOnlineComponents_X_Sync_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.HandleCacheExpired
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
-
-void UOnlineComponents_X::HandleCacheExpired(class UCacheTimer_X* Timer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandleCacheExpired");
-
-	UOnlineComponents_X_HandleCacheExpired_Params params;
-	params.Timer = Timer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.HandlePsyNetLogin
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UOnlineComponents_X::HandlePsyNetLogin()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.HandlePsyNetLogin");
-
-	UOnlineComponents_X_HandlePsyNetLogin_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UOnlineComponents_X::Init()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.Init");
-
-	UOnlineComponents_X_Init_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponents_X.EventLoaded
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UOnlineComponents_X*     Data                           (CPF_Parm, CPF_EditInline)
-
-void UOnlineComponents_X::EventLoaded(class UOnlineComponents_X* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponents_X.EventLoaded");
-
-	UOnlineComponents_X_EventLoaded_Params params;
-	params.Data = Data;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineComponentsParser_X.ParseObjectsFromUTF8
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<unsigned char>          UTF8Data                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TArray<class UObject*>         OutObjects                     (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineComponentsParser_X::STATIC_ParseObjectsFromUTF8(TArray<unsigned char>* UTF8Data, TArray<class UObject*>* OutObjects)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineComponentsParser_X.ParseObjectsFromUTF8");
-
-	UOnlineComponentsParser_X_ParseObjectsFromUTF8_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (UTF8Data != nullptr)
-		*UTF8Data = params.UTF8Data;
-	if (OutObjects != nullptr)
-		*OutObjects = params.OutObjects;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.OnlineConfig_X.UnsubscribeModifiers
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 
@@ -10805,6 +10615,30 @@ bool UCrossplayConfig_X::PlatformsShareGroup(TEnumAsByte<EOnlinePlatform> Platfo
 	params.Platform2 = Platform2;
 
 	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPCConfig_X.IsRPCDisabled
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class URPC_X*                  RPC                            (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool URPCConfig_X::IsRPCDisabled(class URPC_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCConfig_X.IsRPCDisabled");
+
+	URPCConfig_X_IsRPCDisabled_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10984,23 +10818,6 @@ bool UOnlineGameSettings_X::Equals(class UOnlineGameSettings_X* OtherGameSetting
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameSettings_X.SetBeganWaitingTime
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameSettings_X::SetBeganWaitingTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSettings_X.SetBeganWaitingTime");
-
-	UOnlineGameSettings_X_SetBeganWaitingTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -11502,15 +11319,81 @@ void UOnlineLegalText_X::EventNewText(class UOnlineLegalText_X* Text)
 }
 
 
+// Function ProjectX.OnlineMessageComponent_X.EnableCompression
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bEnabled                       (CPF_Parm)
+// class UOnlineMessageComponent_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UOnlineMessageComponent_X* UOnlineMessageComponent_X::EnableCompression(bool bEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.EnableCompression");
+
+	UOnlineMessageComponent_X_EnableCompression_Params params;
+	params.bEnabled = bEnabled;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineMessageComponent_X.SetSerializer
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USerializer_X*           InSerializer                   (CPF_Parm)
+// class UOnlineMessageComponent_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UOnlineMessageComponent_X* UOnlineMessageComponent_X::SetSerializer(class USerializer_X* InSerializer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.SetSerializer");
+
+	UOnlineMessageComponent_X_SetSerializer_Params params;
+	params.InSerializer = InSerializer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineMessageComponent_X.InvokeHandlers
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineMessageComponent_X::InvokeHandlers(class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.InvokeHandlers");
+
+	UOnlineMessageComponent_X_InvokeHandlers_Params params;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineMessageComponent_X.DeserializeMessage
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // TArray<unsigned char>          Data                           (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class UObject*                 OutMessage                     (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
-// class UObject*                 MessageOuter                   (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UObject*                 MessageOuter                   (CPF_Parm)
+// class UObject*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineMessageComponent_X::DeserializeMessage(class UObject* MessageOuter, TArray<unsigned char>* Data, class UObject** OutMessage)
+class UObject* UOnlineMessageComponent_X::DeserializeMessage(class UObject* MessageOuter, TArray<unsigned char>* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineMessageComponent_X.DeserializeMessage");
 
@@ -11526,8 +11409,6 @@ bool UOnlineMessageComponent_X::DeserializeMessage(class UObject* MessageOuter, 
 
 	if (Data != nullptr)
 		*Data = params.Data;
-	if (OutMessage != nullptr)
-		*OutMessage = params.OutMessage;
 
 	return params.ReturnValue;
 }
@@ -12686,6 +12567,33 @@ void UPlayerInput_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 }
 
 
+// Function ProjectX.PlayerInput_X.GetKeyForActionArray
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   Action                         (CPF_Parm)
+// TArray<struct FPlayerBinding>  PlayerBindings                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName UPlayerInput_X::STATIC_GetKeyForActionArray(const struct FName& Action, TArray<struct FPlayerBinding>* PlayerBindings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.GetKeyForActionArray");
+
+	UPlayerInput_X_GetKeyForActionArray_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (PlayerBindings != nullptr)
+		*PlayerBindings = params.PlayerBindings;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.PlayerInput_X.AbsorbCurrentKeyPress
 // (FUNC_Native, FUNC_Public)
 
@@ -12932,6 +12840,30 @@ void UPlayerInput_X::SetControlPreset(const struct FName& PresetName)
 }
 
 
+// Function ProjectX.PlayerInput_X.EventActionToggled
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UPlayerInput_X*          PlayerInput                    (CPF_Parm)
+// struct FName                   ActionName                     (CPF_Parm)
+// bool                           bEnabled                       (CPF_Parm)
+
+void UPlayerInput_X::EventActionToggled(class UPlayerInput_X* PlayerInput, const struct FName& ActionName, bool bEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerInput_X.EventActionToggled");
+
+	UPlayerInput_X_EventActionToggled_Params params;
+	params.PlayerInput = PlayerInput;
+	params.ActionName = ActionName;
+	params.bEnabled = bEnabled;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.PsyNet_X.GetRetryDelay
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -13000,6 +12932,69 @@ void UPsyNet_X::STATIC_NetworkError(const struct FUniqueNetId& PlayerID, const s
 }
 
 
+// Function ProjectX.PsyNet_X.IsUnderMaintenance
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UPsyNet_X::IsUnderMaintenance()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.IsUnderMaintenance");
+
+	UPsyNet_X_IsUnderMaintenance_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNet_X.SetUnderMaintenance
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           bUnderMaintenance              (CPF_Parm)
+
+void UPsyNet_X::SetUnderMaintenance(bool bUnderMaintenance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.SetUnderMaintenance");
+
+	UPsyNet_X_SetUnderMaintenance_Params params;
+	params.bUnderMaintenance = bUnderMaintenance;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNet_X.NotifyWhenLoggedOut
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UPsyNet_X::NotifyWhenLoggedOut(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.NotifyWhenLoggedOut");
+
+	UPsyNet_X_NotifyWhenLoggedOut_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.PsyNet_X.NotifyWhenLoggedIn
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -13031,44 +13026,6 @@ void UPsyNet_X::HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
 
 	UPsyNet_X_HandleLoginChanged_Params params;
 	params.Auth = Auth;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.PsyNet_X.GetDevEnvironment
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// TEnumAsByte<EDatabaseEnvironment> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-TEnumAsByte<EDatabaseEnvironment> UPsyNet_X::GetDevEnvironment()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.GetDevEnvironment");
-
-	UPsyNet_X_GetDevEnvironment_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.PsyNet_X.InitEnvironment
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void UPsyNet_X::InitEnvironment()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.InitEnvironment");
-
-	UPsyNet_X_InitEnvironment_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13117,16 +13074,16 @@ void UPsyNet_X::Flush()
 // (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // class UClass*                  RPCClass                       (CPF_Parm)
-// struct FUniqueNetId            PlayerID                       (CPF_OptionalParm, CPF_Parm)
+// class UPsyNetSession_X*        Session                        (CPF_OptionalParm, CPF_Parm, CPF_EditInline)
 // class URPC_X*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_CoerceParm)
 
-class URPC_X* UPsyNet_X::STATIC_RPC(class UClass* RPCClass, const struct FUniqueNetId& PlayerID)
+class URPC_X* UPsyNet_X::STATIC_RPC(class UClass* RPCClass, class UPsyNetSession_X* Session)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.RPC");
 
 	UPsyNet_X_RPC_Params params;
 	params.RPCClass = RPCClass;
-	params.PlayerID = PlayerID;
+	params.Session = Session;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13185,6 +13142,23 @@ class UPsyNet_X* UPsyNet_X::STATIC_GetInstance()
 }
 
 
+// Function ProjectX.PsyNet_X.EventPrimaryPlayerLoggedOut
+// (FUNC_Public, FUNC_Delegate)
+
+void UPsyNet_X::EventPrimaryPlayerLoggedOut()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.EventPrimaryPlayerLoggedOut");
+
+	UPsyNet_X_EventPrimaryPlayerLoggedOut_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.PsyNet_X.EventPrimaryPlayerLoggedIn
 // (FUNC_Public, FUNC_Delegate)
 
@@ -13193,6 +13167,411 @@ void UPsyNet_X::EventPrimaryPlayerLoggedIn()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNet_X.EventPrimaryPlayerLoggedIn");
 
 	UPsyNet_X_EventPrimaryPlayerLoggedIn_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetLocator_X.GetURL
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// TEnumAsByte<EDatabaseEnvironment> Environment                    (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UPsyNetLocator_X::STATIC_GetURL(TEnumAsByte<EDatabaseEnvironment> Environment)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetLocator_X.GetURL");
+
+	UPsyNetLocator_X_GetURL_Params params;
+	params.Environment = Environment;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNetSession_X.GetDebugName
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UPsyNetSession_X::GetDebugName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.GetDebugName");
+
+	UPsyNetSession_X_GetDebugName_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNetSession_X.Dispose
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void UPsyNetSession_X::Dispose()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.Dispose");
+
+	UPsyNetSession_X_Dispose_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetSession_X.NotifyWhenActive
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UPsyNetSession_X::NotifyWhenActive(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.NotifyWhenActive");
+
+	UPsyNetSession_X_NotifyWhenActive_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetSession_X.End
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void UPsyNetSession_X::End()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.End");
+
+	UPsyNetSession_X_End_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetSession_X.Begin
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            InPlayerId                     (CPF_Parm)
+// struct FString                 InSessionID                    (CPF_Parm, CPF_NeedCtorLink)
+
+void UPsyNetSession_X::Begin(const struct FUniqueNetId& InPlayerId, const struct FString& InSessionID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.Begin");
+
+	UPsyNetSession_X_Begin_Params params;
+	params.InPlayerId = InPlayerId;
+	params.InSessionID = InSessionID;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetSession_X.IsActive
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UPsyNetSession_X::IsActive()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.IsActive");
+
+	UPsyNetSession_X_IsActive_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNetSession_X.EventEnd
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UPsyNetSession_X*        Session                        (CPF_Parm, CPF_EditInline)
+
+void UPsyNetSession_X::EventEnd(class UPsyNetSession_X* Session)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.EventEnd");
+
+	UPsyNetSession_X_EventEnd_Params params;
+	params.Session = Session;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetSession_X.EventBegin
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UPsyNetSession_X*        Session                        (CPF_Parm, CPF_EditInline)
+
+void UPsyNetSession_X::EventBegin(class UPsyNetSession_X* Session)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetSession_X.EventBegin");
+
+	UPsyNetSession_X_EventBegin_Params params;
+	params.Session = Session;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.UpdateRegisteredObjects
+// (FUNC_Final, FUNC_Native, FUNC_Private)
+
+void UPsyNetStaticData_X::UpdateRegisteredObjects()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.UpdateRegisteredObjects");
+
+	UPsyNetStaticData_X_UpdateRegisteredObjects_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.LoadFromUTF8
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<unsigned char>          SignedData                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UPsyNetStaticData_X::LoadFromUTF8(TArray<unsigned char>* SignedData)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.LoadFromUTF8");
+
+	UPsyNetStaticData_X_LoadFromUTF8_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (SignedData != nullptr)
+		*SignedData = params.SignedData;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.LoadFromSignedUTF8
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<unsigned char>          SignedData                     (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UPsyNetStaticData_X::LoadFromSignedUTF8(TArray<unsigned char>* SignedData)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.LoadFromSignedUTF8");
+
+	UPsyNetStaticData_X_LoadFromSignedUTF8_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (SignedData != nullptr)
+		*SignedData = params.SignedData;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.InstanceComponents
+// (FUNC_Final, FUNC_Native, FUNC_Private)
+
+void UPsyNetStaticData_X::InstanceComponents()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.InstanceComponents");
+
+	UPsyNetStaticData_X_InstanceComponents_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.HandleDataChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineResource_X*       Resource                       (CPF_Parm, CPF_EditInline)
+
+void UPsyNetStaticData_X::HandleDataChanged(class UOnlineResource_X* Resource)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.HandleDataChanged");
+
+	UPsyNetStaticData_X_HandleDataChanged_Params params;
+	params.Resource = Resource;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.HandleGetURL
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class URPC_GetStaticDataURL_X* RPC                            (CPF_Parm)
+
+void UPsyNetStaticData_X::HandleGetURL(class URPC_GetStaticDataURL_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.HandleGetURL");
+
+	UPsyNetStaticData_X_HandleGetURL_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.Sync
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UPsyNetStaticData_X::Sync()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.Sync");
+
+	UPsyNetStaticData_X_Sync_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.HandleCacheExpired
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
+
+void UPsyNetStaticData_X::HandleCacheExpired(class UCacheTimer_X* Timer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.HandleCacheExpired");
+
+	UPsyNetStaticData_X_HandleCacheExpired_Params params;
+	params.Timer = Timer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.HandlePsyNetLogin
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UPsyNetStaticData_X::HandlePsyNetLogin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.HandlePsyNetLogin");
+
+	UPsyNetStaticData_X_HandlePsyNetLogin_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.Init
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+
+void UPsyNetStaticData_X::Init()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.Init");
+
+	UPsyNetStaticData_X_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PsyNetStaticData_X.EventLoaded
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UPsyNetStaticData_X*     Data                           (CPF_Parm, CPF_EditInline)
+
+void UPsyNetStaticData_X::EventLoaded(class UPsyNetStaticData_X* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PsyNetStaticData_X.EventLoaded");
+
+	UPsyNetStaticData_X_EventLoaded_Params params;
+	params.Data = Data;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13341,9 +13720,9 @@ void URPC_X::NotifySuccess()
 // Function ProjectX.RPC_X.NotifyError
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// class UError_X*                InError                        (CPF_Parm)
+// class UError*                  InError                        (CPF_Parm)
 
-void URPC_X::NotifyError(class UError_X* InError)
+void URPC_X::NotifyError(class UError* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.NotifyError");
 
@@ -13362,10 +13741,10 @@ void URPC_X::NotifyError(class UError_X* InError)
 // Function ProjectX.RPC_X.ShouldResendOnFail
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
-// class UError_X*                InError                        (CPF_Parm)
+// class UError*                  InError                        (CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool URPC_X::ShouldResendOnFail(class UError_X* InError)
+bool URPC_X::ShouldResendOnFail(class UError* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.ShouldResendOnFail");
 
@@ -13433,20 +13812,43 @@ void URPC_X::OnSuccess()
 }
 
 
-// Function ProjectX.RPC_X.ClearCallbacks
-// (FUNC_Defined, FUNC_Public)
+// Function ProjectX.RPC_X.Dispose
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
 
-void URPC_X::ClearCallbacks()
+void URPC_X::Dispose()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.ClearCallbacks");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.Dispose");
 
-	URPC_X_ClearCallbacks_Params params;
+	URPC_X_Dispose_Params params;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.RPC_X.CreateTask
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         InCallback                     (CPF_Parm, CPF_NeedCtorLink)
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* URPC_X::CreateTask(const struct FScriptDelegate& InCallback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.CreateTask");
+
+	URPC_X_CreateTask_Params params;
+	params.InCallback = InCallback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -13508,6 +13910,27 @@ class URPC_X* URPC_X::NotifyOnSuccess(const struct FScriptDelegate& Callback)
 
 	URPC_X_NotifyOnSuccess_Params params;
 	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_X.GetResponseObject
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UObject* URPC_X::GetResponseObject()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_X.GetResponseObject");
+
+	URPC_X_GetResponseObject_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13599,17 +14022,42 @@ void URPCQueue_X::STATIC_SignatureMismatch(int ServiceID)
 }
 
 
-// Function ProjectX.RPCQueue_X.FailAllPending
+// Function ProjectX.RPCQueue_X.SetHeader
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// struct FString                 Key                            (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+// struct FString                 Value                          (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
 
-void URPCQueue_X::FailAllPending(class UError_X* Error)
+void URPCQueue_X::SetHeader(const struct FString& Key, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.SetHeader");
+
+	URPCQueue_X_SetHeader_Params params;
+	params.Key = Key;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.RPCQueue_X.FailAllPending
+// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UErrorType*              ErrorType                      (CPF_Parm)
+// struct FString                 DebugMessage                   (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+
+void URPCQueue_X::FailAllPending(class UErrorType* ErrorType, const struct FString& DebugMessage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.FailAllPending");
 
 	URPCQueue_X_FailAllPending_Params params;
-	params.Error = Error;
+	params.ErrorType = ErrorType;
+	params.DebugMessage = DebugMessage;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -13695,6 +14143,27 @@ void URPCQueue_X::TickSend()
 }
 
 
+// Function ProjectX.RPCQueue_X.QueRPC
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class URPC_X*                  RPC                            (CPF_Parm)
+
+void URPCQueue_X::QueRPC(class URPC_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPCQueue_X.QueRPC");
+
+	URPCQueue_X_QueRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPCQueue_X.CreatePendingRPC
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
@@ -13720,7 +14189,7 @@ class URPC_X* URPCQueue_X::CreatePendingRPC(class UClass* RPCClass)
 
 
 // Function ProjectX.RPCQueue_X.Init
-// (FUNC_Native, FUNC_Public)
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
 
 void URPCQueue_X::Init()
 {
@@ -13729,7 +14198,6 @@ void URPCQueue_X::Init()
 	URPCQueue_X_Init_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13923,6 +14391,281 @@ void USaveGame_X::EventSaveFail(class USaveGame_X* SaveGame)
 
 	USaveGame_X_EventSaveFail_Params params;
 	params.SaveGame = SaveGame;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.__ScriptAsyncTask_X__DisposeAll_1
+// (FUNC_Final, FUNC_Static, FUNC_Private)
+// Parameters:
+// class UScriptAsyncTask_X*      T                              (CPF_Parm)
+
+void UScriptAsyncTask_X::STATIC___ScriptAsyncTask_X__DisposeAll_1(class UScriptAsyncTask_X* T)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.__ScriptAsyncTask_X__DisposeAll_1");
+
+	UScriptAsyncTask_X___ScriptAsyncTask_X__DisposeAll_1_Params params;
+	params.T = T;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.GetCompleted
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* UScriptAsyncTask_X::STATIC_GetCompleted()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.GetCompleted");
+
+	UScriptAsyncTask_X_GetCompleted_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.DisposeAll
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UScriptAsyncTask_X*> Tasks                          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UScriptAsyncTask_X::STATIC_DisposeAll(TArray<class UScriptAsyncTask_X*>* Tasks)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.DisposeAll");
+
+	UScriptAsyncTask_X_DisposeAll_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Tasks != nullptr)
+		*Tasks = params.Tasks;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.CompleteAll
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UScriptAsyncTask_X*> Tasks                          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class UError*                  InError                        (CPF_OptionalParm, CPF_Parm)
+
+void UScriptAsyncTask_X::STATIC_CompleteAll(class UError* InError, TArray<class UScriptAsyncTask_X*>* Tasks)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.CompleteAll");
+
+	UScriptAsyncTask_X_CompleteAll_Params params;
+	params.InError = InError;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Tasks != nullptr)
+		*Tasks = params.Tasks;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.Create
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* UScriptAsyncTask_X::STATIC_Create()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.Create");
+
+	UScriptAsyncTask_X_Create_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.Dispose
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void UScriptAsyncTask_X::Dispose()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.Dispose");
+
+	UScriptAsyncTask_X_Dispose_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.Complete
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UError*                  InError                        (CPF_OptionalParm, CPF_Parm)
+
+void UScriptAsyncTask_X::Complete(class UError* InError)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.Complete");
+
+	UScriptAsyncTask_X_Complete_Params params;
+	params.InError = InError;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.NotifyOnComplete
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* UScriptAsyncTask_X::NotifyOnComplete(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.NotifyOnComplete");
+
+	UScriptAsyncTask_X_NotifyOnComplete_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.NotifyOnFail
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* UScriptAsyncTask_X::NotifyOnFail(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.NotifyOnFail");
+
+	UScriptAsyncTask_X_NotifyOnFail_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.NotifyOnSuccess
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// class UScriptAsyncTask_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UScriptAsyncTask_X* UScriptAsyncTask_X::NotifyOnSuccess(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.NotifyOnSuccess");
+
+	UScriptAsyncTask_X_NotifyOnSuccess_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.EventTaskComplete
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UScriptAsyncTask_X*      Task                           (CPF_Parm)
+
+void UScriptAsyncTask_X::EventTaskComplete(class UScriptAsyncTask_X* Task)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.EventTaskComplete");
+
+	UScriptAsyncTask_X_EventTaskComplete_Params params;
+	params.Task = Task;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.EventTaskFail
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UScriptAsyncTask_X*      Task                           (CPF_Parm)
+
+void UScriptAsyncTask_X::EventTaskFail(class UScriptAsyncTask_X* Task)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.EventTaskFail");
+
+	UScriptAsyncTask_X_EventTaskFail_Params params;
+	params.Task = Task;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ScriptAsyncTask_X.EventTaskSuccess
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UScriptAsyncTask_X*      Task                           (CPF_Parm)
+
+void UScriptAsyncTask_X::EventTaskSuccess(class UScriptAsyncTask_X* Task)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ScriptAsyncTask_X.EventTaskSuccess");
+
+	UScriptAsyncTask_X_EventTaskSuccess_Params params;
+	params.Task = Task;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14912,6 +15655,33 @@ class UDrawDebugManager_X* UDrawDebugManager_X::STATIC_GetInstance()
 }
 
 
+// Function ProjectX.Online_X.BuildAddress
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 Host                           (CPF_Parm, CPF_NeedCtorLink)
+// int                            Port                           (CPF_Parm)
+// struct FString                 IP                             (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnline_X::STATIC_BuildAddress(const struct FString& Host, int Port, const struct FString& IP)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.BuildAddress");
+
+	UOnline_X_BuildAddress_Params params;
+	params.Host = Host;
+	params.Port = Port;
+	params.IP = IP;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.Online_X.IsInOnlineGame
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -15264,10 +16034,10 @@ int UOnline_X::STATIC_FindUniqueNetID(TArray<struct FUniqueNetId>* List, struct 
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
 // Parameters:
 // int                            ErrorCode                      (CPF_Parm)
-// class UError_X*                FallbackError                  (CPF_OptionalParm, CPF_Parm)
-// class UError_X*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// class UError*                  FallbackError                  (CPF_OptionalParm, CPF_Parm)
+// class UError*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UError_X* UOnline_X::GetConnectionStatusError(int ErrorCode, class UError_X* FallbackError)
+class UError* UOnline_X::GetConnectionStatusError(int ErrorCode, class UError* FallbackError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Online_X.GetConnectionStatusError");
 
@@ -15565,52 +16335,6 @@ void UOnlineGame_Base_X::SetDefaultSearchType(class UClass* OnlineSearchClass)
 }
 
 
-// Function ProjectX.OnlineGame_Base_X.IsPortZero
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FString                 InURL                          (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGame_Base_X::IsPortZero(const struct FString& InURL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.IsPortZero");
-
-	UOnlineGame_Base_X_IsPortZero_Params params;
-	params.InURL = InURL;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGame_Base_X.RemovePort
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FString                 InURL                          (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGame_Base_X::RemovePort(const struct FString& InURL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.RemovePort");
-
-	UOnlineGame_Base_X_RemovePort_Params params;
-	params.InURL = InURL;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.OnlineGame_Base_X.KickAllPlayers
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 
@@ -15659,6 +16383,29 @@ void UOnlineGame_Base_X::OnExit()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGame_Base_X.GetPlaylistPlayerCount
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UGameSettingPlaylist_X*  Playlist                       (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineGame_Base_X::GetPlaylistPlayerCount(class UGameSettingPlaylist_X* Playlist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_Base_X.GetPlaylistPlayerCount");
+
+	UOnlineGame_Base_X_GetPlaylistPlayerCount_Params params;
+	params.Playlist = Playlist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -15932,10 +16679,10 @@ bool UOnlineGame_X::IsSignedIn(int ControllerId)
 // Function ProjectX.OnlineGame_X.CheckUpToDate
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGame_X::CheckUpToDate(class UError_X** Error)
+bool UOnlineGame_X::CheckUpToDate(class UError** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckUpToDate");
 
@@ -15957,10 +16704,10 @@ bool UOnlineGame_X::CheckUpToDate(class UError_X** Error)
 // Function ProjectX.OnlineGame_X.CheckNotTooYoung
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGame_X::CheckNotTooYoung(class UError_X** Error)
+bool UOnlineGame_X::CheckNotTooYoung(class UError** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckNotTooYoung");
 
@@ -15979,13 +16726,36 @@ bool UOnlineGame_X::CheckNotTooYoung(class UError_X** Error)
 }
 
 
+// Function ProjectX.OnlineGame_X.GetPsyNetLoginError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayer_X*         OnlinePlayer                   (CPF_Parm)
+// class UError*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UError* UOnlineGame_X::GetPsyNetLoginError(class UOnlinePlayer_X* OnlinePlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.GetPsyNetLoginError");
+
+	UOnlineGame_X_GetPsyNetLoginError_Params params;
+	params.OnlinePlayer = OnlinePlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.OnlineGame_X.CheckPsyNetConnection
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGame_X::CheckPsyNetConnection(class UError_X** Error)
+bool UOnlineGame_X::CheckPsyNetConnection(class UError** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckPsyNetConnection");
 
@@ -16007,10 +16777,10 @@ bool UOnlineGame_X::CheckPsyNetConnection(class UError_X** Error)
 // Function ProjectX.OnlineGame_X.CheckInternetConnection
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGame_X::CheckInternetConnection(class UError_X** Error)
+bool UOnlineGame_X::CheckInternetConnection(class UError** Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.CheckInternetConnection");
 
@@ -16285,9 +17055,9 @@ void UOnlineGame_X::OnMainMenuOpened()
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // class UOnlinePlayer_X*         OnlinePlayer                   (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGame_X::HandlePlayerLogin(class UOnlinePlayer_X* OnlinePlayer, class UError_X* Error)
+void UOnlineGame_X::HandlePlayerLogin(class UOnlinePlayer_X* OnlinePlayer, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.HandlePlayerLogin");
 
@@ -16406,10 +17176,10 @@ void UOnlineGame_X::EventPlayerPsyNetLogin(class UOnlinePlayer_X* Player)
 // Function ProjectX.OnlineGame_X.EventConnectionError
 // (FUNC_HasOptionalParms, FUNC_Public, FUNC_Delegate)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 // class UOnlinePlayer_X*         Player                         (CPF_OptionalParm, CPF_Parm)
 
-void UOnlineGame_X::EventConnectionError(class UError_X* Error, class UOnlinePlayer_X* Player)
+void UOnlineGame_X::EventConnectionError(class UError* Error, class UOnlinePlayer_X* Player)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGame_X.EventConnectionError");
 
@@ -18021,9 +18791,9 @@ void UOnlineGameLeaderboards_X::EventLeaderboardAvatarFound(class UTexture* Avat
 // Function ProjectX.OnlineGameLeaderboards_X.EventGetLeaderboardFailed
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameLeaderboards_X::EventGetLeaderboardFailed(class UError_X* Error)
+void UOnlineGameLeaderboards_X::EventGetLeaderboardFailed(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.EventGetLeaderboardFailed");
 
@@ -18068,9 +18838,9 @@ void UOnlineGameLeaderboards_X::EventNewLeaderboard(const struct FName& NewLeade
 // class UOnlineGameLeaderboards_X* LeaderboardsRef                (CPF_Parm)
 // struct FLeaderboardData        PlayerLeaderboardData          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // struct FName                   LeaderboardId                  (CPF_Parm)
-// class UError_X*                Error                          (CPF_OptionalParm, CPF_Parm)
+// class UError*                  Error                          (CPF_OptionalParm, CPF_Parm)
 
-void UOnlineGameLeaderboards_X::OnGetLeaderboardPlayerValue(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError_X* Error, struct FLeaderboardData* PlayerLeaderboardData)
+void UOnlineGameLeaderboards_X::OnGetLeaderboardPlayerValue(class UOnlineGameLeaderboards_X* LeaderboardsRef, const struct FName& LeaderboardId, class UError* Error, struct FLeaderboardData* PlayerLeaderboardData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLeaderboards_X.OnGetLeaderboardPlayerValue");
 
@@ -18087,6 +18857,52 @@ void UOnlineGameLeaderboards_X::OnGetLeaderboardPlayerValue(class UOnlineGameLea
 
 	if (PlayerLeaderboardData != nullptr)
 		*PlayerLeaderboardData = params.PlayerLeaderboardData;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.__OnlineGameReservations_X__AllPlayersReserved_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FReservationData        P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameReservations_X::__OnlineGameReservations_X__AllPlayersReserved_1(const struct FReservationData& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.__OnlineGameReservations_X__AllPlayersReserved_1");
+
+	UOnlineGameReservations_X___OnlineGameReservations_X__AllPlayersReserved_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.__OnlineGameReservations_X__AllPlayersInGame_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FReservationData        P                              (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameReservations_X::__OnlineGameReservations_X__AllPlayersInGame_1(const struct FReservationData& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.__OnlineGameReservations_X__AllPlayersInGame_1");
+
+	UOnlineGameReservations_X___OnlineGameReservations_X__AllPlayersInGame_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -18623,10 +19439,9 @@ void UOnlineGameReservations_X::RemoveReservationIndex(int Index)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
 // struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
 // struct FUniqueNetId            PartyID                        (CPF_OptionalParm, CPF_Parm)
-// TEnumAsByte<EReservationStatus> Status                         (CPF_OptionalParm, CPF_Parm)
 // int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID, TEnumAsByte<EReservationStatus> Status)
+int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& PlayerID, const struct FString& PlayerName, const struct FUniqueNetId& PartyID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.AddSpecialReservation");
 
@@ -18634,7 +19449,6 @@ int UOnlineGameReservations_X::AddSpecialReservation(const struct FUniqueNetId& 
 	params.PlayerID = PlayerID;
 	params.PlayerName = PlayerName;
 	params.PartyID = PartyID;
-	params.Status = Status;
 
 	auto flags = fn->FunctionFlags;
 
@@ -19211,9 +20025,9 @@ bool UOnlineGameReservations_X::STATIC_AssignTeams(int TeamSize, TArray<struct F
 // Parameters:
 // class UOnlineGameSkill_X*      SkillSystem                    (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameReservations_X::HandleSkillSynced(class UOnlineGameSkill_X* SkillSystem, const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void UOnlineGameReservations_X::HandleSkillSynced(class UOnlineGameSkill_X* SkillSystem, const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.HandleSkillSynced");
 
@@ -19654,6 +20468,23 @@ void UOnlineGameReservations_X::StartMatch()
 }
 
 
+// Function ProjectX.OnlineGameReservations_X.BroadcastReadyMessageIfReady
+// (FUNC_Defined, FUNC_Public)
+
+void UOnlineGameReservations_X::BroadcastReadyMessageIfReady()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.BroadcastReadyMessageIfReady");
+
+	UOnlineGameReservations_X_BroadcastReadyMessageIfReady_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameReservations_X.CreateReadyMessage
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -19664,6 +20495,27 @@ class UReservationsReadyMessage_X* UOnlineGameReservations_X::CreateReadyMessage
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.CreateReadyMessage");
 
 	UOnlineGameReservations_X_CreateReadyMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.ShouldSyncSkills
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameReservations_X::ShouldSyncSkills()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.ShouldSyncSkills");
+
+	UOnlineGameReservations_X_ShouldSyncSkills_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -20669,6 +21521,48 @@ bool UOnlinePlayer_X::IsPrimaryPlayer()
 }
 
 
+// Function ProjectX.OnlinePlayer_X.HandleAuthLoginChange
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UOnlinePlayer_X::HandleAuthLoginChange(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleAuthLoginChange");
+
+	UOnlinePlayer_X_HandleAuthLoginChange_Params params;
+	params.Auth = Auth;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlinePlayer_X.HandleAuthSession
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+// struct FString                 SessionId                      (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlinePlayer_X::HandleAuthSession(class UOnlinePlayerAuthentication_X* Auth, const struct FString& SessionId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.HandleAuthSession");
+
+	UOnlinePlayer_X_HandleAuthSession_Params params;
+	params.Auth = Auth;
+	params.SessionId = SessionId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlinePlayer_X.OnInit
 // (FUNC_Defined, FUNC_Protected)
 
@@ -20813,9 +21707,9 @@ void UOnlinePlayer_X::EventLogoutComplete(class UOnlinePlayer_X* Player)
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UOnlinePlayer_X*         Player                         (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlinePlayer_X::EventLoginComplete(class UOnlinePlayer_X* Player, class UError_X* Error)
+void UOnlinePlayer_X::EventLoginComplete(class UOnlinePlayer_X* Player, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayer_X.EventLoginComplete");
 
@@ -21082,26 +21976,6 @@ bool UOnlinePlayerAuthentication_X::RequiresAuthorizationCode()
 }
 
 
-// Function ProjectX.OnlinePlayerAuthentication_X.AuthResponse
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UWebRequest_X*           WebRequest                     (CPF_Parm)
-
-void UOnlinePlayerAuthentication_X::AuthResponse(class UWebRequest_X* WebRequest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.AuthResponse");
-
-	UOnlinePlayerAuthentication_X_AuthResponse_Params params;
-	params.WebRequest = WebRequest;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.OnlinePlayerAuthentication_X.ReLogin
 // (FUNC_Defined, FUNC_Event, FUNC_Protected)
 
@@ -21130,6 +22004,26 @@ void UOnlinePlayerAuthentication_X::SetLoggedInPlayer(class UOnlinePlayer_X* Pla
 
 	UOnlinePlayerAuthentication_X_SetLoggedInPlayer_Params params;
 	params.Player = Player;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlinePlayerAuthentication_X.HandlePsyNetLoginChanged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+
+void UOnlinePlayerAuthentication_X::HandlePsyNetLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.HandlePsyNetLoginChanged");
+
+	UOnlinePlayerAuthentication_X_HandlePsyNetLoginChanged_Params params;
+	params.Auth = Auth;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21422,6 +22316,28 @@ void UOnlinePlayerAuthentication_X::EventUnauthorized()
 }
 
 
+// Function ProjectX.OnlinePlayerAuthentication_X.EventSessionReceived
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
+// struct FString                 SessionId                      (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlinePlayerAuthentication_X::EventSessionReceived(class UOnlinePlayerAuthentication_X* Auth, const struct FString& SessionId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerAuthentication_X.EventSessionReceived");
+
+	UOnlinePlayerAuthentication_X_EventSessionReceived_Params params;
+	params.Auth = Auth;
+	params.SessionId = SessionId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlinePlayerAuthentication_X.EventLoginChanged
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -21547,6 +22463,52 @@ void UTickActorComponent_X::EventTick(float DeltaTime)
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.Timers_X.ClearDelegate
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UTimers_X::STATIC_ClearDelegate(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.ClearDelegate");
+
+	UTimers_X_ClearDelegate_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.Timers_X.SetDelegate
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// float                          Rate                           (CPF_Parm)
+// bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
+
+void UTimers_X::STATIC_SetDelegate(const struct FScriptDelegate& Callback, float Rate, bool bLoop)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Timers_X.SetDelegate");
+
+	UTimers_X_SetDelegate_Params params;
+	params.Callback = Callback;
+	params.Rate = Rate;
+	params.bLoop = bLoop;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -21716,6 +22678,52 @@ void UTimers_X::STATIC_Set(class UObject* Obj, const struct FName& FuncName, flo
 	UTimers_X_Set_Params params;
 	params.Obj = Obj;
 	params.FuncName = FuncName;
+	params.Rate = Rate;
+	params.bLoop = bLoop;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.TimersComponent_X.ClearDelegate
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UTimersComponent_X::STATIC_ClearDelegate(const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.ClearDelegate");
+
+	UTimersComponent_X_ClearDelegate_Params params;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.TimersComponent_X.SetDelegate
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// float                          Rate                           (CPF_Parm)
+// bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
+
+void UTimersComponent_X::STATIC_SetDelegate(const struct FScriptDelegate& Callback, float Rate, bool bLoop)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.TimersComponent_X.SetDelegate");
+
+	UTimersComponent_X_SetDelegate_Params params;
+	params.Callback = Callback;
 	params.Rate = Rate;
 	params.bLoop = bLoop;
 
@@ -22010,2598 +23018,6 @@ void UTickComponent_X::TickDelegate(float DeltaTime)
 }
 
 
-// Function ProjectX.UITextureSlice_X.DrawRotated
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          PixelSizeX                     (CPF_Parm)
-// float                          PixelSizeY                     (CPF_Parm)
-// struct FRotator                Rotation                       (CPF_Parm)
-
-void UUITextureSlice_X::DrawRotated(class UCanvas* C, float PixelSizeX, float PixelSizeY, const struct FRotator& Rotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.DrawRotated");
-
-	UUITextureSlice_X_DrawRotated_Params params;
-	params.C = C;
-	params.PixelSizeX = PixelSizeX;
-	params.PixelSizeY = PixelSizeY;
-	params.Rotation = Rotation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UITextureSlice_X.DrawStretched
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          PixelSizeX                     (CPF_Parm)
-// float                          PixelSizeY                     (CPF_Parm)
-
-void UUITextureSlice_X::DrawStretched(class UCanvas* C, float PixelSizeX, float PixelSizeY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.DrawStretched");
-
-	UUITextureSlice_X_DrawStretched_Params params;
-	params.C = C;
-	params.PixelSizeX = PixelSizeX;
-	params.PixelSizeY = PixelSizeY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UITextureSlice_X.Draw
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          PixelSizeX                     (CPF_Parm)
-// float                          PixelSizeY                     (CPF_Parm)
-
-void UUITextureSlice_X::Draw(class UCanvas* C, float PixelSizeX, float PixelSizeY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UITextureSlice_X.Draw");
-
-	UUITextureSlice_X_Draw_Params params;
-	params.C = C;
-	params.PixelSizeX = PixelSizeX;
-	params.PixelSizeY = PixelSizeY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.ParseLink
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Private, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FString                 FullText                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// struct FTextLink               Link                           (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::STATIC_ParseLink(struct FString* FullText, struct FTextLink* Link)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ParseLink");
-
-	UUIWidget_X_ParseLink_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (FullText != nullptr)
-		*FullText = params.FullText;
-	if (Link != nullptr)
-		*Link = params.Link;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.ParseLinks
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FString                 FullText                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// TArray<struct FTextLink>       Links                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UUIWidget_X::STATIC_ParseLinks(struct FString* FullText, TArray<struct FTextLink>* Links)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ParseLinks");
-
-	UUIWidget_X_ParseLinks_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (FullText != nullptr)
-		*FullText = params.FullText;
-	if (Links != nullptr)
-		*Links = params.Links;
-}
-
-
-// Function ProjectX.UIWidget_X.GetAttributeValue
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 Input                          (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Attribute                      (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UUIWidget_X::STATIC_GetAttributeValue(const struct FString& Input, const struct FString& Attribute)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetAttributeValue");
-
-	UUIWidget_X_GetAttributeValue_Params params;
-	params.Input = Input;
-	params.Attribute = Attribute;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetTaggedContent
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FString                 Input                          (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Tag                            (CPF_Parm, CPF_NeedCtorLink)
-// struct FTaggedContent          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FTaggedContent UUIWidget_X::STATIC_GetTaggedContent(const struct FString& Input, const struct FString& Tag)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetTaggedContent");
-
-	UUIWidget_X_GetTaggedContent_Params params;
-	params.Input = Input;
-	params.Tag = Tag;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetCursorTarget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_X::GetCursorTarget()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetCursorTarget");
-
-	UUIWidget_X_GetCursorTarget_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.InputKey
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::InputKey(const struct FName& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.InputKey");
-
-	UUIWidget_X_InputKey_Params params;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetScene
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIScene_X* UUIWidget_X::GetScene()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetScene");
-
-	UUIWidget_X_GetScene_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GatherSceneReferences
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<class UUIWidget_X*>     Scenes                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UUIWidget_X::GatherSceneReferences(TArray<class UUIWidget_X*>* Scenes)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GatherSceneReferences");
-
-	UUIWidget_X_GatherSceneReferences_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Scenes != nullptr)
-		*Scenes = params.Scenes;
-}
-
-
-// Function ProjectX.UIWidget_X.GetAllFocusWidgets
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<class UUIWidget_X*>     OutWidgets                     (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::GetAllFocusWidgets(TArray<class UUIWidget_X*>* OutWidgets)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetAllFocusWidgets");
-
-	UUIWidget_X_GetAllFocusWidgets_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutWidgets != nullptr)
-		*OutWidgets = params.OutWidgets;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetCursorHoverWidget
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 ScreenPosition                 (CPF_Parm)
-// class UUIWidget_X*             HoverWidget                    (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::GetCursorHoverWidget(const struct FVector& ScreenPosition, class UUIWidget_X** HoverWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetCursorHoverWidget");
-
-	UUIWidget_X_GetCursorHoverWidget_Params params;
-	params.ScreenPosition = ScreenPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (HoverWidget != nullptr)
-		*HoverWidget = params.HoverWidget;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetOnlineGame
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlineGame_X*           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGame_X* UUIWidget_X::GetOnlineGame()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOnlineGame");
-
-	UUIWidget_X_GetOnlineGame_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetOnlinePlayer
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UOnlinePlayer_X*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlinePlayer_X* UUIWidget_X::GetOnlinePlayer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOnlinePlayer");
-
-	UUIWidget_X_GetOnlinePlayer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.ModifyAnimPosition
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FName                   EventName                      (CPF_Parm)
-// struct FName                   SequenceName                   (CPF_Parm)
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-// bool                           bWarnifNotFound                (CPF_OptionalParm, CPF_Parm)
-
-void UUIWidget_X::ModifyAnimPosition(const struct FName& EventName, const struct FName& SequenceName, float NewX, float NewY, bool bWarnifNotFound)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ModifyAnimPosition");
-
-	UUIWidget_X_ModifyAnimPosition_Params params;
-	params.EventName = EventName;
-	params.SequenceName = SequenceName;
-	params.NewX = NewX;
-	params.NewY = NewY;
-	params.bWarnifNotFound = bWarnifNotFound;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetUITimer
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FUITimer                InTimer                        (CPF_Parm)
-
-void UUIWidget_X::SetUITimer(const struct FUITimer& InTimer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetUITimer");
-
-	UUIWidget_X_SetUITimer_Params params;
-	params.InTimer = InTimer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.AddCommand
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FName                   EventName                      (CPF_Parm)
-// struct FString                 Cmd                            (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bIgnoreParent                  (CPF_OptionalParm, CPF_Parm)
-
-void UUIWidget_X::AddCommand(const struct FName& EventName, const struct FString& Cmd, bool bIgnoreParent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.AddCommand");
-
-	UUIWidget_X_AddCommand_Params params;
-	params.EventName = EventName;
-	params.Cmd = Cmd;
-	params.bIgnoreParent = bIgnoreParent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.GetSceneManager
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUISceneManager_X*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUISceneManager_X* UUIWidget_X::GetSceneManager()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetSceneManager");
-
-	UUIWidget_X_GetSceneManager_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetTimeSeconds
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUIWidget_X::GetTimeSeconds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetTimeSeconds");
-
-	UUIWidget_X_GetTimeSeconds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetWorldInfo
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AWorldInfo*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AWorldInfo* UUIWidget_X::GetWorldInfo()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetWorldInfo");
-
-	UUIWidget_X_GetWorldInfo_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.GetOpenTime
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUIWidget_X::GetOpenTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetOpenTime");
-
-	UUIWidget_X_GetOpenTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.IsTimerActive
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   FuncName                       (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::IsTimerActive(const struct FName& FuncName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.IsTimerActive");
-
-	UUIWidget_X_IsTimerActive_Params params;
-	params.FuncName = FuncName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.ClearAllTimers
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-
-void UUIWidget_X::ClearAllTimers()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ClearAllTimers");
-
-	UUIWidget_X_ClearAllTimers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.ClearTimer
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FName                   FuncName                       (CPF_Parm)
-
-void UUIWidget_X::ClearTimer(const struct FName& FuncName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ClearTimer");
-
-	UUIWidget_X_ClearTimer_Params params;
-	params.FuncName = FuncName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetTimer
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          InRate                         (CPF_Parm)
-// bool                           bLoop                          (CPF_Parm)
-// struct FName                   FuncName                       (CPF_Parm)
-
-void UUIWidget_X::SetTimer(float InRate, bool bLoop, const struct FName& FuncName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetTimer");
-
-	UUIWidget_X_SetTimer_Params params;
-	params.InRate = InRate;
-	params.bLoop = bLoop;
-	params.FuncName = FuncName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnDestroyed
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void UUIWidget_X::OnDestroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnDestroyed");
-
-	UUIWidget_X_OnDestroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Destroy
-// (FUNC_Final, FUNC_Exec, FUNC_Native, FUNC_Public)
-
-void UUIWidget_X::Destroy()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Destroy");
-
-	UUIWidget_X_Destroy_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.GetDockPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// TEnumAsByte<EDockPoint>        DockPoint                      (CPF_Parm)
-// struct FVector2D               OutPivotPosition               (CPF_Parm, CPF_OutParm)
-// struct FVector2D               OutRelativePosition            (CPF_Parm, CPF_OutParm)
-
-void UUIWidget_X::GetDockPosition(TEnumAsByte<EDockPoint> DockPoint, struct FVector2D* OutPivotPosition, struct FVector2D* OutRelativePosition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetDockPosition");
-
-	UUIWidget_X_GetDockPosition_Params params;
-	params.DockPoint = DockPoint;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPivotPosition != nullptr)
-		*OutPivotPosition = params.OutPivotPosition;
-	if (OutRelativePosition != nullptr)
-		*OutRelativePosition = params.OutRelativePosition;
-}
-
-
-// Function ProjectX.UIWidget_X.DrawText
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FString                 Str                            (CPF_Parm, CPF_NeedCtorLink)
-// struct FUIWidgetMatrix         DrawArea                       (CPF_Parm)
-
-void UUIWidget_X::DrawText(class UCanvas* C, const struct FString& Str, const struct FUIWidgetMatrix& DrawArea)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawText");
-
-	UUIWidget_X_DrawText_Params params;
-	params.C = C;
-	params.Str = Str;
-	params.DrawArea = DrawArea;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.DrawSelf
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_X::DrawSelf(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawSelf");
-
-	UUIWidget_X_DrawSelf_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.DrawChildren
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaSeconds                   (CPF_Parm)
-
-void UUIWidget_X::DrawChildren(class UCanvas* C, float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.DrawChildren");
-
-	UUIWidget_X_DrawChildren_Params params;
-	params.C = C;
-	params.DeltaSeconds = DeltaSeconds;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Draw
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaSeconds                   (CPF_Parm)
-
-void UUIWidget_X::Draw(class UCanvas* C, float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Draw");
-
-	UUIWidget_X_Draw_Params params;
-	params.C = C;
-	params.DeltaSeconds = DeltaSeconds;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateFinalColor
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::UpdateFinalColor(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalColor");
-
-	UUIWidget_X_UpdateFinalColor_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateOffScreen
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_X::UpdateOffScreen(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateOffScreen");
-
-	UUIWidget_X_UpdateOffScreen_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.ApplyDeltaFinalPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FVector                 Delta                          (CPF_Parm)
-
-void UUIWidget_X::ApplyDeltaFinalPosition(class UCanvas* C, const struct FVector& Delta)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ApplyDeltaFinalPosition");
-
-	UUIWidget_X_ApplyDeltaFinalPosition_Params params;
-	params.C = C;
-	params.Delta = Delta;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.ResizeToContent
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::ResizeToContent(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ResizeToContent");
-
-	UUIWidget_X_ResizeToContent_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateBounds
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::UpdateBounds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateBounds");
-
-	UUIWidget_X_UpdateBounds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateFinalPosition
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::UpdateFinalPosition(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalPosition");
-
-	UUIWidget_X_UpdateFinalPosition_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutChildPosition
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// class UUIWidget_X*             ChildWidget                    (CPF_Parm)
-// struct FUIWidgetMatrix         ChildMatrix                    (CPF_Parm)
-
-void UUIWidget_X::LayoutChildPosition(class UCanvas* C, class UUIWidget_X* ChildWidget, const struct FUIWidgetMatrix& ChildMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildPosition");
-
-	UUIWidget_X_LayoutChildPosition_Params params;
-	params.C = C;
-	params.ChildWidget = ChildWidget;
-	params.ChildMatrix = ChildMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutChildrenPosition
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ChildContainerMatrix           (CPF_Parm)
-
-void UUIWidget_X::LayoutChildrenPosition(class UCanvas* C, const struct FUIWidgetMatrix& ChildContainerMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildrenPosition");
-
-	UUIWidget_X_LayoutChildrenPosition_Params params;
-	params.C = C;
-	params.ChildContainerMatrix = ChildContainerMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.GetChildContainerMatrix
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
-// Parameters:
-// struct FUIWidgetMatrix         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FUIWidgetMatrix UUIWidget_X::GetChildContainerMatrix()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetChildContainerMatrix");
-
-	UUIWidget_X_GetChildContainerMatrix_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutPosition
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::LayoutPosition(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutPosition");
-
-	UUIWidget_X_LayoutPosition_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateFinalSize
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::UpdateFinalSize(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateFinalSize");
-
-	UUIWidget_X_UpdateFinalSize_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutChildSize
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// class UUIWidget_X*             ChildWidget                    (CPF_Parm)
-// struct FUIWidgetMatrix         ChildMatrix                    (CPF_Parm)
-
-void UUIWidget_X::LayoutChildSize(class UCanvas* C, class UUIWidget_X* ChildWidget, const struct FUIWidgetMatrix& ChildMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildSize");
-
-	UUIWidget_X_LayoutChildSize_Params params;
-	params.C = C;
-	params.ChildWidget = ChildWidget;
-	params.ChildMatrix = ChildMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutChildrenSize
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_X::LayoutChildrenSize(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutChildrenSize");
-
-	UUIWidget_X_LayoutChildrenSize_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutSize
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_X::LayoutSize(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutSize");
-
-	UUIWidget_X_LayoutSize_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.LayoutDirty
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUIWidget_X::LayoutDirty()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.LayoutDirty");
-
-	UUIWidget_X_LayoutDirty_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Tick
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaSeconds                   (CPF_Parm)
-
-void UUIWidget_X::Tick(class UCanvas* C, float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Tick");
-
-	UUIWidget_X_Tick_Params params;
-	params.C = C;
-	params.DeltaSeconds = DeltaSeconds;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnExecuteCmd
-// (FUNC_Event, FUNC_Protected)
-// Parameters:
-// struct FString                 Cmd                            (CPF_Parm, CPF_NeedCtorLink)
-
-void UUIWidget_X::OnExecuteCmd(const struct FString& Cmd)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnExecuteCmd");
-
-	UUIWidget_X_OnExecuteCmd_Params params;
-	params.Cmd = Cmd;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.ExecuteCmd
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FString                 Cmd                            (CPF_Parm, CPF_NeedCtorLink)
-
-void UUIWidget_X::ExecuteCmd(const struct FString& Cmd)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.ExecuteCmd");
-
-	UUIWidget_X_ExecuteCmd_Params params;
-	params.Cmd = Cmd;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.TickQueuedEvents
-// (FUNC_Final, FUNC_Defined, FUNC_Protected)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void UUIWidget_X::TickQueuedEvents(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.TickQueuedEvents");
-
-	UUIWidget_X_TickQueuedEvents_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.TickAnimations
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void UUIWidget_X::TickAnimations(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.TickAnimations");
-
-	UUIWidget_X_TickAnimations_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.PlayAnim
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UUIAnimSequence_X*       Sequence                       (CPF_Parm)
-
-void UUIWidget_X::PlayAnim(class UUIAnimSequence_X* Sequence)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PlayAnim");
-
-	UUIWidget_X_PlayAnim_Params params;
-	params.Sequence = Sequence;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnEvent
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
-// Parameters:
-// struct FName                   EventName                      (CPF_Parm)
-// bool                           bFromParent                    (CPF_OptionalParm, CPF_Parm)
-
-void UUIWidget_X::OnEvent(const struct FName& EventName, bool bFromParent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnEvent");
-
-	UUIWidget_X_OnEvent_Params params;
-	params.EventName = EventName;
-	params.bFromParent = bFromParent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.NotifyEvent
-// (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FName                   EventName                      (CPF_Parm)
-// bool                           bRecursive                     (CPF_OptionalParm, CPF_Parm)
-// bool                           bFromParent                    (CPF_OptionalParm, CPF_Parm)
-
-void UUIWidget_X::NotifyEvent(const struct FName& EventName, bool bRecursive, bool bFromParent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.NotifyEvent");
-
-	UUIWidget_X_NotifyEvent_Params params;
-	params.EventName = EventName;
-	params.bRecursive = bRecursive;
-	params.bFromParent = bFromParent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Drag
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-// struct FVector                 Delta                          (CPF_Parm)
-
-void UUIWidget_X::Drag(class UUICursor_X* Cursor, const struct FVector& Delta)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Drag");
-
-	UUIWidget_X_Drag_Params params;
-	params.Cursor = Cursor;
-	params.Delta = Delta;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Click
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_X::Click(class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Click");
-
-	UUIWidget_X_Click_Params params;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnFocusChanged
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_X::OnFocusChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnFocusChanged");
-
-	UUIWidget_X_OnFocusChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetFocused
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewFocused                    (CPF_Parm)
-
-void UUIWidget_X::SetFocused(bool bNewFocused)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetFocused");
-
-	UUIWidget_X_SetFocused_Params params;
-	params.bNewFocused = bNewFocused;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnPressChanged
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_X::OnPressChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnPressChanged");
-
-	UUIWidget_X_OnPressChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetPressed
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewPressed                    (CPF_Parm)
-
-void UUIWidget_X::SetPressed(bool bNewPressed)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPressed");
-
-	UUIWidget_X_SetPressed_Params params;
-	params.bNewPressed = bNewPressed;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnHoverChanged
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_X::OnHoverChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnHoverChanged");
-
-	UUIWidget_X_OnHoverChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetHovered
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewHovered                    (CPF_Parm)
-
-void UUIWidget_X::SetHovered(bool bNewHovered)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetHovered");
-
-	UUIWidget_X_SetHovered_Params params;
-	params.bNewHovered = bNewHovered;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetText
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void UUIWidget_X::SetText(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetText");
-
-	UUIWidget_X_SetText_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetPixelSize
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetPixelSize(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPixelSize");
-
-	UUIWidget_X_SetPixelSize_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetRelativeSize
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetRelativeSize(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetRelativeSize");
-
-	UUIWidget_X_SetRelativeSize_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetDock
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EDockPoint>        NewDock                        (CPF_Parm)
-
-void UUIWidget_X::SetDock(TEnumAsByte<EDockPoint> NewDock)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetDock");
-
-	UUIWidget_X_SetDock_Params params;
-	params.NewDock = NewDock;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetScale2D
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetScale2D(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetScale2D");
-
-	UUIWidget_X_SetScale2D_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetScale
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewScale                       (CPF_Parm)
-
-void UUIWidget_X::SetScale(float NewScale)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetScale");
-
-	UUIWidget_X_SetScale_Params params;
-	params.NewScale = NewScale;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetPixelOffset
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetPixelOffset(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPixelOffset");
-
-	UUIWidget_X_SetPixelOffset_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetRelativePosition
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetRelativePosition(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetRelativePosition");
-
-	UUIWidget_X_SetRelativePosition_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetPivotPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-
-void UUIWidget_X::SetPivotPosition(float NewX, float NewY)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetPivotPosition");
-
-	UUIWidget_X_SetPivotPosition_Params params;
-	params.NewX = NewX;
-	params.NewY = NewY;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnHierarchyHiddenChanged
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_X::OnHierarchyHiddenChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnHierarchyHiddenChanged");
-
-	UUIWidget_X_OnHierarchyHiddenChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UpdateHierarchyHidden
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// bool                           bRecurse                       (CPF_Parm)
-
-void UUIWidget_X::UpdateHierarchyHidden(bool bRecurse)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UpdateHierarchyHidden");
-
-	UUIWidget_X_UpdateHierarchyHidden_Params params;
-	params.bRecurse = bRecurse;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.OnVisibilityChanged
-// (FUNC_Protected)
-
-void UUIWidget_X::OnVisibilityChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.OnVisibilityChanged");
-
-	UUIWidget_X_OnVisibilityChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetVisibility
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EWidgetVisibility> NewVisibility                  (CPF_Parm)
-
-void UUIWidget_X::SetVisibility(TEnumAsByte<EWidgetVisibility> NewVisibility)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetVisibility");
-
-	UUIWidget_X_SetVisibility_Params params;
-	params.NewVisibility = NewVisibility;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetHidden
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// bool                           bNewHidden                     (CPF_Parm)
-
-void UUIWidget_X::SetHidden(bool bNewHidden)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetHidden");
-
-	UUIWidget_X_SetHidden_Params params;
-	params.bNewHidden = bNewHidden;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetFocusType
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EWidgetFocusType>  NewFocusType                   (CPF_Parm)
-
-void UUIWidget_X::SetFocusType(TEnumAsByte<EWidgetFocusType> NewFocusType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetFocusType");
-
-	UUIWidget_X_SetFocusType_Params params;
-	params.NewFocusType = NewFocusType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.SetTint
-// (FUNC_Final, FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// float                          R                              (CPF_Parm)
-// float                          G                              (CPF_Parm)
-// float                          B                              (CPF_Parm)
-// float                          A                              (CPF_Parm)
-
-void UUIWidget_X::SetTint(float R, float G, float B, float A)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.SetTint");
-
-	UUIWidget_X_SetTint_Params params;
-	params.R = R;
-	params.G = G;
-	params.B = B;
-	params.A = A;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.FindAndAddCommand
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FName                   EventName                      (CPF_Parm)
-// struct FString                 Command                        (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-// bool                           bIgnoreParent                  (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::FindAndAddCommand(const struct FName& WidgetName, const struct FName& EventName, const struct FString& Command, bool bIgnoreParent)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindAndAddCommand");
-
-	UUIWidget_X_FindAndAddCommand_Params params;
-	params.WidgetName = WidgetName;
-	params.EventName = EventName;
-	params.Command = Command;
-	params.bIgnoreParent = bIgnoreParent;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.FindAndSetText
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   WidgetName                     (CPF_Parm)
-// struct FString                 Txt                            (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_X::FindAndSetText(const struct FName& WidgetName, const struct FString& Txt)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindAndSetText");
-
-	UUIWidget_X_FindAndSetText_Params params;
-	params.WidgetName = WidgetName;
-	params.Txt = Txt;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.FindWidgetChecked
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   WidgetName                     (CPF_Parm)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_X::FindWidgetChecked(const struct FName& WidgetName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindWidgetChecked");
-
-	UUIWidget_X_FindWidgetChecked_Params params;
-	params.WidgetName = WidgetName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.FindWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   WidgetName                     (CPF_Parm)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_X::FindWidget(const struct FName& WidgetName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.FindWidget");
-
-	UUIWidget_X_FindWidget_Params params;
-	params.WidgetName = WidgetName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.HandleWidgetFocusChanged
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UUIWidget_X*             Sender                         (CPF_Parm)
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::HandleWidgetFocusChanged(class UUIWidget_X* Sender, class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetFocusChanged");
-
-	UUIWidget_X_HandleWidgetFocusChanged_Params params;
-	params.Sender = Sender;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.HandleWidgetClicked
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UUIWidget_X*             Sender                         (CPF_Parm)
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_X::HandleWidgetClicked(class UUIWidget_X* Sender, class UUIWidget_X* Widget, class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetClicked");
-
-	UUIWidget_X_HandleWidgetClicked_Params params;
-	params.Sender = Sender;
-	params.Widget = Widget;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.HandleWidgetDestroyed
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::HandleWidgetDestroyed(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.HandleWidgetDestroyed");
-
-	UUIWidget_X_HandleWidgetDestroyed_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.GetWidgetIndex
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             ChildWidget                    (CPF_Parm)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UUIWidget_X::GetWidgetIndex(class UUIWidget_X* ChildWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.GetWidgetIndex");
-
-	UUIWidget_X_GetWidgetIndex_Params params;
-	params.ChildWidget = ChildWidget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_X.RemoveAllWidgets
-// (FUNC_Defined, FUNC_Public)
-
-void UUIWidget_X::RemoveAllWidgets()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RemoveAllWidgets");
-
-	UUIWidget_X_RemoveAllWidgets_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.RemoveWidget
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::RemoveWidget(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RemoveWidget");
-
-	UUIWidget_X_RemoveWidget_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.UnregisterWidget
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::UnregisterWidget(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.UnregisterWidget");
-
-	UUIWidget_X_UnregisterWidget_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.RegisterWidget
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::RegisterWidget(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.RegisterWidget");
-
-	UUIWidget_X_RegisterWidget_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.InsertWidget
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// int                            Index                          (CPF_Parm)
-
-void UUIWidget_X::InsertWidget(class UUIWidget_X* Widget, int Index)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.InsertWidget");
-
-	UUIWidget_X_InsertWidget_Params params;
-	params.Widget = Widget;
-	params.Index = Index;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.AddWidget
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::AddWidget(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.AddWidget");
-
-	UUIWidget_X_AddWidget_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.PostInit
-// (FUNC_Protected)
-
-void UUIWidget_X::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PostInit");
-
-	UUIWidget_X_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.PreInit
-// (FUNC_Protected)
-
-void UUIWidget_X::PreInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.PreInit");
-
-	UUIWidget_X_PreInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.Initialize
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UUISceneClient_X*        ForClient                      (CPF_OptionalParm, CPF_Parm)
-
-void UUIWidget_X::Initialize(class UUISceneClient_X* ForClient)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.Initialize");
-
-	UUIWidget_X_Initialize_Params params;
-	params.ForClient = ForClient;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventDestroyed
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::EventDestroyed(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventDestroyed");
-
-	UUIWidget_X_EventDestroyed_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventInputKey
-// (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// unsigned char                  bHandled                       (CPF_Parm, CPF_OutParm)
-
-void UUIWidget_X::EventInputKey(class UUIWidget_X* Widget, const struct FName& Key, unsigned char* bHandled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventInputKey");
-
-	UUIWidget_X_EventInputKey_Params params;
-	params.Widget = Widget;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (bHandled != nullptr)
-		*bHandled = params.bHandled;
-}
-
-
-// Function ProjectX.UIWidget_X.EventDragged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_X::EventDragged(class UUIWidget_X* Widget, class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventDragged");
-
-	UUIWidget_X_EventDragged_Params params;
-	params.Widget = Widget;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventClicked
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Sender                         (CPF_Parm)
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_X::EventClicked(class UUIWidget_X* Sender, class UUIWidget_X* Widget, class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventClicked");
-
-	UUIWidget_X_EventClicked_Params params;
-	params.Sender = Sender;
-	params.Widget = Widget;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventFocusChanged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Sender                         (CPF_Parm)
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::EventFocusChanged(class UUIWidget_X* Sender, class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventFocusChanged");
-
-	UUIWidget_X_EventFocusChanged_Params params;
-	params.Sender = Sender;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventPressChanged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::EventPressChanged(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventPressChanged");
-
-	UUIWidget_X_EventPressChanged_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_X.EventHoverChanged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIWidget_X::EventHoverChanged(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_X.EventHoverChanged");
-
-	UUIWidget_X_EventHoverChanged_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_Locator_X.StaticGetScreenLocation
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UCanvas*                 InCanvas                       (CPF_Parm)
-// struct FVector                 TargetLocation                 (CPF_Parm)
-// struct FVector                 ViewLocation                   (CPF_Parm)
-// struct FRotator                ViewRotation                   (CPF_Parm)
-// struct FScreenLocationInfo     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FScreenLocationInfo UUIWidget_Locator_X::STATIC_StaticGetScreenLocation(class UCanvas* InCanvas, const struct FVector& TargetLocation, const struct FVector& ViewLocation, const struct FRotator& ViewRotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.StaticGetScreenLocation");
-
-	UUIWidget_Locator_X_StaticGetScreenLocation_Params params;
-	params.InCanvas = InCanvas;
-	params.TargetLocation = TargetLocation;
-	params.ViewLocation = ViewLocation;
-	params.ViewRotation = ViewRotation;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_Locator_X.GetScreenLocation
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 InCanvas                       (CPF_Parm)
-// struct FVector                 TargetLocation                 (CPF_Parm)
-// struct FScreenLocationInfo     ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FScreenLocationInfo UUIWidget_Locator_X::GetScreenLocation(class UCanvas* InCanvas, const struct FVector& TargetLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.GetScreenLocation");
-
-	UUIWidget_Locator_X_GetScreenLocation_Params params;
-	params.InCanvas = InCanvas;
-	params.TargetLocation = TargetLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_Locator_X.GetLocatorLocation
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  InLocator                      (CPF_Parm)
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector UUIWidget_Locator_X::GetLocatorLocation(class AActor* InLocator)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.GetLocatorLocation");
-
-	UUIWidget_Locator_X_GetLocatorLocation_Params params;
-	params.InLocator = InLocator;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_Locator_X.SetLocator
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  InLocator                      (CPF_Parm)
-
-void UUIWidget_Locator_X::SetLocator(class AActor* InLocator)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.SetLocator");
-
-	UUIWidget_Locator_X_SetLocator_Params params;
-	params.InLocator = InLocator;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_Locator_X.Tick
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaSeconds                   (CPF_Parm)
-
-void UUIWidget_Locator_X::Tick(class UCanvas* C, float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Locator_X.Tick");
-
-	UUIWidget_Locator_X_Tick_Params params;
-	params.C = C;
-	params.DeltaSeconds = DeltaSeconds;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.Click
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_WrappedText_X::Click(class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.Click");
-
-	UUIWidget_WrappedText_X_Click_Params params;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.GetURL
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FVector                 ScreenPosition                 (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UUIWidget_WrappedText_X::GetURL(const struct FVector& ScreenPosition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.GetURL");
-
-	UUIWidget_WrappedText_X_GetURL_Params params;
-	params.ScreenPosition = ScreenPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.GetCursorHoverWidget
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 ScreenPosition                 (CPF_Parm)
-// class UUIWidget_X*             HoverWidget                    (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_WrappedText_X::GetCursorHoverWidget(const struct FVector& ScreenPosition, class UUIWidget_X** HoverWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.GetCursorHoverWidget");
-
-	UUIWidget_WrappedText_X_GetCursorHoverWidget_Params params;
-	params.ScreenPosition = ScreenPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (HoverWidget != nullptr)
-		*HoverWidget = params.HoverWidget;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.DrawSelf
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_WrappedText_X::DrawSelf(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.DrawSelf");
-
-	UUIWidget_WrappedText_X_DrawSelf_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.TokenizeLine
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// int                            LineIdx                        (CPF_Parm)
-// int                            LinkIdx                        (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_WrappedText_X::TokenizeLine(int LineIdx, int LinkIdx)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.TokenizeLine");
-
-	UUIWidget_WrappedText_X_TokenizeLine_Params params;
-	params.LineIdx = LineIdx;
-	params.LinkIdx = LinkIdx;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.TokenizeWrappedLines
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_WrappedText_X::TokenizeWrappedLines()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.TokenizeWrappedLines");
-
-	UUIWidget_WrappedText_X_TokenizeWrappedLines_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.UpdateFinalSize
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ParentMatrix                   (CPF_Parm)
-
-void UUIWidget_WrappedText_X::UpdateFinalSize(class UCanvas* C, const struct FUIWidgetMatrix& ParentMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateFinalSize");
-
-	UUIWidget_WrappedText_X_UpdateFinalSize_Params params;
-	params.C = C;
-	params.ParentMatrix = ParentMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.UpdateLinks
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_WrappedText_X::UpdateLinks()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateLinks");
-
-	UUIWidget_WrappedText_X_UpdateLinks_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.SetText
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void UUIWidget_WrappedText_X::SetText(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.SetText");
-
-	UUIWidget_WrappedText_X_SetText_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.PostInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_WrappedText_X::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.PostInit");
-
-	UUIWidget_WrappedText_X_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_WrappedText_X.UpdateWrappedLines
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          Width                          (CPF_Parm)
-
-void UUIWidget_WrappedText_X::UpdateWrappedLines(class UCanvas* C, float Width)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_WrappedText_X.UpdateWrappedLines");
-
-	UUIWidget_WrappedText_X_UpdateWrappedLines_Params params;
-	params.C = C;
-	params.Width = Width;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.WebRequest_X.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -24625,9 +23041,9 @@ void UWebRequest_X::PrintDebugInfo(class UDebugDrawer* Drawer)
 // Function ProjectX.WebRequest_X.SetError
 // (FUNC_Native, FUNC_Public)
 // Parameters:
-// class UError_X*                InError                        (CPF_Parm)
+// class UError*                  InError                        (CPF_Parm)
 
-void UWebRequest_X::SetError(class UError_X* InError)
+void UWebRequest_X::SetError(class UError* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.SetError");
 
@@ -24752,17 +23168,16 @@ struct FString UWebRequest_X::GetResponseString()
 }
 
 
-// Function ProjectX.WebRequest_X.HasNewETag
-// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Function ProjectX.WebRequest_X.HasNewData
+// (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
-// struct FString                 OutETag                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UWebRequest_X::HasNewETag(struct FString* OutETag)
+bool UWebRequest_X::HasNewData()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.HasNewETag");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.HasNewData");
 
-	UWebRequest_X_HasNewETag_Params params;
+	UWebRequest_X_HasNewData_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -24770,9 +23185,6 @@ bool UWebRequest_X::HasNewETag(struct FString* OutETag)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	if (OutETag != nullptr)
-		*OutETag = params.OutETag;
 
 	return params.ReturnValue;
 }
@@ -24953,6 +23365,28 @@ void UWebRequest_X::SetContentFromString(const struct FString& ContentString)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.WebRequest_X.GetETag
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UWebRequest_X::GetETag()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebRequest_X.GetETag");
+
+	UWebRequest_X_GetETag_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -25582,12 +24016,15 @@ void UPrivilegeCheck_X::OnFinished()
 
 // Function ProjectX.PrivilegeCheck_X.Fail
 // (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// struct FString                 Reason                         (CPF_Parm, CPF_NeedCtorLink)
 
-void UPrivilegeCheck_X::Fail()
+void UPrivilegeCheck_X::Fail(const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PrivilegeCheck_X.Fail");
 
 	UPrivilegeCheck_X_Fail_Params params;
+	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
 
@@ -26030,6 +24467,45 @@ class UAddReservationMessage_X* UAddReservationMessage_X::AddPlayers()
 }
 
 
+// Function ProjectX.OnlineGameParty_X.HandlePartyConfigChanged
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UOnlineGameParty_X::HandlePartyConfigChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePartyConfigChanged");
+
+	UOnlineGameParty_X_HandlePartyConfigChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameParty_X.HandleMessageForMetrics
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void UOnlineGameParty_X::HandleMessageForMetrics(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleMessageForMetrics");
+
+	UOnlineGameParty_X_HandleMessageForMetrics_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameParty_X.HandlePlayerTradeComplete
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
@@ -26308,9 +24784,9 @@ struct FString UOnlineGameParty_X::GetTradingPlayerName()
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
-// class UObject*                 Message                        (CPF_Parm)
+// class UPartyMessage_InviteToTrade_X* Message                        (CPF_Parm)
 
-void UOnlineGameParty_X::HandleInviteToTradeMessage(class UOnlineMessageComponent_X* Component, class UObject* Message)
+void UOnlineGameParty_X::HandleInviteToTradeMessage(class UOnlineMessageComponent_X* Component, class UPartyMessage_InviteToTrade_X* Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleInviteToTradeMessage");
 
@@ -26623,9 +25099,9 @@ void UOnlineGameParty_X::BroadcastBugReport(const struct FString& Reason)
 // Function ProjectX.OnlineGameParty_X.OnPartyError
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameParty_X::OnPartyError(class UError_X* Error)
+void UOnlineGameParty_X::OnPartyError(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnPartyError");
 
@@ -26745,9 +25221,9 @@ bool UOnlineGameParty_X::IsPlaylistSkillRestricted(int PlaylistId)
 // Parameters:
 // class UOnlineGameSkillGroups_X* SkillObj                       (CPF_Parm)
 // TArray<struct FUniqueNetId>    PlayerIDs                      (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameParty_X::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* SkillObj, TArray<struct FUniqueNetId> PlayerIDs, class UError_X* Error)
+void UOnlineGameParty_X::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* SkillObj, TArray<struct FUniqueNetId> PlayerIDs, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleGroupSkillSynced");
 
@@ -26769,9 +25245,9 @@ void UOnlineGameParty_X::HandleGroupSkillSynced(class UOnlineGameSkillGroups_X* 
 // Parameters:
 // class UOnlineGameSkill_X*      SkillObj                       (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameParty_X::HandlePlayerSkillSynced(class UOnlineGameSkill_X* SkillObj, const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void UOnlineGameParty_X::HandlePlayerSkillSynced(class UOnlineGameSkill_X* SkillObj, const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayerSkillSynced");
 
@@ -27442,10 +25918,10 @@ void UOnlineGameParty_X::HandleLocalPlayers(class UOnlineMessageComponent_X* Com
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // int                            ControllerId                   (CPF_Parm)
-// class UError_X*                OutError                       (CPF_Parm, CPF_OutParm)
+// class UError*                  OutError                       (CPF_Parm, CPF_OutParm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineGameParty_X::AllowSplitScreenPlayer(int ControllerId, class UError_X** OutError)
+bool UOnlineGameParty_X::AllowSplitScreenPlayer(int ControllerId, class UError** OutError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.AllowSplitScreenPlayer");
 
@@ -28351,9 +26827,9 @@ void UOnlineGameParty_X::HandleJoinGameComplete(bool bSuccess, const struct FStr
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // struct FPartyMemberServer      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// struct FPartyMemberServer      StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FPartyMemberServer      StructInitializer_CC6175184409EE1BE993E3A29D2CA50C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FPartyMemberServer* StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31)
+struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FPartyMemberServer* StructInitializer_CC6175184409EE1BE993E3A29D2CA50C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPartyMemberServer");
 
@@ -28365,8 +26841,8 @@ struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FParty
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31 != nullptr)
-		*StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31 = params.StructInitializer__s_10EACB5341B65F7C7437D6AE8E567E31;
+	if (StructInitializer_CC6175184409EE1BE993E3A29D2CA50C != nullptr)
+		*StructInitializer_CC6175184409EE1BE993E3A29D2CA50C = params.StructInitializer_CC6175184409EE1BE993E3A29D2CA50C;
 
 	return params.ReturnValue;
 }
@@ -28804,102 +27280,6 @@ bool UOnlineGameParty_X::CreateParty(int LocalPlayerNum, int MaxPlayers, const s
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameParty_X.OnCreatePlayTogetherParty
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UOnlineGameParty_X*      InParty                        (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
-
-void UOnlineGameParty_X::OnCreatePlayTogetherParty(class UOnlineGameParty_X* InParty, bool bWasSuccessful)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.OnCreatePlayTogetherParty");
-
-	UOnlineGameParty_X_OnCreatePlayTogetherParty_Params params;
-	params.InParty = InParty;
-	params.bWasSuccessful = bWasSuccessful;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameParty_X.FinishHostStartPlayTogether
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UOnlineGameParty_X::FinishHostStartPlayTogether()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.FinishHostStartPlayTogether");
-
-	UOnlineGameParty_X_FinishHostStartPlayTogether_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameParty_X.UpdatePlayTogether
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UOnlineGameParty_X::UpdatePlayTogether()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.UpdatePlayTogether");
-
-	UOnlineGameParty_X_UpdatePlayTogether_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameParty_X.HandlePlayTogetherLoginChanged
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UOnlinePlayerAuthentication_X* Auth                           (CPF_Parm)
-
-void UOnlineGameParty_X::HandlePlayTogetherLoginChanged(class UOnlinePlayerAuthentication_X* Auth)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandlePlayTogetherLoginChanged");
-
-	UOnlineGameParty_X_HandlePlayTogetherLoginChanged_Params params;
-	params.Auth = Auth;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameParty_X.HandleHostStartPlayTogether
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// unsigned char                  LocalUserNum                   (CPF_Parm)
-
-void UOnlineGameParty_X::HandleHostStartPlayTogether(unsigned char LocalUserNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.HandleHostStartPlayTogether");
-
-	UOnlineGameParty_X_HandleHostStartPlayTogether_Params params;
-	params.LocalUserNum = LocalUserNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -29410,9 +27790,9 @@ void UOnlineGameParty_X::EventPartyJoinGameError(class UOnlineGameParty_X* Party
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UOnlineGameParty_X*      PartyObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameParty_X::EventPartyError(class UOnlineGameParty_X* PartyObject, class UError_X* Error)
+void UOnlineGameParty_X::EventPartyError(class UOnlineGameParty_X* PartyObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.EventPartyError");
 
@@ -30039,6 +28419,75 @@ class UAddReservationMessagePublic_X* UAddReservationMessagePublic_X::SetSetting
 }
 
 
+// Function ProjectX.OnlineGameSkill_X.SkillsSynced
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameSkill_X::SkillsSynced(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.SkillsSynced");
+
+	UOnlineGameSkill_X_SkillsSynced_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameSkill_X.GetHighestSkillTier
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineGameSkill_X::GetHighestSkillTier(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetHighestSkillTier");
+
+	UOnlineGameSkill_X_GetHighestSkillTier_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameSkill_X.GetPlayerSeasonRewardProgress
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FPlayerSeasonRewardProgress ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FPlayerSeasonRewardProgress UOnlineGameSkill_X::GetPlayerSeasonRewardProgress(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.GetPlayerSeasonRewardProgress");
+
+	UOnlineGameSkill_X_GetPlayerSeasonRewardProgress_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.OnlineGameSkill_X.GetPlaylistSkillCache
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -30082,12 +28531,53 @@ void UOnlineGameSkill_X::HandleSkillsUpdateFailed(class URPC_X* RPC)
 }
 
 
+// Function ProjectX.OnlineGameSkill_X.SetPlayerSeasonReward
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FPlayerSeasonRewardProgress Reward                         (CPF_Parm)
+
+void UOnlineGameSkill_X::SetPlayerSeasonReward(const struct FPlayerSeasonRewardProgress& Reward)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.SetPlayerSeasonReward");
+
+	UOnlineGameSkill_X_SetPlayerSeasonReward_Params params;
+	params.Reward = Reward;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameSkill_X.ReplicateSeasonReward
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FPlayerSeasonRewardProgress Reward                         (CPF_Parm)
+
+void UOnlineGameSkill_X::ReplicateSeasonReward(const struct FPlayerSeasonRewardProgress& Reward)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.ReplicateSeasonReward");
+
+	UOnlineGameSkill_X_ReplicateSeasonReward_Params params;
+	params.Reward = Reward;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameSkill_X.HandleSkillsUpdated
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
 // class URPC_X*                  RPC                            (CPF_Parm)
+// struct FPlayerSeasonRewardProgress StructInitializer_163BF4F440F2593423B965BA30F4B9BF (CPF_Const, CPF_OutParm)
 
-void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC)
+void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSeasonRewardProgress* StructInitializer_163BF4F440F2593423B965BA30F4B9BF)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.HandleSkillsUpdated");
 
@@ -30099,6 +28589,9 @@ void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+
+	if (StructInitializer_163BF4F440F2593423B965BA30F4B9BF != nullptr)
+		*StructInitializer_163BF4F440F2593423B965BA30F4B9BF = params.StructInitializer_163BF4F440F2593423B965BA30F4B9BF;
 }
 
 
@@ -30220,15 +28713,35 @@ struct FPlayerSkillRating UOnlineGameSkill_X::GetPlayerRating(const struct FUniq
 // (FUNC_Defined, FUNC_Protected)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameSkill_X::OnSkillSynced(const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void UOnlineGameSkill_X::OnSkillSynced(const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.OnSkillSynced");
 
 	UOnlineGameSkill_X_OnSkillSynced_Params params;
 	params.PlayerID = PlayerID;
 	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameSkill_X.CacheSeasonReward
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FPlayerSeasonRewardProgress Reward                         (CPF_Parm)
+
+void UOnlineGameSkill_X::CacheSeasonReward(const struct FPlayerSeasonRewardProgress& Reward)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.CacheSeasonReward");
+
+	UOnlineGameSkill_X_CacheSeasonReward_Params params;
+	params.Reward = Reward;
 
 	auto flags = fn->FunctionFlags;
 
@@ -30352,9 +28865,9 @@ int UOnlineGameSkill_X::STATIC_GetSkillPlaylistID(int PlaylistId)
 // Parameters:
 // class UOnlineGameSkill_X*      Skill                          (CPF_Parm)
 // struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameSkill_X::EventSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError_X* Error)
+void UOnlineGameSkill_X::EventSkillSynced(class UOnlineGameSkill_X* Skill, const struct FUniqueNetId& PlayerID, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.EventSkillSynced");
 
@@ -30842,16 +29355,16 @@ void USeqEvent_Spawned_X::STATIC_TriggerFor(class AActor* A)
 }
 
 
-// Function ProjectX.CameraStateBlender_X.GetTransitionBlend
-// (FUNC_Defined, FUNC_Protected)
+// Function ProjectX.CameraStateBlender_X.IsTransitioning
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-float UCameraStateBlender_X::GetTransitionBlend()
+bool UCameraStateBlender_X::IsTransitioning()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.GetTransitionBlend");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraStateBlender_X.IsTransitioning");
 
-	UCameraStateBlender_X_GetTransitionBlend_Params params;
+	UCameraStateBlender_X_IsTransitioning_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -31301,6 +29814,119 @@ void UCameraState_X::Init(class ACamera_X* InCamera)
 }
 
 
+// Function ProjectX.CameraUtils_X.BlendPOVs
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FCameraOrientation      FromPOV                        (CPF_Parm)
+// struct FCameraOrientation      ToPOV                          (CPF_Parm)
+// struct FCameraOrientation      OutPOV                         (CPF_Parm, CPF_OutParm)
+// float                          Percent                        (CPF_Parm)
+
+void UCameraUtils_X::STATIC_BlendPOVs(const struct FCameraOrientation& FromPOV, const struct FCameraOrientation& ToPOV, float Percent, struct FCameraOrientation* OutPOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraUtils_X.BlendPOVs");
+
+	UCameraUtils_X_BlendPOVs_Params params;
+	params.FromPOV = FromPOV;
+	params.ToPOV = ToPOV;
+	params.Percent = Percent;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutPOV != nullptr)
+		*OutPOV = params.OutPOV;
+}
+
+
+// Function ProjectX.CameraUtils_X.GetBlendPercent
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FViewTargetTransitionParams BlendParams                    (CPF_Parm)
+// float                          Time                           (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UCameraUtils_X::STATIC_GetBlendPercent(const struct FViewTargetTransitionParams& BlendParams, float Time)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraUtils_X.GetBlendPercent");
+
+	UCameraUtils_X_GetBlendPercent_Params params;
+	params.BlendParams = BlendParams;
+	params.Time = Time;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.CameraUtils_X.GetFrustumSize
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          Dist                           (CPF_Parm)
+// float                          FOV                            (CPF_Parm)
+// float                          AspectRatio                    (CPF_Parm)
+// float                          OutWidth                       (CPF_Parm, CPF_OutParm)
+// float                          OutHeight                      (CPF_Parm, CPF_OutParm)
+
+void UCameraUtils_X::STATIC_GetFrustumSize(float Dist, float FOV, float AspectRatio, float* OutWidth, float* OutHeight)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraUtils_X.GetFrustumSize");
+
+	UCameraUtils_X_GetFrustumSize_Params params;
+	params.Dist = Dist;
+	params.FOV = FOV;
+	params.AspectRatio = AspectRatio;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutWidth != nullptr)
+		*OutWidth = params.OutWidth;
+	if (OutHeight != nullptr)
+		*OutHeight = params.OutHeight;
+}
+
+
+// Function ProjectX.CameraUtils_X.CalculateDistanceRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FVector                 Focus                          (CPF_Parm)
+// struct FVector                 Origin                         (CPF_Parm)
+// float                          OutDistance                    (CPF_Parm, CPF_OutParm)
+// struct FRotator                OutRotation                    (CPF_Parm, CPF_OutParm)
+
+void UCameraUtils_X::STATIC_CalculateDistanceRotation(const struct FVector& Focus, const struct FVector& Origin, float* OutDistance, struct FRotator* OutRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraUtils_X.CalculateDistanceRotation");
+
+	UCameraUtils_X_CalculateDistanceRotation_Params params;
+	params.Focus = Focus;
+	params.Origin = Origin;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutDistance != nullptr)
+		*OutDistance = params.OutDistance;
+	if (OutRotation != nullptr)
+		*OutRotation = params.OutRotation;
+}
+
+
 // Function ProjectX.CameraModifier_CameraShake_X.ModifyCameraShakeScale
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -31384,6 +30010,23 @@ void UCameraState_CamActor_X::EndCameraState()
 }
 
 
+// Function ProjectX.CameraState_CamActor_X.BeginCameraState
+// (FUNC_Defined, FUNC_Public)
+
+void UCameraState_CamActor_X::BeginCameraState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CameraState_CamActor_X.BeginCameraState");
+
+	UCameraState_CamActor_X_BeginCameraState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.CameraState_CamActor_X.GetBlendParams
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -31425,328 +30068,6 @@ bool UCameraState_CamActor_X::ShouldExecute()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIScene_X.CopyProperties
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              ReplacementScene               (CPF_Parm)
-
-void UUIScene_X::CopyProperties(class UUIScene_X* ReplacementScene)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.CopyProperties");
-
-	UUIScene_X_CopyProperties_Params params;
-	params.ReplacementScene = ReplacementScene;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIScene_X.OnDestroyed
-// (FUNC_Defined, FUNC_Event, FUNC_Protected)
-
-void UUIScene_X::OnDestroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.OnDestroyed");
-
-	UUIScene_X_OnDestroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIScene_X.Close
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-
-void UUIScene_X::Close()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.Close");
-
-	UUIScene_X_Close_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIScene_X.PostInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIScene_X::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.PostInit");
-
-	UUIScene_X_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIScene_X.EventClosed
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIScene_X*              Scene                          (CPF_Parm)
-
-void UUIScene_X::EventClosed(class UUIScene_X* Scene)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIScene_X.EventClosed");
-
-	UUIScene_X_EventClosed_Params params;
-	params.Scene = Scene;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.SanitizePhraseAndNotify
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGameWordFilter_X::SanitizePhraseAndNotify(const struct FString& Comment, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhraseAndNotify");
-
-	UOnlineGameWordFilter_X_SanitizePhraseAndNotify_Params params;
-	params.Comment = Comment;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.AddCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            Index                          (CPF_Parm)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameWordFilter_X::AddCallback(int Index, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.AddCallback");
-
-	UOnlineGameWordFilter_X_AddCallback_Params params;
-	params.Index = Index;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.SanitizePhrase
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGameWordFilter_X::SanitizePhrase(const struct FString& Comment)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhrase");
-
-	UOnlineGameWordFilter_X_SanitizePhrase_Params params;
-	params.Comment = Comment;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.HandleCommentSanitized
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameWordFilter_X::HandleCommentSanitized(const struct FString& Original, const struct FString& Sanitized)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.HandleCommentSanitized");
-
-	UOnlineGameWordFilter_X_HandleCommentSanitized_Params params;
-	params.Original = Original;
-	params.Sanitized = Sanitized;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.InternalSanitize
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bUnique                        (CPF_OptionalParm, CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGameWordFilter_X::InternalSanitize(const struct FString& Comment, const struct FScriptDelegate& Callback, bool bUnique)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.InternalSanitize");
-
-	UOnlineGameWordFilter_X_InternalSanitize_Params params;
-	params.Comment = Comment;
-	params.Callback = Callback;
-	params.bUnique = bUnique;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.IsPending
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameWordFilter_X::IsPending(const struct FString& Comment)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.IsPending");
-
-	UOnlineGameWordFilter_X_IsPending_Params params;
-	params.Comment = Comment;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.SanitizeUnique
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGameWordFilter_X::SanitizeUnique(const struct FString& Comment, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizeUnique");
-
-	UOnlineGameWordFilter_X_SanitizeUnique_Params params;
-	params.Comment = Comment;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.Sanitize
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineGameWordFilter_X::Sanitize(const struct FString& Comment, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.Sanitize");
-
-	UOnlineGameWordFilter_X_Sanitize_Params params;
-	params.Comment = Comment;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.OnMainMenuOpened
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameWordFilter_X::OnMainMenuOpened()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.OnMainMenuOpened");
-
-	UOnlineGameWordFilter_X_OnMainMenuOpened_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameWordFilter_X.EventCommentSanitized
-// (FUNC_Final, FUNC_Private, FUNC_Delegate)
-// Parameters:
-// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameWordFilter_X::EventCommentSanitized(const struct FString& Original, const struct FString& Sanitized)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.EventCommentSanitized");
-
-	UOnlineGameWordFilter_X_EventCommentSanitized_Params params;
-	params.Original = Original;
-	params.Sanitized = Sanitized;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -33935,533 +32256,6 @@ class APlayerController* AGameInfo_MapProfiler_X::SpawnPlayerController(const st
 }
 
 
-// Function ProjectX.OnlineGameMatchmakingOld_X.PrintDebugInfo
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class UDebugDrawer*            Drawer                         (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::PrintDebugInfo(class UDebugDrawer* Drawer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.PrintDebugInfo");
-
-	UOnlineGameMatchmakingOld_X_PrintDebugInfo_Params params;
-	params.Drawer = Drawer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.SubmitMatchmakingAnalytics
-// (FUNC_Final, FUNC_HasOptionalParms, FUNC_Private)
-// Parameters:
-// bool                           bOnClose                       (CPF_OptionalParm, CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::SubmitMatchmakingAnalytics(bool bOnClose)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SubmitMatchmakingAnalytics");
-
-	UOnlineGameMatchmakingOld_X_SubmitMatchmakingAnalytics_Params params;
-	params.bOnClose = bOnClose;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.Cancel
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameMatchmakingOld_X::Cancel()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.Cancel");
-
-	UOnlineGameMatchmakingOld_X_Cancel_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.SortSearchResults
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FOnlineGameSearchResult A                              (CPF_Parm)
-// struct FOnlineGameSearchResult B                              (CPF_Parm)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UOnlineGameMatchmakingOld_X::SortSearchResults(const struct FOnlineGameSearchResult& A, const struct FOnlineGameSearchResult& B)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SortSearchResults");
-
-	UOnlineGameMatchmakingOld_X_SortSearchResults_Params params;
-	params.A = A;
-	params.B = B;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.SortResultsBasedOnRelativePing
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FOnlineGameSearchResult> Results                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::SortResultsBasedOnRelativePing(TArray<struct FOnlineGameSearchResult>* Results)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.SortResultsBasedOnRelativePing");
-
-	UOnlineGameMatchmakingOld_X_SortResultsBasedOnRelativePing_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Results != nullptr)
-		*Results = params.Results;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.FilterSearchResults
-// (FUNC_Protected)
-// Parameters:
-// TArray<struct FOnlineGameSearchResult> FoundResults                   (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::FilterSearchResults(TArray<struct FOnlineGameSearchResult> FoundResults)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.FilterSearchResults");
-
-	UOnlineGameMatchmakingOld_X_FilterSearchResults_Params params;
-	params.FoundResults = FoundResults;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.ClearTimeoutTimer
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameMatchmakingOld_X::ClearTimeoutTimer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.ClearTimeoutTimer");
-
-	UOnlineGameMatchmakingOld_X_ClearTimeoutTimer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionTimeout
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameMatchmakingOld_X::HandleConnectionTimeout()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionTimeout");
-
-	UOnlineGameMatchmakingOld_X_HandleConnectionTimeout_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionFailed
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::HandleConnectionFailed(const struct FString& Message)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleConnectionFailed");
-
-	UOnlineGameMatchmakingOld_X_HandleConnectionFailed_Params params;
-	params.Message = Message;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.OnNewGameStarted
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameMatchmakingOld_X::OnNewGameStarted()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnNewGameStarted");
-
-	UOnlineGameMatchmakingOld_X_OnNewGameStarted_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleOnlineGameDestroyComplete
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::HandleOnlineGameDestroyComplete(const struct FName& SessionName, bool bWasSuccessful)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleOnlineGameDestroyComplete");
-
-	UOnlineGameMatchmakingOld_X_HandleOnlineGameDestroyComplete_Params params;
-	params.SessionName = SessionName;
-	params.bWasSuccessful = bWasSuccessful;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.DestroyOnlineGame
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameMatchmakingOld_X::DestroyOnlineGame()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.DestroyOnlineGame");
-
-	UOnlineGameMatchmakingOld_X_DestroyOnlineGame_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleJoinOnlineGameComplete
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FName                   SessionName                    (CPF_Parm)
-// bool                           bWasSuccessful                 (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::HandleJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleJoinOnlineGameComplete");
-
-	UOnlineGameMatchmakingOld_X_HandleJoinOnlineGameComplete_Params params;
-	params.SessionName = SessionName;
-	params.bWasSuccessful = bWasSuccessful;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.JoinOnlineGame
-// (FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   SessionName                    (CPF_Parm)
-// struct FOnlineGameSearchResult DesiredGame                    (CPF_Const, CPF_Parm, CPF_OutParm)
-
-void UOnlineGameMatchmakingOld_X::JoinOnlineGame(const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.JoinOnlineGame");
-
-	UOnlineGameMatchmakingOld_X_JoinOnlineGame_Params params;
-	params.SessionName = SessionName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (DesiredGame != nullptr)
-		*DesiredGame = params.DesiredGame;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.TryToJoinNextGame
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UOnlineGameMatchmakingOld_X::TryToJoinNextGame()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.TryToJoinNextGame");
-
-	UOnlineGameMatchmakingOld_X_TryToJoinNextGame_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindOnlineGamesComplete
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           bWasSuccessful                 (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::HandleFindOnlineGamesComplete(bool bWasSuccessful)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindOnlineGamesComplete");
-
-	UOnlineGameMatchmakingOld_X_HandleFindOnlineGamesComplete_Params params;
-	params.bWasSuccessful = bWasSuccessful;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.StartNewGameSearch
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameMatchmakingOld_X::StartNewGameSearch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.StartNewGameSearch");
-
-	UOnlineGameMatchmakingOld_X_StartNewGameSearch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindGameFailed
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UError_X*                Error                          (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::HandleFindGameFailed(class UError_X* Error)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleFindGameFailed");
-
-	UOnlineGameMatchmakingOld_X_HandleFindGameFailed_Params params;
-	params.Error = Error;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.FindAndJoinOnlineGame
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           bInOfficialSearch              (CPF_Parm)
-// bool                           bInNoSeparateCleanSearch       (CPF_Parm)
-// TArray<struct FString>         inRequiredGameTags             (CPF_Parm, CPF_NeedCtorLink)
-// TArray<struct FString>         NeedsOneGameTags               (CPF_Parm, CPF_NeedCtorLink)
-// TArray<struct FString>         MapNames                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         FindGameStatusChangedDelegate  (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         FindGameTryingServerDelegate   (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// struct FScriptDelegate         FindGameFailedDelegate         (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// bool                           bDontJoinServer                (CPF_OptionalParm, CPF_Parm)
-// struct FString                 inFakeBuildID                  (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::FindAndJoinOnlineGame(bool bInOfficialSearch, bool bInNoSeparateCleanSearch, TArray<struct FString> inRequiredGameTags, TArray<struct FString> NeedsOneGameTags, TArray<struct FString> MapNames, const struct FScriptDelegate& FindGameStatusChangedDelegate, const struct FScriptDelegate& FindGameTryingServerDelegate, const struct FScriptDelegate& FindGameFailedDelegate, bool bDontJoinServer, const struct FString& inFakeBuildID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.FindAndJoinOnlineGame");
-
-	UOnlineGameMatchmakingOld_X_FindAndJoinOnlineGame_Params params;
-	params.bInOfficialSearch = bInOfficialSearch;
-	params.bInNoSeparateCleanSearch = bInNoSeparateCleanSearch;
-	params.inRequiredGameTags = inRequiredGameTags;
-	params.NeedsOneGameTags = NeedsOneGameTags;
-	params.MapNames = MapNames;
-	params.FindGameStatusChangedDelegate = FindGameStatusChangedDelegate;
-	params.FindGameTryingServerDelegate = FindGameTryingServerDelegate;
-	params.FindGameFailedDelegate = FindGameFailedDelegate;
-	params.bDontJoinServer = bDontJoinServer;
-	params.inFakeBuildID = inFakeBuildID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.ResumeMatchmaking
-// (FUNC_Defined, FUNC_Public)
-
-void UOnlineGameMatchmakingOld_X::ResumeMatchmaking()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.ResumeMatchmaking");
-
-	UOnlineGameMatchmakingOld_X_ResumeMatchmaking_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.HandleMatchmakingReport
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Info                           (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::HandleMatchmakingReport(const struct FString& Info)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.HandleMatchmakingReport");
-
-	UOnlineGameMatchmakingOld_X_HandleMatchmakingReport_Params params;
-	params.Info = Info;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.OnExit
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameMatchmakingOld_X::OnExit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnExit");
-
-	UOnlineGameMatchmakingOld_X_OnExit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.OnInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameMatchmakingOld_X::OnInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.OnInit");
-
-	UOnlineGameMatchmakingOld_X_OnInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameFailed
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UError_X*                Error                          (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::EventFindGameFailed(class UError_X* Error)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameFailed");
-
-	UOnlineGameMatchmakingOld_X_EventFindGameFailed_Params params;
-	params.Error = Error;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameTryingServer
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// int                            TryingServerIdx                (CPF_Parm)
-// int                            TotalServersFound              (CPF_Parm)
-// class UOnlineGameSettings_X*   ServerGameSettings             (CPF_Parm)
-
-void UOnlineGameMatchmakingOld_X::EventFindGameTryingServer(int TryingServerIdx, int TotalServersFound, class UOnlineGameSettings_X* ServerGameSettings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameTryingServer");
-
-	UOnlineGameMatchmakingOld_X_EventFindGameTryingServer_Params params;
-	params.TryingServerIdx = TryingServerIdx;
-	params.TotalServersFound = TotalServersFound;
-	params.ServerGameSettings = ServerGameSettings;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameStatusChanged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// struct FString                 NewStatus                      (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineGameMatchmakingOld_X::EventFindGameStatusChanged(const struct FString& NewStatus)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingOld_X.EventFindGameStatusChanged");
-
-	UOnlineGameMatchmakingOld_X_EventFindGameStatusChanged_Params params;
-	params.NewStatus = NewStatus;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.OnlineGameJoinGame_X.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -34564,23 +32358,6 @@ void UOnlineGameJoinGame_X::HandleReservationResponse(class UTcpConnection* Conn
 }
 
 
-// Function ProjectX.OnlineGameJoinGame_X.OnMainMenuOpened
-// (FUNC_Defined, FUNC_Protected)
-
-void UOnlineGameJoinGame_X::OnMainMenuOpened()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OnMainMenuOpened");
-
-	UOnlineGameJoinGame_X_OnMainMenuOpened_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.OnlineGameJoinGame_X.NotifyConnectionFailed
 // (FUNC_Public)
 // Parameters:
@@ -34653,6 +32430,26 @@ void UOnlineGameJoinGame_X::ClearServerData()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ClearServerData");
 
 	UOnlineGameJoinGame_X_ClearServerData_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.HandleSpawned
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGameInfo_X*             InGameInfo                     (CPF_Parm)
+
+void UOnlineGameJoinGame_X::HandleSpawned(class AGameInfo_X* InGameInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.HandleSpawned");
+
+	UOnlineGameJoinGame_X_HandleSpawned_Params params;
+	params.InGameInfo = InGameInfo;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36423,10 +34220,10 @@ void UOnlineConfigDispatcher_X::Construct()
 // Function ProjectX.WebCache_X.GetErrorDebugString
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 // struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 
-struct FString UWebCache_X::GetErrorDebugString(class UError_X* Error)
+struct FString UWebCache_X::GetErrorDebugString(class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.GetErrorDebugString");
 
@@ -36513,9 +34310,9 @@ void UWebCache_X::DownloadData(const struct FString& URL, const struct FString& 
 // Parameters:
 // class ULocalCache_X*           Cache                          (CPF_Parm)
 // class UCachedWebData_X*        CacheObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UWebCache_X::HandleLoadFromCache(class ULocalCache_X* Cache, class UCachedWebData_X* CacheObject, class UError_X* Error)
+void UWebCache_X::HandleLoadFromCache(class ULocalCache_X* Cache, class UCachedWebData_X* CacheObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.WebCache_X.HandleLoadFromCache");
 
@@ -36588,6 +34385,301 @@ void UWebCache_X::CachedTextCallback(class UCachedWebData_X* CachedData)
 
 	UWebCache_X_CachedTextCallback_Params params;
 	params.CachedData = CachedData;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.SanitizePhraseAndNotify
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineGameWordFilter_X::SanitizePhraseAndNotify(const struct FString& Comment, const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhraseAndNotify");
+
+	UOnlineGameWordFilter_X_SanitizePhraseAndNotify_Params params;
+	params.Comment = Comment;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.SanitizePhrase
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineGameWordFilter_X::STATIC_SanitizePhrase(const struct FString& Comment)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizePhrase");
+
+	UOnlineGameWordFilter_X_SanitizePhrase_Params params;
+	params.Comment = Comment;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.CreateError
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// struct FWordFilterResult       Result                         (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// TEnumAsByte<EWordFilterUsage>  Usage                          (CPF_Parm)
+// class UError*                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UError* UOnlineGameWordFilter_X::CreateError(TEnumAsByte<EWordFilterUsage> Usage, struct FWordFilterResult* Result)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.CreateError");
+
+	UOnlineGameWordFilter_X_CreateError_Params params;
+	params.Usage = Usage;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Result != nullptr)
+		*Result = params.Result;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.HandleCommentSanitized
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// struct FWordFilterResult       Result                         (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UOnlineGameWordFilter_X::HandleCommentSanitized(struct FWordFilterResult* Result)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.HandleCommentSanitized");
+
+	UOnlineGameWordFilter_X_HandleCommentSanitized_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Result != nullptr)
+		*Result = params.Result;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.UpdateUsage
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TEnumAsByte<EWordFilterUsage>  OldUsage                       (CPF_Parm)
+// TEnumAsByte<EWordFilterUsage>  NewUsage                       (CPF_Parm)
+// TEnumAsByte<EWordFilterUsage>  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+TEnumAsByte<EWordFilterUsage> UOnlineGameWordFilter_X::UpdateUsage(TEnumAsByte<EWordFilterUsage> OldUsage, TEnumAsByte<EWordFilterUsage> NewUsage)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.UpdateUsage");
+
+	UOnlineGameWordFilter_X_UpdateUsage_Params params;
+	params.OldUsage = OldUsage;
+	params.NewUsage = NewUsage;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.InternalSanitize
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         ErrorCallback                  (CPF_Parm, CPF_NeedCtorLink)
+// TEnumAsByte<EWordFilterUsage>  Usage                          (CPF_Parm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineGameWordFilter_X::InternalSanitize(const struct FString& Comment, const struct FScriptDelegate& Callback, const struct FScriptDelegate& ErrorCallback, TEnumAsByte<EWordFilterUsage> Usage, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.InternalSanitize");
+
+	UOnlineGameWordFilter_X_InternalSanitize_Params params;
+	params.Comment = Comment;
+	params.Callback = Callback;
+	params.ErrorCallback = ErrorCallback;
+	params.Usage = Usage;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.IsPending
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineGameWordFilter_X::IsPending(const struct FString& Comment)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.IsPending");
+
+	UOnlineGameWordFilter_X_IsPending_Params params;
+	params.Comment = Comment;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.SanitizeChat
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         ErrorCallback                  (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_OptionalParm, CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineGameWordFilter_X::SanitizeChat(const struct FString& Comment, const struct FScriptDelegate& Callback, const struct FScriptDelegate& ErrorCallback, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.SanitizeChat");
+
+	UOnlineGameWordFilter_X_SanitizeChat_Params params;
+	params.Comment = Comment;
+	params.Callback = Callback;
+	params.ErrorCallback = ErrorCallback;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.Sanitize
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 Comment                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         ErrorCallback                  (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_OptionalParm, CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineGameWordFilter_X::Sanitize(const struct FString& Comment, const struct FScriptDelegate& Callback, const struct FScriptDelegate& ErrorCallback, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.Sanitize");
+
+	UOnlineGameWordFilter_X_Sanitize_Params params;
+	params.Comment = Comment;
+	params.Callback = Callback;
+	params.ErrorCallback = ErrorCallback;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.OnMainMenuOpened
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameWordFilter_X::OnMainMenuOpened()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.OnMainMenuOpened");
+
+	UOnlineGameWordFilter_X_OnMainMenuOpened_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.EventCommentError
+// (FUNC_Final, FUNC_Private, FUNC_Delegate)
+// Parameters:
+// struct FString                 OriginalPhrase                 (CPF_Parm, CPF_NeedCtorLink)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameWordFilter_X::EventCommentError(const struct FString& OriginalPhrase, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.EventCommentError");
+
+	UOnlineGameWordFilter_X_EventCommentError_Params params;
+	params.OriginalPhrase = OriginalPhrase;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameWordFilter_X.EventCommentSanitized
+// (FUNC_Final, FUNC_Private, FUNC_Delegate)
+// Parameters:
+// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineGameWordFilter_X::EventCommentSanitized(const struct FString& Original, const struct FString& Sanitized)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameWordFilter_X.EventCommentSanitized");
+
+	UOnlineGameWordFilter_X_EventCommentSanitized_Params params;
+	params.Original = Original;
+	params.Sanitized = Sanitized;
 
 	auto flags = fn->FunctionFlags;
 
@@ -36975,9 +35067,9 @@ void UOnlineGameSkillGroups_X::PreCacheSkill(TArray<struct FUniqueNetId> Players
 // Parameters:
 // class UOnlineGameSkillGroups_X* Skill                          (CPF_Parm)
 // TArray<struct FUniqueNetId>    PlayerIDs                      (CPF_Parm, CPF_NeedCtorLink)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlineGameSkillGroups_X::EventGroupSkillSynced(class UOnlineGameSkillGroups_X* Skill, TArray<struct FUniqueNetId> PlayerIDs, class UError_X* Error)
+void UOnlineGameSkillGroups_X::EventGroupSkillSynced(class UOnlineGameSkillGroups_X* Skill, TArray<struct FUniqueNetId> PlayerIDs, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkillGroups_X.EventGroupSkillSynced");
 
@@ -37476,6 +35568,28 @@ void UOnlineGamePrivileges_X::EventCheckingPrivilegesChanged(class UOnlineGamePr
 }
 
 
+// Function ProjectX.OnlineGameRegions_X.SetCachedRegionPings
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FCachedRegionPing> InCachedRegionPings            (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UOnlineGameRegions_X::SetCachedRegionPings(TArray<struct FCachedRegionPing>* InCachedRegionPings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.SetCachedRegionPings");
+
+	UOnlineGameRegions_X_SetCachedRegionPings_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InCachedRegionPings != nullptr)
+		*InCachedRegionPings = params.InCachedRegionPings;
+}
+
+
 // Function ProjectX.OnlineGameRegions_X.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -37749,6 +35863,28 @@ void UOnlineGameRegions_X::OnInit()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.OnInit");
 
 	UOnlineGameRegions_X_OnInit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameRegions_X.EventRegionsError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameRegions_X*    RegionsObj                     (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameRegions_X::EventRegionsError(class UOnlineGameRegions_X* RegionsObj, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameRegions_X.EventRegionsError");
+
+	UOnlineGameRegions_X_EventRegionsError_Params params;
+	params.RegionsObj = RegionsObj;
+	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
 
@@ -38915,6 +37051,28 @@ class UOnlineGameServerBrowser_X* UOnlineGameServerBrowser_X::SetErrorDelegate(c
 }
 
 
+// Function ProjectX.OnlineGameServerBrowser_X.EventBrowserError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameServerBrowser_X* Browser                        (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameServerBrowser_X::EventBrowserError(class UOnlineGameServerBrowser_X* Browser, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.EventBrowserError");
+
+	UOnlineGameServerBrowser_X_EventBrowserError_Params params;
+	params.Browser = Browser;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameServerBrowser_X.EventSearchError
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
@@ -39349,6 +37507,28 @@ bool UOnlineGamePrivateMatch_X::StartSearch(const struct FString& InPreferredReg
 }
 
 
+// Function ProjectX.OnlineGamePrivateMatch_X.EventPrivateMatchError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGamePrivateMatch_X* InPrivateMatch                 (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGamePrivateMatch_X::EventPrivateMatchError(class UOnlineGamePrivateMatch_X* InPrivateMatch, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.EventPrivateMatchError");
+
+	UOnlineGamePrivateMatch_X_EventPrivateMatchError_Params params;
+	params.InPrivateMatch = InPrivateMatch;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameMatchmaking_X.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -39756,6 +37936,28 @@ void UOnlineGameMatchmaking_X::OnInit()
 }
 
 
+// Function ProjectX.OnlineGameMatchmaking_X.EventMatchmakingError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlineGameMatchmaking_X* InMatchmaking                  (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameMatchmaking_X::EventMatchmakingError(class UOnlineGameMatchmaking_X* InMatchmaking, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.EventMatchmakingError");
+
+	UOnlineGameMatchmaking_X_EventMatchmakingError_Params params;
+	params.InMatchmaking = InMatchmaking;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.OnlineGameTrial_X.OnChanged
 // (FUNC_Defined, FUNC_Protected)
 
@@ -40076,6 +38278,131 @@ void UOnlineGameTrial_X::EventUpdated(class UOnlineGameTrial_X* Trial)
 }
 
 
+// Function ProjectX.OnlineGameVersion_X.HandleError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameVersion_X::HandleError(class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.HandleError");
+
+	UOnlineGameVersion_X_HandleError_Params params;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameVersion_X.HandleServerBrowserError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameServerBrowser_X* Browser                        (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameVersion_X::HandleServerBrowserError(class UOnlineGameServerBrowser_X* Browser, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.HandleServerBrowserError");
+
+	UOnlineGameVersion_X_HandleServerBrowserError_Params params;
+	params.Browser = Browser;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameVersion_X.HandlePrivateMatchError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGamePrivateMatch_X* InPrivateMatch                 (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameVersion_X::HandlePrivateMatchError(class UOnlineGamePrivateMatch_X* InPrivateMatch, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.HandlePrivateMatchError");
+
+	UOnlineGameVersion_X_HandlePrivateMatchError_Params params;
+	params.InPrivateMatch = InPrivateMatch;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameVersion_X.HandleRegionsError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameRegions_X*    InRegions                      (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameVersion_X::HandleRegionsError(class UOnlineGameRegions_X* InRegions, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.HandleRegionsError");
+
+	UOnlineGameVersion_X_HandleRegionsError_Params params;
+	params.InRegions = InRegions;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameVersion_X.HandleMatchmakingError
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UOnlineGameMatchmaking_X* InMatchmaking                  (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void UOnlineGameVersion_X::HandleMatchmakingError(class UOnlineGameMatchmaking_X* InMatchmaking, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.HandleMatchmakingError");
+
+	UOnlineGameVersion_X_HandleMatchmakingError_Params params;
+	params.InMatchmaking = InMatchmaking;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameVersion_X.OnInit
+// (FUNC_Defined, FUNC_Protected)
+
+void UOnlineGameVersion_X::OnInit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameVersion_X.OnInit");
+
+	UOnlineGameVersion_X_OnInit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_UpdatePlayerPlaylist_X.SetNumLocalPlayers
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -40373,6 +38700,26 @@ void UOnlineGameBlog_X::Init()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameBlog_X.Init");
 
 	UOnlineGameBlog_X_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServerRegistration_X.__OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
+
+void UOnlineGameDedicatedServerRegistration_X::__OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces_1(class UCacheTimer_X* Timer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X.__OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces_1");
+
+	UOnlineGameDedicatedServerRegistration_X___OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces_1_Params params;
+	params.Timer = Timer;
 
 	auto flags = fn->FunctionFlags;
 
@@ -40717,6 +39064,108 @@ void UOnlineGameDedicatedServerRegistration_X::OnInit()
 }
 
 
+// Function ProjectX.OnlinePlayerPermissions_X.HasPermission
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// TEnumAsByte<EOnlinePlayerPermission> Permission                     (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlinePlayerPermissions_X::HasPermission(const struct FUniqueNetId& PlayerID, TEnumAsByte<EOnlinePlayerPermission> Permission)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerPermissions_X.HasPermission");
+
+	UOnlinePlayerPermissions_X_HasPermission_Params params;
+	params.PlayerID = PlayerID;
+	params.Permission = Permission;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlinePlayerPermissions_X.HandlePlayerPermissions
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class URPC_GetPlayerPermissions_X* RPC                            (CPF_Parm)
+
+void UOnlinePlayerPermissions_X::HandlePlayerPermissions(class URPC_GetPlayerPermissions_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerPermissions_X.HandlePlayerPermissions");
+
+	UOnlinePlayerPermissions_X_HandlePlayerPermissions_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlinePlayerPermissions_X.SendRequest
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UOnlinePlayerPermissions_X::SendRequest()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerPermissions_X.SendRequest");
+
+	UOnlinePlayerPermissions_X_SendRequest_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlinePlayerPermissions_X.SyncPermissions
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+
+void UOnlinePlayerPermissions_X::SyncPermissions(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerPermissions_X.SyncPermissions");
+
+	UOnlinePlayerPermissions_X_SyncPermissions_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlinePlayerPermissions_X.EventUpdated
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UOnlinePlayerPermissions_X* Permissions                    (CPF_Parm)
+
+void UOnlinePlayerPermissions_X::EventUpdated(class UOnlinePlayerPermissions_X* Permissions)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerPermissions_X.EventUpdated");
+
+	UOnlinePlayerPermissions_X_EventUpdated_Params params;
+	params.Permissions = Permissions;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_CheckReplacementDedicatedServer_X.GetServerAddress
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -40875,6 +39324,23 @@ void UClanforgeReservation_X::HandleSendComplete(class UWebRequest_X* Request)
 
 	UClanforgeReservation_X_HandleSendComplete_Params params;
 	params.Request = Request;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.ClanforgeReservation_X.ProcessNextRequest
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void UClanforgeReservation_X::ProcessNextRequest()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ClanforgeReservation_X.ProcessNextRequest");
+
+	UClanforgeReservation_X_ProcessNextRequest_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41656,49 +40122,6 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetServerName(const stru
 
 	URPC_CreateGameServer_X_SetServerName_Params params;
 	params.InServerName = InServerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCacheTimer_X*           Timer                          (CPF_Parm, CPF_EditInline)
-
-void UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5::LambdaCallback(class UCacheTimer_X* Timer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.LambdaCallback");
-
-	UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5_LambdaCallback_Params params;
-	params.Timer = Timer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineGameDedicatedServerRegistration_X* InOuter                        (CPF_Parm)
-// class UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5* UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5::STATIC_StaticConstruct(class UOnlineGameDedicatedServerRegistration_X* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5.StaticConstruct");
-
-	UOnlineGameDedicatedServerRegistration_X__HandleCreateServerSucces__1C16414D4C74B82C286817B4FE1FC5D5_StaticConstruct_Params params;
-	params.InOuter = InOuter;
 
 	auto flags = fn->FunctionFlags;
 
@@ -42704,9 +41127,9 @@ void UOnlinePlayerFriends_X::OnInit()
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UOnlinePlayerFriends_X*  FriendsRef                     (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UOnlinePlayerFriends_X::EventFriendsListChanged(class UOnlinePlayerFriends_X* FriendsRef, class UError_X* Error)
+void UOnlinePlayerFriends_X::EventFriendsListChanged(class UOnlinePlayerFriends_X* FriendsRef, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlinePlayerFriends_X.EventFriendsListChanged");
 
@@ -42955,9 +41378,9 @@ void UCheckReservation_X::EventSuccess(class UCheckReservation_X* ReservationObj
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
 // class UCheckReservation_X*     ReservationObj                 (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void UCheckReservation_X::EventError(class UCheckReservation_X* ReservationObj, class UError_X* Error)
+void UCheckReservation_X::EventError(class UCheckReservation_X* ReservationObj, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.CheckReservation_X.EventError");
 
@@ -42973,14 +41396,17 @@ void UCheckReservation_X::EventError(class UCheckReservation_X* ReservationObj, 
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingEnd
+// Function ProjectX.MatchmakingMetrics_X.RankedReconnect
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Address                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMatchmakingMetrics_X::MatchmakingEnd()
+void UMatchmakingMetrics_X::RankedReconnect(const struct FString& Address)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingEnd");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.RankedReconnect");
 
-	UMatchmakingMetrics_X_MatchmakingEnd_Params params;
+	UMatchmakingMetrics_X_RankedReconnect_Params params;
+	params.Address = Address;
 
 	auto flags = fn->FunctionFlags;
 
@@ -42990,14 +41416,14 @@ void UMatchmakingMetrics_X::MatchmakingEnd()
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingFoundServer
+// Function ProjectX.MatchmakingMetrics_X.End
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 
-void UMatchmakingMetrics_X::MatchmakingFoundServer()
+void UMatchmakingMetrics_X::End()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingFoundServer");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.End");
 
-	UMatchmakingMetrics_X_MatchmakingFoundServer_Params params;
+	UMatchmakingMetrics_X_End_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43007,14 +41433,21 @@ void UMatchmakingMetrics_X::MatchmakingFoundServer()
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingCancel
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Function ProjectX.MatchmakingMetrics_X.FoundServer
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 Address                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ServerName                     (CPF_Parm, CPF_NeedCtorLink)
+// int                            Playlist                       (CPF_Parm)
 
-void UMatchmakingMetrics_X::MatchmakingCancel()
+void UMatchmakingMetrics_X::FoundServer(const struct FString& Address, const struct FString& ServerName, int Playlist)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingCancel");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.FoundServer");
 
-	UMatchmakingMetrics_X_MatchmakingCancel_Params params;
+	UMatchmakingMetrics_X_FoundServer_Params params;
+	params.Address = Address;
+	params.ServerName = ServerName;
+	params.Playlist = Playlist;
 
 	auto flags = fn->FunctionFlags;
 
@@ -43024,16 +41457,55 @@ void UMatchmakingMetrics_X::MatchmakingCancel()
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingError
+// Function ProjectX.MatchmakingMetrics_X.RecordFoundServer
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FCheckReservationData   Reservation                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void UMatchmakingMetrics_X::RecordFoundServer(struct FCheckReservationData* Reservation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.RecordFoundServer");
+
+	UMatchmakingMetrics_X_RecordFoundServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Reservation != nullptr)
+		*Reservation = params.Reservation;
+}
+
+
+// Function ProjectX.MatchmakingMetrics_X.Cancel
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+
+void UMatchmakingMetrics_X::Cancel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.Cancel");
+
+	UMatchmakingMetrics_X_Cancel_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MatchmakingMetrics_X.ErrorID
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // int                            Error                          (CPF_Parm)
 
-void UMatchmakingMetrics_X::MatchmakingError(int Error)
+void UMatchmakingMetrics_X::ErrorID(int Error)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingError");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.ErrorID");
 
-	UMatchmakingMetrics_X_MatchmakingError_Params params;
+	UMatchmakingMetrics_X_ErrorID_Params params;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -43044,16 +41516,16 @@ void UMatchmakingMetrics_X::MatchmakingError(int Error)
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingErrorUnknown
+// Function ProjectX.MatchmakingMetrics_X.ErrorUnknown
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
 // struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMatchmakingMetrics_X::MatchmakingErrorUnknown(const struct FString& Message)
+void UMatchmakingMetrics_X::ErrorUnknown(const struct FString& Message)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingErrorUnknown");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.ErrorUnknown");
 
-	UMatchmakingMetrics_X_MatchmakingErrorUnknown_Params params;
+	UMatchmakingMetrics_X_ErrorUnknown_Params params;
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
@@ -43084,18 +41556,18 @@ void UMatchmakingMetrics_X::RecordError(const struct FString& Error)
 }
 
 
-// Function ProjectX.MatchmakingMetrics_X.MatchmakingStart
+// Function ProjectX.MatchmakingMetrics_X.Start
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // TArray<struct FString>         Regions                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<int>                    Playlists                      (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bDisableCrossPlay              (CPF_Parm)
 
-void UMatchmakingMetrics_X::MatchmakingStart(TArray<struct FString> Regions, TArray<int> Playlists, bool bDisableCrossPlay)
+void UMatchmakingMetrics_X::Start(TArray<struct FString> Regions, TArray<int> Playlists, bool bDisableCrossPlay)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.MatchmakingStart");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchmakingMetrics_X.Start");
 
-	UMatchmakingMetrics_X_MatchmakingStart_Params params;
+	UMatchmakingMetrics_X_Start_Params params;
 	params.Regions = Regions;
 	params.Playlists = Playlists;
 	params.bDisableCrossPlay = bDisableCrossPlay;
@@ -43772,29 +42244,6 @@ class UPartyMessage_InviteToTrade_X* UPartyMessage_InviteToTrade_X::SetInviteMem
 }
 
 
-// Function ProjectX.PartyMessage_InviteToTrade_X.SetMemberId
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_InviteToTrade_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_InviteToTrade_X* UPartyMessage_InviteToTrade_X::SetMemberId(const struct FUniqueNetId& InMemberId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_InviteToTrade_X.SetMemberId");
-
-	UPartyMessage_InviteToTrade_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetTradeId
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -43864,29 +42313,6 @@ class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::
 }
 
 
-// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetMemberId
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_AcceptInviteToTrade_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_AcceptInviteToTrade_X* UPartyMessage_AcceptInviteToTrade_X::SetMemberId(const struct FUniqueNetId& InMemberId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetMemberId");
-
-	UPartyMessage_AcceptInviteToTrade_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetTradingMemberId
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -43910,42 +42336,43 @@ class UPartyMessage_PlayerTradeComplete_X* UPartyMessage_PlayerTradeComplete_X::
 }
 
 
-// Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetMemberId
-// (FUNC_Defined, FUNC_Public)
+// Function ProjectX.PartyMetrics_X.PartyMessage
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_PlayerTradeComplete_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
+// struct FName                   MessageType                    (CPF_Parm)
 
-class UPartyMessage_PlayerTradeComplete_X* UPartyMessage_PlayerTradeComplete_X::SetMemberId(const struct FUniqueNetId& InMemberId)
+void UPartyMetrics_X::PartyMessage(const struct FUniqueNetId& PartyID, const struct FName& MessageType)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetMemberId");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyMessage");
 
-	UPartyMessage_PlayerTradeComplete_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
+	UPartyMetrics_X_PartyMessage_Params params;
+	params.PartyID = PartyID;
+	params.MessageType = MessageType;
 
 	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
 // Function ProjectX.PartyMetrics_X.PartyChanged
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 // Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 // bool                           bLeader                        (CPF_Parm)
 // int                            PartySize                      (CPF_Parm)
 // int                            LocalPlayers                   (CPF_Parm)
 // int                            RemotePlayers                  (CPF_Parm)
 
-void UPartyMetrics_X::PartyChanged(bool bLeader, int PartySize, int LocalPlayers, int RemotePlayers)
+void UPartyMetrics_X::PartyChanged(const struct FUniqueNetId& PartyID, bool bLeader, int PartySize, int LocalPlayers, int RemotePlayers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyChanged");
 
 	UPartyMetrics_X_PartyChanged_Params params;
+	params.PartyID = PartyID;
 	params.bLeader = bLeader;
 	params.PartySize = PartySize;
 	params.LocalPlayers = LocalPlayers;
@@ -44005,13 +42432,15 @@ void UPartyMetrics_X::RecordPartyChanged(class UOnlineGameParty_X* Party)
 // Function ProjectX.PartyMetrics_X.PartyError
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UPartyMetrics_X::PartyError(const struct FString& Error)
+void UPartyMetrics_X::PartyError(const struct FUniqueNetId& PartyID, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyError");
 
 	UPartyMetrics_X_PartyError_Params params;
+	params.PartyID = PartyID;
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
@@ -44025,13 +42454,15 @@ void UPartyMetrics_X::PartyError(const struct FString& Error)
 // Function ProjectX.PartyMetrics_X.PartyKickRemotePlayer
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 // struct FString                 Reason                         (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
 
-void UPartyMetrics_X::PartyKickRemotePlayer(const struct FString& Reason)
+void UPartyMetrics_X::PartyKickRemotePlayer(const struct FUniqueNetId& PartyID, const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyKickRemotePlayer");
 
 	UPartyMetrics_X_PartyKickRemotePlayer_Params params;
+	params.PartyID = PartyID;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -44045,13 +42476,15 @@ void UPartyMetrics_X::PartyKickRemotePlayer(const struct FString& Reason)
 // Function ProjectX.PartyMetrics_X.PartyKickLocalPlayer
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 // struct FString                 Reason                         (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
 
-void UPartyMetrics_X::PartyKickLocalPlayer(const struct FString& Reason)
+void UPartyMetrics_X::PartyKickLocalPlayer(const struct FUniqueNetId& PartyID, const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyKickLocalPlayer");
 
 	UPartyMetrics_X_PartyKickLocalPlayer_Params params;
+	params.PartyID = PartyID;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -44065,13 +42498,15 @@ void UPartyMetrics_X::PartyKickLocalPlayer(const struct FString& Reason)
 // Function ProjectX.PartyMetrics_X.PartyLeave
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 // struct FString                 Reason                         (CPF_Parm, CPF_NeedCtorLink)
 
-void UPartyMetrics_X::PartyLeave(const struct FString& Reason)
+void UPartyMetrics_X::PartyLeave(const struct FUniqueNetId& PartyID, const struct FString& Reason)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyLeave");
 
 	UPartyMetrics_X_PartyLeave_Params params;
+	params.PartyID = PartyID;
 	params.Reason = Reason;
 
 	auto flags = fn->FunctionFlags;
@@ -44084,12 +42519,15 @@ void UPartyMetrics_X::PartyLeave(const struct FString& Reason)
 
 // Function ProjectX.PartyMetrics_X.PartyCreationFailed
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 
-void UPartyMetrics_X::PartyCreationFailed()
+void UPartyMetrics_X::PartyCreationFailed(const struct FUniqueNetId& PartyID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyCreationFailed");
 
 	UPartyMetrics_X_PartyCreationFailed_Params params;
+	params.PartyID = PartyID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44101,12 +42539,15 @@ void UPartyMetrics_X::PartyCreationFailed()
 
 // Function ProjectX.PartyMetrics_X.PartyCreated
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
 
-void UPartyMetrics_X::PartyCreated()
+void UPartyMetrics_X::PartyCreated(const struct FUniqueNetId& PartyID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMetrics_X.PartyCreated");
 
 	UPartyMetrics_X_PartyCreated_Params params;
+	params.PartyID = PartyID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44151,29 +42592,6 @@ class UPartyMessage_ReadyToTrade_X* UPartyMessage_ReadyToTrade_X::SetTradingMemb
 
 	UPartyMessage_ReadyToTrade_X_SetTradingMemberId_Params params;
 	params.InTradingMemberId = InTradingMemberId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.PartyMessage_ReadyToTrade_X.SetMemberId
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_ReadyToTrade_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_ReadyToTrade_X* UPartyMessage_ReadyToTrade_X::SetMemberId(const struct FUniqueNetId& InMemberId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_ReadyToTrade_X.SetMemberId");
-
-	UPartyMessage_ReadyToTrade_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44287,6 +42705,23 @@ class URPC_PlayerSearchPrivateMatch_X* URPC_PlayerSearchPrivateMatch_X::SetRegio
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetGameServerPingList_X.OnSuccess
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void URPC_GetGameServerPingList_X::OnSuccess()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetGameServerPingList_X.OnSuccess");
+
+	URPC_GetGameServerPingList_X_OnSuccess_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -44407,14 +42842,14 @@ void UReservationsMetrics_X::ReservationsFull()
 }
 
 
-// Function ProjectX.ReservationsMetrics_X.PlatformExlusiveReservation
+// Function ProjectX.ReservationsMetrics_X.PlatformExclusiveReservation
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 
-void UReservationsMetrics_X::PlatformExlusiveReservation()
+void UReservationsMetrics_X::PlatformExclusiveReservation()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.PlatformExlusiveReservation");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.ReservationsMetrics_X.PlatformExclusiveReservation");
 
-	UReservationsMetrics_X_PlatformExlusiveReservation_Params params;
+	UReservationsMetrics_X_PlatformExclusiveReservation_Params params;
 
 	auto flags = fn->FunctionFlags;
 
@@ -44560,52 +42995,6 @@ void UReservationsMetrics_X::FirstReservation(int Playlist)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FReservationData        P                              (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2::LambdaCallback(const struct FReservationData& P)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.LambdaCallback");
-
-	UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2_LambdaCallback_Params params;
-	params.P = P;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineGameReservations_X* InOuter                        (CPF_Parm)
-// class UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2* UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2::STATIC_StaticConstruct(class UOnlineGameReservations_X* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2.StaticConstruct");
-
-	UOnlineGameReservations_X__AllPlayersInGame__4D0808504AF3B7B9201721A8F33D63F2_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -44814,52 +43203,6 @@ void APRI_X::EventPlayerNameChanged(class APRI_X* PRI)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.LambdaCallback
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FReservationData        P                              (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6::LambdaCallback(const struct FReservationData& P)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.LambdaCallback");
-
-	UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6_LambdaCallback_Params params;
-	params.P = P;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.StaticConstruct
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineGameReservations_X* InOuter                        (CPF_Parm)
-// class UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6* UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6::STATIC_StaticConstruct(class UOnlineGameReservations_X* InOuter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6.StaticConstruct");
-
-	UOnlineGameReservations_X__AllPlayersReserved__D1B98EE14C79846FB351FB90AA9E42F6_StaticConstruct_Params params;
-	params.InOuter = InOuter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -45523,73 +43866,6 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetPlatform(const struct F
 }
 
 
-// Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetAllow
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bValue                         (CPF_Parm)
-// class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer_X::SetAllow(bool bValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetAllow");
-
-	UPartyMessage_RequestAddLocalPlayer_X_SetAllow_Params params;
-	params.bValue = bValue;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetReponse
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer_X::SetReponse()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetReponse");
-
-	UPartyMessage_RequestAddLocalPlayer_X_SetReponse_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetMemberId
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_RequestAddLocalPlayer_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPartyMessage_RequestAddLocalPlayer_X* UPartyMessage_RequestAddLocalPlayer_X::SetMemberId(const struct FUniqueNetId& InMemberId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_RequestAddLocalPlayer_X.SetMemberId");
-
-	UPartyMessage_RequestAddLocalPlayer_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function ProjectX.PostProcessManager_X.GetNextPostProcessOverride
 // (FUNC_Final, FUNC_Defined, FUNC_Protected)
 // Parameters:
@@ -46015,6 +44291,26 @@ void UPostProcessManager_X::Init(class APlayerController_X* NewOwner)
 }
 
 
+// Function ProjectX.__RPC_X__CreateTask_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UScriptAsyncTask_X*      T                              (CPF_Parm)
+
+void U__RPC_X__CreateTask_1::LambdaCallback(class UScriptAsyncTask_X* T)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.__RPC_X__CreateTask_1.LambdaCallback");
+
+	U__RPC_X__CreateTask_1_LambdaCallback_Params params;
+	params.T = T;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_Test_X.Check
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -46356,23 +44652,6 @@ struct FString UTestsHelper_X::STATIC_GetRandomString()
 }
 
 
-// Function ProjectX.SeqAct_OpenUIScene_X.Activated
-// (FUNC_Event, FUNC_Public)
-
-void USeqAct_OpenUIScene_X::Activated()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.SeqAct_OpenUIScene_X.Activated");
-
-	USeqAct_OpenUIScene_X_Activated_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function ProjectX.SeqAct_SpawnArchetype_X.Init
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
@@ -46462,3006 +44741,6 @@ void UTask_X::TaskToExecute()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.ModifyAnimPosition
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            FrameIndex                     (CPF_Parm)
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-// bool                           bWarnifNotFound                (CPF_OptionalParm, CPF_Parm)
-
-void UUIAnimSequence_X::ModifyAnimPosition(int FrameIndex, float NewX, float NewY, bool bWarnifNotFound)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.ModifyAnimPosition");
-
-	UUIAnimSequence_X_ModifyAnimPosition_Params params;
-	params.FrameIndex = FrameIndex;
-	params.NewX = NewX;
-	params.NewY = NewY;
-	params.bWarnifNotFound = bWarnifNotFound;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.GetBlendedValue
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FUIAnimValue            BlendStart                     (CPF_Parm)
-// struct FUIAnimValue            BlendEnd                       (CPF_Parm)
-// float                          Blend                          (CPF_Parm)
-// struct FUIAnimValue            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FUIAnimValue UUIAnimSequence_X::GetBlendedValue(const struct FUIAnimValue& BlendStart, const struct FUIAnimValue& BlendEnd, float Blend)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetBlendedValue");
-
-	UUIAnimSequence_X_GetBlendedValue_Params params;
-	params.BlendStart = BlendStart;
-	params.BlendEnd = BlendEnd;
-	params.Blend = Blend;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.GetAnimKeyframes
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            SeqIndex                       (CPF_Parm)
-// struct FUIAnimValue            StartValue                     (CPF_Parm, CPF_OutParm)
-// struct FUIAnimValue            EndValue                       (CPF_Parm, CPF_OutParm)
-
-void UUIAnimSequence_X::GetAnimKeyframes(int SeqIndex, struct FUIAnimValue* StartValue, struct FUIAnimValue* EndValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetAnimKeyframes");
-
-	UUIAnimSequence_X_GetAnimKeyframes_Params params;
-	params.SeqIndex = SeqIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (StartValue != nullptr)
-		*StartValue = params.StartValue;
-	if (EndValue != nullptr)
-		*EndValue = params.EndValue;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.GetNewValue
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// float                          Time                           (CPF_Parm)
-// struct FUIAnimValue            StartValue                     (CPF_Parm)
-// struct FUIAnimValue            NewValue                       (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIAnimSequence_X::GetNewValue(float Time, const struct FUIAnimValue& StartValue, struct FUIAnimValue* NewValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetNewValue");
-
-	UUIAnimSequence_X_GetNewValue_Params params;
-	params.Time = Time;
-	params.StartValue = StartValue;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (NewValue != nullptr)
-		*NewValue = params.NewValue;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UUIAnimSequence_X::Init()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.Init");
-
-	UUIAnimSequence_X_Init_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.SetWidgetValue
-// (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            AnimValue                      (CPF_Parm, CPF_OutParm)
-
-void UUIAnimSequence_X::SetWidgetValue(class UUIWidget_X* Widget, struct FUIAnimValue* AnimValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.SetWidgetValue");
-
-	UUIAnimSequence_X_SetWidgetValue_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (AnimValue != nullptr)
-		*AnimValue = params.AnimValue;
-}
-
-
-// Function ProjectX.UIAnimSequence_X.GetWidgetValue
-// (FUNC_Public, FUNC_Delegate, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            AnimValue                      (CPF_Parm, CPF_OutParm)
-
-void UUIAnimSequence_X::GetWidgetValue(class UUIWidget_X* Widget, struct FUIAnimValue* AnimValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIAnimSequence_X.GetWidgetValue");
-
-	UUIAnimSequence_X_GetWidgetValue_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (AnimValue != nullptr)
-		*AnimValue = params.AnimValue;
-}
-
-
-// Function ProjectX.UICursor_X.OnClick
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnClick()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnClick");
-
-	UUICursor_X_OnClick_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.OnDragEnd
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnDragEnd()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragEnd");
-
-	UUICursor_X_OnDragEnd_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.OnDragMove
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnDragMove()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragMove");
-
-	UUICursor_X_OnDragMove_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.OnDragStart
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnDragStart()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnDragStart");
-
-	UUICursor_X_OnDragStart_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.OnReleased
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnReleased()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnReleased");
-
-	UUICursor_X_OnReleased_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.OnPressed
-// (FUNC_Public, FUNC_Delegate)
-
-void UUICursor_X::OnPressed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.OnPressed");
-
-	UUICursor_X_OnPressed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.NotifyGameSessionEnded
-// (FUNC_Defined, FUNC_Public)
-
-void UUICursor_X::NotifyGameSessionEnded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.NotifyGameSessionEnded");
-
-	UUICursor_X_NotifyGameSessionEnded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.SetPressedInternal
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// bool                           bNewPressed                    (CPF_Parm)
-
-void UUICursor_X::SetPressedInternal(bool bNewPressed)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetPressedInternal");
-
-	UUICursor_X_SetPressedInternal_Params params;
-	params.bNewPressed = bNewPressed;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.SetPressed
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewPressed                    (CPF_Parm)
-
-void UUICursor_X::SetPressed(bool bNewPressed)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetPressed");
-
-	UUICursor_X_SetPressed_Params params;
-	params.bNewPressed = bNewPressed;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.UpdateHoverWidget
-// (FUNC_Defined, FUNC_Protected)
-
-void UUICursor_X::UpdateHoverWidget()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.UpdateHoverWidget");
-
-	UUICursor_X_UpdateHoverWidget_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.TickCursor
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUICursor_X::TickCursor(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.TickCursor");
-
-	UUICursor_X_TickCursor_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.SetCanvasPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FVector2D               NewPosition                    (CPF_Parm)
-
-void UUICursor_X::SetCanvasPosition(const struct FVector2D& NewPosition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.SetCanvasPosition");
-
-	UUICursor_X_SetCanvasPosition_Params params;
-	params.NewPosition = NewPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UICursor_X.GetTimeSeconds
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUICursor_X::GetTimeSeconds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.GetTimeSeconds");
-
-	UUICursor_X_GetTimeSeconds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UICursor_X.GetWorldInfo
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AWorldInfo*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AWorldInfo* UUICursor_X::GetWorldInfo()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.GetWorldInfo");
-
-	UUICursor_X_GetWorldInfo_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UICursor_X.Init
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUISceneManager_X*       InManager                      (CPF_Parm)
-
-void UUICursor_X::Init(class UUISceneManager_X* InManager)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UICursor_X.Init");
-
-	UUICursor_X_Init_Params params;
-	params.InManager = InManager;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.NotifyGameSessionEnded
-// (FUNC_Defined, FUNC_Public)
-
-void UUISceneManager_X::NotifyGameSessionEnded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.NotifyGameSessionEnded");
-
-	UUISceneManager_X_NotifyGameSessionEnded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.SetHasInteraction
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bHasInteraction                (CPF_Parm)
-
-void UUISceneManager_X::SetHasInteraction(bool bHasInteraction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.SetHasInteraction");
-
-	UUISceneManager_X_SetHasInteraction_Params params;
-	params.bHasInteraction = bHasInteraction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.UpdateCursorVisibility
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUISceneManager_X::UpdateCursorVisibility()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.UpdateCursorVisibility");
-
-	UUISceneManager_X_UpdateCursorVisibility_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetHoverWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FVector                 ScreenPosition                 (CPF_Parm)
-// struct FRay                    WorldRay                       (CPF_Parm)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUISceneManager_X::GetHoverWidget(const struct FVector& ScreenPosition, const struct FRay& WorldRay)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetHoverWidget");
-
-	UUISceneManager_X_GetHoverWidget_Params params;
-	params.ScreenPosition = ScreenPosition;
-	params.WorldRay = WorldRay;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.UpdateCursor
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 Canvas                         (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-
-void UUISceneManager_X::UpdateCursor(class UCanvas* Canvas, float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.UpdateCursor");
-
-	UUISceneManager_X_UpdateCursor_Params params;
-	params.Canvas = Canvas;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.Draw
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULocalPlayer*            ForPlayer                      (CPF_Parm)
-// class UCanvas*                 Canvas                         (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-
-void UUISceneManager_X::Draw(class ULocalPlayer* ForPlayer, class UCanvas* Canvas, float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.Draw");
-
-	UUISceneManager_X_Draw_Params params;
-	params.ForPlayer = ForPlayer;
-	params.Canvas = Canvas;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.MoveCursor_Mobile
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FVector2D               NewPosition                    (CPF_Parm)
-
-void UUISceneManager_X::MoveCursor_Mobile(const struct FVector2D& NewPosition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.MoveCursor_Mobile");
-
-	UUISceneManager_X_MoveCursor_Mobile_Params params;
-	params.NewPosition = NewPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.HandleMobileTouch
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
-
-void UUISceneManager_X::HandleMobileTouch(TEnumAsByte<ETouchType> EventType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleMobileTouch");
-
-	UUISceneManager_X_HandleMobileTouch_Params params;
-	params.EventType = EventType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.HandleInputAxis
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// float                          Delta                          (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneManager_X::HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleInputAxis");
-
-	UUISceneManager_X_HandleInputAxis_Params params;
-	params.ControllerId = ControllerId;
-	params.Key = Key;
-	params.Delta = Delta;
-	params.DeltaTime = DeltaTime;
-	params.bGamepad = bGamepad;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.HandleInputKey
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
-// float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
-// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneManager_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.HandleInputKey");
-
-	UUISceneManager_X_HandleInputKey_Params params;
-	params.ControllerId = ControllerId;
-	params.Key = Key;
-	params.EventType = EventType;
-	params.AmountDepressed = AmountDepressed;
-	params.bGamepad = bGamepad;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.CloseAllScenes
-// (FUNC_Defined, FUNC_Public)
-
-void UUISceneManager_X::CloseAllScenes()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.CloseAllScenes");
-
-	UUISceneManager_X_CloseAllScenes_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.RegisterUIScene
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              SceneInstance                  (CPF_Parm)
-// class ULocalPlayer*            Player                         (CPF_Parm)
-
-void UUISceneManager_X::RegisterUIScene(class UUIScene_X* SceneInstance, class ULocalPlayer* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.RegisterUIScene");
-
-	UUISceneManager_X_RegisterUIScene_Params params;
-	params.SceneInstance = SceneInstance;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.OpenUIScene
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              SceneArchetype                 (CPF_Parm)
-// class ULocalPlayer*            Player                         (CPF_Parm)
-// class UUIScene_X*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIScene_X* UUISceneManager_X::OpenUIScene(class UUIScene_X* SceneArchetype, class ULocalPlayer* Player)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.OpenUIScene");
-
-	UUISceneManager_X_OpenUIScene_Params params;
-	params.SceneArchetype = SceneArchetype;
-	params.Player = Player;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetSceneClientByID
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// class UUISceneClient_X*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUISceneClient_X* UUISceneManager_X::GetSceneClientByID(int ControllerId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetSceneClientByID");
-
-	UUISceneManager_X_GetSceneClientByID_Params params;
-	params.ControllerId = ControllerId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetLocalPlayer
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// class ULocalPlayer*            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ULocalPlayer* UUISceneManager_X::GetLocalPlayer(int ControllerId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetLocalPlayer");
-
-	UUISceneManager_X_GetLocalPlayer_Params params;
-	params.ControllerId = ControllerId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetRealTimeSeconds
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUISceneManager_X::GetRealTimeSeconds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetRealTimeSeconds");
-
-	UUISceneManager_X_GetRealTimeSeconds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.OnCursorPressEmptySpace
-// (FUNC_Defined, FUNC_Protected)
-
-void UUISceneManager_X::OnCursorPressEmptySpace()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.OnCursorPressEmptySpace");
-
-	UUISceneManager_X_OnCursorPressEmptySpace_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.Initialize
-// (FUNC_Defined, FUNC_Public)
-
-void UUISceneManager_X::Initialize()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.Initialize");
-
-	UUISceneManager_X_Initialize_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetGameVieport
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UGameViewportClient_X*   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UGameViewportClient_X* UUISceneManager_X::GetGameVieport()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetGameVieport");
-
-	UUISceneManager_X_GetGameVieport_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneManager_X.GetInstance
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UUISceneManager_X*       ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUISceneManager_X* UUISceneManager_X::STATIC_GetInstance()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneManager_X.GetInstance");
-
-	UUISceneManager_X_GetInstance_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.GetNewWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             OldWidget                      (CPF_Parm)
-// TArray<class UUIWidget_X*>     OldScenes                      (CPF_Parm, CPF_NeedCtorLink)
-// TArray<class UUIWidget_X*>     NewScenes                      (CPF_Parm, CPF_NeedCtorLink)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUISceneClient_X::GetNewWidget(class UUIWidget_X* OldWidget, TArray<class UUIWidget_X*> OldScenes, TArray<class UUIWidget_X*> NewScenes)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetNewWidget");
-
-	UUISceneClient_X_GetNewWidget_Params params;
-	params.OldWidget = OldWidget;
-	params.OldScenes = OldScenes;
-	params.NewScenes = NewScenes;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.HandleTextArchetypesReloaded
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UUISceneClient_X::HandleTextArchetypesReloaded()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleTextArchetypesReloaded");
-
-	UUISceneClient_X_HandleTextArchetypesReloaded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.UpdateCursorVisibility
-// (FUNC_Defined, FUNC_Protected)
-
-void UUISceneClient_X::UpdateCursorVisibility()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.UpdateCursorVisibility");
-
-	UUISceneClient_X_UpdateCursorVisibility_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnPressEnter
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnPressEnter()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressEnter");
-
-	UUISceneClient_X_OnPressEnter_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnPressRight
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnPressRight()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressRight");
-
-	UUISceneClient_X_OnPressRight_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnPressLeft
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnPressLeft()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressLeft");
-
-	UUISceneClient_X_OnPressLeft_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnPressDown
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnPressDown()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressDown");
-
-	UUISceneClient_X_OnPressDown_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnPressUp
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnPressUp()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnPressUp");
-
-	UUISceneClient_X_OnPressUp_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.OnInputKey
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::OnInputKey(const struct FName& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OnInputKey");
-
-	UUISceneClient_X_OnInputKey_Params params;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.SetHasInteraction
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bHasInteraction                (CPF_Parm)
-
-void UUISceneClient_X::SetHasInteraction(bool bHasInteraction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetHasInteraction");
-
-	UUISceneClient_X_SetHasInteraction_Params params;
-	params.bHasInteraction = bHasInteraction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.AutoNavigate
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 Direction                      (CPF_Parm)
-
-void UUISceneClient_X::AutoNavigate(const struct FVector& Direction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.AutoNavigate");
-
-	UUISceneClient_X_AutoNavigate_Params params;
-	params.Direction = Direction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.GetAutoFocusWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUISceneClient_X::GetAutoFocusWidget()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetAutoFocusWidget");
-
-	UUISceneClient_X_GetAutoFocusWidget_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.HandleFocusWidgetFocusChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UUIWidget_X*             Sender                         (CPF_Parm)
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUISceneClient_X::HandleFocusWidgetFocusChanged(class UUIWidget_X* Sender, class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleFocusWidgetFocusChanged");
-
-	UUISceneClient_X_HandleFocusWidgetFocusChanged_Params params;
-	params.Sender = Sender;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.SetFocusWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             NewFocusWidget                 (CPF_Parm)
-
-void UUISceneClient_X::SetFocusWidget(class UUIWidget_X* NewFocusWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetFocusWidget");
-
-	UUISceneClient_X_SetFocusWidget_Params params;
-	params.NewFocusWidget = NewFocusWidget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.SetAutoFocusWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             NewWidget                      (CPF_Parm)
-
-void UUISceneClient_X::SetAutoFocusWidget(class UUIWidget_X* NewWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetAutoFocusWidget");
-
-	UUISceneClient_X_SetAutoFocusWidget_Params params;
-	params.NewWidget = NewWidget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.HandleHoverWidgetHoverChanged
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUISceneClient_X::HandleHoverWidgetHoverChanged(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.HandleHoverWidgetHoverChanged");
-
-	UUISceneClient_X_HandleHoverWidgetHoverChanged_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.SetHoverWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             NewHoverWidget                 (CPF_Parm)
-
-void UUISceneClient_X::SetHoverWidget(class UUIWidget_X* NewHoverWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetHoverWidget");
-
-	UUISceneClient_X_SetHoverWidget_Params params;
-	params.NewHoverWidget = NewHoverWidget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.GetHoverWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 ScreenPosition                 (CPF_Parm)
-// class UUIWidget_X*             OutWidget                      (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUISceneClient_X::GetHoverWidget(const struct FVector& ScreenPosition, class UUIWidget_X** OutWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.GetHoverWidget");
-
-	UUISceneClient_X_GetHoverWidget_Params params;
-	params.ScreenPosition = ScreenPosition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutWidget != nullptr)
-		*OutWidget = params.OutWidget;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.SetNavigationMode
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EUINavigationMode> NewNavMode                     (CPF_Parm)
-
-void UUISceneClient_X::SetNavigationMode(TEnumAsByte<EUINavigationMode> NewNavMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.SetNavigationMode");
-
-	UUISceneClient_X_SetNavigationMode_Params params;
-	params.NewNavMode = NewNavMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.LayoutUI
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUISceneClient_X::LayoutUI(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.LayoutUI");
-
-	UUISceneClient_X_LayoutUI_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.DrawDebugPoints
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUISceneClient_X::DrawDebugPoints(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.DrawDebugPoints");
-
-	UUISceneClient_X_DrawDebugPoints_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.AddDebugPoint
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 V                              (CPF_Parm)
-// struct FString                 Text                           (CPF_OptionalParm, CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void UUISceneClient_X::AddDebugPoint(const struct FVector& V, const struct FString& Text)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.AddDebugPoint");
-
-	UUISceneClient_X_AddDebugPoint_Params params;
-	params.V = V;
-	params.Text = Text;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.Draw
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-
-void UUISceneClient_X::Draw(class UCanvas* C, float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.Draw");
-
-	UUISceneClient_X_Draw_Params params;
-	params.C = C;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.ValidateFocusWidget
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUISceneClient_X::ValidateFocusWidget()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.ValidateFocusWidget");
-
-	UUISceneClient_X_ValidateFocusWidget_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.UpdateFocusWidgets
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUISceneClient_X::UpdateFocusWidgets()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.UpdateFocusWidgets");
-
-	UUISceneClient_X_UpdateFocusWidgets_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.NotifyFocusDirty
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUISceneClient_X::NotifyFocusDirty()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.NotifyFocusDirty");
-
-	UUISceneClient_X_NotifyFocusDirty_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.NotifyLayoutDirty
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUISceneClient_X::NotifyLayoutDirty()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.NotifyLayoutDirty");
-
-	UUISceneClient_X_NotifyLayoutDirty_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.RegisterScene
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              SceneInstance                  (CPF_Parm)
-
-void UUISceneClient_X::RegisterScene(class UUIScene_X* SceneInstance)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.RegisterScene");
-
-	UUISceneClient_X_RegisterScene_Params params;
-	params.SceneInstance = SceneInstance;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UISceneClient_X.OpenScene
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIScene_X*              SceneArchetype                 (CPF_Parm)
-// class UUIScene_X*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIScene_X* UUISceneClient_X::OpenScene(class UUIScene_X* SceneArchetype)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.OpenScene");
-
-	UUISceneClient_X_OpenScene_Params params;
-	params.SceneArchetype = SceneArchetype;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UISceneClient_X.InitSceneClient
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULocalPlayer*            InPlayer                       (CPF_Parm)
-
-void UUISceneClient_X::InitSceneClient(class ULocalPlayer* InPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UISceneClient_X.InitSceneClient");
-
-	UUISceneClient_X_InitSceneClient_Params params;
-	params.InPlayer = InPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIEventAction_X.ModifyAnimPosition
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FName                   SequenceName                   (CPF_Parm)
-// float                          NewX                           (CPF_Parm)
-// float                          NewY                           (CPF_Parm)
-// bool                           bWarnifNotFound                (CPF_OptionalParm, CPF_Parm)
-
-void UUIEventAction_X::ModifyAnimPosition(const struct FName& SequenceName, float NewX, float NewY, bool bWarnifNotFound)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.ModifyAnimPosition");
-
-	UUIEventAction_X_ModifyAnimPosition_Params params;
-	params.SequenceName = SequenceName;
-	params.NewX = NewX;
-	params.NewY = NewY;
-	params.bWarnifNotFound = bWarnifNotFound;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueRotation
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueRotation(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueRotation");
-
-	UUIEventAction_X_SetWidgetValueRotation_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueRotation
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueRotation(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueRotation");
-
-	UUIEventAction_X_GetWidgetValueRotation_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueOpacity
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueOpacity(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueOpacity");
-
-	UUIEventAction_X_SetWidgetValueOpacity_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueOpacity
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueOpacity(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueOpacity");
-
-	UUIEventAction_X_GetWidgetValueOpacity_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueBackColor
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueBackColor(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueBackColor");
-
-	UUIEventAction_X_SetWidgetValueBackColor_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueBackColor
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueBackColor(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueBackColor");
-
-	UUIEventAction_X_GetWidgetValueBackColor_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueTint
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueTint(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueTint");
-
-	UUIEventAction_X_SetWidgetValueTint_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueTint
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueTint(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueTint");
-
-	UUIEventAction_X_GetWidgetValueTint_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueScale2D
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueScale2D(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueScale2D");
-
-	UUIEventAction_X_SetWidgetValueScale2D_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueScale2D
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueScale2D(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueScale2D");
-
-	UUIEventAction_X_GetWidgetValueScale2D_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueScale
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueScale(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueScale");
-
-	UUIEventAction_X_SetWidgetValueScale_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueScale
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueScale(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueScale");
-
-	UUIEventAction_X_GetWidgetValueScale_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValuePivotPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValuePivotPosition(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValuePivotPosition");
-
-	UUIEventAction_X_SetWidgetValuePivotPosition_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValuePivotPosition
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValuePivotPosition(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValuePivotPosition");
-
-	UUIEventAction_X_GetWidgetValuePivotPosition_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValueRelativePosition
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValueRelativePosition(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValueRelativePosition");
-
-	UUIEventAction_X_SetWidgetValueRelativePosition_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValueRelativePosition
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValueRelativePosition(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValueRelativePosition");
-
-	UUIEventAction_X_GetWidgetValueRelativePosition_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.SetWidgetValuePixelOffset
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::SetWidgetValuePixelOffset(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.SetWidgetValuePixelOffset");
-
-	UUIEventAction_X_SetWidgetValuePixelOffset_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.GetWidgetValuePixelOffset
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-// struct FUIAnimValue            Value                          (CPF_Parm, CPF_OutParm)
-
-void UUIEventAction_X::GetWidgetValuePixelOffset(class UUIWidget_X* Widget, struct FUIAnimValue* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.GetWidgetValuePixelOffset");
-
-	UUIEventAction_X_GetWidgetValuePixelOffset_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-}
-
-
-// Function ProjectX.UIEventAction_X.Trigger
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             Widget                         (CPF_Parm)
-
-void UUIEventAction_X::Trigger(class UUIWidget_X* Widget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.Trigger");
-
-	UUIEventAction_X_Trigger_Params params;
-	params.Widget = Widget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIEventAction_X.Init
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-
-void UUIEventAction_X::Init()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIEventAction_X.Init");
-
-	UUIEventAction_X_Init_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIInteraction_X.GetFakeAxisKey
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// float                          Delta                          (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName UUIInteraction_X::GetFakeAxisKey(const struct FName& Key, float Delta)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetFakeAxisKey");
-
-	UUIInteraction_X_GetFakeAxisKey_Params params;
-	params.Key = Key;
-	params.Delta = Delta;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.HandleInputAxis
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// float                          Delta                          (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIInteraction_X::HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.HandleInputAxis");
-
-	UUIInteraction_X_HandleInputAxis_Params params;
-	params.ControllerId = ControllerId;
-	params.Key = Key;
-	params.Delta = Delta;
-	params.DeltaTime = DeltaTime;
-	params.bGamepad = bGamepad;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.HandleInputKey
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<EInputEvent>       EventType                      (CPF_Parm)
-// float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
-// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIInteraction_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.HandleInputKey");
-
-	UUIInteraction_X_HandleInputKey_Params params;
-	params.ControllerId = ControllerId;
-	params.Key = Key;
-	params.EventType = EventType;
-	params.AmountDepressed = AmountDepressed;
-	params.bGamepad = bGamepad;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.AddKeyHandlers
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// TArray<struct FKeyHandler>     Handlers                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void UUIInteraction_X::AddKeyHandlers(TArray<struct FKeyHandler>* Handlers)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.AddKeyHandlers");
-
-	UUIInteraction_X_AddKeyHandlers_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Handlers != nullptr)
-		*Handlers = params.Handlers;
-}
-
-
-// Function ProjectX.UIInteraction_X.SetKeyHandler
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// struct FScriptDelegate         Handler                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UUIInteraction_X::SetKeyHandler(const struct FName& Key, const struct FScriptDelegate& Handler)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetKeyHandler");
-
-	UUIInteraction_X_SetKeyHandler_Params params;
-	params.Key = Key;
-	params.Handler = Handler;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIInteraction_X.GetOpenTime
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUIInteraction_X::GetOpenTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetOpenTime");
-
-	UUIInteraction_X_GetOpenTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.GetTimeSeconds
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UUIInteraction_X::GetTimeSeconds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetTimeSeconds");
-
-	UUIInteraction_X_GetTimeSeconds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.GetWorldInfo
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AWorldInfo*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AWorldInfo* UUIInteraction_X::GetWorldInfo()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetWorldInfo");
-
-	UUIInteraction_X_GetWorldInfo_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.GetInteractionIndex
-// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
-// Parameters:
-// TArray<class UInteraction*>    Interactions                   (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UUIInteraction_X::GetInteractionIndex(TArray<class UInteraction*>* Interactions)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.GetInteractionIndex");
-
-	UUIInteraction_X_GetInteractionIndex_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Interactions != nullptr)
-		*Interactions = params.Interactions;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIInteraction_X.SetEnabled
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewEnabled                    (CPF_Parm)
-
-void UUIInteraction_X::SetEnabled(bool bNewEnabled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetEnabled");
-
-	UUIInteraction_X_SetEnabled_Params params;
-	params.bNewEnabled = bNewEnabled;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIInteraction_X.SetPlayer
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ULocalPlayer*            ForPlayer                      (CPF_Parm)
-
-void UUIInteraction_X::SetPlayer(class ULocalPlayer* ForPlayer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.SetPlayer");
-
-	UUIInteraction_X_SetPlayer_Params params;
-	params.ForPlayer = ForPlayer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIInteraction_X.OnInputKey
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIInteraction_X::OnInputKey(const struct FName& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIInteraction_X.OnInputKey");
-
-	UUIInteraction_X_OnInputKey_Params params;
-	params.Key = Key;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIToggleButton_X.SetDisabled
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// bool                           bNewDisabled                   (CPF_Parm)
-
-void UUIToggleButton_X::SetDisabled(bool bNewDisabled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.SetDisabled");
-
-	UUIToggleButton_X_SetDisabled_Params params;
-	params.bNewDisabled = bNewDisabled;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIToggleButton_X.SetSelected
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bNewSelected                   (CPF_Parm)
-
-void UUIToggleButton_X::SetSelected(bool bNewSelected)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.SetSelected");
-
-	UUIToggleButton_X_SetSelected_Params params;
-	params.bNewSelected = bNewSelected;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIToggleButton_X.Click
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIToggleButton_X::Click(class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.Click");
-
-	UUIToggleButton_X_Click_Params params;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIToggleButton_X.PostInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIToggleButton_X::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.PostInit");
-
-	UUIToggleButton_X_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIToggleButton_X.EventToggled
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIToggleButton_X*       Button                         (CPF_Parm)
-// bool                           bIsSelected                    (CPF_Parm)
-
-void UUIToggleButton_X::EventToggled(class UUIToggleButton_X* Button, bool bIsSelected)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIToggleButton_X.EventToggled");
-
-	UUIToggleButton_X_EventToggled_Params params;
-	params.Button = Button;
-	params.bIsSelected = bIsSelected;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.NotifyServerTyping
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_InputText_X::NotifyServerTyping()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.NotifyServerTyping");
-
-	UUIWidget_InputText_X_NotifyServerTyping_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.Click
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UUICursor_X*             Cursor                         (CPF_Parm)
-
-void UUIWidget_InputText_X::Click(class UUICursor_X* Cursor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Click");
-
-	UUIWidget_InputText_X_Click_Params params;
-	params.Cursor = Cursor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetCursorLine
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// int                            NewLine                        (CPF_Parm)
-
-void UUIWidget_InputText_X::SetCursorLine(int NewLine)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorLine");
-
-	UUIWidget_InputText_X_SetCursorLine_Params params;
-	params.NewLine = NewLine;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.UpdateCursorLine
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UUIWidget_InputText_X::UpdateCursorLine()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.UpdateCursorLine");
-
-	UUIWidget_InputText_X_UpdateCursorLine_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetCursorPos
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// int                            NewPos                         (CPF_Parm)
-
-void UUIWidget_InputText_X::SetCursorPos(int NewPos)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorPos");
-
-	UUIWidget_InputText_X_SetCursorPos_Params params;
-	params.NewPos = NewPos;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.Delete
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UUIWidget_InputText_X::Delete()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Delete");
-
-	UUIWidget_InputText_X_Delete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.Backspace
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-
-void UUIWidget_InputText_X::Backspace()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Backspace");
-
-	UUIWidget_InputText_X_Backspace_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.AppendText
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UUIWidget_InputText_X::AppendText(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.AppendText");
-
-	UUIWidget_InputText_X_AppendText_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetTextInternal
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void UUIWidget_InputText_X::SetTextInternal(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetTextInternal");
-
-	UUIWidget_InputText_X_SetTextInternal_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetText
-// (FUNC_Defined, FUNC_Exec, FUNC_Public)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void UUIWidget_InputText_X::SetText(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetText");
-
-	UUIWidget_InputText_X_SetText_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.ValidateText
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UUIWidget_InputText_X::ValidateText(const struct FString& NewText)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.ValidateText");
-
-	UUIWidget_InputText_X_ValidateText_Params params;
-	params.NewText = NewText;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.HandleInputChar
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FString                 Unicode                        (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_InputText_X::HandleInputChar(int ControllerId, const struct FString& Unicode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleInputChar");
-
-	UUIWidget_InputText_X_HandleInputChar_Params params;
-	params.ControllerId = ControllerId;
-	params.Unicode = Unicode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.HandleInputKey
-// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Private)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
-// float                          AmountDepressed                (CPF_OptionalParm, CPF_Parm)
-// bool                           bGamepad                       (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_InputText_X::HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleInputKey");
-
-	UUIWidget_InputText_X_HandleInputKey_Params params;
-	params.ControllerId = ControllerId;
-	params.Key = Key;
-	params.Event = Event;
-	params.AmountDepressed = AmountDepressed;
-	params.bGamepad = bGamepad;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.ProcessControlKey
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FName                   Key                            (CPF_Parm)
-// TEnumAsByte<EInputEvent>       Event                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UUIWidget_InputText_X::ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.ProcessControlKey");
-
-	UUIWidget_InputText_X_ProcessControlKey_Params params;
-	params.Key = Key;
-	params.Event = Event;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetCursorVisible
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// bool                           bVisible                       (CPF_Parm)
-
-void UUIWidget_InputText_X::SetCursorVisible(bool bVisible)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetCursorVisible");
-
-	UUIWidget_InputText_X_SetCursorVisible_Params params;
-	params.bVisible = bVisible;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.DrawCursor
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_InputText_X::DrawCursor(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.DrawCursor");
-
-	UUIWidget_InputText_X_DrawCursor_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.DrawSelf
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void UUIWidget_InputText_X::DrawSelf(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.DrawSelf");
-
-	UUIWidget_InputText_X_DrawSelf_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.LayoutChildSize
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// class UUIWidget_X*             ChildWidget                    (CPF_Parm)
-// struct FUIWidgetMatrix         ChildMatrix                    (CPF_Parm)
-
-void UUIWidget_InputText_X::LayoutChildSize(class UCanvas* C, class UUIWidget_X* ChildWidget, const struct FUIWidgetMatrix& ChildMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.LayoutChildSize");
-
-	UUIWidget_InputText_X_LayoutChildSize_Params params;
-	params.C = C;
-	params.ChildWidget = ChildWidget;
-	params.ChildMatrix = ChildMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.Tick
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// float                          DeltaSeconds                   (CPF_Parm)
-
-void UUIWidget_InputText_X::Tick(class UCanvas* C, float DeltaSeconds)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.Tick");
-
-	UUIWidget_InputText_X_Tick_Params params;
-	params.C = C;
-	params.DeltaSeconds = DeltaSeconds;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.HandleConsoleInputComplete
-// (FUNC_Final, FUNC_Defined, FUNC_Private)
-// Parameters:
-// struct FString                 NewText                        (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bCanceled                      (CPF_Parm)
-
-void UUIWidget_InputText_X::HandleConsoleInputComplete(const struct FString& NewText, bool bCanceled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.HandleConsoleInputComplete");
-
-	UUIWidget_InputText_X_HandleConsoleInputComplete_Params params;
-	params.NewText = NewText;
-	params.bCanceled = bCanceled;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.OnFocusChanged
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_InputText_X::OnFocusChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.OnFocusChanged");
-
-	UUIWidget_InputText_X_OnFocusChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.SetReadOnlyText
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Txt                            (CPF_Parm, CPF_NeedCtorLink)
-
-void UUIWidget_InputText_X::SetReadOnlyText(const struct FString& Txt)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.SetReadOnlyText");
-
-	UUIWidget_InputText_X_SetReadOnlyText_Params params;
-	params.Txt = Txt;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.PostInit
-// (FUNC_Defined, FUNC_Protected)
-
-void UUIWidget_InputText_X::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.PostInit");
-
-	UUIWidget_InputText_X_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_InputText_X.EventSelectNextInputText
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UUIWidget_InputText_X*   LastWidget                     (CPF_Parm)
-
-void UUIWidget_InputText_X::EventSelectNextInputText(class UUIWidget_InputText_X* LastWidget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_InputText_X.EventSelectNextInputText");
-
-	UUIWidget_InputText_X_EventSelectNextInputText_Params params;
-	params.LastWidget = LastWidget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_Stack_X.LayoutChildrenPosition
-// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-// struct FUIWidgetMatrix         ChildContainerMatrix           (CPF_Parm)
-
-void UUIWidget_Stack_X::LayoutChildrenPosition(class UCanvas* C, const struct FUIWidgetMatrix& ChildContainerMatrix)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_Stack_X.LayoutChildrenPosition");
-
-	UUIWidget_Stack_X_LayoutChildrenPosition_Params params;
-	params.C = C;
-	params.ChildContainerMatrix = ChildContainerMatrix;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_List_X.SetNumberOfItems
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            NumItems                       (CPF_Parm)
-
-void UUIWidget_List_X::SetNumberOfItems(int NumItems)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.SetNumberOfItems");
-
-	UUIWidget_List_X_SetNumberOfItems_Params params;
-	params.NumItems = NumItems;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_List_X.RemoveAllWidgets
-// (FUNC_Defined, FUNC_Public)
-
-void UUIWidget_List_X::RemoveAllWidgets()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.RemoveAllWidgets");
-
-	UUIWidget_List_X_RemoveAllWidgets_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.UIWidget_List_X.AddSimpleTextItem
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FString                 Label                          (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_List_X::AddSimpleTextItem(const struct FString& Label)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.AddSimpleTextItem");
-
-	UUIWidget_List_X_AddSimpleTextItem_Params params;
-	params.Label = Label;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_List_X.InsertItem
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            Index                          (CPF_OptionalParm, CPF_Parm)
-// class UUIWidget_X*             Template                       (CPF_OptionalParm, CPF_Parm)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_List_X::InsertItem(int Index, class UUIWidget_X* Template)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.InsertItem");
-
-	UUIWidget_List_X_InsertItem_Params params;
-	params.Index = Index;
-	params.Template = Template;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function ProjectX.UIWidget_List_X.AddItem
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UUIWidget_X*             Template                       (CPF_OptionalParm, CPF_Parm)
-// class UUIWidget_X*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UUIWidget_X* UUIWidget_List_X::AddItem(class UUIWidget_X* Template)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.UIWidget_List_X.AddItem");
-
-	UUIWidget_List_X_AddItem_Params params;
-	params.Template = Template;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -49745,18 +45024,18 @@ void URPC_TestPlayerID_X::Init()
 }
 
 
-// Function ProjectX.PartyMessage_AcceptTrade_X.SetMemberId
+// Function ProjectX.RPC_RecordMatch_X.SetMatchName
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
-// struct FUniqueNetId            InMemberId                     (CPF_Parm)
-// class UPartyMessage_AcceptTrade_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+// struct FString                 InName                         (CPF_Parm, CPF_NeedCtorLink)
+// class URPC_RecordMatch_X*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UPartyMessage_AcceptTrade_X* UPartyMessage_AcceptTrade_X::SetMemberId(const struct FUniqueNetId& InMemberId)
+class URPC_RecordMatch_X* URPC_RecordMatch_X::SetMatchName(const struct FString& InName)
 {
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PartyMessage_AcceptTrade_X.SetMemberId");
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_RecordMatch_X.SetMatchName");
 
-	UPartyMessage_AcceptTrade_X_SetMemberId_Params params;
-	params.InMemberId = InMemberId;
+	URPC_RecordMatch_X_SetMatchName_Params params;
+	params.InName = InName;
 
 	auto flags = fn->FunctionFlags;
 
@@ -49819,9 +45098,9 @@ class URPC_RecordMatch_X* URPC_RecordMatch_X::SetMatchGUID(const struct FString&
 // Parameters:
 // class ULocalCache_X*           Cache                          (CPF_Parm)
 // class UObject*                 CacheObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void ULocalCacheTests_X::STATIC_HandleLocalCacheImported(class ULocalCache_X* Cache, class UObject* CacheObject, class UError_X* Error)
+void ULocalCacheTests_X::STATIC_HandleLocalCacheImported(class ULocalCache_X* Cache, class UObject* CacheObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.HandleLocalCacheImported");
 
@@ -49860,9 +45139,9 @@ void ULocalCacheTests_X::STATIC_ImportTest()
 // Parameters:
 // class ULocalCache_X*           Cache                          (CPF_Parm)
 // class UObject*                 CacheObject                    (CPF_Parm)
-// class UError_X*                Error                          (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
 
-void ULocalCacheTests_X::STATIC_HandleLocalCacheExported(class ULocalCache_X* Cache, class UObject* CacheObject, class UError_X* Error)
+void ULocalCacheTests_X::STATIC_HandleLocalCacheExported(class ULocalCache_X* Cache, class UObject* CacheObject, class UError* Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.LocalCacheTests_X.HandleLocalCacheExported");
 
@@ -50118,63 +45397,6 @@ class URPC_CheckReservation_X* URPC_CheckReservation_X::SetIsHeartbeat(bool bInI
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function ProjectX.MetricsConfig_X.ResetProperties
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UMetricsSystem_X*        Metrics                        (CPF_Parm, CPF_EditInline)
-
-void UMetricsConfig_X::ResetProperties(class UMetricsSystem_X* Metrics)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.ResetProperties");
-
-	UMetricsConfig_X_ResetProperties_Params params;
-	params.Metrics = Metrics;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsConfig_X.SetProperties
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UMetricsSystem_X*        Metrics                        (CPF_Parm, CPF_EditInline)
-
-void UMetricsConfig_X::SetProperties(class UMetricsSystem_X* Metrics)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.SetProperties");
-
-	UMetricsConfig_X_SetProperties_Params params;
-	params.Metrics = Metrics;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function ProjectX.MetricsConfig_X.Apply
-// (FUNC_Defined, FUNC_Public)
-
-void UMetricsConfig_X::Apply()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MetricsConfig_X.Apply");
-
-	UMetricsConfig_X_Apply_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 
@@ -50835,6 +46057,300 @@ class URPC_SetPlayerSkillTier_X* URPC_SetPlayerSkillTier_X::SetPlaylist(int InPl
 
 	URPC_SetPlayerSkillTier_X_SetPlaylist_Params params;
 	params.InPlaylist = InPlaylist;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.__ScriptAsyncTask_X__CompleteAll_1.LambdaCallback
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UScriptAsyncTask_X*      T                              (CPF_Parm)
+
+void U__ScriptAsyncTask_X__CompleteAll_1::LambdaCallback(class UScriptAsyncTask_X* T)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.__ScriptAsyncTask_X__CompleteAll_1.LambdaCallback");
+
+	U__ScriptAsyncTask_X__CompleteAll_1_LambdaCallback_Params params;
+	params.T = T;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorderConfig_X.ResetProperties
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UEventRecorder_X*        EventRecorder                  (CPF_Parm, CPF_EditInline)
+
+void UEventRecorderConfig_X::ResetProperties(class UEventRecorder_X* EventRecorder)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderConfig_X.ResetProperties");
+
+	UEventRecorderConfig_X_ResetProperties_Params params;
+	params.EventRecorder = EventRecorder;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorderConfig_X.SetProperties
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UEventRecorder_X*        EventRecorder                  (CPF_Parm, CPF_EditInline)
+
+void UEventRecorderConfig_X::SetProperties(class UEventRecorder_X* EventRecorder)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderConfig_X.SetProperties");
+
+	UEventRecorderConfig_X_SetProperties_Params params;
+	params.EventRecorder = EventRecorder;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.EventRecorderConfig_X.Apply
+// (FUNC_Defined, FUNC_Public)
+
+void UEventRecorderConfig_X::Apply()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.EventRecorderConfig_X.Apply");
+
+	UEventRecorderConfig_X_Apply_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.__RPC_GetPlayerPermissions_X__GetPlayerPermissions_1
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FUniqueNetId            P                              (CPF_Parm)
+// struct FPlayerPermissionsList  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FPlayerPermissionsList URPC_GetPlayerPermissions_X::__RPC_GetPlayerPermissions_X__GetPlayerPermissions_1(const struct FUniqueNetId& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.__RPC_GetPlayerPermissions_X__GetPlayerPermissions_1");
+
+	URPC_GetPlayerPermissions_X___RPC_GetPlayerPermissions_X__GetPlayerPermissions_1_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.GetPermissionFromString
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   PermissionName                 (CPF_Parm)
+// TEnumAsByte<EOnlinePlayerPermission> Permission                     (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool URPC_GetPlayerPermissions_X::GetPermissionFromString(const struct FName& PermissionName, TEnumAsByte<EOnlinePlayerPermission>* Permission)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.GetPermissionFromString");
+
+	URPC_GetPlayerPermissions_X_GetPermissionFromString_Params params;
+	params.PermissionName = PermissionName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Permission != nullptr)
+		*Permission = params.Permission;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.ConvertPermissions
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// TArray<struct FName>           PermissionNames                (CPF_Parm, CPF_NeedCtorLink)
+// TArray<TEnumAsByte<EOnlinePlayerPermission>> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+TArray<TEnumAsByte<EOnlinePlayerPermission>> URPC_GetPlayerPermissions_X::ConvertPermissions(TArray<struct FName> PermissionNames)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.ConvertPermissions");
+
+	URPC_GetPlayerPermissions_X_ConvertPermissions_Params params;
+	params.PermissionNames = PermissionNames;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.ConvertPlayerPermissions
+// (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FPlayerPermissionsList  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FPlayerPermissionsList URPC_GetPlayerPermissions_X::ConvertPlayerPermissions(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.ConvertPlayerPermissions");
+
+	URPC_GetPlayerPermissions_X_ConvertPlayerPermissions_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.GetPlayerPermissions
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// TArray<struct FPlayerPermissionsList> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+// TArray<struct FPlayerPermissionsList> MapLocal_CA81527F4782C7D1866A93A74380140F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+
+TArray<struct FPlayerPermissionsList> URPC_GetPlayerPermissions_X::GetPlayerPermissions(TArray<struct FPlayerPermissionsList>* MapLocal_CA81527F4782C7D1866A93A74380140F)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.GetPlayerPermissions");
+
+	URPC_GetPlayerPermissions_X_GetPlayerPermissions_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (MapLocal_CA81527F4782C7D1866A93A74380140F != nullptr)
+		*MapLocal_CA81527F4782C7D1866A93A74380140F = params.MapLocal_CA81527F4782C7D1866A93A74380140F;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_GetPlayerPermissions_X.SetPlayers
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FUniqueNetId>    InPlayerIDs                    (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class URPC_GetPlayerPermissions_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_GetPlayerPermissions_X* URPC_GetPlayerPermissions_X::SetPlayers(TArray<struct FUniqueNetId>* InPlayerIDs)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.SetPlayers");
+
+	URPC_GetPlayerPermissions_X_SetPlayers_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InPlayerIDs != nullptr)
+		*InPlayerIDs = params.InPlayerIDs;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_AddPlayerToRole_X.SetRole
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// TEnumAsByte<EOnlinePlayerRole> Role                           (CPF_Parm)
+// class URPC_AddPlayerToRole_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_AddPlayerToRole_X* URPC_AddPlayerToRole_X::SetRole(TEnumAsByte<EOnlinePlayerRole> Role)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_AddPlayerToRole_X.SetRole");
+
+	URPC_AddPlayerToRole_X_SetRole_Params params;
+	params.Role = Role;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_RemovePlayerFromRole_X.SetRole
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// TEnumAsByte<EOnlinePlayerRole> Role                           (CPF_Parm)
+// class URPC_RemovePlayerFromRole_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_RemovePlayerFromRole_X* URPC_RemovePlayerFromRole_X::SetRole(TEnumAsByte<EOnlinePlayerRole> Role)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_RemovePlayerFromRole_X.SetRole");
+
+	URPC_RemovePlayerFromRole_X_SetRole_Params params;
+	params.Role = Role;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.RPC_SetSeasonReward_X.SetReward
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            Level                          (CPF_Parm)
+// int                            Wins                           (CPF_Parm)
+// class URPC_SetSeasonReward_X*  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class URPC_SetSeasonReward_X* URPC_SetSeasonReward_X::SetReward(int Level, int Wins)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_SetSeasonReward_X.SetReward");
+
+	URPC_SetSeasonReward_X_SetReward_Params params;
+	params.Level = Level;
+	params.Wins = Wins;
 
 	auto flags = fn->FunctionFlags;
 

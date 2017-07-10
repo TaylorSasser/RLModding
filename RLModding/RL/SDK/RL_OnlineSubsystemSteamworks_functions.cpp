@@ -2853,20 +2853,42 @@ void UOnlineSubsystemSteamworks::OnCommerceDialogClosed()
 }
 
 
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayerAccountID
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            NetId                          (CPF_Const, CPF_Parm)
+
+void UOnlineSubsystemSteamworks::GetPlayerAccountID(const struct FUniqueNetId& NetId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayerAccountID");
+
+	UOnlineSubsystemSteamworks_GetPlayerAccountID_Params params;
+	params.NetId = NetId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WordFilterSanitizeString
-// (FUNC_Public)
+// (FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // struct FString                 Comment                        (CPF_Const, CPF_Parm, CPF_NeedCtorLink)
 // struct FScriptDelegate         SanitizeDelegate               (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_OptionalParm, CPF_Parm)
 // bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-bool UOnlineSubsystemSteamworks::WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate)
+bool UOnlineSubsystemSteamworks::WordFilterSanitizeString(const struct FString& Comment, const struct FScriptDelegate& SanitizeDelegate, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.WordFilterSanitizeString");
 
 	UOnlineSubsystemSteamworks_WordFilterSanitizeString_Params params;
 	params.Comment = Comment;
 	params.SanitizeDelegate = SanitizeDelegate;
+	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10579,28 +10601,6 @@ bool UOnlineSubsystemSteamworks::Init()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnSanitizeStringComplete
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystemSteamworks::OnSanitizeStringComplete(const struct FString& Original, const struct FString& Sanitized)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnSanitizeStringComplete");
-
-	UOnlineSubsystemSteamworks_OnSanitizeStringComplete_Params params;
-	params.Original = Original;
-	params.Sanitized = Sanitized;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
 }
 
 

@@ -39,7 +39,7 @@ namespace SDK
 enum class EEdition
 {
 	Edition_Default                = 0,
-	Edition_Penguin                = 1,
+	Edition_China                  = 1,
 	Edition_MAX                    = 2
 };
 
@@ -192,8 +192,11 @@ enum class EGameVersion
 	GameVersion_Update14           = 17,
 	GameVersion_Update15           = 18,
 	GameVersion_Update16           = 19,
-	GameVersion_Unreleased         = 20,
-	GameVersion_MAX                = 21
+	GameVersion_Update17           = 20,
+	GameVersion_Update18           = 21,
+	GameVersion_Update19           = 22,
+	GameVersion_Unreleased         = 23,
+	GameVersion_MAX                = 24
 };
 
 

@@ -78,6 +78,39 @@ struct FAkEventTrackKey
 	class UAkEvent*                                    Event;                                                    // 0x0004(0x0004) (CPF_Edit)
 };
 
+// ScriptStruct AkAudio.AkRevPhysicsSimulation.AkRevSimPhysicsControls
+// 0x0018
+struct FAkRevSimPhysicsControls
+{
+	float                                              Weight;                                                   // 0x0000(0x0004) (CPF_Edit)
+	float                                              EngineTorque;                                             // 0x0004(0x0004) (CPF_Edit)
+	float                                              BreakingHorsePower;                                       // 0x0008(0x0004) (CPF_Edit)
+	TArray<float>                                      GearRatios;                                               // 0x000C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+};
+
+// ScriptStruct AkAudio.AkRevPhysicsSimulation.AkRevSimFrame
+// 0x000C
+struct FAkRevSimFrame
+{
+	float                                              RPM;                                                      // 0x0000(0x0004)
+	int                                                Gear;                                                     // 0x0004(0x0004)
+	float                                              Velocity;                                                 // 0x0008(0x0004)
+};
+
+// ScriptStruct AkAudio.AkRevPhysicsSimulation.AkRevSimUpdateParams
+// 0x003C
+struct FAkRevSimUpdateParams
+{
+	float                                              Throttle;                                                 // 0x0000(0x0004)
+	float                                              Brake;                                                    // 0x0004(0x0004)
+	float                                              EngineFrictionScale;                                      // 0x0008(0x0004)
+	float                                              GroundFrictionScale;                                      // 0x000C(0x0004)
+	float                                              ClutchedGearRatio;                                        // 0x0010(0x0004)
+	unsigned long                                      bEnableUpShifting : 1;                                    // 0x0014(0x0004)
+	struct FAkRevSimPhysicsControls                    Controls;                                                 // 0x0018(0x0018) (CPF_NeedCtorLink)
+	struct FAkRevSimFrame                              frame;                                                    // 0x0030(0x000C)
+};
+
 }
 
 #ifdef _MSC_VER

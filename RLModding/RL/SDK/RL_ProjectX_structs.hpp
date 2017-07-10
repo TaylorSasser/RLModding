@@ -12,16 +12,10 @@ namespace SDK
 //Constants
 //---------------------------------------------------------------------------
 
-#define CONST_InMatchmakingID                                    -2
-#define CONST_MAX_CONTROLLER_IDS                                 4
-#define CONST_EpochYear                                          1970
-#define CONST_SecondsInMinute                                    60
-#define CONST_SecondsInHour                                      3600
+#define CONST_MaxPing                                            1.0f
 #define CONST_DEMO_VERSION                                       0
-#define CONST_SecondsInMonth                                     2629743
-#define CONST_MaxPing                                            1000.0f
-#define CONST_SecondsInDay                                       86400
-#define CONST_SecondsInYear                                      31556926
+#define CONST_MAX_CONTROLLER_IDS                                 4
+#define CONST_InMatchmakingID                                    -2
 #define CONST_NumFriendsPerRequest                               100
 #define CONST_FriendRequestPerFrame                              5
 
@@ -60,6 +54,16 @@ enum class EWebRequestAuthorization
 };
 
 
+// Enum ProjectX._Types_X.EPushNotificationType
+enum class EPushNotificationType
+{
+	NotificationType_Unknown       = 0,
+	AasAddictNotify                = 1,
+	AasGameStartResp               = 2,
+	EPushNotificationType_MAX      = 3
+};
+
+
 // Enum ProjectX._Types_X.EReservationStatus
 enum class EReservationStatus
 {
@@ -74,9 +78,9 @@ enum class EReservationStatus
 // Enum ProjectX._Types_X.EDatabaseEnvironment
 enum class EDatabaseEnvironment
 {
-	DBE_Test                       = 0,
+	DBE_DevLocal                   = 0,
 	DBE_Dev                        = 1,
-	DBE_DevLocal                   = 2,
+	DBE_Test                       = 2,
 	DBE_Production                 = 3,
 	DBE_MAX                        = 4
 };
@@ -148,6 +152,24 @@ enum class EPlayerTitleType
 	PlayerTitleType_Ranked_Champion = 6,
 	PlayerTitleType_RLCS_Champion  = 7,
 	PlayerTitleType_MAX            = 8
+};
+
+
+// Enum ProjectX._Types_X.EOnlinePlayerPermission
+enum class EOnlinePlayerPermission
+{
+	OPP_PrivateMatchAdmin          = 0,
+	OPP_SuperPrivateMatchAdmin     = 1,
+	OPP_MAX                        = 2
+};
+
+
+// Enum ProjectX._Types_X.EOnlinePlayerRole
+enum class EOnlinePlayerRole
+{
+	OPR_PrivateMatchAdmin          = 0,
+	OPR_SuperPrivateMatchAdmin     = 1,
+	OPR_MAX                        = 2
 };
 
 
@@ -259,6 +281,25 @@ enum class EPartyProcessingStatus
 };
 
 
+// Enum ProjectX.OnlineGameRegions_X.RegionPingResult
+enum class ERegionPingResult
+{
+	PingResult_NotUsable           = 0,
+	PingResult_UsingCache          = 1,
+	PingResult_UsingSuccessfulPing = 2,
+	PingResult_MAX                 = 3
+};
+
+
+// Enum ProjectX.OnlineGameWordFilter_X.EWordFilterUsage
+enum class EWordFilterUsage
+{
+	WordFilterUsage_Name           = 0,
+	WordFilterUsage_Chat           = 1,
+	WordFilterUsage_MAX            = 2
+};
+
+
 // Enum ProjectX.ReservationsPasswordMessage_X.EPasswordFailureReason
 enum class EPasswordFailureReason
 {
@@ -296,73 +337,6 @@ enum class ETcpConnectionState
 	TcpConnectionState_Connected   = 2,
 	TcpConnectionState_Disconnected = 3,
 	TcpConnectionState_MAX         = 4
-};
-
-
-// Enum ProjectX.UIAnimSequence_X.EAnimBlendMode
-enum class EAnimBlendMode
-{
-	Blend_Set                      = 0,
-	Blend_Add                      = 1,
-	Blend_ReversedSet              = 2,
-	Blend_ReversedAdd              = 3,
-	BLEND_MAX                      = 4
-};
-
-
-// Enum ProjectX.UIWidget_X.EDockPoint
-enum class EDockPoint
-{
-	Dock_None                      = 0,
-	Dock_TopLeft                   = 1,
-	Dock_Top                       = 2,
-	Dock_TopRight                  = 3,
-	Dock_Left                      = 4,
-	Dock_Center                    = 5,
-	Dock_Right                     = 6,
-	Dock_BottomLeft                = 7,
-	Dock_Bottom                    = 8,
-	Dock_BottomRight               = 9,
-	Dock_MAX                       = 10
-};
-
-
-// Enum ProjectX.UIWidget_X.EWidgetVisibility
-enum class EWidgetVisibility
-{
-	Visibility_Visible             = 0,
-	Visibility_Hidden              = 1,
-	Visibility_Collapsed           = 2,
-	Visibility_MAX                 = 3
-};
-
-
-// Enum ProjectX.UIWidget_X.EWidgetFocusType
-enum class EWidgetFocusType
-{
-	FocusType_None                 = 0,
-	FocusType_Full                 = 1,
-	FocusType_CursorOnly           = 2,
-	FocusType_MAX                  = 3
-};
-
-
-// Enum ProjectX.UIWidget_WrappedText_X.ETextAlign
-enum class ETextAlign
-{
-	TextAlign_Left                 = 0,
-	TextAlign_Center               = 1,
-	TextAlign_Right                = 2,
-	TextAlign_MAX                  = 3
-};
-
-
-// Enum ProjectX.UIWidget_Stack_X.EStackOrientation
-enum class EStackOrientation
-{
-	STACK_Vertical                 = 0,
-	STACK_Horizontal               = 1,
-	STACK_MAX                      = 2
 };
 
 
@@ -595,6 +569,15 @@ struct FEffectsMapping
 	class UParticleSystem*                             Particle;                                                 // 0x0004(0x0004) (CPF_Edit)
 };
 
+// ScriptStruct ProjectX._Types_X.MetricsEvent
+// 0x001C
+struct FMetricsEvent
+{
+	float                                              TimeSeconds;                                              // 0x0000(0x0004)
+	struct FString                                     EventName;                                                // 0x0004(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     EventData;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
+};
+
 // ScriptStruct ProjectX.FakeData_X.FakeData1
 // 0x002D
 struct FFakeData1
@@ -788,15 +771,6 @@ struct FMatchmakingStateReport
 	TArray<struct FMatchmakingInfo>                    Info;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct ProjectX._Types_X.MetricsEvent
-// 0x001C
-struct FMetricsEvent
-{
-	float                                              TimeSeconds;                                              // 0x0000(0x0004)
-	struct FString                                     EventName;                                                // 0x0004(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     EventData;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct ProjectX.ObjectListComponent_X.ObjectListListener
 // 0x0024
 struct FObjectListListener
@@ -875,6 +849,14 @@ struct FGamepadDeadzoneSettings
 	float                                              Deadzone;                                                 // 0x000C(0x0004) (CPF_Edit)
 };
 
+// ScriptStruct ProjectX.PlayerInput_X.KeyboardAxisBlendSettings
+// 0x000C
+struct FKeyboardAxisBlendSettings
+{
+	struct FName                                       Axis;                                                     // 0x0000(0x0008) (CPF_Edit)
+	float                                              BlendTime;                                                // 0x0008(0x0004) (CPF_Edit)
+};
+
 // ScriptStruct ProjectX._Types_X.BindingAction
 // 0x0030
 struct FBindingAction
@@ -889,14 +871,13 @@ struct FBindingAction
 };
 
 // ScriptStruct ProjectX.PsyNet_X.PsyNetKeys
-// 0x003C
+// 0x0030
 struct FPsyNetKeys
 {
 	struct FString                                     Environment;                                              // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     PsyNetAuth;                                               // 0x000C(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     DedicatedServer;                                          // 0x0018(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     GetKeys;                                                  // 0x0024(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     SteamPublisher;                                           // 0x0030(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     GetKeys;                                                  // 0x0018(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     SteamPublisher;                                           // 0x0024(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.RandomStream_X.RandomStream_Mirror
@@ -1074,110 +1055,6 @@ struct FTeamPairHistory
 	int                                                Count;                                                    // 0x0060(0x0004)
 };
 
-// ScriptStruct ProjectX.UITextureAtlas_X.PlatformAtlas
-// 0x0028
-struct FPlatformAtlas
-{
-	int                                                InvTextureScale;                                          // 0x0000(0x0004) (CPF_Edit, CPF_Const)
-	TArray<TEnumAsByte<EConsoleType>>                  Platforms;                                                // 0x0004(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
-	TArray<class UTexture2D*>                          GeneratedTextures;                                        // 0x0010(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
-	TArray<struct FString>                             GeneratedTexturePaths;                                    // 0x001C(0x000C) (CPF_Edit, CPF_Const, CPF_EditConst, CPF_NeedCtorLink)
-};
-
-// ScriptStruct ProjectX.UITextureSlice_X.IntUV
-// 0x0008
-struct FIntUV
-{
-	int                                                U;                                                        // 0x0000(0x0004) (CPF_Edit)
-	int                                                V;                                                        // 0x0004(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct ProjectX._Types_X.UIAnimValue
-// 0x0018
-struct FUIAnimValue
-{
-	float                                              X;                                                        // 0x0000(0x0004)
-	float                                              Y;                                                        // 0x0004(0x0004)
-	float                                              R;                                                        // 0x0008(0x0004)
-	float                                              G;                                                        // 0x000C(0x0004)
-	float                                              B;                                                        // 0x0010(0x0004)
-	float                                              A;                                                        // 0x0014(0x0004)
-};
-
-// ScriptStruct ProjectX.UIWidget_X.AnimationInstance
-// 0x0028
-struct FAnimationInstance
-{
-	class UUIAnimSequence_X*                           Sequence;                                                 // 0x0000(0x0004)
-	struct FName                                       SeqName;                                                  // 0x0004(0x0008)
-	float                                              Time;                                                     // 0x000C(0x0004)
-	struct FUIAnimValue                                StartValue;                                               // 0x0010(0x0018)
-};
-
-// ScriptStruct ProjectX._Types_X.UITimer
-// 0x000C
-struct FUITimer
-{
-	struct FName                                       Event;                                                    // 0x0000(0x0008) (CPF_Edit)
-	float                                              Delay;                                                    // 0x0008(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct ProjectX._Types_X.UIWidgetMatrix
-// 0x0034
-struct FUIWidgetMatrix
-{
-	struct FVector                                     Position;                                                 // 0x0000(0x000C)
-	struct FVector                                     Size;                                                     // 0x000C(0x000C)
-	struct FVector                                     Scale;                                                    // 0x0018(0x000C)
-	struct FLinearColor                                Tint;                                                     // 0x0024(0x0010)
-};
-
-// ScriptStruct ProjectX._Types_X.KeyHandler
-// 0x0018
-struct FKeyHandler
-{
-	struct FName                                       Key;                                                      // 0x0000(0x0008)
-	struct FScriptDelegate                             Handler;                                                  // 0x0008(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0008(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-};
-
-// ScriptStruct ProjectX.UIWidget_Locator_X.ScreenLocationInfo
-// 0x0014
-struct FScreenLocationInfo
-{
-	struct FVector                                     ScreenLocation;                                           // 0x0000(0x000C)
-	float                                              Distance;                                                 // 0x000C(0x0004)
-	unsigned long                                      bInFront : 1;                                             // 0x0010(0x0004)
-	unsigned long                                      bOnScreen : 1;                                            // 0x0010(0x0004)
-};
-
-// ScriptStruct ProjectX.UIWidget_WrappedText_X.WrappedLineToken
-// 0x0040
-struct FWrappedLineToken
-{
-	struct FString                                     Text;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     URL;                                                      // 0x000C(0x000C) (CPF_NeedCtorLink)
-	struct FVector                                     BoundsMin;                                                // 0x0018(0x000C)
-	struct FVector                                     BoundsMax;                                                // 0x0024(0x000C)
-	struct FLinearColor                                Tint;                                                     // 0x0030(0x0010)
-};
-
-// ScriptStruct ProjectX.UIWidget_WrappedText_X.TokenizedLine
-// 0x000C
-struct FTokenizedLine
-{
-	TArray<struct FWrappedLineToken>                   Tokens;                                                   // 0x0000(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct ProjectX.UIWidget_X.TextLink
-// 0x0024
-struct FTextLink
-{
-	struct FString                                     URL;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Token;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Text;                                                     // 0x0018(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct ProjectX._SharedHelpers.Orientation
 // 0x0018
 struct FOrientation
@@ -1228,13 +1105,14 @@ struct FServerResult
 	struct FCustomMatchSettings                        Settings;                                                 // 0x0018(0x0060) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct ProjectX._Types_X.CheckReservationData
-// 0x001C
-struct FCheckReservationData
+// ScriptStruct ProjectX._Types_X.PushNotificationData
+// 0x0048
+struct FPushNotificationData
 {
-	struct FString                                     Address;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     ServerName;                                               // 0x000C(0x000C) (CPF_NeedCtorLink)
-	int                                                Playlist;                                                 // 0x0018(0x0004)
+	TEnumAsByte<EPushNotificationType>                 NotificationType;                                         // 0x0000(0x0001)
+	struct FString                                     Content;                                                  // 0x0004(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                FromUserId;                                               // 0x0010(0x0030)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0040(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX._Types_X.PushNotificationData.CreatedAt
 };
 
 // ScriptStruct ProjectX._Types_X.IntVector3
@@ -1252,6 +1130,15 @@ struct FDownloadedImage
 {
 	struct FString                                     URL;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
 	class UTexture2DDynamic*                           Texture;                                                  // 0x000C(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.CheckReservationData
+// 0x001C
+struct FCheckReservationData
+{
+	struct FString                                     Address;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     ServerName;                                               // 0x000C(0x000C) (CPF_NeedCtorLink)
+	int                                                Playlist;                                                 // 0x0018(0x0004)
 };
 
 // ScriptStruct ProjectX._Types_X.MapPrefs
@@ -1279,12 +1166,13 @@ struct FGroupSkillRating : public FTierSkillRating
 	TArray<struct FUniqueNetId>                        Players;                                                  // 0x0018(0x000C) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct ProjectX._Types_X.CachedRegionPing
-// 0x000C
-struct FCachedRegionPing
+// ScriptStruct ProjectX._Types_X.PlayerSeasonRewardProgress
+// 0x0038
+struct FPlayerSeasonRewardProgress
 {
-	struct FName                                       Name;                                                     // 0x0000(0x0008)
-	float                                              AvgPing;                                                  // 0x0008(0x0004)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
+	int                                                Level;                                                    // 0x0030(0x0004)
+	int                                                Wins;                                                     // 0x0034(0x0004)
 };
 
 // ScriptStruct ProjectX._Types_X.SkillMatchPartyRating
@@ -1407,6 +1295,36 @@ struct FProcedureResult
 	TArray<struct FProcedureKeyValuePair>              KVPairs;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct ProjectX._Types_X.UITimer
+// 0x000C
+struct FUITimer
+{
+	struct FName                                       Event;                                                    // 0x0000(0x0008) (CPF_Edit)
+	float                                              Delay;                                                    // 0x0008(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct ProjectX._Types_X.UIAnimValue
+// 0x0018
+struct FUIAnimValue
+{
+	float                                              X;                                                        // 0x0000(0x0004)
+	float                                              Y;                                                        // 0x0004(0x0004)
+	float                                              R;                                                        // 0x0008(0x0004)
+	float                                              G;                                                        // 0x000C(0x0004)
+	float                                              B;                                                        // 0x0010(0x0004)
+	float                                              A;                                                        // 0x0014(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.UIWidgetMatrix
+// 0x0034
+struct FUIWidgetMatrix
+{
+	struct FVector                                     Position;                                                 // 0x0000(0x000C)
+	struct FVector                                     Size;                                                     // 0x000C(0x000C)
+	struct FVector                                     Scale;                                                    // 0x0018(0x000C)
+	struct FLinearColor                                Tint;                                                     // 0x0024(0x0010)
+};
+
 // ScriptStruct ProjectX._Types_X.CustomAnimSettings
 // 0x0034
 struct FCustomAnimSettings
@@ -1435,6 +1353,15 @@ struct FRay
 	struct FVector                                     Dir;                                                      // 0x000C(0x000C)
 };
 
+// ScriptStruct ProjectX._Types_X.KeyHandler
+// 0x0018
+struct FKeyHandler
+{
+	struct FName                                       Key;                                                      // 0x0000(0x0008)
+	struct FScriptDelegate                             Handler;                                                  // 0x0008(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0008(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+};
+
 // ScriptStruct ProjectX._Types_X.PlaylistTierSkillRating
 // 0x0004 (0x001C - 0x0018)
 struct FPlaylistTierSkillRating : public FTierSkillRating
@@ -1454,6 +1381,29 @@ struct FPlayerSkillRating : public FTierSkillRating
 struct FPlaylistSkillRating : public FPlayerSkillRating
 {
 	int                                                Playlist;                                                 // 0x0048(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.RPCRewardLevelData
+// 0x0008
+struct FRPCRewardLevelData
+{
+	int                                                SeasonLevel;                                              // 0x0000(0x0004)
+	int                                                SeasonLevelWins;                                          // 0x0004(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.RPCPlayerRewardLevelData
+// 0x0030 (0x0038 - 0x0008)
+struct FRPCPlayerRewardLevelData : public FRPCRewardLevelData
+{
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0008(0x0030)
+};
+
+// ScriptStruct ProjectX._Types_X.CachedRegionPing
+// 0x000C
+struct FCachedRegionPing
+{
+	struct FName                                       Name;                                                     // 0x0000(0x0008)
+	float                                              Ping;                                                     // 0x0008(0x0004)
 };
 
 // ScriptStruct ProjectX._Types_X.PartyMemberServer
@@ -1479,6 +1429,22 @@ struct FPartyMember
 	struct FGuid                                       TradeId;                                                  // 0x00A8(0x0010)
 	unsigned long                                      bReadyToTrade : 1;                                        // 0x00B8(0x0004)
 	struct FPartyMemberServer                          Server;                                                   // 0x00BC(0x001C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct ProjectX._Types_X.ClubMember
+// 0x003C
+struct FClubMember
+{
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
+	struct FString                                     PlayerName;                                               // 0x0030(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct ProjectX._Types_X.PlayerPermissionsList
+// 0x003C
+struct FPlayerPermissionsList
+{
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
+	TArray<TEnumAsByte<EOnlinePlayerPermission>>       Permissions;                                              // 0x0030(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineGameParty_X.PlaylistRestrictionPlayer
@@ -1558,17 +1524,6 @@ struct FTestStructEvent
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
-// ScriptStruct ProjectX.OnlineGameWordFilter_X.FilterPair
-// 0x0028
-struct FFilterPair
-{
-	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Value;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bUnique : 1;                                              // 0x0018(0x0004)
-	unsigned long                                      bPending : 1;                                             // 0x0018(0x0004)
-	TArray<struct FScriptDelegate>                     Callbacks;                                                // 0x001C(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct ProjectX.OnlineImageDownloaderWeb_X.DownloadedImageRequest
 // 0x002C
 struct FDownloadedImageRequest
@@ -1628,6 +1583,19 @@ struct FCachedDataRequest
 	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
+// ScriptStruct ProjectX.OnlineGameWordFilter_X.FilterPair
+// 0x003C
+struct FFilterPair
+{
+	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Value;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
+	TEnumAsByte<EWordFilterUsage>                      Usage;                                                    // 0x0018(0x0001)
+	unsigned long                                      bPending : 1;                                             // 0x001C(0x0004)
+	class UError*                                      Error;                                                    // 0x0020(0x0004)
+	TArray<struct FScriptDelegate>                     Callbacks;                                                // 0x0024(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FScriptDelegate>                     ErrorCallbacks;                                           // 0x0030(0x000C) (CPF_NeedCtorLink)
+};
+
 // ScriptStruct ProjectX.OnlineGameSkillGroups_X.GroupSkillSyncRequest
 // 0x0018
 struct FGroupSkillSyncRequest
@@ -1668,16 +1636,18 @@ struct FWordFilterRequest
 };
 
 // ScriptStruct ProjectX.OnlineGameRegions_X.RegionData
-// 0x0034
+// 0x0039
 struct FRegionData
 {
 	struct FString                                     Name;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     LocalizedName;                                            // 0x000C(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     IP;                                                       // 0x0018(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Address;                                                  // 0x0018(0x000C) (CPF_NeedCtorLink)
 	class UTcpConnection*                              Connection;                                               // 0x0024(0x0004)
 	float                                              PingSendTime;                                             // 0x0028(0x0004)
 	float                                              Ping;                                                     // 0x002C(0x0004)
-	int                                                PingCount;                                                // 0x0030(0x0004)
+	float                                              AvgPing;                                                  // 0x0030(0x0004)
+	int                                                PingCount;                                                // 0x0034(0x0004)
+	TEnumAsByte<ERegionPingResult>                     PingResult;                                               // 0x0038(0x0001)
 };
 
 // ScriptStruct ProjectX.OnlineGamePopulation_X.PlaylistPopulation
@@ -1784,11 +1754,14 @@ struct FGetRegionListData
 };
 
 // ScriptStruct ProjectX.RPC_GetGameServerPingList_X.GetGameServerPingListData
-// 0x0018
+// 0x0034
 struct FGetGameServerPingListData
 {
 	struct FString                                     Region;                                                   // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     IP;                                                       // 0x000C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Host;                                                     // 0x0018(0x000C) (CPF_NeedCtorLink)
+	int                                                Port;                                                     // 0x0024(0x0004)
+	struct FString                                     Address;                                                  // 0x0028(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineGameReservations_AssignTeamsByParty_X.PartyByTeam
@@ -1900,66 +1873,6 @@ struct FRPCTestParam
 	TArray<struct FRPCTestItem>                        TestItems;                                                // 0x0054(0x000C) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct ProjectX.UIAnimSequence_X.UIAnimFrame
-// 0x0021
-struct FUIAnimFrame
-{
-	float                                              X;                                                        // 0x0000(0x0004) (CPF_Edit)
-	float                                              Y;                                                        // 0x0004(0x0004) (CPF_Edit)
-	float                                              R;                                                        // 0x0008(0x0004) (CPF_Edit)
-	float                                              G;                                                        // 0x000C(0x0004) (CPF_Edit)
-	float                                              B;                                                        // 0x0010(0x0004) (CPF_Edit)
-	float                                              A;                                                        // 0x0014(0x0004) (CPF_Edit)
-	float                                              Duration;                                                 // 0x0018(0x0004) (CPF_Edit)
-	float                                              Falloff;                                                  // 0x001C(0x0004) (CPF_Edit)
-	TEnumAsByte<EAnimBlendMode>                        BlendMode;                                                // 0x0020(0x0001) (CPF_Edit)
-};
-
-// ScriptStruct ProjectX.UISceneClient_X.DebugPoint
-// 0x0018
-struct FDebugPoint
-{
-	struct FVector                                     Position;                                                 // 0x0000(0x000C)
-	struct FString                                     Text;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct ProjectX.UIInteraction_X.KeyConversion
-// 0x0010
-struct FKeyConversion
-{
-	struct FName                                       RealKey;                                                  // 0x0000(0x0008)
-	struct FName                                       FakeKey;                                                  // 0x0008(0x0008)
-};
-
-// ScriptStruct ProjectX.UIInteraction_X.AxisConversion
-// 0x0018
-struct UUIInteraction_X_FAxisConversion
-{
-	struct FName                                       RealAxis;                                                 // 0x0000(0x0008)
-	struct FName                                       NegativeFakeKey;                                          // 0x0008(0x0008)
-	struct FName                                       PositiveFakeKey;                                          // 0x0010(0x0008)
-};
-
-// ScriptStruct ProjectX.UIInteraction_X.InputHistoryPoint
-// 0x0010
-struct FInputHistoryPoint
-{
-	struct FName                                       Key;                                                      // 0x0000(0x0008)
-	float                                              LastInputTime;                                            // 0x0008(0x0004)
-	unsigned long                                      bPressed : 1;                                             // 0x000C(0x0004)
-	unsigned long                                      bWasHandled : 1;                                          // 0x000C(0x0004)
-};
-
-// ScriptStruct ProjectX.UIWidget_X.TaggedContent
-// 0x0020
-struct FTaggedContent
-{
-	int                                                StartIdx;                                                 // 0x0000(0x0004)
-	int                                                EndIdx;                                                   // 0x0004(0x0004)
-	struct FString                                     Content;                                                  // 0x0008(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Attributes;                                               // 0x0014(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct ProjectX.LocalCache_X.CacheIOTaskBase
 // 0x0020
 struct FCacheIOTaskBase
@@ -1967,7 +1880,7 @@ struct FCacheIOTaskBase
 	class UObject*                                     CacheObject;                                              // 0x0000(0x0004)
 	TArray<unsigned char>                              Data;                                                     // 0x0004(0x000C) (CPF_AlwaysInit, CPF_NeedCtorLink)
 	struct FString                                     Path;                                                     // 0x0010(0x000C) (CPF_AlwaysInit, CPF_NeedCtorLink)
-	class UErrorType_X*                                Error;                                                    // 0x001C(0x0004)
+	class UErrorType*                                  Error;                                                    // 0x001C(0x0004)
 };
 
 // ScriptStruct ProjectX.LocalCache_X.CacheExportTask
@@ -2002,6 +1915,14 @@ struct FGetGenericDataAllData
 {
 	struct FName                                       DataKey;                                                  // 0x0000(0x0008)
 	struct FString                                     DataValue;                                                // 0x0008(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct ProjectX.RPC_GetPlayerPermissions_X.PlayerPermissionsReponse
+// 0x003C
+struct FPlayerPermissionsReponse
+{
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
+	TArray<struct FName>                               Permissions;                                              // 0x0030(0x000C) (CPF_NeedCtorLink)
 };
 
 }

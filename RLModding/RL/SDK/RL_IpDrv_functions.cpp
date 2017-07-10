@@ -4606,16 +4606,34 @@ void UOnlineSubsystemCommonImpl::OnPlayerCountryRetrieved(const struct FUniqueNe
 // Function IpDrv.OnlineSubsystemCommonImpl.OnSanitizeStringComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 Original                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 Sanitized                      (CPF_Parm, CPF_NeedCtorLink)
+// struct FWordFilterResult       Result                         (CPF_Parm, CPF_NeedCtorLink)
 
-void UOnlineSubsystemCommonImpl::OnSanitizeStringComplete(const struct FString& Original, const struct FString& Sanitized)
+void UOnlineSubsystemCommonImpl::OnSanitizeStringComplete(const struct FWordFilterResult& Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineSubsystemCommonImpl.OnSanitizeStringComplete");
 
 	UOnlineSubsystemCommonImpl_OnSanitizeStringComplete_Params params;
-	params.Original = Original;
-	params.Sanitized = Sanitized;
+	params.Result = Result;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.OnlineAuthInterfaceImpl.OnLoginChanged
+// (FUNC_Public)
+// Parameters:
+// bool                           bLoggedIn                      (CPF_Parm)
+
+void UOnlineAuthInterfaceImpl::OnLoginChanged(bool bLoggedIn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.OnLoginChanged");
+
+	UOnlineAuthInterfaceImpl_OnLoginChanged_Params params;
+	params.bLoggedIn = bLoggedIn;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1396,8 +1396,13 @@ struct UOnlineSubsystemCommonImpl_OnPlayerCountryRetrieved_Params
 // Function IpDrv.OnlineSubsystemCommonImpl.OnSanitizeStringComplete
 struct UOnlineSubsystemCommonImpl_OnSanitizeStringComplete_Params
 {
-	struct FString                                     Original;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     Sanitized;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	struct FWordFilterResult                           Result;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function IpDrv.OnlineAuthInterfaceImpl.OnLoginChanged
+struct UOnlineAuthInterfaceImpl_OnLoginChanged_Params
+{
+	bool                                               bLoggedIn;                                                // (CPF_Parm)
 };
 
 // Function IpDrv.OnlineAuthInterfaceImpl.RequiresMTXAuthorizationCode

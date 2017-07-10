@@ -111,19 +111,19 @@ public:
 
 
 // Class IpDrv.InternetLink
-// 0x0018 (0x0204 - 0x01EC)
+// 0x0018 (0x0214 - 0x01FC)
 class AInternetLink : public AInfo
 {
 public:
-	TEnumAsByte<ELinkMode>                             LinkMode;                                                 // 0x01EC(0x0001)
-	TEnumAsByte<ELineMode>                             InLineMode;                                               // 0x01ED(0x0001)
-	TEnumAsByte<ELineMode>                             OutLineMode;                                              // 0x01EE(0x0001)
-	TEnumAsByte<EReceiveMode>                          ReceiveMode;                                              // 0x01EF(0x0001)
-	struct FPointer                                    Socket;                                                   // 0x01F0(0x0004) (CPF_Const)
-	int                                                Port;                                                     // 0x01F4(0x0004) (CPF_Const)
-	struct FPointer                                    RemoteSocket;                                             // 0x01F8(0x0004) (CPF_Const)
-	struct FPointer                                    PrivateResolveInfo;                                       // 0x01FC(0x0004) (CPF_Const, CPF_Native)
-	int                                                DataPending;                                              // 0x0200(0x0004) (CPF_Const)
+	TEnumAsByte<ELinkMode>                             LinkMode;                                                 // 0x01FC(0x0001)
+	TEnumAsByte<ELineMode>                             InLineMode;                                               // 0x01FD(0x0001)
+	TEnumAsByte<ELineMode>                             OutLineMode;                                              // 0x01FE(0x0001)
+	TEnumAsByte<EReceiveMode>                          ReceiveMode;                                              // 0x01FF(0x0001)
+	struct FPointer                                    Socket;                                                   // 0x0200(0x0004) (CPF_Const)
+	int                                                Port;                                                     // 0x0204(0x0004) (CPF_Const)
+	struct FPointer                                    RemoteSocket;                                             // 0x0208(0x0004) (CPF_Const)
+	struct FPointer                                    PrivateResolveInfo;                                       // 0x020C(0x0004) (CPF_Const, CPF_Native)
+	int                                                DataPending;                                              // 0x0210(0x0004) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -145,15 +145,15 @@ public:
 
 
 // Class IpDrv.TcpLink
-// 0x0034 (0x0238 - 0x0204)
+// 0x0034 (0x0248 - 0x0214)
 class ATcpLink : public AInternetLink
 {
 public:
-	TEnumAsByte<ELinkState>                            LinkState;                                                // 0x0204(0x0001)
-	struct FIpAddr                                     RemoteAddr;                                               // 0x0208(0x0014)
-	class UClass*                                      AcceptClass;                                              // 0x021C(0x0004)
-	TArray<unsigned char>                              SendFIFO;                                                 // 0x0220(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FString                                     RecvBuf;                                                  // 0x022C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TEnumAsByte<ELinkState>                            LinkState;                                                // 0x0214(0x0001)
+	struct FIpAddr                                     RemoteAddr;                                               // 0x0218(0x0014)
+	class UClass*                                      AcceptClass;                                              // 0x022C(0x0004)
+	TArray<unsigned char>                              SendFIFO;                                                 // 0x0230(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FString                                     RecvBuf;                                                  // 0x023C(0x000C) (CPF_Const, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -698,7 +698,7 @@ public:
 	bool IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
 	struct FString GetPlayerNicknameFromIndex(int UserIndex);
 	void OnPlayerCountryRetrieved(const struct FUniqueNetId& PlayerID, const struct FString& Country);
-	void OnSanitizeStringComplete(const struct FString& Original, const struct FString& Sanitized);
+	void OnSanitizeStringComplete(const struct FWordFilterResult& Result);
 };
 
 
@@ -759,6 +759,7 @@ public:
 	}
 
 
+	void OnLoginChanged(bool bLoggedIn);
 	bool RequiresMTXAuthorizationCode();
 	bool RequiresAuthorizationCode();
 	bool IsRequestingAuthorizationCode(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& Callback);
@@ -1535,22 +1536,22 @@ public:
 
 
 // Class IpDrv.WebServer
-// 0x014C (0x0384 - 0x0238)
+// 0x014C (0x0394 - 0x0248)
 class AWebServer : public ATcpLink
 {
 public:
-	struct FString                                     ServerName;                                               // 0x0238(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     Applications[0xA];                                        // 0x0244(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     ApplicationPaths[0xA];                                    // 0x02BC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	unsigned long                                      bEnabled : 1;                                             // 0x0334(0x0004) (CPF_Config)
-	int                                                ListenPort;                                               // 0x0338(0x0004) (CPF_Config)
-	int                                                MaxConnections;                                           // 0x033C(0x0004) (CPF_Config)
-	int                                                DefaultApplication;                                       // 0x0340(0x0004) (CPF_Config)
-	int                                                ExpirationSeconds;                                        // 0x0344(0x0004) (CPF_Config)
-	struct FString                                     ServerURL;                                                // 0x0348(0x000C) (CPF_NeedCtorLink)
-	class UWebApplication*                             ApplicationObjects[0xA];                                  // 0x0354(0x0004)
-	int                                                ConnectionCount;                                          // 0x037C(0x0004)
-	int                                                ConnID;                                                   // 0x0380(0x0004)
+	struct FString                                     ServerName;                                               // 0x0248(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     Applications[0xA];                                        // 0x0254(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	struct FString                                     ApplicationPaths[0xA];                                    // 0x02CC(0x000C) (CPF_Config, CPF_NeedCtorLink)
+	unsigned long                                      bEnabled : 1;                                             // 0x0344(0x0004) (CPF_Config)
+	int                                                ListenPort;                                               // 0x0348(0x0004) (CPF_Config)
+	int                                                MaxConnections;                                           // 0x034C(0x0004) (CPF_Config)
+	int                                                DefaultApplication;                                       // 0x0350(0x0004) (CPF_Config)
+	int                                                ExpirationSeconds;                                        // 0x0354(0x0004) (CPF_Config)
+	struct FString                                     ServerURL;                                                // 0x0358(0x000C) (CPF_NeedCtorLink)
+	class UWebApplication*                             ApplicationObjects[0xA];                                  // 0x0364(0x0004)
+	int                                                ConnectionCount;                                          // 0x038C(0x0004)
+	int                                                ConnID;                                                   // 0x0390(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -2256,20 +2257,20 @@ public:
 
 
 // Class IpDrv.WebConnection
-// 0x0030 (0x0268 - 0x0238)
+// 0x0030 (0x0278 - 0x0248)
 class AWebConnection : public ATcpLink
 {
 public:
-	class AWebServer*                                  WebServer;                                                // 0x0238(0x0004)
-	struct FString                                     ReceivedData;                                             // 0x023C(0x000C) (CPF_NeedCtorLink)
-	class UWebRequest*                                 Request;                                                  // 0x0248(0x0004)
-	class UWebResponse*                                Response;                                                 // 0x024C(0x0004)
-	class UWebApplication*                             Application;                                              // 0x0250(0x0004)
-	unsigned long                                      bDelayCleanup : 1;                                        // 0x0254(0x0004)
-	int                                                RawBytesExpecting;                                        // 0x0258(0x0004)
-	int                                                MaxValueLength;                                           // 0x025C(0x0004) (CPF_Config)
-	int                                                MaxLineLength;                                            // 0x0260(0x0004) (CPF_Config)
-	int                                                ConnID;                                                   // 0x0264(0x0004)
+	class AWebServer*                                  WebServer;                                                // 0x0248(0x0004)
+	struct FString                                     ReceivedData;                                             // 0x024C(0x000C) (CPF_NeedCtorLink)
+	class UWebRequest*                                 Request;                                                  // 0x0258(0x0004)
+	class UWebResponse*                                Response;                                                 // 0x025C(0x0004)
+	class UWebApplication*                             Application;                                              // 0x0260(0x0004)
+	unsigned long                                      bDelayCleanup : 1;                                        // 0x0264(0x0004)
+	int                                                RawBytesExpecting;                                        // 0x0268(0x0004)
+	int                                                MaxValueLength;                                           // 0x026C(0x0004) (CPF_Config)
+	int                                                MaxLineLength;                                            // 0x0270(0x0004) (CPF_Config)
+	int                                                ConnID;                                                   // 0x0274(0x0004)
 
 	static UClass* StaticClass()
 	{
