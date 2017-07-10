@@ -34,6 +34,7 @@
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
+    <ClCompile Include="Mods\Modules\Underglow.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
     <ClCompile Include="RL\SDK\RL_Core_functions.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
+    <ClInclude Include="Mods\Modules\Underglow.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_parameters.hpp" />
