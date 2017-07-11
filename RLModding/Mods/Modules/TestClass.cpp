@@ -35,7 +35,9 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 	if (currentCanvas == nullptr || currentCar == nullptr || pDevice == nullptr) return;
 	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
 
-	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->CarMesh->Bounds.Origin);
+	printf("Carbounds origin %f:%f:%f \n",currentCar->Location.X,currentCar->Location.Y,currentCar->Location.Z);
+
+	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->Location);
 
 	D3DRECT aRec = { carBoundsOrigin.x - 50,carBoundsOrigin.y - 50,carBoundsOrigin.y + 50,carBoundsOrigin.y + 50 };
 	pDevice->Clear(1, &aRec, D3DCLEAR_TARGET, D3DCOLOR_XRGB(127, 0, 127), 0, 0);

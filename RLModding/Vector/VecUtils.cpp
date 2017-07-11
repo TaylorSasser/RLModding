@@ -45,6 +45,7 @@ namespace Vec {
 		//printf("Y Axis %f:%f:%f \n",yAxis.x,yAxis.y,yAxis.z);
 		//printf("Z Axis %f:%f:%f \n",zAxis.x,zAxis.y,zAxis.z);
 		printf("PlayerCamera X %f \n",playerController->PlayerCamera->CameraCache.POV.Location.X);
+		printf("Location X %f \n",Location.X);
 		printf("PlayerCamera Y %f \n",playerController->PlayerCamera->CameraCache.POV.Location.Y);
 		printf("PlayerCamera Z %f \n",playerController->PlayerCamera->CameraCache.POV.Location.Z);
 
