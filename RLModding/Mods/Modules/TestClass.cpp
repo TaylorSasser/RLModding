@@ -30,18 +30,60 @@ void TestClass::onChatSend(SDK::UObject** object,SDK::UFunction* function,void* 
 void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
 
 void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
-	currentCanvas = ((SDK::UGameViewportClient_PostRender_Params*)parameters)->Canvas;
+	printf("post render begin");
+	SDK::UGameViewportClient_PostRender_Params* temp = (SDK::UGameViewportClient_PostRender_Params*) parameters;
+	SDK::APlayerController* pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
 
-	if (currentCanvas == nullptr || currentCar == nullptr || pDevice == nullptr) return;
-	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
 
-	printf("Carbounds origin %f:%f:%f \n",currentCar->Location.X,currentCar->Location.Y,currentCar->Location.Z);
+	SDK::AGameEvent_TA* gameEvent = (SDK::AGameEvent_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
+	if (temp != NULL && temp->Canvas != NULL && pDevice != NULL && pPlayerController != NULL && gameEvent != NULL) {
+		for (int i = 0; i < gameEvent->Cars.Num(); i++) {
+			SDK::ACar_TA* car = gameEvent->Cars[i];
 
-	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->Location);
+			printf("Carbounds origin %f:%f:%f \n", car->Location.X, car->Location.Y, car->Location.Z);
 
-	D3DRECT aRec = { carBoundsOrigin.x - 50,carBoundsOrigin.y - 50,carBoundsOrigin.y + 50,carBoundsOrigin.y + 50 };
-	pDevice->Clear(1, &aRec, D3DCLEAR_TARGET, D3DCOLOR_XRGB(127, 0, 127), 0, 0);
-	delete &aRec;
+			//Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, car->Location);
+			SDK::FVector _carBoundsOrigin = Vec::VecUtils::CalculateScreenCoordinate(currentCanvas, car->Location, pPlayerController);
+			Vec::Vector3D carBoundsOrigin(0, 0, 0);
+			carBoundsOrigin.x = _carBoundsOrigin.X;
+			carBoundsOrigin.y = _carBoundsOrigin.Y;
+			carBoundsOrigin.z = _carBoundsOrigin.Z;
+
+			printf("Carbounds origin2 %f:%f:%f \n", carBoundsOrigin.x, carBoundsOrigin.y);
+
+
+			D3DVIEWPORT9 viewP;
+			pDevice->GetViewport(&viewP);
+			DWORD ScreenCenterX = viewP.Width / 2;
+			DWORD ScreenCenterY = viewP.Height / 2;
+
+			// draw cross at car
+			DWORD CarCenterX = carBoundsOrigin.x;
+			DWORD CarCenterY = carBoundsOrigin.y;
+			D3DRECT rec1 = { CarCenterX - 35, CarCenterY, CarCenterX + 35, CarCenterY + 1 };
+			D3DRECT rec2 = { CarCenterX, CarCenterY - 35, CarCenterX + 1,CarCenterY + 35 };
+
+			if (CarCenterX > 36 && CarCenterY > 36 && CarCenterX + 35 < viewP.Width && CarCenterY + 35 < viewP.Height) {
+
+				pDevice->Clear(1, &rec1, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);//purple
+				pDevice->Clear(1, &rec2, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
+			}
+
+
+			// draw cross in middle of screen
+			D3DRECT rec4 = { ScreenCenterX - 35, ScreenCenterY, ScreenCenterX + 35, ScreenCenterY + 1 };
+			D3DRECT rec5 = { ScreenCenterX, ScreenCenterY - 35, ScreenCenterX + 1,ScreenCenterY + 35 };
+			pDevice->Clear(1, &rec4, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);//purple
+			pDevice->Clear(1, &rec5, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
+
+
+			/*delete &rec1;
+			delete &rec2;
+			delete &rec4;
+			delete &rec5;
+			*/
+		}
+	}
 }
 
 void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
