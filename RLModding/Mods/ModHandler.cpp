@@ -21,7 +21,7 @@ ModHandler::~ModHandler() {
 	}
 }
 
-std::list<ModBase*> ModHandler::getMods() {
+std::list<ModBase*> ModHandler::getMods()  {
 	return Mods;
 }
 
@@ -31,16 +31,4 @@ size_t ModHandler::GetModListSize() {
 
 void ModHandler::addMod(ModBase* mod) {
 	Mods.push_back(mod);
-}
-
-ModBase* ModHandler::getModInstance(std::string name) {
-	for (auto& mod : Mods) {
-		if (mod->getName() == name) {
-			printf("Found the instance of the mod class %s\n",name);
-			return mod;
-		} else {
-			printf("Could not find instance of the mod class %s\n", name);
-			return nullptr;
-		}
-	}
 }

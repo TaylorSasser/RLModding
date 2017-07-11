@@ -9,13 +9,20 @@
 
 SDK::ACar_TA* currentCar = nullptr;
 SDK::UCanvas* currentCanvas = nullptr;
-SDK::FVector Camera;
-SDK::FRotator Rotator;
+IDirect3DDevice9* pDevice = nullptr;
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
 
-void TestClass::onEnable() {printf("Test class enabled \n");}
+void TestClass::onEnable() {
+	printf("Test class enabled \n");
+	/*
+	if (currentCanvas == nullptr || currentCar == nullptr) return;
+	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
+
+	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->CarMesh->Bounds.Origin);
+	*/
+}
 void TestClass::onDisable() {printf("Test class disabled \n");}
 
 void TestClass::onMainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
@@ -24,24 +31,26 @@ void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void*
 
 void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
 	currentCanvas = ((SDK::UGameViewportClient_PostRender_Params*)parameters)->Canvas;
+
+	if (currentCanvas == nullptr || currentCar == nullptr || pDevice == nullptr) return;
+	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
+
+	printf("Carbounds origin %f:%f:%f \n",currentCar->Location.X,currentCar->Location.Y,currentCar->Location.Z);
+
+	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->Location);
+
+	D3DRECT aRec = { carBoundsOrigin.x - 50,carBoundsOrigin.y - 50,carBoundsOrigin.y + 50,carBoundsOrigin.y + 50 };
+	pDevice->Clear(1, &aRec, D3DCLEAR_TARGET, D3DCOLOR_XRGB(127, 0, 127), 0, 0);
+	delete &aRec;
 }
 
 void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
-	if (currentCanvas == nullptr || currentCar == nullptr) return;
-	auto pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
-	pPlayerController->GetPlayerViewPoint(&Camera,&Rotator);
-
-	Vec::Vector3D carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas,pPlayerController,currentCar->CarMesh->Bounds.Origin);
-	if (&carBoundsOrigin == nullptr) return;
-	D3DRECT aRec = {carBoundsOrigin.x,carBoundsOrigin.y,carBoundsOrigin.x - 20,carBoundsOrigin.y - 20};
-	Device->Clear(1,&aRec, 0, D3DCOLOR_XRGB(127, 0, 127), 0, 0);
-
+	pDevice = Device;
 }
 
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onTCPConnectionEnd(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onInGameTick(SDK::UObject** object, SDK::UFunction* func, void* params) {}
 void TestClass::onCarTick(SDK::UObject** object,SDK::UFunction* funct,void* params) {
-	printf("Car tick called \n");
 	currentCar = (SDK::ACar_TA*)*object; 
 }

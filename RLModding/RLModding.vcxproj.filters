@@ -7,7 +7,6 @@
     <ClCompile Include="Hooks\DX9Hook.cpp" />
     <ClCompile Include="Hooks\HookManager.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
-    <ClCompile Include="Hooks\PacketHook.cpp" />
     <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
@@ -35,6 +34,7 @@
     <ClCompile Include="Vector\Vector3D.cpp" />
     <ClCompile Include="Vector\Vector4D.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
+    <ClCompile Include="Mods\Modules\Underglow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -42,7 +42,6 @@
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\HookManager.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
-    <ClInclude Include="Hooks\PacketHook.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />
@@ -112,6 +111,8 @@
     <ClInclude Include="Vector\Vector3D.h" />
     <ClInclude Include="Vector\Vector4D.h" />
     <ClInclude Include="Vector\VecUtils.h" />
+    <ClInclude Include="Mods\Modules\Underglow.h" />
+    <ClInclude Include="Mods\Modules\PacketHook.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

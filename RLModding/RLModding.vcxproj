@@ -27,13 +27,13 @@
     <ClCompile Include="Hooks\DX9Hook.cpp" />
     <ClCompile Include="Hooks\HookManager.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
-    <ClCompile Include="Hooks\PacketHook.cpp" />
     <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
+    <ClCompile Include="Mods\Modules\Underglow.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
     <ClCompile Include="RL\SDK\RL_Core_functions.cpp" />
@@ -63,7 +63,7 @@
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\HookManager.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
-    <ClInclude Include="Hooks\PacketHook.h" />
+    <ClInclude Include="Mods\Modules\PacketHook.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />
@@ -86,6 +86,7 @@
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
+    <ClInclude Include="Mods\Modules\Underglow.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_parameters.hpp" />
