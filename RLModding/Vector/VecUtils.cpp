@@ -29,51 +29,23 @@ namespace Vec {
 		zAxis.z = cos(rotator.Roll * URotationToRadians) * cos(rotator.Pitch * URotationToRadians);																																// CR CP
 	}
 
-	void VecUtils::VectorSubtract(Vector* result, Vector* a, Vector* b) {
-		result->x = a->x - b->x;
-		result->y = a->y - b->y;
-		result->z = a->z - b->z;
+	Vector VecUtils::FVectorToVector(SDK::FVector input) {
+		return Vector(input.X, input.Y, input.Z);
 	}
-
-	float VecUtils::VectorDotProduct(SDK::FVector* a, SDK::FVector* b) {
-		return (a->X * b->X + a->Y * b->Y + a->Z * b->Z);
-	}
-
-	void VecUtils::GetAxes2(SDK::FRotator rotator, SDK::FVector& xAxis, SDK::FVector& yAxis, SDK::FVector& zAxis) {
-		Vector a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
-		GetAxes(rotator, a, b, c);
-		xAxis.X = a.x;
-		xAxis.Y = a.y;
-		xAxis.Z = a.z;
-
-		yAxis.X = b.x;
-		yAxis.Y = b.y;
-		yAxis.Z = b.z;
-
-		zAxis.X = c.x;
-		zAxis.Y = c.y;
-		zAxis.Z = c.z;
-	}
-
 
 	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC, long SizeX, long SizeY)
 	{
+		// Convert FVector of object location and camera location to Vector
+		Vector Location2 = FVectorToVector(Location);
+		Vector CameraLocation2 = FVectorToVector(pPC->PlayerCamera->Location);
+
+
 		SDK::FVector Return;
 
 		Vector AxisX(0, 0, 0), AxisY(0, 0, 0), AxisZ(0, 0, 0), Delta(0, 0, 0), Transformed(0, 0, 0);
-		SDK::FRotator MYCam = pPC->PlayerCamera->Rotation;
+		GetAxes(pPC->PlayerCamera->Rotation, AxisX, AxisY, AxisZ);
 
-		GetAxes(MYCam, AxisX, AxisY, AxisZ);
-
-		Vector Location2(0, 0, 0), CameraLocation2(0, 0, 0);
-		Location2.x = Location.X;
-		Location2.y = Location.Y;
-		Location2.z = Location.Z;
-		CameraLocation2.x = pPC->PlayerCamera->Location.X;
-		CameraLocation2.y = pPC->PlayerCamera->Location.Y;
-		CameraLocation2.z = pPC->PlayerCamera->Location.Z;
-
-		VectorSubtract(&Delta, &Location2, &CameraLocation2);
+		Delta = Location2 - CameraLocation2;
 		Transformed.x = Delta.Dot(AxisY);
 		Transformed.y = Delta.Dot(AxisZ);
 		Transformed.z = Delta.Dot(AxisX);
