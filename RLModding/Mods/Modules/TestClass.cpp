@@ -4,7 +4,6 @@
 #include "../../Libs/DirectX9/d3d9.h"
 #include "../../Libs/DirectX9/d3dx9.h"
 #include <functional>
-#include "../../Vector/Vector3D.h"
 #include "../../Vector/VecUtils.h"
 
 SDK::ACar_TA* currentCar = nullptr;
@@ -41,9 +40,9 @@ void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
 			D3DVIEWPORT9 viewP;
 			Device->GetViewport(&viewP);
 
-			Vec::Vector3D ballPOS = Vec::VecUtils::CalculateScreenCoordinate(ball->Location, pPlayerController,viewP.Width,viewP.Height);
+			SDK::FVector ballPOS = Vec::VecUtils::CalculateScreenCoordinate(ball->Location, pPlayerController,viewP.Width,viewP.Height);
 			
-			D3DRECT rec1 = { ballPOS.x,ballPOS.y,ballPOS.x + 35,ballPOS.y + 35 };
+			D3DRECT rec1 = { ballPOS.X,ballPOS.Y,ballPOS.X + 35,ballPOS.Y + 35 };
 			if (rec1.x1 == 0 || rec1.y1 == 0) return;
 			Device->Clear(1, &rec1, D3DCLEAR_TARGET, D3DCOLOR_XRGB(127,0,127), 0, 0);
 	}

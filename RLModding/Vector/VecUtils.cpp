@@ -170,8 +170,8 @@ namespace Vec {
 	}
 
 
-	SDK::FVector VecUtils::CalculateScreenCoordinate(Vector Location, SDK::APlayerController* pPC,long SizeX,long SizeY){
-		SDK::FVector Return;
+	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector _Location, SDK::APlayerController* pPC,long SizeX,long SizeY){
+		/*SDK::FVector Return;
 
 		Vector3D AxisX(0, 0, 0), AxisY(0, 0, 0), AxisZ(0, 0, 0), Delta(0, 0, 0), Transformed(0, 0, 0);
 		SDK::FRotator MYCam = pPC->PlayerCamera->Rotation;
@@ -202,6 +202,47 @@ namespace Vec {
 		printf("Return Values %ld:%ld:%ld \n",Return.X,Return.Y,Return.Z);
 
 		return Return;
+		*/
+
+
+		Vector Location(0, 0, 0);
+		Location.x = _Location.X;
+		Location.y = _Location.Y;
+		Location.z = _Location.Z;
+
+		SDK::FVector Return;
+
+		Vector AxisX(0, 0, 0), AxisY(0, 0, 0), AxisZ(0, 0, 0), Delta(0, 0, 0), Transformed(0, 0, 0);
+		SDK::FRotator MYCam = pPC->PlayerCamera->Rotation;
+
+		GetAxes(MYCam, AxisX, AxisY, AxisZ);
+
+		Vector LocationVec(0, 0, 0);
+
+		LocationVec.x = pPC->PlayerCamera->Location.X;
+		LocationVec.y = pPC->PlayerCamera->Location.Y;
+		LocationVec.z = pPC->PlayerCamera->Location.Z;
+
+		VectorSubtract(Delta, Location, LocationVec);
+
+		Transformed.x = Delta.Dot(AxisY);
+		Transformed.y = Delta.Dot(AxisZ);
+		Transformed.z = Delta.Dot(AxisX);
+
+		if (Transformed.z < 1.00f)
+			Transformed.z = 1.00f;
+
+		float FOVAngle = pPC->PlayerCamera->GetFOVAngle();
+
+		Return.X = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.Y = (SizeY / 2.0f) + -Transformed.y * ((SizeY / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.Z = 0;
+
+		printf("Return Values %ld:%ld:%ld \n", Return.X, Return.Y, Return.Z);
+
+		return Return;
+
+
 	}
 
 }

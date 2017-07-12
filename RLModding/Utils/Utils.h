@@ -1,7 +1,6 @@
 #pragma once
 #include <Windows.h>
 #include "../RL/SDK.hpp"
-#include "../Vector/Vector3D.h"
 #include <unordered_map>
 #include "../Libs/DirectX9/d3d9.h"
 
