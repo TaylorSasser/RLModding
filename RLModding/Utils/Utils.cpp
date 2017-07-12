@@ -12,6 +12,21 @@ using std::string;
 
 
 namespace Utils {
+
+
+	bool DrawMessage(LPD3DXFONT font, unsigned int x, unsigned int y, int alpha, unsigned char r, unsigned char g, unsigned char b, LPCSTR Message)
+	{	// Create a colour for the text
+		D3DCOLOR fontColor = D3DCOLOR_ARGB(alpha, r, g, b);
+		RECT rct; //Font
+		rct.left = x;
+		rct.right = 1680;
+		rct.top = y;
+		rct.bottom = rct.top + 200;
+		font->DrawTextA(NULL, Message, -1, &rct, 0, fontColor);
+		//delete &rct;
+		return true;
+	}
+
 	
 	bool InitializeObjectsStore() {
 		auto address = FindPattern(GetModuleHandleW(nullptr), reinterpret_cast<const unsigned char*>("\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"), "x????x??x??xxxxx");
