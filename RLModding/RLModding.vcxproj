@@ -50,8 +50,8 @@
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Utils\Wrapper.cpp" />
+    <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="Vector\Vector4D.cpp" />
-    <ClCompile Include="Vector\Vector3D.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +63,6 @@
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\HookManager.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
-    <ClInclude Include="Mods\Modules\PacketHook.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />
@@ -128,8 +127,8 @@
     <ClInclude Include="Utils\SDKDefines.h" />
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Utils\Wrapper.h" />
+    <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="Vector\Vector4D.h" />
-    <ClInclude Include="Vector\Vector3D.h" />
     <ClInclude Include="Vector\VecUtils.h" />
   </ItemGroup>
   <ItemGroup>

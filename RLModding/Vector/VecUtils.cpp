@@ -1,6 +1,7 @@
 #include "VecUtils.h"
-#include "Vector3D.h"
+#include "Vector.hpp"
 #include "../Libs/DirectX9/d3d9.h"
+#include "../RL/SDK.hpp"
 #define UCONST_Pi 3.1415926
 #define URotation180  32768 
 #define URotationToRadians  UCONST_Pi / URotation180 
@@ -8,7 +9,7 @@
 namespace Vec {
 	
 
-	void VecUtils::GetAxes(SDK::FRotator rotator, Vector3D& xAxis, Vector3D& yAxis, Vector3D& zAxis) {
+	void VecUtils::GetAxes(SDK::FRotator rotator, Vector& xAxis, Vector& yAxis, Vector& zAxis) {
 		// SR = sin of Roll; SP = sin of Pitch; SY = sin of Yaw;
 		// CR = cos of Roll; CP = cos of Pitch; CY = cos of Yaw
 
@@ -27,16 +28,15 @@ namespace Vec {
 		zAxis.y = cos(rotator.Yaw * URotationToRadians) * sin(rotator.Roll * URotationToRadians) - cos(rotator.Roll * URotationToRadians) * sin(rotator.Pitch * URotationToRadians) * sin(rotator.Yaw * URotationToRadians);	// CY * SR - CR * SP * CY
 		zAxis.z = cos(rotator.Roll * URotationToRadians) * cos(rotator.Pitch * URotationToRadians);																																// CR CP
 	}
-	Vector3D VecUtils::WorldToScreen(SDK::UCanvas* canvas, SDK::APlayerController* playerController,SDK::FVector Location) {
-		Vector3D xAxis(0,0,0), yAxis(0,0,0), zAxis(0,0,0), Delta(0,0,0), Transformed(0,0,0);
+	Vector VecUtils::WorldToScreen(SDK::UCanvas* canvas, SDK::APlayerController* playerController,SDK::FVector Location) {
+		Vector xAxis,yAxis,zAxis,Delta,Transformed;
 		
 
 		SDK::FVector MyCameraLocation;
 		SDK::FRotator MyCameraRotator;
 
 		if (playerController == NULL || playerController->PlayerCamera == NULL) {
-			Vector3D Return1(0, 0, 0);
-			return Return1;
+			return Vector(0,0,0);
 		}
 
 		playerController->PlayerCamera->GetCameraViewPoint(&MyCameraLocation, &MyCameraRotator);
@@ -63,9 +63,9 @@ namespace Vec {
 		printf("DeltaY %f \n",Delta.y);
 		printf("DeltaZ %f \n",Delta.z);
 
-		Transformed.x = Delta.DotProduct(yAxis);
-		Transformed.y = Delta.DotProduct(zAxis);
-		Transformed.z = Delta.DotProduct(xAxis);
+		Transformed.x = Delta.Dot(yAxis);
+		Transformed.y = Delta.Dot(zAxis);
+		Transformed.z = Delta.Dot(xAxis);
 		
 		//printf("Transformed %f:%f:%f \n",Transformed.x,Transformed.y,Transformed.z);
 		
@@ -74,7 +74,7 @@ namespace Vec {
 		float ClipCenterX = 1920 / 2; 
 		float ClipCenterY = 1080 / 2;
 
-		Vector3D Return(0,0,0);
+		Vector Return;
 		
 		Return.x = ClipCenterX + (ClipCenterX / Transformed.z / tan(FOVAngle * 0.5f * (float)UCONST_Pi / 180.0f)) * Transformed.x;
 		Return.y = ClipCenterY + (ClipCenterX / Transformed.z / tan(FOVAngle * 0.5f * (float)UCONST_Pi / 180.0f)) * -Transformed.y;
@@ -143,18 +143,18 @@ namespace Vec {
 
 
 
-	void VecUtils::VectorSubtract(Vector3D* result, Vector3D* a, Vector3D* b) {
-		result->x = a->x - b->x;
-		result->y = a->y - b->y;
-		result->z = a->z - b->z;
+	void VecUtils::VectorSubtract(Vector& result, Vector& a, Vector& b) {
+		result.x = a.x - b.x;
+		result.y = a.y - b.y;
+		result.z = a.z - b.z;
 	}
 
-	float VecUtils::VectorDotProduct(SDK::FVector* a, SDK::FVector* b) {
-		return (a->X * b->X + a->Y * b->Y + a->Z * b->Z);
+	float VecUtils::VectorDotProduct(Vector& a, Vector& b) {
+		return (a.x * b.x + a.y * b.y + a.z * b.z);
 	}
 
 	void VecUtils::GetAxes2(SDK::FRotator rotator, SDK::FVector& xAxis, SDK::FVector& yAxis, SDK::FVector& zAxis) {
-		Vector3D a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
+		Vector a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
 		GetAxes(rotator, a, b, c);
 		xAxis.X = a.x;
 		xAxis.Y = a.y;
@@ -170,8 +170,7 @@ namespace Vec {
 	}
 
 
-	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::UCanvas* pCanvas, SDK::FVector Location, SDK::APlayerController* pPC)
-	{
+	SDK::FVector VecUtils::CalculateScreenCoordinate(Vector Location, SDK::APlayerController* pPC,long SizeX,long SizeY){
 		SDK::FVector Return;
 
 		Vector3D AxisX(0, 0, 0), AxisY(0, 0, 0), AxisZ(0, 0, 0), Delta(0, 0, 0), Transformed(0, 0, 0);
@@ -179,15 +178,14 @@ namespace Vec {
 
 		GetAxes(MYCam, AxisX, AxisY, AxisZ);
 
-		Vector3D Location2(0, 0, 0), CameraLocation2(0, 0, 0);
-		Location2.x = Location.X;
-		Location2.y = Location.Y;
-		Location2.z = Location.Z;
-		CameraLocation2.x = pPC->PlayerCamera->Location.X;
-		CameraLocation2.y = pPC->PlayerCamera->Location.Y;
-		CameraLocation2.z = pPC->PlayerCamera->Location.Z;
+		Vector3D LocationVec(0,0,0);
 
-		VectorSubtract(&Delta, &Location2, &CameraLocation2);
+		LocationVec.x = pPC->PlayerCamera->Location.X;
+		LocationVec.y = pPC->PlayerCamera->Location.Y;
+		LocationVec.z = pPC->PlayerCamera->Location.Z;
+
+		VectorSubtract(Delta,Location,LocationVec);
+
 		Transformed.x = Delta.DotProduct(AxisY);
 		Transformed.y = Delta.DotProduct(AxisZ);
 		Transformed.z = Delta.DotProduct(AxisX);
@@ -196,18 +194,12 @@ namespace Vec {
 			Transformed.z = 1.00f;
 
 		float FOVAngle = pPC->PlayerCamera->GetFOVAngle();
-		printf("FOV: %f\n", FOVAngle);
 
-
-		printf("debug 1 \n");
-
-		Return.X = (1600 / 2.0f) + Transformed.x * ((1600 / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		printf("debug 2 \n");
-		Return.Y = (900 / 2.0f) + -Transformed.y * ((1600 / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		printf("debug 3 \n");
+		Return.X = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.Y = (SizeY / 2.0f) + -Transformed.y * ((SizeY / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
 		Return.Z = 0;
 
-		printf("RETURN \n");
+		printf("Return Values %ld:%ld:%ld \n",Return.X,Return.Y,Return.Z);
 
 		return Return;
 	}

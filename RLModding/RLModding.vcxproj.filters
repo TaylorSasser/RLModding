@@ -31,10 +31,10 @@
     <ClCompile Include="Utils\Wrapper.cpp" />
     <ClCompile Include="Gui\GUIConsole.cpp" />
     <ClCompile Include="Filesystem\FileManager.cpp" />
-    <ClCompile Include="Vector\Vector3D.cpp" />
     <ClCompile Include="Vector\Vector4D.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
     <ClCompile Include="Mods\Modules\Underglow.cpp" />
+    <ClCompile Include="Vector\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -108,11 +108,10 @@
     <ClInclude Include="Gui\GUIConsole.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
-    <ClInclude Include="Vector\Vector3D.h" />
     <ClInclude Include="Vector\Vector4D.h" />
     <ClInclude Include="Vector\VecUtils.h" />
     <ClInclude Include="Mods\Modules\Underglow.h" />
-    <ClInclude Include="Mods\Modules\PacketHook.h" />
+    <ClInclude Include="Vector\Vector.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
