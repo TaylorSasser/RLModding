@@ -41,7 +41,8 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
 
 	if  (pPlayerController != NULL) {
-		DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
+		SDK::FVector vec = Vec::VecUtils::CalculateScreenCoordinate(ball->Location,pPlayerController);
+		DrawManager::Instance()->AddRectFilled(ImVec2(vec.X,vec.Y), ImVec2(vec.X - 20,vec.Y - 20), D3DCOLOR_ARGB(255, 127, 0, 127));
 	}
 }
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}
