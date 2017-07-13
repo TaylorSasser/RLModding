@@ -38,11 +38,14 @@ void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void*
 void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
 
 	SDK::APlayerController* pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
-	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
+	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::ABall_TA::StaticClass());
 
-	if  (pPlayerController != NULL) {
-		SDK::FVector vec = Vec::VecUtils::CalculateScreenCoordinate(ball->Location,pPlayerController);
-		DrawManager::Instance()->AddRectFilled(ImVec2(vec.X,vec.Y), ImVec2(vec.X - 20,vec.Y - 20), D3DCOLOR_ARGB(255, 127, 0, 127));
+	if  (pPlayerController != NULL && ball != NULL) {
+		DrawManager::Instance()->BeginRendering();
+		SDK::FVector BallFixed = ball->Location;
+		BallFixed.Z += ball->Radius;
+		SDK::FVector vec = Vec::VecUtils::CalculateScreenCoordinate(BallFixed, pPlayerController);
+		DrawManager::Instance()->AddCircleFilled(ImVec2(vec.X,vec.Y),20, D3DCOLOR_ARGB(255, 127, 0, 127),32);
 	}
 }
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}
