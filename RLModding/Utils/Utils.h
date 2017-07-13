@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include "../Libs/DirectX9/d3d9.h"
 #include "../Libs/DirectX9/d3dx9.h"
+#include "../DrawManager/DrawManager.hpp"
 
 namespace Utils {
 	struct FOutParamRec {
@@ -21,9 +22,9 @@ namespace Utils {
 		struct FFrame*		PreviousFrame;
 	};
 
-
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
+
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 	SDK::FString to_fstring(std::string s);
 

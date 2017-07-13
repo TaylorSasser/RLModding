@@ -1,7 +1,6 @@
 #pragma once
 #include "../RL/SDK.hpp"
 #include <Windows.h>
-#include <d3d9.h>
 
 
 class ModBase
@@ -40,7 +39,6 @@ public:
 	virtual void onCarTick(SDK::UObject**,SDK::UFunction*,void*)			{}						
 	virtual void onGameEventTick(SDK::UObject**,SDK::UFunction*,void*)		{}				
 	virtual void onReplayTick(SDK::UObject**,SDK::UFunction*,void*)			{}
-	virtual void onDX9RenderTick(IDirect3DDevice9*)							{}
 	virtual void onFreeplayTick(SDK::UObject**,SDK::UFunction*,void*)		{}			
 	virtual void onPostRender(SDK::UObject**,SDK::UFunction*,void*)			{}
 

@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
-    <ClCompile Include="DrawManager\DrawBase.cpp" />
+    <ClCompile Include="DrawManager\DrawManager.cpp" />
     <ClCompile Include="Events\EventManager.cpp" />
     <ClCompile Include="Filesystem\FileManager.cpp" />
     <ClCompile Include="Gui\GUIConsole.cpp" />
@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
-    <ClInclude Include="DrawManager\DrawBase.h" />
+    <ClInclude Include="DrawManager\DrawManager.hpp" />
     <ClInclude Include="Events\EventManager.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
     <ClInclude Include="Gui\ClickEvent.h" />

@@ -6,8 +6,8 @@
 #include <windows.h>
 
 #include <d3d9.h>
-#include "ImGUI/imgui.h"
-#include "ImGUI/imgui_internal.h"
+#include "../Libs/ImGUI/imgui.h"
+#include "../Libs/ImGUI/imgui_internal.h"
 
 #define RGBA(r, g, b, a) ((a << 24) | (b << 16) | (g << 8) | r)
 
@@ -24,8 +24,8 @@ DEFINE_ENUM_FLAG_OPERATORS(text_flags)
 class DrawManager
 {
 public:
-    DrawManager(IDirect3DDevice9* device);
-    ~DrawManager();
+	DrawManager::DrawManager();
+	DrawManager::~DrawManager();
 
     void CreateObjects();
     void InvalidateObjects();
@@ -48,9 +48,27 @@ public:
     void AddPolyline(const ImVec2* points, const int num_points, ImU32 col, bool closed, float thickness, bool anti_aliased);
     void AddConvexPolyFilled(const ImVec2* points, const int num_points, ImU32 col, bool anti_aliased);
     void AddBezierCurve(const ImVec2& pos0, const ImVec2& cp0, const ImVec2& cp1, const ImVec2& pos1, ImU32 col, float thickness, int num_segments = 0);
+	ImDrawData* GetDrawData();
+	
+	bool isInitialized() {return initalized;}
+	
+	void Initialize(IDirect3DDevice9* device) {
+		_device = device;
+		_texture = nullptr;	
+		_drawList = nullptr;
+		initalized = true;
+		if (device == nullptr) {initalized = false;}
+	}
+
+	static DrawManager* Instance() {
+		if (!instance) instance = new DrawManager();
+		return instance;
+	}
 
 private:
-    ImDrawData* GetDrawData();
+	bool initalized = false;
+	static DrawManager* instance;
+    
 
     IDirect3DDevice9*   _device;
     IDirect3DTexture9*  _texture;

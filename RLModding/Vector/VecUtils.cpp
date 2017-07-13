@@ -33,45 +33,27 @@ namespace Vec {
 		return Vector(input.X, input.Y, input.Z);
 	}
 
-<<<<<<< HEAD
-	float VecUtils::VectorDotProduct(SDK::FVector* a, SDK::FVector* b) {
-		return (a->X * b->X + a->Y * b->Y + a->Z * b->Z);
-	}
+	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC) {
+		RECT windowRect;
+		HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
+		
+		int SizeX,SizeY;
 
-	void VecUtils::GetAxes2(SDK::FRotator rotator, SDK::FVector& xAxis, SDK::FVector& yAxis, SDK::FVector& zAxis) {
-		Vector a(0, 0, 0), b(0, 0, 0), c(0, 0, 0);
-		GetAxes(rotator, a, b, c);
-		xAxis.X = a.x;
-		xAxis.Y = a.y;
-		xAxis.Z = a.z;
+		if (GetWindowRect(window,&windowRect)) {
+			SizeX = windowRect.right - windowRect.left;
+			SizeY = windowRect.bottom - windowRect.top;
+		}
 
-		yAxis.X = b.x;
-		yAxis.Y = b.y;
-		yAxis.Z = b.z;
-
-		zAxis.X = c.x;
-		zAxis.Y = c.y;
-		zAxis.Z = c.z;
-	}
-
-
-	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC, long SizeX, long SizeY) {
-		SDK::FVector Return;
-=======
-	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC, long SizeX, long SizeY)
-	{
-		// Convert FVector of object location and camera location to Vector
 		Vector Location2 = FVectorToVector(Location);
 		Vector CameraLocation2 = FVectorToVector(pPC->PlayerCamera->Location);
->>>>>>> 7d0530325cdfdf619093155563f0ee6fed63db5b
 
 
 		SDK::FVector Return;
 
-		Vector AxisX, AxisY, AxisZ, Delta, Transformed;
+		Vector AxisX, AxisY, AxisZ, Transformed;
 		GetAxes(pPC->PlayerCamera->Rotation, AxisX, AxisY, AxisZ);
 
-		Delta = Location2 - CameraLocation2;
+		Vector Delta = Location2 - CameraLocation2;
 		Transformed.x = Delta.Dot(AxisY);
 		Transformed.y = Delta.Dot(AxisZ);
 		Transformed.z = Delta.Dot(AxisX);

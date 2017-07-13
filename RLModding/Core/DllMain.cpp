@@ -14,8 +14,8 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 	case DLL_PROCESS_ATTACH:
 		MainThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)onAttach, hModule, 0, NULL);
 	case DLL_PROCESS_DETACH:
-		CloseHandle(MainThread);
 		Core::Restore();
+		CloseHandle(MainThread);
 	}
 	return true;
 }

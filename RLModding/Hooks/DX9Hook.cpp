@@ -3,6 +3,9 @@
 #include "../Utils/Wrapper.h"
 #include "../Libs/Detours.h"
 #include "../Gui/GUIConsole.h"
+#include "../DrawManager/DrawManager.hpp"
+#include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
+#include "../Libs/DirectX9/d3d9.h"
 
 DX9Hook* DX9Hook::instance = nullptr;
 DX9Hook::DX9Hook(){}
@@ -77,9 +80,13 @@ HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS*
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	__asm pushad
 
+	if (DrawManager::Instance()->isInitialized() == false) {
+		ImGui_ImplDX9_Init(FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)"), pDevice);
+		DrawManager::Instance()->Initialize(pDevice);
+		DrawManager::Instance()->CreateObjects();
+	}
 
-	GUIConsole::Instance()->DrawGUI(pDevice);
-
+	/*
 	for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
 		std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::onDX9RenderTick,Mod,std::placeholders::_1);
 		if (Mod->isEnabled() && Mod != nullptr) {
@@ -88,7 +95,7 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 			}
 		}
 	}
-
+	*/
 	__asm popad
 	return pD3D9EndScene(pDevice);
 }

@@ -13,7 +13,6 @@ using std::string;
 
 namespace Utils {
 
-
 	bool DrawMessage(LPD3DXFONT font, unsigned int x, unsigned int y, int alpha, unsigned char r, unsigned char g, unsigned char b, LPCSTR Message)
 	{	// Create a colour for the text
 		D3DCOLOR fontColor = D3DCOLOR_ARGB(alpha, r, g, b);

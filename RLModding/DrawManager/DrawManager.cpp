@@ -2,11 +2,14 @@
 
 #include <cstdint>
 
-#include "ImGUI/imgui.h"
-#include "ImGUI/DX9/imgui_impl_dx9.h"
+#include "../Libs/ImGUI/imgui.h"
+#include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 
-bool get_system_font_path(const std::string& name, std::string& path)
-{
+DrawManager::DrawManager() {}
+DrawManager::~DrawManager() {}
+DrawManager* DrawManager::instance = nullptr;
+
+bool get_system_font_path(const std::string& name, std::string& path) {
     //
     // This code is not as safe as it should be.
     // Assumptions we make:
@@ -67,20 +70,9 @@ bool get_system_font_path(const std::string& name, std::string& path)
     return false;
 }
 
-DrawManager::DrawManager(IDirect3DDevice9* device)
-{
-    _device = device;
-    _texture = nullptr;
-    _drawList = nullptr;
-}
 
-DrawManager::~DrawManager()
-{
 
-}
-
-void DrawManager::CreateObjects()
-{
+void DrawManager::CreateObjects() {
     _drawList = new ImDrawList();
 
     auto font_path = std::string{};
@@ -130,17 +122,16 @@ void DrawManager::InvalidateObjects()
     _drawList = nullptr;
 }
 
-void DrawManager::BeginRendering()
-{
-    _drawData.Valid = false;
-
-    _drawList->Clear();
-    _drawList->PushClipRectFullScreen();
+void DrawManager::BeginRendering() {
+	_drawData.Valid = false;
+	_drawList->Clear();
+	_drawList->PushClipRectFullScreen();
 }
 
 void DrawManager::EndRendering()
 {
     ImGui_ImplDX9_RenderDrawLists(GetDrawData());
+	
 }
 
 void DrawManager::AddText(ImVec2 point, ImU32 color, text_flags flags, const char* format, ...)

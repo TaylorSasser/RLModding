@@ -6,10 +6,10 @@
 #include <functional>
 #include "../../Vector/Vector.hpp"
 #include "../../Vector/VecUtils.h"
+#include "../../DrawManager/DrawManager.hpp"
 
 SDK::ACar_TA* currentCar = nullptr;
 SDK::UCanvas* currentCanvas = nullptr;
-IDirect3DDevice9* pDevice = nullptr;
 
 Vec::Vector carBoundsOrigin(0, 0, 0);
 float boostAmount = 0;
@@ -35,49 +35,16 @@ void TestClass::onActorJump(SDK::UObject** object,SDK::UFunction* function,void*
 void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void* parameters) {
 
 	SDK::APlayerController* pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
+	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
 
-
-	SDK::AGameEvent_TA* gameEvent = (SDK::AGameEvent_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
-	if (pDevice != NULL && pPlayerController != NULL && gameEvent != NULL) {
-		for (int i = 0; i < gameEvent->Cars.Num(); i++) {
-			SDK::ACar_TA* car = gameEvent->Cars[i];
-
-			printf("Carbounds origin %f:%f:%f \n", car->Location.X, car->Location.Y, car->Location.Z);
-
-
-
-			D3DVIEWPORT9 viewP;
-			pDevice->GetViewport(&viewP);
-
-			SDK::FVector _carBoundsOrigin = Vec::VecUtils::CalculateScreenCoordinate(car->Location, pPlayerController, viewP.Width, viewP.Height);
+	if  (pPlayerController != NULL) {
+			SDK::FVector _carBoundsOrigin = Vec::VecUtils::CalculateScreenCoordinate(ball->Location, pPlayerController);
+			DrawManager::Instance()->BeginRendering();
+			DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
+			DrawManager::Instance()->EndRendering();
 			
-			// TODO now it just saves the last car
-			carBoundsOrigin.x = _carBoundsOrigin.X;
-			carBoundsOrigin.y = _carBoundsOrigin.Y;
-			carBoundsOrigin.z = _carBoundsOrigin.Z;
-			boostAmount = car->BoostComponent->CurrentBoostAmount;
-		}
 	}
 }
-
-void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
-	pDevice = Device;
-
-	// draw cross at car
-	D3DRECT rec1 = { carBoundsOrigin.x - 35, carBoundsOrigin.y, carBoundsOrigin.x + 35, carBoundsOrigin.y + 1 };
-	D3DRECT rec2 = { carBoundsOrigin.x, carBoundsOrigin.y - 35, carBoundsOrigin.x + 1, carBoundsOrigin.y + 35 };
-
-	LPD3DXFONT m_font = NULL;
-	D3DXCreateFont(pDevice, 17, 0, FW_BOLD, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_DONTCARE, TEXT("Arial"), &m_font);
-	std::string text = "boost: ";
-	text += std::to_string(boostAmount);
-	Utils::DrawMessage(m_font, rec1.x1, rec1.y1, 255, 255, 0, 255, text.c_str());
-
-	pDevice->Clear(1, &rec1, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
-	pDevice->Clear(1, &rec2, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
-
-}
-
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onTCPConnectionEnd(SDK::UObject** object,SDK::UFunction* func,void* params) {}
 void TestClass::onInGameTick(SDK::UObject** object, SDK::UFunction* func, void* params) {}
