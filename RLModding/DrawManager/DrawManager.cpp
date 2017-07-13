@@ -1,5 +1,6 @@
 #include "DrawManager.hpp"
 
+/* Credit goes to CSGO Simple & MarkHC*/
 #include <cstdint>
 
 #include "../Libs/ImGUI/imgui.h"
