@@ -7,6 +7,7 @@
 #include "../../Vector/Vector.hpp"
 #include "../../Vector/VecUtils.h"
 #include "../../DrawManager/DrawManager.hpp"
+#include "../../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 
 SDK::ACar_TA* currentCar = nullptr;
 SDK::UCanvas* currentCanvas = nullptr;
@@ -26,7 +27,9 @@ void TestClass::onEnable() {
 	Vec::Vector carBoundsOrigin = Vec::VecUtils::WorldToScreen(currentCanvas, pPlayerController, currentCar->CarMesh->Bounds.Origin);
 	*/
 }
-void TestClass::onDisable() {printf("Test class disabled \n");}
+void TestClass::onDisable() {
+	printf("Test class disabled \n");
+}
 
 void TestClass::onMainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
 void TestClass::onChatSend(SDK::UObject** object,SDK::UFunction* function,void* parameters) {}
@@ -38,11 +41,7 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
 
 	if  (pPlayerController != NULL) {
-			DrawManager::Instance()->BeginRendering();
-			DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
-			DrawManager::Instance()->AddRect(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
-			DrawManager::Instance()->EndRendering();
-			
+		DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
 	}
 }
 void TestClass::onTCPConnectionBegin(SDK::UObject** object,SDK::UFunction* func,void* params) {}

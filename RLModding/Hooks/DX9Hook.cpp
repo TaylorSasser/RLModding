@@ -84,11 +84,9 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 		DrawManager::Instance()->CreateObjects();
 	} else {
 		ImGui_ImplDX9_NewFrame();
-		DrawManager::Instance()->BeginRendering();
-		DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
-		DrawManager::Instance()->AddRect(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
 		ImGui::Render();
 		DrawManager::Instance()->EndRendering();
+		DrawManager::Instance()->BeginRendering();
 	}
 	return pD3D9EndScene(pDevice);
 }
