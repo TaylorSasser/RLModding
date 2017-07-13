@@ -28,7 +28,6 @@ DWORD Device = NULL;
 
 static bool FirstRun = false;
 
-
 void DX9Hook::InitGUI() {
 	WNDCLASSEXA wc = {sizeof(WNDCLASSEX),CS_CLASSDC,D3D9MsgProc,0L,0L,GetModuleHandleA(NULL),NULL,NULL,NULL,NULL,"DX",NULL};
 	RegisterClassExA(&wc);
