@@ -11,8 +11,6 @@
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
-    <ClCompile Include="Mods\ModHandler.cpp" />
-    <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_Basic.cpp" />
     <ClCompile Include="RL\SDK\RL_Core_functions.cpp" />
@@ -33,9 +31,11 @@
     <ClCompile Include="Filesystem\FileManager.cpp" />
     <ClCompile Include="Vector\Vector4D.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
-    <ClCompile Include="Mods\Modules\Underglow.cpp" />
     <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="DrawManager\DrawManager.cpp" />
+    <ClCompile Include="Mods\Modules\TestClass.cpp" />
+    <ClCompile Include="Mods\Modules\Underglow.cpp" />
+    <ClCompile Include="Mods\ModHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -62,9 +62,6 @@
     <ClInclude Include="Libs\ImGUI\stb_rect_pack.h" />
     <ClInclude Include="Libs\ImGUI\stb_textedit.h" />
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
-    <ClInclude Include="Mods\ModBase.h" />
-    <ClInclude Include="Mods\ModHandler.h" />
-    <ClInclude Include="Mods\Modules\TestClass.h" />
     <ClInclude Include="RL\SDK.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_AkAudio_parameters.hpp" />
@@ -111,9 +108,12 @@
     <ClInclude Include="Filesystem\FileManager.h" />
     <ClInclude Include="Vector\Vector4D.h" />
     <ClInclude Include="Vector\VecUtils.h" />
-    <ClInclude Include="Mods\Modules\Underglow.h" />
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
+    <ClInclude Include="Mods\Modules\TestClass.h" />
+    <ClInclude Include="Mods\Modules\Underglow.h" />
+    <ClInclude Include="Mods\ModBase.h" />
+    <ClInclude Include="Mods\ModHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

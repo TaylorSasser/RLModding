@@ -78,13 +78,20 @@ HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS*
 
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
-	__asm pushad
-
 	if (DrawManager::Instance()->isInitialized() == false) {
 		ImGui_ImplDX9_Init(FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)"), pDevice);
 		DrawManager::Instance()->Initialize(pDevice);
 		DrawManager::Instance()->CreateObjects();
+	} else {
+		ImGui_ImplDX9_NewFrame();
+		DrawManager::Instance()->BeginRendering();
+		DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
+		DrawManager::Instance()->AddRect(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
+		ImGui::Render();
+		DrawManager::Instance()->EndRendering();
 	}
+	return pD3D9EndScene(pDevice);
+}
 
 	/*
 	for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
@@ -96,7 +103,5 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 		}
 	}
 	*/
-	__asm popad
-	return pD3D9EndScene(pDevice);
-}
+	
 

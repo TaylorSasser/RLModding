@@ -5,7 +5,11 @@
 #include "../Libs/ImGUI/imgui.h"
 #include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 
-DrawManager::DrawManager() {}
+DrawManager::DrawManager() {
+	_device = nullptr;
+	_texture = nullptr;
+	_drawList = nullptr;
+}
 DrawManager::~DrawManager() {}
 DrawManager* DrawManager::instance = nullptr;
 
@@ -128,10 +132,8 @@ void DrawManager::BeginRendering() {
 	_drawList->PushClipRectFullScreen();
 }
 
-void DrawManager::EndRendering()
-{
-    ImGui_ImplDX9_RenderDrawLists(GetDrawData());
-	
+void DrawManager::EndRendering() {
+    ImGui_ImplDX9_RenderDrawLists(GetDrawData());	
 }
 
 void DrawManager::AddText(ImVec2 point, ImU32 color, text_flags flags, const char* format, ...)
@@ -241,14 +243,13 @@ void DrawManager::AddBezierCurve(const ImVec2& pos0, const ImVec2& cp0, const Im
     _drawList->AddBezierCurve(pos0, cp0, cp1, pos1, col, thickness, num_segments);
 }
 
-ImDrawData* DrawManager::GetDrawData()
-{
-    if(!_drawList->VtxBuffer.empty()) {
-        _drawData.Valid = true;
-        _drawData.CmdLists = &_drawList;
-        _drawData.CmdListsCount = 1;
-        _drawData.TotalVtxCount = _drawList->VtxBuffer.Size;
-        _drawData.TotalIdxCount = _drawList->IdxBuffer.Size;
-    }
-    return &_drawData;
+ImDrawData* DrawManager::GetDrawData() {
+	if (!_drawList->VtxBuffer.empty()) {
+		_drawData.Valid = true;
+		_drawData.CmdLists = &_drawList;
+		_drawData.CmdListsCount = 1;
+		_drawData.TotalVtxCount = _drawList->VtxBuffer.Size;
+		_drawData.TotalIdxCount = _drawList->IdxBuffer.Size;
+	}
+	return &_drawData;
 }

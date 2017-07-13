@@ -38,9 +38,9 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
 
 	if  (pPlayerController != NULL) {
-			SDK::FVector _carBoundsOrigin = Vec::VecUtils::CalculateScreenCoordinate(ball->Location, pPlayerController);
 			DrawManager::Instance()->BeginRendering();
 			DrawManager::Instance()->AddRectFilled(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
+			DrawManager::Instance()->AddRect(ImVec2(300, 300), ImVec2(250, 250), D3DCOLOR_ARGB(255, 127, 0, 127));
 			DrawManager::Instance()->EndRendering();
 			
 	}

@@ -56,8 +56,13 @@ public:
 		_device = device;
 		_texture = nullptr;	
 		_drawList = nullptr;
-		initalized = true;
-		if (device == nullptr) {initalized = false;}
+		
+		if (device != nullptr) {
+			initalized = true;
+			printf("Device address %p\n",device);
+		} else {
+			initalized = false;
+		}
 	}
 
 	static DrawManager* Instance() {
