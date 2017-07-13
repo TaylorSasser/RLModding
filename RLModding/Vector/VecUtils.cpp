@@ -68,7 +68,7 @@ namespace Vec {
 
 		SDK::FVector Return;
 
-		Vector AxisX(0, 0, 0), AxisY(0, 0, 0), AxisZ(0, 0, 0), Delta(0, 0, 0), Transformed(0, 0, 0);
+		Vector AxisX, AxisY, AxisZ, Delta, Transformed;
 		GetAxes(pPC->PlayerCamera->Rotation, AxisX, AxisY, AxisZ);
 
 		Delta = Location2 - CameraLocation2;

@@ -12,6 +12,7 @@ SDK::UCanvas* currentCanvas = nullptr;
 IDirect3DDevice9* pDevice = nullptr;
 
 Vec::Vector carBoundsOrigin(0, 0, 0);
+float boostAmount = 0;
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
@@ -54,6 +55,7 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 			carBoundsOrigin.x = _carBoundsOrigin.X;
 			carBoundsOrigin.y = _carBoundsOrigin.Y;
 			carBoundsOrigin.z = _carBoundsOrigin.Z;
+			boostAmount = car->BoostComponent->CurrentBoostAmount;
 		}
 	}
 }
@@ -64,6 +66,12 @@ void TestClass::onDX9RenderTick(IDirect3DDevice9* Device) {
 	// draw cross at car
 	D3DRECT rec1 = { carBoundsOrigin.x - 35, carBoundsOrigin.y, carBoundsOrigin.x + 35, carBoundsOrigin.y + 1 };
 	D3DRECT rec2 = { carBoundsOrigin.x, carBoundsOrigin.y - 35, carBoundsOrigin.x + 1, carBoundsOrigin.y + 35 };
+
+	LPD3DXFONT m_font = NULL;
+	D3DXCreateFont(pDevice, 17, 0, FW_BOLD, 0, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_DONTCARE, TEXT("Arial"), &m_font);
+	std::string text = "boost: ";
+	text += std::to_string(boostAmount);
+	Utils::DrawMessage(m_font, rec1.x1, rec1.y1, 255, 255, 0, 255, text.c_str());
 
 	pDevice->Clear(1, &rec1, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
 	pDevice->Clear(1, &rec2, D3DCLEAR_TARGET, D3DCOLOR_XRGB(255, 255, 255), 0, 0);
