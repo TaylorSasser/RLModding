@@ -1,4 +1,5 @@
 #pragma once
+/* Credit goes to CSGO simple & MarkHC for this class */
 
 #include <memory>
 #include <string>
