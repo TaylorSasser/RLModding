@@ -3,6 +3,7 @@
 #include <cmath>
 #include <limits>
 
+/* Credit goes to CSGOSimple and MarkHC  */
 namespace Vec
 {
 
