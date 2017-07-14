@@ -46,7 +46,7 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 		DrawManager::Instance()->BeginRendering();
 
 		// Draw ball location + circles each radius step below it until it reaches the ground
-		if (ball != NULL) {
+		if (ball != NULL && false) {
 
 			SDK::FVector previousBall2DLocation = Vec::VecUtils::CalculateScreenCoordinate(ball->Location, pPlayerController);
 
@@ -87,14 +87,18 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 			}
 		}
 
-
+		// Draw boost meter for all cars
 		if (gameEvent != NULL) {
 			for (int i = 0; i < gameEvent->Cars.Num(); i++) {
 				SDK::ACar_TA* car = gameEvent->Cars[i];
-				SDK::FVector car2DLocation = Vec::VecUtils::CalculateScreenCoordinate(car->Location, pPlayerController);
-				std::string boostText = "boost: " + std::to_string((int)(100.0f * car->BoostComponent->CurrentBoostAmount));
-				DrawManager::Instance()->AddText(ImVec2(car2DLocation.X - 2, car2DLocation.Y - 2), ImColor(255, 255, 255, 255), (text_flags)1, boostText.c_str());
-				DrawManager::Instance()->AddText(ImVec2(car2DLocation.X, car2DLocation.Y), ImColor(255, 0, 0, 255), (text_flags)1, boostText.c_str());
+				if (car != NULL) {
+					SDK::FVector car2DLocation = Vec::VecUtils::CalculateScreenCoordinate(car->Location, pPlayerController);
+					if (car->BoostComponent != NULL) {
+						std::string boostText = "boost: " + std::to_string((int)(100.0f * car->BoostComponent->CurrentBoostAmount));
+						DrawManager::Instance()->AddText(ImVec2(car2DLocation.X - 2, car2DLocation.Y - 2), ImColor(255, 255, 255, 255), (text_flags)1, boostText.c_str());
+						DrawManager::Instance()->AddText(ImVec2(car2DLocation.X, car2DLocation.Y), ImColor(255, 0, 0, 255), (text_flags)1, boostText.c_str());
+					}
+				}
 			}
 		}
 	}
