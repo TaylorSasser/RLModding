@@ -8,12 +8,14 @@
 #include "../../Vector/VecUtils.h"
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/ImGUI/DX9/imgui_impl_dx9.h"
+#include <set>
 
 SDK::ACar_TA* currentCar = nullptr;
 SDK::UCanvas* currentCanvas = nullptr;
 
 Vec::Vector carBoundsOrigin(0, 0, 0);
 float boostAmount = 0;
+std::set<SDK::AVehiclePickup_Boost_TA*> boostPills;
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
@@ -40,6 +42,7 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 	SDK::APlayerController* pPlayerController = (SDK::APlayerController*)Utils::GetInstanceOf(SDK::APlayerController::StaticClass());
 	SDK::ABall_TA* ball = (SDK::ABall_TA*)Utils::GetInstanceOf(SDK::ABall_TA::StaticClass());
 	SDK::AGameEvent_TA* gameEvent = (SDK::AGameEvent_TA*)Utils::GetInstanceOf(SDK::AGameEvent_TA::StaticClass());
+	SDK::UGameShare_TA* gameShare = (SDK::UGameShare_TA*)Utils::GetInstanceOf(SDK::UGameShare_TA::StaticClass());
 
 	if (pPlayerController != NULL) {
 
@@ -95,9 +98,26 @@ void TestClass::onPostRender(SDK::UObject** object,SDK::UFunction* function,void
 					SDK::FVector car2DLocation = Vec::VecUtils::CalculateScreenCoordinate(car->Location, pPlayerController);
 					if (car->BoostComponent != NULL) {
 						std::string boostText = "boost: " + std::to_string((int)(100.0f * car->BoostComponent->CurrentBoostAmount));
-						DrawManager::Instance()->AddText(ImVec2(car2DLocation.X - 2, car2DLocation.Y - 2), ImColor(255, 255, 255, 255), (text_flags)1, boostText.c_str());
-						DrawManager::Instance()->AddText(ImVec2(car2DLocation.X, car2DLocation.Y), ImColor(255, 0, 0, 255), (text_flags)1, boostText.c_str());
+						DrawManager::Instance()->AddText(ImVec2(car2DLocation.X, car2DLocation.Y), ImColor(255, 0, 0, 255), (text_flags)4, boostText.c_str());
 					}
+				}
+			}
+		}
+
+		// Draw boost pads time left
+		if (gameShare != NULL) {
+			for (int i = 0; i < gameShare->ActiveBoostPills.Num(); i++) {
+				boostPills.insert(gameShare->ActiveBoostPills[i]);
+			}
+
+			for (std::set<SDK::AVehiclePickup_Boost_TA*>::iterator it = boostPills.begin(); it != boostPills.end(); ++it){
+				SDK::AVehiclePickup_Boost_TA* boost = *it;
+				for (int i = 0; i < boost->Timers.Num(); i++) {
+					int cooldown = int(boost->RespawnDelay - boost->Timers[i].Count);
+					char buffer[50];
+					sprintf(buffer, "Cooldown: %d", abs(cooldown));
+					SDK::FVector boost2DLocation = Vec::VecUtils::CalculateScreenCoordinate(boost->Location, pPlayerController);
+					DrawManager::Instance()->AddText(ImVec2(boost2DLocation.X, boost2DLocation.Y), ImColor(255, 0, 0, 255), (text_flags)4, buffer);
 				}
 			}
 		}
