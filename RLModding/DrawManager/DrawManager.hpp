@@ -83,5 +83,5 @@ private:
     ImFontAtlas         _fonts;
 
     const std::string   FontName = "Tahoma";
-    const float         FontSize = 14.0f;
+    const float         FontSize = 20.0f;
 };
