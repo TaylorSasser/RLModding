@@ -33,7 +33,7 @@ namespace Vec {
 		return Vector(input.X, input.Y, input.Z);
 	}
 
-	SDK::FVector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC) {
+	Vector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC) {
 		RECT windowRect;
 		HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 		
@@ -44,16 +44,13 @@ namespace Vec {
 			SizeY = windowRect.bottom - windowRect.top;
 		}
 
-		Vector Location2 = FVectorToVector(Location);
-		Vector CameraLocation2 = FVectorToVector(pPC->PlayerCamera->Location);
+		Vector BaseLocation = FVectorToVector(Location);
+		Vector CameraLocation = FVectorToVector(pPC->PlayerCamera->Location);
 
-
-		SDK::FVector Return;
-
-		Vector AxisX, AxisY, AxisZ, Transformed;
+		Vector AxisX, AxisY, AxisZ, Transformed,Return;
 		GetAxes(pPC->PlayerCamera->Rotation, AxisX, AxisY, AxisZ);
 
-		Vector Delta = Location2 - CameraLocation2;
+		Vector Delta =  BaseLocation - CameraLocation;
 		Transformed.x = Delta.Dot(AxisY);
 		Transformed.y = Delta.Dot(AxisZ);
 		Transformed.z = Delta.Dot(AxisX);
@@ -63,10 +60,10 @@ namespace Vec {
 
 		float FOVAngle = pPC->PlayerCamera->GetFOVAngle();
 
-		Return.X = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
-		Return.Y = (SizeY / 2.0f) + -Transformed.y * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z; 
-		Return.Z = 0;
-
+		Return.x = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.y = (SizeY / 2.0f) + -Transformed.y * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
+		Return.z = 0.0f;
+		printf("Return %f:%f:%f \n",Return.x,Return.y,Return.z);
 		return Return;
 	}
 

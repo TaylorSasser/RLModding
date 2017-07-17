@@ -28,6 +28,7 @@
     <ClCompile Include="Hooks\DX9Hook.cpp" />
     <ClCompile Include="Hooks\HookManager.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
+    <ClCompile Include="Interfaces\Interfaces.cpp" />
     <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\HookManager.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
+    <ClInclude Include="Interfaces\Interfaces.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />

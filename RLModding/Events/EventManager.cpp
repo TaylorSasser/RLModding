@@ -19,7 +19,7 @@ EventManager::EventManager() {
 	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::onTCPConnectionBegin);
 	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::onTCPConnectionEnd);
 	addFunction("Function Engine.GameViewportClient.PostRender",&ModBase::onPostRender);
-
+	addFunction("Function ProjectX.PartyMessage_X.Broadcast",&ModBase::onProfileJoinGame);
 }
 EventManager::~EventManager() {
 	delete this;

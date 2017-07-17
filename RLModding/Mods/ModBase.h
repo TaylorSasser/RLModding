@@ -31,6 +31,7 @@ public:
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
+	virtual void onProfileJoinGame(SDK::UObject**,SDK::UFunction*,void*)	{}
 
 	virtual void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void*)		{}					
 	virtual void onInGameTick(SDK::UObject**,SDK::UFunction*,void*)			{}		

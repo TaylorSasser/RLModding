@@ -35,6 +35,7 @@
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="Mods\Modules\Underglow.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
+    <ClCompile Include="Interfaces\Interfaces.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="Mods\Modules\Underglow.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
+    <ClInclude Include="Interfaces\Interfaces.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

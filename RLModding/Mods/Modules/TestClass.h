@@ -9,6 +9,8 @@ public:
 	void onEnable();
 	void onDisable();
 
+	void onProfileJoinGame(SDK::UObject **, SDK::UFunction *, void * parameters);
+
 	void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void* params);
 	void onChatSend(SDK::UObject**,SDK::UFunction*,void* params);
 	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms);

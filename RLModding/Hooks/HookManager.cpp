@@ -33,10 +33,11 @@ HookManager* HookManager::instance = nullptr;
 void HookManager::DetourFunctions(std::function<void(UObject**, UFunction*, void*, bool)> function) {
 	CallFunction = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
 	ProcessEvent = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
+	printf("CallFunction Address %p \n",CallFunction);
 	OldCallFunction = (DWORD)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
 	OldProcessEvent = (DWORD)DetourFunction((BYTE*)ProcessEvent, (BYTE*)ProcessEventProxy);
+	printf("Old CallFunction address %p \n",OldCallFunction);
 	CallFuncProto = function;
-	printf("HookManager finished \n");
 }
 
 void HookManager::RemoveDetours() {
