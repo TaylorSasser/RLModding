@@ -1,4 +1,4 @@
-#include "HookManager.h"
+#include "FunctionHook.h"
 #include <Windows.h>
 #include "../Utils/Pattern/TFL_HT.h"
 #include "../RL/SDK.hpp"
@@ -8,6 +8,10 @@
 
 
 using namespace SDK;
+
+FunctionHook::FunctionHook() {}
+FunctionHook::~FunctionHook() {}
+
 
 UObject**		pCallObject = nullptr;
 UFunction*		pUFuncCF = nullptr;
@@ -25,22 +29,16 @@ VOID ProcessEventProxy();
 
 std::function<void(UObject**, UFunction*, void*, bool isCallFunc)> CallFuncProto;
 
-HookManager::HookManager() {}
-HookManager::~HookManager() {}
 
-HookManager* HookManager::instance = nullptr;
-
-void HookManager::DetourFunctions(std::function<void(UObject**, UFunction*, void*, bool)> function) {
+void FunctionHook::DetourFunctions(std::function<void(UObject**, UFunction*, void*, bool)> function) {
 	CallFunction = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
 	ProcessEvent = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
-	printf("CallFunction Address %p \n",CallFunction);
 	OldCallFunction = (DWORD)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
 	OldProcessEvent = (DWORD)DetourFunction((BYTE*)ProcessEvent, (BYTE*)ProcessEventProxy);
-	printf("Old CallFunction address %p \n",OldCallFunction);
 	CallFuncProto = function;
 }
 
-void HookManager::RemoveDetours() {
+void FunctionHook::RemoveDetours() {
 	DetourRemove((PBYTE)OldCallFunction,(PBYTE)CallFunctionProxy);
 	DetourRemove((PBYTE)OldProcessEvent,(PBYTE)ProcessEventProxy);
 }

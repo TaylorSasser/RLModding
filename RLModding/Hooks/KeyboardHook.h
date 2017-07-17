@@ -3,16 +3,10 @@
 
 
 class KeyboardHook {
-private:
-	static KeyboardHook* instance;
-	KeyboardHook();
-	KeyboardHook(const KeyboardHook&) = delete;
-	~KeyboardHook();
+
 public:
-	static KeyboardHook* Instance() {
-		if (!instance) instance = new KeyboardHook();
-		return instance;
-	}
+	KeyboardHook();
+	~KeyboardHook();
 	void HookKeyboard();
 	void RestoreKeyboard();
 };

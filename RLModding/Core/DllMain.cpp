@@ -1,10 +1,7 @@
 #include <Windows.h>
 #include "Core.h"
-#include "../Hooks/HookManager.h"
-#include "../Mods/ModBase.h"
-#include "../Utils/Wrapper.h"
-#include "../Hooks/KeyboardHook.h"
-#include "../Hooks/DX9Hook.h"
+#include "../Interfaces/Interfaces.h"
+
 
 HANDLE MainThread;
 void onAttach(HMODULE hModule);
@@ -22,7 +19,8 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
-	HookManager::Instance()->DetourFunctions(Wrapper::Interfaces::getEventManager()->FunctionProto);
-	DX9Hook::Instance()->InitGUI();
-	KeyboardHook::Instance()->HookKeyboard();
+	Interfaces::ConstructAll();
+	Interfaces::FunctionHandler()->DetourFunctions(Interfaces::EventHandler()->FunctionProto);
+	Interfaces::DX9Handler()->InitGUI();
+	Interfaces::KeyboardHandler()->HookKeyboard();
 }

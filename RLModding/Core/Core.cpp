@@ -4,7 +4,7 @@
 #include "../RL/SDK.hpp"
 #include "../Hooks/KeyboardHook.h"
 #include "../Hooks/DX9Hook.h"
-#include "../Hooks/HookManager.h"
+#include "../Hooks/FunctionHook.h"
 
 namespace Core {
 

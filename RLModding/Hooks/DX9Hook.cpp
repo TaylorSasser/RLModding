@@ -1,17 +1,15 @@
 #include "DX9Hook.h"
 #include <thread>
-#include "../Utils/Wrapper.h"
 #include "../Libs/Detours.h"
 #include "../Gui/GUIConsole.h"
 #include "../DrawManager/DrawManager.hpp"
 #include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 #include "../Libs/DirectX9/d3d9.h"
+#include "../Interfaces/Interfaces.h"
 
-DX9Hook* DX9Hook::instance = nullptr;
+
 DX9Hook::DX9Hook(){}
 DX9Hook::~DX9Hook(){}
-
-
 
 LRESULT CALLBACK D3D9MsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {return DefWindowProc(hwnd, uMsg, wParam, lParam); }
 
@@ -78,15 +76,15 @@ HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS*
 
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
-	if (DrawManager::Instance()->isInitialized() == false) {
+	if (Interfaces::RenderHandler()->isInitialized() == false) {
 		ImGui_ImplDX9_Init(FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)"), pDevice);
-		DrawManager::Instance()->Initialize(pDevice);
-		DrawManager::Instance()->CreateObjects();
+		Interfaces::RenderHandler()->Initialize(pDevice);
+		Interfaces::RenderHandler()->CreateObjects();
 	} else {
 		ImGui_ImplDX9_NewFrame();
 		ImGui::Render();
-		DrawManager::Instance()->EndRendering();
-		DrawManager::Instance()->BeginRendering();
+		Interfaces::RenderHandler()->EndRendering();
+		Interfaces::RenderHandler()->BeginRendering();
 	}
 	return pD3D9EndScene(pDevice);
 }

@@ -5,7 +5,6 @@
     <ClCompile Include="Core\DllMain.cpp" />
     <ClCompile Include="Events\EventManager.cpp" />
     <ClCompile Include="Hooks\DX9Hook.cpp" />
-    <ClCompile Include="Hooks\HookManager.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
     <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
@@ -26,22 +25,21 @@
     <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
-    <ClCompile Include="Utils\Wrapper.cpp" />
-    <ClCompile Include="Gui\GUIConsole.cpp" />
     <ClCompile Include="Filesystem\FileManager.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
     <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="DrawManager\DrawManager.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
-    <ClCompile Include="Mods\Modules\Underglow.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
     <ClCompile Include="Interfaces\Interfaces.cpp" />
+    <ClCompile Include="Hooks\FunctionHook.cpp" />
+    <ClCompile Include="Gui\InGameGUI.cpp" />
+    <ClCompile Include="InGameConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="Events\EventManager.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />
-    <ClInclude Include="Hooks\HookManager.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
@@ -102,18 +100,17 @@
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />
     <ClInclude Include="Utils\Utils.h" />
-    <ClInclude Include="Utils\Wrapper.h" />
-    <ClInclude Include="Gui\GUIConsole.h" />
-    <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
     <ClInclude Include="Vector\VecUtils.h" />
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
     <ClInclude Include="Mods\Modules\TestClass.h" />
-    <ClInclude Include="Mods\Modules\Underglow.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
     <ClInclude Include="Interfaces\Interfaces.h" />
+    <ClInclude Include="Hooks\FunctionHook.h" />
+    <ClInclude Include="Gui\InGameGUI.h" />
+    <ClInclude Include="InGameConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

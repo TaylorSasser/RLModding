@@ -6,20 +6,19 @@ public:
 	TestClass(std::string name,int key);
 	~TestClass();
 
-	void onEnable();
-	void onDisable();
+	void onEnable() override;
+	void onDisable() override;
 
-	void onProfileJoinGame(SDK::UObject **, SDK::UFunction *, void * parameters);
+	void onProfileJoinGame(SDK::UObject **, SDK::UFunction *, void * parameters) override;
+	void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void* params) override;
+	void onChatSend(SDK::UObject**,SDK::UFunction*,void* params) override;
+	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms) override;
+	void onInGameTick(SDK::UObject**, SDK::UFunction*, void*) override;
+	void onCarTick(SDK::UObject**, SDK::UFunction*, void*) override;
+	void onPostRender(SDK::UObject**,SDK::UFunction*,void*) override;
 
-	void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void* params);
-	void onChatSend(SDK::UObject**,SDK::UFunction*,void* params);
-	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms);
-	void onInGameTick(SDK::UObject**, SDK::UFunction*, void*);
-	void onCarTick(SDK::UObject**, SDK::UFunction*, void*);
-	void onPostRender(SDK::UObject**,SDK::UFunction*,void*);
-
-	void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*);
-	void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*);
+	void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*) override;
+	void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*) override;
 
 };
 
