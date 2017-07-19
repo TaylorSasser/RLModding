@@ -8,6 +8,7 @@
 #include "../Hooks/KeyboardHook.h"
 #include "../Filesystem/FileManager.h"
 #include "../Mods/ModHandler.h"
+#include "../Gui/InGameGUI.h"
 
 class Interfaces {
 public:
@@ -18,6 +19,7 @@ public:
 	static KeyboardHook*				KeyboardHandler();
 	static FileManager*					FileHandler();
 	static ModHandler*					Mods();
+	static InGameGUI*					GUI();
 	static void							ConstructAll();
 	static void							DestructAll();
 
@@ -29,4 +31,5 @@ private:
 	static DrawManager*					m_draw_manager_;
 	static KeyboardHook*				m_keyboard_hook_;
 	static FileManager*					m_file_manager_;
+	static InGameGUI*					m_InGame_GUI;
 };

@@ -1,7 +1,7 @@
 #include "DX9Hook.h"
 #include <thread>
+#include <Windows.h>
 #include "../Libs/Detours.h"
-#include "../Gui/GUIConsole.h"
 #include "../DrawManager/DrawManager.hpp"
 #include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 #include "../Libs/DirectX9/d3d9.h"
@@ -82,6 +82,7 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 		Interfaces::RenderHandler()->CreateObjects();
 	} else {
 		ImGui_ImplDX9_NewFrame();
+		Interfaces::GUI()->Render();
 		ImGui::Render();
 		Interfaces::RenderHandler()->EndRendering();
 		Interfaces::RenderHandler()->BeginRendering();

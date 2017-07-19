@@ -1,4 +1,5 @@
 #include "Interfaces.h"
+#include "../Gui/InGameGUI.h"
 
 FunctionHook*				Interfaces::m_function_hook_ = nullptr;
 EventManager*				Interfaces::m_event_manager_ = nullptr;
@@ -7,6 +8,7 @@ DrawManager*				Interfaces::m_draw_manager_ = nullptr;
 KeyboardHook*				Interfaces::m_keyboard_hook_ = nullptr;
 FileManager*				Interfaces::m_file_manager_ = nullptr;
 ModHandler*					Interfaces::m_mod_handler_ = nullptr;
+InGameGUI*					Interfaces::m_InGame_GUI = nullptr;
 
 
 FunctionHook* Interfaces::FunctionHandler() {
@@ -17,6 +19,12 @@ ModHandler*	Interfaces::Mods() {
 	if (!m_mod_handler_) m_mod_handler_ = new ModHandler();
 	return m_mod_handler_;
 }
+
+InGameGUI* Interfaces::GUI() {
+	if (!m_InGame_GUI) m_InGame_GUI = new InGameGUI();
+	return m_InGame_GUI;
+}
+
 EventManager* Interfaces::EventHandler() {
 	if (!m_event_manager_) m_event_manager_ = new EventManager();
 	return m_event_manager_;
@@ -37,6 +45,7 @@ FileManager* Interfaces::FileHandler() {
 	if (!m_file_manager_) m_file_manager_ = new FileManager();
 	return m_file_manager_;
 }
+
 void Interfaces::ConstructAll() {
 	Mods();
 	FunctionHandler();

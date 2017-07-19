@@ -5,6 +5,7 @@
 #include "../Libs/ImGui/imgui.h"
 #include "../Libs/ImGui/DX9/imgui_impl_dx9.h"
 #include "../Interfaces/Interfaces.h"
+#include "../Gui/ClickEvent.h"
 
 KeyboardHook::KeyboardHook(){}
 KeyboardHook::~KeyboardHook(){}
@@ -15,7 +16,7 @@ HINSTANCE RLModding;
 
 bool PressedKeys[256] = {};
 
-LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code,WPARAM wParam,LPARAM lParam);
+LRESULT __stdcall HookedWindowProc(HWND hwnd,unsigned int code,WPARAM wParam,LPARAM lParam);
 
 void KeyboardHook::HookKeyboard() {
 	RLWindow = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
@@ -30,23 +31,22 @@ void KeyboardHook::RestoreKeyboard() {
 
 
 // TRUE = GUI is open
-LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code, WPARAM wParam,LPARAM lParam) {
+LRESULT __stdcall HookedWindowProc(HWND hwnd,unsigned int code, WPARAM wParam,LPARAM lParam) {
 
 	ImGuiIO& io = ImGui::GetIO();
-	switch (code)
-	{
+	switch (code) {
 	case WM_LBUTTONDOWN:
-		//io.MouseDown[0] = true;
-		//return (Interfaces::->MouseClickEvent(ClickEvent::LeftClick, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		io.MouseDown[0] = true;
+		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_LBUTTONUP:
-		//io.MouseDown[0] = false;
-		//return (GUIConsole::Instance()->MouseClickEvent(ClickEvent::LeftClick, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		io.MouseDown[0] = false;
+		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_RBUTTONDOWN:
-		//io.MouseDown[1] = true;
-		//return (GUIConsole::Instance()->MouseClickEvent(ClickEvent::RightClick, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		io.MouseDown[1] = true;
+		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_RBUTTONUP:
-		//io.MouseDown[1] = false;
-		//return (GUIConsole::Instance()->MouseClickEvent(ClickEvent::RightClick, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		io.MouseDown[1] = false;
+		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_MBUTTONDOWN:
 		io.MouseDown[2] = true;
 		return CallWindowProc(OldWindow, hwnd, code, wParam, lParam);
@@ -61,11 +61,11 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd,UINT code, WPARAM wParam,LPARAM lPa
 		io.MousePos.y = (signed short)(lParam >> 16);
 		return CallWindowProc(OldWindow, hwnd, code, wParam, lParam);
 	case WM_KEYDOWN:
-		//if (wParam < 256)
-			//io.KeysDown[wParam] = 1;
-		//return //(GUIConsole::Instance()->KeyPressEvent(KeyEvent::Down, wParam) ? 1 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		if (wParam < 256)
+			io.KeysDown[wParam] = 1;
+		return (Interfaces::GUI()->KeyPressEvent(KeyEvent::KeyDown, wParam) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_KEYUP:
-		//if (GUIConsole::Instance()->KeyPressEvent(KeyEvent::Up, wParam) != false) { return true; }
+		if (Interfaces::GUI()->KeyPressEvent(KeyEvent::KeyUp, wParam) == false) { return true; }
 		for (auto& Mod : Interfaces::Mods()->getMods()) {
 			if (Mod->getBind() == wParam) {
 				Mod->Toggle();

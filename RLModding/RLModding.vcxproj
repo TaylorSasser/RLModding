@@ -59,6 +59,7 @@
     <ClInclude Include="DrawManager\DrawManager.hpp" />
     <ClInclude Include="Events\EventManager.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
+    <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\FunctionHook.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />

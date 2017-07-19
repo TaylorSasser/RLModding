@@ -32,3 +32,11 @@ size_t ModHandler::GetModListSize() {
 void ModHandler::addMod(ModBase* mod) {
 	Mods.push_back(mod);
 }
+ModBase* ModHandler::getModInstance(std::string name) {
+	for (auto& mod : Mods) {
+		if (mod->getName() == name) {
+			return mod;
+		}
+	}
+	return nullptr;
+}
