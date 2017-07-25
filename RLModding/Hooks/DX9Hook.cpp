@@ -1,11 +1,8 @@
-#include "DX9Hook.h"
-#include <thread>
-#include <Windows.h>
-#include "../Libs/Detours.h"
-#include "../DrawManager/DrawManager.hpp"
-#include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
-#include "../Libs/DirectX9/d3d9.h"
 #include "../Interfaces/Interfaces.h"
+#include "DX9Hook.h"
+#include "../Libs/Detours.h"
+#include "../Mods/ModBase.h"
+#include "../Libs/ImGUI/DX9/imgui_impl_dx9.h"
 
 
 DX9Hook::DX9Hook(){}
@@ -64,13 +61,13 @@ void DX9Hook::RemoveHook() {
 	DetourRemove((PBYTE)pD3D9EndScene,(PBYTE)Hooked_EndScene);
 }
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
-	//ImGui_ImplDX9_InvalidateObjects();			Destruct objects
-	//GUIConsole::InvalidateObjects();				Destruct objects
+	ImGui_ImplDX9_InvalidateDeviceObjects();
+	Interfaces::RenderHandler()->InvalidateObjects();
 
 	HRESULT restore = pD3D9HookedReset(pDevice,pPresentationParameters);
 
-	//ImGui_ImplDX9_CreateDeviceObjects();			Create new objects
-	//GUIConsole::CreateObjects();					Create new objects
+	ImGui_ImplDX9_CreateDeviceObjects();		
+	Interfaces::RenderHandler()->CreateObjects();
 	return restore;
 }
 

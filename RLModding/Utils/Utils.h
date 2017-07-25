@@ -14,9 +14,11 @@ namespace Utils {
 	struct FFrame {
 		unsigned char		UnknownData00[0xC];
 		class UStruct*		Node;
+		SDK::UObject*		Object;
 		BYTE*				Code;
 		BYTE*				Locals;
 		struct FFrame*		PreviousFrame;
+		FOutParamRec*		OutParams;
 	};
 
 	bool InitializeObjectsStore();

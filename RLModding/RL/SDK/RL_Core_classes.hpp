@@ -787,7 +787,8 @@ public:
 	class UField*                                      SuperField;                                               // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	class UField*                                      Children;                                                 // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	unsigned long                                      PropertySize;                                             // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData01[0x30];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	TArray<unsigned char>							   Script;				
+	char                                               UnknownData01[0x24];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -844,7 +845,15 @@ public:
 class UProperty : public UField
 {
 public:
-	unsigned char                                      UnknownData00[0x3C];                                      // 0x0048(0x003C) MISSED OFFSET
+	unsigned long	ArrayDim;
+	unsigned long	ElementSize;
+	int				PropertyFlagsA;
+	int				PropertyFlagsB;
+	unsigned long	PropertySize;
+	char			UnknownData00[0x0C];
+	unsigned long	Offset;
+	char			UnknownData01[0x0C];
+
 
 	static UClass* StaticClass()
 	{

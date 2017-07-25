@@ -1,5 +1,6 @@
 #pragma once
 #include "../RL/SDK.hpp"
+#include "../Events/Event.h"
 #include <Windows.h>
 
 
@@ -19,6 +20,7 @@ public:
 		this->onToggle();
 	}
 
+	virtual void setState(bool state) {this->enabled = state;}
 	virtual bool isEnabled() {return this->enabled;}
 
 	virtual std::string getName() {return this->name;}
@@ -31,7 +33,7 @@ public:
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual void onProfileJoinGame(SDK::UObject**,SDK::UFunction*,void*)	{}
+	virtual void onJoinGame(SDK::UObject**,SDK::UFunction*,void*)			{}
 
 	virtual void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void*)		{}					
 	virtual void onInGameTick(SDK::UObject**,SDK::UFunction*,void*)			{}		

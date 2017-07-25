@@ -19,11 +19,10 @@ EventManager::EventManager() {
 	addFunction("Function ProjectX.TcpConnection.EventConnected",&ModBase::onTCPConnectionBegin);
 	addFunction("Function ProjectX.TcpConnection.EventDisconnected",&ModBase::onTCPConnectionEnd);
 	addFunction("Function Engine.GameViewportClient.PostRender",&ModBase::onPostRender);
-	addFunction("Function ProjectX.PartyMessage_X.Broadcast",&ModBase::onProfileJoinGame);
+	addFunction("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation",&ModBase::onJoinGame);
 }
 EventManager::~EventManager() {
 	delete[] &hashmap;
-	delete this;
 }
 void EventManager::addFunction(std::string funcname,function func) {
 	hashmap.insert(std::pair<std::string,function>(funcname,func));

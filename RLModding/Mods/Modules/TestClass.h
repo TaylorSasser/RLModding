@@ -9,6 +9,7 @@ public:
 	void onEnable() override;
 	void onDisable() override;
 
+	void onJoinGame(SDK::UObject** object, SDK::UFunction*,void* params) override;
 	void onProfileJoinGame(SDK::UObject **, SDK::UFunction *, void * parameters) override;
 	void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void* params) override;
 	void onChatSend(SDK::UObject**,SDK::UFunction*,void* params) override;

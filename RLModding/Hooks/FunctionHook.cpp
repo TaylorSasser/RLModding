@@ -5,84 +5,87 @@
 #include "../Libs/detours.h"
 #include "../Utils/Utils.h"
 #include "../Utils/SDKDefines.h"
+#include <iostream>
 
-
-using namespace SDK;
 
 FunctionHook::FunctionHook() {}
 FunctionHook::~FunctionHook() {}
 
+using namespace SDK;
 
-UObject**		pCallObject = nullptr;
-UFunction*		pUFuncCF = nullptr;
-Utils::FFrame*	pFFrameCF = nullptr;
-void*			pParams = nullptr;
-void*			pResultCF = nullptr;
+typedef void(__fastcall *tCallFunction)(SDK::UObject**,void* edx,Utils::FFrame&,void*,UFunction* );
+typedef void(__fastcall *tProcessEvent)(SDK::UObject**,void* edx,UFunction*,void*,void*);
 
+UObject**		pCallObjectCF;
+UObject**		pCallObjectPE;
+UFunction*		pUFuncCF;		
+UFunction*		pUFuncPE;
+Utils::FFrame*	pFFrameCF;
+void*			pResultCF;
+void*			pResultPE;
+void*			pParamsCF;
+void*			pParamsPE;
 
-DWORD CallFunction, OldCallFunction;
-DWORD ProcessEvent, OldProcessEvent;
-DWORD ProcessInternal, OldProcessInternal;
+tProcessEvent ProcessEvent,OldProcessEvent;
+tCallFunction CallFunction,OldCallFunction;
 
-VOID CallFunctionProxy();
-VOID ProcessEventProxy();
+//DWORD CallFunction, OldCallFunction;
+//DWORD ProcessEvent, OldProcessEvent;
+//DWORD ProcessInternal, OldProcessInternal;
+
+void __fastcall CallFunctionProxy(SDK::UObject**, void* edx, Utils::FFrame&, void*, UFunction*);
+void __fastcall ProcessEventProxy(SDK::UObject**, void* edx, UFunction*,void*,void* pPresult);
+//void __fastcall ProcessEventProxy();
 
 std::function<void(UObject**, UFunction*, void*, bool isCallFunc)> CallFuncProto;
 
 
 void FunctionHook::DetourFunctions(std::function<void(UObject**, UFunction*, void*, bool)> function) {
-	CallFunction = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
-	ProcessEvent = (DWORD)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
-	OldCallFunction = (DWORD)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
-	OldProcessEvent = (DWORD)DetourFunction((BYTE*)ProcessEvent, (BYTE*)ProcessEventProxy);
+	CallFunction = (tCallFunction)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
+	//ProcessEvent = (tProcessEvent)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
+	OldCallFunction = (tCallFunction)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
+	//OldProcessEvent = (tProcessEvent)DetourFunction((BYTE*)ProcessEvent, (BYTE*)ProcessEventProxy);
 	CallFuncProto = function;
 }
 
 void FunctionHook::RemoveDetours() {
-	DetourRemove((PBYTE)OldCallFunction,(PBYTE)CallFunctionProxy);
-	DetourRemove((PBYTE)OldProcessEvent,(PBYTE)ProcessEventProxy);
+	DetourRemove((PBYTE)OldCallFunction, (PBYTE)CallFunctionProxy);
+	//DetourRemove((PBYTE)OldProcessEvent, (PBYTE)ProcessEventProxy);
 }
 
-VOID __declspec(naked) CallFunctionProxy() {
-	__asm {
-		mov pCallObject, ecx
-
-		push edx
-		mov edx, dword ptr[esp + 0x8]
-		mov pFFrameCF, edx
-		mov edx, dword ptr[esp + 0xC]
-		mov pResultCF, edx
-		mov edx, dword ptr[esp + 0x10]
-		mov pUFuncCF, edx
-		pop edx
-		pushfd
-		pushad
+void __fastcall CallFunctionProxy(SDK::UObject** pCallObjectCF, void* edx, Utils::FFrame& pFFrame, void* result, UFunction* function) {
+	
+	if (pCallObjectCF != nullptr) {
+		CallFuncProto(pCallObjectCF,function,pFFrame.Locals, true);
+		if (function->GetFullName() == "Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation") {
+			printf("object name %s \n",pFFrame.Object->GetFullName());
+			printf("params address %p\n",pFFrame.Locals);
+		}
 	}
-	if (pCallObject != nullptr && pUFuncCF->Func != nullptr && pFFrameCF != nullptr) {
-		CallFuncProto(pCallObject, pUFuncCF, pFFrameCF->Locals, true);
-	}
-	__asm {
-		popad
-		popfd
-		jmp[OldCallFunction]
-	}
+	OldCallFunction(pCallObjectCF,edx,pFFrame,result,function);
 }
+void __fastcall ProcessEventProxy(SDK::UObject** pCallObject,void* edx, UFunction*,void* pParams,void* pResult) {
+	
+}
+
 VOID __declspec(naked) ProcessEventProxy() {
 	__asm {
-		mov pCallObject, ecx
+		mov pCallObjectPE, ecx
 
 		push edx
 		mov edx, dword ptr[esp + 0x8]
-		mov pUFuncCF, edx
+		mov pUFuncPE, edx
 		mov edx, dword ptr[esp + 0xC]
-		mov pParams, edx
+		mov pParamsPE, edx
+		mov edx, dword ptr[esp + 0x10]
+		mov pResultPE, edx
 		pop edx
 		pushfd
 		pushad
 
 	}
-	if (pCallObject != nullptr && pUFuncCF->Func != nullptr && pParams != nullptr) {
-		CallFuncProto(pCallObject, pUFuncCF, pParams, false);
+	if (pCallObjectPE != nullptr) {
+		CallFuncProto(pCallObjectPE, pUFuncPE, pParamsPE, false);
 	}
 	__asm {
 		popad
@@ -90,3 +93,4 @@ VOID __declspec(naked) ProcessEventProxy() {
 		jmp[OldProcessEvent]
 	}
 }
+

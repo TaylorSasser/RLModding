@@ -499,8 +499,8 @@ struct UOnlineGameInterfaceSteamworks_PsyNet_UpdateOnlineGame_Params
 // Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation
 struct UOnlineGameInterfaceSteamworks_PsyNet_SetFriendJoinLocation_Params
 {
-	struct FUniqueNetId                                JoinablePlayerID;                                         // (CPF_Parm)
-	struct FString                                     ServerAddress;                                            // (CPF_Parm, CPF_NeedCtorLink)
+	struct FUniqueNetId								   JoinablePlayerID;                                         // (CPF_Parm)
+	struct FString									   ServerAddress;                                            // (CPF_Parm, CPF_NeedCtorLink)
 	TEnumAsByte<ELobbyVisibility>                      Visibility;                                               // (CPF_Parm)
 };
 

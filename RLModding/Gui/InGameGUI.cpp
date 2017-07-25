@@ -20,19 +20,20 @@ void InGameGUI::Render() {
 	if (isGUIOpen == false) {
 		return;
 	}
+	/*
 
 	ImGui::Begin("Rocket League Mods",0,ImVec2(400,300),0.75f); 
-	if (ImGui::CollapsingHeader("Example")) {
-		for (auto& mod : Interfaces::Mods()->getMods()) {
-			bool temp = mod->isEnabled();bool* state = &temp;
-			if (ImGui::Checkbox(mod->getName().c_str(),state)) {
-				mod->Toggle();
-			} else {
-				mod->Toggle();
-			}
-		}
-	}
+	ImGui::CollapsingHeader("Misc Mods");
+		
+	auto mod = Interfaces::Mods()->getModInstance("Test Class");
+	bool toggle = ImGui::Checkbox(mod->getName().c_str(),mod->state());
+	mod->setState(toggle);
+		
+
+
+
 	ImGui::End();
+	*/
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
@@ -42,6 +43,6 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
-	return isGUIOpen;
-	
+	return isGUIOpen;	
 }
+
