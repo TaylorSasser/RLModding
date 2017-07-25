@@ -49,16 +49,7 @@ void EventManager::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 	if (it != hashmap.end()) {
 		for (auto& Mod : Interfaces::Mods()->getMods()) {
 			if (Mod->isEnabled() == true) {
-
-				function fff = it->second;
-				Mod->Bind( object, func, params, fff);
-
-				std::function<void(SDK::UObject**, SDK::UFunction*, void*)> tempvar = std::bind(it->second, Mod, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-
-				/*std::function<void(SDK::UObject**, SDK::UFunction*, void*)> tempvar = std::bind(it->second, Mod, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-				if (object != nullptr && func != nullptr && params != nullptr) {
-					tempvar(object, func, params);
-				}*/
+				Mod->Bind( object, func, params, it->second);
 			}
 		}
 	}
