@@ -35,7 +35,6 @@
     <ClCompile Include="Hooks\FunctionHook.cpp" />
     <ClCompile Include="Gui\InGameGUI.cpp" />
     <ClCompile Include="Core\InGameConsole.cpp" />
-    <ClCompile Include="Events\EventFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -113,7 +112,6 @@
     <ClInclude Include="Gui\InGameGUI.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Core\InGameConsole.h" />
-    <ClInclude Include="Events\Event.h" />
     <ClInclude Include="EventFactory.h" />
   </ItemGroup>
   <ItemGroup>

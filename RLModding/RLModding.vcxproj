@@ -22,7 +22,6 @@
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
     <ClCompile Include="DrawManager\DrawManager.cpp" />
-    <ClCompile Include="Events\EventFactory.cpp" />
     <ClCompile Include="Events\EventManager.cpp" />
     <ClCompile Include="Filesystem\FileManager.cpp" />
     <ClCompile Include="Hooks\DX9Hook.cpp" />
@@ -59,7 +58,6 @@
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
     <ClInclude Include="EventFactory.h" />
-    <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Events\EventManager.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
@@ -249,7 +247,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RLMODDING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>Sync</ExceptionHandling>
     </ClCompile>
     <Link>
