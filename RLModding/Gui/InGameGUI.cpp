@@ -24,10 +24,9 @@ void InGameGUI::Render() {
 	ImGui::Begin("Rocket League Mods",0,ImVec2(400,300),0.75f); 
 	if (ImGui::CollapsingHeader("Example")) {
 		for (auto& mod : Interfaces::Mods()->getMods()) {
-			bool temp = mod->isEnabled();bool* state = &temp;
-			if (ImGui::Checkbox(mod->getName().c_str(),state)) {
-				mod->Toggle();
-			} else {
+			bool temp = mod->isEnabled();
+			bool* state = &temp;
+			if (ImGui::Checkbox(mod->getName().c_str(), state)) {
 				mod->Toggle();
 			}
 		}
