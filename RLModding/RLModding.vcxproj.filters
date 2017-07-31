@@ -34,7 +34,6 @@
     <ClCompile Include="Interfaces\Interfaces.cpp" />
     <ClCompile Include="Hooks\FunctionHook.cpp" />
     <ClCompile Include="Gui\InGameGUI.cpp" />
-    <ClCompile Include="Core\InGameConsole.cpp" />
     <ClCompile Include="Events\EventFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -112,9 +111,8 @@
     <ClInclude Include="Hooks\FunctionHook.h" />
     <ClInclude Include="Gui\InGameGUI.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
-    <ClInclude Include="Core\InGameConsole.h" />
     <ClInclude Include="Events\Event.h" />
-    <ClInclude Include="EventFactory.h" />
+    <ClInclude Include="Events\EventFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

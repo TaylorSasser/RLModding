@@ -29,7 +29,6 @@
     <ClCompile Include="Hooks\FunctionHook.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
     <ClCompile Include="Gui\InGameGUI.cpp" />
-    <ClCompile Include="Core\InGameConsole.cpp" />
     <ClCompile Include="Interfaces\Interfaces.cpp" />
     <ClCompile Include="Libs\ImGUI\DX9\imgui_impl_dx9.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
@@ -58,7 +57,7 @@
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
-    <ClInclude Include="EventFactory.h" />
+    <ClInclude Include="Events\EventFactory.h" />
     <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Events\EventManager.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
@@ -67,7 +66,6 @@
     <ClInclude Include="Hooks\FunctionHook.h" />
     <ClInclude Include="Hooks\KeyboardHook.h" />
     <ClInclude Include="Gui\InGameGUI.h" />
-    <ClInclude Include="Core\InGameConsole.h" />
     <ClInclude Include="Interfaces\Interfaces.h" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />

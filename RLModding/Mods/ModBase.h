@@ -33,23 +33,23 @@ public:
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual void onJoinGame(SDK::UObject**,SDK::UFunction*,void*)			{}
+	virtual void onJoinGame(Event*)											{}
 
-	virtual void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void*)		{}					
-	virtual void onInGameTick(SDK::UObject**,SDK::UFunction*,void*)			{}		
-	virtual void onAActorTick(SDK::UObject**,SDK::UFunction*,void*)			{}					
-	virtual void onBallTick(SDK::UObject**,SDK::UFunction*,void*)			{}						
-	virtual void onCarTick(SDK::UObject**,SDK::UFunction*,void*)			{}						
-	virtual void onGameEventTick(SDK::UObject**,SDK::UFunction*,void*)		{}				
-	virtual void onReplayTick(SDK::UObject**,SDK::UFunction*,void*)			{}
-	virtual void onFreeplayTick(SDK::UObject**,SDK::UFunction*,void*)		{}			
-	virtual void onPostRender(SDK::UObject**,SDK::UFunction*,void*)			{}
+	virtual void onMainMenuTick(Event*)										{}					
+	virtual void onInGameTick(Event*)										{}		
+	virtual void onAActorTick(Event*)										{}					
+	virtual void onBallTick(Event*)											{}						
+	virtual void onCarTick(Event*)											{}						
+	virtual void onGameEventTick(Event*)									{}				
+	virtual void onReplayTick(Event*)										{}
+	virtual void onFreeplayTick(Event*)										{}			
+	virtual void onPostRender(Event*)										{}
 
-	virtual void onEventMMRChange(SDK::UObject**, SDK::UFunction*,void*)	{}		
-	virtual void onChatSend(SDK::UObject**,SDK::UFunction*,void*)			{}
-	virtual void onActorJump(SDK::UObject**, SDK::UFunction*,void*)			{}
-	virtual void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*) {}
-	virtual void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*)	{}
+	virtual void onEventMMRChange(Event*)									{}		
+	virtual void onChatSend(Event*)											{}
+	virtual void onActorJump(Event*)										{}
+	virtual void onTCPConnectionBegin(Event*)								{}
+	virtual void onTCPConnectionEnd(Event*)									{}
 
 private:
 	bool enabled = false;
