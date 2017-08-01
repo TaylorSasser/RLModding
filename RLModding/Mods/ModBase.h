@@ -8,15 +8,7 @@
 class ModBase
 {
 public:
-	//Tick
-
-	typedef void (ModBase::*function)(SDK::UObject**, SDK::UFunction*, void*);
-
-	ModBase(const std::string& modName, int keyBind)
-		: name(modName),
-		  key(keyBind)
-	{
-	}
+	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind) {}
 
 	virtual ~ModBase() = default;
 
@@ -26,9 +18,7 @@ public:
 		else { onDisable(); }
 		onToggle();
 	}
-
-	virtual void Bind(SDK::UObject** object, SDK::UFunction* func, void* params, function fff) {}
-
+	
 	virtual void setState(bool state) { enabled = state; }
 	virtual bool isEnabled() { return enabled; }
 
