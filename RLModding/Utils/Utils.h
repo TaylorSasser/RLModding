@@ -6,8 +6,8 @@
 
 namespace Utils {
 	struct FOutParamRec {
-		class UProperty*		Property;
-		unsigned char*			PropertyAddr;
+		class UProperty*	Property;
+		unsigned char*		PropertyAddr;
 		struct FOutParamRec*	NextOutParam;
 	};
 
@@ -15,8 +15,8 @@ namespace Utils {
 		unsigned char		UnknownData00[0xC];
 		class UStruct*		Node;
 		SDK::UObject*		Object;
-		BYTE*				Code;
-		BYTE*				Locals;
+		BYTE*			Code;
+		BYTE*			Locals;
 		struct FFrame*		PreviousFrame;
 		FOutParamRec*		OutParams;
 	};
