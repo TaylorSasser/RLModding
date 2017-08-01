@@ -3,7 +3,7 @@
 #include "../Utils/Utils.h"
 #include <iostream>
 ModHandler::ModHandler() {
-	addMod(new TestClass("Test Class", VK_NUMPAD0));
+	addMod(std::make_unique<TestClass>("Test Class", VK_NUMPAD0));
 	//Example for using keybindMap from Utils
 	//settings.json is from the GUI
 	//std::unordered_map<std::string, int> map = Utils::getKeybinds("settings.json");
@@ -14,29 +14,24 @@ ModHandler::ModHandler() {
 	//addMod(new TestClass("Test Class", map["Host_Hotkey"]));
 }
 
-
-ModHandler::~ModHandler() {
-	for (auto& mod : Mods) {
-		delete mod;
-	}
-}
-
 std::list<ModBase*> ModHandler::getMods() {
-	return Mods;
+	//return Mods;
+	throw;
 }
 
 size_t ModHandler::GetModListSize() {
-	return Mods.size();
+	return mods.size();
 }
 
-void ModHandler::addMod(ModBase* mod) {
-	Mods.push_back(mod);
+void ModHandler::addMod(std::unique_ptr<ModBase> mod) {
+	mods[mod->getName()] = std::move(mod);
 }
+
 ModBase* ModHandler::getModInstance(const std::string& name) {
-	for (auto& mod : Mods) {
-		if (mod->getName() == name) {
-			return mod;
-		}
+	auto it = mods.find(name);
+	if (it == std::end(mods))
+	{
+		return nullptr;
 	}
-	return nullptr;
+	return it->second.get();
 }

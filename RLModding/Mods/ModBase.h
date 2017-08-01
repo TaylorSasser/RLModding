@@ -35,7 +35,7 @@ public:
 	virtual const std::string& getName() { return name; }
 	virtual void setName(const std::string &newName) { name = newName; }
 
-	virtual int	 getBind() { return key; }
+	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
 
 	virtual void onEnable() {}
