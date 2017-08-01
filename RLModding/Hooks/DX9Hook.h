@@ -1,11 +1,10 @@
 #pragma once
 #include <Windows.h>
-#include <memory>
-#include "../Utils/Utils.h"
-
-#include "../Mods/ModBase.h"
 #include "../Libs/DirectX9/d3d9.h"
 #include "../Libs/DirectX9/d3dx9.h"
+#include "../DrawManager/DrawManager.hpp"
+
+
 
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")

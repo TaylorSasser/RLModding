@@ -9,16 +9,7 @@ public:
 	void onEnable() override;
 	void onDisable() override;
 
-	void onProfileJoinGame(SDK::UObject **, SDK::UFunction *, void * parameters) override;
-	void onMainMenuTick(SDK::UObject**,SDK::UFunction*,void* params) override;
-	void onChatSend(SDK::UObject**,SDK::UFunction*,void* params) override;
-	void onActorJump(SDK::UObject**,SDK::UFunction*,void* parms) override;
-	void onInGameTick(SDK::UObject**, SDK::UFunction*, void*) override;
-	void onCarTick(SDK::UObject**, SDK::UFunction*, void*) override;
-	void onPostRender(SDK::UObject**,SDK::UFunction*,void*) override;
-
-	void onTCPConnectionBegin(SDK::UObject**,SDK::UFunction*,void*) override;
-	void onTCPConnectionEnd(SDK::UObject**,SDK::UFunction*,void*) override;
-
+	void onJoinGame(Event* event) override;
+	void onActorJump(Event* event) override;
 };
 

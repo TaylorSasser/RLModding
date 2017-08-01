@@ -2,7 +2,7 @@
 #include "../Gui/InGameGUI.h"
 
 FunctionHook*				Interfaces::m_function_hook_ = nullptr;
-EventManager*				Interfaces::m_event_manager_ = nullptr;
+EventFactory*				Interfaces::m_event_manager_ = nullptr;
 DX9Hook*					Interfaces::m_dx9_hook_ = nullptr;
 DrawManager*				Interfaces::m_draw_manager_ = nullptr;
 KeyboardHook*				Interfaces::m_keyboard_hook_ = nullptr;
@@ -27,8 +27,8 @@ InGameGUI* Interfaces::GUI() {
 	return m_InGame_GUI;
 }
 
-EventManager* Interfaces::EventHandler() {
-	if (!m_event_manager_) m_event_manager_ = new EventManager();
+EventFactory* Interfaces::EventHandler() {
+	if (!m_event_manager_) m_event_manager_ = new EventFactory();
 	return m_event_manager_;
 }
 DX9Hook* Interfaces::DX9Handler() {

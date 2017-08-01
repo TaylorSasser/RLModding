@@ -6,8 +6,7 @@
 	#pragma pack(push, 0x4)
 #endif
 
-namespace SDK
-{
+namespace SDK {
 template<typename Fn>
 inline Fn GetVFunction(const void *instance, std::size_t index)
 {
