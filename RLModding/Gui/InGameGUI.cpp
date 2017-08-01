@@ -41,6 +41,11 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
+	if ((w == VK_END) && (e == KeyEvent::KeyUp)) {
+		printf("END KEY PRESSED\n");
+		isGUIOpen = false;
+		FreeLibraryAndExitThread(Interfaces::HModule(), 0);
+		//FreeLibrary(Interfaces::HModule());
+	}
 	return isGUIOpen;
-	
 }
