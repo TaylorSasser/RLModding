@@ -7,8 +7,8 @@
 #include "../Interfaces/Interfaces.h"
 #include "../Gui/ClickEvent.h"
 
-KeyboardHook::KeyboardHook(){}
-KeyboardHook::~KeyboardHook(){}
+KeyboardHook::KeyboardHook() {}
+KeyboardHook::~KeyboardHook() {}
 
 WNDPROC OldWindow;
 HWND	RLWindow;
@@ -16,22 +16,22 @@ HINSTANCE RLModding;
 
 bool PressedKeys[256] = {};
 
-LRESULT __stdcall HookedWindowProc(HWND hwnd,unsigned int code,WPARAM wParam,LPARAM lParam);
+LRESULT __stdcall HookedWindowProc(HWND hwnd, unsigned int code, WPARAM wParam, LPARAM lParam);
 
 void KeyboardHook::HookKeyboard() {
 	RLWindow = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 	while (RLWindow == nullptr); Sleep(200);
-	OldWindow = reinterpret_cast<WNDPROC>(SetWindowLongPtr(RLWindow,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(HookedWindowProc)));
+	OldWindow = reinterpret_cast<WNDPROC>(SetWindowLongPtr(RLWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HookedWindowProc)));
 
 }
 
 void KeyboardHook::RestoreKeyboard() {
-	SetWindowLongPtr(RLWindow,GWLP_WNDPROC,reinterpret_cast<LONG_PTR>(OldWindow));
+	SetWindowLongPtr(RLWindow, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(OldWindow));
 }
 
 
 // TRUE = GUI is open
-LRESULT __stdcall HookedWindowProc(HWND hwnd,unsigned int code, WPARAM wParam,LPARAM lParam) {
+LRESULT __stdcall HookedWindowProc(HWND hwnd, unsigned int code, WPARAM wParam, LPARAM lParam) {
 
 	ImGuiIO& io = ImGui::GetIO();
 	switch (code) {
@@ -79,6 +79,3 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd,unsigned int code, WPARAM wParam,LP
 		return CallWindowProc(OldWindow, hwnd, code, wParam, lParam);
 	}
 }
-
-
-

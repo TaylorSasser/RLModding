@@ -2,7 +2,7 @@
 #include "Modules/TestClass.h"
 #include "../Utils/Utils.h"
 #include <iostream>
-ModHandler::ModHandler()  {
+ModHandler::ModHandler() {
 	addMod(new TestClass("Test Class", VK_NUMPAD0));
 	//Example for using keybindMap from Utils
 	//settings.json is from the GUI
@@ -21,7 +21,7 @@ ModHandler::~ModHandler() {
 	}
 }
 
-std::list<ModBase*> ModHandler::getMods()  {
+std::list<ModBase*> ModHandler::getMods() {
 	return Mods;
 }
 

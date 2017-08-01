@@ -3,7 +3,7 @@
 
 class TestClass : public ModBase {
 public:
-	TestClass(std::string name,int key);
+	TestClass(std::string name, int key);
 	~TestClass();
 
 	void onEnable() override;

@@ -14,7 +14,6 @@ bool isGUIOpen = false;
 
 bool DrawModToggle(std::string name);
 
-
 void InGameGUI::Render() {
 
 	if (isGUIOpen == false) {
@@ -22,13 +21,13 @@ void InGameGUI::Render() {
 	}
 	/*
 
-	ImGui::Begin("Rocket League Mods",0,ImVec2(400,300),0.75f); 
+	ImGui::Begin("Rocket League Mods",0,ImVec2(400,300),0.75f);
 	ImGui::CollapsingHeader("Misc Mods");
-		
+
 	auto mod = Interfaces::Mods()->getModInstance("Test Class");
 	bool toggle = ImGui::Checkbox(mod->getName().c_str(),mod->state());
 	mod->setState(toggle);
-		
+
 
 
 
@@ -39,10 +38,10 @@ void InGameGUI::Render() {
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
 	return isGUIOpen;
 }
+
 bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
-	return isGUIOpen;	
+	return isGUIOpen;
 }
-

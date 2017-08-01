@@ -9,7 +9,7 @@
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")
 
-class DX9Hook{
+class DX9Hook {
 	typedef IDirect3D9* (__stdcall* myDirect3DCreate9)(UINT SDKVersion);
 public:
 	DX9Hook();

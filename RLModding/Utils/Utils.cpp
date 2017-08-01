@@ -4,7 +4,7 @@
 using std::string;
 
 
-namespace Utils {	
+namespace Utils {
 	bool InitializeObjectsStore() {
 		auto address = FindPattern(GetModuleHandleW(nullptr), reinterpret_cast<const unsigned char*>("\xA1\x00\x00\x00\x00\x8B\x00\x00\x8B\x00\x00\x25\x00\x02\x00\x00"), "x????x??x??xxxxx");
 		if (address == -1) { return false; }

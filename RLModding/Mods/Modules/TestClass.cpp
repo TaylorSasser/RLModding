@@ -4,7 +4,7 @@
 #include "../../DrawManager/DrawManager.hpp"
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
-TestClass::~TestClass(){}
+TestClass::~TestClass() {}
 
 
 
