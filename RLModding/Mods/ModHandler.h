@@ -14,8 +14,7 @@ public:
 	size_t GetModListSize();
 
 	template<typename T>
-	void CreateMod(const std::string& name, int key)
-	{
+	void CreateMod(const std::string& name, int key) {
 		mods[name] = std::make_unique<T>(std::move(name), key);
 	}
 
