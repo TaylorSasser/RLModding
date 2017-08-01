@@ -5,8 +5,6 @@
 #include "../Interfaces/Interfaces.h"
 #include "string"
 
-#include "boost/algorithm/string.hpp"
-
 
 std::function<void(SDK::UObject**,SDK::UFunction*,void*)> functionTEMP;
 

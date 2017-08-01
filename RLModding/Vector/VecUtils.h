@@ -7,7 +7,7 @@
 namespace Vec {
 	class VecUtils {
 	public:
-		static void GetAxes(SDK::FRotator,Vector& xAxis,Vector& yAxis,Vector& zAxis);
+		static void GetAxes(SDK::FRotator, Vector& xAxis, Vector& yAxis, Vector& zAxis);
 		static Vector VecUtils::FVectorToVector(SDK::FVector input);
 		static Vector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC);
 
