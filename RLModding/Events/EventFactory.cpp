@@ -29,6 +29,7 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		}
 		return false;
 	}
+	return false;
 }
 
 void EventFactory::SubscribeEvent(const std::string& name, Function function) {
