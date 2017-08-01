@@ -20,7 +20,7 @@ EventFactory::EventFactory() {
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
-		for (auto& Mod : Interfaces::Mods()->getMods()) {
+		for (auto& Mod : Interfaces::Mods().getMods()) {
 			if (Mod->isEnabled() == true) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, Mod, std::placeholders::_1);
 				

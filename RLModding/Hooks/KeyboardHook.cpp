@@ -37,16 +37,16 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd, unsigned int code, WPARAM wParam, 
 	switch (code) {
 	case WM_LBUTTONDOWN:
 		io.MouseDown[0] = true;
-		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		return (Interfaces::GUI().MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_LBUTTONUP:
 		io.MouseDown[0] = false;
-		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		return (Interfaces::GUI().MouseClickEvent(ClickEvent::LeftMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_RBUTTONDOWN:
 		io.MouseDown[1] = true;
-		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		return (Interfaces::GUI().MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_RBUTTONUP:
 		io.MouseDown[1] = false;
-		return (Interfaces::GUI()->MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		return (Interfaces::GUI().MouseClickEvent(ClickEvent::RightMouse, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_MBUTTONDOWN:
 		io.MouseDown[2] = true;
 		return CallWindowProc(OldWindow, hwnd, code, wParam, lParam);
@@ -63,9 +63,9 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd, unsigned int code, WPARAM wParam, 
 	case WM_KEYDOWN:
 		if (wParam < 256)
 			io.KeysDown[wParam] = 1;
-		return (Interfaces::GUI()->KeyPressEvent(KeyEvent::KeyDown, wParam) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
+		return (Interfaces::GUI().KeyPressEvent(KeyEvent::KeyDown, wParam) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_KEYUP:
-		for (auto& Mod : Interfaces::Mods()->getMods()) {
+		for (auto& Mod : Interfaces::Mods().getMods()) {
 			if (Mod->getBind() == wParam) {
 				Mod->Toggle();
 			}

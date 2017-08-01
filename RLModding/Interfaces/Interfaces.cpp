@@ -1,67 +1,42 @@
 #include "Interfaces.h"
 #include "../Gui/InGameGUI.h"
 
-FunctionHook*				Interfaces::m_function_hook_ = nullptr;
-EventFactory*				Interfaces::m_event_manager_ = nullptr;
-DX9Hook*					Interfaces::m_dx9_hook_ = nullptr;
-DrawManager*				Interfaces::m_draw_manager_ = nullptr;
-KeyboardHook*				Interfaces::m_keyboard_hook_ = nullptr;
-FileManager*				Interfaces::m_file_manager_ = nullptr;
-ModHandler*					Interfaces::m_mod_handler_ = nullptr;
-InGameGUI*					Interfaces::m_InGame_GUI = nullptr;
-
-
-FunctionHook* Interfaces::FunctionHandler() {
-	if (!m_function_hook_) m_function_hook_ = new FunctionHook();
+FunctionHook& Interfaces::FunctionHandler() {
+	static FunctionHook m_function_hook_;
 	return m_function_hook_;
 }
-ModHandler*	Interfaces::Mods() {
-	if (!m_mod_handler_) m_mod_handler_ = new ModHandler();
+
+ModHandler& Interfaces::Mods() {
+	static ModHandler m_mod_handler_;
 	return m_mod_handler_;
 }
 
-InGameGUI* Interfaces::GUI() {
-	if (!m_InGame_GUI) m_InGame_GUI = new InGameGUI();
+InGameGUI& Interfaces::GUI() {
+	static InGameGUI m_InGame_GUI;
 	return m_InGame_GUI;
 }
 
-EventFactory* Interfaces::EventHandler() {
-	if (!m_event_manager_) m_event_manager_ = new EventFactory();
+EventFactory& Interfaces::EventHandler() {
+	static EventFactory m_event_manager_;
 	return m_event_manager_;
 }
-DX9Hook* Interfaces::DX9Handler() {
-	if (!m_dx9_hook_) m_dx9_hook_ = new DX9Hook();
+
+DX9Hook& Interfaces::DX9Handler() {
+	static DX9Hook m_dx9_hook_;
 	return m_dx9_hook_;
 }
-DrawManager* Interfaces::RenderHandler() {
-	if (!m_draw_manager_) m_draw_manager_ = new DrawManager();
+
+DrawManager& Interfaces::RenderHandler() {
+	static DrawManager m_draw_manager_;
 	return m_draw_manager_;
 }
-KeyboardHook* Interfaces::KeyboardHandler() {
-	if (!m_keyboard_hook_) m_keyboard_hook_ = new KeyboardHook();
+
+KeyboardHook& Interfaces::KeyboardHandler() {
+	static KeyboardHook m_keyboard_hook_;
 	return m_keyboard_hook_;
 }
-FileManager* Interfaces::FileHandler() {
-	if (!m_file_manager_) m_file_manager_ = new FileManager();
+
+FileManager& Interfaces::FileHandler() {
+	static FileManager m_file_manager_;
 	return m_file_manager_;
-}
-
-void Interfaces::ConstructAll() {
-	Mods();
-	FunctionHandler();
-	EventHandler();
-	DX9Handler();
-	RenderHandler();
-	KeyboardHandler();
-	FileHandler();
-}
-
-void Interfaces::DestructAll() {
-	Interfaces::m_function_hook_ = nullptr;
-	Interfaces::m_event_manager_ = nullptr;
-	Interfaces::m_dx9_hook_ = nullptr;
-	Interfaces::m_draw_manager_ = nullptr;
-	Interfaces::m_keyboard_hook_ = nullptr;
-	Interfaces::m_file_manager_ = nullptr;
-	Interfaces::m_mod_handler_ = nullptr;
 }

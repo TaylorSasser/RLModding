@@ -62,28 +62,28 @@ void DX9Hook::RemoveHook() {
 }
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
 	ImGui_ImplDX9_InvalidateDeviceObjects();
-	Interfaces::RenderHandler()->InvalidateObjects();
+	Interfaces::RenderHandler().InvalidateObjects();
 
 	HRESULT restore = pD3D9HookedReset(pDevice, pPresentationParameters);
 
 	ImGui_ImplDX9_CreateDeviceObjects();
-	Interfaces::RenderHandler()->CreateObjects();
+	Interfaces::RenderHandler().CreateObjects();
 	return restore;
 }
 
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
-	if (Interfaces::RenderHandler()->isInitialized() == false) {
+	if (Interfaces::RenderHandler().isInitialized() == false) {
 		ImGui_ImplDX9_Init(FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)"), pDevice);
-		Interfaces::RenderHandler()->Initialize(pDevice);
-		Interfaces::RenderHandler()->CreateObjects();
+		Interfaces::RenderHandler().Initialize(pDevice);
+		Interfaces::RenderHandler().CreateObjects();
 	}
 	else {
 		ImGui_ImplDX9_NewFrame();
-		Interfaces::GUI()->Render();
+		Interfaces::GUI().Render();
 		ImGui::Render();
-		Interfaces::RenderHandler()->EndRendering();
-		Interfaces::RenderHandler()->BeginRendering();
+		Interfaces::RenderHandler().EndRendering();
+		Interfaces::RenderHandler().BeginRendering();
 	}
 	return pD3D9EndScene(pDevice);
 }
