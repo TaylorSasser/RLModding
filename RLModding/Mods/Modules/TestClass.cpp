@@ -3,11 +3,10 @@
 #include <functional>
 #include "../../DrawManager/DrawManager.hpp"
 
-TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
-TestClass::~TestClass() {}
-
-
-
+TestClass::TestClass(std::string&& name, int key)
+	: ModBase(std::move(name), key)
+{
+}
 
 void TestClass::onEnable() {
 	printf("Test class enabled \n");
