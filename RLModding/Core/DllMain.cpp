@@ -10,10 +10,12 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 	switch (dwReason) {
 	case DLL_PROCESS_ATTACH:
 		MainThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)onAttach, hModule, 0, NULL);
+		break;
 	case DLL_PROCESS_DETACH:
 		Core::Restore();
-		//onDetach();//This case block is called when the dll is attached for some reason and it keeps crashing and is annoying
+		onDetach();//This case block is called when the dll is attached for some reason and it keeps crashing and is annoying
 		CloseHandle(MainThread);
+		break;
 	}
 	return true;
 }
@@ -32,5 +34,5 @@ void onDetach() {
 	Interfaces::DX9Handler()->RemoveHook();
 	Interfaces::KeyboardHandler()->RestoreKeyboard();
 	Interfaces::DestructAll();
-	//FreeLibraryAndExitThread(hModule, 0);
+	FreeLibraryAndExitThread(hModule, 0);
 }
