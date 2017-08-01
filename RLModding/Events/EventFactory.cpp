@@ -43,6 +43,6 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		return false;
 	}
 }
-void EventFactory::SubscribeEvent(std::string name, Function function) {
+void EventFactory::SubscribeEvent(const std::string& name, Function function) {
 	hashmap.insert(std::pair<std::string, Function>(name, function));
 }

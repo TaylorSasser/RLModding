@@ -10,7 +10,7 @@ public:
 	std::list<ModBase*> getMods();
 	size_t GetModListSize();
 	void addMod(ModBase* Mod);
-	ModBase* getModInstance(std::string name);
+	ModBase* getModInstance(const std::string &name);
 
 private:
 	std::list<ModBase*> Mods;

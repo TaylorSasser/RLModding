@@ -32,7 +32,7 @@ namespace Utils {
 		return ObjectInstance;
 	}
 
-	SDK::FString to_fstring(std::string s) {
+	SDK::FString to_fstring(const std::string& s) {
 		wchar_t *p = new wchar_t[s.size() + 1];
 		for (std::string::size_type i = 0; i < s.size(); ++i)
 			p[i] = s[i];

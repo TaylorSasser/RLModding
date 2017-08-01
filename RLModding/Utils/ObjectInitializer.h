@@ -3,7 +3,7 @@
 #include <string>
 
 template<typename T>
-T* ConstructUObject(std::string CustomName) {
+T* ConstructUObject(const std::string& CustomName) {
 	size_t nameindex = SDK::FName::GNames->Num() + 1;
 	size_t objectindex = SDK::UObject::GObjects->Num() + 1;
 	T* object = (T*)malloc(sizeof(T));

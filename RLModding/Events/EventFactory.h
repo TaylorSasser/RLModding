@@ -14,7 +14,7 @@ public:
 	std::function<bool(SDK::UObject**, SDK::UFunction*, void*, bool)> getProxy() {
 		return std::bind(&EventFactory::FunctionProxy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_3);
 	}
-	void SubscribeEvent(std::string, Function);
+	void SubscribeEvent(const std::string&, Function);
 private:
 	bool FunctionProxy(SDK::UObject** object, SDK::UFunction* function, void* params, bool isCallFunc);
 	std::unordered_map<std::string, Function> hashmap;
