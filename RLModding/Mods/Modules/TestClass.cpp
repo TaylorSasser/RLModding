@@ -6,9 +6,6 @@
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {}
 TestClass::~TestClass(){}
 
-
-
-
 void TestClass::onEnable() {
 	printf("Test class enabled \n");
 }
