@@ -1,49 +1,19 @@
 # RLModding
 
-### Running boost 1.64
-Make sure to build boost & the dll in 32 bit mode
-
-the logging directory (as of 5/28/2017) is C:\Program Files (x86)\Steam\steamapps\common\rocketleague\Binaries\Win32
-be careful of printing out function names, log files can get REALLY big fast (100k lines in a minute)
-
-inside of the project, you will need to configure 2 paths. 
-
-Go to your Configuration Properties for your project, C/C++->General->Additional Include Directories
-Change C:/Boost to your main boost folder, not the path of the of the headers.
-
-Next change your linker->General->Additional Library Directories and change your Library from C:\Boost\Stage\Lib to the
-directories of the 32 bit .lib files you built 
-
-### Setting up DirectX9 SDK
-Go to https://www.microsoft.com/en-us/download/details.aspx?id=6812 and download and install.
-
-Go to your Configuration Properties for your project, C/C++->General->Additional Include Directories and add the DirectX Include folder.
-Something like C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include
-
-Next change your linker->General->Additional Library Directories and add the DirectX lib folder.
-Something like C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86
-
-### How to create a new module
-- Extend ModBase publically. See TestClass.h and TestClass.cpp as examples.
-- Add your module to the ModHandler array list by writing this line in the ModHandler constructor:
-```
-AddMod(new TestClass());
-```
-
 ### How to hook a new function
 Copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
 ```
-addFunction("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
+SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::MainMenuTick);
 ```
 
 Add a definition to ModBase
 ```
-virtual void MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {}
+virtual void MainMenuTick(Event* event) {}
 ```
 
 Add a definition to your module class (here our module is called TestClass)
 ```
-void TestClass::MainMenuTick(SDK::UObject**, SDK::UFunction*, void* parameters) {
+void TestClass::MainMenuTick(Event* event) {
 	std::cout << "ModBase mainmenu tick called" << std::endl;
 }
 ```
@@ -52,5 +22,6 @@ So the method call flow looks like:
 when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
 
 ### TODO
-- Add in keybinds for toggleing modules with JSON so every mod can have its own bind.
-- Add in a way to build raw packets into high level objects (decrypting the packets too)
+- Extract parameters from the call function hooks. Still no idea how to do that :/
+
+=- Add in a way to build raw packets into high level objects (decrypting the packets too)
