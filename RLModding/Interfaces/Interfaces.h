@@ -22,6 +22,7 @@ public:
 	static InGameGUI*					GUI();
 	static void							ConstructAll();
 	static void							DestructAll();
+	static HMODULE						HModule();
 
 private:
 	static ModHandler*					m_mod_handler_;
