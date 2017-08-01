@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class FileManager {	
+class FileManager {
 public:
 	FileManager();
 	~FileManager();

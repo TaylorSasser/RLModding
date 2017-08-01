@@ -3,7 +3,7 @@
 
 
 
-FileManager::FileManager(){}
-FileManager::~FileManager(){}
+FileManager::FileManager() {}
+FileManager::~FileManager() {}
 
 void FileManager::Initialize() {}

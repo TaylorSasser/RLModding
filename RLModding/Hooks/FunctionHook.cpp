@@ -39,11 +39,11 @@ void FunctionHook::RemoveDetours() {
 	DetourRemove((PBYTE)OldProcessEvent, (PBYTE)ProcessEventProxy);
 }
 
-void __fastcall CallFunctionProxy(SDK::UObject** pCallObjectCF, void* edx, Utils::FFrame& pFFrame, void* result, UFunction* function) { 
-	CallFuncProto(pCallObjectCF,function,NULL,true);
+void __fastcall CallFunctionProxy(SDK::UObject** pCallObjectCF, void* edx, Utils::FFrame& pFFrame, void* result, UFunction* function) {
+	CallFuncProto(pCallObjectCF, function, NULL, true);
 	OldCallFunction(pCallObjectCF, edx, pFFrame, result, function);
 }
 void __fastcall ProcessEventProxy(SDK::UObject** pCallObjectPE, void* edx, UFunction* function, void* pParams, void* pResult) {
-	CallFuncProto(pCallObjectPE,function,pParams,false);
+	CallFuncProto(pCallObjectPE, function, pParams, false);
 	OldProcessEvent(pCallObjectPE, edx, function, pParams, pResult);
 }

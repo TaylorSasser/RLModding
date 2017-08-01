@@ -1,18 +1,28 @@
 #pragma once
-#include <list>
+#include <unordered_map>
 #include "ModBase.h"
 #include <string>
+#include <memory>
 
 class ModHandler {
 public:
 	ModHandler();
-	~ModHandler();
-	std::list<ModBase*> getMods();
+
+	auto begin() { return mods.begin(); }
+	auto end() { return mods.end(); }
+
 	size_t GetModListSize();
-	void addMod(ModBase* Mod);
-	ModBase* getModInstance(std::string name);
+
+	template<typename T>
+	void CreateMod(const std::string& name, int key)
+	{
+		mods[name] = std::make_unique<T>(std::move(name), key);
+	}
+
+	void addMod(std::unique_ptr<ModBase>);
+	ModBase* getModInstance(const std::string &name);
 
 private:
-	std::list<ModBase*> Mods;
+	std::unordered_map<std::string, std::unique_ptr<ModBase>> mods;
 };
 
