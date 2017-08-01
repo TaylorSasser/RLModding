@@ -10,7 +10,7 @@ typedef void (ModBase::*Function)(Event* e);
 class EventFactory {
 public:
 	EventFactory();
-	~EventFactory();
+
 	std::function<bool(SDK::UObject**, SDK::UFunction*, void*, bool)> getProxy() {
 		return std::bind(&EventFactory::FunctionProxy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_3);
 	}

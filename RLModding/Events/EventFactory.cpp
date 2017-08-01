@@ -17,32 +17,20 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation", &ModBase::onJoinGame);
 }
 
-
-EventFactory::~EventFactory() {
-	delete[] & hashmap;
-}
-
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
-	std::unordered_map<std::string, Function>::iterator it = hashmap.find(func->GetFullName());
+	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		for (auto& Mod : Interfaces::Mods()->getMods()) {
 			if (Mod->isEnabled() == true) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, Mod, std::placeholders::_1);
-				if (isCallFunc) {
-					Event* event = new Event(object, func, NULL);
-					ModFunction(event);
-					delete event;
-				}
-				else {
-					Event* event = new Event(object, func, params);
-					ModFunction(event);
-					delete event;
-				}
+				
+				Event event(object, func, isCallFunc ? nullptr : params);
+				ModFunction(&event);
 			}
 		}
 		return false;
 	}
 }
 void EventFactory::SubscribeEvent(const std::string& name, Function function) {
-	hashmap.insert(std::pair<std::string, Function>(name, function));
+	hashmap[name] = function;
 }
