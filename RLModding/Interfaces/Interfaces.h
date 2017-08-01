@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../RL/SDK.hpp"
 #include "../Hooks/FunctionHook.h"
 #include "../Hooks/DX9Hook.h"
 #include "../DrawManager/DrawManager.hpp"

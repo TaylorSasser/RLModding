@@ -7627,7 +7627,8 @@ public:
 class ULevelBase : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x54];                                      // 0x003C(0x0054) MISSED OFFSET
+	TArray<AActor*>										Actors;													// 0X003C (0X000C)
+	unsigned char										UnknownData00[0xC];                            			// 0x0048 (0x0054)
 
 	static UClass* StaticClass()
 	{
@@ -10509,7 +10510,9 @@ public:
 class UWorld : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x29C];                                     // 0x003C(0x029C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xC];                           			// 0x003C (0x000C)
+	TArray<ULevel*> Levels;																						// 0x0048 (0x000C)
+	unsigned char                                      UnknownData01[0x258];                           		// 0x0048 (0x0258)
 
 	static UClass* StaticClass()
 	{

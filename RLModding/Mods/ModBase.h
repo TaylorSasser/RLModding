@@ -32,24 +32,8 @@ public:
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual void onJoinGame(Event*) {}
-<<<<<<< HEAD
-	virtual void onMainMenuTick(Event* event) {
-		
-	}					
-	virtual void onInGameTick(Event*) {}		
-	virtual void onAActorTick(Event*) {}					
-	virtual void onBallTick(Event*) {}						
-	virtual void onCarTick(Event*) {}						
-	virtual void onGameEventTick(Event*) {}				
-	virtual void onReplayTick(Event*) {}
-	virtual void onFreeplayTick(Event*) {}			
-	virtual void onPostRender(Event*) {}
-
-	virtual void onEventMMRChange(Event*) {}		
-=======
-
-	virtual void onMainMenuTick(Event*) {}
+	virtual void onJoinGame(Event*) {}				
+	virtual void onMainMenuTick(Event* event) {}
 	virtual void onInGameTick(Event*) {}
 	virtual void onAActorTick(Event*) {}
 	virtual void onBallTick(Event*) {}
@@ -60,7 +44,6 @@ public:
 	virtual void onPostRender(Event*) {}
 
 	virtual void onEventMMRChange(Event*) {}
->>>>>>> 4936f1faf028ca24fe08b075728b63c19f8ac163
 	virtual void onChatSend(Event*) {}
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
