@@ -10,6 +10,8 @@ FileManager*				Interfaces::m_file_manager_ = nullptr;
 ModHandler*					Interfaces::m_mod_handler_ = nullptr;
 InGameGUI*					Interfaces::m_InGame_GUI = nullptr;
 
+HMODULE mod = nullptr;
+
 
 FunctionHook* Interfaces::FunctionHandler() {
 	if (!m_function_hook_) m_function_hook_ = new FunctionHook();
@@ -45,8 +47,12 @@ FileManager* Interfaces::FileHandler() {
 	if (!m_file_manager_) m_file_manager_ = new FileManager();
 	return m_file_manager_;
 }
+HMODULE Interfaces::HModule() {
+	return mod;
+}
 
-void Interfaces::ConstructAll() {
+void Interfaces::ConstructAll(HMODULE h) {
+	mod = h;
 	Mods();
 	FunctionHandler();
 	EventHandler();
