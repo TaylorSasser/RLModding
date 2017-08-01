@@ -20,20 +20,6 @@ void InGameGUI::Render() {
 	if (isGUIOpen == false) {
 		return;
 	}
-	/*
-
-	ImGui::Begin("Rocket League Mods",0,ImVec2(400,300),0.75f); 
-	ImGui::CollapsingHeader("Misc Mods");
-		
-	auto mod = Interfaces::Mods()->getModInstance("Test Class");
-	bool toggle = ImGui::Checkbox(mod->getName().c_str(),mod->state());
-	mod->setState(toggle);
-		
-
-
-
-	ImGui::End();
-	*/
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
