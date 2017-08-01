@@ -7,7 +7,10 @@
 class ModHandler {
 public:
 	ModHandler();
-	std::list<ModBase*> getMods();
+
+	auto begin() { return mods.begin(); }
+	auto end() { return mods.end(); }
+
 	size_t GetModListSize();
 	void addMod(std::unique_ptr<ModBase>);
 	ModBase* getModInstance(const std::string &name);

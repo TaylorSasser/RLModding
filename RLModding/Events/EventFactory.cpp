@@ -2,7 +2,6 @@
 #include "../RL/SDK.hpp"
 #include "../Interfaces/Interfaces.h"
 
-
 EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.Say_TA", &ModBase::onChatSend);
@@ -20,9 +19,9 @@ EventFactory::EventFactory() {
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
-		for (auto& Mod : Interfaces::Mods().getMods()) {
-			if (Mod->isEnabled() == true) {
-				std::function<void(Event*)> ModFunction = std::bind(it->second, Mod, std::placeholders::_1);
+		for (auto& mod : Interfaces::Mods()) {
+			if (mod.second->isEnabled() == true) {
+				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
 				
 				Event event(object, func, isCallFunc ? nullptr : params);
 				ModFunction(&event);
@@ -31,6 +30,7 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		return false;
 	}
 }
+
 void EventFactory::SubscribeEvent(const std::string& name, Function function) {
 	hashmap[name] = function;
 }

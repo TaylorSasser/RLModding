@@ -14,11 +14,6 @@ ModHandler::ModHandler() {
 	//addMod(new TestClass("Test Class", map["Host_Hotkey"]));
 }
 
-std::list<ModBase*> ModHandler::getMods() {
-	//return Mods;
-	throw;
-}
-
 size_t ModHandler::GetModListSize() {
 	return mods.size();
 }
