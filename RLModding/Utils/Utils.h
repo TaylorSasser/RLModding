@@ -25,5 +25,5 @@ namespace Utils {
 	bool InitializeNamesStore();
 
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
-	SDK::FString to_fstring(std::string s);
+	SDK::FString to_fstring(const std::string& s);
 }

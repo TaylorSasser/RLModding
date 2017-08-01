@@ -4,7 +4,7 @@
 
 
 class FunctionHook {
-public:	
+public:
 	FunctionHook();
 	~FunctionHook();
 	void FunctionHook::DetourFunctions(std::function<bool(SDK::UObject**, SDK::UFunction*, void*, bool isCallFunc)>);

@@ -7,7 +7,7 @@
 #define URotationToRadians  UCONST_Pi / URotation180 
 
 namespace Vec {
-	
+
 
 	void VecUtils::GetAxes(SDK::FRotator rotator, Vector& xAxis, Vector& yAxis, Vector& zAxis) {
 		// SR = sin of Roll; SP = sin of Pitch; SY = sin of Yaw;
@@ -36,10 +36,10 @@ namespace Vec {
 	Vector VecUtils::CalculateScreenCoordinate(SDK::FVector Location, SDK::APlayerController* pPC) {
 		RECT windowRect;
 		HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
-		
-		int SizeX,SizeY;
 
-		if (GetWindowRect(window,&windowRect)) {
+		int SizeX, SizeY;
+
+		if (GetWindowRect(window, &windowRect)) {
 			SizeX = windowRect.right - windowRect.left;
 			SizeY = windowRect.bottom - windowRect.top;
 		}
@@ -47,10 +47,10 @@ namespace Vec {
 		Vector BaseLocation = FVectorToVector(Location);
 		Vector CameraLocation = FVectorToVector(pPC->PlayerCamera->Location);
 
-		Vector AxisX, AxisY, AxisZ, Transformed,Return;
+		Vector AxisX, AxisY, AxisZ, Transformed, Return;
 		GetAxes(pPC->PlayerCamera->Rotation, AxisX, AxisY, AxisZ);
 
-		Vector Delta =  BaseLocation - CameraLocation;
+		Vector Delta = BaseLocation - CameraLocation;
 		Transformed.x = Delta.Dot(AxisY);
 		Transformed.y = Delta.Dot(AxisZ);
 		Transformed.z = Delta.Dot(AxisX);
@@ -63,7 +63,7 @@ namespace Vec {
 		Return.x = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
 		Return.y = (SizeY / 2.0f) + -Transformed.y * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
 		Return.z = 0.0f;
-		printf("Return %f:%f:%f \n",Return.x,Return.y,Return.z);
+		printf("Return %f:%f:%f \n", Return.x, Return.y, Return.z);
 		return Return;
 	}
 

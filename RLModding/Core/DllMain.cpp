@@ -9,7 +9,7 @@ void onAttach(HMODULE hModule);
 BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 	switch (dwReason) {
 	case DLL_PROCESS_ATTACH:
-		MainThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)onAttach, hModule, 0, NULL);
+		MainThread = CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(onAttach), hModule, 0, nullptr);
 	case DLL_PROCESS_DETACH:
 		Core::Restore();
 		CloseHandle(MainThread);
@@ -19,7 +19,7 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
-	Interfaces::FunctionHandler()->DetourFunctions(Interfaces::EventHandler()->getProxy());
-	Interfaces::DX9Handler()->InitGUI();
-	Interfaces::KeyboardHandler()->HookKeyboard();
+	Interfaces::FunctionHandler().DetourFunctions(Interfaces::EventHandler().getProxy());
+	Interfaces::DX9Handler().InitGUI();
+	Interfaces::KeyboardHandler().HookKeyboard();
 }
