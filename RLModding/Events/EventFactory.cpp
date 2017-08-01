@@ -22,7 +22,6 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled() == true) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
-				
 				Event event(object, func, isCallFunc ? nullptr : params);
 				ModFunction(&event);
 			}
