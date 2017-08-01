@@ -3,8 +3,8 @@
 #include <functional>
 #include "../../DrawManager/DrawManager.hpp"
 
-TestClass::TestClass(std::string&& name, int key)
-	: ModBase(std::move(name), key)
+TestClass::TestClass(const std::string& name, int key)
+	: ModBase(name, key)
 {
 }
 

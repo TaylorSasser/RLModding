@@ -3,7 +3,7 @@
 #include "../Utils/Utils.h"
 #include <iostream>
 ModHandler::ModHandler() {
-	addMod(std::make_unique<TestClass>("Test Class", VK_NUMPAD0));
+	CreateMod<TestClass>("Test Class", VK_NUMPAD0);
 	//Example for using keybindMap from Utils
 	//settings.json is from the GUI
 	//std::unordered_map<std::string, int> map = Utils::getKeybinds("settings.json");

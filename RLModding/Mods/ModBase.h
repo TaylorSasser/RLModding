@@ -12,8 +12,8 @@ public:
 
 	typedef void (ModBase::*function)(SDK::UObject**, SDK::UFunction*, void*);
 
-	ModBase(std::string&& modName, int keyBind)
-		: name(std::move(modName)),
+	ModBase(const std::string& modName, int keyBind)
+		: name(modName),
 		  key(keyBind)
 	{
 	}
