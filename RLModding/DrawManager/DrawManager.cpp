@@ -174,72 +174,72 @@ void DrawManager::AddText(ImVec2 point, ImU32 color, text_flags flags, const cha
 	_drawList->PopTextureID();
 }
 
-void DrawManager::AddRect(const ImVec2& a, float w, float h, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/, float thickness /*= 1.0f*/)
+void DrawManager::AddRect(const ImVec2& a, float w, float h, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddRect(a, { a.x + w, a.y + h }, col, rounding, rounding_corners_flags, thickness);
 }
 
-void DrawManager::AddLine(const ImVec2& a, const ImVec2& b, ImU32 col, float thickness /*= 1.0f*/)
+void DrawManager::AddLine(const ImVec2& a, const ImVec2& b, ImU32 col, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddLine(a, b, col, thickness);
 }
 
-void DrawManager::AddRect(const ImVec2& a, const ImVec2& b, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/, float thickness /*= 1.0f*/)
+void DrawManager::AddRect(const ImVec2& a, const ImVec2& b, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddRect(a, b, col, rounding, rounding_corners_flags, thickness);
 }
 
-void DrawManager::AddRectFilled(const ImVec2& a, const ImVec2& b, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/)
+void DrawManager::AddRectFilled(const ImVec2& a, const ImVec2& b, ImU32 col, float rounding /*= 0.0f*/, int rounding_corners_flags /*= ~0*/) const
 {
 	_drawList->AddRectFilled(a, b, col, rounding, rounding_corners_flags);
 }
 
-void DrawManager::AddRectFilledMultiColor(const ImVec2& a, const ImVec2& b, ImU32 col_upr_left, ImU32 col_upr_right, ImU32 col_bot_right, ImU32 col_bot_left)
+void DrawManager::AddRectFilledMultiColor(const ImVec2& a, const ImVec2& b, ImU32 col_upr_left, ImU32 col_upr_right, ImU32 col_bot_right, ImU32 col_bot_left) const
 {
 	_drawList->AddRectFilledMultiColor(a, b, col_upr_left, col_upr_right, col_bot_right, col_bot_left);
 }
 
-void DrawManager::AddQuad(const ImVec2& a, const ImVec2& b, const ImVec2& c, const ImVec2& d, ImU32 col, float thickness /*= 1.0f*/)
+void DrawManager::AddQuad(const ImVec2& a, const ImVec2& b, const ImVec2& c, const ImVec2& d, ImU32 col, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddQuad(a, b, c, d, col, thickness);
 }
 
-void DrawManager::AddQuadFilled(const ImVec2& a, const ImVec2& b, const ImVec2& c, const ImVec2& d, ImU32 col)
+void DrawManager::AddQuadFilled(const ImVec2& a, const ImVec2& b, const ImVec2& c, const ImVec2& d, ImU32 col) const
 {
 	_drawList->AddQuadFilled(a, b, c, d, col);
 }
 
-void DrawManager::AddTriangle(const ImVec2& a, const ImVec2& b, const ImVec2& c, ImU32 col, float thickness /*= 1.0f*/)
+void DrawManager::AddTriangle(const ImVec2& a, const ImVec2& b, const ImVec2& c, ImU32 col, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddTriangle(a, b, c, col, thickness);
 }
 
-void DrawManager::AddTriangleFilled(const ImVec2& a, const ImVec2& b, const ImVec2& c, ImU32 col)
+void DrawManager::AddTriangleFilled(const ImVec2& a, const ImVec2& b, const ImVec2& c, ImU32 col) const
 {
 	_drawList->AddTriangleFilled(a, b, c, col);
 }
 
-void DrawManager::AddCircle(const ImVec2& centre, float radius, ImU32 col, int num_segments /*= 12*/, float thickness /*= 1.0f*/)
+void DrawManager::AddCircle(const ImVec2& centre, float radius, ImU32 col, int num_segments /*= 12*/, float thickness /*= 1.0f*/) const
 {
 	_drawList->AddCircle(centre, radius, col, num_segments, thickness);
 }
 
-void DrawManager::AddCircleFilled(const ImVec2& centre, float radius, ImU32 col, int num_segments /*= 12*/)
+void DrawManager::AddCircleFilled(const ImVec2& centre, float radius, ImU32 col, int num_segments /*= 12*/) const
 {
 	_drawList->AddCircleFilled(centre, radius, col, num_segments);
 }
 
-void DrawManager::AddPolyline(const ImVec2* points, const int num_points, ImU32 col, bool closed, float thickness, bool anti_aliased)
+void DrawManager::AddPolyline(const ImVec2* points, const int num_points, ImU32 col, bool closed, float thickness, bool anti_aliased) const
 {
 	_drawList->AddPolyline(points, num_points, col, closed, thickness, anti_aliased);
 }
 
-void DrawManager::AddConvexPolyFilled(const ImVec2* points, const int num_points, ImU32 col, bool anti_aliased)
+void DrawManager::AddConvexPolyFilled(const ImVec2* points, const int num_points, ImU32 col, bool anti_aliased) const
 {
 	_drawList->AddConvexPolyFilled(points, num_points, col, anti_aliased);
 }
 
-void DrawManager::AddBezierCurve(const ImVec2& pos0, const ImVec2& cp0, const ImVec2& cp1, const ImVec2& pos1, ImU32 col, float thickness, int num_segments /*= 0*/)
+void DrawManager::AddBezierCurve(const ImVec2& pos0, const ImVec2& cp0, const ImVec2& cp1, const ImVec2& pos1, ImU32 col, float thickness, int num_segments /*= 0*/) const
 {
 	_drawList->AddBezierCurve(pos0, cp0, cp1, pos1, col, thickness, num_segments);
 }
