@@ -12,12 +12,12 @@
 
 class Interfaces {
 public:
-	static FunctionHook&				FunctionHandler();
-	static DX9Hook&						DX9Handler();
-	static DrawManager&					RenderHandler();
-	static KeyboardHook&				KeyboardHandler();
-	static FileManager&					FileHandler();
-	static ModHandler&					Mods();
-	static InGameGUI&					GUI();
-	static EventFactory&				EventHandler();
+	static FunctionHook& FunctionHandler();
+	static DX9Hook& DX9Handler();
+	static DrawManager& RenderHandler();
+	static KeyboardHook& KeyboardHandler();
+	static FileManager& FileHandler();
+	static ModHandler& Mods();
+	static InGameGUI& GUI();
+	static EventFactory& EventHandler();
 };
