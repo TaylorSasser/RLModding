@@ -113,6 +113,7 @@
     <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Events\EventFactory.h" />
     <ClInclude Include="Interfaces\InstanceStorage.h" />
+    <ClInclude Include="Libs\Boost\Includes\lexical_cast.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
