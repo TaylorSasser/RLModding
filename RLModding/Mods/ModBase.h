@@ -14,9 +14,8 @@ public:
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
-		enabled = !enabled;
-		if (enabled) { onEnable(); }
-		else { onDisable(); }
+	enabled = !enabled;
+	if (enabled) { onEnable(); } else { onDisable(); }
 		onToggle();
 	}
 	
@@ -26,14 +25,16 @@ public:
 	virtual const std::string& getName() { return name; }
 	virtual void setName(const std::string &newName) { name = newName; }
 
-	virtual int	getBind() { return key; }
+	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
 
 	virtual void onEnable() {}
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual void onJoinGame(Event*) {}				
+	virtual void onProfileJoinGame(Event*) {}
+	virtual void onPlayerTick(Event*) {}
+
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 	}
