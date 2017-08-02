@@ -34,6 +34,7 @@
     <ClCompile Include="Hooks\FunctionHook.cpp" />
     <ClCompile Include="Gui\InGameGUI.cpp" />
     <ClCompile Include="Events\EventFactory.cpp" />
+    <ClCompile Include="Interfaces\InstanceStorage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -111,6 +112,7 @@
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Events\EventFactory.h" />
+    <ClInclude Include="Interfaces\InstanceStorage.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
