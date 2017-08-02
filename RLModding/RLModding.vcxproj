@@ -67,7 +67,6 @@
     <ClInclude Include="Gui\InGameGUI.h" />
     <ClInclude Include="Interfaces\InstanceStorage.h" />
     <ClInclude Include="Interfaces\Interfaces.h" />
-    <ClInclude Include="Libs\Boost\Includes\lexical_cast.hpp" />
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />

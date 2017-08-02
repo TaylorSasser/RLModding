@@ -20,15 +20,15 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 }
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
-	Core::Initialize();
-	Interfaces::FunctionHandler().DetourFunctions(Interfaces::EventHandler().getProxy());
-	Interfaces::DX9Handler().InitGUI();
+	//Core::Initialize();
+	//Interfaces::FunctionHandler().DetourFunctions(Interfaces::EventHandler().getProxy());
+	//Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
 }
 
 void onDetach(HMODULE hModule) {
-	Core::Restore();
-	Interfaces::FunctionHandler().RemoveDetours();
-	Interfaces::DX9Handler().RemoveHook();
+	//Core::Restore();
+	//Interfaces::FunctionHandler().RemoveDetours();
+	//Interfaces::DX9Handler().RemoveHook();
 	Interfaces::KeyboardHandler().RestoreKeyboard();
 }
