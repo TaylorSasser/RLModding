@@ -21,7 +21,12 @@ So the method call flow looks like:
 
 when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
 
+###Current boost libs
+- ptree
+- json_parser
+- lexical_cast
+
 ### TODO
 - Extract parameters from the call function hooks. Still no idea how to do that :/
 
-=- Add in a way to build raw packets into high level objects (decrypting the packets too)
+- Add in a way to build raw packets into high level objects (decrypting the packets too)
