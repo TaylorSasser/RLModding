@@ -14,7 +14,7 @@ public:
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
-		enabled = !enabled;
+	enabled = !enabled;
 	if (enabled) { onEnable(); } else { onDisable(); }
 		onToggle();
 	}
