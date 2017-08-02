@@ -13,7 +13,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnectionBegin);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventDisconnected", &ModBase::onTCPConnectionEnd);
 	SubscribeEvent("Function Engine.GameViewportClient.PostRender", &ModBase::onPostRender);
-	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation", &ModBase::onJoinGame);
+	SubscribeEvent("Function ProjectX.PartyMessage_X.Broadcast", &ModBase::onProfileJoinGame);
+	SubscribeEvent("Function Engine.PlayerController.PlayerTick", &ModBase::onPlayerTick);
+
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {

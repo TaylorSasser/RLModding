@@ -32,7 +32,9 @@ public:
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
-	virtual void onJoinGame(Event*) {}				
+	virtual void onProfileJoinGame(Event*) {}
+	virtual void onPlayerTick(Event*) {}
+
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 	}

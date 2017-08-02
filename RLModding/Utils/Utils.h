@@ -26,4 +26,5 @@ namespace Utils {
 
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class);
 	SDK::FString to_fstring(const std::string& s);
+	bool FloatCompare(float a, float b);
 }

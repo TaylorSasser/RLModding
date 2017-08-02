@@ -40,4 +40,11 @@ namespace Utils {
 		p[s.size()] = '\0';
 		return SDK::FString(p);
 	}
+
+	// Compare floats
+	bool FloatCompare(float a, float b)
+	{
+		return fabs(a - b) < .01;
+	}
+
 };
