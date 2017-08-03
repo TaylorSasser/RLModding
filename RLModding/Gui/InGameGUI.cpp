@@ -18,6 +18,51 @@ void InGameGUI::Render() {
 	if (isGUIOpen == false) {
 		return;
 	}
+
+	// Draw mouse cursor in game (since it is disabled);
+	ImGui::GetIO().MouseDrawCursor = true;
+
+	// Menu
+	{
+		if (ImGui::BeginMainMenuBar())
+		{
+			if (ImGui::BeginMenu("Mods"))
+			{
+				for (auto& mod : Interfaces::Mods()) {
+					bool temp = mod.second->isEnabled();
+					bool* state = &temp;
+					static bool enabled = true;
+
+					ImGui::MenuItem(mod.second->getName().c_str(), NULL, &enabled);
+
+					if (temp != enabled) {
+						mod.second->Toggle();
+					}
+					
+				}
+
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Favorites"))
+			{
+				
+				ImGui::EndMenu();
+			}
+			if (ImGui::BeginMenu("Help"))
+			{
+				ImGui::EndMenu();
+			}
+			ImGui::EndMainMenuBar();
+		}
+	}
+
+	for (auto& mod : Interfaces::Mods()) {
+		bool temp = mod.second->isEnabled();
+		bool* state = &temp;
+		if (temp) mod.second->DrawMenu();
+
+	}
+
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {

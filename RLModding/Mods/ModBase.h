@@ -28,12 +28,18 @@ public:
 	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
 
+	virtual void DrawMenu() {}
+
 	virtual void onEnable() {}
 	virtual void onDisable() {}
 	virtual void onToggle() {}
 
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}
+
+	virtual void onPlayerTATick(Event* event) {
+		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
+	}
 
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
