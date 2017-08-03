@@ -28,6 +28,8 @@ public:
 	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
 
+	virtual void DrawMenu() {}
+
 	virtual void onEnable() {}
 	virtual void onDisable() {}
 	virtual void onToggle() {}
