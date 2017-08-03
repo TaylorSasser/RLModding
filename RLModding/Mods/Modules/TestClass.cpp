@@ -8,11 +8,8 @@
 #include <string>
 
 TestClass::TestClass(std::string name, int key) : ModBase(name, key) {
-	TestClass::Toggle();
 }
-TestClass::~TestClass() {
-
-}
+TestClass::~TestClass() {}
 
 
 SDK::APlayerController_TA* inGamePlayerController = nullptr;
@@ -240,13 +237,6 @@ void TestClass::onDisable() {
 	printf("Test class disabled \n");
 }
 
-void TestClass::DrawFavorites() {
-	ImGui::Combo("", &quickPlayMapIndex, "park_p\0cs_p\0\0");
-	ImGui::SameLine();
-	if (ImGui::Button("Quick Play")) {
-		quickPlay = true;
-	}
-}
 
 void TestClass::DrawMenu() {
 	if (TestClass::isEnabled()) {

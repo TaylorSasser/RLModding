@@ -2,8 +2,13 @@
 #include "Modules/TestClass.h"
 #include "../Utils/Utils.h"
 #include <iostream>
+#include "Modules/ZombieGameMode.h"
+
+
 ModHandler::ModHandler() {
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0);
+	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1);
+	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }
 
 size_t ModHandler::GetModListSize() {
