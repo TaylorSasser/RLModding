@@ -67,8 +67,6 @@
     <ClInclude Include="Gui\InGameGUI.h" />
     <ClInclude Include="Interfaces\InstanceStorage.h" />
     <ClInclude Include="Interfaces\Interfaces.h" />
-<<<<<<< HEAD
-=======
     <ClInclude Include="Libs\Boost\any.hpp" />
     <ClInclude Include="Libs\Boost\archive\archive_exception.hpp" />
     <ClInclude Include="Libs\Boost\archive\detail\abi_prefix.hpp" />
@@ -1720,7 +1718,6 @@
     <ClInclude Include="Libs\Boost\utility\swap.hpp" />
     <ClInclude Include="Libs\Boost\version.hpp" />
     <ClInclude Include="Libs\Boost\visit_each.hpp" />
->>>>>>> d3eb67cb4e161cfbc708f6415a18744a8326c4de
     <ClInclude Include="Libs\detours.h" />
     <ClInclude Include="Libs\DirectX9\d3d9.h" />
     <ClInclude Include="Libs\DirectX9\d3dx9.h" />
