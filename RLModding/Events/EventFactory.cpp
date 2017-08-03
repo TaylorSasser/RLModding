@@ -15,6 +15,7 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function Engine.GameViewportClient.PostRender", &ModBase::onPostRender);
 	SubscribeEvent("Function ProjectX.PartyMessage_X.Broadcast", &ModBase::onProfileJoinGame);
 	SubscribeEvent("Function Engine.PlayerController.PlayerTick", &ModBase::onPlayerTick);
+	SubscribeEvent("Function TAGame.PlayerController_TA.PostAsyncTick", &ModBase::onPlayerTATick);
 
 }
 
