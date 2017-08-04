@@ -251,3 +251,9 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+RLModding/RLModding.vcxproj
+RLModding/RLModding.vcxproj.filters
+RLModding/RLModding.vcxproj
+RLModding/RLModding.vcxproj.filters
+*.vcxproj
+*.filters
