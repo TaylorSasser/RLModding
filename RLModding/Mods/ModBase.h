@@ -14,7 +14,7 @@ public:
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
-	enabled = !enabled;
+		enabled = !enabled;
 	if (enabled) { onEnable(); } else { onDisable(); }
 		onToggle();
 	}
@@ -40,18 +40,20 @@ public:
 	virtual void onPlayerTATick(Event* event) {
 		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
 	}
-
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 	}
-	virtual void onInGameTick(Event*) {}
-	virtual void onAActorTick(Event*) {}
-	virtual void onBallTick(Event*) {}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
+	}
+	virtual void onGameStart(Event* event) {
+		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
+	}
+	virtual void onGameEnd(Event* event) {
+		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
 	}
 	virtual void onReplayTick(Event*) {}
 	virtual void onFreeplayTick(Event*) {}

@@ -5,25 +5,22 @@
 ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}
 
 void ZombieGameMode::onEnable() {
-	if (InstanceStorage::GameEvent() == nullptr || InstanceStorage::MenuController() != nullptr) return;
-	//Clear bots
-	printf("Game Event Found \n");
+	printf("Zombie Game Mode Enabled \n");
+
 	if (InstanceStorage::GameEvent()->AIManager->Bots.Num() != 0) {
 		for (auto i = 0u; i < InstanceStorage::GameEvent()->AIManager->Bots.Num(); i++) {
 			InstanceStorage::GameEvent()->AIManager->RemoveBot(InstanceStorage::GameEvent()->AIManager->Bots[i]);
+			printf("Removed Bot %d \n",i);
 		}
 	}
-	//Add in bots
-	if (Zombies.Num() == 0 && Zombies[0] == nullptr) {
-		for (int i = 0; i < NumZombies; i++) {
-			SDK::AAIController_TA* zombie = InstanceStorage::GameEvent()->SpawnBot();
-			if (zombie != nullptr) 
-				Zombies[i] = zombie;
-		}
+	for (int i = 0; i < 8; i++) {
+		SDK::AAIController_TA* zombie = InstanceStorage::GameEvent()->SpawnBot();
+		printf("Spawned Zombie %d \n",i);
+		Zombies[i] = zombie;
 	}
 }
 void ZombieGameMode::onDisable() {
-	if (InstanceStorage::GameEvent()->AIManager->Bots.Num() != 0) {
+	if (Zombies.Num() != 0) {
 		for (auto i = 0u; i < InstanceStorage::GameEvent()->AIManager->Bots.Num(); i++) {
 			InstanceStorage::GameEvent()->AIManager->RemoveBot(InstanceStorage::GameEvent()->AIManager->Bots[i]);
 		}

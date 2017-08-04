@@ -61,6 +61,7 @@
     <ClInclude Include="Events\EventFactory.h" />
     <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
+    <ClInclude Include="Interfaces\GobalVariables.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />
     <ClInclude Include="Hooks\FunctionHook.h" />

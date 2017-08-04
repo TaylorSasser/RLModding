@@ -121,6 +121,7 @@
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="Vector\VecUtils.h" />
     <ClInclude Include="Mods\Modules\ZombieGameMode.h" />
+    <ClInclude Include="Interfaces\GobalVariables.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

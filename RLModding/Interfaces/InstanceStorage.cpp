@@ -6,6 +6,8 @@ APlayerController_Menu_TA*	InstanceStorage::m_APlayerController_Menu_TA = nullpt
 APlayerController_TA*		InstanceStorage::m_PlayerController_TA = nullptr;
 ACar_TA*					InstanceStorage::m_ACar_TA = nullptr;
 AGameEvent_TA*				InstanceStorage::m_GameEvent_TA = nullptr;
+UOnlineGameLanServer_TA*	InstanceStorage::m_OnlineGameLanServer_TA = nullptr;
+TArray<ACar_TA*>			InstanceStorage::m_GameCars;
 
 
 AAIManager_TA* InstanceStorage::AAIManager() {
@@ -29,7 +31,19 @@ ACar_TA* InstanceStorage::CurrentCar() {
 AGameEvent_TA* InstanceStorage::GameEvent() {
 	return m_GameEvent_TA;
 }
+UOnlineGameLanServer_TA* InstanceStorage::LanServer() {
+	return m_OnlineGameLanServer_TA;
+}
+TArray<ACar_TA*> InstanceStorage::GameCars() {
+	return m_GameCars;
+}
 
+void InstanceStorage::SetLanServer(UOnlineGameLanServer_TA* server) {
+	m_OnlineGameLanServer_TA = server;
+	m_GameEvent_TA = server->GetCurrentGameEvent();
+	m_AAIManager_TA = server->GetCurrentGameEvent()->AIManager;
+	m_GameCars = server->GetCurrentGameEvent()->Cars;
+}
 
 void InstanceStorage::SetAIManager(AAIManager_TA* manager) {
 	m_AAIManager_TA = manager;

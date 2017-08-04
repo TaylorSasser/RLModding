@@ -2,12 +2,14 @@
 #include "../RL/SDK.hpp"
 #include "../Interfaces/Interfaces.h"
 
+//Hack for updating the InstanceStorage
+ModBase modBase(NULL, NULL);
+
 EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.Say_TA", &ModBase::onChatSend);
 	SubscribeEvent("Function TAGame.Car_TA.OnJumpReleased", &ModBase::onActorJump);
 	SubscribeEvent("Function TAGame.Car_TA.Tick", &ModBase::onCarTick);
-	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
 	SubscribeEvent("Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.Tick", &ModBase::onFreeplayTick);
 	SubscribeEvent("Function TAGame.GameEvent_TA.Tick", &ModBase::onGameEventTick);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnectionBegin);
@@ -16,6 +18,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.PartyMessage_X.Broadcast", &ModBase::onProfileJoinGame);
 	SubscribeEvent("Function Engine.PlayerController.PlayerTick", &ModBase::onPlayerTick);
 	SubscribeEvent("Function TAGame.PlayerController_TA.PostAsyncTick", &ModBase::onPlayerTATick);
+	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.StartMatch",&ModBase::onGameStart);
+	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded",&ModBase::onGameEnd);
 
 }
 
@@ -29,6 +33,9 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 				ModFunction(&event);
 			}
 		}
+		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
+		Event event(object, func, isCallFunc ? nullptr : params);
+		ModFunction(&event);
 		return false;
 	}
 	return false;
