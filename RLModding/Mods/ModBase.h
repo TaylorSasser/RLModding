@@ -37,6 +37,10 @@ public:
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}
 
+	virtual void onPlayerTATick(Event* event) {
+		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
+	}
+
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 	}

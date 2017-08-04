@@ -12,7 +12,6 @@ InGameGUI::~InGameGUI() {}
 
 bool isGUIOpen = false;
 
-bool DrawModToggle(std::string name);
 
 void InGameGUI::Render() {
 

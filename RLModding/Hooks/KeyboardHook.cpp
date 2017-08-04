@@ -65,7 +65,7 @@ LRESULT __stdcall HookedWindowProc(HWND hwnd, unsigned int code, WPARAM wParam, 
 			io.KeysDown[wParam] = 1;
 		return (Interfaces::GUI().KeyPressEvent(KeyEvent::KeyDown, wParam) ? 0 : CallWindowProc(OldWindow, hwnd, code, wParam, lParam));
 	case WM_KEYUP:
-		if (Interfaces::GUI().KeyPressEvent(KeyEvent::KeyUp, wParam) == false) { return true; }
+		if (Interfaces::GUI().KeyPressEvent(KeyEvent::KeyUp, wParam) == true) { return true; }
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->getBind() == wParam) {
 				mod.second->Toggle();
