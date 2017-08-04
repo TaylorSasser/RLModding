@@ -2,10 +2,9 @@
 #include "../RL/SDK.hpp"
 #include "../Interfaces/Interfaces.h"
 
-//Hack for updating the InstanceStorage
-ModBase modBase(NULL, NULL);
 
 EventFactory::EventFactory() {
+	modBase = new ModBase("ModBase InstanceUpdater", -1);
 	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.Say_TA", &ModBase::onChatSend);
 	SubscribeEvent("Function TAGame.Car_TA.OnJumpReleased", &ModBase::onActorJump);
@@ -20,12 +19,15 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PlayerController_TA.PostAsyncTick", &ModBase::onPlayerTATick);
 	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.StartMatch",&ModBase::onGameStart);
 	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded",&ModBase::onGameEnd);
-
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
+		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
+		Event event(object, func, isCallFunc ? nullptr : params);
+		ModFunction(&event);
+
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled() == true) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
@@ -33,9 +35,6 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 				ModFunction(&event);
 			}
 		}
-		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
-		Event event(object, func, isCallFunc ? nullptr : params);
-		ModFunction(&event);
 		return false;
 	}
 	return false;

@@ -16,6 +16,7 @@ public:
 	}
 	void SubscribeEvent(const std::string&, Function);
 private:
+	ModBase* modBase;
 	bool FunctionProxy(SDK::UObject** object, SDK::UFunction* function, void* params, bool isCallFunc);
 	std::unordered_map<std::string, Function> hashmap;
 };
