@@ -1,14 +1,13 @@
 #pragma once
 #include "../RL/SDK.hpp"
+#include "Windows.h"
 
 class Garage {
 public:
 	Garage();
 	~Garage();
-	SDK::UProduct_TA* LoadObject(SDK::UProductAsset_TA* asset);
-	SDK::UTexture2D* LoadTexture(SDK::FString DecalName);
-	void LoadCustomDecals();
+	SDK::UProductAsset_Skin_TA* Garage::LoadCarDecal();
 private:
-	
+	HANDLE Heap;
 };
 
