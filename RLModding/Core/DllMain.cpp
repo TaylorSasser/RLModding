@@ -13,7 +13,6 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 		MainThread = CreateThread(nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(onAttach), hModule, 0, nullptr);
 		break;
 	case DLL_PROCESS_DETACH:
-		onDetach(hModule);
 		break;
 	}
 	return true;
@@ -21,6 +20,7 @@ BOOL WINAPI DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved) {
 void onAttach(HMODULE hModule) {
 	DisableThreadLibraryCalls(hModule);
 	Core::Initialize();
+	Interfaces::CustomGarage().LoadCustomDecals();
 	Interfaces::FunctionHandler().DetourFunctions(Interfaces::EventHandler().getProxy());
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();

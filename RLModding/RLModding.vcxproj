@@ -24,6 +24,7 @@
     <ClCompile Include="DrawManager\DrawManager.cpp" />
     <ClCompile Include="Events\EventFactory.cpp" />
     <ClCompile Include="Filesystem\FileManager.cpp" />
+    <ClCompile Include="CustomGarage\Garage.cpp" />
     <ClCompile Include="Hooks\DX9Hook.cpp" />
     <ClCompile Include="Hooks\FunctionHook.cpp" />
     <ClCompile Include="Hooks\KeyboardHook.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="Events\EventFactory.h" />
     <ClInclude Include="Events\Event.h" />
     <ClInclude Include="Filesystem\FileManager.h" />
+    <ClInclude Include="CustomGarage\Garage.h" />
     <ClInclude Include="Interfaces\GobalVariables.h" />
     <ClInclude Include="Gui\ClickEvent.h" />
     <ClInclude Include="Hooks\DX9Hook.h" />

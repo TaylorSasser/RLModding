@@ -8,9 +8,11 @@
 #include "../Mods/ModHandler.h"
 #include "../Gui/InGameGUI.h"
 #include "../Events/EventFactory.h"
+#include "../CustomGarage/Garage.h"
 
 class Interfaces {
 public:
+	static Garage& CustomGarage();
 	static FunctionHook& FunctionHandler();
 	static DX9Hook& DX9Handler();
 	static DrawManager& RenderHandler();

@@ -1,6 +1,12 @@
 #include "Interfaces.h"
 #include "../Gui/InGameGUI.h"
 
+
+Garage&	Interfaces::CustomGarage() {
+	static Garage m_Custom_Garage;
+	return m_Custom_Garage;
+}
+
 FunctionHook& Interfaces::FunctionHandler() {
 	static FunctionHook m_function_hook_;
 	return m_function_hook_;

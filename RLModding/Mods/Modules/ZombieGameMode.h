@@ -1,5 +1,6 @@
 #pragma once
 #include "../ModBase.h"
+#define MAXZOMBIES 16
 
 class ZombieGameMode : public ModBase {
 public:
@@ -9,8 +10,8 @@ public:
 	void onPlayerTick(Event* e);
 
 private:
-	SDK::TArray<SDK::AAIController_TA*> Zombies;
-	int NumZombies = 8;
+	int NumZombies;
+	SDK::AAIController_TA* Zombies[MAXZOMBIES];
 	bool AllowAllyZombies = true;
 };
 

@@ -27,6 +27,7 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
 		Event event(object, func, isCallFunc ? nullptr : params);
 		ModFunction(&event);
+		//printf("Calling Object Address %p : Function Name %s \n",event.getCallingObject(),event.getUFunction()->GetFullName());
 
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled() == true) {

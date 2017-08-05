@@ -20,7 +20,7 @@ void ZombieGameMode::onEnable() {
 	}
 }
 void ZombieGameMode::onDisable() {
-	if (Zombies.Num() != 0) {
+	if (Zombies[0] != nullptr ) {
 		for (auto i = 0u; i < InstanceStorage::GameEvent()->AIManager->Bots.Num(); i++) {
 			InstanceStorage::GameEvent()->AIManager->RemoveBot(InstanceStorage::GameEvent()->AIManager->Bots[i]);
 		}
@@ -28,7 +28,7 @@ void ZombieGameMode::onDisable() {
 }
 
 void ZombieGameMode::onPlayerTick(Event* e) {
-	for (auto i = 0u; i < Zombies.Num(); i++) {
+	for (auto i = 0u; i < 8; i++) {
 		auto Car = InstanceStorage::CurrentCar();
 		Zombies[i]->DebugDriveTo(Car->Location);
 	}
