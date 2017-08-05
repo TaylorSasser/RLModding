@@ -1,7 +1,6 @@
 #include "ModHandler.h"
 #include "Modules/TestClass.h"
 #include "../Utils/Utils.h"
-#include <iostream>
 #include "Modules/ZombieGameMode.h"
 
 

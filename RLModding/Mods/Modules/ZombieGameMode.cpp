@@ -5,8 +5,6 @@
 ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}
 
 void ZombieGameMode::onEnable() {
-	printf("Zombie Game Mode Enabled \n");
-
 	if (InstanceStorage::GameEvent()->AIManager->Bots.Num() != 0) {
 		for (auto i = 0u; i < InstanceStorage::GameEvent()->AIManager->Bots.Num(); i++) {
 			InstanceStorage::GameEvent()->AIManager->RemoveBot(InstanceStorage::GameEvent()->AIManager->Bots[i]);

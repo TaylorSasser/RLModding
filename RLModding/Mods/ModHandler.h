@@ -1,7 +1,6 @@
 #pragma once
 #include <unordered_map>
 #include "ModBase.h"
-#include <string>
 #include <memory>
 
 class ModHandler {
