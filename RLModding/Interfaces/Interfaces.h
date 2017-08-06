@@ -9,9 +9,12 @@
 #include "../Gui/InGameGUI.h"
 #include "../Events/EventFactory.h"
 #include "../CustomGarage/Garage.h"
+#include "../Gui/InGameGUI.h"
+#include "../Memory/MemoryAllocator.h"
 
 class Interfaces {
 public:
+	static MemoryAllocator& Memory();
 	static Garage& CustomGarage();
 	static FunctionHook& FunctionHandler();
 	static DX9Hook& DX9Handler();

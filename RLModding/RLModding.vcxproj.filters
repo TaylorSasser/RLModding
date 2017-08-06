@@ -37,6 +37,7 @@
     <ClCompile Include="Vector\VecUtils.cpp" />
     <ClCompile Include="Mods\Modules\ZombieGameMode.cpp" />
     <ClCompile Include="CustomGarage\Garage.cpp" />
+    <ClCompile Include="Memory\MemoryAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -124,6 +125,7 @@
     <ClInclude Include="Mods\Modules\ZombieGameMode.h" />
     <ClInclude Include="Interfaces\GobalVariables.h" />
     <ClInclude Include="CustomGarage\Garage.h" />
+    <ClInclude Include="Memory\MemoryAllocator.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

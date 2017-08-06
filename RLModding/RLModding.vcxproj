@@ -35,6 +35,7 @@
     <ClCompile Include="Libs\ImGUI\imgui.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_demo.cpp" />
     <ClCompile Include="Libs\ImGUI\imgui_draw.cpp" />
+    <ClCompile Include="Memory\MemoryAllocator.cpp" />
     <ClCompile Include="Mods\ModHandler.cpp" />
     <ClCompile Include="Mods\Modules\TestClass.cpp" />
     <ClCompile Include="RL\SDK\RL_AkAudio_functions.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="Libs\ImGUI\stb_rect_pack.h" />
     <ClInclude Include="Libs\ImGUI\stb_textedit.h" />
     <ClInclude Include="Libs\ImGUI\stb_truetype.h" />
+    <ClInclude Include="Memory\MemoryAllocator.h" />
     <ClInclude Include="Mods\ModBase.h" />
     <ClInclude Include="Mods\ModHandler.h" />
     <ClInclude Include="Mods\Modules\TestClass.h" />

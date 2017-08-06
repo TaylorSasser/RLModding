@@ -10,6 +10,12 @@ public:
 	void Garage::InsertAssetIntoGarage(SDK::UProductAsset_Skin_TA* asset);
 	SDK::UTexture2D* Garage::DownloadTextureFromURL(SDK::FString URL);
 private:
+	template<class T> T* ConstructObject(std::string name,T* CopyFrom);
+	SDK::FName* GNamesRegister(std::string);
 	HANDLE Heap;
 };
+
+
+
+
 

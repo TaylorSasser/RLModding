@@ -1,7 +1,7 @@
 #include "InstanceStorage.h"
 
 AAIManager_TA**				InstanceStorage::m_AAIManager_TA;
-UWorld**					InstanceStorage::m_UWorld;;
+UWorld**					InstanceStorage::m_UWorld;
 APlayerController_Menu_TA**	InstanceStorage::m_APlayerController_Menu_TA = nullptr;
 APlayerController_TA**		InstanceStorage::m_PlayerController_TA = nullptr;
 ACar_TA**					InstanceStorage::m_ACar_TA = nullptr;
@@ -39,7 +39,9 @@ TArray<ACar_TA*> InstanceStorage::GameCars() {
 }
 
 void InstanceStorage::SetLanServer(UOnlineGameLanServer_TA* server) {
-	m_OnlineGameLanServer_TA = &server;
+	if (server != nullptr) {
+		m_OnlineGameLanServer_TA = &server;
+	}
 }
 
 void InstanceStorage::SetAIManager(AAIManager_TA* manager) {

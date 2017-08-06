@@ -1,6 +1,10 @@
 #include "Interfaces.h"
-#include "../Gui/InGameGUI.h"
 
+
+MemoryAllocator& Interfaces::Memory() {
+	static MemoryAllocator m_memory_allocator(1);
+	return m_memory_allocator;
+}
 
 Garage&	Interfaces::CustomGarage() {
 	static Garage m_Custom_Garage;
