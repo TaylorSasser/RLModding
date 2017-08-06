@@ -9,7 +9,6 @@
 #include "../Gui/InGameGUI.h"
 #include "../Events/EventFactory.h"
 #include "../CustomGarage/Garage.h"
-#include "../Gui/InGameGUI.h"
 #include "../Memory/MemoryAllocator.h"
 
 class Interfaces {

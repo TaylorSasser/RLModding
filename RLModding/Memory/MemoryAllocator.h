@@ -8,7 +8,7 @@ public:
 	MemoryAllocator(size_t PoolSizeMegaBytes);
 	~MemoryAllocator();
 	template<class T> T* AllocUObject(T* src, std::string ObjectName);
-	template<class T> void MemoryAllocator::DestroyUObject(T* src);
+	template<class T> void DestroyUObject(T* src);
 private:
 	template<class T> T* AllocNullObject();
 	void RegisterObject(SDK::UObject*, std::string objectName);

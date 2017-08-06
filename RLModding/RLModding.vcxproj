@@ -136,7 +136,6 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
-    <ClInclude Include="Utils\ObjectInitializer.h" />
     <ClInclude Include="Utils\Pattern\PatternFinder.h" />
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />

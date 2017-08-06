@@ -1,8 +1,9 @@
 #include "Interfaces.h"
 
+// 1 MB of memory is PLENTY. It should be enough to support (800) ProductAssets;
 
 MemoryAllocator& Interfaces::Memory() {
-	static MemoryAllocator m_memory_allocator(1);
+	static MemoryAllocator m_memory_allocator(1); 
 	return m_memory_allocator;
 }
 
