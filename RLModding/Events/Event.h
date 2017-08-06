@@ -12,7 +12,7 @@ public:
 
 	SDK::UObject* getCallingObject() const
 	{
-		return reinterpret_cast<SDK::UObject*>(*pCallObject);
+		return reinterpret_cast<SDK::UObject*>(pCallObject);
 	}
 
 	SDK::UFunction* getUFunction() const

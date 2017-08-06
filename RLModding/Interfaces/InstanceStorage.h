@@ -28,13 +28,13 @@ public:
 	static void SetLanServer(UOnlineGameLanServer_TA*);
 
 private:
-	static TArray<ACar_TA*>*			m_GameCars;
-	static AAIManager_TA**				m_AAIManager_TA;
-	static UWorld**						m_UWorld;
-	static APlayerController_Menu_TA**	m_APlayerController_Menu_TA;
-	static APlayerController_TA**		m_PlayerController_TA;
-	static ACar_TA**					m_ACar_TA;
-	static AGameEvent_TA**				m_GameEvent_TA;
-	static UOnlineGameLanServer_TA**	m_OnlineGameLanServer_TA;
+	static TArray<ACar_TA*>				m_GameCars;
+	static AAIManager_TA*				m_AAIManager_TA;
+	static UWorld*						m_UWorld;
+	static APlayerController_Menu_TA*	m_APlayerController_Menu_TA;
+	static APlayerController_TA*		m_PlayerController_TA;
+	static ACar_TA*						m_ACar_TA;
+	static AGameEvent_TA*				m_GameEvent_TA;
+	static UOnlineGameLanServer_TA*		m_OnlineGameLanServer_TA;
 };
 
