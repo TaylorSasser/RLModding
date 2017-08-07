@@ -1769,6 +1769,32 @@
     <ClInclude Include="Libs\boost\utility.hpp" />
     <ClInclude Include="Libs\boost\version.hpp" />
     <ClInclude Include="Libs\boost\visit_each.hpp" />
+    <ClInclude Include="Libs\boost\core\scoped_enum.hpp" />
+    <ClInclude Include="Libs\boost\detail\bitmask.hpp" />
+    <ClInclude Include="Libs\boost\detail\scoped_enum_emulation.hpp" />
+    <ClInclude Include="Libs\boost\detail\utf8_codecvt_facet.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\detail\utf8_codecvt_facet.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\config.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\convenience.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\fstream.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\operations.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\path.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\path_traits.hpp" />
+    <ClInclude Include="Libs\boost\filesystem\string_file.hpp" />
+    <ClInclude Include="Libs\boost\functional\hash\hash_fwd.hpp" />
+    <ClInclude Include="Libs\boost\functional\hash_fwd.hpp" />
+    <ClInclude Include="Libs\boost\io\detail\quoted_manip.hpp" />
+    <ClInclude Include="Libs\boost\io\ios_state.hpp" />
+    <ClInclude Include="Libs\boost\smart_ptr\scoped_array.hpp" />
+    <ClInclude Include="Libs\boost\system\detail\local_free_on_destruction.hpp" />
+    <ClInclude Include="Libs\boost\system\api_config.hpp" />
+    <ClInclude Include="Libs\boost\system\config.hpp" />
+    <ClInclude Include="Libs\boost\system\error_code.hpp" />
+    <ClInclude Include="Libs\boost\system\system_error.hpp" />
+    <ClInclude Include="Libs\boost\cerrno.hpp" />
+    <ClInclude Include="Libs\boost\filesystem.hpp" />
+    <ClInclude Include="Libs\boost\io_fwd.hpp" />
+    <ClInclude Include="Libs\boost\scoped_array.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
