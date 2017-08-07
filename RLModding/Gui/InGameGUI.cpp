@@ -73,7 +73,7 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == Interfaces::FileHandler().GetGUIKeyBind("gui_toggle")) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
-	if ((w == Interfaces::FileHandler().GetGUIKeyBind("deject")) && (e == KeyEvent::KeyUp)) {
+	if ((w == Interfaces::FileHandler().GetGUIKeyBind("eject")) && (e == KeyEvent::KeyUp)) {
 		FreeLibraryAndExitThread(LoadLibrary(L"RLModding.dll"),0);
 	}
 	return isGUIOpen;

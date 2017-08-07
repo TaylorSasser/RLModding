@@ -17,7 +17,7 @@ void FileManager::Save() {
 	}
 
 	root.put("gui_toggle", VK_HOME);
-	root.put("deject", VK_END);
+	root.put("eject", VK_END);
 
 	pt::write_json("bindings.json", root);
 }
