@@ -25,37 +25,35 @@ void FileManager::Save() {
 //Load keybinds
 void FileManager::Load() {
 	if (!exists())
-		Save();
+		Save();	
 	pt::read_json("bindings.json", keybinds_jsontree);
 }
 
 //Returns the keybind for the specified mod
 int FileManager::GetKeyBindFromModName(std::string mod_name) {
 	int bind = keybinds_jsontree.get<int>(mod_name, 0);
-	if (bind == 0)
+	/*if (bind == 0)
 	{
 		update();
 		return keybinds_jsontree.get<int>(mod_name, 0);
-	}
+	}*/
 	return bind;
 }
 
+//For GUI Key and eject key
 int FileManager::GetGUIKeyBind(std::string gui_key) {
 	int bind = keybinds_jsontree.get<int>(gui_key, 0);
-	if (bind == 0)
-	{
-		update();
-		return keybinds_jsontree.get<int>(gui_key, 0);
-	}
 	return bind;
 }
 
+//Check if bindings.json exists
 bool FileManager::exists() {
 	std::ifstream f("bindings.json");
 	bool exists = f.good();
 	f.close();
 	return exists;
 }
+
 
 void FileManager::update() {
 	Save();
