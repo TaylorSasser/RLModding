@@ -37,6 +37,7 @@
     <ClCompile Include="Vector\VecUtils.cpp" />
     <ClCompile Include="Mods\Modules\ZombieGameMode.cpp" />
     <ClCompile Include="CustomGarage\Garage.cpp" />
+    <ClCompile Include="Memory\MemoryAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -114,7 +115,6 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
-    <ClInclude Include="Utils\ObjectInitializer.h" />
     <ClInclude Include="Utils\Pattern\PatternFinder.h" />
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />
@@ -1795,6 +1795,7 @@
     <ClInclude Include="Libs\boost\filesystem.hpp" />
     <ClInclude Include="Libs\boost\io_fwd.hpp" />
     <ClInclude Include="Libs\boost\scoped_array.hpp" />
+    <ClInclude Include="Memory\MemoryAllocator.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
