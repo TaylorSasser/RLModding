@@ -9,29 +9,6 @@ MemoryAllocator::~MemoryAllocator() {
 	HeapDestroy(MemoryPool);
 }
 
-template<class T>
-T* MemoryAllocator::AllocUObject(T* src,std::string ObjectName) {
-	T* Object = AllocNullObject<T>();
-	if (src != nullptr || src != NULL) {
-		memcpy(Object, src, sizeof(T));
-	}
-	RegisterObject(reinterpret_cast<SDK::UObject*>(Object),ObjectName);
-	return reinterpret_cast<T*>(Object);
-}
-
-template <class T>
-T* MemoryAllocator::AllocNullObject() {
-	T* UObject = reinterpret_cast<T>(HeapAlloc(MemoryPool, HEAP_ZERO_MEMORY, sizeof(T)));
-	ZeroMemory(UObject,sizeof(T));
-	return UObject;
-}
-template<class T> void MemoryAllocator::DestroyUObject(T* src) {
-	ZeroMemory(src,sizeof(T));
-	HeapFree(MemoryPool,NULL,src);
-}
-
-
-
 void MemoryAllocator::RegisterObject(SDK::UObject* Object, std::string ObjectName) {
 	SDK::UObject::GObjects->Add(Object);
 	SDK::FNameEntry* ObjectNameEntry = reinterpret_cast<SDK::FNameEntry*>(HeapAlloc(MemoryPool, HEAP_ZERO_MEMORY, sizeof(SDK::FNameEntry)));

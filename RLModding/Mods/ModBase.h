@@ -5,6 +5,9 @@
 #include "../Events/Event.h"
 #include "../Interfaces/InstanceStorage.h"
 
+enum Category {
+	Gamemodes,Ball,Lan,Other
+};
 
 class ModBase
 {

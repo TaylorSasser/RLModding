@@ -1,6 +1,6 @@
 #include "Garage.h"
 #include "../Utils/Utils.h"
-#include "../Utils/ObjectInitializer.h"
+#include "../Interfaces/Interfaces.h"
 
 /* Potental Bugs
  * Setting skins for cars not unlocked / owned
@@ -14,21 +14,11 @@ Garage::~Garage() {}
 
 //DEPRECIATED. Only use the methods for REFERENCE. USE Interfaces::Memory() to create any custom UObjects;
 
-SDK::UProductAsset_Skin_TA* Garage::LoadCarDecal() {
-	SDK::UProductAsset_Skin_TA* SkinMemory = reinterpret_cast<SDK::UProductAsset_Skin_TA*>(HeapAlloc(Heap, HEAP_ZERO_MEMORY, sizeof(SDK::UProductAsset_Skin_TA)));
-	ZeroMemory(SkinMemory,sizeof(SDK::UProductAsset_Skin_TA));
-	SDK::UProductAsset_Skin_TA* DummySkin = SDK::UObject::FindObject<SDK::UProductAsset_Skin_TA>("ProductAsset_Skin_TA Skin_MuscleCar_Wings.Skin_MuscleCar_Wings");
-	memcpy(SkinMemory,DummySkin,sizeof(SDK::UProductAsset_Skin_TA));
-	return SkinMemory;
+void Garage::LoadCarDecal() {
+	auto UDecal = Interfaces::Memory().AllocUObject<UProductAsset_Skin_TA>(UObject::FindObject<UProductAsset_Skin_TA>("ProductAsset_Skin_TA Skin_MuscleCar_Wings.Skin_MuscleCar_Wings"),"CustomDecal_Skin_TA.Test");
+	auto UProduct = Interfaces::Memory().AllocUObject<UProduct_TA>(UObject::FindObject<UProduct_TA>("Product_TA ProductsDB.Products.Skin_MuscleCar_Wings"),"CustomProduct_SkinDecal_TA.Test");
 }
-void Garage::InsertAssetIntoGarage(SDK::UProductAsset_Skin_TA* asset) {
-	SDK::UProduct_TA* ProductMemory = reinterpret_cast<SDK::UProduct_TA*>(HeapAlloc(Heap,HEAP_ZERO_MEMORY,sizeof(SDK::UProduct_TA)));
-	ZeroMemory(ProductMemory,sizeof(SDK::UProduct_TA));
-	SDK::UProduct_TA* DummyProduct = SDK::UObject::FindObject<SDK::UProduct_TA>("Product_TA ProductsDB.Products.Skin_MuscleCar_Wings");
-	memcpy(ProductMemory,DummyProduct,sizeof(SDK::UProduct_TA));
-	ProductMemory->AssetPath = L"Skin_Dominus_Tribal.Skin_Dominus_Tribal";
 
-}
 SDK::UTexture2D* Garage::DownloadTextureFromURL(SDK::FString URL) {
 	SDK::UOnlineImageDownloaderWeb_X* ImageDownloaderWeb = (SDK::UOnlineImageDownloaderWeb_X*)Utils::GetInstanceOf(SDK::UOnlineImageDownloaderWeb_X::StaticClass());
 	SDK::TArray<SDK::FDownloadedImageRequest> Requests = ImageDownloaderWeb->Requests;
