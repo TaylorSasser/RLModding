@@ -38,6 +38,9 @@
     <ClCompile Include="Mods\Modules\ZombieGameMode.cpp" />
     <ClCompile Include="CustomGarage\Garage.cpp" />
     <ClCompile Include="Memory\MemoryAllocator.cpp" />
+    <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
+    <ClCompile Include="Mods\Modules\ChatMessageSpoofer.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1796,6 +1799,9 @@
     <ClInclude Include="Libs\boost\io_fwd.hpp" />
     <ClInclude Include="Libs\boost\scoped_array.hpp" />
     <ClInclude Include="Memory\MemoryAllocator.h" />
+    <ClInclude Include="PlayerBlacklist\BlackList.h" />
+    <ClInclude Include="Mods\Modules\ChatMessageSpoofer.h" />
+    <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

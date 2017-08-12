@@ -11,13 +11,19 @@ namespace Utils {
 		struct FOutParamRec*	NextOutParam;
 	};
 
-	struct FFrame {
-		unsigned char		UnknownData00[0xC];
-		class UStruct*		Node;
+	struct FOutputDevice {
+		void* VfTable;
+		unsigned long bAllowSuppression;
+		unsigned long bSuppressEventTag;
+		unsigned long bAutoEmitLineTerminator;
+	};
+
+	struct FFrame : public FOutputDevice{
+		SDK::UStruct*		Node;
 		SDK::UObject*		Object;
-		BYTE*			Code;
-		BYTE*			Locals;
-		struct FFrame*		PreviousFrame;
+		BYTE*				Code;
+		BYTE*				Locals;
+		FFrame*				PreviousFrame;
 		FOutParamRec*		OutParams;
 	};
 

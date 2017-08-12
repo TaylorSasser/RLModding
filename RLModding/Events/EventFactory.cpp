@@ -27,14 +27,14 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 
 		//This is for updating the InstanceStorage with all of our good types before the Mod functions can get called. It also allows us to use the override operator inside of our module and not invoke the superclass function.
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
-		Event event(object, func, isCallFunc ? nullptr : params);
+		Event event(object, func, params);
 		ModFunction(&event);
 		//printf("Calling Object Address %p : Function Name %s \n",event.getCallingObject(),event.getUFunction()->GetFullName());
 
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled() == true) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
-				Event event(object, func, isCallFunc ? nullptr : params);
+				Event event(object, func,params);
 				ModFunction(&event);
 			}
 		}

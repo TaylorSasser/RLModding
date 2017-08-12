@@ -40,7 +40,7 @@ void FunctionHook::RemoveDetours() {
 }
 
 void __fastcall CallFunctionProxy(SDK::UObject** pCallObjectCF, void* edx, Utils::FFrame& pFFrame, void* result, UFunction* function) {
-	CallFuncProto(pCallObjectCF, function, NULL, true);
+	CallFuncProto(pCallObjectCF, function,pFFrame.Locals, true);
 	OldCallFunction(pCallObjectCF, edx, pFFrame, result, function);
 }
 void __fastcall ProcessEventProxy(SDK::UObject** pCallObjectPE, void* edx, UFunction* function, void* pParams, void* pResult) {

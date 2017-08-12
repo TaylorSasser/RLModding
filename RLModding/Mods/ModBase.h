@@ -68,8 +68,8 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 
-private:
 	bool enabled = false;
+private:
 	std::string name;
 	int key = -1;
 };

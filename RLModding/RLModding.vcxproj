@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Mods\Modules\ChatMessageSpoofer.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
+    <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
     <ClCompile Include="DrawManager\DrawManager.cpp" />
@@ -58,6 +61,9 @@
     <ClCompile Include="Mods\Modules\ZombieGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Mods\Modules\ChatMessageSpoofer.h" />
+    <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
+    <ClInclude Include="PlayerBlacklist\BlackList.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
     <ClInclude Include="Events\EventFactory.h" />

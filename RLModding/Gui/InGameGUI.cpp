@@ -15,54 +15,29 @@ bool isGUIOpen = false;
 
 void InGameGUI::Render() {
 
-	if (isGUIOpen == false) {
+	if (!isGUIOpen) {
 		return;
 	}
 
 	// Draw mouse cursor in game (since it is disabled);
 	ImGui::GetIO().MouseDrawCursor = true;
+	ImGui::GetStyle().Alpha = 50;
 
-	// Menu
-	{
-		if (ImGui::BeginMainMenuBar())
-		{
-			if (ImGui::BeginMenu("Mods"))
-			{
-				for (auto& mod : Interfaces::Mods()) {
-					bool temp = mod.second->isEnabled();
-					bool* state = &temp;
-					static bool enabled = true;
-
-					ImGui::MenuItem(mod.second->getName().c_str(), NULL, &enabled);
-
-					if (temp != enabled) {
-						mod.second->Toggle();
+	if (ImGui::BeginMainMenuBar()) {
+		if (ImGui::BeginMenu("Test Classes")) {
+			for (auto& mods : Interfaces::Mods())
+			//Add in category check && console
+				if (ImGui::MenuItem(mods.second->getName().c_str(),NULL,mods.second->enabled)) {
+					mods.second->Toggle();
+					if (mods.second->isEnabled()) {
+						mods.second->DrawMenu();
 					}
-					
 				}
-
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Favorites"))
-			{
-				
-				ImGui::EndMenu();
-			}
-			if (ImGui::BeginMenu("Help"))
-			{
-				ImGui::EndMenu();
-			}
-			ImGui::EndMainMenuBar();
+			ImGui::EndMenu();
 		}
+
+		ImGui::EndMainMenuBar();
 	}
-
-	for (auto& mod : Interfaces::Mods()) {
-		bool temp = mod.second->isEnabled();
-		bool* state = &temp;
-		if (temp) mod.second->DrawMenu();
-
-	}
-
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
@@ -70,7 +45,7 @@ bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
 }
 
 bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
-	if ((w == Interfaces::FileHandler().GetGUIKeyBind("gui_toggle")) && (e == KeyEvent::KeyUp)) {
+	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
 	if ((w == Interfaces::FileHandler().GetGUIKeyBind("eject")) && (e == KeyEvent::KeyUp)) {

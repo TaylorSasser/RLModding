@@ -19,26 +19,10 @@ public:
 	}
 
 	template<class T>
-	T* readParams() {
-		if (isCallFunction) {
-			this->params = new T;
-			for (auto property = (SDK::UProperty*)pUFunction->Children; property != nullptr; property = (SDK::UProperty*)property->Next) {
-				memcpy(params + property->Offset, property + property->Offset, property->ElementSize);
-			}
-			return reinterpret_cast<T>(params);
-		}
-		return nullptr;
+	T* getParams() {
+		return reinterpret_cast<T*>(params);
 	}
 
-	template<class T>
-	void setParams(T* parameters) {
-		if (isCallFunction) {
-			for (auto property = (SDK::UProperty*)pUFunction->Children; property != nullptr; property = (SDK::UProperty*)property->Next) {
-				memcpy(property + property->Offset, params + property->Offset, property->ElementSize);
-			}
-			reinterpret_cast<T>(params) = parameters;
-		}
-	}
 private:
 	SDK::UObject** pCallObject;
 	SDK::UFunction* pUFunction;
