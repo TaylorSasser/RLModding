@@ -1,5 +1,4 @@
 #include "ZombieGameMode.h"
-#include "../Interfaces/InstanceStorage.h"
 
 
 ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}

@@ -1,5 +1,7 @@
 #pragma once
-#include "../ModBase.h"
+#include "../../ModBase.h"
+#include "../../../Interfaces/InstanceStorage.h"
+
 #define MAXZOMBIES 16
 
 class ZombieGameMode : public ModBase {

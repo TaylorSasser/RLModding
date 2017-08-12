@@ -40,6 +40,8 @@ public:
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}
 
+	virtual void onSetFriendJoinLocation(Event*) {}
+
 	virtual void onPlayerTATick(Event* event) {
 		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
 	}

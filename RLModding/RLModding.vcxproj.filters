@@ -35,12 +35,12 @@
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
-    <ClCompile Include="Mods\Modules\ZombieGameMode.cpp" />
     <ClCompile Include="CustomGarage\Garage.cpp" />
     <ClCompile Include="Memory\MemoryAllocator.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
-    <ClCompile Include="Mods\Modules\ChatMessageSpoofer.cpp" />
     <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
+    <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -124,7 +124,6 @@
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="Vector\VecUtils.h" />
-    <ClInclude Include="Mods\Modules\ZombieGameMode.h" />
     <ClInclude Include="Interfaces\GobalVariables.h" />
     <ClInclude Include="CustomGarage\Garage.h" />
     <ClInclude Include="Libs\boost\format\internals.hpp" />
@@ -1800,8 +1799,9 @@
     <ClInclude Include="Libs\boost\scoped_array.hpp" />
     <ClInclude Include="Memory\MemoryAllocator.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
-    <ClInclude Include="Mods\Modules\ChatMessageSpoofer.h" />
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
+    <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
+    <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

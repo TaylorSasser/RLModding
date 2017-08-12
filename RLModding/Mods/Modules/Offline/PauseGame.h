@@ -1,11 +1,10 @@
 #pragma once
 #include "../../ModBase.h"
 
-class PauseGame :
-	public ModBase
+class PauseGame : public ModBase
 {
 public:
-	PauseGame();
+	PauseGame(std::string name,int key);
 	~PauseGame();
 };
 
