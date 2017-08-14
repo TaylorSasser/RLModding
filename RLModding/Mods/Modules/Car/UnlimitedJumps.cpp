@@ -1,5 +1,6 @@
 #include "UnlimitedJumps.h"
 
+UnlimitedJumps::UnlimitedJumps(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 UnlimitedJumps::UnlimitedJumps(std::string name, int key) : ModBase(name,key) {}
 UnlimitedJumps::~UnlimitedJumps(){}
 

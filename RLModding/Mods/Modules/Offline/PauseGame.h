@@ -8,7 +8,6 @@ public:
 	PauseGame(std::string name,int key);
 	~PauseGame();
 
-	void onToggle() override;
 	void onEnable() override;
 	void onDisable() override;
 
