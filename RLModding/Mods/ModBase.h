@@ -22,7 +22,15 @@ enum GameState {
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 
 enum Category {
-	Gamemodes,Ball,Lan,Other,ALL
+	Gamemodes = 0,Ball,Lan,Other,ALL
+};
+
+static const std::string categoryNames[5] = {
+	"Game Modes",
+	"Ball Mods",
+	"LAN Mods",
+	"Other Mods",
+	"ALL"
 };
 
 class ModBase
@@ -30,7 +38,6 @@ class ModBase
 public:
 	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate) {}
 	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY) {}
-
 	
 	virtual ~ModBase() = default;
 
