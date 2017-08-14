@@ -7,8 +7,17 @@
 #include "../Interfaces/InstanceStorage.h"
 
 
+/*
+None:		00000
+Training:	00001
+Exhibition: 00010
+Online:		00100
+LAN:		01000
+Menu:		10000
+Any:		11111
+*/
 enum GameState {
-	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3,ANY = 1 << 4
+	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
 };
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 
@@ -27,8 +36,8 @@ public:
 
 	virtual void Toggle() {
 		enabled = !enabled;
-	if (enabled) { onEnable(); } else { onDisable(); }
 		onToggle();
+	if (enabled) { onEnable(); } else { onDisable(); }		
 	}
 	
 	virtual void setState(bool state) { enabled = state; }
@@ -41,7 +50,17 @@ public:
 	virtual void setBind(int keycode) { key = keycode; }
 
 	virtual Category getCategory() {return cat;}
-	virtual GameState getGameState() {return allowedGameStates;}
+	//Get the mods allowed gamestates
+	virtual GameState getAllowedGameStates() {return allowedGameStates;}
+	//Get the current game state, in menu? in training? etc.
+	virtual GameState getCurrentGameState() {
+		if (Globals::inCustom) return LAN;
+		else if (Globals::inExhibition) return EXHIBITION;
+		else if (Globals::inMainMenu) return MENU;
+		else if (Globals::inOnline) return ONLINE;
+		else if (Globals::inTraining) return TRAINING;
+		else return NONE;
+	};
 
 	virtual void DrawMenu() {}
 
@@ -91,7 +110,7 @@ public:
 	virtual void onTCPConnectionEnd(Event*) {}
 
 	bool enabled = false;
-private:
+protected:
 	GameState allowedGameStates;
 	Category cat;
 	std::string name;

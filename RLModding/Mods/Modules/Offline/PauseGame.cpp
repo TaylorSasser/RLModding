@@ -1,9 +1,13 @@
 #include "PauseGame.h"
 
 
-
+PauseGame::PauseGame(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 PauseGame::PauseGame(std::string name,int key) : ModBase(name,key) {}
 PauseGame::~PauseGame() {}
+
+void PauseGame::onToggle() {
+
+}
 
 void PauseGame::onEnable() {
 	if (InstanceStorage::GameEvent() != nullptr) {

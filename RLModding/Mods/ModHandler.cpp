@@ -3,6 +3,7 @@
 #include "../Utils/Utils.h"
 #include "Modules/Lan/ZombieGameMode.h"
 #include "Modules/Exploits/JoinServer.h"
+#include "Modules/Offline/PauseGame.h"
 
 
 ModHandler::ModHandler() {
