@@ -69,8 +69,11 @@ public:
 	//When toggled, check to make sure they are in a valid state
 	virtual void onToggle() {
 		GameState currentState = getCurrentGameState();
-		if (!(currentState & getAllowedGameStates()))
+		if (!(currentState & getAllowedGameStates())) {
+			printf("Invalid state\n");
 			setState(false);
+		}
+			
 	}
 
 	virtual void onProfileJoinGame(Event*) {}
