@@ -66,7 +66,12 @@ public:
 
 	virtual void onEnable() {}
 	virtual void onDisable() {}
-	virtual void onToggle() {}
+	//When toggled, check to make sure they are in a valid state
+	virtual void onToggle() {
+		GameState currentState = getCurrentGameState();
+		if (!(currentState & getAllowedGameStates()))
+			setState(false);
+	}
 
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}

@@ -237,13 +237,6 @@ void TestClass::onDisable() {
 	printf("Test class disabled \n");
 }
 
-//When toggled, check to make sure they are in a valid state
-void TestClass::onToggle() {
-	GameState currentState = getCurrentGameState();
-	if (!(currentState & getAllowedGameStates()))
-		setState(false);
-}
-
 void TestClass::DrawMenu() {
 	if (TestClass::isEnabled()) {
 		ImGui::Begin("Players Menu", 0, ImVec2(400, 300), 0.75f);

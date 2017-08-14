@@ -8,7 +8,6 @@ public:
 
 	void onEnable();
 	void onDisable();
-	void onToggle();
 	void DrawMenu();
 
 	void onProfileJoinGame(Event*);
