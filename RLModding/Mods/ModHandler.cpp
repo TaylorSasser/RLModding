@@ -7,7 +7,7 @@
 
 
 ModHandler::ModHandler() {
-	CreateMod<TestClass>("Test Class", VK_NUMPAD0,Category::Ball,GameState::TRAINING);
+	CreateMod<TestClass>("Test Class", VK_NUMPAD0,Category::Ball,GameState::ANY);
 	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2);
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
