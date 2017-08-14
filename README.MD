@@ -21,6 +21,20 @@ So the method call flow looks like:
 
 when TAGame.PlayerController_Menu_TA.PlayerTick is called -> SDK -> ModBase::MainMenuTick -> TestClass::MainMenuTick
 
+### Adding a new mod
+After you've created your mod class you can add it in ModHandler.cpp with the CreateMod function
+
+psuedo code
+```
+CreateMod<YourClass>("Mod Name", KeyBind, Category, GameStates)
+```
+
+Example
+```
+CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::Gamemodes, GameState::EXHIBITION | GameState::LAN);
+```
+You have a class ZombieGameMode binded to numpad 1. It is part of the category Gamemodes and can only be activated when you are in exhibition or LAN.
+
 ### Current boost libs
 - ptree
 - json_parser
