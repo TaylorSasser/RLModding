@@ -19,6 +19,7 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PlayerController_TA.PostAsyncTick", &ModBase::onPlayerTATick);
 	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.StartMatch",&ModBase::onGameStart);
 	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded",&ModBase::onGameEnd);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventJoinGameComplete",&ModBase::onOnlineGameStart);
 	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation",&ModBase::onSetFriendJoinLocation);
 }
 
@@ -33,7 +34,7 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 		//printf("Calling Object Address %p : Function Name %s \n",event.getCallingObject(),event.getUFunction()->GetFullName());
 
 		for (auto& mod : Interfaces::Mods()) {
-			if (mod.second->isEnabled() == true) {
+			if (mod.second->isEnabled()) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
 				Event event(object, func,params);
 				ModFunction(&event);

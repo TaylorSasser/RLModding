@@ -53,6 +53,7 @@
     <ClCompile Include="RL\SDK\RL_TAGame_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_WinDrv_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp" />
+    <ClCompile Include="Mods\Modules\Car\UnlimitedJumps.cpp" />
     <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
@@ -61,6 +62,7 @@
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
@@ -1813,6 +1815,7 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
+    <ClInclude Include="Mods\Modules\Car\UnlimitedJumps.h" />
     <ClInclude Include="Utils\Pattern\PatternFinder.h" />
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />

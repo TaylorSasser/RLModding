@@ -15,6 +15,8 @@ public:
 		return std::bind(&EventFactory::FunctionProxy, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_3);
 	}
 	void SubscribeEvent(const std::string&, Function);
+
+	bool GameStateCheck(GameState game);
 private:
 	ModBase* modBase;
 	bool FunctionProxy(SDK::UObject** object, SDK::UFunction* function, void* params, bool isCallFunc);

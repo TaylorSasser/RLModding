@@ -41,6 +41,7 @@
     <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
+    <ClCompile Include="Mods\Modules\Car\UnlimitedJumps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1802,6 +1803,8 @@
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
+    <ClInclude Include="Mods\Modules\Car\UnlimitedJumps.h" />
+    <ClInclude Include="Interfaces\GlobalVariables.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

@@ -6,8 +6,8 @@
 
 namespace Utils {
 	struct FOutParamRec {
-		class UProperty*	Property;
-		unsigned char*		PropertyAddr;
+		class UProperty*		Property;
+		unsigned char*			PropertyAddr;
 		struct FOutParamRec*	NextOutParam;
 	};
 

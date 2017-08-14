@@ -24,9 +24,10 @@ void InGameGUI::Render() {
 	ImGui::GetStyle().Alpha = 50;
 
 	if (ImGui::BeginMainMenuBar()) {
-		if (ImGui::BeginMenu("Test Classes")) {
-			for (auto& mods : Interfaces::Mods())
-			//Add in category check && console
+		if (ImGui::BeginMenu("Ball Mods")) {
+			for (auto& mods : Interfaces::Mods()) {
+				if (mods.second->getCategory() != Category::Ball)
+					return;
 				if (ImGui::MenuItem(mods.second->getName().c_str(),NULL,mods.second->enabled)) {
 					mods.second->Toggle();
 					if (mods.second->isEnabled()) {
@@ -35,7 +36,18 @@ void InGameGUI::Render() {
 				}
 			ImGui::EndMenu();
 		}
-
+	}
+	if (ImGui::BeginMenu("Other Mods")) {
+			for (auto& mods : Interfaces::Mods()) {
+				if (ImGui::MenuItem(mods.second->getName().c_str(), NULL, mods.second->enabled)) {
+					mods.second->Toggle();
+					if (mods.second->isEnabled()) {
+						mods.second->DrawMenu();
+					}
+				}
+				ImGui::EndMenu();
+			}
+		}
 		ImGui::EndMainMenuBar();
 	}
 }

@@ -7,7 +7,7 @@
 #include <map>
 #include <string>
 
-TestClass::TestClass(std::string name, int key) : ModBase(name, key) {
+TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {
 }
 TestClass::~TestClass() {}
 
