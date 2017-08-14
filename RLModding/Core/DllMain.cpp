@@ -25,7 +25,7 @@ void onAttach(HMODULE hModule) {
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().Load();
-	Interfaces::Blacklist().Check();
+	//Interfaces::Blacklist().Check();
 }
 
 void onDetach(HMODULE hModule) {
