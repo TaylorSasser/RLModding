@@ -10,6 +10,7 @@
 #include "../Events/EventFactory.h"
 #include "../CustomGarage/Garage.h"
 #include "../Memory/MemoryAllocator.h"
+#include "../PlayerBlacklist/BlackList.h"
 
 class Interfaces {
 public:
@@ -23,4 +24,5 @@ public:
 	static ModHandler& Mods();
 	static InGameGUI& GUI();
 	static EventFactory& EventHandler();
+	static BlackList& Blacklist();
 };

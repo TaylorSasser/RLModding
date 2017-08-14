@@ -51,3 +51,8 @@ FileManager& Interfaces::FileHandler() {
 	static FileManager m_file_manager_;
 	return m_file_manager_;
 }
+
+BlackList& Interfaces::Blacklist() {
+	static BlackList m_black_list;
+	return m_black_list;
+}

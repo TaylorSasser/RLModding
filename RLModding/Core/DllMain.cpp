@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "Core.h"
 #include "../Interfaces/Interfaces.h"
+#include "../PlayerBlacklist/BlackList.h"
 
 
 HANDLE MainThread;
@@ -24,6 +25,7 @@ void onAttach(HMODULE hModule) {
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().Load();
+	Interfaces::Blacklist().Check();
 }
 
 void onDetach(HMODULE hModule) {

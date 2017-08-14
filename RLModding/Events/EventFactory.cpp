@@ -2,6 +2,7 @@
 #include "../RL/SDK.hpp"
 #include "../Interfaces/Interfaces.h"
 
+//Function ProjectX.OnlineGameJoinGame_X.EventJoiningGameComplete
 
 EventFactory::EventFactory() {
 	modBase = new ModBase("ModBase InstanceUpdater", -1);
