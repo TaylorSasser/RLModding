@@ -1,23 +1,17 @@
 #pragma once
-#include <string>
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <vector>
+#include <Windows.h>
 #include "../Interfaces/InstanceStorage.h"
 #include "../RL/SDK.hpp"
 #include "../Utils/Utils.h"
 
-// https://steamid.io <- Go here to find steam ids
 
-class BlackList
-{
+class BlackList {
 public:
 	BlackList();
 	~BlackList();
 	bool Exists(std::string);
 	void Check();
-	std::string GetPlayerId();
+	uint32_t GetPlayerId();
 	bool isBlacklisted();
 
 private:
