@@ -29,24 +29,11 @@ static bool setFreePlayColors = false;
 static bool testBallExplosion = false;
 
 
-const char* rumbleItems[] = { "Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "", "", "", "", "" };
-static int selectedRumbleIndex = -1;
-
-static float magnetRange;
-static float magnetBallGravity = 1.0;
-static bool magnetDeactivateOnTouch = false;
-
 static float carMaxSpinRate = 5.5;
 
 static float carMaxLinearSpeed = 2300;
 
-// Rumble Settings
-static float itemGiveRate = 10.0;
-static float currItemGiveRate = 10.0;
 
-// Inventory Options
-static bool groupItems = true;
-static bool runInvExport = false;
 
 static int quickPlayMapIndex = 0;
 static bool quickPlay = false;
@@ -64,7 +51,6 @@ bool travelToMap = false;
 
 bool dumpObjects = false;
 
-bool inventoryExportDone = false;
 
 static int demolishPlayerIndex = -1;
 static int attachBallIndex = -1;
@@ -80,149 +66,6 @@ bool carCollisionChanged = false;
 SDK::UGameEngine* pGameEngine;
 SDK::UOnlineProduct_TA* product;
 
-
-void ExportInventory() {
-
-	std::ofstream myfile;
-	myfile.open("inventory.csv");
-
-	char *Quality[] =
-	{
-		"Common",
-		"Uncommon",
-		"Rare",
-		"VeryRare",
-		"Import",
-		"Exotic",
-		"BlackMarket",
-		"Premium",
-		"Limited",
-		"MAX"
-	};
-
-	std::map<std::string, int> itemTotals;
-
-	SDK::USaveData_TA* saveData = (SDK::USaveData_TA*)Utils::GetInstanceOf(SDK::USaveData_TA::StaticClass());
-	if (saveData) {
-		printf("Found save data...\n");
-		SDK::TArray< class SDK::UOnlineProduct_TA* > products = saveData->OnlineProducts;
-		for (int i = 0; i < products.Num(); i++)
-		{
-			std::string productName = "";
-			std::string productPaint = "";
-			std::string productCert = "";
-			std::string productQuality = "";
-			int productQuantity = 1;
-
-			if (products.GetByIndex(i)) {
-				//WriteLogFile(to_string(products.Data[i]->ProductID));
-				//WriteLogFile(" (");
-
-				SDK::UProductDatabase_TA* prodDB = (SDK::UProductDatabase_TA*)Utils::GetInstanceOf(SDK::UProductDatabase_TA::StaticClass());
-				SDK::UCertifiedStatDatabase_TA* certDB = (SDK::UCertifiedStatDatabase_TA*)Utils::GetInstanceOf(SDK::UCertifiedStatDatabase_TA::StaticClass());
-				SDK::UPaintDatabase_TA* paintDB = (SDK::UPaintDatabase_TA*)Utils::GetInstanceOf(SDK::UPaintDatabase_TA::StaticClass());
-
-				SDK::FName realProductName = prodDB->GetProductName(products.GetByIndex(i)->ProductID);
-				SDK::UProduct_TA* tempProduct = prodDB->GetProductByName(realProductName);
-				//WriteLogFile(realProductName.GetName());
-				//WriteLogFile(" | ");
-				bool exportSetting = 1;
-				if (exportSetting == 1)
-					productName = tempProduct->GetLongLabel().ToString();
-				else
-					productName = products.GetByIndex(i)->ProductID;
-
-
-				SDK::TArray< class SDK::UProductAttribute_TA* > attributes = products.GetByIndex(i)->Attributes;
-				if (attributes.IsValidIndex(0) && attributes.Num() > 0) {
-					for (int j = 0; j < attributes.Num(); j++)
-					{
-						if (attributes.GetByIndex(j)) {
-							SDK::FOnlineProductAttribute onlineAttribute = attributes.GetByIndex(j)->InstanceOnlineProductAttribute();
-							//WriteLogFile(onlineAttribute.Key.GetName());
-							//WriteLogFile(" : ");
-							//WriteLogFile(to_string(onlineAttribute.Value.Data));
-							//std::cout << onlineAttribute.Key.GetName().c_str() << " : " << onlineAttribute.Value.ToString() <<  std::endl;
-
-							if (strcmp(onlineAttribute.Key.GetName().c_str(), "Certified") == 0) {
-								if (exportSetting == 1)
-									productCert = certDB->GetStatName(std::stoi(onlineAttribute.Value.c_str())).GetName();
-								else
-									productCert = onlineAttribute.Value.ToString();
-							}
-							else if (strcmp(onlineAttribute.Key.GetName().c_str(), "Painted") == 0) {
-
-								SDK::UProductPaint_TA* paint = paintDB->GetPaint(std::stoi(onlineAttribute.Value.ToString()));
-								if (exportSetting == 1)
-									productPaint = paint->Label.ToString();
-								else
-									productPaint = onlineAttribute.Value.ToString();
-							}
-							/*
-							else if (strcmp(onlineAttribute.Key.GetName().c_str(), "Quality") == 0) {
-							if (commaCount == 0) {
-							myfile << ",";
-							commaCount++;
-							}
-							int quality = std::stoi(onlineAttribute.Value.ToString());
-							if (exportSetting == 1)
-							myfile << quality << ",";
-							else
-							myfile << quality << ",";
-
-							commaCount++;
-							}
-							*/
-							/*
-							WriteLogFile(to_string(attributes.Data[j]->GetSortLabel().Data));
-							WriteLogFile(" : ");
-							WriteLogFile(to_string(attributes.Data[j]->GetOnlineProductAttributeValue().Data));
-							WriteLogFile(",");
-							*/
-						}
-
-					}
-				}
-
-
-				// append quality
-
-				productQuality = Quality[(int)tempProduct->GetQuality().GetValue()];
-				std::string itemId = productName + "," + productCert + "," + productPaint + "," + productQuality + ",";
-
-				// If item already found, add one to total
-				if (itemTotals.find(itemId) != itemTotals.end()) {
-					itemTotals[itemId] = itemTotals[itemId] + 1;
-				}
-				else {
-					itemTotals[itemId] = 1;
-				}
-
-
-
-
-			}
-			else {
-				printf("product id is null.\n");
-			}
-
-		}
-
-		for (std::map<std::string, int>::iterator iter = itemTotals.begin(); iter != itemTotals.end(); ++iter)
-		{
-			std::string k = iter->first;
-			myfile << k << itemTotals[k] << "\n";
-
-		}
-
-	}
-	else {
-		printf("No saveData found...\n");
-
-	}
-	myfile.close();
-	inventoryExportDone = true;
-}
 
 void TestClass::onEnable() {
 	printf("Test class enabled \n");
@@ -363,86 +206,7 @@ void TestClass::DrawMenu() {
 		}
 
 		ImGui::End();
-
-		// Rumble Controls
-		ImGui::Begin("Rumble Options", 0, ImVec2(400, 300), 0.75f);
-
-		ImGui::InputFloat("Item Give Rate", &itemGiveRate, 0.5f, 1.0f);
-
-		ImGui::Combo("Select Item", &selectedRumbleIndex, rumbleItems, IM_ARRAYSIZE(rumbleItems));
-
-		ImGui::Separator();
-
-		//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado"
-		// Boot
-		if (selectedRumbleIndex == 0) {
-
-		}
-		else if (selectedRumbleIndex == 1) {
-
-		}
-		else if (selectedRumbleIndex == 2) {
-
-		}
-		// Magnet
-		else if (selectedRumbleIndex == 3) {
-			ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
-			ImGui::InputFloat("Magnet Range", &magnetRange, 0.5f, 1.0f);
-			ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
-
-		}
-
-
-
-		ImGui::End();
-
-		{
-			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
-
-			//ImGui::SetNextWindowSize(ImVec2(400, 400), ImGuiSetCond_FirstUseEver);
-			ImGui::Begin("Inventory Management");
-
-			ImGui::Text("Line Format: Chakram,EpicSaves,Sky Blue,");
-
-			ImGui::Checkbox("Group Items by quantity.", &groupItems);
-
-			if (ImGui::Button("Export Inventory")) {
-				runInvExport = true;
-				ImGui::OpenPopup("Exporting Inventory");
-
-			}
-
-			if (ImGui::BeginPopupModal("Exporting Inventory"))
-			{
-				ImGui::Text("Please wait, this could take some time...");
-
-				if (ImGui::Button("Close") || inventoryExportDone) {
-					ImGui::CloseCurrentPopup();
-					inventoryExportDone = false;
-				}
-				ImGui::EndPopup();
-			}
-
-			if (ImGui::Button("Load Inventory Info")) {
-				//TestClass::runConsoleCommand = true;
-
-
-				// ProjectX.OnlineGameJoinGame_X.GenerateKeys
-				/*
-				SDK::FName randomFname = SDK::FName("GenerateKeys");
-				SDK::UOnlineGameJoinGame_X* game = (SDK::UOnlineGameJoinGame_X*)Utils::GetInstanceOf(SDK::UOnlineGameJoinGame_X::StaticClass());
-				std::cout << "fName at " << randomFname.GetName().c_str() << std::endl;
-				if (game) {
-				game->GotoState(randomFname, randomFname, true, true);
-				std::cout << "Calling generate keys from player controller" << std::endl;
-				}
-				*/
-
-
-			}
-			ImGui::End();
-
-		}
+		
 
 	}
 }
@@ -458,10 +222,7 @@ void TestClass::onMainMenuTick(Event* e) {
 			quickPlay = false;
 		}
 
-		if (runInvExport) {
-			runInvExport = false;
-			ExportInventory();
-		}
+
 	}
 
 }
@@ -542,9 +303,6 @@ void TestClass::onPlayerTick(Event* e) {
 
 					}
 
-				}
-				else {
-					printf("No AI Manager found.");
 				}
 			}
 		}
@@ -764,44 +522,6 @@ void TestClass::onPlayerTick(Event* e) {
 			localGameEvent->AddBallTrajectory();
 
 		}
-
-		// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-		SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)localGameEvent->SubRules;
-		if (itemRules && currItemGiveRate != itemGiveRate) {
-			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-			for (int l = 0; l < itemDispensers.Num(); l++) {
-				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
-			}
-		}
-		else {
-		}
-
-		if (itemRules) {
-			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-
-			for (int l = 0; l < itemDispensers.Num(); l++) {
-				SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
-				for (int q = 0; q < items.Num(); q++)
-				{
-					if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallGravity_TA::StaticClass())) {
-						// Check if magnet settings have changed
-						SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
-						if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
-							magnet->Range = magnetRange;
-						}
-						if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
-							magnet->BallGravity = magnetBallGravity;
-						}
-						if (magnet->bDeactivateOnTouch != magnetDeactivateOnTouch) {
-							magnet->bDeactivateOnTouch = magnetDeactivateOnTouch;
-						}
-					}
-
-				}
-			}
-		}
-
-		// End Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 		/*
 		if (updateScoreAndTime) {

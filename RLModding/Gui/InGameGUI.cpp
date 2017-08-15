@@ -4,13 +4,7 @@
 #include "../Libs/ImGui/imgui.h"
 #include "../Libs/ImGui/DX9/imgui_impl_dx9.h"
 #include "../Interfaces/Interfaces.h"
-
-
-InGameGUI::InGameGUI() {}
-InGameGUI::~InGameGUI() {}
-
-
-bool isGUIOpen = false;
+#include "../Mods/ModBase.h"
 
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
@@ -38,7 +32,7 @@ void SetStyle(ImGuiStyle * style) {
 	style->Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
 	style->Colors[ImGuiCol_FrameBgActive] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 	style->Colors[ImGuiCol_TitleBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
-	style->Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(1.00f, 0.98f, 0.95f, 0.75f);
+	style->Colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
 	style->Colors[ImGuiCol_TitleBgActive] = ImVec4(0.07f, 0.07f, 0.09f, 1.00f);
 	style->Colors[ImGuiCol_MenuBarBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
 	style->Colors[ImGuiCol_ScrollbarBg] = ImVec4(0.10f, 0.09f, 0.12f, 1.00f);
@@ -72,18 +66,31 @@ void SetStyle(ImGuiStyle * style) {
 	style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
 }
 
+InGameGUI::InGameGUI() {
+	SetStyle(&ImGui::GetStyle());
+}
+InGameGUI::~InGameGUI() {}
+
+bool isGUIOpen = false;
+
 void InGameGUI::Render() {
+
+	if (!(ModBase::STATIC_getCurrentGameState() & GameState::MENU)) {
+		ImGui::GetIO().MouseDrawCursor = true;
+	}
+	else {
+		ImGui::GetIO().MouseDrawCursor = false;
+	}
 
 	if (!isGUIOpen) {
 		return;
 	}
 
 	// Draw mouse cursor in game (since it is disabled);
-	ImGui::GetIO().MouseDrawCursor = true;
-	//Custom Style
-	SetStyle(&ImGui::GetStyle());
+	//ImGui::GetIO().MouseDrawCursor = true;
 
 	
+
 	if (ImGui::BeginMainMenuBar()) {
 		for (auto& name : categoryNames) {
 			if (ImGui::BeginMenu(name.c_str())) {
@@ -101,11 +108,22 @@ void InGameGUI::Render() {
 	}
 
 	// Draws the actual windows outside of the menu loop cause DUH
+	ImGui::Begin("Enabled Mods", 0, ImVec2(500, 400), 0.75f);
+	int i = 0;
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {
+			ImGui::Text(mods.first.c_str());
 			mods.second->DrawMenu();
-		}	
+			ImGui::PushID(i);
+			if (ImGui::Button("Disable", ImVec2(70,25))) {
+				mods.second->Toggle();
+			}
+			ImGui::PopID();
+			ImGui::Separator();
+			i++;
+		}
 	}
+	ImGui::End();
 
 }
 

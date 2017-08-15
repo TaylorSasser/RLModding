@@ -5,6 +5,7 @@
 #include "../Events/Event.h"
 #include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/InstanceStorage.h"
+#include "../DrawManager/DrawManager.hpp"
 
 
 /*
@@ -22,20 +23,22 @@ enum GameState {
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 
 enum Category {
-	Gamemodes = 0,Ball,Lan,Other,ALL,MAX
+	Menu = 0,GameModes,Ball,Lan,Car,Other,ALL,MAX
 };
 
-static const std::string categoryNames[MAX] = {
+static const std::string categoryNames[MAX-1] = {
+	"Menu Mods",
 	"Game Modes",
 	"Ball Mods",
 	"LAN Mods",
-	"Other Mods",
-	"ALL"
+	"Car Mods",
+	"Other Mods"
 };
 
 class ModBase
 {
 public:
+	ModBase() {}
 	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate) {}
 	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY) {}
 	
@@ -68,6 +71,8 @@ public:
 		else if (Globals::inTraining) return TRAINING;
 		else return NONE;
 	};
+
+	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 
 	virtual void DrawMenu() {}
 
@@ -123,6 +128,10 @@ public:
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
+
+	virtual void onInitExhibition(Event*){
+		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
+	}
 
 	bool enabled = false;
 protected:
