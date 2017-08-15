@@ -75,14 +75,20 @@ bool isGUIOpen = false;
 
 void InGameGUI::Render() {
 
+	if (!(ModBase::STATIC_getCurrentGameState() & (1 << 4))) {
+		ImGui::GetIO().MouseDrawCursor = true;
+	}
+	else {
+		ImGui::GetIO().MouseDrawCursor = false;
+	}
+
 	if (!isGUIOpen) {
 		return;
 	}
 
 	// Draw mouse cursor in game (since it is disabled);
-	if (!(ModBase::STATIC_getCurrentGameState() & (1 << 4))) {
-		ImGui::GetIO().MouseDrawCursor = true;
-	}
+	//ImGui::GetIO().MouseDrawCursor = true;
+
 	
 
 	if (ImGui::BeginMainMenuBar()) {
