@@ -63,7 +63,6 @@ namespace Vec {
 		Return.x = (SizeX / 2.0f) + Transformed.x * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
 		Return.y = (SizeY / 2.0f) + -Transformed.y * ((SizeX / 2.0f) / tan(FOVAngle * UCONST_Pi / 360.0f)) / Transformed.z;
 		Return.z = 0.0f;
-		printf("Return %f:%f:%f \n", Return.x, Return.y, Return.z);
 		return Return;
 	}
 
