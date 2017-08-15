@@ -22,10 +22,10 @@ enum GameState {
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 
 enum Category {
-	Gamemodes = 0,Ball,Lan,Other,ALL
+	Gamemodes = 0,Ball,Lan,Other,ALL,MAX
 };
 
-static const std::string categoryNames[5] = {
+static const std::string categoryNames[MAX] = {
 	"Game Modes",
 	"Ball Mods",
 	"LAN Mods",

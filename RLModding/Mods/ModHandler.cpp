@@ -4,6 +4,7 @@
 #include "Modules/Lan/ZombieGameMode.h"
 #include "Modules/Exploits/JoinServer.h"
 #include "Modules/Car/UnlimitedJumps.h"
+#include "Modules/Offline/CustomBlog.h"
 
 
 ModHandler::ModHandler() {
@@ -11,6 +12,7 @@ ModHandler::ModHandler() {
 	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::Gamemodes, GameState::EXHIBITION | GameState::LAN);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
 	CreateMod<UnlimitedJumps>("Unlimited Jumps", VK_NUMPAD3, Category::Other, GameState::EXHIBITION | GameState::TRAINING | GameState::LAN);
+	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Other, GameState::MENU);
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }
 
