@@ -1827,4 +1827,7 @@
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Gui\Fonts\Ruda-Bold.ttf" />
+  </ItemGroup>
 </Project>

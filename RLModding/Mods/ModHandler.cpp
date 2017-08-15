@@ -12,8 +12,7 @@
 ModHandler::ModHandler() {
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0,Category::Ball,GameState::ANY);
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::Lan, GameState::EXHIBITION | GameState::LAN);
-
-	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::Gamemodes, GameState::EXHIBITION | GameState::LAN);
+	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
 	CreateMod<UnlimitedJumps>("Unlimited Jumps", VK_NUMPAD3, Category::Other, GameState::EXHIBITION | GameState::TRAINING | GameState::LAN);
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Other, GameState::MENU);
