@@ -27,8 +27,6 @@ EventFactory::EventFactory() {
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
-
-		//This is for updating the InstanceStorage with all of our good types before the Mod functions can get called. It also allows us to use the override operator inside of our module and not invoke the superclass function.
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
 		Event event(object, func, params);
 		ModFunction(&event);

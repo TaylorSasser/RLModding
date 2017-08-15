@@ -251,8 +251,7 @@ struct FName
 		return *GNames;
 	};
 
-	inline std::string GetName() const
-	{
+	inline std::string GetName() const {
 		return GetGlobalNames()[Index]->GetName();
 	};
 

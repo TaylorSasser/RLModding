@@ -4,7 +4,7 @@ ZombieGameMode::ZombieGameMode(std::string name, int key, Category category, Gam
 ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}
 
 void ZombieGameMode::onEnable() {
-	if (InstanceStorage::GameEvent()->AIManager == nullptr && InstanceStorage::GameEvent() == nullptr && InstanceStorage::CurrentCar() != nullptr) {
+	if (InstanceStorage::GameEvent()->AIManager == nullptr || InstanceStorage::GameEvent() == nullptr || InstanceStorage::CurrentCar() == nullptr) {
 		//Console.printDebug("AI Manager not found");
 		printf("Could not start Zombies Module \n");
 	}
@@ -22,6 +22,9 @@ void ZombieGameMode::onEnable() {
 	}
 }
 void ZombieGameMode::onDisable() {
+	if (InstanceStorage::GameEvent()->AIManager == nullptr || InstanceStorage::GameEvent() == nullptr || InstanceStorage::CurrentCar() == nullptr) {
+		printf("Could not Cleanup Zombies Module \n");
+	}
 	if (Zombies[0] != nullptr ) {
 		for (auto i = 0u; i < InstanceStorage::GameEvent()->AIManager->Bots.Num(); i++) {
 			InstanceStorage::GameEvent()->AIManager->RemoveBot(InstanceStorage::GameEvent()->AIManager->Bots[i]);
