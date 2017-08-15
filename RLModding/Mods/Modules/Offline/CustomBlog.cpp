@@ -1,7 +1,6 @@
 #include "CustomBlog.h"
 
 CustomBlog::CustomBlog(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
-CustomBlog::CustomBlog(std::string name, int key) : ModBase(name, key) {}
 CustomBlog::~CustomBlog() {}
 
 void CustomBlog::onEnable() {

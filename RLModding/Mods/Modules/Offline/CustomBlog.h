@@ -7,7 +7,6 @@ class CustomBlog : public ModBase
 {
 public:
 	CustomBlog(std::string name, int key, Category category, GameState gamestate);
-	CustomBlog(std::string name, int key);
 	~CustomBlog();
 
 	void onEnable() override;
