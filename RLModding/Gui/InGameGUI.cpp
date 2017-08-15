@@ -4,6 +4,7 @@
 #include "../Libs/ImGui/imgui.h"
 #include "../Libs/ImGui/DX9/imgui_impl_dx9.h"
 #include "../Interfaces/Interfaces.h"
+#include "../Mods/ModBase.h"
 
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
@@ -79,9 +80,10 @@ void InGameGUI::Render() {
 	}
 
 	// Draw mouse cursor in game (since it is disabled);
-	ImGui::GetIO().MouseDrawCursor = true;
-	//Custom Style
-	//SetStyle(&ImGui::GetStyle());
+	if (!(ModBase::STATIC_getCurrentGameState() & (1 << 4))) {
+		ImGui::GetIO().MouseDrawCursor = true;
+	}
+	
 
 	if (ImGui::BeginMainMenuBar()) {
 		for (auto& name : categoryNames) {

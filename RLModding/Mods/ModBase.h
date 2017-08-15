@@ -37,6 +37,7 @@ static const std::string categoryNames[MAX-1] = {
 class ModBase
 {
 public:
+	ModBase() {}
 	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate) {}
 	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY) {}
 	
@@ -69,6 +70,8 @@ public:
 		else if (Globals::inTraining) return TRAINING;
 		else return NONE;
 	};
+
+	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 
 	virtual void DrawMenu() {}
 
