@@ -42,6 +42,7 @@
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
     <ClCompile Include="Mods\Modules\Car\UnlimitedJumps.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -2054,6 +2055,7 @@
     <ClInclude Include="PlayerBlacklist\Open Steamworks\UserStatsCommon.h" />
     <ClInclude Include="PlayerBlacklist\Open Steamworks\UtilsCommon.h" />
     <ClInclude Include="PlayerBlacklist\Open Steamworks\Win32Library.h" />
+    <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
