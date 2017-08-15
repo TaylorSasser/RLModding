@@ -105,6 +105,9 @@ public:
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
+		if (InstanceStorage::GameEvent() && InstanceStorage::GameEvent()->MatchTypeName.Index == 5059) { //Exhibition
+			Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
+		}
 	}
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));

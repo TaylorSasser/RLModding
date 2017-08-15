@@ -37,7 +37,7 @@ void CustomBlog::DrawMenu() {
 void CustomBlog::onMainMenuTick(Event* event) {
 	UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
 	UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
-
+	
 	if (bSet && blog && community) {
 		blog->BlogTitle = Utils::to_fstring(title);
 		blog->BlogBody = Utils::to_fstring(body);
