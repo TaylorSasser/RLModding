@@ -7,6 +7,7 @@
 #include "Modules/Car/UnlimitedJumps.h"
 #include "Modules/Offline/CustomBlog.h"
 #include "Modules/Offline/InventoryManager.h"
+#include "Modules/Classic Mods/ClassicMods.h"
 
 
 ModHandler::ModHandler() {
@@ -17,6 +18,7 @@ ModHandler::ModHandler() {
 	CreateMod<UnlimitedJumps>("Unlimited Jumps", VK_NUMPAD3, Category::Car, GameState::EXHIBITION | GameState::TRAINING | GameState::LAN);
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
+	CreateMod<ClassicMods>("Classic Mods", VK_NUMPAD7, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }

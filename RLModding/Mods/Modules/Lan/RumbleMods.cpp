@@ -54,7 +54,7 @@ void RumbleMods::DrawMenu() {
 			}
 
 			//Example Settings
-			//For things have settings to configure anywhere do something like this
+			//For things that have settings to configure anywhere do something like this
 			//Essentially have a boolean to detect the start and stop of the gamemode while the menu
 			//just brings up the settings anywhere
 			if (bStartGameMode) {

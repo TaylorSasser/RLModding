@@ -5,6 +5,7 @@
 #include "../Events/Event.h"
 #include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/InstanceStorage.h"
+#include "../DrawManager/DrawManager.hpp"
 
 
 /*
