@@ -1,7 +1,7 @@
 #include "InventoryManager.h"
-#include "../../Utils/Utils.h"
+#include "../../../Utils/Utils.h"
 #include <functional>
-#include "../../DrawManager/DrawManager.hpp"
+#include "../../../DrawManager/DrawManager.hpp"
 #include <comdef.h> // for wchar to char conversion
 #include <fstream>
 #include <map>
@@ -69,10 +69,6 @@ void InventoryManager::DrawMenu() {
 }
 
 void InventoryManager::onEnable() {
-	if (InstanceStorage::GameEvent()->AIManager == nullptr && InstanceStorage::GameEvent() == nullptr && InstanceStorage::CurrentCar() != nullptr) {
-		//Console.printDebug("AI Manager not found");
-		printf("Could not start Zombies Module \n");
-	}
 
 }
 void InventoryManager::onDisable() {

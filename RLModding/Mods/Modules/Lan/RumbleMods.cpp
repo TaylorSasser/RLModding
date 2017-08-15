@@ -1,7 +1,7 @@
 #include "RumbleMods.h"
-#include "../../Utils/Utils.h"
+#include "../../../Utils/Utils.h"
 #include <functional>
-#include "../../DrawManager/DrawManager.hpp"
+#include "../../../DrawManager/DrawManager.hpp"
 #include <comdef.h> // for wchar to char conversion
 #include <fstream>
 #include <map>
