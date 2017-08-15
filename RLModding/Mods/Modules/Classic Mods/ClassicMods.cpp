@@ -38,11 +38,7 @@ void ClassicMods::DrawMenu() {
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
 	if (ImGui::Button("Reset")) {
-		jumpTimeout = 1.5;
-		torqueRate = 5.5;
-		maxCarSpeed = 2300.0;
-		groundSticky = 1.0;
-		wallSticky = 1.0;
+		reset();
 	}
 	ImGui::End();
 }
