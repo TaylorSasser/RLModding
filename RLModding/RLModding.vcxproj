@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
@@ -65,6 +66,7 @@
   <ItemGroup>
     <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
+    <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
@@ -1846,7 +1848,7 @@
     <ProjectGuid>{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>RLModding</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

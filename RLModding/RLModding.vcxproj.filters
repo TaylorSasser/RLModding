@@ -43,6 +43,7 @@
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
     <ClCompile Include="Mods\Modules\Car\UnlimitedJumps.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1807,6 +1808,7 @@
     <ClInclude Include="Mods\Modules\Car\UnlimitedJumps.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
+    <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
