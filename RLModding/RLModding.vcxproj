@@ -22,6 +22,7 @@
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
     <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
     <ClCompile Include="Core\Core.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
+    <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
     <ClInclude Include="Core\Core.h" />
