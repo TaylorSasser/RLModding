@@ -13,6 +13,6 @@ public:
 	void onPlayerTick(Event* e);
 
 private:
-
+	bool bStartGameMode = false;
 };
 

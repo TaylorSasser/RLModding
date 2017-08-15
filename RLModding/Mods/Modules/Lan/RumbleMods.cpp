@@ -53,7 +53,26 @@ void RumbleMods::DrawMenu() {
 
 			}
 
-
+			//Example Settings
+			//For things have settings to configure anywhere do something like this
+			//Essentially have a boolean to detect the start and stop of the gamemode while the menu
+			//just brings up the settings anywhere
+			if (bStartGameMode) {
+				if (ImGui::Button("Disable")) {
+					bStartGameMode = false;
+				}
+			}
+			else {
+				if (ImGui::Button("Enable")) {
+					if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING)))
+						bStartGameMode = true;
+					else {
+						printf("Invalid state for rumble settings\n");
+					}
+				}
+			}
+			//End Example Settings
+			
 
 			ImGui::End();
 		}
@@ -62,10 +81,6 @@ void RumbleMods::DrawMenu() {
 }
 
 void RumbleMods::onEnable() {
-	if (InstanceStorage::GameEvent()->AIManager == nullptr && InstanceStorage::GameEvent() == nullptr && InstanceStorage::CurrentCar() != nullptr) {
-		//Console.printDebug("AI Manager not found");
-		printf("Could not start Zombies Module \n");
-	}
 
 }
 void RumbleMods::onDisable() {
@@ -73,41 +88,44 @@ void RumbleMods::onDisable() {
 }
 
 void RumbleMods::onPlayerTick(Event* e) {
-	// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SubRules;
-	if (itemRules && currItemGiveRate != itemGiveRate) {
-		SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-		for (int l = 0; l < itemDispensers.Num(); l++) {
-			itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
-		}
-	}
-	else {
-	}
-
-	if (itemRules) {
-		SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-
-		for (int l = 0; l < itemDispensers.Num(); l++) {
-			SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
-			for (int q = 0; q < items.Num(); q++)
-			{
-				if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallGravity_TA::StaticClass())) {
-					// Check if magnet settings have changed
-					SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
-					if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
-						magnet->Range = magnetRange;
-					}
-					if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
-						magnet->BallGravity = magnetBallGravity;
-					}
-					if (magnet->bDeactivateOnTouch != magnetDeactivateOnTouch) {
-						magnet->bDeactivateOnTouch = magnetDeactivateOnTouch;
-					}
-				}
-
+	//This boolean for starting the gamemode
+	if (bStartGameMode) {
+		// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SubRules;
+		if (itemRules && currItemGiveRate != itemGiveRate) {
+			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
+			for (int l = 0; l < itemDispensers.Num(); l++) {
+				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
 			}
 		}
-	}
+		else {
+		}
 
-	// End Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		if (itemRules) {
+			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
+
+			for (int l = 0; l < itemDispensers.Num(); l++) {
+				SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
+				for (int q = 0; q < items.Num(); q++)
+				{
+					if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallGravity_TA::StaticClass())) {
+						// Check if magnet settings have changed
+						SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
+						if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
+							magnet->Range = magnetRange;
+						}
+						if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
+							magnet->BallGravity = magnetBallGravity;
+						}
+						if (magnet->bDeactivateOnTouch != magnetDeactivateOnTouch) {
+							magnet->bDeactivateOnTouch = magnetDeactivateOnTouch;
+						}
+					}
+
+				}
+			}
+		}
+
+		// End Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	}
 }
