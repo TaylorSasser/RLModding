@@ -304,9 +304,6 @@ void TestClass::onPlayerTick(Event* e) {
 					}
 
 				}
-				else {
-					printf("No AI Manager found.");
-				}
 			}
 		}
 

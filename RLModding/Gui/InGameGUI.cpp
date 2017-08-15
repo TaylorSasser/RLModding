@@ -108,11 +108,22 @@ void InGameGUI::Render() {
 	}
 
 	// Draws the actual windows outside of the menu loop cause DUH
+	ImGui::Begin("Enabled Mods", 0, ImVec2(500, 400), 0.75f);
+	int i = 0;
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {
+			ImGui::Text(mods.first.c_str());
 			mods.second->DrawMenu();
-		}	
+			ImGui::PushID(i);
+			if (ImGui::Button("Disable", ImVec2(70,25))) {
+				mods.second->Toggle();
+			}
+			ImGui::PopID();
+			ImGui::Separator();
+			i++;
+		}
 	}
+	ImGui::End();
 
 }
 
