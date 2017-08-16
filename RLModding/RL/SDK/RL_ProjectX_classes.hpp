@@ -3179,7 +3179,7 @@ public:
 class UOnlineGameDedicatedServer_X : public UOnlineGameServer_X
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
+	__int64											   GameServerID;                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
 	struct FString                                     GameServerHost;                                           // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UOnlineGameStats_X*                          GameStats;                                                // 0x00FC(0x0004) (CPF_Transient)
 	class UOnlineGameDedicatedServerRegistration_X*    Registration;                                             // 0x0100(0x0004) (CPF_Edit)
