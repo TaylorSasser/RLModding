@@ -20,7 +20,10 @@ Any:		11111
 enum GameState {
 	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
 };
+
+
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
+inline GameState operator^(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) ^ static_cast<int>(b)); }
 
 enum Category {
 	Menu = 0,GameModes,Ball,Lan,Car,Other,ALL,MAX
