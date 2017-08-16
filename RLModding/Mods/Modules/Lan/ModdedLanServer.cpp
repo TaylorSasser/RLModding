@@ -5,7 +5,6 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
-	//Interfaces::GUI().isGUIOpen = false;
 }
 
 void ModdedLanServer::onDisable() {
@@ -19,6 +18,10 @@ void ModdedLanServer::DrawMenu() {
 		Interfaces::GUI().isGUIOpen = false;
 		//travel() for some reason this doesn't work?!?!?
 		bTravel = true;
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Close")) {
+		this->enabled = false;
 	}
 	ImGui::End();
 }
