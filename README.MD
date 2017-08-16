@@ -41,6 +41,6 @@ You have a class ZombieGameMode binded to numpad 1. It is part of the category G
 - lexical_cast
 
 ### TODO
-- Extract parameters from the call function hooks. Still no idea how to do that :/
 
+- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
 - Add in a way to build raw packets into high level objects (decrypting the packets too)
