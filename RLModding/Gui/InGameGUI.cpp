@@ -71,11 +71,9 @@ InGameGUI::InGameGUI() {
 }
 InGameGUI::~InGameGUI() {}
 
-bool isGUIOpen = false;
-
 void InGameGUI::Render() {
 
-	if (!(ModBase::STATIC_getCurrentGameState() & GameState::MENU) && isGUIOpen) {
+	if (!(ModBase::STATIC_getCurrentGameState() & GameState::MENU) && isGUIOpen ) {
 		ImGui::GetIO().MouseDrawCursor = true;
 	}
 	else {
