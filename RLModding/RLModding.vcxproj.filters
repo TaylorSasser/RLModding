@@ -46,6 +46,7 @@
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
     <ClCompile Include="Mods\Modules\Classic Mods\ClassicMods.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1813,6 +1814,7 @@
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Classic Mods\ClassicMods.h" />
+    <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

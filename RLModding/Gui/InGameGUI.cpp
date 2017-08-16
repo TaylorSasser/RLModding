@@ -108,23 +108,23 @@ void InGameGUI::Render() {
 	}
 
 	// Draws the actual windows outside of the menu loop cause DUH
-	ImGui::Begin("Enabled Mods", 0, ImVec2(500, 400), 0.75f);
-	int i = 0;
+
+	//ImGui::Begin("Enabled Mods", 0, ImVec2(500, 400), 0.75f);
+	//int i = 0;
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {
-			ImGui::Text(mods.first.c_str());
+			//ImGui::Text(mods.first.c_str());
 			mods.second->DrawMenu();
-			ImGui::PushID(i);
-			if (ImGui::Button("Disable", ImVec2(70,25))) {
-				mods.second->Toggle();
-			}
-			ImGui::PopID();
-			ImGui::Separator();
-			i++;
+			//mGui::PushID(i);
+			//if (ImGui::Button("Disable", ImVec2(70,25))) {
+				//mods.second->Toggle();
+			//}
+			//ImGui::PopID();
+			//ImGui::Separator();
+			//i++;
 		}
 	}
-	ImGui::End();
-
+	//ImGui::End();
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
@@ -135,9 +135,9 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
-	if ((w == Interfaces::FileHandler().GetGUIKeyBind("eject")) && (e == KeyEvent::KeyUp)) {
-		FreeLibraryAndExitThread(LoadLibrary(L"RLModding.dll"),0);
-	}
+	//if ((w == Interfaces::FileHandler().GetGUIKeyBind("eject")) && (e == KeyEvent::KeyUp)) {
+		//FreeLibraryAndExitThread(LoadLibrary(L"RLModding.dll"),0);
+	//}
 	return isGUIOpen;
 }
 

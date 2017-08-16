@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Classic Mods\ClassicMods.cpp" />
@@ -67,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interfaces\GlobalVariables.h" />
+    <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Classic Mods\ClassicMods.h" />
