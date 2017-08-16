@@ -22,19 +22,19 @@ void ClassicMods::onDisable() {
 
 void ClassicMods::DrawMenu() {
 	ImGui::Begin("Classic Mods", 0, ImVec2(400, 300), 0.75f);
-	ImGui::SliderFloat("Jump Timeout", &jumpTimeout, 0.05f, 60.0f, "%.2f");
+	ImGui::InputFloat("Jump Timeout", &jumpTimeout, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of time till you lose your second dodge");
-	ImGui::SliderFloat("Torque Rate", &torqueRate, 1.0f, 100.0f, "%.2f");
+	ImGui::InputFloat("Torque Rate", &torqueRate, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("How fast your car flips. For example doubling the default 5.5 will make your car flip ~2 times with one dodge");
-	ImGui::SliderFloat("Max Car Velocity", &maxCarSpeed, 100.0f, 100000.0f, "%.2f");
+	ImGui::InputFloat("Max Car Velocity", &maxCarSpeed, 1000.0f, 10000.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The max velocity of your car");
-	ImGui::SliderFloat("Ground Sticky Force", &groundSticky, 0.5f, 25.0f, "%.2f");
+	ImGui::InputFloat("Ground Sticky Force", &groundSticky, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the ground");
-	ImGui::SliderFloat("Wall Sticky Force", &wallSticky, 0.5f, 25.0f, "%.2f");
+	ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
 	if (ImGui::Button("Reset")) {

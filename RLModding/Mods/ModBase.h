@@ -133,6 +133,8 @@ public:
 		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
 	}
 
+	virtual void onPostPRI(Event* event) {}
+
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;

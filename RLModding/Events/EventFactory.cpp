@@ -23,6 +23,7 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventJoinGameComplete",&ModBase::onOnlineGameStart);
 	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation",&ModBase::onSetFriendJoinLocation);
 	SubscribeEvent("Function TAGame.MatchType_Offline_TA.OnInitGameEvent", &ModBase::onInitExhibition);
+	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
