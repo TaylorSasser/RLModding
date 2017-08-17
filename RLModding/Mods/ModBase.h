@@ -62,11 +62,11 @@ public:
 	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
 
-	virtual Category getCategory() {return cat;}
-	//Get the mods allowed gamestates
+	virtual Category getCategory() {return cat;} 	//Get the mods allowed gamestates
+
 	virtual GameState getAllowedGameStates() {return allowedGameStates;}
-	//Get the current game state, in menu? in training? etc.
-	virtual GameState getCurrentGameState() {
+	
+	virtual GameState getCurrentGameState() {	 //Get the current game state, in menu? in training? etc.
 		if (Globals::inCustom) return LAN;
 		else if (Globals::inExhibition) return EXHIBITION;
 		else if (Globals::inMainMenu) return MENU;
@@ -85,10 +85,8 @@ public:
 	virtual void onToggle() {
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) {
-			printf("Invalid state\n");
 			setState(false);
 		}
-			
 	}
 
 	virtual void onProfileJoinGame(Event*) {}
@@ -135,6 +133,8 @@ public:
 	virtual void onInitExhibition(Event*){
 		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
 	}
+
+	virtual void onGotoState(Event* event) {}
 
 	virtual void onPostPRI(Event* event) {}
 
