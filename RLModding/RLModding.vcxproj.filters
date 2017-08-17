@@ -48,6 +48,9 @@
     <ClCompile Include="Mods\Modules\Classic Mods\ClassicMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
+    <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1818,6 +1821,9 @@
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
     <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
+    <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
+    <ClInclude Include="Mods\Modules\Lan\GameEventMods.h" />
+    <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

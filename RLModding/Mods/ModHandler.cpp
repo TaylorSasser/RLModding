@@ -10,7 +10,9 @@
 #include "Modules/Classic Mods/ClassicMods.h"
 #include "Modules/Lan/ModdedLanServer.h"
 #include "Modules/Lan/FiftyFifty.h"
-
+#include "Modules/Lan/BallMods.h"
+#include "Modules/Lan/GameEventMods.h"
+#include "Modules/Car/CarPhysics.h"
 
 ModHandler::ModHandler() {
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0,Category::Other,GameState::ANY);
@@ -23,6 +25,9 @@ ModHandler::ModHandler() {
 	CreateMod<ClassicMods>("Classic Mods", VK_NUMPAD7, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<ModdedLanServer>("Start Custom Map",VK_NUMPAD8,Category::Lan,GameState::ANY ^ GameState::ONLINE);
 	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
+	CreateMod<BallMods>("Ball Mods", VK_NUMPAD9, Category::Ball, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::Lan, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<CarPhysics>("Car Physics", VK_F3, Category::Car, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }

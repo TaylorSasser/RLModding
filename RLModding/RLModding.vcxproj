@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
@@ -68,8 +71,11 @@
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
+    <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
+    <ClInclude Include="Mods\Modules\Lan\GameEventMods.h" />
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
@@ -1857,7 +1863,7 @@
     <ProjectGuid>{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>RLModding</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

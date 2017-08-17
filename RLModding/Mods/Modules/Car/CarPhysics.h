@@ -1,0 +1,19 @@
+#pragma once
+#include "../../ModBase.h"
+#include "../../../Interfaces/InstanceStorage.h"
+
+class CarPhysics : public ModBase {
+public:
+	CarPhysics(std::string name, int key, Category category, GameState gamestate);
+	CarPhysics(std::string, int key);
+
+	void DrawMenu();
+	void onEnable();
+	void onDisable();
+	void onPlayerTick(Event* e);
+
+private:
+	bool bStartGameMode = false;
+
+};
+
