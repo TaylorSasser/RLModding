@@ -21,7 +21,7 @@ ModHandler::ModHandler() {
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
 	CreateMod<ClassicMods>("Classic Mods", VK_NUMPAD7, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	CreateMod<ModdedLanServer>("Start Custom Map",VK_NUMPAD8,Category::Lan,GameState::ANY);
+	CreateMod<ModdedLanServer>("Start Custom Map",VK_NUMPAD8,Category::Lan,GameState::ANY ^ GameState::ONLINE);
 	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this

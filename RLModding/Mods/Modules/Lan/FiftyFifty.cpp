@@ -19,12 +19,11 @@ void FiftyFifty::DrawMenu() {
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
-			/*if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION))
+			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION))
 				bStarted = true;
 			else {
 				printf("Invalid state for 50/50\n");
-			}*/
-			bStarted = true;
+			}
 		}
 	}
 	else {

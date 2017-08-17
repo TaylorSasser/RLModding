@@ -6,6 +6,7 @@
 #include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/InstanceStorage.h"
 #include "../DrawManager/DrawManager.hpp"
+#include <iostream>
 
 
 /*
@@ -121,6 +122,9 @@ public:
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
+		if (!inOnline) {
+			inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;
+		}
 	}
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
