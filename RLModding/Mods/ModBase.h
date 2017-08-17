@@ -135,6 +135,8 @@ public:
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
+	
+	virtual void onWebRequestCreated(Event*) {}
 
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
