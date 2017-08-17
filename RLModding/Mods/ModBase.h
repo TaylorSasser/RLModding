@@ -144,6 +144,8 @@ public:
 
 	virtual void onPostPRI(Event* event) {}
 
+	virtual void onGotoState(Event*) {}
+
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;
