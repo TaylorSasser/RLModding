@@ -25,7 +25,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.MatchType_Offline_TA.OnInitGameEvent", &ModBase::onInitExhibition);
 	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
 	SubscribeEvent("Function Core.Object.GotoState",&ModBase::onGotoState);
-	SubscribeEvent("Function ProjectX.PsyNet_X.CreateWebRequest",&ModBase::onWebRequestCreated);
+	SubscribeEvent("Function ProjectX.WebRequest_X.EventCompleted",&ModBase::onWebRequestCreated);
+	SubscribeEvent("Function ProjectX.RPC_X.OnComplete", &ModBase::onRPCComplete);
+
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {

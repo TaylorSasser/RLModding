@@ -144,7 +144,13 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	
-	virtual void onWebRequestCreated(Event*) {}
+	virtual void onWebRequestCreated(Event* e) {
+		UWebRequest_X* request = reinterpret_cast<UWebRequest_X*>(UWebRequest_X::StaticClass());
+		if (request) {
+			FScriptDelegate temp;
+			request->Send(L"Keys/GenerateKeys", temp);
+		}
+	}
 
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
@@ -153,6 +159,16 @@ public:
 	virtual void onPostPRI(Event* event) {}
 
 	virtual void onGotoState(Event*) {}
+
+	virtual void onRPCComplete(Event* e) {
+		URPC_X* rpc = reinterpret_cast<URPC_X*>(e->getCallingObject());
+		if (rpc)
+		{
+			std::cout << "Service: " << rpc->Service.ToString() << std::endl;
+			//std::cout << "Version: " << rpc->Version << std::endl;
+		}
+		
+	}
 
 	bool enabled = false;
 protected:
