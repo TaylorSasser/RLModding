@@ -55,11 +55,13 @@ public:
 	{
 		return Data[i];
 	}
+	/* Not working. realloc can call on used memory regions and is not thread safe. mutexes?
 	inline void Add(T InputData) {
 		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
 		Data[Count++] = InputData;
 		Max = Count;
 	};
+	*/
 
 private:
 	T* Data;
