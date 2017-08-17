@@ -74,7 +74,6 @@ InGameGUI::~InGameGUI() {}
 void InGameGUI::Render() {
 
 	if (!(ModBase::STATIC_getCurrentGameState() & GameState::MENU) && isGUIOpen ) {
-		//std::cout << ModBase::STATIC_getCurrentGameState() << std::endl;
 		ImGui::GetIO().MouseDrawCursor = true;
 	}
 	else {
@@ -102,7 +101,16 @@ void InGameGUI::Render() {
 				}
 				ImGui::EndMenu();
 			}
+			
 		}
+
+		//Sellout
+		if (ImGui::BeginMenu("Donate")) {
+			ShellExecute(NULL, "open", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XHLHQGAQK2XZG", NULL, NULL, SW_SHOWNORMAL);
+			isGUIOpen = false;
+			ImGui::EndMenu();
+		}
+		
 		ImGui::EndMainMenuBar();
 	}
 
