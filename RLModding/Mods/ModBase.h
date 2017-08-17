@@ -6,6 +6,7 @@
 #include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/InstanceStorage.h"
 #include "../DrawManager/DrawManager.hpp"
+#include "../Utils/Utils.h"
 #include <iostream>
 
 
@@ -108,6 +109,13 @@ public:
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 		inMainMenu = true;inOnline = false;inCustom = false;inExhibition = false;inTraining = false;
+		UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
+		UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
+
+		if (blog && community) {
+			blog->MotD = L"Created by ButterandCream, two. and Taylor";
+			community->UpdateBlogText();
+		}
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
