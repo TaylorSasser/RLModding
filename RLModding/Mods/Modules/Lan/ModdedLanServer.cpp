@@ -70,7 +70,7 @@ void ModdedLanServer::travel() {
 			std::string command = mapName + "?playtest?listen?Private?" + str_gameMode + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
-			std::cout << "State: " << ModBase::STATIC_getCurrentGameState() << std::endl;
+			std::cout << "State: " << ModBase::STATIC_getCurrentGameStateTextName() << std::endl;
 		}
 	}
 }
