@@ -58,7 +58,8 @@ void FiftyFifty::onPlayerTick(Event* event) {
 					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
 					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
 					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx))
-						gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+						if (controller->Car->CanDemolish(gameTeams[team_idx]->Members[player_idx]->Car))
+							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
 					checkTime = true;
 				}		
 			}
