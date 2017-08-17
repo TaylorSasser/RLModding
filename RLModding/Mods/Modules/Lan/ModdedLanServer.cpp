@@ -35,6 +35,7 @@ void ModdedLanServer::DrawMenu() {
 	ImGui::Combo("Gravity", &defaultGravity, gravityCombo, IM_ARRAYSIZE(gravityCombo));
 	ImGui::Combo("Demolish", &defaultDemoSettings, demoSettingsCombo, IM_ARRAYSIZE(demoSettingsCombo));
 	ImGui::Combo("Respawn Time", &defaultRespawnTime, respawnTimeCombo, IM_ARRAYSIZE(respawnTimeCombo));
+	ImGui::Combo("Testing", &defaultTesting, testingCombo, IM_ARRAYSIZE(testingCombo));
 	if (ImGui::Button("Launch")) {
 		mapName = maps[selectedMap].filename;
 		create_mutator_string();
@@ -111,4 +112,5 @@ void ModdedLanServer::create_mutator_string() {
 	str_mutators += mutators[gravityCombo[defaultGravity]];
 	str_mutators += mutators[demoSettingsCombo[defaultDemoSettings]];
 	str_mutators += mutators[respawnTimeCombo[defaultRespawnTime]];
+	str_mutators += testingCombo[defaultTesting];
 }
