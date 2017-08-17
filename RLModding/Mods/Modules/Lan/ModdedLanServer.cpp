@@ -11,7 +11,7 @@ void ModdedLanServer::onDisable() {
 }
 
 void ModdedLanServer::DrawMenu() {
-	ImGui::Begin("LAN Options", 0, ImVec2(500, 300), 0.75f);
+	ImGui::Begin("LAN Options", 0, ImVec2(500, 800), 0.75f);
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
 	ImGui::Combo("Game Mode", &defaultGameMode, gameModesCombo, IM_ARRAYSIZE(gameModesCombo));
 	ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));
@@ -55,11 +55,19 @@ void ModdedLanServer::onMainMenuTick(Event* event) {
 	}
 }
 
+void ModdedLanServer::onGameEventTick(Event* event) {
+	if (bTravel) {
+		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = true; Globals::inExhibition = false; Globals::inTraining = false;
+		travel();
+		bTravel = false;
+	}
+}
+
 void ModdedLanServer::travel() {
 	if (!Interfaces::GUI().isGUIOpen) {
 		LAN_Server = reinterpret_cast<SDK::UOnlineGameDedicatedServer_X*>(Utils::GetInstanceOf(UOnlineGameDedicatedServer_X::StaticClass()));
 		if (LAN_Server) {
-			std::string command = mapName + "?playtest?listen?Private?" + str_gameMode + "?" + str_mutators;
+			std::string command = mapName + "?playtest?listen?Private?" + str_gameMode + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
 			std::cout << "State: " << ModBase::STATIC_getCurrentGameState() << std::endl;

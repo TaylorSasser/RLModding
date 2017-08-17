@@ -15,6 +15,7 @@ public:
 	void onDisable() override;
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
+	void onGameEventTick(Event*) override;
 
 private:
 	void travel();
