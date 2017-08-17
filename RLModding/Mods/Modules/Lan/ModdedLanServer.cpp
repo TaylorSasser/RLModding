@@ -5,7 +5,12 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
-	if (InstanceStorage::GameEvent() != nullptr && InstanceStorage::GameEvent()->STATIC_GetOnlineGameLanServer() != nullptr) {
-		InstanceStorage::GameEvent()->STATIC_GetOnlineGameLanServer()->TravelToMap(L"Park_P?");
-	}
+	
+}
+
+void ModdedLanServer::onWebRequestCreated(Event* event) {
+	std::cout << ((UPsyNet_X*)event->getCallingObject())->Keys.Environment.ToString() << std::endl;
+	std::cout << ((UPsyNet_X*)event->getCallingObject())->Keys.GetKeys.ToString() << std::endl;
+	std::cout << ((UPsyNet_X*)event->getCallingObject())->Keys.PsyNetAuth.ToString() << std::endl;
+	std::cout << ((UPsyNet_X*)event->getCallingObject())->Keys.SteamPublisher.ToString() << std::endl;
 }

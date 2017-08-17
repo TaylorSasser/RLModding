@@ -129,6 +129,8 @@ public:
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
+	
+	virtual void onWebRequestCreated(Event*) {}
 
 	virtual void onInitExhibition(Event*){
 		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
