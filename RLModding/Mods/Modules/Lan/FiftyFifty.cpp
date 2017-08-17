@@ -14,7 +14,7 @@ void FiftyFifty::onDisable() {
 
 void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", 0, ImVec2(400, 300), 0.75f);
-	ImGui::InputFloat("Interval", &interval, 1.0f, 5.0f, 1);
+	ImGui::SliderFloat("Interval", &interval, 5.0f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
 	if (!bStarted) {
@@ -31,9 +31,10 @@ void FiftyFifty::DrawMenu() {
 			bStarted = false;
 		}
 	}
-
+	ImGui::SameLine();
 	if (ImGui::Button("Close")) {
 		Interfaces::GUI().isGUIOpen = false;
+		this->setState(false);
 	}
 	
 	ImGui::End();
@@ -58,7 +59,6 @@ void FiftyFifty::onPlayerTick(Event* event) {
 					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
 					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
 					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx))
-						if (controller->Car->CanDemolish(gameTeams[team_idx]->Members[player_idx]->Car))
 							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
 					checkTime = true;
 				}		
