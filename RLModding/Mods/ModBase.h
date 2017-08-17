@@ -77,14 +77,6 @@ public:
 	};
 
 	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
-	static std::string STATIC_getCurrentGameStateTextName() {
-		if (inCustom) return "LAN";
-		else if (inExhibition) return "EXHIBITION";
-		else if (inMainMenu) return "MENU";
-		else if (inOnline) return "ONLINE";
-		else if (inTraining) return "TRAINING";
-		else return "NONE";
-	}
 
 	virtual void DrawMenu() {}
 
