@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interfaces\GlobalVariables.h" />
+    <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
@@ -1943,7 +1944,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level1</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>

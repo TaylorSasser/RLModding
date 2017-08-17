@@ -1815,6 +1815,7 @@
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Classic Mods\ClassicMods.h" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
+    <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
