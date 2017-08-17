@@ -67,21 +67,21 @@ public:
 	virtual GameState getAllowedGameStates() {return allowedGameStates;}
 	//Get the current game state, in menu? in training? etc.
 	virtual GameState getCurrentGameState() {
-		if (Globals::inCustom) return LAN;
-		else if (Globals::inExhibition) return EXHIBITION;
-		else if (Globals::inMainMenu) return MENU;
-		else if (Globals::inOnline) return ONLINE;
-		else if (Globals::inTraining) return TRAINING;
+		if (inCustom) return LAN;
+		else if (inExhibition) return EXHIBITION;
+		else if (inMainMenu) return MENU;
+		else if (inOnline) return ONLINE;
+		else if (inTraining) return TRAINING;
 		else return NONE;
 	};
 
 	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 	static std::string STATIC_getCurrentGameStateTextName() {
-		if (Globals::inCustom) return "LAN";
-		else if (Globals::inExhibition) return "EXHIBITION";
-		else if (Globals::inMainMenu) return "MENU";
-		else if (Globals::inOnline) return "ONLINE";
-		else if (Globals::inTraining) return "TRAINING";
+		if (inCustom) return "LAN";
+		else if (inExhibition) return "EXHIBITION";
+		else if (inMainMenu) return "MENU";
+		else if (inOnline) return "ONLINE";
+		else if (inTraining) return "TRAINING";
 		else return "NONE";
 	}
 
@@ -103,7 +103,7 @@ public:
 	virtual void onPlayerTick(Event*) {}
 
 	virtual void onOnlineGameStart(Event* event) {
-		Globals::inMainMenu = false; Globals::inOnline = true; Globals::inCustom = false; Globals::inExhibition = false; Globals::inTraining = false;
+		inMainMenu = false; inOnline = true; inCustom = false; inExhibition = false; inTraining = false;
 	}
 
 	virtual void onSetFriendJoinLocation(Event*) {}
@@ -114,7 +114,7 @@ public:
 	}
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
-		Globals::inMainMenu = true;Globals::inOnline = false;Globals::inCustom = false;Globals::inExhibition = false;Globals::inTraining = false;
+		inMainMenu = true;inOnline = false;inCustom = false;inExhibition = false;inTraining = false;
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
@@ -130,7 +130,7 @@ public:
 	}
 	virtual void onReplayTick(Event*) {}
 	virtual void onFreeplayTick(Event*) {
-		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = false; Globals::inTraining = true;
+		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = false; inTraining = true;
 	}
 	virtual void onPostRender(Event*) {}
 
@@ -141,7 +141,7 @@ public:
 	virtual void onTCPConnectionEnd(Event*) {}
 
 	virtual void onInitExhibition(Event*){
-		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = false; Globals::inExhibition = true; Globals::inTraining = false;
+		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
 	}
 
 	virtual void onPostPRI(Event* event) {}

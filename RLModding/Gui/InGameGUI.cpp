@@ -5,7 +5,7 @@
 #include "../Libs/ImGui/DX9/imgui_impl_dx9.h"
 #include "../Interfaces/Interfaces.h"
 #include "../Mods/ModBase.h"
-
+#include <iostream>
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
 
@@ -73,7 +73,8 @@ InGameGUI::~InGameGUI() {}
 
 void InGameGUI::Render() {
 
-	if (!(ModBase::STATIC_getCurrentGameState() & GameState::MENU) && isGUIOpen ) {
+	if (!inMainMenu && isGUIOpen ) {
+		//std::cout << ModBase::STATIC_getCurrentGameState() << std::endl;
 		ImGui::GetIO().MouseDrawCursor = true;
 	}
 	else {

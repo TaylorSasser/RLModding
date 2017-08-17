@@ -5,6 +5,7 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
+	std::cout << getCurrentGameState() << std::endl;
 }
 
 void ModdedLanServer::onDisable() {
@@ -49,7 +50,6 @@ void ModdedLanServer::DrawMenu() {
 
 void ModdedLanServer::onMainMenuTick(Event* event) {
 	if (bTravel) {
-		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = true; Globals::inExhibition = false; Globals::inTraining = false;
 		travel();
 		bTravel = false;
 	}
@@ -57,7 +57,6 @@ void ModdedLanServer::onMainMenuTick(Event* event) {
 
 void ModdedLanServer::onGameEventTick(Event* event) {
 	if (bTravel) {
-		Globals::inMainMenu = false; Globals::inOnline = false; Globals::inCustom = true; Globals::inExhibition = false; Globals::inTraining = false;
 		travel();
 		bTravel = false;
 	}
@@ -70,7 +69,7 @@ void ModdedLanServer::travel() {
 			std::string command = mapName + "?playtest?listen?Private?" + str_gameMode + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
-			std::cout << "State: " << ModBase::STATIC_getCurrentGameStateTextName() << std::endl;
+			std::cout << "State: " << getCurrentGameState() << std::endl;
 		}
 	}
 }

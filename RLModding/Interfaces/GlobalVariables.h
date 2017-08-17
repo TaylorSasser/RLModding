@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Globals {
+namespace {
 	static bool inOnline;
 	static bool inCustom;
 	static bool inExhibition;
