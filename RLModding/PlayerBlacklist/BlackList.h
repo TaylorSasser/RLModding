@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <iostream>
 #include "../Interfaces/InstanceStorage.h"
 #include "../RL/SDK.hpp"
 #include "../Utils/Utils.h"
@@ -11,7 +12,7 @@ public:
 	~BlackList();
 	bool Exists(std::string);
 	void Check();
-	uint32_t GetPlayerId();
+	__int64 GetPlayerId();
 	bool isBlacklisted();
 
 private:

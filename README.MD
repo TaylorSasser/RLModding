@@ -40,7 +40,14 @@ You have a class ZombieGameMode binded to numpad 1. It is part of the category G
 - json_parser
 - lexical_cast
 
-### TODO
-- Extract parameters from the call function hooks. Still no idea how to do that :/
+### Game Mode Ideas
+ - 50/50 - Randomly demo someone every X seconds (20 seconds?)
+ - If you're supersonic for too long apply random shit
+ - Give perks for having full boost, loose perks at 2/3s boost, 1/3, etc.
+ - Rumble item to blow up everyone on opposing team
+ - Rumble item to spawn bots to chase specific player for X seconds
 
+### TODO
+
+- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
 - Add in a way to build raw packets into high level objects (decrypting the packets too)
