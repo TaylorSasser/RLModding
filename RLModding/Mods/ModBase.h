@@ -147,8 +147,9 @@ public:
 	virtual void onWebRequestCreated(Event* e) {
 		UWebRequest_X* request = reinterpret_cast<UWebRequest_X*>(UWebRequest_X::StaticClass());
 		if (request) {
-			FScriptDelegate temp;
-			request->Send(L"Keys/GenerateKeys", temp);
+			//Crashes
+			//FScriptDelegate temp;
+			//request->Send(L"Keys/GenerateKeys", temp);
 		}
 	}
 
