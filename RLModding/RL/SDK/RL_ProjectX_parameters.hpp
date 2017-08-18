@@ -14,6 +14,14 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+
+//Function Project.OnlineJoinOnlineGame.GenerateKeys.SetNetworkKeys
+struct UOnlineGenerateKeys_SetNetworkKeys_Params {
+	URPC_KeysBase_X* RPC;
+	UStructProperty KeyInfo;
+};
+
+
 // Function ProjectX._SharedHelpers.ScoreDeltaFromDefault
 struct U_SharedHelpers_ScoreDeltaFromDefault_Params
 {

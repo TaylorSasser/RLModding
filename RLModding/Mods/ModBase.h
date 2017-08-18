@@ -39,12 +39,6 @@ static const std::string categoryNames[MAX-1] = {
 	"Car Mods",
 	"Other Mods"
 };
-
-struct Keys {
-	URPC_KeysBase_X* RPC;
-	FPsyNetKeys KeyInfo;
-};
-
 class ModBase
 {
 public:
@@ -55,9 +49,10 @@ public:
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
-		enabled = !enabled;
+		enabled = !enabled;		
 		onToggle();
-	if (enabled) { onEnable(); } else { onDisable(); }		
+		if (enabled) onEnable(); 
+		else onDisable();
 	}
 	
 	virtual void setState(bool state) { enabled = state; }
@@ -85,17 +80,12 @@ public:
 	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 
 	virtual void DrawMenu() {}
-
 	virtual void onEnable() {}
 	virtual void onDisable() {}
-	//When toggled, check to make sure they are in a valid state
-	virtual void onToggle() {
+	
+	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
-		if (!(currentState & getAllowedGameStates())) {
-			printf("Invalid state\n");
-			setState(false);
-		}
-			
+		if (!(currentState & getAllowedGameStates())) setState(false);
 	}
 
 	virtual void onProfileJoinGame(Event*) {}
@@ -109,7 +99,6 @@ public:
 
 	virtual void onPlayerTATick(Event* event) {
 		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
-
 	}
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
@@ -118,7 +107,7 @@ public:
 		UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
 
 		if (blog && community) {
-			blog->MotD = L"Created by ButterandCream, two. and Taylor";
+			blog->MotD = L"Created by Taylor,ButterandCream,and Two";
 			community->UpdateBlogText();
 		}
 	}
@@ -127,9 +116,7 @@ public:
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
-		if (!inOnline) {
-			inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;
-		}
+		if (!inOnline) inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;
 	}
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
@@ -151,8 +138,7 @@ public:
 	
 	//Originally GenerateKeys.SetNetworkKeys
 	virtual void onKeysBeginState(Event* e) {
-		std::cout << "Testing Function!\n";
-		auto temp = e->getParams<Keys>();
+		auto temp = e->getParams<UOnlineGenerateKeys_SetNetworkKeys_Params>();
 		std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
 		std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
 		std::cout << "Server Port: " << temp->RPC->ServerPort << std::endl;
@@ -160,13 +146,9 @@ public:
 		std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
 		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
 		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
-		
-		//Crashes it
-		/*temp->RPC->Key = L"/8mO8deSDdAQAmfUxWdPCat6eA1vTBnbbjELJXXGIQA=";
-		temp->RPC->IV = L"4WDZoL5mWOtl3IyjwJp2Hg==";
-		temp->RPC->HMACKey = L"pkRZXXwHbVQe6d9fNf5HPDGJ/AGr8CaNV87S9SL9czg=";
-		temp->RPC->SessionId = L"iS1ziIXqMNRIJFM1MPauog==";
-		*/
+		std::cout << "Struct name : " << temp->KeyInfo.GetFullName() << std::endl;
+		std::cout << "sizeof U_KeysBase_X : " << sizeof(URPC_KeysBase_X) << std::endl;
+		std::cout << "sizoef UStructProperty : " << sizeof(UStructProperty) << std::endl;
 	}
 
 	virtual void onInitExhibition(Event*){

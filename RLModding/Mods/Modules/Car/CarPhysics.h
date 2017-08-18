@@ -8,8 +8,6 @@ public:
 	CarPhysics(std::string, int key);
 
 	void DrawMenu();
-	void onEnable();
-	void onDisable();
 	void onPlayerTick(Event* e);
 
 private:
