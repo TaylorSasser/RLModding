@@ -39,7 +39,6 @@
     <ClCompile Include="Memory\MemoryAllocator.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
     <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
-    <ClCompile Include="Mods\Modules\Exploits\JoinServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
     <ClCompile Include="Mods\Modules\Car\UnlimitedJumps.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
@@ -51,6 +50,7 @@
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\JoinServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1810,7 +1810,6 @@
     <ClInclude Include="Memory\MemoryAllocator.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
     <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
-    <ClInclude Include="Mods\Modules\Exploits\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
     <ClInclude Include="Mods\Modules\Car\UnlimitedJumps.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
@@ -4664,6 +4663,7 @@
     <ClInclude Include="Libs\boost\unordered_map.hpp" />
     <ClInclude Include="Libs\boost\variant.hpp" />
     <ClInclude Include="Libs\boost\weak_ptr.hpp" />
+    <ClInclude Include="Mods\Modules\Lan\JoinServer.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
@@ -4680,5 +4680,6 @@
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />
     <Text Include="RL\FunctionDump.log" />
+    <Text Include="RL\FunctionDumpSorted.log" />
   </ItemGroup>
 </Project>
