@@ -105,10 +105,9 @@ void InGameGUI::Render() {
 		}
 
 		//Sellout
-		if (ImGui::BeginMenu("Donate")) {
+		if (ImGui::Button("Donate")) {
 			ShellExecute(NULL, "open", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XHLHQGAQK2XZG", NULL, NULL, SW_SHOWNORMAL);
 			isGUIOpen = false;
-			ImGui::EndMenu();
 		}
 		
 		ImGui::EndMainMenuBar();
