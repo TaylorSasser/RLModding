@@ -52,3 +52,31 @@ You have a class ZombieGameMode binded to numpad 1. It is part of the category G
 
 - Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
 - Add in a way to build raw packets into high level objects (decrypting the packets too)
+
+### Printing Keys
+EventFactory.cpp
+```
+SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
+```
+
+Inside of ModBase.h (Outside of class)
+```
+struct Keys {
+	URPC_KeysBase_X* RPC;
+	FPsyNetKeys KeyInfo; //Not sure what struct, just a placeholder
+};
+```
+
+Virtual function in ModBase.h
+```
+virtual void onKeysBeginState(Event* e) {
+	auto temp = e->getParams<Keys>();
+	std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
+	std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
+	std::cout << "Server Port: " << temp->RPC->ServerPort << std::endl;
+	std::cout << "Key: " << temp->RPC->Key.ToString() << std::endl;
+	std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
+	std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
+	std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
+}
+```
