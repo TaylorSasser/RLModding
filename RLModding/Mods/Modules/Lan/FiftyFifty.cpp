@@ -17,6 +17,11 @@ void FiftyFifty::DrawMenu() {
 	ImGui::SliderFloat("Interval", &interval, 5.0f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
+
+	ImGui::Checkbox("Demo Player", &demoPlayer);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If unchecked a mine will go off under a random player every X seconds.");
+
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION))
@@ -42,10 +47,21 @@ void FiftyFifty::DrawMenu() {
 
 void FiftyFifty::onPlayerTick(Event* event) {
 	if (bStarted) {
+
+		
+
 		srand(time(NULL));
 		APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(event->getCallingObject());
 		if (controller) {
 			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
+
+			// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
+			if (localGameEvent->GameBalls.Num() < 2) {
+				localGameEvent->SetTotalGameBalls(2);
+				localGameEvent->ResetBalls();
+			}
+
+
 			if (localGameEvent) {
 				if (checkTime) {
 					start = time(NULL);
@@ -58,8 +74,14 @@ void FiftyFifty::onPlayerTick(Event* event) {
 					int team_idx = rand() % gameTeams.Num();
 					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
 					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
-					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx))
+					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
+						if(demoPlayer)
 							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+						else {
+							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+						}
+					}
+							
 					checkTime = true;
 				}		
 			}

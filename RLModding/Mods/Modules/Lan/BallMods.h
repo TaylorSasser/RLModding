@@ -14,6 +14,14 @@ public:
 
 private:
 	bool bStartGameMode = false;
+	float currBallScale[100];
+	bool freezeBall[100];
+	bool explodeBall[100];
 
+	int ballSelectedIndex = -1;
+	float ballScale[100];
+	int numGameBalls = 1;
+	bool testBallExplosion = false;
+	int attachBallIndex = -1;
 };
 

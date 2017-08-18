@@ -1,6 +1,7 @@
 #pragma once
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
+#include <ctime>
 
 class GameEventMods : public ModBase {
 public:
@@ -14,6 +15,14 @@ public:
 
 private:
 	bool bStartGameMode = false;
+	bool pauseServer = false;
+	bool pausedGame = false;
+	bool randomSpawnPoints = false;
+	bool startOverTime = false;
+	bool randomExplosion = false;
+	bool spawnBot = false;
 
+	// Clock 
+	std::clock_t start;
 };
 

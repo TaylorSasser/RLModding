@@ -16,9 +16,9 @@ public:
 private:
 	bool bStarted = false;
 	bool checkTime = true;
+	bool demoPlayer = true;
 	float interval = 20.0;
 	time_t start, end;
-
 	
 };
 
