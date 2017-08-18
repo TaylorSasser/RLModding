@@ -65,7 +65,7 @@ void ModdedLanServer::onGameEventTick(Event* event) {
 
 void ModdedLanServer::travel() {
 	if (!Interfaces::GUI().isGUIOpen) {
-		LAN_Server = reinterpret_cast<SDK::UOnlineGameDedicatedServer_X*>(Utils::GetInstanceOf(UOnlineGameDedicatedServer_X::StaticClass()));
+		LAN_Server = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
 			std::string command = mapName + "?playtest?listen?Lan?" + str_gameMode + str_mutators;
 			printf("Command: %s\n", command);
