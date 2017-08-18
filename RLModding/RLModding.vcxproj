@@ -4694,6 +4694,7 @@
     <None Include="Libs\ImGUI\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="RL\FunctionDump.log" />
     <Text Include="RL\Generator.log" />
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />

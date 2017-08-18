@@ -41,8 +41,8 @@ static const std::string categoryNames[MAX-1] = {
 };
 
 struct Keys {
-	URPC_CheckKeys_X* RPC;
-	FPsyNetKeys keys;
+	URPC_KeysBase_X* RPC;
+	UStruct keys;
 };
 
 class ModBase
@@ -159,8 +159,6 @@ public:
 		std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
 		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
 		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
-		std::cout << "Player ID: " << temp->RPC->PlayerID.Uid << std::endl;
-		std::cout << "To Check: " << temp->RPC->KeyToCheck.ToString() << std::endl;
 		
 	}
 
@@ -171,16 +169,6 @@ public:
 	virtual void onPostPRI(Event* event) {}
 
 	virtual void onGotoState(Event*) {}
-
-	virtual void onRPCComplete(Event* e) {
-		URPC_X* rpc = reinterpret_cast<URPC_X*>(e->getCallingObject());
-		if (rpc)
-		{
-			std::cout << "Service: " << rpc->Service.ToString() << std::endl;
-			//std::cout << "Version: " << rpc->Version << std::endl;
-		}
-		
-	}
 
 	bool enabled = false;
 protected:

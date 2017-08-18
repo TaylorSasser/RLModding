@@ -4679,5 +4679,6 @@
     <Text Include="RL\Generator.log" />
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />
+    <Text Include="RL\FunctionDump.log" />
   </ItemGroup>
 </Project>

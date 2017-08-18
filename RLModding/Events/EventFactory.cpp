@@ -28,7 +28,6 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
 	SubscribeEvent("Function Core.Object.GotoState",&ModBase::onGotoState);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
-	SubscribeEvent("Function ProjectX.RPC_X.OnComplete", &ModBase::onRPCComplete);
 
 }
 //bool printAll = false;
