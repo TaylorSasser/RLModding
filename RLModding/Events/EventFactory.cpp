@@ -30,25 +30,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
 
 }
-//bool printAll = false;
-//std::ofstream file;
+
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
-
-	/*if (GetAsyncKeyState(VK_F5)) {
-		printAll = !printAll;
-		if (printAll) {
-			std::cout << "Printing ALL!\n";
-			file.open("RL_Log.log");
-		}
-		else {
-			file.close();
-		}
-		Sleep(200);
-	}
-
-	if (printAll) {
-		file << func->GetFullName() << std::endl;
-	}*/
 
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {

@@ -53,8 +53,12 @@ void FiftyFifty::onPlayerTick(Event* event) {
 			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
 
 			// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
-			if (localGameEvent->GameBalls.Num() < 2) {
+			if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
 				localGameEvent->SetTotalGameBalls(2);
+				localGameEvent->ResetBalls();
+			}
+			else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
+				localGameEvent->SetTotalGameBalls(1);
 				localGameEvent->ResetBalls();
 			}
 
