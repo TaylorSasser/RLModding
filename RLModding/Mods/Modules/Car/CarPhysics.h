@@ -14,6 +14,15 @@ public:
 
 private:
 	bool bStartGameMode = false;
-
+	float col2[4] = { 0.4f,0.7f,0.0f,0.5f };
+	bool carCollisionOff = false;
+	bool cloneMe = false;
+	int numClones = 1;
+	//const char* players[] = { "", "", "", "", "", "", "", "", "", "", "" };
+	float carScale = 1.0;
+	float carMaxSpinRate = 5.5;
+	bool carCollisionChanged = false;
+	float currCarScale = 1.0;
+	float carMaxLinearSpeed = 2300;
 };
 

@@ -972,7 +972,7 @@ struct FCustomMatchSettings
 struct FSteamPlayerDLCOwnershipState
 {
 	struct FName                                       Name;                                                     // 0x0000(0x0008)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamPlayerDLCOwnershipState.AppID
+	__int64											   AppID;                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamPlayerDLCOwnershipState.AppID
 	TEnumAsByte<EDLCOwnershipState>                    State;                                                    // 0x0010(0x0001) (CPF_Transient)
 };
 
@@ -1196,7 +1196,7 @@ struct FSkillMatchParty
 // 0x001C
 struct FRecordedMatchData
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX._Types_X.RecordedMatchData.ServerID
+	__int64											   ServerID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX._Types_X.RecordedMatchData.ServerID
 	int                                                Playlist;                                                 // 0x0008(0x0004)
 	int                                                WinningTeam;                                              // 0x000C(0x0004)
 	int                                                Team0Score;                                               // 0x0010(0x0004)
@@ -1548,7 +1548,7 @@ struct FMapProfile
 {
 	struct FString                                     Map;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FRenderProfile                              Profile;                                                  // 0x000C(0x001C)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.MapRenderProfiler_X.MapProfile.ProfileId
+	__int64		                                       ProfileId;                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.MapRenderProfiler_X.MapProfile.ProfileId
 };
 
 // ScriptStruct ProjectX.OnlineGamePlayerTitles_X.CachedTitleData
@@ -1671,8 +1671,8 @@ struct FCheckReplacementDedicatedServerData
 // 0x0020
 struct FSteamJsonResponseGetPublisherAppOwnership3
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamJsonResponseGetPublisherAppOwnership3.AppID
-	unsigned char                                      UnknownData01[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamJsonResponseGetPublisherAppOwnership3.OwnerSteamID
+	__int64												AppID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamJsonResponseGetPublisherAppOwnership3.AppID
+	__int64												OwnerSteamID;                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDLC_X.SteamJsonResponseGetPublisherAppOwnership3.OwnerSteamID
 	unsigned long                                      OwnsApp : 1;                                              // 0x0010(0x0004)
 	unsigned long                                      Permanent : 1;                                            // 0x0010(0x0004)
 	struct FString                                     TimeStamp;                                                // 0x0014(0x000C) (CPF_NeedCtorLink)

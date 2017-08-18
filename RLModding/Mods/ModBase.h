@@ -40,6 +40,11 @@ static const std::string categoryNames[MAX-1] = {
 	"Other Mods"
 };
 
+struct Keys {
+	URPC_KeysBase_X* RPC;
+	FPsyNetKeys KeyInfo;
+};
+
 class ModBase
 {
 public:
@@ -144,13 +149,24 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	
-	virtual void onWebRequestCreated(Event* e) {
-		UWebRequest_X* request = reinterpret_cast<UWebRequest_X*>(UWebRequest_X::StaticClass());
-		if (request) {
-			//Crashes
-			//FScriptDelegate temp;
-			//request->Send(L"Keys/GenerateKeys", temp);
-		}
+	//Originally GenerateKeys.SetNetworkKeys
+	virtual void onKeysBeginState(Event* e) {
+		std::cout << "Testing Function!\n";
+		auto temp = e->getParams<Keys>();
+		std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
+		std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
+		std::cout << "Server Port: " << temp->RPC->ServerPort << std::endl;
+		std::cout << "Key: " << temp->RPC->Key.ToString() << std::endl;
+		std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
+		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
+		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
+		
+		//Crashes it
+		/*temp->RPC->Key = L"/8mO8deSDdAQAmfUxWdPCat6eA1vTBnbbjELJXXGIQA=";
+		temp->RPC->IV = L"4WDZoL5mWOtl3IyjwJp2Hg==";
+		temp->RPC->HMACKey = L"pkRZXXwHbVQe6d9fNf5HPDGJ/AGr8CaNV87S9SL9czg=";
+		temp->RPC->SessionId = L"iS1ziIXqMNRIJFM1MPauog==";
+		*/
 	}
 
 	virtual void onInitExhibition(Event*){
@@ -161,16 +177,6 @@ public:
 
 	virtual void onGotoState(Event*) {}
 
-	virtual void onRPCComplete(Event* e) {
-		URPC_X* rpc = reinterpret_cast<URPC_X*>(e->getCallingObject());
-		if (rpc)
-		{
-			std::cout << "Service: " << rpc->Service.ToString() << std::endl;
-			//std::cout << "Version: " << rpc->Version << std::endl;
-		}
-		
-	}
-
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;
@@ -178,3 +184,4 @@ protected:
 	std::string name;
 	int key = -1;
 };
+

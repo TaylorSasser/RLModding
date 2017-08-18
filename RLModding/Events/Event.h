@@ -18,6 +18,7 @@ public:
 		return pUFunction;
 	}
 
+	//event->getParams<STRUCT WITH FNAME>():
 	template<class T>
 	T* getParams() {
 		return reinterpret_cast<T*>(params);

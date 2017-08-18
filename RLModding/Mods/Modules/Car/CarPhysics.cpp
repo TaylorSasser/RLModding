@@ -8,17 +8,6 @@
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
-static float col2[4] = { 0.4f,0.7f,0.0f,0.5f };
-static bool carCollisionOff = false;
-static bool cloneMe = false;
-static int numClones = 1;
-//const char* players[] = { "", "", "", "", "", "", "", "", "", "", "" };
-static float carScale = 1.0;
-static float carMaxSpinRate = 5.5;
-bool carCollisionChanged = false;
-float currCarScale = 1.0;
-static float carMaxLinearSpeed = 2300;
-
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", 0, ImVec2(400, 300), 0.75f);

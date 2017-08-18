@@ -1,20 +1,12 @@
 #include "GameEventMods.h"
-#include "../../Utils/Utils.h"
+#include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
 #include <ctime>
 
 GameEventMods::GameEventMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 GameEventMods::GameEventMods(std::string name, int key) : ModBase(name, key) {}
 
-static bool pauseServer = false;
-bool pausedGame = false;
-static bool randomSpawnPoints = false;
-static bool startOverTime = false;
-static bool randomExplosion = false;
-bool spawnBot = false;
 
-// Clock 
-std::clock_t start;
 
 
 void GameEventMods::DrawMenu() {
@@ -123,7 +115,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 				int duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 				//localGameEvent->RandomizeSpawnPoints();
 				if (duration > 3) {
-					localGameEvent->GameBalls.GetByIndex(0)->Explode(pylon->Goals.GetByIndex(0), InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->PRI);
+					//localGameEvent->GameBalls.GetByIndex(0)->Explode(pylon->Goals.GetByIndex(0), InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->PRI);
 					//localGameEvent->GameBalls.GetByIndex(0)->InitExplosionFX(localGameEvent->GameBalls.GetByIndex(0)->Explosion, pylon->Goals.GetByIndex(0), localGameEvent->GameBalls.GetByIndex(0)->Explosion->FXActor);
 					start = std::clock();
 

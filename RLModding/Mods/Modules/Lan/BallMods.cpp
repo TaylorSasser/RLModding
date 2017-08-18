@@ -1,5 +1,5 @@
 #include "BallMods.h"
-#include "../../Utils/Utils.h"
+#include "../Utils/Utils.h"
 
 //
 // Need to fix removing balls via the plus and minsus (crashes atm) 
@@ -7,17 +7,6 @@
 
 BallMods::BallMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 BallMods::BallMods(std::string name, int key) : ModBase(name, key) {}
-
-float currBallScale[100];
-bool freezeBall[100];
-bool explodeBall[100];
-
-int ballSelectedIndex = -1;
-static float ballScale[100];
-static int numGameBalls = 1;
-static bool testBallExplosion = false;
-static int attachBallIndex = -1;
-
 
 void BallMods::DrawMenu() {
 	if (BallMods::isEnabled()) {

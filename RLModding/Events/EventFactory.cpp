@@ -1,6 +1,8 @@
 #include "EventFactory.h"
 #include "../RL/SDK.hpp"
 #include "../Interfaces/Interfaces.h"
+#include <iostream>
+#include <fstream>
 
 //Function ProjectX.OnlineGameJoinGame_X.EventJoiningGameComplete
 
@@ -25,12 +27,29 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.MatchType_Offline_TA.OnInitGameEvent", &ModBase::onInitExhibition);
 	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
 	SubscribeEvent("Function Core.Object.GotoState",&ModBase::onGotoState);
-	SubscribeEvent("Function ProjectX.WebRequest_X.EventCompleted",&ModBase::onWebRequestCreated);
-	SubscribeEvent("Function ProjectX.RPC_X.OnComplete", &ModBase::onRPCComplete);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
 
 }
-
+//bool printAll = false;
+//std::ofstream file;
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
+
+	/*if (GetAsyncKeyState(VK_F5)) {
+		printAll = !printAll;
+		if (printAll) {
+			std::cout << "Printing ALL!\n";
+			file.open("RL_Log.log");
+		}
+		else {
+			file.close();
+		}
+		Sleep(200);
+	}
+
+	if (printAll) {
+		file << func->GetFullName() << std::endl;
+	}*/
+
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);

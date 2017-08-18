@@ -16,5 +16,6 @@ private:
 	int NumZombies;
 	SDK::AAIController_TA* Zombies[MAXZOMBIES];
 	bool AllowAllyZombies = true;
+	bool isInit = false;
 };
 
