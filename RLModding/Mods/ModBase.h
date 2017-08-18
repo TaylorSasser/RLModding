@@ -40,6 +40,11 @@ static const std::string categoryNames[MAX-1] = {
 	"Other Mods"
 };
 
+struct Keys {
+	URPC_CheckKeys_X* RPC;
+	FPsyNetKeys keys;
+};
+
 class ModBase
 {
 public:
@@ -144,13 +149,19 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	
-	virtual void onWebRequestCreated(Event* e) {
-		UWebRequest_X* request = reinterpret_cast<UWebRequest_X*>(UWebRequest_X::StaticClass());
-		if (request) {
-			//Crashes
-			//FScriptDelegate temp;
-			//request->Send(L"Keys/GenerateKeys", temp);
-		}
+	//VerifyPrivileges
+	virtual void onKeysBeginState(Event* e) {
+		auto temp = e->getParams<Keys>();
+		std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
+		std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
+		std::cout << "Server Port: " << temp->RPC->ServerPort << std::endl;
+		std::cout << "Key: " << temp->RPC->Key.ToString() << std::endl;
+		std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
+		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
+		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
+		std::cout << "Player ID: " << temp->RPC->PlayerID.Uid << std::endl;
+		std::cout << "To Check: " << temp->RPC->KeyToCheck.ToString() << std::endl;
+		
 	}
 
 	virtual void onInitExhibition(Event*){

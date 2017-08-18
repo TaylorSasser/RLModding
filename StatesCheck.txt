@@ -1,0 +1,2 @@
+SubscribeEvent("Function ProjectX.RPC_X.OnComplete", &ModBase::onRPCComplete); - > VerifyPrivleges State
+SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.BeginState",&ModBase::onKeysBeginState); - > None

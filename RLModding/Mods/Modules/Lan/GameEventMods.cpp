@@ -1,5 +1,5 @@
 #include "GameEventMods.h"
-#include "../../Utils/Utils.h"
+#include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
 #include <ctime>
 
