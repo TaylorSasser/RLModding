@@ -18,7 +18,11 @@ namespace SDK
 //Function Project.OnlineJoinOnlineGame.GenerateKeys.SetNetworkKeys
 struct UOnlineGenerateKeys_SetNetworkKeys_Params {
 	URPC_KeysBase_X* RPC;
-	UStructProperty KeyInfo;
+	UOnlineGenerateKeys_SetNetworkKeys_KeyInfo KeyInfo;
+};
+
+struct UOnlineGenerateKeys_SetNetworkKeys_KeyInfo {
+	unsigned char KeyInfo;
 };
 
 

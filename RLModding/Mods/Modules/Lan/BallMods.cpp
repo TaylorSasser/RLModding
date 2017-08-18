@@ -16,7 +16,6 @@ void BallMods::DrawMenu() {
 
 		ImGui::InputInt("# Balls", &numGameBalls);
 
-
 		for (int i = 0; i < numGameBalls; i++) {
 			std::string ballScaleLabel = "Ball " + std::to_string(i + 1) + " Scale";
 
@@ -81,7 +80,6 @@ void BallMods::onPlayerTick(Event* e) {
 
 		if (gameBalls.IsValidIndex(0)) {
 
-			// Ball explosion test
 			if (testBallExplosion) {
 				testBallExplosion = false;
 
@@ -111,24 +109,19 @@ void BallMods::onPlayerTick(Event* e) {
 						currBall->DoExplode();
 						explodeBall[i] = false;
 					}
-
-					// Test static mesh override...works, but why?
-					//ASpecialPickup_Tornado_TA* tornado = (SDK::ASpecialPickup_Tornado_TA*)Utils::GetInstanceOf(SDK::ASpecialPickup_Tornado_TA::StaticClass());
-					//currBall->StaticMesh->StaticMesh = tornado->TornadoMesh;
-
-					//UStaticMesh* goalIndicator = (SDK::UStaticMesh*)Utils::GetInstanceOf(SDK::UStaticMesh::StaticClass());
-					//currBall->SetBallMesh(goalIndicator);
-
 				} 
 			}
-
 			if (attachBallIndex != -1) {
 				gameBalls.GetByIndex(0)->AttachToCar(InstanceStorage::PlayerController()->Car);
 				attachBallIndex = -1;
-
 			}
-
 		}
 	}
 }
 
+// Test static mesh override...works, but why?
+//ASpecialPickup_Tornado_TA* tornado = (SDK::ASpecialPickup_Tornado_TA*)Utils::GetInstanceOf(SDK::ASpecialPickup_Tornado_TA::StaticClass());
+//currBall->StaticMesh->StaticMesh = tornado->TornadoMesh;
+
+//UStaticMesh* goalIndicator = (SDK::UStaticMesh*)Utils::GetInstanceOf(SDK::UStaticMesh::StaticClass());
+//currBall->SetBallMesh(goalIndicator);

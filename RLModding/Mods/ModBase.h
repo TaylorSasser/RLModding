@@ -65,9 +65,8 @@ public:
 	virtual void setBind(int keycode) { key = keycode; }
 
 	virtual Category getCategory() {return cat;}
-	//Get the mods allowed gamestates
 	virtual GameState getAllowedGameStates() {return allowedGameStates;}
-	//Get the current game state, in menu? in training? etc.
+	
 	virtual GameState getCurrentGameState() {
 		if (inCustom) return LAN;
 		else if (inExhibition) return EXHIBITION;
@@ -102,7 +101,7 @@ public:
 	}
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
-		inMainMenu = true;inOnline = false;inCustom = false;inExhibition = false;inTraining = false;
+		inMainMenu = true; inOnline = false; inCustom = false; inExhibition = false; inTraining = false;
 		UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
 		UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
 
@@ -135,21 +134,7 @@ public:
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
-	
-	//Originally GenerateKeys.SetNetworkKeys
-	virtual void onKeysBeginState(Event* e) {
-		auto temp = e->getParams<UOnlineGenerateKeys_SetNetworkKeys_Params>();
-		std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
-		std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
-		std::cout << "Server Port: " << temp->RPC->ServerPort << std::endl;
-		std::cout << "Key: " << temp->RPC->Key.ToString() << std::endl;
-		std::cout << "IV: " << temp->RPC->IV.ToString() << std::endl;
-		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
-		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
-		std::cout << "Struct name : " << temp->KeyInfo.GetFullName() << std::endl;
-		std::cout << "sizeof U_KeysBase_X : " << sizeof(URPC_KeysBase_X) << std::endl;
-		std::cout << "sizoef UStructProperty : " << sizeof(UStructProperty) << std::endl;
-	}
+	virtual void onKeysBeginState(Event* e) {}
 
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
