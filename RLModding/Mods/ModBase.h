@@ -42,7 +42,7 @@ static const std::string categoryNames[MAX-1] = {
 
 struct Keys {
 	URPC_KeysBase_X* RPC;
-	UStruct keys;
+	FPsyNetKeys KeyInfo;
 };
 
 class ModBase
@@ -149,8 +149,9 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	
-	//VerifyPrivileges
+	//Originally GenerateKeys.SetNetworkKeys
 	virtual void onKeysBeginState(Event* e) {
+		std::cout << "Testing Function!\n";
 		auto temp = e->getParams<Keys>();
 		std::cout << "Service: " << temp->RPC->Service.ToString() << std::endl;
 		std::cout << "Server Host: " << temp->RPC->ServerHost.ToString() << std::endl;
@@ -160,6 +161,12 @@ public:
 		std::cout << "HMAC: " << temp->RPC->HMACKey.ToString() << std::endl;
 		std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
 		
+		//Crashes it
+		/*temp->RPC->Key = L"/8mO8deSDdAQAmfUxWdPCat6eA1vTBnbbjELJXXGIQA=";
+		temp->RPC->IV = L"4WDZoL5mWOtl3IyjwJp2Hg==";
+		temp->RPC->HMACKey = L"pkRZXXwHbVQe6d9fNf5HPDGJ/AGr8CaNV87S9SL9czg=";
+		temp->RPC->SessionId = L"iS1ziIXqMNRIJFM1MPauog==";
+		*/
 	}
 
 	virtual void onInitExhibition(Event*){
@@ -177,3 +184,4 @@ protected:
 	std::string name;
 	int key = -1;
 };
+
