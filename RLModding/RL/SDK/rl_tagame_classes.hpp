@@ -3605,7 +3605,7 @@ class UOnlineProduct_TA : public UObject
 {
 public:
 	int                                                ProductID;                                                // 0x003C(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0040(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineProduct_TA.InstanceID
+	__int64											   InstanceID;                                       // 0x0040(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineProduct_TA.InstanceID
 	TArray<class UProductAttribute_TA*>                Attributes;                                               // 0x0048(0x000C) (CPF_NeedCtorLink)
 	int                                                SeriesID;                                                 // 0x0054(0x0004)
 	int                                                TradeHold;                                                // 0x0058(0x0004)
@@ -8291,8 +8291,8 @@ public:
 	TArray<class UOnlineProduct_TA*>                   OnlineProducts;                                           // 0x00F0(0x000C) (CPF_NeedCtorLink)
 	class UOnlineProductStoreSet_TA*                   OnlineProductSet;                                         // 0x00FC(0x0004) (CPF_Transient)
 	class UIdenticalProductCache_TA*                   IdenticalOnlineProducts;                                  // 0x0100(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	unsigned char                                      UnknownData03[0x8];                                       // 0x0104(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.LastUnlockDisplayId
-	unsigned char                                      UnknownData04[0x8];                                       // 0x010C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.LastProdRewardMigrationId
+	__int64											   LastUnlockDisplayId;                                       // 0x0104(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.LastUnlockDisplayId
+	__int64											   LastProdRewardMigrationId;                                       // 0x010C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.LastProdRewardMigrationId
 	TArray<class UProfile_TA*>                         Profiles;                                                 // 0x0114(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	class UAchievementSave_TA*                         AchievementData;                                          // 0x0120(0x0004) (CPF_Edit)
 	TArray<struct FUISavedKeyValue>                    UISavedValues;                                            // 0x0124(0x000C) (CPF_NeedCtorLink)
@@ -12359,7 +12359,7 @@ public:
 	float                                              ProfileGameTimeSlice;                                     // 0x0098(0x0004) (CPF_Transient)
 	struct FString                                     PendingReplayFileName;                                    // 0x009C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FReplayDuplicationParams                    PendingReplayDuplication;                                 // 0x00A8(0x0008) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00B0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.CheatManagerBase_TA.LastEquippedIntanceID
+	__int64											   LastEquippedIntanceID;                                       // 0x00B0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.CheatManagerBase_TA.LastEquippedIntanceID
 
 	static UClass* StaticClass()
 	{
@@ -15049,7 +15049,7 @@ public:
 	struct FLoadoutData                                LastNonLicensedLoadout[0x2];                              // 0x0154(0x0034) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                LoadoutSetIndex;                                          // 0x01BC(0x0004) (CPF_Transient)
 	class ULoadoutSet_TA*                              LoadoutSet;                                               // 0x01C0(0x0004) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x01C4(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.PreviewOnlineID
+	__int64		                                       PreviewOnlineID;                                       // 0x01C4(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.PreviewOnlineID
 	int                                                PreviewProductSlot;                                       // 0x01CC(0x0004) (CPF_Transient)
 	class UOnlineGameTrial_X*                          Trial;                                                    // 0x01D0(0x0004) (CPF_Edit)
 	class UCarPreviewSet_TA*                           CarPreviewSet;                                            // 0x01D4(0x0004)
@@ -15123,9 +15123,9 @@ public:
 	struct FString                                     ProductStatDescription;                                   // 0x0094(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FString                                     ProductStatValue;                                         // 0x00A0(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FString                                     CertifiedStatLabel;                                       // 0x00AC(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00B8(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.ProductID
-	unsigned char                                      UnknownData01[0x8];                                       // 0x00C0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.BaseProductID
-	unsigned char                                      UnknownData02[0x8];                                       // 0x00C8(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.SchematicPointerID
+	__int64		                                       ProductID;                                       // 0x00B8(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.ProductID
+	__int64		 									   BaseProductID;                                       // 0x00C0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.BaseProductID
+	__int64		                                       SchematicPointerID;                                       // 0x00C8(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.SchematicPointerID
 	int                                                ProductSlot;                                              // 0x00D0(0x0004) (CPF_DataBinding)
 	struct FString                                     ProductSlotLabel;                                         // 0x00D4(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	unsigned long                                      bProductEquipped_1 : 1;                                   // 0x00E0(0x0004) (CPF_DataBinding)
@@ -21265,8 +21265,8 @@ public:
 	TArray<int>                                        Tags;                                                     // 0x0080(0x000C) (CPF_NeedCtorLink)
 	struct FName                                       MapName;                                                  // 0x008C(0x0008) (CPF_DataBinding)
 	int                                                NumRounds;                                                // 0x0094(0x0004) (CPF_Transient, CPF_DataBinding)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.TrainingEditorData_TA.CreatedAt
-	unsigned char                                      UnknownData01[0x8];                                       // 0x00A0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.TrainingEditorData_TA.UpdatedAt
+	__int64			                                   CreatedAt;                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.TrainingEditorData_TA.CreatedAt
+	__int64			                                   UpdatedAt;                                       // 0x00A0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.TrainingEditorData_TA.UpdatedAt
 	struct FUniqueNetId                                CreatorPlayerID;                                          // 0x00A8(0x0030)
 	TArray<struct FEditorRoundData>                    Rounds;                                                   // 0x00D8(0x000C) (CPF_NeedCtorLink)
 
