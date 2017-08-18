@@ -47,9 +47,6 @@ void FiftyFifty::DrawMenu() {
 
 void FiftyFifty::onPlayerTick(Event* event) {
 	if (bStarted) {
-
-		
-
 		srand(time(NULL));
 		APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(event->getCallingObject());
 		if (controller) {
@@ -77,9 +74,8 @@ void FiftyFifty::onPlayerTick(Event* event) {
 					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
 						if(demoPlayer)
 							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
-						else {
-							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
-						}
+						else 
+							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);	
 					}
 							
 					checkTime = true;
