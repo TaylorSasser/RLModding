@@ -67,7 +67,7 @@ void ModdedLanServer::travel() {
 	if (!Interfaces::GUI().isGUIOpen) {
 		LAN_Server = reinterpret_cast<SDK::UOnlineGameDedicatedServer_X*>(Utils::GetInstanceOf(UOnlineGameDedicatedServer_X::StaticClass()));
 		if (LAN_Server) {
-			std::string command = mapName + "?playtest?listen?Private?" + str_gameMode + str_mutators;
+			std::string command = mapName + "?playtest?listen?Lan?" + str_gameMode + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
 			std::cout << "State: " << getCurrentGameState() << std::endl;
