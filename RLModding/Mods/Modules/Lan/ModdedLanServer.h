@@ -20,7 +20,7 @@ public:
 private:
 	void travel();
 	void create_mutator_string();
-	UOnlineGameDedicatedServer_X* LAN_Server = nullptr;
+	UOnlineGameLanServer_X* LAN_Server = nullptr;
 	//Map Selection
 	bool bTravel;
 	std::string mapName;
