@@ -5404,7 +5404,7 @@ public:
 	TArray<struct FPointer>                            ListFilesTasks;                                           // 0x0064(0x000C) (CPF_Native, CPF_Transient, CPF_AlwaysInit)
 	TArray<struct FScriptDelegate>                     ListFilesCallbacks;                                       // 0x0070(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                KeepNewestSaveFileCount;                                  // 0x007C(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0080(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.CurrentUser
+	struct FUniqueNetId                                CurrentUser;                                       // 0x0080(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.CurrentUser
 	class UObject*                                     SaveData;                                                 // 0x0088(0x0004)
 	struct FString                                     SavePath;                                                 // 0x008C(0x000C) (CPF_NeedCtorLink)
 	int                                                ControllerId;                                             // 0x0098(0x0004)
@@ -8283,10 +8283,10 @@ public:
 	struct FProfileSliderLimits                        UIScaleLimits;                                            // 0x0094(0x000C) (CPF_Const, CPF_Transient)
 	float                                              UIScale;                                                  // 0x00A0(0x0004) (CPF_Edit)
 	TArray<int>                                        UnlockedProducts;                                         // 0x00A4(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0xC];                                       // 0x00B0(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.NewProductIDs
+	TArray<int>                                        NewProductIDs;                                       // 0x00B0(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.NewProductIDs
 	TArray<int>                                        NewProducts;                                              // 0x00BC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0xC];                                       // 0x00C8(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.NewOnlineProducts
-	unsigned char                                      UnknownData02[0xC];                                       // 0x00D4(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.UnseenContainerProducts
+	TArray<class UOnlineProduct_TA*>                   NewOnlineProducts;                                       // 0x00C8(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.NewOnlineProducts
+	TArray<class UOnlineProduct_TA*>                   UnseenContainerProducts;                                       // 0x00D4(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.SaveData_TA.UnseenContainerProducts
 	struct FTrialSaveData                              TrialSave;                                                // 0x00E0(0x0010)
 	TArray<class UOnlineProduct_TA*>                   OnlineProducts;                                           // 0x00F0(0x000C) (CPF_NeedCtorLink)
 	class UOnlineProductStoreSet_TA*                   OnlineProductSet;                                         // 0x00FC(0x0004) (CPF_Transient)
@@ -8304,7 +8304,7 @@ public:
 	struct FCachedStaticText                           Blog;                                                     // 0x016C(0x0018) (CPF_NeedCtorLink)
 	class UOnlineSaveData_TA*                          OnlineData;                                               // 0x0184(0x0004) (CPF_Transient)
 	struct FString                                     RankedReconnectBeacon;                                    // 0x0188(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData05[0x8];                                       // 0x0194(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.RankedReconnectEpochTime
+	__int64											   RankedReconnectEpochTime;                                       // 0x0194(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.RankedReconnectEpochTime
 	TArray<struct FPlaylistSkillData>                  SkillData;                                                // 0x019C(0x000C) (CPF_NeedCtorLink)
 	int                                                SchematicResources;                                       // 0x01A8(0x0004) (CPF_Transient)
 	struct FString                                     SelectedFreeplayMap;                                      // 0x01AC(0x000C) (CPF_NeedCtorLink)
@@ -8653,7 +8653,7 @@ class ULoadout_TA : public UObject
 {
 public:
 	TArray<int>                                        Products;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0xC];                                       // 0x0048(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.Loadout_TA.OnlineProducts
+	TArray<UOnlineProduct_TA*>                         OnlineProducts;                                       // 0x0048(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.Loadout_TA.OnlineProducts
 	struct FLoadoutTeamPaint                           TeamPaint;                                                // 0x0054(0x0010)
 	struct FLoadoutTeamPaint                           TeamPaints[0x2];                                          // 0x0064(0x0010)
 	struct FName                                       PlayerTitle;                                              // 0x0084(0x0008)
@@ -21314,7 +21314,7 @@ class URPC_ProductsTradeIn_TA : public URPC_TA
 {
 public:
 	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	unsigned char                                      UnknownData00[0xC];                                       // 0x00D0(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.RPC_ProductsTradeIn_TA.ProductInstances
+	TArray<class UOnlineProduct_TA*>                   ProductInstances;                                       // 0x00D0(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame.RPC_ProductsTradeIn_TA.ProductInstances
 	TEnumAsByte<EGameVersion>                          GameVersion;                                              // 0x00DC(0x0001)
 	TArray<struct FOnlineProductData>                  Drops;                                                    // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<class UOnlineProduct_TA*>                   Products;                                                 // 0x00EC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
@@ -24040,7 +24040,7 @@ class URPC_SchematicsTradeIn_TA : public URPC_TA
 {
 public:
 	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_SchematicsTradeIn_TA.CrateID
+	__int64											   CrateID;                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_SchematicsTradeIn_TA.CrateID
 	TArray<struct FSchematicResourceData>              Schematics;                                               // 0x00D8(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FOnlineProductData>                  Drops;                                                    // 0x00E4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FOnlineProductData>                  CrateDrops;                                               // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
@@ -24997,7 +24997,7 @@ class URPC_ProductsDebugSetCertified_TA : public URPC_TA
 {
 public:
 	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsDebugSetCertified_TA.InstanceID
+	__int64											   InstanceID;                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsDebugSetCertified_TA.InstanceID
 	int                                                CertifiedStatID;                                          // 0x00D8(0x0004)
 	int                                                CertifiedValue;                                           // 0x00DC(0x0004)
 	struct FOnlineProductData                          Product;                                                  // 0x00E0(0x0020) (CPF_Transient, CPF_NeedCtorLink)
@@ -25028,7 +25028,7 @@ class URPC_ProductsDebugSetPainted_TA : public URPC_TA
 {
 public:
 	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsDebugSetPainted_TA.InstanceID
+	__int64											   InstanceID;                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsDebugSetPainted_TA.InstanceID
 	int                                                PaintID;                                                  // 0x00D8(0x0004)
 	struct FOnlineProductData                          Product;                                                  // 0x00DC(0x0020) (CPF_Transient, CPF_NeedCtorLink)
 	class UOnlineProduct_TA*                           OnlineProduct;                                            // 0x00FC(0x0004) (CPF_Transient)

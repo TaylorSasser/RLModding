@@ -1582,7 +1582,7 @@ struct FLoadoutData : public FClientLoadoutData
 	struct FLoadoutTeamPaint                           TeamPaint;                                                // 0x000C(0x0010)
 	struct FName                                       Title;                                                    // 0x001C(0x0008)
 	int                                                TeamIndex;                                                // 0x0024(0x0004)
-	unsigned char                                      UnknownData00[0xC];                                       // 0x0028(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutData.OnlineProducts
+	TArray<class UOnlineProducts_TA*>                  OnlineProducts;                                       // 0x0028(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutData.OnlineProducts
 };
 
 // ScriptStruct TAGame.GameEvent_TA.PlayerRespawnTime
@@ -2534,7 +2534,7 @@ struct FServerSetLoadoutParams
 // 0x0014
 struct FLoadoutTeam
 {
-	unsigned char                                      UnknownData00[0xC];                                       // 0x0000(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutTeam.Products
+	TArray<int>                                        Products;                                       // 0x0000(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutTeam.Products
 	struct FLoadoutTeamColor                           TeamColor;                                                // 0x000C(0x0008)
 };
 
@@ -3167,7 +3167,7 @@ struct FReplayPlayerStats
 {
 	struct FString                                     Name;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x000C(0x0001)
-	__int64                                            OnlineID;                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
+	struct FUniqueNetId                                OnlineID;                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
 	int                                                Team;                                                     // 0x0018(0x0004)
 	int                                                Score;                                                    // 0x001C(0x0004)
 	int                                                Goals;                                                    // 0x0020(0x0004)
