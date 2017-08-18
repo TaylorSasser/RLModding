@@ -1925,6 +1925,10 @@ struct FPlayerPermissionsReponse
 	TArray<struct FName>                               Permissions;                                              // 0x0030(0x000C) (CPF_NeedCtorLink)
 };
 
+struct UOnlineGenerateKeys_SetNetworkKeys_KeyInfo {
+	unsigned char KeyInfo;
+};
+
 }
 
 #ifdef _MSC_VER

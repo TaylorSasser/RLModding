@@ -21,9 +21,7 @@ struct UOnlineGenerateKeys_SetNetworkKeys_Params {
 	UOnlineGenerateKeys_SetNetworkKeys_KeyInfo KeyInfo;
 };
 
-struct UOnlineGenerateKeys_SetNetworkKeys_KeyInfo {
-	unsigned char KeyInfo;
-};
+
 
 
 // Function ProjectX._SharedHelpers.ScoreDeltaFromDefault
