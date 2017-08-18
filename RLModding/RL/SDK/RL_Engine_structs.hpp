@@ -8071,7 +8071,7 @@ struct FServerResponseLine
 // 0x0009
 struct FUniqueLobbyId
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
+	__int64													Uid;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0008(0x0001)
 };
 
