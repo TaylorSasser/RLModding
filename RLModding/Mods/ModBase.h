@@ -158,6 +158,10 @@ public:
 
 	}
 
+	virtual void onEngineTick(Event* e) {
+		InstanceStorage::SetEngine(reinterpret_cast<SDK::UEngine*>(e->getCallingObject()));
+	}
+
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;

@@ -8,6 +8,7 @@ ACar_TA*					InstanceStorage::m_ACar_TA = nullptr;
 AGameEvent_TA*				InstanceStorage::m_GameEvent_TA = nullptr;
 UOnlineGameLanServer_TA*	InstanceStorage::m_OnlineGameLanServer_TA = nullptr;
 TArray<ACar_TA*>			InstanceStorage::m_GameCars;
+UEngine*					InstanceStorage::m_Engine;
 
 
 AAIManager_TA* InstanceStorage::AAIManager() {
@@ -37,6 +38,9 @@ UOnlineGameLanServer_TA* InstanceStorage::LanServer() {
 TArray<ACar_TA*> InstanceStorage::GameCars() {
 	return (TArray<ACar_TA*>)m_GameCars;
 }
+UEngine* InstanceStorage::Engine() {
+	return (UEngine*)m_Engine;
+}
 
 void InstanceStorage::SetLanServer(UOnlineGameLanServer_TA* server) {
 	m_OnlineGameLanServer_TA = server;
@@ -59,4 +63,7 @@ void InstanceStorage::SetCurrentCar(ACar_TA* car) {
 }
 void InstanceStorage::SetGameEvent(AGameEvent_TA* gameevent) {
 	m_GameEvent_TA = gameevent;
+}
+void InstanceStorage::SetEngine(UEngine* engine) {
+	m_Engine = engine;
 }

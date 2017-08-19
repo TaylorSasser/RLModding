@@ -18,6 +18,7 @@ public:
 	static AGameEvent_TA* GameEvent();
 	static UOnlineGameLanServer_TA*	LanServer();
 	static TArray<ACar_TA*> GameCars();
+	static UEngine* Engine();
 
 	static void SetAIManager(AAIManager_TA*);
 	static void SetWorld(UWorld*);
@@ -26,6 +27,7 @@ public:
 	static void SetCurrentCar(ACar_TA*);
 	static void SetGameEvent(AGameEvent_TA*);
 	static void SetLanServer(UOnlineGameLanServer_TA*);
+	static void SetEngine(UEngine*);
 
 private:
 	static TArray<ACar_TA*>				m_GameCars;
@@ -36,5 +38,6 @@ private:
 	static ACar_TA*						m_ACar_TA;
 	static AGameEvent_TA*				m_GameEvent_TA;
 	static UOnlineGameLanServer_TA*		m_OnlineGameLanServer_TA;
+	static UEngine*						m_Engine;
 };
 

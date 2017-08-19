@@ -12,8 +12,11 @@ void JoinServer::onEnable() {
 	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
 	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=");
 	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"Hifv0CpmgG6QwFKRHovTLw==");
-	reinterpret_cast<UEngine*>(Utils::GetInstanceOf(UEngine::StaticClass()))->SetNetworkSecurityKey(KeyInfo);
-	std::cout << "Set Security Key Info!\n";
+	if (InstanceStorage::Engine()) {
+		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
+		std::cout << "Set Security Key Info!\n";
+	}
+	
 
 }
 
