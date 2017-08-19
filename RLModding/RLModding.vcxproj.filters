@@ -4664,6 +4664,7 @@
     <ClInclude Include="Libs\boost\variant.hpp" />
     <ClInclude Include="Libs\boost\weak_ptr.hpp" />
     <ClInclude Include="Mods\Modules\Lan\JoinServer.h" />
+    <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

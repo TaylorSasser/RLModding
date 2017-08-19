@@ -2912,6 +2912,7 @@
     <ClInclude Include="Libs\boost\xpressive\xpressive_dynamic.hpp" />
     <ClInclude Include="Libs\boost\xpressive\xpressive_fwd.hpp" />
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
+    <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />

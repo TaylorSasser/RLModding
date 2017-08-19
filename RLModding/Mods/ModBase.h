@@ -39,6 +39,7 @@ static const std::string categoryNames[MAX-1] = {
 	"Car Mods",
 	"Other Mods"
 };
+
 class ModBase
 {
 public:
@@ -102,20 +103,14 @@ public:
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 		inMainMenu = true; inOnline = false; inCustom = false; inExhibition = false; inTraining = false;
-		UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
-		UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
-
-		if (blog && community) {
-			blog->MotD = L"Created by Taylor,ButterandCream,and Two";
-			community->UpdateBlogText();
-		}
+		
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
-		if (!inOnline) inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;
+		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false; }
 	}
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
@@ -134,7 +129,8 @@ public:
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
-	virtual void onKeysBeginState(Event* e) {}
+	virtual void onKeysBeginState(Event* e) {
+	}
 
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
@@ -143,6 +139,24 @@ public:
 	virtual void onPostPRI(Event* event) {}
 
 	virtual void onGotoState(Event*) {}
+
+	virtual void onEngineSecurityKeys(Event* e) {
+
+	}
+
+	virtual void onHandleGenKeys(Event* e) {
+		std::cout << "Hooked!\n";
+		/*auto params = e->getParams<HandleGenerateKeys_Params>();
+		params->RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
+		params->RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
+		params->RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
+		*///params->RPC->SessionId
+
+	}
+
+	virtual void onBeaconAddress(Event* e) {
+
+	}
 
 	bool enabled = false;
 protected:

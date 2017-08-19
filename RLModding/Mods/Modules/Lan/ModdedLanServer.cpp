@@ -5,7 +5,14 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
-	std::cout << getCurrentGameState() << std::endl;
+	std::cout << "Getting Security Key Info...\n";
+	FNetworkEncryptionKey KeyInfo;
+	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=");
+	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
+	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=");
+	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"Hifv0CpmgG6QwFKRHovTLw==");
+	reinterpret_cast<UEngine*>(Utils::GetInstanceOf(UEngine::StaticClass()))->SetNetworkSecurityKey(KeyInfo);
+	std::cout << "Set Security Key Info!\n";
 }
 
 void ModdedLanServer::onDisable() {

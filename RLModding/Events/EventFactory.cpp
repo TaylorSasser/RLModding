@@ -28,10 +28,29 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
 	SubscribeEvent("Function Core.Object.GotoState",&ModBase::onGotoState);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.HandleGenerateKeys", &ModBase::onHandleGenKeys);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.SetServerBeaconAddress", &ModBase::onBeaconAddress);
 
 }
 
+bool printAll = false;
+std::ofstream file;
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
+
+	if (GetAsyncKeyState(VK_F5)) {
+		printAll = !printAll;
+	if (printAll) {
+		std::cout << "Printing ALL!\n";
+		file.open("RL_Log.log");
+	}
+	else {
+		file.close();
+	}
+		Sleep(200);
+	}
+	if (printAll) {
+		file << func->GetFullName() << std::endl;
+	}
 
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
