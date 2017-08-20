@@ -13,13 +13,12 @@ void ModdedLanServer::onEnable() {
 	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
 
 	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+	join->STATIC_DynamicLoadObject(L"join", UOnlineGameJoinGame_X::StaticClass(), 0);
 	if (join) {
 		join->GenerateKeysRPCs.Add(RPC);
 		std::cout << "Added Keys to Array!\n";
 	}
 		
-
-	std::cout << "Added Keys!\n";
 	FNetworkEncryptionKey KeyInfo;
 	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->Key);
 	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->IV);

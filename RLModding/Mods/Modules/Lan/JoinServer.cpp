@@ -14,21 +14,21 @@ void JoinServer::onEnable() {
 	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
 
 	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+	join->STATIC_DynamicLoadObject(L"join", UOnlineGameJoinGame_X::StaticClass(), 0);
 	if (join) {
 		join->GenerateKeysRPCs.Add(RPC);
 		std::cout << "Added Keys to Array!\n";
 	}
 
 	FNetworkEncryptionKey KeyInfo;
-	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=");
-	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
-	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=");
-	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"Hifv0CpmgG6QwFKRHovTLw==");
+	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->Key);
+	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->IV);
+	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->HMACKey);
+	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->SessionId);
 	if (InstanceStorage::Engine()) {
 		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
 		std::cout << "Set Security Key Info!\n";
 	}
-	
 
 }
 
