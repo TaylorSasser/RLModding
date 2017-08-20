@@ -12,6 +12,13 @@ void ModdedLanServer::onEnable() {
 	RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
 	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
 
+	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+	if (join) {
+		join->GenerateKeysRPCs.Add(RPC);
+		std::cout << "Added Keys to Array!\n";
+	}
+		
+
 	std::cout << "Added Keys!\n";
 	FNetworkEncryptionKey KeyInfo;
 	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->Key);
