@@ -29,34 +29,6 @@ void BallMods::DrawMenu() {
 				explodeBall[i] = true;
 			}
 		}
-
-		ImGui::Separator();
-
-		if (ImGui::Button("Test Ball Explosion Edit")) {
-			testBallExplosion = true;
-		}
-
-		//Example Settings
-		//For things that have settings to configure anywhere do something like this
-		//Essentially have a boolean to detect the start and stop of the gamemode while the menu
-		//just brings up the settings anywhere
-		if (bStartGameMode) {
-			if (ImGui::Button("Disable")) {
-				bStartGameMode = false;
-			}
-		}
-		else {
-			if (ImGui::Button("Enable")) {
-				if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING)))
-					bStartGameMode = true;
-				else {
-					printf("Invalid state for rumble settings\n");
-				}
-			}
-		}
-		//End Example Settings
-
-
 		ImGui::End();
 	}
 }
@@ -72,56 +44,39 @@ void BallMods::onDisable() {
 }
 
 void BallMods::onPlayerTick(Event* e) {
-	if (bStartGameMode) {
-		// Game Event Ball modifiers
-		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	// Game Event Ball modifiers
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
+	SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
 
-		if (gameBalls.IsValidIndex(0)) {
+	if (gameBalls.IsValidIndex(0)) {
 
-			if (testBallExplosion) {
-				testBallExplosion = false;
+		if (numGameBalls != gameBalls.Num()) {
+			localGameEvent->SetTotalGameBalls(numGameBalls);
+			localGameEvent->ResetBalls();
+			std::fill_n(currBallScale, 100, 1.0);
+		}
 
-				//gameBalls.GetByIndex(0)->ShouldDemolish(inGamePlayerController->Car);
-
-				//gameBalls.GetByIndex(0)->Explosion->ExplosionComponent->EndRadius *= 100;
-			}
-
-			if (numGameBalls != gameBalls.Num()) {
-				localGameEvent->SetTotalGameBalls(numGameBalls);
-				localGameEvent->ResetBalls();
-				std::fill_n(currBallScale, 100, 1.0);
-			}
-
-			for (int i = 0; i < numGameBalls; i++) {
-				if (gameBalls.IsValidIndex(i) && gameBalls.GetByIndex(i) != NULL) {
-					ABall_TA* currBall = gameBalls.GetByIndex(i);
-					if (!Utils::FloatCompare(ballScale[i], currBallScale[i])) {
-						currBall->SetBallScale(ballScale[i]);
-						currBallScale[i] = ballScale[i];
-					}
-					if (freezeBall[i]) {
-						currBall->bFrozen = true;
-						freezeBall[i] = false;
-					}
-					if (explodeBall[i]) {
-						currBall->DoExplode();
-						explodeBall[i] = false;
-					}
-				} 
-			}
-			if (attachBallIndex != -1) {
-				gameBalls.GetByIndex(0)->AttachToCar(InstanceStorage::PlayerController()->Car);
-				attachBallIndex = -1;
-			}
+		for (int i = 0; i < numGameBalls; i++) {
+			if (gameBalls.IsValidIndex(i) && gameBalls.GetByIndex(i) != NULL) {
+				ABall_TA* currBall = gameBalls.GetByIndex(i);
+				if (!Utils::FloatCompare(ballScale[i], currBallScale[i])) {
+					currBall->SetBallScale(ballScale[i]);
+					currBallScale[i] = ballScale[i];
+				}
+				if (freezeBall[i]) {
+					currBall->bFrozen = true;
+					freezeBall[i] = false;
+				}
+				if (explodeBall[i]) {
+					currBall->DoExplode();
+					explodeBall[i] = false;
+				}
+			} 
+		}
+		if (attachBallIndex != -1) {
+			gameBalls.GetByIndex(0)->AttachToCar(InstanceStorage::PlayerController()->Car);
+			attachBallIndex = -1;
 		}
 	}
 }
-
-// Test static mesh override...works, but why?
-//ASpecialPickup_Tornado_TA* tornado = (SDK::ASpecialPickup_Tornado_TA*)Utils::GetInstanceOf(SDK::ASpecialPickup_Tornado_TA::StaticClass());
-//currBall->StaticMesh->StaticMesh = tornado->TornadoMesh;
-
-//UStaticMesh* goalIndicator = (SDK::UStaticMesh*)Utils::GetInstanceOf(SDK::UStaticMesh::StaticClass());
-//currBall->SetBallMesh(goalIndicator);

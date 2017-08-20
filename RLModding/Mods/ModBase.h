@@ -165,28 +165,22 @@ public:
 	virtual void onPsyNetRPC(Event* e) {
 		auto params = e->getParams<UPsyNet_X_RPC_Params>();
 		//URPC_GenerateKeys_X
-		//std::cout << "PsyNetRPC\n";
-		if (params) {
-			if (params->ReturnValue != nullptr) {
-				URPC_GenerateKeys_X* RPC = reinterpret_cast<URPC_GenerateKeys_X*>(params->ReturnValue);
-				if (RPC) {
-					std::cout << "Trying to print service\n";
-					std::cout << RPC->Service.ToString() << std::endl;
-				}
-			}
-		}
+		//std::cout << "PsyNetRPC\n"
 		
 	}
 
 	virtual void onTitlesLoad(Event* e) {
 		UGFxData_Garage_TA* garage = (UGFxData_Garage_TA*)e->getCallingObject();
-		if (garage) {
-			for (int i = 0; i < garage->PlayerTitles.Num(); i++) {
-				if (garage->PlayerTitles.IsValidIndex(i)) {
-					std::cout << garage->PlayerTitles[i].Text.ToString() << std::endl;
-				}
-			}
+	}
+
+	virtual void onTCPConnect(Event* e) {
+		UTcpConnection* connection = (UTcpConnection*)e->getCallingObject();
+		if (connection != nullptr) {
+			std::cout << connection->GetRemoteAddress().ToString() << std::endl;
+			std::cout << connection->GetAddress().ToString() << std::endl;
 		}
+		
+
 	}
 
 	bool enabled = false;

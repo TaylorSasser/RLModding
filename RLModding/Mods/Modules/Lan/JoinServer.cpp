@@ -70,7 +70,6 @@ void JoinServer::travel() {
 			std::string command(ip);
 			std::string temp = "open " + command;
 			std::cout << "Traveling to: " << temp << std::endl;
-			//LAN_Server->TravelToMap(Utils::to_fstring(command));
 			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(temp), 1);
 		}
 	}

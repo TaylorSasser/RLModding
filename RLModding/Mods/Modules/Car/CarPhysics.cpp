@@ -28,12 +28,6 @@ void CarPhysics::DrawMenu() {
 		ImGui::End();
 	}
 }
-//ImGui::ColorEdit4("Car Color",col2);
-//ImGui::InputFloat("Car Max Spin Rate", &carMaxSpinRate, 0.5f, 1.0f);
-
-//if (ImGui::Button("Demolish")) demolishPlayerIndex = playerSelectedIndex;
-//ImGui::SameLine();
-//if (ImGui::Button("Attach Ball")) attachBallIndex = playerSelectedIndex;
 
 void CarPhysics::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();

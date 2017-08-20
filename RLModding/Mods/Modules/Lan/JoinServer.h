@@ -15,7 +15,7 @@ public:
 
 private:
 	void travel();
-	char ip[128] = "25.84.166.129";
+	char ip[128] = "25.81.228.178";
 	bool bTravel = false;
 	UOnlineGameLanServer_X* LAN_Server = nullptr;
 };

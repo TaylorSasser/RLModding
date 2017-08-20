@@ -37,6 +37,7 @@ void ClassicMods::DrawMenu() {
 	ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
+	ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 	if (ImGui::Button("Reset")) {
 		reset();
 	}
@@ -44,28 +45,6 @@ void ClassicMods::DrawMenu() {
 }
 
 void ClassicMods::onPlayerTick(Event* event) {
-	/*if (ClassicMods::isEnabled()) {
-		if (InstanceStorage::PlayerController()) {
-			ACar_TA* car = InstanceStorage::PlayerController()->Car;
-			if (car) {
-				if (ModBase::STATIC_getCurrentGameState() & GameState::TRAINING) {
-					ACar_Freeplay_TA* freeplayCar = reinterpret_cast<SDK::ACar_Freeplay_TA*>(car);
-					freeplayCar->MaxTimeForDodge = jumpTimeout;
-					freeplayCar->MaxAngularSpeed = torqueRate;
-					freeplayCar->MaxLinearSpeed = maxCarSpeed;
-					freeplayCar->StickyForceGround = groundSticky;
-					freeplayCar->StickyForceWall = wallSticky;
-				}
-				else {
-					car->MaxTimeForDodge = jumpTimeout;
-					car->MaxAngularSpeed = torqueRate;
-					car->MaxLinearSpeed = maxCarSpeed;
-					car->StickyForceGround = groundSticky;
-					car->StickyForceWall = wallSticky;
-				}
-			}
-		}
-	}*/
 	
 }
 
@@ -110,5 +89,12 @@ void ClassicMods::onCarTick(Event* event) {
 				car->StickyForceWall = wallSticky;
 			}
 		}
+	}
+}
+
+void ClassicMods::onActorJump(Event*e) {
+	if (e->getCallingObject() != nullptr) {
+		((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;
+		((SDK::ACar_TA*)e->getCallingObject())->bJumped = 0;
 	}
 }

@@ -1,4 +1,5 @@
 #include "InventoryManager.h"
+#include "../Interfaces/Interfaces.h"
 #include "../../../Utils/Utils.h"
 #include <functional>
 #include "../../../DrawManager/DrawManager.hpp"
@@ -20,7 +21,6 @@ void InventoryManager::DrawMenu() {
 		{
 			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
 
-			//ImGui::SetNextWindowSize(ImVec2(400, 400), ImGuiSetCond_FirstUseEver);
 			ImGui::Begin("Inventory Management");
 
 			ImGui::Text("Line Format: Chakram,EpicSaves,Sky Blue,");
@@ -45,21 +45,14 @@ void InventoryManager::DrawMenu() {
 			}
 
 			if (ImGui::Button("Load Inventory Info")) {
-				//TestClass::runConsoleCommand = true;
-
-
-				// ProjectX.OnlineGameJoinGame_X.GenerateKeys
-				/*
-				SDK::FName randomFname = SDK::FName("GenerateKeys");
-				SDK::UOnlineGameJoinGame_X* game = (SDK::UOnlineGameJoinGame_X*)Utils::GetInstanceOf(SDK::UOnlineGameJoinGame_X::StaticClass());
-				std::cout << "fName at " << randomFname.GetName().c_str() << std::endl;
-				if (game) {
-				game->GotoState(randomFname, randomFname, true, true);
-				std::cout << "Calling generate keys from player controller" << std::endl;
+				std::ifstream f("inventory.csv");
+				if (f.good()) {
+					std::cout << "Opening inventory.csv\n";
+					Interfaces::GUI().isGUIOpen = false;
+					ShellExecute(NULL, "open", "invetory.csv", NULL, NULL, SW_SHOWNORMAL);
 				}
-				*/
-
-
+					
+				f.close();
 			}
 			ImGui::End();
 

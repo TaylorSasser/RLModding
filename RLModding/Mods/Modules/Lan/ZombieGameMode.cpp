@@ -6,7 +6,6 @@ ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {
 void ZombieGameMode::onEnable() {
 	
 	if (!InstanceStorage::GameEvent()) {
-		//Console.printDebug("AI Manager not found");
 		printf("Could not start Zombies Module \n");
 		return;
 	}

@@ -4,7 +4,6 @@
 #include "Modules/Lan/RumbleMods.h"
 #include "Modules/Lan/ZombieGameMode.h"
 #include "Modules/Lan/JoinServer.h"
-#include "Modules/Car/UnlimitedJumps.h"
 #include "Modules/Offline/CustomBlog.h"
 #include "Modules/Offline/InventoryManager.h"
 #include "Modules/Classic Mods/ClassicMods.h"
@@ -28,7 +27,6 @@ ModHandler::ModHandler() {
 	CreateMod<BallMods>("Ball Mods", VK_NUMPAD9, Category::Ball, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	
 	CreateMod<CarPhysics>("Car Physics", VK_F3, Category::Car, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	CreateMod<UnlimitedJumps>("Unlimited Jumps", VK_NUMPAD3, Category::Car, GameState::EXHIBITION | GameState::TRAINING | GameState::LAN);
 
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);

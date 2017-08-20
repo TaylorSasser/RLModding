@@ -11,6 +11,7 @@ public:
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarTick(Event*) override;
+	void onActorJump(Event*) override;
 
 private:
 	void reset();
@@ -19,4 +20,5 @@ private:
 	float jumpTimeout = 1.5;
 	float maxCarSpeed = 2300.0;
 	float torqueRate = 5.5;
+	bool bUnlimitedJumps = false;
 };

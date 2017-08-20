@@ -14,7 +14,6 @@ public:
 	void onPlayerTick(Event* e);
 
 private:
-	bool bStartGameMode = false;
 	bool pauseServer = false;
 	bool pausedGame = false;
 	bool randomSpawnPoints = false;

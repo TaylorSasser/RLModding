@@ -13,7 +13,6 @@ public:
 	void onPlayerTick(Event* e);
 
 private:
-	bool bStartGameMode = false;
 	float currBallScale[100];
 	bool freezeBall[100];
 	bool explodeBall[100];

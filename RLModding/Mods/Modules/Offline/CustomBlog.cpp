@@ -5,7 +5,6 @@ CustomBlog::~CustomBlog() {}
 
 void CustomBlog::onEnable() {
 	bSet = true;
-	printf("Custom Blog enabled\n");
 }
 
 void CustomBlog::onDisable() {
