@@ -48,11 +48,6 @@ You have a class ZombieGameMode binded to numpad 1. It is part of the category G
  - Rumble item to blow up everyone on opposing team
  - Rumble item to spawn bots to chase specific player for X seconds
 
-## TODO
-
-- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
-- Add in a way to build raw packets into high level objects (decrypting the packets too)
-
 ## Printing Keys
 EventFactory.cpp
 ```
@@ -80,3 +75,15 @@ virtual void onKeysBeginState(Event* e) {
 	std::cout << "Session ID: " << temp->RPC->SessionId.ToString() << std::endl;
 }
 ```
+
+## LAN Attempts
+
+- Directly setting the engines network security keys to some hardcoded keys
+- Above method + adding the RPC_GenerateKeys to the GenereateKeysRPCs array in OnlineGameJoin_X
+- Found that SessionId is connected to your player id so we can't use the same one for everybody
+
+
+## TODO
+
+- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
+- Add in a way to build raw packets into high level objects (decrypting the packets too)
