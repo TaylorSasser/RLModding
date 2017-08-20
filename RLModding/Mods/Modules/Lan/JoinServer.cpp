@@ -7,6 +7,18 @@ JoinServer::~JoinServer(){}
 
 void JoinServer::onEnable() {
 	std::cout << "Getting Security Key Info...\n";
+	URPC_GenerateKeys_X* RPC;
+	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
+	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
+	RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
+	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
+
+	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+	if (join) {
+		join->GenerateKeysRPCs.Add(RPC);
+		std::cout << "Added Keys to Array!\n";
+	}
+
 	FNetworkEncryptionKey KeyInfo;
 	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=");
 	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
@@ -56,8 +68,10 @@ void JoinServer::travel() {
 		LAN_Server = reinterpret_cast<UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
 			std::string command(ip);
-			std::cout << "Traveling to: " << command << std::endl;
-			LAN_Server->TravelToMap(Utils::to_fstring(command));
+			std::string temp = "open " + command;
+			std::cout << "Traveling to: " << temp << std::endl;
+			//LAN_Server->TravelToMap(Utils::to_fstring(command));
+			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(temp), 1);
 		}
 	}
 }
