@@ -180,7 +180,6 @@ public:
 
 	virtual void onTitlesLoad(Event* e) {
 		UGFxData_Garage_TA* garage = (UGFxData_Garage_TA*)e->getCallingObject();
-		std::cout << "GARAGE!\n";
 		if (garage) {
 			for (int i = 0; i < garage->PlayerTitles.Num(); i++) {
 				if (garage->PlayerTitles.IsValidIndex(i)) {
