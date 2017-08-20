@@ -1,14 +1,14 @@
 #include "InstanceStorage.h"
 
-AAIManager_TA*				InstanceStorage::m_AAIManager_TA;
-UWorld*						InstanceStorage::m_UWorld;
+AAIManager_TA*				InstanceStorage::m_AAIManager_TA = nullptr;
+UWorld*						InstanceStorage::m_UWorld= nullptr;
 APlayerController_Menu_TA*	InstanceStorage::m_APlayerController_Menu_TA = nullptr;
 APlayerController_TA*		InstanceStorage::m_PlayerController_TA = nullptr;
 ACar_TA*					InstanceStorage::m_ACar_TA = nullptr;
 AGameEvent_TA*				InstanceStorage::m_GameEvent_TA = nullptr;
 UOnlineGameLanServer_TA*	InstanceStorage::m_OnlineGameLanServer_TA = nullptr;
 TArray<ACar_TA*>			InstanceStorage::m_GameCars;
-UEngine*					InstanceStorage::m_Engine;
+UEngine*					InstanceStorage::m_Engine = nullptr;
 
 
 AAIManager_TA* InstanceStorage::AAIManager() {

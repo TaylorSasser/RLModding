@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "Core.h"
+#include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/Interfaces.h"
 #include "../PlayerBlacklist/BlackList.h"
 
@@ -26,11 +27,21 @@ void onAttach(HMODULE hModule) {
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().Load();
 	Interfaces::Blacklist().Check();
+	CreateThread(NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(onDetach), hModule, 0, nullptr);
 }
 
 void onDetach(HMODULE hModule) {
-	Core::Restore();
-	Interfaces::FunctionHandler().RemoveDetours();
-	Interfaces::DX9Handler().RemoveHook();
-	Interfaces::KeyboardHandler().RestoreKeyboard();
+	while (true) {
+		if (GetAsyncKeyState(VK_END)) {
+			Core::Restore();
+			Interfaces::FunctionHandler().RemoveDetours();
+			Interfaces::DX9Handler().RemoveHook();
+			Interfaces::KeyboardHandler().RestoreKeyboard();
+			Sleep(1000);
+			FreeLibraryAndExitThread(hModule, 0);
+			ExitThread(0);
+		}
+		Sleep(5000);
+	}
+	
 }

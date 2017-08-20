@@ -15,6 +15,7 @@ typedef HRESULT(__stdcall* D3D9HookedReset_t)(LPDIRECT3DDEVICE9, D3DPRESENT_PARA
 
 D3D9EndScene_t pD3D9EndScene;
 D3D9HookedReset_t pD3D9HookedReset;
+IDirect3DDevice9 *pd3dDevice;
 
 HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice);
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters);
