@@ -7,6 +7,18 @@ JoinServer::~JoinServer(){}
 
 void JoinServer::onEnable() {
 	std::cout << "Getting Security Key Info...\n";
+	URPC_GenerateKeys_X* RPC;
+	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
+	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
+	RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
+	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
+
+	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+	if (join) {
+		join->GenerateKeysRPCs.Add(RPC);
+		std::cout << "Added Keys to Array!\n";
+	}
+
 	FNetworkEncryptionKey KeyInfo;
 	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=");
 	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
