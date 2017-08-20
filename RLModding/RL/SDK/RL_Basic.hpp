@@ -51,8 +51,7 @@ public:
 		return Data[i];
 	}
 
-	inline const T& GetByIndex(size_t i) const
-	{
+	inline const T& GetByIndex(size_t i) const {
 		return Data[i];
 	}
 	/* Not working. realloc can call on used memory regions and is not thread safe. mutexes? */
