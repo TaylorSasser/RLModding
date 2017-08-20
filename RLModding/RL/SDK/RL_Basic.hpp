@@ -61,7 +61,7 @@ public:
 		Data[Count++] = InputData;
 		Max = Count;
 	};
-	*/
+	*/	
 
 private:
 	T* Data;

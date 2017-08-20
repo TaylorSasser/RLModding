@@ -31,6 +31,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.HandleGenerateKeys", &ModBase::onHandleGenKeys);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.SetServerBeaconAddress", &ModBase::onBeaconAddress);
 	SubscribeEvent("Function Engine.Engine.GetEngine", &ModBase::onEngineTick);
+	SubscribeEvent("Function ProjectX.PsyNet_X.RPC", &ModBase::onPsyNetRPC);
+	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 
 }
 

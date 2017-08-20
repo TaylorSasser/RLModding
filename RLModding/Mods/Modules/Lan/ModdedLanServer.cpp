@@ -6,11 +6,18 @@ ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
 	std::cout << "Getting Security Key Info...\n";
+	URPC_GenerateKeys_X* RPC;
+	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
+	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
+	RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
+	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
+
+	std::cout << "Added Keys!\n";
 	FNetworkEncryptionKey KeyInfo;
-	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=");
-	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"HKNBpu215LCUGiDTs1XwCA==");
-	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=");
-	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(L"Hifv0CpmgG6QwFKRHovTLw==");
+	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->Key);
+	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->IV);
+	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->HMACKey);
+	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->SessionId);
 	if (InstanceStorage::Engine()) {
 		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
 		std::cout << "Set Security Key Info!\n";
@@ -76,7 +83,7 @@ void ModdedLanServer::travel() {
 	if (!Interfaces::GUI().isGUIOpen) {
 		LAN_Server = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
-			std::string command = mapName + "?playtest?listen?Lan?" + str_gameMode + str_mutators;
+			std::string command = mapName + "?game=" + str_gameMode + "playtest?listen?lan?" + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
 			std::cout << "State: " << getCurrentGameState() << std::endl;

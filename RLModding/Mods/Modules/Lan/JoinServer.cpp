@@ -56,8 +56,10 @@ void JoinServer::travel() {
 		LAN_Server = reinterpret_cast<UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
 			std::string command(ip);
-			std::cout << "Traveling to: " << command << std::endl;
-			LAN_Server->TravelToMap(Utils::to_fstring(command));
+			std::string temp = "open " + command;
+			std::cout << "Traveling to: " << temp << std::endl;
+			//LAN_Server->TravelToMap(Utils::to_fstring(command));
+			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(temp), 1);
 		}
 	}
 }
