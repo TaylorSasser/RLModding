@@ -1,6 +1,5 @@
 #include <Windows.h>
 #include "Core.h"
-#include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/Interfaces.h"
 #include "../PlayerBlacklist/BlackList.h"
 
@@ -41,7 +40,7 @@ void onDetach(HMODULE hModule) {
 			FreeLibraryAndExitThread(hModule, 0);
 			ExitThread(0);
 		}
-		Sleep(5000);
+		Sleep(3000);
 	}
 	
 }
