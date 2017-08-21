@@ -81,6 +81,7 @@ virtual void onKeysBeginState(Event* e) {
 - Directly setting the engines network security keys to some hardcoded keys
 - Above method + adding the hardcoded keys to an RPC_GenerateKeys object and adding it to the GenereateKeysRPCs array in OnlineGameJoin_X
 - Found that SessionId is connected to your player id so we can't use the same one for everybody
+- Changing the developer environment
 
 
 ## TODO
