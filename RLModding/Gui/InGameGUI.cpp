@@ -141,6 +141,13 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
+	if ((w == VK_END) && (e == KeyEvent::KeyUp)) {
+		Core::Restore();
+		Interfaces::FunctionHandler().RemoveDetours();
+		Interfaces::DX9Handler().RemoveHook();
+		Interfaces::KeyboardHandler().RestoreKeyboard();
+		FreeLibraryAndExitThread(GetCurrentThread(), 0);
+	}
 	return isGUIOpen;
 }
 
