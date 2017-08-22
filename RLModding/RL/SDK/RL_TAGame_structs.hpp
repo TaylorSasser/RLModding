@@ -6,9 +6,6 @@
 	#pragma pack(push, 0x4)
 #endif
 
-#undef AF_MAX
-#undef PF_MAX
-
 namespace SDK
 {
 //---------------------------------------------------------------------------
@@ -1582,7 +1579,7 @@ struct FLoadoutData : public FClientLoadoutData
 	struct FLoadoutTeamPaint                           TeamPaint;                                                // 0x000C(0x0010)
 	struct FName                                       Title;                                                    // 0x001C(0x0008)
 	int                                                TeamIndex;                                                // 0x0024(0x0004)
-	TArray<class UOnlineProducts_TA*>                  OnlineProducts;                                       // 0x0028(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutData.OnlineProducts
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0028(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutData.OnlineProducts
 };
 
 // ScriptStruct TAGame.GameEvent_TA.PlayerRespawnTime
@@ -1948,8 +1945,7 @@ struct FAssetLoadRequest
 {
 	struct FAssetLoadResult                            Result;                                                   // 0x0000(0x0010)
 	unsigned long                                      bLoaded : 1;                                              // 0x0010(0x0004)
-	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.ProductDatabase_TA.TemporaryProduct
@@ -1996,8 +1992,7 @@ struct FProductThumbnailResult
 struct FRenderThumbnailRequest
 {
 	struct FProductThumbnailResult                     Result;                                                   // 0x0000(0x000C) (CPF_Const)
-	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.Ball_Breakout_TA.BreakoutDamage
@@ -2140,8 +2135,7 @@ struct FTimelineKeyframe
 struct FReplayExportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.ReplayManager_TA.ReplayImportCallbackData
@@ -2149,8 +2143,7 @@ struct FReplayExportCallbackData
 struct FReplayImportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.SkelControlSingleBoneCopy_TA.AxisConversion
@@ -2359,7 +2352,7 @@ struct FOnlineProductAttribute
 struct FOnlineProductData
 {
 	int                                                ProductID;                                                // 0x0000(0x0004)
-	__int64											   InstanceID;                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.OnlineProductData.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.OnlineProductData.InstanceID
 	int                                                SeriesID;                                                 // 0x000C(0x0004)
 	TArray<struct FOnlineProductAttribute>             Attributes;                                               // 0x0010(0x000C) (CPF_NeedCtorLink)
 	int                                                TradeHold;                                                // 0x001C(0x0004)
@@ -2458,7 +2451,7 @@ struct U_Types_TA_FActorHistory
 // 0x0020
 struct FSortedProductData
 {
-	__int64											   Id;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SortedProductData.Id
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SortedProductData.Id
 	unsigned long                                      bUnlocked : 1;                                            // 0x0008(0x0004)
 	struct FString                                     Name;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bIsPack : 1;                                              // 0x0018(0x0004)
@@ -2534,7 +2527,7 @@ struct FServerSetLoadoutParams
 // 0x0014
 struct FLoadoutTeam
 {
-	TArray<int>                                        Products;                                       // 0x0000(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutTeam.Products
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0000(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.LoadoutTeam.Products
 	struct FLoadoutTeamColor                           TeamColor;                                                // 0x000C(0x0008)
 };
 
@@ -2542,7 +2535,7 @@ struct FLoadoutTeam
 // 0x000C
 struct FSchematicResourceData
 {
-	__int64                                            InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SchematicResourceData.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SchematicResourceData.InstanceID
 	int                                                Resources;                                                // 0x0008(0x0004) (CPF_DataBinding)
 };
 
@@ -2730,6 +2723,15 @@ struct FOptionsValue
 	struct FString                                     Value;                                                    // 0x0008(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct TAGame.Camera_TA.SwivelExtent
+// 0x000C
+struct FSwivelExtent
+{
+	int                                                PitchMin;                                                 // 0x0000(0x0004)
+	int                                                PitchMax;                                                 // 0x0004(0x0004)
+	int                                                YawMax;                                                   // 0x0008(0x0004)
+};
+
 // ScriptStruct TAGame.Camera_TA.ProfileSliderLimits
 // 0x000C
 struct FProfileSliderLimits
@@ -2745,7 +2747,7 @@ struct FTrialSaveData
 {
 	unsigned long                                      bInitialized : 1;                                         // 0x0000(0x0004)
 	int                                                MinutesRemaining;                                         // 0x0004(0x0004)
-	__int64                                            LastPlayedTime;                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.TrialSaveData.LastPlayedTime
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.TrialSaveData.LastPlayedTime
 };
 
 // ScriptStruct TAGame.SaveData_TA.CachedStaticText
@@ -2821,7 +2823,7 @@ struct FCarSpawnData
 // 0x0008
 struct FTradeInDrop
 {
-	__int64                                            ProductID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ProductTradeIn_TA.TradeInDrop.ProductID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ProductTradeIn_TA.TradeInDrop.ProductID
 };
 
 // ScriptStruct TAGame.GFxData_ProductTradeIn_TA.TradeInDropTable
@@ -2866,7 +2868,7 @@ struct FTitleInfo
 // 0x000C
 struct FSaveDataSetProperties
 {
-	__int64                                            LastUnlockDisplayId;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineSaveData_TA.SaveDataSetProperties.LastUnlockDisplayId
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineSaveData_TA.SaveDataSetProperties.LastUnlockDisplayId
 	class UAchievementSave_TA*                         AchievementData;                                          // 0x0008(0x0004)
 };
 
@@ -2903,7 +2905,7 @@ struct FAdInfo
 {
 	struct FString                                     URL;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
 	int                                                ZoneID;                                                   // 0x000C(0x0004)
-	__int64                                            UTCEndTime;                                       // 0x0010(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_AdsGet_TA.AdInfo.UTCEndTime
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0010(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_AdsGet_TA.AdInfo.UTCEndTime
 };
 
 // ScriptStruct TAGame.ReplayDirector_TA.ReplayFocusCar
@@ -2924,15 +2926,6 @@ struct FReplayScoreData
 	class APRI_TA*                                     AssistedBy;                                               // 0x0004(0x0004)
 	float                                              Speed;                                                    // 0x0008(0x0004)
 	float                                              Time;                                                     // 0x000C(0x0004)
-};
-
-// ScriptStruct TAGame.Camera_TA.SwivelExtent
-// 0x000C
-struct FSwivelExtent
-{
-	int                                                PitchMin;                                                 // 0x0000(0x0004)
-	int                                                PitchMax;                                                 // 0x0004(0x0004)
-	int                                                YawMax;                                                   // 0x0008(0x0004)
 };
 
 // ScriptStruct TAGame.CameraState_Car_TA.InterpVector
@@ -3167,7 +3160,7 @@ struct FReplayPlayerStats
 {
 	struct FString                                     Name;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x000C(0x0001)
-	struct FUniqueNetId                                OnlineID;                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
 	int                                                Team;                                                     // 0x0018(0x0004)
 	int                                                Score;                                                    // 0x001C(0x0004)
 	int                                                Goals;                                                    // 0x0020(0x0004)
@@ -3182,8 +3175,7 @@ struct FReplayPlayerStats
 struct FButtonInfo
 {
 	struct FString                                     Text;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x0010) (CPF_NeedCtorLink)
 	unsigned long                                      bCorrectAnswer : 1;                                       // 0x001C(0x0004)
 };
 
@@ -3353,8 +3345,8 @@ struct FGarageTeam
 	struct FString                                     Label;                                                    // 0x0000(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	int                                                TeamColorID;                                              // 0x000C(0x0004) (CPF_DataBinding)
 	int                                                CustomColorID;                                            // 0x0010(0x0004) (CPF_DataBinding)
-	__int64                                            TeamFinishID;                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.TeamFinishID
-	__int64                                            CustomFinishID;                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.CustomFinishID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.TeamFinishID
+	unsigned char                                      UnknownData01[0x8];                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.CustomFinishID
 };
 
 // ScriptStruct TAGame.GFxData_Products_TA.LoadingProduct
@@ -3362,7 +3354,7 @@ struct FGarageTeam
 struct FLoadingProduct
 {
 	int                                                ProductID;                                                // 0x0000(0x0004)
-	__int64                                            InstanceID;                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.LoadingProduct.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.LoadingProduct.InstanceID
 	TArray<int>                                        ReferencedViews;                                          // 0x000C(0x000C) (CPF_NeedCtorLink)
 	class UOnlineProduct_TA*                           OnlineProduct;                                            // 0x0018(0x0004)
 	TEnumAsByte<EProductThumbnailSize>                 ThumbnailSize;                                            // 0x001C(0x0001)
@@ -3374,7 +3366,7 @@ struct FLoadingProduct
 // 0x000C
 struct FGFxItemDrop
 {
-	__int64                                            Id;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ItemDrops_TA.GFxItemDrop.Id
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ItemDrops_TA.GFxItemDrop.Id
 	unsigned long                                      bCanEquipNow : 1;                                         // 0x0008(0x0004) (CPF_DataBinding)
 };
 
@@ -3593,8 +3585,8 @@ struct FEsportEventData
 	int                                                ImageTextureSizeY;                                        // 0x0054(0x0004) (CPF_DataBinding)
 	struct FString                                     UTCStartTime;                                             // 0x0058(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     UTCEndTime;                                               // 0x0064(0x000C) (CPF_NeedCtorLink)
-	__int64                                            UTCStartTimeSeconds;                                     // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.ESportEvents_TA.EsportEventData.UTCStartTimeSeconds
-	__int64											   UTCEndTimeSeconds;                                    // 0x0078(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.ESportEvents_TA.EsportEventData.UTCEndTimeSeconds
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.ESportEvents_TA.EsportEventData.UTCStartTimeSeconds
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0078(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.ESportEvents_TA.EsportEventData.UTCEndTimeSeconds
 };
 
 // ScriptStruct TAGame.Upsell_TA.UpsellData
@@ -3619,7 +3611,7 @@ struct FUpsellData
 // 0x0010
 struct FInstanceToSlotRow
 {
-	__int64                                            InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsLoadoutGet_TA.InstanceToSlotRow.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsLoadoutGet_TA.InstanceToSlotRow.InstanceID
 	int                                                SlotIndex;                                                // 0x0008(0x0004)
 	int                                                TeamIndex;                                                // 0x000C(0x0004)
 };
@@ -3684,7 +3676,7 @@ struct FPriorityCandidate
 // 0x000C
 struct FClientOnlineProductStat
 {
-	__int64                                            InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.PRI_TA.ClientOnlineProductStat.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.PRI_TA.ClientOnlineProductStat.InstanceID
 	int                                                Value;                                                    // 0x0008(0x0004)
 };
 
@@ -3858,7 +3850,7 @@ struct FSaveDataExportTask
 // 0x0008
 struct FDingoContentCache
 {
-	__int64											   UserXUID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.DingoContentCache.UserXUID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.DingoContentCache.UserXUID
 };
 
 // ScriptStruct TAGame.MapPrefsMetrics_TA.MapPrefsMetric
@@ -3901,7 +3893,7 @@ struct FMTXPurchaseInfo
 // 0x000C
 struct FMTProductInfo
 {
-	__int64                                            ProductID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_MicroTransactions_GetCatalog_TA.MTProductInfo.ProductID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_MicroTransactions_GetCatalog_TA.MTProductInfo.ProductID
 	int                                                Count;                                                    // 0x0008(0x0004)
 };
 
@@ -4192,7 +4184,7 @@ struct FSearchCacheData
 struct FFavoritedFileMetaData
 {
 	struct FString                                     Code;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	__int64                                            UpdatedAt;                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_TrainingModeBrowser_TA.FavoritedFileMetaData.UpdatedAt
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_TrainingModeBrowser_TA.FavoritedFileMetaData.UpdatedAt
 	struct FString                                     Filename;                                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -4209,7 +4201,7 @@ struct FCachedDownloadedFile
 struct FCodeTimePair
 {
 	struct FString                                     Code;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	__int64                                            UpdatedAt;                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_TrainingEditor_ListPlayerTrainingDataTimestamp_TA.CodeTimePair.UpdatedAt
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_TrainingEditor_ListPlayerTrainingDataTimestamp_TA.CodeTimePair.UpdatedAt
 };
 
 // ScriptStruct TAGame.VehiclePickup_BoostModifier_Randomizer_TA.RandomPickup

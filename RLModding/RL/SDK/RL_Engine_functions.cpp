@@ -6461,6 +6461,175 @@ void AActor::OnTimer()
 }
 
 
+// Function Engine.Volume.ProcessActorSetVolume
+// (FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+
+void AVolume::ProcessActorSetVolume(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.ProcessActorSetVolume");
+
+	AVolume_ProcessActorSetVolume_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.CollisionChanged
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void AVolume::CollisionChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.CollisionChanged");
+
+	AVolume_CollisionChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.OnToggle
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_Toggle*          Action                         (CPF_Parm)
+
+void AVolume::OnToggle(class USeqAct_Toggle* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.OnToggle");
+
+	AVolume_OnToggle_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.DisplayDebug
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// class AHUD*                    HUD                            (CPF_Parm)
+// float                          out_YL                         (CPF_Parm, CPF_OutParm)
+// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
+
+void AVolume::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.DisplayDebug");
+
+	AVolume_DisplayDebug_Params params;
+	params.HUD = HUD;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_YL != nullptr)
+		*out_YL = params.out_YL;
+	if (out_YPos != nullptr)
+		*out_YPos = params.out_YPos;
+}
+
+
+// Function Engine.Volume.PostBeginPlay
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void AVolume::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.PostBeginPlay");
+
+	AVolume_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.EncompassesPoint
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 Loc                            (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool AVolume::EncompassesPoint(const struct FVector& Loc)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.EncompassesPoint");
+
+	AVolume_EncompassesPoint_Params params;
+	params.Loc = Loc;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Volume.Encompasses
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool AVolume::Encompasses(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.Encompasses");
+
+	AVolume_Encompasses_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PostProcessVolume.OnToggle
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_Toggle*          Action                         (CPF_Parm)
+
+void APostProcessVolume::OnToggle(class USeqAct_Toggle* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PostProcessVolume.OnToggle");
+
+	APostProcessVolume_OnToggle_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.WorldInfo.PrintDebugInfo
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -7978,6 +8147,1631 @@ void AWorldInfo::EventPauseChanged()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.WorldInfo.EventPauseChanged");
 
 	AWorldInfo_EventPauseChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.GetPlayerIP
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineSubsystem::STATIC_GetPlayerIP(const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlayerIP");
+
+	UOnlineSubsystem_GetPlayerIP_Params params;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.ShowRestrictionMessage
+// (FUNC_Public)
+// Parameters:
+// int                            ControllerId                   (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::ShowRestrictionMessage(int ControllerId, TEnumAsByte<EFeaturePrivilege> Privilege)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ShowRestrictionMessage");
+
+	UOnlineSubsystem_ShowRestrictionMessage_Params params;
+	params.ControllerId = ControllerId;
+	params.Privilege = Privilege;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.IsOriginalAppOwner
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::IsOriginalAppOwner()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsOriginalAppOwner");
+
+	UOnlineSubsystem_IsOriginalAppOwner_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.CanPlayersTextChat
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FUniqueNetId            TargetId                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::CanPlayersTextChat(const struct FUniqueNetId& PlayerID, const struct FUniqueNetId& TargetId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.CanPlayersTextChat");
+
+	UOnlineSubsystem_CanPlayersTextChat_Params params;
+	params.PlayerID = PlayerID;
+	params.TargetId = TargetId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.ShowHelpUI
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::ShowHelpUI(unsigned char LocalUserNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ShowHelpUI");
+
+	UOnlineSubsystem_ShowHelpUI_Params params;
+	params.LocalUserNum = LocalUserNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.ResetStats
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bResetAchievements             (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::ResetStats(bool bResetAchievements)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ResetStats");
+
+	UOnlineSubsystem_ResetStats_Params params;
+	params.bResetAchievements = bResetAchievements;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.FinishOnlineGameSession
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 ServerID                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::FinishOnlineGameSession(const struct FString& ServerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.FinishOnlineGameSession");
+
+	UOnlineSubsystem_FinishOnlineGameSession_Params params;
+	params.ServerID = ServerID;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.StartOnlineGameSession
+// (FUNC_Public)
+// Parameters:
+// struct FString                 ServerID                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::StartOnlineGameSession(const struct FString& ServerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StartOnlineGameSession");
+
+	UOnlineSubsystem_StartOnlineGameSession_Params params;
+	params.ServerID = ServerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate
+// (FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         PairingChangeDelegate          (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::ClearSystemUserControllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate");
+
+	UOnlineSubsystem_ClearSystemUserControllerPairingChangedDelegate_Params params;
+	params.PairingChangeDelegate = PairingChangeDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate
+// (FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         PairingChangeDelegate          (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::AddSystemUserControllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate");
+
+	UOnlineSubsystem_AddSystemUserControllerPairingChangedDelegate_Params params;
+	params.PairingChangeDelegate = PairingChangeDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// int                            NewLocalUserNum                (CPF_Parm)
+// int                            PreviousLocalUserNum           (CPF_Parm)
+
+void UOnlineSubsystem::OnSystemUserControllerPairingChanged(int NewLocalUserNum, int PreviousLocalUserNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged");
+
+	UOnlineSubsystem_OnSystemUserControllerPairingChanged_Params params;
+	params.NewLocalUserNum = NewLocalUserNum;
+	params.PreviousLocalUserNum = PreviousLocalUserNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.IsAchievementUnlocked
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// int                            AchievementId                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::IsAchievementUnlocked(unsigned char LocalUserNum, int AchievementId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsAchievementUnlocked");
+
+	UOnlineSubsystem_IsAchievementUnlocked_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.AchievementId = AchievementId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.IsRichPresenceLocalized
+// (FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::IsRichPresenceLocalized()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsRichPresenceLocalized");
+
+	UOnlineSubsystem_IsRichPresenceLocalized_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.UpdateGameProgress
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  LocalPlayerNum                 (CPF_Parm)
+// float                          Progress                       (CPF_Parm)
+
+void UOnlineSubsystem::UpdateGameProgress(unsigned char LocalPlayerNum, float Progress)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UpdateGameProgress");
+
+	UOnlineSubsystem_UpdateGameProgress_Params params;
+	params.LocalPlayerNum = LocalPlayerNum;
+	params.Progress = Progress;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.ClearAccountPickerInput
+// (FUNC_Public)
+
+void UOnlineSubsystem::ClearAccountPickerInput()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearAccountPickerInput");
+
+	UOnlineSubsystem_ClearAccountPickerInput_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.LookForAccountPickerInput
+// (FUNC_Public)
+
+void UOnlineSubsystem::LookForAccountPickerInput()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.LookForAccountPickerInput");
+
+	UOnlineSubsystem_LookForAccountPickerInput_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.AddPlayerToSession
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  ControllerId                   (CPF_Parm)
+
+void UOnlineSubsystem::AddPlayerToSession(unsigned char ControllerId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.AddPlayerToSession");
+
+	UOnlineSubsystem_AddPlayerToSession_Params params;
+	params.ControllerId = ControllerId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.ClearPrimaryPlayer
+// (FUNC_Public)
+
+void UOnlineSubsystem::ClearPrimaryPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearPrimaryPlayer");
+
+	UOnlineSubsystem_ClearPrimaryPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.RemoveUserAssociation
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  ControllerId                   (CPF_Parm)
+
+void UOnlineSubsystem::RemoveUserAssociation(unsigned char ControllerId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.RemoveUserAssociation");
+
+	UOnlineSubsystem_RemoveUserAssociation_Params params;
+	params.ControllerId = ControllerId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.MapEnd
+// (FUNC_Public)
+
+void UOnlineSubsystem::MapEnd()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.MapEnd");
+
+	UOnlineSubsystem_MapEnd_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.MapStart
+// (FUNC_Public)
+
+void UOnlineSubsystem::MapStart()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.MapStart");
+
+	UOnlineSubsystem_MapStart_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.OnlineMatchEnd
+// (FUNC_Public)
+
+void UOnlineSubsystem::OnlineMatchEnd()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnlineMatchEnd");
+
+	UOnlineSubsystem_OnlineMatchEnd_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.OnlineMatchStart
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 MapName                        (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::OnlineMatchStart(const struct FString& MapName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnlineMatchStart");
+
+	UOnlineSubsystem_OnlineMatchStart_Params params;
+	params.MapName = MapName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSessionDifficultyLevel
+// (FUNC_Public)
+// Parameters:
+// int                            DifficultyLevel                (CPF_Parm)
+
+void UOnlineSubsystem::SetSessionDifficultyLevel(int DifficultyLevel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionDifficultyLevel");
+
+	UOnlineSubsystem_SetSessionDifficultyLevel_Params params;
+	params.DifficultyLevel = DifficultyLevel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSessionGameplayModeName
+// (FUNC_Public)
+// Parameters:
+// struct FName                   GameplayModeName               (CPF_Parm)
+
+void UOnlineSubsystem::SetSessionGameplayModeName(const struct FName& GameplayModeName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionGameplayModeName");
+
+	UOnlineSubsystem_SetSessionGameplayModeName_Params params;
+	params.GameplayModeName = GameplayModeName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSessionGameplayMode
+// (FUNC_Public)
+// Parameters:
+// int                            GameplayMode                   (CPF_Parm)
+
+void UOnlineSubsystem::SetSessionGameplayMode(int GameplayMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionGameplayMode");
+
+	UOnlineSubsystem_SetSessionGameplayMode_Params params;
+	params.GameplayMode = GameplayMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.PrintDebugInfo
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UDebugDrawer*            Drawer                         (CPF_Parm)
+
+void UOnlineSubsystem::PrintDebugInfo(class UDebugDrawer* Drawer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.PrintDebugInfo");
+
+	UOnlineSubsystem_PrintDebugInfo_Params params;
+	params.Drawer = Drawer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.GetOnlinePlatformFromName
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 PlatformName                   (CPF_Parm, CPF_NeedCtorLink)
+// TEnumAsByte<EOnlinePlatform>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+TEnumAsByte<EOnlinePlatform> UOnlineSubsystem::STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetOnlinePlatformFromName");
+
+	UOnlineSubsystem_GetOnlinePlatformFromName_Params params;
+	params.PlatformName = PlatformName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.GetPlatformName
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// TEnumAsByte<EOnlinePlatform>   PlatformType                   (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineSubsystem::STATIC_GetPlatformName(TEnumAsByte<EOnlinePlatform> PlatformType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlatformName");
+
+	UOnlineSubsystem_GetPlatformName_Params params;
+	params.PlatformType = PlatformType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.IsEnabled
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::IsEnabled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsEnabled");
+
+	UOnlineSubsystem_IsEnabled_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetPlayedWith
+// (FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
+
+void UOnlineSubsystem::SetPlayedWith(const struct FUniqueNetId& PlayerNetId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayedWith");
+
+	UOnlineSubsystem_SetPlayedWith_Params params;
+	params.PlayerNetId = PlayerNetId;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.ReadOnlineAvatar
+// (FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
+// TEnumAsByte<EAvatarSize>       Size                           (CPF_Parm)
+// struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EAvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ReadOnlineAvatar");
+
+	UOnlineSubsystem_ReadOnlineAvatar_Params params;
+	params.PlayerNetId = PlayerNetId;
+	params.Size = Size;
+	params.ReadOnlineAvatarCompleteDelegate = ReadOnlineAvatarCompleteDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
+// class UTexture*                Avatar                         (CPF_Parm)
+// struct FString                 OnlinePlayerName               (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::OnReadOnlineAvatarComplete(const struct FUniqueNetId& PlayerNetId, class UTexture* Avatar, const struct FString& OnlinePlayerName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete");
+
+	UOnlineSubsystem_OnReadOnlineAvatarComplete_Params params;
+	params.PlayerNetId = PlayerNetId;
+	params.Avatar = Avatar;
+	params.OnlinePlayerName = OnlinePlayerName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.SetDebugSpewLevel
+// (FUNC_Public)
+// Parameters:
+// int                            DebugSpewLevel                 (CPF_Parm)
+
+void UOnlineSubsystem::SetDebugSpewLevel(int DebugSpewLevel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetDebugSpewLevel");
+
+	UOnlineSubsystem_SetDebugSpewLevel_Params params;
+	params.DebugSpewLevel = DebugSpewLevel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.DumpVoiceRegistration
+// (FUNC_Public)
+
+void UOnlineSubsystem::DumpVoiceRegistration()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpVoiceRegistration");
+
+	UOnlineSubsystem_DumpVoiceRegistration_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.DumpSessionState
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void UOnlineSubsystem::DumpSessionState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpSessionState");
+
+	UOnlineSubsystem_DumpSessionState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.DumpGameSettings
+// (FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UOnlineGameSettings*     GameSettings                   (CPF_Const, CPF_Parm)
+
+void UOnlineSubsystem::STATIC_DumpGameSettings(class UOnlineGameSettings* GameSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpGameSettings");
+
+	UOnlineSubsystem_DumpGameSettings_Params params;
+	params.GameSettings = GameSettings;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.GetNumSupportedLogins
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineSubsystem::STATIC_GetNumSupportedLogins()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetNumSupportedLogins");
+
+	UOnlineSubsystem_GetNumSupportedLogins_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.GetBuildUniqueId
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UOnlineSubsystem::GetBuildUniqueId()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetBuildUniqueId");
+
+	UOnlineSubsystem_GetBuildUniqueId_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex
+// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// int                            UserIndex                      (CPF_Parm)
+// struct FUniqueNetId            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FUniqueNetId UOnlineSubsystem::GetPlayerUniqueNetIdFromIndex(int UserIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex");
+
+	UOnlineSubsystem_GetPlayerUniqueNetIdFromIndex_Params params;
+	params.UserIndex = UserIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.StringToUniqueLobbyId
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 UniqueNetIdString              (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueLobbyId          out_UniqueId                   (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::STATIC_StringToUniqueLobbyId(const struct FString& UniqueNetIdString, struct FUniqueLobbyId* out_UniqueId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StringToUniqueLobbyId");
+
+	UOnlineSubsystem_StringToUniqueLobbyId_Params params;
+	params.UniqueNetIdString = UniqueNetIdString;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_UniqueId != nullptr)
+		*out_UniqueId = params.out_UniqueId;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.UniqueLobbyIdToString
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FUniqueLobbyId          IdToConvert                    (CPF_Const, CPF_Parm, CPF_OutParm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineSubsystem::STATIC_UniqueLobbyIdToString(struct FUniqueLobbyId* IdToConvert)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UniqueLobbyIdToString");
+
+	UOnlineSubsystem_UniqueLobbyIdToString_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (IdToConvert != nullptr)
+		*IdToConvert = params.IdToConvert;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.StringToUniqueNetId
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 UniqueNetIdString              (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            out_UniqueId                   (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::STATIC_StringToUniqueNetId(const struct FString& UniqueNetIdString, struct FUniqueNetId* out_UniqueId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StringToUniqueNetId");
+
+	UOnlineSubsystem_StringToUniqueNetId_Params params;
+	params.UniqueNetIdString = UniqueNetIdString;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_UniqueId != nullptr)
+		*out_UniqueId = params.out_UniqueId;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.UniqueNetIdToString
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FUniqueNetId            IdToConvert                    (CPF_Const, CPF_Parm, CPF_OutParm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UOnlineSubsystem::STATIC_UniqueNetIdToString(struct FUniqueNetId* IdToConvert)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UniqueNetIdToString");
+
+	UOnlineSubsystem_UniqueNetIdToString_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (IdToConvert != nullptr)
+		*IdToConvert = params.IdToConvert;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.GetNamedInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   InterfaceName                  (CPF_Parm)
+// class UObject*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UObject* UOnlineSubsystem::GetNamedInterface(const struct FName& InterfaceName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetNamedInterface");
+
+	UOnlineSubsystem_GetNamedInterface_Params params;
+	params.InterfaceName = InterfaceName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetNamedInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   InterfaceName                  (CPF_Parm)
+// class UObject*                 NewInterface                   (CPF_Parm)
+
+void UOnlineSubsystem::SetNamedInterface(const struct FName& InterfaceName, class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetNamedInterface");
+
+	UOnlineSubsystem_SetNamedInterface_Params params;
+	params.InterfaceName = InterfaceName;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.SetCommunityContentInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InCommunityContentInterface    (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetCommunityContentInterface(class UObject* InCommunityContentInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetCommunityContentInterface");
+
+	UOnlineSubsystem_SetCommunityContentInterface_Params params;
+	params.InCommunityContentInterface = InCommunityContentInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetGameDVRInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InGameDVRInterface             (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetGameDVRInterface(class UObject* InGameDVRInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetGameDVRInterface");
+
+	UOnlineSubsystem_SetGameDVRInterface_Params params;
+	params.InGameDVRInterface = InGameDVRInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSharedCloudInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InCloudInterface               (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetSharedCloudInterface(class UObject* InCloudInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSharedCloudInterface");
+
+	UOnlineSubsystem_SetSharedCloudInterface_Params params;
+	params.InCloudInterface = InCloudInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetUserCloudInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InCloudInterface               (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetUserCloudInterface(class UObject* InCloudInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetUserCloudInterface");
+
+	UOnlineSubsystem_SetUserCloudInterface_Params params;
+	params.InCloudInterface = InCloudInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetAuthInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InAuthInterface                (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetAuthInterface(class UObject* InAuthInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetAuthInterface");
+
+	UOnlineSubsystem_SetAuthInterface_Params params;
+	params.InAuthInterface = InAuthInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSocialInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InSocialInterface              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetSocialInterface(class UObject* InSocialInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSocialInterface");
+
+	UOnlineSubsystem_SetSocialInterface_Params params;
+	params.InSocialInterface = InSocialInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetTitleFileCacheInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetTitleFileCacheInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetTitleFileCacheInterface");
+
+	UOnlineSubsystem_SetTitleFileCacheInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetTitleFileInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetTitleFileInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetTitleFileInterface");
+
+	UOnlineSubsystem_SetTitleFileInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetPartyChatInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetPartyChatInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPartyChatInterface");
+
+	UOnlineSubsystem_SetPartyChatInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetNewsInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetNewsInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetNewsInterface");
+
+	UOnlineSubsystem_SetNewsInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetStatsInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetStatsInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetStatsInterface");
+
+	UOnlineSubsystem_SetStatsInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetVoiceInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetVoiceInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetVoiceInterface");
+
+	UOnlineSubsystem_SetVoiceInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetContentInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetContentInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetContentInterface");
+
+	UOnlineSubsystem_SetContentInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetLobbyInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 InInterface                    (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetLobbyInterface(class UObject* InInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetLobbyInterface");
+
+	UOnlineSubsystem_SetLobbyInterface_Params params;
+	params.InInterface = InInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetPurchaseInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetPurchaseInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPurchaseInterface");
+
+	UOnlineSubsystem_SetPurchaseInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetGameInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetGameInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetGameInterface");
+
+	UOnlineSubsystem_SetGameInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetSystemInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetSystemInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSystemInterface");
+
+	UOnlineSubsystem_SetSystemInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetMarketplaceInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetMarketplaceInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetMarketplaceInterface");
+
+	UOnlineSubsystem_SetMarketplaceInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetPlayerInterfaceEx
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetPlayerInterfaceEx(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayerInterfaceEx");
+
+	UOnlineSubsystem_SetPlayerInterfaceEx_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetPlayerInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetPlayerInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayerInterface");
+
+	UOnlineSubsystem_SetPlayerInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.SetAccountInterface
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UObject*                 NewInterface                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::SetAccountInterface(class UObject* NewInterface)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetAccountInterface");
+
+	UOnlineSubsystem_SetAccountInterface_Params params;
+	params.NewInterface = NewInterface;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.Exit
+// (FUNC_Native, FUNC_Event, FUNC_Public)
+
+void UOnlineSubsystem::Exit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.Exit");
+
+	UOnlineSubsystem_Exit_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.PostInit
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::PostInit()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.PostInit");
+
+	UOnlineSubsystem_PostInit_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.Init
+// (FUNC_Native, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystem::Init()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.Init");
+
+	UOnlineSubsystem_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.EncodeBase64
+// (FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 Text                           (CPF_Parm, CPF_NeedCtorLink)
+// TArray<unsigned char>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+TArray<unsigned char> UOnlineSubsystem::STATIC_EncodeBase64(const struct FString& Text)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.EncodeBase64");
+
+	UOnlineSubsystem_EncodeBase64_Params params;
+	params.Text = Text;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.DecodeBase64
+// (FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 Text                           (CPF_Parm, CPF_NeedCtorLink)
+// TArray<unsigned char>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+TArray<unsigned char> UOnlineSubsystem::STATIC_DecodeBase64(const struct FString& Text)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DecodeBase64");
+
+	UOnlineSubsystem_DecodeBase64_Params params;
+	params.Text = Text;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
+// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystem::GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel");
+
+	UOnlineSubsystem_GetFeaturePrivilegeLevel_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.Privilege = Privilege;
+	params.Callback = Callback;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> Level                          (CPF_Parm)
+
+void UOnlineSubsystem::FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated");
+
+	UOnlineSubsystem_FeaturePrivilegeLevelUpdated_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.Privilege = Privilege;
+	params.Level = Level;
 
 	auto flags = fn->FunctionFlags;
 
@@ -9706,155 +11500,6 @@ void UISetParameter::SetNameParameter(const struct FName& Key, const struct FNam
 }
 
 
-// Function Engine.Volume.ProcessActorSetVolume
-// (FUNC_Event, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-
-void AVolume::ProcessActorSetVolume(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.ProcessActorSetVolume");
-
-	AVolume_ProcessActorSetVolume_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Volume.CollisionChanged
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void AVolume::CollisionChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.CollisionChanged");
-
-	AVolume_CollisionChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Volume.OnToggle
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_Toggle*          Action                         (CPF_Parm)
-
-void AVolume::OnToggle(class USeqAct_Toggle* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.OnToggle");
-
-	AVolume_OnToggle_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Volume.DisplayDebug
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class AHUD*                    HUD                            (CPF_Parm)
-// float                          out_YL                         (CPF_Parm, CPF_OutParm)
-// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
-
-void AVolume::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.DisplayDebug");
-
-	AVolume_DisplayDebug_Params params;
-	params.HUD = HUD;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_YL != nullptr)
-		*out_YL = params.out_YL;
-	if (out_YPos != nullptr)
-		*out_YPos = params.out_YPos;
-}
-
-
-// Function Engine.Volume.PostBeginPlay
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void AVolume::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.PostBeginPlay");
-
-	AVolume_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Volume.EncompassesPoint
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 Loc                            (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool AVolume::EncompassesPoint(const struct FVector& Loc)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.EncompassesPoint");
-
-	AVolume_EncompassesPoint_Params params;
-	params.Loc = Loc;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Volume.Encompasses
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool AVolume::Encompasses(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.Encompasses");
-
-	AVolume_Encompasses_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
 // Function Engine.BlockingVolume.OnToggle
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -10518,26 +12163,6 @@ void ALadderVolume::PostBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.LadderVolume.PostBeginPlay");
 
 	ALadderVolume_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.PostProcessVolume.OnToggle
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_Toggle*          Action                         (CPF_Parm)
-
-void APostProcessVolume::OnToggle(class USeqAct_Toggle* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.PostProcessVolume.OnToggle");
-
-	APostProcessVolume_OnToggle_Params params;
-	params.Action = Action;
 
 	auto flags = fn->FunctionFlags;
 
@@ -21014,6 +22639,219 @@ void ANavigationPoint::GetBoundingCylinder(float* CollisionRadius, float* Collis
 }
 
 
+// Function Engine.Pylon.CanReachPylon
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class APylon*                  DestPylon                      (CPF_Parm)
+// class AController*             C                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APylon::CanReachPylon(class APylon* DestPylon, class AController* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.CanReachPylon");
+
+	APylon_CanReachPylon_Params params;
+	params.DestPylon = DestPylon;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pylon.OnToggle
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USeqAct_Toggle*          Action                         (CPF_Parm)
+
+void APylon::OnToggle(class USeqAct_Toggle* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.OnToggle");
+
+	APylon_OnToggle_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.IsEnabled
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APylon::IsEnabled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.IsEnabled");
+
+	APylon_IsEnabled_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pylon.SetEnabled
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           bEnabled                       (CPF_Parm)
+
+void APylon::SetEnabled(bool bEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.SetEnabled");
+
+	APylon_SetEnabled_Params params;
+	params.bEnabled = bEnabled;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.PostBeginPlay
+// (FUNC_Defined, FUNC_Public)
+
+void APylon::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.PostBeginPlay");
+
+	APylon_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.NotifyPathChanged
+// (FUNC_Event, FUNC_Public)
+
+void APylon::NotifyPathChanged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.NotifyPathChanged");
+
+	APylon_NotifyPathChanged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.VerifyTopLevelConnections
+// (FUNC_Defined, FUNC_Public)
+
+void APylon::VerifyTopLevelConnections()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.VerifyTopLevelConnections");
+
+	APylon_VerifyTopLevelConnections_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.GetTestPathExtent
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector APylon::GetTestPathExtent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.GetTestPathExtent");
+
+	APylon_GetTestPathExtent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pylon.FlushDynamicEdges
+// (FUNC_Native, FUNC_Public)
+
+void APylon::FlushDynamicEdges()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.FlushDynamicEdges");
+
+	APylon_FlushDynamicEdges_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles
+// (FUNC_Native, FUNC_Public)
+
+void APylon::UpdateMeshForPreExistingNavMeshObstacles()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles");
+
+	APylon_UpdateMeshForPreExistingNavMeshObstacles_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pylon.OnPylonStatusChange
+// (FUNC_Native, FUNC_Public)
+
+void APylon::OnPylonStatusChange()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.OnPylonStatusChange");
+
+	APylon_OnPylonStatusChange_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.CoverLink.GetDebugAbbrev
 // (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 // Parameters:
@@ -22867,219 +24705,6 @@ bool APortalMarker::CanTeleport(class AActor* A)
 }
 
 
-// Function Engine.Pylon.CanReachPylon
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class APylon*                  DestPylon                      (CPF_Parm)
-// class AController*             C                              (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APylon::CanReachPylon(class APylon* DestPylon, class AController* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.CanReachPylon");
-
-	APylon_CanReachPylon_Params params;
-	params.DestPylon = DestPylon;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pylon.OnToggle
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class USeqAct_Toggle*          Action                         (CPF_Parm)
-
-void APylon::OnToggle(class USeqAct_Toggle* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.OnToggle");
-
-	APylon_OnToggle_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.IsEnabled
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APylon::IsEnabled()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.IsEnabled");
-
-	APylon_IsEnabled_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pylon.SetEnabled
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           bEnabled                       (CPF_Parm)
-
-void APylon::SetEnabled(bool bEnabled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.SetEnabled");
-
-	APylon_SetEnabled_Params params;
-	params.bEnabled = bEnabled;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.PostBeginPlay
-// (FUNC_Defined, FUNC_Public)
-
-void APylon::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.PostBeginPlay");
-
-	APylon_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.NotifyPathChanged
-// (FUNC_Event, FUNC_Public)
-
-void APylon::NotifyPathChanged()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.NotifyPathChanged");
-
-	APylon_NotifyPathChanged_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.VerifyTopLevelConnections
-// (FUNC_Defined, FUNC_Public)
-
-void APylon::VerifyTopLevelConnections()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.VerifyTopLevelConnections");
-
-	APylon_VerifyTopLevelConnections_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.GetTestPathExtent
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector APylon::GetTestPathExtent()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.GetTestPathExtent");
-
-	APylon_GetTestPathExtent_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pylon.FlushDynamicEdges
-// (FUNC_Native, FUNC_Public)
-
-void APylon::FlushDynamicEdges()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.FlushDynamicEdges");
-
-	APylon_FlushDynamicEdges_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles
-// (FUNC_Native, FUNC_Public)
-
-void APylon::UpdateMeshForPreExistingNavMeshObstacles()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles");
-
-	APylon_UpdateMeshForPreExistingNavMeshObstacles_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pylon.OnPylonStatusChange
-// (FUNC_Native, FUNC_Public)
-
-void APylon::OnPylonStatusChange()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pylon.OnPylonStatusChange");
-
-	APylon_OnPylonStatusChange_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function Engine.AISwitchablePylon.IsEnabled
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
@@ -24674,6 +26299,217 @@ void UHeightFogComponent::SetEnabled(bool bSetEnabled)
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.HeightFogComponent.SetEnabled");
 
 	UHeightFogComponent_SetEnabled_Params params;
+	params.bSetEnabled = bSetEnabled;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.OnUpdatePropertyLightColor
+// (FUNC_Defined, FUNC_Public)
+
+void ULightComponent::OnUpdatePropertyLightColor()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyLightColor");
+
+	ULightComponent_OnUpdatePropertyLightColor_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.OnUpdatePropertyBrightness
+// (FUNC_Defined, FUNC_Public)
+
+void ULightComponent::OnUpdatePropertyBrightness()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBrightness");
+
+	ULightComponent_OnUpdatePropertyBrightness_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness
+// (FUNC_Defined, FUNC_Public)
+
+void ULightComponent::OnUpdatePropertyOcclusionMaskDarkness()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness");
+
+	ULightComponent_OnUpdatePropertyOcclusionMaskDarkness_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.OnUpdatePropertyBloomTint
+// (FUNC_Defined, FUNC_Public)
+
+void ULightComponent::OnUpdatePropertyBloomTint()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBloomTint");
+
+	ULightComponent_OnUpdatePropertyBloomTint_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.OnUpdatePropertyBloomScale
+// (FUNC_Defined, FUNC_Public)
+
+void ULightComponent::OnUpdatePropertyBloomScale()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBloomScale");
+
+	ULightComponent_OnUpdatePropertyBloomScale_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.UpdateLightShaftParameters
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void ULightComponent::UpdateLightShaftParameters()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.UpdateLightShaftParameters");
+
+	ULightComponent_UpdateLightShaftParameters_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.UpdateColorAndBrightness
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void ULightComponent::UpdateColorAndBrightness()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.UpdateColorAndBrightness");
+
+	ULightComponent_UpdateColorAndBrightness_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.GetDirection
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector ULightComponent::GetDirection()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.GetDirection");
+
+	ULightComponent_GetDirection_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.LightComponent.GetOrigin
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector ULightComponent::GetOrigin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.GetOrigin");
+
+	ULightComponent_GetOrigin_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.LightComponent.SetLightProperties
+// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          NewBrightness                  (CPF_OptionalParm, CPF_Parm)
+// struct FColor                  NewLightColor                  (CPF_OptionalParm, CPF_Parm)
+// class ULightFunction*          NewLightFunction               (CPF_OptionalParm, CPF_Parm)
+
+void ULightComponent::SetLightProperties(float NewBrightness, const struct FColor& NewLightColor, class ULightFunction* NewLightFunction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.SetLightProperties");
+
+	ULightComponent_SetLightProperties_Params params;
+	params.NewBrightness = NewBrightness;
+	params.NewLightColor = NewLightColor;
+	params.NewLightFunction = NewLightFunction;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.LightComponent.SetEnabled
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           bSetEnabled                    (CPF_Parm)
+
+void ULightComponent::SetEnabled(bool bSetEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.SetEnabled");
+
+	ULightComponent_SetEnabled_Params params;
 	params.bSetEnabled = bSetEnabled;
 
 	auto flags = fn->FunctionFlags;
@@ -46728,6 +48564,1368 @@ void UOnlineMatchmakingStats::StartTimer(struct FMMStats_Timer* Timer)
 }
 
 
+// Function Engine.Settings.UpdateFromURL
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 URL                            (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// class AGameInfo*               Game                           (CPF_Parm)
+
+void USettings::UpdateFromURL(class AGameInfo* Game, struct FString* URL)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateFromURL");
+
+	USettings_UpdateFromURL_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (URL != nullptr)
+		*URL = params.URL;
+}
+
+
+// Function Engine.Settings.BuildURL
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::BuildURL(struct FString* URL)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.BuildURL");
+
+	USettings_BuildURL_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (URL != nullptr)
+		*URL = params.URL;
+}
+
+
+// Function Engine.Settings.AppendContextsToURL
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::AppendContextsToURL(struct FString* URL)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendContextsToURL");
+
+	USettings_AppendContextsToURL_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (URL != nullptr)
+		*URL = params.URL;
+}
+
+
+// Function Engine.Settings.AppendPropertiesToURL
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::AppendPropertiesToURL(struct FString* URL)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendPropertiesToURL");
+
+	USettings_AppendPropertiesToURL_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (URL != nullptr)
+		*URL = params.URL;
+}
+
+
+// Function Engine.Settings.AppendDataBindingsToURL
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::AppendDataBindingsToURL(struct FString* URL)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendDataBindingsToURL");
+
+	USettings_AppendDataBindingsToURL_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (URL != nullptr)
+		*URL = params.URL;
+}
+
+
+// Function Engine.Settings.GetQoSAdvertisedStringSettings
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FLocalizedStringSetting> QoSSettings                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::GetQoSAdvertisedStringSettings(TArray<struct FLocalizedStringSetting>* QoSSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetQoSAdvertisedStringSettings");
+
+	USettings_GetQoSAdvertisedStringSettings_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (QoSSettings != nullptr)
+		*QoSSettings = params.QoSSettings;
+}
+
+
+// Function Engine.Settings.GetQoSAdvertisedProperties
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FSettingsProperty> QoSProps                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::GetQoSAdvertisedProperties(TArray<struct FSettingsProperty>* QoSProps)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetQoSAdvertisedProperties");
+
+	USettings_GetQoSAdvertisedProperties_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (QoSProps != nullptr)
+		*QoSProps = params.QoSProps;
+}
+
+
+// Function Engine.Settings.GetRangedPropertyValue
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// float                          OutValue                       (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetRangedPropertyValue(int PropertyId, float* OutValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetRangedPropertyValue");
+
+	USettings_GetRangedPropertyValue_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutValue != nullptr)
+		*OutValue = params.OutValue;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetRangedPropertyValue
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// float                          NewValue                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::SetRangedPropertyValue(int PropertyId, float NewValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetRangedPropertyValue");
+
+	USettings_SetRangedPropertyValue_Params params;
+	params.PropertyId = PropertyId;
+	params.NewValue = NewValue;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyRange
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// float                          OutMinValue                    (CPF_Parm, CPF_OutParm)
+// float                          OutMaxValue                    (CPF_Parm, CPF_OutParm)
+// float                          RangeIncrement                 (CPF_Parm, CPF_OutParm)
+// unsigned char                  bFormatAsInt                   (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyRange");
+
+	USettings_GetPropertyRange_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutMinValue != nullptr)
+		*OutMinValue = params.OutMinValue;
+	if (OutMaxValue != nullptr)
+		*OutMaxValue = params.OutMaxValue;
+	if (RangeIncrement != nullptr)
+		*RangeIncrement = params.RangeIncrement;
+	if (bFormatAsInt != nullptr)
+		*bFormatAsInt = params.bFormatAsInt;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyMappingType
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// TEnumAsByte<EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyMappingType");
+
+	USettings_GetPropertyMappingType_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutType != nullptr)
+		*OutType = params.OutType;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.HasStringSetting
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            SettingId                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::HasStringSetting(int SettingId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.HasStringSetting");
+
+	USettings_HasStringSetting_Params params;
+	params.SettingId = SettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.HasProperty
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::HasProperty(int PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.HasProperty");
+
+	USettings_HasProperty_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.UpdateProperties
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FSettingsProperty> Props                          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           bShouldAddIfMissing            (CPF_OptionalParm, CPF_Parm)
+
+void USettings::UpdateProperties(bool bShouldAddIfMissing, TArray<struct FSettingsProperty>* Props)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateProperties");
+
+	USettings_UpdateProperties_Params params;
+	params.bShouldAddIfMissing = bShouldAddIfMissing;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Props != nullptr)
+		*Props = params.Props;
+}
+
+
+// Function Engine.Settings.UpdateStringSettings
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FLocalizedStringSetting> Settings                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           bShouldAddIfMissing            (CPF_OptionalParm, CPF_Parm)
+
+void USettings::UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateStringSettings");
+
+	USettings_UpdateStringSettings_Params params;
+	params.bShouldAddIfMissing = bShouldAddIfMissing;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Settings != nullptr)
+		*Settings = params.Settings;
+}
+
+
+// Function Engine.Settings.GetPropertyType
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// TEnumAsByte<ESettingsDataType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+TEnumAsByte<ESettingsDataType> USettings::GetPropertyType(int PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyType");
+
+	USettings_GetPropertyType_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyValueId
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// int                            ValueId                        (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetPropertyValueId(int PropertyId, int* ValueId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyValueId");
+
+	USettings_GetPropertyValueId_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ValueId != nullptr)
+		*ValueId = params.ValueId;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetPropertyValueId
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// int                            ValueId                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::SetPropertyValueId(int PropertyId, int ValueId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetPropertyValueId");
+
+	USettings_SetPropertyValueId_Params params;
+	params.PropertyId = PropertyId;
+	params.ValueId = ValueId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringProperty
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// struct FString                 Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetStringProperty(int PropertyId, struct FString* Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringProperty");
+
+	USettings_GetStringProperty_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Value != nullptr)
+		*Value = params.Value;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetStringProperty
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
+
+void USettings::SetStringProperty(int PropertyId, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringProperty");
+
+	USettings_SetStringProperty_Params params;
+	params.PropertyId = PropertyId;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Settings.GetIntProperty
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// int                            Value                          (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetIntProperty(int PropertyId, int* Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetIntProperty");
+
+	USettings_GetIntProperty_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Value != nullptr)
+		*Value = params.Value;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetIntProperty
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// int                            Value                          (CPF_Parm)
+
+void USettings::SetIntProperty(int PropertyId, int Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetIntProperty");
+
+	USettings_SetIntProperty_Params params;
+	params.PropertyId = PropertyId;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Settings.GetFloatProperty
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// float                          Value                          (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetFloatProperty(int PropertyId, float* Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetFloatProperty");
+
+	USettings_GetFloatProperty_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Value != nullptr)
+		*Value = params.Value;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetFloatProperty
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// float                          Value                          (CPF_Parm)
+
+void USettings::SetFloatProperty(int PropertyId, float Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetFloatProperty");
+
+	USettings_SetFloatProperty_Params params;
+	params.PropertyId = PropertyId;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Settings.SetPropertyFromStringByName
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   PropertyName                   (CPF_Parm)
+// struct FString                 NewValue                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetPropertyFromStringByName");
+
+	USettings_SetPropertyFromStringByName_Params params;
+	params.PropertyName = PropertyName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (NewValue != nullptr)
+		*NewValue = params.NewValue;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyAsStringByName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   PropertyName                   (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USettings::GetPropertyAsStringByName(const struct FName& PropertyName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyAsStringByName");
+
+	USettings_GetPropertyAsStringByName_Params params;
+	params.PropertyName = PropertyName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyAsString
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USettings::GetPropertyAsString(int PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyAsString");
+
+	USettings_GetPropertyAsString_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyColumnHeader
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USettings::GetPropertyColumnHeader(int PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyColumnHeader");
+
+	USettings_GetPropertyColumnHeader_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            PropertyId                     (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName USettings::GetPropertyName(int PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyName");
+
+	USettings_GetPropertyName_Params params;
+	params.PropertyId = PropertyId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetPropertyId
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   PropertyName                   (CPF_Parm)
+// int                            PropertyId                     (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetPropertyId(const struct FName& PropertyName, int* PropertyId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyId");
+
+	USettings_GetPropertyId_Params params;
+	params.PropertyName = PropertyName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (PropertyId != nullptr)
+		*PropertyId = params.PropertyId;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetStringSettingValueFromStringByName
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   StringSettingName              (CPF_Parm)
+// struct FString                 NewValue                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValueFromStringByName");
+
+	USettings_SetStringSettingValueFromStringByName_Params params;
+	params.StringSettingName = StringSettingName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (NewValue != nullptr)
+		*NewValue = params.NewValue;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingValueNameByName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   StringSettingName              (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName USettings::GetStringSettingValueNameByName(const struct FName& StringSettingName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueNameByName");
+
+	USettings_GetStringSettingValueNameByName_Params params;
+	params.StringSettingName = StringSettingName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingValueName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// int                            ValueIndex                     (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName USettings::GetStringSettingValueName(int StringSettingId, int ValueIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueName");
+
+	USettings_GetStringSettingValueName_Params params;
+	params.StringSettingId = StringSettingId;
+	params.ValueIndex = ValueIndex;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.IsWildcardStringSetting
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::IsWildcardStringSetting(int StringSettingId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.IsWildcardStringSetting");
+
+	USettings_IsWildcardStringSetting_Params params;
+	params.StringSettingId = StringSettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingColumnHeader
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString USettings::GetStringSettingColumnHeader(int StringSettingId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingColumnHeader");
+
+	USettings_GetStringSettingColumnHeader_Params params;
+	params.StringSettingId = StringSettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName USettings::GetStringSettingName(int StringSettingId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingName");
+
+	USettings_GetStringSettingName_Params params;
+	params.StringSettingId = StringSettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingId
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   StringSettingName              (CPF_Parm)
+// int                            StringSettingId                (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetStringSettingId(const struct FName& StringSettingName, int* StringSettingId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingId");
+
+	USettings_GetStringSettingId_Params params;
+	params.StringSettingName = StringSettingName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (StringSettingId != nullptr)
+		*StringSettingId = params.StringSettingId;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingValueByName
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FName                   StringSettingName              (CPF_Parm)
+// int                            ValueIndex                     (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetStringSettingValueByName(const struct FName& StringSettingName, int* ValueIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueByName");
+
+	USettings_GetStringSettingValueByName_Params params;
+	params.StringSettingName = StringSettingName;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ValueIndex != nullptr)
+		*ValueIndex = params.ValueIndex;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetStringSettingValueByName
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   StringSettingName              (CPF_Parm)
+// int                            ValueIndex                     (CPF_Parm)
+// bool                           bShouldAutoAdd                 (CPF_Parm)
+
+void USettings::SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, bool bShouldAutoAdd)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValueByName");
+
+	USettings_SetStringSettingValueByName_Params params;
+	params.StringSettingName = StringSettingName;
+	params.ValueIndex = ValueIndex;
+	params.bShouldAutoAdd = bShouldAutoAdd;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Settings.GetStringSettingValueNames
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// TArray<struct FIdToStringMapping> Values                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetStringSettingValueNames(int StringSettingId, TArray<struct FIdToStringMapping>* Values)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueNames");
+
+	USettings_GetStringSettingValueNames_Params params;
+	params.StringSettingId = StringSettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Values != nullptr)
+		*Values = params.Values;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.IncrementStringSettingValue
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// int                            Direction                      (CPF_Parm)
+// bool                           bShouldWrap                    (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::IncrementStringSettingValue(int StringSettingId, int Direction, bool bShouldWrap)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.IncrementStringSettingValue");
+
+	USettings_IncrementStringSettingValue_Params params;
+	params.StringSettingId = StringSettingId;
+	params.Direction = Direction;
+	params.bShouldWrap = bShouldWrap;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetStringSettingValue
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// int                            ValueIndex                     (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool USettings::GetStringSettingValue(int StringSettingId, int* ValueIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValue");
+
+	USettings_GetStringSettingValue_Params params;
+	params.StringSettingId = StringSettingId;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ValueIndex != nullptr)
+		*ValueIndex = params.ValueIndex;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.SetStringSettingValue
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            StringSettingId                (CPF_Parm)
+// int                            ValueIndex                     (CPF_Parm)
+// bool                           bShouldAutoAdd                 (CPF_OptionalParm, CPF_Parm)
+
+void USettings::SetStringSettingValue(int StringSettingId, int ValueIndex, bool bShouldAutoAdd)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValue");
+
+	USettings_SetStringSettingValue_Params params;
+	params.StringSettingId = StringSettingId;
+	params.ValueIndex = ValueIndex;
+	params.bShouldAutoAdd = bShouldAutoAdd;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Settings.GetSettingsDataDateTime
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// int                            OutInt1                        (CPF_Parm, CPF_OutParm)
+// int                            OutInt2                        (CPF_Parm, CPF_OutParm)
+
+void USettings::STATIC_GetSettingsDataDateTime(struct FSettingsData* Data, int* OutInt1, int* OutInt2)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataDateTime");
+
+	USettings_GetSettingsDataDateTime_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+	if (OutInt1 != nullptr)
+		*OutInt1 = params.OutInt1;
+	if (OutInt2 != nullptr)
+		*OutInt2 = params.OutInt2;
+}
+
+
+// Function Engine.Settings.GetSettingsDataBlob
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// TArray<unsigned char>          OutBlob                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::STATIC_GetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* OutBlob)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataBlob");
+
+	USettings_GetSettingsDataBlob_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+	if (OutBlob != nullptr)
+		*OutBlob = params.OutBlob;
+}
+
+
+// Function Engine.Settings.GetSettingsDataInt
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int USettings::STATIC_GetSettingsDataInt(struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataInt");
+
+	USettings_GetSettingsDataInt_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.GetSettingsDataFloat
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float USettings::STATIC_GetSettingsDataFloat(struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataFloat");
+
+	USettings_GetSettingsDataFloat_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Settings.EmptySettingsData
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+
+void USettings::STATIC_EmptySettingsData(struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.EmptySettingsData");
+
+	USettings_EmptySettingsData_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function Engine.Settings.SetSettingsData
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// struct FSettingsData           Data2Copy                      (CPF_Parm, CPF_OutParm)
+
+void USettings::STATIC_SetSettingsData(struct FSettingsData* Data, struct FSettingsData* Data2Copy)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsData");
+
+	USettings_SetSettingsData_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+	if (Data2Copy != nullptr)
+		*Data2Copy = params.Data2Copy;
+}
+
+
+// Function Engine.Settings.SetSettingsDataBlob
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// TArray<unsigned char>          InBlob                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void USettings::STATIC_SetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* InBlob)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataBlob");
+
+	USettings_SetSettingsDataBlob_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+	if (InBlob != nullptr)
+		*InBlob = params.InBlob;
+}
+
+
+// Function Engine.Settings.SetSettingsDataDateTime
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// int                            InInt1                         (CPF_Parm)
+// int                            InInt2                         (CPF_Parm)
+
+void USettings::STATIC_SetSettingsDataDateTime(int InInt1, int InInt2, struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataDateTime");
+
+	USettings_SetSettingsDataDateTime_Params params;
+	params.InInt1 = InInt1;
+	params.InInt2 = InInt2;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function Engine.Settings.SetSettingsDataInt
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// int                            InInt                          (CPF_Parm)
+
+void USettings::STATIC_SetSettingsDataInt(int InInt, struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataInt");
+
+	USettings_SetSettingsDataInt_Params params;
+	params.InInt = InInt;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
+// Function Engine.Settings.SetSettingsDataFloat
+// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
+// float                          InFloat                        (CPF_Parm)
+
+void USettings::STATIC_SetSettingsDataFloat(float InFloat, struct FSettingsData* Data)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataFloat");
+
+	USettings_SetSettingsDataFloat_Params params;
+	params.InFloat = InFloat;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Data != nullptr)
+		*Data = params.Data;
+}
+
+
 // Function Engine.OnlinePlayerStorage.SetDefaultVersionNumber
 // (FUNC_Native, FUNC_Public)
 
@@ -48176,1631 +51374,6 @@ void UOnlineStatsWrite::OnStatsWriteComplete()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineStatsWrite.OnStatsWriteComplete");
 
 	UOnlineStatsWrite_OnStatsWriteComplete_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.GetPlayerIP
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineSubsystem::STATIC_GetPlayerIP(const struct FUniqueNetId& PlayerID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlayerIP");
-
-	UOnlineSubsystem_GetPlayerIP_Params params;
-	params.PlayerID = PlayerID;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.ShowRestrictionMessage
-// (FUNC_Public)
-// Parameters:
-// int                            ControllerId                   (CPF_Parm)
-// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::ShowRestrictionMessage(int ControllerId, TEnumAsByte<EFeaturePrivilege> Privilege)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ShowRestrictionMessage");
-
-	UOnlineSubsystem_ShowRestrictionMessage_Params params;
-	params.ControllerId = ControllerId;
-	params.Privilege = Privilege;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.IsOriginalAppOwner
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::IsOriginalAppOwner()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsOriginalAppOwner");
-
-	UOnlineSubsystem_IsOriginalAppOwner_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.CanPlayersTextChat
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerID                       (CPF_Parm)
-// struct FUniqueNetId            TargetId                       (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::CanPlayersTextChat(const struct FUniqueNetId& PlayerID, const struct FUniqueNetId& TargetId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.CanPlayersTextChat");
-
-	UOnlineSubsystem_CanPlayersTextChat_Params params;
-	params.PlayerID = PlayerID;
-	params.TargetId = TargetId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.ShowHelpUI
-// (FUNC_Public)
-// Parameters:
-// unsigned char                  LocalUserNum                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::ShowHelpUI(unsigned char LocalUserNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ShowHelpUI");
-
-	UOnlineSubsystem_ShowHelpUI_Params params;
-	params.LocalUserNum = LocalUserNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.ResetStats
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bResetAchievements             (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::ResetStats(bool bResetAchievements)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ResetStats");
-
-	UOnlineSubsystem_ResetStats_Params params;
-	params.bResetAchievements = bResetAchievements;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.FinishOnlineGameSession
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FString                 ServerID                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::FinishOnlineGameSession(const struct FString& ServerID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.FinishOnlineGameSession");
-
-	UOnlineSubsystem_FinishOnlineGameSession_Params params;
-	params.ServerID = ServerID;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.StartOnlineGameSession
-// (FUNC_Public)
-// Parameters:
-// struct FString                 ServerID                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::StartOnlineGameSession(const struct FString& ServerID)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StartOnlineGameSession");
-
-	UOnlineSubsystem_StartOnlineGameSession_Params params;
-	params.ServerID = ServerID;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate
-// (FUNC_Public)
-// Parameters:
-// struct FScriptDelegate         PairingChangeDelegate          (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::ClearSystemUserControllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate");
-
-	UOnlineSubsystem_ClearSystemUserControllerPairingChangedDelegate_Params params;
-	params.PairingChangeDelegate = PairingChangeDelegate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate
-// (FUNC_Public)
-// Parameters:
-// struct FScriptDelegate         PairingChangeDelegate          (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::AddSystemUserControllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate");
-
-	UOnlineSubsystem_AddSystemUserControllerPairingChangedDelegate_Params params;
-	params.PairingChangeDelegate = PairingChangeDelegate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// int                            NewLocalUserNum                (CPF_Parm)
-// int                            PreviousLocalUserNum           (CPF_Parm)
-
-void UOnlineSubsystem::OnSystemUserControllerPairingChanged(int NewLocalUserNum, int PreviousLocalUserNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged");
-
-	UOnlineSubsystem_OnSystemUserControllerPairingChanged_Params params;
-	params.NewLocalUserNum = NewLocalUserNum;
-	params.PreviousLocalUserNum = PreviousLocalUserNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.IsAchievementUnlocked
-// (FUNC_Public)
-// Parameters:
-// unsigned char                  LocalUserNum                   (CPF_Parm)
-// int                            AchievementId                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::IsAchievementUnlocked(unsigned char LocalUserNum, int AchievementId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsAchievementUnlocked");
-
-	UOnlineSubsystem_IsAchievementUnlocked_Params params;
-	params.LocalUserNum = LocalUserNum;
-	params.AchievementId = AchievementId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.IsRichPresenceLocalized
-// (FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::IsRichPresenceLocalized()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsRichPresenceLocalized");
-
-	UOnlineSubsystem_IsRichPresenceLocalized_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.UpdateGameProgress
-// (FUNC_Public)
-// Parameters:
-// unsigned char                  LocalPlayerNum                 (CPF_Parm)
-// float                          Progress                       (CPF_Parm)
-
-void UOnlineSubsystem::UpdateGameProgress(unsigned char LocalPlayerNum, float Progress)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UpdateGameProgress");
-
-	UOnlineSubsystem_UpdateGameProgress_Params params;
-	params.LocalPlayerNum = LocalPlayerNum;
-	params.Progress = Progress;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.ClearAccountPickerInput
-// (FUNC_Public)
-
-void UOnlineSubsystem::ClearAccountPickerInput()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearAccountPickerInput");
-
-	UOnlineSubsystem_ClearAccountPickerInput_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.LookForAccountPickerInput
-// (FUNC_Public)
-
-void UOnlineSubsystem::LookForAccountPickerInput()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.LookForAccountPickerInput");
-
-	UOnlineSubsystem_LookForAccountPickerInput_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.AddPlayerToSession
-// (FUNC_Public)
-// Parameters:
-// unsigned char                  ControllerId                   (CPF_Parm)
-
-void UOnlineSubsystem::AddPlayerToSession(unsigned char ControllerId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.AddPlayerToSession");
-
-	UOnlineSubsystem_AddPlayerToSession_Params params;
-	params.ControllerId = ControllerId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.ClearPrimaryPlayer
-// (FUNC_Public)
-
-void UOnlineSubsystem::ClearPrimaryPlayer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ClearPrimaryPlayer");
-
-	UOnlineSubsystem_ClearPrimaryPlayer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.RemoveUserAssociation
-// (FUNC_Public)
-// Parameters:
-// unsigned char                  ControllerId                   (CPF_Parm)
-
-void UOnlineSubsystem::RemoveUserAssociation(unsigned char ControllerId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.RemoveUserAssociation");
-
-	UOnlineSubsystem_RemoveUserAssociation_Params params;
-	params.ControllerId = ControllerId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.MapEnd
-// (FUNC_Public)
-
-void UOnlineSubsystem::MapEnd()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.MapEnd");
-
-	UOnlineSubsystem_MapEnd_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.MapStart
-// (FUNC_Public)
-
-void UOnlineSubsystem::MapStart()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.MapStart");
-
-	UOnlineSubsystem_MapStart_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.OnlineMatchEnd
-// (FUNC_Public)
-
-void UOnlineSubsystem::OnlineMatchEnd()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnlineMatchEnd");
-
-	UOnlineSubsystem_OnlineMatchEnd_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.OnlineMatchStart
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FString                 MapName                        (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::OnlineMatchStart(const struct FString& MapName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnlineMatchStart");
-
-	UOnlineSubsystem_OnlineMatchStart_Params params;
-	params.MapName = MapName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSessionDifficultyLevel
-// (FUNC_Public)
-// Parameters:
-// int                            DifficultyLevel                (CPF_Parm)
-
-void UOnlineSubsystem::SetSessionDifficultyLevel(int DifficultyLevel)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionDifficultyLevel");
-
-	UOnlineSubsystem_SetSessionDifficultyLevel_Params params;
-	params.DifficultyLevel = DifficultyLevel;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSessionGameplayModeName
-// (FUNC_Public)
-// Parameters:
-// struct FName                   GameplayModeName               (CPF_Parm)
-
-void UOnlineSubsystem::SetSessionGameplayModeName(const struct FName& GameplayModeName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionGameplayModeName");
-
-	UOnlineSubsystem_SetSessionGameplayModeName_Params params;
-	params.GameplayModeName = GameplayModeName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSessionGameplayMode
-// (FUNC_Public)
-// Parameters:
-// int                            GameplayMode                   (CPF_Parm)
-
-void UOnlineSubsystem::SetSessionGameplayMode(int GameplayMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSessionGameplayMode");
-
-	UOnlineSubsystem_SetSessionGameplayMode_Params params;
-	params.GameplayMode = GameplayMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.PrintDebugInfo
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class UDebugDrawer*            Drawer                         (CPF_Parm)
-
-void UOnlineSubsystem::PrintDebugInfo(class UDebugDrawer* Drawer)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.PrintDebugInfo");
-
-	UOnlineSubsystem_PrintDebugInfo_Params params;
-	params.Drawer = Drawer;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.GetOnlinePlatformFromName
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 PlatformName                   (CPF_Parm, CPF_NeedCtorLink)
-// TEnumAsByte<EOnlinePlatform>   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-TEnumAsByte<EOnlinePlatform> UOnlineSubsystem::STATIC_GetOnlinePlatformFromName(const struct FString& PlatformName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetOnlinePlatformFromName");
-
-	UOnlineSubsystem_GetOnlinePlatformFromName_Params params;
-	params.PlatformName = PlatformName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.GetPlatformName
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// TEnumAsByte<EOnlinePlatform>   PlatformType                   (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineSubsystem::STATIC_GetPlatformName(TEnumAsByte<EOnlinePlatform> PlatformType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlatformName");
-
-	UOnlineSubsystem_GetPlatformName_Params params;
-	params.PlatformType = PlatformType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.IsEnabled
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::IsEnabled()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.IsEnabled");
-
-	UOnlineSubsystem_IsEnabled_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetPlayedWith
-// (FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
-
-void UOnlineSubsystem::SetPlayedWith(const struct FUniqueNetId& PlayerNetId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayedWith");
-
-	UOnlineSubsystem_SetPlayedWith_Params params;
-	params.PlayerNetId = PlayerNetId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.ReadOnlineAvatar
-// (FUNC_Public)
-// Parameters:
-// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
-// TEnumAsByte<EAvatarSize>       Size                           (CPF_Parm)
-// struct FScriptDelegate         ReadOnlineAvatarCompleteDelegate (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::ReadOnlineAvatar(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EAvatarSize> Size, const struct FScriptDelegate& ReadOnlineAvatarCompleteDelegate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.ReadOnlineAvatar");
-
-	UOnlineSubsystem_ReadOnlineAvatar_Params params;
-	params.PlayerNetId = PlayerNetId;
-	params.Size = Size;
-	params.ReadOnlineAvatarCompleteDelegate = ReadOnlineAvatarCompleteDelegate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// struct FUniqueNetId            PlayerNetId                    (CPF_Const, CPF_Parm)
-// class UTexture*                Avatar                         (CPF_Parm)
-// struct FString                 OnlinePlayerName               (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::OnReadOnlineAvatarComplete(const struct FUniqueNetId& PlayerNetId, class UTexture* Avatar, const struct FString& OnlinePlayerName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete");
-
-	UOnlineSubsystem_OnReadOnlineAvatarComplete_Params params;
-	params.PlayerNetId = PlayerNetId;
-	params.Avatar = Avatar;
-	params.OnlinePlayerName = OnlinePlayerName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.SetDebugSpewLevel
-// (FUNC_Public)
-// Parameters:
-// int                            DebugSpewLevel                 (CPF_Parm)
-
-void UOnlineSubsystem::SetDebugSpewLevel(int DebugSpewLevel)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetDebugSpewLevel");
-
-	UOnlineSubsystem_SetDebugSpewLevel_Params params;
-	params.DebugSpewLevel = DebugSpewLevel;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.DumpVoiceRegistration
-// (FUNC_Public)
-
-void UOnlineSubsystem::DumpVoiceRegistration()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpVoiceRegistration");
-
-	UOnlineSubsystem_DumpVoiceRegistration_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.DumpSessionState
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-
-void UOnlineSubsystem::DumpSessionState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpSessionState");
-
-	UOnlineSubsystem_DumpSessionState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.DumpGameSettings
-// (FUNC_Defined, FUNC_Static, FUNC_Public)
-// Parameters:
-// class UOnlineGameSettings*     GameSettings                   (CPF_Const, CPF_Parm)
-
-void UOnlineSubsystem::STATIC_DumpGameSettings(class UOnlineGameSettings* GameSettings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DumpGameSettings");
-
-	UOnlineSubsystem_DumpGameSettings_Params params;
-	params.GameSettings = GameSettings;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.GetNumSupportedLogins
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UOnlineSubsystem::STATIC_GetNumSupportedLogins()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetNumSupportedLogins");
-
-	UOnlineSubsystem_GetNumSupportedLogins_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.GetBuildUniqueId
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int UOnlineSubsystem::GetBuildUniqueId()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetBuildUniqueId");
-
-	UOnlineSubsystem_GetBuildUniqueId_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex
-// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// int                            UserIndex                      (CPF_Parm)
-// struct FUniqueNetId            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FUniqueNetId UOnlineSubsystem::GetPlayerUniqueNetIdFromIndex(int UserIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex");
-
-	UOnlineSubsystem_GetPlayerUniqueNetIdFromIndex_Params params;
-	params.UserIndex = UserIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.StringToUniqueLobbyId
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 UniqueNetIdString              (CPF_Parm, CPF_NeedCtorLink)
-// struct FUniqueLobbyId          out_UniqueId                   (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::STATIC_StringToUniqueLobbyId(const struct FString& UniqueNetIdString, struct FUniqueLobbyId* out_UniqueId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StringToUniqueLobbyId");
-
-	UOnlineSubsystem_StringToUniqueLobbyId_Params params;
-	params.UniqueNetIdString = UniqueNetIdString;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_UniqueId != nullptr)
-		*out_UniqueId = params.out_UniqueId;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.UniqueLobbyIdToString
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FUniqueLobbyId          IdToConvert                    (CPF_Const, CPF_Parm, CPF_OutParm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineSubsystem::STATIC_UniqueLobbyIdToString(struct FUniqueLobbyId* IdToConvert)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UniqueLobbyIdToString");
-
-	UOnlineSubsystem_UniqueLobbyIdToString_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (IdToConvert != nullptr)
-		*IdToConvert = params.IdToConvert;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.StringToUniqueNetId
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 UniqueNetIdString              (CPF_Parm, CPF_NeedCtorLink)
-// struct FUniqueNetId            out_UniqueId                   (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::STATIC_StringToUniqueNetId(const struct FString& UniqueNetIdString, struct FUniqueNetId* out_UniqueId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.StringToUniqueNetId");
-
-	UOnlineSubsystem_StringToUniqueNetId_Params params;
-	params.UniqueNetIdString = UniqueNetIdString;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_UniqueId != nullptr)
-		*out_UniqueId = params.out_UniqueId;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.UniqueNetIdToString
-// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FUniqueNetId            IdToConvert                    (CPF_Const, CPF_Parm, CPF_OutParm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString UOnlineSubsystem::STATIC_UniqueNetIdToString(struct FUniqueNetId* IdToConvert)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.UniqueNetIdToString");
-
-	UOnlineSubsystem_UniqueNetIdToString_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (IdToConvert != nullptr)
-		*IdToConvert = params.IdToConvert;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.GetNamedInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   InterfaceName                  (CPF_Parm)
-// class UObject*                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UObject* UOnlineSubsystem::GetNamedInterface(const struct FName& InterfaceName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetNamedInterface");
-
-	UOnlineSubsystem_GetNamedInterface_Params params;
-	params.InterfaceName = InterfaceName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetNamedInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   InterfaceName                  (CPF_Parm)
-// class UObject*                 NewInterface                   (CPF_Parm)
-
-void UOnlineSubsystem::SetNamedInterface(const struct FName& InterfaceName, class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetNamedInterface");
-
-	UOnlineSubsystem_SetNamedInterface_Params params;
-	params.InterfaceName = InterfaceName;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.SetCommunityContentInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InCommunityContentInterface    (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetCommunityContentInterface(class UObject* InCommunityContentInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetCommunityContentInterface");
-
-	UOnlineSubsystem_SetCommunityContentInterface_Params params;
-	params.InCommunityContentInterface = InCommunityContentInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetGameDVRInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InGameDVRInterface             (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetGameDVRInterface(class UObject* InGameDVRInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetGameDVRInterface");
-
-	UOnlineSubsystem_SetGameDVRInterface_Params params;
-	params.InGameDVRInterface = InGameDVRInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSharedCloudInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InCloudInterface               (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetSharedCloudInterface(class UObject* InCloudInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSharedCloudInterface");
-
-	UOnlineSubsystem_SetSharedCloudInterface_Params params;
-	params.InCloudInterface = InCloudInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetUserCloudInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InCloudInterface               (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetUserCloudInterface(class UObject* InCloudInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetUserCloudInterface");
-
-	UOnlineSubsystem_SetUserCloudInterface_Params params;
-	params.InCloudInterface = InCloudInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetAuthInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InAuthInterface                (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetAuthInterface(class UObject* InAuthInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetAuthInterface");
-
-	UOnlineSubsystem_SetAuthInterface_Params params;
-	params.InAuthInterface = InAuthInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSocialInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InSocialInterface              (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetSocialInterface(class UObject* InSocialInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSocialInterface");
-
-	UOnlineSubsystem_SetSocialInterface_Params params;
-	params.InSocialInterface = InSocialInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetTitleFileCacheInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetTitleFileCacheInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetTitleFileCacheInterface");
-
-	UOnlineSubsystem_SetTitleFileCacheInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetTitleFileInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetTitleFileInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetTitleFileInterface");
-
-	UOnlineSubsystem_SetTitleFileInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetPartyChatInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetPartyChatInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPartyChatInterface");
-
-	UOnlineSubsystem_SetPartyChatInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetNewsInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetNewsInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetNewsInterface");
-
-	UOnlineSubsystem_SetNewsInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetStatsInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetStatsInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetStatsInterface");
-
-	UOnlineSubsystem_SetStatsInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetVoiceInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetVoiceInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetVoiceInterface");
-
-	UOnlineSubsystem_SetVoiceInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetContentInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetContentInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetContentInterface");
-
-	UOnlineSubsystem_SetContentInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetLobbyInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InInterface                    (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetLobbyInterface(class UObject* InInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetLobbyInterface");
-
-	UOnlineSubsystem_SetLobbyInterface_Params params;
-	params.InInterface = InInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetPurchaseInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetPurchaseInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPurchaseInterface");
-
-	UOnlineSubsystem_SetPurchaseInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetGameInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetGameInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetGameInterface");
-
-	UOnlineSubsystem_SetGameInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetSystemInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetSystemInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetSystemInterface");
-
-	UOnlineSubsystem_SetSystemInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetMarketplaceInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetMarketplaceInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetMarketplaceInterface");
-
-	UOnlineSubsystem_SetMarketplaceInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetPlayerInterfaceEx
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetPlayerInterfaceEx(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayerInterfaceEx");
-
-	UOnlineSubsystem_SetPlayerInterfaceEx_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetPlayerInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetPlayerInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetPlayerInterface");
-
-	UOnlineSubsystem_SetPlayerInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.SetAccountInterface
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 NewInterface                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::SetAccountInterface(class UObject* NewInterface)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.SetAccountInterface");
-
-	UOnlineSubsystem_SetAccountInterface_Params params;
-	params.NewInterface = NewInterface;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.Exit
-// (FUNC_Native, FUNC_Event, FUNC_Public)
-
-void UOnlineSubsystem::Exit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.Exit");
-
-	UOnlineSubsystem_Exit_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.PostInit
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::PostInit()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.PostInit");
-
-	UOnlineSubsystem_PostInit_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.Init
-// (FUNC_Native, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UOnlineSubsystem::Init()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.Init");
-
-	UOnlineSubsystem_Init_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.EncodeBase64
-// (FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 Text                           (CPF_Parm, CPF_NeedCtorLink)
-// TArray<unsigned char>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-TArray<unsigned char> UOnlineSubsystem::STATIC_EncodeBase64(const struct FString& Text)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.EncodeBase64");
-
-	UOnlineSubsystem_EncodeBase64_Params params;
-	params.Text = Text;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.DecodeBase64
-// (FUNC_Native, FUNC_Static, FUNC_Public)
-// Parameters:
-// struct FString                 Text                           (CPF_Parm, CPF_NeedCtorLink)
-// TArray<unsigned char>          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-TArray<unsigned char> UOnlineSubsystem::STATIC_DecodeBase64(const struct FString& Text)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.DecodeBase64");
-
-	UOnlineSubsystem_DecodeBase64_Params params;
-	params.Text = Text;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
-// struct FScriptDelegate         Callback                       (CPF_Parm, CPF_NeedCtorLink)
-
-void UOnlineSubsystem::GetFeaturePrivilegeLevel(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, const struct FScriptDelegate& Callback)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel");
-
-	UOnlineSubsystem_GetFeaturePrivilegeLevel_Params params;
-	params.LocalUserNum = LocalUserNum;
-	params.Privilege = Privilege;
-	params.Callback = Callback;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// unsigned char                  LocalUserNum                   (CPF_Parm)
-// TEnumAsByte<EFeaturePrivilege> Privilege                      (CPF_Parm)
-// TEnumAsByte<EFeaturePrivilegeLevel> Level                          (CPF_Parm)
-
-void UOnlineSubsystem::FeaturePrivilegeLevelUpdated(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> Level)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated");
-
-	UOnlineSubsystem_FeaturePrivilegeLevelUpdated_Params params;
-	params.LocalUserNum = LocalUserNum;
-	params.Privilege = Privilege;
-	params.Level = Level;
 
 	auto flags = fn->FunctionFlags;
 
@@ -52685,1368 +54258,6 @@ bool UGameViewportClient::HandleInputKey(int ControllerId, const struct FName& K
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.UpdateFromURL
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 URL                            (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// class AGameInfo*               Game                           (CPF_Parm)
-
-void USettings::UpdateFromURL(class AGameInfo* Game, struct FString* URL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateFromURL");
-
-	USettings_UpdateFromURL_Params params;
-	params.Game = Game;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (URL != nullptr)
-		*URL = params.URL;
-}
-
-
-// Function Engine.Settings.BuildURL
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::BuildURL(struct FString* URL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.BuildURL");
-
-	USettings_BuildURL_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (URL != nullptr)
-		*URL = params.URL;
-}
-
-
-// Function Engine.Settings.AppendContextsToURL
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::AppendContextsToURL(struct FString* URL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendContextsToURL");
-
-	USettings_AppendContextsToURL_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (URL != nullptr)
-		*URL = params.URL;
-}
-
-
-// Function Engine.Settings.AppendPropertiesToURL
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::AppendPropertiesToURL(struct FString* URL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendPropertiesToURL");
-
-	USettings_AppendPropertiesToURL_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (URL != nullptr)
-		*URL = params.URL;
-}
-
-
-// Function Engine.Settings.AppendDataBindingsToURL
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FString                 URL                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::AppendDataBindingsToURL(struct FString* URL)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.AppendDataBindingsToURL");
-
-	USettings_AppendDataBindingsToURL_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (URL != nullptr)
-		*URL = params.URL;
-}
-
-
-// Function Engine.Settings.GetQoSAdvertisedStringSettings
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FLocalizedStringSetting> QoSSettings                    (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::GetQoSAdvertisedStringSettings(TArray<struct FLocalizedStringSetting>* QoSSettings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetQoSAdvertisedStringSettings");
-
-	USettings_GetQoSAdvertisedStringSettings_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (QoSSettings != nullptr)
-		*QoSSettings = params.QoSSettings;
-}
-
-
-// Function Engine.Settings.GetQoSAdvertisedProperties
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FSettingsProperty> QoSProps                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::GetQoSAdvertisedProperties(TArray<struct FSettingsProperty>* QoSProps)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetQoSAdvertisedProperties");
-
-	USettings_GetQoSAdvertisedProperties_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (QoSProps != nullptr)
-		*QoSProps = params.QoSProps;
-}
-
-
-// Function Engine.Settings.GetRangedPropertyValue
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// float                          OutValue                       (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetRangedPropertyValue(int PropertyId, float* OutValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetRangedPropertyValue");
-
-	USettings_GetRangedPropertyValue_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutValue != nullptr)
-		*OutValue = params.OutValue;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetRangedPropertyValue
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// float                          NewValue                       (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::SetRangedPropertyValue(int PropertyId, float NewValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetRangedPropertyValue");
-
-	USettings_SetRangedPropertyValue_Params params;
-	params.PropertyId = PropertyId;
-	params.NewValue = NewValue;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyRange
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// float                          OutMinValue                    (CPF_Parm, CPF_OutParm)
-// float                          OutMaxValue                    (CPF_Parm, CPF_OutParm)
-// float                          RangeIncrement                 (CPF_Parm, CPF_OutParm)
-// unsigned char                  bFormatAsInt                   (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyRange");
-
-	USettings_GetPropertyRange_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutMinValue != nullptr)
-		*OutMinValue = params.OutMinValue;
-	if (OutMaxValue != nullptr)
-		*OutMaxValue = params.OutMaxValue;
-	if (RangeIncrement != nullptr)
-		*RangeIncrement = params.RangeIncrement;
-	if (bFormatAsInt != nullptr)
-		*bFormatAsInt = params.bFormatAsInt;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyMappingType
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// TEnumAsByte<EPropertyValueMappingType> OutType                        (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyMappingType");
-
-	USettings_GetPropertyMappingType_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutType != nullptr)
-		*OutType = params.OutType;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.HasStringSetting
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            SettingId                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::HasStringSetting(int SettingId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.HasStringSetting");
-
-	USettings_HasStringSetting_Params params;
-	params.SettingId = SettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.HasProperty
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::HasProperty(int PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.HasProperty");
-
-	USettings_HasProperty_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.UpdateProperties
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FSettingsProperty> Props                          (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           bShouldAddIfMissing            (CPF_OptionalParm, CPF_Parm)
-
-void USettings::UpdateProperties(bool bShouldAddIfMissing, TArray<struct FSettingsProperty>* Props)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateProperties");
-
-	USettings_UpdateProperties_Params params;
-	params.bShouldAddIfMissing = bShouldAddIfMissing;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Props != nullptr)
-		*Props = params.Props;
-}
-
-
-// Function Engine.Settings.UpdateStringSettings
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FLocalizedStringSetting> Settings                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           bShouldAddIfMissing            (CPF_OptionalParm, CPF_Parm)
-
-void USettings::UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.UpdateStringSettings");
-
-	USettings_UpdateStringSettings_Params params;
-	params.bShouldAddIfMissing = bShouldAddIfMissing;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Settings != nullptr)
-		*Settings = params.Settings;
-}
-
-
-// Function Engine.Settings.GetPropertyType
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// TEnumAsByte<ESettingsDataType> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-TEnumAsByte<ESettingsDataType> USettings::GetPropertyType(int PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyType");
-
-	USettings_GetPropertyType_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyValueId
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// int                            ValueId                        (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetPropertyValueId(int PropertyId, int* ValueId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyValueId");
-
-	USettings_GetPropertyValueId_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ValueId != nullptr)
-		*ValueId = params.ValueId;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetPropertyValueId
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// int                            ValueId                        (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::SetPropertyValueId(int PropertyId, int ValueId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetPropertyValueId");
-
-	USettings_SetPropertyValueId_Params params;
-	params.PropertyId = PropertyId;
-	params.ValueId = ValueId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringProperty
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// struct FString                 Value                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetStringProperty(int PropertyId, struct FString* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringProperty");
-
-	USettings_GetStringProperty_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetStringProperty
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// struct FString                 Value                          (CPF_Parm, CPF_NeedCtorLink)
-
-void USettings::SetStringProperty(int PropertyId, const struct FString& Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringProperty");
-
-	USettings_SetStringProperty_Params params;
-	params.PropertyId = PropertyId;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Settings.GetIntProperty
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// int                            Value                          (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetIntProperty(int PropertyId, int* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetIntProperty");
-
-	USettings_GetIntProperty_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetIntProperty
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// int                            Value                          (CPF_Parm)
-
-void USettings::SetIntProperty(int PropertyId, int Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetIntProperty");
-
-	USettings_SetIntProperty_Params params;
-	params.PropertyId = PropertyId;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Settings.GetFloatProperty
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// float                          Value                          (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetFloatProperty(int PropertyId, float* Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetFloatProperty");
-
-	USettings_GetFloatProperty_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Value != nullptr)
-		*Value = params.Value;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetFloatProperty
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// float                          Value                          (CPF_Parm)
-
-void USettings::SetFloatProperty(int PropertyId, float Value)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetFloatProperty");
-
-	USettings_SetFloatProperty_Params params;
-	params.PropertyId = PropertyId;
-	params.Value = Value;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Settings.SetPropertyFromStringByName
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   PropertyName                   (CPF_Parm)
-// struct FString                 NewValue                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetPropertyFromStringByName");
-
-	USettings_SetPropertyFromStringByName_Params params;
-	params.PropertyName = PropertyName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (NewValue != nullptr)
-		*NewValue = params.NewValue;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyAsStringByName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   PropertyName                   (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString USettings::GetPropertyAsStringByName(const struct FName& PropertyName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyAsStringByName");
-
-	USettings_GetPropertyAsStringByName_Params params;
-	params.PropertyName = PropertyName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyAsString
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString USettings::GetPropertyAsString(int PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyAsString");
-
-	USettings_GetPropertyAsString_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyColumnHeader
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString USettings::GetPropertyColumnHeader(int PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyColumnHeader");
-
-	USettings_GetPropertyColumnHeader_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            PropertyId                     (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName USettings::GetPropertyName(int PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyName");
-
-	USettings_GetPropertyName_Params params;
-	params.PropertyId = PropertyId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetPropertyId
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   PropertyName                   (CPF_Parm)
-// int                            PropertyId                     (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetPropertyId(const struct FName& PropertyName, int* PropertyId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetPropertyId");
-
-	USettings_GetPropertyId_Params params;
-	params.PropertyName = PropertyName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (PropertyId != nullptr)
-		*PropertyId = params.PropertyId;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetStringSettingValueFromStringByName
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   StringSettingName              (CPF_Parm)
-// struct FString                 NewValue                       (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValueFromStringByName");
-
-	USettings_SetStringSettingValueFromStringByName_Params params;
-	params.StringSettingName = StringSettingName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (NewValue != nullptr)
-		*NewValue = params.NewValue;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingValueNameByName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   StringSettingName              (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName USettings::GetStringSettingValueNameByName(const struct FName& StringSettingName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueNameByName");
-
-	USettings_GetStringSettingValueNameByName_Params params;
-	params.StringSettingName = StringSettingName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingValueName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// int                            ValueIndex                     (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName USettings::GetStringSettingValueName(int StringSettingId, int ValueIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueName");
-
-	USettings_GetStringSettingValueName_Params params;
-	params.StringSettingId = StringSettingId;
-	params.ValueIndex = ValueIndex;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.IsWildcardStringSetting
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::IsWildcardStringSetting(int StringSettingId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.IsWildcardStringSetting");
-
-	USettings_IsWildcardStringSetting_Params params;
-	params.StringSettingId = StringSettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingColumnHeader
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString USettings::GetStringSettingColumnHeader(int StringSettingId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingColumnHeader");
-
-	USettings_GetStringSettingColumnHeader_Params params;
-	params.StringSettingId = StringSettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName USettings::GetStringSettingName(int StringSettingId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingName");
-
-	USettings_GetStringSettingName_Params params;
-	params.StringSettingId = StringSettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingId
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   StringSettingName              (CPF_Parm)
-// int                            StringSettingId                (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetStringSettingId(const struct FName& StringSettingName, int* StringSettingId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingId");
-
-	USettings_GetStringSettingId_Params params;
-	params.StringSettingName = StringSettingName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (StringSettingId != nullptr)
-		*StringSettingId = params.StringSettingId;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingValueByName
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FName                   StringSettingName              (CPF_Parm)
-// int                            ValueIndex                     (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetStringSettingValueByName(const struct FName& StringSettingName, int* ValueIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueByName");
-
-	USettings_GetStringSettingValueByName_Params params;
-	params.StringSettingName = StringSettingName;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ValueIndex != nullptr)
-		*ValueIndex = params.ValueIndex;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetStringSettingValueByName
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   StringSettingName              (CPF_Parm)
-// int                            ValueIndex                     (CPF_Parm)
-// bool                           bShouldAutoAdd                 (CPF_Parm)
-
-void USettings::SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, bool bShouldAutoAdd)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValueByName");
-
-	USettings_SetStringSettingValueByName_Params params;
-	params.StringSettingName = StringSettingName;
-	params.ValueIndex = ValueIndex;
-	params.bShouldAutoAdd = bShouldAutoAdd;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Settings.GetStringSettingValueNames
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// TArray<struct FIdToStringMapping> Values                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetStringSettingValueNames(int StringSettingId, TArray<struct FIdToStringMapping>* Values)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValueNames");
-
-	USettings_GetStringSettingValueNames_Params params;
-	params.StringSettingId = StringSettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Values != nullptr)
-		*Values = params.Values;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.IncrementStringSettingValue
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// int                            Direction                      (CPF_Parm)
-// bool                           bShouldWrap                    (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::IncrementStringSettingValue(int StringSettingId, int Direction, bool bShouldWrap)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.IncrementStringSettingValue");
-
-	USettings_IncrementStringSettingValue_Params params;
-	params.StringSettingId = StringSettingId;
-	params.Direction = Direction;
-	params.bShouldWrap = bShouldWrap;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetStringSettingValue
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// int                            ValueIndex                     (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool USettings::GetStringSettingValue(int StringSettingId, int* ValueIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetStringSettingValue");
-
-	USettings_GetStringSettingValue_Params params;
-	params.StringSettingId = StringSettingId;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ValueIndex != nullptr)
-		*ValueIndex = params.ValueIndex;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.SetStringSettingValue
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            StringSettingId                (CPF_Parm)
-// int                            ValueIndex                     (CPF_Parm)
-// bool                           bShouldAutoAdd                 (CPF_OptionalParm, CPF_Parm)
-
-void USettings::SetStringSettingValue(int StringSettingId, int ValueIndex, bool bShouldAutoAdd)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetStringSettingValue");
-
-	USettings_SetStringSettingValue_Params params;
-	params.StringSettingId = StringSettingId;
-	params.ValueIndex = ValueIndex;
-	params.bShouldAutoAdd = bShouldAutoAdd;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Settings.GetSettingsDataDateTime
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// int                            OutInt1                        (CPF_Parm, CPF_OutParm)
-// int                            OutInt2                        (CPF_Parm, CPF_OutParm)
-
-void USettings::STATIC_GetSettingsDataDateTime(struct FSettingsData* Data, int* OutInt1, int* OutInt2)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataDateTime");
-
-	USettings_GetSettingsDataDateTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-	if (OutInt1 != nullptr)
-		*OutInt1 = params.OutInt1;
-	if (OutInt2 != nullptr)
-		*OutInt2 = params.OutInt2;
-}
-
-
-// Function Engine.Settings.GetSettingsDataBlob
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// TArray<unsigned char>          OutBlob                        (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::STATIC_GetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* OutBlob)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataBlob");
-
-	USettings_GetSettingsDataBlob_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-	if (OutBlob != nullptr)
-		*OutBlob = params.OutBlob;
-}
-
-
-// Function Engine.Settings.GetSettingsDataInt
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int USettings::STATIC_GetSettingsDataInt(struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataInt");
-
-	USettings_GetSettingsDataInt_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.GetSettingsDataFloat
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float USettings::STATIC_GetSettingsDataFloat(struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.GetSettingsDataFloat");
-
-	USettings_GetSettingsDataFloat_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Settings.EmptySettingsData
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-
-void USettings::STATIC_EmptySettingsData(struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.EmptySettingsData");
-
-	USettings_EmptySettingsData_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function Engine.Settings.SetSettingsData
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// struct FSettingsData           Data2Copy                      (CPF_Parm, CPF_OutParm)
-
-void USettings::STATIC_SetSettingsData(struct FSettingsData* Data, struct FSettingsData* Data2Copy)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsData");
-
-	USettings_SetSettingsData_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-	if (Data2Copy != nullptr)
-		*Data2Copy = params.Data2Copy;
-}
-
-
-// Function Engine.Settings.SetSettingsDataBlob
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// TArray<unsigned char>          InBlob                         (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void USettings::STATIC_SetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* InBlob)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataBlob");
-
-	USettings_SetSettingsDataBlob_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-	if (InBlob != nullptr)
-		*InBlob = params.InBlob;
-}
-
-
-// Function Engine.Settings.SetSettingsDataDateTime
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// int                            InInt1                         (CPF_Parm)
-// int                            InInt2                         (CPF_Parm)
-
-void USettings::STATIC_SetSettingsDataDateTime(int InInt1, int InInt2, struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataDateTime");
-
-	USettings_SetSettingsDataDateTime_Params params;
-	params.InInt1 = InInt1;
-	params.InInt2 = InInt2;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function Engine.Settings.SetSettingsDataInt
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// int                            InInt                          (CPF_Parm)
-
-void USettings::STATIC_SetSettingsDataInt(int InInt, struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataInt");
-
-	USettings_SetSettingsDataInt_Params params;
-	params.InInt = InInt;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
-}
-
-
-// Function Engine.Settings.SetSettingsDataFloat
-// (FUNC_Native, FUNC_Static, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FSettingsData           Data                           (CPF_Parm, CPF_OutParm)
-// float                          InFloat                        (CPF_Parm)
-
-void USettings::STATIC_SetSettingsDataFloat(float InFloat, struct FSettingsData* Data)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Settings.SetSettingsDataFloat");
-
-	USettings_SetSettingsDataFloat_Params params;
-	params.InFloat = InFloat;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Data != nullptr)
-		*Data = params.Data;
 }
 
 
@@ -60277,6 +60488,41 @@ void ASkeletalMeshActorMAT::MAT_SetAnimWeights(TArray<struct FAnimSlotInfo> Slot
 }
 
 
+// Function Engine.AnimSequence.GetNotifyTimeByClass
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// class UClass*                  NotifyClass                    (CPF_Parm)
+// float                          PlayRate                       (CPF_OptionalParm, CPF_Parm)
+// float                          StartPosition                  (CPF_OptionalParm, CPF_Parm)
+// class UAnimNotify*             out_Notify                     (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// float                          out_Duration                   (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UAnimSequence::GetNotifyTimeByClass(class UClass* NotifyClass, float PlayRate, float StartPosition, class UAnimNotify** out_Notify, float* out_Duration)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimSequence.GetNotifyTimeByClass");
+
+	UAnimSequence_GetNotifyTimeByClass_Params params;
+	params.NotifyClass = NotifyClass;
+	params.PlayRate = PlayRate;
+	params.StartPosition = StartPosition;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_Notify != nullptr)
+		*out_Notify = params.out_Notify;
+	if (out_Duration != nullptr)
+		*out_Duration = params.out_Duration;
+
+	return params.ReturnValue;
+}
+
+
 // Function Engine.AnimNotify.FindNextNotifyOfClass
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
@@ -60347,6 +60593,4913 @@ void UAnimNotify_Scripted::Notify(class AActor* Owner, class UAnimNodeSequence* 
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OnSetVelocity
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_SetVelocity*     Action                         (CPF_Parm)
+
+void APawn::OnSetVelocity(class USeqAct_SetVelocity* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnSetVelocity");
+
+	APawn_OnSetVelocity_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Speak
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class USoundCue*               Cue                            (CPF_Parm)
+
+void APawn::Speak(class USoundCue* Cue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Speak");
+
+	APawn_Speak_Params params;
+	params.Cue = Cue;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetScalarParameterInterp
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FScalarParameterInterpStruct ScalarParameterInterp          (CPF_Const, CPF_Parm, CPF_OutParm)
+
+void APawn::SetScalarParameterInterp(struct FScalarParameterInterpStruct* ScalarParameterInterp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetScalarParameterInterp");
+
+	APawn_SetScalarParameterInterp_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (ScalarParameterInterp != nullptr)
+		*ScalarParameterInterp = params.ScalarParameterInterp;
+}
+
+
+// Function Engine.Pawn.SetRootMotionInterpCurrentTime
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          inTime                         (CPF_Parm)
+// float                          DeltaTime                      (CPF_OptionalParm, CPF_Parm)
+// bool                           bUpdateSkelPose                (CPF_OptionalParm, CPF_Parm)
+
+void APawn::SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, bool bUpdateSkelPose)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetRootMotionInterpCurrentTime");
+
+	APawn_SetRootMotionInterpCurrentTime_Params params;
+	params.inTime = inTime;
+	params.DeltaTime = DeltaTime;
+	params.bUpdateSkelPose = bUpdateSkelPose;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetCinematicMode
+// (FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           bInCinematicMode               (CPF_Parm)
+
+void APawn::SetCinematicMode(bool bInCinematicMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetCinematicMode");
+
+	APawn_SetCinematicMode_Params params;
+	params.bInCinematicMode = bInCinematicMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ZeroMovementVariables
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::ZeroMovementVariables()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ZeroMovementVariables");
+
+	APawn_ZeroMovementVariables_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClearPathStep
+// (FUNC_Native, FUNC_Public)
+
+void APawn::ClearPathStep()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearPathStep");
+
+	APawn_ClearPathStep_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.DrawPathStep
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UCanvas*                 C                              (CPF_Parm)
+
+void APawn::DrawPathStep(class UCanvas* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DrawPathStep");
+
+	APawn_DrawPathStep_Params params;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IncrementPathChild
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Cnt                            (CPF_Parm)
+// class UCanvas*                 C                              (CPF_Parm)
+
+void APawn::IncrementPathChild(int Cnt, class UCanvas* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementPathChild");
+
+	APawn_IncrementPathChild_Params params;
+	params.Cnt = Cnt;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IncrementPathStep
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            Cnt                            (CPF_Parm)
+// class UCanvas*                 C                              (CPF_Parm)
+
+void APawn::IncrementPathStep(int Cnt, class UCanvas* C)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementPathStep");
+
+	APawn_IncrementPathStep_Params params;
+	params.Cnt = Cnt;
+	params.C = C;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CreatePathGoalEvaluator
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UClass*                  GoalEvalClass                  (CPF_Parm)
+// class UPathGoalEvaluator*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UPathGoalEvaluator* APawn::CreatePathGoalEvaluator(class UClass* GoalEvalClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreatePathGoalEvaluator");
+
+	APawn_CreatePathGoalEvaluator_Params params;
+	params.GoalEvalClass = GoalEvalClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CreatePathConstraint
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UClass*                  ConstraintClass                (CPF_Parm)
+// class UPathConstraint*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UPathConstraint* APawn::CreatePathConstraint(class UClass* ConstraintClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreatePathConstraint");
+
+	APawn_CreatePathConstraint_Params params;
+	params.ConstraintClass = ConstraintClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.AddGoalEvaluator
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UPathGoalEvaluator*      Evaluator                      (CPF_Parm)
+
+void APawn::AddGoalEvaluator(class UPathGoalEvaluator* Evaluator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddGoalEvaluator");
+
+	APawn_AddGoalEvaluator_Params params;
+	params.Evaluator = Evaluator;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.AddPathConstraint
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UPathConstraint*         Constraint                     (CPF_Parm)
+
+void APawn::AddPathConstraint(class UPathConstraint* Constraint)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddPathConstraint");
+
+	APawn_AddPathConstraint_Params params;
+	params.Constraint = Constraint;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClearConstraints
+// (FUNC_Native, FUNC_Public)
+
+void APawn::ClearConstraints()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearConstraints");
+
+	APawn_ClearConstraints_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SoakPause
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::SoakPause()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SoakPause");
+
+	APawn_SoakPause_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.BecomeViewTarget
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APlayerController*       PC                             (CPF_Parm)
+
+void APawn::BecomeViewTarget(class APlayerController* PC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BecomeViewTarget");
+
+	APawn_BecomeViewTarget_Params params;
+	params.PC = PC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MessagePlayer
+// (FUNC_Final, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FString                 msg                            (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+
+void APawn::MessagePlayer(const struct FString& msg)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MessagePlayer");
+
+	APawn_MessagePlayer_Params params;
+	params.msg = msg;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.HandleTeleport
+// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// TArray<class UObject*>         DestList                       (CPF_Parm, CPF_NeedCtorLink)
+// bool                           bUpdateRotation                (CPF_Parm)
+// bool                           bCheckOverlap                  (CPF_Parm)
+// float                          TeleportDistance               (CPF_OptionalParm, CPF_Parm)
+// TArray<class AVolume*>         TeleportVolumes                (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// int                            PreferredDestIndex             (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::HandleTeleport(TArray<class UObject*> DestList, bool bUpdateRotation, bool bCheckOverlap, float TeleportDistance, TArray<class AVolume*> TeleportVolumes, int PreferredDestIndex)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandleTeleport");
+
+	APawn_HandleTeleport_Params params;
+	params.DestList = DestList;
+	params.bUpdateRotation = bUpdateRotation;
+	params.bCheckOverlap = bCheckOverlap;
+	params.TeleportDistance = TeleportDistance;
+	params.TeleportVolumes = TeleportVolumes;
+	params.PreferredDestIndex = PreferredDestIndex;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.OnTeleport
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_Teleport*        Action                         (CPF_Parm)
+
+void APawn::OnTeleport(class USeqAct_Teleport* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnTeleport");
+
+	APawn_OnTeleport_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OnSetMaterial
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USeqAct_SetMaterial*     Action                         (CPF_Parm)
+
+void APawn::OnSetMaterial(class USeqAct_SetMaterial* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnSetMaterial");
+
+	APawn_OnSetMaterial_Params params;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetDamageScaling
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float APawn::GetDamageScaling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetDamageScaling");
+
+	APawn_GetDamageScaling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.DoKismetAttachment
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  Attachment                     (CPF_Parm)
+// class USeqAct_AttachToActor*   Action                         (CPF_Parm)
+
+void APawn::DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DoKismetAttachment");
+
+	APawn_DoKismetAttachment_Params params;
+	params.Attachment = Attachment;
+	params.Action = Action;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SpawnedByKismet
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::SpawnedByKismet()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpawnedByKismet");
+
+	APawn_SpawnedByKismet_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IsStationary
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsStationary()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsStationary");
+
+	APawn_IsStationary_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetCollisionExtent
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector APawn::GetCollisionExtent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionExtent");
+
+	APawn_GetCollisionExtent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetCollisionHeight
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float APawn::GetCollisionHeight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionHeight");
+
+	APawn_GetCollisionHeight_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetCollisionRadius
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float APawn::GetCollisionRadius()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionRadius");
+
+	APawn_GetCollisionRadius_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CheatFly
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CheatFly()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatFly");
+
+	APawn_CheatFly_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CheatGhost
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CheatGhost()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatGhost");
+
+	APawn_CheatGhost_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CheatWalk
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CheatWalk()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatWalk");
+
+	APawn_CheatWalk_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.PlayWeaponSwitch
+// (FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 OldWeapon                      (CPF_Parm)
+// class AWeapon*                 NewWeapon                      (CPF_Parm)
+
+void APawn::PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayWeaponSwitch");
+
+	APawn_PlayWeaponSwitch_Params params;
+	params.OldWeapon = OldWeapon;
+	params.NewWeapon = NewWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetActiveWeapon
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 NewWeapon                      (CPF_Parm)
+
+void APawn::SetActiveWeapon(class AWeapon* NewWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetActiveWeapon");
+
+	APawn_SetActiveWeapon_Params params;
+	params.NewWeapon = NewWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TossInventory
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class AInventory*              Inv                            (CPF_Parm)
+// struct FVector                 ForceVelocity                  (CPF_OptionalParm, CPF_Parm)
+
+void APawn::TossInventory(class AInventory* Inv, const struct FVector& ForceVelocity)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TossInventory");
+
+	APawn_TossInventory_Params params;
+	params.Inv = Inv;
+	params.ForceVelocity = ForceVelocity;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ThrowActiveWeapon
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           bDestroyWeap                   (CPF_OptionalParm, CPF_Parm)
+
+void APawn::ThrowActiveWeapon(bool bDestroyWeap)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ThrowActiveWeapon");
+
+	APawn_ThrowActiveWeapon_Params params;
+	params.bDestroyWeap = bDestroyWeap;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.DrawHUD
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AHUD*                    H                              (CPF_Parm)
+
+void APawn::DrawHUD(class AHUD* H)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DrawHUD");
+
+	APawn_DrawHUD_Params params;
+	params.H = H;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FindInventoryType
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UClass*                  DesiredClass                   (CPF_Parm)
+// bool                           bAllowSubclass                 (CPF_OptionalParm, CPF_Parm)
+// class AInventory*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AInventory* APawn::FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FindInventoryType");
+
+	APawn_FindInventoryType_Params params;
+	params.DesiredClass = DesiredClass;
+	params.bAllowSubclass = bAllowSubclass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CreateInventory
+// (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UClass*                  NewInvClass                    (CPF_Parm)
+// bool                           bDoNotActivate                 (CPF_OptionalParm, CPF_Parm)
+// class AInventory*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AInventory* APawn::CreateInventory(class UClass* NewInvClass, bool bDoNotActivate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreateInventory");
+
+	APawn_CreateInventory_Params params;
+	params.NewInvClass = NewInvClass;
+	params.bDoNotActivate = bDoNotActivate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.AddDefaultInventory
+// (FUNC_Public)
+
+void APawn::AddDefaultInventory()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddDefaultInventory");
+
+	APawn_AddDefaultInventory_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StopDriving
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AVehicle*                V                              (CPF_Parm)
+
+void APawn::StopDriving(class AVehicle* V)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopDriving");
+
+	APawn_StopDriving_Params params;
+	params.V = V;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StartDriving
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AVehicle*                V                              (CPF_Parm)
+
+void APawn::StartDriving(class AVehicle* V)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartDriving");
+
+	APawn_StartDriving_Params params;
+	params.V = V;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CanThrowWeapon
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanThrowWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanThrowWeapon");
+
+	APawn_CanThrowWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.Suicide
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::Suicide()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Suicide");
+
+	APawn_Suicide_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetVehicleBase
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class AVehicle*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AVehicle* APawn::GetVehicleBase()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetVehicleBase");
+
+	APawn_GetVehicleBase_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.PlayLanded
+// (FUNC_Public)
+// Parameters:
+// float                          ImpactVel                      (CPF_Parm)
+
+void APawn::PlayLanded(float ImpactVel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayLanded");
+
+	APawn_PlayLanded_Params params;
+	params.ImpactVel = ImpactVel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CannotJumpNow
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CannotJumpNow()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CannotJumpNow");
+
+	APawn_CannotJumpNow_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.PlayFootStepSound
+// (FUNC_Event, FUNC_Public)
+// Parameters:
+// int                            FootDown                       (CPF_Parm)
+
+void APawn::PlayFootStepSound(int FootDown)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayFootStepSound");
+
+	APawn_PlayFootStepSound_Params params;
+	params.FootDown = FootDown;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TornOff
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::TornOff()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TornOff");
+
+	APawn_TornOff_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayDying
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FVector                 HitLoc                         (CPF_Parm)
+
+void APawn::PlayDying(class UClass* DamageType, const struct FVector& HitLoc)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayDying");
+
+	APawn_PlayDying_Params params;
+	params.DamageType = DamageType;
+	params.HitLoc = HitLoc;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetDyingPhysics
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::SetDyingPhysics()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetDyingPhysics");
+
+	APawn_SetDyingPhysics_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TurnOff
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::TurnOff()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TurnOff");
+
+	APawn_TurnOff_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayHit
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          Damage                         (CPF_Parm)
+// class AController*             InstigatedBy                   (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_Parm)
+
+void APawn::PlayHit(float Damage, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FVector& Momentum, const struct FTraceHitInfo& HitInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayHit");
+
+	APawn_PlayHit_Params params;
+	params.Damage = Damage;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.DamageType = DamageType;
+	params.Momentum = Momentum;
+	params.HitInfo = HitInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayDyingSound
+// (FUNC_Public)
+
+void APawn::PlayDyingSound()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayDyingSound");
+
+	APawn_PlayDyingSound_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.DoJump
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bUpdating                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::DoJump(bool bUpdating)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DoJump");
+
+	APawn_DoJump_Params params;
+	params.bUpdating = bUpdating;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CheckWaterJump
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 WallNormal                     (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CheckWaterJump(struct FVector* WallNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheckWaterJump");
+
+	APawn_CheckWaterJump_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (WallNormal != nullptr)
+		*WallNormal = params.WallNormal;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.TakeDrowningDamage
+// (FUNC_Public)
+
+void APawn::TakeDrowningDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeDrowningDamage");
+
+	APawn_TakeDrowningDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.BreathTimer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::BreathTimer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BreathTimer");
+
+	APawn_BreathTimer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TouchingWaterVolume
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::TouchingWaterVolume()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TouchingWaterVolume");
+
+	APawn_TouchingWaterVolume_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.HeadVolumeChange
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          newHeadVolume                  (CPF_Parm)
+
+void APawn::HeadVolumeChange(class APhysicsVolume* newHeadVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HeadVolumeChange");
+
+	APawn_HeadVolumeChange_Params params;
+	params.newHeadVolume = newHeadVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TickSpecial
+// (FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void APawn::TickSpecial(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TickSpecial");
+
+	APawn_TickSpecial_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Landed
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  FloorActor                     (CPF_Parm)
+
+void APawn::Landed(const struct FVector& HitNormal, class AActor* FloorActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Landed");
+
+	APawn_Landed_Params params;
+	params.HitNormal = HitNormal;
+	params.FloorActor = FloorActor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Falling
+// (FUNC_Event, FUNC_Public)
+
+void APawn::Falling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Falling");
+
+	APawn_Falling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.DelayTriggerDeath
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::DelayTriggerDeath()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DelayTriggerDeath");
+
+	APawn_DelayTriggerDeath_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Died
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             Killer                         (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Died");
+
+	APawn_Died_Params params;
+	params.Killer = Killer;
+	params.DamageType = DamageType;
+	params.HitLocation = HitLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.ThrowWeaponOnDeath
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::ThrowWeaponOnDeath()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ThrowWeaponOnDeath");
+
+	APawn_ThrowWeaponOnDeath_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IsSameTeam
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APawn*                   Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsSameTeam(class APawn* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsSameTeam");
+
+	APawn_IsSameTeam_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetTeam
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class ATeamInfo*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ATeamInfo* APawn::GetTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetTeam");
+
+	APawn_GetTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetTeamNum
+// (FUNC_Simulated, FUNC_Native, FUNC_Public)
+// Parameters:
+// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+unsigned char APawn::GetTeamNum()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetTeamNum");
+
+	APawn_GetTeamNum_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.TakeDamage
+// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            Damage                         (CPF_Parm)
+// class AController*             InstigatedBy                   (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void APawn::TakeDamage(int Damage, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeDamage");
+
+	APawn_TakeDamage_Params params;
+	params.Damage = Damage;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetKillInstigator
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             InstigatedBy                   (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// class AController*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AController* APawn::SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetKillInstigator");
+
+	APawn_SetKillInstigator_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.DamageType = DamageType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.NotifyTakeHit
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             InstigatedBy                   (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// int                            Damage                         (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_Parm)
+
+void APawn::NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.NotifyTakeHit");
+
+	APawn_NotifyTakeHit_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.Damage = Damage;
+	params.DamageType = DamageType;
+	params.Momentum = Momentum;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TakeRadiusDamageOnBones
+// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class AController*             InstigatedBy                   (CPF_Parm)
+// float                          BaseDamage                     (CPF_Parm)
+// float                          DamageRadius                   (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// float                          Momentum                       (CPF_Parm)
+// struct FVector                 HurtOrigin                     (CPF_Parm)
+// bool                           bFullDamage                    (CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_Parm)
+// TArray<struct FName>           Bones                          (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::TakeRadiusDamageOnBones(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, TArray<struct FName> Bones)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeRadiusDamageOnBones");
+
+	APawn_TakeRadiusDamageOnBones_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.BaseDamage = BaseDamage;
+	params.DamageRadius = DamageRadius;
+	params.DamageType = DamageType;
+	params.Momentum = Momentum;
+	params.HurtOrigin = HurtOrigin;
+	params.bFullDamage = bFullDamage;
+	params.DamageCauser = DamageCauser;
+	params.Bones = Bones;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.PruneDamagedBoneList
+// (FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<struct FName>           Bones                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void APawn::PruneDamagedBoneList(TArray<struct FName>* Bones)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PruneDamagedBoneList");
+
+	APawn_PruneDamagedBoneList_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Bones != nullptr)
+		*Bones = params.Bones;
+}
+
+
+// Function Engine.Pawn.HealDamage
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// int                            Amount                         (CPF_Parm)
+// class AController*             Healer                         (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HealDamage");
+
+	APawn_HealDamage_Params params;
+	params.Amount = Amount;
+	params.Healer = Healer;
+	params.DamageType = DamageType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.AdjustDamage
+// (FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// int                            InDamage                       (CPF_Parm, CPF_OutParm)
+// struct FVector                 Momentum                       (CPF_Parm, CPF_OutParm)
+// class AController*             InstigatedBy                   (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_Parm)
+
+void APawn::AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, int* InDamage, struct FVector* Momentum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AdjustDamage");
+
+	APawn_AdjustDamage_Params params;
+	params.InstigatedBy = InstigatedBy;
+	params.HitLocation = HitLocation;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InDamage != nullptr)
+		*InDamage = params.InDamage;
+	if (Momentum != nullptr)
+		*Momentum = params.Momentum;
+}
+
+
+// Function Engine.Pawn.SetMovementPhysics
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::SetMovementPhysics()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMovementPhysics");
+
+	APawn_SetMovementPhysics_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Gasp
+// (FUNC_Public)
+
+void APawn::Gasp()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Gasp");
+
+	APawn_Gasp_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OnGiveInventory
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_GiveInventory*   inAction                       (CPF_Parm)
+
+void APawn::OnGiveInventory(class USeqAct_GiveInventory* inAction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnGiveInventory");
+
+	APawn_OnGiveInventory_Params params;
+	params.inAction = inAction;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OnAssignController
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USeqAct_AssignController* inAction                       (CPF_Parm)
+
+void APawn::OnAssignController(class USeqAct_AssignController* inAction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnAssignController");
+
+	APawn_OnAssignController_Params params;
+	params.inAction = inAction;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ReceivedNewEvent
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class USequenceEvent*          Evt                            (CPF_Parm)
+
+void APawn::ReceivedNewEvent(class USequenceEvent* Evt)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReceivedNewEvent");
+
+	APawn_ReceivedNewEvent_Params params;
+	params.Evt = Evt;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SpawnDefaultController
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::SpawnDefaultController()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpawnDefaultController");
+
+	APawn_SpawnDefaultController_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PostBeginPlay
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PostBeginPlay");
+
+	APawn_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PreBeginPlay
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::PreBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PreBeginPlay");
+
+	APawn_PreBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Destroyed
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Destroyed");
+
+	APawn_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.DetachFromController
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           bDestroyController             (CPF_OptionalParm, CPF_Parm)
+
+void APawn::DetachFromController(bool bDestroyController)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DetachFromController");
+
+	APawn_DetachFromController_Params params;
+	params.bDestroyController = bDestroyController;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CrushedBy
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APawn*                   OtherPawn                      (CPF_Parm)
+
+void APawn::CrushedBy(class APawn* OtherPawn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CrushedBy");
+
+	APawn_CrushedBy_Params params;
+	params.OtherPawn = OtherPawn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CanBeBaseForPawn
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class APawn*                   aPawn                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanBeBaseForPawn(class APawn* aPawn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanBeBaseForPawn");
+
+	APawn_CanBeBaseForPawn_Params params;
+	params.aPawn = aPawn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.BaseChange
+// (FUNC_Defined, FUNC_Singular, FUNC_Event, FUNC_Public)
+
+void APawn::BaseChange()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BaseChange");
+
+	APawn_BaseChange_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StuckOnPawn
+// (FUNC_Event, FUNC_Public)
+// Parameters:
+// class APawn*                   OtherPawn                      (CPF_Parm)
+
+void APawn::StuckOnPawn(class APawn* OtherPawn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StuckOnPawn");
+
+	APawn_StuckOnPawn_Params params;
+	params.OtherPawn = OtherPawn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.JumpOffPawn
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::JumpOffPawn()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.JumpOffPawn");
+
+	APawn_JumpOffPawn_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.gibbedBy
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+
+void APawn::gibbedBy(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.gibbedBy");
+
+	APawn_gibbedBy_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.EncroachedBy
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+
+void APawn::EncroachedBy(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EncroachedBy");
+
+	APawn_EncroachedBy_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.EncroachingOn
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::EncroachingOn(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EncroachingOn");
+
+	APawn_EncroachingOn_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.FaceRotation
+// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+// float                          DeltaTime                      (CPF_OptionalParm, CPF_Parm)
+
+void APawn::FaceRotation(const struct FRotator& NewRotation, float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FaceRotation");
+
+	APawn_FaceRotation_Params params;
+	params.NewRotation = NewRotation;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.UpdatePawnRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void APawn::UpdatePawnRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdatePawnRotation");
+
+	APawn_UpdatePawnRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClientSetRotation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void APawn::ClientSetRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientSetRotation");
+
+	APawn_ClientSetRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClientRestart
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::ClientRestart()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientRestart");
+
+	APawn_ClientRestart_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Restart
+// (FUNC_Public)
+
+void APawn::Restart()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Restart");
+
+	APawn_Restart_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.TakeFallingDamage
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::TakeFallingDamage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeFallingDamage");
+
+	APawn_TakeFallingDamage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.KilledBy
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void APawn::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.KilledBy");
+
+	APawn_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.AddVelocity
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FVector                 NewVelocity                    (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+
+void APawn::AddVelocity(const struct FVector& NewVelocity, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddVelocity");
+
+	APawn_AddVelocity_Params params;
+	params.NewVelocity = NewVelocity;
+	params.HitLocation = HitLocation;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.HandleMomentum
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FVector                 Momentum                       (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+
+void APawn::HandleMomentum(const struct FVector& Momentum, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandleMomentum");
+
+	APawn_HandleMomentum_Params params;
+	params.Momentum = Momentum;
+	params.HitLocation = HitLocation;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StartCrouch
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          HeightAdjust                   (CPF_Parm)
+
+void APawn::StartCrouch(float HeightAdjust)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartCrouch");
+
+	APawn_StartCrouch_Params params;
+	params.HeightAdjust = HeightAdjust;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.EndCrouch
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          HeightAdjust                   (CPF_Parm)
+
+void APawn::EndCrouch(float HeightAdjust)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EndCrouch");
+
+	APawn_EndCrouch_Params params;
+	params.HeightAdjust = HeightAdjust;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ShouldCrouch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bCrouch                        (CPF_Parm)
+
+void APawn::ShouldCrouch(bool bCrouch)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ShouldCrouch");
+
+	APawn_ShouldCrouch_Params params;
+	params.bCrouch = bCrouch;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.UnCrouch
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::UnCrouch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UnCrouch");
+
+	APawn_UnCrouch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OutsideWorldBounds
+// (FUNC_Defined, FUNC_Singular, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::OutsideWorldBounds()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OutsideWorldBounds");
+
+	APawn_OutsideWorldBounds_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FellOutOfWorld
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UClass*                  dmgType                        (CPF_Parm)
+
+void APawn::FellOutOfWorld(class UClass* dmgType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FellOutOfWorld");
+
+	APawn_FellOutOfWorld_Params params;
+	params.dmgType = dmgType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClientMessage
+// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 S                              (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+// struct FName                   Type                           (CPF_OptionalParm, CPF_Parm)
+
+void APawn::ClientMessage(const struct FString& S, const struct FName& Type)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientMessage");
+
+	APawn_ClientMessage_Params params;
+	params.S = S;
+	params.Type = Type;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.HandlePickup
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AInventory*              Inv                            (CPF_Parm)
+
+void APawn::HandlePickup(class AInventory* Inv)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandlePickup");
+
+	APawn_HandlePickup_Params params;
+	params.Inv = Inv;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.LineOfSightTo
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::LineOfSightTo(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.LineOfSightTo");
+
+	APawn_LineOfSightTo_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SetMoveTarget
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  NewTarget                      (CPF_Parm)
+
+void APawn::SetMoveTarget(class AActor* NewTarget)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMoveTarget");
+
+	APawn_SetMoveTarget_Params params;
+	params.NewTarget = NewTarget;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.InGodMode
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::InGodMode()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InGodMode");
+
+	APawn_InGodMode_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SetViewRotation
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// struct FRotator                NewRotation                    (CPF_Parm)
+
+void APawn::SetViewRotation(const struct FRotator& NewRotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetViewRotation");
+
+	APawn_SetViewRotation_Params params;
+	params.NewRotation = NewRotation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetAdjustedAimFor
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 W                              (CPF_Parm)
+// struct FVector                 StartFireLoc                   (CPF_Parm)
+// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FRotator APawn::GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetAdjustedAimFor");
+
+	APawn_GetAdjustedAimFor_Params params;
+	params.W = W;
+	params.StartFireLoc = StartFireLoc;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.InFreeCam
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::InFreeCam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InFreeCam");
+
+	APawn_InFreeCam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetBaseAimRotation
+// (FUNC_Defined, FUNC_Singular, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FRotator APawn::GetBaseAimRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBaseAimRotation");
+
+	APawn_GetBaseAimRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetWeaponStartTraceLocation
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class AWeapon*                 CurrentWeapon                  (CPF_OptionalParm, CPF_Parm)
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector APawn::GetWeaponStartTraceLocation(class AWeapon* CurrentWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetWeaponStartTraceLocation");
+
+	APawn_GetWeaponStartTraceLocation_Params params;
+	params.CurrentWeapon = CurrentWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetPawnViewLocation
+// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector APawn::GetPawnViewLocation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetPawnViewLocation");
+
+	APawn_GetPawnViewLocation_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetViewRotation
+// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FRotator APawn::GetViewRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetViewRotation");
+
+	APawn_GetViewRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetActorEyesViewPoint
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FVector                 out_Location                   (CPF_Parm, CPF_OutParm)
+// struct FRotator                out_Rotation                   (CPF_Parm, CPF_OutParm)
+
+void APawn::GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetActorEyesViewPoint");
+
+	APawn_GetActorEyesViewPoint_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_Location != nullptr)
+		*out_Location = params.out_Location;
+	if (out_Rotation != nullptr)
+		*out_Rotation = params.out_Rotation;
+}
+
+
+// Function Engine.Pawn.ProcessViewRotation
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FRotator                out_ViewRotation               (CPF_Parm, CPF_OutParm)
+// struct FRotator                out_DeltaRot                   (CPF_Parm, CPF_OutParm)
+
+void APawn::ProcessViewRotation(float DeltaTime, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ProcessViewRotation");
+
+	APawn_ProcessViewRotation_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_ViewRotation != nullptr)
+		*out_ViewRotation = params.out_ViewRotation;
+	if (out_DeltaRot != nullptr)
+		*out_DeltaRot = params.out_DeltaRot;
+}
+
+
+// Function Engine.Pawn.IsFirstPerson
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsFirstPerson()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsFirstPerson");
+
+	APawn_IsFirstPerson_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsLocalHuman
+// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsLocalHuman()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsLocalHuman");
+
+	APawn_IsLocalHuman_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsPlayerPawn
+// (FUNC_Simulated, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsPlayerPawn()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsPlayerPawn");
+
+	APawn_IsPlayerPawn_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsLocallyControlled
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsLocallyControlled()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsLocallyControlled");
+
+	APawn_IsLocallyControlled_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsHumanControlled
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class AController*             PawnController                 (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsHumanControlled(class AController* PawnController)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsHumanControlled");
+
+	APawn_IsHumanControlled_Params params;
+	params.PawnController = PawnController;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.DisplayDebug
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// class AHUD*                    HUD                            (CPF_Parm)
+// float                          out_YL                         (CPF_Parm, CPF_OutParm)
+// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
+
+void APawn::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DisplayDebug");
+
+	APawn_DisplayDebug_Params params;
+	params.HUD = HUD;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_YL != nullptr)
+		*out_YL = params.out_YL;
+	if (out_YPos != nullptr)
+		*out_YPos = params.out_YPos;
+}
+
+
+// Function Engine.Pawn.ClimbLadder
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ALadderVolume*           L                              (CPF_Parm)
+
+void APawn::ClimbLadder(class ALadderVolume* L)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClimbLadder");
+
+	APawn_ClimbLadder_Params params;
+	params.L = L;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.EndClimbLadder
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ALadderVolume*           OldLadder                      (CPF_Parm)
+
+void APawn::EndClimbLadder(class ALadderVolume* OldLadder)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EndClimbLadder");
+
+	APawn_EndClimbLadder_Params params;
+	params.OldLadder = OldLadder;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CanSplash
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanSplash()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanSplash");
+
+	APawn_CanSplash_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SetWalking
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           bNewIsWalking                  (CPF_Parm)
+
+void APawn::SetWalking(bool bNewIsWalking)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetWalking");
+
+	APawn_SetWalking_Params params;
+	params.bNewIsWalking = bNewIsWalking;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.RangedAttackTime
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float APawn::RangedAttackTime()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RangedAttackTime");
+
+	APawn_RangedAttackTime_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.RecommendLongRangedAttack
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::RecommendLongRangedAttack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RecommendLongRangedAttack");
+
+	APawn_RecommendLongRangedAttack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CanGrabLadder
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanGrabLadder()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanGrabLadder");
+
+	APawn_CanGrabLadder_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.DropToGround
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::DropToGround()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DropToGround");
+
+	APawn_DropToGround_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetDefaultCameraMode
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class APlayerController*       RequestedBy                    (CPF_Parm)
+// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FName APawn::GetDefaultCameraMode(class APlayerController* RequestedBy)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetDefaultCameraMode");
+
+	APawn_GetDefaultCameraMode_Params params;
+	params.RequestedBy = RequestedBy;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.UnPossessed
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::UnPossessed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UnPossessed");
+
+	APawn_UnPossessed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.UpdateControllerOnPossess
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bVehicleTransition             (CPF_Parm)
+
+void APawn::UpdateControllerOnPossess(bool bVehicleTransition)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdateControllerOnPossess");
+
+	APawn_UpdateControllerOnPossess_Params params;
+	params.bVehicleTransition = bVehicleTransition;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PossessedBy
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AController*             C                              (CPF_Parm)
+// bool                           bVehicleTransition             (CPF_Parm)
+
+void APawn::PossessedBy(class AController* C, bool bVehicleTransition)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PossessedBy");
+
+	APawn_PossessedBy_Params params;
+	params.C = C;
+	params.bVehicleTransition = bVehicleTransition;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayTeleportEffect
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bOut                           (CPF_Parm)
+// bool                           bSound                         (CPF_Parm)
+
+void APawn::PlayTeleportEffect(bool bOut, bool bSound)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayTeleportEffect");
+
+	APawn_PlayTeleportEffect_Params params;
+	params.bOut = bOut;
+	params.bSound = bSound;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetHumanReadableName
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString APawn::GetHumanReadableName()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetHumanReadableName");
+
+	APawn_GetHumanReadableName_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.NeedToTurn
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FVector                 targ                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::NeedToTurn(const struct FVector& targ)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.NeedToTurn");
+
+	APawn_NeedToTurn_Params params;
+	params.targ = targ;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsFiring
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsFiring()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsFiring");
+
+	APawn_IsFiring_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.HasRangedAttack
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::HasRangedAttack()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HasRangedAttack");
+
+	APawn_HasRangedAttack_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.FireOnRelease
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::FireOnRelease()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FireOnRelease");
+
+	APawn_FireOnRelease_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.TooCloseToAttack
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::TooCloseToAttack(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TooCloseToAttack");
+
+	APawn_TooCloseToAttack_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CanAttack
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanAttack(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanAttack");
+
+	APawn_CanAttack_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.BotFire
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bFinished                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::BotFire(bool bFinished)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BotFire");
+
+	APawn_BotFire_Params params;
+	params.bFinished = bFinished;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.WeaponStoppedFiring
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// bool                           bViaReplication                (CPF_Parm)
+
+void APawn::WeaponStoppedFiring(class AWeapon* InWeapon, bool bViaReplication)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.WeaponStoppedFiring");
+
+	APawn_WeaponStoppedFiring_Params params;
+	params.InWeapon = InWeapon;
+	params.bViaReplication = bViaReplication;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.WeaponFired
+// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// bool                           bViaReplication                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_OptionalParm, CPF_Parm)
+
+void APawn::WeaponFired(class AWeapon* InWeapon, bool bViaReplication, const struct FVector& HitLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.WeaponFired");
+
+	APawn_WeaponFired_Params params;
+	params.InWeapon = InWeapon;
+	params.bViaReplication = bViaReplication;
+	params.HitLocation = HitLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FlashLocationUpdated
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// struct FVector                 InFlashLocation                (CPF_Parm)
+// bool                           bViaReplication                (CPF_Parm)
+
+void APawn::FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, bool bViaReplication)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FlashLocationUpdated");
+
+	APawn_FlashLocationUpdated_Params params;
+	params.InWeapon = InWeapon;
+	params.InFlashLocation = InFlashLocation;
+	params.bViaReplication = bViaReplication;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClearFlashLocation
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+
+void APawn::ClearFlashLocation(class AWeapon* InWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearFlashLocation");
+
+	APawn_ClearFlashLocation_Params params;
+	params.InWeapon = InWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetFlashLocation
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  InFiringMode                   (CPF_Parm)
+// struct FVector                 NewLoc                         (CPF_Parm)
+
+void APawn::SetFlashLocation(class AWeapon* InWeapon, unsigned char InFiringMode, const struct FVector& NewLoc)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetFlashLocation");
+
+	APawn_SetFlashLocation_Params params;
+	params.InWeapon = InWeapon;
+	params.InFiringMode = InFiringMode;
+	params.NewLoc = NewLoc;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClearFlashCount
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+
+void APawn::ClearFlashCount(class AWeapon* InWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearFlashCount");
+
+	APawn_ClearFlashCount_Params params;
+	params.InWeapon = InWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FlashCountUpdated
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  InFlashCount                   (CPF_Parm)
+// bool                           bViaReplication                (CPF_Parm)
+
+void APawn::FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, bool bViaReplication)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FlashCountUpdated");
+
+	APawn_FlashCountUpdated_Params params;
+	params.InWeapon = InWeapon;
+	params.InFlashCount = InFlashCount;
+	params.bViaReplication = bViaReplication;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IncrementFlashCount
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  InFiringMode                   (CPF_Parm)
+
+void APawn::IncrementFlashCount(class AWeapon* InWeapon, unsigned char InFiringMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementFlashCount");
+
+	APawn_IncrementFlashCount_Params params;
+	params.InWeapon = InWeapon;
+	params.InFiringMode = InFiringMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FiringModeUpdated
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  InFiringMode                   (CPF_Parm)
+// bool                           bViaReplication                (CPF_Parm)
+
+void APawn::FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, bool bViaReplication)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FiringModeUpdated");
+
+	APawn_FiringModeUpdated_Params params;
+	params.InWeapon = InWeapon;
+	params.InFiringMode = InFiringMode;
+	params.bViaReplication = bViaReplication;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetFiringMode
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  InFiringMode                   (CPF_Parm)
+
+void APawn::SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetFiringMode");
+
+	APawn_SetFiringMode_Params params;
+	params.InWeapon = InWeapon;
+	params.InFiringMode = InFiringMode;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetWeaponFiringMode
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 InWeapon                       (CPF_Parm)
+// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+unsigned char APawn::GetWeaponFiringMode(class AWeapon* InWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetWeaponFiringMode");
+
+	APawn_GetWeaponFiringMode_Params params;
+	params.InWeapon = InWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.StopFire
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void APawn::StopFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopFire");
+
+	APawn_StopFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StartFire
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void APawn::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartFire");
+
+	APawn_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.StopFiring
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::StopFiring()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopFiring");
+
+	APawn_StopFiring_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.Reset
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Reset");
+
+	APawn_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayerChangedTeam
+// (FUNC_Defined, FUNC_Public)
+
+void APawn::PlayerChangedTeam()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayerChangedTeam");
+
+	APawn_PlayerChangedTeam_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetBaseEyeheight
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::SetBaseEyeheight()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetBaseEyeheight");
+
+	APawn_SetBaseEyeheight_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SpecialMoveThruEdge
+// (FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// TEnumAsByte<ENavMeshEdgeType>  EdgeType                       (CPF_Parm)
+// int                            Dir                            (CPF_Parm)
+// struct FVector                 MoveStart                      (CPF_Parm)
+// struct FVector                 MoveDest                       (CPF_Parm)
+// class AActor*                  RelActor                       (CPF_OptionalParm, CPF_Parm)
+// int                            RelItem                        (CPF_OptionalParm, CPF_Parm)
+// class UNavigationHandle*       NavHandle                      (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpecialMoveThruEdge");
+
+	APawn_SpecialMoveThruEdge_Params params;
+	params.EdgeType = EdgeType;
+	params.Dir = Dir;
+	params.MoveStart = MoveStart;
+	params.MoveDest = MoveDest;
+	params.RelActor = RelActor;
+	params.RelItem = RelItem;
+	params.NavHandle = NavHandle;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SpecialMoveTo
+// (FUNC_Public)
+// Parameters:
+// class ANavigationPoint*        Start                          (CPF_Parm)
+// class ANavigationPoint*        End                            (CPF_Parm)
+// class AActor*                  Next                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpecialMoveTo");
+
+	APawn_SpecialMoveTo_Params params;
+	params.Start = Start;
+	params.End = End;
+	params.Next = Next;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.TermRagdoll
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::TermRagdoll()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TermRagdoll");
+
+	APawn_TermRagdoll_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.InitRagdoll
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::InitRagdoll()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InitRagdoll");
+
+	APawn_InitRagdoll_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetBoundingCylinder
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          CollisionRadius                (CPF_Parm, CPF_OutParm)
+// float                          CollisionHeight                (CPF_Parm, CPF_OutParm)
+
+void APawn::GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBoundingCylinder");
+
+	APawn_GetBoundingCylinder_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (CollisionRadius != nullptr)
+		*CollisionRadius = params.CollisionRadius;
+	if (CollisionHeight != nullptr)
+		*CollisionHeight = params.CollisionHeight;
+}
+
+
+// Function Engine.Pawn.ReachedDesiredRotation
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::ReachedDesiredRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedDesiredRotation");
+
+	APawn_ReachedDesiredRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SetPushesRigidBodies
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           NewPush                        (CPF_Parm)
+
+void APawn::SetPushesRigidBodies(bool NewPush)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetPushesRigidBodies");
+
+	APawn_SetPushesRigidBodies_Params params;
+	params.NewPush = NewPush;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ForceCrouch
+// (FUNC_Native, FUNC_Public)
+
+void APawn::ForceCrouch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ForceCrouch");
+
+	APawn_ForceCrouch_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ReachedPoint
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 Point                          (CPF_Parm)
+// class AActor*                  NewAnchor                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::ReachedPoint(const struct FVector& Point, class AActor* NewAnchor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedPoint");
+
+	APawn_ReachedPoint_Params params;
+	params.Point = Point;
+	params.NewAnchor = NewAnchor;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.ReachedDestination
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class AActor*                  Goal                           (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::ReachedDestination(class AActor* Goal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedDestination");
+
+	APawn_ReachedDestination_Params params;
+	params.Goal = Goal;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetBestAnchor
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// class AActor*                  TestActor                      (CPF_Parm)
+// struct FVector                 TestLocation                   (CPF_Parm)
+// bool                           bStartPoint                    (CPF_Parm)
+// bool                           bOnlyCheckVisible              (CPF_Parm)
+// float                          out_Dist                       (CPF_Parm, CPF_OutParm)
+// class ANavigationPoint*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class ANavigationPoint* APawn::GetBestAnchor(class AActor* TestActor, const struct FVector& TestLocation, bool bStartPoint, bool bOnlyCheckVisible, float* out_Dist)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBestAnchor");
+
+	APawn_GetBestAnchor_Params params;
+	params.TestActor = TestActor;
+	params.TestLocation = TestLocation;
+	params.bStartPoint = bStartPoint;
+	params.bOnlyCheckVisible = bOnlyCheckVisible;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_Dist != nullptr)
+		*out_Dist = params.out_Dist;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SetAnchor
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class ANavigationPoint*        NewAnchor                      (CPF_Parm)
+
+void APawn::SetAnchor(class ANavigationPoint* NewAnchor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetAnchor");
+
+	APawn_SetAnchor_Params params;
+	params.NewAnchor = NewAnchor;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetRemoteViewPitch
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// int                            NewRemoteViewPitch             (CPF_Parm)
+
+void APawn::SetRemoteViewPitch(int NewRemoteViewPitch)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetRemoteViewPitch");
+
+	APawn_SetRemoteViewPitch_Params params;
+	params.NewRemoteViewPitch = NewRemoteViewPitch;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IsInvisible
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsInvisible()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsInvisible");
+
+	APawn_IsInvisible_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsValidEnemyTargetFor
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class APlayerReplicationInfo*  PRI                            (CPF_Const, CPF_Parm)
+// bool                           bNoPRIisEnemy                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsValidEnemyTargetFor(class APlayerReplicationInfo* PRI, bool bNoPRIisEnemy)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsValidEnemyTargetFor");
+
+	APawn_IsValidEnemyTargetFor_Params params;
+	params.PRI = PRI;
+	params.bNoPRIisEnemy = bNoPRIisEnemy;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetFallDuration
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float APawn::GetFallDuration()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetFallDuration");
+
+	APawn_GetFallDuration_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.SuggestJumpVelocity
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FVector                 JumpVelocity                   (CPF_Parm, CPF_OutParm)
+// struct FVector                 Destination                    (CPF_Parm)
+// struct FVector                 Start                          (CPF_Parm)
+// bool                           bRequireFallLanding            (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::SuggestJumpVelocity(const struct FVector& Destination, const struct FVector& Start, bool bRequireFallLanding, struct FVector* JumpVelocity)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SuggestJumpVelocity");
+
+	APawn_SuggestJumpVelocity_Params params;
+	params.Destination = Destination;
+	params.Start = Start;
+	params.bRequireFallLanding = bRequireFallLanding;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (JumpVelocity != nullptr)
+		*JumpVelocity = params.JumpVelocity;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.ValidAnchor
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::ValidAnchor()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ValidAnchor");
+
+	APawn_ValidAnchor_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.AdjustDestination
+// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class AActor*                  GoalActor                      (CPF_Parm)
+// struct FVector                 Dest                           (CPF_OptionalParm, CPF_Parm)
+// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FVector APawn::AdjustDestination(class AActor* GoalActor, const struct FVector& Dest)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AdjustDestination");
+
+	APawn_AdjustDestination_Params params;
+	params.GoalActor = GoalActor;
+	params.Dest = Dest;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsAliveAndWell
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsAliveAndWell()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsAliveAndWell");
+
+	APawn_IsAliveAndWell_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.ReplicatedEvent
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   VarName                        (CPF_Parm)
+
+void APawn::ReplicatedEvent(const struct FName& VarName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReplicatedEvent");
+
+	APawn_ReplicatedEvent_Params params;
+	params.VarName = VarName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetSkelControlScale
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   SkelControlName                (CPF_Parm)
+// float                          Scale                          (CPF_Parm)
+
+void APawn::SetSkelControlScale(const struct FName& SkelControlName, float Scale)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetSkelControlScale");
+
+	APawn_SetSkelControlScale_Params params;
+	params.SkelControlName = SkelControlName;
+	params.Scale = Scale;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetMorphWeight
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   MorphNodeName                  (CPF_Parm)
+// float                          MorphWeight                    (CPF_Parm)
+
+void APawn::SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMorphWeight");
+
+	APawn_SetMorphWeight_Params params;
+	params.MorphNodeName = MorphNodeName;
+	params.MorphWeight = MorphWeight;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.GetActorFaceFXAsset
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UFaceFXAsset*            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UFaceFXAsset* APawn::GetActorFaceFXAsset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetActorFaceFXAsset");
+
+	APawn_GetActorFaceFXAsset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.FaceFXAudioFinished
+// (FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class UAudioComponent*         AC                             (CPF_Parm, CPF_EditInline)
+
+void APawn::FaceFXAudioFinished(class UAudioComponent* AC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FaceFXAudioFinished");
+
+	APawn_FaceFXAudioFinished_Params params;
+	params.AC = AC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.OnPlayFaceFXAnim
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class USeqAct_PlayFaceFXAnim*  inAction                       (CPF_Parm)
+
+void APawn::OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnPlayFaceFXAnim");
+
+	APawn_OnPlayFaceFXAnim_Params params;
+	params.inAction = inAction;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CanActorPlayFaceFXAnim
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::CanActorPlayFaceFXAnim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanActorPlayFaceFXAnim");
+
+	APawn_CanActorPlayFaceFXAnim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsActorPlayingFaceFXAnim
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsActorPlayingFaceFXAnim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsActorPlayingFaceFXAnim");
+
+	APawn_IsActorPlayingFaceFXAnim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.GetFaceFXAudioComponent
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UAudioComponent*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+
+class UAudioComponent* APawn::GetFaceFXAudioComponent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetFaceFXAudioComponent");
+
+	APawn_GetFaceFXAudioComponent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.StopActorFaceFXAnim
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::StopActorFaceFXAnim()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopActorFaceFXAnim");
+
+	APawn_StopActorFaceFXAnim_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PlayActorFaceFXAnim
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UFaceFXAnimSet*          AnimSet                        (CPF_Parm)
+// struct FString                 GroupName                      (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 SeqName                        (CPF_Parm, CPF_NeedCtorLink)
+// class USoundCue*               SoundCueToPlay                 (CPF_Parm)
+// class UAkEvent*                AkEventToPlay                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayActorFaceFXAnim");
+
+	APawn_PlayActorFaceFXAnim_Params params;
+	params.AnimSet = AnimSet;
+	params.GroupName = GroupName;
+	params.SeqName = SeqName;
+	params.SoundCueToPlay = SoundCueToPlay;
+	params.AkEventToPlay = AkEventToPlay;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.MAT_FinishAIGroup
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void APawn::MAT_FinishAIGroup()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_FinishAIGroup");
+
+	APawn_MAT_FinishAIGroup_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_BeginAIGroup
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FVector                 StartLoc                       (CPF_Parm)
+// struct FRotator                StartRot                       (CPF_Parm)
+
+void APawn::MAT_BeginAIGroup(const struct FVector& StartLoc, const struct FRotator& StartRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_BeginAIGroup");
+
+	APawn_MAT_BeginAIGroup_Params params;
+	params.StartLoc = StartLoc;
+	params.StartRot = StartRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FinishAIGroup
+// (FUNC_Simulated, FUNC_Public)
+
+void APawn::FinishAIGroup()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FinishAIGroup");
+
+	APawn_FinishAIGroup_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.BeginAIGroup
+// (FUNC_Simulated, FUNC_Public)
+
+void APawn::BeginAIGroup()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BeginAIGroup");
+
+	APawn_BeginAIGroup_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.InterpolationFinished
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class USeqAct_Interp*          InterpAction                   (CPF_Parm)
+
+void APawn::InterpolationFinished(class USeqAct_Interp* InterpAction)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InterpolationFinished");
+
+	APawn_InterpolationFinished_Params params;
+	params.InterpAction = InterpAction;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.InterpolationStarted
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class USeqAct_Interp*          InterpAction                   (CPF_Parm)
+// class UInterpGroupInst*        GroupInst                      (CPF_Parm)
+
+void APawn::InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InterpolationStarted");
+
+	APawn_InterpolationStarted_Params params;
+	params.InterpAction = InterpAction;
+	params.GroupInst = GroupInst;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_SetSkelControlStrength
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   SkelControlName                (CPF_Parm)
+// float                          ControlStrength                (CPF_Parm)
+
+void APawn::MAT_SetSkelControlStrength(const struct FName& SkelControlName, float ControlStrength)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetSkelControlStrength");
+
+	APawn_MAT_SetSkelControlStrength_Params params;
+	params.SkelControlName = SkelControlName;
+	params.ControlStrength = ControlStrength;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_SetSkelControlScale
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   SkelControlName                (CPF_Parm)
+// float                          Scale                          (CPF_Parm)
+
+void APawn::MAT_SetSkelControlScale(const struct FName& SkelControlName, float Scale)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetSkelControlScale");
+
+	APawn_MAT_SetSkelControlScale_Params params;
+	params.SkelControlName = SkelControlName;
+	params.Scale = Scale;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_SetMorphWeight
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   MorphNodeName                  (CPF_Parm)
+// float                          MorphWeight                    (CPF_Parm)
+
+void APawn::MAT_SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetMorphWeight");
+
+	APawn_MAT_SetMorphWeight_Params params;
+	params.MorphNodeName = MorphNodeName;
+	params.MorphWeight = MorphWeight;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_SetAnimWeights
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// TArray<struct FAnimSlotInfo>   SlotInfos                      (CPF_Parm, CPF_NeedCtorLink)
+
+void APawn::MAT_SetAnimWeights(TArray<struct FAnimSlotInfo> SlotInfos)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetAnimWeights");
+
+	APawn_MAT_SetAnimWeights_Params params;
+	params.SlotInfos = SlotInfos;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_SetAnimPosition
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FName                   SlotName                       (CPF_Parm)
+// int                            ChannelIndex                   (CPF_Parm)
+// struct FName                   InAnimSeqName                  (CPF_Parm)
+// float                          InPosition                     (CPF_Parm)
+// bool                           bFireNotifies                  (CPF_Parm)
+// bool                           bLooping                       (CPF_Parm)
+// bool                           bEnableRootMotion              (CPF_Parm)
+
+void APawn::MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetAnimPosition");
+
+	APawn_MAT_SetAnimPosition_Params params;
+	params.SlotName = SlotName;
+	params.ChannelIndex = ChannelIndex;
+	params.InAnimSeqName = InAnimSeqName;
+	params.InPosition = InPosition;
+	params.bFireNotifies = bFireNotifies;
+	params.bLooping = bLooping;
+	params.bEnableRootMotion = bEnableRootMotion;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetAnimPosition
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   SlotName                       (CPF_Parm)
+// int                            ChannelIndex                   (CPF_Parm)
+// struct FName                   InAnimSeqName                  (CPF_Parm)
+// float                          InPosition                     (CPF_Parm)
+// bool                           bFireNotifies                  (CPF_Parm)
+// bool                           bLooping                       (CPF_Parm)
+// bool                           bEnableRootMotion              (CPF_Parm)
+
+void APawn::SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetAnimPosition");
+
+	APawn_SetAnimPosition_Params params;
+	params.SlotName = SlotName;
+	params.ChannelIndex = ChannelIndex;
+	params.InAnimSeqName = InAnimSeqName;
+	params.InPosition = InPosition;
+	params.bFireNotifies = bFireNotifies;
+	params.bLooping = bLooping;
+	params.bEnableRootMotion = bEnableRootMotion;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_FinishAnimControl
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
+
+void APawn::MAT_FinishAnimControl(class UInterpGroup* InInterpGroup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_FinishAnimControl");
+
+	APawn_MAT_FinishAnimControl_Params params;
+	params.InInterpGroup = InInterpGroup;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.FinishAnimControl
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
+
+void APawn::FinishAnimControl(class UInterpGroup* InInterpGroup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FinishAnimControl");
+
+	APawn_FinishAnimControl_Params params;
+	params.InInterpGroup = InInterpGroup;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.MAT_BeginAnimControl
+// (FUNC_Native, FUNC_Public)
+// Parameters:
+// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
+
+void APawn::MAT_BeginAnimControl(class UInterpGroup* InInterpGroup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_BeginAnimControl");
+
+	APawn_MAT_BeginAnimControl_Params params;
+	params.InInterpGroup = InInterpGroup;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.BeginAnimControl
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
+
+void APawn::BeginAnimControl(class UInterpGroup* InInterpGroup)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BeginAnimControl");
+
+	APawn_BeginAnimControl_Params params;
+	params.InInterpGroup = InInterpGroup;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.RestoreAnimSetsToDefault
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::RestoreAnimSetsToDefault()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RestoreAnimSetsToDefault");
+
+	APawn_RestoreAnimSetsToDefault_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.AnimSetListUpdated
+// (FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::AnimSetListUpdated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AnimSetListUpdated");
+
+	APawn_AnimSetListUpdated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.AddAnimSets
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<class UAnimSet*>        CustomAnimSets                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+
+void APawn::AddAnimSets(TArray<class UAnimSet*>* CustomAnimSets)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddAnimSets");
+
+	APawn_AddAnimSets_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (CustomAnimSets != nullptr)
+		*CustomAnimSets = params.CustomAnimSets;
+}
+
+
+// Function Engine.Pawn.BuildScriptAnimSetList
+// (FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void APawn::BuildScriptAnimSetList()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BuildScriptAnimSetList");
+
+	APawn_BuildScriptAnimSetList_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.UpdateAnimSetList
+// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
+
+void APawn::UpdateAnimSetList()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdateAnimSetList");
+
+	APawn_UpdateAnimSetList_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ClearAnimNodes
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void APawn::ClearAnimNodes()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearAnimNodes");
+
+	APawn_ClearAnimNodes_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.CacheAnimNodes
+// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
+
+void APawn::CacheAnimNodes()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CacheAnimNodes");
+
+	APawn_CacheAnimNodes_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.PostInitAnimTree
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// class USkeletalMeshComponent*  SkelComp                       (CPF_Parm, CPF_EditInline)
+
+void APawn::PostInitAnimTree(class USkeletalMeshComponent* SkelComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PostInitAnimTree");
+
+	APawn_PostInitAnimTree_Params params;
+	params.SkelComp = SkelComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.IsDesiredRotationLocked
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsDesiredRotationLocked()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsDesiredRotationLocked");
+
+	APawn_IsDesiredRotationLocked_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.IsDesiredRotationInUse
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::IsDesiredRotationInUse()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsDesiredRotationInUse");
+
+	APawn_IsDesiredRotationInUse_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.CheckDesiredRotation
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void APawn::CheckDesiredRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheckDesiredRotation");
+
+	APawn_CheckDesiredRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.ResetDesiredRotation
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+
+void APawn::ResetDesiredRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ResetDesiredRotation");
+
+	APawn_ResetDesiredRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.LockDesiredRotation
+// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           Lock                           (CPF_Parm)
+// bool                           InUnlockWhenReached            (CPF_OptionalParm, CPF_Parm)
+
+void APawn::LockDesiredRotation(bool Lock, bool InUnlockWhenReached)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.LockDesiredRotation");
+
+	APawn_LockDesiredRotation_Params params;
+	params.Lock = Lock;
+	params.InUnlockWhenReached = InUnlockWhenReached;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.SetDesiredRotation
+// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FRotator                TargetDesiredRotation          (CPF_Parm)
+// bool                           InLockDesiredRotation          (CPF_OptionalParm, CPF_Parm)
+// bool                           InUnlockWhenReached            (CPF_OptionalParm, CPF_Parm)
+// float                          InterpolationTime              (CPF_OptionalParm, CPF_Parm)
+// bool                           bResetRotationRate             (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime, bool bResetRotationRate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetDesiredRotation");
+
+	APawn_SetDesiredRotation_Params params;
+	params.TargetDesiredRotation = TargetDesiredRotation;
+	params.InLockDesiredRotation = InLockDesiredRotation;
+	params.InUnlockWhenReached = InUnlockWhenReached;
+	params.InterpolationTime = InterpolationTime;
+	params.bResetRotationRate = bResetRotationRate;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.PickWallAdjust
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FVector                 WallHitNormal                  (CPF_Parm)
+// class AActor*                  HitActor                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool APawn::PickWallAdjust(const struct FVector& WallHitNormal, class AActor* HitActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PickWallAdjust");
+
+	APawn_PickWallAdjust_Params params;
+	params.WallHitNormal = WallHitNormal;
+	params.HitActor = HitActor;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
 }
 
 
@@ -62395,41 +67548,6 @@ void USkelControlLookAt::SetTargetLocation(const struct FVector& NewTargetLocati
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.AnimSequence.GetNotifyTimeByClass
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class UClass*                  NotifyClass                    (CPF_Parm)
-// float                          PlayRate                       (CPF_OptionalParm, CPF_Parm)
-// float                          StartPosition                  (CPF_OptionalParm, CPF_Parm)
-// class UAnimNotify*             out_Notify                     (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
-// float                          out_Duration                   (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float UAnimSequence::GetNotifyTimeByClass(class UClass* NotifyClass, float PlayRate, float StartPosition, class UAnimNotify** out_Notify, float* out_Duration)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.AnimSequence.GetNotifyTimeByClass");
-
-	UAnimSequence_GetNotifyTimeByClass_Params params;
-	params.NotifyClass = NotifyClass;
-	params.PlayRate = PlayRate;
-	params.StartPosition = StartPosition;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_Notify != nullptr)
-		*out_Notify = params.out_Notify;
-	if (out_Duration != nullptr)
-		*out_Duration = params.out_Duration;
-
-	return params.ReturnValue;
 }
 
 
@@ -67774,4913 +72892,6 @@ void AKAsset::PostBeginPlay()
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OnSetVelocity
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_SetVelocity*     Action                         (CPF_Parm)
-
-void APawn::OnSetVelocity(class USeqAct_SetVelocity* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnSetVelocity");
-
-	APawn_OnSetVelocity_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Speak
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class USoundCue*               Cue                            (CPF_Parm)
-
-void APawn::Speak(class USoundCue* Cue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Speak");
-
-	APawn_Speak_Params params;
-	params.Cue = Cue;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetScalarParameterInterp
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FScalarParameterInterpStruct ScalarParameterInterp          (CPF_Const, CPF_Parm, CPF_OutParm)
-
-void APawn::SetScalarParameterInterp(struct FScalarParameterInterpStruct* ScalarParameterInterp)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetScalarParameterInterp");
-
-	APawn_SetScalarParameterInterp_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (ScalarParameterInterp != nullptr)
-		*ScalarParameterInterp = params.ScalarParameterInterp;
-}
-
-
-// Function Engine.Pawn.SetRootMotionInterpCurrentTime
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// float                          inTime                         (CPF_Parm)
-// float                          DeltaTime                      (CPF_OptionalParm, CPF_Parm)
-// bool                           bUpdateSkelPose                (CPF_OptionalParm, CPF_Parm)
-
-void APawn::SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, bool bUpdateSkelPose)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetRootMotionInterpCurrentTime");
-
-	APawn_SetRootMotionInterpCurrentTime_Params params;
-	params.inTime = inTime;
-	params.DeltaTime = DeltaTime;
-	params.bUpdateSkelPose = bUpdateSkelPose;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetCinematicMode
-// (FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           bInCinematicMode               (CPF_Parm)
-
-void APawn::SetCinematicMode(bool bInCinematicMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetCinematicMode");
-
-	APawn_SetCinematicMode_Params params;
-	params.bInCinematicMode = bInCinematicMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ZeroMovementVariables
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::ZeroMovementVariables()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ZeroMovementVariables");
-
-	APawn_ZeroMovementVariables_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClearPathStep
-// (FUNC_Native, FUNC_Public)
-
-void APawn::ClearPathStep()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearPathStep");
-
-	APawn_ClearPathStep_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.DrawPathStep
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class UCanvas*                 C                              (CPF_Parm)
-
-void APawn::DrawPathStep(class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DrawPathStep");
-
-	APawn_DrawPathStep_Params params;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IncrementPathChild
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            Cnt                            (CPF_Parm)
-// class UCanvas*                 C                              (CPF_Parm)
-
-void APawn::IncrementPathChild(int Cnt, class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementPathChild");
-
-	APawn_IncrementPathChild_Params params;
-	params.Cnt = Cnt;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IncrementPathStep
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            Cnt                            (CPF_Parm)
-// class UCanvas*                 C                              (CPF_Parm)
-
-void APawn::IncrementPathStep(int Cnt, class UCanvas* C)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementPathStep");
-
-	APawn_IncrementPathStep_Params params;
-	params.Cnt = Cnt;
-	params.C = C;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CreatePathGoalEvaluator
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  GoalEvalClass                  (CPF_Parm)
-// class UPathGoalEvaluator*      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPathGoalEvaluator* APawn::CreatePathGoalEvaluator(class UClass* GoalEvalClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreatePathGoalEvaluator");
-
-	APawn_CreatePathGoalEvaluator_Params params;
-	params.GoalEvalClass = GoalEvalClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CreatePathConstraint
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  ConstraintClass                (CPF_Parm)
-// class UPathConstraint*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UPathConstraint* APawn::CreatePathConstraint(class UClass* ConstraintClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreatePathConstraint");
-
-	APawn_CreatePathConstraint_Params params;
-	params.ConstraintClass = ConstraintClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.AddGoalEvaluator
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class UPathGoalEvaluator*      Evaluator                      (CPF_Parm)
-
-void APawn::AddGoalEvaluator(class UPathGoalEvaluator* Evaluator)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddGoalEvaluator");
-
-	APawn_AddGoalEvaluator_Params params;
-	params.Evaluator = Evaluator;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.AddPathConstraint
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class UPathConstraint*         Constraint                     (CPF_Parm)
-
-void APawn::AddPathConstraint(class UPathConstraint* Constraint)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddPathConstraint");
-
-	APawn_AddPathConstraint_Params params;
-	params.Constraint = Constraint;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClearConstraints
-// (FUNC_Native, FUNC_Public)
-
-void APawn::ClearConstraints()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearConstraints");
-
-	APawn_ClearConstraints_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SoakPause
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::SoakPause()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SoakPause");
-
-	APawn_SoakPause_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.BecomeViewTarget
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class APlayerController*       PC                             (CPF_Parm)
-
-void APawn::BecomeViewTarget(class APlayerController* PC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BecomeViewTarget");
-
-	APawn_BecomeViewTarget_Params params;
-	params.PC = PC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MessagePlayer
-// (FUNC_Final, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FString                 msg                            (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-
-void APawn::MessagePlayer(const struct FString& msg)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MessagePlayer");
-
-	APawn_MessagePlayer_Params params;
-	params.msg = msg;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.HandleTeleport
-// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// TArray<class UObject*>         DestList                       (CPF_Parm, CPF_NeedCtorLink)
-// bool                           bUpdateRotation                (CPF_Parm)
-// bool                           bCheckOverlap                  (CPF_Parm)
-// float                          TeleportDistance               (CPF_OptionalParm, CPF_Parm)
-// TArray<class AVolume*>         TeleportVolumes                (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-// int                            PreferredDestIndex             (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::HandleTeleport(TArray<class UObject*> DestList, bool bUpdateRotation, bool bCheckOverlap, float TeleportDistance, TArray<class AVolume*> TeleportVolumes, int PreferredDestIndex)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandleTeleport");
-
-	APawn_HandleTeleport_Params params;
-	params.DestList = DestList;
-	params.bUpdateRotation = bUpdateRotation;
-	params.bCheckOverlap = bCheckOverlap;
-	params.TeleportDistance = TeleportDistance;
-	params.TeleportVolumes = TeleportVolumes;
-	params.PreferredDestIndex = PreferredDestIndex;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.OnTeleport
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_Teleport*        Action                         (CPF_Parm)
-
-void APawn::OnTeleport(class USeqAct_Teleport* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnTeleport");
-
-	APawn_OnTeleport_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OnSetMaterial
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class USeqAct_SetMaterial*     Action                         (CPF_Parm)
-
-void APawn::OnSetMaterial(class USeqAct_SetMaterial* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnSetMaterial");
-
-	APawn_OnSetMaterial_Params params;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetDamageScaling
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float APawn::GetDamageScaling()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetDamageScaling");
-
-	APawn_GetDamageScaling_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.DoKismetAttachment
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Attachment                     (CPF_Parm)
-// class USeqAct_AttachToActor*   Action                         (CPF_Parm)
-
-void APawn::DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DoKismetAttachment");
-
-	APawn_DoKismetAttachment_Params params;
-	params.Attachment = Attachment;
-	params.Action = Action;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SpawnedByKismet
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::SpawnedByKismet()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpawnedByKismet");
-
-	APawn_SpawnedByKismet_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IsStationary
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsStationary()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsStationary");
-
-	APawn_IsStationary_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetCollisionExtent
-// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector APawn::GetCollisionExtent()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionExtent");
-
-	APawn_GetCollisionExtent_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetCollisionHeight
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float APawn::GetCollisionHeight()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionHeight");
-
-	APawn_GetCollisionHeight_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetCollisionRadius
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float APawn::GetCollisionRadius()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetCollisionRadius");
-
-	APawn_GetCollisionRadius_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CheatFly
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CheatFly()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatFly");
-
-	APawn_CheatFly_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CheatGhost
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CheatGhost()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatGhost");
-
-	APawn_CheatGhost_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CheatWalk
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CheatWalk()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheatWalk");
-
-	APawn_CheatWalk_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.PlayWeaponSwitch
-// (FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 OldWeapon                      (CPF_Parm)
-// class AWeapon*                 NewWeapon                      (CPF_Parm)
-
-void APawn::PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayWeaponSwitch");
-
-	APawn_PlayWeaponSwitch_Params params;
-	params.OldWeapon = OldWeapon;
-	params.NewWeapon = NewWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetActiveWeapon
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 NewWeapon                      (CPF_Parm)
-
-void APawn::SetActiveWeapon(class AWeapon* NewWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetActiveWeapon");
-
-	APawn_SetActiveWeapon_Params params;
-	params.NewWeapon = NewWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TossInventory
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class AInventory*              Inv                            (CPF_Parm)
-// struct FVector                 ForceVelocity                  (CPF_OptionalParm, CPF_Parm)
-
-void APawn::TossInventory(class AInventory* Inv, const struct FVector& ForceVelocity)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TossInventory");
-
-	APawn_TossInventory_Params params;
-	params.Inv = Inv;
-	params.ForceVelocity = ForceVelocity;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ThrowActiveWeapon
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           bDestroyWeap                   (CPF_OptionalParm, CPF_Parm)
-
-void APawn::ThrowActiveWeapon(bool bDestroyWeap)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ThrowActiveWeapon");
-
-	APawn_ThrowActiveWeapon_Params params;
-	params.bDestroyWeap = bDestroyWeap;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.DrawHUD
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AHUD*                    H                              (CPF_Parm)
-
-void APawn::DrawHUD(class AHUD* H)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DrawHUD");
-
-	APawn_DrawHUD_Params params;
-	params.H = H;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FindInventoryType
-// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UClass*                  DesiredClass                   (CPF_Parm)
-// bool                           bAllowSubclass                 (CPF_OptionalParm, CPF_Parm)
-// class AInventory*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AInventory* APawn::FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FindInventoryType");
-
-	APawn_FindInventoryType_Params params;
-	params.DesiredClass = DesiredClass;
-	params.bAllowSubclass = bAllowSubclass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CreateInventory
-// (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UClass*                  NewInvClass                    (CPF_Parm)
-// bool                           bDoNotActivate                 (CPF_OptionalParm, CPF_Parm)
-// class AInventory*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AInventory* APawn::CreateInventory(class UClass* NewInvClass, bool bDoNotActivate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CreateInventory");
-
-	APawn_CreateInventory_Params params;
-	params.NewInvClass = NewInvClass;
-	params.bDoNotActivate = bDoNotActivate;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.AddDefaultInventory
-// (FUNC_Public)
-
-void APawn::AddDefaultInventory()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddDefaultInventory");
-
-	APawn_AddDefaultInventory_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StopDriving
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class AVehicle*                V                              (CPF_Parm)
-
-void APawn::StopDriving(class AVehicle* V)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopDriving");
-
-	APawn_StopDriving_Params params;
-	params.V = V;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StartDriving
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class AVehicle*                V                              (CPF_Parm)
-
-void APawn::StartDriving(class AVehicle* V)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartDriving");
-
-	APawn_StartDriving_Params params;
-	params.V = V;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CanThrowWeapon
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanThrowWeapon()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanThrowWeapon");
-
-	APawn_CanThrowWeapon_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.Suicide
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::Suicide()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Suicide");
-
-	APawn_Suicide_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetVehicleBase
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class AVehicle*                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AVehicle* APawn::GetVehicleBase()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetVehicleBase");
-
-	APawn_GetVehicleBase_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.PlayLanded
-// (FUNC_Public)
-// Parameters:
-// float                          ImpactVel                      (CPF_Parm)
-
-void APawn::PlayLanded(float ImpactVel)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayLanded");
-
-	APawn_PlayLanded_Params params;
-	params.ImpactVel = ImpactVel;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CannotJumpNow
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CannotJumpNow()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CannotJumpNow");
-
-	APawn_CannotJumpNow_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.PlayFootStepSound
-// (FUNC_Event, FUNC_Public)
-// Parameters:
-// int                            FootDown                       (CPF_Parm)
-
-void APawn::PlayFootStepSound(int FootDown)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayFootStepSound");
-
-	APawn_PlayFootStepSound_Params params;
-	params.FootDown = FootDown;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TornOff
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::TornOff()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TornOff");
-
-	APawn_TornOff_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayDying
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FVector                 HitLoc                         (CPF_Parm)
-
-void APawn::PlayDying(class UClass* DamageType, const struct FVector& HitLoc)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayDying");
-
-	APawn_PlayDying_Params params;
-	params.DamageType = DamageType;
-	params.HitLoc = HitLoc;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetDyingPhysics
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::SetDyingPhysics()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetDyingPhysics");
-
-	APawn_SetDyingPhysics_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TurnOff
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::TurnOff()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TurnOff");
-
-	APawn_TurnOff_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayHit
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          Damage                         (CPF_Parm)
-// class AController*             InstigatedBy                   (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FVector                 Momentum                       (CPF_Parm)
-// struct FTraceHitInfo           HitInfo                        (CPF_Parm)
-
-void APawn::PlayHit(float Damage, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FVector& Momentum, const struct FTraceHitInfo& HitInfo)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayHit");
-
-	APawn_PlayHit_Params params;
-	params.Damage = Damage;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.DamageType = DamageType;
-	params.Momentum = Momentum;
-	params.HitInfo = HitInfo;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayDyingSound
-// (FUNC_Public)
-
-void APawn::PlayDyingSound()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayDyingSound");
-
-	APawn_PlayDyingSound_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.DoJump
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bUpdating                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::DoJump(bool bUpdating)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DoJump");
-
-	APawn_DoJump_Params params;
-	params.bUpdating = bUpdating;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CheckWaterJump
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 WallNormal                     (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CheckWaterJump(struct FVector* WallNormal)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheckWaterJump");
-
-	APawn_CheckWaterJump_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (WallNormal != nullptr)
-		*WallNormal = params.WallNormal;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.TakeDrowningDamage
-// (FUNC_Public)
-
-void APawn::TakeDrowningDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeDrowningDamage");
-
-	APawn_TakeDrowningDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.BreathTimer
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::BreathTimer()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BreathTimer");
-
-	APawn_BreathTimer_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TouchingWaterVolume
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::TouchingWaterVolume()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TouchingWaterVolume");
-
-	APawn_TouchingWaterVolume_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.HeadVolumeChange
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class APhysicsVolume*          newHeadVolume                  (CPF_Parm)
-
-void APawn::HeadVolumeChange(class APhysicsVolume* newHeadVolume)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HeadVolumeChange");
-
-	APawn_HeadVolumeChange_Params params;
-	params.newHeadVolume = newHeadVolume;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TickSpecial
-// (FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void APawn::TickSpecial(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TickSpecial");
-
-	APawn_TickSpecial_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Landed
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FVector                 HitNormal                      (CPF_Parm)
-// class AActor*                  FloorActor                     (CPF_Parm)
-
-void APawn::Landed(const struct FVector& HitNormal, class AActor* FloorActor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Landed");
-
-	APawn_Landed_Params params;
-	params.HitNormal = HitNormal;
-	params.FloorActor = FloorActor;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Falling
-// (FUNC_Event, FUNC_Public)
-
-void APawn::Falling()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Falling");
-
-	APawn_Falling_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.DelayTriggerDeath
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::DelayTriggerDeath()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DelayTriggerDeath");
-
-	APawn_DelayTriggerDeath_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Died
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             Killer                         (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Died");
-
-	APawn_Died_Params params;
-	params.Killer = Killer;
-	params.DamageType = DamageType;
-	params.HitLocation = HitLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.ThrowWeaponOnDeath
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::ThrowWeaponOnDeath()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ThrowWeaponOnDeath");
-
-	APawn_ThrowWeaponOnDeath_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IsSameTeam
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class APawn*                   Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsSameTeam(class APawn* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsSameTeam");
-
-	APawn_IsSameTeam_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetTeam
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class ATeamInfo*               ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ATeamInfo* APawn::GetTeam()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetTeam");
-
-	APawn_GetTeam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetTeamNum
-// (FUNC_Simulated, FUNC_Native, FUNC_Public)
-// Parameters:
-// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-unsigned char APawn::GetTeamNum()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetTeamNum");
-
-	APawn_GetTeamNum_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.TakeDamage
-// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// int                            Damage                         (CPF_Parm)
-// class AController*             InstigatedBy                   (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// struct FVector                 Momentum                       (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
-// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
-
-void APawn::TakeDamage(int Damage, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeDamage");
-
-	APawn_TakeDamage_Params params;
-	params.Damage = Damage;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.Momentum = Momentum;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-	params.DamageCauser = DamageCauser;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetKillInstigator
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             InstigatedBy                   (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// class AController*             ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AController* APawn::SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetKillInstigator");
-
-	APawn_SetKillInstigator_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.DamageType = DamageType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.NotifyTakeHit
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             InstigatedBy                   (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// int                            Damage                         (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FVector                 Momentum                       (CPF_Parm)
-// class AActor*                  DamageCauser                   (CPF_Parm)
-
-void APawn::NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.NotifyTakeHit");
-
-	APawn_NotifyTakeHit_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.Damage = Damage;
-	params.DamageType = DamageType;
-	params.Momentum = Momentum;
-	params.DamageCauser = DamageCauser;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TakeRadiusDamageOnBones
-// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class AController*             InstigatedBy                   (CPF_Parm)
-// float                          BaseDamage                     (CPF_Parm)
-// float                          DamageRadius                   (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// float                          Momentum                       (CPF_Parm)
-// struct FVector                 HurtOrigin                     (CPF_Parm)
-// bool                           bFullDamage                    (CPF_Parm)
-// class AActor*                  DamageCauser                   (CPF_Parm)
-// TArray<struct FName>           Bones                          (CPF_Parm, CPF_NeedCtorLink)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::TakeRadiusDamageOnBones(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, TArray<struct FName> Bones)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeRadiusDamageOnBones");
-
-	APawn_TakeRadiusDamageOnBones_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.BaseDamage = BaseDamage;
-	params.DamageRadius = DamageRadius;
-	params.DamageType = DamageType;
-	params.Momentum = Momentum;
-	params.HurtOrigin = HurtOrigin;
-	params.bFullDamage = bFullDamage;
-	params.DamageCauser = DamageCauser;
-	params.Bones = Bones;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.PruneDamagedBoneList
-// (FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<struct FName>           Bones                          (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void APawn::PruneDamagedBoneList(TArray<struct FName>* Bones)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PruneDamagedBoneList");
-
-	APawn_PruneDamagedBoneList_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Bones != nullptr)
-		*Bones = params.Bones;
-}
-
-
-// Function Engine.Pawn.HealDamage
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// int                            Amount                         (CPF_Parm)
-// class AController*             Healer                         (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::HealDamage(int Amount, class AController* Healer, class UClass* DamageType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HealDamage");
-
-	APawn_HealDamage_Params params;
-	params.Amount = Amount;
-	params.Healer = Healer;
-	params.DamageType = DamageType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.AdjustDamage
-// (FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// int                            InDamage                       (CPF_Parm, CPF_OutParm)
-// struct FVector                 Momentum                       (CPF_Parm, CPF_OutParm)
-// class AController*             InstigatedBy                   (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FTraceHitInfo           HitInfo                        (CPF_Parm)
-// class AActor*                  DamageCauser                   (CPF_Parm)
-
-void APawn::AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, int* InDamage, struct FVector* Momentum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AdjustDamage");
-
-	APawn_AdjustDamage_Params params;
-	params.InstigatedBy = InstigatedBy;
-	params.HitLocation = HitLocation;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-	params.DamageCauser = DamageCauser;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (InDamage != nullptr)
-		*InDamage = params.InDamage;
-	if (Momentum != nullptr)
-		*Momentum = params.Momentum;
-}
-
-
-// Function Engine.Pawn.SetMovementPhysics
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::SetMovementPhysics()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMovementPhysics");
-
-	APawn_SetMovementPhysics_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Gasp
-// (FUNC_Public)
-
-void APawn::Gasp()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Gasp");
-
-	APawn_Gasp_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OnGiveInventory
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_GiveInventory*   inAction                       (CPF_Parm)
-
-void APawn::OnGiveInventory(class USeqAct_GiveInventory* inAction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnGiveInventory");
-
-	APawn_OnGiveInventory_Params params;
-	params.inAction = inAction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OnAssignController
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class USeqAct_AssignController* inAction                       (CPF_Parm)
-
-void APawn::OnAssignController(class USeqAct_AssignController* inAction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnAssignController");
-
-	APawn_OnAssignController_Params params;
-	params.inAction = inAction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ReceivedNewEvent
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class USequenceEvent*          Evt                            (CPF_Parm)
-
-void APawn::ReceivedNewEvent(class USequenceEvent* Evt)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReceivedNewEvent");
-
-	APawn_ReceivedNewEvent_Params params;
-	params.Evt = Evt;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SpawnDefaultController
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::SpawnDefaultController()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpawnDefaultController");
-
-	APawn_SpawnDefaultController_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PostBeginPlay
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PostBeginPlay");
-
-	APawn_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PreBeginPlay
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::PreBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PreBeginPlay");
-
-	APawn_PreBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Destroyed
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::Destroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Destroyed");
-
-	APawn_Destroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.DetachFromController
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           bDestroyController             (CPF_OptionalParm, CPF_Parm)
-
-void APawn::DetachFromController(bool bDestroyController)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DetachFromController");
-
-	APawn_DetachFromController_Params params;
-	params.bDestroyController = bDestroyController;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CrushedBy
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class APawn*                   OtherPawn                      (CPF_Parm)
-
-void APawn::CrushedBy(class APawn* OtherPawn)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CrushedBy");
-
-	APawn_CrushedBy_Params params;
-	params.OtherPawn = OtherPawn;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CanBeBaseForPawn
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class APawn*                   aPawn                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanBeBaseForPawn(class APawn* aPawn)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanBeBaseForPawn");
-
-	APawn_CanBeBaseForPawn_Params params;
-	params.aPawn = aPawn;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.BaseChange
-// (FUNC_Defined, FUNC_Singular, FUNC_Event, FUNC_Public)
-
-void APawn::BaseChange()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BaseChange");
-
-	APawn_BaseChange_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StuckOnPawn
-// (FUNC_Event, FUNC_Public)
-// Parameters:
-// class APawn*                   OtherPawn                      (CPF_Parm)
-
-void APawn::StuckOnPawn(class APawn* OtherPawn)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StuckOnPawn");
-
-	APawn_StuckOnPawn_Params params;
-	params.OtherPawn = OtherPawn;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.JumpOffPawn
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::JumpOffPawn()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.JumpOffPawn");
-
-	APawn_JumpOffPawn_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.gibbedBy
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-
-void APawn::gibbedBy(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.gibbedBy");
-
-	APawn_gibbedBy_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.EncroachedBy
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-
-void APawn::EncroachedBy(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EncroachedBy");
-
-	APawn_EncroachedBy_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.EncroachingOn
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::EncroachingOn(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EncroachingOn");
-
-	APawn_EncroachingOn_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.FaceRotation
-// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FRotator                NewRotation                    (CPF_Parm)
-// float                          DeltaTime                      (CPF_OptionalParm, CPF_Parm)
-
-void APawn::FaceRotation(const struct FRotator& NewRotation, float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FaceRotation");
-
-	APawn_FaceRotation_Params params;
-	params.NewRotation = NewRotation;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.UpdatePawnRotation
-// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FRotator                NewRotation                    (CPF_Parm)
-
-void APawn::UpdatePawnRotation(const struct FRotator& NewRotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdatePawnRotation");
-
-	APawn_UpdatePawnRotation_Params params;
-	params.NewRotation = NewRotation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClientSetRotation
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FRotator                NewRotation                    (CPF_Parm)
-
-void APawn::ClientSetRotation(const struct FRotator& NewRotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientSetRotation");
-
-	APawn_ClientSetRotation_Params params;
-	params.NewRotation = NewRotation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClientRestart
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::ClientRestart()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientRestart");
-
-	APawn_ClientRestart_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.Restart
-// (FUNC_Public)
-
-void APawn::Restart()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Restart");
-
-	APawn_Restart_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.TakeFallingDamage
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::TakeFallingDamage()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TakeFallingDamage");
-
-	APawn_TakeFallingDamage_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.KilledBy
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class APawn*                   EventInstigator                (CPF_Parm)
-
-void APawn::KilledBy(class APawn* EventInstigator)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.KilledBy");
-
-	APawn_KilledBy_Params params;
-	params.EventInstigator = EventInstigator;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.AddVelocity
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FVector                 NewVelocity                    (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
-
-void APawn::AddVelocity(const struct FVector& NewVelocity, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddVelocity");
-
-	APawn_AddVelocity_Params params;
-	params.NewVelocity = NewVelocity;
-	params.HitLocation = HitLocation;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.HandleMomentum
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FVector                 Momentum                       (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_Parm)
-// class UClass*                  DamageType                     (CPF_Parm)
-// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
-
-void APawn::HandleMomentum(const struct FVector& Momentum, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandleMomentum");
-
-	APawn_HandleMomentum_Params params;
-	params.Momentum = Momentum;
-	params.HitLocation = HitLocation;
-	params.DamageType = DamageType;
-	params.HitInfo = HitInfo;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StartCrouch
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          HeightAdjust                   (CPF_Parm)
-
-void APawn::StartCrouch(float HeightAdjust)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartCrouch");
-
-	APawn_StartCrouch_Params params;
-	params.HeightAdjust = HeightAdjust;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.EndCrouch
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          HeightAdjust                   (CPF_Parm)
-
-void APawn::EndCrouch(float HeightAdjust)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EndCrouch");
-
-	APawn_EndCrouch_Params params;
-	params.HeightAdjust = HeightAdjust;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ShouldCrouch
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bCrouch                        (CPF_Parm)
-
-void APawn::ShouldCrouch(bool bCrouch)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ShouldCrouch");
-
-	APawn_ShouldCrouch_Params params;
-	params.bCrouch = bCrouch;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.UnCrouch
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::UnCrouch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UnCrouch");
-
-	APawn_UnCrouch_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OutsideWorldBounds
-// (FUNC_Defined, FUNC_Singular, FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::OutsideWorldBounds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OutsideWorldBounds");
-
-	APawn_OutsideWorldBounds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FellOutOfWorld
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UClass*                  dmgType                        (CPF_Parm)
-
-void APawn::FellOutOfWorld(class UClass* dmgType)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FellOutOfWorld");
-
-	APawn_FellOutOfWorld_Params params;
-	params.dmgType = dmgType;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClientMessage
-// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FString                 S                              (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-// struct FName                   Type                           (CPF_OptionalParm, CPF_Parm)
-
-void APawn::ClientMessage(const struct FString& S, const struct FName& Type)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClientMessage");
-
-	APawn_ClientMessage_Params params;
-	params.S = S;
-	params.Type = Type;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.HandlePickup
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AInventory*              Inv                            (CPF_Parm)
-
-void APawn::HandlePickup(class AInventory* Inv)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HandlePickup");
-
-	APawn_HandlePickup_Params params;
-	params.Inv = Inv;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.LineOfSightTo
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::LineOfSightTo(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.LineOfSightTo");
-
-	APawn_LineOfSightTo_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SetMoveTarget
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  NewTarget                      (CPF_Parm)
-
-void APawn::SetMoveTarget(class AActor* NewTarget)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMoveTarget");
-
-	APawn_SetMoveTarget_Params params;
-	params.NewTarget = NewTarget;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.InGodMode
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::InGodMode()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InGodMode");
-
-	APawn_InGodMode_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SetViewRotation
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// struct FRotator                NewRotation                    (CPF_Parm)
-
-void APawn::SetViewRotation(const struct FRotator& NewRotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetViewRotation");
-
-	APawn_SetViewRotation_Params params;
-	params.NewRotation = NewRotation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetAdjustedAimFor
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 W                              (CPF_Parm)
-// struct FVector                 StartFireLoc                   (CPF_Parm)
-// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FRotator APawn::GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetAdjustedAimFor");
-
-	APawn_GetAdjustedAimFor_Params params;
-	params.W = W;
-	params.StartFireLoc = StartFireLoc;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.InFreeCam
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::InFreeCam()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InFreeCam");
-
-	APawn_InFreeCam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetBaseAimRotation
-// (FUNC_Defined, FUNC_Singular, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FRotator APawn::GetBaseAimRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBaseAimRotation");
-
-	APawn_GetBaseAimRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetWeaponStartTraceLocation
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class AWeapon*                 CurrentWeapon                  (CPF_OptionalParm, CPF_Parm)
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector APawn::GetWeaponStartTraceLocation(class AWeapon* CurrentWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetWeaponStartTraceLocation");
-
-	APawn_GetWeaponStartTraceLocation_Params params;
-	params.CurrentWeapon = CurrentWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetPawnViewLocation
-// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector APawn::GetPawnViewLocation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetPawnViewLocation");
-
-	APawn_GetPawnViewLocation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetViewRotation
-// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FRotator APawn::GetViewRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetViewRotation");
-
-	APawn_GetViewRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetActorEyesViewPoint
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 out_Location                   (CPF_Parm, CPF_OutParm)
-// struct FRotator                out_Rotation                   (CPF_Parm, CPF_OutParm)
-
-void APawn::GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetActorEyesViewPoint");
-
-	APawn_GetActorEyesViewPoint_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_Location != nullptr)
-		*out_Location = params.out_Location;
-	if (out_Rotation != nullptr)
-		*out_Rotation = params.out_Rotation;
-}
-
-
-// Function Engine.Pawn.ProcessViewRotation
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-// struct FRotator                out_ViewRotation               (CPF_Parm, CPF_OutParm)
-// struct FRotator                out_DeltaRot                   (CPF_Parm, CPF_OutParm)
-
-void APawn::ProcessViewRotation(float DeltaTime, struct FRotator* out_ViewRotation, struct FRotator* out_DeltaRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ProcessViewRotation");
-
-	APawn_ProcessViewRotation_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_ViewRotation != nullptr)
-		*out_ViewRotation = params.out_ViewRotation;
-	if (out_DeltaRot != nullptr)
-		*out_DeltaRot = params.out_DeltaRot;
-}
-
-
-// Function Engine.Pawn.IsFirstPerson
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsFirstPerson()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsFirstPerson");
-
-	APawn_IsFirstPerson_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsLocalHuman
-// (FUNC_Final, FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsLocalHuman()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsLocalHuman");
-
-	APawn_IsLocalHuman_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsPlayerPawn
-// (FUNC_Simulated, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsPlayerPawn()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsPlayerPawn");
-
-	APawn_IsPlayerPawn_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsLocallyControlled
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsLocallyControlled()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsLocallyControlled");
-
-	APawn_IsLocallyControlled_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsHumanControlled
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class AController*             PawnController                 (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsHumanControlled(class AController* PawnController)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsHumanControlled");
-
-	APawn_IsHumanControlled_Params params;
-	params.PawnController = PawnController;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.DisplayDebug
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class AHUD*                    HUD                            (CPF_Parm)
-// float                          out_YL                         (CPF_Parm, CPF_OutParm)
-// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
-
-void APawn::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DisplayDebug");
-
-	APawn_DisplayDebug_Params params;
-	params.HUD = HUD;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_YL != nullptr)
-		*out_YL = params.out_YL;
-	if (out_YPos != nullptr)
-		*out_YPos = params.out_YPos;
-}
-
-
-// Function Engine.Pawn.ClimbLadder
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ALadderVolume*           L                              (CPF_Parm)
-
-void APawn::ClimbLadder(class ALadderVolume* L)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClimbLadder");
-
-	APawn_ClimbLadder_Params params;
-	params.L = L;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.EndClimbLadder
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class ALadderVolume*           OldLadder                      (CPF_Parm)
-
-void APawn::EndClimbLadder(class ALadderVolume* OldLadder)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.EndClimbLadder");
-
-	APawn_EndClimbLadder_Params params;
-	params.OldLadder = OldLadder;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CanSplash
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanSplash()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanSplash");
-
-	APawn_CanSplash_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SetWalking
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           bNewIsWalking                  (CPF_Parm)
-
-void APawn::SetWalking(bool bNewIsWalking)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetWalking");
-
-	APawn_SetWalking_Params params;
-	params.bNewIsWalking = bNewIsWalking;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.RangedAttackTime
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float APawn::RangedAttackTime()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RangedAttackTime");
-
-	APawn_RangedAttackTime_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.RecommendLongRangedAttack
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::RecommendLongRangedAttack()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RecommendLongRangedAttack");
-
-	APawn_RecommendLongRangedAttack_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CanGrabLadder
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanGrabLadder()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanGrabLadder");
-
-	APawn_CanGrabLadder_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.DropToGround
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::DropToGround()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.DropToGround");
-
-	APawn_DropToGround_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetDefaultCameraMode
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class APlayerController*       RequestedBy                    (CPF_Parm)
-// struct FName                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FName APawn::GetDefaultCameraMode(class APlayerController* RequestedBy)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetDefaultCameraMode");
-
-	APawn_GetDefaultCameraMode_Params params;
-	params.RequestedBy = RequestedBy;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.UnPossessed
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::UnPossessed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UnPossessed");
-
-	APawn_UnPossessed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.UpdateControllerOnPossess
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bVehicleTransition             (CPF_Parm)
-
-void APawn::UpdateControllerOnPossess(bool bVehicleTransition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdateControllerOnPossess");
-
-	APawn_UpdateControllerOnPossess_Params params;
-	params.bVehicleTransition = bVehicleTransition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PossessedBy
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AController*             C                              (CPF_Parm)
-// bool                           bVehicleTransition             (CPF_Parm)
-
-void APawn::PossessedBy(class AController* C, bool bVehicleTransition)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PossessedBy");
-
-	APawn_PossessedBy_Params params;
-	params.C = C;
-	params.bVehicleTransition = bVehicleTransition;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayTeleportEffect
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bOut                           (CPF_Parm)
-// bool                           bSound                         (CPF_Parm)
-
-void APawn::PlayTeleportEffect(bool bOut, bool bSound)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayTeleportEffect");
-
-	APawn_PlayTeleportEffect_Params params;
-	params.bOut = bOut;
-	params.bSound = bSound;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetHumanReadableName
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-
-struct FString APawn::GetHumanReadableName()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetHumanReadableName");
-
-	APawn_GetHumanReadableName_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.NeedToTurn
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 targ                           (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::NeedToTurn(const struct FVector& targ)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.NeedToTurn");
-
-	APawn_NeedToTurn_Params params;
-	params.targ = targ;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsFiring
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsFiring()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsFiring");
-
-	APawn_IsFiring_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.HasRangedAttack
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::HasRangedAttack()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.HasRangedAttack");
-
-	APawn_HasRangedAttack_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.FireOnRelease
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::FireOnRelease()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FireOnRelease");
-
-	APawn_FireOnRelease_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.TooCloseToAttack
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::TooCloseToAttack(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TooCloseToAttack");
-
-	APawn_TooCloseToAttack_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CanAttack
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Other                          (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanAttack(class AActor* Other)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanAttack");
-
-	APawn_CanAttack_Params params;
-	params.Other = Other;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.BotFire
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           bFinished                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::BotFire(bool bFinished)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BotFire");
-
-	APawn_BotFire_Params params;
-	params.bFinished = bFinished;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.WeaponStoppedFiring
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// bool                           bViaReplication                (CPF_Parm)
-
-void APawn::WeaponStoppedFiring(class AWeapon* InWeapon, bool bViaReplication)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.WeaponStoppedFiring");
-
-	APawn_WeaponStoppedFiring_Params params;
-	params.InWeapon = InWeapon;
-	params.bViaReplication = bViaReplication;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.WeaponFired
-// (FUNC_Defined, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// bool                           bViaReplication                (CPF_Parm)
-// struct FVector                 HitLocation                    (CPF_OptionalParm, CPF_Parm)
-
-void APawn::WeaponFired(class AWeapon* InWeapon, bool bViaReplication, const struct FVector& HitLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.WeaponFired");
-
-	APawn_WeaponFired_Params params;
-	params.InWeapon = InWeapon;
-	params.bViaReplication = bViaReplication;
-	params.HitLocation = HitLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FlashLocationUpdated
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// struct FVector                 InFlashLocation                (CPF_Parm)
-// bool                           bViaReplication                (CPF_Parm)
-
-void APawn::FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, bool bViaReplication)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FlashLocationUpdated");
-
-	APawn_FlashLocationUpdated_Params params;
-	params.InWeapon = InWeapon;
-	params.InFlashLocation = InFlashLocation;
-	params.bViaReplication = bViaReplication;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClearFlashLocation
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-
-void APawn::ClearFlashLocation(class AWeapon* InWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearFlashLocation");
-
-	APawn_ClearFlashLocation_Params params;
-	params.InWeapon = InWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetFlashLocation
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  InFiringMode                   (CPF_Parm)
-// struct FVector                 NewLoc                         (CPF_Parm)
-
-void APawn::SetFlashLocation(class AWeapon* InWeapon, unsigned char InFiringMode, const struct FVector& NewLoc)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetFlashLocation");
-
-	APawn_SetFlashLocation_Params params;
-	params.InWeapon = InWeapon;
-	params.InFiringMode = InFiringMode;
-	params.NewLoc = NewLoc;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClearFlashCount
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-
-void APawn::ClearFlashCount(class AWeapon* InWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearFlashCount");
-
-	APawn_ClearFlashCount_Params params;
-	params.InWeapon = InWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FlashCountUpdated
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  InFlashCount                   (CPF_Parm)
-// bool                           bViaReplication                (CPF_Parm)
-
-void APawn::FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, bool bViaReplication)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FlashCountUpdated");
-
-	APawn_FlashCountUpdated_Params params;
-	params.InWeapon = InWeapon;
-	params.InFlashCount = InFlashCount;
-	params.bViaReplication = bViaReplication;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IncrementFlashCount
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  InFiringMode                   (CPF_Parm)
-
-void APawn::IncrementFlashCount(class AWeapon* InWeapon, unsigned char InFiringMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IncrementFlashCount");
-
-	APawn_IncrementFlashCount_Params params;
-	params.InWeapon = InWeapon;
-	params.InFiringMode = InFiringMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FiringModeUpdated
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  InFiringMode                   (CPF_Parm)
-// bool                           bViaReplication                (CPF_Parm)
-
-void APawn::FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, bool bViaReplication)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FiringModeUpdated");
-
-	APawn_FiringModeUpdated_Params params;
-	params.InWeapon = InWeapon;
-	params.InFiringMode = InFiringMode;
-	params.bViaReplication = bViaReplication;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetFiringMode
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  InFiringMode                   (CPF_Parm)
-
-void APawn::SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetFiringMode");
-
-	APawn_SetFiringMode_Params params;
-	params.InWeapon = InWeapon;
-	params.InFiringMode = InFiringMode;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetWeaponFiringMode
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class AWeapon*                 InWeapon                       (CPF_Parm)
-// unsigned char                  ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-unsigned char APawn::GetWeaponFiringMode(class AWeapon* InWeapon)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetWeaponFiringMode");
-
-	APawn_GetWeaponFiringMode_Params params;
-	params.InWeapon = InWeapon;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.StopFire
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// unsigned char                  FireModeNum                    (CPF_Parm)
-
-void APawn::StopFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopFire");
-
-	APawn_StopFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StartFire
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// unsigned char                  FireModeNum                    (CPF_Parm)
-
-void APawn::StartFire(unsigned char FireModeNum)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StartFire");
-
-	APawn_StartFire_Params params;
-	params.FireModeNum = FireModeNum;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.StopFiring
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::StopFiring()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopFiring");
-
-	APawn_StopFiring_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.Reset
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::Reset()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Reset");
-
-	APawn_Reset_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayerChangedTeam
-// (FUNC_Defined, FUNC_Public)
-
-void APawn::PlayerChangedTeam()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayerChangedTeam");
-
-	APawn_PlayerChangedTeam_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetBaseEyeheight
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::SetBaseEyeheight()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetBaseEyeheight");
-
-	APawn_SetBaseEyeheight_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SpecialMoveThruEdge
-// (FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// TEnumAsByte<ENavMeshEdgeType>  EdgeType                       (CPF_Parm)
-// int                            Dir                            (CPF_Parm)
-// struct FVector                 MoveStart                      (CPF_Parm)
-// struct FVector                 MoveDest                       (CPF_Parm)
-// class AActor*                  RelActor                       (CPF_OptionalParm, CPF_Parm)
-// int                            RelItem                        (CPF_OptionalParm, CPF_Parm)
-// class UNavigationHandle*       NavHandle                      (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpecialMoveThruEdge");
-
-	APawn_SpecialMoveThruEdge_Params params;
-	params.EdgeType = EdgeType;
-	params.Dir = Dir;
-	params.MoveStart = MoveStart;
-	params.MoveDest = MoveDest;
-	params.RelActor = RelActor;
-	params.RelItem = RelItem;
-	params.NavHandle = NavHandle;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SpecialMoveTo
-// (FUNC_Public)
-// Parameters:
-// class ANavigationPoint*        Start                          (CPF_Parm)
-// class ANavigationPoint*        End                            (CPF_Parm)
-// class AActor*                  Next                           (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SpecialMoveTo");
-
-	APawn_SpecialMoveTo_Params params;
-	params.Start = Start;
-	params.End = End;
-	params.Next = Next;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.TermRagdoll
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::TermRagdoll()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.TermRagdoll");
-
-	APawn_TermRagdoll_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.InitRagdoll
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::InitRagdoll()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InitRagdoll");
-
-	APawn_InitRagdoll_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetBoundingCylinder
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// float                          CollisionRadius                (CPF_Parm, CPF_OutParm)
-// float                          CollisionHeight                (CPF_Parm, CPF_OutParm)
-
-void APawn::GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBoundingCylinder");
-
-	APawn_GetBoundingCylinder_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (CollisionRadius != nullptr)
-		*CollisionRadius = params.CollisionRadius;
-	if (CollisionHeight != nullptr)
-		*CollisionHeight = params.CollisionHeight;
-}
-
-
-// Function Engine.Pawn.ReachedDesiredRotation
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::ReachedDesiredRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedDesiredRotation");
-
-	APawn_ReachedDesiredRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SetPushesRigidBodies
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           NewPush                        (CPF_Parm)
-
-void APawn::SetPushesRigidBodies(bool NewPush)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetPushesRigidBodies");
-
-	APawn_SetPushesRigidBodies_Params params;
-	params.NewPush = NewPush;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ForceCrouch
-// (FUNC_Native, FUNC_Public)
-
-void APawn::ForceCrouch()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ForceCrouch");
-
-	APawn_ForceCrouch_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ReachedPoint
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 Point                          (CPF_Parm)
-// class AActor*                  NewAnchor                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::ReachedPoint(const struct FVector& Point, class AActor* NewAnchor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedPoint");
-
-	APawn_ReachedPoint_Params params;
-	params.Point = Point;
-	params.NewAnchor = NewAnchor;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.ReachedDestination
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class AActor*                  Goal                           (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::ReachedDestination(class AActor* Goal)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReachedDestination");
-
-	APawn_ReachedDestination_Params params;
-	params.Goal = Goal;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetBestAnchor
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// class AActor*                  TestActor                      (CPF_Parm)
-// struct FVector                 TestLocation                   (CPF_Parm)
-// bool                           bStartPoint                    (CPF_Parm)
-// bool                           bOnlyCheckVisible              (CPF_Parm)
-// float                          out_Dist                       (CPF_Parm, CPF_OutParm)
-// class ANavigationPoint*        ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class ANavigationPoint* APawn::GetBestAnchor(class AActor* TestActor, const struct FVector& TestLocation, bool bStartPoint, bool bOnlyCheckVisible, float* out_Dist)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetBestAnchor");
-
-	APawn_GetBestAnchor_Params params;
-	params.TestActor = TestActor;
-	params.TestLocation = TestLocation;
-	params.bStartPoint = bStartPoint;
-	params.bOnlyCheckVisible = bOnlyCheckVisible;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_Dist != nullptr)
-		*out_Dist = params.out_Dist;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SetAnchor
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class ANavigationPoint*        NewAnchor                      (CPF_Parm)
-
-void APawn::SetAnchor(class ANavigationPoint* NewAnchor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetAnchor");
-
-	APawn_SetAnchor_Params params;
-	params.NewAnchor = NewAnchor;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetRemoteViewPitch
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// int                            NewRemoteViewPitch             (CPF_Parm)
-
-void APawn::SetRemoteViewPitch(int NewRemoteViewPitch)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetRemoteViewPitch");
-
-	APawn_SetRemoteViewPitch_Params params;
-	params.NewRemoteViewPitch = NewRemoteViewPitch;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IsInvisible
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsInvisible()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsInvisible");
-
-	APawn_IsInvisible_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsValidEnemyTargetFor
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class APlayerReplicationInfo*  PRI                            (CPF_Const, CPF_Parm)
-// bool                           bNoPRIisEnemy                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsValidEnemyTargetFor(class APlayerReplicationInfo* PRI, bool bNoPRIisEnemy)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsValidEnemyTargetFor");
-
-	APawn_IsValidEnemyTargetFor_Params params;
-	params.PRI = PRI;
-	params.bNoPRIisEnemy = bNoPRIisEnemy;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetFallDuration
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float APawn::GetFallDuration()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetFallDuration");
-
-	APawn_GetFallDuration_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.SuggestJumpVelocity
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 JumpVelocity                   (CPF_Parm, CPF_OutParm)
-// struct FVector                 Destination                    (CPF_Parm)
-// struct FVector                 Start                          (CPF_Parm)
-// bool                           bRequireFallLanding            (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::SuggestJumpVelocity(const struct FVector& Destination, const struct FVector& Start, bool bRequireFallLanding, struct FVector* JumpVelocity)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SuggestJumpVelocity");
-
-	APawn_SuggestJumpVelocity_Params params;
-	params.Destination = Destination;
-	params.Start = Start;
-	params.bRequireFallLanding = bRequireFallLanding;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (JumpVelocity != nullptr)
-		*JumpVelocity = params.JumpVelocity;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.ValidAnchor
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::ValidAnchor()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ValidAnchor");
-
-	APawn_ValidAnchor_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.AdjustDestination
-// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class AActor*                  GoalActor                      (CPF_Parm)
-// struct FVector                 Dest                           (CPF_OptionalParm, CPF_Parm)
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector APawn::AdjustDestination(class AActor* GoalActor, const struct FVector& Dest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AdjustDestination");
-
-	APawn_AdjustDestination_Params params;
-	params.GoalActor = GoalActor;
-	params.Dest = Dest;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsAliveAndWell
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsAliveAndWell()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsAliveAndWell");
-
-	APawn_IsAliveAndWell_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.ReplicatedEvent
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   VarName                        (CPF_Parm)
-
-void APawn::ReplicatedEvent(const struct FName& VarName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ReplicatedEvent");
-
-	APawn_ReplicatedEvent_Params params;
-	params.VarName = VarName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetSkelControlScale
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   SkelControlName                (CPF_Parm)
-// float                          Scale                          (CPF_Parm)
-
-void APawn::SetSkelControlScale(const struct FName& SkelControlName, float Scale)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetSkelControlScale");
-
-	APawn_SetSkelControlScale_Params params;
-	params.SkelControlName = SkelControlName;
-	params.Scale = Scale;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetMorphWeight
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   MorphNodeName                  (CPF_Parm)
-// float                          MorphWeight                    (CPF_Parm)
-
-void APawn::SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetMorphWeight");
-
-	APawn_SetMorphWeight_Params params;
-	params.MorphNodeName = MorphNodeName;
-	params.MorphWeight = MorphWeight;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.GetActorFaceFXAsset
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UFaceFXAsset*            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UFaceFXAsset* APawn::GetActorFaceFXAsset()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetActorFaceFXAsset");
-
-	APawn_GetActorFaceFXAsset_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.FaceFXAudioFinished
-// (FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class UAudioComponent*         AC                             (CPF_Parm, CPF_EditInline)
-
-void APawn::FaceFXAudioFinished(class UAudioComponent* AC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FaceFXAudioFinished");
-
-	APawn_FaceFXAudioFinished_Params params;
-	params.AC = AC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.OnPlayFaceFXAnim
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// class USeqAct_PlayFaceFXAnim*  inAction                       (CPF_Parm)
-
-void APawn::OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.OnPlayFaceFXAnim");
-
-	APawn_OnPlayFaceFXAnim_Params params;
-	params.inAction = inAction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CanActorPlayFaceFXAnim
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::CanActorPlayFaceFXAnim()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CanActorPlayFaceFXAnim");
-
-	APawn_CanActorPlayFaceFXAnim_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsActorPlayingFaceFXAnim
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsActorPlayingFaceFXAnim()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsActorPlayingFaceFXAnim");
-
-	APawn_IsActorPlayingFaceFXAnim_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.GetFaceFXAudioComponent
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UAudioComponent*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
-
-class UAudioComponent* APawn::GetFaceFXAudioComponent()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.GetFaceFXAudioComponent");
-
-	APawn_GetFaceFXAudioComponent_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.StopActorFaceFXAnim
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::StopActorFaceFXAnim()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.StopActorFaceFXAnim");
-
-	APawn_StopActorFaceFXAnim_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PlayActorFaceFXAnim
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UFaceFXAnimSet*          AnimSet                        (CPF_Parm)
-// struct FString                 GroupName                      (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 SeqName                        (CPF_Parm, CPF_NeedCtorLink)
-// class USoundCue*               SoundCueToPlay                 (CPF_Parm)
-// class UAkEvent*                AkEventToPlay                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PlayActorFaceFXAnim");
-
-	APawn_PlayActorFaceFXAnim_Params params;
-	params.AnimSet = AnimSet;
-	params.GroupName = GroupName;
-	params.SeqName = SeqName;
-	params.SoundCueToPlay = SoundCueToPlay;
-	params.AkEventToPlay = AkEventToPlay;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.MAT_FinishAIGroup
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void APawn::MAT_FinishAIGroup()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_FinishAIGroup");
-
-	APawn_MAT_FinishAIGroup_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_BeginAIGroup
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FVector                 StartLoc                       (CPF_Parm)
-// struct FRotator                StartRot                       (CPF_Parm)
-
-void APawn::MAT_BeginAIGroup(const struct FVector& StartLoc, const struct FRotator& StartRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_BeginAIGroup");
-
-	APawn_MAT_BeginAIGroup_Params params;
-	params.StartLoc = StartLoc;
-	params.StartRot = StartRot;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FinishAIGroup
-// (FUNC_Simulated, FUNC_Public)
-
-void APawn::FinishAIGroup()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FinishAIGroup");
-
-	APawn_FinishAIGroup_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.BeginAIGroup
-// (FUNC_Simulated, FUNC_Public)
-
-void APawn::BeginAIGroup()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BeginAIGroup");
-
-	APawn_BeginAIGroup_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.InterpolationFinished
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class USeqAct_Interp*          InterpAction                   (CPF_Parm)
-
-void APawn::InterpolationFinished(class USeqAct_Interp* InterpAction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InterpolationFinished");
-
-	APawn_InterpolationFinished_Params params;
-	params.InterpAction = InterpAction;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.InterpolationStarted
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class USeqAct_Interp*          InterpAction                   (CPF_Parm)
-// class UInterpGroupInst*        GroupInst                      (CPF_Parm)
-
-void APawn::InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.InterpolationStarted");
-
-	APawn_InterpolationStarted_Params params;
-	params.InterpAction = InterpAction;
-	params.GroupInst = GroupInst;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_SetSkelControlStrength
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   SkelControlName                (CPF_Parm)
-// float                          ControlStrength                (CPF_Parm)
-
-void APawn::MAT_SetSkelControlStrength(const struct FName& SkelControlName, float ControlStrength)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetSkelControlStrength");
-
-	APawn_MAT_SetSkelControlStrength_Params params;
-	params.SkelControlName = SkelControlName;
-	params.ControlStrength = ControlStrength;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_SetSkelControlScale
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   SkelControlName                (CPF_Parm)
-// float                          Scale                          (CPF_Parm)
-
-void APawn::MAT_SetSkelControlScale(const struct FName& SkelControlName, float Scale)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetSkelControlScale");
-
-	APawn_MAT_SetSkelControlScale_Params params;
-	params.SkelControlName = SkelControlName;
-	params.Scale = Scale;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_SetMorphWeight
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   MorphNodeName                  (CPF_Parm)
-// float                          MorphWeight                    (CPF_Parm)
-
-void APawn::MAT_SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetMorphWeight");
-
-	APawn_MAT_SetMorphWeight_Params params;
-	params.MorphNodeName = MorphNodeName;
-	params.MorphWeight = MorphWeight;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_SetAnimWeights
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// TArray<struct FAnimSlotInfo>   SlotInfos                      (CPF_Parm, CPF_NeedCtorLink)
-
-void APawn::MAT_SetAnimWeights(TArray<struct FAnimSlotInfo> SlotInfos)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetAnimWeights");
-
-	APawn_MAT_SetAnimWeights_Params params;
-	params.SlotInfos = SlotInfos;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_SetAnimPosition
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FName                   SlotName                       (CPF_Parm)
-// int                            ChannelIndex                   (CPF_Parm)
-// struct FName                   InAnimSeqName                  (CPF_Parm)
-// float                          InPosition                     (CPF_Parm)
-// bool                           bFireNotifies                  (CPF_Parm)
-// bool                           bLooping                       (CPF_Parm)
-// bool                           bEnableRootMotion              (CPF_Parm)
-
-void APawn::MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_SetAnimPosition");
-
-	APawn_MAT_SetAnimPosition_Params params;
-	params.SlotName = SlotName;
-	params.ChannelIndex = ChannelIndex;
-	params.InAnimSeqName = InAnimSeqName;
-	params.InPosition = InPosition;
-	params.bFireNotifies = bFireNotifies;
-	params.bLooping = bLooping;
-	params.bEnableRootMotion = bEnableRootMotion;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetAnimPosition
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// struct FName                   SlotName                       (CPF_Parm)
-// int                            ChannelIndex                   (CPF_Parm)
-// struct FName                   InAnimSeqName                  (CPF_Parm)
-// float                          InPosition                     (CPF_Parm)
-// bool                           bFireNotifies                  (CPF_Parm)
-// bool                           bLooping                       (CPF_Parm)
-// bool                           bEnableRootMotion              (CPF_Parm)
-
-void APawn::SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetAnimPosition");
-
-	APawn_SetAnimPosition_Params params;
-	params.SlotName = SlotName;
-	params.ChannelIndex = ChannelIndex;
-	params.InAnimSeqName = InAnimSeqName;
-	params.InPosition = InPosition;
-	params.bFireNotifies = bFireNotifies;
-	params.bLooping = bLooping;
-	params.bEnableRootMotion = bEnableRootMotion;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_FinishAnimControl
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
-
-void APawn::MAT_FinishAnimControl(class UInterpGroup* InInterpGroup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_FinishAnimControl");
-
-	APawn_MAT_FinishAnimControl_Params params;
-	params.InInterpGroup = InInterpGroup;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.FinishAnimControl
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
-
-void APawn::FinishAnimControl(class UInterpGroup* InInterpGroup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.FinishAnimControl");
-
-	APawn_FinishAnimControl_Params params;
-	params.InInterpGroup = InInterpGroup;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.MAT_BeginAnimControl
-// (FUNC_Native, FUNC_Public)
-// Parameters:
-// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
-
-void APawn::MAT_BeginAnimControl(class UInterpGroup* InInterpGroup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.MAT_BeginAnimControl");
-
-	APawn_MAT_BeginAnimControl_Params params;
-	params.InInterpGroup = InInterpGroup;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.BeginAnimControl
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UInterpGroup*            InInterpGroup                  (CPF_Parm)
-
-void APawn::BeginAnimControl(class UInterpGroup* InInterpGroup)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BeginAnimControl");
-
-	APawn_BeginAnimControl_Params params;
-	params.InInterpGroup = InInterpGroup;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.RestoreAnimSetsToDefault
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::RestoreAnimSetsToDefault()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.RestoreAnimSetsToDefault");
-
-	APawn_RestoreAnimSetsToDefault_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.AnimSetListUpdated
-// (FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::AnimSetListUpdated()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AnimSetListUpdated");
-
-	APawn_AnimSetListUpdated_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.AddAnimSets
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// TArray<class UAnimSet*>        CustomAnimSets                 (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-
-void APawn::AddAnimSets(TArray<class UAnimSet*>* CustomAnimSets)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.AddAnimSets");
-
-	APawn_AddAnimSets_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (CustomAnimSets != nullptr)
-		*CustomAnimSets = params.CustomAnimSets;
-}
-
-
-// Function Engine.Pawn.BuildScriptAnimSetList
-// (FUNC_Simulated, FUNC_Event, FUNC_Public)
-
-void APawn::BuildScriptAnimSetList()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.BuildScriptAnimSetList");
-
-	APawn_BuildScriptAnimSetList_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.UpdateAnimSetList
-// (FUNC_Final, FUNC_Simulated, FUNC_Native, FUNC_Public)
-
-void APawn::UpdateAnimSetList()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.UpdateAnimSetList");
-
-	APawn_UpdateAnimSetList_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ClearAnimNodes
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-
-void APawn::ClearAnimNodes()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ClearAnimNodes");
-
-	APawn_ClearAnimNodes_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.CacheAnimNodes
-// (FUNC_Simulated, FUNC_Native, FUNC_Event, FUNC_Public)
-
-void APawn::CacheAnimNodes()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CacheAnimNodes");
-
-	APawn_CacheAnimNodes_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.PostInitAnimTree
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// class USkeletalMeshComponent*  SkelComp                       (CPF_Parm, CPF_EditInline)
-
-void APawn::PostInitAnimTree(class USkeletalMeshComponent* SkelComp)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PostInitAnimTree");
-
-	APawn_PostInitAnimTree_Params params;
-	params.SkelComp = SkelComp;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.IsDesiredRotationLocked
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsDesiredRotationLocked()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsDesiredRotationLocked");
-
-	APawn_IsDesiredRotationLocked_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.IsDesiredRotationInUse
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::IsDesiredRotationInUse()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.IsDesiredRotationInUse");
-
-	APawn_IsDesiredRotationInUse_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.CheckDesiredRotation
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void APawn::CheckDesiredRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.CheckDesiredRotation");
-
-	APawn_CheckDesiredRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.ResetDesiredRotation
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void APawn::ResetDesiredRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.ResetDesiredRotation");
-
-	APawn_ResetDesiredRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.LockDesiredRotation
-// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           Lock                           (CPF_Parm)
-// bool                           InUnlockWhenReached            (CPF_OptionalParm, CPF_Parm)
-
-void APawn::LockDesiredRotation(bool Lock, bool InUnlockWhenReached)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.LockDesiredRotation");
-
-	APawn_LockDesiredRotation_Params params;
-	params.Lock = Lock;
-	params.InUnlockWhenReached = InUnlockWhenReached;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Pawn.SetDesiredRotation
-// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// struct FRotator                TargetDesiredRotation          (CPF_Parm)
-// bool                           InLockDesiredRotation          (CPF_OptionalParm, CPF_Parm)
-// bool                           InUnlockWhenReached            (CPF_OptionalParm, CPF_Parm)
-// float                          InterpolationTime              (CPF_OptionalParm, CPF_Parm)
-// bool                           bResetRotationRate             (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime, bool bResetRotationRate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.SetDesiredRotation");
-
-	APawn_SetDesiredRotation_Params params;
-	params.TargetDesiredRotation = TargetDesiredRotation;
-	params.InLockDesiredRotation = InLockDesiredRotation;
-	params.InUnlockWhenReached = InUnlockWhenReached;
-	params.InterpolationTime = InterpolationTime;
-	params.bResetRotationRate = bResetRotationRate;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Pawn.PickWallAdjust
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 WallHitNormal                  (CPF_Parm)
-// class AActor*                  HitActor                       (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool APawn::PickWallAdjust(const struct FVector& WallHitNormal, class AActor* HitActor)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.PickWallAdjust");
-
-	APawn_PickWallAdjust_Params params;
-	params.WallHitNormal = WallHitNormal;
-	params.HitActor = HitActor;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -78424,6 +78635,814 @@ int USeqAct_PlayCameraAnim::STATIC_GetObjClassVersion()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.SeqAct_PlayCameraAnim.GetObjClassVersion");
 
 	USeqAct_PlayCameraAnim_GetObjClassVersion_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.SetCameraFade
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           bNewEnableFading               (CPF_Parm)
+// struct FColor                  NewFadeColor                   (CPF_OptionalParm, CPF_Parm)
+// struct FVector2D               NewFadeAlpha                   (CPF_OptionalParm, CPF_Parm)
+// float                          NewFadeTime                    (CPF_OptionalParm, CPF_Parm)
+// bool                           bNewFadeAudio                  (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::SetCameraFade(bool bNewEnableFading, const struct FColor& NewFadeColor, const struct FVector2D& NewFadeAlpha, float NewFadeTime, bool bNewFadeAudio)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetCameraFade");
+
+	ACamera_SetCameraFade_Params params;
+	params.bNewEnableFading = bNewEnableFading;
+	params.NewFadeColor = NewFadeColor;
+	params.NewFadeAlpha = NewFadeAlpha;
+	params.NewFadeTime = NewFadeTime;
+	params.bNewFadeAudio = bNewFadeAudio;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.StopCameraAnim
+// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UCameraAnimInst*         AnimInst                       (CPF_Parm)
+// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::StopCameraAnim(class UCameraAnimInst* AnimInst, bool bImmediate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopCameraAnim");
+
+	ACamera_StopCameraAnim_Params params;
+	params.AnimInst = AnimInst;
+	params.bImmediate = bImmediate;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.StopAllCameraAnimsByType
+// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UCameraAnim*             Anim                           (CPF_Parm)
+// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::StopAllCameraAnimsByType(class UCameraAnim* Anim, bool bImmediate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopAllCameraAnimsByType");
+
+	ACamera_StopAllCameraAnimsByType_Params params;
+	params.Anim = Anim;
+	params.bImmediate = bImmediate;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.StopAllCameraAnims
+// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::StopAllCameraAnims(bool bImmediate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopAllCameraAnims");
+
+	ACamera_StopAllCameraAnims_Params params;
+	params.bImmediate = bImmediate;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.PlayCameraAnim
+// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UCameraAnim*             Anim                           (CPF_Parm)
+// float                          Rate                           (CPF_OptionalParm, CPF_Parm)
+// float                          Scale                          (CPF_OptionalParm, CPF_Parm)
+// float                          BlendInTime                    (CPF_OptionalParm, CPF_Parm)
+// float                          BlendOutTime                   (CPF_OptionalParm, CPF_Parm)
+// bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
+// bool                           bRandomStartTime               (CPF_OptionalParm, CPF_Parm)
+// float                          Duration                       (CPF_OptionalParm, CPF_Parm)
+// bool                           bSingleInstance                (CPF_OptionalParm, CPF_Parm)
+// class UCameraAnimInst*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UCameraAnimInst* ACamera::PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, float Duration, bool bSingleInstance)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayCameraAnim");
+
+	ACamera_PlayCameraAnim_Params params;
+	params.Anim = Anim;
+	params.Rate = Rate;
+	params.Scale = Scale;
+	params.BlendInTime = BlendInTime;
+	params.BlendOutTime = BlendOutTime;
+	params.bLoop = bLoop;
+	params.bRandomStartTime = bRandomStartTime;
+	params.Duration = Duration;
+	params.bSingleInstance = bSingleInstance;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.ClearAllCameraShakes
+// (FUNC_Defined, FUNC_Public)
+
+void ACamera::ClearAllCameraShakes()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ClearAllCameraShakes");
+
+	ACamera_ClearAllCameraShakes_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.PlayWorldCameraShake
+// (FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class UCameraShake*            Shake                          (CPF_Parm)
+// class AActor*                  ShakeInstigator                (CPF_Parm)
+// struct FVector                 Epicenter                      (CPF_Parm)
+// float                          InnerRadius                    (CPF_Parm)
+// float                          OuterRadius                    (CPF_Parm)
+// float                          Falloff                        (CPF_Parm)
+// bool                           bTryForceFeedback              (CPF_Parm)
+// bool                           bOrientShakeTowardsEpicenter   (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayWorldCameraShake");
+
+	ACamera_PlayWorldCameraShake_Params params;
+	params.Shake = Shake;
+	params.ShakeInstigator = ShakeInstigator;
+	params.Epicenter = Epicenter;
+	params.InnerRadius = InnerRadius;
+	params.OuterRadius = OuterRadius;
+	params.Falloff = Falloff;
+	params.bTryForceFeedback = bTryForceFeedback;
+	params.bOrientShakeTowardsEpicenter = bOrientShakeTowardsEpicenter;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.CalcRadialShakeScale
+// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class ACamera*                 Cam                            (CPF_Parm)
+// struct FVector                 Epicenter                      (CPF_Parm)
+// float                          InnerRadius                    (CPF_Parm)
+// float                          OuterRadius                    (CPF_Parm)
+// float                          Falloff                        (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float ACamera::STATIC_CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CalcRadialShakeScale");
+
+	ACamera_CalcRadialShakeScale_Params params;
+	params.Cam = Cam;
+	params.Epicenter = Epicenter;
+	params.InnerRadius = InnerRadius;
+	params.OuterRadius = OuterRadius;
+	params.Falloff = Falloff;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.StopCameraShake
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCameraShake*            Shake                          (CPF_Parm)
+
+void ACamera::StopCameraShake(class UCameraShake* Shake)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopCameraShake");
+
+	ACamera_StopCameraShake_Params params;
+	params.Shake = Shake;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.PlayCameraShake
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class UCameraShake*            Shake                          (CPF_Parm)
+// float                          Scale                          (CPF_Parm)
+// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
+// struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayCameraShake");
+
+	ACamera_PlayCameraShake_Params params;
+	params.Shake = Shake;
+	params.Scale = Scale;
+	params.PlaySpace = PlaySpace;
+	params.UserPlaySpaceRot = UserPlaySpaceRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.ClearCameraLensEffects
+// (FUNC_Defined, FUNC_Public)
+
+void ACamera::ClearCameraLensEffects()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ClearCameraLensEffects");
+
+	ACamera_ClearCameraLensEffects_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.RemoveCameraLensEffect
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AEmitterCameraLensEffectBase* Emitter                        (CPF_Parm)
+
+void ACamera::RemoveCameraLensEffect(class AEmitterCameraLensEffectBase* Emitter)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.RemoveCameraLensEffect");
+
+	ACamera_RemoveCameraLensEffect_Params params;
+	params.Emitter = Emitter;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.AddCameraLensEffect
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class UClass*                  LensEffectEmitterClass         (CPF_Parm)
+
+void ACamera::AddCameraLensEffect(class UClass* LensEffectEmitterClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.AddCameraLensEffect");
+
+	ACamera_AddCameraLensEffect_Params params;
+	params.LensEffectEmitterClass = LensEffectEmitterClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.FindCameraLensEffect
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UClass*                  LensEffectEmitterClass         (CPF_Parm)
+// class AEmitterCameraLensEffectBase* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class AEmitterCameraLensEffectBase* ACamera::FindCameraLensEffect(class UClass* LensEffectEmitterClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.FindCameraLensEffect");
+
+	ACamera_FindCameraLensEffect_Params params;
+	params.LensEffectEmitterClass = LensEffectEmitterClass;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.DisplayDebug
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// class AHUD*                    HUD                            (CPF_Parm)
+// float                          out_YL                         (CPF_Parm, CPF_OutParm)
+// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
+
+void ACamera::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.DisplayDebug");
+
+	ACamera_DisplayDebug_Params params;
+	params.HUD = HUD;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (out_YL != nullptr)
+		*out_YL = params.out_YL;
+	if (out_YPos != nullptr)
+		*out_YPos = params.out_YPos;
+}
+
+
+// Function Engine.Camera.ProcessViewRotation
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FRotator                OutViewRotation                (CPF_Parm, CPF_OutParm)
+// struct FRotator                OutDeltaRot                    (CPF_Parm, CPF_OutParm)
+
+void ACamera::ProcessViewRotation(float DeltaTime, struct FRotator* OutViewRotation, struct FRotator* OutDeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ProcessViewRotation");
+
+	ACamera_ProcessViewRotation_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutViewRotation != nullptr)
+		*OutViewRotation = params.OutViewRotation;
+	if (OutDeltaRot != nullptr)
+		*OutDeltaRot = params.OutDeltaRot;
+}
+
+
+// Function Engine.Camera.SetViewTarget
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// class AActor*                  NewViewTarget                  (CPF_Parm)
+// struct FViewTargetTransitionParams TransitionParams               (CPF_OptionalParm, CPF_Parm)
+
+void ACamera::SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetViewTarget");
+
+	ACamera_SetViewTarget_Params params;
+	params.NewViewTarget = NewViewTarget;
+	params.TransitionParams = TransitionParams;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.UpdateViewTarget
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FTViewTarget            OutVT                          (CPF_Parm, CPF_OutParm)
+// float                          DeltaTime                      (CPF_Parm)
+
+void ACamera::UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateViewTarget");
+
+	ACamera_UpdateViewTarget_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutVT != nullptr)
+		*OutVT = params.OutVT;
+}
+
+
+// Function Engine.Camera.CheckViewTarget
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FTViewTarget            VT                             (CPF_Parm, CPF_OutParm)
+
+void ACamera::CheckViewTarget(struct FTViewTarget* VT)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CheckViewTarget");
+
+	ACamera_CheckViewTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (VT != nullptr)
+		*VT = params.VT;
+}
+
+
+// Function Engine.Camera.FillCameraCache
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FTPOV                   NewPOV                         (CPF_Const, CPF_Parm, CPF_OutParm)
+
+void ACamera::FillCameraCache(struct FTPOV* NewPOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.FillCameraCache");
+
+	ACamera_FillCameraCache_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (NewPOV != nullptr)
+		*NewPOV = params.NewPOV;
+}
+
+
+// Function Engine.Camera.BlendViewTargets
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// struct FTViewTarget            A                              (CPF_Const, CPF_Parm, CPF_OutParm)
+// struct FTViewTarget            B                              (CPF_Const, CPF_Parm, CPF_OutParm)
+// float                          Alpha                          (CPF_Parm)
+// struct FTPOV                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FTPOV ACamera::BlendViewTargets(float Alpha, struct FTViewTarget* A, struct FTViewTarget* B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.BlendViewTargets");
+
+	ACamera_BlendViewTargets_Params params;
+	params.Alpha = Alpha;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (A != nullptr)
+		*A = params.A;
+	if (B != nullptr)
+		*B = params.B;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.ApplyAudioFade
+// (FUNC_Native, FUNC_Public)
+
+void ACamera::ApplyAudioFade()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ApplyAudioFade");
+
+	ACamera_ApplyAudioFade_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.UpdateFade
+// (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void ACamera::UpdateFade(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateFade");
+
+	ACamera_UpdateFade_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.DoUpdateCamera
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void ACamera::DoUpdateCamera(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.DoUpdateCamera");
+
+	ACamera_DoUpdateCamera_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.UpdateCamera
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void ACamera::UpdateCamera(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateCamera");
+
+	ACamera_UpdateCamera_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.SetDesiredColorScale
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// struct FVector                 NewColorScale                  (CPF_Parm)
+// float                          InterpTime                     (CPF_Parm)
+
+void ACamera::SetDesiredColorScale(const struct FVector& NewColorScale, float InterpTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetDesiredColorScale");
+
+	ACamera_SetDesiredColorScale_Params params;
+	params.NewColorScale = NewColorScale;
+	params.InterpTime = InterpTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.GetCameraRotation
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+struct FRotator ACamera::GetCameraRotation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetCameraRotation");
+
+	ACamera_GetCameraRotation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.GetCameraViewPoint
+// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FVector                 OutCamLoc                      (CPF_Parm, CPF_OutParm)
+// struct FRotator                OutCamRot                      (CPF_Parm, CPF_OutParm)
+
+void ACamera::GetCameraViewPoint(struct FVector* OutCamLoc, struct FRotator* OutCamRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetCameraViewPoint");
+
+	ACamera_GetCameraViewPoint_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutCamLoc != nullptr)
+		*OutCamLoc = params.OutCamLoc;
+	if (OutCamRot != nullptr)
+		*OutCamRot = params.OutCamRot;
+}
+
+
+// Function Engine.Camera.SetFOV
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          NewFOV                         (CPF_Parm)
+
+void ACamera::SetFOV(float NewFOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetFOV");
+
+	ACamera_SetFOV_Params params;
+	params.NewFOV = NewFOV;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.GetFOVAngle
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float ACamera::GetFOVAngle()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetFOVAngle");
+
+	ACamera_GetFOVAngle_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Camera.InitializeFor
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APlayerController*       PC                             (CPF_Parm)
+
+void ACamera::InitializeFor(class APlayerController* PC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.InitializeFor");
+
+	ACamera_InitializeFor_Params params;
+	params.PC = PC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.ApplyCameraModifiers
+// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FTPOV                   OutPOV                         (CPF_Parm, CPF_OutParm)
+
+void ACamera::ApplyCameraModifiers(float DeltaTime, struct FTPOV* OutPOV)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ApplyCameraModifiers");
+
+	ACamera_ApplyCameraModifiers_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutPOV != nullptr)
+		*OutPOV = params.OutPOV;
+}
+
+
+// Function Engine.Camera.Destroyed
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void ACamera::Destroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.Destroyed");
+
+	ACamera_Destroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.PostBeginPlay
+// (FUNC_Defined, FUNC_Public)
+
+void ACamera::PostBeginPlay()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PostBeginPlay");
+
+	ACamera_PostBeginPlay_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Camera.CreateCameraModifier
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UClass*                  ModifierClass                  (CPF_Parm)
+// class UCameraModifier*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UCameraModifier* ACamera::CreateCameraModifier(class UClass* ModifierClass)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CreateCameraModifier");
+
+	ACamera_CreateCameraModifier_Params params;
+	params.ModifierClass = ModifierClass;
 
 	auto flags = fn->FunctionFlags;
 
@@ -84948,217 +85967,6 @@ bool ASpotLightToggleable::ShouldSaveForCheckpoint()
 }
 
 
-// Function Engine.LightComponent.OnUpdatePropertyLightColor
-// (FUNC_Defined, FUNC_Public)
-
-void ULightComponent::OnUpdatePropertyLightColor()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyLightColor");
-
-	ULightComponent_OnUpdatePropertyLightColor_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.OnUpdatePropertyBrightness
-// (FUNC_Defined, FUNC_Public)
-
-void ULightComponent::OnUpdatePropertyBrightness()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBrightness");
-
-	ULightComponent_OnUpdatePropertyBrightness_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness
-// (FUNC_Defined, FUNC_Public)
-
-void ULightComponent::OnUpdatePropertyOcclusionMaskDarkness()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness");
-
-	ULightComponent_OnUpdatePropertyOcclusionMaskDarkness_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.OnUpdatePropertyBloomTint
-// (FUNC_Defined, FUNC_Public)
-
-void ULightComponent::OnUpdatePropertyBloomTint()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBloomTint");
-
-	ULightComponent_OnUpdatePropertyBloomTint_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.OnUpdatePropertyBloomScale
-// (FUNC_Defined, FUNC_Public)
-
-void ULightComponent::OnUpdatePropertyBloomScale()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.OnUpdatePropertyBloomScale");
-
-	ULightComponent_OnUpdatePropertyBloomScale_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.UpdateLightShaftParameters
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void ULightComponent::UpdateLightShaftParameters()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.UpdateLightShaftParameters");
-
-	ULightComponent_UpdateLightShaftParameters_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.UpdateColorAndBrightness
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-
-void ULightComponent::UpdateColorAndBrightness()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.UpdateColorAndBrightness");
-
-	ULightComponent_UpdateColorAndBrightness_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.GetDirection
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector ULightComponent::GetDirection()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.GetDirection");
-
-	ULightComponent_GetDirection_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.LightComponent.GetOrigin
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector ULightComponent::GetOrigin()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.GetOrigin");
-
-	ULightComponent_GetOrigin_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.LightComponent.SetLightProperties
-// (FUNC_Final, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// float                          NewBrightness                  (CPF_OptionalParm, CPF_Parm)
-// struct FColor                  NewLightColor                  (CPF_OptionalParm, CPF_Parm)
-// class ULightFunction*          NewLightFunction               (CPF_OptionalParm, CPF_Parm)
-
-void ULightComponent::SetLightProperties(float NewBrightness, const struct FColor& NewLightColor, class ULightFunction* NewLightFunction)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.SetLightProperties");
-
-	ULightComponent_SetLightProperties_Params params;
-	params.NewBrightness = NewBrightness;
-	params.NewLightColor = NewLightColor;
-	params.NewLightFunction = NewLightFunction;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.LightComponent.SetEnabled
-// (FUNC_Final, FUNC_Native, FUNC_Public)
-// Parameters:
-// bool                           bSetEnabled                    (CPF_Parm)
-
-void ULightComponent::SetEnabled(bool bSetEnabled)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.LightComponent.SetEnabled");
-
-	ULightComponent_SetEnabled_Params params;
-	params.bSetEnabled = bSetEnabled;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function Engine.DirectionalLightComponent.OnUpdatePropertyBrightness
 // (FUNC_Defined, FUNC_Public)
 
@@ -89845,814 +90653,6 @@ void ATeamInfo::ReplicatedEvent(const struct FName& VarName)
 	UObject::ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.SetCameraFade
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           bNewEnableFading               (CPF_Parm)
-// struct FColor                  NewFadeColor                   (CPF_OptionalParm, CPF_Parm)
-// struct FVector2D               NewFadeAlpha                   (CPF_OptionalParm, CPF_Parm)
-// float                          NewFadeTime                    (CPF_OptionalParm, CPF_Parm)
-// bool                           bNewFadeAudio                  (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::SetCameraFade(bool bNewEnableFading, const struct FColor& NewFadeColor, const struct FVector2D& NewFadeAlpha, float NewFadeTime, bool bNewFadeAudio)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetCameraFade");
-
-	ACamera_SetCameraFade_Params params;
-	params.bNewEnableFading = bNewEnableFading;
-	params.NewFadeColor = NewFadeColor;
-	params.NewFadeAlpha = NewFadeAlpha;
-	params.NewFadeTime = NewFadeTime;
-	params.bNewFadeAudio = bNewFadeAudio;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.StopCameraAnim
-// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UCameraAnimInst*         AnimInst                       (CPF_Parm)
-// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::StopCameraAnim(class UCameraAnimInst* AnimInst, bool bImmediate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopCameraAnim");
-
-	ACamera_StopCameraAnim_Params params;
-	params.AnimInst = AnimInst;
-	params.bImmediate = bImmediate;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.StopAllCameraAnimsByType
-// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UCameraAnim*             Anim                           (CPF_Parm)
-// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::StopAllCameraAnimsByType(class UCameraAnim* Anim, bool bImmediate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopAllCameraAnimsByType");
-
-	ACamera_StopAllCameraAnimsByType_Params params;
-	params.Anim = Anim;
-	params.bImmediate = bImmediate;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.StopAllCameraAnims
-// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// bool                           bImmediate                     (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::StopAllCameraAnims(bool bImmediate)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopAllCameraAnims");
-
-	ACamera_StopAllCameraAnims_Params params;
-	params.bImmediate = bImmediate;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.PlayCameraAnim
-// (FUNC_Simulated, FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UCameraAnim*             Anim                           (CPF_Parm)
-// float                          Rate                           (CPF_OptionalParm, CPF_Parm)
-// float                          Scale                          (CPF_OptionalParm, CPF_Parm)
-// float                          BlendInTime                    (CPF_OptionalParm, CPF_Parm)
-// float                          BlendOutTime                   (CPF_OptionalParm, CPF_Parm)
-// bool                           bLoop                          (CPF_OptionalParm, CPF_Parm)
-// bool                           bRandomStartTime               (CPF_OptionalParm, CPF_Parm)
-// float                          Duration                       (CPF_OptionalParm, CPF_Parm)
-// bool                           bSingleInstance                (CPF_OptionalParm, CPF_Parm)
-// class UCameraAnimInst*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UCameraAnimInst* ACamera::PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, float Duration, bool bSingleInstance)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayCameraAnim");
-
-	ACamera_PlayCameraAnim_Params params;
-	params.Anim = Anim;
-	params.Rate = Rate;
-	params.Scale = Scale;
-	params.BlendInTime = BlendInTime;
-	params.BlendOutTime = BlendOutTime;
-	params.bLoop = bLoop;
-	params.bRandomStartTime = bRandomStartTime;
-	params.Duration = Duration;
-	params.bSingleInstance = bSingleInstance;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.ClearAllCameraShakes
-// (FUNC_Defined, FUNC_Public)
-
-void ACamera::ClearAllCameraShakes()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ClearAllCameraShakes");
-
-	ACamera_ClearAllCameraShakes_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.PlayWorldCameraShake
-// (FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UCameraShake*            Shake                          (CPF_Parm)
-// class AActor*                  ShakeInstigator                (CPF_Parm)
-// struct FVector                 Epicenter                      (CPF_Parm)
-// float                          InnerRadius                    (CPF_Parm)
-// float                          OuterRadius                    (CPF_Parm)
-// float                          Falloff                        (CPF_Parm)
-// bool                           bTryForceFeedback              (CPF_Parm)
-// bool                           bOrientShakeTowardsEpicenter   (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayWorldCameraShake");
-
-	ACamera_PlayWorldCameraShake_Params params;
-	params.Shake = Shake;
-	params.ShakeInstigator = ShakeInstigator;
-	params.Epicenter = Epicenter;
-	params.InnerRadius = InnerRadius;
-	params.OuterRadius = OuterRadius;
-	params.Falloff = Falloff;
-	params.bTryForceFeedback = bTryForceFeedback;
-	params.bOrientShakeTowardsEpicenter = bOrientShakeTowardsEpicenter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.CalcRadialShakeScale
-// (FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class ACamera*                 Cam                            (CPF_Parm)
-// struct FVector                 Epicenter                      (CPF_Parm)
-// float                          InnerRadius                    (CPF_Parm)
-// float                          OuterRadius                    (CPF_Parm)
-// float                          Falloff                        (CPF_Parm)
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float ACamera::STATIC_CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CalcRadialShakeScale");
-
-	ACamera_CalcRadialShakeScale_Params params;
-	params.Cam = Cam;
-	params.Epicenter = Epicenter;
-	params.InnerRadius = InnerRadius;
-	params.OuterRadius = OuterRadius;
-	params.Falloff = Falloff;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.StopCameraShake
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UCameraShake*            Shake                          (CPF_Parm)
-
-void ACamera::StopCameraShake(class UCameraShake* Shake)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.StopCameraShake");
-
-	ACamera_StopCameraShake_Params params;
-	params.Shake = Shake;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.PlayCameraShake
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class UCameraShake*            Shake                          (CPF_Parm)
-// float                          Scale                          (CPF_Parm)
-// TEnumAsByte<ECameraAnimPlaySpace> PlaySpace                      (CPF_OptionalParm, CPF_Parm)
-// struct FRotator                UserPlaySpaceRot               (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PlayCameraShake");
-
-	ACamera_PlayCameraShake_Params params;
-	params.Shake = Shake;
-	params.Scale = Scale;
-	params.PlaySpace = PlaySpace;
-	params.UserPlaySpaceRot = UserPlaySpaceRot;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.ClearCameraLensEffects
-// (FUNC_Defined, FUNC_Public)
-
-void ACamera::ClearCameraLensEffects()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ClearCameraLensEffects");
-
-	ACamera_ClearCameraLensEffects_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.RemoveCameraLensEffect
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AEmitterCameraLensEffectBase* Emitter                        (CPF_Parm)
-
-void ACamera::RemoveCameraLensEffect(class AEmitterCameraLensEffectBase* Emitter)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.RemoveCameraLensEffect");
-
-	ACamera_RemoveCameraLensEffect_Params params;
-	params.Emitter = Emitter;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.AddCameraLensEffect
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// class UClass*                  LensEffectEmitterClass         (CPF_Parm)
-
-void ACamera::AddCameraLensEffect(class UClass* LensEffectEmitterClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.AddCameraLensEffect");
-
-	ACamera_AddCameraLensEffect_Params params;
-	params.LensEffectEmitterClass = LensEffectEmitterClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.FindCameraLensEffect
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class UClass*                  LensEffectEmitterClass         (CPF_Parm)
-// class AEmitterCameraLensEffectBase* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class AEmitterCameraLensEffectBase* ACamera::FindCameraLensEffect(class UClass* LensEffectEmitterClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.FindCameraLensEffect");
-
-	ACamera_FindCameraLensEffect_Params params;
-	params.LensEffectEmitterClass = LensEffectEmitterClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.DisplayDebug
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// class AHUD*                    HUD                            (CPF_Parm)
-// float                          out_YL                         (CPF_Parm, CPF_OutParm)
-// float                          out_YPos                       (CPF_Parm, CPF_OutParm)
-
-void ACamera::DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.DisplayDebug");
-
-	ACamera_DisplayDebug_Params params;
-	params.HUD = HUD;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_YL != nullptr)
-		*out_YL = params.out_YL;
-	if (out_YPos != nullptr)
-		*out_YPos = params.out_YPos;
-}
-
-
-// Function Engine.Camera.ProcessViewRotation
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-// struct FRotator                OutViewRotation                (CPF_Parm, CPF_OutParm)
-// struct FRotator                OutDeltaRot                    (CPF_Parm, CPF_OutParm)
-
-void ACamera::ProcessViewRotation(float DeltaTime, struct FRotator* OutViewRotation, struct FRotator* OutDeltaRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ProcessViewRotation");
-
-	ACamera_ProcessViewRotation_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutViewRotation != nullptr)
-		*OutViewRotation = params.OutViewRotation;
-	if (OutDeltaRot != nullptr)
-		*OutDeltaRot = params.OutDeltaRot;
-}
-
-
-// Function Engine.Camera.SetViewTarget
-// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
-// Parameters:
-// class AActor*                  NewViewTarget                  (CPF_Parm)
-// struct FViewTargetTransitionParams TransitionParams               (CPF_OptionalParm, CPF_Parm)
-
-void ACamera::SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetViewTarget");
-
-	ACamera_SetViewTarget_Params params;
-	params.NewViewTarget = NewViewTarget;
-	params.TransitionParams = TransitionParams;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.UpdateViewTarget
-// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FTViewTarget            OutVT                          (CPF_Parm, CPF_OutParm)
-// float                          DeltaTime                      (CPF_Parm)
-
-void ACamera::UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateViewTarget");
-
-	ACamera_UpdateViewTarget_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutVT != nullptr)
-		*OutVT = params.OutVT;
-}
-
-
-// Function Engine.Camera.CheckViewTarget
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FTViewTarget            VT                             (CPF_Parm, CPF_OutParm)
-
-void ACamera::CheckViewTarget(struct FTViewTarget* VT)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CheckViewTarget");
-
-	ACamera_CheckViewTarget_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (VT != nullptr)
-		*VT = params.VT;
-}
-
-
-// Function Engine.Camera.FillCameraCache
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FTPOV                   NewPOV                         (CPF_Const, CPF_Parm, CPF_OutParm)
-
-void ACamera::FillCameraCache(struct FTPOV* NewPOV)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.FillCameraCache");
-
-	ACamera_FillCameraCache_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (NewPOV != nullptr)
-		*NewPOV = params.NewPOV;
-}
-
-
-// Function Engine.Camera.BlendViewTargets
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FTViewTarget            A                              (CPF_Const, CPF_Parm, CPF_OutParm)
-// struct FTViewTarget            B                              (CPF_Const, CPF_Parm, CPF_OutParm)
-// float                          Alpha                          (CPF_Parm)
-// struct FTPOV                   ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FTPOV ACamera::BlendViewTargets(float Alpha, struct FTViewTarget* A, struct FTViewTarget* B)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.BlendViewTargets");
-
-	ACamera_BlendViewTargets_Params params;
-	params.Alpha = Alpha;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (A != nullptr)
-		*A = params.A;
-	if (B != nullptr)
-		*B = params.B;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.ApplyAudioFade
-// (FUNC_Native, FUNC_Public)
-
-void ACamera::ApplyAudioFade()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ApplyAudioFade");
-
-	ACamera_ApplyAudioFade_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.UpdateFade
-// (FUNC_Defined, FUNC_Simulated, FUNC_Protected)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void ACamera::UpdateFade(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateFade");
-
-	ACamera_UpdateFade_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.DoUpdateCamera
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void ACamera::DoUpdateCamera(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.DoUpdateCamera");
-
-	ACamera_DoUpdateCamera_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.UpdateCamera
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void ACamera::UpdateCamera(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.UpdateCamera");
-
-	ACamera_UpdateCamera_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.SetDesiredColorScale
-// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
-// Parameters:
-// struct FVector                 NewColorScale                  (CPF_Parm)
-// float                          InterpTime                     (CPF_Parm)
-
-void ACamera::SetDesiredColorScale(const struct FVector& NewColorScale, float InterpTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetDesiredColorScale");
-
-	ACamera_SetDesiredColorScale_Params params;
-	params.NewColorScale = NewColorScale;
-	params.InterpTime = InterpTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.GetCameraRotation
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FRotator                ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FRotator ACamera::GetCameraRotation()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetCameraRotation");
-
-	ACamera_GetCameraRotation_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.GetCameraViewPoint
-// (FUNC_Final, FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 OutCamLoc                      (CPF_Parm, CPF_OutParm)
-// struct FRotator                OutCamRot                      (CPF_Parm, CPF_OutParm)
-
-void ACamera::GetCameraViewPoint(struct FVector* OutCamLoc, struct FRotator* OutCamRot)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetCameraViewPoint");
-
-	ACamera_GetCameraViewPoint_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutCamLoc != nullptr)
-		*OutCamLoc = params.OutCamLoc;
-	if (OutCamRot != nullptr)
-		*OutCamRot = params.OutCamRot;
-}
-
-
-// Function Engine.Camera.SetFOV
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          NewFOV                         (CPF_Parm)
-
-void ACamera::SetFOV(float NewFOV)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.SetFOV");
-
-	ACamera_SetFOV_Params params;
-	params.NewFOV = NewFOV;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.GetFOVAngle
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float ACamera::GetFOVAngle()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.GetFOVAngle");
-
-	ACamera_GetFOVAngle_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.Camera.InitializeFor
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class APlayerController*       PC                             (CPF_Parm)
-
-void ACamera::InitializeFor(class APlayerController* PC)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.InitializeFor");
-
-	ACamera_InitializeFor_Params params;
-	params.PC = PC;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.ApplyCameraModifiers
-// (FUNC_Native, FUNC_Public, FUNC_HasOutParms)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-// struct FTPOV                   OutPOV                         (CPF_Parm, CPF_OutParm)
-
-void ACamera::ApplyCameraModifiers(float DeltaTime, struct FTPOV* OutPOV)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.ApplyCameraModifiers");
-
-	ACamera_ApplyCameraModifiers_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (OutPOV != nullptr)
-		*OutPOV = params.OutPOV;
-}
-
-
-// Function Engine.Camera.Destroyed
-// (FUNC_Defined, FUNC_Event, FUNC_Public)
-
-void ACamera::Destroyed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.Destroyed");
-
-	ACamera_Destroyed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.PostBeginPlay
-// (FUNC_Defined, FUNC_Public)
-
-void ACamera::PostBeginPlay()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.PostBeginPlay");
-
-	ACamera_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Engine.Camera.CreateCameraModifier
-// (FUNC_Defined, FUNC_Protected)
-// Parameters:
-// class UClass*                  ModifierClass                  (CPF_Parm)
-// class UCameraModifier*         ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-class UCameraModifier* ACamera::CreateCameraModifier(class UClass* ModifierClass)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.Camera.CreateCameraModifier");
-
-	ACamera_CreateCameraModifier_Params params;
-	params.ModifierClass = ModifierClass;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
 }
 
 
@@ -109836,6 +109836,398 @@ void AEmitterSpawnable::SetTemplate(class UParticleSystem* NewTemplate, bool bDe
 }
 
 
+// Function Engine.Controller.Dead.ServerRestartPlayer
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SController_Dead::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.ServerRestartPlayer");
+
+	SController_Dead_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.Dead.IsDead
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SController_Dead::IsDead()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.IsDead");
+
+	SController_Dead_IsDead_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Controller.Dead.PawnDied
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   inPawn                         (CPF_Parm)
+
+void SController_Dead::PawnDied(class APawn* inPawn)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.PawnDied");
+
+	SController_Dead_PawnDied_Params params;
+	params.inPawn = inPawn;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.Dead.KilledBy
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void SController_Dead::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.KilledBy");
+
+	SController_Dead_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.Dead.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SController_Dead::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.HearNoise");
+
+	SController_Dead_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.Dead.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SController_Dead::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.Dead.SeePlayer");
+
+	SController_Dead_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SController_RoundEnded::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.BeginState");
+
+	SController_RoundEnded_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.GamePlayEndedState
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SController_RoundEnded::GamePlayEndedState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.GamePlayEndedState");
+
+	SController_RoundEnded_GamePlayEndedState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Controller.RoundEnded.ReceiveWarning
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   shooter                        (CPF_Parm)
+// float                          projSpeed                      (CPF_Parm)
+// struct FVector                 FireDir                        (CPF_Parm)
+
+void SController_RoundEnded::ReceiveWarning(class APawn* shooter, float projSpeed, const struct FVector& FireDir)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.ReceiveWarning");
+
+	SController_RoundEnded_ReceiveWarning_Params params;
+	params.shooter = shooter;
+	params.projSpeed = projSpeed;
+	params.FireDir = FireDir;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.TakeDamage
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            DamageAmount                   (CPF_Parm)
+// class AController*             EventInstigator                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void SController_RoundEnded::TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.TakeDamage");
+
+	SController_RoundEnded_TakeDamage_Params params;
+	params.DamageAmount = DamageAmount;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.Falling
+// (FUNC_Public)
+
+void SController_RoundEnded::Falling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.Falling");
+
+	SController_RoundEnded_Falling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.NotifyHeadVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SController_RoundEnded::NotifyHeadVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.NotifyHeadVolumeChange");
+
+	SController_RoundEnded_NotifyHeadVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Controller.RoundEnded.NotifyPhysicsVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SController_RoundEnded::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.NotifyPhysicsVolumeChange");
+
+	SController_RoundEnded_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.HitWall
+// (FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  Wall                           (CPF_Parm)
+// class UPrimitiveComponent*     WallComp                       (CPF_Parm, CPF_EditInline)
+
+void SController_RoundEnded::HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.HitWall");
+
+	SController_RoundEnded_HitWall_Params params;
+	params.HitNormal = HitNormal;
+	params.Wall = Wall;
+	params.WallComp = WallComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.NotifyBump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SController_RoundEnded::NotifyBump(class AActor* Other, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.NotifyBump");
+
+	SController_RoundEnded_NotifyBump_Params params;
+	params.Other = Other;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Controller.RoundEnded.KilledBy
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void SController_RoundEnded::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.KilledBy");
+
+	SController_RoundEnded_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SController_RoundEnded::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.HearNoise");
+
+	SController_RoundEnded_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Controller.RoundEnded.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SController_RoundEnded::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Controller.RoundEnded.SeePlayer");
+
+	SController_RoundEnded_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.SeqAct_ControlMovieTexture.Activated
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 
@@ -110354,6 +110746,2394 @@ struct FString UGameMessage::STATIC_GetString(int Switch, bool bPRI1HUD, class A
 }
 
 
+// Function Engine.PlayerController.PlayerWalking.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_PlayerWalking::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.EndState");
+
+	SPlayerController_PlayerWalking_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerWalking::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.BeginState");
+
+	SPlayerController_PlayerWalking_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_PlayerWalking::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.PlayerMove");
+
+	SPlayerController_PlayerWalking_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.ProcessMove
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_PlayerWalking::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.ProcessMove");
+
+	SPlayerController_PlayerWalking_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.NotifyPhysicsVolumeChange
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_PlayerWalking::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.NotifyPhysicsVolumeChange");
+
+	SPlayerController_PlayerWalking_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPlayerController_PlayerWalking::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.Bump");
+
+	SPlayerController_PlayerWalking_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerWalking::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.HearNoise");
+
+	SPlayerController_PlayerWalking_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWalking.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerWalking::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWalking.SeePlayer");
+
+	SPlayerController_PlayerWalking_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.EndState");
+
+	SPlayerController_PlayerClimbing_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.BeginState");
+
+	SPlayerController_PlayerClimbing_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.PlayerMove");
+
+	SPlayerController_PlayerClimbing_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.ProcessMove
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.ProcessMove");
+
+	SPlayerController_PlayerClimbing_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.NotifyPhysicsVolumeChange
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.NotifyPhysicsVolumeChange");
+
+	SPlayerController_PlayerClimbing_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.Bump");
+
+	SPlayerController_PlayerClimbing_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerClimbing::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.HearNoise");
+
+	SPlayerController_PlayerClimbing_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerClimbing.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerClimbing::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerClimbing.SeePlayer");
+
+	SPlayerController_PlayerClimbing_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_PlayerDriving::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.EndState");
+
+	SPlayerController_PlayerDriving_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerDriving::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.BeginState");
+
+	SPlayerController_PlayerDriving_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.ProcessDrive
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          InForward                      (CPF_Parm)
+// float                          InStrafe                       (CPF_Parm)
+// float                          InUp                           (CPF_Parm)
+// bool                           InJump                         (CPF_Parm)
+
+void SPlayerController_PlayerDriving::ProcessDrive(float InForward, float InStrafe, float InUp, bool InJump)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.ProcessDrive");
+
+	SPlayerController_PlayerDriving_ProcessDrive_Params params;
+	params.InForward = InForward;
+	params.InStrafe = InStrafe;
+	params.InUp = InUp;
+	params.InJump = InJump;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.ProcessMove
+// (FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_PlayerDriving::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.ProcessMove");
+
+	SPlayerController_PlayerDriving_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPlayerController_PlayerDriving::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.Bump");
+
+	SPlayerController_PlayerDriving_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerDriving::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.HearNoise");
+
+	SPlayerController_PlayerDriving_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerDriving.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerDriving::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerDriving.SeePlayer");
+
+	SPlayerController_PlayerDriving_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.BeginState");
+
+	SPlayerController_PlayerSwimming_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SPlayerController_PlayerSwimming::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.Timer");
+
+	SPlayerController_PlayerSwimming_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.PlayerMove");
+
+	SPlayerController_PlayerSwimming_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.ProcessMove
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.ProcessMove");
+
+	SPlayerController_PlayerSwimming_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.NotifyPhysicsVolumeChange
+// (FUNC_Defined, FUNC_Event, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.NotifyPhysicsVolumeChange");
+
+	SPlayerController_PlayerSwimming_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.NotifyLanded
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  FloorActor                     (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_PlayerSwimming::NotifyLanded(const struct FVector& HitNormal, class AActor* FloorActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.NotifyLanded");
+
+	SPlayerController_PlayerSwimming_NotifyLanded_Params params;
+	params.HitNormal = HitNormal;
+	params.FloorActor = FloorActor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.Bump");
+
+	SPlayerController_PlayerSwimming_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerSwimming::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.HearNoise");
+
+	SPlayerController_PlayerSwimming_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerSwimming.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerSwimming::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerSwimming.SeePlayer");
+
+	SPlayerController_PlayerSwimming_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerFlying.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerFlying::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerFlying.BeginState");
+
+	SPlayerController_PlayerFlying_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerFlying.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_PlayerFlying::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerFlying.PlayerMove");
+
+	SPlayerController_PlayerFlying_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerFlying.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPlayerController_PlayerFlying::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerFlying.Bump");
+
+	SPlayerController_PlayerFlying_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerFlying.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerFlying::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerFlying.HearNoise");
+
+	SPlayerController_PlayerFlying_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerFlying.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerFlying::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerFlying.SeePlayer");
+
+	SPlayerController_PlayerFlying_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_BaseSpectating::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.EndState");
+
+	SPlayerController_BaseSpectating_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_BaseSpectating::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.BeginState");
+
+	SPlayerController_BaseSpectating_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_BaseSpectating::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.PlayerMove");
+
+	SPlayerController_BaseSpectating_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.ProcessMove
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_BaseSpectating::ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.ProcessMove");
+
+	SPlayerController_BaseSpectating_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.LimitSpectatorVelocity
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_BaseSpectating::LimitSpectatorVelocity()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.LimitSpectatorVelocity");
+
+	SPlayerController_BaseSpectating_LimitSpectatorVelocity_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.BaseSpectating.IsSpectating
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_BaseSpectating::IsSpectating()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.BaseSpectating.IsSpectating");
+
+	SPlayerController_BaseSpectating_IsSpectating_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.Spectating.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_Spectating::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.EndState");
+
+	SPlayerController_Spectating_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Spectating.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_Spectating::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.BeginState");
+
+	SPlayerController_Spectating_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Spectating.NotifyHeadVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_Spectating::NotifyHeadVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.NotifyHeadVolumeChange");
+
+	SPlayerController_Spectating_NotifyHeadVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.Spectating.NotifyPhysicsVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_Spectating::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.NotifyPhysicsVolumeChange");
+
+	SPlayerController_Spectating_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Spectating.ThrowWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Spectating::ThrowWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.ThrowWeapon");
+
+	SPlayerController_Spectating_ThrowWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Spectating.Suicide
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Spectating::Suicide()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.Suicide");
+
+	SPlayerController_Spectating_Suicide_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Spectating.RestartLevel
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Spectating::RestartLevel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Spectating.RestartLevel");
+
+	SPlayerController_Spectating_RestartLevel_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_PlayerWaiting::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.BeginState");
+
+	SPlayerController_PlayerWaiting_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_PlayerWaiting::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.EndState");
+
+	SPlayerController_PlayerWaiting_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.StartFire
+// (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerWaiting::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.StartFire");
+
+	SPlayerController_PlayerWaiting_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.ServerRestartPlayer
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SPlayerController_PlayerWaiting::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.ServerRestartPlayer");
+
+	SPlayerController_PlayerWaiting_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.Suicide
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_PlayerWaiting::Suicide()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.Suicide");
+
+	SPlayerController_PlayerWaiting_Suicide_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.Jump
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_PlayerWaiting::Jump()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.Jump");
+
+	SPlayerController_PlayerWaiting_Jump_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.SwitchToBestWeapon
+// (FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// bool                           bForceNewWeapon                (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerWaiting::SwitchToBestWeapon(bool bForceNewWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.SwitchToBestWeapon");
+
+	SPlayerController_PlayerWaiting_SwitchToBestWeapon_Params params;
+	params.bForceNewWeapon = bForceNewWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.PrevWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_PlayerWaiting::PrevWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.PrevWeapon");
+
+	SPlayerController_PlayerWaiting_PrevWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.NextWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_PlayerWaiting::NextWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.NextWeapon");
+
+	SPlayerController_PlayerWaiting_NextWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.PhysicsVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_PlayerWaiting::PhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.PhysicsVolumeChange");
+
+	SPlayerController_PlayerWaiting_PhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.TakeDamage
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            DamageAmount                   (CPF_Parm)
+// class AController*             EventInstigator                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerWaiting::TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.TakeDamage");
+
+	SPlayerController_PlayerWaiting_TakeDamage_Params params;
+	params.DamageAmount = DamageAmount;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.NotifyBump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_PlayerWaiting::NotifyBump(class AActor* Other, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.NotifyBump");
+
+	SPlayerController_PlayerWaiting_NotifyBump_Params params;
+	params.Other = Other;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_PlayerWaiting::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.HearNoise");
+
+	SPlayerController_PlayerWaiting_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.PlayerWaiting.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_PlayerWaiting::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.PlayerWaiting.SeePlayer");
+
+	SPlayerController_PlayerWaiting_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.EndState");
+
+	SPlayerController_WaitingForPawn_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.BeginState");
+
+	SPlayerController_WaitingForPawn_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SPlayerController_WaitingForPawn::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.Timer");
+
+	SPlayerController_WaitingForPawn_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.ReplicateMove
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 newAccel                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.ReplicateMove");
+
+	SPlayerController_WaitingForPawn_ReplicateMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.newAccel = newAccel;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.PlayerTick
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::PlayerTick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.PlayerTick");
+
+	SPlayerController_WaitingForPawn_PlayerTick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.LongClientAdjustPosition
+// (FUNC_Defined, FUNC_Net, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
+// Parameters:
+// float                          TimeStamp                      (CPF_Parm)
+// struct FName                   NewState                       (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
+// float                          NewLocX                        (CPF_Parm)
+// float                          NewLocY                        (CPF_Parm)
+// float                          NewLocZ                        (CPF_Parm)
+// float                          NewVelX                        (CPF_Parm)
+// float                          NewVelY                        (CPF_Parm)
+// float                          NewVelZ                        (CPF_Parm)
+// class AActor*                  NewBase                        (CPF_Parm)
+// float                          NewFloorX                      (CPF_Parm)
+// float                          NewFloorY                      (CPF_Parm)
+// float                          NewFloorZ                      (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.LongClientAdjustPosition");
+
+	SPlayerController_WaitingForPawn_LongClientAdjustPosition_Params params;
+	params.TimeStamp = TimeStamp;
+	params.NewState = NewState;
+	params.newPhysics = newPhysics;
+	params.NewLocX = NewLocX;
+	params.NewLocY = NewLocY;
+	params.NewLocZ = NewLocZ;
+	params.NewVelX = NewVelX;
+	params.NewVelY = NewVelY;
+	params.NewVelZ = NewVelZ;
+	params.NewBase = NewBase;
+	params.NewFloorX = NewFloorX;
+	params.NewFloorY = NewFloorY;
+	params.NewFloorZ = NewFloorZ;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.ClientGotoState
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_HasOptionalParms, FUNC_Public, FUNC_NetClient)
+// Parameters:
+// struct FName                   NewState                       (CPF_Parm)
+// struct FName                   NewLabel                       (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_WaitingForPawn::ClientGotoState(const struct FName& NewState, const struct FName& NewLabel)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.ClientGotoState");
+
+	SPlayerController_WaitingForPawn_ClientGotoState_Params params;
+	params.NewState = NewState;
+	params.NewLabel = NewLabel;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.StartFire
+// (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_WaitingForPawn::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.StartFire");
+
+	SPlayerController_WaitingForPawn_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.KilledBy
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.KilledBy");
+
+	SPlayerController_WaitingForPawn_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_WaitingForPawn::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.HearNoise");
+
+	SPlayerController_WaitingForPawn_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.WaitingForPawn.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_WaitingForPawn::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.WaitingForPawn.SeePlayer");
+
+	SPlayerController_WaitingForPawn_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_RoundEnded::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.EndState");
+
+	SPlayerController_RoundEnded_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_RoundEnded::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.BeginState");
+
+	SPlayerController_RoundEnded_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.LongClientAdjustPosition
+// (FUNC_Net, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
+// Parameters:
+// float                          TimeStamp                      (CPF_Parm)
+// struct FName                   NewState                       (CPF_Parm)
+// TEnumAsByte<EPhysics>          newPhysics                     (CPF_Parm)
+// float                          NewLocX                        (CPF_Parm)
+// float                          NewLocY                        (CPF_Parm)
+// float                          NewLocZ                        (CPF_Parm)
+// float                          NewVelX                        (CPF_Parm)
+// float                          NewVelY                        (CPF_Parm)
+// float                          NewVelZ                        (CPF_Parm)
+// class AActor*                  NewBase                        (CPF_Parm)
+// float                          NewFloorX                      (CPF_Parm)
+// float                          NewFloorY                      (CPF_Parm)
+// float                          NewFloorZ                      (CPF_Parm)
+
+void SPlayerController_RoundEnded::LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.LongClientAdjustPosition");
+
+	SPlayerController_RoundEnded_LongClientAdjustPosition_Params params;
+	params.TimeStamp = TimeStamp;
+	params.NewState = NewState;
+	params.newPhysics = newPhysics;
+	params.NewLocX = NewLocX;
+	params.NewLocY = NewLocY;
+	params.NewLocZ = NewLocZ;
+	params.NewVelX = NewVelX;
+	params.NewVelY = NewVelY;
+	params.NewVelZ = NewVelZ;
+	params.NewBase = NewBase;
+	params.NewFloorX = NewFloorX;
+	params.NewFloorY = NewFloorY;
+	params.NewFloorZ = NewFloorZ;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SPlayerController_RoundEnded::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.Timer");
+
+	SPlayerController_RoundEnded_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.FindGoodView
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void SPlayerController_RoundEnded::FindGoodView()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.FindGoodView");
+
+	SPlayerController_RoundEnded_FindGoodView_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_RoundEnded::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.PlayerMove");
+
+	SPlayerController_RoundEnded_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.Possess
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APawn*                   aPawn                          (CPF_Parm)
+// bool                           bVehicleTransition             (CPF_Parm)
+
+void SPlayerController_RoundEnded::Possess(class APawn* aPawn, bool bVehicleTransition)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.Possess");
+
+	SPlayerController_RoundEnded_Possess_Params params;
+	params.aPawn = aPawn;
+	params.bVehicleTransition = bVehicleTransition;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.Use
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_RoundEnded::Use()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.Use");
+
+	SPlayerController_RoundEnded_Use_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.ThrowWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_RoundEnded::ThrowWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.ThrowWeapon");
+
+	SPlayerController_RoundEnded_ThrowWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.IsSpectating
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_RoundEnded::IsSpectating()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.IsSpectating");
+
+	SPlayerController_RoundEnded_IsSpectating_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.ServerRestartPlayer
+// (FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SPlayerController_RoundEnded::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.ServerRestartPlayer");
+
+	SPlayerController_RoundEnded_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.Suicide
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_RoundEnded::Suicide()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.Suicide");
+
+	SPlayerController_RoundEnded_Suicide_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.TakeDamage
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            DamageAmount                   (CPF_Parm)
+// class AController*             EventInstigator                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_RoundEnded::TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.TakeDamage");
+
+	SPlayerController_RoundEnded_TakeDamage_Params params;
+	params.DamageAmount = DamageAmount;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.Falling
+// (FUNC_Public)
+
+void SPlayerController_RoundEnded::Falling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.Falling");
+
+	SPlayerController_RoundEnded_Falling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.NotifyPhysicsVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPlayerController_RoundEnded::NotifyPhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.NotifyPhysicsVolumeChange");
+
+	SPlayerController_RoundEnded_NotifyPhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.NotifyHeadVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_RoundEnded::NotifyHeadVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.NotifyHeadVolumeChange");
+
+	SPlayerController_RoundEnded_NotifyHeadVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.HitWall
+// (FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  Wall                           (CPF_Parm)
+// class UPrimitiveComponent*     WallComp                       (CPF_Parm, CPF_EditInline)
+
+void SPlayerController_RoundEnded::HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.HitWall");
+
+	SPlayerController_RoundEnded_HitWall_Params params;
+	params.HitNormal = HitNormal;
+	params.Wall = Wall;
+	params.WallComp = WallComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.NotifyBump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_RoundEnded::NotifyBump(class AActor* Other, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.NotifyBump");
+
+	SPlayerController_RoundEnded_NotifyBump_Params params;
+	params.Other = Other;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.KilledBy
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void SPlayerController_RoundEnded::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.KilledBy");
+
+	SPlayerController_RoundEnded_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_RoundEnded::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.HearNoise");
+
+	SPlayerController_RoundEnded_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.RoundEnded.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_RoundEnded::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.RoundEnded.SeePlayer");
+
+	SPlayerController_RoundEnded_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPlayerController_Dead::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.EndState");
+
+	SPlayerController_Dead_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPlayerController_Dead::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.BeginState");
+
+	SPlayerController_Dead_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SPlayerController_Dead::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.Timer");
+
+	SPlayerController_Dead_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.FindGoodView
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void SPlayerController_Dead::FindGoodView()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.FindGoodView");
+
+	SPlayerController_Dead_FindGoodView_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_Dead::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.PlayerMove");
+
+	SPlayerController_Dead_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.Jump
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Dead::Jump()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.Jump");
+
+	SPlayerController_Dead_Jump_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.Use
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Dead::Use()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.Use");
+
+	SPlayerController_Dead_Use_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.StartFire
+// (FUNC_Defined, FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_Dead::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.StartFire");
+
+	SPlayerController_Dead_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.ServerRestartPlayer
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SPlayerController_Dead::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.ServerRestartPlayer");
+
+	SPlayerController_Dead_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.IsDead
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_Dead::IsDead()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.IsDead");
+
+	SPlayerController_Dead_IsDead_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PlayerController.Dead.ThrowWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Dead::ThrowWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.ThrowWeapon");
+
+	SPlayerController_Dead_ThrowWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.ReplicatedEvent
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   VarName                        (CPF_Parm)
+
+void SPlayerController_Dead::ReplicatedEvent(const struct FName& VarName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.ReplicatedEvent");
+
+	SPlayerController_Dead_ReplicatedEvent_Params params;
+	params.VarName = VarName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.PrevWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Dead::PrevWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.PrevWeapon");
+
+	SPlayerController_Dead_PrevWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.NextWeapon
+// (FUNC_Exec, FUNC_Public)
+
+void SPlayerController_Dead::NextWeapon()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.NextWeapon");
+
+	SPlayerController_Dead_NextWeapon_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.KilledBy
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   EventInstigator                (CPF_Parm)
+
+void SPlayerController_Dead::KilledBy(class APawn* EventInstigator)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.KilledBy");
+
+	SPlayerController_Dead_KilledBy_Params params;
+	params.EventInstigator = EventInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.HearNoise
+// (FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          Loudness                       (CPF_Parm)
+// class AActor*                  NoiseMaker                     (CPF_Parm)
+// struct FName                   NoiseType                      (CPF_OptionalParm, CPF_Parm)
+
+void SPlayerController_Dead::HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.HearNoise");
+
+	SPlayerController_Dead_HearNoise_Params params;
+	params.Loudness = Loudness;
+	params.NoiseMaker = NoiseMaker;
+	params.NoiseType = NoiseType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PlayerController.Dead.SeePlayer
+// (FUNC_Public)
+// Parameters:
+// class APawn*                   Seen                           (CPF_Parm)
+
+void SPlayerController_Dead::SeePlayer(class APawn* Seen)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerController.Dead.SeePlayer");
+
+	SPlayerController_Dead_SeePlayer_Params params;
+	params.Seen = Seen;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.SeqAct_ToggleHUD.GetObjClassVersion
 // (FUNC_Defined, FUNC_Event, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -110473,6 +113253,123 @@ void USeqAct_SetSoundMode::Activated()
 }
 
 
+// Function Engine.AIController.ScriptedMove.PushedState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SAIController_ScriptedMove::PushedState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AIController.ScriptedMove.PushedState");
+
+	SAIController_ScriptedMove_PushedState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AIController.ScriptedMove.PoppedState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SAIController_ScriptedMove::PoppedState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AIController.ScriptedMove.PoppedState");
+
+	SAIController_ScriptedMove_PoppedState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AIController.ScriptedRouteMove.PoppedState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SAIController_ScriptedRouteMove::PoppedState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AIController.ScriptedRouteMove.PoppedState");
+
+	SAIController_ScriptedRouteMove_PoppedState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.AssociatedTouch.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SVolume_AssociatedTouch::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.AssociatedTouch.BeginState");
+
+	SVolume_AssociatedTouch_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.AssociatedTouch.UnTouch
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+
+void SVolume_AssociatedTouch::UnTouch(class AActor* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.AssociatedTouch.UnTouch");
+
+	SVolume_AssociatedTouch_UnTouch_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Volume.AssociatedTouch.Touch
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SVolume_AssociatedTouch::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Volume.AssociatedTouch.Touch");
+
+	SVolume_AssociatedTouch_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.AnimNotify_PlayFaceFXAnim.Notify
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:
@@ -110486,6 +113383,91 @@ void UAnimNotify_PlayFaceFXAnim::Notify(class AActor* Owner, class UAnimNodeSequ
 	UAnimNotify_PlayFaceFXAnim_Notify_Params params;
 	params.Owner = Owner;
 	params.AnimSeqInstigator = AnimSeqInstigator;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AutoTestManager.TravelTheWorld.SetIncrementsForLoops
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          NumTravelLocations             (CPF_Const, CPF_Parm)
+
+void SAutoTestManager_TravelTheWorld::SetIncrementsForLoops(float NumTravelLocations)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AutoTestManager.TravelTheWorld.SetIncrementsForLoops");
+
+	SAutoTestManager_TravelTheWorld_SetIncrementsForLoops_Params params;
+	params.NumTravelLocations = NumTravelLocations;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AutoTestManager.TravelTheWorld.PrintOutTravelWorldTimes
+// (FUNC_Public)
+// Parameters:
+// int                            TotalTimeInSeconds             (CPF_Const, CPF_Parm)
+
+void SAutoTestManager_TravelTheWorld::PrintOutTravelWorldTimes(int TotalTimeInSeconds)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AutoTestManager.TravelTheWorld.PrintOutTravelWorldTimes");
+
+	SAutoTestManager_TravelTheWorld_PrintOutTravelWorldTimes_Params params;
+	params.TotalTimeInSeconds = TotalTimeInSeconds;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AutoTestManager.TravelTheWorld.CalcTravelTheWorldTime
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// int                            NumTravelLocations             (CPF_Const, CPF_Parm)
+// int                            NumRotations                   (CPF_Const, CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float SAutoTestManager_TravelTheWorld::CalcTravelTheWorldTime(int NumTravelLocations, int NumRotations)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AutoTestManager.TravelTheWorld.CalcTravelTheWorldTime");
+
+	SAutoTestManager_TravelTheWorld_CalcTravelTheWorldTime_Params params;
+	params.NumTravelLocations = NumTravelLocations;
+	params.NumRotations = NumRotations;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.AutoTestManager.TravelTheWorld.BeginState
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SAutoTestManager_TravelTheWorld::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AutoTestManager.TravelTheWorld.BeginState");
+
+	SAutoTestManager_TravelTheWorld_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
 
 	auto flags = fn->FunctionFlags;
 
@@ -111132,6 +114114,166 @@ void AVolumeTimer::PostBeginPlay()
 }
 
 
+// Function Engine.DroppedPickup.Pickup.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SDroppedPickup_Pickup::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.EndState");
+
+	SDroppedPickup_Pickup_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SDroppedPickup_Pickup::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.BeginState");
+
+	SDroppedPickup_Pickup_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.CheckTouching
+// (FUNC_Defined, FUNC_Public)
+
+void SDroppedPickup_Pickup::CheckTouching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.CheckTouching");
+
+	SDroppedPickup_Pickup_CheckTouching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SDroppedPickup_Pickup::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.Timer");
+
+	SDroppedPickup_Pickup_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.Touch
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SDroppedPickup_Pickup::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.Touch");
+
+	SDroppedPickup_Pickup_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.RecheckValidTouch
+// (FUNC_Defined, FUNC_Public)
+
+void SDroppedPickup_Pickup::RecheckValidTouch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.RecheckValidTouch");
+
+	SDroppedPickup_Pickup_RecheckValidTouch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.DroppedPickup.Pickup.ValidTouch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APawn*                   Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SDroppedPickup_Pickup::ValidTouch(class APawn* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.Pickup.ValidTouch");
+
+	SDroppedPickup_Pickup_ValidTouch_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.DroppedPickup.FadeOut.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SDroppedPickup_FadeOut::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.DroppedPickup.FadeOut.BeginState");
+
+	SDroppedPickup_FadeOut_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.DynamicPhysicsVolume.PostBeginPlay
 // (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
 
@@ -111277,6 +114419,176 @@ int UFailedConnect::STATIC_GetFailSwitch(const struct FString& FailString)
 }
 
 
+// Function Engine.GameInfo.PendingMatch.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SGameInfo_PendingMatch::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.EndState");
+
+	SGameInfo_PendingMatch_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.ProcessClientRegistrationCompletion
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APlayerController*       PC                             (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
+
+void SGameInfo_PendingMatch::ProcessClientRegistrationCompletion(class APlayerController* PC, bool bWasSuccessful)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.ProcessClientRegistrationCompletion");
+
+	SGameInfo_PendingMatch_ProcessClientRegistrationCompletion_Params params;
+	params.PC = PC;
+	params.bWasSuccessful = bWasSuccessful;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.StartArbitratedMatch
+// (FUNC_Defined, FUNC_Public)
+
+void SGameInfo_PendingMatch::StartArbitratedMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.StartArbitratedMatch");
+
+	SGameInfo_PendingMatch_StartArbitratedMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.ArbitrationTimeout
+// (FUNC_Defined, FUNC_Public)
+
+void SGameInfo_PendingMatch::ArbitrationTimeout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.ArbitrationTimeout");
+
+	SGameInfo_PendingMatch_ArbitrationTimeout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.ArbitrationRegistrationComplete
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FName                   SessionName                    (CPF_Parm)
+// bool                           bWasSuccessful                 (CPF_Parm)
+
+void SGameInfo_PendingMatch::ArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.ArbitrationRegistrationComplete");
+
+	SGameInfo_PendingMatch_ArbitrationRegistrationComplete_Params params;
+	params.SessionName = SessionName;
+	params.bWasSuccessful = bWasSuccessful;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.RegisterServerForArbitration
+// (FUNC_Defined, FUNC_Public)
+
+void SGameInfo_PendingMatch::RegisterServerForArbitration()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.RegisterServerForArbitration");
+
+	SGameInfo_PendingMatch_RegisterServerForArbitration_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.StartArbitrationRegistration
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+
+void SGameInfo_PendingMatch::StartArbitrationRegistration()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.StartArbitrationRegistration");
+
+	SGameInfo_PendingMatch_StartArbitrationRegistration_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.StartMatch
+// (FUNC_Defined, FUNC_Public)
+
+void SGameInfo_PendingMatch::StartMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.StartMatch");
+
+	SGameInfo_PendingMatch_StartMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.GameInfo.PendingMatch.MatchIsInProgress
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SGameInfo_PendingMatch::MatchIsInProgress()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.PendingMatch.MatchIsInProgress");
+
+	SGameInfo_PendingMatch_MatchIsInProgress_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function Engine.HeightFog.OnToggle
 // (FUNC_Defined, FUNC_Simulated, FUNC_Public)
 // Parameters:
@@ -111342,6 +114654,359 @@ void UIPoolable::OnPoolReset()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.IPoolable.OnPoolReset");
 
 	UIPoolable_OnPoolReset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.KActorFromStatic.Initializing.Tick
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SKActorFromStatic_Initializing::Tick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.KActorFromStatic.Initializing.Tick");
+
+	SKActorFromStatic_Initializing_Tick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPawn_Dying::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.BeginState");
+
+	SPawn_Dying_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.TakeDamage
+// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            Damage                         (CPF_Parm)
+// class AController*             EventInstigator                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void SPawn_Dying::TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.TakeDamage");
+
+	SPawn_Dying_TakeDamage_Params params;
+	params.Damage = Damage;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.Timer
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+
+void SPawn_Dying::Timer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.Timer");
+
+	SPawn_Dying_Timer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.OutsideWorldBounds
+// (FUNC_Defined, FUNC_Singular, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void SPawn_Dying::OutsideWorldBounds()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.OutsideWorldBounds");
+
+	SPawn_Dying_OutsideWorldBounds_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.Died
+// (FUNC_Public)
+// Parameters:
+// class AController*             Killer                         (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPawn_Dying::Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.Died");
+
+	SPawn_Dying_Died_Params params;
+	params.Killer = Killer;
+	params.DamageType = DamageType;
+	params.HitLocation = HitLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Pawn.Dying.Landed
+// (FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  FloorActor                     (CPF_Parm)
+
+void SPawn_Dying::Landed(const struct FVector& HitNormal, class AActor* FloorActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.Landed");
+
+	SPawn_Dying_Landed_Params params;
+	params.HitNormal = HitNormal;
+	params.FloorActor = FloorActor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.BaseChange
+// (FUNC_Singular, FUNC_Event, FUNC_Public)
+
+void SPawn_Dying::BaseChange()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.BaseChange");
+
+	SPawn_Dying_BaseChange_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.PlayNextAnimation
+// (FUNC_Simulated, FUNC_Public)
+
+void SPawn_Dying::PlayNextAnimation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.PlayNextAnimation");
+
+	SPawn_Dying_PlayNextAnimation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.PlayWeaponSwitch
+// (FUNC_Simulated, FUNC_Public)
+// Parameters:
+// class AWeapon*                 OldWeapon                      (CPF_Parm)
+// class AWeapon*                 NewWeapon                      (CPF_Parm)
+
+void SPawn_Dying::PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.PlayWeaponSwitch");
+
+	SPawn_Dying_PlayWeaponSwitch_Params params;
+	params.OldWeapon = OldWeapon;
+	params.NewWeapon = NewWeapon;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.FellOutOfWorld
+// (FUNC_Public)
+// Parameters:
+// class UClass*                  dmgType                        (CPF_Parm)
+
+void SPawn_Dying::FellOutOfWorld(class UClass* dmgType)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.FellOutOfWorld");
+
+	SPawn_Dying_FellOutOfWorld_Params params;
+	params.dmgType = dmgType;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.BreathTimer
+// (FUNC_Public)
+
+void SPawn_Dying::BreathTimer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.BreathTimer");
+
+	SPawn_Dying_BreathTimer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.Falling
+// (FUNC_Public)
+
+void SPawn_Dying::Falling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.Falling");
+
+	SPawn_Dying_Falling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.PhysicsVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          NewVolume                      (CPF_Parm)
+
+void SPawn_Dying::PhysicsVolumeChange(class APhysicsVolume* NewVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.PhysicsVolumeChange");
+
+	SPawn_Dying_PhysicsVolumeChange_Params params;
+	params.NewVolume = NewVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.HeadVolumeChange
+// (FUNC_Public)
+// Parameters:
+// class APhysicsVolume*          newHeadVolume                  (CPF_Parm)
+
+void SPawn_Dying::HeadVolumeChange(class APhysicsVolume* newHeadVolume)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.HeadVolumeChange");
+
+	SPawn_Dying_HeadVolumeChange_Params params;
+	params.newHeadVolume = newHeadVolume;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.HitWall
+// (FUNC_Public)
+// Parameters:
+// struct FVector                 HitNormal                      (CPF_Parm)
+// class AActor*                  Wall                           (CPF_Parm)
+// class UPrimitiveComponent*     WallComp                       (CPF_Parm, CPF_EditInline)
+
+void SPawn_Dying::HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.HitWall");
+
+	SPawn_Dying_HitWall_Params params;
+	params.HitNormal = HitNormal;
+	params.Wall = Wall;
+	params.WallComp = WallComp;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Pawn.Dying.Bump
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPawn_Dying::Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Pawn.Dying.Bump");
+
+	SPawn_Dying_Bump_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitNormal = HitNormal;
 
 	auto flags = fn->FunctionFlags;
 
@@ -111916,6 +115581,440 @@ struct FString APathNode_Dynamic::GetDebugAbbrev()
 	static auto fn = UObject::FindObject<UFunction>("Function Engine.PathNode_Dynamic.GetDebugAbbrev");
 
 	APathNode_Dynamic_GetDebugAbbrev_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PickupFactory.Pickup.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPickupFactory_Pickup::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.BeginState");
+
+	SPickupFactory_Pickup_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Pickup.CheckTouching
+// (FUNC_Defined, FUNC_Public)
+
+void SPickupFactory_Pickup::CheckTouching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.CheckTouching");
+
+	SPickupFactory_Pickup_CheckTouching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Pickup.Touch
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPickupFactory_Pickup::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.Touch");
+
+	SPickupFactory_Pickup_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Pickup.RecheckValidTouch
+// (FUNC_Defined, FUNC_Public)
+
+void SPickupFactory_Pickup::RecheckValidTouch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.RecheckValidTouch");
+
+	SPickupFactory_Pickup_RecheckValidTouch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Pickup.ValidTouch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APawn*                   Other                          (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPickupFactory_Pickup::ValidTouch(class APawn* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.ValidTouch");
+
+	SPickupFactory_Pickup_ValidTouch_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PickupFactory.Pickup.ReadyToPickup
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          MaxWait                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPickupFactory_Pickup::ReadyToPickup(float MaxWait)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.ReadyToPickup");
+
+	SPickupFactory_Pickup_ReadyToPickup_Params params;
+	params.MaxWait = MaxWait;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PickupFactory.Pickup.DetourWeight
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// class APawn*                   Other                          (CPF_Parm)
+// float                          PathWeight                     (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float SPickupFactory_Pickup::DetourWeight(class APawn* Other, float PathWeight)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Pickup.DetourWeight");
+
+	SPickupFactory_Pickup_DetourWeight_Params params;
+	params.Other = Other;
+	params.PathWeight = PathWeight;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PickupFactory.WaitingForMatch.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPickupFactory_WaitingForMatch::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.WaitingForMatch.BeginState");
+
+	SPickupFactory_WaitingForMatch_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.WaitingForMatch.MatchStarting
+// (FUNC_Defined, FUNC_Public)
+
+void SPickupFactory_WaitingForMatch::MatchStarting()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.WaitingForMatch.MatchStarting");
+
+	SPickupFactory_WaitingForMatch_MatchStarting_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.WaitingForMatch.Touch
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPickupFactory_WaitingForMatch::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.WaitingForMatch.Touch");
+
+	SPickupFactory_WaitingForMatch_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Sleeping.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPickupFactory_Sleeping::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Sleeping.EndState");
+
+	SPickupFactory_Sleeping_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Sleeping.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPickupFactory_Sleeping::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Sleeping.BeginState");
+
+	SPickupFactory_Sleeping_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Sleeping.StartSleeping
+// (FUNC_Public)
+
+void SPickupFactory_Sleeping::StartSleeping()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Sleeping.StartSleeping");
+
+	SPickupFactory_Sleeping_StartSleeping_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Sleeping.ReadyToPickup
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          MaxWait                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPickupFactory_Sleeping::ReadyToPickup(float MaxWait)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Sleeping.ReadyToPickup");
+
+	SPickupFactory_Sleeping_ReadyToPickup_Params params;
+	params.MaxWait = MaxWait;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.PickupFactory.Sleeping.Touch
+// (FUNC_Public)
+// Parameters:
+// class AActor*                  Other                          (CPF_Parm)
+// class UPrimitiveComponent*     OtherComp                      (CPF_Parm, CPF_EditInline)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 HitNormal                      (CPF_Parm)
+
+void SPickupFactory_Sleeping::Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Sleeping.Touch");
+
+	SPickupFactory_Sleeping_Touch_Params params;
+	params.Other = Other;
+	params.OtherComp = OtherComp;
+	params.HitLocation = HitLocation;
+	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.EndState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SPickupFactory_Disabled::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.EndState");
+
+	SPickupFactory_Disabled_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SPickupFactory_Disabled::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.BeginState");
+
+	SPickupFactory_Disabled_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.SetInitialState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+
+void SPickupFactory_Disabled::SetInitialState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.SetInitialState");
+
+	SPickupFactory_Disabled_SetInitialState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.StartSleeping
+// (FUNC_Public)
+
+void SPickupFactory_Disabled::StartSleeping()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.StartSleeping");
+
+	SPickupFactory_Disabled_StartSleeping_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.Reset
+// (FUNC_Public)
+
+void SPickupFactory_Disabled::Reset()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.Reset");
+
+	SPickupFactory_Disabled_Reset_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.PickupFactory.Disabled.ReadyToPickup
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// float                          MaxWait                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPickupFactory_Disabled::ReadyToPickup(float MaxWait)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PickupFactory.Disabled.ReadyToPickup");
+
+	SPickupFactory_Disabled_ReadyToPickup_Params params;
+	params.MaxWait = MaxWait;
 
 	auto flags = fn->FunctionFlags;
 
@@ -112507,6 +116606,512 @@ void AWaterVolume::Touch(class AActor* Other, class UPrimitiveComponent* OtherCo
 	params.OtherComp = OtherComp;
 	params.HitLocation = HitLocation;
 	params.HitNormal = HitNormal;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Inactive.TryPutDown
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SWeapon_Inactive::TryPutDown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Inactive.TryPutDown");
+
+	SWeapon_Inactive_TryPutDown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Weapon.Inactive.StartFire
+// (FUNC_Simulated, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void SWeapon_Inactive::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Inactive.StartFire");
+
+	SWeapon_Inactive_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Inactive.ServerStopFire
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void SWeapon_Inactive::ServerStopFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Inactive.ServerStopFire");
+
+	SWeapon_Inactive_ServerStopFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Inactive.ServerStartFire
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void SWeapon_Inactive::ServerStartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Inactive.ServerStartFire");
+
+	SWeapon_Inactive_ServerStartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Inactive.BeginState
+// (FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_Inactive::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Inactive.BeginState");
+
+	SWeapon_Inactive_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Active.TryPutDown
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SWeapon_Active::TryPutDown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Active.TryPutDown");
+
+	SWeapon_Active_TryPutDown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Weapon.Active.Activate
+// (FUNC_Simulated, FUNC_Public)
+
+void SWeapon_Active::Activate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Active.Activate");
+
+	SWeapon_Active_Activate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Active.ReadyToFire
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           bFinished                      (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SWeapon_Active::ReadyToFire(bool bFinished)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Active.ReadyToFire");
+
+	SWeapon_Active_ReadyToFire_Params params;
+	params.bFinished = bFinished;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Weapon.Active.BeginFire
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_Parm)
+
+void SWeapon_Active::BeginFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Active.BeginFire");
+
+	SWeapon_Active_BeginFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.Active.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_Active::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.Active.BeginState");
+
+	SWeapon_Active_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponFiring.EndState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SWeapon_WeaponFiring::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponFiring.EndState");
+
+	SWeapon_WeaponFiring_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponFiring.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_WeaponFiring::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponFiring.BeginState");
+
+	SWeapon_WeaponFiring_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponFiring.RefireCheckTimer
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void SWeapon_WeaponFiring::RefireCheckTimer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponFiring.RefireCheckTimer");
+
+	SWeapon_WeaponFiring_RefireCheckTimer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponFiring.IsFiring
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SWeapon_WeaponFiring::IsFiring()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponFiring.IsFiring");
+
+	SWeapon_WeaponFiring_IsFiring_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Weapon.WeaponEquipping.WeaponEquipped
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void SWeapon_WeaponEquipping::WeaponEquipped()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponEquipping.WeaponEquipped");
+
+	SWeapon_WeaponEquipping_WeaponEquipped_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponEquipping.EndState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SWeapon_WeaponEquipping::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponEquipping.EndState");
+
+	SWeapon_WeaponEquipping_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponEquipping.Activate
+// (FUNC_Simulated, FUNC_Public)
+
+void SWeapon_WeaponEquipping::Activate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponEquipping.Activate");
+
+	SWeapon_WeaponEquipping_Activate_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponEquipping.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_WeaponEquipping::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponEquipping.BeginState");
+
+	SWeapon_WeaponEquipping_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponPuttingDown.EndState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SWeapon_WeaponPuttingDown::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponPuttingDown.EndState");
+
+	SWeapon_WeaponPuttingDown_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponPuttingDown.ClientWeaponThrown
+// (FUNC_Defined, FUNC_Net, FUNC_NetReliable, FUNC_Simulated, FUNC_Public, FUNC_NetClient)
+
+void SWeapon_WeaponPuttingDown::ClientWeaponThrown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponPuttingDown.ClientWeaponThrown");
+
+	SWeapon_WeaponPuttingDown_ClientWeaponThrown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponPuttingDown.TryPutDown
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SWeapon_WeaponPuttingDown::TryPutDown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponPuttingDown.TryPutDown");
+
+	SWeapon_WeaponPuttingDown_TryPutDown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.Weapon.WeaponPuttingDown.WeaponIsDown
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void SWeapon_WeaponPuttingDown::WeaponIsDown()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponPuttingDown.WeaponIsDown");
+
+	SWeapon_WeaponPuttingDown_WeaponIsDown_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.WeaponPuttingDown.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_WeaponPuttingDown::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.WeaponPuttingDown.BeginState");
+
+	SWeapon_WeaponPuttingDown_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.PendingClientWeaponSet.EndState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   NextStateName                  (CPF_Parm)
+
+void SWeapon_PendingClientWeaponSet::EndState(const struct FName& NextStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.PendingClientWeaponSet.EndState");
+
+	SWeapon_PendingClientWeaponSet_EndState_Params params;
+	params.NextStateName = NextStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.PendingClientWeaponSet.BeginState
+// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   PreviousStateName              (CPF_Parm)
+
+void SWeapon_PendingClientWeaponSet::BeginState(const struct FName& PreviousStateName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.PendingClientWeaponSet.BeginState");
+
+	SWeapon_PendingClientWeaponSet_BeginState_Params params;
+	params.PreviousStateName = PreviousStateName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.Weapon.PendingClientWeaponSet.PendingWeaponSetTimer
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+
+void SWeapon_PendingClientWeaponSet::PendingWeaponSetTimer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.Weapon.PendingClientWeaponSet.PendingWeaponSetTimer");
+
+	SWeapon_PendingClientWeaponSet_PendingWeaponSetTimer_Params params;
 
 	auto flags = fn->FunctionFlags;
 

@@ -1652,6 +1652,76 @@ struct ADebugCameraController_PrimarySelect_Params
 	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_Parm)
 };
 
+// Function GameFramework.MobileInputZone.AddKismetEventHandler
+struct UMobileInputZone_AddKismetEventHandler_Params
+{
+	class USeqEvent_MobileZoneBase*                    NewHandler;                                               // (CPF_Parm)
+};
+
+// Function GameFramework.MobileInputZone.OnPostDrawZone
+struct UMobileInputZone_OnPostDrawZone_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	class UCanvas*                                     Canvas;                                                   // (CPF_Parm)
+};
+
+// Function GameFramework.MobileInputZone.OnPreDrawZone
+struct UMobileInputZone_OnPreDrawZone_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	class UCanvas*                                     Canvas;                                                   // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.MobileInputZone.OnProcessSlide
+struct UMobileInputZone_OnProcessSlide_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
+	int                                                SlideValue;                                               // (CPF_Parm)
+	struct FVector2D                                   ViewportSize;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.MobileInputZone.OnDoubleTapDelegate
+struct UMobileInputZone_OnDoubleTapDelegate_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
+	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.MobileInputZone.OnTapDelegate
+struct UMobileInputZone_OnTapDelegate_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
+	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.MobileInputZone.OnProcessInputDelegate
+struct UMobileInputZone_OnProcessInputDelegate_Params
+{
+	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	int                                                Handle;                                                   // (CPF_Parm)
+	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
+	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.MobileInputZone.DeactivateZone
+struct UMobileInputZone_DeactivateZone_Params
+{
+};
+
+// Function GameFramework.MobileInputZone.ActivateZone
+struct UMobileInputZone_ActivateZone_Params
+{
+};
+
 // Function GameFramework.MobileHUD.RenderKismetHud
 struct AMobileHUD_RenderKismetHud_Params
 {
@@ -1729,76 +1799,6 @@ struct AMobileHUD_PostRender_Params
 
 // Function GameFramework.MobileHUD.PostBeginPlay
 struct AMobileHUD_PostBeginPlay_Params
-{
-};
-
-// Function GameFramework.MobileInputZone.AddKismetEventHandler
-struct UMobileInputZone_AddKismetEventHandler_Params
-{
-	class USeqEvent_MobileZoneBase*                    NewHandler;                                               // (CPF_Parm)
-};
-
-// Function GameFramework.MobileInputZone.OnPostDrawZone
-struct UMobileInputZone_OnPostDrawZone_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	class UCanvas*                                     Canvas;                                                   // (CPF_Parm)
-};
-
-// Function GameFramework.MobileInputZone.OnPreDrawZone
-struct UMobileInputZone_OnPreDrawZone_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	class UCanvas*                                     Canvas;                                                   // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function GameFramework.MobileInputZone.OnProcessSlide
-struct UMobileInputZone_OnProcessSlide_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
-	int                                                SlideValue;                                               // (CPF_Parm)
-	struct FVector2D                                   ViewportSize;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function GameFramework.MobileInputZone.OnDoubleTapDelegate
-struct UMobileInputZone_OnDoubleTapDelegate_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
-	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function GameFramework.MobileInputZone.OnTapDelegate
-struct UMobileInputZone_OnTapDelegate_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
-	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function GameFramework.MobileInputZone.OnProcessInputDelegate
-struct UMobileInputZone_OnProcessInputDelegate_Params
-{
-	class UMobileInputZone*                            Zone;                                                     // (CPF_Parm)
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	int                                                Handle;                                                   // (CPF_Parm)
-	TEnumAsByte<ETouchType>                            EventType;                                                // (CPF_Parm)
-	struct FVector2D                                   TouchLocation;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function GameFramework.MobileInputZone.DeactivateZone
-struct UMobileInputZone_DeactivateZone_Params
-{
-};
-
-// Function GameFramework.MobileInputZone.ActivateZone
-struct UMobileInputZone_ActivateZone_Params
 {
 };
 
@@ -2900,6 +2900,12 @@ struct ADebugCameraHUD_PostBeginPlay_Params
 {
 };
 
+// Function GameFramework.DebugCameraController.PlayerWaiting.PlayerMove
+struct SDebugCameraController_PlayerWaiting_PlayerMove_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
 // Function GameFramework.DebugCameraInput.InputKey
 struct UDebugCameraInput_InputKey_Params
 {
@@ -2931,6 +2937,38 @@ struct UGameCrowdSpawnInterface_GetSpawnPosition_Params
 	struct FRotator                                    SpawnRot;                                                 // (CPF_Parm, CPF_OutParm)
 };
 
+// Function GameFramework.GameAICommand.DebugState.PausedState
+struct SGameAICommand_DebugState_PausedState_Params
+{
+};
+
+// Function GameFramework.GameAICommand.DebugState.ContinuedState
+struct SGameAICommand_DebugState_ContinuedState_Params
+{
+};
+
+// Function GameFramework.GameAICommand.DebugState.PoppedState
+struct SGameAICommand_DebugState_PoppedState_Params
+{
+};
+
+// Function GameFramework.GameAICommand.DebugState.PushedState
+struct SGameAICommand_DebugState_PushedState_Params
+{
+};
+
+// Function GameFramework.GameAICommand.DebugState.EndState
+struct SGameAICommand_DebugState_EndState_Params
+{
+	struct FName                                       NextStateName;                                            // (CPF_Parm)
+};
+
+// Function GameFramework.GameAICommand.DebugState.BeginState
+struct SGameAICommand_DebugState_BeginState_Params
+{
+	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
+};
+
 // Function GameFramework.GameAICmd_Hover_MoveToGoal.IsEnemyBasedOnInterpActor
 struct UGameAICmd_Hover_MoveToGoal_IsEnemyBasedOnInterpActor_Params
 {
@@ -2957,6 +2995,26 @@ struct UGameAICmd_Hover_MoveToGoal_MoveToGoal_Params
 	class AActor*                                      InGoal;                                                   // (CPF_Parm)
 	float                                              InGoalDistance;                                           // (CPF_Parm)
 	float                                              InHoverHeight;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown.GetMoveDest
+struct SGameAICmd_Hover_MoveToGoal_MoveDown_GetMoveDest_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.PopNextNode
+struct SGameAICmd_Hover_MoveToGoal_Moving_PopNextNode_Params
+{
+	struct FVector                                     Dest;                                                     // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.ReachedDest
+struct SGameAICmd_Hover_MoveToGoal_Moving_ReachedDest_Params
+{
+	class AActor*                                      Dest;                                                     // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -3041,6 +3099,95 @@ struct UGameAICmd_Hover_MoveToGoal_Mesh_HoverToGoal_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DelayFailure.HandlePathObstruction
+struct SGameAICmd_Hover_MoveToGoal_Mesh_DelayFailure_HandlePathObstruction_Params
+{
+	class AActor*                                      BlockedBy;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown.GetMoveDest
+struct SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown_GetMoveDest_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving.GetMoveDestinationOffset
+struct SGameAICmd_Hover_MoveToGoal_Mesh_Moving_GetMoveDestinationOffset_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.HandlePathObstruction
+struct SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs_HandlePathObstruction_Params
+{
+	class AActor*                                      BlockedBy;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.ShouldUpdateBreadCrumbs
+struct SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs_ShouldUpdateBreadCrumbs_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.ShouldUpdateBreadCrumbs
+struct SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint_ShouldUpdateBreadCrumbs_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.FindAPointWhereICanHoverTo
+struct SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint_FindAPointWhereICanHoverTo_Params
+{
+	struct FVector                                     out_FallbackDest;                                         // (CPF_Parm, CPF_OutParm)
+	float                                              Inradius;                                                 // (CPF_Parm)
+	float                                              MinRadius;                                                // (CPF_OptionalParm, CPF_Parm)
+	float                                              entityRadius;                                             // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bDirectOnly;                                              // (CPF_OptionalParm, CPF_Parm)
+	int                                                MaxPoints;                                                // (CPF_OptionalParm, CPF_Parm)
+	float                                              ValidHitBoxSize;                                          // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function GameFramework.GameAIController.DebugState.PausedState
+struct SGameAIController_DebugState_PausedState_Params
+{
+};
+
+// Function GameFramework.GameAIController.DebugState.ContinuedState
+struct SGameAIController_DebugState_ContinuedState_Params
+{
+};
+
+// Function GameFramework.GameAIController.DebugState.PoppedState
+struct SGameAIController_DebugState_PoppedState_Params
+{
+};
+
+// Function GameFramework.GameAIController.DebugState.PushedState
+struct SGameAIController_DebugState_PushedState_Params
+{
+};
+
+// Function GameFramework.GameAIController.DebugState.EndState
+struct SGameAIController_DebugState_EndState_Params
+{
+	struct FName                                       NextStateName;                                            // (CPF_Parm)
+};
+
+// Function GameFramework.GameAIController.DebugState.BeginState
+struct SGameAIController_DebugState_BeginState_Params
+{
+	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
+};
+
+// Function GameFramework.GameCrowdReplicationActor.ReceivingReplication.Tick
+struct SGameCrowdReplicationActor_ReceivingReplication_Tick_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
 // Function GameFramework.GameFixedCamera.OnBecomeActive
 struct UGameFixedCamera_OnBecomeActive_Params
 {
@@ -3070,6 +3217,12 @@ struct AGameKActorSpawnableEffect_FellOutOfWorld_Params
 // Function GameFramework.GameKActorSpawnableEffect.PostBeginPlay
 struct AGameKActorSpawnableEffect_PostBeginPlay_Params
 {
+};
+
+// Function GameFramework.GameKActorSpawnableEffect.ScalingDown.Tick
+struct SGameKActorSpawnableEffect_ScalingDown_Tick_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
 };
 
 // Function GameFramework.MobileDebugCameraController.SetupDebugZones

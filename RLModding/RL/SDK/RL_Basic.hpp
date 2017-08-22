@@ -6,7 +6,8 @@
 	#pragma pack(push, 0x4)
 #endif
 
-namespace SDK {
+namespace SDK
+{
 template<typename Fn>
 inline Fn GetVFunction(const void *instance, std::size_t index)
 {
@@ -51,16 +52,17 @@ public:
 		return Data[i];
 	}
 
-	inline const T& GetByIndex(size_t i) const {
+	inline const T& GetByIndex(size_t i) const
+	{
 		return Data[i];
 	}
-	/* Not working. realloc can call on used memory regions and is not thread safe. mutexes? */
-	inline void Add(T InputData) {
+
+	void Add(T InputData)
+	{
 		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
 		Data[Count++] = InputData;
 		Max = Count;
 	};
-	
 
 private:
 	T* Data;
@@ -252,7 +254,8 @@ struct FName
 		return *GNames;
 	};
 
-	inline std::string GetName() const {
+	inline std::string GetName() const
+	{
 		return GetGlobalNames()[Index]->GetName();
 	};
 

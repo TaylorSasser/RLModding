@@ -1,12 +1,6 @@
 #include "FunctionHook.h"
 #include <Windows.h>
-#include "../Utils/Pattern/TFL_HT.h"
-#include "../RL/SDK.hpp"
-#include "../Libs/detours.h"
-#include "../Utils/Utils.h"
-#include "../Utils/SDKDefines.h"
-#include <iostream>
-#include "../Interfaces/Interfaces.h"
+
 
 
 FunctionHook::FunctionHook() {}

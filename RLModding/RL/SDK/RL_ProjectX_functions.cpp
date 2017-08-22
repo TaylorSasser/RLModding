@@ -26827,9 +26827,9 @@ void UOnlineGameParty_X::HandleJoinGameComplete(bool bSuccess, const struct FStr
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
 // struct FPartyMemberServer      ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// struct FPartyMemberServer      StructInitializer_CC6175184409EE1BE993E3A29D2CA50C (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// struct FPartyMemberServer      StructInitializer_134D48E84585344A8A885BB92F666FBB (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FPartyMemberServer* StructInitializer_CC6175184409EE1BE993E3A29D2CA50C)
+struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FPartyMemberServer* StructInitializer_134D48E84585344A8A885BB92F666FBB)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameParty_X.GetPartyMemberServer");
 
@@ -26841,8 +26841,8 @@ struct FPartyMemberServer UOnlineGameParty_X::GetPartyMemberServer(struct FParty
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer_CC6175184409EE1BE993E3A29D2CA50C != nullptr)
-		*StructInitializer_CC6175184409EE1BE993E3A29D2CA50C = params.StructInitializer_CC6175184409EE1BE993E3A29D2CA50C;
+	if (StructInitializer_134D48E84585344A8A885BB92F666FBB != nullptr)
+		*StructInitializer_134D48E84585344A8A885BB92F666FBB = params.StructInitializer_134D48E84585344A8A885BB92F666FBB;
 
 	return params.ReturnValue;
 }
@@ -28575,9 +28575,9 @@ void UOnlineGameSkill_X::ReplicateSeasonReward(const struct FPlayerSeasonRewardP
 // (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
 // Parameters:
 // class URPC_X*                  RPC                            (CPF_Parm)
-// struct FPlayerSeasonRewardProgress StructInitializer_163BF4F440F2593423B965BA30F4B9BF (CPF_Const, CPF_OutParm)
+// struct FPlayerSeasonRewardProgress StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83 (CPF_Const, CPF_OutParm)
 
-void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSeasonRewardProgress* StructInitializer_163BF4F440F2593423B965BA30F4B9BF)
+void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSeasonRewardProgress* StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameSkill_X.HandleSkillsUpdated");
 
@@ -28590,8 +28590,8 @@ void UOnlineGameSkill_X::HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSe
 
 	fn->FunctionFlags = flags;
 
-	if (StructInitializer_163BF4F440F2593423B965BA30F4B9BF != nullptr)
-		*StructInitializer_163BF4F440F2593423B965BA30F4B9BF = params.StructInitializer_163BF4F440F2593423B965BA30F4B9BF;
+	if (StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83 != nullptr)
+		*StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83 = params.StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83;
 }
 
 
@@ -31636,6 +31636,615 @@ class URPC_ReportCheater_X* URPC_ReportCheater_X::SetPlayerID(const struct FUniq
 }
 
 
+// Function ProjectX.PlayerController_X.DebugMode.PlayerTick
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_X_DebugMode::PlayerTick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.PlayerTick");
+
+	SPlayerController_X_DebugMode_PlayerTick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.ProcessMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 NewInput                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SPlayerController_X_DebugMode::ProcessMove(float DeltaTime, const struct FVector& NewInput, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.ProcessMove");
+
+	SPlayerController_X_DebugMode_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.NewInput = NewInput;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SPlayerController_X_DebugMode::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.PlayerMove");
+
+	SPlayerController_X_DebugMode_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.GetAutoAimTarget
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// class AActor*                  HitActor                       (CPF_Parm, CPF_OutParm)
+// struct FVector                 HitLoc                         (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPlayerController_X_DebugMode::GetAutoAimTarget(class AActor** HitActor, struct FVector* HitLoc)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.GetAutoAimTarget");
+
+	SPlayerController_X_DebugMode_GetAutoAimTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (HitActor != nullptr)
+		*HitActor = params.HitActor;
+	if (HitLoc != nullptr)
+		*HitLoc = params.HitLoc;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.DebugKillAllExcept
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_X_DebugMode::DebugKillAllExcept()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.DebugKillAllExcept");
+
+	SPlayerController_X_DebugMode_DebugKillAllExcept_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.DebugKill
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_X_DebugMode::DebugKill()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.DebugKill");
+
+	SPlayerController_X_DebugMode_DebugKill_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.DebugCrosshair
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_X_DebugMode::DebugCrosshair()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.DebugCrosshair");
+
+	SPlayerController_X_DebugMode_DebugCrosshair_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.ToggleDebugCamera
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SPlayerController_X_DebugMode::ToggleDebugCamera()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.ToggleDebugCamera");
+
+	SPlayerController_X_DebugMode_ToggleDebugCamera_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SPlayerController_X_DebugMode::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.EndState");
+
+	SPlayerController_X_DebugMode_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SPlayerController_X_DebugMode::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.BeginState");
+
+	SPlayerController_X_DebugMode_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.DebugMode.ServerRestartPlayer
+// (FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SPlayerController_X_DebugMode::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.DebugMode.ServerRestartPlayer");
+
+	SPlayerController_X_DebugMode_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.PlayerController_X.Profiling.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SPlayerController_X_Profiling::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.PlayerController_X.Profiling.BeginState");
+
+	SPlayerController_X_Profiling_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Recording.PlayerTick
+// (FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SDemoPC_X_Recording::PlayerTick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Recording.PlayerTick");
+
+	SDemoPC_X_Recording_PlayerTick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.FollowPlayerNone
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::FollowPlayerNone()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.FollowPlayerNone");
+
+	SDemoPC_X_Playing_FollowPlayerNone_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.FollowPlayerPrev
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::FollowPlayerPrev()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.FollowPlayerPrev");
+
+	SDemoPC_X_Playing_FollowPlayerPrev_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.FollowPlayerNext
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::FollowPlayerNext()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.FollowPlayerNext");
+
+	SDemoPC_X_Playing_FollowPlayerNext_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.PlayerTick
+// (FUNC_Defined, FUNC_Simulated, FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SDemoPC_X_Playing::PlayerTick(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.PlayerTick");
+
+	SDemoPC_X_Playing_PlayerTick_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.SetShowDebugObject
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UObject*                 O                              (CPF_Parm)
+
+void SDemoPC_X_Playing::SetShowDebugObject(class UObject* O)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.SetShowDebugObject");
+
+	SDemoPC_X_Playing_SetShowDebugObject_Params params;
+	params.O = O;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.ProcessMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+// struct FVector                 NewInput                       (CPF_Parm)
+// TEnumAsByte<EDoubleClickDir>   DoubleClickMove                (CPF_Parm)
+// struct FRotator                DeltaRot                       (CPF_Parm)
+
+void SDemoPC_X_Playing::ProcessMove(float DeltaTime, const struct FVector& NewInput, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.ProcessMove");
+
+	SDemoPC_X_Playing_ProcessMove_Params params;
+	params.DeltaTime = DeltaTime;
+	params.NewInput = NewInput;
+	params.DoubleClickMove = DoubleClickMove;
+	params.DeltaRot = DeltaRot;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.PlayerMove
+// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SDemoPC_X_Playing::PlayerMove(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.PlayerMove");
+
+	SDemoPC_X_Playing_PlayerMove_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.GetAutoAimTarget
+// (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
+// Parameters:
+// class AActor*                  HitActor                       (CPF_Parm, CPF_OutParm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SDemoPC_X_Playing::GetAutoAimTarget(class AActor** HitActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.GetAutoAimTarget");
+
+	SDemoPC_X_Playing_GetAutoAimTarget_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (HitActor != nullptr)
+		*HitActor = params.HitActor;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.AllowAutoAimDebug
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AActor*                  HitActor                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SDemoPC_X_Playing::AllowAutoAimDebug(class AActor* HitActor)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.AllowAutoAimDebug");
+
+	SDemoPC_X_Playing_AllowAutoAimDebug_Params params;
+	params.HitActor = HitActor;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.DebugCrosshair
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::DebugCrosshair()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.DebugCrosshair");
+
+	SDemoPC_X_Playing_DebugCrosshair_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.DebugCategorySwitch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bForward                       (CPF_Parm)
+
+void SDemoPC_X_Playing::DebugCategorySwitch(bool bForward)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.DebugCategorySwitch");
+
+	SDemoPC_X_Playing_DebugCategorySwitch_Params params;
+	params.bForward = bForward;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.DebugCategoryPrev
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::DebugCategoryPrev()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.DebugCategoryPrev");
+
+	SDemoPC_X_Playing_DebugCategoryPrev_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.DebugCategoryNext
+// (FUNC_Defined, FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::DebugCategoryNext()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.DebugCategoryNext");
+
+	SDemoPC_X_Playing_DebugCategoryNext_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.ToggleDebugCamera
+// (FUNC_Exec, FUNC_Public)
+
+void SDemoPC_X_Playing::ToggleDebugCamera()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.ToggleDebugCamera");
+
+	SDemoPC_X_Playing_ToggleDebugCamera_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SDemoPC_X_Playing::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.EndState");
+
+	SDemoPC_X_Playing_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SDemoPC_X_Playing::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.BeginState");
+
+	SDemoPC_X_Playing_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.ServerRestartPlayer
+// (FUNC_Net, FUNC_NetReliable, FUNC_Public, FUNC_NetServer)
+
+void SDemoPC_X_Playing::ServerRestartPlayer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.ServerRestartPlayer");
+
+	SDemoPC_X_Playing_ServerRestartPlayer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.DemoPC_X.Playing.StartFire
+// (FUNC_Exec, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// unsigned char                  FireModeNum                    (CPF_OptionalParm, CPF_Parm)
+
+void SDemoPC_X_Playing::StartFire(unsigned char FireModeNum)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.DemoPC_X.Playing.StartFire");
+
+	SDemoPC_X_Playing_StartFire_Params params;
+	params.FireModeNum = FireModeNum;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.DrawDebugObject_X.Update
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -33589,6 +34198,162 @@ void UMapRenderProfiler_X::Start()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.Start");
 
 	UMapRenderProfiler_X_Start_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.LoadingMap.StartProfiling
+// (FUNC_Defined, FUNC_Public)
+
+void SMapRenderProfiler_X_LoadingMap::StartProfiling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.LoadingMap.StartProfiling");
+
+	SMapRenderProfiler_X_LoadingMap_StartProfiling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.LoadingMap.HandleMapLoaded
+// (FUNC_Defined, FUNC_Public)
+
+void SMapRenderProfiler_X_LoadingMap::HandleMapLoaded()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.LoadingMap.HandleMapLoaded");
+
+	SMapRenderProfiler_X_LoadingMap_HandleMapLoaded_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.LoadingMap.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SMapRenderProfiler_X_LoadingMap::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.LoadingMap.BeginState");
+
+	SMapRenderProfiler_X_LoadingMap_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.FlythroughProfiling.HandleProfileFinished
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AMapFlythroughProfiler_X* Profiler                       (CPF_Parm)
+
+void SMapRenderProfiler_X_FlythroughProfiling::HandleProfileFinished(class AMapFlythroughProfiler_X* Profiler)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.FlythroughProfiling.HandleProfileFinished");
+
+	SMapRenderProfiler_X_FlythroughProfiling_HandleProfileFinished_Params params;
+	params.Profiler = Profiler;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.FlythroughProfiling.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SMapRenderProfiler_X_FlythroughProfiling::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.FlythroughProfiling.BeginState");
+
+	SMapRenderProfiler_X_FlythroughProfiling_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.RenderProfiling.UploadProfile
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 MapName                        (CPF_Parm, CPF_NeedCtorLink)
+// class ARenderProfiler_X*       Profile                        (CPF_Parm)
+
+void SMapRenderProfiler_X_RenderProfiling::UploadProfile(const struct FString& MapName, class ARenderProfiler_X* Profile)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.RenderProfiling.UploadProfile");
+
+	SMapRenderProfiler_X_RenderProfiling_UploadProfile_Params params;
+	params.MapName = MapName;
+	params.Profile = Profile;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.RenderProfiling.HandleProfileFinished
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class ARenderProfiler_X*       Profiler                       (CPF_Parm)
+
+void SMapRenderProfiler_X_RenderProfiling::HandleProfileFinished(class ARenderProfiler_X* Profiler)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.RenderProfiling.HandleProfileFinished");
+
+	SMapRenderProfiler_X_RenderProfiling_HandleProfileFinished_Params params;
+	params.Profiler = Profiler;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MapRenderProfiler_X.RenderProfiling.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SMapRenderProfiler_X_RenderProfiling::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MapRenderProfiler_X.RenderProfiling.BeginState");
+
+	SMapRenderProfiler_X_RenderProfiling_BeginState_Params params;
+	params.P = P;
 
 	auto flags = fn->FunctionFlags;
 
@@ -39279,6 +40044,157 @@ class URPC_RemoveQuitter_X* URPC_RemoveQuitter_X::SetPlayerID(const struct FUniq
 }
 
 
+// Function ProjectX.OnlineGameDedicatedServer_X.Initializing.HandlePsyNetDataLoaded
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UPsyNetStaticData_X*     D                              (CPF_Parm, CPF_EditInline)
+
+void SOnlineGameDedicatedServer_X_Initializing::HandlePsyNetDataLoaded(class UPsyNetStaticData_X* D)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Initializing.HandlePsyNetDataLoaded");
+
+	SOnlineGameDedicatedServer_X_Initializing_HandlePsyNetDataLoaded_Params params;
+	params.D = D;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.Initializing.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameDedicatedServer_X_Initializing::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Initializing.OnNewGameInfoCreated");
+
+	SOnlineGameDedicatedServer_X_Initializing_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.Inactive.CreateMatchID
+// (FUNC_Protected)
+
+void SOnlineGameDedicatedServer_X_Inactive::CreateMatchID()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Inactive.CreateMatchID");
+
+	SOnlineGameDedicatedServer_X_Inactive_CreateMatchID_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.Inactive.HandleReservationsUpdated
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameDedicatedServer_X_Inactive::HandleReservationsUpdated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Inactive.HandleReservationsUpdated");
+
+	SOnlineGameDedicatedServer_X_Inactive_HandleReservationsUpdated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.Inactive.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameDedicatedServer_X_Inactive::EndState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Inactive.EndState");
+
+	SOnlineGameDedicatedServer_X_Inactive_EndState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.Inactive.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameDedicatedServer_X_Inactive::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.Inactive.BeginState");
+
+	SOnlineGameDedicatedServer_X_Inactive_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.StartingPrivateMatch.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameDedicatedServer_X_StartingPrivateMatch::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.StartingPrivateMatch.OnNewGameInfoCreated");
+
+	SOnlineGameDedicatedServer_X_StartingPrivateMatch_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameDedicatedServer_X.BotTesting.HandleReservationsUpdated
+// (FUNC_Protected)
+
+void SOnlineGameDedicatedServer_X_BotTesting::HandleReservationsUpdated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameDedicatedServer_X.BotTesting.HandleReservationsUpdated");
+
+	SOnlineGameDedicatedServer_X_BotTesting_HandleReservationsUpdated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.ClanforgeReservation_X.HandleRetry
 // (FUNC_Final, FUNC_Defined, FUNC_Private)
 
@@ -40133,6 +41049,109 @@ class URPC_CreateGameServer_X* URPC_CreateGameServer_X::SetServerName(const stru
 }
 
 
+// Function ProjectX.OnlineGameInvite_X.Joining.HandlePasswordRequired
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameInvite_X_Joining::HandlePasswordRequired()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.Joining.HandlePasswordRequired");
+
+	SOnlineGameInvite_X_Joining_HandlePasswordRequired_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameInvite_X.Joining.HandleJoinGameComplete
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameInvite_X_Joining::HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.Joining.HandleJoinGameComplete");
+
+	SOnlineGameInvite_X_Joining_HandleJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameInvite_X.Joining.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameInvite_X_Joining::EndState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.Joining.EndState");
+
+	SOnlineGameInvite_X_Joining_EndState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameInvite_X.Joining.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameInvite_X_Joining::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.Joining.BeginState");
+
+	SOnlineGameInvite_X_Joining_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameInvite_X.Joining.OnGameInviteAccepted
+// (FUNC_Protected)
+// Parameters:
+// struct FOnlineGameSearchResult InviteResult                   (CPF_Const, CPF_Parm, CPF_OutParm)
+// struct FString                 ErrorString                    (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameInvite_X_Joining::OnGameInviteAccepted(const struct FString& ErrorString, struct FOnlineGameSearchResult* InviteResult)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameInvite_X.Joining.OnGameInviteAccepted");
+
+	SOnlineGameInvite_X_Joining_OnGameInviteAccepted_Params params;
+	params.ErrorString = ErrorString;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (InviteResult != nullptr)
+		*InviteResult = params.InviteResult;
+}
+
+
 // Function ProjectX.ReservationsWaitingMessage_X.SetWaitingForPlayers
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -40271,6 +41290,263 @@ class UPingMessage_X* UPingMessage_X::SetIsResponse()
 }
 
 
+// Function ProjectX.OnlineGameJoinGame_X.JoiningBase.OnMainMenuOpened
+// (FUNC_Protected)
+
+void SOnlineGameJoinGame_X_JoiningBase::OnMainMenuOpened()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningBase.OnMainMenuOpened");
+
+	SOnlineGameJoinGame_X_JoiningBase_OnMainMenuOpened_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningBase.IsJoiningGame
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameJoinGame_X_JoiningBase::IsJoiningGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningBase.IsJoiningGame");
+
+	SOnlineGameJoinGame_X_JoiningBase_IsJoiningGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningBase.StartJoin
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// struct FString                 BeaconAddress                  (CPF_Parm, CPF_NeedCtorLink)
+// struct FJoinMatchSettings      InSettings                     (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameJoinGame_X_JoiningBase::StartJoin(const struct FString& BeaconAddress, const struct FJoinMatchSettings& InSettings)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningBase.StartJoin");
+
+	SOnlineGameJoinGame_X_JoiningBase_StartJoin_Params params;
+	params.BeaconAddress = BeaconAddress;
+	params.InSettings = InSettings;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.HandleCanPlayOnline
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UPrivilegeCheck_X*       PrivilegeCheck                 (CPF_Parm)
+
+void SOnlineGameJoinGame_X_VerifyPrivileges::HandleCanPlayOnline(class UPrivilegeCheck_X* PrivilegeCheck)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.HandleCanPlayOnline");
+
+	SOnlineGameJoinGame_X_VerifyPrivileges_HandleCanPlayOnline_Params params;
+	params.PrivilegeCheck = PrivilegeCheck;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_VerifyPrivileges::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.EndState");
+
+	SOnlineGameJoinGame_X_VerifyPrivileges_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_VerifyPrivileges::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.VerifyPrivileges.BeginState");
+
+	SOnlineGameJoinGame_X_VerifyPrivileges_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.GoToNextState
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_GenerateKeys::GoToNextState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.GoToNextState");
+
+	SOnlineGameJoinGame_X_GenerateKeys_GoToNextState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class URPC_GenerateKeys_X*     RPC                            (CPF_Parm)
+
+void SOnlineGameJoinGame_X_GenerateKeys::SetNetworkKeys(class URPC_GenerateKeys_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys");
+
+	SOnlineGameJoinGame_X_GenerateKeys_SetNetworkKeys_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.HandleGenerateKeys
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URPC_GenerateKeys_X*     RPC                            (CPF_Parm)
+
+void SOnlineGameJoinGame_X_GenerateKeys::HandleGenerateKeys(class URPC_GenerateKeys_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.HandleGenerateKeys");
+
+	SOnlineGameJoinGame_X_GenerateKeys_HandleGenerateKeys_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SendGenerateKeysRPCs
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_GenerateKeys::SendGenerateKeysRPCs()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SendGenerateKeysRPCs");
+
+	SOnlineGameJoinGame_X_GenerateKeys_SendGenerateKeysRPCs_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.RemoveKeysRPC
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URPC_X*                  RPC                            (CPF_Parm)
+
+void SOnlineGameJoinGame_X_GenerateKeys::RemoveKeysRPC(class URPC_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.RemoveKeysRPC");
+
+	SOnlineGameJoinGame_X_GenerateKeys_RemoveKeysRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_GenerateKeys::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.EndState");
+
+	SOnlineGameJoinGame_X_GenerateKeys_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_GenerateKeys::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.BeginState");
+
+	SOnlineGameJoinGame_X_GenerateKeys_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -40312,6 +41588,1013 @@ class URPC_KeysBase_X* URPC_KeysBase_X::SetServerAddress(const struct FString& S
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendServerReservedEvent
+// (FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServer::SendServerReservedEvent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendServerReservedEvent");
+
+	SOnlineGameJoinGame_X_ReservingServer_SendServerReservedEvent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.TravelToServer
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServer::TravelToServer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.TravelToServer");
+
+	SOnlineGameJoinGame_X_ReservingServer_TravelToServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.JoinServer
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UReservationsReadyMessage_X* Message                        (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServer::JoinServer(class UReservationsReadyMessage_X* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.JoinServer");
+
+	SOnlineGameJoinGame_X_ReservingServer_JoinServer_Params params;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.HandleReservationResponse
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UObject*                 Message                        (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServer::HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.HandleReservationResponse");
+
+	SOnlineGameJoinGame_X_ReservingServer_HandleReservationResponse_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.HandleDisconnection
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpBeacon*              Beacon                         (CPF_Parm, CPF_EditInline)
+// class UTcpConnection*          Connection                     (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServer::HandleDisconnection(class UTcpBeacon* Beacon, class UTcpConnection* Connection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.HandleDisconnection");
+
+	SOnlineGameJoinGame_X_ReservingServer_HandleDisconnection_Params params;
+	params.Beacon = Beacon;
+	params.Connection = Connection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.CreateReservationMessage
+// (FUNC_Protected)
+// Parameters:
+// class UAddReservationMessage_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UAddReservationMessage_X* SOnlineGameJoinGame_X_ReservingServer::CreateReservationMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.CreateReservationMessage");
+
+	SOnlineGameJoinGame_X_ReservingServer_CreateReservationMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendReservationMessage
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServer::SendReservationMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendReservationMessage");
+
+	SOnlineGameJoinGame_X_ReservingServer_SendReservationMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendReservation
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServer::SendReservation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.SendReservation");
+
+	SOnlineGameJoinGame_X_ReservingServer_SendReservation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServer::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.EndState");
+
+	SOnlineGameJoinGame_X_ReservingServer_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServer.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServer::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServer.BeginState");
+
+	SOnlineGameJoinGame_X_ReservingServer_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.SendServerReservedEvent
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServerForPrivateMatch::SendServerReservedEvent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.SendServerReservedEvent");
+
+	SOnlineGameJoinGame_X_ReservingServerForPrivateMatch_SendServerReservedEvent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.TravelToServer
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServerForPrivateMatch::TravelToServer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.TravelToServer");
+
+	SOnlineGameJoinGame_X_ReservingServerForPrivateMatch_TravelToServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.HandleReservationResponse
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UObject*                 Message                        (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServerForPrivateMatch::HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.HandleReservationResponse");
+
+	SOnlineGameJoinGame_X_ReservingServerForPrivateMatch_HandleReservationResponse_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.CreateReservationMessage
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UAddReservationMessage_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UAddReservationMessage_X* SOnlineGameJoinGame_X_ReservingServerForPrivateMatch::CreateReservationMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch.CreateReservationMessage");
+
+	SOnlineGameJoinGame_X_ReservingServerForPrivateMatch_CreateReservationMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.SendServerReservedEvent
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_ReservingServerForMatchmaking::SendServerReservedEvent()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.SendServerReservedEvent");
+
+	SOnlineGameJoinGame_X_ReservingServerForMatchmaking_SendServerReservedEvent_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.HandleReservationResponse
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UObject*                 Message                        (CPF_Parm)
+
+void SOnlineGameJoinGame_X_ReservingServerForMatchmaking::HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.HandleReservationResponse");
+
+	SOnlineGameJoinGame_X_ReservingServerForMatchmaking_HandleReservationResponse_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.CreateReservationMessage
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UAddReservationMessage_X* ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UAddReservationMessage_X* SOnlineGameJoinGame_X_ReservingServerForMatchmaking::CreateReservationMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking.CreateReservationMessage");
+
+	SOnlineGameJoinGame_X_ReservingServerForMatchmaking_CreateReservationMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.StartConnectToServer
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_JoinCountdown::StartConnectToServer()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.StartConnectToServer");
+
+	SOnlineGameJoinGame_X_JoinCountdown_StartConnectToServer_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_JoinCountdown::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.EndState");
+
+	SOnlineGameJoinGame_X_JoinCountdown_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_JoinCountdown::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoinCountdown.BeginState");
+
+	SOnlineGameJoinGame_X_JoinCountdown_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.OnJoinGameComplete
+// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Protected)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 BugItReason                    (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameJoinGame_X_WaitForAllPlayers::OnJoinGameComplete(bool bSuccess, const struct FString& FailReason, const struct FString& BugItReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.OnJoinGameComplete");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_OnJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+	params.BugItReason = BugItReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.OnAllPlayersJoined
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_WaitForAllPlayers::OnAllPlayersJoined()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.OnAllPlayersJoined");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_OnAllPlayersJoined_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.CheckAllLocalPlayersHaveJoined
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UPlayer*                 JoinedPlayer                   (CPF_Parm)
+
+void SOnlineGameJoinGame_X_WaitForAllPlayers::CheckAllLocalPlayersHaveJoined(class UPlayer* JoinedPlayer)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.CheckAllLocalPlayersHaveJoined");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_CheckAllLocalPlayersHaveJoined_Params params;
+	params.JoinedPlayer = JoinedPlayer;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.IsInTransition
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameJoinGame_X_WaitForAllPlayers::IsInTransition()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.IsInTransition");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_IsInTransition_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_WaitForAllPlayers::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.EndState");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_WaitForAllPlayers::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers.BeginState");
+
+	SOnlineGameJoinGame_X_WaitForAllPlayers_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.HandleSpawned
+// (FUNC_Protected)
+// Parameters:
+// class AGameInfo_X*             InGameInfo                     (CPF_Parm)
+
+void SOnlineGameJoinGame_X_OpeningLoadingScreen::HandleSpawned(class AGameInfo_X* InGameInfo)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.HandleSpawned");
+
+	SOnlineGameJoinGame_X_OpeningLoadingScreen_HandleSpawned_Params params;
+	params.InGameInfo = InGameInfo;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.OnAllPlayersJoined
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_OpeningLoadingScreen::OnAllPlayersJoined()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.OnAllPlayersJoined");
+
+	SOnlineGameJoinGame_X_OpeningLoadingScreen_OnAllPlayersJoined_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.CancelJoin
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_OpeningLoadingScreen::CancelJoin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.CancelJoin");
+
+	SOnlineGameJoinGame_X_OpeningLoadingScreen_CancelJoin_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_OpeningLoadingScreen::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen.BeginState");
+
+	SOnlineGameJoinGame_X_OpeningLoadingScreen_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.NotifyConnectionFailed
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Message                        (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameJoinGame_X_JoiningNewServer::NotifyConnectionFailed(const struct FString& Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.NotifyConnectionFailed");
+
+	SOnlineGameJoinGame_X_JoiningNewServer_NotifyConnectionFailed_Params params;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.OnAllPlayersJoined
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_JoiningNewServer::OnAllPlayersJoined()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.OnAllPlayersJoined");
+
+	SOnlineGameJoinGame_X_JoiningNewServer_OnAllPlayersJoined_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.HandleInternetConnectionChanged
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bConnected                     (CPF_Parm)
+
+void SOnlineGameJoinGame_X_JoiningNewServer::HandleInternetConnectionChanged(bool bConnected)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.HandleInternetConnectionChanged");
+
+	SOnlineGameJoinGame_X_JoiningNewServer_HandleInternetConnectionChanged_Params params;
+	params.bConnected = bConnected;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_JoiningNewServer::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.EndState");
+
+	SOnlineGameJoinGame_X_JoiningNewServer_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_JoiningNewServer::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.JoiningNewServer.BeginState");
+
+	SOnlineGameJoinGame_X_JoiningNewServer_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.RetryJoin.RetryJoinGame
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameJoinGame_X_RetryJoin::RetryJoinGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.RetryJoin.RetryJoinGame");
+
+	SOnlineGameJoinGame_X_RetryJoin_RetryJoinGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.RetryJoin.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_RetryJoin::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.RetryJoin.BeginState");
+
+	SOnlineGameJoinGame_X_RetryJoin_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.FailedJoin.OnNewGame
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameJoinGame_X_FailedJoin::OnNewGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.FailedJoin.OnNewGame");
+
+	SOnlineGameJoinGame_X_FailedJoin_OnNewGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameJoinGame_X.FailedJoin.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameJoinGame_X_FailedJoin::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameJoinGame_X.FailedJoin.BeginState");
+
+	SOnlineGameJoinGame_X_FailedJoin_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleSearchTimeout
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void SOnlineGameLanBrowser_X_Searching::HandleSearchTimeout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleSearchTimeout");
+
+	SOnlineGameLanBrowser_X_Searching_HandleSearchTimeout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleHostResponse
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineMessageComponent_X* Component                      (CPF_Parm, CPF_EditInline)
+// class UObject*                 Message                        (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Searching::HandleHostResponse(class UOnlineMessageComponent_X* Component, class UObject* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleHostResponse");
+
+	SOnlineGameLanBrowser_X_Searching_HandleHostResponse_Params params;
+	params.Component = Component;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.UpdateStatusMessage
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void SOnlineGameLanBrowser_X_Searching::UpdateStatusMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.UpdateStatusMessage");
+
+	SOnlineGameLanBrowser_X_Searching_UpdateStatusMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.PerformSearch
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameLanBrowser_X_Searching::PerformSearch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.PerformSearch");
+
+	SOnlineGameLanBrowser_X_Searching_PerformSearch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.IsSearching
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameLanBrowser_X_Searching::IsSearching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.IsSearching");
+
+	SOnlineGameLanBrowser_X_Searching_IsSearching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleGameStarted
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGRI_X*                  GRI                            (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Searching::HandleGameStarted(class AGRI_X* GRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.HandleGameStarted");
+
+	SOnlineGameLanBrowser_X_Searching_HandleGameStarted_Params params;
+	params.GRI = GRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Searching::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.EndState");
+
+	SOnlineGameLanBrowser_X_Searching_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Searching.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Searching::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Searching.BeginState");
+
+	SOnlineGameLanBrowser_X_Searching_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Joining.HandleJoinGameComplete
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameLanBrowser_X_Joining::HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Joining.HandleJoinGameComplete");
+
+	SOnlineGameLanBrowser_X_Joining_HandleJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Joining.Cancel
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameLanBrowser_X_Joining::Cancel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Joining.Cancel");
+
+	SOnlineGameLanBrowser_X_Joining_Cancel_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Joining.HandleStatusUpdate
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 NewStatus                      (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameLanBrowser_X_Joining::HandleStatusUpdate(const struct FString& NewStatus)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Joining.HandleStatusUpdate");
+
+	SOnlineGameLanBrowser_X_Joining_HandleStatusUpdate_Params params;
+	params.NewStatus = NewStatus;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Joining.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Joining::EndState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Joining.EndState");
+
+	SOnlineGameLanBrowser_X_Joining_EndState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanBrowser_X.Joining.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameLanBrowser_X_Joining::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanBrowser_X.Joining.BeginState");
+
+	SOnlineGameLanBrowser_X_Joining_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -40672,6 +42955,206 @@ void UOnlineGameLanReservations_X::EventReservationsTimeout()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.EventReservationsTimeout");
 
 	UOnlineGameLanReservations_X_EventReservationsTimeout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.HandlePrivateReservation
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UAddReservationMessagePrivate_X* Message                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameLanReservations_X_PrivateMatchStarting::HandlePrivateReservation(class UTcpConnection* Connection, class UAddReservationMessagePrivate_X* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.HandlePrivateReservation");
+
+	SOnlineGameLanReservations_X_PrivateMatchStarting_HandlePrivateReservation_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.AllowPlayerLogin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameLanReservations_X_PrivateMatchStarting::AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.AllowPlayerLogin");
+
+	SOnlineGameLanReservations_X_PrivateMatchStarting_AllowPlayerLogin_Params params;
+	params.Options = Options;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.HandleReservationDisconnected
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+
+void SOnlineGameLanReservations_X_PrivateMatchStarting::HandleReservationDisconnected(class UTcpConnection* Connection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.HandleReservationDisconnected");
+
+	SOnlineGameLanReservations_X_PrivateMatchStarting_HandleReservationDisconnected_Params params;
+	params.Connection = Connection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameLanReservations_X_PrivateMatchStarting::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting.OnNewGameInfoCreated");
+
+	SOnlineGameLanReservations_X_PrivateMatchStarting_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatch.HandlePrivateReservation
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UAddReservationMessagePrivate_X* Message                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameLanReservations_X_PrivateMatch::HandlePrivateReservation(class UTcpConnection* Connection, class UAddReservationMessagePrivate_X* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatch.HandlePrivateReservation");
+
+	SOnlineGameLanReservations_X_PrivateMatch_HandlePrivateReservation_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameLanReservations_X.PrivateMatch.HandlePublicReservation
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UAddReservationMessagePublic_X* Message                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameLanReservations_X_PrivateMatch::HandlePublicReservation(class UTcpConnection* Connection, class UAddReservationMessagePublic_X* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanReservations_X.PrivateMatch.HandlePublicReservation");
+
+	SOnlineGameLanReservations_X_PrivateMatch_HandlePublicReservation_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameLanServer_X.Initializing.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameLanServer_X_Initializing::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.Initializing.OnNewGameInfoCreated");
+
+	SOnlineGameLanServer_X_Initializing_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanServer_X.Inactive.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameLanServer_X_Inactive::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.Inactive.BeginState");
+
+	SOnlineGameLanServer_X_Inactive_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameLanServer_X.StartingPrivateMatch.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameLanServer_X_StartingPrivateMatch::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameLanServer_X.StartingPrivateMatch.OnNewGameInfoCreated");
+
+	SOnlineGameLanServer_X_StartingPrivateMatch_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
 
 	auto flags = fn->FunctionFlags;
 
@@ -41214,6 +43697,261 @@ class URPC_GetLeaderboardRankForUsers_X* URPC_GetLeaderboardRankForUsers_X::SetS
 }
 
 
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.HandleGameStarted
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGRI_X*                  GRI                            (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Searching::HandleGameStarted(class AGRI_X* GRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.HandleGameStarted");
+
+	SOnlineGameMatchmakingBase_X_Searching_HandleGameStarted_Params params;
+	params.GRI = GRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.IsSearching
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameMatchmakingBase_X_Searching::IsSearching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.IsSearching");
+
+	SOnlineGameMatchmakingBase_X_Searching_IsSearching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.HandleRegionsPinged
+// (FUNC_Protected)
+// Parameters:
+// class UOnlineGameRegions_X*    InRegions                      (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Searching::HandleRegionsPinged(class UOnlineGameRegions_X* InRegions)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.HandleRegionsPinged");
+
+	SOnlineGameMatchmakingBase_X_Searching_HandleRegionsPinged_Params params;
+	params.InRegions = InRegions;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.StopListeningRegionsPinged
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameMatchmakingBase_X_Searching::StopListeningRegionsPinged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.StopListeningRegionsPinged");
+
+	SOnlineGameMatchmakingBase_X_Searching_StopListeningRegionsPinged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.WaitForRegionsPinged
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameMatchmakingBase_X_Searching::WaitForRegionsPinged()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.WaitForRegionsPinged");
+
+	SOnlineGameMatchmakingBase_X_Searching_WaitForRegionsPinged_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Searching::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.EndState");
+
+	SOnlineGameMatchmakingBase_X_Searching_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Searching.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Searching::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Searching.BeginState");
+
+	SOnlineGameMatchmakingBase_X_Searching_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.HandleJoinGameComplete
+// (FUNC_Protected)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameMatchmakingBase_X_Joining::HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.HandleJoinGameComplete");
+
+	SOnlineGameMatchmakingBase_X_Joining_HandleJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.Cancel
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameMatchmakingBase_X_Joining::Cancel()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.Cancel");
+
+	SOnlineGameMatchmakingBase_X_Joining_Cancel_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.HandleStatusUpdate
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// struct FString                 NewStatus                      (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameMatchmakingBase_X_Joining::HandleStatusUpdate(const struct FString& NewStatus)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.HandleStatusUpdate");
+
+	SOnlineGameMatchmakingBase_X_Joining_HandleStatusUpdate_Params params;
+	params.NewStatus = NewStatus;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.IsSearching
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameMatchmakingBase_X_Joining::IsSearching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.IsSearching");
+
+	SOnlineGameMatchmakingBase_X_Joining_IsSearching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Joining::EndState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.EndState");
+
+	SOnlineGameMatchmakingBase_X_Joining_EndState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmakingBase_X.Joining.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameMatchmakingBase_X_Joining::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmakingBase_X.Joining.BeginState");
+
+	SOnlineGameMatchmakingBase_X_Joining_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.CheckReservation_X.HandleCheckReservation
 // (FUNC_Final, FUNC_Defined, FUNC_Private, FUNC_HasDefaults)
 // Parameters:
@@ -41580,6 +44318,279 @@ void UMatchmakingMetrics_X::Start(TArray<struct FString> Regions, TArray<int> Pl
 }
 
 
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.OnReceiveGameServer
+// (FUNC_Defined, FUNC_Protected, FUNC_HasDefaults)
+// Parameters:
+// class UCheckReservation_X*     ReservationObj                 (CPF_Parm)
+// struct FCheckReservationData   Reservation                    (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameMatchmaking_X_Searching::OnReceiveGameServer(class UCheckReservation_X* ReservationObj, const struct FCheckReservationData& Reservation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.OnReceiveGameServer");
+
+	SOnlineGameMatchmaking_X_Searching_OnReceiveGameServer_Params params;
+	params.ReservationObj = ReservationObj;
+	params.Reservation = Reservation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleMatchmakingStartSuccessRPC
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class URPC_StartMatchmaking_X* RPC                            (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::HandleMatchmakingStartSuccessRPC(class URPC_StartMatchmaking_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleMatchmakingStartSuccessRPC");
+
+	SOnlineGameMatchmaking_X_Searching_HandleMatchmakingStartSuccessRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleError
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UError*                  Error                          (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::HandleError(class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleError");
+
+	SOnlineGameMatchmaking_X_Searching_HandleError_Params params;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.OnCheckReservationError
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCheckReservation_X*     ReservationObj                 (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::OnCheckReservationError(class UCheckReservation_X* ReservationObj, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.OnCheckReservationError");
+
+	SOnlineGameMatchmaking_X_Searching_OnCheckReservationError_Params params;
+	params.ReservationObj = ReservationObj;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleMatchmakingFailRPC
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class URPC_X*                  RPC                            (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::HandleMatchmakingFailRPC(class URPC_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleMatchmakingFailRPC");
+
+	SOnlineGameMatchmaking_X_Searching_HandleMatchmakingFailRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.SendMatchmakingState
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameMatchmaking_X_Searching::SendMatchmakingState()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.SendMatchmakingState");
+
+	SOnlineGameMatchmaking_X_Searching_SendMatchmakingState_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.UpdateMatchmaking
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameMatchmaking_X_Searching::UpdateMatchmaking()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.UpdateMatchmaking");
+
+	SOnlineGameMatchmaking_X_Searching_UpdateMatchmaking_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.StartMatchmaking
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameMatchmaking_X_Searching::StartMatchmaking()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.StartMatchmaking");
+
+	SOnlineGameMatchmaking_X_Searching_StartMatchmaking_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleRegionsPinged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineGameRegions_X*    InRegions                      (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::HandleRegionsPinged(class UOnlineGameRegions_X* InRegions)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.HandleRegionsPinged");
+
+	SOnlineGameMatchmaking_X_Searching_HandleRegionsPinged_Params params;
+	params.InRegions = InRegions;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.OnMainMenuOpened
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameMatchmaking_X_Searching::OnMainMenuOpened()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.OnMainMenuOpened");
+
+	SOnlineGameMatchmaking_X_Searching_OnMainMenuOpened_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.OnNewGame
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameMatchmaking_X_Searching::OnNewGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.OnNewGame");
+
+	SOnlineGameMatchmaking_X_Searching_OnNewGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.RecordStart
+// (FUNC_Defined, FUNC_Public)
+
+void SOnlineGameMatchmaking_X_Searching::RecordStart()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.RecordStart");
+
+	SOnlineGameMatchmaking_X_Searching_RecordStart_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.AddRecommendedServers
+// (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// float                          PingThreshold                  (CPF_OptionalParm, CPF_Parm)
+// float                          PingIncrement                  (CPF_OptionalParm, CPF_Parm)
+// float                          MaxPing                        (CPF_OptionalParm, CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameMatchmaking_X_Searching::AddRecommendedServers(float PingThreshold, float PingIncrement, float MaxPing)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.AddRecommendedServers");
+
+	SOnlineGameMatchmaking_X_Searching_AddRecommendedServers_Params params;
+	params.PingThreshold = PingThreshold;
+	params.PingIncrement = PingIncrement;
+	params.MaxPing = MaxPing;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Searching.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameMatchmaking_X_Searching::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Searching.EndState");
+
+	SOnlineGameMatchmaking_X_Searching_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_StartMatchmaking_X.SetIgnoreSkill
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -41736,6 +44747,28 @@ class URPC_StartMatchmaking_X* URPC_StartMatchmaking_X::SetRegions(TArray<struct
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameMatchmaking_X.Joining.HandleJoinGameComplete
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGameMatchmaking_X_Joining::HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameMatchmaking_X.Joining.HandleJoinGameComplete");
+
+	SOnlineGameMatchmaking_X_Joining_HandleJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -42685,6 +45718,204 @@ class URPC_GetPlayerTitles_X* URPC_GetPlayerTitles_X::SetPlayerID(const struct F
 }
 
 
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleSearchTimeout
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void SOnlineGamePrivateMatch_X_Searching::HandleSearchTimeout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleSearchTimeout");
+
+	SOnlineGamePrivateMatch_X_Searching_HandleSearchTimeout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnReceiveGameServer
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UCheckReservation_X*     ReservationObj                 (CPF_Parm)
+// struct FCheckReservationData   Reservation                    (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGamePrivateMatch_X_Searching::OnReceiveGameServer(class UCheckReservation_X* ReservationObj, const struct FCheckReservationData& Reservation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnReceiveGameServer");
+
+	SOnlineGamePrivateMatch_X_Searching_OnReceiveGameServer_Params params;
+	params.ReservationObj = ReservationObj;
+	params.Reservation = Reservation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnStartMatchmakingSucceededRPC
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class URPC_PlayerSearchPrivateMatch_X* RPC                            (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::OnStartMatchmakingSucceededRPC(class URPC_PlayerSearchPrivateMatch_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnStartMatchmakingSucceededRPC");
+
+	SOnlineGamePrivateMatch_X_Searching_OnStartMatchmakingSucceededRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleError
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UError*                  Error                          (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::HandleError(class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleError");
+
+	SOnlineGamePrivateMatch_X_Searching_HandleError_Params params;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnCheckReservationError
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UCheckReservation_X*     ReservationObj                 (CPF_Parm)
+// class UError*                  Error                          (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::OnCheckReservationError(class UCheckReservation_X* ReservationObj, class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnCheckReservationError");
+
+	SOnlineGamePrivateMatch_X_Searching_OnCheckReservationError_Params params;
+	params.ReservationObj = ReservationObj;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnMatchmakingFailedRPC
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class URPC_X*                  RPC                            (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::OnMatchmakingFailedRPC(class URPC_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.OnMatchmakingFailedRPC");
+
+	SOnlineGamePrivateMatch_X_Searching_OnMatchmakingFailedRPC_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.UpdateStatusMessage
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+
+void SOnlineGamePrivateMatch_X_Searching::UpdateStatusMessage()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.UpdateStatusMessage");
+
+	SOnlineGamePrivateMatch_X_Searching_UpdateStatusMessage_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleRegionsPinged
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UOnlineGameRegions_X*    InRegions                      (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::HandleRegionsPinged(class UOnlineGameRegions_X* InRegions)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.HandleRegionsPinged");
+
+	SOnlineGamePrivateMatch_X_Searching_HandleRegionsPinged_Params params;
+	params.InRegions = InRegions;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.EndState");
+
+	SOnlineGamePrivateMatch_X_Searching_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Searching.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGamePrivateMatch_X_Searching::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Searching.BeginState");
+
+	SOnlineGamePrivateMatch_X_Searching_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function ProjectX.RPC_PlayerSearchPrivateMatch_X.SetRegion
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -42705,6 +45936,28 @@ class URPC_PlayerSearchPrivateMatch_X* URPC_PlayerSearchPrivateMatch_X::SetRegio
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGamePrivateMatch_X.Joining.HandleJoinGameComplete
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// bool                           bSuccess                       (CPF_Parm)
+// struct FString                 FailReason                     (CPF_Parm, CPF_NeedCtorLink)
+
+void SOnlineGamePrivateMatch_X_Joining::HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGamePrivateMatch_X.Joining.HandleJoinGameComplete");
+
+	SOnlineGamePrivateMatch_X_Joining_HandleJoinGameComplete_Params params;
+	params.bSuccess = bSuccess;
+	params.FailReason = FailReason;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -43206,6 +46459,165 @@ void APRI_X::EventPlayerNameChanged(class APRI_X* PRI)
 }
 
 
+// Function ProjectX.OnlineGameReservations_X.PrivateMatchBase.IsCustomMatch
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameReservations_X_PrivateMatchBase::IsCustomMatch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatchBase.IsCustomMatch");
+
+	SOnlineGameReservations_X_PrivateMatchBase_IsCustomMatch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.AllowPlayerLogin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FString                 Options                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameReservations_X_PrivateMatchStarting::AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.AllowPlayerLogin");
+
+	SOnlineGameReservations_X_PrivateMatchStarting_AllowPlayerLogin_Params params;
+	params.Options = Options;
+	params.PlayerID = PlayerID;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.HandleReservationDisconnected
+// (FUNC_Final, FUNC_Defined, FUNC_Private)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+
+void SOnlineGameReservations_X_PrivateMatchStarting::HandleReservationDisconnected(class UTcpConnection* Connection)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.HandleReservationDisconnected");
+
+	SOnlineGameReservations_X_PrivateMatchStarting_HandleReservationDisconnected_Params params;
+	params.Connection = Connection;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.OnNewGameInfoCreated
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class AGameInfo_X*             Game                           (CPF_Parm)
+
+void SOnlineGameReservations_X_PrivateMatchStarting::OnNewGameInfoCreated(class AGameInfo_X* Game)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatchStarting.OnNewGameInfoCreated");
+
+	SOnlineGameReservations_X_PrivateMatchStarting_OnNewGameInfoCreated_Params params;
+	params.Game = Game;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatch.AllPlayersInGame
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameReservations_X_PrivateMatch::AllPlayersInGame()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatch.AllPlayersInGame");
+
+	SOnlineGameReservations_X_PrivateMatch_AllPlayersInGame_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatch.AllowSplitscreenJoin
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class APlayerReplicationInfo*  PrimaryPRI                     (CPF_Parm)
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// struct FString                 PlayerName                     (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameReservations_X_PrivateMatch::AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatch.AllowSplitscreenJoin");
+
+	SOnlineGameReservations_X_PrivateMatch_AllowSplitscreenJoin_Params params;
+	params.PrimaryPRI = PrimaryPRI;
+	params.PlayerID = PlayerID;
+	params.PlayerName = PlayerName;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameReservations_X.PrivateMatch.HandlePublicReservation
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class UTcpConnection*          Connection                     (CPF_Parm)
+// class UAddReservationMessagePublic_X* Message                        (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameReservations_X_PrivateMatch::HandlePublicReservation(class UTcpConnection* Connection, class UAddReservationMessagePublic_X* Message)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameReservations_X.PrivateMatch.HandlePublicReservation");
+
+	SOnlineGameReservations_X_PrivateMatch_HandlePublicReservation_Params params;
+	params.Connection = Connection;
+	params.Message = Message;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function ProjectX.RPC_GetKeys_X.SetPlayer
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -43226,6 +46638,141 @@ class URPC_GetKeys_X* URPC_GetKeys_X::SetPlayer(const struct FUniqueNetId& InPla
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleSearchTimeout
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameServerBrowser_X_Searching::HandleSearchTimeout()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleSearchTimeout");
+
+	SOnlineGameServerBrowser_X_Searching_HandleSearchTimeout_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleGameServerList
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class URPC_CustomGameServerGet_X* RPC                            (CPF_Parm)
+
+void SOnlineGameServerBrowser_X_Searching::HandleGameServerList(class URPC_CustomGameServerGet_X* RPC)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleGameServerList");
+
+	SOnlineGameServerBrowser_X_Searching_HandleGameServerList_Params params;
+	params.RPC = RPC;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.PerformSearch
+// (FUNC_Defined, FUNC_Protected)
+
+void SOnlineGameServerBrowser_X_Searching::PerformSearch()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.PerformSearch");
+
+	SOnlineGameServerBrowser_X_Searching_PerformSearch_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.IsSearching
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SOnlineGameServerBrowser_X_Searching::IsSearching()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.IsSearching");
+
+	SOnlineGameServerBrowser_X_Searching_IsSearching_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleGameStarted
+// (FUNC_Defined, FUNC_Protected)
+// Parameters:
+// class AGRI_X*                  GRI                            (CPF_Parm)
+
+void SOnlineGameServerBrowser_X_Searching::HandleGameStarted(class AGRI_X* GRI)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.HandleGameStarted");
+
+	SOnlineGameServerBrowser_X_Searching_HandleGameStarted_Params params;
+	params.GRI = GRI;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.EndState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   N                              (CPF_Parm)
+
+void SOnlineGameServerBrowser_X_Searching::EndState(const struct FName& N)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.EndState");
+
+	SOnlineGameServerBrowser_X_Searching_EndState_Params params;
+	params.N = N;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.OnlineGameServerBrowser_X.Searching.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SOnlineGameServerBrowser_X_Searching::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.OnlineGameServerBrowser_X.Searching.BeginState");
+
+	SOnlineGameServerBrowser_X_Searching_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -43863,6 +47410,106 @@ class URPC_LoginAuthPlayer_X* URPC_LoginAuthPlayer_X::SetPlatform(const struct F
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function ProjectX.Pawn_X.Dying.TakeDamage
+// (FUNC_Defined, FUNC_Event, FUNC_HasOptionalParms, FUNC_Public)
+// Parameters:
+// int                            Damage                         (CPF_Parm)
+// class AController*             EventInstigator                (CPF_Parm)
+// struct FVector                 HitLocation                    (CPF_Parm)
+// struct FVector                 Momentum                       (CPF_Parm)
+// class UClass*                  DamageType                     (CPF_Parm)
+// struct FTraceHitInfo           HitInfo                        (CPF_OptionalParm, CPF_Parm)
+// class AActor*                  DamageCauser                   (CPF_OptionalParm, CPF_Parm)
+
+void SPawn_X_Dying::TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Dying.TakeDamage");
+
+	SPawn_X_Dying_TakeDamage_Params params;
+	params.Damage = Damage;
+	params.EventInstigator = EventInstigator;
+	params.HitLocation = HitLocation;
+	params.Momentum = Momentum;
+	params.DamageType = DamageType;
+	params.HitInfo = HitInfo;
+	params.DamageCauser = DamageCauser;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.Pawn_X.Dying.TakeDamage_X
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UDamageComponent_X*      Damage                         (CPF_Parm, CPF_EditInline)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPawn_X_Dying::TakeDamage_X(class UDamageComponent_X* Damage)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Dying.TakeDamage_X");
+
+	SPawn_X_Dying_TakeDamage_X_Params params;
+	params.Damage = Damage;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.Pawn_X.Dying.Died_X
+// (FUNC_Public)
+// Parameters:
+// class AController*             Killer                         (CPF_Parm)
+// class UDamageComponent_X*      Damage                         (CPF_Parm, CPF_EditInline)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool SPawn_X_Dying::Died_X(class AController* Killer, class UDamageComponent_X* Damage)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Dying.Died_X");
+
+	SPawn_X_Dying_Died_X_Params params;
+	params.Killer = Killer;
+	params.Damage = Damage;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function ProjectX.Pawn_X.Dying.BeginState
+// (FUNC_Defined, FUNC_Event, FUNC_Public)
+// Parameters:
+// struct FName                   P                              (CPF_Parm)
+
+void SPawn_X_Dying::BeginState(const struct FName& P)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.Pawn_X.Dying.BeginState");
+
+	SPawn_X_Dying_BeginState_Params params;
+	params.P = P;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -45015,6 +48662,100 @@ void URPC_TestPlayerID_X::Init()
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_TestPlayerID_X.Init");
 
 	URPC_TestPlayerID_X_Init_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MatchRecorder_X.Finished.Finish
+// (FUNC_Public)
+// Parameters:
+// int                            InWinningTeam                  (CPF_Parm)
+// int                            InTeam0Score                   (CPF_Parm)
+// int                            InTeam1Score                   (CPF_Parm)
+// int                            InPlaylist                     (CPF_Parm)
+// bool                           bInOvertime                    (CPF_Parm)
+
+void SMatchRecorder_X_Finished::Finish(int InWinningTeam, int InTeam0Score, int InTeam1Score, int InPlaylist, bool bInOvertime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.Finished.Finish");
+
+	SMatchRecorder_X_Finished_Finish_Params params;
+	params.InWinningTeam = InWinningTeam;
+	params.InTeam0Score = InTeam0Score;
+	params.InTeam1Score = InTeam1Score;
+	params.InPlaylist = InPlaylist;
+	params.bInOvertime = bInOvertime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MatchRecorder_X.Finished.AccumulateTime
+// (FUNC_Public)
+// Parameters:
+// float                          DeltaTime                      (CPF_Parm)
+
+void SMatchRecorder_X_Finished::AccumulateTime(float DeltaTime)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.Finished.AccumulateTime");
+
+	SMatchRecorder_X_Finished_AccumulateTime_Params params;
+	params.DeltaTime = DeltaTime;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MatchRecorder_X.Finished.RemovePlayer
+// (FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// bool                           bPenalize                      (CPF_Parm)
+
+void SMatchRecorder_X_Finished::RemovePlayer(const struct FUniqueNetId& PlayerID, bool bPenalize)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.Finished.RemovePlayer");
+
+	SMatchRecorder_X_Finished_RemovePlayer_Params params;
+	params.PlayerID = PlayerID;
+	params.bPenalize = bPenalize;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function ProjectX.MatchRecorder_X.Finished.AddPlayer
+// (FUNC_Public)
+// Parameters:
+// struct FUniqueNetId            PlayerID                       (CPF_Parm)
+// int                            Team                           (CPF_Parm)
+// struct FUniqueNetId            PartyID                        (CPF_Parm)
+
+void SMatchRecorder_X_Finished::AddPlayer(const struct FUniqueNetId& PlayerID, int Team, const struct FUniqueNetId& PartyID)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.MatchRecorder_X.Finished.AddPlayer");
+
+	SMatchRecorder_X_Finished_AddPlayer_Params params;
+	params.PlayerID = PlayerID;
+	params.Team = Team;
+	params.PartyID = PartyID;
 
 	auto flags = fn->FunctionFlags;
 
@@ -46245,9 +49986,9 @@ struct FPlayerPermissionsList URPC_GetPlayerPermissions_X::ConvertPlayerPermissi
 // (FUNC_Final, FUNC_Defined, FUNC_Public)
 // Parameters:
 // TArray<struct FPlayerPermissionsList> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-// TArray<struct FPlayerPermissionsList> MapLocal_CA81527F4782C7D1866A93A74380140F (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+// TArray<struct FPlayerPermissionsList> MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2 (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 
-TArray<struct FPlayerPermissionsList> URPC_GetPlayerPermissions_X::GetPlayerPermissions(TArray<struct FPlayerPermissionsList>* MapLocal_CA81527F4782C7D1866A93A74380140F)
+TArray<struct FPlayerPermissionsList> URPC_GetPlayerPermissions_X::GetPlayerPermissions(TArray<struct FPlayerPermissionsList>* MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function ProjectX.RPC_GetPlayerPermissions_X.GetPlayerPermissions");
 
@@ -46259,8 +50000,8 @@ TArray<struct FPlayerPermissionsList> URPC_GetPlayerPermissions_X::GetPlayerPerm
 
 	fn->FunctionFlags = flags;
 
-	if (MapLocal_CA81527F4782C7D1866A93A74380140F != nullptr)
-		*MapLocal_CA81527F4782C7D1866A93A74380140F = params.MapLocal_CA81527F4782C7D1866A93A74380140F;
+	if (MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2 != nullptr)
+		*MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2 = params.MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2;
 
 	return params.ReturnValue;
 }

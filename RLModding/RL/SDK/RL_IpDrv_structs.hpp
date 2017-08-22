@@ -868,8 +868,7 @@ struct FOnlineImageDownload
 struct FSanitizeCallbackData
 {
 	int                                                Id;                                                       // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
 	struct FString                                     Comment;                                                  // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 

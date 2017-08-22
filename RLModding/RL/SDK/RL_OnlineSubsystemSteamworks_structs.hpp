@@ -88,7 +88,7 @@ struct FWorkshopItemData
 	struct FString                                     AddPairs;                                                 // 0x0048(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     RemovePairs;                                              // 0x0054(0x000C) (CPF_NeedCtorLink)
 	int                                                Visibility;                                               // 0x0060(0x0004)
-	__int64											   ItemId;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
 	unsigned long                                      bIsUploading : 1;                                         // 0x006C(0x0004)
 	unsigned char                                      UnknownData01[0x8];                                       // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.UpdateHandle
 };
@@ -188,8 +188,7 @@ struct FProfileSettingsCache
 struct FDeviceIdCache
 {
 	int                                                DeviceID;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     DeviceSelectionDelegates;                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -233,8 +232,7 @@ struct FQueuedAvatarRequest
 	int                                                NumberOfAttempts;                                         // 0x0004(0x0004) (CPF_Const)
 	struct FUniqueNetId                                PlayerNetId;                                              // 0x0008(0x0030) (CPF_Const)
 	int                                                Size;                                                     // 0x0038(0x0004) (CPF_Const)
-	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x003C(0x0010) (CPF_Const, CPF_NeedCtorLink)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AchievementMappingInfo
@@ -314,8 +312,7 @@ struct FAppPriceInfoRequest
 {
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x0000(0x0004)
 	TArray<struct FName>                               AppNames;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0010(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.LeaderboardEntry
