@@ -60,6 +60,7 @@ void DX9Hook::InitGUI() {
 
 void DX9Hook::RemoveHook() {
 	DetourRemove((PBYTE)pD3D9EndScene, (PBYTE)Hooked_EndScene);
+	DetourRemove((PBYTE)pD3D9HookedReset,(PYBTE)Hooked_Reset);
 }
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
 	ImGui_ImplDX9_InvalidateDeviceObjects();
@@ -88,14 +89,3 @@ HRESULT __stdcall Hooked_EndScene(IDirect3DDevice9* pDevice) {
 	}
 	return pD3D9EndScene(pDevice);
 }
-
-/*
-for (auto& Mod : Wrapper::Interfaces::getModHandler()->getMods()) {
-	std::function<void(IDirect3DDevice9*)> renderFunction = std::bind(&ModBase::onDX9RenderTick,Mod,std::placeholders::_1);
-	if (Mod->isEnabled() && Mod != nullptr) {
-		if (pDevice != nullptr) {
-			renderFunction(pDevice);
-		}
-	}
-}
-*/
