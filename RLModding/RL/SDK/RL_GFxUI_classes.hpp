@@ -349,7 +349,7 @@ public:
 	TArray<TEnumAsByte<EEdition>>                      Editions;                                                 // 0x00A0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	int                                                RTTextures;                                               // 0x00AC(0x0004)
 	int                                                RTVideoTextures;                                          // 0x00B0(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
+	__int64                                      ImportTimeStamp;                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
 
 	static UClass* StaticClass()
 	{

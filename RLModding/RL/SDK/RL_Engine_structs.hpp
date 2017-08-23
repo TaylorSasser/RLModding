@@ -3973,7 +3973,7 @@ struct FPhysXVerticalProperties
 // 0x0020
 struct FScreenMessageString
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.WorldInfo.ScreenMessageString.Key
+	__int64                                      Key;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.WorldInfo.ScreenMessageString.Key
 	struct FString                                     ScreenMessage;                                            // 0x0008(0x000C) (CPF_Transient, CPF_AlwaysInit, CPF_NeedCtorLink)
 	struct FColor                                      DisplayColor;                                             // 0x0014(0x0004) (CPF_Transient, CPF_AlwaysInit)
 	float                                              TimeToDisplay;                                            // 0x0018(0x0004) (CPF_Transient, CPF_AlwaysInit)
@@ -4068,7 +4068,7 @@ struct FHostMigrationState
 // 0x0010
 struct FSteamDLCInfo
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SteamDLCInfo.AppID
+	__int64                                      AppID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SteamDLCInfo.AppID
 	struct FName                                       Value;                                                    // 0x0008(0x0008)
 };
 
@@ -4108,7 +4108,7 @@ struct FNamedInterfaceDef
 // 0x0014
 struct FSceNpOnlineId
 {
-	unsigned char                                      UnknownData00[0x10];                                      // 0x0000(0x0010) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpOnlineId.Data
+	__int64											   Data;                                      // 0x0000(0x0010) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpOnlineId.Data
 	unsigned char                                      Term;                                                     // 0x0010(0x0001)
 	unsigned char                                      Dummy[0x3];                                               // 0x0011(0x0001)
 };
@@ -4143,7 +4143,7 @@ struct FOnlineRegistrant
 // 0x000C (0x003C - 0x0030)
 struct FOnlineArbitrationRegistrant : public FOnlineRegistrant
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineArbitrationRegistrant.MachineId
+	__int64                                      MachineId;                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineArbitrationRegistrant.MachineId
 	int                                                Trustworthiness;                                          // 0x0038(0x0004) (CPF_Const)
 };
 
@@ -7091,7 +7091,7 @@ struct FTerrainPatchBounds
 // 0x000C
 struct FTerrainMaterialMask
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.TerrainComponent.TerrainMaterialMask.BitMask
+	__int64                                      BitMask;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.TerrainComponent.TerrainMaterialMask.BitMask
 	int                                                NumBits;                                                  // 0x0008(0x0004)
 };
 
@@ -7203,7 +7203,7 @@ struct FOnlineFriendMessage
 struct FOnlineFriend
 {
 	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0030) (CPF_Const)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineFriend.SessionId
+	__int64                                      SessionId;                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineFriend.SessionId
 	struct FString                                     NickName;                                                 // 0x0038(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     PresenceInfo;                                             // 0x0044(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	TEnumAsByte<EOnlineFriendState>                    FriendState;                                              // 0x0050(0x0001) (CPF_Const)
@@ -7230,7 +7230,7 @@ struct FOnlinePartyMember
 	unsigned long                                      bIsTalking : 1;                                           // 0x0044(0x0004) (CPF_Const)
 	unsigned long                                      bIsInGameSession : 1;                                     // 0x0044(0x0004) (CPF_Const)
 	unsigned long                                      bIsPlayingThisGame : 1;                                   // 0x0044(0x0004) (CPF_Const)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlinePartyMember.SessionId
+	__int64                                     SessionId;                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlinePartyMember.SessionId
 	int                                                Data1;                                                    // 0x0050(0x0004) (CPF_Const)
 	int                                                Data2;                                                    // 0x0054(0x0004) (CPF_Const)
 	int                                                Data3;                                                    // 0x0058(0x0004) (CPF_Const)
@@ -7294,7 +7294,7 @@ struct FAchievementDetails
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0045(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.ChallengeWindowBegin
 	unsigned char                                      UnknownData01[0x8];                                       // 0x0050(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.ChallengeWindowEnd
 	struct FString                                     DeepLink;                                                 // 0x0058(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.EstimatedUnlockTime
+	__int64                                      EstimatedUnlockTime;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.EstimatedUnlockTime
 	unsigned long                                      bIsRevoked : 1;                                           // 0x006C(0x0004) (CPF_Const)
 	TEnumAsByte<EAchievementParticipationType>         ParticipationType;                                        // 0x0070(0x0001) (CPF_Const)
 	TArray<struct FString>                             PlatformsAvailableOn;                                     // 0x0074(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -8066,7 +8066,7 @@ struct FServerResponseLine
 // 0x0009
 struct FUniqueLobbyId
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
+	__int64                                    Uid;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0008(0x0001)
 };
 
@@ -8113,7 +8113,7 @@ struct FSocialPostLinkInfo : public FSocialPostImageInfo
 // 0x0094
 struct FDownloadedWorkshopData
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.DownloadedWorkshopData.ItemID
+	__int64                                      ItemID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.DownloadedWorkshopData.ItemID
 	struct FString                                     Title;                                                    // 0x0008(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FString                                     AuthorName;                                               // 0x0014(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FUniqueNetId                                AuthorNetID;                                              // 0x0020(0x0030)
@@ -8152,9 +8152,9 @@ struct FMarketplaceInventoryItem
 	int                                                ConsumableBalance;                                        // 0x0010(0x0004) (CPF_Const)
 	int                                                TitleId;                                                  // 0x0014(0x0004) (CPF_Const)
 	TArray<struct FString>                             ContainerIds;                                             // 0x0018(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0024(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.StartDate
-	unsigned char                                      UnknownData01[0x8];                                       // 0x002C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.EndDate
-	unsigned char                                      UnknownData02[0x8];                                       // 0x0034(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.RightsObtainedDate
+	__int64                                      StartDate;                                       // 0x0024(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.StartDate
+	__int64										 EndDate;                                       // 0x002C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.EndDate
+	__int64                                      RightsObtainedDate;                                       // 0x0034(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.RightsObtainedDate
 	struct FString                                     URL;                                                      // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     ConsumableUrl;                                            // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
 };
@@ -8197,7 +8197,7 @@ struct FMarketplaceProductDetails
 	TEnumAsByte<EMediaItemType>                        MediaItemType;                                            // 0x000C(0x0001) (CPF_Const)
 	struct FString                                     ProductName;                                              // 0x0010(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     ProductID;                                                // 0x001C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceProductDetails.ReleaseDate
+	__int64                                      ReleaseDate;                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceProductDetails.ReleaseDate
 	struct FString                                     SandboxId;                                                // 0x0030(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	int                                                TitleId;                                                  // 0x003C(0x0004) (CPF_Const)
 	TArray<struct FMarketplaceProductImage>            Images;                                                   // 0x0040(0x000C) (CPF_Const, CPF_NeedCtorLink)

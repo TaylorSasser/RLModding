@@ -6807,7 +6807,7 @@ public:
 class UDateTime : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.DateTime.EpochTime
+	__int64                                     EpochTime;                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.DateTime.EpochTime
 	int                                                Year;                                                     // 0x0044(0x0004) (CPF_DataBinding)
 	int                                                Month;                                                    // 0x0048(0x0004) (CPF_DataBinding)
 	int                                                Day;                                                      // 0x004C(0x0004) (CPF_DataBinding)
@@ -31013,7 +31013,7 @@ public:
 	TArray<float>                                      CachedStreamingTextureFactors;                            // 0x03BC(0x000C) (CPF_Const, CPF_Native)
 	float                                              StreamingDistanceMultiplier;                              // 0x03C8(0x0004) (CPF_Edit, CPF_Const)
 	int                                                ReleaseResourcesFence;                                    // 0x03CC(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	unsigned char                                      UnknownData01[0x8];                                       // 0x03D0(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.SkeletalMesh.SkelMeshRUID
+	__int64                                      SkelMeshRUID;                                       // 0x03D0(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.SkeletalMesh.SkelMeshRUID
 	unsigned long                                      bUseClothingAssetMaterial : 1;                            // 0x03D8(0x0004) (CPF_Edit, CPF_Const)
 
 	static UClass* StaticClass()

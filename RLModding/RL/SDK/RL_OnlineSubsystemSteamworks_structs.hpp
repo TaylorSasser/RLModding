@@ -88,7 +88,7 @@ struct FWorkshopItemData
 	struct FString                                     AddPairs;                                                 // 0x0048(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     RemovePairs;                                              // 0x0054(0x000C) (CPF_NeedCtorLink)
 	int                                                Visibility;                                               // 0x0060(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
+	__int64                                     ItemID;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
 	unsigned long                                      bIsUploading : 1;                                         // 0x006C(0x0004)
 	unsigned char                                      UnknownData01[0x8];                                       // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.UpdateHandle
 };

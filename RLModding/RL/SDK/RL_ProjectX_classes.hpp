@@ -1691,7 +1691,7 @@ public:
 	struct FPointer                                    VfTable_FTickableObject;                                  // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 	struct FPointer                                    LanBeacon;                                                // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                LanAnnouncePort;                                          // 0x0050(0x0004) (CPF_Const, CPF_Config)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0054(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanBeacon_X.QueryNonce
+	__int64                                     QueryNonce;                                       // 0x0054(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanBeacon_X.QueryNonce
 	TEnumAsByte<ELanBeaconState>                       BeaconState;                                              // 0x005C(0x0001) (CPF_Const)
 	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x0060(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	int                                                MaxPacketSize;                                            // 0x0064(0x0004) (CPF_Const)
@@ -3107,7 +3107,7 @@ public:
 class UOnlineGameDedicatedServer_X : public UOnlineGameServer_X
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
+	__int64                                      GameServerID;                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
 	struct FString                                     GameServerHost;                                           // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UOnlineGameStats_X*                          GameStats;                                                // 0x00FC(0x0004) (CPF_Transient)
 	class UOnlineGameDedicatedServerRegistration_X*    Registration;                                             // 0x0100(0x0004) (CPF_Edit)
@@ -3494,7 +3494,7 @@ public:
 	class URPC_LoginAuthPlayer_X*                      LoginRPC;                                                 // 0x006C(0x0004) (CPF_Transient)
 	struct FUniqueNetId                                LoggedInPlayerId;                                         // 0x0070(0x0030) (CPF_Transient)
 	struct FString                                     LoggedInPlayerName;                                       // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00AC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlinePlayerAuthentication_X.PlayerUID
+	__int64                                     PlayerUID;                                       // 0x00AC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlinePlayerAuthentication_X.PlayerUID
 	struct FString                                     Platform;                                                 // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bLoggedIn : 1;                                            // 0x00C0(0x0004) (CPF_Const, CPF_Transient)
 	unsigned long                                      bPendingLoginRequest : 1;                                 // 0x00C0(0x0004) (CPF_Transient)
@@ -5344,7 +5344,7 @@ public:
 	int                                                ReplicatedGamePlaylist;                                   // 0x024C(0x0004) (CPF_Net, CPF_Transient)
 	int                                                ReplicatedGameMutatorIndex;                               // 0x0250(0x0004) (CPF_Net, CPF_Transient)
 	struct FReplicatedReservationData                  Reservations[0x8];                                        // 0x0254(0x0040) (CPF_Net, CPF_Transient, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0454(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.GRI_X.GameServerID
+	__int64                                     GameServerID;                                       // 0x0454(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.GRI_X.GameServerID
 	unsigned long                                      bGameStarted : 1;                                         // 0x045C(0x0004) (CPF_Net, CPF_Transient)
 	unsigned long                                      bGameEnded : 1;                                           // 0x045C(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x0460(0x0010) (CPF_NeedCtorLink)
@@ -5390,7 +5390,7 @@ public:
 class ULanMessage_X : public UOnlineMessage_X
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanMessage_X.Nonce
+	__int64                                      Nonce;                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanMessage_X.Nonce
 
 	static UClass* StaticClass()
 	{
@@ -6210,7 +6210,7 @@ public:
 	unsigned long                                      bTrialEnabled : 1;                                        // 0x0060(0x0004) (CPF_Transient)
 	unsigned long                                      bPsyNetTrialDataSet : 1;                                  // 0x0060(0x0004) (CPF_Transient)
 	int                                                MinutesRemaining;                                         // 0x0064(0x0004) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0068(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameTrial_X.LastPlayedTime
+	__int64                                      LastPlayedTime;                                       // 0x0068(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameTrial_X.LastPlayedTime
 	int                                                SecondsPlayed;                                            // 0x0070(0x0004) (CPF_Transient)
 	struct FScriptDelegate                             __EventUpdated__Delegate;                                 // 0x0074(0x0010) (CPF_NeedCtorLink)
 
@@ -7797,7 +7797,7 @@ public:
 	TArray<struct FString>                             Regions;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
 	TArray<int>                                        Playlists;                                                // 0x00AC(0x000C) (CPF_NeedCtorLink)
 	int                                                SecondsSearching;                                         // 0x00B8(0x0004)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00BC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_StartMatchmaking_X.CurrentServerId
+	__int64                                      CurrentServerId;                                       // 0x00BC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_StartMatchmaking_X.CurrentServerId
 	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x00C4(0x0004)
 	TArray<struct FUniqueNetId>                        PartyMembers;                                             // 0x00C8(0x000C) (CPF_NeedCtorLink)
 	float                                              BannedSecondsRemaining;                                   // 0x00D4(0x0004) (CPF_Transient)
@@ -8166,7 +8166,7 @@ public:
 	int                                                ReconnectTimeoutSeconds;                                  // 0x0058(0x0004) (CPF_Edit)
 	TArray<int>                                        SkillTierToSeasonRewardLevel;                             // 0x005C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<int>                                        SeasonRewardRequiredWinsPerLevel;                         // 0x0068(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0074(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RankedConfig_X.SeasonEndTimeSeconds
+	__int64                                      SeasonEndTimeSeconds;                                       // 0x0074(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RankedConfig_X.SeasonEndTimeSeconds
 
 	static UClass* StaticClass()
 	{
@@ -9163,8 +9163,8 @@ public:
 	struct FString                                     StartTime;                                                // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	struct FString                                     EndTime;                                                  // 0x0054(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bChangeRankedIcons : 1;                                   // 0x0060(0x0004) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.StartTimeSeconds
-	unsigned char                                      UnknownData01[0x8];                                       // 0x006C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.EndTimeSeconds
+	__int64                                      StartTimeSeconds;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.StartTimeSeconds
+	__int64                                      EndTimeSeconds;                                       // 0x006C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.EndTimeSeconds
 
 	static UClass* StaticClass()
 	{
@@ -9290,7 +9290,7 @@ class URPC_GetTrialData_X : public URPC_X
 public:
 	int                                                MinutesRemaining;                                         // 0x00A0(0x0004) (CPF_Transient)
 	int                                                AdditionalMinutesRemaining;                               // 0x00A4(0x0004) (CPF_Transient)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_GetTrialData_X.LastPlayedTime
+	__int64                                     LastPlayedTime;                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_GetTrialData_X.LastPlayedTime
 
 	static UClass* StaticClass()
 	{
