@@ -1,6 +1,12 @@
 #pragma once
+#include <Windows.h> 
 #include "functional"
+#include "../Libs/detours.h"
+#include "../Utils/Pattern/TFL_HT.h"
+#include "../Utils/Utils.h"
+#include "../Utils/SDKDefines.h"
 #include "../RL/SDK.hpp"
+
 
 
 class FunctionHook {

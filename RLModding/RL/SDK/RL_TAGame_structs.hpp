@@ -11,7 +11,8 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Constants
 //---------------------------------------------------------------------------
-
+#undef AF_MAX
+#undef PF_MAX
 #define CONST_UnrealUnitsPerMeter                                100
 #define CONST_MaxLoadoutSets                                     50
 #define CONST_BoostLevel_Activated                               0.0f

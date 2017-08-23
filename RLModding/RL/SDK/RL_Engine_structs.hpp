@@ -11,7 +11,8 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Constants
 //---------------------------------------------------------------------------
-
+#undef AF_MAX
+#undef PF_MAX
 #define CONST_MINFLOORZ                                          0.7
 #define CONST_SecondsInMonth                                     2629743
 #define CONST_ACTORMAXSTEPHEIGHT                                 35.0

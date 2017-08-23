@@ -1,6 +1,5 @@
 #include "TestClass.h"
 #include "../../Utils/Utils.h"
-#include <functional>
 #include "../../DrawManager/DrawManager.hpp"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}

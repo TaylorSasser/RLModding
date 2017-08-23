@@ -5,6 +5,7 @@
 #include "../Libs/ImGui/DX9/imgui_impl_dx9.h"
 #include "../Interfaces/Interfaces.h"
 #include "../Mods/ModBase.h"
+#include "../Core/Core.h"
 #include <iostream>
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
@@ -112,22 +113,9 @@ void InGameGUI::Render() {
 		
 		ImGui::EndMainMenuBar();
 	}
-
-	// Draws the actual windows outside of the menu loop cause DUH
-
-	//ImGui::Begin("Enabled Mods", 0, ImVec2(500, 400), 0.75f);
-	//int i = 0;
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {
-			//ImGui::Text(mods.first.c_str());
 			mods.second->DrawMenu();
-			//mGui::PushID(i);
-			//if (ImGui::Button("Disable", ImVec2(70,25))) {
-				//mods.second->Toggle();
-			//}
-			//ImGui::PopID();
-			//ImGui::Separator();
-			//i++;
 		}
 	}
 	//ImGui::End();
@@ -146,7 +134,7 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 		Interfaces::FunctionHandler().RemoveDetours();
 		Interfaces::DX9Handler().RemoveHook();
 		Interfaces::KeyboardHandler().RestoreKeyboard();
-		FreeLibraryAndExitThread(GetCurrentThread(), 0);
+		FreeLibraryAndExitThread(LoadLibraryA("RLModding"), 0);
 	}
 	return isGUIOpen;
 }
