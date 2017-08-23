@@ -5,7 +5,7 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
-	std::cout << "Getting Security Key Info...\n";
+	/*std::cout << "Getting Security Key Info...\n";
 	URPC_GenerateKeys_X* RPC;
 	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
 	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
@@ -27,7 +27,7 @@ void ModdedLanServer::onEnable() {
 	if (InstanceStorage::Engine()) {
 		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
 		std::cout << "Set Security Key Info!\n";
-	}
+	}*/
 }
 
 void ModdedLanServer::onDisable() {

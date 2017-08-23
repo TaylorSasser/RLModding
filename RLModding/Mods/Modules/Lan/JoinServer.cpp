@@ -6,7 +6,7 @@ JoinServer::JoinServer(std::string name, int key, Category category, GameState g
 JoinServer::~JoinServer(){}
 
 void JoinServer::onEnable() {
-	std::cout << "Getting Security Key Info...\n";
+	/*std::cout << "Getting Security Key Info...\n";
 	URPC_GenerateKeys_X* RPC;
 	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
 	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
@@ -28,7 +28,7 @@ void JoinServer::onEnable() {
 	if (InstanceStorage::Engine()) {
 		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
 		std::cout << "Set Security Key Info!\n";
-	}
+	}*/
 
 }
 
