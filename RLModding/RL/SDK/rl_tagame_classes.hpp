@@ -9130,7 +9130,7 @@ public:
 
 // State TAGame.AIController_TA.DoingNothing
 // 0x0000
-class SAIController_TA_DoingNothing
+class SAIController_TA_DoingNothing : public UState
 {
 public:
 
@@ -9344,7 +9344,7 @@ public:
 
 // State TAGame.AssetProfiler_TA.Recording
 // 0x0000
-class SAssetProfiler_TA_Recording
+class SAssetProfiler_TA_Recording : public UState
 {
 public:
 
@@ -9714,7 +9714,7 @@ public:
 
 // State TAGame.BTAction_Jump.StartJump
 // 0x0000
-class SBTAction_Jump_StartJump
+class SBTAction_Jump_StartJump : public UState
 {
 public:
 
@@ -9731,7 +9731,7 @@ public:
 
 // State TAGame.BTAction_Jump.Jumping
 // 0x0000
-class SBTAction_Jump_Jumping
+class SBTAction_Jump_Jumping : public UState
 {
 public:
 
@@ -9788,7 +9788,7 @@ public:
 
 // State TAGame.BTAction_DodgeHit.StopJump
 // 0x0000
-class SBTAction_DodgeHit_StopJump
+class SBTAction_DodgeHit_StopJump : public UState
 {
 public:
 
@@ -9805,7 +9805,7 @@ public:
 
 // State TAGame.BTAction_DodgeHit.StartDodge
 // 0x0000
-class SBTAction_DodgeHit_StartDodge
+class SBTAction_DodgeHit_StartDodge : public UState
 {
 public:
 
@@ -9825,7 +9825,7 @@ public:
 
 // State TAGame.BTAction_DodgeHit.StopDodge
 // 0x0000
-class SBTAction_DodgeHit_StopDodge
+class SBTAction_DodgeHit_StopDodge : public UState
 {
 public:
 
@@ -11996,7 +11996,7 @@ public:
 
 // State TAGame.CarComponent_TA.Disabled
 // 0x0000
-class SCarComponent_TA_Disabled
+class SCarComponent_TA_Disabled : public UState
 {
 public:
 
@@ -12014,7 +12014,7 @@ public:
 
 // State TAGame.CarComponent_TA.Inactive
 // 0x0000
-class SCarComponent_TA_Inactive
+class SCarComponent_TA_Inactive : public UState
 {
 public:
 
@@ -12029,7 +12029,7 @@ public:
 
 // State TAGame.CarComponent_TA.Active
 // 0x0000
-class SCarComponent_TA_Active
+class SCarComponent_TA_Active : public UState
 {
 public:
 
@@ -13354,7 +13354,7 @@ public:
 
 // State TAGame.GameEvent_TA.NoSpawnState
 // 0x0000
-class SGameEvent_TA_NoSpawnState
+class SGameEvent_TA_NoSpawnState : public UState
 {
 public:
 
@@ -13372,7 +13372,7 @@ public:
 
 // State TAGame.GameEvent_TA.ActiveBase
 // 0x0000
-class SGameEvent_TA_ActiveBase
+class SGameEvent_TA_ActiveBase : public UState
 {
 public:
 
@@ -13584,7 +13584,7 @@ public:
 
 // State TAGame.GameEvent_Lobby_TA.PlayWithBall
 // 0x0000
-class SGameEvent_Lobby_TA_PlayWithBall
+class SGameEvent_Lobby_TA_PlayWithBall : public UState
 {
 public:
 
@@ -13808,8 +13808,8 @@ public:
 
 // State TAGame.GameEvent_Soccar_TA.WaitingForPlayers
 // 0x0000
-class SGameEvent_Soccar_TA_WaitingForPlayers
-{
+class SGameEvent_Soccar_TA_WaitingForPlayers : public UState
+{ 
 public:
 
 	static UClass* StaticClass()
@@ -13856,7 +13856,7 @@ public:
 
 // State TAGame.GameEvent_Soccar_TA.PreMatchLobby
 // 0x0000
-class SGameEvent_Soccar_TA_PreMatchLobby
+class SGameEvent_Soccar_TA_PreMatchLobby : public UState
 {
 public:
 
@@ -14427,7 +14427,7 @@ public:
 
 // State TAGame.GameEvent_Season_TA.SeasonIntro
 // 0x0000
-class SGameEvent_Season_TA_SeasonIntro
+class SGameEvent_Season_TA_SeasonIntro : public UState
 {
 public:
 
@@ -14639,7 +14639,7 @@ public:
 
 // State TAGame.GameEvent_Tutorial_TA.Intro
 // 0x0000
-class SGameEvent_Tutorial_TA_Intro
+class SGameEvent_Tutorial_TA_Intro : public UState
 {
 public:
 
@@ -14675,7 +14675,7 @@ public:
 
 // State TAGame.GameEvent_Tutorial_TA.StartGame
 // 0x0000
-class SGameEvent_Tutorial_TA_StartGame
+class SGameEvent_Tutorial_TA_StartGame : public UState
 {
 public:
 
@@ -17496,8 +17496,8 @@ public:
 
 // State TAGame.GFxData_ServerBrowser_TA.Searching
 // 0x0000
-class SGFxData_ServerBrowser_TA_Searching
-{
+class SGFxData_ServerBrowser_TA_Searching : public UState
+{ 
 public:
 
 	static UClass* StaticClass()
@@ -17515,7 +17515,7 @@ public:
 
 // State TAGame.GFxData_ServerBrowser_TA.Joining
 // 0x0000
-class SGFxData_ServerBrowser_TA_Joining
+class SGFxData_ServerBrowser_TA_Joining : public UState
 {
 public:
 
@@ -19174,7 +19174,7 @@ public:
 
 // State TAGame.OnlineGameDedicatedServer_TA.Active
 // 0x0000
-class SOnlineGameDedicatedServer_TA_Active
+class SOnlineGameDedicatedServer_TA_Active : public UState
 {
 public:
 
@@ -19192,7 +19192,7 @@ public:
 
 // State TAGame.OnlineGameDedicatedServer_TA.EndGame
 // 0x0000
-class SOnlineGameDedicatedServer_TA_EndGame
+class SOnlineGameDedicatedServer_TA_EndGame : public UState
 {
 public:
 
@@ -19210,7 +19210,7 @@ public:
 
 // State TAGame.OnlineGameDedicatedServer_TA.PostGameLobby
 // 0x0000
-class SOnlineGameDedicatedServer_TA_PostGameLobby
+class SOnlineGameDedicatedServer_TA_PostGameLobby : public UState
 {
 public:
 
@@ -19402,7 +19402,7 @@ public:
 
 // State TAGame.OnlineGameLanServer_TA.EndGame
 // 0x0000
-class SOnlineGameLanServer_TA_EndGame
+class SOnlineGameLanServer_TA_EndGame : public UState
 {
 public:
 
@@ -19761,7 +19761,7 @@ public:
 
 // State TAGame.PlayerControllerBase_TA.Spectating_TA
 // 0x0000
-class SPlayerControllerBase_TA_Spectating_TA
+class SPlayerControllerBase_TA_Spectating_TA : public UState
 {
 public:
 
@@ -20134,7 +20134,7 @@ public:
 
 // State TAGame.PlayerController_TA.Driving
 // 0x0000
-class SPlayerController_TA_Driving
+class SPlayerController_TA_Driving : public UState
 {
 public:
 
@@ -20152,7 +20152,7 @@ public:
 
 // State TAGame.PlayerController_TA.RecordedDriving
 // 0x0000
-class SPlayerController_TA_RecordedDriving
+class SPlayerController_TA_RecordedDriving : public UState
 {
 public:
 
@@ -20186,7 +20186,7 @@ public:
 
 // State TAGame.PlayerController_TA.FollowPlayer_TA
 // 0x0000
-class SPlayerController_TA_FollowPlayer_TA
+class SPlayerController_TA_FollowPlayer_TA : public UState
 {
 public:
 
@@ -20377,7 +20377,7 @@ public:
 
 // State TAGame.PlayerController_TA.Editing
 // 0x0018
-class SPlayerController_TA_Editing
+class SPlayerController_TA_Editing : public UState
 {
 public:
 	struct FVector                                     LastEditorPawnLocation;                                   // 0x0000(0x000C)
@@ -21009,7 +21009,7 @@ public:
 
 // State TAGame.ReplayDirector_TA.Recording
 // 0x0000
-class SReplayDirector_TA_Recording
+class SReplayDirector_TA_Recording : public UState
 {
 public:
 
@@ -21028,7 +21028,7 @@ public:
 
 // State TAGame.ReplayDirector_TA.Playing
 // 0x0000
-class SReplayDirector_TA_Playing
+class SReplayDirector_TA_Playing : public UState
 {
 public:
 
@@ -21051,7 +21051,7 @@ public:
 
 // State TAGame.ReplayDirector_TA.PlayingHighlights
 // 0x000C
-class SReplayDirector_TA_PlayingHighlights
+class SReplayDirector_TA_PlayingHighlights : public UState
 {
 public:
 	struct FName                                       CarName;                                                  // 0x0000(0x0008)
@@ -21916,7 +21916,7 @@ public:
 
 // State TAGame.StatFactory_TA.Inactive
 // 0x0000
-class SStatFactory_TA_Inactive
+class SStatFactory_TA_Inactive : public UState
 {
 public:
 
@@ -21931,7 +21931,7 @@ public:
 
 // State TAGame.StatFactory_TA.Active
 // 0x0000
-class SStatFactory_TA_Active
+class SStatFactory_TA_Active : public UState
 {
 public:
 
@@ -22062,7 +22062,7 @@ public:
 
 // State TAGame.VehiclePickup_TA.Idle
 // 0x0000
-class SVehiclePickup_TA_Idle
+class SVehiclePickup_TA_Idle : public UState
 {
 public:
 
@@ -22081,7 +22081,7 @@ public:
 
 // State TAGame.VehiclePickup_TA.PickedUp
 // 0x0000
-class SVehiclePickup_TA_PickedUp
+class SVehiclePickup_TA_PickedUp : public UState
 {
 public:
 
@@ -22179,7 +22179,7 @@ public:
 
 // State TAGame.VoteActor_TA.Finished
 // 0x0000
-class SVoteActor_TA_Finished
+class SVoteActor_TA_Finished : public UState
 {
 public:
 
@@ -22325,7 +22325,7 @@ public:
 
 // State TAGame.EngineAudioPreviewBase_TA.Previewing
 // 0x0000
-class SEngineAudioPreviewBase_TA_Previewing
+class SEngineAudioPreviewBase_TA_Previewing : public UState
 {
 public:
 
@@ -22343,7 +22343,7 @@ public:
 
 // State TAGame.EngineAudioPreviewBase_TA.Warmup
 // 0x0000
-class SEngineAudioPreviewBase_TA_Warmup
+class SEngineAudioPreviewBase_TA_Warmup : public UState
 {
 public:
 
@@ -22538,7 +22538,7 @@ public:
 
 // State TAGame.CountdownObject_TA.Countdown
 // 0x0000
-class SCountdownObject_TA_Countdown
+class SCountdownObject_TA_Countdown : public UState
 {
 public:
 
@@ -22557,7 +22557,7 @@ public:
 
 // State TAGame.CountdownObject_TA.Idle
 // 0x0000
-class SCountdownObject_TA_Idle
+class SCountdownObject_TA_Idle : public UState
 {
 public:
 
@@ -26480,7 +26480,7 @@ public:
 
 // State TAGame.InMapScoreboard_TA.Score
 // 0x0000
-class SInMapScoreboard_TA_Score
+class SInMapScoreboard_TA_Score : public UState
 {
 public:
 
@@ -26497,7 +26497,7 @@ public:
 
 // State TAGame.InMapScoreboard_TA.RoundActive
 // 0x0000
-class SInMapScoreboard_TA_RoundActive
+class SInMapScoreboard_TA_RoundActive : public UState
 {
 public:
 
@@ -26515,7 +26515,7 @@ public:
 
 // State TAGame.InMapScoreboard_TA.GoalScored
 // 0x0000
-class SInMapScoreboard_TA_GoalScored
+class SInMapScoreboard_TA_GoalScored : public UState
 {
 public:
 
@@ -26534,7 +26534,7 @@ public:
 
 // State TAGame.InMapScoreboard_TA.Countdown
 // 0x0000
-class SInMapScoreboard_TA_Countdown
+class SInMapScoreboard_TA_Countdown : public UState
 {
 public:
 
@@ -26552,7 +26552,7 @@ public:
 
 // State TAGame.InMapScoreboard_TA.Replay
 // 0x0000
-class SInMapScoreboard_TA_Replay
+class SInMapScoreboard_TA_Replay : public UState
 {
 public:
 

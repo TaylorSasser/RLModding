@@ -4841,7 +4841,7 @@ public:
 
 // State ProjectX.PlayerController_X.DebugMode
 // 0x0000
-class SPlayerController_X_DebugMode
+class SPlayerController_X_DebugMode : public UState
 {
 public:
 
@@ -4868,7 +4868,7 @@ public:
 
 // State ProjectX.PlayerController_X.Profiling
 // 0x0000
-class SPlayerController_X_Profiling
+class SPlayerController_X_Profiling : public UState
 {
 public:
 
@@ -4885,7 +4885,7 @@ public:
 
 // State ProjectX.DemoPC_X.Recording
 // 0x0000
-class SDemoPC_X_Recording
+class SDemoPC_X_Recording : public UState
 {
 public:
 
@@ -4902,7 +4902,7 @@ public:
 
 // State ProjectX.DemoPC_X.Playing
 // 0x0000
-class SDemoPC_X_Playing
+class SDemoPC_X_Playing : public UState
 {
 public:
 
@@ -5491,7 +5491,7 @@ public:
 
 // State ProjectX.MapRenderProfiler_X.LoadingMap
 // 0x0000
-class SMapRenderProfiler_X_LoadingMap
+class SMapRenderProfiler_X_LoadingMap : public UState
 {
 public:
 
@@ -5510,7 +5510,7 @@ public:
 
 // State ProjectX.MapRenderProfiler_X.FlythroughProfiling
 // 0x0000
-class SMapRenderProfiler_X_FlythroughProfiling
+class SMapRenderProfiler_X_FlythroughProfiling : public UState
 {
 public:
 
@@ -5528,7 +5528,7 @@ public:
 
 // State ProjectX.MapRenderProfiler_X.RenderProfiling
 // 0x0000
-class SMapRenderProfiler_X_RenderProfiling
+class SMapRenderProfiler_X_RenderProfiling : public UState
 {
 public:
 
@@ -6475,7 +6475,7 @@ public:
 
 // State ProjectX.OnlineGameDedicatedServer_X.Initializing
 // 0x0000
-class SOnlineGameDedicatedServer_X_Initializing
+class SOnlineGameDedicatedServer_X_Initializing : public UState
 {
 public:
 
@@ -6493,7 +6493,7 @@ public:
 
 // State ProjectX.OnlineGameDedicatedServer_X.Inactive
 // 0x0000
-class SOnlineGameDedicatedServer_X_Inactive
+class SOnlineGameDedicatedServer_X_Inactive : public UState
 {
 public:
 
@@ -6513,7 +6513,7 @@ public:
 
 // State ProjectX.OnlineGameDedicatedServer_X.StartingPrivateMatch
 // 0x0000
-class SOnlineGameDedicatedServer_X_StartingPrivateMatch
+class SOnlineGameDedicatedServer_X_StartingPrivateMatch : public UState
 {
 public:
 
@@ -6530,7 +6530,7 @@ public:
 
 // State ProjectX.OnlineGameDedicatedServer_X.BotTesting
 // 0x0000
-class SOnlineGameDedicatedServer_X_BotTesting
+class SOnlineGameDedicatedServer_X_BotTesting : public UState
 {
 public:
 
@@ -6734,7 +6734,7 @@ public:
 
 // State ProjectX.OnlineGameInvite_X.Joining
 // 0x0000
-class SOnlineGameInvite_X_Joining
+class SOnlineGameInvite_X_Joining : public UState
 {
 public:
 
@@ -6967,7 +6967,7 @@ public:
 
 // State ProjectX.OnlineGameJoinGame_X.JoiningBase
 // 0x0000
-class SOnlineGameJoinGame_X_JoiningBase
+class SOnlineGameJoinGame_X_JoiningBase : public UState
 {
 public:
 
@@ -7251,7 +7251,7 @@ public:
 
 // State ProjectX.OnlineGameLanBrowser_X.Searching
 // 0x0000
-class SOnlineGameLanBrowser_X_Searching
+class SOnlineGameLanBrowser_X_Searching : public UState
 {
 public:
 
@@ -7275,7 +7275,7 @@ public:
 
 // State ProjectX.OnlineGameLanBrowser_X.Joining
 // 0x0000
-class SOnlineGameLanBrowser_X_Joining
+class SOnlineGameLanBrowser_X_Joining : public UState
 {
 public:
 
@@ -7335,7 +7335,7 @@ public:
 
 // State ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting
 // 0x0000
-class SOnlineGameLanReservations_X_PrivateMatchStarting
+class SOnlineGameLanReservations_X_PrivateMatchStarting : public UState
 {
 public:
 
@@ -7355,7 +7355,7 @@ public:
 
 // State ProjectX.OnlineGameLanReservations_X.PrivateMatch
 // 0x0000
-class SOnlineGameLanReservations_X_PrivateMatch
+class SOnlineGameLanReservations_X_PrivateMatch : public UState
 {
 public:
 
@@ -7373,7 +7373,7 @@ public:
 
 // State ProjectX.OnlineGameLanServer_X.Initializing
 // 0x0000
-class SOnlineGameLanServer_X_Initializing
+class SOnlineGameLanServer_X_Initializing : public UState
 {
 public:
 
@@ -7390,7 +7390,7 @@ public:
 
 // State ProjectX.OnlineGameLanServer_X.Inactive
 // 0x0000
-class SOnlineGameLanServer_X_Inactive
+class SOnlineGameLanServer_X_Inactive : public UState
 {
 public:
 
@@ -7407,7 +7407,7 @@ public:
 
 // State ProjectX.OnlineGameLanServer_X.StartingPrivateMatch
 // 0x0000
-class SOnlineGameLanServer_X_StartingPrivateMatch
+class SOnlineGameLanServer_X_StartingPrivateMatch : public UState
 {
 public:
 
@@ -7424,7 +7424,7 @@ public:
 
 // State ProjectX.OnlineGameLanServer_X.Active
 // 0x0000
-class SOnlineGameLanServer_X_Active
+class SOnlineGameLanServer_X_Active : public UState
 {
 public:
 
@@ -7644,7 +7644,7 @@ public:
 
 // State ProjectX.OnlineGameMatchmakingBase_X.Searching
 // 0x0000
-class SOnlineGameMatchmakingBase_X_Searching
+class SOnlineGameMatchmakingBase_X_Searching : public UState
 {
 public:
 
@@ -7667,7 +7667,7 @@ public:
 
 // State ProjectX.OnlineGameMatchmakingBase_X.Joining
 // 0x0000
-class SOnlineGameMatchmakingBase_X_Joining
+class SOnlineGameMatchmakingBase_X_Joining : public UState
 {
 public:
 
@@ -8423,7 +8423,7 @@ public:
 
 // State ProjectX.OnlineGameReservations_X.PrivateMatchBase
 // 0x0000
-class SOnlineGameReservations_X_PrivateMatchBase
+class SOnlineGameReservations_X_PrivateMatchBase : public UState
 {
 public:
 
@@ -8499,7 +8499,7 @@ public:
 
 // State ProjectX.OnlineGameServerBrowser_X.Searching
 // 0x0000
-class SOnlineGameServerBrowser_X_Searching
+class SOnlineGameServerBrowser_X_Searching : public UState
 {
 public:
 
@@ -9053,7 +9053,7 @@ public:
 
 // State ProjectX.MatchRecorder_X.Finished
 // 0x0000
-class SMatchRecorder_X_Finished
+class SMatchRecorder_X_Finished : public UState
 {
 public:
 

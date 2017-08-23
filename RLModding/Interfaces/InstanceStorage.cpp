@@ -18,7 +18,7 @@ UWorld* InstanceStorage::World() {
 	return (UWorld*)m_UWorld;
 }
 TArray<ULevel*> InstanceStorage::Levels() {
-	return World()->Levels;
+	//return World()->Levels;
 }
 APlayerController_TA* InstanceStorage::PlayerController() {
 	return (APlayerController_TA*)m_PlayerController_TA;

@@ -33651,7 +33651,7 @@ public:
 
 // State Engine.Controller.Dead
 // 0x0000
-class SController_Dead
+class SController_Dead : public UState
 {
 public:
 
@@ -33673,7 +33673,7 @@ public:
 
 // State Engine.Controller.RoundEnded
 // 0x0000
-class SController_RoundEnded
+class SController_RoundEnded : public UState
 {
 public:
 
@@ -33826,7 +33826,7 @@ public:
 
 // State Engine.PlayerController.PlayerWalking
 // 0x0000
-class SPlayerController_PlayerWalking
+class SPlayerController_PlayerWalking : public UState
 {
 public:
 
@@ -33850,7 +33850,7 @@ public:
 
 // State Engine.PlayerController.PlayerClimbing
 // 0x0000
-class SPlayerController_PlayerClimbing
+class SPlayerController_PlayerClimbing : public UState
 {
 public:
 
@@ -33874,7 +33874,7 @@ public:
 
 // State Engine.PlayerController.PlayerDriving
 // 0x0000
-class SPlayerController_PlayerDriving
+class SPlayerController_PlayerDriving : public UState
 {
 public:
 
@@ -33897,7 +33897,7 @@ public:
 
 // State Engine.PlayerController.PlayerSwimming
 // 0x0000
-class SPlayerController_PlayerSwimming
+class SPlayerController_PlayerSwimming : public UState
 {
 public:
 
@@ -33922,7 +33922,7 @@ public:
 
 // State Engine.PlayerController.PlayerFlying
 // 0x0000
-class SPlayerController_PlayerFlying
+class SPlayerController_PlayerFlying : public UState
 {
 public:
 
@@ -33943,7 +33943,7 @@ public:
 
 // State Engine.PlayerController.BaseSpectating
 // 0x0000
-class SPlayerController_BaseSpectating
+class SPlayerController_BaseSpectating : public UState
 {
 public:
 
@@ -34245,7 +34245,7 @@ public:
 
 // State Engine.AIController.ScriptedMove
 // 0x0000
-class SAIController_ScriptedMove
+class SAIController_ScriptedMove : public UState
 {
 public:
 
@@ -34263,7 +34263,7 @@ public:
 
 // State Engine.AIController.ScriptedRouteMove
 // 0x0000
-class SAIController_ScriptedRouteMove
+class SAIController_ScriptedRouteMove : public UState
 {
 public:
 
@@ -34280,7 +34280,7 @@ public:
 
 // State Engine.Volume.AssociatedTouch
 // 0x0000
-class SVolume_AssociatedTouch
+class SVolume_AssociatedTouch : public UState
 {
 public:
 
@@ -34353,7 +34353,7 @@ public:
 
 // State Engine.AutoTestManager.TravelTheWorld
 // 0x0000
-class SAutoTestManager_TravelTheWorld
+class SAutoTestManager_TravelTheWorld : public UState
 {
 public:
 
@@ -34373,7 +34373,7 @@ public:
 
 // State Engine.AutoTestManager.SentinelHandleCauseEventCommand
 // 0x0000
-class SAutoTestManager_SentinelHandleCauseEventCommand
+class SAutoTestManager_SentinelHandleCauseEventCommand : public UState
 {
 public:
 
@@ -34593,7 +34593,7 @@ public:
 
 // State Engine.DroppedPickup.Pickup
 // 0x0000
-class SDroppedPickup_Pickup
+class SDroppedPickup_Pickup : public UState
 {
 public:
 
@@ -34791,7 +34791,7 @@ public:
 
 // State Engine.GameInfo.PendingMatch
 // 0x0000
-class SGameInfo_PendingMatch
+class SGameInfo_PendingMatch : public UState
 {
 public:
 
@@ -34816,7 +34816,7 @@ public:
 
 // State Engine.GameInfo.TravelTheWorld
 // 0x0000
-class SGameInfo_TravelTheWorld
+class SGameInfo_TravelTheWorld : public UState
 {
 public:
 
@@ -34884,7 +34884,7 @@ public:
 
 // State Engine.KActorFromStatic.Initializing
 // 0x0000
-class SKActorFromStatic_Initializing
+class SKActorFromStatic_Initializing : public UState
 {
 public:
 
@@ -34951,7 +34951,7 @@ public:
 
 // State Engine.Pawn.Dying
 // 0x0000
-class SPawn_Dying
+class SPawn_Dying : public UState
 {
 public:
 
@@ -35160,7 +35160,7 @@ public:
 
 // State Engine.PickupFactory.Pickup
 // 0x0000
-class SPickupFactory_Pickup
+class SPickupFactory_Pickup : public UState
 {
 public:
 
@@ -35183,7 +35183,7 @@ public:
 
 // State Engine.PickupFactory.WaitingForMatch
 // 0x0000
-class SPickupFactory_WaitingForMatch
+class SPickupFactory_WaitingForMatch : public UState
 {
 public:
 
@@ -35202,7 +35202,7 @@ public:
 
 // State Engine.PickupFactory.Sleeping
 // 0x0000
-class SPickupFactory_Sleeping
+class SPickupFactory_Sleeping : public UState
 {
 public:
 
@@ -35223,7 +35223,7 @@ public:
 
 // State Engine.PickupFactory.Disabled
 // 0x0000
-class SPickupFactory_Disabled
+class SPickupFactory_Disabled : public UState
 {
 public:
 
@@ -35861,7 +35861,7 @@ public:
 
 // State Engine.Weapon.Inactive
 // 0x0000
-class SWeapon_Inactive
+class SWeapon_Inactive : public UState
 {
 public:
 
@@ -35882,7 +35882,7 @@ public:
 
 // State Engine.Weapon.Active
 // 0x0000
-class SWeapon_Active
+class SWeapon_Active : public UState
 {
 public:
 
@@ -35903,7 +35903,7 @@ public:
 
 // State Engine.Weapon.WeaponFiring
 // 0x0000
-class SWeapon_WeaponFiring
+class SWeapon_WeaponFiring : public UState
 {
 public:
 
@@ -35923,7 +35923,7 @@ public:
 
 // State Engine.Weapon.WeaponEquipping
 // 0x0000
-class SWeapon_WeaponEquipping
+class SWeapon_WeaponEquipping : public UState
 {
 public:
 
@@ -35943,7 +35943,7 @@ public:
 
 // State Engine.Weapon.WeaponPuttingDown
 // 0x0000
-class SWeapon_WeaponPuttingDown
+class SWeapon_WeaponPuttingDown : public UState
 {
 public:
 
@@ -35964,7 +35964,7 @@ public:
 
 // State Engine.Weapon.PendingClientWeaponSet
 // 0x0000
-class SWeapon_PendingClientWeaponSet
+class SWeapon_PendingClientWeaponSet : public UState
 {
 public:
 

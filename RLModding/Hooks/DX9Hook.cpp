@@ -60,7 +60,7 @@ void DX9Hook::InitGUI() {
 
 void DX9Hook::RemoveHook() {
 	DetourRemove((PBYTE)pD3D9EndScene, (PBYTE)Hooked_EndScene);
-	DetourRemove((PBYTE)pD3D9HookedReset,(PYBTE)Hooked_Reset);
+	DetourRemove((PBYTE)pD3D9HookedReset, (PBYTE)Hooked_Reset);
 }
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
 	ImGui_ImplDX9_InvalidateDeviceObjects();

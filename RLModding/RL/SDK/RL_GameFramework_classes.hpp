@@ -2514,7 +2514,7 @@ public:
 
 // State GameFramework.GameAICommand.DebugState
 // 0x0000
-class SGameAICommand_DebugState
+class SGameAICommand_DebugState : public UState
 {
 public:
 
@@ -2536,7 +2536,7 @@ public:
 
 // State GameFramework.GameAICommand.DelayFailure
 // 0x0000
-class SGameAICommand_DelayFailure
+class SGameAICommand_DelayFailure : public UState
 {
 public:
 
@@ -2551,7 +2551,7 @@ public:
 
 // State GameFramework.GameAICommand.DelaySuccess
 // 0x0000
-class SGameAICommand_DelaySuccess
+class SGameAICommand_DelaySuccess : public UState
 {
 public:
 
@@ -2597,7 +2597,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_MoveDown
+class SGameAICmd_Hover_MoveToGoal_MoveDown : public UState
 {
 public:
 
@@ -2614,7 +2614,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal.Moving
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_Moving
+class SGameAICmd_Hover_MoveToGoal_Moving : public UState
 {
 public:
 
@@ -2694,7 +2694,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown
+class SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown : public UState
 {
 public:
 
@@ -2711,7 +2711,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Moving
+class SGameAICmd_Hover_MoveToGoal_Mesh_Moving : public UState
 {
 public:
 
@@ -2728,7 +2728,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs
+class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs : public UState
 {
 public:
 
@@ -2746,7 +2746,7 @@ public:
 
 // State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint
 // 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint
+class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint : public UState
 {
 public:
 
@@ -2764,7 +2764,7 @@ public:
 
 // State GameFramework.GameAIController.DebugState
 // 0x0000
-class SGameAIController_DebugState
+class SGameAIController_DebugState : public UState
 {
 public:
 
@@ -2817,7 +2817,7 @@ public:
 
 // State GameFramework.GameCrowdReplicationActor.ReceivingReplication
 // 0x0000
-class SGameCrowdReplicationActor_ReceivingReplication
+class SGameCrowdReplicationActor_ReceivingReplication : public UState
 {
 public:
 
@@ -2906,7 +2906,7 @@ public:
 
 // State GameFramework.GameKActorSpawnableEffect.ScalingDown
 // 0x0000
-class SGameKActorSpawnableEffect_ScalingDown
+class SGameKActorSpawnableEffect_ScalingDown : public UState
 {
 public:
 

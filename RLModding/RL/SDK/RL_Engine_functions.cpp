@@ -117078,7 +117078,7 @@ void SWeapon_PendingClientWeaponSet::EndState(const struct FName& NextStateName)
 
 	auto flags = fn->FunctionFlags;
 
-	UObject::ProcessEvent(fn, &params);
+	UObject().ProcessEvent(fn, &params);
 
 	fn->FunctionFlags = flags;
 }

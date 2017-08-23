@@ -4126,7 +4126,7 @@ struct FSceNpId
 // 0x002E
 struct FUniqueNetId
 {
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
+	__int64											Uid;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
 	struct FSceNpId                                    NpId;                                                     // 0x0008(0x0024)
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x002C(0x0001)
 	unsigned char                                      SplitscreenID;                                            // 0x002D(0x0001)
