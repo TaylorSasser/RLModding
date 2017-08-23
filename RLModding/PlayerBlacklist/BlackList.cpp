@@ -23,9 +23,9 @@ void BlackList::Check() {
 //Get the user's steam id
 __int64 BlackList::GetPlayerId() {
 	UOnlineSubsystemSteamworks* steam = reinterpret_cast<UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(UOnlineSubsystemSteamworks::StaticClass()));
-	if (steam)
+	if (steam) {
 		return steam->LoggedInPlayerId.Uid;
-	return 0u;
+	}
 }
 
 bool BlackList::isBlacklisted() {
