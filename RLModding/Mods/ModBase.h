@@ -182,6 +182,32 @@ public:
 		
 
 	}
+	
+	virtual void onSetPrimaryPlayer(Event* e) {
+		URPC_KeysBase_X* caller = reinterpret_cast<SDK::URPC_KeysBase_X*>(e->getCallingObject());
+		std::cout << ">>>>>>SETTING NEW SERVER: " << std::endl;
+		/*caller->SetServerAddress(L"25.82.10.172:7778");
+		caller->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
+		caller->IV = L"HKNBpu215LCUGiDTs1XwCA==";
+		caller->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
+		caller->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";*/
+
+		// OLD
+		//std::cout << "current server address: " << e->getParams<URPC_KeysBase_X_SetServerAddress_Params>()->ServerAddress. << std::endl;
+		//std::cout << caller->ServerHost.ToString() << std::endl;
+		//e->getParams<URPC_KeysBase_X_SetServerAddress_Params>()->ServerAddress = L"25.82.10.172:7778";
+		//std::cout << "set server address" << std::endl;
+	}
+	virtual void onSendServerReservedEvent(Event* e) {
+		std::cout << ">>>>>>MESSAGE: " << std::endl;
+		UOnlineGameJoinGame_X* game = reinterpret_cast<SDK::UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
+		std::cout << ">>>>>>MESSAGE2: " << game->ServerGameAddress.ToString() << std::endl;
+		game->ServerGameAddress = L"25.81.228.178:7777";
+		//std::cout << e->getParams<SOnlineGameJoinGame_TA_ReservingServer_JoinServer_Params>()->Message->ServerAddress.ToString() << std::endl;
+		//e->getParams<SOnlineGameJoinGame_TA_ReservingServer_JoinServer_Params>()->Message->ServerAddress = L"192.168.0.144:7778";
+		
+	}
+
 
 	bool enabled = false;
 protected:

@@ -35,6 +35,12 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnect);
 
+	// LAN stuff, nullpointer
+	//Function TAGame.OnlineGameJoinGame_TA.ReservingServer.JoinServer
+	//Function ProjectX.OnlineGameJoinGame_X.ReservingServer.JoinServer
+	SubscribeEvent("Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer", &ModBase::onSetPrimaryPlayer);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventServerReserved", &ModBase::onSendServerReservedEvent);
+
 }
 
 bool printAll = false;
@@ -54,6 +60,19 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 	}
 	if (printAll) {
 		file << func->GetFullName() << std::endl;
+	}
+
+	std::string str2("RPC");
+	if (func->GetFullName().find(str2) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
+	}
+	std::string str3("TravelToServer");
+	if (func->GetFullName().find(str3) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
+	}
+	std::string str4("ServerReserved");
+	if (func->GetFullName().find(str4) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
 	}
 
 	auto it = hashmap.find(func->GetFullName());
