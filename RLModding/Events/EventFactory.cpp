@@ -34,7 +34,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.PsyNet_X.RPC", &ModBase::onPsyNetRPC);
 	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnect);
-
+	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.OnDownloadedWorkshopData", &ModBase::onWorkshopDownloaded);
+	SubscribeEvent("Function TAGame.GameEvent_Breakout_TA.EventPlatformDamaged", &ModBase::onBreakoutPlatformDamaged);
+	
 	// LAN stuff, nullpointer
 	//Function TAGame.OnlineGameJoinGame_TA.ReservingServer.JoinServer
 	//Function ProjectX.OnlineGameJoinGame_X.ReservingServer.JoinServer

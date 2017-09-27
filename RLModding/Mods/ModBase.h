@@ -208,6 +208,34 @@ public:
 		
 	}
 
+	virtual void onWorkshopDownloaded(Event* e) {
+		std::cout << "Dowanloadedfdfdfdfdf" << std::endl;
+		UOnlineCommunityContentInterfaceSteamworks_OnDownloadedWorkshopData_Params* params = e->getParams<UOnlineCommunityContentInterfaceSteamworks_OnDownloadedWorkshopData_Params>();
+
+		TArray<struct FDownloadedWorkshopData> items = params->Items;
+		for (int i = 0; i < items.Num(); i++) {
+			if(items.IsValidIndex(i) && items.GetByIndex(i).Filename.IsValid())
+				std::cout << items.GetByIndex(i).Filename.ToString() << std::endl;
+		}
+
+	
+
+	}
+		virtual void onBreakoutPlatformDamaged(Event* e) {
+		std::cout << "Platform Damaged" << std::endl;
+		AGameEvent_Breakout_TA_EventPlatformDamaged_Params* params = e->getParams<AGameEvent_Breakout_TA_EventPlatformDamaged_Params>();
+
+		ABreakOutActor_Platform_TA* platform = params->Platform;
+		//platform->DamageState.bDirectDamage = true;
+		//platform->DamageState.bImmediate = true;
+		//platform->Location.Z += 100;
+		//platform->StaticMeshComponent->SetBlockRigidBody(false);
+		//platform->StaticMeshComponent->SetRBCollisionChannels(false);
+		//platform->StaticMeshComponent->SetRBChannel(ERBCollisionChannel::RBCC_Nothing);
+		platform->StaticMeshComponent->StaticMesh->UseSimpleRigidBodyCollision = false;
+		//platform->StaticMeshComponent->CollideActors = false;
+		//platform->StaticMeshComponent->StaticMesh->BodySetup->bNoCollision = true;
+	}
 
 	bool enabled = false;
 protected:

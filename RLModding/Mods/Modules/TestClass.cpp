@@ -12,3 +12,35 @@ void TestClass::onEnable() {
 	std::cout << data << std::endl;
 }
 void TestClass::onDisable() {}
+
+void TestClass::onPlayerTATick(Event* e) {
+	if (TestClass::isEnabled()) {
+		if (InstanceStorage::GameEvent()) {
+			SDK::TArray< class SDK::ATeam_TA* > gameTeams = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Teams;
+			// new team
+			SDK::ATeam_TA* tempTeam = gameTeams.GetByIndex(0);
+			tempTeam->TeamIndex = 2;
+			tempTeam->TeamName = FString(L"Larry");
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SetTeam(2, tempTeam);
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->CreateTeams();
+
+			AGFxHUD_TA* gui = (AGFxHUD_TA*)Utils::GetInstanceOf(AGFxHUD_TA::StaticClass());
+			if (gui) {
+				gui->SetTeam(tempTeam);
+			}
+
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->ChooseTeam(2, InstanceStorage::PlayerController());
+			return;
+
+			for (int j = 0; j < gameTeams.Num(); j++)
+			{
+				SDK::TArray< class SDK::APRI_TA* > pris = gameTeams.GetByIndex(j)->Members;
+				for (int k = 0; k < pris.Num(); k++)
+				{
+				}
+
+			}
+		}
+
+	}
+}
