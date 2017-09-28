@@ -6,6 +6,8 @@
 	#pragma pack(push, 0x4)
 #endif
 
+
+#undef SendMessage
 namespace SDK
 {
 //---------------------------------------------------------------------------

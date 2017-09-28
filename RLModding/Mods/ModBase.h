@@ -32,12 +32,7 @@ enum Category {
 };
 
 static const std::string categoryNames[MAX-1] = {
-	"Menu Mods",
-	"Game Modes",
-	"Ball Mods",
-	"LAN Mods",
-	"Car Mods",
-	"Other Mods"
+	"Menu Mods","Game Modes","Ball Mods","LAN Mods","Car Mods","Other Mods"
 };
 
 class ModBase
@@ -123,65 +118,36 @@ public:
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = false; inTraining = true;
 	}
 	virtual void onPostRender(Event*) {}
-
 	virtual void onEventMMRChange(Event*) {}
 	virtual void onChatSend(Event*) {}
 	virtual void onActorJump(Event*) {}
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
-	virtual void onKeysBeginState(Event* e) {
-	}
+	virtual void onKeysBeginState(Event* e) {}
 
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
 	}
 
-	virtual void onPostPRI(Event* event) {}
-
+	virtual void onPostPRI(Event*) {}
 	virtual void onGotoState(Event*) {}
-
-	virtual void onEngineSecurityKeys(Event* e) {
-
-	}
-
-	virtual void onHandleGenKeys(Event* e) {
-		std::cout << "Hooked!\n";
-		/*auto params = e->getParams<HandleGenerateKeys_Params>();
-		params->RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
-		params->RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
-		params->RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
-		*///params->RPC->SessionId
-
-	}
-
-	virtual void onBeaconAddress(Event* e) {
-
-	}
+	virtual void onEngineSecurityKeys(Event* e) {}
+	virtual void onHandleGenKeys(Event* e) {}
+	virtual void onBeaconAddress(Event* e) {}
 
 	virtual void onEngineTick(Event* e) {
 		InstanceStorage::SetEngine(reinterpret_cast<SDK::UEngine*>(e->getCallingObject()));
 	}
 
-	virtual void onPsyNetRPC(Event* e) {
-		auto params = e->getParams<UPsyNet_X_RPC_Params>();
-		//URPC_GenerateKeys_X
-		//std::cout << "PsyNetRPC\n"
-		
-	}
-
-	virtual void onTitlesLoad(Event* e) {
-		UGFxData_Garage_TA* garage = (UGFxData_Garage_TA*)e->getCallingObject();
-	}
-
-	virtual void onTCPConnect(Event* e) {
-		UTcpConnection* connection = (UTcpConnection*)e->getCallingObject();
-		if (connection != nullptr) {
-			std::cout << connection->GetRemoteAddress().ToString() << std::endl;
-			std::cout << connection->GetAddress().ToString() << std::endl;
-		}
-		
-
-	}
+	virtual void onPsyNetRPC(Event* e) {}
+	virtual void onTitlesLoad(Event* e) {}
+	virtual void onTCPConnect(Event* e) {}
+	virtual void onMessageSend(Event* event) {}
+	virtual void onPostProcess(Event* event) {}
+	virtual void onGetProcess(Event* event) {}
+	virtual void onWebRequestSend(Event* event) {}
+	virtual void onConstructWebRequest(Event* event) {}
+	virtual void onRequestSigned(Event* event) {}
 
 	bool enabled = false;
 protected:

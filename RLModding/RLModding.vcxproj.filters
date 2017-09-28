@@ -50,6 +50,11 @@
     <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\Lan\JoinServer.cpp" />
+    <ClCompile Include="Socket\TCPSocket.cpp" />
+    <ClCompile Include="Socket\IPAddress.cpp" />
+    <ClCompile Include="Socket\Network.cpp" />
+    <ClCompile Include="Socket\Socket.cpp" />
+    <ClCompile Include="Common\PacketBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4663,6 +4668,11 @@
     <ClInclude Include="Libs\boost\weak_ptr.hpp" />
     <ClInclude Include="Mods\Modules\Lan\JoinServer.h" />
     <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
+    <ClInclude Include="Socket\Socket.h" />
+    <ClInclude Include="Socket\TCPSocket.h" />
+    <ClInclude Include="Socket\IPAddress.h" />
+    <ClInclude Include="Socket\Network.h" />
+    <ClInclude Include="Common\PacketBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

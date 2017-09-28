@@ -1,16 +1,8 @@
 #include "Garage.h"
 #include "../Utils/Utils.h"
 #include "../Interfaces/Interfaces.h"
-//#include "../Utils/ObjectInitializer.h"
 
-/* Potental Bugs
- * Setting skins for cars not unlocked / owned
- * Heap Overflow
- */
-
-Garage::Garage() {
-	
-}
+Garage::Garage() {}
 Garage::~Garage() {}
 
 //DEPRECIATED. Only use the methods for REFERENCE. USE Interfaces::Memory() to create any custom UObjects;

@@ -4,8 +4,6 @@
 #include <iostream>
 #include <fstream>
 
-//Function ProjectX.OnlineGameJoinGame_X.EventJoiningGameComplete
-
 EventFactory::EventFactory() {
 	modBase = new ModBase("ModBase InstanceUpdater", -1);
 	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
@@ -34,38 +32,26 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.PsyNet_X.RPC", &ModBase::onPsyNetRPC);
 	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnect);
+	SubscribeEvent("Function IpDrv.WebConnection.ProcessPost",&ModBase::onPostProcess);
+	SubscribeEvent("Function IpDrv.WebConnection.ProcessGet",&ModBase::onGetProcess);
+	SubscribeEvent("Function ProjectX.WebRequest_X.Send",&ModBase::onWebRequestSend);
+	SubscribeEvent("Function ProjectX.WebRequest_X.ConstructHttpRequest",&ModBase::onConstructWebRequest);
+	SubscribeEvent("Function ProjectX.Aws4Signature_X.SignRequest",&ModBase::onRequestSigned);
 
 }
 
-bool printAll = false;
-std::ofstream file;
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
-
-	if (GetAsyncKeyState(VK_F5)) {
-		printAll = !printAll;
-		if (printAll) {
-			std::cout << "Printing ALL!\n";
-			file.open("RL_Log.log");
-		}
-		else {
-			file.close();
-		}
-		Sleep(200);
-	}
-	if (printAll) {
-		file << func->GetFullName() << std::endl;
-	}
 
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
 		Event event(object, func, params);
 		ModFunction(&event);
-		//printf("Calling Object Address %p : Function Name %s \n",event.getCallingObject(),event.getUFunction()->GetFullName());
 
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled()) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
+				if (object == nullptr || func == nullptr || params == nullptr) continue;
 				Event event(object, func,params);
 				ModFunction(&event);
 			}

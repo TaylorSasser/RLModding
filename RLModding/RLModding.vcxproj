@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
@@ -62,6 +63,10 @@
     <ClCompile Include="RL\SDK\RL_TAGame_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_WinDrv_functions.cpp" />
     <ClCompile Include="RL\SDK\RL_XAudio2_functions.cpp" />
+    <ClCompile Include="Socket\IPAddress.cpp" />
+    <ClCompile Include="Socket\Network.cpp" />
+    <ClCompile Include="Socket\Socket.cpp" />
+    <ClCompile Include="Socket\TCPSocket.cpp" />
     <ClCompile Include="Utils\Pattern\PatternFinder.cpp" />
     <ClCompile Include="Utils\Pattern\TFL_HT.cpp" />
     <ClCompile Include="Utils\Utils.cpp" />
@@ -70,6 +75,7 @@
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Libs\boost\algorithm\cxx11\all_of.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\case_conv.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\classification.hpp" />
@@ -4674,6 +4680,10 @@
     <ClInclude Include="RL\SDK\RL_XAudio2_classes.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_parameters.hpp" />
     <ClInclude Include="RL\SDK\RL_XAudio2_structs.hpp" />
+    <ClInclude Include="Socket\IPAddress.h" />
+    <ClInclude Include="Socket\Network.h" />
+    <ClInclude Include="Socket\Socket.h" />
+    <ClInclude Include="Socket\TCPSocket.h" />
     <ClInclude Include="Utils\Pattern\PatternFinder.h" />
     <ClInclude Include="Utils\Pattern\TFL_HT.h" />
     <ClInclude Include="Utils\SDKDefines.h" />

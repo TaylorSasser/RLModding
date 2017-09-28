@@ -2,14 +2,10 @@
 #include <sstream>
 #include <Windows.h>
 
-
-
 BlackList::BlackList() {}
-
 BlackList::~BlackList() {}
 
-bool BlackList::Exists(std::string steam_id)
-{
+bool BlackList::Exists(std::string steam_id) {
 	if (std::find(blacklist.begin(), blacklist.end(), steam_id) != blacklist.end())
 		return true;
 	return false;

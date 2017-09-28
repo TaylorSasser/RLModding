@@ -1,14 +1,29 @@
 #include "TestClass.h"
 #include "../../Utils/Utils.h"
 #include "../../DrawManager/DrawManager.hpp"
+#include "../../Libs/detours.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
 
+void __fastcall execSignRequest(SDK::UObject**, void*, Utils::FFrame&, void*);
+typedef void (__fastcall *Native)(SDK::UObject**, void* edx,Utils::FFrame&,void*);
+
+Native OldSignRequest;
+
 void TestClass::onEnable() {
-	TArray<unsigned char> Test;
-	Test.Add('T');Test.Add('E');Test.Add('S');Test.Add('T');
-	std::string data(reinterpret_cast<char*>(&Test[0u]));
-	std::cout << data << std::endl;
+	printf("Test class enabled \n");
+	auto fn = UObject::FindObject<UFunction>("Function ProjectX.Aws4Signature_X.SignRequest");
+	printf("Function Address %p \n",fn->Func);
+	OldSignRequest = (Native)DetourFunction((PBYTE)fn->Func,(PBYTE)execSignRequest);
 }
-void TestClass::onDisable() {}
+
+
+void __fastcall execSignRequest(SDK::UObject** pCallObject,void* edx, Utils::FFrame& frame, void* RESULT_DECL) {
+	printf("Sign Request called");
+	OldSignRequest(pCallObject,edx,frame,RESULT_DECL);
+}
+void TestClass::onDisable() {
+	printf("Test class disabled\n");
+	DetourRemove((PBYTE)OldSignRequest,(PBYTE)execSignRequest);
+}
