@@ -10,15 +10,6 @@
 #include <iostream>
 
 
-/*
-None:		00000
-Training:	00001
-Exhibition: 00010
-Online:		00100
-LAN:		01000
-Menu:		10000
-Any:		11111
-*/
 enum GameState {
 	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
 };
@@ -27,9 +18,7 @@ enum GameState {
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 inline GameState operator^(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) ^ static_cast<int>(b)); }
 
-enum Category {
-	Menu = 0,GameModes,Ball,Lan,Car,Other,ALL,MAX
-};
+enum Category {Menu = 0,GameModes,Ball,Lan,Car,Other,ALL,MAX};
 
 static const std::string categoryNames[MAX-1] = {
 	"Menu Mods","Game Modes","Ball Mods","LAN Mods","Car Mods","Other Mods"
@@ -72,7 +61,7 @@ public:
 		else return NONE;
 	};
 
-	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
+	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
 
 	virtual void DrawMenu() {}
 	virtual void onEnable() {}
@@ -105,7 +94,7 @@ public:
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
-		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false; }
+		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;}
 	}
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
@@ -138,93 +127,18 @@ public:
 	virtual void onEngineTick(Event* e) {
 		InstanceStorage::SetEngine(reinterpret_cast<SDK::UEngine*>(e->getCallingObject()));
 	}
-
-<<<<<<< HEAD
+	virtual void onPostProcess(Event* e) {}
+	virtual void onGetProcess(Event* e) {}
+	virtual void onWebRequestSend(Event* e) {}
+	virtual void onConstructWebRequest(Event* e) {}
+	virtual void onRequestSigned(Event* e) {}
 	virtual void onPsyNetRPC(Event* e) {}
 	virtual void onTitlesLoad(Event* e) {}
 	virtual void onTCPConnect(Event* e) {}
-	virtual void onMessageSend(Event* event) {}
-	virtual void onPostProcess(Event* event) {}
-	virtual void onGetProcess(Event* event) {}
-	virtual void onWebRequestSend(Event* event) {}
-	virtual void onConstructWebRequest(Event* event) {}
-	virtual void onRequestSigned(Event* event) {}
-=======
-	virtual void onPsyNetRPC(Event* e) {
-		auto params = e->getParams<UPsyNet_X_RPC_Params>();
-		//URPC_GenerateKeys_X
-		//std::cout << "PsyNetRPC\n"
-		
-	}
-
-	virtual void onTitlesLoad(Event* e) {
-		UGFxData_Garage_TA* garage = (UGFxData_Garage_TA*)e->getCallingObject();
-	}
-
-	virtual void onTCPConnect(Event* e) {
-		UTcpConnection* connection = (UTcpConnection*)e->getCallingObject();
-		if (connection != nullptr) {
-			std::cout << connection->GetRemoteAddress().ToString() << std::endl;
-			std::cout << connection->GetAddress().ToString() << std::endl;
-		}
-		
-
-	}
-	
-	virtual void onSetPrimaryPlayer(Event* e) {
-		URPC_KeysBase_X* caller = reinterpret_cast<SDK::URPC_KeysBase_X*>(e->getCallingObject());
-		std::cout << ">>>>>>SETTING NEW SERVER: " << std::endl;
-		/*caller->SetServerAddress(L"25.82.10.172:7778");
-		caller->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
-		caller->IV = L"HKNBpu215LCUGiDTs1XwCA==";
-		caller->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
-		caller->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";*/
-
-		// OLD
-		//std::cout << "current server address: " << e->getParams<URPC_KeysBase_X_SetServerAddress_Params>()->ServerAddress. << std::endl;
-		//std::cout << caller->ServerHost.ToString() << std::endl;
-		//e->getParams<URPC_KeysBase_X_SetServerAddress_Params>()->ServerAddress = L"25.82.10.172:7778";
-		//std::cout << "set server address" << std::endl;
-	}
-	virtual void onSendServerReservedEvent(Event* e) {
-		std::cout << ">>>>>>MESSAGE: " << std::endl;
-		UOnlineGameJoinGame_X* game = reinterpret_cast<SDK::UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
-		std::cout << ">>>>>>MESSAGE2: " << game->ServerGameAddress.ToString() << std::endl;
-		game->ServerGameAddress = L"25.81.228.178:7777";
-		//std::cout << e->getParams<SOnlineGameJoinGame_TA_ReservingServer_JoinServer_Params>()->Message->ServerAddress.ToString() << std::endl;
-		//e->getParams<SOnlineGameJoinGame_TA_ReservingServer_JoinServer_Params>()->Message->ServerAddress = L"192.168.0.144:7778";
-		
-	}
-
-	virtual void onWorkshopDownloaded(Event* e) {
-		std::cout << "Dowanloadedfdfdfdfdf" << std::endl;
-		UOnlineCommunityContentInterfaceSteamworks_OnDownloadedWorkshopData_Params* params = e->getParams<UOnlineCommunityContentInterfaceSteamworks_OnDownloadedWorkshopData_Params>();
-
-		TArray<struct FDownloadedWorkshopData> items = params->Items;
-		for (int i = 0; i < items.Num(); i++) {
-			if(items.IsValidIndex(i) && items.GetByIndex(i).Filename.IsValid())
-				std::cout << items.GetByIndex(i).Filename.ToString() << std::endl;
-		}
-
-	
-
-	}
-		virtual void onBreakoutPlatformDamaged(Event* e) {
-		std::cout << "Platform Damaged" << std::endl;
-		AGameEvent_Breakout_TA_EventPlatformDamaged_Params* params = e->getParams<AGameEvent_Breakout_TA_EventPlatformDamaged_Params>();
-
-		ABreakOutActor_Platform_TA* platform = params->Platform;
-		//platform->DamageState.bDirectDamage = true;
-		//platform->DamageState.bImmediate = true;
-		//platform->Location.Z += 100;
-		//platform->StaticMeshComponent->SetBlockRigidBody(false);
-		//platform->StaticMeshComponent->SetRBCollisionChannels(false);
-		//platform->StaticMeshComponent->SetRBChannel(ERBCollisionChannel::RBCC_Nothing);
-		platform->StaticMeshComponent->StaticMesh->UseSimpleRigidBodyCollision = false;
-		//platform->StaticMeshComponent->CollideActors = false;
-		//platform->StaticMeshComponent->StaticMesh->BodySetup->bNoCollision = true;
-	}
->>>>>>> b10d2542b868273eecaedb99d935e2de5c70f679
+	virtual void onSetPrimaryPlayer(Event* e) {}
+	virtual void onSendServerReservedEvent(Event* e) {}
+	virtual void onWorkshopDownloaded(Event* e) {}
+	virtual void onBreakoutPlatformDamaged(Event* e) {}
 
 	bool enabled = false;
 protected:

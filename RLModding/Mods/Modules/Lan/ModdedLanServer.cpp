@@ -38,10 +38,10 @@ void ModdedLanServer::DrawMenu() {
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
 	ImGui::Combo("Game Mode", &defaultGameMode, gameModesCombo, IM_ARRAYSIZE(gameModesCombo));
 	ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));
-	if (defaultBotDifficulty != 0) {
+	if (defaultBotDifficulty != 0) 
 		ImGui::Combo("Team Size", &defaultTeamSize, teamSizeCombo, IM_ARRAYSIZE(teamSizeCombo));
-	}
-	else { defaultTeamSize = 0; }
+	else
+		defaultTeamSize = 0;
 	ImGui::Combo("Match Length", &defaultTime, timeCombo, IM_ARRAYSIZE(timeCombo));
 	ImGui::Combo("Max Score", &defaultScore, scoreCombo, IM_ARRAYSIZE(scoreCombo));
 	ImGui::Combo("Game Speed", &defaultGameSpeed, gameSpeedCombo, IM_ARRAYSIZE(gameSpeedCombo));
