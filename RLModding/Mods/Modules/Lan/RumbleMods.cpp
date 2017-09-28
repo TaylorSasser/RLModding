@@ -11,23 +11,12 @@
 RumbleMods::RumbleMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 RumbleMods::RumbleMods(std::string name, int key) : ModBase(name, key) {}
 
-// Rumble Settings
-static float itemGiveRate = 10.0;
-static float currItemGiveRate = 10.0;
-
-
 const char* rumbleItems[] = { "Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook", "", "", "" };
 static int selectedRumbleIndex = -1;
 
 // Player selection menu
 const char* players[] = { "All", "", "", "", "", "", "", "", "", "", "" };
 static int playerSelectedIndex = -1;
-
-
-// Magnet Options
-static float magnetRange;
-static float magnetBallGravity = 1.0;
-static bool magnetDeactivateOnTouch = false;
 
 // Boot Options
 
@@ -60,7 +49,7 @@ void RumbleMods::DrawMenu() {
 
 			ImGui::Separator();
 
-			//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado"
+			//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook"
 			// Boot
 			if (selectedRumbleIndex == 0) {
 
@@ -77,8 +66,31 @@ void RumbleMods::DrawMenu() {
 				ImGui::InputFloat("Magnet Range", &magnetRange, 0.5f, 1.0f);
 				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
 
+			}// Power Hitter
+			else if (selectedRumbleIndex == 4) {
+				ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
+				ImGui::InputFloat("Magnet Range", &magnetRange, 0.5f, 1.0f);
+				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+
+			}// Punching Glove
+			else if (selectedRumbleIndex == 5) {
+				ImGui::InputFloat("Force", &punchingGloveForce, 0.5f, 1.0f);
+				ImGui::InputFloat("Vertical Force", &punchingGloveVerticalForce, 0.5f, 1.0f);
+				ImGui::Checkbox("Apply Relative Force", &punchingGloveRelativeForce);
+				ImGui::Checkbox("Follow After Hit", &punchingGloveFollowAfterHit);
+
+				
+				
+				//ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+
 			} // Spikes
 			else if (selectedRumbleIndex == 6) {
+				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
+				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
+				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+
+			} // Swapper
+			else if (selectedRumbleIndex == 7) {
 				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
 				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
 				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
@@ -91,7 +103,18 @@ void RumbleMods::DrawMenu() {
 				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
 
 			}
-			
+			// Plunger
+			else if (selectedRumbleIndex == 9) {
+				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
+				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
+				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+
+			} // Grappling Hook
+			else if (selectedRumbleIndex == 10) {
+				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
+				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
+				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+			}
 
 			//Example Settings
 			//For things that have settings to configure anywhere do something like this
@@ -99,7 +122,7 @@ void RumbleMods::DrawMenu() {
 			//just brings up the settings anywhere
 			if (bStartGameMode) {
 				if (ImGui::Button("Disable")) {
-					bStartGameMode = false;
+					RumbleMods::bStartGameMode = false;
 				}
 			}
 			else {
@@ -147,6 +170,7 @@ void RumbleMods::onPlayerTick(Event* e) {
 			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
 			for (int l = 0; l < itemDispensers.Num(); l++) {
 				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
+				std::cout << "Item give rate: " << itemGiveRate << std::endl;
 			}
 		}
 		else {
@@ -253,6 +277,25 @@ void RumbleMods::onPlayerTick(Event* e) {
 							//forceItemIndex = q;
 						}
 					}
+					// Punching Glove
+					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallCarSpring_TA::StaticClass())) {
+						SDK::ASpecialPickup_BallCarSpring_TA* punchingGlove = (SDK::ASpecialPickup_BallCarSpring_TA*)items.GetByIndex(q);
+
+						if (!Utils::FloatCompare(punchingGlove->Force, punchingGloveForce)) {
+							//tornado->Radius = tornadoRadius;
+							std::cout << "Punching GLove Force " << punchingGlove->Force << std::endl;
+						}
+						//tornado->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 5 && giveItem) {
+							punchingGlove->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
+						}
+
+					}
+					// Spikes
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallVelcro_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallVelcro_TA* spikes = (SDK::ASpecialPickup_BallVelcro_TA*)items.GetByIndex(q);
 						spikes->AfterHitDuration *= 1000;

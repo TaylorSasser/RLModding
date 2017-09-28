@@ -9,4 +9,5 @@ public:
 	void onEnable();
 	void onDisable();
 
+	void onPlayerTATick(Event* e);
 };

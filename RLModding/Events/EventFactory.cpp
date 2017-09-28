@@ -32,16 +32,58 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.PsyNet_X.RPC", &ModBase::onPsyNetRPC);
 	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnect);
+<<<<<<< HEAD
 	SubscribeEvent("Function IpDrv.WebConnection.ProcessPost",&ModBase::onPostProcess);
 	SubscribeEvent("Function IpDrv.WebConnection.ProcessGet",&ModBase::onGetProcess);
 	SubscribeEvent("Function ProjectX.WebRequest_X.Send",&ModBase::onWebRequestSend);
 	SubscribeEvent("Function ProjectX.WebRequest_X.ConstructHttpRequest",&ModBase::onConstructWebRequest);
 	SubscribeEvent("Function ProjectX.Aws4Signature_X.SignRequest",&ModBase::onRequestSigned);
+=======
+	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.OnDownloadedWorkshopData", &ModBase::onWorkshopDownloaded);
+	SubscribeEvent("Function TAGame.GameEvent_Breakout_TA.EventPlatformDamaged", &ModBase::onBreakoutPlatformDamaged);
+	
+	// LAN stuff, nullpointer
+	//Function TAGame.OnlineGameJoinGame_TA.ReservingServer.JoinServer
+	//Function ProjectX.OnlineGameJoinGame_X.ReservingServer.JoinServer
+	SubscribeEvent("Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer", &ModBase::onSetPrimaryPlayer);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventServerReserved", &ModBase::onSendServerReservedEvent);
+>>>>>>> b10d2542b868273eecaedb99d935e2de5c70f679
 
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 
+<<<<<<< HEAD
+=======
+	if (GetAsyncKeyState(VK_F5)) {
+		printAll = !printAll;
+		if (printAll) {
+			std::cout << "Printing ALL!\n";
+			file.open("RL_Log.log");
+		}
+		else {
+			file.close();
+		}
+		Sleep(200);
+	}
+	if (printAll) {
+		file << func->GetFullName() << std::endl;
+	}
+
+	std::string str2("RPC");
+	if (func->GetFullName().find(str2) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
+	}
+	std::string str3("TravelToServer");
+	if (func->GetFullName().find(str3) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
+	}
+	std::string str4("ServerReserved");
+	if (func->GetFullName().find(str4) != std::string::npos) {
+		std::cout << func->GetFullName() << "\n";
+	}
+
+>>>>>>> b10d2542b868273eecaedb99d935e2de5c70f679
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);

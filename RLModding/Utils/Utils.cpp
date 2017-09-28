@@ -20,6 +20,7 @@ namespace Utils {
 		SDK::FName::GNames = reinterpret_cast<decltype(SDK::FName::GNames)>(*reinterpret_cast<uint32_t*>(address + 2));
 		return SDK::FName::GNames != nullptr;
 	}
+
 	SDK::UObject* GetInstanceOf(SDK::UClass* Class) {
 		static SDK::UObject* ObjectInstance;
 		ObjectInstance = NULL;
@@ -189,6 +190,18 @@ namespace Utils {
 	bool FloatCompare(float a, float b)
 	{
 		return fabs(a - b) < .01;
+	}
+
+	void FlashWindow(int flashCount) {
+		LPCWSTR WindowName = L"LaunchUnrealUWindowsClient";
+		HWND hwnd = FindWindowW(WindowName, NULL);
+		FLASHWINFO fi;
+		fi.cbSize = sizeof(FLASHWINFO);
+		fi.hwnd = hwnd;
+		fi.dwFlags = FLASHW_ALL;
+		fi.uCount = 10;
+		fi.dwTimeout = 0;
+		FlashWindowEx(&fi);
 	}
 
 };
