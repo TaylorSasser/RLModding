@@ -20,7 +20,7 @@ void BlackList::Check() {
 __int64 BlackList::GetPlayerId() {
 	UOnlineSubsystemSteamworks* steam = reinterpret_cast<UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(UOnlineSubsystemSteamworks::StaticClass()));
 	if (steam) {
-		return steam->LoggedInPlayerId.Uid;
+		return steam->LoggedInPlayerId.SteamID;
 	}
 }
 

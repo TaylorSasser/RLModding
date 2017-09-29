@@ -2178,6 +2178,77 @@ bool UOnlineLobbyInterfaceSteamworks::CreateLobby(int LocalPlayerNum, int MaxPla
 }
 
 
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AllowPsyNetParty
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystemSteamworks::AllowPsyNetParty()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AllowPsyNetParty");
+
+	UOnlineSubsystemSteamworks_AllowPsyNetParty_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RecordPlayersRecentlyMetKeys
+// (FUNC_Public)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// TArray<struct FFriendHistoryKey> PlayerKeys                     (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystemSteamworks::RecordPlayersRecentlyMetKeys(unsigned char LocalUserNum, TArray<struct FFriendHistoryKey> PlayerKeys)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RecordPlayersRecentlyMetKeys");
+
+	UOnlineSubsystemSteamworks_RecordPlayersRecentlyMetKeys_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.PlayerKeys = PlayerKeys;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayHistoryRegistrationKey
+// (FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// TArray<unsigned char>          Key                            (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UOnlineSubsystemSteamworks::GetPlayHistoryRegistrationKey(TArray<unsigned char>* Key)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayHistoryRegistrationKey");
+
+	UOnlineSubsystemSteamworks_GetPlayHistoryRegistrationKey_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (Key != nullptr)
+		*Key = params.Key;
+
+	return params.ReturnValue;
+}
+
+
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsOriginalAppOwner
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -3420,6 +3491,47 @@ void UOnlineSubsystemSteamworks::OpenStoreForDLC(unsigned char LocalUserNum, con
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenStoreForItemsAsync
+// (FUNC_Final, FUNC_Public)
+// Parameters:
+// unsigned char                  LocalUserNum                   (CPF_Parm)
+// TArray<struct FString>         Targets                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FScriptDelegate         OnStorePurchaseCompleteDelegate (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineSubsystemSteamworks::OpenStoreForItemsAsync(unsigned char LocalUserNum, TArray<struct FString> Targets, const struct FScriptDelegate& OnStorePurchaseCompleteDelegate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenStoreForItemsAsync");
+
+	UOnlineSubsystemSteamworks_OpenStoreForItemsAsync_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.Targets = Targets;
+	params.OnStorePurchaseCompleteDelegate = OnStorePurchaseCompleteDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnStorePurchaseCompleteDelegate
+// (FUNC_Public, FUNC_Delegate)
+
+void UOnlineSubsystemSteamworks::OnStorePurchaseCompleteDelegate()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnStorePurchaseCompleteDelegate");
+
+	UOnlineSubsystemSteamworks_OnStorePurchaseCompleteDelegate_Params params;
+
+	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9941,19 +10053,21 @@ bool UOnlineSubsystemSteamworks::CanCommunicateText(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicate
-// (FUNC_Native, FUNC_Public)
+// (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
 // unsigned char                  LocalUserNum                   (CPF_Parm)
 // TEnumAsByte<ECommunicationMethod> CommMethod                     (CPF_Parm)
+// bool                           bAttemptToResolve              (CPF_OptionalParm, CPF_Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-TEnumAsByte<EFeaturePrivilegeLevel> UOnlineSubsystemSteamworks::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<ECommunicationMethod> CommMethod)
+TEnumAsByte<EFeaturePrivilegeLevel> UOnlineSubsystemSteamworks::CanCommunicate(unsigned char LocalUserNum, TEnumAsByte<ECommunicationMethod> CommMethod, bool bAttemptToResolve)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.CanCommunicate");
 
 	UOnlineSubsystemSteamworks_CanCommunicate_Params params;
 	params.LocalUserNum = LocalUserNum;
 	params.CommMethod = CommMethod;
+	params.bAttemptToResolve = bAttemptToResolve;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

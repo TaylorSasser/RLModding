@@ -14,6 +14,53 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function IpDrv.AdHocDelegates.EventAdHocDestroyed
+struct UAdHocDelegates_EventAdHocDestroyed_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventAdHocFinalized
+struct UAdHocDelegates_EventAdHocFinalized_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventStationDisconnected
+struct UAdHocDelegates_EventStationDisconnected_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventStationConnected
+struct UAdHocDelegates_EventStationConnected_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventBecomeStation
+struct UAdHocDelegates_EventBecomeStation_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventAccessPointCreated
+struct UAdHocDelegates_EventAccessPointCreated_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventAdHocInitialized
+struct UAdHocDelegates_EventAdHocInitialized_Params
+{
+};
+
+// Function IpDrv.AdHocDelegates.EventAdHocError
+struct UAdHocDelegates_EventAdHocError_Params
+{
+	class UError*                                      Error;                                                    // (CPF_Parm)
+};
+
+// Function IpDrv.AdHocDelegates.EventAdHocOnNetworkChanged
+struct UAdHocDelegates_EventAdHocOnNetworkChanged_Params
+{
+	TArray<struct FAdHocAccessPointInfo>               Ahapis;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+};
+
 // Function IpDrv.HttpRequestCurl.ProcessRequest
 struct UHttpRequestCurl_ProcessRequest_Params
 {
@@ -2468,6 +2515,12 @@ struct UOnlineLobbyInterfaceImpl_ClearLobbySessionCretedeDelegate_Params
 	struct FScriptDelegate                             LobbySessionCreatedDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
 };
 
+// Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbySessionCreatedDelegate
+struct UOnlineLobbyInterfaceImpl_ClearLobbySessionCreatedDelegate_Params
+{
+	struct FScriptDelegate                             LobbySessionCreatedDelegate;                              // (CPF_Parm, CPF_NeedCtorLink)
+};
+
 // Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbySessionCreatedDelegate
 struct UOnlineLobbyInterfaceImpl_AddLobbySessionCreatedDelegate_Params
 {
@@ -4050,7 +4103,7 @@ struct UMcpClashMobManager_Init_Params
 // Function IpDrv.McpGroupsBase.OnAcceptGroupInviteComplete
 struct UMcpGroupsBase_OnAcceptGroupInviteComplete_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
 	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -4059,7 +4112,7 @@ struct UMcpGroupsBase_OnAcceptGroupInviteComplete_Params
 struct UMcpGroupsBase_AcceptGroupInvite_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bShouldAccept;                                            // (CPF_Parm)
 };
 
@@ -4100,7 +4153,7 @@ struct UMcpGroupsBase_DeleteAllGroups_Params
 // Function IpDrv.McpGroupsBase.OnRemoveGroupMembersComplete
 struct UMcpGroupsBase_OnRemoveGroupMembersComplete_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
 	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -4109,14 +4162,14 @@ struct UMcpGroupsBase_OnRemoveGroupMembersComplete_Params
 struct UMcpGroupsBase_RemoveGroupMembers_Params
 {
 	struct FString                                     OwnerId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             MemberIds;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsBase.OnAddGroupMembersComplete
 struct UMcpGroupsBase_OnAddGroupMembersComplete_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
 	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -4125,7 +4178,7 @@ struct UMcpGroupsBase_OnAddGroupMembersComplete_Params
 struct UMcpGroupsBase_AddGroupMembers_Params
 {
 	struct FString                                     OwnerId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             MemberIds;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               bRequiresAcceptance;                                      // (CPF_Parm)
 };
@@ -4133,14 +4186,14 @@ struct UMcpGroupsBase_AddGroupMembers_Params
 // Function IpDrv.McpGroupsBase.GetGroupMembers
 struct UMcpGroupsBase_GetGroupMembers_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FMcpGroupMember>                     GroupMembers;                                             // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsBase.OnQueryGroupMembersComplete
 struct UMcpGroupsBase_OnQueryGroupMembersComplete_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
 	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -4149,7 +4202,7 @@ struct UMcpGroupsBase_OnQueryGroupMembersComplete_Params
 struct UMcpGroupsBase_QueryGroupMembers_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsBase.GetGroupList
@@ -4176,7 +4229,7 @@ struct UMcpGroupsBase_QueryGroups_Params
 // Function IpDrv.McpGroupsBase.OnDeleteGroupComplete
 struct UMcpGroupsBase_OnDeleteGroupComplete_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bWasSuccessful;                                           // (CPF_Parm)
 	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
 };
@@ -4185,7 +4238,7 @@ struct UMcpGroupsBase_OnDeleteGroupComplete_Params
 struct UMcpGroupsBase_DeleteGroup_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsBase.OnCreateGroupComplete
@@ -4213,7 +4266,7 @@ struct UMcpGroupsBase_CreateInstance_Params
 struct UMcpGroupsManager_CacheGroupMember_Params
 {
 	struct FString                                     MemberId;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TEnumAsByte<EMcpGroupAcceptState>                  AcceptState;                                              // (CPF_Parm)
 };
 
@@ -4236,7 +4289,7 @@ struct UMcpGroupsManager_OnAcceptGroupInviteRequestComplete_Params
 struct UMcpGroupsManager_AcceptGroupInvite_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               bShouldAccept;                                            // (CPF_Parm)
 };
 
@@ -4266,7 +4319,7 @@ struct UMcpGroupsManager_OnRemoveGroupMembersRequestComplete_Params
 struct UMcpGroupsManager_RemoveGroupMembers_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             MemberIds;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
@@ -4282,7 +4335,7 @@ struct UMcpGroupsManager_OnAddGroupMembersRequestComplete_Params
 struct UMcpGroupsManager_AddGroupMembers_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             MemberIds;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	bool                                               bRequiresAcceptance;                                      // (CPF_Parm)
 };
@@ -4290,7 +4343,7 @@ struct UMcpGroupsManager_AddGroupMembers_Params
 // Function IpDrv.McpGroupsManager.GetGroupMembers
 struct UMcpGroupsManager_GetGroupMembers_Params
 {
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FMcpGroupMember>                     GroupMembers;                                             // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
@@ -4306,7 +4359,7 @@ struct UMcpGroupsManager_OnQueryGroupMembersRequestComplete_Params
 struct UMcpGroupsManager_QueryGroupMembers_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsManager.GetGroupList
@@ -4342,7 +4395,7 @@ struct UMcpGroupsManager_OnDeleteGroupRequestComplete_Params
 struct UMcpGroupsManager_DeleteGroup_Params
 {
 	struct FString                                     UniqueUserId;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function IpDrv.McpGroupsManager.OnCreateGroupRequestComplete

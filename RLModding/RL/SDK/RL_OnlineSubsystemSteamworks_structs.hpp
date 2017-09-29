@@ -88,7 +88,7 @@ struct FWorkshopItemData
 	struct FString                                     AddPairs;                                                 // 0x0048(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     RemovePairs;                                              // 0x0054(0x000C) (CPF_NeedCtorLink)
 	int                                                Visibility;                                               // 0x0060(0x0004)
-	__int64                                     ItemID;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.ItemID
 	unsigned long                                      bIsUploading : 1;                                         // 0x006C(0x0004)
 	unsigned char                                      UnknownData01[0x8];                                       // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.WorkshopItemData.UpdateHandle
 };
@@ -146,10 +146,10 @@ struct FFilterKeyToSteamKeyMapping
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.LocalTalkerSteam
-// 0x0001 (0x0035 - 0x0034)
+// 0x0001 (0x004D - 0x004C)
 struct FLocalTalkerSteam : public FLocalTalker
 {
-	TEnumAsByte<EMuteType>                             MuteType;                                                 // 0x0034(0x0001)
+	TEnumAsByte<EMuteType>                             MuteType;                                                 // 0x004C(0x0001)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.PlayerStat
@@ -162,15 +162,15 @@ struct FPlayerStat
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.PendingPlayerStats
-// 0x0098
+// 0x00C8
 struct FPendingPlayerStats
 {
-	struct FUniqueNetId                                Player;                                                   // 0x0000(0x0030) (CPF_Const)
-	struct FString                                     PlayerName;                                               // 0x0030(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FString                                     StatGuid;                                                 // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FPlayerStat>                         Stats;                                                    // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FOnlinePlayerScore                          Score;                                                    // 0x0054(0x0038) (CPF_Const)
-	struct FString                                     Place;                                                    // 0x008C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FUniqueNetId                                Player;                                                   // 0x0000(0x0048) (CPF_Const)
+	struct FString                                     PlayerName;                                               // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FString                                     StatGuid;                                                 // 0x0054(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FPlayerStat>                         Stats;                                                    // 0x0060(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FOnlinePlayerScore                          Score;                                                    // 0x006C(0x0050) (CPF_Const)
+	struct FString                                     Place;                                                    // 0x00BC(0x000C) (CPF_Const, CPF_NeedCtorLink)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.ProfileSettingsCache
@@ -188,7 +188,8 @@ struct FProfileSettingsCache
 struct FDeviceIdCache
 {
 	int                                                DeviceID;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	TArray<struct FScriptDelegate>                     DeviceSelectionDelegates;                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -225,14 +226,15 @@ struct FSteamUserCloudMetadata
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.QueuedAvatarRequest
-// 0x004C
+// 0x0064
 struct FQueuedAvatarRequest
 {
 	float                                              CheckTime;                                                // 0x0000(0x0004) (CPF_Const)
 	int                                                NumberOfAttempts;                                         // 0x0004(0x0004) (CPF_Const)
-	struct FUniqueNetId                                PlayerNetId;                                              // 0x0008(0x0030) (CPF_Const)
-	int                                                Size;                                                     // 0x0038(0x0004) (CPF_Const)
-	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x003C(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerNetId;                                              // 0x0008(0x0048) (CPF_Const)
+	int                                                Size;                                                     // 0x0050(0x0004) (CPF_Const)
+	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x0054(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AchievementMappingInfo
@@ -312,17 +314,18 @@ struct FAppPriceInfoRequest
 {
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x0000(0x0004)
 	TArray<struct FName>                               AppNames;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0010(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.LeaderboardEntry
-// 0x0044
+// 0x005C
 struct FLeaderboardEntry
 {
-	struct FUniqueNetId                                PlayerUID;                                                // 0x0000(0x0030)
-	int                                                Rank;                                                     // 0x0030(0x0004)
-	int                                                Score;                                                    // 0x0034(0x0004)
-	TArray<int>                                        LeaderboardData;                                          // 0x0038(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerUID;                                                // 0x0000(0x0048)
+	int                                                Rank;                                                     // 0x0048(0x0004)
+	int                                                Score;                                                    // 0x004C(0x0004)
+	TArray<int>                                        LeaderboardData;                                          // 0x0050(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.SteamPlayerClanData

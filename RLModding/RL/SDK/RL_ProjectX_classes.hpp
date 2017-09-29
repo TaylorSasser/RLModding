@@ -6,8 +6,6 @@
 	#pragma pack(push, 0x4)
 #endif
 
-
-#undef SendMessage
 namespace SDK
 {
 //---------------------------------------------------------------------------
@@ -39,12 +37,16 @@ public:
 
 
 // Class ProjectX._Types_X
-// 0x0020 (0x005C - 0x003C)
+// 0x0030 (0x006C - 0x003C)
 class U_Types_X : public UObject
 {
 public:
-	struct FScriptDelegate                             __KeyPressDelegate__Delegate;                             // 0x003C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnPriviledgeChecked__Delegate;                          // 0x004C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __KeyPressDelegate__Delegate;                             // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPriviledgeChecked__Delegate;                          // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __ServiceExecutionDelegate__Delegate;                     // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -53,6 +55,7 @@ public:
 	}
 
 
+	void ServiceExecutionDelegate(class UPsyNetClientService_X* Service);
 	struct FIntVector3 STATIC_ToIntVector3(const struct FVector& V);
 	void OnPriviledgeChecked(class UPrivilegeCheck_X* PrivilegeCheck);
 	bool KeyPressDelegate();
@@ -200,6 +203,39 @@ public:
 };
 
 
+// Class ProjectX.AdHocBeacon_X
+// 0x0008 (0x0044 - 0x003C)
+class UAdHocBeacon_X : public UObject
+{
+public:
+	struct FPointer                                    VfTable_FTickableObject;                                  // 0x003C(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
+	struct FPointer                                    pAdHoc;                                                   // 0x0040(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.AdHocBeacon_X");
+		return ptr;
+	}
+
+
+	void AdHocJoinMatch();
+	void AdHocCreateMatch();
+	bool AdHocIsActive();
+	void AdHocDisconnectFromAccessPoint();
+	void AdHocConnectToAccessPoint(int ScanResultIndex);
+	void AdHocRevertToInitialized();
+	void AdHocScanForAccessPoints();
+	void AdHocBecomeStation();
+	void AdHocRejectStation(int NetworkNodeIndex);
+	void AdHocBecomeAccessPoint();
+	void AdHocSetAdvertiseData(const struct FString& AdvertiseData);
+	void AdHocDestroy();
+	void AdHocCreate();
+	void AdHocCreateWithUsername(const struct FString& UserName);
+	void Construct();
+};
+
+
 // Class ProjectX.FXActor_X
 // 0x005C (0x0258 - 0x01FC)
 class AFXActor_X : public AActor
@@ -219,8 +255,10 @@ public:
 	TArray<class UFXActorEvent_X*>                     FXStates;                                                 // 0x0224(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UParameterDispenser_X*                       Parameters;                                               // 0x0230(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	int                                                EditID;                                                   // 0x0234(0x0004) (CPF_Edit, CPF_Const, CPF_EditConst)
-	struct FScriptDelegate                             __EventFXStatePushed__Delegate;                           // 0x0238(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFXStatePopped__Delegate;                           // 0x0248(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventFXStatePushed__Delegate;                           // 0x0238(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0238(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventFXStatePopped__Delegate;                           // 0x0248(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0248(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -316,7 +354,8 @@ public:
 	class UStaticMeshComponent*                        ArchetypeStaticMesh;                                      // 0x021C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TArray<class AActor*>                              SpawnedActors;                                            // 0x0220(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class AActor*                                      SpawnedActor;                                             // 0x022C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x0230(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x0230(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0230(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -363,8 +402,10 @@ public:
 	class UClass*                                      ConnectionClass;                                          // 0x0060(0x0004)
 	struct FPointer                                    ListenSocket;                                             // 0x0064(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	TArray<class UTcpConnection*>                      Connections;                                              // 0x0068(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x0074(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x0084(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -373,6 +414,7 @@ public:
 	}
 
 
+	void ReceivedBunch(class UTcpConnection* Connection);
 	void OnDisconnected(class UTcpConnection* Connection);
 	void OnConnected(class UTcpConnection* Connection);
 	void OnConnectionRemoved(class UTcpConnection* Connection);
@@ -395,7 +437,8 @@ class UTcpMessageBeacon : public UTcpBeacon
 public:
 	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x0094(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TArray<struct FTcpMessageHandler>                  MessageHandlers;                                          // 0x0098(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __MessageReceivedDelegate__Delegate;                      // 0x00A4(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __MessageReceivedDelegate__Delegate;                      // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -517,7 +560,8 @@ public:
 	TArray<struct FRotationCameraKnock>                RotationKnocks;                                           // 0x05AC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bDisableCameraShake : 1;                                  // 0x05B8(0x0004) (CPF_Transient)
 	unsigned long                                      bSnapNextTransition : 1;                                  // 0x05B8(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventCameraStateChanged__Delegate;                      // 0x05BC(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventCameraStateChanged__Delegate;                      // 0x05BC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x05BC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -586,7 +630,8 @@ public:
 class UCanvasTexture_X : public UTextureRenderTarget2D
 {
 public:
-	struct FScriptDelegate                             __Draw__Delegate;                                         // 0x012C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __Draw__Delegate;                                         // 0x012C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x012C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -632,12 +677,18 @@ public:
 	class APlayerReplicationInfo*                      LastPRI;                                                  // 0x05D0(0x0004) (CPF_Transient)
 	unsigned long                                      bPausedForExternalUI : 1;                                 // 0x05D4(0x0004) (CPF_Transient)
 	class UNetConnection*                              NetConnection;                                            // 0x05D8(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventReceivedPRI__Delegate;                             // 0x05DC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPawnChange__Delegate;                              // 0x05EC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventReceivedPlayer__Delegate;                          // 0x05FC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDestroyed__Delegate;                               // 0x060C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerCameraChange__Delegate;                      // 0x061C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerKicked__Delegate;                            // 0x062C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventReceivedPRI__Delegate;                             // 0x05DC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x05DC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPawnChange__Delegate;                              // 0x05EC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x05EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReceivedPlayer__Delegate;                          // 0x05FC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x05FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDestroyed__Delegate;                               // 0x060C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x060C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerCameraChange__Delegate;                      // 0x061C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x061C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerKicked__Delegate;                            // 0x062C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x062C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -683,10 +734,10 @@ public:
 	void OnExternalUIChanged(bool bIsOpening);
 	void SetPaused(bool bPaused);
 	void ReceivedPlayer();
-	class UOnlineGame_X* GetOnlineGame();
+	class UOnlineGame_X* STATIC_GetOnlineGame();
 	TScriptInterface<class UIOnlineGameHost_X> STATIC_GetOnlineGameHost();
 	class UOnlineGameLanServer_X* STATIC_GetOnlineGameLanServer();
-	class UOnlineGameDedicatedServer_X* GetOnlineGameDedicatedServer();
+	class UOnlineGameDedicatedServer_X* STATIC_GetOnlineGameDedicatedServer();
 	void SpawnDefaultHUD();
 	void SetPRI(class APlayerReplicationInfo* PRI);
 	void ReplicatedEvent(const struct FName& VarName);
@@ -700,15 +751,12 @@ public:
 
 
 // Class ProjectX.CheatManager_X
-// 0x0038 (0x008C - 0x0054)
+// 0x0010 (0x0064 - 0x0054)
 class UCheatManager_X : public UCheatManager
 {
 public:
-	class UObjectProvider*                             CheatObjectProvider;                                      // 0x0054(0x0004) (CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
-	TArray<class UClass*>                              CheatClasses;                                             // 0x0058(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FString>                             CheatClassPaths;                                          // 0x0064(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FString>                             CheatArchetypes;                                          // 0x0070(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDelegateTest__Delegate;                            // 0x007C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventDelegateTest__Delegate;                            // 0x0054(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -717,10 +765,7 @@ public:
 	}
 
 
-	TArray<struct FString> GetErrorArray(const struct FString& Error1, const struct FString& Error2, const struct FString& Error3);
-	void SetUnderMaintenance(bool bUnderMaintenance);
-	TArray<class UObject*> CreateCheatObjects();
-	void LoadPsynetStaticData(const struct FString& Platform, const struct FString& Language);
+	void LoadPsynetStaticData(const struct FString& Environment, const struct FString& Platform, const struct FString& Language);
 	void HandleImageDownloaded(class UOnlineImageDownloaderWeb_X* Downloader, const struct FDownloadedImage& Image);
 	void DownloadImage(const struct FString& URL);
 	void LoadKismetLevel(const struct FName& LeveFileName);
@@ -730,6 +775,7 @@ public:
 	void DisableCCD();
 	void SimulateInputKey(const struct FName& KeyName);
 	void SetNetServerMaxTickRate(float Rate);
+	void ScreenShotDir(const struct FString& Directory);
 	void ListVisiblePrimitives();
 	void HideVisiblePrimitives(const struct FString& NameMatch, const struct FString& NameIgnore);
 	void ToggleReplicateVoiceToSelf();
@@ -868,49 +914,6 @@ public:
 };
 
 
-// Class ProjectX.DemoRecDriverInterface_X
-// 0x0020 (0x005C - 0x003C)
-class UDemoRecDriverInterface_X : public UObject
-{
-public:
-	unsigned long                                      bRecordingPaused : 1;                                     // 0x003C(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bPlaybackPaused : 1;                                      // 0x003C(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bPlaying : 1;                                             // 0x003C(0x0004) (CPF_Const, CPF_Transient)
-	int                                                PlayersOnlyTicks;                                         // 0x0040(0x0004) (CPF_Const, CPF_Transient)
-	float                                              RecordedTime;                                             // 0x0044(0x0004) (CPF_Const, CPF_Transient)
-	float                                              AccumulatedDelayedPlayback;                               // 0x0048(0x0004) (CPF_Transient)
-	float                                              AccumulationFireTime;                                     // 0x004C(0x0004) (CPF_Transient)
-	TArray<struct FDemoLogItem>                        Logs;                                                     // 0x0050(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DemoRecDriverInterface_X");
-		return ptr;
-	}
-
-
-	void STATIC_DemoLog(class UObject* context, const struct FString& Text);
-	int GetCurrentFrame();
-	void DelayedAdvancePlayback(float DeltaSeconds);
-	void TogglePause();
-	void RestartPlayback();
-	void SetPlaybackSpeed(float Speed);
-	float GetTime(int ForFrameNum);
-	float GetTimelinePoint(int ForFrameNum);
-	int GetTimelineFrameNum(float TimelinePoint);
-	int GetFrameNum();
-	void AdvancePlayback(float DeltaSeconds);
-	void SkipToTimelinePoint(float Percentage);
-	void SkipToFrameNum(int FrameNum);
-	void StepFrame();
-	void ResumePlayback();
-	void PausePlayback();
-	void ResumeRecording();
-	void PauseRecording();
-	void OnInit();
-};
-
-
 // Class ProjectX.DistributionFloatShakeParameter_X
 // 0x0003 (0x0070 - 0x006D)
 class UDistributionFloatShakeParameter_X : public UDistributionFloatParameterBase
@@ -945,7 +948,7 @@ public:
 
 
 // Class ProjectX.EngineShare_X
-// 0x00A4 (0x00E0 - 0x003C)
+// 0x00B4 (0x00F0 - 0x003C)
 class UEngineShare_X : public UEngineShare
 {
 public:
@@ -957,14 +960,22 @@ public:
 	struct FString                                     ArchetypeString_OnlineGameLanServer;                      // 0x0060(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
 	unsigned long                                      bDisableSaving : 1;                                       // 0x006C(0x0004) (CPF_Transient)
 	unsigned long                                      bIsShowingLoadmapMovie : 1;                               // 0x006C(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bUseServerMatchmaking : 1;                                // 0x006C(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventPreExit__Delegate;                                 // 0x0070(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLoadingMovieClosed__Delegate;                      // 0x0080(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPreScriptsReloaded__Delegate;                      // 0x0090(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPostScriptsReloaded__Delegate;                     // 0x00A0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventOnlineGameInitialized__Delegate;                   // 0x00B0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPreLoadMap__Delegate;                              // 0x00C0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPostLoadMap__Delegate;                             // 0x00D0(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPreExit__Delegate;                                 // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLoadingMovieClosed__Delegate;                      // 0x0080(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPreScriptsReloaded__Delegate;                      // 0x0090(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0090(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPostScriptsReloaded__Delegate;                     // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventOnlineGameInitialized__Delegate;                   // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPreLoadMap__Delegate;                              // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPostLoadMap__Delegate;                             // 0x00D0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCrashed__Delegate;                                 // 0x00E0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x00E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -974,6 +985,8 @@ public:
 
 
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
+	bool STATIC_IsRequestingExit();
+	struct FString STATIC_GetUserAgentHeader();
 	struct FString GetRegionString();
 	struct FString GetPlatformString();
 	void STATIC_Crash();
@@ -985,6 +998,7 @@ public:
 	void InitOnlineGame(class UOnlineSubsystem* NewOnlineSubsystem);
 	bool STATIC_IsLanServer();
 	bool STATIC_IsDedicatedServer();
+	void EventCrashed();
 	void EventPostLoadMap();
 	void EventPreLoadMap(const struct FString& MapName);
 	void EventOnlineGameInitialized();
@@ -996,72 +1010,62 @@ public:
 
 
 // Class ProjectX.Errors_X
-// 0x0120 (0x0174 - 0x0054)
+// 0x00F8 (0x014C - 0x0054)
 class UErrors_X : public UErrorList
 {
 public:
 	class UErrorType*                                  UnknownError;                                             // 0x0054(0x0004) (CPF_Const)
-	class UErrorType*                                  HTTPError;                                                // 0x0058(0x0004) (CPF_Const)
-	class UErrorType*                                  SessionNotActive;                                         // 0x005C(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_NotConnected;                                        // 0x0060(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_Connected;                                           // 0x0064(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_ConnectionDropped;                                   // 0x0068(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_NoNetworkConnection;                                 // 0x006C(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_ServiceUnavailable;                                  // 0x0070(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_UpdateRequired;                                      // 0x0074(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_ServersTooBusy;                                      // 0x0078(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_DuplicateLoginDetected;                              // 0x007C(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_InvalidUser;                                         // 0x0080(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_InvalidResponse;                                     // 0x0084(0x0004) (CPF_Const)
-	class UErrorType*                                  OSCS_TooYoung;                                            // 0x0088(0x0004) (CPF_Const)
-	class UErrorType*                                  ConnectionStatusErrors[0xB];                              // 0x008C(0x0004) (CPF_Const)
-	class UErrorType*                                  VersionMismatch;                                          // 0x00B8(0x0004) (CPF_Const)
-	class UErrorType*                                  NoServers;                                                // 0x00BC(0x0004) (CPF_Const)
-	class UErrorType*                                  FileDoesNotExist;                                         // 0x00C0(0x0004) (CPF_Const)
-	class UErrorType*                                  FileLoadFail;                                             // 0x00C4(0x0004) (CPF_Const)
-	class UErrorType*                                  FileLoadCorrupt;                                          // 0x00C8(0x0004) (CPF_Const)
-	class UErrorType*                                  FileMountCorrupt;                                         // 0x00CC(0x0004) (CPF_Const)
-	class UErrorType*                                  FileSaveFail;                                             // 0x00D0(0x0004) (CPF_Const)
-	class UErrorType*                                  FileSaveNoSpace;                                          // 0x00D4(0x0004) (CPF_Const)
-	class UErrorType*                                  UserBanned;                                               // 0x00D8(0x0004) (CPF_Const)
-	class UErrorType*                                  NotLoggedInToPsynet;                                      // 0x00DC(0x0004) (CPF_Const)
-	class UErrorType*                                  FriendsList;                                              // 0x00E0(0x0004) (CPF_Const)
-	class UErrorType*                                  CreatePartyFailed;                                        // 0x00E4(0x0004) (CPF_Const)
-	class UErrorType*                                  CreatePartyFailedTeamFull;                                // 0x00E8(0x0004) (CPF_Const)
-	class UErrorType*                                  CreatePlayerFailedPartyFull;                              // 0x00EC(0x0004) (CPF_Const)
-	class UErrorType*                                  InvitePlayerToPartyFailedPartyFull;                       // 0x00F0(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailedPartyFull;                                 // 0x00F4(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailedPartyMatchmaking;                          // 0x00F8(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailedPartyInGame;                               // 0x00FC(0x0004) (CPF_Const)
-	class UErrorType*                                  KickedFromParty;                                          // 0x0100(0x0004) (CPF_Const)
-	class UErrorType*                                  PartyDestroyedConnectionError;                            // 0x0104(0x0004) (CPF_Const)
-	class UErrorType*                                  PartyDestroyedSignedOut;                                  // 0x0108(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailed;                                          // 0x010C(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailedNotAllowed;                                // 0x0110(0x0004) (CPF_Const)
-	class UErrorType*                                  JoinPartyFailedNotJoinable;                               // 0x0114(0x0004) (CPF_Const)
-	class UErrorType*                                  PartyBuildID;                                             // 0x0118(0x0004) (CPF_Const)
-	class UErrorType*                                  AuthenticationFailed;                                     // 0x011C(0x0004) (CPF_Const)
-	class UErrorType*                                  NoExportCountry;                                          // 0x0120(0x0004) (CPF_Const)
-	class UErrorType*                                  UnauthorizedAccess;                                       // 0x0124(0x0004) (CPF_Const)
-	class UErrorType*                                  ServiceNotFound;                                          // 0x0128(0x0004) (CPF_Const)
-	class UErrorType*                                  FeatureDisabled;                                          // 0x012C(0x0004) (CPF_Const)
-	class UErrorType*                                  MatchmakingDisabled;                                      // 0x0130(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameNotSet;                                         // 0x0134(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameAlreadyTaken;                                   // 0x0138(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameTooShort;                                       // 0x013C(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameTooLong;                                        // 0x0140(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameInappropriate;                                  // 0x0144(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameInvalidCharacter;                               // 0x0148(0x0004) (CPF_Const)
-	class UErrorType*                                  PlayerNameFailed;                                         // 0x014C(0x0004) (CPF_Const)
-	class UErrorType*                                  NotAuthorized;                                            // 0x0150(0x0004) (CPF_Const)
-	class UErrorType*                                  GameServerPending;                                        // 0x0154(0x0004) (CPF_Const)
-	class UErrorType*                                  CacheError;                                               // 0x0158(0x0004) (CPF_Const)
-	class UErrorType*                                  WordFilterEvil;                                           // 0x015C(0x0004) (CPF_Const)
-	class UErrorType*                                  WordFilterPlatformError;                                  // 0x0160(0x0004) (CPF_Const)
-	class UErrorType*                                  WordFilterPlatformChatError;                              // 0x0164(0x0004) (CPF_Const)
-	class UErrorType*                                  InvalidSettings;                                          // 0x0168(0x0004) (CPF_Const)
-	class UErrorType*                                  Maintenance;                                              // 0x016C(0x0004) (CPF_Const)
-	class UErrorType*                                  PlatformAuthError;                                        // 0x0170(0x0004) (CPF_Const)
+	class UPsyNetErrorType_X*                          RequestError;                                             // 0x0058(0x0004) (CPF_Const)
+	class UErrorType*                                  HTTPError;                                                // 0x005C(0x0004) (CPF_Const)
+	class UErrorType*                                  SessionNotActive;                                         // 0x0060(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_NotConnected;                                        // 0x0064(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_Connected;                                           // 0x0068(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_ConnectionDropped;                                   // 0x006C(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_NoNetworkConnection;                                 // 0x0070(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_ServiceUnavailable;                                  // 0x0074(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_UpdateRequired;                                      // 0x0078(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_ServersTooBusy;                                      // 0x007C(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_DuplicateLoginDetected;                              // 0x0080(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_InvalidUser;                                         // 0x0084(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_InvalidResponse;                                     // 0x0088(0x0004) (CPF_Const)
+	class UErrorType*                                  OSCS_TooYoung;                                            // 0x008C(0x0004) (CPF_Const)
+	class UErrorType*                                  ConnectionStatusErrors[0xB];                              // 0x0090(0x0004) (CPF_Const)
+	class UErrorType*                                  VersionMismatch;                                          // 0x00BC(0x0004) (CPF_Const)
+	class UErrorType*                                  NoServers;                                                // 0x00C0(0x0004) (CPF_Const)
+	class UErrorType*                                  FileDoesNotExist;                                         // 0x00C4(0x0004) (CPF_Const)
+	class UErrorType*                                  FileLoadFail;                                             // 0x00C8(0x0004) (CPF_Const)
+	class UErrorType*                                  FileLoadCorrupt;                                          // 0x00CC(0x0004) (CPF_Const)
+	class UErrorType*                                  FileMountCorrupt;                                         // 0x00D0(0x0004) (CPF_Const)
+	class UErrorType*                                  FileSaveFail;                                             // 0x00D4(0x0004) (CPF_Const)
+	class UErrorType*                                  FileSaveNoSpace;                                          // 0x00D8(0x0004) (CPF_Const)
+	class UErrorType*                                  UserBanned;                                               // 0x00DC(0x0004) (CPF_Const)
+	class UErrorType*                                  NotLoggedInToPsynet;                                      // 0x00E0(0x0004) (CPF_Const)
+	class UErrorType*                                  FriendsList;                                              // 0x00E4(0x0004) (CPF_Const)
+	class UErrorType*                                  AuthenticationFailed;                                     // 0x00E8(0x0004) (CPF_Const)
+	class UErrorType*                                  NoExportCountry;                                          // 0x00EC(0x0004) (CPF_Const)
+	class UErrorType*                                  UnauthorizedAccess;                                       // 0x00F0(0x0004) (CPF_Const)
+	class UErrorType*                                  ServiceNotFound;                                          // 0x00F4(0x0004) (CPF_Const)
+	class UErrorType*                                  FeatureDisabled;                                          // 0x00F8(0x0004) (CPF_Const)
+	class UErrorType*                                  MatchmakingDisabled;                                      // 0x00FC(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameNotSet;                                         // 0x0100(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameAlreadyTaken;                                   // 0x0104(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameTooShort;                                       // 0x0108(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameTooLong;                                        // 0x010C(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameInappropriate;                                  // 0x0110(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameInvalidCharacter;                               // 0x0114(0x0004) (CPF_Const)
+	class UErrorType*                                  PlayerNameFailed;                                         // 0x0118(0x0004) (CPF_Const)
+	class UErrorType*                                  NotAuthorized;                                            // 0x011C(0x0004) (CPF_Const)
+	class UErrorType*                                  SessionAlreadyActive;                                     // 0x0120(0x0004) (CPF_Const)
+	class UErrorType*                                  GameServerPending;                                        // 0x0124(0x0004) (CPF_Const)
+	class UErrorType*                                  CacheError;                                               // 0x0128(0x0004) (CPF_Const)
+	class UErrorType*                                  WordFilterEvil;                                           // 0x012C(0x0004) (CPF_Const)
+	class UErrorType*                                  WordFilterPlatformError;                                  // 0x0130(0x0004) (CPF_Const)
+	class UErrorType*                                  WordFilterPlatformChatError;                              // 0x0134(0x0004) (CPF_Const)
+	class UErrorType*                                  InvalidSettings;                                          // 0x0138(0x0004) (CPF_Const)
+	class UErrorType*                                  Maintenance;                                              // 0x013C(0x0004) (CPF_Const)
+	class UErrorType*                                  PlatformAuthError;                                        // 0x0140(0x0004) (CPF_Const)
+	class UErrorType*                                  LocalHostConnectionError;                                 // 0x0144(0x0004) (CPF_Const)
+	class UPsyNetErrorType_X*                          PerConBroken;                                             // 0x0148(0x0004) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
@@ -1184,7 +1188,7 @@ public:
 
 
 // Class ProjectX.GameEngine_X
-// 0x0000 (0x07CC - 0x07CC)
+// 0x0000 (0x07DC - 0x07DC)
 class UGameEngine_X : public UGameEngine
 {
 public:
@@ -1210,8 +1214,10 @@ public:
 	class APlayerController*                           PlayerControllerArchetype;                                // 0x03DC(0x0004) (CPF_Edit)
 	class APawn*                                       PawnArchetype;                                            // 0x03E0(0x0004) (CPF_Edit)
 	TArray<struct FPauserData>                         PCPausers;                                                // 0x03E4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x03F0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventInit__Delegate;                                    // 0x0400(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x03F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x03F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInit__Delegate;                                    // 0x0400(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0400(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1225,7 +1231,7 @@ public:
 	void SetPaused(class APlayerController* PC, bool bPause);
 	void TogglePause(class APlayerController* PC);
 	bool IsPaused(class APlayerController* PC);
-	TScriptInterface<class UIOnlineGameHost_X> STATIC_GetOnlineGameHost();
+	TScriptInterface<class UIOnlineGameHost_X> GetOnlineGameHost();
 	class UOnlineGameLanServer_X* STATIC_GetOnlineGameLanServer();
 	class UOnlineGameDedicatedServer_X* STATIC_GetOnlineGameDedicatedServer();
 	class UOnlineGame_Base_X* STATIC_GetOnlineGame();
@@ -1306,10 +1312,14 @@ class UGameViewportClient_X : public UGameViewportClient
 public:
 	unsigned long                                      bHandCursor : 1;                                          // 0x0144(0x0004) (CPF_Transient)
 	int                                                MaxSplitScreenPlayers;                                    // 0x0148(0x0004) (CPF_Const)
-	struct FScriptDelegate                             __EventLocalPlayerJoin__Delegate;                         // 0x014C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLocalPlayerLeave__Delegate;                        // 0x015C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventNotifyConnectionError__Delegate;                   // 0x016C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPrimaryPlayerChange__Delegate;                     // 0x017C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventLocalPlayerJoin__Delegate;                         // 0x014C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x014C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLocalPlayerLeave__Delegate;                        // 0x015C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventNotifyConnectionError__Delegate;                   // 0x016C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x016C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPrimaryPlayerChange__Delegate;                     // 0x017C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x017C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1318,17 +1328,18 @@ public:
 	}
 
 
-	float GetDefaultSafeZone();
 	void OnPrimaryPlayerSwitch(class ULocalPlayer* OldPrimaryPlayer, class ULocalPlayer* NewPrimaryPlayer);
 	bool ForceRemovePlayer(class ULocalPlayer* ExPlayer);
 	bool RemovePlayer(class ULocalPlayer* ExPlayer);
 	bool RemovePlayerByID(int ControllerId);
-	void FlashWindow();
 	void SetHardwareMouseCursorVisibility(bool bIsVisible);
 	void NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
 	class ULocalPlayer* CreatePlayer(int ControllerId, bool bSpawnActor, struct FString* OutError);
 	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
 	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	bool IsGameRecordingEnabled();
+	float GetDefaultSafeZone();
+	void FlashWindow();
 	void SaveCurrentWindowState();
 	void SaveWindowState(int ResX, int ResY, bool bFullScreen, bool bBorderless, bool bVsync);
 	bool GetAvailableResolutions(TArray<struct FIntPoint>* Resolutions);
@@ -1405,9 +1416,12 @@ public:
 	class UGFxDataStore_X*                             DataStore;                                                // 0x007C(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	TEnumAsByte<EUINavigationMode>                     NavigationMode;                                           // 0x0080(0x0001) (CPF_Transient)
 	TEnumAsByte<EInputPlatformType>                    InputType;                                                // 0x0081(0x0001) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __EventInputCaptureChanged__Delegate;                     // 0x0084(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventInputTypeChanged__Delegate;                        // 0x0094(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventReceivedInput__Delegate;                           // 0x00A4(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventInputCaptureChanged__Delegate;                     // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0082(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInputTypeChanged__Delegate;                        // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReceivedInput__Delegate;                           // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1501,9 +1515,12 @@ public:
 	TArray<struct FDirtyObject>                        DirtyObjects;                                             // 0x00CC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bAnyShellHasInput : 1;                                    // 0x00D8(0x0004) (CPF_Transient)
 	TEnumAsByte<EInputPlatformType>                    AvailableGamepadType;                                     // 0x00DC(0x0001) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __EventShellCreated__Delegate;                            // 0x00E0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAvailableGamepadTypeChanged__Delegate;             // 0x00F0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGameSessionEnded__Delegate;                        // 0x0100(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventShellCreated__Delegate;                            // 0x00E0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00DD(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAvailableGamepadTypeChanged__Delegate;             // 0x00F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGameSessionEnded__Delegate;                        // 0x0100(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1551,9 +1568,12 @@ public:
 	struct FName                                       DebugColumnCallback;                                      // 0x01F4(0x0008) (CPF_Edit)
 	class UGFxObjectReference_X*                       ShellHooksClass;                                          // 0x01FC(0x0004) (CPF_Const, CPF_Transient)
 	TArray<class UGFxSoundPack_X*>                     LoadedSoundPacks;                                         // 0x0200(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventStarted__Delegate;                                 // 0x020C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventClosed__Delegate;                                  // 0x021C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventInputCaptureChanged__Delegate;                     // 0x022C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventStarted__Delegate;                                 // 0x020C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x020C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventClosed__Delegate;                                  // 0x021C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x021C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInputCaptureChanged__Delegate;                     // 0x022C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x022C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1693,7 +1713,7 @@ public:
 	struct FPointer                                    VfTable_FTickableObject;                                  // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 	struct FPointer                                    LanBeacon;                                                // 0x004C(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
 	int                                                LanAnnouncePort;                                          // 0x0050(0x0004) (CPF_Const, CPF_Config)
-	__int64                                     QueryNonce;                                       // 0x0054(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanBeacon_X.QueryNonce
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0054(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanBeacon_X.QueryNonce
 	TEnumAsByte<ELanBeaconState>                       BeaconState;                                              // 0x005C(0x0001) (CPF_Const)
 	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x0060(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	int                                                MaxPacketSize;                                            // 0x0064(0x0004) (CPF_Const)
@@ -1750,8 +1770,10 @@ public:
 	TArray<struct FPointer>                            ExportTasks;                                              // 0x0058(0x000C) (CPF_Native, CPF_Transient, CPF_AlwaysInit)
 	TArray<struct FCacheExportCallbackData>            ExportCallbacks;                                          // 0x0064(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bDebug : 1;                                               // 0x0070(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventImportFinished__Delegate;                          // 0x0074(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventExportFinished__Delegate;                          // 0x0084(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventImportFinished__Delegate;                          // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventExportFinished__Delegate;                          // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1769,11 +1791,11 @@ public:
 
 
 // Class ProjectX.LocalPlayer_X
-// 0x0004 (0x03E0 - 0x03DC)
+// 0x0004 (0x03F8 - 0x03F4)
 class ULocalPlayer_X : public ULocalPlayer
 {
 public:
-	class UOnlinePlayer_X*                             OnlinePlayer;                                             // 0x03DC(0x0004) (CPF_Transient)
+	class UOnlinePlayer_X*                             OnlinePlayer;                                             // 0x03F4(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -1790,7 +1812,7 @@ public:
 
 
 // Class ProjectX.MapFlythroughProfiler_X
-// 0x0040 (0x023C - 0x01FC)
+// 0x0048 (0x0244 - 0x01FC)
 class AMapFlythroughProfiler_X : public AActor
 {
 public:
@@ -1799,8 +1821,9 @@ public:
 	float                                              ProfileTime;                                              // 0x0204(0x0004) (CPF_Edit)
 	float                                              FinishTime;                                               // 0x0208(0x0004) (CPF_Transient)
 	float                                              Speed;                                                    // 0x020C(0x0004) (CPF_Transient)
-	struct FRenderProfile                              Profile;                                                  // 0x0210(0x001C) (CPF_Transient)
-	struct FScriptDelegate                             __EventFinished__Delegate;                                // 0x022C(0x0010) (CPF_NeedCtorLink)
+	struct FRenderProfile                              Profile;                                                  // 0x0210(0x0024) (CPF_Transient)
+	struct FScriptDelegate                             __EventFinished__Delegate;                                // 0x0234(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0234(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1815,34 +1838,6 @@ public:
 };
 
 
-// Class ProjectX.MatchmakingReporter
-// 0x0020 (0x005C - 0x003C)
-class UMatchmakingReporter : public UObject
-{
-public:
-	TArray<struct FString>                             Instructions;                                             // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<EMatchmakingState>                     MatchmakingState;                                         // 0x0048(0x0001) (CPF_Transient)
-	TArray<struct FMatchmakingStateReport>             StateReports;                                             // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                NumReports;                                               // 0x0058(0x0004) (CPF_Const)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.MatchmakingReporter");
-		return ptr;
-	}
-
-
-	void PrintDebugInfo(class UDebugDrawer* Drawer);
-	struct FString GetMatchmakingStateName(TEnumAsByte<EMatchmakingState> InState);
-	void AddInfo(const struct FString& Info, TEnumAsByte<EMatchmakingInfoSeverity> Severity);
-	void SetMatchmakingState(TEnumAsByte<EMatchmakingState> InState);
-	void ClearStateReports();
-	bool Initialize();
-	void STATIC_ShowReportsLocation();
-	class UMatchmakingReporter* STATIC_GetInstance();
-};
-
-
 // Class ProjectX.ObjectListComponent_X
 // 0x0028 (0x0070 - 0x0048)
 class UObjectListComponent_X : public UComponent
@@ -1850,7 +1845,8 @@ class UObjectListComponent_X : public UComponent
 public:
 	TArray<class UObject*>                             Objects;                                                  // 0x0048(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FObjectListListener>                 Listeners;                                                // 0x0054(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __ObjectListenerCallback__Delegate;                       // 0x0060(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __ObjectListenerCallback__Delegate;                       // 0x0060(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0060(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1871,11 +1867,12 @@ public:
 
 
 // Class ProjectX.OnlineConfig_X
-// 0x000C (0x0048 - 0x003C)
+// 0x0010 (0x004C - 0x003C)
 class UOnlineConfig_X : public UObject
 {
 public:
-	TArray<struct FModifierSubscription>               AllSubscriptions;                                         // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bAllowOnServer : 1;                                       // 0x003C(0x0004) (CPF_Edit)
+	TArray<struct FModifierSubscription>               AllSubscriptions;                                         // 0x0040(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1892,11 +1889,11 @@ public:
 
 
 // Class ProjectX.CrossplayConfig_X
-// 0x000C (0x0054 - 0x0048)
+// 0x000C (0x0058 - 0x004C)
 class UCrossplayConfig_X : public UOnlineConfig_X
 {
 public:
-	TArray<struct FCrossplayGroup>                     Groups;                                                   // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FCrossplayGroup>                     Groups;                                                   // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1910,12 +1907,12 @@ public:
 
 
 // Class ProjectX.RPCConfig_X
-// 0x0018 (0x0060 - 0x0048)
+// 0x0018 (0x0064 - 0x004C)
 class URPCConfig_X : public UOnlineConfig_X
 {
 public:
-	TArray<class UClass*>                              DisabledClasses;                                          // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FString>                             DisabledServices;                                         // 0x0054(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class UClass*>                              DisabledClasses;                                          // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FString>                             DisabledServices;                                         // 0x0058(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1967,7 +1964,8 @@ public:
 	int                                                NumSecondsWaitingForPlayers;                              // 0x0088(0x0004)
 	int                                                SearchScore;                                              // 0x008C(0x0004)
 	float                                              LogTime;                                                  // 0x0090(0x0004) (CPF_Transient, CPF_DataBinding)
-	struct FScriptDelegate                             __EventNumPlayersUpdated__Delegate;                       // 0x0094(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventNumPlayersUpdated__Delegate;                       // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2004,7 +2002,8 @@ class UOnlineLegalText_X : public UComponent
 public:
 	struct FString                                     Folder;                                                   // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	class UCachedWebData_X*                            CachedData;                                               // 0x0054(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventNewText__Delegate;                                 // 0x0058(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventNewText__Delegate;                                 // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2046,7 +2045,8 @@ public:
 	class USerializer_X*                               Serializer;                                               // 0x0048(0x0004) (CPF_Edit)
 	class UCompression_X*                              Compressor;                                               // 0x004C(0x0004) (CPF_Edit)
 	TArray<struct FOnlineMessageHandler>               MessageHandlers;                                          // 0x0050(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __MessageReceivedDelegate__Delegate;                      // 0x005C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __MessageReceivedDelegate__Delegate;                      // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2154,11 +2154,16 @@ public:
 	float                                              GravityScale;                                             // 0x0480(0x0004) (CPF_Edit)
 	class UDamageComponent_X*                          LegacyTakeDamageComponent;                                // 0x0484(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	class AController*                                 PreviousController;                                       // 0x0488(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventTakeDamage__Delegate;                              // 0x048C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventHealDamage__Delegate;                              // 0x049C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDied__Delegate;                                    // 0x04AC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDestroyed__Delegate;                               // 0x04BC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAnimEnd__Delegate;                                 // 0x04CC(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventTakeDamage__Delegate;                              // 0x048C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x048C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventHealDamage__Delegate;                              // 0x049C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x049C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDied__Delegate;                                    // 0x04AC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x04AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDestroyed__Delegate;                               // 0x04BC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x04BC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAnimEnd__Delegate;                                 // 0x04CC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x04CC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2196,6 +2201,32 @@ public:
 };
 
 
+// Class ProjectX.PerCon_X
+// 0x0024 (0x0060 - 0x003C)
+class UPerCon_X : public UObject
+{
+public:
+	class UPsyNetConfig_X*                             Config;                                                   // 0x003C(0x0004)
+	TEnumAsByte<EPerConStatus>                         Status;                                                   // 0x0040(0x0001)
+	struct FString                                     BrokenReason;                                             // 0x0044(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventStatusChanged__Delegate;                           // 0x0050(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0050(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PerCon_X");
+		return ptr;
+	}
+
+
+	void HandleConfigChanged();
+	void SetStatus(TEnumAsByte<EPerConStatus> InStatus);
+	void SetBroken(const struct FString& Reason);
+	void SetEnabled(bool bEnable);
+	void EventStatusChanged(class UPerCon_X* PerCon);
+};
+
+
 // Class ProjectX.PhysicalMaterialProperty_X
 // 0x0008 (0x0044 - 0x003C)
 class UPhysicalMaterialProperty_X : public UPhysicalMaterialPropertyBase
@@ -2209,63 +2240,6 @@ public:
 		return ptr;
 	}
 
-};
-
-
-// Class ProjectX.DemoPC_X
-// 0x0030 (0x066C - 0x063C)
-class ADemoPC_X : public APlayerController_X
-{
-public:
-	float                                              MoveAcceleration;                                         // 0x063C(0x0004) (CPF_Config)
-	float                                              MoveMaxSpeed;                                             // 0x0640(0x0004) (CPF_Config)
-	class UPostProcessChain*                           DemoPostProcessChain;                                     // 0x0644(0x0004) (CPF_Edit)
-	float                                              FollowPawnDistance;                                       // 0x0648(0x0004) (CPF_Edit)
-	class UDemoRecDriverInterface_X*                   DemoInterface;                                            // 0x064C(0x0004) (CPF_Transient)
-	struct FName                                       DebugCateogryName;                                        // 0x0650(0x0008) (CPF_Transient)
-	float                                              OldTextHeight;                                            // 0x0658(0x0004) (CPF_Transient)
-	TArray<struct FString>                             FollowPlayerNames;                                        // 0x065C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                FollowPlayerIndex;                                        // 0x0668(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DemoPC_X");
-		return ptr;
-	}
-
-
-	class APawn* GetFollowPlayer();
-	void DrawLogs(class UCanvas* C, class APawn* InPlayer);
-	void DrawNames(class UCanvas* C);
-	void DrawTimeline(class UCanvas* C);
-	void DrawHUD(class AHUD* H);
-	void HUDMessage(const struct FString& S, const struct FName& Type, float Lifetime);
-	void ClientStartOnlineGame();
-	void InitPlayerReplicationInfo();
-	void ClientSkipToFirstFrame();
-	void ReplicateStreamingStatus(class APlayerController* PC);
-	void SetDemoInterface(class UDemoRecDriverInterface_X* InDemoInterface);
-	void ReceivedPlayer();
-};
-
-
-// Class ProjectX.PlayerInput_MobileNative_X
-// 0x0020 (0x04D4 - 0x04B4)
-class UPlayerInput_MobileNative_X : public UMobilePlayerInput
-{
-public:
-	struct FScriptDelegate                             __EventAppEnteredBackground__Delegate;                    // 0x04B4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAppEnteredForeground__Delegate;                    // 0x04C4(0x0010) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PlayerInput_MobileNative_X");
-		return ptr;
-	}
-
-
-	void EventAppEnteredForeground();
-	void EventAppEnteredBackground();
 };
 
 
@@ -2292,7 +2266,8 @@ public:
 	TArray<struct FPointer>                            HeldBindings;                                             // 0x02F0(0x000C) (CPF_Native, CPF_Transient)
 	unsigned long                                      bDebugInput : 1;                                          // 0x02FC(0x0004) (CPF_Transient)
 	unsigned long                                      bAbsorbCurrentKeyPress : 1;                               // 0x02FC(0x0004) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __EventActionToggled__Delegate;                           // 0x0300(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventActionToggled__Delegate;                           // 0x0300(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0300(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2337,19 +2312,19 @@ public:
 
 
 // Class ProjectX.PsyNet_X
-// 0x006C (0x00A8 - 0x003C)
+// 0x0068 (0x00A4 - 0x003C)
 class UPsyNet_X : public UObject
 {
 public:
 	TEnumAsByte<EDatabaseEnvironment>                  Environment;                                              // 0x003C(0x0001) (CPF_Transient)
 	struct FString                                     EnvironmentName;                                          // 0x0040(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned long                                      bZipRequests : 1;                                         // 0x004C(0x0004) (CPF_Edit)
-	unsigned long                                      bZipResponses : 1;                                        // 0x004C(0x0004) (CPF_Edit)
-	struct FPsyNetKeys                                 Keys;                                                     // 0x0050(0x0030) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	float                                              MaintenanceTime;                                          // 0x0080(0x0004) (CPF_Edit)
-	float                                              MaintenanceEndTime;                                       // 0x0084(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventPrimaryPlayerLoggedIn__Delegate;                   // 0x0088(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPrimaryPlayerLoggedOut__Delegate;                  // 0x0098(0x0010) (CPF_NeedCtorLink)
+	struct FPsyNetKeys                                 Keys;                                                     // 0x004C(0x0030) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	class UStringMap*                                  Headers;                                                  // 0x007C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPsyNetServiceSubscriptions_X*               Services;                                                 // 0x0080(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FScriptDelegate                             __EventPrimaryPlayerLoggedIn__Delegate;                   // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPrimaryPlayerLoggedOut__Delegate;                  // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2358,32 +2333,185 @@ public:
 	}
 
 
+	TArray<unsigned char> STATIC_DecodeBinaryDataFromString(const struct FString& S);
+	struct FString STATIC_EncodeBinaryDataToString(TArray<unsigned char> B);
+	struct FString STATIC_AssignQWordToString();
+	void STATIC_AssignStringToQWord(const struct FString& S);
 	float STATIC_GetRetryDelay(int Failures, TArray<float> Delays);
 	void STATIC_ConnectionChangedIP(const struct FUniqueNetId& PlayerID);
 	void STATIC_NetworkError(const struct FUniqueNetId& PlayerID, const struct FString& Reason);
-	bool IsUnderMaintenance();
-	void SetUnderMaintenance(bool bUnderMaintenance);
+	void InitHeaders();
 	void NotifyWhenLoggedOut(const struct FScriptDelegate& Callback);
 	void NotifyWhenLoggedIn(const struct FScriptDelegate& Callback);
 	void HandleLoginChanged(class UOnlinePlayerAuthentication_X* Auth);
+	class UPsyNetConnection_X* GetPrimaryConnection();
+	void HandleServiceExecuted(class UPsyNetServiceProvider_X* P, class UPsyNetClientService_X* Service);
+	void InitServices();
 	void Init();
-	void Flush();
-	class URPC_X* STATIC_RPC(class UClass* RPCClass, class UPsyNetSession_X* Session);
-	class UWebRequest_X* STATIC_CreateWebRequest(const struct FUniqueNetId& PlayerID);
+	void Flush(float TimeoutSeconds);
+	class URPC_X* STATIC_QueueRPC(class URPC_X* RPC);
+	class URPC_X* STATIC_RPC(class UClass* RPCClass);
 	class UPsyNet_X* STATIC_GetInstance();
 	void EventPrimaryPlayerLoggedOut();
 	void EventPrimaryPlayerLoggedIn();
 };
 
 
+// Class ProjectX.PsyNetClientService_X
+// 0x0018 (0x0054 - 0x003C)
+class UPsyNetClientService_X : public UObject
+{
+public:
+	struct FString                                     Service;                                                  // 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
+	int                                                Version;                                                  // 0x0048(0x0004) (CPF_Edit, CPF_Const)
+	class UError*                                      Error;                                                    // 0x004C(0x0004) (CPF_Const)
+	class UPsyNetConnection_X*                         Connection;                                               // 0x0050(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetClientService_X");
+		return ptr;
+	}
+
+
+	void Execute();
+	void SetError(class UError* InError);
+};
+
+
+// Class ProjectX.PsyNetClientServiceCollection_X
+// 0x000C (0x0048 - 0x003C)
+class UPsyNetClientServiceCollection_X : public UObject
+{
+public:
+	TArray<class UPsyNetClientService_X*>              ServiceArchetypes;                                        // 0x003C(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetClientServiceCollection_X");
+		return ptr;
+	}
+
+
+	class UPsyNetClientService_X* GetServiceArchetype(const struct FString& ServiceName, int Version);
+	void CollectServiceArchetypes();
+	void Construct();
+};
+
+
+// Class ProjectX.PsyNetConnection_X
+// 0x009C (0x00D8 - 0x003C)
+class UPsyNetConnection_X : public UObject
+{
+public:
+	float                                              MaintenanceTime;                                          // 0x003C(0x0004) (CPF_Edit)
+	class UPsyNet_X*                                   PsyNet;                                                   // 0x0040(0x0004)
+	class UOnlineSubsystem*                            OnlineSub;                                                // 0x0044(0x0004)
+	class UStringMap*                                  Headers;                                                  // 0x0048(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPsyNetRequestQue_X*                         RequestQue;                                               // 0x004C(0x0004)
+	class URPCQueue_X*                                 RPCQueue;                                                 // 0x0050(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPsyNetServiceProvider_X*                    ServiceProvider;                                          // 0x0054(0x0004)
+	class UPsyNetMessenger_X*                          Messenger;                                                // 0x0058(0x0004)
+	class UPerCon_X*                                   PerCon;                                                   // 0x005C(0x0004)
+	class UPerConMonitor_X*                            PerConMonitor;                                            // 0x0060(0x0004)
+	class UPerConMetrics_X*                            PerConMetrics;                                            // 0x0064(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	unsigned long                                      bAuthorized : 1;                                          // 0x0068(0x0004)
+	unsigned long                                      bPerConConnected : 1;                                     // 0x0068(0x0004)
+	class UError*                                      DisabledError;                                            // 0x006C(0x0004)
+	TArray<class UError*>                              DisabledErrorStack;                                       // 0x0070(0x000C) (CPF_NeedCtorLink)
+	class UError*                                      MaintenanceError;                                         // 0x007C(0x0004)
+	class UError*                                      DuplicateLoginError;                                      // 0x0080(0x0004)
+	class UError*                                      NoInternetError;                                          // 0x0084(0x0004)
+	struct FScriptDelegate                             __EventAuthorized__Delegate;                              // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConConnected__Delegate;                         // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConDisconnected__Delegate;                      // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventEnabled__Delegate;                                 // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisabled__Delegate;                                // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetConnection_X");
+		return ptr;
+	}
+
+
+	void NotifyOnPerConDisconnect(const struct FScriptDelegate& Callback);
+	void NotifyOnPerConConnect(const struct FScriptDelegate& Callback);
+	void Dispose();
+	void UpdateLinkConnection(bool bHasConnection);
+	void ClearDuplicateLoginError();
+	void OnDuplicateLogin();
+	void HandleDuplicateLoginMessage(class UPsyNetClientService_X* Service);
+	void HandleWebSocketDisconnect(class UPsyNetMessengerWebSocket_X* WS, int Code, const struct FString& Reason);
+	void HandleWebSocketConnect(class UPsyNetMessengerWebSocket_X* WS);
+	bool HasWebSocketConnection();
+	void UpdatePerConState();
+	void ClearMaintenance();
+	void HandleErrorRPC(class URPC_X* InRPC, class UError* Error);
+	class UError* UpdateDisabledError(class UError* Error, class UErrorType* Type, bool bIsError);
+	void AddDisabledError(class UError* Error);
+	void RemoveDisabledError(class UError* Error);
+	void Flush(float TimeoutSeconds);
+	class URPC_X* QueueRPC(class URPC_X* RPC);
+	class URPC_X* RPC(class UClass* RPCClass);
+	bool ProcessServiceCall(class UPsyNetMessage_X* Message);
+	void ProcessMessage(class UPsyNetMessage_X* Message);
+	void ReceiveMessage(class UPsyNetMessage_X* Message);
+	class USendRequestTask* SendRequest(class UPsyNetMessage_X* Request);
+	class UAsyncTask* SendMessage(class UPsyNetMessage_X* Message);
+	void RemoveHeader(const struct FString& Key);
+	void SetHeader(const struct FString& Key, const struct FString& Value);
+	void SetAuthorized(bool bAuth);
+	class UStringMap* BuildHandshakeHeaders();
+	class UPsyNetMessenger_X* CreateWebSocketMessenger();
+	class UPsyNetMessenger_X* CreateHttpMessenger();
+	TEnumAsByte<EPsyNetTransportType> GetTransportType();
+	void KillMessenger();
+	void InitMessenger();
+	void InitServiceProvider();
+	void HandlePerConStatusChanged(class UPerCon_X* P);
+	void InitPerCon();
+	void InitRPCQueue();
+	void InitRequestQue();
+	void InitHeaders();
+	void Construct();
+	void EventDisabled(class UPsyNetConnection_X* Connection);
+	void EventEnabled(class UPsyNetConnection_X* Connection);
+	void EventPerConDisconnected(class UPsyNetConnection_X* Connection);
+	void EventPerConConnected(class UPsyNetConnection_X* Connection);
+	void EventAuthorized(class UPsyNetConnection_X* Connection);
+};
+
+
+// Class ProjectX.PsyNetErrorType_X
+// 0x0000 (0x0048 - 0x0048)
+class UPsyNetErrorType_X : public UErrorType
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetErrorType_X");
+		return ptr;
+	}
+
+};
+
+
 // Class ProjectX.PsyNetLocator_X
-// 0x0024 (0x0060 - 0x003C)
+// 0x0028 (0x0064 - 0x003C)
 class UPsyNetLocator_X : public UObject
 {
 public:
 	struct FString                                     DevLocalURL;                                              // 0x003C(0x000C) (CPF_Edit, CPF_Const, CPF_Config, CPF_NeedCtorLink)
 	struct FString                                     TestURL;                                                  // 0x0048(0x000C) (CPF_Edit, CPF_Const, CPF_Config, CPF_NeedCtorLink)
 	struct FString                                     ProductionURL;                                            // 0x0054(0x000C) (CPF_Edit, CPF_Const, CPF_Config, CPF_NeedCtorLink)
+	unsigned long                                      bUseEnvironmentURL : 1;                                   // 0x0060(0x0004) (CPF_Edit, CPF_Const, CPF_Config)
 
 	static UClass* StaticClass()
 	{
@@ -2396,31 +2524,163 @@ public:
 };
 
 
-// Class ProjectX.PsyNetSession_X
-// 0x005C (0x00A4 - 0x0048)
-class UPsyNetSession_X : public UComponent
+// Class ProjectX.PsyNetMessage_X
+// 0x0010 (0x004C - 0x003C)
+class UPsyNetMessage_X : public UObject
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0048(0x0030)
-	struct FString                                     SessionId;                                                // 0x0078(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventBegin__Delegate;                                   // 0x0084(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventEnd__Delegate;                                     // 0x0094(0x0010) (CPF_NeedCtorLink)
+	class UStringMap*                                  Headers;                                                  // 0x003C(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	TArray<unsigned char>                              Body;                                                     // 0x0040(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetSession_X");
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetMessage_X");
 		return ptr;
 	}
 
 
-	struct FString GetDebugName();
+	struct FString GetBodyText();
+	void SetBodyText(const struct FString& Value);
+	void SetBody(TArray<unsigned char>* Value);
+};
+
+
+// Class ProjectX.PsyNetMessenger_X
+// 0x0010 (0x004C - 0x003C)
+class UPsyNetMessenger_X : public UObject
+{
+public:
+	struct FScriptDelegate                             __EventMessageReceived__Delegate;                         // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetMessenger_X");
+		return ptr;
+	}
+
+
 	void Dispose();
-	void NotifyWhenActive(const struct FScriptDelegate& Callback);
-	void End();
-	void Begin(const struct FUniqueNetId& InPlayerId, const struct FString& InSessionID);
-	bool IsActive();
-	void EventEnd(class UPsyNetSession_X* Session);
-	void EventBegin(class UPsyNetSession_X* Session);
+	void EventMessageReceived(class UPsyNetMessage_X* Message);
+	class UAsyncTask* SendMessage(class UPsyNetMessage_X* Message);
+};
+
+
+// Class ProjectX.PsyNetMessengerHttp_X
+// 0x000C (0x0058 - 0x004C)
+class UPsyNetMessengerHttp_X : public UPsyNetMessenger_X
+{
+public:
+	struct FString                                     URL;                                                      // 0x004C(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetMessengerHttp_X");
+		return ptr;
+	}
+
+
+	void CopyHeadersToMessage(class UWebRequest_X* From, class UPsyNetMessage_X* To);
+	void CopyHeadersToRequest(class UPsyNetMessage_X* From, class UWebRequest_X* To);
+	void HandleWebRequestComplete(const struct FString& PsyRequestID, class UWebRequest_X* Request, class UAsyncTask* Task);
+	class UAsyncTask* SendMessage(class UPsyNetMessage_X* Message);
+	void Init(TEnumAsByte<EDatabaseEnvironment> Environment);
+};
+
+
+// Class ProjectX.PsyNetMessengerWebSocket_X
+// 0x0078 (0x00C4 - 0x004C)
+class UPsyNetMessengerWebSocket_X : public UPsyNetMessenger_X
+{
+public:
+	float                                              MessageSendTimeout;                                       // 0x004C(0x0004) (CPF_Edit)
+	class UStringMap*                                  HandshakeHeaders;                                         // 0x0050(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FString                                     URL;                                                      // 0x0054(0x000C) (CPF_NeedCtorLink)
+	class UWebSocketConnection_X*                      Connection;                                               // 0x0060(0x0004)
+	TArray<struct FQueuedPsyNetMessage>                QueuedMessages;                                           // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bAllowConnect : 1;                                        // 0x0070(0x0004)
+	struct FScriptDelegate                             __EventStartConnect__Delegate;                            // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventStartConnectFail__Delegate;                        // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInvalidMessageReceived__Delegate;                  // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetMessengerWebSocket_X");
+		return ptr;
+	}
+
+
+	void __PsyNetMessengerWebSocket_X__SendQueuedMessages_1(const struct FQueuedPsyNetMessage& QueuedMessage);
+	void Dispose();
+	void HandleReceivedBunch(class UTcpConnection* C);
+	void SerializeMessage(class UPsyNetMessage_X* Message);
+	void FailQueuedMessages(class UError* Error);
+	void TimeoutQueuedMessages();
+	void SendMessageWithTask(class UPsyNetMessage_X* Message, class UAsyncTask* Task);
+	void SendQueuedMessages();
+	void QueueMessage(class UPsyNetMessage_X* Message, class UAsyncTask* Task);
+	void StripHandshakeHeaders(class UPsyNetMessage_X* Message);
+	class UAsyncTask* SendMessage(class UPsyNetMessage_X* Message);
+	void Reconnect();
+	float GetReconnectDelay();
+	void DelayReconnect();
+	void HandleDisconnected(class UWebSocketConnection_X* InConnection);
+	void HandleConnected(class UWebSocketConnection_X* InConnection);
+	void Disconnect();
+	void Connect();
+	bool IsConnected();
+	void Init(TEnumAsByte<EDatabaseEnvironment> Environment, class UStringMap* InHandshakeHeaders);
+	void EventInvalidMessageReceived(class UPsyNetMessengerWebSocket_X* Messenger, const struct FString& MessageSubstring);
+	void EventDisconnected(class UPsyNetMessengerWebSocket_X* Messenger, int Code, const struct FString& Reason);
+	void EventConnected(class UPsyNetMessengerWebSocket_X* Messenger);
+	void EventStartConnectFail(class UPsyNetMessengerWebSocket_X* Messenger);
+	void EventStartConnect(class UPsyNetMessengerWebSocket_X* Messenger);
+};
+
+
+// Class ProjectX.PsyNetServiceSerializer_X
+// 0x0000 (0x003C - 0x003C)
+class UPsyNetServiceSerializer_X : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetServiceSerializer_X");
+		return ptr;
+	}
+
+
+	struct FString STATIC_SerializeResponse(class UPsyNetClientService_X* Service);
+	void STATIC_DeserializeRequest(const struct FString& JSON, class UPsyNetClientService_X* Service);
+};
+
+
+// Class ProjectX.PsyNetServiceSubscriptions_X
+// 0x000C (0x0054 - 0x0048)
+class UPsyNetServiceSubscriptions_X : public UComponent
+{
+public:
+	TArray<struct FServiceSubscription>                Subscriptions;                                            // 0x0048(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetServiceSubscriptions_X");
+		return ptr;
+	}
+
+
+	void NotifyServiceExecuted(class UPsyNetClientService_X* Service);
+	void UnsubscribeAll(class UObject* Listener);
+	void Unsubscribe(const struct FScriptDelegate& Callback);
+	void Subscribe(class UClass* ServiceClass, const struct FScriptDelegate& Callback);
 };
 
 
@@ -2437,7 +2697,8 @@ public:
 	TArray<class UObject*>                             DefaultComponents;                                        // 0x0054(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	TArray<class UObject*>                             DownloadedObjects;                                        // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<class UObject*>                             RegisteredObjects;                                        // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLoaded__Delegate;                                  // 0x0078(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventLoaded__Delegate;                                  // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2446,6 +2707,7 @@ public:
 	}
 
 
+	void __PsyNetStaticData_X__Sync_1(class URPC_X* _);
 	void UpdateRegisteredObjects();
 	bool LoadFromUTF8(TArray<unsigned char>* SignedData);
 	bool LoadFromSignedUTF8(TArray<unsigned char>* SignedData);
@@ -2507,7 +2769,8 @@ public:
 	int                                                CurrentIndex;                                             // 0x020C(0x0004) (CPF_Transient)
 	unsigned long                                      bInclusive : 1;                                           // 0x0210(0x0004) (CPF_Transient)
 	float                                              PrimitiveTime;                                            // 0x0214(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventFinished__Delegate;                                // 0x0218(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventFinished__Delegate;                                // 0x0218(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0218(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2523,7 +2786,7 @@ public:
 
 
 // Class ProjectX.RPC_X
-// 0x0064 (0x00A0 - 0x003C)
+// 0x005C (0x0098 - 0x003C)
 class URPC_X : public UObject
 {
 public:
@@ -2532,13 +2795,17 @@ public:
 	TArray<float>                                      RetryDelays;                                              // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	unsigned long                                      bRetry : 1;                                               // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bHighPriority : 1;                                        // 0x0058(0x0004) (CPF_Edit)
+	unsigned long                                      bRequiresAuth : 1;                                        // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bDisposed : 1;                                            // 0x0058(0x0004) (CPF_Transient)
 	float                                              ServiceFailRetryDelay;                                    // 0x005C(0x0004) (CPF_Edit)
 	class UError*                                      Error;                                                    // 0x0060(0x0004) (CPF_Const, CPF_Transient)
-	TArray<class UScriptAsyncTask_X*>                  Tasks;                                                    // 0x0064(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSuccess__Delegate;                                 // 0x0070(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFail__Delegate;                                    // 0x0080(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventComplete__Delegate;                                // 0x0090(0x0010) (CPF_NeedCtorLink)
+	class UAsyncTask*                                  Task;                                                     // 0x0064(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __EventSuccess__Delegate;                                 // 0x0068(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0068(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventFail__Delegate;                                    // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventComplete__Delegate;                                // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2547,7 +2814,7 @@ public:
 	}
 
 
-	bool STATIC_IsPersistentConnection();
+	class URPC_X* SetRequiresAuth(bool bRequired);
 	void NotifySuccess();
 	void NotifyError(class UError* InError);
 	bool ShouldResendOnFail(class UError* InError);
@@ -2555,7 +2822,7 @@ public:
 	void OnFail();
 	void OnSuccess();
 	void Dispose();
-	class UScriptAsyncTask_X* CreateTask(const struct FScriptDelegate& InCallback);
+	class UAsyncTask* CreateTask(const struct FScriptDelegate& InCallback);
 	class URPC_X* NotifyOnComplete(const struct FScriptDelegate& Callback);
 	class URPC_X* NotifyOnFail(const struct FScriptDelegate& Callback);
 	class URPC_X* NotifyOnSuccess(const struct FScriptDelegate& Callback);
@@ -2567,7 +2834,7 @@ public:
 
 
 // Class ProjectX.RPC_CrashReport_X
-// 0x0000 (0x00A0 - 0x00A0)
+// 0x0000 (0x0098 - 0x0098)
 class URPC_CrashReport_X : public URPC_X
 {
 public:
@@ -2582,15 +2849,15 @@ public:
 
 
 // Class ProjectX.RPC_RecordMetrics_X
-// 0x0034 (0x00D4 - 0x00A0)
+// 0x0034 (0x00CC - 0x0098)
 class URPC_RecordMetrics_X : public URPC_X
 {
 public:
-	struct FGuid                                       AppSessionID;                                             // 0x00A0(0x0010)
-	struct FGuid                                       LevelSessionID;                                           // 0x00B0(0x0010)
-	float                                              CurrentTimeSeconds;                                       // 0x00C0(0x0004)
-	int                                                FirstEventIndex;                                          // 0x00C4(0x0004)
-	TArray<struct FMetricsEvent>                       Events;                                                   // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	struct FGuid                                       AppSessionID;                                             // 0x0098(0x0010)
+	struct FGuid                                       LevelSessionID;                                           // 0x00A8(0x0010)
+	float                                              CurrentTimeSeconds;                                       // 0x00B8(0x0004)
+	int                                                FirstEventIndex;                                          // 0x00BC(0x0004)
+	TArray<struct FMetricsEvent>                       Events;                                                   // 0x00C0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -2601,23 +2868,47 @@ public:
 };
 
 
+// Class ProjectX.RPCBatch_X
+// 0x0040 (0x007C - 0x003C)
+class URPCBatch_X : public UObject
+{
+public:
+	float                                              SendTime;                                                 // 0x003C(0x0004)
+	TArray<struct FPendingRPC>                         Requests;                                                 // 0x0040(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FRPCResponse>                        Responses;                                                // 0x004C(0x000C) (CPF_NeedCtorLink)
+	struct FRPCError                                   Error;                                                    // 0x0058(0x0018) (CPF_NeedCtorLink)
+	class UPsyNetMessage_X*                            RequestMessage;                                           // 0x0070(0x0004)
+	class UPsyNetMessage_X*                            ResponseMessage;                                          // 0x0074(0x0004)
+	class UError*                                      ResponseError;                                            // 0x0078(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPCBatch_X");
+		return ptr;
+	}
+
+};
+
+
 // Class ProjectX.RPCQueue_X
-// 0x00B0 (0x00F8 - 0x0048)
+// 0x0088 (0x00D0 - 0x0048)
 class URPCQueue_X : public UComponent
 {
 public:
 	struct FPointer                                    VfTable_FTickableObject;                                  // 0x0048(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
-	struct FString                                     URL;                                                      // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned long                                      bEnabled : 1;                                             // 0x0058(0x0004) (CPF_Edit)
-	unsigned long                                      bSignWebRequest : 1;                                      // 0x0058(0x0004) (CPF_Edit)
-	unsigned long                                      bVerifySignedResponse : 1;                                // 0x0058(0x0004) (CPF_Edit)
-	int                                                MaxRPCsPerBatch;                                          // 0x005C(0x0004) (CPF_Edit)
-	float                                              LoginTimeoutTime;                                         // 0x0060(0x0004) (CPF_Edit)
-	class URPCConfig_X*                                RPCConfig;                                                // 0x0064(0x0004) (CPF_Edit)
-	TArray<struct FPendingRPC>                         PendingRPCs;                                              // 0x0068(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FRPCBatch>                           PendingBatches;                                           // 0x0074(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	struct FMap_Mirror                                 ServiceFailureDelayTimes;                                 // 0x0080(0x003C) (CPF_Const, CPF_Native, CPF_Transient)
-	struct FMap_Mirror                                 HeadersMap;                                               // 0x00BC(0x003C) (CPF_Const, CPF_Native, CPF_Transient)
+	float                                              AuthTimeoutSeconds;                                       // 0x004C(0x0004) (CPF_Edit)
+	int                                                MaxRPCsPerBatch;                                          // 0x0050(0x0004) (CPF_Edit)
+	unsigned long                                      bSignRequest : 1;                                         // 0x0054(0x0004) (CPF_Edit)
+	unsigned long                                      bVerifySignedResponse : 1;                                // 0x0054(0x0004) (CPF_Edit)
+	unsigned long                                      bAuthorized : 1;                                          // 0x0054(0x0004)
+	class URPCConfig_X*                                RPCConfig;                                                // 0x0058(0x0004) (CPF_Edit)
+	TArray<struct FPendingRPC>                         PendingRPCs;                                              // 0x005C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<class URPCBatch_X*>                         PendingBatches;                                           // 0x0068(0x000C) (CPF_NeedCtorLink)
+	struct FMap_Mirror                                 ServiceFailureDelayTimes;                                 // 0x0074(0x003C) (CPF_Const, CPF_Native)
+	struct FScriptDelegate                             __EventError__Delegate;                                   // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __SendRequestDelegate__Delegate;                          // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2626,33 +2917,19 @@ public:
 	}
 
 
+	void OnError(class URPC_X* RPC, class UError* Error);
+	class UPsyNetMetrics_X* GetPsyNetMetrics();
+	void RecordBatchMetrics(class URPCBatch_X* Batch);
+	void HandleBatchComplete(class URPCBatch_X* Batch, class UPsyNetMessage_X* Response, class UError* Error);
+	void CreateBatch(class UPsyNetMessage_X* Message, TArray<struct FPendingRPC>* BatchRPCs);
 	void STATIC_SignatureMismatch(int ServiceID);
-	void SetHeader(const struct FString& Key, const struct FString& Value);
-	void FailAllPending(class UErrorType* ErrorType, const struct FString& DebugMessage);
-	void SetEnabled(bool bNewEnabled);
-	void Flush();
+	void FailAllPending(class UError* Error);
+	void FailPending(class URPC_X* RPC, class UError* Error);
 	void TickReceive();
 	void TickSend();
-	void QueRPC(class URPC_X* RPC);
-	class URPC_X* CreatePendingRPC(class UClass* RPCClass);
-	void Init();
-};
-
-
-// Class ProjectX.AuthenticatedRPCQueue_X
-// 0x0008 (0x0100 - 0x00F8)
-class UAuthenticatedRPCQueue_X : public URPCQueue_X
-{
-public:
-	class UOnlinePlayerAuthentication_X*               Auth;                                                     // 0x00F8(0x0004) (CPF_Transient)
-	class UPsyNetSession_X*                            PsyNetSession;                                            // 0x00FC(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.AuthenticatedRPCQueue_X");
-		return ptr;
-	}
-
+	void QueueRPC(class URPC_X* RPC);
+	class USendRequestTask* SendRequestDelegate(class UPsyNetMessage_X* Message);
+	void EventError(class URPC_X* RPC, class UError* Error);
 };
 
 
@@ -2665,8 +2942,10 @@ public:
 	int                                                HardVersion;                                              // 0x0040(0x0004) (CPF_Const, CPF_Transient)
 	struct FString                                     SaveFileName;                                             // 0x0044(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UTickComponent_X*                            TickComponent;                                            // 0x0050(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	struct FScriptDelegate                             __EventSaveFail__Delegate;                                // 0x0054(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLoadFail__Delegate;                                // 0x0064(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSaveFail__Delegate;                                // 0x0054(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLoadFail__Delegate;                                // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2685,40 +2964,6 @@ public:
 	void Save();
 	void EventLoadFail(class USaveGame_X* SaveGame);
 	void EventSaveFail(class USaveGame_X* SaveGame);
-};
-
-
-// Class ProjectX.ScriptAsyncTask_X
-// 0x0038 (0x0074 - 0x003C)
-class UScriptAsyncTask_X : public UObject
-{
-public:
-	unsigned long                                      bComplete : 1;                                            // 0x003C(0x0004) (CPF_Transient)
-	class UError*                                      Error;                                                    // 0x0040(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventTaskSuccess__Delegate;                             // 0x0044(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTaskFail__Delegate;                                // 0x0054(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTaskComplete__Delegate;                            // 0x0064(0x0010) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.ScriptAsyncTask_X");
-		return ptr;
-	}
-
-
-	void STATIC___ScriptAsyncTask_X__DisposeAll_1(class UScriptAsyncTask_X* T);
-	class UScriptAsyncTask_X* STATIC_GetCompleted();
-	void STATIC_DisposeAll(TArray<class UScriptAsyncTask_X*>* Tasks);
-	void STATIC_CompleteAll(class UError* InError, TArray<class UScriptAsyncTask_X*>* Tasks);
-	class UScriptAsyncTask_X* STATIC_Create();
-	void Dispose();
-	void Complete(class UError* InError);
-	class UScriptAsyncTask_X* NotifyOnComplete(const struct FScriptDelegate& Callback);
-	class UScriptAsyncTask_X* NotifyOnFail(const struct FScriptDelegate& Callback);
-	class UScriptAsyncTask_X* NotifyOnSuccess(const struct FScriptDelegate& Callback);
-	void EventTaskComplete(class UScriptAsyncTask_X* Task);
-	void EventTaskFail(class UScriptAsyncTask_X* Task);
-	void EventTaskSuccess(class UScriptAsyncTask_X* Task);
 };
 
 
@@ -2892,35 +3137,6 @@ public:
 };
 
 
-// Class ProjectX.DrawDebugManager_X
-// 0x0010 (0x0068 - 0x0058)
-class UDrawDebugManager_X : public UTickableStateObject_X
-{
-public:
-	TArray<class UDrawDebugObject_X*>                  Objects;                                                  // 0x0058(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FColor                                      ObjColor;                                                 // 0x0064(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugManager_X");
-		return ptr;
-	}
-
-
-	class UDrawDebugBox_X* STATIC_DrawBox(const struct FVector& Start, const struct FVector& Extent, class AActor* A, float Lifetime);
-	class UDrawDebugSphere_X* STATIC_DrawSphere(const struct FVector& Start, float Radius, class AActor* A, float Lifetime);
-	class UDrawDebugLinePivot_X* STATIC_DrawLinePivotActor(class AActor* A, float Size, float Lifetime);
-	class UDrawDebugLinePivot_X* STATIC_DrawLinePivot(const struct FVector& Start, const struct FRotator& Rotation, float Size, float Lifetime);
-	class UDrawDebugLine_X* STATIC_DrawLineActors(class AActor* ActorStart, class AActor* ActorEnd, float Lifetime);
-	class UDrawDebugLine_X* STATIC_DrawLine(const struct FVector& Start, const struct FVector& End, float Lifetime);
-	class UDrawDebugObject_X* CreateObject(class UClass* Type, float Lifetime, class AActor* ActorRef);
-	void SetColor(unsigned char R, unsigned char G, unsigned char B);
-	void Tick(float DeltaTime);
-	void Destroy();
-	class UDrawDebugManager_X* STATIC_GetInstance();
-};
-
-
 // Class ProjectX.Online_X
 // 0x0008 (0x0060 - 0x0058)
 class UOnline_X : public UTickableStateObject_X
@@ -2963,7 +3179,7 @@ public:
 
 
 // Class ProjectX.OnlineGame_Base_X
-// 0x0088 (0x00E8 - 0x0060)
+// 0x0084 (0x00E4 - 0x0060)
 class UOnlineGame_Base_X : public UOnline_X
 {
 public:
@@ -2984,10 +3200,10 @@ public:
 	TEnumAsByte<EOnlineServerConnectionStatus>         CurrentConnectionStatus;                                  // 0x00B0(0x0001) (CPF_Transient)
 	struct FString                                     ServerName;                                               // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FString                                     CachedOptions;                                            // 0x00C0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	class URPCQueue_X*                                 RPCQueue;                                                 // 0x00CC(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UOnlineConfigDispatcher_X*                   OnlineConfigDispatcher;                                   // 0x00D0(0x0004) (CPF_Transient)
-	class UOnlineGameWordFilter_X*                     WordFilter;                                               // 0x00D4(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventInternetConnectionChanged__Delegate;               // 0x00D8(0x0010) (CPF_NeedCtorLink)
+	class UOnlineConfigDispatcher_X*                   OnlineConfigDispatcher;                                   // 0x00CC(0x0004) (CPF_Transient)
+	class UOnlineGameWordFilter_X*                     WordFilter;                                               // 0x00D0(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             __EventInternetConnectionChanged__Delegate;               // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3021,35 +3237,37 @@ public:
 
 
 // Class ProjectX.OnlineGame_X
-// 0x0090 (0x0178 - 0x00E8)
+// 0x008C (0x0170 - 0x00E4)
 class UOnlineGame_X : public UOnlineGame_Base_X
 {
 public:
-	class UOnlineGameAccount_X*                        Account;                                                  // 0x00E8(0x0004) (CPF_Edit)
-	class UOnlineGameMatchmaking_X*                    Matchmaking;                                              // 0x00EC(0x0004) (CPF_Edit)
-	class UOnlineGamePrivateMatch_X*                   PrivateMatch;                                             // 0x00F0(0x0004) (CPF_Edit)
-	class UOnlineGameServerBrowser_X*                  ServerBrowser;                                            // 0x00F4(0x0004) (CPF_Edit)
-	class UOnlineGameLanBrowser_X*                     LanBrowser;                                               // 0x00F8(0x0004) (CPF_Edit)
-	class UOnlineGameLeaderboards_X*                   Leaderboards;                                             // 0x00FC(0x0004) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0100(0x0004) UNKNOWN PROPERTY: ObjectProperty ProjectX.OnlineGame_X.PushNotification
-	class UOnlineGamePopulation_X*                     Population;                                               // 0x0104(0x0004) (CPF_Transient)
-	class UOnlineGameCommunity_X*                      Community;                                                // 0x0108(0x0004) (CPF_Transient)
-	class UOnlineGameVoice_X*                          Voice;                                                    // 0x010C(0x0004) (CPF_Transient)
-	class UOnlineGameParty_X*                          Party;                                                    // 0x0110(0x0004) (CPF_Edit)
-	class UOnlineGameInvite_X*                         GameInvite;                                               // 0x0114(0x0004) (CPF_Edit)
-	class UOnlineGameJoinGame_X*                       JoinGame;                                                 // 0x0118(0x0004) (CPF_Edit)
-	class UOnlineGameRegions_X*                        Regions;                                                  // 0x011C(0x0004) (CPF_Edit)
-	class UOnlineGamePrivileges_X*                     Privileges;                                               // 0x0120(0x0004)
-	class UOnlineGameWordFilterProcessor_X*            WordFilterProcessor;                                      // 0x0124(0x0004) (CPF_Transient)
-	class UOnlineGameVersion_X*                        GameVersion;                                              // 0x0128(0x0004) (CPF_Transient)
-	class UOnlinePlayer_X*                             PlayerArchetype;                                          // 0x012C(0x0004) (CPF_Edit)
-	TArray<class UOnlinePlayer_X*>                     OnlinePlayers;                                            // 0x0130(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	class UOnlineLegalText_X*                          Eula;                                                     // 0x013C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UOnlineLegalText_X*                          PrivacyPolicy;                                            // 0x0140(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UOnlineLegalText_X*                          ToS;                                                      // 0x0144(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	struct FScriptDelegate                             __EventConnectionError__Delegate;                         // 0x0148(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerPsyNetLogin__Delegate;                       // 0x0158(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerPsyNetLogout__Delegate;                      // 0x0168(0x0010) (CPF_NeedCtorLink)
+	class UOnlineGameAccount_X*                        Account;                                                  // 0x00E4(0x0004) (CPF_Edit)
+	class UOnlineGameMatchmaking_X*                    Matchmaking;                                              // 0x00E8(0x0004) (CPF_Edit)
+	class UOnlineGamePrivateMatch_X*                   PrivateMatch;                                             // 0x00EC(0x0004) (CPF_Edit)
+	class UOnlineGameServerBrowser_X*                  ServerBrowser;                                            // 0x00F0(0x0004) (CPF_Edit)
+	class UOnlineGameLanBrowser_X*                     LanBrowser;                                               // 0x00F4(0x0004) (CPF_Edit)
+	class UOnlineGameLeaderboards_X*                   Leaderboards;                                             // 0x00F8(0x0004) (CPF_Edit)
+	class UOnlineGamePopulation_X*                     Population;                                               // 0x00FC(0x0004) (CPF_Transient)
+	class UOnlineGameCommunity_X*                      Community;                                                // 0x0100(0x0004) (CPF_Transient)
+	class UOnlineGameVoice_X*                          Voice;                                                    // 0x0104(0x0004) (CPF_Transient)
+	class UOnlineGameParty_X*                          Party;                                                    // 0x0108(0x0004) (CPF_Edit)
+	class UOnlineGameInvite_X*                         GameInvite;                                               // 0x010C(0x0004) (CPF_Edit)
+	class UOnlineGameJoinGame_X*                       JoinGame;                                                 // 0x0110(0x0004) (CPF_Edit)
+	class UOnlineGameRegions_X*                        Regions;                                                  // 0x0114(0x0004) (CPF_Edit)
+	class UOnlineGamePrivileges_X*                     Privileges;                                               // 0x0118(0x0004)
+	class UOnlineGameWordFilterProcessor_X*            WordFilterProcessor;                                      // 0x011C(0x0004) (CPF_Transient)
+	class UOnlineGameVersion_X*                        GameVersion;                                              // 0x0120(0x0004) (CPF_Transient)
+	class UOnlinePlayer_X*                             PlayerArchetype;                                          // 0x0124(0x0004) (CPF_Edit)
+	TArray<class UOnlinePlayer_X*>                     OnlinePlayers;                                            // 0x0128(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	class UOnlineLegalText_X*                          Eula;                                                     // 0x0134(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UOnlineLegalText_X*                          PrivacyPolicy;                                            // 0x0138(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UOnlineLegalText_X*                          ToS;                                                      // 0x013C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FScriptDelegate                             __EventConnectionError__Delegate;                         // 0x0140(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0140(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerPsyNetLogin__Delegate;                       // 0x0150(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0150(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerPsyNetLogout__Delegate;                      // 0x0160(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3090,10 +3308,11 @@ public:
 
 
 // Class ProjectX.OnlineGameServer_X
-// 0x0000 (0x00E8 - 0x00E8)
+// 0x0004 (0x00E8 - 0x00E4)
 class UOnlineGameServer_X : public UOnlineGame_Base_X
 {
 public:
+	class UPsyNetConnection_X*                         PsyNetConnection;                                         // 0x00E4(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -3101,15 +3320,18 @@ public:
 		return ptr;
 	}
 
+
+	void OnExit();
+	void OnInit();
 };
 
 
 // Class ProjectX.OnlineGameDedicatedServer_X
-// 0x0140 (0x0228 - 0x00E8)
+// 0x0168 (0x0250 - 0x00E8)
 class UOnlineGameDedicatedServer_X : public UOnlineGameServer_X
 {
 public:
-	__int64                                      GameServerID;                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00E8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameDedicatedServer_X.GameServerID
 	struct FString                                     GameServerHost;                                           // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UOnlineGameStats_X*                          GameStats;                                                // 0x00FC(0x0004) (CPF_Transient)
 	class UOnlineGameDedicatedServerRegistration_X*    Registration;                                             // 0x0100(0x0004) (CPF_Edit)
@@ -3121,17 +3343,25 @@ public:
 	float                                              AverageMMR;                                               // 0x0120(0x0004) (CPF_Transient)
 	int                                                MachineId;                                                // 0x0124(0x0004) (CPF_Transient)
 	struct FCustomMatchSettings                        CustomMatch;                                              // 0x0128(0x0060) (CPF_Transient, CPF_NeedCtorLink)
-	struct FUniqueNetId                                CustomMatchOwner;                                         // 0x0188(0x0030) (CPF_Transient)
-	unsigned long                                      bQueuedShutdown : 1;                                      // 0x01B8(0x0004) (CPF_Transient)
-	unsigned long                                      bFindingReplacementServer : 1;                            // 0x01B8(0x0004) (CPF_Transient)
-	unsigned long                                      bDisableMatchmakingBan : 1;                               // 0x01B8(0x0004) (CPF_Transient)
-	struct FString                                     MatchGUID;                                                // 0x01BC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFoundNewDedicatedServerForPlayers__Delegate;       // 0x01C8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAverageMMRChanged__Delegate;                       // 0x01D8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlaylistSet__Delegate;                             // 0x01E8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPrivateMatchSettingsChanged__Delegate;             // 0x01F8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventInactive__Delegate;                                // 0x0208(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventActive__Delegate;                                  // 0x0218(0x0010) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                CustomMatchOwner;                                         // 0x0188(0x0048) (CPF_Transient)
+	unsigned long                                      bQueuedShutdown : 1;                                      // 0x01D0(0x0004) (CPF_Transient)
+	unsigned long                                      bFindingReplacementServer : 1;                            // 0x01D0(0x0004) (CPF_Transient)
+	unsigned long                                      bDisableMatchmakingBan : 1;                               // 0x01D0(0x0004) (CPF_Transient)
+	struct FString                                     MatchGUID;                                                // 0x01D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventFoundNewDedicatedServerForPlayers__Delegate;       // 0x01E0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAverageMMRChanged__Delegate;                       // 0x01F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlaylistSet__Delegate;                             // 0x0200(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPrivateMatchSettingsChanged__Delegate;             // 0x0210(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInactive__Delegate;                                // 0x0220(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0220(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventActive__Delegate;                                  // 0x0230(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0230(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventMatchGUIDChanged__Delegate;                        // 0x0240(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0240(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3141,11 +3371,13 @@ public:
 
 
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
+	void SetMatchID(const struct FString& Id);
 	void CreateMatchID();
 	struct FName GetCurrentMapName();
 	void ClearMatchmakingBan(const struct FUniqueNetId& PlayerID);
 	void IssueMatchmakingBan(const struct FUniqueNetId& PlayerID, const struct FString& Reason);
 	unsigned char GetTeamNum(const struct FUniqueNetId& PlayerID);
+	bool KickPlayersOnGameEventDestroyed();
 	bool IsRankedMatch();
 	void OnExit();
 	void HandleNewServerIPRPC(class URPC_CheckReplacementDedicatedServer_X* RPC);
@@ -3160,7 +3392,7 @@ public:
 	bool AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
 	void PlayerLoggedIn(class APlayerReplicationInfo* PRI);
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
+	void AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID, struct FString* ErrorMessage);
 	void OnNewGameInfoCreated(class AGameInfo_X* Game);
 	void TravelToMap(const struct FString& ServerCommand);
 	void GotoPrivateMatchMap(const struct FName& MapName, int GameMode);
@@ -3169,7 +3401,7 @@ public:
 	struct FString GetStartServerCommand();
 	struct FName GetNextRandomMapName(int GameMode);
 	struct FName GetNextMapName(int GameMode);
-	void GetCustomMatchSettings(struct FCustomMatchSettings* OutSettings);
+	struct FCustomMatchSettings GetCustomMatchSettings();
 	struct FUniqueNetId GetCustomMatchOwner();
 	void UpdateCustomMatchOwner(const struct FUniqueNetId& NewOwner);
 	void SetCustomSettings(const struct FCustomMatchSettings& Settings);
@@ -3184,6 +3416,7 @@ public:
 	void HandleReservationsUpdated();
 	void InitClanforge();
 	void OnInit();
+	void EventMatchGUIDChanged(class UOnlineGameDedicatedServer_X* Server);
 	void EventActive(class UOnlineGameDedicatedServer_X* Server);
 	void EventInactive(class UOnlineGameDedicatedServer_X* Server);
 	void EventPrivateMatchSettingsChanged(class UOnlineGameDedicatedServer_X* Server, const struct FCustomMatchSettings& NewSettings);
@@ -3202,7 +3435,8 @@ public:
 	float                                              PlayerOwnershipSyncInterval;                              // 0x0064(0x0004)
 	TArray<struct FPlayerDLCInfo>                      PlayerDLCInfos;                                           // 0x0068(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FSteamWebRequestData>                SteamWebRequests;                                         // 0x0074(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventValidationReady__Delegate;                         // 0x0080(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventValidationReady__Delegate;                         // 0x0080(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3234,10 +3468,14 @@ public:
 	int                                                CurrentFriendIndex;                                       // 0x007C(0x0004) (CPF_Transient)
 	unsigned long                                      bGlobalLeaderboards : 1;                                  // 0x0080(0x0004) (CPF_Transient)
 	class URPC_X*                                      GetLoaderboardPlayerValueRPC;                             // 0x0084(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __OnGetLeaderboardPlayerValue__Delegate;                  // 0x0088(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventNewLeaderboard__Delegate;                          // 0x0098(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGetLeaderboardFailed__Delegate;                    // 0x00A8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLeaderboardAvatarFound__Delegate;                  // 0x00B8(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnGetLeaderboardPlayerValue__Delegate;                  // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventNewLeaderboard__Delegate;                          // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGetLeaderboardFailed__Delegate;                    // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLeaderboardAvatarFound__Delegate;                  // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3276,8 +3514,8 @@ class UOnlineGameReservations_X : public UOnline_X
 {
 public:
 	TArray<class URPC_GetKeys_X*>                      GetKeysRPCs;                                              // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	float                                              ReservationTimeout;                                       // 0x006C(0x0004) (CPF_Edit)
-	float                                              WaitForPlayersTimeout;                                    // 0x0070(0x0004) (CPF_Edit)
+	float                                              ExtraMapLoadTime;                                         // 0x006C(0x0004) (CPF_Edit)
+	float                                              WaitForReservationsTimeout;                               // 0x0070(0x0004) (CPF_Edit)
 	unsigned long                                      bAllowPrivateMatchCrossPlayDisable : 1;                   // 0x0074(0x0004) (CPF_Edit)
 	unsigned long                                      bSkipReservationCheck : 1;                                // 0x0074(0x0004) (CPF_Transient)
 	unsigned long                                      bSinglePlayerMatchmaking : 1;                             // 0x0074(0x0004) (CPF_Transient)
@@ -3289,8 +3527,10 @@ public:
 	TArray<struct FTeamPairHistory>                    TeamPairHistories;                                        // 0x0088(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UCrossplayConfig_X*                          Crossplay;                                                // 0x0094(0x0004) (CPF_Edit)
 	class UMapPrefsConfig_X*                           MapPrefsConfig;                                           // 0x0098(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventReservationsUpdated__Delegate;                     // 0x009C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventMigrationJoinOccurred__Delegate;                   // 0x00AC(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventReservationsUpdated__Delegate;                     // 0x009C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventMigrationJoinOccurred__Delegate;                   // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3301,6 +3541,7 @@ public:
 
 	bool __OnlineGameReservations_X__AllPlayersReserved_1(const struct FReservationData& P);
 	bool __OnlineGameReservations_X__AllPlayersInGame_1(const struct FReservationData& P);
+	float GetMapLoadTimeout(TEnumAsByte<EOnlinePlatform> Platform);
 	void GetAccumulatedPrefs(TArray<struct FName>* Likes, TArray<struct FName>* Dislikes);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	class UReservationsMetrics_X* GetMetrics();
@@ -3319,8 +3560,8 @@ public:
 	void GetPlayerCounts(int* Team0Reserved, int* Team0Joined, int* Team1Reserved, int* Team1Joined);
 	void NotifyReservationsUpdated();
 	void OnReservationsUpdated();
-	void CheckReservationTimeout();
-	void StartReservationTimeout();
+	void CheckMapLoadTimeout();
+	void StartMapLoadTimeout();
 	void SyncSkills();
 	void HackForceNotServerTravelling();
 	void SetServerTraveling(bool bTraveling);
@@ -3331,7 +3572,7 @@ public:
 	void RemoveReservation(const struct FUniqueNetId& PlayerID);
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
 	void PlayerLoggedIn(class APlayerReplicationInfo* PRI);
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
+	void AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID, struct FString* ErrorMessage);
 	bool AllPlayersInGame();
 	bool AllPlayersReserved();
 	bool HasGameEnded();
@@ -3374,7 +3615,6 @@ public:
 	void HandleGetKeysRPCSuccess(class URPC_GetKeys_X* RPC);
 	void HandleGetKeysRPC(class URPC_GetKeys_X* RPC);
 	void StartMatch();
-	void BroadcastReadyMessageIfReady();
 	class UReservationsReadyMessage_X* CreateReadyMessage();
 	bool ShouldSyncSkills();
 	bool IsSoloPlaylist(int PlaylistId);
@@ -3405,28 +3645,39 @@ public:
 
 
 // Class ProjectX.OnlinePlayer_X
-// 0x00BC (0x011C - 0x0060)
+// 0x00F8 (0x0158 - 0x0060)
 class UOnlinePlayer_X : public UOnline_X
 {
 public:
 	class UOnlinePlayerFriends_X*                      Friends;                                                  // 0x0060(0x0004) (CPF_Edit)
 	class UOnlinePlayerAuthentication_X*               Authentication;                                           // 0x0064(0x0004) (CPF_Edit)
-	class UPsyNetSession_X*                            PsyNetSession;                                            // 0x0068(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPsyNetConnection_X*                         PsyNetConnection;                                         // 0x0068(0x0004) (CPF_Edit)
 	struct FString                                     PlayerName;                                               // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0078(0x0030) (CPF_Transient)
-	TEnumAsByte<ELoginStatus>                          LoginStatus;                                              // 0x00A8(0x0001) (CPF_Transient)
-	int                                                LocalPlayerNum;                                           // 0x00AC(0x0004) (CPF_Transient)
-	unsigned long                                      bLoggingIn : 1;                                           // 0x00B0(0x0004)
-	unsigned long                                      bLoggingOut : 1;                                          // 0x00B0(0x0004)
-	unsigned long                                      bPsyNetLogout : 1;                                        // 0x00B0(0x0004) (CPF_Const, CPF_Config)
-	class UError*                                      LoginError;                                               // 0x00B4(0x0004) (CPF_Transient)
-	class UAuthenticatedRPCQueue_X*                    RPCQueue;                                                 // 0x00B8(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	struct FScriptDelegate                             __EventLoginComplete__Delegate;                           // 0x00BC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLogoutComplete__Delegate;                          // 0x00CC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLoginStatusChanged__Delegate;                      // 0x00DC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCountryUpdated__Delegate;                          // 0x00EC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCanPlayOnlineChanged__Delegate;                    // 0x00FC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventShowKeyboardComplete__Delegate;                    // 0x010C(0x0010) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0078(0x0048) (CPF_Transient)
+	TEnumAsByte<ELoginStatus>                          LoginStatus;                                              // 0x00C0(0x0001) (CPF_Transient)
+	int                                                LocalPlayerNum;                                           // 0x00C4(0x0004) (CPF_Transient)
+	unsigned long                                      bLoggingIn : 1;                                           // 0x00C8(0x0004)
+	unsigned long                                      bLoggingOut : 1;                                          // 0x00C8(0x0004)
+	unsigned long                                      bPsyNetLogout : 1;                                        // 0x00C8(0x0004) (CPF_Const, CPF_Config)
+	class UError*                                      LoginError;                                               // 0x00CC(0x0004) (CPF_Transient)
+	class UError*                                      LoginStatusError;                                         // 0x00D0(0x0004)
+	class UError*                                      BannedError;                                              // 0x00D4(0x0004)
+	struct FScriptDelegate                             __EventLoginComplete__Delegate;                           // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00D8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLogoutComplete__Delegate;                          // 0x00E8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00E8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLoginStatusChanged__Delegate;                      // 0x00F8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCountryUpdated__Delegate;                          // 0x0108(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0108(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPsyNetLogin__Delegate;                             // 0x0118(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0118(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCanPlayOnlineChanged__Delegate;                    // 0x0128(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0128(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventShowKeyboardComplete__Delegate;                    // 0x0138(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0138(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPreFlushExit__Delegate;                            // 0x0148(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0148(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3437,9 +3688,9 @@ public:
 
 	void GetPlayersLikesDislikes(class UGameSettingPlaylist_X* Playlist, TArray<struct FName>* PlayerLikes, TArray<struct FName>* PlayerDislikes);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
+	void NotifyOnPsyNetLogin(const struct FScriptDelegate& Callback);
 	bool IsGuestAccount();
 	void SetPlayerName(const struct FString& NewName);
-	class UWebRequest_X* CreatePsyNetWebRequest();
 	void UpdateSplitscreenId();
 	bool IsUpdateRequired();
 	struct FString GetOnlineName();
@@ -3450,7 +3701,7 @@ public:
 	TEnumAsByte<EFeaturePrivilegeLevel> CanPlayOnline();
 	void HandlePlayerCountryReceived(const struct FUniqueNetId& InPlayerId, const struct FString& Country);
 	void GetPlayerCountry(const struct FScriptDelegate& Handler);
-	TEnumAsByte<EFeaturePrivilegeLevel> CanCommunicateText();
+	TEnumAsByte<EFeaturePrivilegeLevel> CanCommunicateText(bool bTryToResolve);
 	void OpenErrorDialog(TEnumAsByte<EPS4ErrorDialog> ErrorCode);
 	void OpenPS4DisplayMode(TEnumAsByte<EPS4DisplayMode> DisplayMode, TArray<struct FString> Targets, int ServiceLabel);
 	void ResetControllerColor(int InControllerID);
@@ -3474,12 +3725,18 @@ public:
 	void OnRemoved();
 	void InitPlayer();
 	bool IsPrimaryPlayer();
+	void HandleErrorRPC(class URPC_X* RPC, class UError* Error);
+	void HandlePerConDisconnected(class UPsyNetConnection_X* Connection);
+	void UpdatePsyNetEnabled();
+	void HandleBanned(class UOnlinePlayerAuthentication_X* Auth);
 	void HandleAuthLoginChange(class UOnlinePlayerAuthentication_X* Auth);
-	void HandleAuthSession(class UOnlinePlayerAuthentication_X* Auth, const struct FString& SessionId);
+	void HandleLoginRPC(class UOnlinePlayerAuthentication_X* Auth, class URPC_LoginAuthPlayer_X* RPC);
 	void OnInit();
 	class UOnlineGame_X* GetOnlineGame();
+	void EventPreFlushExit();
 	void EventShowKeyboardComplete(const struct FString& NewText, bool bCanceled);
 	void EventCanPlayOnlineChanged(class UOnlinePlayer_X* Player);
+	void EventPsyNetLogin(class UOnlinePlayer_X* Player);
 	void EventCountryUpdated(const struct FString& Country);
 	void EventLoginStatusChanged(class UOnlinePlayer_X* Player);
 	void EventLogoutComplete(class UOnlinePlayer_X* Player);
@@ -3488,37 +3745,36 @@ public:
 
 
 // Class ProjectX.OnlinePlayerAuthentication_X
-// 0x00F4 (0x0154 - 0x0060)
+// 0x00EC (0x014C - 0x0060)
 class UOnlinePlayerAuthentication_X : public UOnline_X
 {
 public:
-	struct FString                                     AuthDocument;                                             // 0x0060(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
-	class URPC_LoginAuthPlayer_X*                      LoginRPC;                                                 // 0x006C(0x0004) (CPF_Transient)
-	struct FUniqueNetId                                LoggedInPlayerId;                                         // 0x0070(0x0030) (CPF_Transient)
-	struct FString                                     LoggedInPlayerName;                                       // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	__int64                                     PlayerUID;                                       // 0x00AC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlinePlayerAuthentication_X.PlayerUID
-	struct FString                                     Platform;                                                 // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned long                                      bLoggedIn : 1;                                            // 0x00C0(0x0004) (CPF_Const, CPF_Transient)
-	unsigned long                                      bPendingLoginRequest : 1;                                 // 0x00C0(0x0004) (CPF_Transient)
-	unsigned long                                      bPlatformTokenAuthenticationFailed : 1;                   // 0x00C0(0x0004) (CPF_Transient)
-	unsigned long                                      bUnauthorized : 1;                                        // 0x00C0(0x0004) (CPF_Transient)
-	unsigned long                                      bSkipAuth : 1;                                            // 0x00C0(0x0004) (CPF_Transient)
-	unsigned long                                      bNeedToAuthenticateName : 1;                              // 0x00C0(0x0004) (CPF_Transient)
-	float                                              BannedUntilTime;                                          // 0x00C4(0x0004) (CPF_Transient)
-	struct FString                                     BannedReason;                                             // 0x00C8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     EncryptedAuthTicket;                                      // 0x00D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<EAuthStatus>                           AuthStatus;                                               // 0x00E0(0x0001) (CPF_Transient)
-	int                                                AuthRequestFailureMax;                                    // 0x00E4(0x0004) (CPF_Const)
-	int                                                AuthRequestRetryTime;                                     // 0x00E8(0x0004) (CPF_Const)
-	int                                                AuthRequestFailureCount;                                  // 0x00EC(0x0004) (CPF_Transient)
-	struct FString                                     AuthenticatedName;                                        // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	float                                              LoginRetryDelay;                                          // 0x00FC(0x0004) (CPF_Edit)
-	class UOnlineGameTrial_X*                          Trial;                                                    // 0x0100(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventLoginChanged__Delegate;                            // 0x0104(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSessionReceived__Delegate;                         // 0x0114(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventUnauthorized__Delegate;                            // 0x0124(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventBanned__Delegate;                                  // 0x0134(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAuthenticatedNameChanged__Delegate;                // 0x0144(0x0010) (CPF_NeedCtorLink)
+	class URPC_LoginAuthPlayer_X*                      LoginRPC;                                                 // 0x0060(0x0004) (CPF_Transient)
+	struct FUniqueNetId                                LoggedInPlayerId;                                         // 0x0064(0x0048) (CPF_Transient)
+	struct FString                                     LoggedInPlayerName;                                       // 0x00AC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00B8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlinePlayerAuthentication_X.PlayerUID
+	struct FString                                     Platform;                                                 // 0x00C0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bLoggedIn : 1;                                            // 0x00CC(0x0004)
+	unsigned long                                      bPlatformTokenAuthenticationFailed : 1;                   // 0x00CC(0x0004) (CPF_Transient)
+	unsigned long                                      bSkipAuth : 1;                                            // 0x00CC(0x0004)
+	unsigned long                                      bNeedToAuthenticateName : 1;                              // 0x00CC(0x0004) (CPF_Transient)
+	float                                              BannedUntilTime;                                          // 0x00D0(0x0004) (CPF_Transient)
+	struct FString                                     BannedReason;                                             // 0x00D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     EncryptedAuthTicket;                                      // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	int                                                AuthRequestFailureMax;                                    // 0x00EC(0x0004) (CPF_Const)
+	int                                                AuthRequestRetryTime;                                     // 0x00F0(0x0004) (CPF_Const)
+	int                                                AuthRequestFailureCount;                                  // 0x00F4(0x0004) (CPF_Transient)
+	struct FString                                     AuthenticatedName;                                        // 0x00F8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	float                                              LoginRetryDelay;                                          // 0x0104(0x0004) (CPF_Edit)
+	class UOnlineGameTrial_X*                          Trial;                                                    // 0x0108(0x0004) (CPF_Edit)
+	struct FScriptDelegate                             __EventLoginChanged__Delegate;                            // 0x010C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x010C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLoginSuccessRPC__Delegate;                         // 0x011C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x011C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventBanned__Delegate;                                  // 0x012C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x012C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAuthenticatedNameChanged__Delegate;                // 0x013C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x013C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3527,38 +3783,59 @@ public:
 	}
 
 
+	struct FString GetDebugName();
+	void GotoAuthState(const struct FName& AuthStateName);
 	bool IsBanned();
-	void SetLoggedIn(bool bSignedIn);
 	int GetGameVersion();
+	struct FName GetFeatureSet();
 	struct FString GetBuildRegion();
 	void HandleTrialStatusChanged(class UOnlineGameTrial_X* InTrial);
 	void OnChangeAuthenticatedName(const struct FString& NewName);
 	bool NeedToAuthenticateName();
 	void HandleReceivedAuthorizationCode(bool bSuccess, const struct FString& AuthorizationCode, const struct FString& EncryptedTicket, int IssuerID);
 	bool RequestAuthorizationCode();
-	void AuthenticationError(TEnumAsByte<EAuthResult> AuthResult);
-	void ResetAuthentication();
 	bool RequiresAuthorizationCode();
 	void ReLogin();
-	void SetLoggedInPlayer(class UOnlinePlayer_X* Player);
+	void Logout();
+	void UpdateLoginState();
+	bool CanLogInToPsyNet();
 	void HandlePsyNetLoginChanged(class UOnlinePlayerAuthentication_X* Auth);
-	void HandleLocalPlayerLoginStatusChanged(class UOnlinePlayer_X* Player);
+	void HandleLinkStatusChanged(bool B);
+	void HandleConnectionChanged(class UPsyNetConnection_X* C);
+	void HandleLoginStatusChanged(class UOnlinePlayer_X* Player);
 	int GetBannedMinutesRemaining();
 	bool ParseBanned(class URPC_LoginAuthPlayer_X* RPC);
 	void ReceiveAuthenticatedName(const struct FString& ReceivedName);
-	void RetryLogin();
 	void OnLoginFailRPC(class URPC_LoginAuthPlayer_X* RPC);
 	void OnLoginSuccessRPC(class URPC_LoginAuthPlayer_X* RPC);
-	void SendLoginRequest();
-	void ClearLoginRPC();
+	void SendLoginRPC();
 	void PsyNetLogin();
 	void OnRemoved();
 	void OnInit();
 	void EventAuthenticatedNameChanged(class UOnlinePlayerAuthentication_X* Auth);
 	void EventBanned(class UOnlinePlayerAuthentication_X* Auth);
-	void EventUnauthorized();
-	void EventSessionReceived(class UOnlinePlayerAuthentication_X* Auth, const struct FString& SessionId);
+	void EventLoginSuccessRPC(class UOnlinePlayerAuthentication_X* Auth, class URPC_LoginAuthPlayer_X* RPC);
 	void EventLoginChanged(class UOnlinePlayerAuthentication_X* Auth);
+};
+
+
+// Class ProjectX.SystemInfo_X
+// 0x0000 (0x003C - 0x003C)
+class USystemInfo_X : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.SystemInfo_X");
+		return ptr;
+	}
+
+
+	void STATIC_GetOSInfo(struct FString* Type, struct FString* Bit);
+	void STATIC_GetVideoCardInfo(struct FString* CardName, int* RAM);
+	void STATIC_GetMemoryInfo(float* Physical, float* PageFile, float* Virtual, int* Used, int* Allocated);
+	void STATIC_GetCPUInfo(struct FString* Type, struct FString* Description, struct FString* Cores, struct FString* Threads);
 };
 
 
@@ -3569,7 +3846,8 @@ class UTickActorComponent_X : public UActorComponent
 public:
 	TArray<struct FTimerData>                          Timers;                                                   // 0x0068(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	unsigned long                                      bTick : 1;                                                // 0x0074(0x0004) (CPF_Const)
-	struct FScriptDelegate                             __EventTick__Delegate;                                    // 0x0078(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventTick__Delegate;                                    // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3600,6 +3878,7 @@ public:
 	}
 
 
+	bool STATIC_IsDelegateActive(const struct FScriptDelegate& Callback);
 	void STATIC_ClearDelegate(const struct FScriptDelegate& Callback);
 	void STATIC_SetDelegate(const struct FScriptDelegate& Callback, float Rate, bool bLoop);
 	float STATIC_GetRemainingTime(class UObject* Obj, const struct FName& FuncName);
@@ -3626,6 +3905,7 @@ public:
 	}
 
 
+	bool STATIC_IsDelegateActive(const struct FScriptDelegate& Callback);
 	void STATIC_ClearDelegate(const struct FScriptDelegate& Callback);
 	void STATIC_SetDelegate(const struct FScriptDelegate& Callback, float Rate, bool bLoop);
 	float GetRemainingTimeForTimer(const struct FName& inTimerFunc, class UObject* inObj);
@@ -3649,7 +3929,8 @@ public:
 	struct FPointer                                    VfTable_FTickableObject;                                  // 0x0054(0x0004) (CPF_Const, CPF_Native, CPF_NoExport)
 	unsigned long                                      bTickWhenGamePaused : 1;                                  // 0x0058(0x0004) (CPF_Edit)
 	unsigned long                                      bTick : 1;                                                // 0x0058(0x0004) (CPF_Const)
-	struct FScriptDelegate                             __TickDelegate__Delegate;                                 // 0x005C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __TickDelegate__Delegate;                                 // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3694,7 +3975,8 @@ public:
 	struct FString                                     StringContent;                                            // 0x0064(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              ResponseData;                                             // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	class UError*                                      Error;                                                    // 0x007C(0x0004) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __EventCompleted__Delegate;                               // 0x0080(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventCompleted__Delegate;                               // 0x0080(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3719,6 +4001,7 @@ public:
 	class UWebRequest_X* Send(const struct FString& InURL, const struct FScriptDelegate& OnCompleteCallback);
 	void PrepareRequest(const struct FString& InURL);
 	void SetContentFromString(const struct FString& ContentString);
+	void SetContent(TArray<unsigned char>* ContentBytes);
 	struct FString GetETag();
 	void SetETag(const struct FString& ETag);
 	class UWebRequest_X* SetSessionID(const struct FString& Value);
@@ -3852,7 +4135,7 @@ public:
 
 
 // Class ProjectX.TcpConnection
-// 0x0068 (0x00A4 - 0x003C)
+// 0x009C (0x00D8 - 0x003C)
 class UTcpConnection : public UObject
 {
 public:
@@ -3865,10 +4148,17 @@ public:
 	float                                              LastReceiveTime;                                          // 0x0050(0x0004) (CPF_Const, CPF_Transient)
 	TArray<unsigned char>                              InBytes;                                                  // 0x0054(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<unsigned char>                              OutBytes;                                                 // 0x0060(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<unsigned char>                              QueuedWebSocketBytes;                                     // 0x006C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	TArray<unsigned char>                              InBytesDecoded;                                           // 0x0078(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x0084(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x0094(0x0010) (CPF_NeedCtorLink)
+	TArray<int>                                        OutMessageLengths;                                        // 0x006C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<unsigned char>                              QueuedWebSocketBytes;                                     // 0x0078(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<int>                                        QueuedWebSocketMessageLengths;                            // 0x0084(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<unsigned char>                              InBytesDecoded;                                           // 0x0090(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	TArray<unsigned char>                              BunchBytes;                                               // 0x009C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventConnected__Delegate;                               // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisconnected__Delegate;                            // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReceivedBunch__Delegate;                           // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00C8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3882,30 +4172,29 @@ public:
 	void Close();
 	struct FString GetRemoteAddress();
 	struct FString GetAddress();
+	void EventReceivedBunch(class UTcpConnection* Connection);
 	void EventDisconnected(class UTcpConnection* Connection);
 	void EventConnected(class UTcpConnection* Connection);
 };
 
 
-// Class ProjectX.DemoRecDriver_X
-// 0x016C (0x03C0 - 0x0254)
-class UDemoRecDriver_X : public UDemoRecDriver
+// Class ProjectX.WebSocketConnection_X
+// 0x0010 (0x00E8 - 0x00D8)
+class UWebSocketConnection_X : public UTcpConnection
 {
 public:
-	unsigned char                                      UnknownData00[0x64];                                      // 0x0254(0x0064) MISSED OFFSET
-	float                                              KeyframeDelay;                                            // 0x02B8(0x0004) (CPF_Config)
-	int                                                MaxDemoSizeMegabytes;                                     // 0x02BC(0x0004) (CPF_Config)
-	int                                                MaxKeyframes;                                             // 0x02BC(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData01[0x1C];                                      // 0x02C0(0x001C) MISSED OFFSET
-	struct FString                                     DemoInterfaceClassName;                                   // 0x02DC(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0xD8];                                      // 0x02E8(0x00D8) MISSED OFFSET
+	struct FString                                     ClosedReason;                                             // 0x00D8(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	int                                                ClosedCode;                                               // 0x00E4(0x0004) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DemoRecDriver_X");
+		static auto ptr = UObject::FindClass("Class ProjectX.WebSocketConnection_X");
 		return ptr;
 	}
 
+
+	bool BeginWebSocketConnect(const struct FString& Address, class UStringMap* HandshakeHeaders);
+	bool BeginConnect(const struct FString& Address);
 };
 
 
@@ -3922,8 +4211,10 @@ public:
 	TEnumAsByte<EFeaturePrivilege>                     FailedPrivilege;                                          // 0x005C(0x0001) (CPF_Transient)
 	TArray<int>                                        PendingControllerIDs;                                     // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FScriptDelegate>                     CheckDelegates;                                           // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             EventFinished;                                            // 0x0078(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __CheckDelegate__Delegate;                                // 0x0088(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             EventFinished;                                            // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __CheckDelegate__Delegate;                                // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3949,44 +4240,6 @@ public:
 };
 
 
-// Class ProjectX.AccessControl_X
-// 0x0000 (0x0310 - 0x0310)
-class AAccessControl_X : public AAccessControl
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.AccessControl_X");
-		return ptr;
-	}
-
-
-	struct FUniqueNetId GetPlayerIDFromPlayer(class UPlayer* SearchPlayer);
-};
-
-
-// Class ProjectX.Achievement_X
-// 0x0028 (0x0064 - 0x003C)
-class UAchievement_X : public UObject
-{
-public:
-	int                                                Id;                                                       // 0x003C(0x0004) (CPF_Edit)
-	struct FString                                     FriendlyName;                                             // 0x0040(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	struct FString                                     Description;                                              // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	int                                                FacebookPoints;                                           // 0x0058(0x0004) (CPF_Edit)
-	int                                                FacebookDisplayOrder;                                     // 0x005C(0x0004) (CPF_Edit)
-	unsigned long                                      bDirty : 1;                                               // 0x0060(0x0004) (CPF_Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.Achievement_X");
-		return ptr;
-	}
-
-};
-
-
 // Class ProjectX.ActivateAnimSeriesComponent_X
 // 0x0008 (0x0074 - 0x006C)
 class UActivateAnimSeriesComponent_X : public UActorComponent_X
@@ -4009,13 +4262,13 @@ public:
 
 
 // Class ProjectX.AddReservationMessage_X
-// 0x0040 (0x007C - 0x003C)
+// 0x0058 (0x0094 - 0x003C)
 class UAddReservationMessage_X : public UBeaconMessage_X
 {
 public:
 	TArray<struct FReservationPlayerData>              Players;                                                  // 0x003C(0x000C) (CPF_NeedCtorLink)
-	struct FUniqueNetId                                PartyLeaderID;                                            // 0x0048(0x0030)
-	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x0078(0x0004)
+	struct FUniqueNetId                                PartyLeaderID;                                            // 0x0048(0x0048)
+	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x0090(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -4033,58 +4286,86 @@ public:
 
 
 // Class ProjectX.OnlineGameParty_X
-// 0x0264 (0x02C4 - 0x0060)
+// 0x0294 (0x02F4 - 0x0060)
 class UOnlineGameParty_X : public UOnline_X
 {
 public:
 	TArray<struct FPartyMember>                        PartyMembers;                                             // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FUniqueLobbyId                              PartyID;                                                  // 0x006C(0x000C) (CPF_Transient)
-	struct FUniqueNetId                                PartyLeader;                                              // 0x0078(0x0030) (CPF_Transient)
-	int                                                MaxPartySize;                                             // 0x00A8(0x0004) (CPF_Transient)
-	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x00AC(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
-	class UPartyMessage_SearchStatus_X*                PendingSearchStatus;                                      // 0x00B0(0x0004) (CPF_Transient)
-	class UPartyMessage_SearchStatus_X*                NullSearchStatus;                                         // 0x00B4(0x0004)
-	int                                                PartyTimeout;                                             // 0x00B8(0x0004) (CPF_Edit, CPF_Const)
-	int                                                CurrentPartySize;                                         // 0x00BC(0x0004) (CPF_Transient)
-	unsigned long                                      LastbSearchingStatus : 1;                                 // 0x00C0(0x0004) (CPF_Transient)
-	unsigned long                                      LastLockStatus : 1;                                       // 0x00C0(0x0004) (CPF_Transient)
-	struct FName                                       LastSearchState;                                          // 0x00C4(0x0008) (CPF_Transient)
-	struct FPartyJoinMatchSettings                     MatchSettings;                                            // 0x00CC(0x002C) (CPF_Transient, CPF_NeedCtorLink)
-	TEnumAsByte<EPartyProcessingStatus>                ProcessingStatus;                                         // 0x00F8(0x0001) (CPF_Transient)
-	float                                              SkillCacheTime;                                           // 0x00FC(0x0004) (CPF_Edit)
-	float                                              LastSkillSyncTime;                                        // 0x0100(0x0004) (CPF_Transient)
-	int                                                PendingPartyLocalPlayerNum;                               // 0x0104(0x0004) (CPF_Transient)
-	struct FUniqueLobbyId                              PendingPartyId;                                           // 0x0108(0x000C) (CPF_Transient)
-	TArray<struct FPlaylistSkillRestrictionInfo>       PlaylistRestrictions;                                     // 0x0114(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     NotInSameOnlineGameError;                                 // 0x0120(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     MissingLicenseAgreementError;                             // 0x012C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	class UPartyConfig_X*                              PartyConfig;                                              // 0x0138(0x0004) (CPF_Edit)
-	class URankedConfig_X*                             RankedConfig;                                             // 0x013C(0x0004) (CPF_Edit)
-	class UOnlineGameTrial_X*                          Trial;                                                    // 0x0140(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventPartyCreated__Delegate;                            // 0x0144(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerInvited__Delegate;                           // 0x0154(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartyChanged__Delegate;                            // 0x0164(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartySizeChanged__Delegate;                        // 0x0174(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchStatusChanged__Delegate;                     // 0x0184(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartyError__Delegate;                              // 0x0194(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartyJoinGameError__Delegate;                      // 0x01A4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartyJoinGameSuccess__Delegate;                    // 0x01B4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPartyDestroyed__Delegate;                          // 0x01C4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventConfirmJoinGameMessage__Delegate;                  // 0x01D4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventLeaderLeftOnlineGame__Delegate;                    // 0x01E4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventProcessingStatusChanged__Delegate;                 // 0x01F4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventDisableCrossPlayChanged__Delegate;                 // 0x0204(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlaylistSkillRestrictionChange__Delegate;          // 0x0214(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerTradingChanged__Delegate;                    // 0x0224(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventInviteToTrade__Delegate;                           // 0x0234(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAcceptedInviteToTrade__Delegate;                   // 0x0244(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCloseInviteToTrade__Delegate;                      // 0x0254(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventReadyToTrade__Delegate;                            // 0x0264(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventNotReadyToTrade__Delegate;                         // 0x0274(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTradeReady__Delegate;                              // 0x0284(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventAnotherInviteToTrade__Delegate;                    // 0x0294(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerInMatchChanged__Delegate;                    // 0x02A4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerIsCurrentlyTrading__Delegate;                // 0x02B4(0x0010) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PartyLeader;                                              // 0x0078(0x0048) (CPF_Transient)
+	int                                                MaxPartySize;                                             // 0x00C0(0x0004) (CPF_Const)
+	class UOnlineMessageComponent_X*                   MessageComponent;                                         // 0x00C4(0x0004) (CPF_Const, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPartyMessage_SearchStatus_X*                PendingSearchStatus;                                      // 0x00C8(0x0004) (CPF_Transient)
+	class UPartyMessage_SearchStatus_X*                NullSearchStatus;                                         // 0x00CC(0x0004)
+	int                                                PartyTimeout;                                             // 0x00D0(0x0004) (CPF_Edit, CPF_Const)
+	int                                                CurrentPartySize;                                         // 0x00D4(0x0004) (CPF_Transient)
+	unsigned long                                      LastbSearchingStatus : 1;                                 // 0x00D8(0x0004) (CPF_Transient)
+	unsigned long                                      LastLockStatus : 1;                                       // 0x00D8(0x0004) (CPF_Transient)
+	struct FName                                       LastSearchState;                                          // 0x00DC(0x0008) (CPF_Transient)
+	struct FPartyJoinMatchSettings                     MatchSettings;                                            // 0x00E4(0x002C) (CPF_Transient, CPF_NeedCtorLink)
+	TEnumAsByte<EPartyProcessingStatus>                ProcessingStatus;                                         // 0x0110(0x0001) (CPF_Transient)
+	float                                              SkillCacheTime;                                           // 0x0114(0x0004) (CPF_Edit)
+	float                                              LastSkillSyncTime;                                        // 0x0118(0x0004) (CPF_Transient)
+	int                                                PendingPartyLocalPlayerNum;                               // 0x011C(0x0004) (CPF_Transient)
+	struct FUniqueLobbyId                              PendingPartyId;                                           // 0x0120(0x000C) (CPF_Transient)
+	TArray<struct FPlaylistSkillRestrictionInfo>       PlaylistRestrictions;                                     // 0x012C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     NotInSameOnlineGameError;                                 // 0x0138(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     MissingLicenseAgreementError;                             // 0x0144(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	class UPartyConfig_X*                              PartyConfig;                                              // 0x0150(0x0004) (CPF_Edit)
+	class URankedConfig_X*                             RankedConfig;                                             // 0x0154(0x0004) (CPF_Edit)
+	class UOnlineGameTrial_X*                          Trial;                                                    // 0x0158(0x0004) (CPF_Edit)
+	class UPsyNetConfig_X*                             Config;                                                   // 0x015C(0x0004) (CPF_Edit)
+	TScriptInterface<class UOnlineLobbyInterface>      PlatformLobbyInterface;                                   // 0x0160(0x0008)
+	TScriptInterface<class UOnlineLobbyInterface>      PsyNetLobbyInterface;                                     // 0x0168(0x0008)
+	int                                                CreatePartyLocalPlayerNum;                                // 0x0170(0x0004)
+	struct FScriptDelegate                             __EventPartyCreated__Delegate;                            // 0x0174(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerInvited__Delegate;                           // 0x0184(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartyChanged__Delegate;                            // 0x0194(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0194(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartySizeChanged__Delegate;                        // 0x01A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x01A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchStatusChanged__Delegate;                     // 0x01B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x01B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartyError__Delegate;                              // 0x01C4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x01C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartyJoinGameError__Delegate;                      // 0x01D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x01D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartyJoinGameSuccess__Delegate;                    // 0x01E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x01E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPartyDestroyed__Delegate;                          // 0x01F4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x01F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventConfirmJoinGameMessage__Delegate;                  // 0x0204(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0204(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLeaderLeftOnlineGame__Delegate;                    // 0x0214(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData10[0x4];                                       // 0x0214(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventProcessingStatusChanged__Delegate;                 // 0x0224(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData11[0x4];                                       // 0x0224(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventDisableCrossPlayChanged__Delegate;                 // 0x0234(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData12[0x4];                                       // 0x0234(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlaylistSkillRestrictionChange__Delegate;          // 0x0244(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData13[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerTradingChanged__Delegate;                    // 0x0254(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData14[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInviteToTrade__Delegate;                           // 0x0264(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData15[0x4];                                       // 0x0264(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAcceptedInviteToTrade__Delegate;                   // 0x0274(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData16[0x4];                                       // 0x0274(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCloseInviteToTrade__Delegate;                      // 0x0284(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData17[0x4];                                       // 0x0284(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReadyToTrade__Delegate;                            // 0x0294(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData18[0x4];                                       // 0x0294(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventNotReadyToTrade__Delegate;                         // 0x02A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData19[0x4];                                       // 0x02A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventTradeReady__Delegate;                              // 0x02B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData20[0x4];                                       // 0x02B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAnotherInviteToTrade__Delegate;                    // 0x02C4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData21[0x4];                                       // 0x02C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerInMatchChanged__Delegate;                    // 0x02D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData22[0x4];                                       // 0x02D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPlayerIsCurrentlyTrading__Delegate;                // 0x02E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData23[0x4];                                       // 0x02E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4121,8 +4402,6 @@ public:
 	void SetProcessingStatus(TEnumAsByte<EPartyProcessingStatus> Status);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	struct FString GetPlayerRatingString(const struct FUniqueNetId& PlayerID, int Playlist);
-	void HandlePartyBugReport(class UOnlineMessageComponent_X* Component, class UObject* Message);
-	void BroadcastBugReport(const struct FString& Reason);
 	void OnPartyError(class UError* Error);
 	void HandlePartyError(const struct FString& Error);
 	void HandleRankedConfigChanged();
@@ -4184,8 +4463,9 @@ public:
 	struct FUniqueNetId GetLocalMemberId();
 	bool IsMemberLocal(const struct FUniqueNetId& MemberId);
 	bool HasRemoteMember();
-	void HandleNewLeader(class UOnlineMessageComponent_X* Component, class UObject* Message);
+	void OnPartyLeaderChanged();
 	void HandleKickMessage(class UOnlineMessageComponent_X* Component, class UObject* Message);
+	void HandleLobbySettingsUpdateMessage(class UOnlineMessageComponent_X* Component, class UPartyMessage_LobbySettings_X* LobbySettingsMessage);
 	void HandleLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
 	void HandleLobbyReceiveBinaryData(int MemberIndex, struct FActiveLobbyInfo* LobbyInfo, TArray<unsigned char>* Data);
 	void RemoveAllPartyMembers();
@@ -4195,21 +4475,26 @@ public:
 	void OnEditExistingPartyMember(int PartyMemberIdx);
 	void OnAddNewPartyMember(int PartyMemberIdx);
 	void UpdatePartyInfo(struct FActiveLobbyInfo* Lobby);
+	void UpdatePartyLeader(struct FActiveLobbyInfo* Lobby);
+	void HandleLobbySettingsUpdated(struct FActiveLobbyInfo* Lobby);
 	void OnNewLobby();
 	void HandleJoinLobby(bool bWasSuccessful, const struct FString& Error, struct FActiveLobbyInfo* LobbyInfo, struct FUniqueLobbyId* LobbyUID);
+	void BroadcastStateDelayed();
+	void BroadcastState();
 	void HandleLobbyMemberStatusUpdate(int MemberIndex, int InstigatorIndex, const struct FString& Status, struct FActiveLobbyInfo* LobbyInfo);
 	void HandlePartyJoinGameComplete(bool bSuccess, const struct FString& FailReason);
 	void HandleConfirmJoinGame(const struct FPartyJoinMatchSettings& InSettings);
-	void JoinFriend(const struct FUniqueNetId& PartyMemberID);
+	bool JoinFriend(const struct FUniqueNetId& PartyMemberID);
 	bool WantsToFollowTheLeaderOutOfGame();
 	void HandlePartyJoinGame(class UOnlineMessageComponent_X* Component, class UObject* MessageObject);
 	void BroadcastPartyServer();
 	void HandleServerReserved();
 	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-	struct FPartyMemberServer GetPartyMemberServer(struct FPartyMemberServer* StructInitializer_134D48E84585344A8A885BB92F666FBB);
+	struct FPartyMemberServer GetPartyMemberServer(struct FPartyMemberServer* StructInitializer_AE91A0294BB84AE86418E6BED0782ACF);
 	void HandlePartyMemberJoinGame(class UOnlineMessageComponent_X* Component, class UPartyMessage_PartyMemberJoinGame_X* MessageObject);
 	bool SetPartyMemberJoinGame(struct FUniqueNetId* PlayerID, struct FPartyMemberServer* Server);
 	void BroadcastPartyMember(const struct FUniqueNetId& PlayerID, const struct FPartyMemberServer& Server);
+	void BroadcastLobbySettings(const struct FActiveLobbyInfo& LobbyInfo);
 	bool SetLeader(const struct FUniqueNetId& NewLeader);
 	bool IsPrimaryPlayerIndex(int MemberIdx);
 	bool IsPrimaryPlayer(struct FUniqueNetId* PlayerID);
@@ -4225,12 +4510,20 @@ public:
 	void CheckPartyTimeout();
 	void StartPartyTimeout();
 	void OnPartyCreated(bool bWasSuccessful, const struct FString& Error, struct FUniqueLobbyId* InPartyId);
-	bool CreateParty(int LocalPlayerNum, int MaxPlayers, const struct FScriptDelegate& Handler);
+	bool CreatePartyInternal();
+	bool CreateParty(int LocalPlayerNum, const struct FScriptDelegate& Handler);
+	bool ShouldCreatePsyNetParty();
+	void SetLobbyInterfacePsyNet();
+	void HandlePlayerInvitedPsyNet(bool bAccepted, struct FUniqueLobbyId* InLobbyId, struct FUniqueNetId* FriendId);
+	void HandlePlayerInvitedPlatform(bool bAccepted, struct FUniqueLobbyId* InLobbyId, struct FUniqueNetId* FriendId);
 	void HandlePlayerInvited(bool bAccepted, struct FUniqueLobbyId* InLobbyId, struct FUniqueNetId* FriendId);
 	void HandlePartySizeTracker(class UOnlineGameParty_X* PartyObject);
 	void HandlePrimaryPlayerIdChanged(class UOnlineGameAccount_X* InAccount, const struct FUniqueNetId& PlayerID);
 	void HandleInternetConnectionChanged(bool bConnected);
 	class UPartyMetrics_X* GetMetrics();
+	void SetLobbyInterface(const TScriptInterface<class UOnlineLobbyInterface>& Lobby);
+	bool IsUsingPsyNetParty();
+	void InitLobbyInterfaces();
 	void OnInit();
 	void EventPlayerIsCurrentlyTrading(class UOnlineGameParty_X* PartyObject, const struct FUniqueNetId& InMemberId);
 	void EventPlayerInMatchChanged(class UOnlineGameParty_X* PartyObject, const struct FUniqueNetId& InMemberId);
@@ -4267,8 +4560,10 @@ public:
 	class UOnlinePlayer_X*                             PrimaryPlayer;                                            // 0x0060(0x0004) (CPF_Transient)
 	float                                              UpdateCurrentGameTaskTimer;                               // 0x0064(0x0004) (CPF_Edit)
 	int                                                CurrentPlaylistId;                                        // 0x0068(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventPrimaryPlayerIdChanged__Delegate;                  // 0x006C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCurrentPlaylistSet__Delegate;                      // 0x007C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPrimaryPlayerIdChanged__Delegate;                  // 0x006C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCurrentPlaylistSet__Delegate;                      // 0x007C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4296,11 +4591,11 @@ public:
 
 
 // Class ProjectX.AddReservationMessagePrivate_X
-// 0x0060 (0x00DC - 0x007C)
+// 0x0060 (0x00F4 - 0x0094)
 class UAddReservationMessagePrivate_X : public UAddReservationMessage_X
 {
 public:
-	struct FCustomMatchSettings                        Settings;                                                 // 0x007C(0x0060) (CPF_NeedCtorLink)
+	struct FCustomMatchSettings                        Settings;                                                 // 0x0094(0x0060) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -4315,12 +4610,12 @@ public:
 
 
 // Class ProjectX.AddReservationMessagePublic_X
-// 0x0024 (0x00A0 - 0x007C)
+// 0x0024 (0x00B8 - 0x0094)
 class UAddReservationMessagePublic_X : public UAddReservationMessage_X
 {
 public:
-	struct FJoinMatchSettings                          Settings;                                                 // 0x007C(0x0018) (CPF_NeedCtorLink)
-	TArray<struct FOnlinePlayerMapPrefs>               MapPrefs;                                                 // 0x0094(0x000C) (CPF_NeedCtorLink)
+	struct FJoinMatchSettings                          Settings;                                                 // 0x0094(0x0018) (CPF_NeedCtorLink)
+	TArray<struct FOnlinePlayerMapPrefs>               MapPrefs;                                                 // 0x00AC(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -4348,7 +4643,8 @@ public:
 	TArray<struct FPlayerSeasonRewardProgress>         SeasonRewards;                                            // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FSkillSyncRequest>                   SyncRequests;                                             // 0x0078(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FUniqueNetId>                        SkillsSyncedPlayers;                                      // 0x0084(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSkillSynced__Delegate;                             // 0x0090(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSkillSynced__Delegate;                             // 0x0090(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0090(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4364,7 +4660,7 @@ public:
 	void HandleSkillsUpdateFailed(class URPC_X* RPC);
 	void SetPlayerSeasonReward(const struct FPlayerSeasonRewardProgress& Reward);
 	void ReplicateSeasonReward(const struct FPlayerSeasonRewardProgress& Reward);
-	void HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSeasonRewardProgress* StructInitializer_01EE021C4EE003C15F9DB2A7B026EC83);
+	void HandleSkillsUpdated(class URPC_X* RPC, struct FPlayerSeasonRewardProgress* StructInitializer_3128EB3C462E6A23D4DFDFA61F2814F0);
 	void SubmitMatch(class UMatchRecorder_X* MatchRecorder, const struct FString& MatchGUID);
 	void Clear();
 	float STATIC_GetMMR(float Mu, float Sigma);
@@ -4389,7 +4685,8 @@ public:
 	class UClass*                                      PlaylistClass;                                            // 0x0060(0x0004) (CPF_Edit)
 	TArray<class UGameSettingPlaylist_X*>              DownloadedPlaylists;                                      // 0x0064(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class URankedConfig_X*                             RankedConfig;                                             // 0x0070(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventPlaylistsChanged__Delegate;                        // 0x0074(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPlaylistsChanged__Delegate;                        // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4476,7 +4773,8 @@ public:
 	struct FCameraTransition                           Transition;                                               // 0x0048(0x0048) (CPF_Transient)
 	struct FCameraOrientation                          TransitionDelta;                                          // 0x0090(0x002C) (CPF_Transient)
 	class UCameraState_X*                              CameraState;                                              // 0x00BC(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventBlenderStateChanged__Delegate;                     // 0x00C0(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventBlenderStateChanged__Delegate;                     // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4545,6 +4843,9 @@ public:
 
 	void STATIC_BlendPOVs(const struct FCameraOrientation& FromPOV, const struct FCameraOrientation& ToPOV, float Percent, struct FCameraOrientation* OutPOV);
 	float STATIC_GetBlendPercent(const struct FViewTargetTransitionParams& BlendParams, float Time);
+	bool STATIC_IsPointInView(const struct FVector& Point, const struct FVector& ViewStart, const struct FRotator& ViewRotation, float FOV);
+	float STATIC_GetFrustumDistanceFromWidth(float FOV, float Width, float AspectRatio);
+	float STATIC_GetFrustumDistanceFromHeight(float FOV, float Height);
 	void STATIC_GetFrustumSize(float Dist, float FOV, float AspectRatio, float* OutWidth, float* OutHeight);
 	void STATIC_CalculateDistanceRotation(const struct FVector& Focus, const struct FVector& Origin, float* OutDistance, struct FRotator* OutRotation);
 };
@@ -4644,7 +4945,8 @@ class UOnlineImageDownloaderWeb_X : public UObject
 {
 public:
 	TArray<struct FDownloadedImageRequest>             Requests;                                                 // 0x003C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventImageDownloaded__Delegate;                         // 0x0048(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventImageDownloaded__Delegate;                         // 0x0048(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0048(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -4656,58 +4958,6 @@ public:
 	void OnDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
 	void RequestOnlineImage(const struct FString& URL, bool bSRGB, const struct FScriptDelegate& Callback);
 	void EventImageDownloaded(class UOnlineImageDownloaderWeb_X* Downloader, const struct FDownloadedImage& Image);
-};
-
-
-// Class ProjectX.CustomAnimComponent_X
-// 0x0074 (0x00BC - 0x0048)
-class UCustomAnimComponent_X : public UComponent
-{
-public:
-	struct FName                                       AnimNodeName;                                             // 0x0048(0x0008) (CPF_Edit, CPF_Const)
-	class UAnimNodeSlot*                               SlotNode;                                                 // 0x0050(0x0004) (CPF_Transient)
-	class UAnimNodeBlend*                              BlendNode;                                                // 0x0054(0x0004) (CPF_Transient)
-	class UAnimNodeSlot*                               SlotNodeB;                                                // 0x0058(0x0004) (CPF_Transient)
-	class UAnimNodeBlendPerBone*                       BlendPerBoneNode;                                         // 0x005C(0x0004) (CPF_Transient)
-	unsigned long                                      bControlsRootMotion : 1;                                  // 0x0060(0x0004) (CPF_Edit, CPF_Const)
-	struct FCustomAnimSettings                         CurrentSettings;                                          // 0x0064(0x0034) (CPF_Transient)
-	float                                              CurrentPriority;                                          // 0x0098(0x0004) (CPF_Transient)
-	class USkeletalMeshComponent*                      Mesh;                                                     // 0x009C(0x0004) (CPF_ExportObject, CPF_Transient, CPF_Component, CPF_EditInline)
-	TArray<struct FCustomAnimSettings>                 QueuedAnims;                                              // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFinished__Delegate;                                // 0x00AC(0x0010) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.CustomAnimComponent_X");
-		return ptr;
-	}
-
-
-	bool IsPlayingAnim(const struct FName& InAnimName);
-	float GetCurrentAnimPosition();
-	void Cleanup();
-	class UCustomAnimComponent_X* SetRootBoneRotationAxis(TEnumAsByte<ERootRotationOption> Axis);
-	class UCustomAnimComponent_X* SetRootBoneAxis(TEnumAsByte<ERootBoneAxis> Axis);
-	class UCustomAnimComponent_X* SetRootMotionRotation(TEnumAsByte<ERootMotionRotationMode> Mode);
-	class UCustomAnimComponent_X* SetRootMotion(TEnumAsByte<ERootMotionMode> Mode);
-	class UCustomAnimComponent_X* SetMirrored(bool bMirrored);
-	class UCustomAnimComponent_X* SetRate(float Rate);
-	class UCustomAnimComponent_X* SetBlendOutTime(float Time);
-	class UCustomAnimComponent_X* SetBlendInTime(float Time);
-	class UCustomAnimComponent_X* SetLooping(bool bLooping);
-	class UCustomAnimComponent_X* SetStartTime(float StartTime);
-	void Reset();
-	float Stop(float BlendOutTime);
-	class UCustomAnimComponent_X* Que(const struct FName& AnimName);
-	class UCustomAnimComponent_X* QueSettings(const struct FCustomAnimSettings& Settings);
-	float Play_Internal(const struct FName& AnimName, float Priority);
-	float Play(const struct FName& AnimName, float Priority);
-	float PlayBlended(const struct FCustomAnimSettings& SettingsA, const struct FCustomAnimSettings& SettingsB, float Blend, float Priority);
-	float PlaySettings(const struct FCustomAnimSettings& Settings, float Priority);
-	void OnAnimComplete();
-	void HandleAnimEnd(class APawn_X* ForPawn, class UAnimNodeSequence* SeqNode);
-	void Init(class USkeletalMeshComponent* InMesh);
-	void EventFinished(class UCustomAnimComponent_X* AnimComponent);
 };
 
 
@@ -4766,13 +5016,13 @@ public:
 
 
 // Class ProjectX.OnlineGameLanServer_X
-// 0x0094 (0x017C - 0x00E8)
+// 0x00AC (0x0194 - 0x00E8)
 class UOnlineGameLanServer_X : public UOnlineGameServer_X
 {
 public:
 	class UOnlineGameLanReservations_X*                Reservations;                                             // 0x00E8(0x0004) (CPF_Edit)
 	struct FCustomMatchSettings                        CustomMatch;                                              // 0x00EC(0x0060) (CPF_Transient, CPF_NeedCtorLink)
-	struct FUniqueNetId                                CustomMatchOwner;                                         // 0x014C(0x0030) (CPF_Transient)
+	struct FUniqueNetId                                CustomMatchOwner;                                         // 0x014C(0x0048) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -4785,13 +5035,13 @@ public:
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
 	bool AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
 	void PlayerLoggedIn(class APlayerReplicationInfo* PRI);
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
+	void AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID, struct FString* ErrorMessage);
 	void TravelToMap(const struct FString& ServerCommand);
 	void OnNewGameInfoCreated(class AGameInfo_X* Game);
 	void GoToNextMap();
 	void ClearSettings();
 	void HandleReservationsTimeout();
-	void GetCustomMatchSettings(struct FCustomMatchSettings* OutSettings);
+	struct FCustomMatchSettings GetCustomMatchSettings();
 	struct FUniqueNetId GetCustomMatchOwner();
 	void UpdateCustomMatchOwner(const struct FUniqueNetId& NewOwner);
 	void SetupPrivateMatch(const struct FCustomMatchSettings& Settings, const struct FUniqueNetId& Creator);
@@ -4813,21 +5063,21 @@ public:
 
 
 	struct FUniqueNetId GetCustomMatchOwner();
-	void GetCustomMatchSettings(struct FCustomMatchSettings* OutSettings);
+	struct FCustomMatchSettings GetCustomMatchSettings();
 	bool AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
 	void PlayerLoggedIn(class APlayerReplicationInfo* PRI);
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
+	void AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID, struct FString* ErrorMessage);
 };
 
 
 // Class ProjectX.RPC_ReportCheater_X
-// 0x003C (0x00DC - 0x00A0)
+// 0x0054 (0x00EC - 0x0098)
 class URPC_ReportCheater_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	struct FString                                     Reason;                                                   // 0x00D0(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	struct FString                                     Reason;                                                   // 0x00E0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -4838,233 +5088,6 @@ public:
 
 	class URPC_ReportCheater_X* SetReason(const struct FString& InReason);
 	class URPC_ReportCheater_X* SetPlayerID(const struct FUniqueNetId& InPlayerId);
-};
-
-
-// State ProjectX.PlayerController_X.DebugMode
-// 0x0000
-class SPlayerController_X_DebugMode : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.PlayerController_X.DebugMode");
-		return ptr;
-	}
-
-
-	void PlayerTick(float DeltaTime);
-	void ProcessMove(float DeltaTime, const struct FVector& NewInput, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
-	void PlayerMove(float DeltaTime);
-	bool GetAutoAimTarget(class AActor** HitActor, struct FVector* HitLoc);
-	void DebugKillAllExcept();
-	void DebugKill();
-	void DebugCrosshair();
-	void ToggleDebugCamera();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-	void ServerRestartPlayer();
-};
-
-
-// State ProjectX.PlayerController_X.Profiling
-// 0x0000
-class SPlayerController_X_Profiling : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.PlayerController_X.Profiling");
-		return ptr;
-	}
-
-
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.DemoPC_X.Recording
-// 0x0000
-class SDemoPC_X_Recording : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.DemoPC_X.Recording");
-		return ptr;
-	}
-
-
-	void PlayerTick(float DeltaTime);
-};
-
-
-// State ProjectX.DemoPC_X.Playing
-// 0x0000
-class SDemoPC_X_Playing : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.DemoPC_X.Playing");
-		return ptr;
-	}
-
-
-	void FollowPlayerNone();
-	void FollowPlayerPrev();
-	void FollowPlayerNext();
-	void PlayerTick(float DeltaTime);
-	void SetShowDebugObject(class UObject* O);
-	void ProcessMove(float DeltaTime, const struct FVector& NewInput, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
-	void PlayerMove(float DeltaTime);
-	bool GetAutoAimTarget(class AActor** HitActor);
-	bool AllowAutoAimDebug(class AActor* HitActor);
-	void DebugCrosshair();
-	void DebugCategorySwitch(bool bForward);
-	void DebugCategoryPrev();
-	void DebugCategoryNext();
-	void ToggleDebugCamera();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-	void ServerRestartPlayer();
-	void StartFire(unsigned char FireModeNum);
-};
-
-
-// Class ProjectX.DemoPlayerInput_X
-// 0x0000 (0x0270 - 0x0270)
-class UDemoPlayerInput_X : public UPlayerInput
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DemoPlayerInput_X");
-		return ptr;
-	}
-
-};
-
-
-// Class ProjectX.DrawDebugObject_X
-// 0x0018 (0x0054 - 0x003C)
-class UDrawDebugObject_X : public UObject
-{
-public:
-	float                                              Lifetime;                                                 // 0x003C(0x0004) (CPF_Transient)
-	struct FVector                                     Start;                                                    // 0x0040(0x000C) (CPF_Transient)
-	class AActor*                                      ActorRef;                                                 // 0x004C(0x0004) (CPF_Transient)
-	struct FColor                                      ObjColor;                                                 // 0x0050(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugObject_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
-	bool UpdateLifetime(float DeltaTime);
-	void Destroy();
-	void ShutDown();
-	void Initialize(float InLifetime);
-	class AWorldInfo* GetWorldInfo();
-};
-
-
-// Class ProjectX.DrawDebugBox_X
-// 0x000C (0x0060 - 0x0054)
-class UDrawDebugBox_X : public UDrawDebugObject_X
-{
-public:
-	struct FVector                                     Extent;                                                   // 0x0054(0x000C) (CPF_Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugBox_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
-};
-
-
-// Class ProjectX.DrawDebugLine_X
-// 0x000C (0x0060 - 0x0054)
-class UDrawDebugLine_X : public UDrawDebugObject_X
-{
-public:
-	struct FVector                                     End;                                                      // 0x0054(0x000C) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugLine_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
-};
-
-
-// Class ProjectX.DrawDebugLineActors_X
-// 0x0004 (0x0064 - 0x0060)
-class UDrawDebugLineActors_X : public UDrawDebugLine_X
-{
-public:
-	class AActor*                                      ActorEnd;                                                 // 0x0060(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugLineActors_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
-};
-
-
-// Class ProjectX.DrawDebugLinePivot_X
-// 0x0010 (0x0074 - 0x0064)
-class UDrawDebugLinePivot_X : public UDrawDebugLineActors_X
-{
-public:
-	struct FRotator                                    Rotation;                                                 // 0x0064(0x000C) (CPF_Transient)
-	float                                              Size;                                                     // 0x0070(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugLinePivot_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
-};
-
-
-// Class ProjectX.DrawDebugSphere_X
-// 0x0004 (0x0058 - 0x0054)
-class UDrawDebugSphere_X : public UDrawDebugObject_X
-{
-public:
-	float                                              Radius;                                                   // 0x0054(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.DrawDebugSphere_X");
-		return ptr;
-	}
-
-
-	void Update(float DeltaTime);
 };
 
 
@@ -5090,45 +5113,6 @@ public:
 	void SpawnFX();
 	void PostBeginPlay();
 	void ReplicatedEvent(const struct FName& VarName);
-};
-
-
-// Class ProjectX.FacebookAchievementManager_X
-// 0x0060 (0x00D4 - 0x0074)
-class UFacebookAchievementManager_X : public USaveGame_X
-{
-public:
-	TArray<int>                                        PendingAchievements;                                      // 0x0074(0x000C) (CPF_NeedCtorLink)
-	TArray<int>                                        CompletedAchievements;                                    // 0x0080(0x000C) (CPF_NeedCtorLink)
-	class UFacebookIntegration*                        Facebook;                                                 // 0x008C(0x0004) (CPF_Transient)
-	unsigned long                                      bTryingToUnlock : 1;                                      // 0x0090(0x0004) (CPF_Transient)
-	int                                                CurrentSubmittingAchievement;                             // 0x0094(0x0004) (CPF_Transient)
-	struct FString                                     WebsiteURL;                                               // 0x0098(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	TArray<int>                                        AchievementsToReset;                                      // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                TotalAchievementsToReset;                                 // 0x00B0(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventFacebookAchievementsResetComplete__Delegate;       // 0x00B4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFacebookAchievementsResetUpdate__Delegate;         // 0x00C4(0x0010) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.FacebookAchievementManager_X");
-		return ptr;
-	}
-
-
-	void OnDeleteAchievementComplete(struct FPlatformInterfaceDelegateResult* Result);
-	void ResetNextAchievement();
-	void ResetAchievements(TArray<int> AchievementIDs);
-	void OnAddAchievementComplete(struct FPlatformInterfaceDelegateResult* Result);
-	struct FString GetAchievementURL(int AchievementId);
-	void SendFacebookRequest(int AchievementId);
-	void UnlockAchievement(int AchievementId);
-	void CheckPendingAchievements();
-	void InitFacebook();
-	void Cleanup();
-	void Reset();
-	void EventFacebookAchievementsResetUpdate(const struct FString& UpdateMessage);
-	void EventFacebookAchievementsResetComplete();
 };
 
 
@@ -5262,15 +5246,24 @@ public:
 	struct FCustomMatchSettings                        CustomMatch;                                              // 0x0194(0x0060) (CPF_NeedCtorLink)
 	int                                                ReservationAttemptsForOneServer;                          // 0x01F4(0x0004) (CPF_Transient)
 	TArray<class URPC_GenerateKeys_X*>                 GenerateKeysRPCs;                                         // 0x01F8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventJoinGameComplete__Delegate;                        // 0x0204(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventStatusUpdate__Delegate;                            // 0x0214(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCountdownStarted__Delegate;                        // 0x0224(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCountdownEnded__Delegate;                          // 0x0234(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventServerBeaconAddressChanged__Delegate;              // 0x0244(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventServerReserved__Delegate;                          // 0x0254(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPasswordRequired__Delegate;                        // 0x0264(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventJoiningGame__Delegate;                             // 0x0274(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventMaxPlayersChanged__Delegate;                       // 0x0284(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventJoinGameComplete__Delegate;                        // 0x0204(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0204(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventStatusUpdate__Delegate;                            // 0x0214(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0214(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCountdownStarted__Delegate;                        // 0x0224(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0224(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCountdownEnded__Delegate;                          // 0x0234(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0234(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventServerBeaconAddressChanged__Delegate;              // 0x0244(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0244(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventServerReserved__Delegate;                          // 0x0254(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0254(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPasswordRequired__Delegate;                        // 0x0264(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0264(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventJoiningGame__Delegate;                             // 0x0274(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0274(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventMaxPlayersChanged__Delegate;                       // 0x0284(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x0284(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5282,13 +5275,14 @@ public:
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	bool IsInTransition();
 	void SendPing();
+	void GotoJoinGameState(const struct FName& NewStateName);
 	void HandleConnectionResponse(class UTcpConnection* Connection, class UObject* Message);
 	void HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message);
 	void NotifyConnectionFailed(const struct FString& Message);
 	void OnJoinGameComplete(bool bSuccess, const struct FString& FailReason, const struct FString& BugItReason);
 	void SetServerBeaconAddress(const struct FString& NewValue);
 	void ClearServerData();
-	void HandleSpawned(class AGameInfo_X* InGameInfo);
+	void HandleGameInfoSpawned(class AGameInfo_X* InGameInfo);
 	bool IsJoiningGame();
 	void CancelJoin();
 	bool StartJoinPrivateMatch(const struct FString& BeaconAddress, const struct FJoinMatchSettings& JoinSettings, struct FCustomMatchSettings* InSettings);
@@ -5315,8 +5309,10 @@ public:
 	class UGFxObject*                                  GFxPopup;                                                 // 0x0048(0x0004)
 	TArray<struct FScriptDelegate>                     Callbacks;                                                // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	struct FString                                     ConfirmString;                                            // 0x0058(0x000C) (CPF_Edit, CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __ClickDelegate__Delegate;                                // 0x0064(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventClosed__Delegate;                                  // 0x0074(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __ClickDelegate__Delegate;                                // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventClosed__Delegate;                                  // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5327,8 +5323,11 @@ public:
 
 	void Close();
 	void FlashAddButton(const struct FString& Label);
+	void FlashAddCancelButton(const struct FString& LocalizedText);
 	void HandleButtonClicked(int Index);
 	class UGFxModal_X* AddButton(const struct FString& Label, const struct FScriptDelegate& OnClick);
+	class UGFxModal_X* AddCancelButton(const struct FString& LocalizedText, const struct FScriptDelegate& OnClick);
+	class UGFxModal_X* SetCancellable(bool bCancellable);
 	class UGFxModal_X* SetDefaultSelectedButtonIndex(int buttonIndex);
 	class UGFxModal_X* SetBody(const struct FString& LocalizedText);
 	class UGFxModal_X* SetTitle(const struct FString& LocalizedText);
@@ -5339,21 +5338,27 @@ public:
 
 
 // Class ProjectX.GRI_X
-// 0x0264 (0x04B0 - 0x024C)
+// 0x0330 (0x057C - 0x024C)
 class AGRI_X : public AGameReplicationInfo
 {
 public:
 	int                                                ReplicatedGamePlaylist;                                   // 0x024C(0x0004) (CPF_Net, CPF_Transient)
 	int                                                ReplicatedGameMutatorIndex;                               // 0x0250(0x0004) (CPF_Net, CPF_Transient)
-	struct FReplicatedReservationData                  Reservations[0x8];                                        // 0x0254(0x0040) (CPF_Net, CPF_Transient, CPF_NeedCtorLink)
-	__int64                                     GameServerID;                                       // 0x0454(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.GRI_X.GameServerID
-	unsigned long                                      bGameStarted : 1;                                         // 0x045C(0x0004) (CPF_Net, CPF_Transient)
-	unsigned long                                      bGameEnded : 1;                                           // 0x045C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x0460(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGameDataSelected__Delegate;                        // 0x0470(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventReservationsUpdated__Delegate;                     // 0x0480(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventServerNameChanged__Delegate;                       // 0x0490(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGameStarted__Delegate;                             // 0x04A0(0x0010) (CPF_NeedCtorLink)
+	struct FReplicatedReservationData                  Reservations[0x8];                                        // 0x0254(0x0058) (CPF_Net, CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0514(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.GRI_X.GameServerID
+	unsigned long                                      bGameStarted : 1;                                         // 0x051C(0x0004) (CPF_Net, CPF_Transient)
+	unsigned long                                      bGameEnded : 1;                                           // 0x051C(0x0004) (CPF_Transient)
+	struct FString                                     MatchGUID;                                                // 0x0520(0x000C) (CPF_Net, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSpawned__Delegate;                                 // 0x052C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x052C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGameDataSelected__Delegate;                        // 0x053C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x053C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReservationsUpdated__Delegate;                     // 0x054C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x054C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventServerNameChanged__Delegate;                       // 0x055C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x055C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGameStarted__Delegate;                             // 0x056C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x056C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5363,6 +5368,7 @@ public:
 
 
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
+	void HandlematchGUIDChanged(class UOnlineGameDedicatedServer_X* OnlineGameDS);
 	bool IsPlaylistRanked();
 	class UGameSettingPlaylist_X* GetPlaylist();
 	bool PlayerIsInCurrentGame(const struct FUniqueNetId& MemberId);
@@ -5376,7 +5382,9 @@ public:
 	void SetGameData(int NewPlaylistID, int MutatorIndex);
 	void HandleGamePlaylistSet(class UOnlineGameDedicatedServer_X* DedicatedServer);
 	void OnReservationsUpdated();
-	void UpdateReservations();
+	void SetReservations(TArray<struct FReplicatedReservationData> InReservations, struct FReplicatedReservationData* StructInitializer_A8B221F340E612EC5DAFABA7CF1A02F5);
+	struct FReplicatedReservationData ConvertReservation(const struct FReservationData& Data, struct FReplicatedReservationData* StructInitializer_3AF948B04A86812831C8EB9B5D010D73);
+	void UpdateReservations(TArray<struct FReplicatedReservationData>* MapLocal_9538C78F47142F8621255A9B492F2898);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 	void EventGameStarted(class AGRI_X* GRI);
@@ -5392,7 +5400,7 @@ public:
 class ULanMessage_X : public UOnlineMessage_X
 {
 public:
-	__int64                                      Nonce;                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanMessage_X.Nonce
+	unsigned char                                      UnknownData00[0x8];                                       // 0x003C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.LanMessage_X.Nonce
 
 	static UClass* StaticClass()
 	{
@@ -5429,11 +5437,13 @@ public:
 
 
 // Class ProjectX.LanMessage_HostResponse_X
-// 0x0078 (0x00BC - 0x0044)
+// 0x0090 (0x00D4 - 0x0044)
 class ULanMessage_HostResponse_X : public ULanMessage_X
 {
 public:
 	struct FServerResult                               Result;                                                   // 0x0044(0x0078) (CPF_NeedCtorLink)
+	struct FString                                     ServerID;                                                 // 0x00BC(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     MetaData;                                                 // 0x00C8(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -5443,6 +5453,8 @@ public:
 
 
 	struct FString GetDebugString();
+	class ULanMessage_HostResponse_X* SetMetaData(const struct FString& InMetaData);
+	class ULanMessage_HostResponse_X* SetServerID(const struct FString& InServerID);
 	class ULanMessage_HostResponse_X* SetResult(const struct FServerResult& InResult);
 };
 
@@ -5459,91 +5471,6 @@ public:
 		return ptr;
 	}
 
-};
-
-
-// Class ProjectX.MapRenderProfiler_X
-// 0x0078 (0x00D0 - 0x0058)
-class UMapRenderProfiler_X : public UTickableStateObject_X
-{
-public:
-	TArray<struct FString>                             MapList;                                                  // 0x0058(0x000C) (CPF_Config, CPF_NeedCtorLink)
-	struct FString                                     UploadUrl;                                                // 0x0064(0x000C) (CPF_NeedCtorLink)
-	struct FVector                                     CameraLocation;                                           // 0x0070(0x000C)
-	int                                                MapIndex;                                                 // 0x007C(0x0004) (CPF_Transient)
-	TArray<struct FMapProfile>                         MapProfiles;                                              // 0x0080(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     ProfilePlatform;                                          // 0x008C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     ProfileTimestamp;                                         // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FString>                             MapsNeedingRebuild;                                       // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FRenderProfile                              FlythroughProfile;                                        // 0x00B0(0x001C) (CPF_Transient)
-	class ARenderProfiler_X*                           PendingProfile;                                           // 0x00CC(0x0004) (CPF_Transient)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.MapRenderProfiler_X");
-		return ptr;
-	}
-
-
-	void Finalize();
-	void LoadNextMap();
-	void Start();
-};
-
-
-// State ProjectX.MapRenderProfiler_X.LoadingMap
-// 0x0000
-class SMapRenderProfiler_X_LoadingMap : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.MapRenderProfiler_X.LoadingMap");
-		return ptr;
-	}
-
-
-	void StartProfiling();
-	void HandleMapLoaded();
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.MapRenderProfiler_X.FlythroughProfiling
-// 0x0000
-class SMapRenderProfiler_X_FlythroughProfiling : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.MapRenderProfiler_X.FlythroughProfiling");
-		return ptr;
-	}
-
-
-	void HandleProfileFinished(class AMapFlythroughProfiler_X* Profiler);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.MapRenderProfiler_X.RenderProfiling
-// 0x0000
-class SMapRenderProfiler_X_RenderProfiling : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.MapRenderProfiler_X.RenderProfiling");
-		return ptr;
-	}
-
-
-	void UploadProfile(const struct FString& MapName, class ARenderProfiler_X* Profile);
-	void HandleProfileFinished(class ARenderProfiler_X* Profiler);
-	void BeginState(const struct FName& P);
 };
 
 
@@ -5603,7 +5530,7 @@ public:
 
 
 // Class ProjectX.OnlineGamePlayerTitles_X
-// 0x0044 (0x00A4 - 0x0060)
+// 0x0054 (0x00B4 - 0x0060)
 class UOnlineGamePlayerTitles_X : public UOnline_X
 {
 public:
@@ -5611,8 +5538,12 @@ public:
 	struct FName                                       XpTitleID;                                                // 0x0064(0x0008) (CPF_Edit)
 	TArray<struct FCachedTitleData>                    TitleCache;                                               // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FCachedPlayerData>                   PlayerCache;                                              // 0x0078(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPlayerTitledUpdated__Delegate;                     // 0x0084(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTitleDataUpdated__Delegate;                        // 0x0094(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPlayerTitledUpdated__Delegate;                     // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventTitleDataUpdated__Delegate;                        // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventReceivedPlayerTitles__Delegate;                    // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5632,6 +5563,7 @@ public:
 	void SyncPlayerTitles(const struct FUniqueNetId& PlayerID, const struct FScriptDelegate& Callback);
 	void HandlePlayerPsyNetLogin(class UOnlinePlayer_X* Player);
 	void OnInit();
+	void EventReceivedPlayerTitles(class UOnlineGamePlayerTitles_X* Titles);
 	void EventTitleDataUpdated(class UOnlineGamePlayerTitles_X* Titles, const struct FName& TitleId);
 	void EventPlayerTitledUpdated(class UOnlineGamePlayerTitles_X* Titles, const struct FUniqueNetId& PlayerID);
 };
@@ -5665,7 +5597,8 @@ class UWebCache_X : public UObject
 public:
 	unsigned long                                      bDebug : 1;                                               // 0x003C(0x0004) (CPF_Edit)
 	TArray<struct FCachedDataRequest>                  Requests;                                                 // 0x0040(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __CachedTextCallback__Delegate;                           // 0x004C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __CachedTextCallback__Delegate;                           // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5692,8 +5625,10 @@ class UOnlineGameWordFilter_X : public UOnline_X
 public:
 	TArray<struct FFilterPair>                         Filtered;                                                 // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UWordFilterConfig_X*                         Config;                                                   // 0x006C(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventCommentSanitized__Delegate;                        // 0x0070(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventCommentError__Delegate;                            // 0x0080(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventCommentSanitized__Delegate;                        // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventCommentError__Delegate;                            // 0x0080(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5726,7 +5661,8 @@ public:
 	TArray<struct FUniqueNetId>                        PlayerIDMap;                                              // 0x006C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FPlayerGroup>                        Groups;                                                   // 0x0078(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FCachedGroupSkillRating>             GroupRatings;                                             // 0x0084(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGroupSkillSynced__Delegate;                        // 0x0090(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventGroupSkillSynced__Delegate;                        // 0x0090(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0090(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5735,15 +5671,14 @@ public:
 	}
 
 
+	struct FUniqueNetId __OnlineGameSkillGroups_X__ReverseMapPlayerIDs_1(int PlayerIdx);
 	void HandleSkillsUpdateFailed(class URPC_X* RPCObject);
 	void HandleSkillsUpdated(class URPC_X* RPCObject);
 	void SubmitMatch(class UMatchRecorder_X* MatchRecorder);
-	TArray<struct FUniqueNetId> ReverseMapPlayerIDs(TArray<int> PlayerIndexes);
-	bool ArraysEqual(TArray<int> A, TArray<int> B);
-	int HashPlayerIndexes(TArray<int> PlayerIndexes);
+	TArray<struct FUniqueNetId> ReverseMapPlayerIDs(TArray<int> PlayerIndexes, TArray<struct FUniqueNetId>* MapLocal_A305344E403B1AFF01B8EC8090C32CCD);
+	int HashPlayerIndexes(TArray<int>* PlayerIndexes);
 	int MapPlayerID(const struct FUniqueNetId& PlayerID);
-	int SortPlayerIndexes(int A, int B);
-	TArray<int> MapPlayerIDs(TArray<struct FUniqueNetId> PlayerIDs);
+	TArray<int> MapPlayerIDs(TArray<struct FUniqueNetId>* PlayerIDs, TArray<int>* MapLocal_75AD7BE446C0AA6F6A3AD99AAAB215C9, TArray<int>* SortLocal_84037D464416E987592B06876CC3042A);
 	int GetOrCreatePlayerGroup(TArray<struct FUniqueNetId> Players);
 	int GetOrCreateGroupRating(TArray<struct FUniqueNetId> Players, int Playlist);
 	struct FTierSkillRating GetGroupSkillRating(TArray<struct FUniqueNetId> Players, int Playlist);
@@ -5755,43 +5690,6 @@ public:
 };
 
 
-// Class ProjectX.NetMetrics_X
-// 0x0000 (0x0054 - 0x0054)
-class UNetMetrics_X : public UMetricsGroup_X
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.NetMetrics_X");
-		return ptr;
-	}
-
-
-	void RpcSignatureMismatch(int ServiceID);
-	void ConnectionChangedIP(const struct FUniqueNetId& PlayerID);
-	void PlayerNetworkError(const struct FUniqueNetId& PlayerID, const struct FString& Reason);
-	void PlayerTimeout(const struct FUniqueNetId& PlayerID);
-	void PlayerNetwork(const struct FUniqueNetId& PlayerID, int PingMin, int PingMax, int PingAvg, int PktLossRateMin, int PktLossRateMax, int PktLossAvg, int InBpsMax, int InBpsAvg, int OutBpsMax, int OutBpsAvg);
-	void RecordPlayerNetwork(class APlayerController* PC);
-};
-
-
-// Class ProjectX.PsyNetLocatorHttp_X
-// 0x0000 (0x0060 - 0x0060)
-class UPsyNetLocatorHttp_X : public UPsyNetLocator_X
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetLocatorHttp_X");
-		return ptr;
-	}
-
-};
-
-
 // Class ProjectX.OnlineGameWordFilterProcessor_X
 // 0x0020 (0x0080 - 0x0060)
 class UOnlineGameWordFilterProcessor_X : public UOnline_X
@@ -5799,7 +5697,8 @@ class UOnlineGameWordFilterProcessor_X : public UOnline_X
 public:
 	float                                              ResponseDelay;                                            // 0x0060(0x0004) (CPF_Const)
 	TArray<struct FWordFilterRequest>                  SanitizeCallbacks;                                        // 0x0064(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnSanitizeStringComplete__Delegate;                     // 0x0070(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnSanitizeStringComplete__Delegate;                     // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5823,8 +5722,10 @@ class UOnlineGamePrivileges_X : public UOnline_X
 public:
 	TArray<class UPrivilegeCheck_X*>                   PendingChecks;                                            // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bIsCheckingPrivileges : 1;                                // 0x006C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventCheckingPrivilegesChanged__Delegate;               // 0x0070(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPrivilegeCheckRestriction__Delegate;               // 0x0080(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventCheckingPrivilegesChanged__Delegate;               // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPrivilegeCheckRestriction__Delegate;               // 0x0080(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0080(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5858,12 +5759,16 @@ public:
 	TArray<int>                                        SortedRegions;                                            // 0x0074(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FCachedRegionPing>                   CachedRegionPings;                                        // 0x0080(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	class UTcpMessageBeacon*                           Beacon;                                                   // 0x008C(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	unsigned long                                      bWaitingToPingRegions : 1;                                // 0x0090(0x0004) (CPF_Transient)
 	unsigned long                                      bPingingRegions : 1;                                      // 0x0090(0x0004) (CPF_Transient)
 	unsigned long                                      bServersPinged : 1;                                       // 0x0090(0x0004) (CPF_Transient)
 	int                                                NumServersPinged;                                         // 0x0094(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventRegionsSynced__Delegate;                           // 0x0098(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventRegionsPinged__Delegate;                           // 0x00A8(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventRegionsError__Delegate;                            // 0x00B8(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventRegionsSynced__Delegate;                           // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventRegionsPinged__Delegate;                           // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventRegionsError__Delegate;                            // 0x00B8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00B8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5872,6 +5777,7 @@ public:
 	}
 
 
+	void __OnlineGameRegions_X__SyncRegions_1(class URPC_X* _);
 	void SetCachedRegionPings(TArray<struct FCachedRegionPing>* InCachedRegionPings);
 	void PrintDebugInfo(class UDebugDrawer* Drawer);
 	void NotifyWhenSynced(const struct FScriptDelegate& Callback);
@@ -5894,21 +5800,25 @@ public:
 
 
 // Class ProjectX.OnlineGameInvite_X
-// 0x00AC (0x010C - 0x0060)
+// 0x00C4 (0x0124 - 0x0060)
 class UOnlineGameInvite_X : public UOnline_X
 {
 public:
-	struct FUniqueNetId                                FriendJoinPlayerID;                                       // 0x0060(0x0030) (CPF_Transient)
-	struct FString                                     UnableToFindFriendsGameString;                            // 0x0090(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     AlreadyInSameServerString;                                // 0x009C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     FriendNotJoinable;                                        // 0x00A8(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     GameInviteBeaconAddress;                                  // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FName                                       ActionRequired;                                           // 0x00C0(0x0008) (CPF_Transient)
-	class UOnlineGameTrial_X*                          Trial;                                                    // 0x00C8(0x0004) (CPF_Edit)
-	struct FScriptDelegate                             __EventGameInviteAccepted__Delegate;                      // 0x00CC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGameInviteComplete__Delegate;                      // 0x00DC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventConfirmationRequired__Delegate;                    // 0x00EC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventPasswordRequired__Delegate;                        // 0x00FC(0x0010) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                FriendJoinPlayerID;                                       // 0x0060(0x0048) (CPF_Transient)
+	struct FString                                     UnableToFindFriendsGameString;                            // 0x00A8(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     AlreadyInSameServerString;                                // 0x00B4(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     FriendNotJoinable;                                        // 0x00C0(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     GameInviteBeaconAddress;                                  // 0x00CC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FName                                       ActionRequired;                                           // 0x00D8(0x0008) (CPF_Transient)
+	class UOnlineGameTrial_X*                          Trial;                                                    // 0x00E0(0x0004) (CPF_Edit)
+	struct FScriptDelegate                             __EventGameInviteAccepted__Delegate;                      // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGameInviteComplete__Delegate;                      // 0x00F4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventConfirmationRequired__Delegate;                    // 0x0104(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPasswordRequired__Delegate;                        // 0x0114(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5933,7 +5843,8 @@ public:
 class UOnlineGameVoice_X : public UOnline_X
 {
 public:
-	struct FScriptDelegate                             __EventPlayerTalking__Delegate;                           // 0x0060(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPlayerTalking__Delegate;                           // 0x0060(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0060(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -5981,7 +5892,8 @@ public:
 	unsigned long                                      bDownloadingPopulation : 1;                               // 0x0068(0x0004) (CPF_Transient)
 	int                                                TotalPlayers;                                             // 0x006C(0x0004) (CPF_Transient)
 	TArray<struct UOnlineGamePopulation_X_FPlaylistPopulation> Populations;                                              // 0x0070(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventGetPlaylistPopulations__Delegate;                  // 0x007C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventGetPlaylistPopulations__Delegate;                  // 0x007C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x007C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6008,11 +5920,16 @@ public:
 	unsigned long                                      bIsHostQuery : 1;                                         // 0x00E4(0x0004) (CPF_Transient)
 	float                                              SearchTimeout;                                            // 0x00E8(0x0004) (CPF_Edit, CPF_Const)
 	class ULanBeacon_X*                                LanBeacon;                                                // 0x00EC(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
-	struct FScriptDelegate                             __EventSearchNewResponse__Delegate;                       // 0x00F0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchStatus__Delegate;                            // 0x0100(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchStateChanged__Delegate;                      // 0x0110(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchComplete__Delegate;                          // 0x0120(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchError__Delegate;                             // 0x0130(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSearchNewResponse__Delegate;                       // 0x00F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchStatus__Delegate;                            // 0x0100(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0100(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchStateChanged__Delegate;                      // 0x0110(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0110(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchComplete__Delegate;                          // 0x0120(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x0120(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchError__Delegate;                             // 0x0130(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0130(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6058,9 +5975,12 @@ public:
 	struct FString                                     NoResultsFound;                                           // 0x00D8(0x000C) (CPF_Edit, CPF_Const, CPF_Localized, CPF_NeedCtorLink)
 	struct FString                                     NotLoggedInToPsynet;                                      // 0x00E4(0x000C) (CPF_Edit, CPF_Const, CPF_Localized, CPF_NeedCtorLink)
 	float                                              SearchTimeout;                                            // 0x00F0(0x0004) (CPF_Edit, CPF_Const)
-	struct FScriptDelegate                             __EventSearchComplete__Delegate;                          // 0x00F4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSearchError__Delegate;                             // 0x0104(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventBrowserError__Delegate;                            // 0x0114(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventSearchComplete__Delegate;                          // 0x00F4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSearchError__Delegate;                             // 0x0104(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventBrowserError__Delegate;                            // 0x0114(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6091,12 +6011,16 @@ class UOnlineGameMatchmakingBase_X : public UOnline_X
 {
 public:
 	class UCheckReservation_X*                         CheckReservation;                                         // 0x0060(0x0004) (CPF_Transient)
-	class URPC_X*                                      StartMatchmakingRPC;                                      // 0x0064(0x0004) (CPF_Transient)
+	class UAsyncTask*                                  StartMatchmakingTask;                                     // 0x0064(0x0004) (CPF_Transient)
 	struct FString                                     PingingRegionsString;                                     // 0x0068(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFindGameComplete__Delegate;                        // 0x0074(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFindGameStatus__Delegate;                          // 0x0084(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFindGameError__Delegate;                           // 0x0094(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFindGameStateChanged__Delegate;                    // 0x00A4(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventFindGameComplete__Delegate;                        // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventFindGameStatus__Delegate;                          // 0x0084(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventFindGameError__Delegate;                           // 0x0094(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0094(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventFindGameStateChanged__Delegate;                    // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6136,7 +6060,8 @@ public:
 	struct FString                                     TimeoutString;                                            // 0x00F0(0x000C) (CPF_Edit, CPF_Const, CPF_Localized, CPF_NeedCtorLink)
 	struct FCustomMatchSettings                        Settings;                                                 // 0x00FC(0x0060) (CPF_Transient, CPF_NeedCtorLink)
 	float                                              SearchTimeout;                                            // 0x015C(0x0004) (CPF_Edit, CPF_Const)
-	struct FScriptDelegate                             __EventPrivateMatchError__Delegate;                       // 0x0160(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPrivateMatchError__Delegate;                       // 0x0160(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0160(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6170,7 +6095,8 @@ public:
 	unsigned long                                      bIgnoreSkill : 1;                                         // 0x0110(0x0004) (CPF_Transient)
 	float                                              MatchmakingDisabledDuration;                              // 0x0114(0x0004) (CPF_Edit)
 	float                                              MatchmakingDisabledUntilTime;                             // 0x0118(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventMatchmakingError__Delegate;                        // 0x011C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventMatchmakingError__Delegate;                        // 0x011C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x011C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6197,7 +6123,7 @@ public:
 	struct FString GetLocalizedPlaylistsString();
 	struct FString GetPlaylistsString();
 	void OnExit();
-	bool StartSearch(TArray<int> InPreferredPlaylists, TArray<struct FString> InPreferredRegions);
+	bool StartSearch(TArray<int> InPreferredPlaylists, TArray<struct FString> InPreferredRegions, TArray<int>* SortLocal_BB48D62A4FCE9F99ADD6CC916BE6EBEA);
 	void OnInit();
 	void EventMatchmakingError(class UOnlineGameMatchmaking_X* InMatchmaking, class UError* Error);
 };
@@ -6212,9 +6138,10 @@ public:
 	unsigned long                                      bTrialEnabled : 1;                                        // 0x0060(0x0004) (CPF_Transient)
 	unsigned long                                      bPsyNetTrialDataSet : 1;                                  // 0x0060(0x0004) (CPF_Transient)
 	int                                                MinutesRemaining;                                         // 0x0064(0x0004) (CPF_Transient)
-	__int64                                      LastPlayedTime;                                       // 0x0068(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameTrial_X.LastPlayedTime
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0068(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.OnlineGameTrial_X.LastPlayedTime
 	int                                                SecondsPlayed;                                            // 0x0070(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventUpdated__Delegate;                                 // 0x0074(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventUpdated__Delegate;                                 // 0x0074(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6266,13 +6193,65 @@ public:
 };
 
 
+// Class ProjectX.LanBrowser_X
+// 0x0000 (0x003C - 0x003C)
+class ULanBrowser_X : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.LanBrowser_X");
+		return ptr;
+	}
+
+
+	class UAsyncTask* JoinServer(const struct FString& ServerID, const struct FString& Options);
+	class ULanSearchTask* GetServerList();
+	void DestroyServer();
+	class UAsyncTask* SetServerMetaData(const struct FString& MetaData);
+	class UAsyncTask* CreateServer(const struct FString& MetaData);
+	void HandleGameInfoSpawned(class AGameInfo_X* G);
+	void Construct();
+};
+
+
+// Class ProjectX.UdpLanBrowser_X
+// 0x001C (0x0058 - 0x003C)
+class UUdpLanBrowser_X : public ULanBrowser_X
+{
+public:
+	float                                              SearchTimeout;                                            // 0x003C(0x0004) (CPF_Edit, CPF_Const)
+	class ULanBeacon_X*                                LanBeacon;                                                // 0x0040(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class ULanSearchTask*                              SearchTask;                                               // 0x0044(0x0004)
+	TArray<class ULanServerRecord_X*>                  SearchResults;                                            // 0x0048(0x000C) (CPF_NeedCtorLink)
+	class UUdpLanServer_X*                             LocalServer;                                              // 0x0054(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.UdpLanBrowser_X");
+		return ptr;
+	}
+
+
+	class UAsyncTask* JoinServer(const struct FString& ServerID, const struct FString& Options);
+	void HandleSearchTimeout();
+	void HandleHostResponse(class UOnlineMessageComponent_X* Component, class ULanMessage_HostResponse_X* Response);
+	void SearchTaskDisposed();
+	class ULanSearchTask* GetServerList();
+	void DestroyServer();
+	class UAsyncTask* SetServerMetaData(const struct FString& MetaData);
+	class UAsyncTask* CreateServer(const struct FString& MetaData);
+};
+
+
 // Class ProjectX.RPC_UpdatePlayerPlaylist_X
-// 0x0008 (0x00A8 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URPC_UpdatePlayerPlaylist_X : public URPC_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00A0(0x0004)
-	int                                                NumLocalPlayers;                                          // 0x00A4(0x0004)
+	int                                                Playlist;                                                 // 0x0098(0x0004)
+	int                                                NumLocalPlayers;                                          // 0x009C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -6296,8 +6275,10 @@ public:
 	struct FString                                     Text;                                                     // 0x0058(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	float                                              LastUpdateTime;                                           // 0x0064(0x0004) (CPF_Transient)
 	unsigned long                                      bSyncing : 1;                                             // 0x0068(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventTextChanged__Delegate;                             // 0x006C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTextSynced__Delegate;                              // 0x007C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventTextChanged__Delegate;                             // 0x006C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventTextSynced__Delegate;                              // 0x007C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6306,8 +6287,8 @@ public:
 	}
 
 
-	void OnTextChanged();
 	void SetText(const struct FString& NewText);
+	void ParseBlogInfo();
 	void HandleTextSync(class UWebRequest_X* Request);
 	void GetText(const struct FScriptDelegate& Callback);
 	struct FString STATIC_GetDBEnvironment();
@@ -6317,23 +6298,11 @@ public:
 
 
 // Class ProjectX.OnlineGameBlog_X
-// 0x008C (0x0118 - 0x008C)
+// 0x0004 (0x0090 - 0x008C)
 class UOnlineGameBlog_X : public UOnlineStaticTextSync_X
 {
 public:
-	struct FString                                     DefaultBlogTitle;                                         // 0x008C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     DefaultBlogBody;                                          // 0x0098(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     DefaultMotD;                                              // 0x00A4(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     BlogImage;                                                // 0x00B0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     BlogTitle;                                                // 0x00BC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     BlogBody;                                                 // 0x00C8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     MotD;                                                     // 0x00D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     BlogNotification;                                         // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     YouTubeTitle;                                             // 0x00EC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     YouTubeImage;                                             // 0x00F8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     YouTubeURL;                                               // 0x0104(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                YouTubeOffsetX;                                           // 0x0110(0x0004) (CPF_Transient)
-	int                                                YouTubeOffsetY;                                           // 0x0114(0x0004) (CPF_Transient)
+	class UBlogTiles_X*                                BlogTiles;                                                // 0x008C(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -6342,12 +6311,32 @@ public:
 	}
 
 
-	struct FString FormatMotD(const struct FString& MotDText);
-	struct FString GetKeyValue(const struct FString& SearchText, const struct FString& Key);
-	struct FString GetSectionText(const struct FString& Section);
-	void ParseText();
-	void OnTextChanged();
+	void ParseBlogInfo();
 	void Init();
+};
+
+
+// Class ProjectX.BlogTiles_X
+// 0x0034 (0x0070 - 0x003C)
+class UBlogTiles_X : public UObject
+{
+public:
+	TArray<class UBlogTile_X*>                         CarouselTiles;                                            // 0x003C(0x000C) (CPF_NeedCtorLink)
+	TArray<class UBlogTile_X*>                         RLCSTiles;                                                // 0x0048(0x000C) (CPF_NeedCtorLink)
+	TArray<class UBlogTile_X*>                         CommunityTiles;                                           // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     MotD;                                                     // 0x0060(0x000C) (CPF_NeedCtorLink)
+	int                                                NumOfCarouselTiles;                                       // 0x006C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.BlogTiles_X");
+		return ptr;
+	}
+
+
+	void __BlogTiles_X__UTCtoEpochArray_1(class UBlogTile_X* BlogTile);
+	void UTCtoEpochArray(TArray<class UBlogTile_X*>* BlogTiles);
+	void UTCtoEpoch();
 };
 
 
@@ -6399,7 +6388,8 @@ public:
 	float                                              SyncDelay;                                                // 0x003C(0x0004) (CPF_Edit)
 	TArray<struct FUniqueNetId>                        PendingPlayerRequests;                                    // 0x0040(0x000C) (CPF_NeedCtorLink)
 	TArray<struct FPlayerPermissionsList>              PlayerPermissions;                                        // 0x004C(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventUpdated__Delegate;                                 // 0x0058(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventUpdated__Delegate;                                 // 0x0058(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0058(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6417,13 +6407,13 @@ public:
 
 
 // Class ProjectX.RPC_CheckReplacementDedicatedServer_X
-// 0x0024 (0x00C4 - 0x00A0)
+// 0x0028 (0x00C0 - 0x0098)
 class URPC_CheckReplacementDedicatedServer_X : public URPC_X
 {
 public:
-	int                                                ServerID;                                                 // 0x00A0(0x0004)
-	unsigned long                                      bFoundReplacement : 1;                                    // 0x00A4(0x0004) (CPF_Transient)
-	struct FCheckReplacementDedicatedServerData        Server;                                                   // 0x00A8(0x001C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_CheckReplacementDedicatedServer_X.ServerID
+	unsigned long                                      bFoundReplacement : 1;                                    // 0x00A0(0x0004) (CPF_Transient)
+	struct FCheckReplacementDedicatedServerData        Server;                                                   // 0x00A4(0x001C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6433,17 +6423,17 @@ public:
 
 
 	struct FString GetServerAddress();
-	class URPC_CheckReplacementDedicatedServer_X* SetServerID(int InServerID);
+	class URPC_CheckReplacementDedicatedServer_X* SetServerID();
 };
 
 
 // Class ProjectX.RPC_AddQuitter_X
-// 0x003C (0x00DC - 0x00A0)
+// 0x0054 (0x00EC - 0x0098)
 class URPC_AddQuitter_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	struct FString                                     Reason;                                                   // 0x00D0(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	struct FString                                     Reason;                                                   // 0x00E0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6458,11 +6448,11 @@ public:
 
 
 // Class ProjectX.RPC_RemoveQuitter_X
-// 0x0030 (0x00D0 - 0x00A0)
+// 0x0048 (0x00E0 - 0x0098)
 class URPC_RemoveQuitter_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
 
 	static UClass* StaticClass()
 	{
@@ -6472,78 +6462,6 @@ public:
 
 
 	class URPC_RemoveQuitter_X* SetPlayerID(const struct FUniqueNetId& InPlayerId);
-};
-
-
-// State ProjectX.OnlineGameDedicatedServer_X.Initializing
-// 0x0000
-class SOnlineGameDedicatedServer_X_Initializing : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameDedicatedServer_X.Initializing");
-		return ptr;
-	}
-
-
-	void HandlePsyNetDataLoaded(class UPsyNetStaticData_X* D);
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameDedicatedServer_X.Inactive
-// 0x0000
-class SOnlineGameDedicatedServer_X_Inactive : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameDedicatedServer_X.Inactive");
-		return ptr;
-	}
-
-
-	void CreateMatchID();
-	void HandleReservationsUpdated();
-	void EndState(const struct FName& P);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameDedicatedServer_X.StartingPrivateMatch
-// 0x0000
-class SOnlineGameDedicatedServer_X_StartingPrivateMatch : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameDedicatedServer_X.StartingPrivateMatch");
-		return ptr;
-	}
-
-
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameDedicatedServer_X.BotTesting
-// 0x0000
-class SOnlineGameDedicatedServer_X_BotTesting : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameDedicatedServer_X.BotTesting");
-		return ptr;
-	}
-
-
-	void HandleReservationsUpdated();
 };
 
 
@@ -6579,11 +6497,11 @@ public:
 
 
 // Class ProjectX.RPC_DeactivateGameServer_X
-// 0x0004 (0x00A4 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URPC_DeactivateGameServer_X : public URPC_X
 {
 public:
-	int                                                ServerID;                                                 // 0x00A0(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_DeactivateGameServer_X.ServerID
 
 	static UClass* StaticClass()
 	{
@@ -6592,7 +6510,7 @@ public:
 	}
 
 
-	class URPC_DeactivateGameServer_X* SetServerID(int InServerID);
+	class URPC_DeactivateGameServer_X* SetServerID();
 };
 
 
@@ -6604,7 +6522,8 @@ public:
 	float                                              CacheTimeoutSeconds;                                      // 0x0048(0x0004) (CPF_Edit)
 	float                                              CacheExpireTime;                                          // 0x004C(0x0004) (CPF_Transient)
 	unsigned long                                      bEnabled : 1;                                             // 0x0050(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventExpired__Delegate;                                 // 0x0054(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventExpired__Delegate;                                 // 0x0054(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -6625,11 +6544,11 @@ public:
 
 
 // Class ProjectX.RPC_SetServerNotJoinable_X
-// 0x0004 (0x00A4 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URPC_SetServerNotJoinable_X : public URPC_X
 {
 public:
-	int                                                ServerID;                                                 // 0x00A0(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_SetServerNotJoinable_X.ServerID
 
 	static UClass* StaticClass()
 	{
@@ -6638,18 +6557,18 @@ public:
 	}
 
 
-	class URPC_SetServerNotJoinable_X* SetServerID(int InServerID);
+	class URPC_SetServerNotJoinable_X* SetServerID();
 };
 
 
 // Class ProjectX.RPC_UpdateCustomGameServer_X
-// 0x001C (0x00BC - 0x00A0)
+// 0x0020 (0x00B8 - 0x0098)
 class URPC_UpdateCustomGameServer_X : public URPC_X
 {
 public:
-	int                                                ServerID;                                                 // 0x00A0(0x0004)
-	struct FString                                     ServerName;                                               // 0x00A4(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Password;                                                 // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_UpdateCustomGameServer_X.ServerID
+	struct FString                                     ServerName;                                               // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Password;                                                 // 0x00AC(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6660,27 +6579,27 @@ public:
 
 	class URPC_UpdateCustomGameServer_X* SetPassword(const struct FString& InPassword);
 	class URPC_UpdateCustomGameServer_X* SetServerName(const struct FString& InServerName);
-	class URPC_UpdateCustomGameServer_X* SetServerID(int InServerID);
+	class URPC_UpdateCustomGameServer_X* SetServerID();
 };
 
 
 // Class ProjectX.RPC_UpdateGameServer_X
-// 0x0040 (0x00E0 - 0x00A0)
+// 0x0044 (0x00DC - 0x0098)
 class URPC_UpdateGameServer_X : public URPC_X
 {
 public:
-	int                                                ServerID;                                                 // 0x00A0(0x0004)
-	int                                                Playlist;                                                 // 0x00A4(0x0004)
-	int                                                MaxPlayers;                                               // 0x00A8(0x0004)
-	int                                                NumPlayersTeam1;                                          // 0x00AC(0x0004)
-	int                                                NumPlayersTeam2;                                          // 0x00B0(0x0004)
-	int                                                ReservationsTeam1;                                        // 0x00B4(0x0004)
-	int                                                ReservationsTeam2;                                        // 0x00B8(0x0004)
-	int                                                AvgSkill;                                                 // 0x00BC(0x0004)
-	unsigned long                                      bIsPostGame : 1;                                          // 0x00C0(0x0004)
-	int                                                TimeRemaining;                                            // 0x00C4(0x0004)
-	struct FString                                     ExclusivePlatform;                                        // 0x00C8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FString>                             PlayersPlatforms;                                         // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_UpdateGameServer_X.ServerID
+	int                                                Playlist;                                                 // 0x00A0(0x0004)
+	int                                                MaxPlayers;                                               // 0x00A4(0x0004)
+	int                                                NumPlayersTeam1;                                          // 0x00A8(0x0004)
+	int                                                NumPlayersTeam2;                                          // 0x00AC(0x0004)
+	int                                                ReservationsTeam1;                                        // 0x00B0(0x0004)
+	int                                                ReservationsTeam2;                                        // 0x00B4(0x0004)
+	int                                                AvgSkill;                                                 // 0x00B8(0x0004)
+	unsigned long                                      bIsPostGame : 1;                                          // 0x00BC(0x0004)
+	int                                                TimeRemaining;                                            // 0x00C0(0x0004)
+	struct FString                                     ExclusivePlatform;                                        // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FString>                             PlayersPlatforms;                                         // 0x00D0(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6700,23 +6619,23 @@ public:
 	class URPC_UpdateGameServer_X* SetNumPlayersTeam1(int InNumPlayersTeam1);
 	class URPC_UpdateGameServer_X* SetMaxPlayers(int InMaxPlayers);
 	class URPC_UpdateGameServer_X* SetPlaylist(int InPlaylist);
-	class URPC_UpdateGameServer_X* SetServerID(int InServerID);
+	class URPC_UpdateGameServer_X* SetServerID();
 };
 
 
 // Class ProjectX.RPC_CreateGameServer_X
-// 0x0048 (0x00E8 - 0x00A0)
+// 0x004C (0x00E4 - 0x0098)
 class URPC_CreateGameServer_X : public URPC_X
 {
 public:
-	struct FString                                     ServerName;                                               // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	int                                                MachineId;                                                // 0x00AC(0x0004)
-	struct FString                                     IP;                                                       // 0x00B0(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Region;                                                   // 0x00BC(0x000C) (CPF_NeedCtorLink)
-	int                                                BuildID;                                                  // 0x00C8(0x0004)
-	struct FString                                     ServerType;                                               // 0x00CC(0x000C) (CPF_NeedCtorLink)
-	int                                                ServerID;                                                 // 0x00D8(0x0004) (CPF_Transient)
-	struct FString                                     Host;                                                     // 0x00DC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     ServerName;                                               // 0x0098(0x000C) (CPF_NeedCtorLink)
+	int                                                MachineId;                                                // 0x00A4(0x0004)
+	struct FString                                     IP;                                                       // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Region;                                                   // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	int                                                BuildID;                                                  // 0x00C0(0x0004)
+	struct FString                                     ServerType;                                               // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00D0(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_CreateGameServer_X.ServerID
+	struct FString                                     Host;                                                     // 0x00D8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -6734,24 +6653,43 @@ public:
 };
 
 
-// State ProjectX.OnlineGameInvite_X.Joining
-// 0x0000
-class SOnlineGameInvite_X_Joining : public UState
+// Class ProjectX.PartyErrors_X
+// 0x0064 (0x00B8 - 0x0054)
+class UPartyErrors_X : public UErrorList
 {
 public:
+	class UErrorType*                                  CreatePartyFailed;                                        // 0x0054(0x0004) (CPF_Const)
+	class UErrorType*                                  CreatePartyFailedTeamFull;                                // 0x0058(0x0004) (CPF_Const)
+	class UErrorType*                                  CreatePlayerFailedPartyFull;                              // 0x005C(0x0004) (CPF_Const)
+	class UErrorType*                                  InvitePlayerToPartyFailedPartyFull;                       // 0x0060(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailedPartyFull;                                 // 0x0064(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailedPartyMatchmaking;                          // 0x0068(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailedPartyInGame;                               // 0x006C(0x0004) (CPF_Const)
+	class UErrorType*                                  KickedFromParty;                                          // 0x0070(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyDestroyedConnectionError;                            // 0x0074(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyDestroyedSignedOut;                                  // 0x0078(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailed;                                          // 0x007C(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailedNotAllowed;                                // 0x0080(0x0004) (CPF_Const)
+	class UErrorType*                                  JoinPartyFailedNotJoinable;                               // 0x0084(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyBuildID;                                             // 0x0088(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyNotFound;                                            // 0x008C(0x0004) (CPF_Const)
+	class UErrorType*                                  UserNotOwner;                                             // 0x0090(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyIsFull;                                              // 0x0094(0x0004) (CPF_Const)
+	class UErrorType*                                  CannotAddToParty;                                         // 0x0098(0x0004) (CPF_Const)
+	class UErrorType*                                  UserListInvalid;                                          // 0x009C(0x0004) (CPF_Const)
+	class UErrorType*                                  InvalidOwner;                                             // 0x00A0(0x0004) (CPF_Const)
+	class UErrorType*                                  ChatDisabled;                                             // 0x00A4(0x0004) (CPF_Const)
+	class UErrorType*                                  MissingOrExpiredInvite;                                   // 0x00A8(0x0004) (CPF_Const)
+	class UErrorType*                                  MemberNotFound;                                           // 0x00AC(0x0004) (CPF_Const)
+	class UErrorType*                                  PartyIdConflict;                                          // 0x00B0(0x0004) (CPF_Const)
+	class UErrorType*                                  CannotKickSelf;                                           // 0x00B4(0x0004) (CPF_Const)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameInvite_X.Joining");
+		static auto ptr = UObject::FindClass("Class ProjectX.PartyErrors_X");
 		return ptr;
 	}
 
-
-	void HandlePasswordRequired();
-	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-	void EndState(const struct FName& P);
-	void BeginState(const struct FName& P);
-	void OnGameInviteAccepted(const struct FString& ErrorString, struct FOnlineGameSearchResult* InviteResult);
 };
 
 
@@ -6967,79 +6905,18 @@ public:
 };
 
 
-// State ProjectX.OnlineGameJoinGame_X.JoiningBase
-// 0x0000
-class SOnlineGameJoinGame_X_JoiningBase : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.JoiningBase");
-		return ptr;
-	}
-
-
-	void OnMainMenuOpened();
-	bool IsJoiningGame();
-	bool StartJoin(const struct FString& BeaconAddress, const struct FJoinMatchSettings& InSettings);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.VerifyPrivileges
-// 0x0000
-class SOnlineGameJoinGame_X_VerifyPrivileges : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.VerifyPrivileges");
-		return ptr;
-	}
-
-
-	void HandleCanPlayOnline(class UPrivilegeCheck_X* PrivilegeCheck);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.GenerateKeys
-// 0x0000
-class SOnlineGameJoinGame_X_GenerateKeys : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.GenerateKeys");
-		return ptr;
-	}
-
-
-	void GoToNextState();
-	void SetNetworkKeys(class URPC_GenerateKeys_X* RPC);
-	void HandleGenerateKeys(class URPC_GenerateKeys_X* RPC);
-	void SendGenerateKeysRPCs();
-	void RemoveKeysRPC(class URPC_X* RPC);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
 // Class ProjectX.RPC_KeysBase_X
-// 0x0044 (0x00E4 - 0x00A0)
+// 0x0044 (0x00DC - 0x0098)
 class URPC_KeysBase_X : public URPC_X
 {
 public:
-	struct FString                                     ServerHost;                                               // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	int                                                ServerPort;                                               // 0x00AC(0x0004)
-	struct FString                                     Key;                                                      // 0x00B0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     IV;                                                       // 0x00BC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     HMACKey;                                                  // 0x00C8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     SessionId;                                                // 0x00D4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned long                                      bPrimaryPlayer : 1;                                       // 0x00E0(0x0004) (CPF_Transient)
+	struct FString                                     ServerHost;                                               // 0x0098(0x000C) (CPF_NeedCtorLink)
+	int                                                ServerPort;                                               // 0x00A4(0x0004)
+	struct FString                                     Key;                                                      // 0x00A8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     IV;                                                       // 0x00B4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     HMACKey;                                                  // 0x00C0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     SessionId;                                                // 0x00CC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bPrimaryPlayer : 1;                                       // 0x00D8(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -7054,7 +6931,7 @@ public:
 
 
 // Class ProjectX.RPC_GenerateKeys_X
-// 0x0000 (0x00E4 - 0x00E4)
+// 0x0000 (0x00DC - 0x00DC)
 class URPC_GenerateKeys_X : public URPC_KeysBase_X
 {
 public:
@@ -7068,234 +6945,6 @@ public:
 };
 
 
-// State ProjectX.OnlineGameJoinGame_X.ReservingServer
-// 0x0000
-class SOnlineGameJoinGame_X_ReservingServer : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.ReservingServer");
-		return ptr;
-	}
-
-
-	void SendServerReservedEvent();
-	void TravelToServer();
-	void JoinServer(class UReservationsReadyMessage_X* Message);
-	void HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message);
-	void HandleDisconnection(class UTcpBeacon* Beacon, class UTcpConnection* Connection);
-	class UAddReservationMessage_X* CreateReservationMessage();
-	void SendReservationMessage();
-	void SendReservation();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch
-// 0x0000
-class SOnlineGameJoinGame_X_ReservingServerForPrivateMatch : public SOnlineGameJoinGame_X_ReservingServer
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.ReservingServerForPrivateMatch");
-		return ptr;
-	}
-
-
-	void SendServerReservedEvent();
-	void TravelToServer();
-	void HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message);
-	class UAddReservationMessage_X* CreateReservationMessage();
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking
-// 0x0000
-class SOnlineGameJoinGame_X_ReservingServerForMatchmaking : public SOnlineGameJoinGame_X_ReservingServer
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.ReservingServerForMatchmaking");
-		return ptr;
-	}
-
-
-	void SendServerReservedEvent();
-	void HandleReservationResponse(class UTcpConnection* Connection, class UObject* Message);
-	class UAddReservationMessage_X* CreateReservationMessage();
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.JoinCountdown
-// 0x0000
-class SOnlineGameJoinGame_X_JoinCountdown : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.JoinCountdown");
-		return ptr;
-	}
-
-
-	void StartConnectToServer();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers
-// 0x0000
-class SOnlineGameJoinGame_X_WaitForAllPlayers : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.WaitForAllPlayers");
-		return ptr;
-	}
-
-
-	void OnJoinGameComplete(bool bSuccess, const struct FString& FailReason, const struct FString& BugItReason);
-	void OnAllPlayersJoined();
-	void CheckAllLocalPlayersHaveJoined(class UPlayer* JoinedPlayer);
-	bool IsInTransition();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen
-// 0x0000
-class SOnlineGameJoinGame_X_OpeningLoadingScreen : public SOnlineGameJoinGame_X_WaitForAllPlayers
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.OpeningLoadingScreen");
-		return ptr;
-	}
-
-
-	void HandleSpawned(class AGameInfo_X* InGameInfo);
-	void OnAllPlayersJoined();
-	void CancelJoin();
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.JoiningNewServer
-// 0x0000
-class SOnlineGameJoinGame_X_JoiningNewServer : public SOnlineGameJoinGame_X_WaitForAllPlayers
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.JoiningNewServer");
-		return ptr;
-	}
-
-
-	void NotifyConnectionFailed(const struct FString& Message);
-	void OnAllPlayersJoined();
-	void HandleInternetConnectionChanged(bool bConnected);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.RetryJoin
-// 0x0000
-class SOnlineGameJoinGame_X_RetryJoin : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.RetryJoin");
-		return ptr;
-	}
-
-
-	void RetryJoinGame();
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameJoinGame_X.FailedJoin
-// 0x0000
-class SOnlineGameJoinGame_X_FailedJoin : public SOnlineGameJoinGame_X_JoiningBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameJoinGame_X.FailedJoin");
-		return ptr;
-	}
-
-
-	void OnNewGame();
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameLanBrowser_X.Searching
-// 0x0000
-class SOnlineGameLanBrowser_X_Searching : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanBrowser_X.Searching");
-		return ptr;
-	}
-
-
-	void HandleSearchTimeout();
-	void HandleHostResponse(class UOnlineMessageComponent_X* Component, class UObject* Message);
-	void UpdateStatusMessage();
-	void PerformSearch();
-	bool IsSearching();
-	void HandleGameStarted(class AGRI_X* GRI);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameLanBrowser_X.Joining
-// 0x0000
-class SOnlineGameLanBrowser_X_Joining : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanBrowser_X.Joining");
-		return ptr;
-	}
-
-
-	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-	void Cancel();
-	void HandleStatusUpdate(const struct FString& NewStatus);
-	void EndState(const struct FName& P);
-	void BeginState(const struct FName& P);
-};
-
-
 // Class ProjectX.OnlineGameLanReservations_X
 // 0x0020 (0x0080 - 0x0060)
 class UOnlineGameLanReservations_X : public UOnline_X
@@ -7305,7 +6954,8 @@ public:
 	class UTcpMessageBeacon*                           Beacon;                                                   // 0x0064(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
 	float                                              ReservationTimeout;                                       // 0x0068(0x0004) (CPF_Edit)
 	unsigned long                                      bServerTraveling : 1;                                     // 0x006C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventReservationsTimeout__Delegate;                     // 0x0070(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventReservationsTimeout__Delegate;                     // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -7318,7 +6968,7 @@ public:
 	void SetServerTraveling(bool bTraveling);
 	void OnNewGameInfoCreated(class AGameInfo_X* Game);
 	int GetNumPlayers();
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
+	void AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID, struct FString* ErrorMessage);
 	void PlayerLoggedOut(class APlayerReplicationInfo* PRI);
 	void PlayerLoggedIn(class APlayerReplicationInfo* PRI);
 	void Reset();
@@ -7335,121 +6985,17 @@ public:
 };
 
 
-// State ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting
-// 0x0000
-class SOnlineGameLanReservations_X_PrivateMatchStarting : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanReservations_X.PrivateMatchStarting");
-		return ptr;
-	}
-
-
-	bool HandlePrivateReservation(class UTcpConnection* Connection, class UAddReservationMessagePrivate_X* Message);
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
-	void HandleReservationDisconnected(class UTcpConnection* Connection);
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameLanReservations_X.PrivateMatch
-// 0x0000
-class SOnlineGameLanReservations_X_PrivateMatch : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanReservations_X.PrivateMatch");
-		return ptr;
-	}
-
-
-	bool HandlePrivateReservation(class UTcpConnection* Connection, class UAddReservationMessagePrivate_X* Message);
-	bool HandlePublicReservation(class UTcpConnection* Connection, class UAddReservationMessagePublic_X* Message);
-};
-
-
-// State ProjectX.OnlineGameLanServer_X.Initializing
-// 0x0000
-class SOnlineGameLanServer_X_Initializing : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanServer_X.Initializing");
-		return ptr;
-	}
-
-
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameLanServer_X.Inactive
-// 0x0000
-class SOnlineGameLanServer_X_Inactive : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanServer_X.Inactive");
-		return ptr;
-	}
-
-
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameLanServer_X.StartingPrivateMatch
-// 0x0000
-class SOnlineGameLanServer_X_StartingPrivateMatch : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanServer_X.StartingPrivateMatch");
-		return ptr;
-	}
-
-
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameLanServer_X.Active
-// 0x0000
-class SOnlineGameLanServer_X_Active : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameLanServer_X.Active");
-		return ptr;
-	}
-
-};
-
-
 // Class ProjectX.RPC_GetLeaderboardValueForUserBase_X
-// 0x0048 (0x00E8 - 0x00A0)
+// 0x0060 (0x00F8 - 0x0098)
 class URPC_GetLeaderboardValueForUserBase_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	struct FString                                     LeaderboardId;                                            // 0x00D0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	unsigned long                                      bHasSkill : 1;                                            // 0x00DC(0x0004) (CPF_Transient)
-	unsigned long                                      bHasValue : 1;                                            // 0x00DC(0x0004) (CPF_Transient)
-	int                                                Value;                                                    // 0x00E0(0x0004) (CPF_Transient)
-	float                                              MMR;                                                      // 0x00E4(0x0004) (CPF_Transient)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	struct FString                                     LeaderboardId;                                            // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bHasSkill : 1;                                            // 0x00EC(0x0004) (CPF_Transient)
+	unsigned long                                      bHasValue : 1;                                            // 0x00EC(0x0004) (CPF_Transient)
+	int                                                Value;                                                    // 0x00F0(0x0004) (CPF_Transient)
+	float                                              MMR;                                                      // 0x00F4(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -7463,11 +7009,11 @@ public:
 
 
 // Class ProjectX.RPC_GetSkillLeaderboardValueForUser_X
-// 0x0004 (0x00EC - 0x00E8)
+// 0x0004 (0x00FC - 0x00F8)
 class URPC_GetSkillLeaderboardValueForUser_X : public URPC_GetLeaderboardValueForUserBase_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00E8(0x0004)
+	int                                                Playlist;                                                 // 0x00F8(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7481,11 +7027,11 @@ public:
 
 
 // Class ProjectX.RPC_GetLeaderboardValueForUser_X
-// 0x000C (0x00F4 - 0x00E8)
+// 0x000C (0x0104 - 0x00F8)
 class URPC_GetLeaderboardValueForUser_X : public URPC_GetLeaderboardValueForUserBase_X
 {
 public:
-	struct FString                                     Stat;                                                     // 0x00E8(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Stat;                                                     // 0x00F8(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7499,13 +7045,13 @@ public:
 
 
 // Class ProjectX.RPC_GetLeaderboardBase_X
-// 0x001C (0x00BC - 0x00A0)
+// 0x001C (0x00B4 - 0x0098)
 class URPC_GetLeaderboardBase_X : public URPC_X
 {
 public:
-	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x00A0(0x0004)
-	struct FString                                     LeaderboardId;                                            // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FGetLeaderboardPlatformBaseData>     Platforms;                                                // 0x00B0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x0098(0x0004)
+	struct FString                                     LeaderboardId;                                            // 0x009C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetLeaderboardPlatformBaseData>     Platforms;                                                // 0x00A8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7519,11 +7065,11 @@ public:
 
 
 // Class ProjectX.RPC_GetSkillLeaderboard_X
-// 0x0004 (0x00C0 - 0x00BC)
+// 0x0004 (0x00B8 - 0x00B4)
 class URPC_GetSkillLeaderboard_X : public URPC_GetLeaderboardBase_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00BC(0x0004)
+	int                                                Playlist;                                                 // 0x00B4(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7537,11 +7083,11 @@ public:
 
 
 // Class ProjectX.RPC_GetLeaderboard_X
-// 0x000C (0x00C8 - 0x00BC)
+// 0x000C (0x00C0 - 0x00B4)
 class URPC_GetLeaderboard_X : public URPC_GetLeaderboardBase_X
 {
 public:
-	struct FString                                     Stat;                                                     // 0x00BC(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Stat;                                                     // 0x00B4(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7555,12 +7101,29 @@ public:
 
 
 // Class ProjectX.OnlinePlayerFriends_X
-// 0x001C (0x007C - 0x0060)
+// 0x009C (0x00FC - 0x0060)
 class UOnlinePlayerFriends_X : public UOnline_X
 {
 public:
 	TArray<struct FOnlineFriend>                       CachedFriends;                                            // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventFriendsListChanged__Delegate;                      // 0x006C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventFriendsListChanged__Delegate;                      // 0x006C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPsyNetFriendRequestSentSuccess__Delegate;          // 0x007C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPsyNetPlayerSearch__Delegate;                      // 0x008C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x008C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPsyNetPendingFriendRequests__Delegate;             // 0x009C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConReceivedFriendChatMessage__Delegate;         // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConReceivedFriendAcceptedRequest__Delegate;     // 0x00BC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x00BC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConReceivedFriendFriendStatusUpdate__Delegate;  // 0x00CC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x00CC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConReceivedIncomingFriendRequest__Delegate;     // 0x00DC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x00DC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventPerConReceivedPlayerUnfriended__Delegate;          // 0x00EC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x00EC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -7569,33 +7132,52 @@ public:
 	}
 
 
+	void __OnlinePlayerFriends_X__OnInit_5(class UPsyNetService_PlayerUnfriended_X* N);
+	void __OnlinePlayerFriends_X__OnInit_4(class UPsyNetService_IncomingFriendRequest_X* N);
+	void __OnlinePlayerFriends_X__OnInit_3(class UPsyNetService_FriendStatusUpdate_X* N);
+	void __OnlinePlayerFriends_X__OnInit_2(class UPsyNetService_FriendAcceptedRequest_X* N);
+	void __OnlinePlayerFriends_X__OnInit_1(class UPsyNetService_FriendChatReceived_X* N);
+	void SendChatMessage(const struct FString& InMessage, const struct FUniqueNetId& Recipient);
 	void ShowPlayerCard(const struct FUniqueNetId& FriendId);
 	void SetRichPresence(unsigned char LocalUserNum, const struct FString& PresenceString, const struct FString& GameDataString);
 	void RemoveFriend(const struct FUniqueNetId& FriendId);
-	void AddFriend(const struct FUniqueNetId& FriendId);
+	void DeclineFriendRequest(const struct FUniqueNetId& FriendId);
+	void AcceptFriendRequest(const struct FUniqueNetId& FriendId);
+	class UAsyncTask* AddFriend(const struct FUniqueNetId& FriendId, const struct FScriptDelegate& Callback);
 	struct FString GetFriendPresence(const struct FOnlineFriend& Friend);
 	bool IsFriendJoinable(const struct FUniqueNetId& FriendId);
 	struct FString GetFriendName(const struct FUniqueNetId& FriendId);
 	bool IsFriend(const struct FUniqueNetId& FriendId);
 	void HandleFriendsChange();
+	void MergeFriendLists(TArray<struct FOnlineFriend> OtherList, TArray<struct FOnlineFriend>* MainList);
 	void GetFriendsFromOnlineSub();
 	void UpdateFriendsList(const struct FScriptDelegate& HandleFriendsListChanged);
+	void RemoveFriendsListChangedDelegate(const struct FScriptDelegate& HandleFriendsListChanged);
+	void AddFriendsListChangedDelegate(const struct FScriptDelegate& HandleFriendsListChanged);
 	void HandleDownloadFriendsComplete(bool bWasSuccessful);
 	void DownloadFriendsList();
 	void HandleLoginStatusChanged(class UOnlinePlayer_X* Player);
 	void OnInit();
+	void EventPerConReceivedPlayerUnfriended(const struct FUniqueNetId& SenderId);
+	void EventPerConReceivedIncomingFriendRequest(const struct FOnlineFriend& FriendData);
+	void EventPerConReceivedFriendFriendStatusUpdate(const struct FOnlineFriend& FriendData);
+	void EventPerConReceivedFriendAcceptedRequest(const struct FOnlineFriend& FriendData);
+	void EventPerConReceivedFriendChatMessage(const struct FString& InMessage, const struct FUniqueNetId& SenderId);
+	void EventPsyNetPendingFriendRequests(TArray<struct FOnlineFriend> FriendData);
+	void EventPsyNetPlayerSearch(TArray<struct FOnlineFriend> FriendData, const struct FString& SearchString);
+	void EventPsyNetFriendRequestSentSuccess(const struct FUniqueNetId& FriendId);
 	void EventFriendsListChanged(class UOnlinePlayerFriends_X* FriendsRef, class UError* Error);
 };
 
 
 // Class ProjectX.RPC_GetLeaderboardRankForUsersBase_X
-// 0x0024 (0x00C4 - 0x00A0)
+// 0x0024 (0x00BC - 0x0098)
 class URPC_GetLeaderboardRankForUsersBase_X : public URPC_X
 {
 public:
-	TArray<struct FUniqueNetId>                        PlayerIDs;                                                // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     LeaderboardId;                                            // 0x00AC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FGetLeaderboardRankForUserData>      Players;                                                  // 0x00B8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FUniqueNetId>                        PlayerIDs;                                                // 0x0098(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     LeaderboardId;                                            // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetLeaderboardRankForUserData>      Players;                                                  // 0x00B0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7609,11 +7191,11 @@ public:
 
 
 // Class ProjectX.RPC_GetSkillLeaderboardRankForUsers_X
-// 0x0004 (0x00C8 - 0x00C4)
+// 0x0004 (0x00C0 - 0x00BC)
 class URPC_GetSkillLeaderboardRankForUsers_X : public URPC_GetLeaderboardRankForUsersBase_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00C4(0x0004)
+	int                                                Playlist;                                                 // 0x00BC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7627,11 +7209,11 @@ public:
 
 
 // Class ProjectX.RPC_GetLeaderboardRankForUsers_X
-// 0x000C (0x00D0 - 0x00C4)
+// 0x000C (0x00C8 - 0x00BC)
 class URPC_GetLeaderboardRankForUsers_X : public URPC_GetLeaderboardRankForUsersBase_X
 {
 public:
-	struct FString                                     Stat;                                                     // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Stat;                                                     // 0x00BC(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7644,53 +7226,8 @@ public:
 };
 
 
-// State ProjectX.OnlineGameMatchmakingBase_X.Searching
-// 0x0000
-class SOnlineGameMatchmakingBase_X_Searching : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameMatchmakingBase_X.Searching");
-		return ptr;
-	}
-
-
-	void HandleGameStarted(class AGRI_X* GRI);
-	bool IsSearching();
-	void HandleRegionsPinged(class UOnlineGameRegions_X* InRegions);
-	void StopListeningRegionsPinged();
-	void WaitForRegionsPinged();
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
-// State ProjectX.OnlineGameMatchmakingBase_X.Joining
-// 0x0000
-class SOnlineGameMatchmakingBase_X_Joining : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameMatchmakingBase_X.Joining");
-		return ptr;
-	}
-
-
-	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-	void Cancel();
-	void HandleStatusUpdate(const struct FString& NewStatus);
-	bool IsSearching();
-	void EndState(const struct FName& P);
-	void BeginState(const struct FName& P);
-};
-
-
 // Class ProjectX.CheckReservation_X
-// 0x0034 (0x0070 - 0x003C)
+// 0x0044 (0x0080 - 0x003C)
 class UCheckReservation_X : public UObject
 {
 public:
@@ -7698,9 +7235,13 @@ public:
 	float                                              Rate;                                                     // 0x0040(0x0004) (CPF_Edit)
 	float                                              HeartbeatDelay;                                           // 0x0044(0x0004) (CPF_Edit)
 	float                                              LastMatchmakingHeartbeatTime;                             // 0x0048(0x0004) (CPF_Transient)
-	class URPC_CheckReservation_X*                     CheckReservationRPC;                                      // 0x004C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventError__Delegate;                                   // 0x0050(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventSuccess__Delegate;                                 // 0x0060(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             CheckReservationDelegate;                                 // 0x004C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	class UAsyncTask*                                  CheckReservationTask;                                     // 0x005C(0x0004) (CPF_Transient)
+	struct FScriptDelegate                             FoundReservationCallback;                                 // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0060(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnStartSearch__Delegate;                                // 0x0070(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -7709,15 +7250,14 @@ public:
 	}
 
 
-	void HandleCheckReservation(class URPC_CheckReservation_X* RPC);
+	void HandleReservationNotFound();
+	void HandleFoundReservation(const struct FCheckReservationData& Reservation);
 	void SendRequest();
 	void Cancel();
 	bool IsSearching();
-	void StartSearch();
-	class UCheckReservation_X* NotifyOnError(const struct FScriptDelegate& NewDelegate);
-	class UCheckReservation_X* NotifyOnSuccess(const struct FScriptDelegate& NewDelegate);
-	void EventSuccess(class UCheckReservation_X* ReservationObj, const struct FCheckReservationData& Reservation);
-	void EventError(class UCheckReservation_X* ReservationObj, class UError* Error);
+	void StartSearch(const struct FScriptDelegate& Callback, const struct FScriptDelegate& ReservationDelegate);
+	class UCheckReservation_X* NotifyOnStartSearch(const struct FScriptDelegate& Callback);
+	void OnStartSearch(class UAsyncTask* Task);
 };
 
 
@@ -7746,38 +7286,8 @@ public:
 };
 
 
-// State ProjectX.OnlineGameMatchmaking_X.Searching
-// 0x0000
-class SOnlineGameMatchmaking_X_Searching : public SOnlineGameMatchmakingBase_X_Searching
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameMatchmaking_X.Searching");
-		return ptr;
-	}
-
-
-	void OnReceiveGameServer(class UCheckReservation_X* ReservationObj, const struct FCheckReservationData& Reservation);
-	void HandleMatchmakingStartSuccessRPC(class URPC_StartMatchmaking_X* RPC);
-	void HandleError(class UError* Error);
-	void OnCheckReservationError(class UCheckReservation_X* ReservationObj, class UError* Error);
-	void HandleMatchmakingFailRPC(class URPC_X* RPC);
-	void SendMatchmakingState();
-	void UpdateMatchmaking();
-	void StartMatchmaking();
-	void HandleRegionsPinged(class UOnlineGameRegions_X* InRegions);
-	void OnMainMenuOpened();
-	void OnNewGame();
-	void RecordStart();
-	bool AddRecommendedServers(float PingThreshold, float PingIncrement, float MaxPing);
-	void EndState(const struct FName& N);
-};
-
-
 // Class ProjectX.RPC_PlayerCancelMatchmaking_X
-// 0x0000 (0x00A0 - 0x00A0)
+// 0x0000 (0x0098 - 0x0098)
 class URPC_PlayerCancelMatchmaking_X : public URPC_X
 {
 public:
@@ -7792,17 +7302,17 @@ public:
 
 
 // Class ProjectX.RPC_StartMatchmaking_X
-// 0x0038 (0x00D8 - 0x00A0)
+// 0x0038 (0x00D0 - 0x0098)
 class URPC_StartMatchmaking_X : public URPC_X
 {
 public:
-	TArray<struct FString>                             Regions;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<int>                                        Playlists;                                                // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	int                                                SecondsSearching;                                         // 0x00B8(0x0004)
-	__int64                                      CurrentServerId;                                       // 0x00BC(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_StartMatchmaking_X.CurrentServerId
-	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x00C4(0x0004)
-	TArray<struct FUniqueNetId>                        PartyMembers;                                             // 0x00C8(0x000C) (CPF_NeedCtorLink)
-	float                                              BannedSecondsRemaining;                                   // 0x00D4(0x0004) (CPF_Transient)
+	TArray<struct FString>                             Regions;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
+	TArray<int>                                        Playlists;                                                // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	int                                                SecondsSearching;                                         // 0x00B0(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_StartMatchmaking_X.CurrentServerId
+	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x00BC(0x0004)
+	TArray<struct FUniqueNetId>                        PartyMembers;                                             // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	float                                              BannedSecondsRemaining;                                   // 0x00CC(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -7821,29 +7331,12 @@ public:
 };
 
 
-// State ProjectX.OnlineGameMatchmaking_X.Joining
-// 0x0000
-class SOnlineGameMatchmaking_X_Joining : public SOnlineGameMatchmakingBase_X_Joining
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameMatchmaking_X.Joining");
-		return ptr;
-	}
-
-
-	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-};
-
-
 // Class ProjectX.PartyMessage_X
-// 0x0030 (0x006C - 0x003C)
+// 0x0048 (0x0084 - 0x003C)
 class UPartyMessage_X : public UOnlineMessage_X
 {
 public:
-	struct FUniqueNetId                                Sender;                                                   // 0x003C(0x0030) (CPF_Transient)
+	struct FUniqueNetId                                Sender;                                                   // 0x003C(0x0048) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -7857,12 +7350,12 @@ public:
 
 
 // Class ProjectX.PartyMessage_SearchStatus_X
-// 0x000C (0x0078 - 0x006C)
+// 0x000C (0x0090 - 0x0084)
 class UPartyMessage_SearchStatus_X : public UPartyMessage_X
 {
 public:
-	struct FName                                       SearchState;                                              // 0x006C(0x0008)
-	unsigned long                                      bIsSearching : 1;                                         // 0x0074(0x0004)
+	struct FName                                       SearchState;                                              // 0x0084(0x0008)
+	unsigned long                                      bIsSearching : 1;                                         // 0x008C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7876,14 +7369,32 @@ public:
 };
 
 
+// Class ProjectX.PartyMessage_LobbySettings_X
+// 0x0004 (0x0088 - 0x0084)
+class UPartyMessage_LobbySettings_X : public UPartyMessage_X
+{
+public:
+	int                                                BuildID;                                                  // 0x0084(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PartyMessage_LobbySettings_X");
+		return ptr;
+	}
+
+
+	class UPartyMessage_LobbySettings_X* SetBuildID(int InBuildID);
+};
+
+
 // Class ProjectX.PartyMessage_Kick_X
-// 0x0061 (0x00CD - 0x006C)
+// 0x0091 (0x0115 - 0x0084)
 class UPartyMessage_Kick_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                KickPlayer;                                               // 0x006C(0x0030)
-	struct FUniqueNetId                                Instigator;                                               // 0x009C(0x0030)
-	TEnumAsByte<ELobbyKickReason>                      KickReason;                                               // 0x00CC(0x0001)
+	struct FUniqueNetId                                KickPlayer;                                               // 0x0084(0x0048)
+	struct FUniqueNetId                                Instigator;                                               // 0x00CC(0x0048)
+	TEnumAsByte<ELobbyKickReason>                      KickReason;                                               // 0x0114(0x0001)
 
 	static UClass* StaticClass()
 	{
@@ -7898,32 +7409,14 @@ public:
 };
 
 
-// Class ProjectX.PartyMessage_NewLeader_X
-// 0x0030 (0x009C - 0x006C)
-class UPartyMessage_NewLeader_X : public UPartyMessage_X
-{
-public:
-	struct FUniqueNetId                                NewLeader;                                                // 0x006C(0x0030)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PartyMessage_NewLeader_X");
-		return ptr;
-	}
-
-
-	class UPartyMessage_NewLeader_X* SetLeader(const struct FUniqueNetId& InLeader);
-};
-
-
 // Class ProjectX.PartyMessage_LocalPlayers_X
-// 0x0040 (0x00AC - 0x006C)
+// 0x0058 (0x00DC - 0x0084)
 class UPartyMessage_LocalPlayers_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                PrimaryMemberId;                                          // 0x006C(0x0030)
-	TArray<struct FSimplePartyMember>                  Members;                                                  // 0x009C(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bFromLeader : 1;                                          // 0x00A8(0x0004)
+	struct FUniqueNetId                                PrimaryMemberId;                                          // 0x0084(0x0048)
+	TArray<struct FSimplePartyMember>                  Members;                                                  // 0x00CC(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bFromLeader : 1;                                          // 0x00D8(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7942,12 +7435,12 @@ public:
 
 
 // Class ProjectX.PartyMessage_MatchmakingAvailability_X
-// 0x0034 (0x00A0 - 0x006C)
+// 0x004C (0x00D0 - 0x0084)
 class UPartyMessage_MatchmakingAvailability_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                MemberId;                                                 // 0x006C(0x0030)
-	int                                                MatchmakeRestrictions;                                    // 0x009C(0x0004)
+	struct FUniqueNetId                                MemberId;                                                 // 0x0084(0x0048)
+	int                                                MatchmakeRestrictions;                                    // 0x00CC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -7962,11 +7455,11 @@ public:
 
 
 // Class ProjectX.PartyMessage_JoinGame_X
-// 0x002C (0x0098 - 0x006C)
+// 0x002C (0x00B0 - 0x0084)
 class UPartyMessage_JoinGame_X : public UPartyMessage_X
 {
 public:
-	struct FPartyJoinMatchSettings                     Settings;                                                 // 0x006C(0x002C) (CPF_NeedCtorLink)
+	struct FPartyJoinMatchSettings                     Settings;                                                 // 0x0084(0x002C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7980,12 +7473,12 @@ public:
 
 
 // Class ProjectX.PartyMessage_PartyMemberJoinGame_X
-// 0x004C (0x00B8 - 0x006C)
+// 0x0064 (0x00E8 - 0x0084)
 class UPartyMessage_PartyMemberJoinGame_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x006C(0x0030)
-	struct FPartyMemberServer                          Server;                                                   // 0x009C(0x001C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0084(0x0048)
+	struct FPartyMemberServer                          Server;                                                   // 0x00CC(0x001C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -7999,31 +7492,13 @@ public:
 };
 
 
-// Class ProjectX.PartyMessage_BugIt_X
-// 0x000C (0x0078 - 0x006C)
-class UPartyMessage_BugIt_X : public UPartyMessage_X
-{
-public:
-	struct FString                                     Reason;                                                   // 0x006C(0x000C) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PartyMessage_BugIt_X");
-		return ptr;
-	}
-
-
-	class UPartyMessage_BugIt_X* SetReason(const struct FString& InReason);
-};
-
-
 // Class ProjectX.PartyMessage_DisableCrossPlay_X
-// 0x0034 (0x00A0 - 0x006C)
+// 0x004C (0x00D0 - 0x0084)
 class UPartyMessage_DisableCrossPlay_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                MemberId;                                                 // 0x006C(0x0030)
-	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x009C(0x0004)
+	struct FUniqueNetId                                MemberId;                                                 // 0x0084(0x0048)
+	unsigned long                                      bDisableCrossPlay : 1;                                    // 0x00CC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -8038,11 +7513,11 @@ public:
 
 
 // Class ProjectX.PartyMessage_InviteToTrade_X
-// 0x0030 (0x009C - 0x006C)
+// 0x0048 (0x00CC - 0x0084)
 class UPartyMessage_InviteToTrade_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                InviteMemberId;                                           // 0x006C(0x0030)
+	struct FUniqueNetId                                InviteMemberId;                                           // 0x0084(0x0048)
 
 	static UClass* StaticClass()
 	{
@@ -8056,13 +7531,13 @@ public:
 
 
 // Class ProjectX.PartyMessage_AcceptInviteToTrade_X
-// 0x0044 (0x00B0 - 0x006C)
+// 0x005C (0x00E0 - 0x0084)
 class UPartyMessage_AcceptInviteToTrade_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                InviteMemberId;                                           // 0x006C(0x0030)
-	unsigned long                                      bInviteAccepted : 1;                                      // 0x009C(0x0004)
-	struct FGuid                                       TradeId;                                                  // 0x00A0(0x0010)
+	struct FUniqueNetId                                InviteMemberId;                                           // 0x0084(0x0048)
+	unsigned long                                      bInviteAccepted : 1;                                      // 0x00CC(0x0004)
+	struct FGuid                                       TradeId;                                                  // 0x00D0(0x0010)
 
 	static UClass* StaticClass()
 	{
@@ -8078,11 +7553,11 @@ public:
 
 
 // Class ProjectX.PartyMessage_PlayerTradeComplete_X
-// 0x0030 (0x009C - 0x006C)
+// 0x0048 (0x00CC - 0x0084)
 class UPartyMessage_PlayerTradeComplete_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                TradingMemberId;                                          // 0x006C(0x0030)
+	struct FUniqueNetId                                TradingMemberId;                                          // 0x0084(0x0048)
 
 	static UClass* StaticClass()
 	{
@@ -8117,17 +7592,17 @@ public:
 	void PartyKickRemotePlayer(const struct FUniqueNetId& PartyID, const struct FString& Reason);
 	void PartyKickLocalPlayer(const struct FUniqueNetId& PartyID, const struct FString& Reason);
 	void PartyLeave(const struct FUniqueNetId& PartyID, const struct FString& Reason);
-	void PartyCreationFailed(const struct FUniqueNetId& PartyID);
+	void PartyCreationFailed(const struct FUniqueNetId& PartyID, const struct FString& Error);
 	void PartyCreated(const struct FUniqueNetId& PartyID);
 };
 
 
 // Class ProjectX.PartyConfig_X
-// 0x0004 (0x004C - 0x0048)
+// 0x0004 (0x0050 - 0x004C)
 class UPartyConfig_X : public UOnlineConfig_X
 {
 public:
-	unsigned long                                      bCompressMessages : 1;                                    // 0x0048(0x0004) (CPF_Edit)
+	unsigned long                                      bCompressMessages : 1;                                    // 0x004C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -8139,12 +7614,12 @@ public:
 
 
 // Class ProjectX.PartyMessage_ReadyToTrade_X
-// 0x0034 (0x00A0 - 0x006C)
+// 0x004C (0x00D0 - 0x0084)
 class UPartyMessage_ReadyToTrade_X : public UPartyMessage_X
 {
 public:
-	struct FUniqueNetId                                TradingMemberId;                                          // 0x006C(0x0030)
-	unsigned long                                      bReadyToTrade : 1;                                        // 0x009C(0x0004)
+	struct FUniqueNetId                                TradingMemberId;                                          // 0x0084(0x0048)
+	unsigned long                                      bReadyToTrade : 1;                                        // 0x00CC(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -8159,16 +7634,16 @@ public:
 
 
 // Class ProjectX.RankedConfig_X
-// 0x0034 (0x007C - 0x0048)
+// 0x0034 (0x0080 - 0x004C)
 class URankedConfig_X : public UOnlineConfig_X
 {
 public:
-	struct FString                                     SeasonEndTime;                                            // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	int                                                PartyMaxTierGap;                                          // 0x0054(0x0004) (CPF_Edit)
-	int                                                ReconnectTimeoutSeconds;                                  // 0x0058(0x0004) (CPF_Edit)
-	TArray<int>                                        SkillTierToSeasonRewardLevel;                             // 0x005C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<int>                                        SeasonRewardRequiredWinsPerLevel;                         // 0x0068(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	__int64                                      SeasonEndTimeSeconds;                                       // 0x0074(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RankedConfig_X.SeasonEndTimeSeconds
+	struct FString                                     SeasonEndTime;                                            // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	int                                                PartyMaxTierGap;                                          // 0x0058(0x0004) (CPF_Edit)
+	int                                                ReconnectTimeoutSeconds;                                  // 0x005C(0x0004) (CPF_Edit)
+	TArray<int>                                        SkillTierToSeasonRewardLevel;                             // 0x0060(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<int>                                        SeasonRewardRequiredWinsPerLevel;                         // 0x006C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0078(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RankedConfig_X.SeasonEndTimeSeconds
 
 	static UClass* StaticClass()
 	{
@@ -8183,13 +7658,198 @@ public:
 };
 
 
+// Class ProjectX.PsyNetConfig_X
+// 0x0014 (0x0060 - 0x004C)
+class UPsyNetConfig_X : public UOnlineConfig_X
+{
+public:
+	unsigned long                                      bAllowPerCon : 1;                                         // 0x004C(0x0004) (CPF_Edit)
+	unsigned long                                      bAllowPsyNetParty : 1;                                    // 0x004C(0x0004) (CPF_Edit)
+	int                                                PerConMaxInvalidMessages;                                 // 0x0050(0x0004) (CPF_Edit)
+	int                                                PerConMaxDisconnects;                                     // 0x0054(0x0004) (CPF_Edit)
+	int                                                PerConMaxErrors;                                          // 0x0058(0x0004) (CPF_Edit)
+	float                                              PerConErrorWindow;                                        // 0x005C(0x0004) (CPF_Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetConfig_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.Parties_X
+// 0x0188 (0x01C4 - 0x003C)
+class UParties_X : public UObject
+{
+public:
+	struct FActiveLobbyInfo                            ActiveLobby;                                              // 0x003C(0x0024) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                CreatedByUserId;                                          // 0x0060(0x0048)
+	class UPsyNet_X*                                   PsyNet;                                                   // 0x00A8(0x0004)
+	class UOnlineGameParty_X*                          OnlineGameParty;                                          // 0x00AC(0x0004)
+	class UPartyMessageQueue_X*                        MessageQueue;                                             // 0x00B0(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	class UPsyNetConnection_X*                         PsyNetConnection;                                         // 0x00B4(0x0004)
+	class UPsyNetChannel_X*                            PsyNetChannel;                                            // 0x00B8(0x0004)
+	class UPsyNetServiceSubscriptions_X*               Subscriptions;                                            // 0x00BC(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	unsigned long                                      bUsePsyNetChannels : 1;                                   // 0x00C0(0x0004) (CPF_Edit)
+	struct FScriptDelegate                             __EventShowInviteUI__Delegate;                            // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnCreateLobbyComplete__Delegate;                        // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00D4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyError__Delegate;                                 // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00E4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbySessionCreated__Delegate;                        // 0x00F4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00F4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnFindLobbiesComplete__Delegate;                        // 0x0104(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0104(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnJoinLobbyComplete__Delegate;                          // 0x0114(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0114(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbySettingsUpdate__Delegate;                        // 0x0124(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData06[0x4];                                       // 0x0124(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyMemberSettingsUpdate__Delegate;                  // 0x0134(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x0134(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyMemberStatusUpdate__Delegate;                    // 0x0144(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData08[0x4];                                       // 0x0144(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyReceiveMessage__Delegate;                        // 0x0154(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData09[0x4];                                       // 0x0154(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyReceiveBinaryData__Delegate;                     // 0x0164(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData10[0x4];                                       // 0x0164(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyJoinGame__Delegate;                              // 0x0174(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData11[0x4];                                       // 0x0174(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyInvite__Delegate;                                // 0x0184(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData12[0x4];                                       // 0x0184(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyInvitePending__Delegate;                         // 0x0194(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData13[0x4];                                       // 0x0194(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnLobbyDestroyed__Delegate;                             // 0x01A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData14[0x4];                                       // 0x01A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnHostStartPlayTogether__Delegate;                      // 0x01B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData15[0x4];                                       // 0x01B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.Parties_X");
+		return ptr;
+	}
+
+
+	void HandleOwnerChanged(class UPsyNetService_PartyOwnerChanged_X* Notification);
+	void HandleSystemNotification(class UPsyNetService_PartySystem_X* Notifications);
+	void HandleUserKicked(class UPsyNetService_PartyUserKicked_X* Notification);
+	void HandleUserDisconnected(class UPsyNetService_PartyUserDisconnected_X* Notification);
+	void HandleUserLeft(class UPsyNetService_PartyUserLeft_X* Notification);
+	void HandleUserJoined(class UPsyNetService_PartyUserJoined_X* Notification);
+	void HandleMemberStatusUpdate(const struct FUniqueNetId& InstigatorUID, const struct FUniqueNetId& MemberUID, const struct FString& Status);
+	void HandleUserInvitedResponse(const struct FUniqueLobbyId& LobbyId, const struct FUniqueNetId& ForUserId, bool bAccepted);
+	void HandleUserInvited(class UPsyNetService_PartyUserInvited_X* Notifications);
+	void HandleChannelClosed(class UPsyNetChannel_X* InChannel);
+	class UPsyNetChannel_X* CreatePsyNetChannel(const struct FString& PartyID);
+	void SetPsyNetSubscriptions(class UPsyNetServiceSubscriptions_X* InSubscriptions);
+	void SetPsyNetChannel(class UPsyNetChannel_X* InChannel);
+	void SetPsyNetConnection(class UPsyNetConnection_X* InConnection);
+	void ClearLobbyData(struct FActiveLobbyInfo* StructInitializer_F19C7D2A48C266DE40A93797526EABCC);
+	void DestroyLobby(TEnumAsByte<ELobbyKickReason> Reason);
+	void HandlePerConDisconnected(class UPsyNetConnection_X* Connection);
+	void HandlePerConConnected(class UPsyNetConnection_X* Connection);
+	void HandlePartyInfoSuccess(class URPC_PartyInfo_X* RPC_PartyInfo);
+	void GetPartyInfo();
+	class UOnlinePlayer_X* GetPrimaryPlayer();
+	void OnExit();
+	void Construct();
+	struct FUniqueLobbyId STATIC_CreatePartyID(const struct FString& S);
+	void ClearHostStartPlayTogetherDelegate(const struct FScriptDelegate& InDelegate);
+	void AddHostStartPlayTogetherDelegate(const struct FScriptDelegate& InDelegate);
+	void OnHostStartPlayTogether(unsigned char LocalUserNum);
+	int FindMemberId(struct FLobbyMember* MemberData);
+	int PlayerIdToMemberId(struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID, int* MemberIndex);
+	struct FUniqueNetId MemberIdToPlayerId(int MemberId, struct FUniqueLobbyId* LobbyId, int* MemberIndex);
+	bool KickPlayer(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
+	bool ShowInviteUI(unsigned char LocalUserNum, struct FUniqueLobbyId* LobbyId);
+	bool InviteToLobby(struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* PlayerID);
+	bool InviteToActiveLobby(struct FUniqueNetId* PlayerID);
+	void HandleLobbyOwnerChangeFailed(class URPC_PartyChangeOwner_X* RPC_PartyChangeOwner);
+	void HandleLobbyOwnerChangeSuccess(class URPC_PartyChangeOwner_X* RpcPartyChangeOwner);
+	bool SetLobbyOwner(struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* NewOwnerId);
+	bool SetLobbyLock(bool bLocked, struct FUniqueLobbyId* LobbyId);
+	bool SetLobbyType(TEnumAsByte<ELobbyVisibility> Type, struct FUniqueLobbyId* LobbyId);
+	bool SetLobbyServer(const struct FString& ServerIP, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* ServerUID);
+	bool RemoveLobbySetting(const struct FString& Key, struct FUniqueLobbyId* LobbyId);
+	bool SetLobbySetting(const struct FString& Key, const struct FString& Value, struct FUniqueLobbyId* LobbyId);
+	bool GetLobbyAdmin(struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* AdminId);
+	bool SendLobbyBinaryData(struct FUniqueLobbyId* LobbyId, TArray<unsigned char>* Data);
+	bool SendLobbyMessage(const struct FString& Message, struct FUniqueLobbyId* LobbyId);
+	bool SetLobbyUserSetting(const struct FString& Key, const struct FString& Value, struct FUniqueLobbyId* LobbyId);
+	bool LeaveLobby(struct FUniqueLobbyId* LobbyId);
+	void RemoveLobbyMember(const struct FUniqueNetId& PlayerUID);
+	void AddLobbyMember(const struct FUniqueNetId& PlayerUID, const struct FString& UserName);
+	void HandleLobbyJoinFailed(class URPC_PartyJoin_X* RpcPartyJoin);
+	void HandleLobbyJoinSucceeded(class URPC_PartyJoin_X* RpcPartyJoin);
+	bool JoinLobby(int LocalPlayerNum, struct FUniqueLobbyId* LobbyId);
+	bool UpdateFoundLobbies(const struct FUniqueLobbyId& LobbyId);
+	int FindMemberIndex(const struct FUniqueNetId& MemberId);
+	bool FindLobbies(int MaxResults, TArray<struct FLobbyFilter> Filters, TArray<struct FLobbySortFilter> SortFilters, int MinSlots, TEnumAsByte<ELobbyDistance> Distance);
+	void HandleLobbyCreateFailed(class URPC_PartyCreate_X* RpcPartyCreate);
+	void HandleLobbyCreated(class URPC_PartyCreate_X* RpcPartyCreate);
+	bool CreateLobby(int LocalPlayerNum, int MaxPlayers, TEnumAsByte<ELobbyVisibility> Type, TArray<struct FLobbyMetaData> InitialSettings);
+	void ClearLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
+	void AddLobbyDestroyedDelegate(const struct FScriptDelegate& LobbyDestroyedDelegate);
+	void OnLobbyDestroyed(TEnumAsByte<ELobbyKickReason> Reason, struct FUniqueLobbyId* LobbyId);
+	void RemoveLocalPlayerFromSession(struct FUniqueNetId* PartyMember);
+	void AddLocalPartyMemberToSession(struct FUniqueNetId* NewPartyMember);
+	bool GetLobbyMembers(struct FUniqueLobbyId* LobbyId, TArray<struct FLobbyMember>* Members);
+	void PlayTogether_Invite(const struct FString& InviteMessage, struct FUniqueLobbyId* LobbyId);
+	void ClearLobbyInvitePendingDelegate(const struct FScriptDelegate& LobbyInvitePendingDelegate);
+	void AddLobbyInvitePendingDelegate(const struct FScriptDelegate& LobbyInvitePendingDelegate);
+	void OnLobbyInvitePending(const struct FUniqueLobbyId& LobbyId, const struct FUniqueNetId& FromUserId);
+	void ClearLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate);
+	void AddLobbyInviteDelegate(const struct FScriptDelegate& LobbyInviteDelegate);
+	void OnLobbyInvite(bool bAccepted, struct FUniqueLobbyId* LobbyId, struct FUniqueNetId* FriendId);
+	void ClearLobbyJoinGameDelegate(const struct FScriptDelegate& LobbyJoinGameDelegate);
+	void AddLobbyJoinGameDelegate(const struct FScriptDelegate& LobbyJoinGameDelegate);
+	void OnLobbyJoinGame(const struct FString& ServerIP, struct FActiveLobbyInfo* LobbyInfo, struct FUniqueNetId* ServerID);
+	void TriggerLobbyReceiveBinaryDataDelegate(int MemberIndex, TArray<unsigned char> Data);
+	void ClearLobbyReceiveBinaryDataDelegate(const struct FScriptDelegate& LobbyReceiveBinaryDataDelegate);
+	void AddLobbyReceiveBinaryDataDelegate(const struct FScriptDelegate& LobbyReceiveBinaryDataDelegate);
+	void OnLobbyReceiveBinaryData(int MemberIndex, struct FActiveLobbyInfo* LobbyInfo, TArray<unsigned char>* Data);
+	void ClearLobbyReceiveMessageDelegate(const struct FScriptDelegate& LobbyReceiveMessageDelegate);
+	void AddLobbyReceiveMessageDelegate(const struct FScriptDelegate& LobbyReceiveMessageDelegate);
+	void OnLobbyReceiveMessage(int MemberIndex, const struct FString& Type, const struct FString& Message, struct FActiveLobbyInfo* LobbyInfo);
+	void ClearLobbyMemberStatusUpdateDelegate(const struct FScriptDelegate& LobbyMemberStatusUpdateDelegate);
+	void AddLobbyMemberStatusUpdateDelegate(const struct FScriptDelegate& LobbyMemberStatusUpdateDelegate);
+	void TriggerLobbyMemberStatusUpdateDelegates(int MemberIndex, int InstigatorIndex, const struct FString& Status);
+	void OnLobbyMemberStatusUpdate(int MemberIndex, int InstigatorIndex, const struct FString& Status, struct FActiveLobbyInfo* LobbyInfo);
+	void ClearLobbyMemberSettingsUpdateDelegate(const struct FScriptDelegate& LobbyMemberSettingsUpdateDelegate);
+	void AddLobbyMemberSettingsUpdateDelegate(const struct FScriptDelegate& LobbyMemberSettingsUpdateDelegate);
+	void OnLobbyMemberSettingsUpdate(int MemberIndex, struct FActiveLobbyInfo* LobbyInfo);
+	void ClearLobbySettingsUpdateDelegate(const struct FScriptDelegate& LobbySettingsUpdateDelegate);
+	void AddLobbySettingsUpdateDelegate(const struct FScriptDelegate& LobbySettingsUpdateDelegate);
+	void OnLobbySettingsUpdate(struct FActiveLobbyInfo* LobbyInfo);
+	void ClearJoinLobbyCompleteDelegate(const struct FScriptDelegate& JoinLobbyCompleteDelegate);
+	void AddJoinLobbyCompleteDelegate(const struct FScriptDelegate& JoinLobbyCompleteDelegate);
+	void OnJoinLobbyComplete(bool bWasSuccessful, const struct FString& Error, struct FActiveLobbyInfo* LobbyInfo, struct FUniqueLobbyId* LobbyId);
+	void ClearFindLobbiesCompleteDelegate(const struct FScriptDelegate& FindLobbiesCompleteDelegate);
+	void AddFindLobbiesCompleteDelegate(const struct FScriptDelegate& FindLobbiesCompleteDelegate);
+	void OnFindLobbiesComplete(bool bWasSuccessful, TArray<struct FBasicLobbyInfo>* LobbyList);
+	void ClearLobbySessionCreatedDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate);
+	void AddLobbySessionCreatedDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate);
+	void OnLobbySessionCreated();
+	void ClearLobbyErrorDelegate(const struct FScriptDelegate& LobbyErrorDelegate);
+	void AddLobbyErrorDelegate(const struct FScriptDelegate& LobbyErrorDelegate);
+	void OnLobbyError(const struct FString& Error);
+	void ClearCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
+	void AddCreateLobbyCompleteDelegate(const struct FScriptDelegate& CreateLobbyCompleteDelegate);
+	void OnCreateLobbyComplete(bool bWasSuccessful, const struct FString& Error, struct FUniqueLobbyId* LobbyId);
+	void EventShowInviteUI();
+};
+
+
 // Class ProjectX.RPC_GetPlayerTitles_X
-// 0x003C (0x00DC - 0x00A0)
+// 0x0054 (0x00EC - 0x0098)
 class URPC_GetPlayerTitles_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	TArray<struct FString>                             Titles;                                                   // 0x00D0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	TArray<struct FString>                             Titles;                                                   // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8203,11 +7863,11 @@ public:
 
 
 // Class ProjectX.RPC_GetPopulation_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_GetPopulation_X : public URPC_X
 {
 public:
-	TArray<struct FGetPopulationData>                  Playlists;                                                // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetPopulationData>                  Playlists;                                                // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8218,34 +7878,8 @@ public:
 };
 
 
-// State ProjectX.OnlineGamePrivateMatch_X.Searching
-// 0x0000
-class SOnlineGamePrivateMatch_X_Searching : public SOnlineGameMatchmakingBase_X_Searching
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGamePrivateMatch_X.Searching");
-		return ptr;
-	}
-
-
-	void HandleSearchTimeout();
-	void OnReceiveGameServer(class UCheckReservation_X* ReservationObj, const struct FCheckReservationData& Reservation);
-	void OnStartMatchmakingSucceededRPC(class URPC_PlayerSearchPrivateMatch_X* RPC);
-	void HandleError(class UError* Error);
-	void OnCheckReservationError(class UCheckReservation_X* ReservationObj, class UError* Error);
-	void OnMatchmakingFailedRPC(class URPC_X* RPC);
-	void UpdateStatusMessage();
-	void HandleRegionsPinged(class UOnlineGameRegions_X* InRegions);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
 // Class ProjectX.RPC_PlayerCancelPrivateMatch_X
-// 0x0000 (0x00A0 - 0x00A0)
+// 0x0000 (0x0098 - 0x0098)
 class URPC_PlayerCancelPrivateMatch_X : public URPC_X
 {
 public:
@@ -8260,11 +7894,11 @@ public:
 
 
 // Class ProjectX.RPC_PlayerSearchPrivateMatch_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_PlayerSearchPrivateMatch_X : public URPC_X
 {
 public:
-	struct FString                                     Region;                                                   // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Region;                                                   // 0x0098(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8277,29 +7911,12 @@ public:
 };
 
 
-// State ProjectX.OnlineGamePrivateMatch_X.Joining
-// 0x0000
-class SOnlineGamePrivateMatch_X_Joining : public SOnlineGameMatchmakingBase_X_Joining
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGamePrivateMatch_X.Joining");
-		return ptr;
-	}
-
-
-	void HandleJoinGameComplete(bool bSuccess, const struct FString& FailReason);
-};
-
-
 // Class ProjectX.RPC_GetRegionList_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_GetRegionList_X : public URPC_X
 {
 public:
-	TArray<struct FGetRegionListData>                  Regions;                                                  // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetRegionListData>                  Regions;                                                  // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8311,11 +7928,11 @@ public:
 
 
 // Class ProjectX.RPC_GetGameServerPingList_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_GetGameServerPingList_X : public URPC_X
 {
 public:
-	TArray<struct FGetGameServerPingListData>          Servers;                                                  // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetGameServerPingListData>          Servers;                                                  // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8376,13 +7993,13 @@ public:
 
 
 // Class ProjectX.MapPrefsConfig_X
-// 0x000C (0x0054 - 0x0048)
+// 0x000C (0x0058 - 0x004C)
 class UMapPrefsConfig_X : public UOnlineConfig_X
 {
 public:
-	float                                              PreferenceWeight;                                         // 0x0048(0x0004) (CPF_Edit)
-	int                                                MaxLikes;                                                 // 0x004C(0x0004) (CPF_Edit)
-	int                                                MaxDislikes;                                              // 0x0050(0x0004) (CPF_Edit)
+	float                                              PreferenceWeight;                                         // 0x004C(0x0004) (CPF_Edit)
+	int                                                MaxLikes;                                                 // 0x0050(0x0004) (CPF_Edit)
+	int                                                MaxDislikes;                                              // 0x0054(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -8394,13 +8011,16 @@ public:
 
 
 // Class ProjectX.PRI_X
-// 0x0030 (0x0310 - 0x02E0)
+// 0x0030 (0x0328 - 0x02F8)
 class APRI_X : public APlayerReplicationInfo
 {
 public:
-	struct FScriptDelegate                             __EventPlayerNameChanged__Delegate;                       // 0x02E0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventUniqueIdChanged__Delegate;                         // 0x02F0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __EventTeamChanged__Delegate;                             // 0x0300(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventPlayerNameChanged__Delegate;                       // 0x02F8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x02F8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventUniqueIdChanged__Delegate;                         // 0x0308(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0308(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventTeamChanged__Delegate;                             // 0x0318(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0318(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -8412,6 +8032,7 @@ public:
 	void OnUniqueIdChanged();
 	void SetUniqueId(const struct FUniqueNetId& PlayerUniqueId);
 	void RegisterPlayerWithSession();
+	void AddPlayerHistoryKey(class UOnlineRecentPlayersList* PlayersList);
 	void OnTeamChanged();
 	void SetPlayerTeam(class ATeamInfo* NewTeam);
 	void OnOwnerChanged();
@@ -8423,70 +8044,15 @@ public:
 };
 
 
-// State ProjectX.OnlineGameReservations_X.PrivateMatchBase
-// 0x0000
-class SOnlineGameReservations_X_PrivateMatchBase : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameReservations_X.PrivateMatchBase");
-		return ptr;
-	}
-
-
-	bool IsCustomMatch();
-};
-
-
-// State ProjectX.OnlineGameReservations_X.PrivateMatchStarting
-// 0x0000
-class SOnlineGameReservations_X_PrivateMatchStarting : public SOnlineGameReservations_X_PrivateMatchBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameReservations_X.PrivateMatchStarting");
-		return ptr;
-	}
-
-
-	bool AllowPlayerLogin(const struct FString& Options, const struct FUniqueNetId& PlayerID);
-	void HandleReservationDisconnected(class UTcpConnection* Connection);
-	void OnNewGameInfoCreated(class AGameInfo_X* Game);
-};
-
-
-// State ProjectX.OnlineGameReservations_X.PrivateMatch
-// 0x0000
-class SOnlineGameReservations_X_PrivateMatch : public SOnlineGameReservations_X_PrivateMatchBase
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameReservations_X.PrivateMatch");
-		return ptr;
-	}
-
-
-	bool AllPlayersInGame();
-	bool AllowSplitscreenJoin(class APlayerReplicationInfo* PrimaryPRI, const struct FUniqueNetId& PlayerID, const struct FString& PlayerName);
-	bool HandlePublicReservation(class UTcpConnection* Connection, class UAddReservationMessagePublic_X* Message);
-};
-
-
 // Class ProjectX.RPC_GetKeys_X
-// 0x003C (0x0120 - 0x00E4)
+// 0x0054 (0x0130 - 0x00DC)
 class URPC_GetKeys_X : public URPC_KeysBase_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00E4(0x0030)
-	unsigned long                                      bServerKey : 1;                                           // 0x0114(0x0004) (CPF_Transient)
-	class UAddReservationMessage_X*                    Message;                                                  // 0x0118(0x0004) (CPF_Transient)
-	class UTcpConnection*                              Connection;                                               // 0x011C(0x0004) (CPF_Transient)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x00DC(0x0048)
+	unsigned long                                      bServerKey : 1;                                           // 0x0124(0x0004) (CPF_Transient)
+	class UAddReservationMessage_X*                    Message;                                                  // 0x0128(0x0004) (CPF_Transient)
+	class UTcpConnection*                              Connection;                                               // 0x012C(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -8499,38 +8065,15 @@ public:
 };
 
 
-// State ProjectX.OnlineGameServerBrowser_X.Searching
-// 0x0000
-class SOnlineGameServerBrowser_X_Searching : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.OnlineGameServerBrowser_X.Searching");
-		return ptr;
-	}
-
-
-	void HandleSearchTimeout();
-	void HandleGameServerList(class URPC_CustomGameServerGet_X* RPC);
-	void PerformSearch();
-	bool IsSearching();
-	void HandleGameStarted(class AGRI_X* GRI);
-	void EndState(const struct FName& N);
-	void BeginState(const struct FName& P);
-};
-
-
 // Class ProjectX.RPC_CustomGameServerGet_X
-// 0x0030 (0x00D0 - 0x00A0)
+// 0x0030 (0x00C8 - 0x0098)
 class URPC_CustomGameServerGet_X : public URPC_X
 {
 public:
-	struct FString                                     ServerName;                                               // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Password;                                                 // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FFindPrivateServerResult>            Servers;                                                  // 0x00B8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FServerResult>                       Results;                                                  // 0x00C4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     ServerName;                                               // 0x0098(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Password;                                                 // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FFindPrivateServerResult>            Servers;                                                  // 0x00B0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FServerResult>                       Results;                                                  // 0x00BC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8568,13 +8111,13 @@ public:
 
 
 // Class ProjectX.RPC_GetPlayerSkill_X
-// 0x0044 (0x00E4 - 0x00A0)
+// 0x005C (0x00F4 - 0x0098)
 class URPC_GetPlayerSkill_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	TArray<struct FGetPlayerSkillData>                 Skills;                                                   // 0x00D0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FRPCRewardLevelData                         RewardLevels;                                             // 0x00DC(0x0008) (CPF_Transient)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	TArray<struct FGetPlayerSkillData>                 Skills;                                                   // 0x00E0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FRPCRewardLevelData                         RewardLevels;                                             // 0x00EC(0x0008) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -8588,20 +8131,20 @@ public:
 
 
 // Class ProjectX.RPC_UpdateSkills_X
-// 0x0080 (0x0120 - 0x00A0)
+// 0x0080 (0x0118 - 0x0098)
 class URPC_UpdateSkills_X : public URPC_X
 {
 public:
-	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x00A0(0x0004) (CPF_Transient)
-	struct FString                                     MatchGUID;                                                // 0x00A4(0x000C) (CPF_NeedCtorLink)
-	int                                                Playlist;                                                 // 0x00B0(0x0004)
-	struct FRecordedMatchData                          Match;                                                    // 0x00B4(0x001C)
-	TArray<struct FSkillMatchPlayer>                   Winners;                                                  // 0x00D0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSkillMatchPlayer>                   Losers;                                                   // 0x00DC(0x000C) (CPF_NeedCtorLink)
-	struct FGuid                                       AppSessionID;                                             // 0x00E8(0x0010)
-	struct FGuid                                       LevelSessionID;                                           // 0x00F8(0x0010)
-	TArray<struct FPlayerSkillRating>                  NewSkills;                                                // 0x0108(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FRPCPlayerRewardLevelData>           NewRewardLevels;                                          // 0x0114(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x0098(0x0004) (CPF_Transient)
+	struct FString                                     MatchGUID;                                                // 0x009C(0x000C) (CPF_NeedCtorLink)
+	int                                                Playlist;                                                 // 0x00A8(0x0004)
+	struct FRecordedMatchData                          Match;                                                    // 0x00AC(0x001C)
+	TArray<struct FSkillMatchPlayer>                   Winners;                                                  // 0x00C8(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSkillMatchPlayer>                   Losers;                                                   // 0x00D4(0x000C) (CPF_NeedCtorLink)
+	struct FGuid                                       AppSessionID;                                             // 0x00E0(0x0010)
+	struct FGuid                                       LevelSessionID;                                           // 0x00F0(0x0010)
+	TArray<struct FPlayerSkillRating>                  NewSkills;                                                // 0x0100(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FRPCPlayerRewardLevelData>           NewRewardLevels;                                          // 0x010C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8644,11 +8187,11 @@ public:
 
 
 // Class ProjectX.RPC_UpdateLeaderboard_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_UpdateLeaderboard_X : public URPC_X
 {
 public:
-	TArray<struct FUploadStatDataSet>                  Updates;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FUploadStatDataSet>                  Updates;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8662,11 +8205,11 @@ public:
 
 
 // Class ProjectX.WordFilterConfig_X
-// 0x0004 (0x004C - 0x0048)
+// 0x0004 (0x0050 - 0x004C)
 class UWordFilterConfig_X : public UOnlineConfig_X
 {
 public:
-	unsigned long                                      bSanitizeEntirePhrase : 1;                                // 0x0048(0x0004) (CPF_Edit)
+	unsigned long                                      bSanitizeEntirePhrase : 1;                                // 0x004C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -8678,7 +8221,7 @@ public:
 
 
 // Class ProjectX.RPC_LogoutPlayer_X
-// 0x0000 (0x00A0 - 0x00A0)
+// 0x0000 (0x0098 - 0x0098)
 class URPC_LogoutPlayer_X : public URPC_X
 {
 public:
@@ -8693,23 +8236,26 @@ public:
 
 
 // Class ProjectX.RPC_LoginAuthPlayer_X
-// 0x0078 (0x0118 - 0x00A0)
+// 0x008C (0x0124 - 0x0098)
 class URPC_LoginAuthPlayer_X : public URPC_X
 {
 public:
-	struct FString                                     Platform;                                                 // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     PlayerName;                                               // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     PlayerID;                                                 // 0x00B8(0x000C) (CPF_NeedCtorLink)
-	int                                                GameVersion;                                              // 0x00C4(0x0004)
-	struct FString                                     Language;                                                 // 0x00C8(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     AuthTicket;                                               // 0x00D4(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     BuildRegion;                                              // 0x00E0(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Platform;                                                 // 0x0098(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     PlayerName;                                               // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     PlayerID;                                                 // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	int                                                GameVersion;                                              // 0x00BC(0x0004)
+	struct FString                                     Language;                                                 // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     AuthTicket;                                               // 0x00CC(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     BuildRegion;                                              // 0x00D8(0x000C) (CPF_NeedCtorLink)
+	struct FName                                       FeatureSet;                                               // 0x00E4(0x0008)
 	unsigned long                                      bTrial : 1;                                               // 0x00EC(0x0004)
 	unsigned long                                      bSkipAuth : 1;                                            // 0x00EC(0x0004)
+	unsigned long                                      UseWebSocket : 1;                                         // 0x00EC(0x0004) (CPF_Transient)
 	struct FString                                     SessionId;                                                // 0x00F0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	int                                                BannedMinutes;                                            // 0x00FC(0x0004) (CPF_Transient)
-	struct FString                                     BannedMessage;                                            // 0x0100(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     VerifiedPlayerName;                                       // 0x010C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     PsyToken;                                                 // 0x00FC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	int                                                BannedMinutes;                                            // 0x0108(0x0004) (CPF_Transient)
+	struct FString                                     BannedMessage;                                            // 0x010C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     VerifiedPlayerName;                                       // 0x0118(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8719,6 +8265,7 @@ public:
 
 
 	class URPC_LoginAuthPlayer_X* SetTrial(bool bIsTrial);
+	class URPC_LoginAuthPlayer_X* SetFeatureSet(const struct FName& InFeatureSet);
 	class URPC_LoginAuthPlayer_X* SetBuildRegion(const struct FString& InBuildRegion);
 	class URPC_LoginAuthPlayer_X* SetAuthTicket(const struct FString& InAuthTicket);
 	class URPC_LoginAuthPlayer_X* SetLanguage(const struct FString& InLanguage);
@@ -8729,23 +8276,84 @@ public:
 };
 
 
-// State ProjectX.Pawn_X.Dying
-// 0x0000
-class SPawn_X_Dying : public SPawn_Dying
+// Class ProjectX.PsyNetService_FriendChatReceived_X
+// 0x0054 (0x00A8 - 0x0054)
+class UPsyNetService_FriendChatReceived_X : public UPsyNetClientService_X
 {
 public:
+	struct FUniqueNetId                                FromPlayerID;                                             // 0x0054(0x0048)
+	struct FString                                     Message;                                                  // 0x009C(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("State ProjectX.Pawn_X.Dying");
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_FriendChatReceived_X");
 		return ptr;
 	}
 
+};
 
-	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	bool TakeDamage_X(class UDamageComponent_X* Damage);
-	bool Died_X(class AController* Killer, class UDamageComponent_X* Damage);
-	void BeginState(const struct FName& P);
+
+// Class ProjectX.PsyNetService_FriendAcceptedRequest_X
+// 0x0078 (0x00CC - 0x0054)
+class UPsyNetService_FriendAcceptedRequest_X : public UPsyNetClientService_X
+{
+public:
+	struct FOnlineFriend                               FromPlayer;                                               // 0x0054(0x0078) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_FriendAcceptedRequest_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_FriendStatusUpdate_X
+// 0x0078 (0x00CC - 0x0054)
+class UPsyNetService_FriendStatusUpdate_X : public UPsyNetClientService_X
+{
+public:
+	struct FOnlineFriend                               StatusUpdate;                                             // 0x0054(0x0078) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_FriendStatusUpdate_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_IncomingFriendRequest_X
+// 0x0078 (0x00CC - 0x0054)
+class UPsyNetService_IncomingFriendRequest_X : public UPsyNetClientService_X
+{
+public:
+	struct FOnlineFriend                               FromPlayer;                                               // 0x0054(0x0078) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_IncomingFriendRequest_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PlayerUnfriended_X
+// 0x0048 (0x009C - 0x0054)
+class UPsyNetService_PlayerUnfriended_X : public UPsyNetClientService_X
+{
+public:
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0054(0x0048)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PlayerUnfriended_X");
+		return ptr;
+	}
+
 };
 
 
@@ -8794,6 +8402,136 @@ public:
 };
 
 
+// Class ProjectX.PsyNetMetrics_X
+// 0x0018 (0x006C - 0x0054)
+class UPsyNetMetrics_X : public UMetricsGroup_X
+{
+public:
+	TArray<struct FServiceMetricsData>                 ServiceData;                                              // 0x0054(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FServiceErrorData>                   ErrorData;                                                // 0x0060(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetMetrics_X");
+		return ptr;
+	}
+
+
+	void ServiceErrors(TArray<struct FServiceErrorData> Errors);
+	void ServiceCalls(TArray<struct FServiceMetricsData> Services);
+	void HandleMapChange(const struct FString& M);
+	void RecordServiceError(const struct FString& Service, class UError* Error);
+	void RecordServiceCall(const struct FString& Service, float Latency);
+};
+
+
+// Class ProjectX.__RPCQueue_X__CreateBatch_1
+// 0x0004 (0x0040 - 0x003C)
+class U__RPCQueue_X__CreateBatch_1 : public UObject
+{
+public:
+	class URPCBatch_X*                                 Batch;                                                    // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__RPCQueue_X__CreateBatch_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UPsyNetMessage_X* Response, class UError* Error);
+};
+
+
+// Class ProjectX.SendRequestTask
+// 0x0034 (0x00B8 - 0x0084)
+class USendRequestTask : public UAsyncResult
+{
+public:
+	class UPsyNetMessage_X*                            Result;                                                   // 0x0084(0x0004)
+	struct FScriptDelegate                             __EventSendRequestTaskResult__Delegate;                   // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventSendRequestTaskResultComplete__Delegate;           // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __SendRequestTaskResultDelegate__Delegate;                // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.SendRequestTask");
+		return ptr;
+	}
+
+
+	class USendRequestTask* STATIC_CreateResultError(class UError* InError);
+	class USendRequestTask* STATIC_CreateResult(class UPsyNetMessage_X* InResult);
+	void ClearCallbacks();
+	class USendRequestTask* SetResultWhen(class UAsyncTask* Other, const struct FScriptDelegate& GetResultDelegate);
+	class USendRequestTask* SetResult(class UPsyNetMessage_X* InResult, class UError* InError);
+	class USendRequestTask* NotifyOnResultComplete(const struct FScriptDelegate& Callback);
+	class USendRequestTask* NotifyOnResult(const struct FScriptDelegate& Callback);
+	class UPsyNetMessage_X* SendRequestTaskResultDelegate();
+	void EventSendRequestTaskResultComplete(class UPsyNetMessage_X* OutResult, class UError* OutError);
+	void EventSendRequestTaskResult(class UPsyNetMessage_X* OutResult);
+};
+
+
+// Class ProjectX.NetMetrics_X
+// 0x0000 (0x0054 - 0x0054)
+class UNetMetrics_X : public UMetricsGroup_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.NetMetrics_X");
+		return ptr;
+	}
+
+
+	void RpcSignatureMismatch(int ServiceID);
+	void ConnectionChangedIP(const struct FUniqueNetId& PlayerID);
+	void PlayerNetworkError(const struct FUniqueNetId& PlayerID, const struct FString& Reason);
+	void PlayerTimeout(const struct FUniqueNetId& PlayerID);
+	void PlayerNetwork(const struct FUniqueNetId& PlayerID, int PingMin, int PingMax, int PingAvg, int PktLossRateMin, int PktLossRateMax, int PktLossAvg, int InBpsMax, int InBpsAvg, int OutBpsMax, int OutBpsAvg);
+	void RecordPlayerNetwork(class APlayerController* PC);
+};
+
+
+// Class ProjectX.PsyNetServiceProvider_X
+// 0x0024 (0x0060 - 0x003C)
+class UPsyNetServiceProvider_X : public UObject
+{
+public:
+	class UPsyNetClientServiceCollection_X*            ServiceCollection;                                        // 0x003C(0x0004)
+	class UPsyNetServiceSubscriptions_X*               Subscriptions;                                            // 0x0040(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	TArray<class UPsyNetChannel_X*>                    Channels;                                                 // 0x0044(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventServiceExecuted__Delegate;                         // 0x0050(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0050(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetServiceProvider_X");
+		return ptr;
+	}
+
+
+	void FinalizeServiceTask(class UPsyNetClientService_X* Service, class UExecuteServiceTask* Task, class UError* Error);
+	void PrintServiceResult(const struct FString& ServiceName, class UError* Error);
+	class UExecuteServiceTask* ExecuteServiceMessage(class UPsyNetConnection_X* Connection, class UPsyNetMessage_X* Message);
+	bool IsServiceRequest(class UPsyNetMessage_X* Message);
+	class UExecuteServiceTask* ExecuteNotification(class UPsyNetConnection_X* Connection, class UPsyNetMessage_X* Message);
+	void SetResponse(class UPsyNetClientService_X* Service, class UError* Error, class UPsyNetMessage_X* Response);
+	class UExecuteServiceTask* ExecuteRequest(class UPsyNetConnection_X* Connection, class UPsyNetMessage_X* Request, class UPsyNetMessage_X* Response);
+	void HandleChannelClosed(class UPsyNetChannel_X* Channel);
+	class UPsyNetChannel_X* CreateChannel(const struct FString& ChannelName);
+	void Unsubscribe(const struct FScriptDelegate& Callback);
+	void Subscribe(class UClass* ServiceClass, const struct FScriptDelegate& Callback);
+	void Construct();
+	void EventServiceExecuted(class UPsyNetServiceProvider_X* ServiceProvider, class UPsyNetClientService_X* Service);
+};
+
+
 // Class ProjectX.ReservationsSettingUpMatchMessage_X
 // 0x0000 (0x003C - 0x003C)
 class UReservationsSettingUpMatchMessage_X : public UBeaconMessage_X
@@ -8814,7 +8552,8 @@ public:
 class U__RPC_X__CreateTask_1 : public UObject
 {
 public:
-	struct FScriptDelegate                             InCallback;                                               // 0x003C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             InCallback;                                               // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -8823,23 +8562,23 @@ public:
 	}
 
 
-	void LambdaCallback(class UScriptAsyncTask_X* T);
+	void LambdaCallback(class UError* Err);
 };
 
 
 // Class ProjectX.RPC_Test_X
-// 0x0108 (0x01A8 - 0x00A0)
+// 0x0138 (0x01D0 - 0x0098)
 class URPC_Test_X : public URPC_X
 {
 public:
-	struct FString                                     TestParamLocalizedString;                                 // 0x00A0(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	struct FString                                     TestParamString;                                          // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	struct FRPCTestParam                               TestParamStruct;                                          // 0x00B8(0x0060) (CPF_NeedCtorLink)
-	TArray<struct FRPCTestParam>                       TestParamStructs;                                         // 0x0118(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     TestResultLocalizedString;                                // 0x0124(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FString                                     TestResultString;                                         // 0x0130(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	struct FRPCTestParam                               TestResultStruct;                                         // 0x013C(0x0060) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FRPCTestParam>                       TestResultStructs;                                        // 0x019C(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     TestParamLocalizedString;                                 // 0x0098(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	struct FString                                     TestParamString;                                          // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	struct FRPCTestParam                               TestParamStruct;                                          // 0x00B0(0x0078) (CPF_NeedCtorLink)
+	TArray<struct FRPCTestParam>                       TestParamStructs;                                         // 0x0128(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     TestResultLocalizedString;                                // 0x0134(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     TestResultString;                                         // 0x0140(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FRPCTestParam                               TestResultStruct;                                         // 0x014C(0x0078) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FRPCTestParam>                       TestResultStructs;                                        // 0x01C4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8865,7 +8604,7 @@ public:
 
 
 // Class ProjectX.TestsHelper_X
-// 0x0000 (0x00A0 - 0x00A0)
+// 0x0000 (0x0098 - 0x0098)
 class UTestsHelper_X : public URPC_X
 {
 public:
@@ -8877,23 +8616,9 @@ public:
 	}
 
 
+	struct FString STATIC_GetRandomUppercaseString();
 	TArray<struct FString> STATIC_GetRandomStringArray();
 	struct FString STATIC_GetRandomString();
-};
-
-
-// Class ProjectX.RPCTests_X
-// 0x0000 (0x003C - 0x003C)
-class URPCTests_X : public UObject
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.RPCTests_X");
-		return ptr;
-	}
-
 };
 
 
@@ -8921,35 +8646,13 @@ public:
 };
 
 
-// Class ProjectX.Task_X
-// 0x0018 (0x0060 - 0x0048)
-class UTask_X : public UComponent
-{
-public:
-	int                                                Max;                                                      // 0x0048(0x0004) (CPF_Edit)
-	int                                                Num;                                                      // 0x004C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __TaskToExecute__Delegate;                                // 0x0050(0x0010) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.Task_X");
-		return ptr;
-	}
-
-
-	void Reset();
-	bool Execute();
-	void TaskToExecute();
-};
-
-
 // Class ProjectX.RPC_GetGroupSkills_X
-// 0x0018 (0x00B8 - 0x00A0)
+// 0x0018 (0x00B0 - 0x0098)
 class URPC_GetGroupSkills_X : public URPC_X
 {
 public:
-	TArray<struct FUniqueNetId>                        Players;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FPlaylistTierSkillRating>            Skills;                                                   // 0x00AC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FUniqueNetId>                        Players;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FPlaylistTierSkillRating>            Skills;                                                   // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8963,16 +8666,16 @@ public:
 
 
 // Class ProjectX.RPC_UpdateGroupSkills_X
-// 0x0038 (0x00D8 - 0x00A0)
+// 0x0038 (0x00D0 - 0x0098)
 class URPC_UpdateGroupSkills_X : public URPC_X
 {
 public:
-	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x00A0(0x0004) (CPF_Transient)
-	int                                                Playlist;                                                 // 0x00A4(0x0004)
-	TArray<struct FSkillMatchParty>                    Winners;                                                  // 0x00A8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSkillMatchParty>                    Losers;                                                   // 0x00B4(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSkillMatchPartyRating>              PartySkills;                                              // 0x00C0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	TArray<struct FGroupSkillRating>                   GroupSkills;                                              // 0x00CC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x0098(0x0004) (CPF_Transient)
+	int                                                Playlist;                                                 // 0x009C(0x0004)
+	TArray<struct FSkillMatchParty>                    Winners;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSkillMatchParty>                    Losers;                                                   // 0x00AC(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSkillMatchPartyRating>              PartySkills;                                              // 0x00B8(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGroupSkillRating>                   GroupSkills;                                              // 0x00C4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -8992,14 +8695,14 @@ public:
 
 
 // Class ProjectX.RPC_SetGroupSkills_X
-// 0x0020 (0x00C0 - 0x00A0)
+// 0x0020 (0x00B8 - 0x0098)
 class URPC_SetGroupSkills_X : public URPC_X
 {
 public:
-	TArray<struct FUniqueNetId>                        Players;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<int>                                        Playlists;                                                // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	float                                              Mu;                                                       // 0x00B8(0x0004)
-	float                                              Sigma;                                                    // 0x00BC(0x0004)
+	TArray<struct FUniqueNetId>                        Players;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
+	TArray<int>                                        Playlists;                                                // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	float                                              Mu;                                                       // 0x00B0(0x0004)
+	float                                              Sigma;                                                    // 0x00B4(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9013,14 +8716,14 @@ public:
 
 
 // Class ProjectX.RPC_SetGroupTiers_X
-// 0x0020 (0x00C0 - 0x00A0)
+// 0x0020 (0x00B8 - 0x0098)
 class URPC_SetGroupTiers_X : public URPC_X
 {
 public:
-	TArray<struct FUniqueNetId>                        Players;                                                  // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<int>                                        Playlists;                                                // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	int                                                Tier;                                                     // 0x00B8(0x0004)
-	int                                                MatchesPlayed;                                            // 0x00BC(0x0004)
+	TArray<struct FUniqueNetId>                        Players;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
+	TArray<int>                                        Playlists;                                                // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	int                                                Tier;                                                     // 0x00B0(0x0004)
+	int                                                MatchesPlayed;                                            // 0x00B4(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9034,12 +8737,12 @@ public:
 
 
 // Class ProjectX.RPC_TestPlayerID_X
-// 0x0060 (0x0100 - 0x00A0)
+// 0x0090 (0x0128 - 0x0098)
 class URPC_TestPlayerID_X : public URPC_X
 {
 public:
-	struct FUniqueNetId                                PlayerID;                                                 // 0x00A0(0x0030)
-	struct FUniqueNetId                                ResponsePlayerID;                                         // 0x00D0(0x0030) (CPF_Transient)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	struct FUniqueNetId                                ResponsePlayerID;                                         // 0x00E0(0x0048) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -9053,37 +8756,17 @@ public:
 };
 
 
-// State ProjectX.MatchRecorder_X.Finished
-// 0x0000
-class SMatchRecorder_X_Finished : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State ProjectX.MatchRecorder_X.Finished");
-		return ptr;
-	}
-
-
-	void Finish(int InWinningTeam, int InTeam0Score, int InTeam1Score, int InPlaylist, bool bInOvertime);
-	void AccumulateTime(float DeltaTime);
-	void RemovePlayer(const struct FUniqueNetId& PlayerID, bool bPenalize);
-	void AddPlayer(const struct FUniqueNetId& PlayerID, int Team, const struct FUniqueNetId& PartyID);
-};
-
-
 // Class ProjectX.RPC_RecordMatch_X
-// 0x0050 (0x00F0 - 0x00A0)
+// 0x0050 (0x00E8 - 0x0098)
 class URPC_RecordMatch_X : public URPC_X
 {
 public:
-	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x00A0(0x0004) (CPF_Transient)
-	struct FString                                     MatchGUID;                                                // 0x00A4(0x000C) (CPF_NeedCtorLink)
-	struct FRecordedMatchData                          Match;                                                    // 0x00B0(0x001C)
-	struct FString                                     MatchName;                                                // 0x00CC(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSkillMatchPlayer>                   Winners;                                                  // 0x00D8(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSkillMatchPlayer>                   Losers;                                                   // 0x00E4(0x000C) (CPF_NeedCtorLink)
+	class UMatchRecorder_X*                            MatchRecorder;                                            // 0x0098(0x0004) (CPF_Transient)
+	struct FString                                     MatchGUID;                                                // 0x009C(0x000C) (CPF_NeedCtorLink)
+	struct FRecordedMatchData                          Match;                                                    // 0x00A8(0x001C)
+	struct FString                                     MatchName;                                                // 0x00C4(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSkillMatchPlayer>                   Winners;                                                  // 0x00D0(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSkillMatchPlayer>                   Losers;                                                   // 0x00DC(0x000C) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -9158,15 +8841,15 @@ public:
 
 
 // Class ProjectX.AprilConfig_X
-// 0x002C (0x0074 - 0x0048)
+// 0x002C (0x0078 - 0x004C)
 class UAprilConfig_X : public UOnlineConfig_X
 {
 public:
-	struct FString                                     StartTime;                                                // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	struct FString                                     EndTime;                                                  // 0x0054(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned long                                      bChangeRankedIcons : 1;                                   // 0x0060(0x0004) (CPF_Edit)
-	__int64                                      StartTimeSeconds;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.StartTimeSeconds
-	__int64                                      EndTimeSeconds;                                       // 0x006C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.EndTimeSeconds
+	struct FString                                     StartTime;                                                // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     EndTime;                                                  // 0x0058(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	unsigned long                                      bChangeRankedIcons : 1;                                   // 0x0064(0x0004) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0068(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.StartTimeSeconds
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0070(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.AprilConfig_X.EndTimeSeconds
 
 	static UClass* StaticClass()
 	{
@@ -9215,34 +8898,40 @@ public:
 };
 
 
-// Class ProjectX.RPC_CheckReservation_X
-// 0x003C (0x00DC - 0x00A0)
-class URPC_CheckReservation_X : public URPC_X
+// Class ProjectX.CheckReservationService_X
+// 0x0030 (0x006C - 0x003C)
+class UCheckReservationService_X : public UObject
 {
 public:
-	unsigned long                                      bIsHeartbeat : 1;                                         // 0x00A0(0x0004)
-	unsigned long                                      bFoundReservation : 1;                                    // 0x00A0(0x0004) (CPF_Transient)
-	struct FCheckReservationResponse                   Reservation;                                              // 0x00A4(0x0038) (CPF_Transient, CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnFoundReservation__Delegate;                           // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnReservationNotFound__Delegate;                        // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __CheckReservationDelegate__Delegate;                     // 0x005C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class ProjectX.RPC_CheckReservation_X");
+		static auto ptr = UObject::FindClass("Class ProjectX.CheckReservationService_X");
 		return ptr;
 	}
 
 
-	struct FCheckReservationData GetReservation();
-	class URPC_CheckReservation_X* SetIsHeartbeat(bool bInIsHeartbeat);
+	void STATIC_HandleReservation(class URPC_CheckReservation_X* RPC, const struct FScriptDelegate& FoundCallback, const struct FScriptDelegate& NotFoundCallback);
+	class UAsyncTask* STATIC_SendRequest(bool bIsHeartbeat, const struct FScriptDelegate& FoundCallback, const struct FScriptDelegate& NotFoundCallback);
+	class UAsyncTask* CheckReservationDelegate(bool bIsHeartbeat, const struct FScriptDelegate& FoundCallback, const struct FScriptDelegate& NotFoundCallback);
+	void OnReservationNotFound();
+	void OnFoundReservation(const struct FCheckReservationData& Reservation);
 };
 
 
 // Class ProjectX.NetworkConfig_X
-// 0x0004 (0x004C - 0x0048)
+// 0x0004 (0x0050 - 0x004C)
 class UNetworkConfig_X : public UOnlineConfig_X
 {
 public:
-	unsigned long                                      bEnableDynamicIP : 1;                                     // 0x0048(0x0004) (CPF_Edit)
-	unsigned long                                      bHadDynamicIP : 1;                                        // 0x0048(0x0004) (CPF_Transient)
+	unsigned long                                      bEnableDynamicIP : 1;                                     // 0x004C(0x0004) (CPF_Edit)
+	unsigned long                                      bHadDynamicIP : 1;                                        // 0x004C(0x0004) (CPF_Transient)
 
 	static UClass* StaticClass()
 	{
@@ -9266,7 +8955,8 @@ public:
 	class UCachedWebData_X*                            CachedData;                                               // 0x0060(0x0004) (CPF_Transient)
 	unsigned long                                      bSyncing : 1;                                             // 0x0064(0x0004) (CPF_Transient)
 	int                                                RetryCount;                                               // 0x0068(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventDataChanged__Delegate;                             // 0x006C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventDataChanged__Delegate;                             // 0x006C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x006C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -9286,13 +8976,13 @@ public:
 
 
 // Class ProjectX.RPC_GetTrialData_X
-// 0x0010 (0x00B0 - 0x00A0)
+// 0x0010 (0x00A8 - 0x0098)
 class URPC_GetTrialData_X : public URPC_X
 {
 public:
-	int                                                MinutesRemaining;                                         // 0x00A0(0x0004) (CPF_Transient)
-	int                                                AdditionalMinutesRemaining;                               // 0x00A4(0x0004) (CPF_Transient)
-	__int64                                     LastPlayedTime;                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_GetTrialData_X.LastPlayedTime
+	int                                                MinutesRemaining;                                         // 0x0098(0x0004) (CPF_Transient)
+	int                                                AdditionalMinutesRemaining;                               // 0x009C(0x0004) (CPF_Transient)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00A0(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_GetTrialData_X.LastPlayedTime
 
 	static UClass* StaticClass()
 	{
@@ -9304,12 +8994,12 @@ public:
 
 
 // Class ProjectX.RPC_UpdateTrialData_X
-// 0x0008 (0x00A8 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URPC_UpdateTrialData_X : public URPC_X
 {
 public:
-	int                                                MinutesToRemove;                                          // 0x00A0(0x0004)
-	int                                                AdditionalMinutesToRemove;                                // 0x00A4(0x0004)
+	int                                                MinutesToRemove;                                          // 0x0098(0x0004)
+	int                                                AdditionalMinutesToRemove;                                // 0x009C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9324,12 +9014,13 @@ public:
 
 
 // Class ProjectX.PhysicsConfig_X
-// 0x0018 (0x0060 - 0x0048)
+// 0x001C (0x0068 - 0x004C)
 class UPhysicsConfig_X : public UOnlineConfig_X
 {
 public:
-	TArray<struct FString>                             EnabledFeatures;                                          // 0x0048(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	TArray<struct FString>                             DisabledFeatures;                                         // 0x0054(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FString>                             EnabledFeatures;                                          // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<struct FString>                             DisabledFeatures;                                         // 0x0058(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	unsigned long                                      bUseDemoFix : 1;                                          // 0x0064(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9345,33 +9036,12 @@ public:
 };
 
 
-// Class ProjectX.PsyNetConfig_X
-// 0x0004 (0x004C - 0x0048)
-class UPsyNetConfig_X : public UOnlineConfig_X
-{
-public:
-	unsigned long                                      bZipWebRequests : 1;                                      // 0x0048(0x0004) (CPF_Edit)
-	unsigned long                                      bZipWebResponses : 1;                                     // 0x0048(0x0004) (CPF_Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetConfig_X");
-		return ptr;
-	}
-
-
-	void ResetProperties(class UPsyNet_X* PsyNet);
-	void SetProperties(class UPsyNet_X* PsyNet);
-	void Apply();
-};
-
-
 // Class ProjectX.RPC_CheckKeys_X
-// 0x000C (0x012C - 0x0120)
+// 0x000C (0x013C - 0x0130)
 class URPC_CheckKeys_X : public URPC_GetKeys_X
 {
 public:
-	struct FString                                     KeyToCheck;                                               // 0x0120(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     KeyToCheck;                                               // 0x0130(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -9385,12 +9055,33 @@ public:
 };
 
 
+// Class ProjectX.RPC_CheckReservation_X
+// 0x003C (0x00D4 - 0x0098)
+class URPC_CheckReservation_X : public URPC_X
+{
+public:
+	unsigned long                                      bIsHeartbeat : 1;                                         // 0x0098(0x0004)
+	unsigned long                                      bFoundReservation : 1;                                    // 0x0098(0x0004) (CPF_Transient)
+	struct FCheckReservationResponse                   Reservation;                                              // 0x009C(0x0038) (CPF_Transient, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_CheckReservation_X");
+		return ptr;
+	}
+
+
+	struct FCheckReservationData GetReservation();
+	class URPC_CheckReservation_X* SetIsHeartbeat(bool bInIsHeartbeat);
+};
+
+
 // Class ProjectX.RPC_GetGenericDataAll_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_GetGenericDataAll_X : public URPC_X
 {
 public:
-	TArray<struct FGetGenericDataAllData>              GenericData;                                              // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FGetGenericDataAllData>              GenericData;                                              // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -9402,11 +9093,11 @@ public:
 
 
 // Class ProjectX.RPC_GetStaticDataURL_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_GetStaticDataURL_X : public URPC_X
 {
 public:
-	struct FString                                     URL;                                                      // 0x00A0(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	struct FString                                     URL;                                                      // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -9418,16 +9109,16 @@ public:
 
 
 // Class ProjectX.RPC_ReportLowFPS_X
-// 0x0028 (0x00C8 - 0x00A0)
+// 0x002C (0x00C4 - 0x0098)
 class URPC_ReportLowFPS_X : public URPC_X
 {
 public:
-	struct FString                                     IP;                                                       // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	int                                                MachineId;                                                // 0x00AC(0x0004)
-	int                                                ServerID;                                                 // 0x00B0(0x0004)
-	struct FString                                     ServerName;                                               // 0x00B4(0x000C) (CPF_NeedCtorLink)
-	int                                                NumHumans;                                                // 0x00C0(0x0004)
-	int                                                NumBots;                                                  // 0x00C4(0x0004)
+	struct FString                                     IP;                                                       // 0x0098(0x000C) (CPF_NeedCtorLink)
+	int                                                MachineId;                                                // 0x00A4(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00A8(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.RPC_ReportLowFPS_X.ServerID
+	struct FString                                     ServerName;                                               // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	int                                                NumHumans;                                                // 0x00BC(0x0004)
+	int                                                NumBots;                                                  // 0x00C0(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9439,20 +9130,20 @@ public:
 	class URPC_ReportLowFPS_X* SetNumBots(int InNumBots);
 	class URPC_ReportLowFPS_X* SetNumHumans(int InNumHumans);
 	class URPC_ReportLowFPS_X* SetServerName(const struct FString& InServerName);
-	class URPC_ReportLowFPS_X* SetServerID(int InServerID);
+	class URPC_ReportLowFPS_X* SetServerID();
 	class URPC_ReportLowFPS_X* SetMachineID(int InMachineID);
 	class URPC_ReportLowFPS_X* SetIP(const struct FString& InIP);
 };
 
 
 // Class ProjectX.RPC_SetPlayerSkill_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_SetPlayerSkill_X : public URPC_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00A0(0x0004)
-	float                                              Mu;                                                       // 0x00A4(0x0004)
-	float                                              Sigma;                                                    // 0x00A8(0x0004)
+	int                                                Playlist;                                                 // 0x0098(0x0004)
+	float                                              Mu;                                                       // 0x009C(0x0004)
+	float                                              Sigma;                                                    // 0x00A0(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9468,13 +9159,13 @@ public:
 
 
 // Class ProjectX.RPC_SetPlayerSkillTier_X
-// 0x000C (0x00AC - 0x00A0)
+// 0x000C (0x00A4 - 0x0098)
 class URPC_SetPlayerSkillTier_X : public URPC_X
 {
 public:
-	int                                                Playlist;                                                 // 0x00A0(0x0004)
-	int                                                Tier;                                                     // 0x00A4(0x0004)
-	int                                                MatchesPlayed;                                            // 0x00A8(0x0004)
+	int                                                Playlist;                                                 // 0x0098(0x0004)
+	int                                                Tier;                                                     // 0x009C(0x0004)
+	int                                                MatchesPlayed;                                            // 0x00A0(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9489,32 +9180,14 @@ public:
 };
 
 
-// Class ProjectX.__ScriptAsyncTask_X__CompleteAll_1
-// 0x0004 (0x0040 - 0x003C)
-class U__ScriptAsyncTask_X__CompleteAll_1 : public UObject
-{
-public:
-	class UError*                                      InError;                                                  // 0x003C(0x0004)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.__ScriptAsyncTask_X__CompleteAll_1");
-		return ptr;
-	}
-
-
-	void LambdaCallback(class UScriptAsyncTask_X* T);
-};
-
-
 // Class ProjectX.EventRecorderConfig_X
-// 0x0014 (0x005C - 0x0048)
+// 0x0014 (0x0060 - 0x004C)
 class UEventRecorderConfig_X : public UOnlineConfig_X
 {
 public:
-	unsigned long                                      bEnabled : 1;                                             // 0x0048(0x0004) (CPF_Edit)
-	TArray<struct FName>                               DisabledEvents;                                           // 0x004C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	class UClass*                                      EventRecorderClass;                                       // 0x0058(0x0004) (CPF_Edit)
+	unsigned long                                      bEnabled : 1;                                             // 0x004C(0x0004) (CPF_Edit)
+	TArray<struct FName>                               DisabledEvents;                                           // 0x0050(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	class UClass*                                      EventRecorderClass;                                       // 0x005C(0x0004) (CPF_Edit)
 
 	static UClass* StaticClass()
 	{
@@ -9530,12 +9203,12 @@ public:
 
 
 // Class ProjectX.RPC_GetPlayerPermissions_X
-// 0x0018 (0x00B8 - 0x00A0)
+// 0x0018 (0x00B0 - 0x0098)
 class URPC_GetPlayerPermissions_X : public URPC_X
 {
 public:
-	TArray<struct FUniqueNetId>                        PlayerIDs;                                                // 0x00A0(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FPlayerPermissionsReponse>           PlayerPermissions;                                        // 0x00AC(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FUniqueNetId>                        PlayerIDs;                                                // 0x0098(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FPlayerPermissionsReponse>           PlayerPermissions;                                        // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -9548,36 +9221,20 @@ public:
 	bool GetPermissionFromString(const struct FName& PermissionName, TEnumAsByte<EOnlinePlayerPermission>* Permission);
 	TArray<TEnumAsByte<EOnlinePlayerPermission>> ConvertPermissions(TArray<struct FName> PermissionNames);
 	struct FPlayerPermissionsList ConvertPlayerPermissions(const struct FUniqueNetId& PlayerID);
-	TArray<struct FPlayerPermissionsList> GetPlayerPermissions(TArray<struct FPlayerPermissionsList>* MapLocal_6AD13AFD42F212F5AF39E7B76199A2A2);
+	TArray<struct FPlayerPermissionsList> GetPlayerPermissions(TArray<struct FPlayerPermissionsList>* MapLocal_C71E7F784B91EDA939AC1B9CCD3130FE);
 	class URPC_GetPlayerPermissions_X* SetPlayers(TArray<struct FUniqueNetId>* InPlayerIDs);
 };
 
 
-// Class ProjectX.PCN_X
-// 0x0000 (0x003C - 0x003C)
-class UPCN_X : public UOnlineMessage_X
+// Class ProjectX.PsyNetLocatorHttp_X
+// 0x0000 (0x0064 - 0x0064)
+class UPsyNetLocatorHttp_X : public UPsyNetLocator_X
 {
 public:
 
 	static UClass* StaticClass()
 	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PCN_X");
-		return ptr;
-	}
-
-};
-
-
-// Class ProjectX.PushNotificationConfig_X
-// 0x0004 (0x004C - 0x0048)
-class UPushNotificationConfig_X : public UOnlineConfig_X
-{
-public:
-	int                                                NotificationRequestInSeconds;                             // 0x0048(0x0004) (CPF_Edit)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class ProjectX.PushNotificationConfig_X");
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetLocatorHttp_X");
 		return ptr;
 	}
 
@@ -9585,11 +9242,11 @@ public:
 
 
 // Class ProjectX.RPC_AddPlayerToRole_X
-// 0x0004 (0x00A4 - 0x00A0)
+// 0x0004 (0x009C - 0x0098)
 class URPC_AddPlayerToRole_X : public URPC_X
 {
 public:
-	int                                                RoleID;                                                   // 0x00A0(0x0004)
+	int                                                RoleID;                                                   // 0x0098(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9603,11 +9260,11 @@ public:
 
 
 // Class ProjectX.RPC_RemovePlayerFromRole_X
-// 0x0004 (0x00A4 - 0x00A0)
+// 0x0004 (0x009C - 0x0098)
 class URPC_RemovePlayerFromRole_X : public URPC_X
 {
 public:
-	int                                                RoleID;                                                   // 0x00A0(0x0004)
+	int                                                RoleID;                                                   // 0x0098(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9621,12 +9278,12 @@ public:
 
 
 // Class ProjectX.RPC_SetSeasonReward_X
-// 0x0008 (0x00A8 - 0x00A0)
+// 0x0008 (0x00A0 - 0x0098)
 class URPC_SetSeasonReward_X : public URPC_X
 {
 public:
-	int                                                SeasonLevel;                                              // 0x00A0(0x0004)
-	int                                                SeasonLevelWins;                                          // 0x00A4(0x0004)
+	int                                                SeasonLevel;                                              // 0x0098(0x0004)
+	int                                                SeasonLevelWins;                                          // 0x009C(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9636,6 +9293,1375 @@ public:
 
 
 	class URPC_SetSeasonReward_X* SetReward(int Level, int Wins);
+};
+
+
+// Class ProjectX.__AdHocBrowser_X__CreateErrorDelegate_1
+// 0x0004 (0x0040 - 0x003C)
+class U__AdHocBrowser_X__CreateErrorDelegate_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocBrowser_X__CreateErrorDelegate_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* Error);
+};
+
+
+// Class ProjectX.AdHocBrowser_X
+// 0x0030 (0x006C - 0x003C)
+class UAdHocBrowser_X : public ULanBrowser_X
+{
+public:
+	class UAdHocBeacon_X*                              AdHocBeacon;                                              // 0x003C(0x0004)
+	TArray<struct FAdHocAccessPointInfo>               AdHocNodesOnNetwork;                                      // 0x0040(0x000C) (CPF_NeedCtorLink)
+	float                                              SearchTimeout;                                            // 0x004C(0x0004) (CPF_Edit, CPF_Const)
+	class ULanSearchTask*                              SearchTask;                                               // 0x0050(0x0004)
+	TArray<class ULanServerRecord_X*>                  SearchResults;                                            // 0x0054(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FAdHocAccessPointInfo>               AdHocAccessPointsAvailable;                               // 0x0060(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.AdHocBrowser_X");
+		return ptr;
+	}
+
+
+	void __AdHocBrowser_X__GetServerList_1();
+	void HandleSearchTimeout();
+	void AdHocHandleOnNetworkChanged(TArray<struct FAdHocAccessPointInfo> Ahapis);
+	int FindIndexFromServerID(const struct FString& InServerID);
+	class UAsyncTask* JoinServer(const struct FString& ServerID, const struct FString& Options);
+	void STATIC_CreateErrorDelegate(class UAsyncTask* Task);
+	class ULanSearchTask* GetServerList();
+	void DestroyServer();
+	class UAsyncTask* SetServerMetaData(const struct FString& MetaData);
+	class UAsyncTask* CreateServer(const struct FString& MetaData);
+};
+
+
+// Class ProjectX.__AdHocBrowser_X__CreateErrorDelegate_2
+// 0x0010 (0x004C - 0x003C)
+class U__AdHocBrowser_X__CreateErrorDelegate_2 : public UObject
+{
+public:
+	struct FScriptDelegate                             ErrorDelegate;                                            // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocBrowser_X__CreateErrorDelegate_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocBrowser_X__CreateServer_1
+// 0x0010 (0x004C - 0x003C)
+class U__AdHocBrowser_X__CreateServer_1 : public UObject
+{
+public:
+	struct FString                                     MetaData;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	class UAsyncTask*                                  Task;                                                     // 0x0048(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocBrowser_X__CreateServer_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocBrowser_X__CreateServer_2
+// 0x0010 (0x004C - 0x003C)
+class U__AdHocBrowser_X__CreateServer_2 : public UObject
+{
+public:
+	struct FScriptDelegate                             ApcDelegate;                                              // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocBrowser_X__CreateServer_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocBrowser_X__JoinServer_1
+// 0x001C (0x0058 - 0x003C)
+class U__AdHocBrowser_X__JoinServer_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+	struct FString                                     ServerID;                                                 // 0x0040(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Options;                                                  // 0x004C(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocBrowser_X__JoinServer_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocInterface_X__DisableAdHoc_1
+// 0x0004 (0x0040 - 0x003C)
+class U__AdHocInterface_X__DisableAdHoc_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocInterface_X__DisableAdHoc_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.AdHocInterface_X
+// 0x0008 (0x0044 - 0x003C)
+class UAdHocInterface_X : public UObject
+{
+public:
+	class ULanBrowser_X*                               OldLanBrowser;                                            // 0x003C(0x0004)
+	class UAdHocBeacon_X*                              AdHocBeacon;                                              // 0x0040(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.AdHocInterface_X");
+		return ptr;
+	}
+
+
+	void CreateErrorDelegate(class UAsyncTask* Task);
+	class UAsyncTask* DisableAdHoc();
+	void HandleGameInfoSpawned(class AGameInfo_X* InGameInfo);
+	class UAsyncTask* EnableAdHoc();
+};
+
+
+// Class ProjectX.__AdHocInterface_X__DisableAdHoc_2
+// 0x0010 (0x004C - 0x003C)
+class U__AdHocInterface_X__DisableAdHoc_2 : public UObject
+{
+public:
+	struct FScriptDelegate                             DestroyedDelegate;                                        // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocInterface_X__DisableAdHoc_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocInterface_X__EnableAdHoc_1
+// 0x0004 (0x0040 - 0x003C)
+class U__AdHocInterface_X__EnableAdHoc_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocInterface_X__EnableAdHoc_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__AdHocInterface_X__EnableAdHoc_2
+// 0x0010 (0x004C - 0x003C)
+class U__AdHocInterface_X__EnableAdHoc_2 : public UObject
+{
+public:
+	struct FScriptDelegate                             InitDelegate;                                             // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__AdHocInterface_X__EnableAdHoc_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__CheckReservationService_X__SendRequest_1
+// 0x0020 (0x005C - 0x003C)
+class U__CheckReservationService_X__SendRequest_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             FoundCallback;                                            // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             NotFoundCallback;                                         // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__CheckReservationService_X__SendRequest_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class URPC_CheckReservation_X* RPC);
+};
+
+
+// Class ProjectX.ExecuteServiceTask
+// 0x0034 (0x00B8 - 0x0084)
+class UExecuteServiceTask : public UAsyncResult
+{
+public:
+	class UPsyNetClientService_X*                      Result;                                                   // 0x0084(0x0004)
+	struct FScriptDelegate                             __EventExecuteServiceTaskResult__Delegate;                // 0x0088(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0088(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventExecuteServiceTaskResultComplete__Delegate;        // 0x0098(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0098(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __ExecuteServiceTaskResultDelegate__Delegate;             // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00A8(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.ExecuteServiceTask");
+		return ptr;
+	}
+
+
+	class UExecuteServiceTask* STATIC_CreateResultError(class UError* InError);
+	class UExecuteServiceTask* STATIC_CreateResult(class UPsyNetClientService_X* InResult);
+	void ClearCallbacks();
+	class UExecuteServiceTask* SetResultWhen(class UAsyncTask* Other, const struct FScriptDelegate& GetResultDelegate);
+	class UExecuteServiceTask* SetResult(class UPsyNetClientService_X* InResult, class UError* InError);
+	class UExecuteServiceTask* NotifyOnResultComplete(const struct FScriptDelegate& Callback);
+	class UExecuteServiceTask* NotifyOnResult(const struct FScriptDelegate& Callback);
+	class UPsyNetClientService_X* ExecuteServiceTaskResultDelegate();
+	void EventExecuteServiceTaskResultComplete(class UPsyNetClientService_X* OutResult, class UError* OutError);
+	void EventExecuteServiceTaskResult(class UPsyNetClientService_X* OutResult);
+};
+
+
+// Class ProjectX.__ExecuteServiceTask__NotifyOnResult_1
+// 0x0010 (0x004C - 0x003C)
+class U__ExecuteServiceTask__NotifyOnResult_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__ExecuteServiceTask__NotifyOnResult_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__ExecuteServiceTask__NotifyOnResultComplete_1
+// 0x0010 (0x004C - 0x003C)
+class U__ExecuteServiceTask__NotifyOnResultComplete_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__ExecuteServiceTask__NotifyOnResultComplete_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* Err);
+};
+
+
+// Class ProjectX.__ExecuteServiceTask__SetResultWhen_1
+// 0x0010 (0x004C - 0x003C)
+class U__ExecuteServiceTask__SetResultWhen_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             GetResultDelegate;                                        // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__ExecuteServiceTask__SetResultWhen_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.LanSearchTask
+// 0x003C (0x00C0 - 0x0084)
+class ULanSearchTask : public UAsyncResult
+{
+public:
+	TArray<class ULanServerRecord_X*>                  Result;                                                   // 0x0084(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventLanSearchTaskResult__Delegate;                     // 0x0090(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0090(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventLanSearchTaskResultComplete__Delegate;             // 0x00A0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00A0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __LanSearchTaskResultDelegate__Delegate;                  // 0x00B0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00B0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.LanSearchTask");
+		return ptr;
+	}
+
+
+	class ULanSearchTask* STATIC_CreateResultError(class UError* InError);
+	class ULanSearchTask* STATIC_CreateResult(TArray<class ULanServerRecord_X*> InResult);
+	void ClearCallbacks();
+	class ULanSearchTask* SetResultWhen(class UAsyncTask* Other, const struct FScriptDelegate& GetResultDelegate);
+	class ULanSearchTask* SetResult(TArray<class ULanServerRecord_X*> InResult, class UError* InError);
+	class ULanSearchTask* NotifyOnResultComplete(const struct FScriptDelegate& Callback);
+	class ULanSearchTask* NotifyOnResult(const struct FScriptDelegate& Callback);
+	TArray<class ULanServerRecord_X*> LanSearchTaskResultDelegate();
+	void EventLanSearchTaskResultComplete(TArray<class ULanServerRecord_X*> OutResult, class UError* OutError);
+	void EventLanSearchTaskResult(TArray<class ULanServerRecord_X*> OutResult);
+};
+
+
+// Class ProjectX.LanServerRecord_X
+// 0x0018 (0x0054 - 0x003C)
+class ULanServerRecord_X : public UObject
+{
+public:
+	struct FString                                     ServerID;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     MetaData;                                                 // 0x0048(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.LanServerRecord_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.__LanSearchTask__NotifyOnResult_1
+// 0x0010 (0x004C - 0x003C)
+class U__LanSearchTask__NotifyOnResult_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__LanSearchTask__NotifyOnResult_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__LanSearchTask__NotifyOnResultComplete_1
+// 0x0010 (0x004C - 0x003C)
+class U__LanSearchTask__NotifyOnResultComplete_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__LanSearchTask__NotifyOnResultComplete_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* Err);
+};
+
+
+// Class ProjectX.__LanSearchTask__SetResultWhen_1
+// 0x0010 (0x004C - 0x003C)
+class U__LanSearchTask__SetResultWhen_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             GetResultDelegate;                                        // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__LanSearchTask__SetResultWhen_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__PartyMessageQueue_X__SendMessage_1
+// 0x0004 (0x0040 - 0x003C)
+class U__PartyMessageQueue_X__SendMessage_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PartyMessageQueue_X__SendMessage_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* _);
+};
+
+
+// Class ProjectX.PartyMessageQueue_X
+// 0x002C (0x0074 - 0x0048)
+class UPartyMessageQueue_X : public UComponent
+{
+public:
+	TArray<struct FPendingMessage>                     Pending;                                                  // 0x0048(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<class UAsyncTask*>                          CurrentBatch;                                             // 0x0054(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	float                                              BatchDelayTime;                                           // 0x0060(0x0004) (CPF_Edit)
+	struct FScriptDelegate                             __SendMessageServiceDelegate__Delegate;                   // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PartyMessageQueue_X");
+		return ptr;
+	}
+
+
+	void __PartyMessageQueue_X__CancelAll_1(class UAsyncTask* Task);
+	void HandleTaskComplete(class UAsyncTask* Task);
+	class UAsyncTask* SendMessage(const struct FUniqueLobbyId& LobbyId, const struct FString& Message);
+	void SendBatch();
+	void QueueBatch();
+	void CancelAll();
+	void QueueMessage(const struct FUniqueLobbyId& LobbyId, const struct FString& Message);
+	class UAsyncTask* SendMessageServiceDelegate(const struct FUniqueLobbyId& LobbyId, const struct FString& Message);
+};
+
+
+// Class ProjectX.__PsyNetConnection_X__ProcessServiceCall_1
+// 0x0004 (0x0040 - 0x003C)
+class U__PsyNetConnection_X__ProcessServiceCall_1 : public UObject
+{
+public:
+	class UPsyNetMessage_X*                            Response;                                                 // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetConnection_X__ProcessServiceCall_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* _);
+};
+
+
+// Class ProjectX.__PsyNetMessengerHttp_X__SendMessage_1
+// 0x0010 (0x004C - 0x003C)
+class U__PsyNetMessengerHttp_X__SendMessage_1 : public UObject
+{
+public:
+	struct FString                                     PsyRequestID;                                             // 0x003C(0x000C) (CPF_NeedCtorLink)
+	class UAsyncTask*                                  Task;                                                     // 0x0048(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetMessengerHttp_X__SendMessage_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UWebRequest_X* Request);
+};
+
+
+// Class ProjectX.__PsyNetRequestQue_X__SendRequest_1
+// 0x0008 (0x0044 - 0x003C)
+class U__PsyNetRequestQue_X__SendRequest_1 : public UObject
+{
+public:
+	struct FName                                       RequestID;                                                // 0x003C(0x0008)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetRequestQue_X__SendRequest_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.PsyNetRequestQue_X
+// 0x0020 (0x005C - 0x003C)
+class UPsyNetRequestQue_X : public UObject
+{
+public:
+	float                                              RequestTimeout;                                           // 0x003C(0x0004) (CPF_Edit)
+	TArray<struct FPsyNetRequest>                      Requests;                                                 // 0x0040(0x000C) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __SendMessageDelegate__Delegate;                          // 0x004C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetRequestQue_X");
+		return ptr;
+	}
+
+
+	void FailAllPending(class UError* Error);
+	void TimeoutRequests();
+	bool ProcessResponseMessage(class UPsyNetMessage_X* Message);
+	void RemoveRequest(const struct FName& RequestID);
+	void SetRequestComplete(const struct FName& RequestID, class UPsyNetMessage_X* Response, class UError* Error);
+	class USendRequestTask* SendRequest(class UPsyNetMessage_X* Message);
+	class UAsyncTask* SendMessageDelegate(class UPsyNetMessage_X* Message);
+};
+
+
+// Class ProjectX.__PsyNetServiceProvider_X__CreateChannel_1
+// 0x000C (0x0048 - 0x003C)
+class U__PsyNetServiceProvider_X__CreateChannel_1 : public UObject
+{
+public:
+	struct FString                                     ChannelName;                                              // 0x003C(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetServiceProvider_X__CreateChannel_1");
+		return ptr;
+	}
+
+
+	bool LambdaCallback(class UPsyNetChannel_X* C);
+};
+
+
+// Class ProjectX.PsyNetChannel_X
+// 0x0038 (0x0074 - 0x003C)
+class UPsyNetChannel_X : public UObject
+{
+public:
+	struct FString                                     ChannelName;                                              // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bOpen : 1;                                                // 0x0048(0x0004)
+	unsigned long                                      bReceivedFirstMessage : 1;                                // 0x0048(0x0004)
+	unsigned long                                      bClosed : 1;                                              // 0x0048(0x0004)
+	unsigned long                                      bTimedOut : 1;                                            // 0x0048(0x0004)
+	int                                                NextMessageID;                                            // 0x004C(0x0004)
+	float                                              WaitForMessageTime;                                       // 0x0050(0x0004) (CPF_Edit)
+	TArray<struct FPendingChannelService>              ServiceQueue;                                             // 0x0054(0x000C) (CPF_NeedCtorLink)
+	class UPsyNetServiceSubscriptions_X*               Subscriptions;                                            // 0x0060(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FScriptDelegate                             __EventClosed__Delegate;                                  // 0x0064(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetChannel_X");
+		return ptr;
+	}
+
+
+	struct FString GetDebugName();
+	void Close();
+	void Timeout();
+	void ClearTimeout();
+	void UpdateTimeout();
+	void ExecuteService(class UPsyNetClientService_X* Service);
+	void ExecuteNext();
+	class UAsyncTask* CreatePendingService(class UPsyNetClientService_X* Service, int MessageId);
+	class UAsyncTask* QueueServiceCall(class UPsyNetClientService_X* Service, class UPsyNetMessage_X* Message);
+	void Open();
+	void Unsubscribe(const struct FScriptDelegate& Callback);
+	void Subscribe(class UClass* ServiceClass, const struct FScriptDelegate& Callback);
+	void Init(const struct FString& InChannelName);
+	void EventClosed(class UPsyNetChannel_X* Channel);
+};
+
+
+// Class ProjectX.__PsyNetServiceProvider_X__ExecuteRequest_1
+// 0x0004 (0x0040 - 0x003C)
+class U__PsyNetServiceProvider_X__ExecuteRequest_1 : public UObject
+{
+public:
+	class UPsyNetMessage_X*                            Response;                                                 // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetServiceProvider_X__ExecuteRequest_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UPsyNetClientService_X* Result, class UError* Error);
+};
+
+
+// Class ProjectX.__PsyNetServiceProvider_X__ExecuteServiceMessage_1
+// 0x000C (0x0048 - 0x003C)
+class U__PsyNetServiceProvider_X__ExecuteServiceMessage_1 : public UObject
+{
+public:
+	struct FString                                     ServiceName;                                              // 0x003C(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetServiceProvider_X__ExecuteServiceMessage_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UPsyNetClientService_X* R, class UError* E);
+};
+
+
+// Class ProjectX.__PsyNetServiceProvider_X__ExecuteServiceMessage_2
+// 0x0008 (0x0044 - 0x003C)
+class U__PsyNetServiceProvider_X__ExecuteServiceMessage_2 : public UObject
+{
+public:
+	class UPsyNetClientService_X*                      Service;                                                  // 0x003C(0x0004)
+	class UExecuteServiceTask*                         Task;                                                     // 0x0040(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__PsyNetServiceProvider_X__ExecuteServiceMessage_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* Err);
+};
+
+
+// Class ProjectX.__SendRequestTask__NotifyOnResult_1
+// 0x0010 (0x004C - 0x003C)
+class U__SendRequestTask__NotifyOnResult_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__SendRequestTask__NotifyOnResult_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__SendRequestTask__NotifyOnResultComplete_1
+// 0x0010 (0x004C - 0x003C)
+class U__SendRequestTask__NotifyOnResultComplete_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             Callback;                                                 // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__SendRequestTask__NotifyOnResultComplete_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback(class UError* Err);
+};
+
+
+// Class ProjectX.__SendRequestTask__SetResultWhen_1
+// 0x0010 (0x004C - 0x003C)
+class U__SendRequestTask__SetResultWhen_1 : public UObject
+{
+public:
+	struct FScriptDelegate                             GetResultDelegate;                                        // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__SendRequestTask__SetResultWhen_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__TaskGate_X__Add_1
+// 0x0004 (0x0040 - 0x003C)
+class U__TaskGate_X__Add_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__TaskGate_X__Add_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.TaskGate_X
+// 0x0010 (0x004C - 0x003C)
+class UTaskGate_X : public UObject
+{
+public:
+	unsigned long                                      bOpen : 1;                                                // 0x003C(0x0004)
+	TArray<class UAsyncTask*>                          Tasks;                                                    // 0x0040(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.TaskGate_X");
+		return ptr;
+	}
+
+
+	class UAsyncTask* AddWithTimeout(float TimeoutSeconds, class UErrorType* TimeoutError, const struct FString& ErrorMessage);
+	class UAsyncTask* Add();
+	void CompleteTasks();
+	void SetOpen(bool bIsOpen);
+};
+
+
+// Class ProjectX.__TaskGate_X__AddWithTimeout_1
+// 0x0014 (0x0050 - 0x003C)
+class U__TaskGate_X__AddWithTimeout_1 : public UObject
+{
+public:
+	class UAsyncTask*                                  Task;                                                     // 0x003C(0x0004)
+	class UErrorType*                                  TimeoutError;                                             // 0x0040(0x0004)
+	struct FString                                     ErrorMessage;                                             // 0x0044(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__TaskGate_X__AddWithTimeout_1");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.__TaskGate_X__AddWithTimeout_2
+// 0x0010 (0x004C - 0x003C)
+class U__TaskGate_X__AddWithTimeout_2 : public UObject
+{
+public:
+	struct FScriptDelegate                             TimeoutDelegate;                                          // 0x003C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.__TaskGate_X__AddWithTimeout_2");
+		return ptr;
+	}
+
+
+	void LambdaCallback();
+};
+
+
+// Class ProjectX.BlogTile_X
+// 0x0070 (0x00AC - 0x003C)
+class UBlogTile_X : public UObject
+{
+public:
+	struct FString                                     Title;                                                    // 0x003C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     DescriptionHeader;                                        // 0x0048(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     Description;                                              // 0x0054(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     WebURL;                                                   // 0x0060(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     CarName;                                                  // 0x006C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     ImageURL;                                                 // 0x0078(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     TileStartTimeUTC;                                         // 0x0084(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     LiveStartTimeUTC;                                         // 0x0090(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x009C(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.BlogTile_X.TileStartTimeSecondsUTC
+	unsigned char                                      UnknownData01[0x8];                                       // 0x00A4(0x0008) UNKNOWN PROPERTY: QWordProperty ProjectX.BlogTile_X.LiveStartTimeSecondsUTC
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.BlogTile_X");
+		return ptr;
+	}
+
+
+	void UTCtoEpoch();
+	struct FString GetTileID();
+};
+
+
+// Class ProjectX.CountTrigger_X
+// 0x0018 (0x0060 - 0x0048)
+class UCountTrigger_X : public UComponent
+{
+public:
+	int                                                Threshold;                                                // 0x0048(0x0004) (CPF_Edit)
+	int                                                Count;                                                    // 0x004C(0x0004)
+	struct FScriptDelegate                             __EventTriggered__Delegate;                               // 0x0050(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0050(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.CountTrigger_X");
+		return ptr;
+	}
+
+
+	void Reset();
+	void Increment();
+	void EventTriggered(class UCountTrigger_X* Trigger);
+};
+
+
+// Class ProjectX.RPC_PartyBase_X
+// 0x000C (0x00A4 - 0x0098)
+class URPC_PartyBase_X : public URPC_X
+{
+public:
+	struct FString                                     PartyID;                                                  // 0x0098(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyBase_X");
+		return ptr;
+	}
+
+
+	class URPC_PartyBase_X* SetPartyId(const struct FUniqueLobbyId& InLobbyId);
+};
+
+
+// Class ProjectX.RPC_PartyMessage_X
+// 0x000C (0x00B0 - 0x00A4)
+class URPC_PartyMessage_X : public URPC_PartyBase_X
+{
+public:
+	struct FString                                     Message;                                                  // 0x00A4(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyMessage_X");
+		return ptr;
+	}
+
+
+	class URPC_PartyMessage_X* SetMessage(const struct FString& InMessage);
+};
+
+
+// Class ProjectX.RPC_PartyCreate_X
+// 0x0068 (0x0100 - 0x0098)
+class URPC_PartyCreate_X : public URPC_X
+{
+public:
+	struct FPsyNetPartyInfo                            Info;                                                     // 0x0098(0x005C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FPsyNetPartyMember>                  Members;                                                  // 0x00F4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyCreate_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.RPC_PartyJoin_X
+// 0x0068 (0x010C - 0x00A4)
+class URPC_PartyJoin_X : public URPC_PartyBase_X
+{
+public:
+	struct FPsyNetPartyInfo                            Info;                                                     // 0x00A4(0x005C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FPsyNetPartyMember>                  Members;                                                  // 0x0100(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyJoin_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.RPC_PartyLeave_X
+// 0x0000 (0x00A4 - 0x00A4)
+class URPC_PartyLeave_X : public URPC_PartyBase_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyLeave_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.RPC_PartyChangeOwner_X
+// 0x00B0 (0x0154 - 0x00A4)
+class URPC_PartyChangeOwner_X : public URPC_PartyBase_X
+{
+public:
+	struct FUniqueNetId                                NewOwnerId;                                               // 0x00A4(0x0048)
+	struct FPsyNetPartyInfo                            Info;                                                     // 0x00EC(0x005C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FPsyNetPartyMember>                  Members;                                                  // 0x0148(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyChangeOwner_X");
+		return ptr;
+	}
+
+
+	class URPC_PartyChangeOwner_X* SetNewOwnerId(const struct FUniqueNetId& InNewOwnerId);
+};
+
+
+// Class ProjectX.RPC_PartySendInvites_X
+// 0x000C (0x00B0 - 0x00A4)
+class URPC_PartySendInvites_X : public URPC_PartyBase_X
+{
+public:
+	TArray<struct FString>                             Invitees;                                                 // 0x00A4(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartySendInvites_X");
+		return ptr;
+	}
+
+
+	class URPC_PartySendInvites_X* AddInvitee(const struct FString& InInviteeUserId);
+};
+
+
+// Class ProjectX.RPC_PartyKickMember_X
+// 0x000C (0x00B0 - 0x00A4)
+class URPC_PartyKickMember_X : public URPC_PartyBase_X
+{
+public:
+	TArray<struct FString>                             Members;                                                  // 0x00A4(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyKickMember_X");
+		return ptr;
+	}
+
+
+	class URPC_PartyKickMember_X* AddMember(const struct FString& InMemberId);
+};
+
+
+// Class ProjectX.RPC_PartyInfo_X
+// 0x0018 (0x00B0 - 0x0098)
+class URPC_PartyInfo_X : public URPC_X
+{
+public:
+	TArray<struct FPartyInvite>                        Invites;                                                  // 0x0098(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+	TArray<struct FPsyNetPartyMember>                  Member;                                                   // 0x00A4(0x000C) (CPF_Transient, CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyInfo_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_Party_X
+// 0x00C4 (0x0118 - 0x0054)
+class UPsyNetService_Party_X : public UPsyNetClientService_X
+{
+public:
+	struct FString                                     PartyID;                                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     NotificationType;                                         // 0x0060(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Content;                                                  // 0x006C(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                FromUserId;                                               // 0x0078(0x0048)
+	struct FString                                     FromUserName;                                             // 0x00C0(0x000C) (CPF_NeedCtorLink)
+	int                                                CreatedAt;                                                // 0x00CC(0x0004)
+	struct FUniqueNetId                                ForUserId;                                                // 0x00D0(0x0048)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_Party_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyUserInvited_X
+// 0x0000 (0x0118 - 0x0118)
+class UPsyNetService_PartyUserInvited_X : public UPsyNetService_Party_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyUserInvited_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartySystem_X
+// 0x0000 (0x0118 - 0x0118)
+class UPsyNetService_PartySystem_X : public UPsyNetService_Party_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartySystem_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyUserJoined_X
+// 0x0000 (0x0118 - 0x0118)
+class UPsyNetService_PartyUserJoined_X : public UPsyNetService_Party_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyUserJoined_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyUserKicked_X
+// 0x00F4 (0x0148 - 0x0054)
+class UPsyNetService_PartyUserKicked_X : public UPsyNetClientService_X
+{
+public:
+	struct FString                                     PartyID;                                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     NotificationType;                                         // 0x0060(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                Content;                                                  // 0x006C(0x0048)
+	struct FUniqueNetId                                FromUserId;                                               // 0x00B4(0x0048)
+	int                                                CreatedAt;                                                // 0x00FC(0x0004)
+	struct FUniqueNetId                                ForUserId;                                                // 0x0100(0x0048)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyUserKicked_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyUserLeft_X
+// 0x0000 (0x0118 - 0x0118)
+class UPsyNetService_PartyUserLeft_X : public UPsyNetService_Party_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyUserLeft_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyUserDisconnected_X
+// 0x0000 (0x0118 - 0x0118)
+class UPsyNetService_PartyUserDisconnected_X : public UPsyNetService_Party_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyUserDisconnected_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_PartyOwnerChanged_X
+// 0x00F4 (0x0148 - 0x0054)
+class UPsyNetService_PartyOwnerChanged_X : public UPsyNetClientService_X
+{
+public:
+	struct FString                                     PartyID;                                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     NotificationType;                                         // 0x0060(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                Content;                                                  // 0x006C(0x0048)
+	struct FUniqueNetId                                FromUserId;                                               // 0x00B4(0x0048)
+	int                                                CreatedAt;                                                // 0x00FC(0x0004)
+	struct FUniqueNetId                                ForUserId;                                                // 0x0100(0x0048)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_PartyOwnerChanged_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PerConMetrics_X
+// 0x0010 (0x0064 - 0x0054)
+class UPerConMetrics_X : public UMetricsGroup_X
+{
+public:
+	int                                                StartConnectFailCount;                                    // 0x0054(0x0004)
+	int                                                DisconnectCount;                                          // 0x0058(0x0004)
+	int                                                RPCErrorCount;                                            // 0x005C(0x0004)
+	int                                                InvalidMessageCount;                                      // 0x0060(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PerConMetrics_X");
+		return ptr;
+	}
+
+
+	void ServiceFail(const struct FString& PlayerID, int Count, const struct FString& Service, const struct FName& Error);
+	void InvalidMessage(const struct FString& PlayerID, int Count, const struct FString& Substring);
+	void Disconnected(const struct FString& PlayerID, int Count, int Code, const struct FString& Reason);
+	void Connected(const struct FString& PlayerID);
+	void StartConnectFail(const struct FString& PlayerID, int Count);
+	void StartConnect(const struct FString& PlayerID);
+	void Broken(const struct FString& PlayerID, const struct FString& Reason);
+	void Disabled(const struct FString& PlayerID);
+	void Enabled(const struct FString& PlayerID);
+	void HandleRPCError(class URPC_X* RPC, class UError* Error);
+	void HandleInvalidMessage(class UPsyNetMessengerWebSocket_X* InMessenger, const struct FString& Substring);
+	void HandleDisconnected(class UPsyNetMessengerWebSocket_X* Socket, int Code, const struct FString& Reason);
+	void HandleConnected(class UPsyNetMessengerWebSocket_X* Socket);
+	void HandleStartConnectFail(class UPsyNetMessengerWebSocket_X* Socket);
+	void HandleStartConnect(class UPsyNetMessengerWebSocket_X* Socket);
+	void HandleStatusChanged(class UPerCon_X* PerCon);
+	struct FString GetPlayerID();
+	void SetMessenger(class UPsyNetMessengerWebSocket_X* PerConMessenger);
+	void Construct();
+};
+
+
+// Class ProjectX.PerConMonitor_X
+// 0x0024 (0x0060 - 0x003C)
+class UPerConMonitor_X : public UObject
+{
+public:
+	class UPsyNetConfig_X*                             Config;                                                   // 0x003C(0x0004)
+	class UPerCon_X*                                   PerCon;                                                   // 0x0040(0x0004)
+	class UPsyNetMessengerWebSocket_X*                 Messenger;                                                // 0x0044(0x0004)
+	class URPCQueue_X*                                 RPCQueue;                                                 // 0x0048(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	int                                                Disconnections;                                           // 0x004C(0x0004)
+	int                                                InvalidMessages;                                          // 0x0050(0x0004)
+	TArray<float>                                      Errors;                                                   // 0x0054(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PerConMonitor_X");
+		return ptr;
+	}
+
+
+	bool __PerConMonitor_X__HandleRPCError_1(float RemoveTime);
+	bool STATIC_IsPerConRelevantError(class UError* Error);
+	void HandleRPCError(class URPC_X* RPC, class UError* Error, TArray<float>* FilterLocal_149C8FCA4AD7D366ECD5B18BB60B884D);
+	void HandleInvalidMessage(class UPsyNetMessengerWebSocket_X* InMessenger, const struct FString& Substring);
+	void HandleDisconnected(class UPsyNetMessengerWebSocket_X* InMessenger, int Code, const struct FString& Reason);
+	void HandleConnectFail(class UPsyNetMessengerWebSocket_X* InMessenger);
+	void Dispose();
+	void SetMessenger(class UPsyNetMessengerWebSocket_X* InMessenger);
+	void Init(class UPerCon_X* InPerCon, class URPCQueue_X* InRpcQueue);
+};
+
+
+// Class ProjectX.PsyNetService_DuplicateLogin_X
+// 0x0000 (0x0054 - 0x0054)
+class UPsyNetService_DuplicateLogin_X : public UPsyNetClientService_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_DuplicateLogin_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetLocatorWebSocket_X
+// 0x0000 (0x0064 - 0x0064)
+class UPsyNetLocatorWebSocket_X : public UPsyNetLocator_X
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetLocatorWebSocket_X");
+		return ptr;
+	}
+
+};
+
+
+// Class ProjectX.PsyNetService_AAS_X
+// 0x0008 (0x005C - 0x0054)
+class UPsyNetService_AAS_X : public UPsyNetClientService_X
+{
+public:
+	int                                                AdtTime;                                                  // 0x0054(0x0004)
+	int                                                OnlineHours;                                              // 0x0058(0x0004)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_AAS_X");
+		return ptr;
+	}
+
+
+	int GetOnlineHours();
+};
+
+
+// Class ProjectX.PsyNetService_Echo_X
+// 0x0018 (0x006C - 0x0054)
+class UPsyNetService_Echo_X : public UPsyNetClientService_X
+{
+public:
+	struct FString                                     RequestString;                                            // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     ResponseString;                                           // 0x0060(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.PsyNetService_Echo_X");
+		return ptr;
+	}
+
+
+	void Execute();
+};
+
+
+// Class ProjectX.RPC_PartyChatMessage_X
+// 0x000C (0x00B0 - 0x00A4)
+class URPC_PartyChatMessage_X : public URPC_PartyBase_X
+{
+public:
+	struct FString                                     Message;                                                  // 0x00A4(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PartyChatMessage_X");
+		return ptr;
+	}
+
+
+	class URPC_PartyChatMessage_X* SetMessage(const struct FString& InMessage);
+};
+
+
+// Class ProjectX.RPC_PsyNetSendIndividualChat_X
+// 0x009C (0x0134 - 0x0098)
+class URPC_PsyNetSendIndividualChat_X : public URPC_X
+{
+public:
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0098(0x0048)
+	struct FUniqueNetId                                RecipientID;                                              // 0x00E0(0x0048)
+	struct FString                                     ChatMessage;                                              // 0x0128(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.RPC_PsyNetSendIndividualChat_X");
+		return ptr;
+	}
+
+
+	class URPC_PsyNetSendIndividualChat_X* SetMessage(const struct FString& InMessage);
+	class URPC_PsyNetSendIndividualChat_X* SetRecipientID(const struct FUniqueNetId& InRecipientID);
+	class URPC_PsyNetSendIndividualChat_X* SetPlayerID(const struct FUniqueNetId& InPlayerId);
+};
+
+
+// Class ProjectX.UdpLanServer_X
+// 0x0010 (0x004C - 0x003C)
+class UUdpLanServer_X : public UObject
+{
+public:
+	class ULanBeacon_X*                                Beacon;                                                   // 0x003C(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FString                                     MetaData;                                                 // 0x0040(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class ProjectX.UdpLanServer_X");
+		return ptr;
+	}
+
+
+	void HandleLanQueryMessage(class UOnlineMessageComponent_X* Component, class ULanMessage_HostQuery_X* Query);
+	void Destroy();
+	class UAsyncTask* SetServerMetaData(const struct FString& InMetaData);
+	void Construct();
 };
 
 

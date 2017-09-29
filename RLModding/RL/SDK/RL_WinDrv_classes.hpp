@@ -103,7 +103,7 @@ public:
 
 
 // Class WinDrv.WindowsClient
-// 0x021C (0x026C - 0x0050)
+// 0x02CC (0x031C - 0x0050)
 class UWindowsClient : public UClient
 {
 public:
@@ -111,7 +111,7 @@ public:
 	class UClass*                                      AudioDeviceClass;                                         // 0x0224(0x0004) (CPF_Config)
 	unsigned char                                      UnknownData01[0x30];                                      // 0x0228(0x0030) MISSED OFFSET
 	int                                                AllowJoystickInput;                                       // 0x0258(0x0004) (CPF_Config)
-	unsigned char                                      UnknownData02[0x10];                                      // 0x025C(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData02[0xC0];                                      // 0x025C(0x00C0) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

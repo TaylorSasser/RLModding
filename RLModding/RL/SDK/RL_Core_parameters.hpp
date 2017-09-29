@@ -14,12 +14,73 @@ namespace SDK
 //Parameters
 //---------------------------------------------------------------------------
 
+// Function Core.Object.SumInt
+struct UObject_SumInt_Params
+{
+	int                                                Total;                                                    // (CPF_Parm)
+	int                                                Value;                                                    // (CPF_Parm)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortDescendingString
+struct UObject_SortDescendingString_Params
+{
+	struct FString                                     A;                                                        // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     B;                                                        // (CPF_Parm, CPF_NeedCtorLink)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortAscendingString
+struct UObject_SortAscendingString_Params
+{
+	struct FString                                     A;                                                        // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     B;                                                        // (CPF_Parm, CPF_NeedCtorLink)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortDescendingQWORD
+struct UObject_SortDescendingQWORD_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortAscendingQWORD
+struct UObject_SortAscendingQWORD_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortDescendingInt
+struct UObject_SortDescendingInt_Params
+{
+	int                                                A;                                                        // (CPF_Parm)
+	int                                                B;                                                        // (CPF_Parm)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.SortAscendingInt
+struct UObject_SortAscendingInt_Params
+{
+	int                                                A;                                                        // (CPF_Parm)
+	int                                                B;                                                        // (CPF_Parm)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Core.Object.PadString
 struct UObject_PadString_Params
 {
 	struct FString                                     Str;                                                      // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
 	int                                                Characters;                                               // (CPF_Parm)
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Core.Object.GetScaledAxisValue
+struct UObject_GetScaledAxisValue_Params
+{
+	float                                              Value;                                                    // (CPF_Parm)
+	float                                              Sensitivity;                                              // (CPF_Parm)
+	float                                              MaxSensitivity;                                           // (CPF_Parm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Core.Object.GetObjectProvider
@@ -76,6 +137,12 @@ struct UObject_ProfNodeStart_Params
 {
 	struct FString                                     TimerName;                                                // (CPF_Parm, CPF_NeedCtorLink)
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.CreateGuidString
+struct UObject_CreateGuidString_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
 // Function Core.Object.GetStringFromGuid
@@ -2569,6 +2636,35 @@ struct UObject_FromHex_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.Object.QMin
+struct UObject_QMin_Params
+{
+};
+
+// Function Core.Object.QMax
+struct UObject_QMax_Params
+{
+};
+
+// Function Core.Object.QSubtract
+struct UObject_QSubtract_Params
+{
+};
+
+// Function Core.Object.NotEqual_QWordInt
+struct UObject_NotEqual_QWordInt_Params
+{
+	int                                                B;                                                        // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.EqualEqual_QWordInt
+struct UObject_EqualEqual_QWordInt_Params
+{
+	int                                                B;                                                        // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Core.Object.NotEqual_QWordQWord
 struct UObject_NotEqual_QWordQWord_Params
 {
@@ -2603,6 +2699,17 @@ struct UObject_Greater_QWordQWord_Params
 struct UObject_Less_QWordQWord_Params
 {
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.Subtract_QWordQWord
+struct UObject_Subtract_QWordQWord_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.Object.Add_QWordQWord
+struct UObject_Add_QWordQWord_Params
+{
 };
 
 // Function Core.Object.SubtractSubtract_Int
@@ -3302,6 +3409,47 @@ struct UDebugDrawer_LogFunc_Params
 	struct FString                                     Str;                                                      // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
 };
 
+// Function Core.StringMap.Append
+struct UStringMap_Append_Params
+{
+	class UStringMap*                                  Other;                                                    // (CPF_Parm, CPF_EditInline)
+};
+
+// Function Core.StringMap.Contains
+struct UStringMap_Contains_Params
+{
+	struct FString                                     Key;                                                      // (CPF_Parm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.StringMap.Remove
+struct UStringMap_Remove_Params
+{
+	struct FString                                     Key;                                                      // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Core.StringMap.TryGet
+struct UStringMap_TryGet_Params
+{
+	struct FString                                     Key;                                                      // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     OutValue;                                                 // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.StringMap.Get
+struct UStringMap_Get_Params
+{
+	struct FString                                     Key;                                                      // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Core.StringMap.Set
+struct UStringMap_Set_Params
+{
+	struct FString                                     Key;                                                      // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     Value;                                                    // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+};
+
 // Function Core.DistributionVector.GetVectorValue
 struct UDistributionVector_GetVectorValue_Params
 {
@@ -3331,6 +3479,11 @@ struct UHelpCommandlet_Main_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.AsyncTask.QueCallbacks
+struct UAsyncTask_QueCallbacks_Params
+{
+};
+
 // Function Core.AsyncTask.CreateError
 struct UAsyncTask_CreateError_Params
 {
@@ -3338,10 +3491,22 @@ struct UAsyncTask_CreateError_Params
 	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Core.AsyncTask.CreateComplete
-struct UAsyncTask_CreateComplete_Params
+// Function Core.AsyncTask.CreateSuccess
+struct UAsyncTask_CreateSuccess_Params
 {
-	class UObject*                                     InResult;                                                 // (CPF_OptionalParm, CPF_Parm)
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.Create
+struct UAsyncTask_Create_Params
+{
+	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Core.AsyncTask.DependOn
+struct UAsyncTask_DependOn_Params
+{
+	class UAsyncTask*                                  Other;                                                    // (CPF_Parm)
 	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -3352,6 +3517,11 @@ struct UAsyncTask_NotifyOnDispose_Params
 	class UAsyncTask*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Core.AsyncTask.ClearCallbacks
+struct UAsyncTask_ClearCallbacks_Params
+{
+};
+
 // Function Core.AsyncTask.Dispose
 struct UAsyncTask_Dispose_Params
 {
@@ -3360,7 +3530,6 @@ struct UAsyncTask_Dispose_Params
 // Function Core.AsyncTask.SetComplete
 struct UAsyncTask_SetComplete_Params
 {
-	class UObject*                                     InResult;                                                 // (CPF_OptionalParm, CPF_Parm)
 	class UError*                                      InError;                                                  // (CPF_OptionalParm, CPF_Parm)
 };
 
@@ -3368,12 +3537,6 @@ struct UAsyncTask_SetComplete_Params
 struct UAsyncTask_SetError_Params
 {
 	class UError*                                      InError;                                                  // (CPF_Parm)
-};
-
-// Function Core.AsyncTask.SetResult
-struct UAsyncTask_SetResult_Params
-{
-	class UObject*                                     InResult;                                                 // (CPF_Parm)
 };
 
 // Function Core.AsyncTask.NotifyOnComplete
@@ -3405,7 +3568,6 @@ struct UAsyncTask_EventDisposed_Params
 // Function Core.AsyncTask.EventAsyncTaskComplete
 struct UAsyncTask_EventAsyncTaskComplete_Params
 {
-	class UObject*                                     TaskResult;                                               // (CPF_Parm)
 	class UError*                                      TaskError;                                                // (CPF_Parm)
 };
 
@@ -3418,7 +3580,6 @@ struct UAsyncTask_EventAsyncTaskFail_Params
 // Function Core.AsyncTask.EventAsyncTaskSuccess
 struct UAsyncTask_EventAsyncTaskSuccess_Params
 {
-	class UObject*                                     TaskResult;                                               // (CPF_Parm)
 };
 
 // Function Core._LoggingDoc.TestSpecialLogging

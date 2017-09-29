@@ -3523,16 +3523,16 @@ struct FString UGFxObject::STATIC_TranslateString(const struct FString& StringTo
 // (FUNC_Final, FUNC_Native, FUNC_Public)
 // Parameters:
 // struct FString                 Member                         (CPF_Parm, CPF_NeedCtorLink)
-// class UObject*                 context                        (CPF_Parm)
+// class UObject*                 Context                        (CPF_Parm)
 // struct FName                   fname                          (CPF_Parm)
 
-void UGFxObject::SetFunction(const struct FString& Member, class UObject* context, const struct FName& fname)
+void UGFxObject::SetFunction(const struct FString& Member, class UObject* Context, const struct FName& fname)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function GFxUI.GFxObject.SetFunction");
 
 	UGFxObject_SetFunction_Params params;
 	params.Member = Member;
-	params.context = context;
+	params.Context = Context;
 	params.fname = fname;
 
 	auto flags = fn->FunctionFlags;

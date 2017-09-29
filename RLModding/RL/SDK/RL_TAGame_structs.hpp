@@ -1,5 +1,6 @@
 #pragma once
-
+#undef AF_MAX
+#undef PF_MAX
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -11,17 +12,20 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Constants
 //---------------------------------------------------------------------------
-#undef AF_MAX
-#undef PF_MAX
+
 #define CONST_UnrealUnitsPerMeter                                100
+#define CONST_MAX_REPLICATED_VOTERS                              8
+#define CONST_TRADEHOLD_NONE                                     0
+#define CONST_MeshWidth                                          15.0f
+#define CONST_TRADEHOLD_ALL                                      -1
+#define CONST_BoostLevel_Active                                  1.0f
+#define CONST_TRADEHOLD_P2P                                      -2
+#define CONST_MaxFriendKeyLength                                 64
+#define CONST_MeshRadius                                         15.0f
 #define CONST_MaxLoadoutSets                                     50
 #define CONST_BoostLevel_Activated                               0.0f
-#define CONST_MeshRadius                                         15.0f
-#define CONST_MeshWidth                                          15.0f
-#define CONST_MAX_REPLICATED_VOTERS                              8
-#define CONST_PlayerCountIrrelevant                              "NO_COUNT"
-#define CONST_BoostLevel_Active                                  1.0f
 #define CONST_BoostLevel_Inactive                                -1.0f
+#define CONST_PlayerCountIrrelevant                              "NO_COUNT"
 #define CONST_MAX_NAMEPLATES                                     8
 
 //---------------------------------------------------------------------------
@@ -95,7 +99,8 @@ enum class EChatChannel
 	EChatChannel_Match             = 0,
 	EChatChannel_Team              = 1,
 	EChatChannel_Party             = 2,
-	EChatChannel_MAX               = 3
+	EChatChannel_Individual        = 3,
+	EChatChannel_MAX               = 4
 };
 
 
@@ -145,6 +150,35 @@ enum class EUnlockMethod
 	UnlockMethod_DLC               = 4,
 	UnlockMethod_Never             = 5,
 	UnlockMethod_MAX               = 6
+};
+
+
+// Enum TAGame._Types_TA.EMTXCatalogCategory
+enum class EMTXCatalogCategory
+{
+	MTX_None                       = 0,
+	MTX_Keys                       = 1,
+	MTX_EventCrates                = 2,
+	MTX_MAX                        = 3
+};
+
+
+// Enum TAGame._Types_TA.ECurrency
+enum class ECurrency
+{
+	Currency_Soft                  = 0,
+	Currency_Hard                  = 1,
+	Currency_MAX                   = 2
+};
+
+
+// Enum TAGame._Types_TA.ETrinaryBool
+enum class ETrinaryBool
+{
+	TrinaryBool_Irrelevant         = 0,
+	TrinaryBool_False              = 1,
+	TrinaryBool_True               = 2,
+	TrinaryBool_MAX                = 3
 };
 
 
@@ -382,6 +416,25 @@ enum class ETrainingType
 };
 
 
+// Enum TAGame._Types_TA.ECarImpactResult
+enum class ECarImpactResult
+{
+	CarImpactResult_None           = 0,
+	CarImpactResult_ZeroSpeed      = 1,
+	CarImpactResult_ZeroSpeedTowardsCar = 2,
+	CarImpactResult_OtherCarFaster = 3,
+	CarImpactResult_Success        = 4,
+	CarImpactResult_SuccessAttachedBall = 5,
+	CarImpactResult_FailDemolishTargetNone = 6,
+	CarImpactResult_FailNotSupersonic = 7,
+	CarImpactResult_FailInsufficientForwardSpeed = 8,
+	CarImpactResult_FailNotABumperHit = 9,
+	CarImpactResult_FailSameTeam   = 10,
+	CarImpactResult_Bump           = 11,
+	CarImpactResult_MAX            = 12
+};
+
+
 // Enum TAGame._Types_TA.EDemolishSpeed
 enum class EDemolishSpeed
 {
@@ -448,6 +501,15 @@ enum class EPaintTeam
 	PaintTeam_Orange               = 1,
 	PaintTeam_None                 = 2,
 	PaintTeam_MAX                  = 3
+};
+
+
+// Enum TAGame._Types_TA.ETeam
+enum class ETeam
+{
+	Team_Blue                      = 0,
+	Team_Orange                    = 1,
+	Team_MAX                       = 2
 };
 
 
@@ -747,6 +809,17 @@ enum class ESearchMessageType
 };
 
 
+// Enum TAGame.GFxData_Party_TA.EPsyNetPartyStatus
+enum class EPsyNetPartyStatus
+{
+	PsyNetParty_Disabled           = 0,
+	PsyNetParty_Connecting         = 1,
+	PsyNetParty_Connected          = 2,
+	PsyNetParty_Disconnected       = 3,
+	PsyNetParty_MAX                = 4
+};
+
+
 // Enum TAGame.GFxData_UserSetting_TA.EUserSettingType
 enum class EUserSettingType
 {
@@ -762,9 +835,12 @@ enum class EV2TutorialType
 {
 	V2T_Basic                      = 0,
 	V2T_Advanced                   = 1,
-	V2T_BasicTeam                  = 2,
-	V2T_AdvancedTeam               = 3,
-	V2T_MAX                        = 4
+	V2T_AdvancedDriving            = 2,
+	V2T_AdvancedDoubleJump         = 3,
+	V2T_AdvancedAerials            = 4,
+	V2T_BasicTeam                  = 5,
+	V2T_AdvancedTeam               = 6,
+	V2T_MAX                        = 7
 };
 
 
@@ -841,7 +917,8 @@ enum class ESaveDataVersion
 	SaveDataVersion_Initial        = 0,
 	SaveDataVersion_LightShafts    = 1,
 	SaveDataVersion_NewOnlineProductsRemoved = 2,
-	SaveDataVersion_MAX            = 3
+	SaveDataVersion_Invisitek      = 3,
+	SaveDataVersion_MAX            = 4
 };
 
 
@@ -989,7 +1066,18 @@ enum class EStatePriority
 	SP_Default                     = 0,
 	SP_OverrideAny                 = 1,
 	SP_OverrideLower               = 2,
-	SP_MAX                         = 3
+	SP_InitialOnly                 = 3,
+	SP_MAX                         = 4
+};
+
+
+// Enum TAGame.CameraState_DirectorMoving_TA.ECameraLoopType
+enum class ECameraLoopType
+{
+	CLT_StopAtEnd                  = 0,
+	CLT_PingPong                   = 1,
+	CLT_Loop                       = 2,
+	CLT_MAX                        = 3
 };
 
 
@@ -1012,12 +1100,32 @@ enum class EProductFilterType
 };
 
 
+// Enum TAGame.SpecialEventConfig_TA.ESpecialEventState
+enum class ESpecialEventState
+{
+	SES_Inactive                   = 0,
+	SES_Active                     = 1,
+	SES_Redemption                 = 2,
+	SES_MAX                        = 3
+};
+
+
 // Enum TAGame.GFxData_TrainingModeBrowser_TA.ETrainingModeSearchTypes
 enum class ETrainingModeSearchTypes
 {
 	TMST_AllPublic                 = 0,
 	TMST_FeaturedOnly              = 1,
 	TMST_MAX                       = 2
+};
+
+
+// Enum TAGame.GFxData_UnlockNotification_TA.EUnlockType
+enum class EUnlockType
+{
+	UnlockType_AchievementUnlocked = 0,
+	UnlockType_ChallengeActive     = 1,
+	UnlockType_ChallengeUnlocked   = 2,
+	UnlockType_MAX                 = 3
 };
 
 
@@ -1056,6 +1164,26 @@ enum class EApplyForceTo
 	EAF_CarOnly                    = 2,
 	EAF_BallOnly                   = 3,
 	EAF_MAX                        = 4
+};
+
+
+// Enum TAGame.TMetricsShared_TA.EFinishType
+enum class EFinishType
+{
+	EFinishType_Completed          = 0,
+	EFinishType_Quit               = 1,
+	EFinishType_Error              = 2,
+	EFinishType_MAX                = 3
+};
+
+
+// Enum TAGame.TMetricsShared_TA.EMatchType
+enum class EMatchType
+{
+	EmatchType_Online              = 0,
+	EMatchType_Private             = 1,
+	EMatchType_Offline             = 2,
+	EMatchType_MAX                 = 3
 };
 
 
@@ -1172,13 +1300,13 @@ struct FCachedNavMeshLocation
 };
 
 // ScriptStruct TAGame.AssetProfiler_TA.AssetProfile
-// 0x0040
+// 0x0050
 struct FAssetProfile
 {
 	class UProductAsset_TA*                            Asset;                                                    // 0x0000(0x0004)
-	struct FRenderProfile                              RenderTimeTotal;                                          // 0x0004(0x001C)
-	struct FRenderProfile                              RenderTimePerAsset;                                       // 0x0020(0x001C)
-	int                                                AssetCount;                                               // 0x003C(0x0004)
+	struct FRenderProfile                              RenderTimeTotal;                                          // 0x0004(0x0024)
+	struct FRenderProfile                              RenderTimePerAsset;                                       // 0x0028(0x0024)
+	int                                                AssetCount;                                               // 0x004C(0x0004)
 };
 
 // ScriptStruct TAGame.RBActor_TA.NetworkSyncSettingsData
@@ -1337,11 +1465,12 @@ struct FRandomRange
 };
 
 // ScriptStruct TAGame.BoostMesh_TA.BoostMeshOverride
-// 0x0008
+// 0x0014
 struct FBoostMeshOverride
 {
 	class UActorComponent*                             Mesh;                                                     // 0x0000(0x0004) (CPF_Edit, CPF_ExportObject, CPF_Component, CPF_EditInline)
 	class AFXActor_X*                                  CarType;                                                  // 0x0004(0x0004) (CPF_Edit)
+	struct FString                                     CarTypePath;                                              // 0x0008(0x000C) (CPF_Edit, CPF_EditConst, CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.BoostMesh_TA.AnimatedMaterialParam
@@ -1494,14 +1623,16 @@ struct FFlockAgent
 };
 
 // ScriptStruct TAGame.FpsBucketRecorder_TA.FpsBucketData
-// 0x0014
+// 0x001C
 struct FFpsBucketData
 {
 	int                                                FPS;                                                      // 0x0000(0x0004) (CPF_Edit)
-	float                                              GameThreadTime;                                           // 0x0004(0x0004)
-	float                                              RenderThreadTime;                                         // 0x0008(0x0004)
-	float                                              GPUFrameTime;                                             // 0x000C(0x0004)
-	int                                                Count;                                                    // 0x0010(0x0004)
+	float                                              TotalTime;                                                // 0x0004(0x0004)
+	float                                              GameThreadTime;                                           // 0x0008(0x0004)
+	float                                              RenderThreadTime;                                         // 0x000C(0x0004)
+	float                                              GPUFrameTime;                                             // 0x0010(0x0004)
+	float                                              AvgFPS;                                                   // 0x0014(0x0004)
+	int                                                Count;                                                    // 0x0018(0x0004)
 };
 
 // ScriptStruct TAGame.FXActor_Boost_TA.ParticleParameterSet
@@ -1592,32 +1723,32 @@ struct FPlayerRespawnTime
 };
 
 // ScriptStruct TAGame._Types_TA.PlayerChatMessage
-// 0x0048
+// 0x0060
 struct FPlayerChatMessage
 {
 	float                                              MessageTimeStamp;                                         // 0x0000(0x0004)
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0004(0x0030)
-	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // 0x0034(0x0001)
-	int                                                Team;                                                     // 0x0038(0x0004)
-	struct FString                                     Message;                                                  // 0x003C(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0004(0x0048)
+	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // 0x004C(0x0001)
+	int                                                Team;                                                     // 0x0050(0x0004)
+	struct FString                                     Message;                                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame._Types_TA.ReportPlayerData
-// 0x003C
+// 0x0054
 struct FReportPlayerData
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	struct FString                                     PlayerName;                                               // 0x0030(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	struct FString                                     PlayerName;                                               // 0x0048(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame._Types_TA.ReportedPlayerInfo
-// 0x0088
+// 0x00B8
 struct FReportedPlayerInfo
 {
-	struct FReportPlayerData                           Reporter;                                                 // 0x0000(0x003C) (CPF_NeedCtorLink)
-	struct FReportPlayerData                           Offender;                                                 // 0x003C(0x003C) (CPF_NeedCtorLink)
-	struct FString                                     Reason;                                                   // 0x0078(0x000C) (CPF_NeedCtorLink)
-	float                                              ReportTimeStamp;                                          // 0x0084(0x0004)
+	struct FReportPlayerData                           Reporter;                                                 // 0x0000(0x0054) (CPF_NeedCtorLink)
+	struct FReportPlayerData                           Offender;                                                 // 0x0054(0x0054) (CPF_NeedCtorLink)
+	struct FString                                     Reason;                                                   // 0x00A8(0x000C) (CPF_NeedCtorLink)
+	float                                              ReportTimeStamp;                                          // 0x00B4(0x0004)
 };
 
 // ScriptStruct TAGame.GFxEngine_TA.SoundStateItem
@@ -1694,12 +1825,13 @@ struct FMaterialScalarParam
 };
 
 // ScriptStruct TAGame.MatineeExporter_TA.ActorTransform
-// 0x001C
+// 0x0020
 struct FActorTransform
 {
 	float                                              Time;                                                     // 0x0000(0x0004)
-	struct FVector                                     Location;                                                 // 0x0004(0x000C)
-	struct FRotator                                    Rotation;                                                 // 0x0010(0x000C)
+	float                                              FOV;                                                      // 0x0004(0x0004)
+	struct FVector                                     Location;                                                 // 0x0008(0x000C)
+	struct FRotator                                    Rotation;                                                 // 0x0014(0x000C)
 };
 
 // ScriptStruct TAGame.MatineeExporter_TA.ActorHistory
@@ -1946,7 +2078,8 @@ struct FAssetLoadRequest
 {
 	struct FAssetLoadResult                            Result;                                                   // 0x0000(0x0010)
 	unsigned long                                      bLoaded : 1;                                              // 0x0010(0x0004)
-	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.ProductDatabase_TA.TemporaryProduct
@@ -1993,7 +2126,8 @@ struct FProductThumbnailResult
 struct FRenderThumbnailRequest
 {
 	struct FProductThumbnailResult                     Result;                                                   // 0x0000(0x000C) (CPF_Const)
-	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.Ball_Breakout_TA.BreakoutDamage
@@ -2136,7 +2270,8 @@ struct FTimelineKeyframe
 struct FReplayExportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.ReplayManager_TA.ReplayImportCallbackData
@@ -2144,7 +2279,8 @@ struct FReplayExportCallbackData
 struct FReplayImportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.SkelControlSingleBoneCopy_TA.AxisConversion
@@ -2290,11 +2426,78 @@ struct FRandomWeight
 	float                                              OrigWeight;                                               // 0x0008(0x0004)
 };
 
-// ScriptStruct TAGame._Types_TA.OnlineProductArray
+// ScriptStruct TAGame._Types_TA.ProductAttributesArray
 // 0x000C
-struct FOnlineProductArray
+struct FProductAttributesArray
 {
-	TArray<class UOnlineProduct_TA*>                   Products;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
+	TArray<class UProductAttribute_TA*>                Attributes;                                               // 0x0000(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct TAGame._Types_TA.LoadoutAttributesArray
+// 0x000C
+struct FLoadoutAttributesArray
+{
+	TArray<struct FProductAttributesArray>             Products;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct TAGame._Types_TA.CurrencyDrop
+// 0x0008
+struct FCurrencyDrop
+{
+	int                                                CurrencyID;                                               // 0x0000(0x0004)
+	int                                                Amount;                                                   // 0x0004(0x0004)
+};
+
+// ScriptStruct TAGame._Types_TA.IntroCarInfo
+// 0x001C
+struct FIntroCarInfo
+{
+	int                                                TemplateIndex;                                            // 0x0000(0x0004) (CPF_Edit)
+	struct FString                                     TemplateName;                                             // 0x0004(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+	struct FString                                     TemplateDescription;                                      // 0x0010(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+};
+
+// ScriptStruct TAGame._Types_TA.RPCIntroCar
+// 0x0028
+struct FRPCIntroCar
+{
+	struct FIntroCarInfo                               Info;                                                     // 0x0000(0x001C) (CPF_NeedCtorLink)
+	TArray<int>                                        ProductList;                                              // 0x001C(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct TAGame._Types_TA.EditorIntroCar
+// 0x0028
+struct FEditorIntroCar
+{
+	struct FIntroCarInfo                               Info;                                                     // 0x0000(0x001C) (CPF_Edit, CPF_NeedCtorLink)
+	TArray<class UProduct_TA*>                         ProductList;                                              // 0x001C(0x000C) (CPF_Edit, CPF_NeedCtorLink)
+};
+
+// ScriptStruct TAGame._Types_TA.XPUnlockableFeature
+// 0x0014
+struct FXPUnlockableFeature
+{
+	struct FString                                     Name;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	unsigned long                                      bUnlocked : 1;                                            // 0x000C(0x0004) (CPF_DataBinding)
+	int                                                XPLevelUnlocked;                                          // 0x0010(0x0004)
+};
+
+// ScriptStruct TAGame._Types_TA.GarageComplexLoadout
+// 0x001C
+struct FGarageComplexLoadout
+{
+	struct FLoadoutTeamPaint                           TeamPaint;                                                // 0x0000(0x0010)
+	unsigned char                                      UnknownData00[0xC];                                       // 0x0010(0x000C) UNKNOWN PROPERTY: ArrayProperty TAGame._Types_TA.GarageComplexLoadout.OnlineProducts
+};
+
+// ScriptStruct TAGame._Types_TA.GarageComplexSlot
+// 0x0044
+struct FGarageComplexSlot
+{
+	int                                                SlotID;                                                   // 0x0000(0x0004)
+	unsigned long                                      bUnlocked : 1;                                            // 0x0004(0x0004)
+	int                                                TeamIndex;                                                // 0x0008(0x0004)
+	struct FGarageComplexLoadout                       SlotLoadouts[0x2];                                        // 0x000C(0x001C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame._Types_TA.ProductLevelData
@@ -2353,21 +2556,22 @@ struct FOnlineProductAttribute
 struct FOnlineProductData
 {
 	int                                                ProductID;                                                // 0x0000(0x0004)
-	__int64                                      InstanceID;                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.OnlineProductData.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.OnlineProductData.InstanceID
 	int                                                SeriesID;                                                 // 0x000C(0x0004)
 	TArray<struct FOnlineProductAttribute>             Attributes;                                               // 0x0010(0x000C) (CPF_NeedCtorLink)
 	int                                                TradeHold;                                                // 0x001C(0x0004)
 };
 
 // ScriptStruct TAGame._Types_TA.OnlinePlayerMatchData
-// 0x0048
+// 0x0064
 struct FOnlinePlayerMatchData
 {
 	class APRI_TA*                                     PRI;                                                      // 0x0000(0x0004) (CPF_Transient)
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0004(0x0030)
-	int                                                GameSecondsPlayed;                                        // 0x0034(0x0004)
-	TArray<struct FOnlineProductData>                  Loadout;                                                  // 0x0038(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bCompletedMatch : 1;                                      // 0x0044(0x0004)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0004(0x0048)
+	int                                                GameSecondsPlayed;                                        // 0x004C(0x0004)
+	int                                                GameScore;                                                // 0x0050(0x0004)
+	TArray<struct FOnlineProductData>                  Loadout;                                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bCompletedMatch : 1;                                      // 0x0060(0x0004)
 };
 
 // ScriptStruct TAGame.PRI_TA.ClientLoadoutDatas
@@ -2387,11 +2591,11 @@ struct FClientLoadoutOnlineDatas
 };
 
 // ScriptStruct TAGame.PRI_TA.OnlineProductStat
-// 0x0008
+// 0x000C
 struct FOnlineProductStat
 {
-	class UOnlineProduct_TA*                           OnlineProduct;                                            // 0x0000(0x0004)
-	class UProductStat_TA*                             ProductStat;                                              // 0x0004(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.PRI_TA.OnlineProductStat.InstanceID
+	class UProductStat_TA*                             ProductStat;                                              // 0x0008(0x0004)
 };
 
 // ScriptStruct TAGame._Types_TA.TAPlayerStat
@@ -2403,7 +2607,7 @@ struct FTAPlayerStat
 };
 
 // ScriptStruct TAGame._Types_TA.ProfileCameraSettings
-// 0x0018
+// 0x001C
 struct FProfileCameraSettings
 {
 	float                                              FOV;                                                      // 0x0000(0x0004)
@@ -2412,6 +2616,7 @@ struct FProfileCameraSettings
 	float                                              Distance;                                                 // 0x000C(0x0004)
 	float                                              Stiffness;                                                // 0x0010(0x0004)
 	float                                              SwivelSpeed;                                              // 0x0014(0x0004)
+	float                                              TransitionSpeed;                                          // 0x0018(0x0004)
 };
 
 // ScriptStruct TAGame._Types_TA.ProductStat
@@ -2452,7 +2657,7 @@ struct U_Types_TA_FActorHistory
 // 0x0020
 struct FSortedProductData
 {
-	__int64                                      Id;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SortedProductData.Id
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SortedProductData.Id
 	unsigned long                                      bUnlocked : 1;                                            // 0x0008(0x0004)
 	struct FString                                     Name;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 	unsigned long                                      bIsPack : 1;                                              // 0x0018(0x0004)
@@ -2476,10 +2681,10 @@ struct FProductSkinOverride
 };
 
 // ScriptStruct TAGame._Types_TA.UniqueNetIdGroup4
-// 0x00C0
+// 0x0120
 struct FUniqueNetIdGroup4
 {
-	struct FUniqueNetId                                PlayerIDs[0x4];                                           // 0x0000(0x0030)
+	struct FUniqueNetId                                PlayerIDs[0x4];                                           // 0x0000(0x0048)
 };
 
 // ScriptStruct TAGame._Types_TA.UIProductSlotData
@@ -2500,12 +2705,13 @@ struct FStatValue
 };
 
 // ScriptStruct TAGame._Types_TA.LoadoutProductData
-// 0x000C
+// 0x001C
 struct FLoadoutProductData
 {
 	int                                                SlotIndex;                                                // 0x0000(0x0004)
 	int                                                ProductID;                                                // 0x0004(0x0004)
-	class UOnlineProduct_TA*                           OnlineProduct;                                            // 0x0008(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.LoadoutProductData.InstanceID
+	TArray<class UProductAttribute_TA*>                Attributes;                                               // 0x0010(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame._Types_TA.ServerSetLoadoutTeam
@@ -2536,7 +2742,7 @@ struct FLoadoutTeam
 // 0x000C
 struct FSchematicResourceData
 {
-	__int64                                      InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SchematicResourceData.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame._Types_TA.SchematicResourceData.InstanceID
 	int                                                Resources;                                                // 0x0008(0x0004) (CPF_DataBinding)
 };
 
@@ -2724,15 +2930,6 @@ struct FOptionsValue
 	struct FString                                     Value;                                                    // 0x0008(0x000C) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct TAGame.Camera_TA.SwivelExtent
-// 0x000C
-struct FSwivelExtent
-{
-	int                                                PitchMin;                                                 // 0x0000(0x0004)
-	int                                                PitchMax;                                                 // 0x0004(0x0004)
-	int                                                YawMax;                                                   // 0x0008(0x0004)
-};
-
 // ScriptStruct TAGame.Camera_TA.ProfileSliderLimits
 // 0x000C
 struct FProfileSliderLimits
@@ -2748,15 +2945,7 @@ struct FTrialSaveData
 {
 	unsigned long                                      bInitialized : 1;                                         // 0x0000(0x0004)
 	int                                                MinutesRemaining;                                         // 0x0004(0x0004)
-	__int64                                     LastPlayedTime;                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.TrialSaveData.LastPlayedTime
-};
-
-// ScriptStruct TAGame.SaveData_TA.CachedStaticText
-// 0x0018
-struct FCachedStaticText
-{
-	struct FString                                     Text;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Language;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveData_TA.TrialSaveData.LastPlayedTime
 };
 
 // ScriptStruct TAGame.SaveData_TA.PlaylistSkillData
@@ -2824,7 +3013,7 @@ struct FCarSpawnData
 // 0x0008
 struct FTradeInDrop
 {
-	__int64                                      ProductID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ProductTradeIn_TA.TradeInDrop.ProductID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ProductTradeIn_TA.TradeInDrop.ProductID
 };
 
 // ScriptStruct TAGame.GFxData_ProductTradeIn_TA.TradeInDropTable
@@ -2837,15 +3026,15 @@ struct FTradeInDropTable
 };
 
 // ScriptStruct TAGame.OnlineGameParty_TA.PartyMemberLoadout
-// 0x007C
+// 0x0094
 struct FPartyMemberLoadout
 {
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0030)
-	struct FLoadoutData                                Loadout;                                                  // 0x0030(0x0034) (CPF_NeedCtorLink)
-	TArray<struct FOnlineProductData>                  OnlineLoadoutData;                                        // 0x0064(0x000C) (CPF_NeedCtorLink)
-	int                                                GaragePreviewTeam;                                        // 0x0070(0x0004)
-	class ULocalPlayer*                                LocalPlayer;                                              // 0x0074(0x0004) (CPF_Transient)
-	class UOnlineProductStoreSet_TA*                   ProductSet;                                               // 0x0078(0x0004)
+	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0048)
+	struct FLoadoutData                                Loadout;                                                  // 0x0048(0x0034) (CPF_NeedCtorLink)
+	TArray<struct FOnlineProductData>                  OnlineLoadoutData;                                        // 0x007C(0x000C) (CPF_NeedCtorLink)
+	int                                                GaragePreviewTeam;                                        // 0x0088(0x0004)
+	class ULocalPlayer*                                LocalPlayer;                                              // 0x008C(0x0004) (CPF_Transient)
+	class UOnlineProductStoreSet_TA*                   ProductSet;                                               // 0x0090(0x0004)
 };
 
 // ScriptStruct TAGame.OnlineGameParty_TA.StoredPartyMessage
@@ -2869,7 +3058,7 @@ struct FTitleInfo
 // 0x000C
 struct FSaveDataSetProperties
 {
-	__int64                                      LastUnlockDisplayId;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineSaveData_TA.SaveDataSetProperties.LastUnlockDisplayId
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.OnlineSaveData_TA.SaveDataSetProperties.LastUnlockDisplayId
 	class UAchievementSave_TA*                         AchievementData;                                          // 0x0008(0x0004)
 };
 
@@ -2878,7 +3067,7 @@ struct FSaveDataSetProperties
 struct FCachedAdImageData
 {
 	struct FString                                     ImageURL;                                                 // 0x0000(0x000C) (CPF_Transient, CPF_NeedCtorLink)
-	__int64                                     CacheEndTime;                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.AdManager_TA.CachedAdImageData.CacheEndTime
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.AdManager_TA.CachedAdImageData.CacheEndTime
 	class UTexture2DDynamic*                           ImageTexture;                                             // 0x0014(0x0004) (CPF_Transient)
 };
 
@@ -2927,6 +3116,15 @@ struct FReplayScoreData
 	class APRI_TA*                                     AssistedBy;                                               // 0x0004(0x0004)
 	float                                              Speed;                                                    // 0x0008(0x0004)
 	float                                              Time;                                                     // 0x000C(0x0004)
+};
+
+// ScriptStruct TAGame.Camera_TA.SwivelExtent
+// 0x000C
+struct FSwivelExtent
+{
+	int                                                PitchMin;                                                 // 0x0000(0x0004)
+	int                                                PitchMax;                                                 // 0x0004(0x0004)
+	int                                                YawMax;                                                   // 0x0008(0x0004)
 };
 
 // ScriptStruct TAGame.CameraState_Car_TA.InterpVector
@@ -3118,6 +3316,23 @@ struct FDebugCategory
 	TArray<struct FDebugHelpItem>                      Items;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct TAGame.MatchSeries_TA.SeriesTeam
+// 0x0010
+struct FSeriesTeam
+{
+	TArray<struct FUniqueNetId>                        Players;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
+	int                                                GamesWon;                                                 // 0x000C(0x0004)
+};
+
+// ScriptStruct TAGame.ListenServer_TA.LoadingPlayer
+// 0x0050
+struct FLoadingPlayer
+{
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	int                                                NumPlayers;                                               // 0x0048(0x0004)
+	float                                              TimeoutTime;                                              // 0x004C(0x0004)
+};
+
 // ScriptStruct TAGame.GameEvent_Soccar_TA.MemberTitleStat
 // 0x0014
 struct FMemberTitleStat
@@ -3130,11 +3345,12 @@ struct FMemberTitleStat
 };
 
 // ScriptStruct TAGame.RPC_MatchComplete_TA.OnlineProductDrop
-// 0x003C
+// 0x0060
 struct FOnlineProductDrop
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	TArray<struct FOnlineProductData>                  ProductData;                                              // 0x0030(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	TArray<struct FOnlineProductData>                  ProductData;                                              // 0x0048(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FCurrencyDrop>                       CurrencyData;                                             // 0x0054(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.Replay_Soccar_TA.ScoredGoal
@@ -3161,7 +3377,7 @@ struct FReplayPlayerStats
 {
 	struct FString                                     Name;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x000C(0x0001)
-	__int64                                      OnlineID;                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000D(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Replay_Soccar_TA.ReplayPlayerStats.OnlineID
 	int                                                Team;                                                     // 0x0018(0x0004)
 	int                                                Score;                                                    // 0x001C(0x0004)
 	int                                                Goals;                                                    // 0x0020(0x0004)
@@ -3171,12 +3387,66 @@ struct FReplayPlayerStats
 	unsigned long                                      bBot : 1;                                                 // 0x0030(0x0004)
 };
 
+// ScriptStruct TAGame.GameObserver_TA.CarGoalData
+// 0x000C
+struct FCarGoalData
+{
+	float                                              Distance;                                                 // 0x0000(0x0004)
+	float                                              Dot;                                                      // 0x0004(0x0004)
+	float                                              DotBetweenBall;                                           // 0x0008(0x0004)
+};
+
+// ScriptStruct TAGame.GameObserver_TA.CarData
+// 0x004C
+struct FCarData
+{
+	class ACar_TA*                                     Car;                                                      // 0x0000(0x0004)
+	float                                              Dot;                                                      // 0x0004(0x0004)
+	float                                              DistToBall;                                               // 0x0008(0x0004)
+	float                                              SpeedTowardsBall;                                         // 0x000C(0x0004)
+	float                                              TimeToBall;                                               // 0x0010(0x0004)
+	struct FCarGoalData                                OffensiveGoal;                                            // 0x0014(0x000C)
+	struct FCarGoalData                                DefensiveGoal;                                            // 0x0020(0x000C)
+	struct FString                                     LastEvent;                                                // 0x002C(0x000C) (CPF_NeedCtorLink)
+	float                                              BallHitProbability;                                       // 0x0038(0x0004)
+	float                                              Offense;                                                  // 0x003C(0x0004)
+	float                                              Defense;                                                  // 0x0040(0x0004)
+	float                                              Aerial;                                                   // 0x0044(0x0004)
+	float                                              PredictedDistToBall;                                      // 0x0048(0x0004)
+};
+
+// ScriptStruct TAGame.GameObserver_TA.GoalData
+// 0x0030
+struct FGoalData
+{
+	class UGoal_TA*                                    Goal;                                                     // 0x0000(0x0004) (CPF_ExportObject, CPF_Component, CPF_EditInline)
+	struct FVector                                     GoalFront;                                                // 0x0004(0x000C)
+	struct FVector                                     GoalForward;                                              // 0x0010(0x000C)
+	float                                              DotToBall;                                                // 0x001C(0x0004)
+	float                                              DistToBall;                                               // 0x0020(0x0004)
+	float                                              BallSpeedTowardsGoal;                                     // 0x0024(0x0004)
+	float                                              RawScorability;                                           // 0x0028(0x0004)
+	float                                              Scorability;                                              // 0x002C(0x0004)
+};
+
+// ScriptStruct TAGame.GameObserver_TA.BallData
+// 0x0014
+struct FBallData
+{
+	class ABall_TA*                                    Ball;                                                     // 0x0000(0x0004)
+	float                                              Altitude;                                                 // 0x0004(0x0004)
+	float                                              AerialSkill;                                              // 0x0008(0x0004)
+	class ACar_TA*                                     LastHitBy;                                                // 0x000C(0x0004)
+	float                                              LastHitTime;                                              // 0x0010(0x0004)
+};
+
 // ScriptStruct TAGame.Tutorial_TA.ButtonInfo
 // 0x0020
 struct FButtonInfo
 {
 	struct FString                                     Text;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	unsigned long                                      bCorrectAnswer : 1;                                       // 0x001C(0x0004)
 };
 
@@ -3236,7 +3506,7 @@ struct FChatPresetMessage
 };
 
 // ScriptStruct TAGame.GFxData_Chat_TA.GFxChatMessage
-// 0x0024
+// 0x006C
 struct FGFxChatMessage
 {
 	int                                                Team;                                                     // 0x0000(0x0004) (CPF_DataBinding)
@@ -3244,14 +3514,16 @@ struct FGFxChatMessage
 	struct FString                                     Message;                                                  // 0x0010(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // 0x001C(0x0001) (CPF_DataBinding)
 	unsigned long                                      bLocalPlayer : 1;                                         // 0x0020(0x0004) (CPF_DataBinding)
+	struct FUniqueNetId                                Recipient;                                                // 0x0024(0x0048) (CPF_DataBinding)
 };
 
 // ScriptStruct TAGame.GFxData_Chat_TA.PendingFilterMessage
-// 0x000D
+// 0x0058
 struct FPendingFilterMessage
 {
 	struct FString                                     Message;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
 	TEnumAsByte<EChatChannel>                          ChatChannel;                                              // 0x000C(0x0001)
+	struct FUniqueNetId                                Recipient;                                                // 0x0010(0x0048)
 };
 
 // ScriptStruct TAGame.GFxData_Controls_TA.LocalizedBindingCategory
@@ -3331,8 +3603,8 @@ struct FGarageProductSlot
 	struct FString                                     Label;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	class UTexture*                                    Icon;                                                     // 0x0018(0x0004) (CPF_DataBinding)
 	int                                                SlotIndex;                                                // 0x001C(0x0004) (CPF_DataBinding)
-	__int64                                      EquippedProduct1;                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageProductSlot.EquippedProduct1
-	__int64                                      EquippedProduct0;                                       // 0x0020(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageProductSlot.EquippedProduct0
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0020(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageProductSlot.EquippedProduct0
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageProductSlot.EquippedProduct1
 	int                                                EquippedPack;                                             // 0x0030(0x0004) (CPF_DataBinding)
 	unsigned long                                      bCanUnequip : 1;                                          // 0x0034(0x0004) (CPF_DataBinding)
 	unsigned long                                      bHasNewItems : 1;                                         // 0x0034(0x0004) (CPF_DataBinding)
@@ -3346,8 +3618,8 @@ struct FGarageTeam
 	struct FString                                     Label;                                                    // 0x0000(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	int                                                TeamColorID;                                              // 0x000C(0x0004) (CPF_DataBinding)
 	int                                                CustomColorID;                                            // 0x0010(0x0004) (CPF_DataBinding)
-	__int64                                      TeamFinishID;                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.TeamFinishID
-	__int64                                      CustomFinishID;                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.CustomFinishID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.TeamFinishID
+	unsigned char                                      UnknownData01[0x8];                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Garage_TA.GarageTeam.CustomFinishID
 };
 
 // ScriptStruct TAGame.GFxData_Products_TA.LoadingProduct
@@ -3355,7 +3627,7 @@ struct FGarageTeam
 struct FLoadingProduct
 {
 	int                                                ProductID;                                                // 0x0000(0x0004)
-	__int64                                      InstanceID;                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.LoadingProduct.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0004(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_Products_TA.LoadingProduct.InstanceID
 	TArray<int>                                        ReferencedViews;                                          // 0x000C(0x000C) (CPF_NeedCtorLink)
 	class UOnlineProduct_TA*                           OnlineProduct;                                            // 0x0018(0x0004)
 	TEnumAsByte<EProductThumbnailSize>                 ThumbnailSize;                                            // 0x001C(0x0001)
@@ -3363,20 +3635,12 @@ struct FLoadingProduct
 	class UProductThumbnail_TA*                        Thumbnail;                                                // 0x0024(0x0004)
 };
 
-// ScriptStruct TAGame.GFxData_ItemDrops_TA.GFxItemDrop
-// 0x000C
-struct FGFxItemDrop
-{
-	__int64                                      Id;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_ItemDrops_TA.GFxItemDrop.Id
-	unsigned long                                      bCanEquipNow : 1;                                         // 0x0008(0x0004) (CPF_DataBinding)
-};
-
 // ScriptStruct TAGame.SkillDecayMessageHandler_TA.PlayersShownPlaylists
-// 0x003C
+// 0x0054
 struct FPlayersShownPlaylists
 {
 	TArray<class UGameSettingPlaylist_X*>              ShownPlaylists;                                           // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FUniqueNetId                                PlayerID;                                                 // 0x000C(0x0030)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x000C(0x0048)
 };
 
 // ScriptStruct TAGame.GFxData_DLC_TA.GFxDLCData
@@ -3443,20 +3707,20 @@ struct FPlaylistState
 };
 
 // ScriptStruct TAGame.GFxData_Party_TA.GFxPartyMember
-// 0x0050
+// 0x0068
 struct FGFxPartyMember
 {
-	struct FString                                     PlayerName;                                               // 0x0000(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     ProfileId;                                                // 0x000C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	class UTexture*                                    PlayerAvatarTexture;                                      // 0x0018(0x0004) (CPF_DataBinding)
-	unsigned long                                      bSplitScreen : 1;                                         // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bLocalSplitScreen : 1;                                    // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bHasProfile : 1;                                          // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bPartyLeader : 1;                                         // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bIsPlayerTrading : 1;                                     // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bIsPlayerInMatch : 1;                                     // 0x001C(0x0004) (CPF_DataBinding)
-	unsigned long                                      bPlayerCanTrade : 1;                                      // 0x001C(0x0004) (CPF_DataBinding)
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0020(0x0030) (CPF_Transient)
+	struct FUniqueNetId                                PersonaID;                                                // 0x0000(0x0048) (CPF_DataBinding)
+	struct FString                                     PlayerName;                                               // 0x0048(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     ProfileId;                                                // 0x0054(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	class UTexture*                                    PlayerAvatarTexture;                                      // 0x0060(0x0004) (CPF_DataBinding)
+	unsigned long                                      bSplitScreen : 1;                                         // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bLocalSplitScreen : 1;                                    // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bHasProfile : 1;                                          // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bPartyLeader : 1;                                         // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bIsPlayerTrading : 1;                                     // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bIsPlayerInMatch : 1;                                     // 0x0064(0x0004) (CPF_DataBinding)
+	unsigned long                                      bPlayerCanTrade : 1;                                      // 0x0064(0x0004) (CPF_DataBinding)
 };
 
 // ScriptStruct TAGame.GFxData_ReplayViewer_TA.LocalizedCameraMode
@@ -3513,12 +3777,12 @@ struct FBindingPreset
 };
 
 // ScriptStruct TAGame.UserSettingObserverEventCache_TA.SettingEvent
-// 0x0044
+// 0x005C
 struct FSettingEvent
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	struct FName                                       Id;                                                       // 0x0030(0x0008)
-	struct FString                                     Value;                                                    // 0x0038(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	struct FName                                       Id;                                                       // 0x0048(0x0008)
+	struct FString                                     Value;                                                    // 0x0050(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.GFxData_Stats_TA.GFxStatData
@@ -3612,17 +3876,17 @@ struct FUpsellData
 // 0x0010
 struct FInstanceToSlotRow
 {
-	__int64                                      InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsLoadoutGet_TA.InstanceToSlotRow.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_ProductsLoadoutGet_TA.InstanceToSlotRow.InstanceID
 	int                                                SlotIndex;                                                // 0x0008(0x0004)
 	int                                                TeamIndex;                                                // 0x000C(0x0004)
 };
 
 // ScriptStruct TAGame.OnlineGameReservations_TA.ReservationLoadout
-// 0x003C
+// 0x0054
 struct FReservationLoadout
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	TArray<int>                                        ProductIDs;                                               // 0x0030(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	TArray<int>                                        ProductIDs;                                               // 0x0048(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.OnlineProfile_TA.ProfileAddProperties
@@ -3677,7 +3941,7 @@ struct FPriorityCandidate
 // 0x000C
 struct FClientOnlineProductStat
 {
-	__int64                                      InstanceID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.PRI_TA.ClientOnlineProductStat.InstanceID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.PRI_TA.ClientOnlineProductStat.InstanceID
 	int                                                Value;                                                    // 0x0008(0x0004)
 };
 
@@ -3687,6 +3951,14 @@ struct FProductReplacement
 {
 	TArray<TEnumAsByte<EConsoleType>>                  Platforms;                                                // 0x0000(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	class UProductAsset_TA*                            Replacement;                                              // 0x000C(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct TAGame.Profile_TA.ProfileProduct
+// 0x0014
+struct FProfileProduct
+{
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.Profile_TA.ProfileProduct.InstanceID
+	TArray<class UProductAttribute_TA*>                Attributes;                                               // 0x0008(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct TAGame.ReplayManager_TA.ReplayIOTaskBase
@@ -3743,14 +4015,6 @@ struct FReplayHeadersCountTask
 	struct FString                                     Path;                                                     // 0x0000(0x000C) (CPF_AlwaysInit, CPF_NeedCtorLink)
 	TArray<struct FReplayTypeData>                     Replays;                                                  // 0x000C(0x000C) (CPF_AlwaysInit, CPF_NeedCtorLink)
 	class UErrorType*                                  Error;                                                    // 0x0018(0x0004)
-};
-
-// ScriptStruct TAGame.SaveData_TA.ProfileDiffScore
-// 0x0008
-struct FProfileDiffScore
-{
-	int                                                Score;                                                    // 0x0000(0x0004)
-	class UProfile_TA*                                 Profile;                                                  // 0x0004(0x0004)
 };
 
 // ScriptStruct TAGame.SaveObjectManager_TA.LoadObjectResult
@@ -3851,7 +4115,7 @@ struct FSaveDataExportTask
 // 0x0008
 struct FDingoContentCache
 {
-	__int64                                      UserXUID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.DingoContentCache.UserXUID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.SaveObjectManager_TA.DingoContentCache.UserXUID
 };
 
 // ScriptStruct TAGame.MapPrefsMetrics_TA.MapPrefsMetric
@@ -3894,7 +4158,7 @@ struct FMTXPurchaseInfo
 // 0x000C
 struct FMTProductInfo
 {
-	__int64                                      ProductID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_MicroTransactions_GetCatalog_TA.MTProductInfo.ProductID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_MicroTransactions_GetCatalog_TA.MTProductInfo.ProductID
 	int                                                Count;                                                    // 0x0008(0x0004)
 };
 
@@ -3939,6 +4203,13 @@ struct FStateParams
 {
 	class UCameraState_X*                              State;                                                    // 0x0000(0x0004) (CPF_Edit)
 	TEnumAsByte<EStatePriority>                        Priority;                                                 // 0x0004(0x0001) (CPF_Edit)
+};
+
+// ScriptStruct TAGame.GFxData_Friends_TA.PersonaDataId
+// 0x0048
+struct FPersonaDataId
+{
+	struct FUniqueNetId                                PersonaID;                                                // 0x0000(0x0048) (CPF_DataBinding)
 };
 
 // ScriptStruct TAGame.BeamTraceComponent_TA.BeamTraceProps
@@ -4092,6 +4363,22 @@ struct FModeMapPair
 	struct FName                                       MapName;                                                  // 0x0004(0x0008)
 };
 
+// ScriptStruct TAGame.GFxData_PartyInvite_TA.Invite
+// 0x0054
+struct FInvite
+{
+	struct FUniqueLobbyId                              LobbyId;                                                  // 0x0000(0x000C)
+	struct FUniqueNetId                                FromUser;                                                 // 0x000C(0x0048) (CPF_DataBinding)
+};
+
+// ScriptStruct TAGame.GFxData_PlayerBanners_TA.GFxPlayerBannerRef
+// 0x000C
+struct FGFxPlayerBannerRef
+{
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_PlayerBanners_TA.GFxPlayerBannerRef.InstanceID
+	class UGFxData_PlayerBanner_TA*                    PlayerBanner;                                             // 0x0008(0x0004)
+};
+
 // ScriptStruct TAGame.GFxData_ProductFilter_TA.FilterProductSlot
 // 0x0018
 struct FFilterProductSlot
@@ -4151,6 +4438,39 @@ struct FLocalizedQuickChatBinding
 	struct FString                                     Action;                                                   // 0x001C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 };
 
+// ScriptStruct TAGame.GFxData_SpecialEvents_TA.GFxSpecialEventReward
+// 0x0010
+struct FGFxSpecialEventReward
+{
+	int                                                ProductID;                                                // 0x0000(0x0004) (CPF_DataBinding)
+	int                                                StoreProductID;                                           // 0x0004(0x0004) (CPF_DataBinding)
+	int                                                Cost;                                                     // 0x0008(0x0004) (CPF_DataBinding)
+	int                                                Remaining;                                                // 0x000C(0x0004) (CPF_DataBinding)
+};
+
+// ScriptStruct TAGame.RPC_GetSpecialEventCurrency_TA.EventCurrencyData
+// 0x0014
+struct FEventCurrencyData
+{
+	int                                                CurrencyID;                                               // 0x0000(0x0004)
+	int                                                PsyonixID;                                                // 0x0004(0x0004)
+	int                                                Total;                                                    // 0x0008(0x0004)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_GetSpecialEventCurrency_TA.EventCurrencyData.ExpirationTime
+};
+
+// ScriptStruct TAGame.RPC_GetSpecialEventCurrencyRewards_TA.SpecialEventReward
+// 0x001C
+struct FSpecialEventReward
+{
+	int                                                StoreProductID;                                           // 0x0000(0x0004)
+	int                                                ProductID;                                                // 0x0004(0x0004)
+	int                                                SeriesID;                                                 // 0x0008(0x0004)
+	int                                                Cost;                                                     // 0x000C(0x0004)
+	int                                                CurrencyID;                                               // 0x0010(0x0004)
+	int                                                MaxQuantityPerPlayer;                                     // 0x0014(0x0004)
+	int                                                PurchasedQuantity;                                        // 0x0018(0x0004)
+};
+
 // ScriptStruct TAGame.GFxData_TrainingModeConstants_TA.TrainingModeDifficulty
 // 0x0001
 struct FTrainingModeDifficulty
@@ -4185,7 +4505,7 @@ struct FSearchCacheData
 struct FFavoritedFileMetaData
 {
 	struct FString                                     Code;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	__int64                                      UpdatedAt;                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_TrainingModeBrowser_TA.FavoritedFileMetaData.UpdatedAt
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.GFxData_TrainingModeBrowser_TA.FavoritedFileMetaData.UpdatedAt
 	struct FString                                     Filename;                                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -4202,7 +4522,18 @@ struct FCachedDownloadedFile
 struct FCodeTimePair
 {
 	struct FString                                     Code;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	__int64                                      UpdatedAt;                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_TrainingEditor_ListPlayerTrainingDataTimestamp_TA.CodeTimePair.UpdatedAt
+	unsigned char                                      UnknownData00[0x8];                                       // 0x000C(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_TrainingEditor_ListPlayerTrainingDataTimestamp_TA.CodeTimePair.UpdatedAt
+};
+
+// ScriptStruct TAGame.RPC_GetSpecialEvents_TA.SpecialEventData
+// 0x0024
+struct FSpecialEventData
+{
+	int                                                Id;                                                       // 0x0000(0x0004)
+	struct FString                                     Name;                                                     // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0010(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_GetSpecialEvents_TA.SpecialEventData.StartTime
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0018(0x0008) UNKNOWN PROPERTY: QWordProperty TAGame.RPC_GetSpecialEvents_TA.SpecialEventData.EndTime
+	int                                                CurrencyID;                                               // 0x0020(0x0004)
 };
 
 // ScriptStruct TAGame.VehiclePickup_BoostModifier_Randomizer_TA.RandomPickup

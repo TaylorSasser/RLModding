@@ -46,6 +46,173 @@ bool UObject::IsA(UClass* cmp) const
 	return false;
 }
 
+// Function Core.Object.SumInt
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            Total                          (CPF_Parm)
+// int                            Value                          (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SumInt(int Total, int Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SumInt");
+
+	UObject_SumInt_Params params;
+	params.Total = Total;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortDescendingString
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 A                              (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 B                              (CPF_Parm, CPF_NeedCtorLink)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortDescendingString(const struct FString& A, const struct FString& B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortDescendingString");
+
+	UObject_SortDescendingString_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortAscendingString
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// struct FString                 A                              (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 B                              (CPF_Parm, CPF_NeedCtorLink)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortAscendingString(const struct FString& A, const struct FString& B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortAscendingString");
+
+	UObject_SortAscendingString_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortDescendingQWORD
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortDescendingQWORD()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortDescendingQWORD");
+
+	UObject_SortDescendingQWORD_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortAscendingQWORD
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortAscendingQWORD()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortAscendingQWORD");
+
+	UObject_SortAscendingQWORD_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortDescendingInt
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            A                              (CPF_Parm)
+// int                            B                              (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortDescendingInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortDescendingInt");
+
+	UObject_SortDescendingInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.SortAscendingInt
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            A                              (CPF_Parm)
+// int                            B                              (CPF_Parm)
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_SortAscendingInt(int A, int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SortAscendingInt");
+
+	UObject_SortAscendingInt_Params params;
+	params.A = A;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function Core.Object.PadString
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -62,6 +229,34 @@ struct FString UObject::STATIC_PadString(const struct FString& Str, int Characte
 	params.Characters = Characters;
 
 	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.GetScaledAxisValue
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+// Parameters:
+// float                          Value                          (CPF_Parm)
+// float                          Sensitivity                    (CPF_Parm)
+// float                          MaxSensitivity                 (CPF_Parm)
+// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+float UObject::STATIC_GetScaledAxisValue(float Value, float Sensitivity, float MaxSensitivity)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetScaledAxisValue");
+
+	UObject_GetScaledAxisValue_Params params;
+	params.Value = Value;
+	params.Sensitivity = Sensitivity;
+	params.MaxSensitivity = MaxSensitivity;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -259,6 +454,27 @@ int UObject::STATIC_ProfNodeStart(const struct FString& TimerName)
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.CreateGuidString
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public, FUNC_HasDefaults)
+// Parameters:
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UObject::STATIC_CreateGuidString()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.CreateGuidString");
+
+	UObject_CreateGuidString_Params params;
+
+	auto flags = fn->FunctionFlags;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8428,6 +8644,108 @@ int UObject::STATIC_FromHex(const struct FString& Hex)
 }
 
 
+// Function Core.Object.QMin
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+
+void UObject::STATIC_QMin()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QMin");
+
+	UObject_QMin_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Core.Object.QMax
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+
+void UObject::STATIC_QMax()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QMax");
+
+	UObject_QMax_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Core.Object.QSubtract
+// (FUNC_Final, FUNC_Native, FUNC_Static, FUNC_Public)
+
+void UObject::STATIC_QSubtract()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QSubtract");
+
+	UObject_QSubtract_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Core.Object.NotEqual_QWordInt
+// (FUNC_Final, FUNC_Native, FUNC_Operator, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            B                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UObject::STATIC_NotEqual_QWordInt(int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_QWordInt");
+
+	UObject_NotEqual_QWordInt_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.EqualEqual_QWordInt
+// (FUNC_Final, FUNC_Native, FUNC_Operator, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            B                              (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UObject::STATIC_EqualEqual_QWordInt(int B)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_QWordInt");
+
+	UObject_EqualEqual_QWordInt_Params params;
+	params.B = B;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function Core.Object.NotEqual_QWordQWord
 // (FUNC_Final, FUNC_Native, FUNC_Operator, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -8557,6 +8875,46 @@ bool UObject::STATIC_Less_QWordQWord()
 	fn->FunctionFlags = flags;
 
 	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Subtract_QWordQWord
+// (FUNC_Final, FUNC_Native, FUNC_Operator, FUNC_Static, FUNC_Public)
+// Parameters:
+// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+int UObject::STATIC_Subtract_QWordQWord()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_QWordQWord");
+
+	UObject_Subtract_QWordQWord_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.Object.Add_QWordQWord
+// (FUNC_Final, FUNC_Native, FUNC_Operator, FUNC_Static, FUNC_Public)
+
+void UObject::STATIC_Add_QWordQWord()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_QWordQWord");
+
+	UObject_Add_QWordQWord_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
 }
 
 
@@ -10925,6 +11283,147 @@ void UDebugDrawer::LogFunc(const struct FString& Str)
 }
 
 
+// Function Core.StringMap.Append
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// class UStringMap*              Other                          (CPF_Parm, CPF_EditInline)
+
+void UStringMap::Append(class UStringMap* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.Append");
+
+	UStringMap_Append_Params params;
+	params.Other = Other;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Core.StringMap.Contains
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 Key                            (CPF_Parm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UStringMap::Contains(const struct FString& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.Contains");
+
+	UStringMap_Contains_Params params;
+	params.Key = Key;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.StringMap.Remove
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 Key                            (CPF_Parm, CPF_NeedCtorLink)
+
+void UStringMap::Remove(const struct FString& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.Remove");
+
+	UStringMap_Remove_Params params;
+	params.Key = Key;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Core.StringMap.TryGet
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_HasOutParms)
+// Parameters:
+// struct FString                 Key                            (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 OutValue                       (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UStringMap::TryGet(const struct FString& Key, struct FString* OutValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.TryGet");
+
+	UStringMap_TryGet_Params params;
+	params.Key = Key;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (OutValue != nullptr)
+		*OutValue = params.OutValue;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.StringMap.Get
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 Key                            (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+
+struct FString UStringMap::Get(const struct FString& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.Get");
+
+	UStringMap_Get_Params params;
+	params.Key = Key;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.StringMap.Set
+// (FUNC_Final, FUNC_Native, FUNC_Public)
+// Parameters:
+// struct FString                 Key                            (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 Value                          (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+
+void UStringMap::Set(const struct FString& Key, const struct FString& Value)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.StringMap.Set");
+
+	UStringMap_Set_Params params;
+	params.Key = Key;
+	params.Value = Value;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Core.DistributionVector.GetVectorValue
 // (FUNC_Native, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
@@ -11021,6 +11520,24 @@ int UHelpCommandlet::Main(const struct FString& Params)
 }
 
 
+// Function Core.AsyncTask.QueCallbacks
+// (FUNC_Final, FUNC_Native, FUNC_Private)
+
+void UAsyncTask::QueCallbacks()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.QueCallbacks");
+
+	UAsyncTask_QueCallbacks_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Core.AsyncTask.CreateError
 // (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
@@ -11044,18 +11561,60 @@ class UAsyncTask* UAsyncTask::STATIC_CreateError(class UError* InError)
 }
 
 
-// Function Core.AsyncTask.CreateComplete
-// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_HasOptionalParms, FUNC_Public)
+// Function Core.AsyncTask.CreateSuccess
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
 // Parameters:
-// class UObject*                 InResult                       (CPF_OptionalParm, CPF_Parm)
 // class UAsyncTask*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 
-class UAsyncTask* UAsyncTask::STATIC_CreateComplete(class UObject* InResult)
+class UAsyncTask* UAsyncTask::STATIC_CreateSuccess()
 {
-	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.CreateComplete");
+	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.CreateSuccess");
 
-	UAsyncTask_CreateComplete_Params params;
-	params.InResult = InResult;
+	UAsyncTask_CreateSuccess_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.AsyncTask.Create
+// (FUNC_Final, FUNC_Defined, FUNC_Static, FUNC_Public)
+// Parameters:
+// class UAsyncTask*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UAsyncTask* UAsyncTask::STATIC_Create()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.Create");
+
+	UAsyncTask_Create_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function Core.AsyncTask.DependOn
+// (FUNC_Final, FUNC_Defined, FUNC_Public)
+// Parameters:
+// class UAsyncTask*              Other                          (CPF_Parm)
+// class UAsyncTask*              ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+class UAsyncTask* UAsyncTask::DependOn(class UAsyncTask* Other)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.DependOn");
+
+	UAsyncTask_DependOn_Params params;
+	params.Other = Other;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11090,6 +11649,23 @@ class UAsyncTask* UAsyncTask::NotifyOnDispose(const struct FScriptDelegate& Call
 }
 
 
+// Function Core.AsyncTask.ClearCallbacks
+// (FUNC_Defined, FUNC_Event, FUNC_Protected)
+
+void UAsyncTask::ClearCallbacks()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.ClearCallbacks");
+
+	UAsyncTask_ClearCallbacks_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Core.AsyncTask.Dispose
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 
@@ -11110,15 +11686,13 @@ void UAsyncTask::Dispose()
 // Function Core.AsyncTask.SetComplete
 // (FUNC_Final, FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
-// class UObject*                 InResult                       (CPF_OptionalParm, CPF_Parm)
 // class UError*                  InError                        (CPF_OptionalParm, CPF_Parm)
 
-void UAsyncTask::SetComplete(class UObject* InResult, class UError* InError)
+void UAsyncTask::SetComplete(class UError* InError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.SetComplete");
 
 	UAsyncTask_SetComplete_Params params;
-	params.InResult = InResult;
 	params.InError = InError;
 
 	auto flags = fn->FunctionFlags;
@@ -11140,26 +11714,6 @@ void UAsyncTask::SetError(class UError* InError)
 
 	UAsyncTask_SetError_Params params;
 	params.InError = InError;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function Core.AsyncTask.SetResult
-// (FUNC_Final, FUNC_Defined, FUNC_Event, FUNC_Public)
-// Parameters:
-// class UObject*                 InResult                       (CPF_Parm)
-
-void UAsyncTask::SetResult(class UObject* InResult)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.SetResult");
-
-	UAsyncTask_SetResult_Params params;
-	params.InResult = InResult;
 
 	auto flags = fn->FunctionFlags;
 
@@ -11258,15 +11812,13 @@ void UAsyncTask::EventDisposed()
 // Function Core.AsyncTask.EventAsyncTaskComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// class UObject*                 TaskResult                     (CPF_Parm)
 // class UError*                  TaskError                      (CPF_Parm)
 
-void UAsyncTask::EventAsyncTaskComplete(class UObject* TaskResult, class UError* TaskError)
+void UAsyncTask::EventAsyncTaskComplete(class UError* TaskError)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.EventAsyncTaskComplete");
 
 	UAsyncTask_EventAsyncTaskComplete_Params params;
-	params.TaskResult = TaskResult;
 	params.TaskError = TaskError;
 
 	auto flags = fn->FunctionFlags;
@@ -11299,15 +11851,12 @@ void UAsyncTask::EventAsyncTaskFail(class UError* TaskError)
 
 // Function Core.AsyncTask.EventAsyncTaskSuccess
 // (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UObject*                 TaskResult                     (CPF_Parm)
 
-void UAsyncTask::EventAsyncTaskSuccess(class UObject* TaskResult)
+void UAsyncTask::EventAsyncTaskSuccess()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.AsyncTask.EventAsyncTaskSuccess");
 
 	UAsyncTask_EventAsyncTaskSuccess_Params params;
-	params.TaskResult = TaskResult;
 
 	auto flags = fn->FunctionFlags;
 

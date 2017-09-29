@@ -302,6 +302,46 @@ enum class ERequestType
 };
 
 
+// Enum IpDrv.AdHocDelegates.EAdHocDesiredState
+enum class EAdHocDesiredState
+{
+	AHDS_None                      = 0,
+	AHDS_Initialized               = 1,
+	AHDS_CreateAccessPoint         = 2,
+	AHDS_CreateStation             = 3,
+	AHDS_ScanForAccessPoints       = 4,
+	AHDS_ConnectToChosenStation    = 5,
+	AHDS_DisconnectSpecifiedStation = 6,
+	AHDS_DisconnectFromAccessPoint = 7,
+	AHDS_AccessPointRejecting      = 8,
+	AHDS_Exit                      = 9,
+	AHDS_Max                       = 10
+};
+
+
+// Enum IpDrv.AdHocDelegates.EAdHocCurrentState
+enum class EAdHocCurrentState
+{
+	AHCS_None                      = 0,
+	AHCS_Initializing              = 1,
+	AHCS_Initialized               = 2,
+	AHCS_Station                   = 3,
+	AHCS_StationScanning           = 4,
+	AHCS_StationConnecting         = 5,
+	AHCS_StationConnected          = 6,
+	AHCS_StationDisconnected       = 7,
+	AHCS_StationClosing            = 8,
+	AHCS_AccessPointCreating       = 9,
+	AHCS_AccessPointCreated        = 10,
+	AHCS_AccessPointScanning       = 11,
+	AHCS_AccessPointRejecting      = 12,
+	AHCS_AccessPointClosing        = 13,
+	AHCS_Finalizing                = 14,
+	AHCS_Error                     = 15,
+	AHCS_MAX                       = 16
+};
+
+
 
 //---------------------------------------------------------------------------
 //Script Structs
@@ -444,15 +484,15 @@ struct FConnectionBandwidthStats
 };
 
 // ScriptStruct IpDrv.MeshBeaconClient.ClientConnectionRequest
-// 0x004C
+// 0x0064
 struct FClientConnectionRequest
 {
-	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0030)
-	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0030(0x0001)
-	unsigned long                                      bCanHostVs : 1;                                           // 0x0034(0x0004)
-	float                                              GoodHostRatio;                                            // 0x0038(0x0004)
-	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x003C(0x000C) (CPF_NeedCtorLink)
-	int                                                MinutesSinceLastTest;                                     // 0x0048(0x0004)
+	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0048)
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0048(0x0001)
+	unsigned long                                      bCanHostVs : 1;                                           // 0x004C(0x0004)
+	float                                              GoodHostRatio;                                            // 0x0050(0x0004)
+	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x0054(0x000C) (CPF_NeedCtorLink)
+	int                                                MinutesSinceLastTest;                                     // 0x0060(0x0004)
 };
 
 // ScriptStruct IpDrv.MeshBeaconClient.ClientBandwidthTestData
@@ -481,19 +521,19 @@ struct FClientConnectionBandwidthTestData
 };
 
 // ScriptStruct IpDrv.MeshBeaconHost.ClientMeshBeaconConnection
-// 0x0080
+// 0x0098
 struct FClientMeshBeaconConnection
 {
-	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0030)
-	float                                              ElapsedHeartbeatTime;                                     // 0x0030(0x0004)
-	struct FPointer                                    Socket;                                                   // 0x0034(0x0004) (CPF_Native, CPF_Transient)
-	unsigned long                                      bConnectionAccepted : 1;                                  // 0x0038(0x0004)
-	struct FClientConnectionBandwidthTestData          BandwidthTest;                                            // 0x003C(0x0028)
-	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0064(0x0001)
-	unsigned long                                      bCanHostVs : 1;                                           // 0x0068(0x0004)
-	float                                              GoodHostRatio;                                            // 0x006C(0x0004)
-	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x0070(0x000C) (CPF_NeedCtorLink)
-	int                                                MinutesSinceLastTest;                                     // 0x007C(0x0004)
+	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0048)
+	float                                              ElapsedHeartbeatTime;                                     // 0x0048(0x0004)
+	struct FPointer                                    Socket;                                                   // 0x004C(0x0004) (CPF_Native, CPF_Transient)
+	unsigned long                                      bConnectionAccepted : 1;                                  // 0x0050(0x0004)
+	struct FClientConnectionBandwidthTestData          BandwidthTest;                                            // 0x0054(0x0028)
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x007C(0x0001)
+	unsigned long                                      bCanHostVs : 1;                                           // 0x0080(0x0004)
+	float                                              GoodHostRatio;                                            // 0x0084(0x0004)
+	TArray<struct FConnectionBandwidthStats>           BandwidthHistory;                                         // 0x0088(0x000C) (CPF_NeedCtorLink)
+	int                                                MinutesSinceLastTest;                                     // 0x0094(0x0004)
 };
 
 // ScriptStruct IpDrv.OnlinePlaylistManager.ConfiguredGameSetting
@@ -544,33 +584,33 @@ struct UOnlinePlaylistManager_FPlaylistPopulation
 };
 
 // ScriptStruct IpDrv.PartyBeacon.PlayerReservation
-// 0x004C
+// 0x0064
 struct FPlayerReservation
 {
-	struct FUniqueNetId                                NetId;                                                    // 0x0000(0x0030)
-	int                                                Skill;                                                    // 0x0030(0x0004)
-	int                                                XpLevel;                                                  // 0x0034(0x0004)
-	struct FDouble                                     Mu;                                                       // 0x0038(0x0008)
-	struct FDouble                                     Sigma;                                                    // 0x0040(0x0008)
-	float                                              ElapsedSessionTime;                                       // 0x0048(0x0004)
+	struct FUniqueNetId                                NetId;                                                    // 0x0000(0x0048)
+	int                                                Skill;                                                    // 0x0048(0x0004)
+	int                                                XpLevel;                                                  // 0x004C(0x0004)
+	struct FDouble                                     Mu;                                                       // 0x0050(0x0008)
+	struct FDouble                                     Sigma;                                                    // 0x0058(0x0008)
+	float                                              ElapsedSessionTime;                                       // 0x0060(0x0004)
 };
 
 // ScriptStruct IpDrv.PartyBeacon.PartyReservation
-// 0x0040
+// 0x0058
 struct FPartyReservation
 {
 	int                                                TeamNum;                                                  // 0x0000(0x0004)
-	struct FUniqueNetId                                PartyLeader;                                              // 0x0004(0x0030)
-	TArray<struct FPlayerReservation>                  PartyMembers;                                             // 0x0034(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PartyLeader;                                              // 0x0004(0x0048)
+	TArray<struct FPlayerReservation>                  PartyMembers;                                             // 0x004C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct IpDrv.PartyBeaconHost.ClientBeaconConnection
-// 0x0038
+// 0x0050
 struct FClientBeaconConnection
 {
-	struct FUniqueNetId                                PartyLeader;                                              // 0x0000(0x0030)
-	float                                              ElapsedHeartbeatTime;                                     // 0x0030(0x0004)
-	struct FPointer                                    Socket;                                                   // 0x0034(0x0004) (CPF_Native, CPF_Transient)
+	struct FUniqueNetId                                PartyLeader;                                              // 0x0000(0x0048)
+	float                                              ElapsedHeartbeatTime;                                     // 0x0048(0x0004)
+	struct FPointer                                    Socket;                                                   // 0x004C(0x0004) (CPF_Native, CPF_Transient)
 };
 
 // ScriptStruct IpDrv.McpClashMobBase.McpClashMobChallengeFile
@@ -693,7 +733,7 @@ struct FMcpGroupMember
 struct FMcpGroup
 {
 	struct FString                                     OwnerId;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     GroupID;                                                  // 0x000C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     GroupId;                                                  // 0x000C(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     GroupName;                                                // 0x0018(0x000C) (CPF_NeedCtorLink)
 	TEnumAsByte<EMcpGroupAccessLevel>                  AccessLevel;                                              // 0x0024(0x0001)
 	TArray<struct FMcpGroupMember>                     Members;                                                  // 0x0028(0x000C) (CPF_NeedCtorLink)
@@ -844,12 +884,12 @@ struct FUserRequest
 };
 
 // ScriptStruct IpDrv.MeshBeacon.PlayerMember
-// 0x0038
+// 0x0050
 struct FPlayerMember
 {
 	int                                                TeamNum;                                                  // 0x0000(0x0004)
 	int                                                Skill;                                                    // 0x0004(0x0004)
-	struct FUniqueNetId                                NetId;                                                    // 0x0008(0x0030)
+	struct FUniqueNetId                                NetId;                                                    // 0x0008(0x0048)
 };
 
 // ScriptStruct IpDrv.OnlineImageDownloaderWeb.OnlineImageDownload
@@ -868,8 +908,27 @@ struct FOnlineImageDownload
 struct FSanitizeCallbackData
 {
 	int                                                Id;                                                       // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FString                                     Comment;                                                  // 0x0014(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct IpDrv.AdHocDelegates.AdHocAccessPointInfo
+// 0x002C
+struct FAdHocAccessPointInfo
+{
+	struct FString                                     Ipv4Addr;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     UserName;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     AdvertiseData;                                            // 0x0018(0x000C) (CPF_NeedCtorLink)
+	int                                                ScanResultIndex;                                          // 0x0024(0x0004)
+	int                                                NetworkNodeIndex;                                         // 0x0028(0x0004)
+};
+
+// ScriptStruct IpDrv.AdHocDelegates.AdHocStationInfo
+// 0x000C
+struct FAdHocStationInfo
+{
+	struct FString                                     UserName;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 };
 
 }

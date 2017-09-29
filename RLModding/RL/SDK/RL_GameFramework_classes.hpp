@@ -48,21 +48,6 @@ public:
 };
 
 
-// Class GameFramework.GameTypes
-// 0x0000 (0x003C - 0x003C)
-class UGameTypes : public UObject
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class GameFramework.GameTypes");
-		return ptr;
-	}
-
-};
-
-
 // Class GameFramework.GameAIController
 // 0x0038 (0x03D0 - 0x0398)
 class AGameAIController : public AAIController
@@ -1099,6 +1084,77 @@ public:
 };
 
 
+// Class GameFramework.GameTypes
+// 0x0000 (0x003C - 0x003C)
+class UGameTypes : public UObject
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class GameFramework.GameTypes");
+		return ptr;
+	}
+
+};
+
+
+// Class GameFramework.MobileHUD
+// 0x00EC (0x0570 - 0x0484)
+class AMobileHUD : public AHUD
+{
+public:
+	unsigned long                                      bShowGameHud : 1;                                         // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bShowMobileHud : 1;                                       // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bForceMobileHUD : 1;                                      // 0x0484(0x0004) (CPF_Config, CPF_GlobalConfig)
+	unsigned long                                      bShowMobileTilt : 1;                                      // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugTouches : 1;                                        // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugZones : 1;                                          // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bDebugZonePresses : 1;                                    // 0x0484(0x0004) (CPF_Config)
+	unsigned long                                      bShowMotionDebug : 1;                                     // 0x0484(0x0004) (CPF_Config)
+	class UTexture2D*                                  JoystickBackground;                                       // 0x0488(0x0004)
+	struct FTextureUVs                                 JoystickBackgroundUVs;                                    // 0x048C(0x0010)
+	class UTexture2D*                                  JoystickHat;                                              // 0x049C(0x0004)
+	struct FTextureUVs                                 JoystickHatUVs;                                           // 0x04A0(0x0010)
+	class UTexture2D*                                  ButtonImages[0x2];                                        // 0x04B0(0x0004)
+	struct FTextureUVs                                 ButtonUVs[0x2];                                           // 0x04B8(0x0010)
+	class UFont*                                       ButtonFont;                                               // 0x04D8(0x0004)
+	struct FColor                                      ButtonCaptionColor;                                       // 0x04DC(0x0004)
+	class UTexture2D*                                  TrackballBackground;                                      // 0x04E0(0x0004)
+	struct FTextureUVs                                 TrackballBackgroundUVs;                                   // 0x04E4(0x0010)
+	class UTexture2D*                                  TrackballTouchIndicator;                                  // 0x04F4(0x0004)
+	struct FTextureUVs                                 TrackballTouchIndicatorUVs;                               // 0x04F8(0x0010)
+	class UTexture2D*                                  SliderImages[0x4];                                        // 0x0508(0x0004)
+	struct FTextureUVs                                 SliderUVs[0x4];                                           // 0x0518(0x0010)
+	float                                              MobileTiltX;                                              // 0x0558(0x0004) (CPF_Config)
+	float                                              MobileTiltY;                                              // 0x055C(0x0004) (CPF_Config)
+	float                                              MobileTiltSize;                                           // 0x0560(0x0004) (CPF_Config)
+	TArray<class USeqEvent_HudRender*>                 KismetRenderEvents;                                       // 0x0564(0x000C) (CPF_NeedCtorLink)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class GameFramework.MobileHUD");
+		return ptr;
+	}
+
+
+	void RenderKismetHud();
+	void AddKismetRenderEvent(class USeqEvent_HudRender* NewEvent);
+	void RefreshKismetLinks();
+	void DrawMobileZone_Slider(class UMobileInputZone* Zone);
+	void DrawMobileTilt(class UMobilePlayerInput* MobileInput);
+	void DrawMobileZone_Trackball(class UMobileInputZone* Zone);
+	void DrawMobileZone_Joystick(class UMobileInputZone* Zone);
+	void DrawMobileZone_Button(class UMobileInputZone* Zone);
+	void DrawInputZoneOverlays();
+	void RenderMobileMenu();
+	bool ShowMobileHud();
+	void DrawMobileDebugString(float XPos, float YPos, const struct FString& Str);
+	void PostRender();
+	void PostBeginPlay();
+};
+
+
 // Class GameFramework.MobileInputZone
 // 0x01E4 (0x0220 - 0x003C)
 class UMobileInputZone : public UObject
@@ -1182,12 +1238,18 @@ public:
 	struct FVector2D                                   LastAxisValues;                                           // 0x01B0(0x0008)
 	float                                              TotalActiveTime;                                          // 0x01B8(0x0004)
 	float                                              LastWentActiveTime;                                       // 0x01BC(0x0004)
-	struct FScriptDelegate                             __OnProcessInputDelegate__Delegate;                       // 0x01C0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnTapDelegate__Delegate;                                // 0x01D0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnDoubleTapDelegate__Delegate;                          // 0x01E0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnProcessSlide__Delegate;                               // 0x01F0(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnPreDrawZone__Delegate;                                // 0x0200(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnPostDrawZone__Delegate;                               // 0x0210(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnProcessInputDelegate__Delegate;                       // 0x01C0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x01C0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnTapDelegate__Delegate;                                // 0x01D0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x01D0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnDoubleTapDelegate__Delegate;                          // 0x01E0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x01E0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnProcessSlide__Delegate;                               // 0x01F0(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x01F0(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPreDrawZone__Delegate;                                // 0x0200(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0200(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPostDrawZone__Delegate;                               // 0x0210(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData05[0x4];                                       // 0x0210(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -1205,62 +1267,6 @@ public:
 	bool OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
 	void DeactivateZone();
 	void ActivateZone();
-};
-
-
-// Class GameFramework.MobileHUD
-// 0x00EC (0x0570 - 0x0484)
-class AMobileHUD : public AHUD
-{
-public:
-	unsigned long                                      bShowGameHud : 1;                                         // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bShowMobileHud : 1;                                       // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bForceMobileHUD : 1;                                      // 0x0484(0x0004) (CPF_Config, CPF_GlobalConfig)
-	unsigned long                                      bShowMobileTilt : 1;                                      // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bDebugTouches : 1;                                        // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bDebugZones : 1;                                          // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bDebugZonePresses : 1;                                    // 0x0484(0x0004) (CPF_Config)
-	unsigned long                                      bShowMotionDebug : 1;                                     // 0x0484(0x0004) (CPF_Config)
-	class UTexture2D*                                  JoystickBackground;                                       // 0x0488(0x0004)
-	struct FTextureUVs                                 JoystickBackgroundUVs;                                    // 0x048C(0x0010)
-	class UTexture2D*                                  JoystickHat;                                              // 0x049C(0x0004)
-	struct FTextureUVs                                 JoystickHatUVs;                                           // 0x04A0(0x0010)
-	class UTexture2D*                                  ButtonImages[0x2];                                        // 0x04B0(0x0004)
-	struct FTextureUVs                                 ButtonUVs[0x2];                                           // 0x04B8(0x0010)
-	class UFont*                                       ButtonFont;                                               // 0x04D8(0x0004)
-	struct FColor                                      ButtonCaptionColor;                                       // 0x04DC(0x0004)
-	class UTexture2D*                                  TrackballBackground;                                      // 0x04E0(0x0004)
-	struct FTextureUVs                                 TrackballBackgroundUVs;                                   // 0x04E4(0x0010)
-	class UTexture2D*                                  TrackballTouchIndicator;                                  // 0x04F4(0x0004)
-	struct FTextureUVs                                 TrackballTouchIndicatorUVs;                               // 0x04F8(0x0010)
-	class UTexture2D*                                  SliderImages[0x4];                                        // 0x0508(0x0004)
-	struct FTextureUVs                                 SliderUVs[0x4];                                           // 0x0518(0x0010)
-	float                                              MobileTiltX;                                              // 0x0558(0x0004) (CPF_Config)
-	float                                              MobileTiltY;                                              // 0x055C(0x0004) (CPF_Config)
-	float                                              MobileTiltSize;                                           // 0x0560(0x0004) (CPF_Config)
-	TArray<class USeqEvent_HudRender*>                 KismetRenderEvents;                                       // 0x0564(0x000C) (CPF_NeedCtorLink)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("Class GameFramework.MobileHUD");
-		return ptr;
-	}
-
-
-	void RenderKismetHud();
-	void AddKismetRenderEvent(class USeqEvent_HudRender* NewEvent);
-	void RefreshKismetLinks();
-	void DrawMobileZone_Slider(class UMobileInputZone* Zone);
-	void DrawMobileTilt(class UMobilePlayerInput* MobileInput);
-	void DrawMobileZone_Trackball(class UMobileInputZone* Zone);
-	void DrawMobileZone_Joystick(class UMobileInputZone* Zone);
-	void DrawMobileZone_Button(class UMobileInputZone* Zone);
-	void DrawInputZoneOverlays();
-	void RenderMobileMenu();
-	bool ShowMobileHud();
-	void DrawMobileDebugString(float XPos, float YPos, const struct FString& Str);
-	void PostRender();
-	void PostBeginPlay();
 };
 
 
@@ -1438,9 +1444,12 @@ public:
 	TArray<class USeqEvent_MobileRawInput*>            MobileRawInputSeqEventHandlers;                           // 0x0468(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	struct FVector2D                                   MobileViewportOffset;                                     // 0x0474(0x0008)
 	struct FVector2D                                   MobileViewportSize;                                       // 0x047C(0x0008)
-	struct FScriptDelegate                             __OnTouchNotHandledInMenu__Delegate;                      // 0x0484(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnPreviewTouch__Delegate;                               // 0x0494(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnInputTouch__Delegate;                                 // 0x04A4(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnTouchNotHandledInMenu__Delegate;                      // 0x0484(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0484(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnPreviewTouch__Delegate;                               // 0x0494(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0494(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnInputTouch__Delegate;                                 // 0x04A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x04A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -2428,23 +2437,6 @@ public:
 };
 
 
-// State GameFramework.DebugCameraController.PlayerWaiting
-// 0x0000
-class SDebugCameraController_PlayerWaiting : public SPlayerController_PlayerWaiting
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.DebugCameraController.PlayerWaiting");
-		return ptr;
-	}
-
-
-	void PlayerMove(float DeltaTime);
-};
-
-
 // Class GameFramework.DebugCameraInput
 // 0x0000 (0x0270 - 0x0270)
 class UDebugCameraInput : public UPlayerInput
@@ -2512,58 +2504,6 @@ public:
 };
 
 
-// State GameFramework.GameAICommand.DebugState
-// 0x0000
-class SGameAICommand_DebugState : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICommand.DebugState");
-		return ptr;
-	}
-
-
-	void PausedState();
-	void ContinuedState();
-	void PoppedState();
-	void PushedState();
-	void EndState(const struct FName& NextStateName);
-	void BeginState(const struct FName& PreviousStateName);
-};
-
-
-// State GameFramework.GameAICommand.DelayFailure
-// 0x0000
-class SGameAICommand_DelayFailure : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICommand.DelayFailure");
-		return ptr;
-	}
-
-};
-
-
-// State GameFramework.GameAICommand.DelaySuccess
-// 0x0000
-class SGameAICommand_DelaySuccess : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICommand.DelaySuccess");
-		return ptr;
-	}
-
-};
-
-
 // Class GameFramework.GameAICmd_Hover_MoveToGoal
 // 0x0034 (0x008C - 0x0058)
 class UGameAICmd_Hover_MoveToGoal : public UGameAICommand
@@ -2592,41 +2532,6 @@ public:
 	bool HandlePathObstruction(class AActor* BlockedBy);
 	void Pushed();
 	bool STATIC_MoveToGoal(class AGameAIController* AI, class AActor* InGoal, float InGoalDistance, float InHoverHeight);
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_MoveDown : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown");
-		return ptr;
-	}
-
-
-	struct FVector GetMoveDest();
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal.Moving
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Moving : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal.Moving");
-		return ptr;
-	}
-
-
-	bool PopNextNode(struct FVector* Dest);
-	bool ReachedDest(class AActor* Dest);
 };
 
 
@@ -2675,115 +2580,6 @@ public:
 };
 
 
-// State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DelayFailure
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_DelayFailure : public SGameAICommand_DelayFailure
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DelayFailure");
-		return ptr;
-	}
-
-
-	bool HandlePathObstruction(class AActor* BlockedBy);
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown");
-		return ptr;
-	}
-
-
-	struct FVector GetMoveDest();
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Moving : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving");
-		return ptr;
-	}
-
-
-	float GetMoveDestinationOffset();
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs");
-		return ptr;
-	}
-
-
-	bool HandlePathObstruction(class AActor* BlockedBy);
-	bool ShouldUpdateBreadCrumbs();
-};
-
-
-// State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint
-// 0x0000
-class SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint");
-		return ptr;
-	}
-
-
-	bool ShouldUpdateBreadCrumbs();
-	bool FindAPointWhereICanHoverTo(float Inradius, float MinRadius, float entityRadius, bool bDirectOnly, int MaxPoints, float ValidHitBoxSize, struct FVector* out_FallbackDest);
-};
-
-
-// State GameFramework.GameAIController.DebugState
-// 0x0000
-class SGameAIController_DebugState : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameAIController.DebugState");
-		return ptr;
-	}
-
-
-	void PausedState();
-	void ContinuedState();
-	void PoppedState();
-	void PushedState();
-	void EndState(const struct FName& NextStateName);
-	void BeginState(const struct FName& PreviousStateName);
-};
-
-
 // Class GameFramework.GameCrowd_ListOfAgents
 // 0x000C (0x0048 - 0x003C)
 class UGameCrowd_ListOfAgents : public UObject
@@ -2812,23 +2608,6 @@ public:
 		return ptr;
 	}
 
-};
-
-
-// State GameFramework.GameCrowdReplicationActor.ReceivingReplication
-// 0x0000
-class SGameCrowdReplicationActor_ReceivingReplication : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameCrowdReplicationActor.ReceivingReplication");
-		return ptr;
-	}
-
-
-	void Tick(float DeltaTime);
 };
 
 
@@ -2901,23 +2680,6 @@ public:
 	void StartScalingDown();
 	void FellOutOfWorld(class UClass* dmgType);
 	void PostBeginPlay();
-};
-
-
-// State GameFramework.GameKActorSpawnableEffect.ScalingDown
-// 0x0000
-class SGameKActorSpawnableEffect_ScalingDown : public UState
-{
-public:
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindClass("State GameFramework.GameKActorSpawnableEffect.ScalingDown");
-		return ptr;
-	}
-
-
-	void Tick(float DeltaTime);
 };
 
 
@@ -3124,9 +2886,12 @@ public:
 	struct FDragElementInfo                            Drag;                                                     // 0x00C8(0x0028)
 	struct FVector2D                                   ScaleSize;                                                // 0x00F0(0x0008)
 	unsigned long                                      bRenderDragItem : 1;                                      // 0x00F8(0x0004)
-	struct FScriptDelegate                             __OnUpdateItemInSlot__Delegate;                           // 0x00FC(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __DoCanPutItemInSlot__Delegate;                           // 0x010C(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnUpdateDrag__Delegate;                                 // 0x011C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnUpdateItemInSlot__Delegate;                           // 0x00FC(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00FC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __DoCanPutItemInSlot__Delegate;                           // 0x010C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x010C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnUpdateDrag__Delegate;                                 // 0x011C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x011C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -3250,8 +3015,10 @@ public:
 class UMobileMenuObjectProxy : public UMobileMenuObject
 {
 public:
-	struct FScriptDelegate                             __OnTouchEvent__Delegate;                                 // 0x00A4(0x0010) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             __OnRenderObject__Delegate;                               // 0x00B4(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnTouchEvent__Delegate;                                 // 0x00A4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00A4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __OnRenderObject__Delegate;                               // 0x00B4(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00B4(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{

@@ -1066,7 +1066,7 @@ struct UGFxObject_TranslateString_Params
 struct UGFxObject_SetFunction_Params
 {
 	struct FString                                     Member;                                                   // (CPF_Parm, CPF_NeedCtorLink)
-	class UObject*                                     context;                                                  // (CPF_Parm)
+	class UObject*                                     Context;                                                  // (CPF_Parm)
 	struct FName                                       fname;                                                    // (CPF_Parm)
 };
 

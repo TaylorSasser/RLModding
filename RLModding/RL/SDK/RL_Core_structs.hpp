@@ -217,7 +217,8 @@ struct FPointer
 struct FObjectProviderSubscription
 {
 	class UClass*                                      ObjClass;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectPropertyInjection
@@ -232,7 +233,8 @@ struct FObjectPropertyInjection
 // 0x0014
 struct FObjectProviderPendingCallback
 {
-	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	class UObject*                                     Value;                                                    // 0x0010(0x0004)
 };
 
@@ -256,6 +258,43 @@ struct FColor
 		  A(a)
 	{ }
 
+};
+
+// ScriptStruct Core.Object.BitArray_Mirror
+// 0x001C
+struct FBitArray_Mirror
+{
+	struct FPointer                                    IndirectData;                                             // 0x0000(0x0004) (CPF_Const, CPF_Native)
+	int                                                InlineData[0x4];                                          // 0x0004(0x0004) (CPF_Const, CPF_Native)
+	int                                                NumBits;                                                  // 0x0014(0x0004) (CPF_Const, CPF_Native)
+	int                                                MaxBits;                                                  // 0x0018(0x0004) (CPF_Const, CPF_Native)
+};
+
+// ScriptStruct Core.Object.SparseArray_Mirror
+// 0x0030
+struct FSparseArray_Mirror
+{
+	TArray<int>                                        Elements;                                                 // 0x0000(0x000C) (CPF_Const, CPF_Native)
+	struct FBitArray_Mirror                            AllocationFlags;                                          // 0x000C(0x001C) (CPF_Const, CPF_Native)
+	int                                                FirstFreeIndex;                                           // 0x0028(0x0004) (CPF_Const, CPF_Native)
+	int                                                NumFreeIndices;                                           // 0x002C(0x0004) (CPF_Const, CPF_Native)
+};
+
+// ScriptStruct Core.Object.Set_Mirror
+// 0x003C
+struct FSet_Mirror
+{
+	struct FSparseArray_Mirror                         Elements;                                                 // 0x0000(0x0030) (CPF_Const, CPF_Native)
+	int                                                InlineHash;                                               // 0x0030(0x0004) (CPF_Const, CPF_Native)
+	struct FPointer                                    Hash;                                                     // 0x0034(0x0004) (CPF_Const, CPF_Native)
+	int                                                HashSize;                                                 // 0x0038(0x0004) (CPF_Const, CPF_Native)
+};
+
+// ScriptStruct Core.Object.Map_Mirror
+// 0x003C
+struct FMap_Mirror
+{
+	struct FSet_Mirror                                 Pairs;                                                    // 0x0000(0x003C) (CPF_Const, CPF_Native)
 };
 
 // ScriptStruct Core.Object.Guid
@@ -653,46 +692,9 @@ struct FUntypedBulkData_Mirror
 	int                                                bShouldFreeOnEmpty;                                       // 0x0030(0x0004) (CPF_Const, CPF_Native)
 };
 
-// ScriptStruct Core.Object.BitArray_Mirror
-// 0x001C
-struct FBitArray_Mirror
-{
-	struct FPointer                                    IndirectData;                                             // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	int                                                InlineData[0x4];                                          // 0x0004(0x0004) (CPF_Const, CPF_Native)
-	int                                                NumBits;                                                  // 0x0014(0x0004) (CPF_Const, CPF_Native)
-	int                                                MaxBits;                                                  // 0x0018(0x0004) (CPF_Const, CPF_Native)
-};
-
-// ScriptStruct Core.Object.SparseArray_Mirror
-// 0x0030
-struct FSparseArray_Mirror
-{
-	TArray<int>                                        Elements;                                                 // 0x0000(0x000C) (CPF_Const, CPF_Native)
-	struct FBitArray_Mirror                            AllocationFlags;                                          // 0x000C(0x001C) (CPF_Const, CPF_Native)
-	int                                                FirstFreeIndex;                                           // 0x0028(0x0004) (CPF_Const, CPF_Native)
-	int                                                NumFreeIndices;                                           // 0x002C(0x0004) (CPF_Const, CPF_Native)
-};
-
-// ScriptStruct Core.Object.Set_Mirror
-// 0x003C
-struct FSet_Mirror
-{
-	struct FSparseArray_Mirror                         Elements;                                                 // 0x0000(0x0030) (CPF_Const, CPF_Native)
-	int                                                InlineHash;                                               // 0x0030(0x0004) (CPF_Const, CPF_Native)
-	struct FPointer                                    Hash;                                                     // 0x0034(0x0004) (CPF_Const, CPF_Native)
-	int                                                HashSize;                                                 // 0x0038(0x0004) (CPF_Const, CPF_Native)
-};
-
 // ScriptStruct Core.Object.MultiMap_Mirror
 // 0x003C
 struct FMultiMap_Mirror
-{
-	struct FSet_Mirror                                 Pairs;                                                    // 0x0000(0x003C) (CPF_Const, CPF_Native)
-};
-
-// ScriptStruct Core.Object.Map_Mirror
-// 0x003C
-struct FMap_Mirror
 {
 	struct FSet_Mirror                                 Pairs;                                                    // 0x0000(0x003C) (CPF_Const, CPF_Native)
 };

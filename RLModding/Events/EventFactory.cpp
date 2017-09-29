@@ -44,7 +44,6 @@ EventFactory::EventFactory() {
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
-
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);

@@ -30,13 +30,5 @@ void CustomBlog::DrawMenu() {
 void CustomBlog::onMainMenuTick(Event* event) {
 	UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
 	UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
-	
-	if (bSet && blog && community) {
-		blog->BlogTitle = Utils::to_fstring(title);
-		blog->BlogBody = Utils::to_fstring(body);
-		blog->YouTubeURL = Utils::to_fstring(youtubeURL);
-		blog->YouTubeTitle = Utils::to_fstring(youtubeTitle);
-		blog->MotD = Utils::to_fstring(motd);
-		community->UpdateBlogText();
-	}
+	//Old custom blog method doesnt work anymore. TODO: Find new way.
 }

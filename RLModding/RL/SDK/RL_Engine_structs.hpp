@@ -1,4 +1,6 @@
 #pragma once
+#undef AF_MAX
+#undef PF_MAX
 
 // Rocket League (1.31) SDK
 
@@ -11,8 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Constants
 //---------------------------------------------------------------------------
-#undef AF_MAX
-#undef PF_MAX
+
 #define CONST_MINFLOORZ                                          0.7
 #define CONST_SecondsInMonth                                     2629743
 #define CONST_ACTORMAXSTEPHEIGHT                                 35.0
@@ -250,7 +251,9 @@ enum class EOnlinePlatform
 	OnlinePlatform_PS3             = 3,
 	OnlinePlatform_Dingo           = 4,
 	OnlinePlatform_QQ              = 5,
-	OnlinePlatform_MAX             = 6
+	OnlinePlatform_NNX             = 6,
+	OnlinePlatform_PsyNet          = 7,
+	OnlinePlatform_MAX             = 8
 };
 
 
@@ -1515,7 +1518,13 @@ enum class EPixelFormat
 	PF_R5G6B5                      = 30,
 	PF_G8R8                        = 31,
 	PF_R32_UINT                    = 32,
-	PF_MAX                         = 33
+	PF_ASTC_4x4                    = 33,
+	PF_ASTC_6x6                    = 34,
+	PF_ASTC_8x8                    = 35,
+	PF_ASTC_10x10                  = 36,
+	PF_ASTC_12x12                  = 37,
+	PF_COUNT                       = 38,
+	PF_MAX                         = 39
 };
 
 
@@ -1652,7 +1661,8 @@ enum class EInputPlatformType
 	IPT_PS3                        = 2,
 	IPT_PS4                        = 3,
 	IPT_XBOX_ONE                   = 4,
-	IPT_MAX                        = 5
+	IPT_NNX                        = 5,
+	IPT_MAX                        = 6
 };
 
 
@@ -2054,7 +2064,8 @@ enum class EConsoleType
 	CONSOLE_Kindle                 = 10,
 	CONSOLE_PS4                    = 11,
 	CONSOLE_Dingo                  = 12,
-	CONSOLE_MAX                    = 13
+	CONSOLE_NNX                    = 13,
+	CONSOLE_MAX                    = 14
 };
 
 
@@ -3695,6 +3706,17 @@ enum class ETimeZone
 };
 
 
+// Enum Engine.MaterialExpressionGameParameter.EGameShaderParameterType
+enum class EGameShaderParameterType
+{
+	GSPT_Team0_ColorPrimary        = 0,
+	GSPT_Team0_ColorSecondary      = 1,
+	GSPT_Team1_ColorPrimary        = 2,
+	GSPT_Team1_ColorSecondary      = 3,
+	GSPT_MAX                       = 4
+};
+
+
 
 //---------------------------------------------------------------------------
 //Script Structs
@@ -3713,15 +3735,6 @@ struct FTimerData
 	class UObject*                                     TimerObj;                                                 // 0x0018(0x0004)
 	unsigned long                                      bStateTimer : 1;                                          // 0x001C(0x0004)
 	struct FName                                       TimerStateName;                                           // 0x0020(0x0008)
-};
-
-// ScriptStruct Engine.Brush.GeomSelection
-// 0x000C
-struct FGeomSelection
-{
-	int                                                Type;                                                     // 0x0000(0x0004)
-	int                                                Index;                                                    // 0x0004(0x0004)
-	int                                                SelectionIndex;                                           // 0x0008(0x0004)
 };
 
 // ScriptStruct Engine.PostProcessVolume.LUTBlender
@@ -3859,6 +3872,16 @@ struct FPostProcessSettings
 	struct FMobilePostProcessSettings                  MobilePostProcess;                                        // 0x011C(0x0034) (CPF_Edit)
 };
 
+// ScriptStruct Engine.ReverbVolume.ReverbSettings
+// 0x0010
+struct FReverbSettings
+{
+	unsigned long                                      bApplyReverb : 1;                                         // 0x0000(0x0004) (CPF_Edit)
+	TEnumAsByte<EReverbPreset>                         ReverbType;                                               // 0x0004(0x0001) (CPF_Edit)
+	float                                              Volume;                                                   // 0x0008(0x0004) (CPF_Edit)
+	float                                              FadeTime;                                                 // 0x000C(0x0004) (CPF_Edit)
+};
+
 // ScriptStruct Engine.ReverbVolume.InteriorSettings
 // 0x0024
 struct FInteriorSettings
@@ -3872,16 +3895,6 @@ struct FInteriorSettings
 	float                                              InteriorTime;                                             // 0x0018(0x0004) (CPF_Edit)
 	float                                              InteriorLPF;                                              // 0x001C(0x0004) (CPF_Edit)
 	float                                              InteriorLPFTime;                                          // 0x0020(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.ReverbVolume.ReverbSettings
-// 0x0010
-struct FReverbSettings
-{
-	unsigned long                                      bApplyReverb : 1;                                         // 0x0000(0x0004) (CPF_Edit)
-	TEnumAsByte<EReverbPreset>                         ReverbType;                                               // 0x0004(0x0001) (CPF_Edit)
-	float                                              Volume;                                                   // 0x0008(0x0004) (CPF_Edit)
-	float                                              FadeTime;                                                 // 0x000C(0x0004) (CPF_Edit)
 };
 
 // ScriptStruct Engine.WorldInfo.NetViewer
@@ -3973,7 +3986,7 @@ struct FPhysXVerticalProperties
 // 0x0020
 struct FScreenMessageString
 {
-	__int64                                      Key;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.WorldInfo.ScreenMessageString.Key
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.WorldInfo.ScreenMessageString.Key
 	struct FString                                     ScreenMessage;                                            // 0x0008(0x000C) (CPF_Transient, CPF_AlwaysInit, CPF_NeedCtorLink)
 	struct FColor                                      DisplayColor;                                             // 0x0014(0x0004) (CPF_Transient, CPF_AlwaysInit)
 	float                                              TimeToDisplay;                                            // 0x0018(0x0004) (CPF_Transient, CPF_AlwaysInit)
@@ -4064,100 +4077,6 @@ struct FHostMigrationState
 	unsigned long                                      bHostMigrationEnabled : 1;                                // 0x0018(0x0004)
 };
 
-// ScriptStruct Engine.OnlineSubsystem.SteamDLCInfo
-// 0x0010
-struct FSteamDLCInfo
-{
-	__int64                                      AppID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SteamDLCInfo.AppID
-	struct FName                                       Value;                                                    // 0x0008(0x0008)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.PS4DLCInfo
-// 0x0014
-struct FPS4DLCInfo
-{
-	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FName                                       Value;                                                    // 0x000C(0x0008)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.XboxOneDLCInfo
-// 0x0014
-struct FXboxOneDLCInfo
-{
-	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FName                                       Value;                                                    // 0x000C(0x0008)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.NamedInterface
-// 0x000C
-struct FNamedInterface
-{
-	struct FName                                       InterfaceName;                                            // 0x0000(0x0008)
-	class UObject*                                     InterfaceObject;                                          // 0x0008(0x0004)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.NamedInterfaceDef
-// 0x0014
-struct FNamedInterfaceDef
-{
-	struct FName                                       InterfaceName;                                            // 0x0000(0x0008)
-	struct FString                                     InterfaceClassName;                                       // 0x0008(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.SceNpOnlineId
-// 0x0014
-struct FSceNpOnlineId
-{
-	__int64											   Data;                                      // 0x0000(0x0010) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpOnlineId.Data
-	unsigned char                                      Term;                                                     // 0x0010(0x0001)
-	unsigned char                                      Dummy[0x3];                                               // 0x0011(0x0001)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.SceNpId
-// 0x0024
-struct FSceNpId
-{
-	struct FSceNpOnlineId                              Handle;                                                   // 0x0000(0x0014) (CPF_Const)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpId.Opt
-	unsigned char                                      UnknownData01[0x8];                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpId.Reserved
-};
-
-// ScriptStruct Engine.OnlineSubsystem.UniqueNetId
-// 0x002E
-struct FUniqueNetId
-{
-	__int64											Uid;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
-	struct FSceNpId                                    NpId;                                                     // 0x0008(0x0024)
-	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x002C(0x0001)
-	unsigned char                                      SplitscreenID;                                            // 0x002D(0x0001)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.OnlineRegistrant
-// 0x0030
-struct FOnlineRegistrant
-{
-	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0030) (CPF_Const)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.OnlineArbitrationRegistrant
-// 0x000C (0x003C - 0x0030)
-struct FOnlineArbitrationRegistrant : public FOnlineRegistrant
-{
-	__int64                                      MachineId;                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineArbitrationRegistrant.MachineId
-	int                                                Trustworthiness;                                          // 0x0038(0x0004) (CPF_Const)
-};
-
-// ScriptStruct Engine.OnlineSubsystem.NamedSession
-// 0x0028
-struct FNamedSession
-{
-	struct FName                                       SessionName;                                              // 0x0000(0x0008)
-	struct FPointer                                    SessionInfo;                                              // 0x0008(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-	class UOnlineGameSettings*                         GameSettings;                                             // 0x000C(0x0004)
-	TArray<struct FOnlineRegistrant>                   Registrants;                                              // 0x0010(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FOnlineArbitrationRegistrant>        ArbitrationRegistrants;                                   // 0x001C(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct Engine.OnlineSubsystem.OnlineContent
 // 0x004C
 struct FOnlineContent
@@ -4174,18 +4093,55 @@ struct FOnlineContent
 	TArray<struct FString>                             ContentFiles;                                             // 0x0040(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct Engine.OnlineSubsystem.SceNpOnlineId
+// 0x0014
+struct FSceNpOnlineId
+{
+	unsigned char                                      UnknownData00[0x10];                                      // 0x0000(0x0010) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpOnlineId.Data
+	unsigned char                                      Term;                                                     // 0x0010(0x0001)
+	unsigned char                                      Dummy[0x3];                                               // 0x0011(0x0001)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.SceNpId
+// 0x0024
+struct FSceNpId
+{
+	struct FSceNpOnlineId                              Handle;                                                   // 0x0000(0x0014) (CPF_Const)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0014(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpId.Opt
+	unsigned char                                      UnknownData01[0x8];                                       // 0x001C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SceNpId.Reserved
+};
+
+// ScriptStruct Engine.OnlineSubsystem.NinUserId
+// 0x0018
+struct FNinUserId
+{
+	unsigned char                                      UnknownData00[0x10];                                      // 0x0000(0x0010) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.NinUserId.Data
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0010(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.NinUserId.Context
+};
+
+// ScriptStruct Engine.OnlineSubsystem.UniqueNetId
+// 0x0046
+struct FUniqueNetId
+{
+	uint64_t										   SteamID;												     // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
+	struct FSceNpId                                    NpId;                                                     // 0x0008(0x0024)
+	struct FNinUserId                                  NinUserHandle;                                            // 0x002C(0x0018)
+	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0044(0x0001)
+	unsigned char                                      SplitscreenID;                                            // 0x0045(0x0001)
+};
+
 // ScriptStruct Engine.Engine.NetworkEncryptionKey
-// 0x0070
+// 0x0088
 struct FNetworkEncryptionKey
 {
 	TArray<unsigned char>                              EncryptionKey;                                            // 0x0000(0x000C) (CPF_NeedCtorLink)
 	TArray<unsigned char>                              InitializationVector;                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 	TArray<unsigned char>                              HMACKey;                                                  // 0x0018(0x000C) (CPF_NeedCtorLink)
 	TArray<unsigned char>                              SessionIdentifier;                                        // 0x0024(0x000C) (CPF_NeedCtorLink)
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0030(0x0030)
-	int                                                Id;                                                       // 0x0060(0x0004)
-	unsigned long                                      InUse : 1;                                                // 0x0064(0x0004)
-	struct FDouble                                     TimeLastUsed;                                             // 0x0068(0x0008)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0030(0x0048)
+	int                                                Id;                                                       // 0x0078(0x0004)
+	unsigned long                                      InUse : 1;                                                // 0x007C(0x0004)
+	struct FDouble                                     TimeLastUsed;                                             // 0x0080(0x0008)
 };
 
 // ScriptStruct Engine.Engine.StatColorMapEntry
@@ -4262,58 +4218,21 @@ struct FAnimTag
 	TArray<struct FString>                             Contains;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct Engine.Brush.GeomSelection
+// 0x000C
+struct FGeomSelection
+{
+	int                                                Type;                                                     // 0x0000(0x0004)
+	int                                                Index;                                                    // 0x0004(0x0004)
+	int                                                SelectionIndex;                                           // 0x0008(0x0004)
+};
+
 // ScriptStruct Engine.CullDistanceVolume.CullDistanceSizePair
 // 0x0008
 struct FCullDistanceSizePair
 {
 	float                                              Size;                                                     // 0x0000(0x0004) (CPF_Edit)
 	float                                              CullDistance;                                             // 0x0004(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.KMeshProps.KSphereElem
-// 0x0048
-struct FKSphereElem
-{
-	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
-	float                                              Radius;                                                   // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                                       // 0x0044(0x0004) (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                                        // 0x0044(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.KMeshProps.KBoxElem
-// 0x0050
-struct FKBoxElem
-{
-	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
-	float                                              X;                                                        // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
-	float                                              Y;                                                        // 0x0044(0x0004) (CPF_Edit, CPF_EditConst)
-	float                                              Z;                                                        // 0x0048(0x0004) (CPF_Edit, CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                                       // 0x004C(0x0004) (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                                        // 0x004C(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.KMeshProps.KSphylElem
-// 0x004C
-struct FKSphylElem
-{
-	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
-	float                                              Radius;                                                   // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
-	float                                              Length;                                                   // 0x0044(0x0004) (CPF_Edit, CPF_EditConst)
-	unsigned long                                      bNoRBCollision : 1;                                       // 0x0048(0x0004) (CPF_Edit)
-	unsigned long                                      bPerPolyShape : 1;                                        // 0x0048(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.KMeshProps.KAggregateGeom
-// 0x0038
-struct FKAggregateGeom
-{
-	TArray<struct FKSphereElem>                        SphereElems;                                              // 0x0000(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
-	TArray<struct FKBoxElem>                           BoxElems;                                                 // 0x000C(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
-	TArray<struct FKSphylElem>                         SphylElems;                                               // 0x0018(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
-	TArray<struct FKConvexElem>                        ConvexElems;                                              // 0x0024(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
-	struct FPointer                                    RenderInfo;                                               // 0x0030(0x0004) (CPF_Native, CPF_NoImport)
-	unsigned long                                      bSkipCloseAndParallelChecks : 1;                          // 0x0034(0x0004) (CPF_Edit)
-	unsigned long                                      bSimpleCollisionPlane : 1;                                // 0x0034(0x0004) (CPF_Edit)
 };
 
 // ScriptStruct Engine.KMeshProps.KConvexElem
@@ -4528,6 +4447,52 @@ struct FDynamicLinkInfo
 	struct FVector                                     LastSrcLocation;                                          // 0x000C(0x000C)
 };
 
+// ScriptStruct Engine.KMeshProps.KSphereElem
+// 0x0048
+struct FKSphereElem
+{
+	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
+	float                                              Radius;                                                   // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
+	unsigned long                                      bNoRBCollision : 1;                                       // 0x0044(0x0004) (CPF_Edit)
+	unsigned long                                      bPerPolyShape : 1;                                        // 0x0044(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct Engine.KMeshProps.KBoxElem
+// 0x0050
+struct FKBoxElem
+{
+	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
+	float                                              X;                                                        // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
+	float                                              Y;                                                        // 0x0044(0x0004) (CPF_Edit, CPF_EditConst)
+	float                                              Z;                                                        // 0x0048(0x0004) (CPF_Edit, CPF_EditConst)
+	unsigned long                                      bNoRBCollision : 1;                                       // 0x004C(0x0004) (CPF_Edit)
+	unsigned long                                      bPerPolyShape : 1;                                        // 0x004C(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct Engine.KMeshProps.KSphylElem
+// 0x004C
+struct FKSphylElem
+{
+	struct FMatrix                                     TM;                                                       // 0x0000(0x0040) (CPF_Edit, CPF_EditConst)
+	float                                              Radius;                                                   // 0x0040(0x0004) (CPF_Edit, CPF_EditConst)
+	float                                              Length;                                                   // 0x0044(0x0004) (CPF_Edit, CPF_EditConst)
+	unsigned long                                      bNoRBCollision : 1;                                       // 0x0048(0x0004) (CPF_Edit)
+	unsigned long                                      bPerPolyShape : 1;                                        // 0x0048(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct Engine.KMeshProps.KAggregateGeom
+// 0x0038
+struct FKAggregateGeom
+{
+	TArray<struct FKSphereElem>                        SphereElems;                                              // 0x0000(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
+	TArray<struct FKBoxElem>                           BoxElems;                                                 // 0x000C(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
+	TArray<struct FKSphylElem>                         SphylElems;                                               // 0x0018(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
+	TArray<struct FKConvexElem>                        ConvexElems;                                              // 0x0024(0x000C) (CPF_Edit, CPF_EditFixedSize, CPF_NeedCtorLink)
+	struct FPointer                                    RenderInfo;                                               // 0x0030(0x0004) (CPF_Native, CPF_NoImport)
+	unsigned long                                      bSkipCloseAndParallelChecks : 1;                          // 0x0034(0x0004) (CPF_Edit)
+	unsigned long                                      bSimpleCollisionPlane : 1;                                // 0x0034(0x0004) (CPF_Edit)
+};
+
 // ScriptStruct Engine.StaticMeshActor.PreCombinedStaticMeshActor
 // 0x0044
 struct FPreCombinedStaticMeshActor
@@ -4688,12 +4653,12 @@ struct FClientAdjustment
 };
 
 // ScriptStruct Engine.PlayerController.ConnectedPeerInfo
-// 0x0038
+// 0x0050
 struct FConnectedPeerInfo
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0030(0x0001)
-	unsigned long                                      bLostConnectionToHost : 1;                                // 0x0034(0x0004)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0048(0x0001)
+	unsigned long                                      bLostConnectionToHost : 1;                                // 0x004C(0x0004)
 };
 
 // ScriptStruct Engine.PlayerController.InputEntry
@@ -4713,7 +4678,8 @@ struct FInputMatchRequest
 	TArray<struct FInputEntry>                         Inputs;                                                   // 0x0000(0x000C) (CPF_NeedCtorLink)
 	class AActor*                                      MatchActor;                                               // 0x000C(0x0004)
 	struct FName                                       MatchFuncName;                                            // 0x0010(0x0008)
-	struct FScriptDelegate                             MatchDelegate;                                            // 0x0018(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             MatchDelegate;                                            // 0x0018(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0018(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FName                                       FailedFuncName;                                           // 0x0028(0x0008)
 	struct FName                                       RequestName;                                              // 0x0030(0x0008)
 	int                                                MatchIdx;                                                 // 0x0038(0x0004) (CPF_Transient)
@@ -4743,7 +4709,8 @@ struct FDebugTextInfo
 struct FGetSaveDataCallbackStruct
 {
 	int                                                SlotIndex;                                                // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct Engine.CloudSaveSystem.SetSaveDataCallbackStruct
@@ -4751,7 +4718,8 @@ struct FGetSaveDataCallbackStruct
 struct FSetSaveDataCallbackStruct
 {
 	int                                                SlotIndex;                                                // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct Engine.CloudSaveSystem.SaveSlotOperation
@@ -4852,7 +4820,7 @@ struct FGameplayEventsHeader
 };
 
 // ScriptStruct Engine.GameplayEvents.GameSessionInformation
-// 0x0098
+// 0x00B0
 struct FGameSessionInformation
 {
 	int                                                AppTitleID;                                               // 0x0000(0x0004)
@@ -4868,18 +4836,18 @@ struct FGameSessionInformation
 	struct FString                                     MapURL;                                                   // 0x0050(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	int                                                SessionInstance;                                          // 0x005C(0x0004) (CPF_Const)
 	int                                                GameTypeId;                                               // 0x0060(0x0004) (CPF_Const)
-	struct FUniqueNetId                                OwningNetId;                                              // 0x0064(0x0030) (CPF_Const)
-	int                                                PlaylistId;                                               // 0x0094(0x0004)
+	struct FUniqueNetId                                OwningNetId;                                              // 0x0064(0x0048) (CPF_Const)
+	int                                                PlaylistId;                                               // 0x00AC(0x0004)
 };
 
 // ScriptStruct Engine.GameplayEvents.PlayerInformation
-// 0x0048
+// 0x0060
 struct FPlayerInformation
 {
 	struct FName                                       ControllerName;                                           // 0x0000(0x0008)
 	struct FString                                     PlayerName;                                               // 0x0008(0x000C) (CPF_NeedCtorLink)
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0014(0x0030)
-	unsigned long                                      bIsBot : 1;                                               // 0x0044(0x0004)
+	struct FUniqueNetId                                UniqueId;                                                 // 0x0014(0x0048)
+	unsigned long                                      bIsBot : 1;                                               // 0x005C(0x0004)
 };
 
 // ScriptStruct Engine.GameplayEvents.TeamInformation
@@ -5010,42 +4978,6 @@ struct FLightmassPrimitiveSettings
 	float                                              FullyOccludedSamplesFraction;                             // 0x0018(0x0004) (CPF_Edit)
 };
 
-// ScriptStruct Engine.Settings.LocalizedStringSetting
-// 0x0009
-struct FLocalizedStringSetting
-{
-	int                                                Id;                                                       // 0x0000(0x0004)
-	int                                                ValueIndex;                                               // 0x0004(0x0004)
-	TEnumAsByte<EOnlineDataAdvertisementType>          AdvertisementType;                                        // 0x0008(0x0001)
-};
-
-// ScriptStruct Engine.Settings.StringIdToStringMapping
-// 0x0010
-struct FStringIdToStringMapping
-{
-	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
-	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const, CPF_Localized)
-	unsigned long                                      bIsWildcard : 1;                                          // 0x000C(0x0004) (CPF_Const)
-};
-
-// ScriptStruct Engine.Settings.LocalizedStringSettingMetaData
-// 0x0024
-struct FLocalizedStringSettingMetaData
-{
-	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
-	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const)
-	struct FString                                     ColumnHeaderText;                                         // 0x000C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TArray<struct FStringIdToStringMapping>            ValueMappings;                                            // 0x0018(0x000C) (CPF_Const, CPF_NeedCtorLink)
-};
-
-// ScriptStruct Engine.Settings.IdToStringMapping
-// 0x000C
-struct FIdToStringMapping
-{
-	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
-	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const, CPF_Localized)
-};
-
 // ScriptStruct Engine.Settings.SettingsData
 // 0x000C
 struct FSettingsData
@@ -5053,21 +4985,6 @@ struct FSettingsData
 	TEnumAsByte<ESettingsDataType>                     Type;                                                     // 0x0000(0x0001) (CPF_Const)
 	int                                                Value1;                                                   // 0x0004(0x0004) (CPF_Const)
 	struct FPointer                                    Value2;                                                   // 0x0008(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
-};
-
-// ScriptStruct Engine.Settings.SettingsPropertyPropertyMetaData
-// 0x0040
-struct FSettingsPropertyPropertyMetaData
-{
-	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
-	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const)
-	struct FString                                     ColumnHeaderText;                                         // 0x000C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
-	TEnumAsByte<EPropertyValueMappingType>             MappingType;                                              // 0x0018(0x0001) (CPF_Const)
-	TArray<struct FIdToStringMapping>                  ValueMappings;                                            // 0x001C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FSettingsData>                       PredefinedValues;                                         // 0x0028(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	float                                              MinVal;                                                   // 0x0034(0x0004) (CPF_Const)
-	float                                              MaxVal;                                                   // 0x0038(0x0004) (CPF_Const)
-	float                                              RangeIncrement;                                           // 0x003C(0x0004) (CPF_Const)
 };
 
 // ScriptStruct Engine.Settings.SettingsProperty
@@ -5087,6 +5004,38 @@ struct FOnlineProfileSetting
 	struct FSettingsProperty                           ProfileSetting;                                           // 0x0004(0x0014)
 };
 
+// ScriptStruct Engine.Settings.IdToStringMapping
+// 0x000C
+struct FIdToStringMapping
+{
+	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
+	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const, CPF_Localized)
+};
+
+// ScriptStruct Engine.Settings.SettingsPropertyPropertyMetaData
+// 0x0040
+struct FSettingsPropertyPropertyMetaData
+{
+	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
+	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const)
+	struct FString                                     ColumnHeaderText;                                         // 0x000C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	TEnumAsByte<EPropertyValueMappingType>             MappingType;                                              // 0x0018(0x0001) (CPF_Const)
+	TArray<struct FIdToStringMapping>                  ValueMappings;                                            // 0x001C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FSettingsData>                       PredefinedValues;                                         // 0x0028(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	float                                              MinVal;                                                   // 0x0034(0x0004) (CPF_Const)
+	float                                              MaxVal;                                                   // 0x0038(0x0004) (CPF_Const)
+	float                                              RangeIncrement;                                           // 0x003C(0x0004) (CPF_Const)
+};
+
+// ScriptStruct Engine.Settings.StringIdToStringMapping
+// 0x0010
+struct FStringIdToStringMapping
+{
+	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
+	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const, CPF_Localized)
+	unsigned long                                      bIsWildcard : 1;                                          // 0x000C(0x0004) (CPF_Const)
+};
+
 // ScriptStruct Engine.OnlineStatsRead.OnlineStatsColumn
 // 0x0010
 struct FOnlineStatsColumn
@@ -5096,14 +5045,14 @@ struct FOnlineStatsColumn
 };
 
 // ScriptStruct Engine.OnlineStatsRead.OnlineStatsRow
-// 0x0060
+// 0x0078
 struct FOnlineStatsRow
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030) (CPF_Const)
-	struct FSettingsData                               Rank;                                                     // 0x0030(0x000C) (CPF_Const)
-	struct FString                                     NickName;                                                 // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TArray<struct FOnlineStatsColumn>                  Columns;                                                  // 0x0048(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FSettingsData>                       StatValues;                                               // 0x0054(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048) (CPF_Const)
+	struct FSettingsData                               Rank;                                                     // 0x0048(0x000C) (CPF_Const)
+	struct FString                                     Nickname;                                                 // 0x0054(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FOnlineStatsColumn>                  Columns;                                                  // 0x0060(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FSettingsData>                       StatValues;                                               // 0x006C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineStatsRead.ColumnMetaData
@@ -5113,6 +5062,80 @@ struct FColumnMetaData
 	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
 	struct FString                                     Name;                                                     // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     ColumnName;                                               // 0x0010(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.SteamDLCInfo
+// 0x0010
+struct FSteamDLCInfo
+{
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.SteamDLCInfo.AppID
+	struct FName                                       Value;                                                    // 0x0008(0x0008)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.PS4DLCInfo
+// 0x0014
+struct FPS4DLCInfo
+{
+	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FName                                       Value;                                                    // 0x000C(0x0008)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.XboxOneDLCInfo
+// 0x0014
+struct FXboxOneDLCInfo
+{
+	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FName                                       Value;                                                    // 0x000C(0x0008)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.SwitchDLCInfo
+// 0x0014
+struct FSwitchDLCInfo
+{
+	struct FString                                     Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FName                                       Value;                                                    // 0x000C(0x0008)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.NamedInterface
+// 0x000C
+struct FNamedInterface
+{
+	struct FName                                       InterfaceName;                                            // 0x0000(0x0008)
+	class UObject*                                     InterfaceObject;                                          // 0x0008(0x0004)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.NamedInterfaceDef
+// 0x0014
+struct FNamedInterfaceDef
+{
+	struct FName                                       InterfaceName;                                            // 0x0000(0x0008)
+	struct FString                                     InterfaceClassName;                                       // 0x0008(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.OnlineRegistrant
+// 0x0048
+struct FOnlineRegistrant
+{
+	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0048) (CPF_Const)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.OnlineArbitrationRegistrant
+// 0x000C (0x0054 - 0x0048)
+struct FOnlineArbitrationRegistrant : public FOnlineRegistrant
+{
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineArbitrationRegistrant.MachineId
+	int                                                Trustworthiness;                                          // 0x0050(0x0004) (CPF_Const)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.NamedSession
+// 0x0028
+struct FNamedSession
+{
+	struct FName                                       SessionName;                                              // 0x0000(0x0008)
+	struct FPointer                                    SessionInfo;                                              // 0x0008(0x0004) (CPF_Const, CPF_Native, CPF_Transient)
+	class UOnlineGameSettings*                         GameSettings;                                             // 0x000C(0x0004)
+	TArray<struct FOnlineRegistrant>                   Registrants;                                              // 0x0010(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FOnlineArbitrationRegistrant>        ArbitrationRegistrants;                                   // 0x001C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.PlatformInterfaceBase.DelegateArray
@@ -5215,6 +5238,25 @@ struct FDebugDisplayProperty
 	class UObject*                                     Obj;                                                      // 0x0000(0x0004)
 	struct FName                                       PropertyName;                                             // 0x0004(0x0008)
 	unsigned long                                      bSpecialProperty : 1;                                     // 0x000C(0x0004)
+};
+
+// ScriptStruct Engine.Settings.LocalizedStringSetting
+// 0x0009
+struct FLocalizedStringSetting
+{
+	int                                                Id;                                                       // 0x0000(0x0004)
+	int                                                ValueIndex;                                               // 0x0004(0x0004)
+	TEnumAsByte<EOnlineDataAdvertisementType>          AdvertisementType;                                        // 0x0008(0x0001)
+};
+
+// ScriptStruct Engine.Settings.LocalizedStringSettingMetaData
+// 0x0024
+struct FLocalizedStringSettingMetaData
+{
+	int                                                Id;                                                       // 0x0000(0x0004) (CPF_Const)
+	struct FName                                       Name;                                                     // 0x0004(0x0008) (CPF_Const)
+	struct FString                                     ColumnHeaderText;                                         // 0x000C(0x000C) (CPF_Const, CPF_Localized, CPF_NeedCtorLink)
+	TArray<struct FStringIdToStringMapping>            ValueMappings;                                            // 0x0018(0x000C) (CPF_Const, CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineGameSearch.OnlineGameSearchResult
@@ -5497,71 +5539,12 @@ struct FSkelMaterialSetterDatum
 	class UMaterialInterface*                          TheMaterial;                                              // 0x0004(0x0004) (CPF_Edit)
 };
 
-// ScriptStruct Engine.AnimSequence.AnimNotifyEvent
-// 0x0014
-struct FAnimNotifyEvent
-{
-	float                                              Time;                                                     // 0x0000(0x0004) (CPF_Edit)
-	class UAnimNotify*                                 Notify;                                                   // 0x0004(0x0004) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
-	struct FName                                       Comment;                                                  // 0x0008(0x0008) (CPF_Edit)
-	float                                              Duration;                                                 // 0x0010(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.AnimSequence.SkelControlModifier
-// 0x0014
-struct FSkelControlModifier
-{
-	struct FName                                       SkelControlName;                                          // 0x0000(0x0008) (CPF_Edit)
-	TArray<struct FTimeModifier>                       Modifiers;                                                // 0x0008(0x000C) (CPF_Edit, CPF_NeedCtorLink, CPF_EditInline)
-};
-
-// ScriptStruct Engine.AnimSequence.RawAnimSequenceTrack
-// 0x0018
-struct FRawAnimSequenceTrack
-{
-	TArray<struct FVector>                             PosKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
-	TArray<struct FQuat>                               RotKeys;                                                  // 0x000C(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct Engine.AnimSequence.TranslationTrack
-// 0x0018
-struct FTranslationTrack
-{
-	TArray<struct FVector>                             PosKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
-	TArray<float>                                      Times;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct Engine.AnimSequence.RotationTrack
-// 0x0018
-struct FRotationTrack
-{
-	TArray<struct FQuat>                               RotKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
-	TArray<float>                                      Times;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
-};
-
-// ScriptStruct Engine.AnimSequence.CurveTrack
-// 0x0014
-struct FCurveTrack
-{
-	struct FName                                       CurveName;                                                // 0x0000(0x0008)
-	TArray<float>                                      CurveWeights;                                             // 0x0008(0x000C) (CPF_NeedCtorLink)
-};
-
 // ScriptStruct Engine.AnimSequence.TimeModifier
 // 0x0008
 struct FTimeModifier
 {
 	float                                              Time;                                                     // 0x0000(0x0004) (CPF_Edit)
 	float                                              TargetStrength;                                           // 0x0004(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.EngineTypes.RootMotionCurve
-// 0x001C
-struct FRootMotionCurve
-{
-	struct FName                                       AnimName;                                                 // 0x0000(0x0008) (CPF_Edit)
-	struct FInterpCurveVector                          Curve;                                                    // 0x0008(0x0010) (CPF_Edit, CPF_NeedCtorLink)
-	float                                              MaxCurveTime;                                             // 0x0018(0x0004) (CPF_Edit)
 };
 
 // ScriptStruct Engine.Pawn.ScalarParameterInterpStruct
@@ -5828,6 +5811,56 @@ struct FBoneAngleMorph
 {
 	float                                              Angle;                                                    // 0x0000(0x0004) (CPF_Edit)
 	float                                              TargetWeight;                                             // 0x0004(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct Engine.AnimSequence.AnimNotifyEvent
+// 0x0014
+struct FAnimNotifyEvent
+{
+	float                                              Time;                                                     // 0x0000(0x0004) (CPF_Edit)
+	class UAnimNotify*                                 Notify;                                                   // 0x0004(0x0004) (CPF_Edit, CPF_ExportObject, CPF_NeedCtorLink, CPF_EditInline)
+	struct FName                                       Comment;                                                  // 0x0008(0x0008) (CPF_Edit)
+	float                                              Duration;                                                 // 0x0010(0x0004) (CPF_Edit)
+};
+
+// ScriptStruct Engine.AnimSequence.SkelControlModifier
+// 0x0014
+struct FSkelControlModifier
+{
+	struct FName                                       SkelControlName;                                          // 0x0000(0x0008) (CPF_Edit)
+	TArray<struct FTimeModifier>                       Modifiers;                                                // 0x0008(0x000C) (CPF_Edit, CPF_NeedCtorLink, CPF_EditInline)
+};
+
+// ScriptStruct Engine.AnimSequence.RawAnimSequenceTrack
+// 0x0018
+struct FRawAnimSequenceTrack
+{
+	TArray<struct FVector>                             PosKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
+	TArray<struct FQuat>                               RotKeys;                                                  // 0x000C(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct Engine.AnimSequence.TranslationTrack
+// 0x0018
+struct FTranslationTrack
+{
+	TArray<struct FVector>                             PosKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
+	TArray<float>                                      Times;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct Engine.AnimSequence.RotationTrack
+// 0x0018
+struct FRotationTrack
+{
+	TArray<struct FQuat>                               RotKeys;                                                  // 0x0000(0x000C) (CPF_NeedCtorLink)
+	TArray<float>                                      Times;                                                    // 0x000C(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct Engine.AnimSequence.CurveTrack
+// 0x0014
+struct FCurveTrack
+{
+	struct FName                                       CurveName;                                                // 0x0000(0x0008)
+	TArray<float>                                      CurveWeights;                                             // 0x0008(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.AnimSet.AnimSetMeshLinkup
@@ -6630,6 +6663,15 @@ struct FRigidBodyState
 	unsigned char                                      bNewData;                                                 // 0x0038(0x0001)
 };
 
+// ScriptStruct Engine.EngineTypes.RootMotionCurve
+// 0x001C
+struct FRootMotionCurve
+{
+	struct FName                                       AnimName;                                                 // 0x0000(0x0008) (CPF_Edit)
+	struct FInterpCurveVector                          Curve;                                                    // 0x0008(0x0010) (CPF_Edit, CPF_NeedCtorLink)
+	float                                              MaxCurveTime;                                             // 0x0018(0x0004) (CPF_Edit)
+};
+
 // ScriptStruct Engine.SVehicle.VehicleState
 // 0x004C
 struct FVehicleState
@@ -6841,25 +6883,6 @@ struct FSwitchRange
 {
 	int                                                Min;                                                      // 0x0000(0x0004) (CPF_Edit)
 	int                                                Max;                                                      // 0x0004(0x0004) (CPF_Edit)
-};
-
-// ScriptStruct Engine.Camera.TCameraCache
-// 0x0020
-struct FTCameraCache
-{
-	float                                              TimeStamp;                                                // 0x0000(0x0004)
-	struct FTPOV                                       POV;                                                      // 0x0004(0x001C)
-};
-
-// ScriptStruct Engine.Camera.TViewTarget
-// 0x002C
-struct FTViewTarget
-{
-	class AActor*                                      Target;                                                   // 0x0000(0x0004) (CPF_Edit)
-	class AController*                                 Controller;                                               // 0x0004(0x0004) (CPF_Edit)
-	struct FTPOV                                       POV;                                                      // 0x0008(0x001C) (CPF_Edit)
-	float                                              AspectRatio;                                              // 0x0024(0x0004) (CPF_Edit)
-	class APlayerReplicationInfo*                      PRI;                                                      // 0x0028(0x0004) (CPF_Edit)
 };
 
 // ScriptStruct Engine.Camera.ViewTargetTransitionParams
@@ -7091,7 +7114,7 @@ struct FTerrainPatchBounds
 // 0x000C
 struct FTerrainMaterialMask
 {
-	__int64                                      BitMask;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.TerrainComponent.TerrainMaterialMask.BitMask
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.TerrainComponent.TerrainMaterialMask.BitMask
 	int                                                NumBits;                                                  // 0x0008(0x0004)
 };
 
@@ -7186,55 +7209,57 @@ struct FSoundEventMapping
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlineFriendMessage
-// 0x004C
+// 0x0064
 struct FOnlineFriendMessage
 {
-	struct FUniqueNetId                                SendingPlayerId;                                          // 0x0000(0x0030)
-	struct FString                                     SendingPlayerNick;                                        // 0x0030(0x000C) (CPF_NeedCtorLink)
-	unsigned long                                      bIsFriendInvite : 1;                                      // 0x003C(0x0004)
-	unsigned long                                      bIsGameInvite : 1;                                        // 0x003C(0x0004)
-	unsigned long                                      bWasAccepted : 1;                                         // 0x003C(0x0004)
-	unsigned long                                      bWasDenied : 1;                                           // 0x003C(0x0004)
-	struct FString                                     Message;                                                  // 0x0040(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                SendingPlayerId;                                          // 0x0000(0x0048)
+	struct FString                                     SendingPlayerNick;                                        // 0x0048(0x000C) (CPF_NeedCtorLink)
+	unsigned long                                      bIsFriendInvite : 1;                                      // 0x0054(0x0004)
+	unsigned long                                      bIsGameInvite : 1;                                        // 0x0054(0x0004)
+	unsigned long                                      bWasAccepted : 1;                                         // 0x0054(0x0004)
+	unsigned long                                      bWasDenied : 1;                                           // 0x0054(0x0004)
+	struct FString                                     Message;                                                  // 0x0058(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlineFriend
-// 0x0058
+// 0x0078
 struct FOnlineFriend
 {
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0030) (CPF_Const)
-	__int64                                      SessionId;                                       // 0x0030(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineFriend.SessionId
-	struct FString                                     NickName;                                                 // 0x0038(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FString                                     PresenceInfo;                                             // 0x0044(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	TEnumAsByte<EOnlineFriendState>                    FriendState;                                              // 0x0050(0x0001) (CPF_Const)
-	unsigned long                                      bIsOnline : 1;                                            // 0x0054(0x0004) (CPF_Const)
-	unsigned long                                      bIsPlaying : 1;                                           // 0x0054(0x0004) (CPF_Const)
-	unsigned long                                      bIsPlayingThisGame : 1;                                   // 0x0054(0x0004) (CPF_Const)
-	unsigned long                                      bIsJoinable : 1;                                          // 0x0054(0x0004) (CPF_Const)
-	unsigned long                                      bHasVoiceSupport : 1;                                     // 0x0054(0x0004) (CPF_Const)
-	unsigned long                                      bHaveInvited : 1;                                         // 0x0054(0x0004)
-	unsigned long                                      bHasInvitedYou : 1;                                       // 0x0054(0x0004) (CPF_Const)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048) (CPF_Const)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlineFriend.SessionId
+	struct FString                                     PlayerName;                                               // 0x0050(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FString                                     PresenceInfo;                                             // 0x005C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TEnumAsByte<EOnlineFriendState>                    FriendState;                                              // 0x0068(0x0001) (CPF_Const)
+	unsigned long                                      bIsOnline : 1;                                            // 0x006C(0x0004) (CPF_Const)
+	unsigned long                                      bIsPlaying : 1;                                           // 0x006C(0x0004) (CPF_Const)
+	unsigned long                                      bIsPlayingThisGame : 1;                                   // 0x006C(0x0004) (CPF_Const)
+	unsigned long                                      bIsJoinable : 1;                                          // 0x006C(0x0004) (CPF_Const)
+	unsigned long                                      bHasVoiceSupport : 1;                                     // 0x006C(0x0004) (CPF_Const)
+	unsigned long                                      bHaveInvited : 1;                                         // 0x006C(0x0004)
+	unsigned long                                      bHasInvitedYou : 1;                                       // 0x006C(0x0004) (CPF_Const)
+	int                                                GroupId;                                                  // 0x0070(0x0004) (CPF_Const)
+	unsigned long                                      bIsBlocked : 1;                                           // 0x0074(0x0004) (CPF_Const)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlinePartyMember
-// 0x0060
+// 0x0078
 struct FOnlinePartyMember
 {
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0030) (CPF_Const)
-	struct FString                                     NickName;                                                 // 0x0030(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	unsigned char                                      LocalUserNum;                                             // 0x003C(0x0001) (CPF_Const)
-	TEnumAsByte<ENATType>                              NatType;                                                  // 0x003D(0x0001) (CPF_Const)
-	int                                                TitleId;                                                  // 0x0040(0x0004) (CPF_Const)
-	unsigned long                                      bIsLocal : 1;                                             // 0x0044(0x0004) (CPF_Const)
-	unsigned long                                      bIsInPartyVoice : 1;                                      // 0x0044(0x0004) (CPF_Const)
-	unsigned long                                      bIsTalking : 1;                                           // 0x0044(0x0004) (CPF_Const)
-	unsigned long                                      bIsInGameSession : 1;                                     // 0x0044(0x0004) (CPF_Const)
-	unsigned long                                      bIsPlayingThisGame : 1;                                   // 0x0044(0x0004) (CPF_Const)
-	__int64                                     SessionId;                                       // 0x0048(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlinePartyMember.SessionId
-	int                                                Data1;                                                    // 0x0050(0x0004) (CPF_Const)
-	int                                                Data2;                                                    // 0x0054(0x0004) (CPF_Const)
-	int                                                Data3;                                                    // 0x0058(0x0004) (CPF_Const)
-	int                                                Data4;                                                    // 0x005C(0x0004) (CPF_Const)
+	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0048) (CPF_Const)
+	struct FString                                     Nickname;                                                 // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      LocalUserNum;                                             // 0x0054(0x0001) (CPF_Const)
+	TEnumAsByte<ENATType>                              NatType;                                                  // 0x0055(0x0001) (CPF_Const)
+	int                                                TitleId;                                                  // 0x0058(0x0004) (CPF_Const)
+	unsigned long                                      bIsLocal : 1;                                             // 0x005C(0x0004) (CPF_Const)
+	unsigned long                                      bIsInPartyVoice : 1;                                      // 0x005C(0x0004) (CPF_Const)
+	unsigned long                                      bIsTalking : 1;                                           // 0x005C(0x0004) (CPF_Const)
+	unsigned long                                      bIsInGameSession : 1;                                     // 0x005C(0x0004) (CPF_Const)
+	unsigned long                                      bIsPlayingThisGame : 1;                                   // 0x005C(0x0004) (CPF_Const)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0060(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.OnlinePartyMember.SessionId
+	int                                                Data1;                                                    // 0x0068(0x0004) (CPF_Const)
+	int                                                Data2;                                                    // 0x006C(0x0004) (CPF_Const)
+	int                                                Data3;                                                    // 0x0070(0x0004) (CPF_Const)
+	int                                                Data4;                                                    // 0x0074(0x0004) (CPF_Const)
 };
 
 // ScriptStruct Engine.UIDataProvider_OnlinePlayerStorage.PlayerStorageArrayProvider
@@ -7294,7 +7319,7 @@ struct FAchievementDetails
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0045(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.ChallengeWindowBegin
 	unsigned char                                      UnknownData01[0x8];                                       // 0x0050(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.ChallengeWindowEnd
 	struct FString                                     DeepLink;                                                 // 0x0058(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	__int64                                      EstimatedUnlockTime;                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.EstimatedUnlockTime
+	unsigned char                                      UnknownData02[0x8];                                       // 0x0064(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.AchievementDetails.EstimatedUnlockTime
 	unsigned long                                      bIsRevoked : 1;                                           // 0x006C(0x0004) (CPF_Const)
 	TEnumAsByte<EAchievementParticipationType>         ParticipationType;                                        // 0x0070(0x0001) (CPF_Const)
 	TArray<struct FString>                             PlatformsAvailableOn;                                     // 0x0074(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -7388,11 +7413,11 @@ struct FUIInputKeyData
 };
 
 // ScriptStruct Engine.UIDataStore_InputAlias.UIDataStoreInputAlias
-// 0x0080
+// 0x0098
 struct FUIDataStoreInputAlias
 {
 	struct FName                                       AliasName;                                                // 0x0000(0x0008) (CPF_Config)
-	struct FUIInputKeyData                             PlatformInputKeys[0x5];                                   // 0x0008(0x0018) (CPF_Config, CPF_NeedCtorLink)
+	struct FUIInputKeyData                             PlatformInputKeys[0x6];                                   // 0x0008(0x0018) (CPF_Config, CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.UIDataStore_StringAliasMap.UIMenuInputMap
@@ -7873,6 +7898,25 @@ struct FPRIRemoteUserData
 	struct FString                                     UserId;                                                   // 0x0000(0x000C) (CPF_AlwaysInit, CPF_NeedCtorLink)
 };
 
+// ScriptStruct Engine.Camera.TCameraCache
+// 0x0020
+struct FTCameraCache
+{
+	float                                              TimeStamp;                                                // 0x0000(0x0004)
+	struct FTPOV                                       POV;                                                      // 0x0004(0x001C)
+};
+
+// ScriptStruct Engine.Camera.TViewTarget
+// 0x002C
+struct FTViewTarget
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0004) (CPF_Edit)
+	class AController*                                 Controller;                                               // 0x0004(0x0004) (CPF_Edit)
+	struct FTPOV                                       POV;                                                      // 0x0008(0x001C) (CPF_Edit)
+	float                                              AspectRatio;                                              // 0x0024(0x0004) (CPF_Edit)
+	class APlayerReplicationInfo*                      PRI;                                                      // 0x0028(0x0004) (CPF_Edit)
+};
+
 // ScriptStruct Engine.CameraModifier_CameraShake.CameraShakeInstance
 // 0x0090
 struct FCameraShakeInstance
@@ -8066,18 +8110,16 @@ struct FServerResponseLine
 // 0x0009
 struct FUniqueLobbyId
 {
-	__int64                                    Uid;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueLobbyId.Uid
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0008(0x0001)
 };
 
-// ScriptStruct Engine.OnlineSubsystem.WordFilterResult
-// 0x0028
-struct FWordFilterResult
+// ScriptStruct Engine.OnlineSubsystem.FriendHistoryKey
+// 0x0018
+struct FFriendHistoryKey
 {
-	TEnumAsByte<EWordFilterCensorship>                 Censorship;                                               // 0x0000(0x0001)
-	struct FString                                     Original;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     Sanitized;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
-	struct FString                                     ErrorMessage;                                             // 0x001C(0x000C) (CPF_NeedCtorLink)
+	TArray<unsigned char>                              Key;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Name;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.SocialPostImageFlags
@@ -8110,20 +8152,20 @@ struct FSocialPostLinkInfo : public FSocialPostImageInfo
 };
 
 // ScriptStruct Engine.OnlineSubsystem.DownloadedWorkshopData
-// 0x0094
+// 0x00AC
 struct FDownloadedWorkshopData
 {
-	__int64                                      ItemID;                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.DownloadedWorkshopData.ItemID
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.DownloadedWorkshopData.ItemID
 	struct FString                                     Title;                                                    // 0x0008(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FString                                     AuthorName;                                               // 0x0014(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FUniqueNetId                                AuthorNetID;                                              // 0x0020(0x0030)
-	class UTexture2DDynamic*                           Preview;                                                  // 0x0050(0x0004) (CPF_DataBinding)
-	class UTexture*                                    Avatar;                                                   // 0x0054(0x0004) (CPF_DataBinding)
-	struct FString                                     Description;                                              // 0x0058(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     PreviewURL;                                               // 0x0064(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     ItemPath;                                                 // 0x0070(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     Filename;                                                 // 0x007C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     FullPath;                                                 // 0x0088(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FUniqueNetId                                AuthorNetID;                                              // 0x0020(0x0048)
+	class UTexture2DDynamic*                           Preview;                                                  // 0x0068(0x0004) (CPF_DataBinding)
+	class UTexture*                                    Avatar;                                                   // 0x006C(0x0004) (CPF_DataBinding)
+	struct FString                                     Description;                                              // 0x0070(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     PreviewURL;                                               // 0x007C(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     ItemPath;                                                 // 0x0088(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     Filename;                                                 // 0x0094(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     FullPath;                                                 // 0x00A0(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.SocialPostPrivileges
@@ -8135,11 +8177,11 @@ struct FSocialPostPrivileges
 };
 
 // ScriptStruct Engine.OnlineSubsystem.SessionMemberInfo
-// 0x0031
+// 0x0049
 struct FSessionMemberInfo
 {
-	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0030)
-	TEnumAsByte<ESessionMemberStatus>                  MemberStatus;                                             // 0x0030(0x0001)
+	struct FUniqueNetId                                PlayerNetId;                                              // 0x0000(0x0048)
+	TEnumAsByte<ESessionMemberStatus>                  MemberStatus;                                             // 0x0048(0x0001)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.MarketplaceInventoryItem
@@ -8152,9 +8194,9 @@ struct FMarketplaceInventoryItem
 	int                                                ConsumableBalance;                                        // 0x0010(0x0004) (CPF_Const)
 	int                                                TitleId;                                                  // 0x0014(0x0004) (CPF_Const)
 	TArray<struct FString>                             ContainerIds;                                             // 0x0018(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	__int64                                      StartDate;                                       // 0x0024(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.StartDate
-	__int64										 EndDate;                                       // 0x002C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.EndDate
-	__int64                                      RightsObtainedDate;                                       // 0x0034(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.RightsObtainedDate
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0024(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.StartDate
+	unsigned char                                      UnknownData01[0x8];                                       // 0x002C(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.EndDate
+	unsigned char                                      UnknownData02[0x8];                                       // 0x0034(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceInventoryItem.RightsObtainedDate
 	struct FString                                     URL;                                                      // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     ConsumableUrl;                                            // 0x0048(0x000C) (CPF_Const, CPF_NeedCtorLink)
 };
@@ -8197,7 +8239,7 @@ struct FMarketplaceProductDetails
 	TEnumAsByte<EMediaItemType>                        MediaItemType;                                            // 0x000C(0x0001) (CPF_Const)
 	struct FString                                     ProductName;                                              // 0x0010(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	struct FString                                     ProductID;                                                // 0x001C(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	__int64                                      ReleaseDate;                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceProductDetails.ReleaseDate
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0028(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.MarketplaceProductDetails.ReleaseDate
 	struct FString                                     SandboxId;                                                // 0x0030(0x000C) (CPF_Const, CPF_NeedCtorLink)
 	int                                                TitleId;                                                  // 0x003C(0x0004) (CPF_Const)
 	TArray<struct FMarketplaceProductImage>            Images;                                                   // 0x0040(0x000C) (CPF_Const, CPF_NeedCtorLink)
@@ -8217,7 +8259,7 @@ struct FCommunityContentMetadata
 };
 
 // ScriptStruct Engine.OnlineSubsystem.CommunityContentFile
-// 0x0068
+// 0x0080
 struct FCommunityContentFile
 {
 	int                                                ContentId;                                                // 0x0000(0x0004)
@@ -8225,12 +8267,12 @@ struct FCommunityContentFile
 	int                                                FileId;                                                   // 0x0010(0x0004)
 	int                                                ContentType;                                              // 0x0014(0x0004)
 	int                                                FileSize;                                                 // 0x0018(0x0004)
-	struct FUniqueNetId                                Owner;                                                    // 0x001C(0x0030)
-	int                                                DownloadCount;                                            // 0x004C(0x0004)
-	float                                              AverageRating;                                            // 0x0050(0x0004)
-	int                                                RatingCount;                                              // 0x0054(0x0004)
-	int                                                LastRatingGiven;                                          // 0x0058(0x0004)
-	struct FString                                     LocalFilePath;                                            // 0x005C(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                Owner;                                                    // 0x001C(0x0048)
+	int                                                DownloadCount;                                            // 0x0064(0x0004)
+	float                                              AverageRating;                                            // 0x0068(0x0004)
+	int                                                RatingCount;                                              // 0x006C(0x0004)
+	int                                                LastRatingGiven;                                          // 0x0070(0x0004)
+	struct FString                                     LocalFilePath;                                            // 0x0074(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.TitleFile
@@ -8253,36 +8295,36 @@ struct FEmsFile
 };
 
 // ScriptStruct Engine.OnlineSubsystem.RemoteTalker
-// 0x0038
+// 0x0050
 struct FRemoteTalker
 {
-	struct FUniqueNetId                                TalkerId;                                                 // 0x0000(0x0030)
-	float                                              LastNotificationTime;                                     // 0x0030(0x0004)
-	unsigned long                                      bWasTalking : 1;                                          // 0x0034(0x0004)
-	unsigned long                                      bIsTalking : 1;                                           // 0x0034(0x0004)
-	unsigned long                                      bIsRegistered : 1;                                        // 0x0034(0x0004)
+	struct FUniqueNetId                                TalkerId;                                                 // 0x0000(0x0048)
+	float                                              LastNotificationTime;                                     // 0x0048(0x0004)
+	unsigned long                                      bWasTalking : 1;                                          // 0x004C(0x0004)
+	unsigned long                                      bIsTalking : 1;                                           // 0x004C(0x0004)
+	unsigned long                                      bIsRegistered : 1;                                        // 0x004C(0x0004)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.LocalTalker
-// 0x0034
+// 0x004C
 struct FLocalTalker
 {
-	struct FUniqueNetId                                TalkerId;                                                 // 0x0000(0x0030)
-	unsigned long                                      bHasVoice : 1;                                            // 0x0030(0x0004)
-	unsigned long                                      bHasNetworkedVoice : 1;                                   // 0x0030(0x0004)
-	unsigned long                                      bIsRecognizingSpeech : 1;                                 // 0x0030(0x0004)
-	unsigned long                                      bWasTalking : 1;                                          // 0x0030(0x0004)
-	unsigned long                                      bIsTalking : 1;                                           // 0x0030(0x0004)
-	unsigned long                                      bIsRegistered : 1;                                        // 0x0030(0x0004)
+	struct FUniqueNetId                                TalkerId;                                                 // 0x0000(0x0048)
+	unsigned long                                      bHasVoice : 1;                                            // 0x0048(0x0004)
+	unsigned long                                      bHasNetworkedVoice : 1;                                   // 0x0048(0x0004)
+	unsigned long                                      bIsRecognizingSpeech : 1;                                 // 0x0048(0x0004)
+	unsigned long                                      bWasTalking : 1;                                          // 0x0048(0x0004)
+	unsigned long                                      bIsTalking : 1;                                           // 0x0048(0x0004)
+	unsigned long                                      bIsRegistered : 1;                                        // 0x0048(0x0004)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.OnlinePlayerScore
-// 0x0038
+// 0x0050
 struct FOnlinePlayerScore
 {
-	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0030)
-	int                                                TeamID;                                                   // 0x0030(0x0004)
-	int                                                Score;                                                    // 0x0034(0x0004)
+	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
+	int                                                TeamID;                                                   // 0x0048(0x0004)
+	int                                                Score;                                                    // 0x004C(0x0004)
 };
 
 // ScriptStruct Engine.OnlineSubsystem.SpeechRecognizedWord
@@ -8317,53 +8359,63 @@ struct FOnlineProfile
 };
 
 // ScriptStruct Engine.OnlineSubsystem.FriendsQuery
-// 0x0034
+// 0x004C
 struct FFriendsQuery
 {
-	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0030)
-	unsigned long                                      bIsFriend : 1;                                            // 0x0030(0x0004)
+	struct FUniqueNetId                                UniqueId;                                                 // 0x0000(0x0048)
+	unsigned long                                      bIsFriend : 1;                                            // 0x0048(0x0004)
+};
+
+// ScriptStruct Engine.OnlineSubsystem.WordFilterResult
+// 0x0028
+struct FWordFilterResult
+{
+	TEnumAsByte<EWordFilterCensorship>                 Censorship;                                               // 0x0000(0x0001)
+	struct FString                                     Original;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     Sanitized;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     ErrorMessage;                                             // 0x001C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineAuthInterface.BaseAuthSession
-// 0x0048
+// 0x0060
 struct FBaseAuthSession
 {
 	struct FIpAddr                                     EndPointIP;                                               // 0x0000(0x0014) (CPF_Const)
 	int                                                EndPointPort;                                             // 0x0014(0x0004) (CPF_Const)
-	struct FUniqueNetId                                EndPointUID;                                              // 0x0018(0x0030) (CPF_Const)
+	struct FUniqueNetId                                EndPointUID;                                              // 0x0018(0x0048) (CPF_Const)
 };
 
 // ScriptStruct Engine.AccessControl.PendingClientAuth
-// 0x003C
+// 0x0054
 struct FPendingClientAuth
 {
 	class UPlayer*                                     ClientConnection;                                         // 0x0000(0x0004)
-	struct FUniqueNetId                                ClientUID;                                                // 0x0004(0x0030)
-	float                                              AuthTimestamp;                                            // 0x0034(0x0004)
-	int                                                AuthRetryCount;                                           // 0x0038(0x0004)
+	struct FUniqueNetId                                ClientUID;                                                // 0x0004(0x0048)
+	float                                              AuthTimestamp;                                            // 0x004C(0x0004)
+	int                                                AuthRetryCount;                                           // 0x0050(0x0004)
 };
 
 // ScriptStruct Engine.AccessControl.ServerAuthRetry
-// 0x0034
+// 0x004C
 struct FServerAuthRetry
 {
-	struct FUniqueNetId                                ClientUID;                                                // 0x0000(0x0030)
-	int                                                AuthRetryCount;                                           // 0x0030(0x0004)
+	struct FUniqueNetId                                ClientUID;                                                // 0x0000(0x0048)
+	int                                                AuthRetryCount;                                           // 0x0048(0x0004)
 };
 
 // ScriptStruct Engine.OnlineAuthInterface.AuthSession
-// 0x0008 (0x0050 - 0x0048)
+// 0x0008 (0x0068 - 0x0060)
 struct FAuthSession : public FBaseAuthSession
 {
-	TEnumAsByte<EAuthStatus>                           AuthStatus;                                               // 0x0048(0x0001) (CPF_Const)
-	int                                                AuthTicketUID;                                            // 0x004C(0x0004) (CPF_Const)
+	TEnumAsByte<EAuthStatus>                           AuthStatus;                                               // 0x0060(0x0001) (CPF_Const)
+	int                                                AuthTicketUID;                                            // 0x0064(0x0004) (CPF_Const)
 };
 
 // ScriptStruct Engine.OnlineAuthInterface.LocalAuthSession
-// 0x0004 (0x004C - 0x0048)
+// 0x0004 (0x0064 - 0x0060)
 struct FLocalAuthSession : public FBaseAuthSession
 {
-	int                                                SessionUID;                                               // 0x0048(0x0004) (CPF_Const)
+	int                                                SessionUID;                                               // 0x0060(0x0004) (CPF_Const)
 };
 
 // ScriptStruct Engine.CoverReplicator.ManualCoverTypeInfo
@@ -8877,24 +8929,24 @@ struct FLobbyMetaData
 // 0x0018
 struct FBasicLobbyInfo
 {
-	struct FUniqueLobbyId                              LobbyUID;                                                 // 0x0000(0x000C) (CPF_Const)
-	TArray<struct FLobbyMetaData>                      LobbySettings;                                            // 0x000C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FUniqueLobbyId                              LobbyUID;                                                 // 0x0000(0x000C)
+	TArray<struct FLobbyMetaData>                      LobbySettings;                                            // 0x000C(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineLobbySettings.LobbyMember
-// 0x0048
+// 0x0060
 struct FLobbyMember
 {
-	struct FUniqueNetId                                PlayerUID;                                                // 0x0000(0x0030) (CPF_Const)
-	TArray<struct FLobbyMetaData>                      PlayerSettings;                                           // 0x0030(0x000C) (CPF_Const, CPF_NeedCtorLink)
-	struct FString                                     OnlineName;                                               // 0x003C(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	struct FUniqueNetId                                PlayerUID;                                                // 0x0000(0x0048)
+	TArray<struct FLobbyMetaData>                      PlayerSettings;                                           // 0x0048(0x000C) (CPF_NeedCtorLink)
+	struct FString                                     OnlineName;                                               // 0x0054(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineLobbySettings.ActiveLobbyInfo
 // 0x000C (0x0024 - 0x0018)
 struct FActiveLobbyInfo : public FBasicLobbyInfo
 {
-	TArray<struct FLobbyMember>                        Members;                                                  // 0x0018(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	TArray<struct FLobbyMember>                        Members;                                                  // 0x0018(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineLobbySettings.LobbyFilter
@@ -8924,20 +8976,20 @@ struct FMMStats_Timer
 };
 
 // ScriptStruct Engine.OnlineRecentPlayersList.RecentParty
-// 0x003C
+// 0x0054
 struct FRecentParty
 {
-	struct FUniqueNetId                                PartyLeader;                                              // 0x0000(0x0030)
-	TArray<struct FUniqueNetId>                        PartyMembers;                                             // 0x0030(0x000C) (CPF_NeedCtorLink)
+	struct FUniqueNetId                                PartyLeader;                                              // 0x0000(0x0048)
+	TArray<struct FUniqueNetId>                        PartyMembers;                                             // 0x0048(0x000C) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct Engine.OnlineRecentPlayersList.CurrentPlayerMet
-// 0x0038
+// 0x0050
 struct FCurrentPlayerMet
 {
 	int                                                TeamNum;                                                  // 0x0000(0x0004)
 	int                                                Skill;                                                    // 0x0004(0x0004)
-	struct FUniqueNetId                                NetId;                                                    // 0x0008(0x0030)
+	struct FUniqueNetId                                NetId;                                                    // 0x0008(0x0048)
 };
 
 // ScriptStruct Engine.ParticleModule.ParticleCurvePair

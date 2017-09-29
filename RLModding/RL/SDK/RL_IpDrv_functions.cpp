@@ -12,6 +12,165 @@ namespace SDK
 //Functions
 //---------------------------------------------------------------------------
 
+// Function IpDrv.AdHocDelegates.EventAdHocDestroyed
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventAdHocDestroyed()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAdHocDestroyed");
+
+	UAdHocDelegates_EventAdHocDestroyed_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventAdHocFinalized
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventAdHocFinalized()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAdHocFinalized");
+
+	UAdHocDelegates_EventAdHocFinalized_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventStationDisconnected
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventStationDisconnected()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventStationDisconnected");
+
+	UAdHocDelegates_EventStationDisconnected_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventStationConnected
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventStationConnected()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventStationConnected");
+
+	UAdHocDelegates_EventStationConnected_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventBecomeStation
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventBecomeStation()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventBecomeStation");
+
+	UAdHocDelegates_EventBecomeStation_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventAccessPointCreated
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventAccessPointCreated()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAccessPointCreated");
+
+	UAdHocDelegates_EventAccessPointCreated_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventAdHocInitialized
+// (FUNC_Public, FUNC_Delegate)
+
+void UAdHocDelegates::EventAdHocInitialized()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAdHocInitialized");
+
+	UAdHocDelegates_EventAdHocInitialized_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventAdHocError
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UError*                  Error                          (CPF_Parm)
+
+void UAdHocDelegates::EventAdHocError(class UError* Error)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAdHocError");
+
+	UAdHocDelegates_EventAdHocError_Params params;
+	params.Error = Error;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.AdHocDelegates.EventAdHocOnNetworkChanged
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// TArray<struct FAdHocAccessPointInfo> Ahapis                         (CPF_Parm, CPF_NeedCtorLink)
+
+void UAdHocDelegates::EventAdHocOnNetworkChanged(TArray<struct FAdHocAccessPointInfo> Ahapis)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.AdHocDelegates.EventAdHocOnNetworkChanged");
+
+	UAdHocDelegates_EventAdHocOnNetworkChanged_Params params;
+	params.Ahapis = Ahapis;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function IpDrv.HttpRequestCurl.ProcessRequest
 // (FUNC_Native, FUNC_Public)
 // Parameters:
@@ -8138,6 +8297,26 @@ void UOnlineLobbyInterfaceImpl::ClearLobbySessionCretedeDelegate(const struct FS
 }
 
 
+// Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbySessionCreatedDelegate
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// struct FScriptDelegate         LobbySessionCreatedDelegate    (CPF_Parm, CPF_NeedCtorLink)
+
+void UOnlineLobbyInterfaceImpl::ClearLobbySessionCreatedDelegate(const struct FScriptDelegate& LobbySessionCreatedDelegate)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineLobbyInterfaceImpl.ClearLobbySessionCreatedDelegate");
+
+	UOnlineLobbyInterfaceImpl_ClearLobbySessionCreatedDelegate_Params params;
+	params.LobbySessionCreatedDelegate = LobbySessionCreatedDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function IpDrv.OnlineLobbyInterfaceImpl.AddLobbySessionCreatedDelegate
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -13341,16 +13520,16 @@ void UMcpClashMobManager::Init()
 // Function IpDrv.McpGroupsBase.OnAcceptGroupInviteComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bWasSuccessful                 (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnAcceptGroupInviteComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error)
+void UMcpGroupsBase::OnAcceptGroupInviteComplete(const struct FString& GroupId, bool bWasSuccessful, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnAcceptGroupInviteComplete");
 
 	UMcpGroupsBase_OnAcceptGroupInviteComplete_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -13366,16 +13545,16 @@ void UMcpGroupsBase::OnAcceptGroupInviteComplete(const struct FString& GroupID, 
 // (FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bShouldAccept                  (CPF_Parm)
 
-void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
+void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupId, bool bShouldAccept)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AcceptGroupInvite");
 
 	UMcpGroupsBase_AcceptGroupInvite_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bShouldAccept = bShouldAccept;
 
 	auto flags = fn->FunctionFlags;
@@ -13499,16 +13678,16 @@ void UMcpGroupsBase::DeleteAllGroups(const struct FString& OwnerId)
 // Function IpDrv.McpGroupsBase.OnRemoveGroupMembersComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bWasSuccessful                 (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error)
+void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupId, bool bWasSuccessful, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnRemoveGroupMembersComplete");
 
 	UMcpGroupsBase_OnRemoveGroupMembersComplete_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -13524,16 +13703,16 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupID,
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 OwnerId                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, TArray<struct FString>* MemberIds)
+void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const struct FString& GroupId, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.RemoveGroupMembers");
 
 	UMcpGroupsBase_RemoveGroupMembers_Params params;
 	params.OwnerId = OwnerId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13549,16 +13728,16 @@ void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const str
 // Function IpDrv.McpGroupsBase.OnAddGroupMembersComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bWasSuccessful                 (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnAddGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error)
+void UMcpGroupsBase::OnAddGroupMembersComplete(const struct FString& GroupId, bool bWasSuccessful, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnAddGroupMembersComplete");
 
 	UMcpGroupsBase_OnAddGroupMembersComplete_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -13574,17 +13753,17 @@ void UMcpGroupsBase::OnAddGroupMembersComplete(const struct FString& GroupID, bo
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 OwnerId                        (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           bRequiresAcceptance            (CPF_Parm)
 
-void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
+void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupId, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AddGroupMembers");
 
 	UMcpGroupsBase_AddGroupMembers_Params params;
 	params.OwnerId = OwnerId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bRequiresAcceptance = bRequiresAcceptance;
 
 	auto flags = fn->FunctionFlags;
@@ -13601,15 +13780,15 @@ void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct
 // Function IpDrv.McpGroupsBase.GetGroupMembers
 // (FUNC_Public, FUNC_HasOutParms)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers)
+void UMcpGroupsBase::GetGroupMembers(const struct FString& GroupId, TArray<struct FMcpGroupMember>* GroupMembers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.GetGroupMembers");
 
 	UMcpGroupsBase_GetGroupMembers_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13625,16 +13804,16 @@ void UMcpGroupsBase::GetGroupMembers(const struct FString& GroupID, TArray<struc
 // Function IpDrv.McpGroupsBase.OnQueryGroupMembersComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bWasSuccessful                 (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error)
+void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupId, bool bWasSuccessful, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnQueryGroupMembersComplete");
 
 	UMcpGroupsBase_OnQueryGroupMembersComplete_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -13650,15 +13829,15 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupID, 
 // (FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID)
+void UMcpGroupsBase::QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.QueryGroupMembers");
 
 	UMcpGroupsBase_QueryGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13739,16 +13918,16 @@ void UMcpGroupsBase::QueryGroups(const struct FString& RequesterId)
 // Function IpDrv.McpGroupsBase.OnDeleteGroupComplete
 // (FUNC_Public, FUNC_Delegate)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bWasSuccessful                 (CPF_Parm)
 // struct FString                 Error                          (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::OnDeleteGroupComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error)
+void UMcpGroupsBase::OnDeleteGroupComplete(const struct FString& GroupId, bool bWasSuccessful, const struct FString& Error)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.OnDeleteGroupComplete");
 
 	UMcpGroupsBase_OnDeleteGroupComplete_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bWasSuccessful = bWasSuccessful;
 	params.Error = Error;
 
@@ -13764,15 +13943,15 @@ void UMcpGroupsBase::OnDeleteGroupComplete(const struct FString& GroupID, bool b
 // (FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsBase::DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID)
+void UMcpGroupsBase::DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.DeleteGroup");
 
 	UMcpGroupsBase_DeleteGroup_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -13853,16 +14032,16 @@ class UMcpGroupsBase* UMcpGroupsBase::STATIC_CreateInstance()
 // (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
 // Parameters:
 // struct FString                 MemberId                       (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TEnumAsByte<EMcpGroupAcceptState> AcceptState                    (CPF_Parm)
 
-void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState)
+void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const struct FString& GroupId, TEnumAsByte<EMcpGroupAcceptState> AcceptState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroupMember");
 
 	UMcpGroupsManager_CacheGroupMember_Params params;
 	params.MemberId = MemberId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.AcceptState = AcceptState;
 
 	auto flags = fn->FunctionFlags;
@@ -13923,16 +14102,16 @@ void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete(class UHttpRequestInt
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // bool                           bShouldAccept                  (CPF_Parm)
 
-void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
+void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupId, bool bShouldAccept)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AcceptGroupInvite");
 
 	UMcpGroupsManager_AcceptGroupInvite_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bShouldAccept = bShouldAccept;
 
 	auto flags = fn->FunctionFlags;
@@ -14015,16 +14194,16 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestIn
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UMcpGroupsManager::RemoveGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, TArray<struct FString>* MemberIds)
+void UMcpGroupsManager::RemoveGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupId, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.RemoveGroupMembers");
 
 	UMcpGroupsManager_RemoveGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14065,17 +14244,17 @@ void UMcpGroupsManager::OnAddGroupMembersRequestComplete(class UHttpRequestInter
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 // bool                           bRequiresAcceptance            (CPF_Parm)
 
-void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
+void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupId, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AddGroupMembers");
 
 	UMcpGroupsManager_AddGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 	params.bRequiresAcceptance = bRequiresAcceptance;
 
 	auto flags = fn->FunctionFlags;
@@ -14092,15 +14271,15 @@ void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, cons
 // Function IpDrv.McpGroupsManager.GetGroupMembers
 // (FUNC_Defined, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
 // Parameters:
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 // TArray<struct FMcpGroupMember> GroupMembers                   (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 
-void UMcpGroupsManager::GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers)
+void UMcpGroupsManager::GetGroupMembers(const struct FString& GroupId, TArray<struct FMcpGroupMember>* GroupMembers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.GetGroupMembers");
 
 	UMcpGroupsManager_GetGroupMembers_Params params;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14141,15 +14320,15 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInt
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsManager::QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID)
+void UMcpGroupsManager::QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.QueryGroupMembers");
 
 	UMcpGroupsManager_QueryGroupMembers_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 
@@ -14255,15 +14434,15 @@ void UMcpGroupsManager::OnDeleteGroupRequestComplete(class UHttpRequestInterface
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
 // struct FString                 UniqueUserId                   (CPF_Parm, CPF_NeedCtorLink)
-// struct FString                 GroupID                        (CPF_Parm, CPF_NeedCtorLink)
+// struct FString                 GroupId                        (CPF_Parm, CPF_NeedCtorLink)
 
-void UMcpGroupsManager::DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID)
+void UMcpGroupsManager::DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.DeleteGroup");
 
 	UMcpGroupsManager_DeleteGroup_Params params;
 	params.UniqueUserId = UniqueUserId;
-	params.GroupID = GroupID;
+	params.GroupId = GroupId;
 
 	auto flags = fn->FunctionFlags;
 

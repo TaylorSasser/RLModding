@@ -128,7 +128,8 @@ public:
 	unsigned char                                      UnknownData02[0x3C];                                      // 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
 	class UGFxObject*                                  SplitscreenLayoutObject;                                  // 0x0154(0x0004) (CPF_Transient)
 	int                                                SplitscreenLayoutYAdjust;                                 // 0x0158(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -296,7 +297,7 @@ public:
 	bool GetPosition(float* X, float* Y);
 	struct FASDisplayInfo GetDisplayInfo();
 	struct FString STATIC_TranslateString(const struct FString& StringToTranslate, class UTranslationContext* InContext);
-	void SetFunction(const struct FString& Member, class UObject* context, const struct FName& fname);
+	void SetFunction(const struct FString& Member, class UObject* Context, const struct FName& fname);
 	void SetObject(const struct FString& Member, class UGFxObject* val);
 	void SetString(const struct FString& Member, const struct FString& S, class UTranslationContext* InContext);
 	void SetInt(const struct FString& Member, int I);
@@ -349,7 +350,7 @@ public:
 	TArray<TEnumAsByte<EEdition>>                      Editions;                                                 // 0x00A0(0x000C) (CPF_Edit, CPF_NeedCtorLink)
 	int                                                RTTextures;                                               // 0x00AC(0x0004)
 	int                                                RTVideoTextures;                                          // 0x00B0(0x0004)
-	__int64                                      ImportTimeStamp;                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00B4(0x0008) UNKNOWN PROPERTY: QWordProperty GFxUI.SwfMovie.ImportTimeStamp
 
 	static UClass* StaticClass()
 	{
@@ -538,7 +539,8 @@ public:
 class UGFxClikWidget : public UGFxObject
 {
 public:
-	struct FScriptDelegate                             __EventListener__Delegate;                                // 0x0078(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventListener__Delegate;                                // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{

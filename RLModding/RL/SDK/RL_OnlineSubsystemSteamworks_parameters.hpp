@@ -670,6 +670,27 @@ struct UOnlineLobbyInterfaceSteamworks_CreateLobby_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AllowPsyNetParty
+struct UOnlineSubsystemSteamworks_AllowPsyNetParty_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.RecordPlayersRecentlyMetKeys
+struct UOnlineSubsystemSteamworks_RecordPlayersRecentlyMetKeys_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	TArray<struct FFriendHistoryKey>                   PlayerKeys;                                               // (CPF_Parm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.GetPlayHistoryRegistrationKey
+struct UOnlineSubsystemSteamworks_GetPlayHistoryRegistrationKey_Params
+{
+	TArray<unsigned char>                              Key;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.IsOriginalAppOwner
 struct UOnlineSubsystemSteamworks_IsOriginalAppOwner_Params
 {
@@ -1042,6 +1063,19 @@ struct UOnlineSubsystemSteamworks_OpenStoreForDLC_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
 	struct FName                                       DLC;                                                      // (CPF_Parm)
+};
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenStoreForItemsAsync
+struct UOnlineSubsystemSteamworks_OpenStoreForItemsAsync_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	TArray<struct FString>                             Targets;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	struct FScriptDelegate                             OnStorePurchaseCompleteDelegate;                          // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OnStorePurchaseCompleteDelegate
+struct UOnlineSubsystemSteamworks_OnStorePurchaseCompleteDelegate_Params
+{
 };
 
 // Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.OpenErrorDialog
@@ -3057,6 +3091,7 @@ struct UOnlineSubsystemSteamworks_CanCommunicate_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
 	TEnumAsByte<ECommunicationMethod>                  CommMethod;                                               // (CPF_Parm)
+	bool                                               bAttemptToResolve;                                        // (CPF_OptionalParm, CPF_Parm)
 	TEnumAsByte<EFeaturePrivilegeLevel>                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 

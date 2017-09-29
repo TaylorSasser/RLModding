@@ -57,13 +57,6 @@ public:
 		return Data[i];
 	}
 
-	void Add(T InputData)
-	{
-		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
-		Data[Count++] = InputData;
-		Max = Count;
-	};
-
 private:
 	T* Data;
 	int32_t Count;
