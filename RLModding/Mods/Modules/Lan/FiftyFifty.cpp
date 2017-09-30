@@ -52,40 +52,59 @@ void FiftyFifty::onPlayerTick(Event* event) {
 		if (controller) {
 			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
 
-			// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
-			if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
-				localGameEvent->SetTotalGameBalls(2);
-				localGameEvent->ResetBalls();
-			}
-			else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
-				localGameEvent->SetTotalGameBalls(1);
-				localGameEvent->ResetBalls();
-			}
-
-
+			// Add check for game event
 			if (localGameEvent) {
-				if (checkTime) {
-					start = time(NULL);
-					checkTime = false;
+
+				// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
+				if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
+					localGameEvent->SetTotalGameBalls(2);
+					localGameEvent->ResetBalls();
 				}
-				end = time(NULL);
-				double elapsed = difftime(end, start);
-				if (elapsed >= interval) {
-					TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
-					srand(time(NULL));
-					int team_idx = rand() % gameTeams.Num();
-					srand(time(NULL));
-					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
-					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
-					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
-						if(demoPlayer)
-							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
-						else 
-							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);	
+				else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
+					localGameEvent->SetTotalGameBalls(1);
+					localGameEvent->ResetBalls();
+				}
+
+
+				if (localGameEvent) {
+					if (checkTime) {
+						start = time(NULL);
+						checkTime = false;
 					}
-							
-					checkTime = true;
-				}		
+					end = time(NULL);
+
+					double elapsed = difftime(end, start);
+					if (elapsed >= interval && localGameEvent->Players.Num() > 1) {
+						TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+						srand(time(NULL));
+						if (localGameEvent->Teams.IsValidIndex(0)) {
+							int team_idx = rand() % gameTeams.Num();
+							srand(time(NULL));
+							if (gameTeams.IsValidIndex(team_idx)) {
+								int player_idx = rand() % gameTeams[team_idx]->Members.Num();
+								TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
+								if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
+									if (demoPlayer)
+										gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+									else
+										localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+								}
+
+								checkTime = true;
+							}
+						}
+					}
+					// Account for a single user being alone in a game
+					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
+						if (demoPlayer)
+							controller->Car->Demolish(controller->Car);
+						else
+							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+
+						checkTime = true;
+
+					}
+				}
 			}
 		}
 	}

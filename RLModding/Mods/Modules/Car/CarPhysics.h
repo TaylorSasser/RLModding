@@ -1,6 +1,7 @@
 #pragma once
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
+#include <time.h>
 
 class CarPhysics : public ModBase {
 public:
@@ -13,11 +14,17 @@ public:
 private:
 	bool carCollisionOff = false;
 	bool cloneMe = false;
-	bool carCollisionChanged = false;
+
+	bool setCarScale = false;
 
 	float carScale = 1.0;
 	float currCarScale = 1.0;
 	int numClones = 1;
+
+	bool checkTime = true;
+	float interval = 0.2;
+	time_t start, end;
+
 };
 	
 

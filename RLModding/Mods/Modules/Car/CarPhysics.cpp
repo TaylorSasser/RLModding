@@ -10,7 +10,6 @@ void CarPhysics::DrawMenu() {
 
 		if (ImGui::Button("Toggle Car Collision")) {
 			carCollisionOff = !carCollisionOff;
-			carCollisionChanged = !carCollisionChanged;
 		}
 		if (carCollisionOff) {
 			ImGui::SameLine();
@@ -25,6 +24,10 @@ void CarPhysics::DrawMenu() {
 		ImGui::InputInt("# Clones", &numClones);
 
 		ImGui::SliderFloat("Car Scale", &carScale, 0.1f, 10.0f, "%.1f");
+		ImGui::SameLine();
+		if (ImGui::Button("Apply")) {
+			setCarScale = true;
+		}
 		ImGui::End();
 	}
 }
@@ -32,13 +35,13 @@ void CarPhysics::DrawMenu() {
 void CarPhysics::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-	if (carCollisionChanged && carCollisionOff && InstanceStorage::PlayerController()->Car != NULL) {
+	if (carCollisionOff && InstanceStorage::PlayerController()->Car != NULL) {
 		InstanceStorage::PlayerController()->Car->SetCollisionType(SDK::ECollisionType::COLLIDE_TouchAllButWeapons);
-		carCollisionChanged = false;
-	} else if (carCollisionChanged &&  InstanceStorage::PlayerController()->Car != NULL) {
+	} else if (InstanceStorage::PlayerController()->Car != NULL) {
 		InstanceStorage::PlayerController()->Car->SetCollisionType(SDK::ECollisionType::COLLIDE_CustomDefault);
-		carCollisionChanged = false;
 	}
+
+
 	if (cloneMe) {
 		for (int i = 0; i < numClones; i++) {
 			localGameEvent->SpawnCar(InstanceStorage::PlayerController(), localGameEvent->Cars.GetByIndex(0)->Location, localGameEvent->Cars.GetByIndex(0)->Rotation);
@@ -46,9 +49,15 @@ void CarPhysics::onPlayerTick(Event* e) {
 		cloneMe = false;
 	}
 
-	if (!Utils::FloatCompare(carScale, currCarScale)) {
-		currCarScale = carScale;
+
+
+	// Added check to make sure car is not null
+	if (setCarScale && InstanceStorage::PlayerController()->Car != NULL) {
+		//InstanceStorage::PlayerController()->Car->RespawnInPlace();
 		InstanceStorage::PlayerController()->Car->SetCarScale(carScale);
+		InstanceStorage::PlayerController()->Car->Teleport(InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->Car->Rotation, false, false, false);
+
+		setCarScale = false;
 	}
 }
 /*
