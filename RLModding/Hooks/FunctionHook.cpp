@@ -22,9 +22,19 @@ std::function<bool(UObject**, UFunction*, void*, bool isCallFunc)> CallFuncProto
 
 void FunctionHook::DetourFunctions(std::function<bool(UObject**, UFunction*, void*, bool isCallFunc)> function) {
 	CallFunction = (tCallFunction)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern), CallFunction_Mask);
+	if (!CallFunction) CallFunction = (tCallFunction)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(CallFunction_Pattern2), CallFunction_Mask2);
+
 	ProcessEvent = (tProcessEvent)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern), ProcessEvent_Mask);
+	if (!ProcessEvent) ProcessEvent = (tProcessEvent)TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(nullptr), 0xbac000, reinterpret_cast<PBYTE>(ProcessEvent_Pattern2), ProcessEvent_Mask2);
+
+	if (!CallFunction || !ProcessEvent) {
+		printf("HookManager Failed! Aborting... \n");
+		return;
+	}
+
 	OldCallFunction = (tCallFunction)DetourFunction((BYTE*)CallFunction, (BYTE*)CallFunctionProxy);
 	OldProcessEvent = (tProcessEvent)DetourFunction((BYTE*)ProcessEvent, (BYTE*)ProcessEventProxy);
+	
 	CallFuncProto = function;
 }
 
