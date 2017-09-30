@@ -10,8 +10,11 @@ public:
 
 	void DrawMenu();
 	void onPlayerTick(Event* e);
+	void CarPhysics::onCarSpawned(Event* e);
 
 private:
+	void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);
+
 	bool carCollisionOff = false;
 	bool cloneMe = false;
 
@@ -25,6 +28,11 @@ private:
 	float interval = 0.2;
 	time_t start, end;
 
+	bool refreshCars = true;
+
+	// Player selection menu
+	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
+	int playerSelectedIndex = 0;
 };
 	
 

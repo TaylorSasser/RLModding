@@ -139,6 +139,7 @@ public:
 	virtual void onSendServerReservedEvent(Event* e) {}
 	virtual void onWorkshopDownloaded(Event* e) {}
 	virtual void onBreakoutPlatformDamaged(Event* e) {}
+	virtual void onCarSpawned(Event* e) {}
 
 	bool enabled = false;
 protected:

@@ -18,29 +18,31 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.PartyMessage_X.Broadcast", &ModBase::onProfileJoinGame);
 	SubscribeEvent("Function Engine.PlayerController.PlayerTick", &ModBase::onPlayerTick);
 	SubscribeEvent("Function TAGame.PlayerController_TA.PostAsyncTick", &ModBase::onPlayerTATick);
-	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.StartMatch",&ModBase::onGameStart);
-	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded",&ModBase::onGameEnd);
-	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventJoinGameComplete",&ModBase::onOnlineGameStart);
-	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation",&ModBase::onSetFriendJoinLocation);
+	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.StartMatch", &ModBase::onGameStart);
+	SubscribeEvent("Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded", &ModBase::onGameEnd);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventJoinGameComplete", &ModBase::onOnlineGameStart);
+	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks_PsyNet.SetFriendJoinLocation", &ModBase::onSetFriendJoinLocation);
 	SubscribeEvent("Function TAGame.MatchType_Offline_TA.OnInitGameEvent", &ModBase::onInitExhibition);
 	SubscribeEvent("Function TAGame.PRI_TA.PostBeginPlay", &ModBase::onPostPRI);
-	SubscribeEvent("Function Core.Object.GotoState",&ModBase::onGotoState);
-	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys",&ModBase::onKeysBeginState);
+	SubscribeEvent("Function Core.Object.GotoState", &ModBase::onGotoState);
+	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.SetNetworkKeys", &ModBase::onKeysBeginState);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.GenerateKeys.HandleGenerateKeys", &ModBase::onHandleGenKeys);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.SetServerBeaconAddress", &ModBase::onBeaconAddress);
 	SubscribeEvent("Function Engine.Engine.GetEngine", &ModBase::onEngineTick);
 	SubscribeEvent("Function ProjectX.PsyNet_X.RPC", &ModBase::onPsyNetRPC);
 	SubscribeEvent("Function TAGame.GFxData_Garage_TA.LoadTitles", &ModBase::onTitlesLoad);
 	SubscribeEvent("Function ProjectX.TcpConnection.EventConnected", &ModBase::onTCPConnect);
-	SubscribeEvent("Function IpDrv.WebConnection.ProcessPost",&ModBase::onPostProcess);
-	SubscribeEvent("Function IpDrv.WebConnection.ProcessGet",&ModBase::onGetProcess);
-	SubscribeEvent("Function ProjectX.WebRequest_X.Send",&ModBase::onWebRequestSend);
-	SubscribeEvent("Function ProjectX.WebRequest_X.ConstructHttpRequest",&ModBase::onConstructWebRequest);
-	SubscribeEvent("Function ProjectX.Aws4Signature_X.SignRequest",&ModBase::onRequestSigned);
+	SubscribeEvent("Function IpDrv.WebConnection.ProcessPost", &ModBase::onPostProcess);
+	SubscribeEvent("Function IpDrv.WebConnection.ProcessGet", &ModBase::onGetProcess);
+	SubscribeEvent("Function ProjectX.WebRequest_X.Send", &ModBase::onWebRequestSend);
+	SubscribeEvent("Function ProjectX.WebRequest_X.ConstructHttpRequest", &ModBase::onConstructWebRequest);
+	SubscribeEvent("Function ProjectX.Aws4Signature_X.SignRequest", &ModBase::onRequestSigned);
 	SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineCommunityContentInterfaceSteamworks.OnDownloadedWorkshopData", &ModBase::onWorkshopDownloaded);
 	SubscribeEvent("Function TAGame.GameEvent_Breakout_TA.EventPlatformDamaged", &ModBase::onBreakoutPlatformDamaged);
 	SubscribeEvent("Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer", &ModBase::onSetPrimaryPlayer);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventServerReserved", &ModBase::onSendServerReservedEvent);
+	SubscribeEvent("Function TAGame.GameEvent_TA.OnCarSpawned", &ModBase::onCarSpawned);
+
 }
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {

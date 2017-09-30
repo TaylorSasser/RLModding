@@ -1,5 +1,7 @@
 #include "CarPhysics.h"
 #include "../Utils/Utils.h"
+#include <comdef.h> // for wchar to char conversion
+
 
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
@@ -8,13 +10,21 @@ void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", 0, ImVec2(400, 300), 0.75f);
 
+		ImGui::Combo("Player Car", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
+		ImGui::SameLine();
+		if (ImGui::Button("Refresh")) {
+			refreshCars = true;
+		}
+		ImGui::Separator();
+
 		if (ImGui::Button("Toggle Car Collision")) {
 			carCollisionOff = !carCollisionOff;
 		}
 		if (carCollisionOff) {
 			ImGui::SameLine();
 			ImGui::Text("Car Collision Off");
-		} else {
+		}
+		else {
 			ImGui::SameLine();
 			ImGui::Text("Car Collision On");
 		}
@@ -35,6 +45,43 @@ void CarPhysics::DrawMenu() {
 void CarPhysics::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
+	if (refreshCars) {
+		populatePlayerList(localGameEvent);
+		refreshCars = false;
+	}
+
+	// If for all players
+	if (localGameEvent) {
+		int currPlayer = 0;
+		TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+		for (int i = 0; i < gameTeams.Num(); i++) {
+
+			for (int j = 0; j < gameTeams.GetByIndex(i)->Members.Num(); j++)
+			{
+				if (playerSelectedIndex == 0 || currPlayer == playerSelectedIndex - 1) {
+					ACar_TA* currCar = gameTeams.GetByIndex(i)->Members.GetByIndex(j)->Car;
+
+					// Clone car
+					if (cloneMe) {
+						for (int i = 0; i < numClones; i++) {
+							localGameEvent->SpawnCar(InstanceStorage::PlayerController(), localGameEvent->Cars.GetByIndex(0)->Location, localGameEvent->Cars.GetByIndex(0)->Rotation);
+						}
+						
+					}
+
+					//_bstr_t b(gameTeams.GetByIndex(i)->Members.GetByIndex(j)->PlayerName.ToString().data());
+					//players[currPlayer + 1] = b;
+				}
+
+				currPlayer++;
+			}
+		}
+
+		// Reset options markers
+		if (cloneMe) cloneMe = false;
+
+	}
+
 	if (carCollisionOff && InstanceStorage::PlayerController()->Car != NULL) {
 		InstanceStorage::PlayerController()->Car->SetCollisionType(SDK::ECollisionType::COLLIDE_TouchAllButWeapons);
 	} else if (InstanceStorage::PlayerController()->Car != NULL) {
@@ -53,13 +100,41 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 	// Added check to make sure car is not null
 	if (setCarScale && InstanceStorage::PlayerController()->Car != NULL) {
-		//InstanceStorage::PlayerController()->Car->RespawnInPlace();
+		FVector carOldLoc = InstanceStorage::PlayerController()->Car->Location;
+		FRotator carOldRot = InstanceStorage::PlayerController()->Car->Rotation;
+		
+		InstanceStorage::PlayerController()->Car->RespawnInPlace();
+		InstanceStorage::PlayerController()->Car->Teleport(carOldLoc, carOldRot, false, false, false);
 		InstanceStorage::PlayerController()->Car->SetCarScale(carScale);
-		InstanceStorage::PlayerController()->Car->Teleport(InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->Car->Rotation, false, false, false);
 
 		setCarScale = false;
 	}
 }
+
+void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
+	// Populate player list
+	if (localGameEvent) {
+		int currPlayer = 0;
+		TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+		for (int i = 0; i < gameTeams.Num(); i++) {
+
+			for (int j = 0; j < gameTeams.GetByIndex(i)->Members.Num(); j++)
+			{
+				_bstr_t b(gameTeams.GetByIndex(i)->Members.GetByIndex(j)->PlayerName.ToString().data());
+				players[currPlayer + 1] = b;
+				currPlayer++;
+			}
+		}
+		
+	}
+}
+
+void CarPhysics::onCarSpawned(Event* e) {
+	//std::cout << "Spawned a car!" << std::endl;
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	populatePlayerList(localGameEvent);
+}
+
 /*
 
 gameTeams.Data[j]->SetCustomTeamName(FString(L"DUMB NAME"));
