@@ -166,11 +166,10 @@ void RumbleMods::onPlayerTick(Event* e) {
 
 		// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SubRules;
-		if (itemRules && currItemGiveRate != itemGiveRate) {
+		if (itemRules && !Utils::FloatCompare(currItemGiveRate,itemGiveRate)) {
 			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
 			for (int l = 0; l < itemDispensers.Num(); l++) {
 				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
-				std::cout << "Item give rate: " << itemGiveRate << std::endl;
 			}
 		}
 		else {
@@ -201,7 +200,7 @@ void RumbleMods::onPlayerTick(Event* e) {
 						// Check if magnet settings have changed
 						SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
 						if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
-							magnet->Range = magnetRange;
+							//magnet->Range = magnetRange;
 						}
 						if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
 							magnet->BallGravity = magnetBallGravity;
@@ -219,14 +218,14 @@ void RumbleMods::onPlayerTick(Event* e) {
 					// Grappling Hook
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_GrapplingHook_TA::StaticClass())) {
 						SDK::ASpecialPickup_GrapplingHook_TA* grapplingHook = (SDK::ASpecialPickup_GrapplingHook_TA*)items.GetByIndex(q);
-						grapplingHook->MaxRopeLength *= 100;
-						grapplingHook->bCanTargetCars = true;
-						grapplingHook->bCanTargetEnemyCars = true;
-						grapplingHook->bCanTargetTeamCars = true;
-						grapplingHook->ActivationDuration *= 100;
-						grapplingHook->bDeactivateOnTouch = false;
-						grapplingHook->bCanTargetBall = false;
-						grapplingHook->AfterAttachDuration *= 100;
+						//grapplingHook->MaxRopeLength *= 100;
+						//grapplingHook->bCanTargetCars = true;
+						//grapplingHook->bCanTargetEnemyCars = true;
+						//grapplingHook->bCanTargetTeamCars = true;
+						//grapplingHook->ActivationDuration *= 100;
+						//grapplingHook->bDeactivateOnTouch = false;
+						//grapplingHook->bCanTargetBall = false;
+						//grapplingHook->AfterAttachDuration *= 100;
 						//grapplingHook->AttachTime *= 100;
 						//plunger->ActivationDuration *= 100;
 						// If tornado is selected, set as current selection for item forcing
@@ -240,9 +239,9 @@ void RumbleMods::onPlayerTick(Event* e) {
 					// Power hitter
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_HitForce_TA::StaticClass())) {
 						SDK::ASpecialPickup_HitForce_TA* powerHitter = (SDK::ASpecialPickup_HitForce_TA*)items.GetByIndex(q);
-						powerHitter->CarHitForce *= 20;
-						powerHitter->bDemolishCars = false;
-						powerHitter->ActivationDuration *= 100;
+						//powerHitter->CarHitForce *= 20;
+						//powerHitter->bDemolishCars = false;
+						//powerHitter->ActivationDuration *= 100;
 						//plunger->ActivationDuration *= 100;
 						// If tornado is selected, set as current selection for item forcing
 						if (selectedRumbleIndex == 4 && giveItem) {
@@ -281,10 +280,17 @@ void RumbleMods::onPlayerTick(Event* e) {
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallCarSpring_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallCarSpring_TA* punchingGlove = (SDK::ASpecialPickup_BallCarSpring_TA*)items.GetByIndex(q);
 
-						if (!Utils::FloatCompare(punchingGlove->Force, punchingGloveForce)) {
+						if (!Utils::FloatCompare(punchingGlove->Force, punchingGlove->Force)) {
 							//tornado->Radius = tornadoRadius;
-							std::cout << "Punching GLove Force " << punchingGlove->Force << std::endl;
+							std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
+							punchingGlove->Force = punchingGlove->Force;
 						}
+						if (!Utils::FloatCompare(punchingGlove->VerticalForce, punchingGloveVerticalForce)) {
+							//tornado->Radius = tornadoRadius;
+							std::cout << "Punching Glove Vertical Force " << punchingGlove->VerticalForce << std::endl;
+							punchingGlove->VerticalForce = punchingGloveVerticalForce;
+						}
+						
 						//tornado->ActivationDuration *= 100;
 						// If tornado is selected, set as current selection for item forcing
 						if (selectedRumbleIndex == 5 && giveItem) {
@@ -298,8 +304,8 @@ void RumbleMods::onPlayerTick(Event* e) {
 					// Spikes
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallVelcro_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallVelcro_TA* spikes = (SDK::ASpecialPickup_BallVelcro_TA*)items.GetByIndex(q);
-						spikes->AfterHitDuration *= 1000;
-						spikes->ActivationDuration *= 100;
+						//spikes->AfterHitDuration *= 1000;
+						//spikes->ActivationDuration *= 100;
 						// If tornado is selected, set as current selection for item forcing
 						if (selectedRumbleIndex == 6 && giveItem) {
 							spikes->ApplyPickup(InstanceStorage::PlayerController()->Car);

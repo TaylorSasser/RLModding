@@ -28,7 +28,7 @@ private:
 
 	// Punching Glove Settings
 	float punchingGloveForce = 1.0;
-	float punchingGloveVerticalForce = 1.0;
+	float punchingGloveVerticalForce = 400000.0;
 	bool bStartGameMode = false;
 };
 

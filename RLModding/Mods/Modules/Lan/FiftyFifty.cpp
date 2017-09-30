@@ -14,7 +14,7 @@ void FiftyFifty::onDisable() {
 
 void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", 0, ImVec2(400, 300), 0.75f);
-	ImGui::SliderFloat("Interval", &interval, 5.0f, 60.0f, "%.1f");
+	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
 
@@ -72,7 +72,9 @@ void FiftyFifty::onPlayerTick(Event* event) {
 				double elapsed = difftime(end, start);
 				if (elapsed >= interval) {
 					TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+					srand(time(NULL));
 					int team_idx = rand() % gameTeams.Num();
+					srand(time(NULL));
 					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
 					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
 					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {

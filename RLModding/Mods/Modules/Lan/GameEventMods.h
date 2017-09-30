@@ -20,7 +20,7 @@ private:
 	bool startOverTime = false;
 	bool randomExplosion = false;
 	bool spawnBot = false;
-
+	bool allowMorePlayers = false;
 	// Clock 
 	std::clock_t start;
 };

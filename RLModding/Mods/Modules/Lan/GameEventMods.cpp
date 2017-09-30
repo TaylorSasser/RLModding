@@ -35,6 +35,10 @@ void GameEventMods::DrawMenu() {
 		if (ImGui::Button("Spawn Bot")) {
 			spawnBot = true;
 		}
+		if (ImGui::Button("Up Max Players")) {
+			allowMorePlayers = true;
+		}
+		
 
 		ImGui::End();
 	}
@@ -68,6 +72,25 @@ void GameEventMods::onPlayerTick(Event* e) {
 	if (startOverTime) {
 		localGameEvent->StartOvertime();
 		startOverTime = false;
+	}
+
+	if (allowMorePlayers) {
+		std::cout << "Old Max Players: " << localGameEvent->MaxPlayers << std::endl;
+		localGameEvent->SetMaxPlayers(20);
+		localGameEvent->SetMaxTeamSize(20);
+		localGameEvent->UpdateMaxTeamSize();
+		localGameEvent->ChooseTeam(0, InstanceStorage::PlayerController());
+		localGameEvent->bUnfairTeams = true;
+
+		for (int i = 0; i < localGameEvent->Teams.Num(); i++) {
+			localGameEvent->Teams.GetByIndex(i)->Size = 10;
+		}
+
+		//localGameEvent
+		std::cout << "New Maxd Players: " << localGameEvent->MaxPlayers << std::endl;
+
+		allowMorePlayers = false;
+
 	}
 
 	if (localGameEvent) {

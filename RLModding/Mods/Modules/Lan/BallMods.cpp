@@ -19,7 +19,7 @@ void BallMods::DrawMenu() {
 		for (int i = 0; i < numGameBalls; i++) {
 			std::string ballScaleLabel = "Ball " + std::to_string(i + 1) + " Scale";
 
-			ImGui::SliderFloat(ballScaleLabel.c_str(), &ballScale[i], 0.0f, 20.0f, "%.1f");
+			ImGui::SliderFloat(ballScaleLabel.c_str(), &ballScale[i], 0.1f, 20.0f, "%.1f");
 
 			if (ImGui::Button("Freeze")) {
 				freezeBall[i] = true;
