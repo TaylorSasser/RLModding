@@ -19,7 +19,7 @@ private:
 	char title[128] = "Rocket Launcher";
 	char body[128] = "This is the body of the blog text";
 	char motd[128] = "Created by ButterandCream, Taylor and two.";
-	char youtubeTitle[128] = "Rocket League Mods";
-	char youtubeURL[128] = "rocketleaguemods.com";
+	char ImageUrl[512] = "https://media.discordapp.net/attachments/357638651192016901/357652929345486848/rl.jpg";
+	char URL[128] = "http://rocketleaguemods.com";
 	bool bSet = false;
 };

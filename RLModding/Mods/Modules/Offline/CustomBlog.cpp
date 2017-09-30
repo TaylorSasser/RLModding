@@ -16,8 +16,8 @@ void CustomBlog::DrawMenu() {
 	ImGui::Begin("Custom Blog Menu", 0, ImVec2(400, 300), 0.75f);
 	ImGui::InputText("Title", title, IM_ARRAYSIZE(title));
 	ImGui::InputTextMultiline("Body", body, IM_ARRAYSIZE(body));
-	ImGui::InputText("Youtube URL", youtubeURL, IM_ARRAYSIZE(youtubeURL));
-	ImGui::InputText("Youtube Title", youtubeTitle, IM_ARRAYSIZE(youtubeTitle));
+	ImGui::InputText("Link", URL, IM_ARRAYSIZE(URL));
+	ImGui::InputText("Image Url", ImageUrl, IM_ARRAYSIZE(ImageUrl));
 	ImGui::InputText("MOTD", motd, IM_ARRAYSIZE(motd));
 	if (ImGui::Button("Hide Blog")) {
 		body[0] = '\0';
@@ -28,7 +28,18 @@ void CustomBlog::DrawMenu() {
 }
 
 void CustomBlog::onMainMenuTick(Event* event) {
-	UGFxData_Community_TA* community = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
-	UOnlineGameBlog_X* blog = (UOnlineGameBlog_X*)Utils::GetInstanceOf(UOnlineGameBlog_X::StaticClass());
+	/*
+	UBlogTiles_X* blog = (UBlogTiles_X*)Utils::GetInstanceOf(UBlogTiles_X::StaticClass());
+	TArray<class UBlogTile_X*> CarouselTiles = blog->CarouselTiles;
+	for (int i = 0; i < CarouselTiles.Num(); i++) {
+		if (CarouselTiles.IsValidIndex(i)) {
+			CarouselTiles[i]->Title = Utils::to_fstring(title);
+			CarouselTiles[i]->Description = Utils::to_fstring(body);
+			CarouselTiles[i]->WebURL = Utils::to_fstring(URL);
+			CarouselTiles[i]->ImageURL = Utils::to_fstring(ImageUrl);
+		}
+	}
+	*/
+	//blog->MotD = Utils::to_fstring(motd);
 	//Old custom blog method doesnt work anymore. TODO: Find new way.
 }
