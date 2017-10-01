@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include "../Interfaces/Interfaces.h"
 
 RumbleMods::RumbleMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 RumbleMods::RumbleMods(std::string name, int key) : ModBase(name, key) {}
@@ -33,7 +34,7 @@ void RumbleMods::DrawMenu() {
 	if (RumbleMods::isEnabled()) {
 		{
 			// Rumble Controls
-			ImGui::Begin("Rumble Options", 0, ImVec2(400, 300), 0.75f);
+			ImGui::Begin("Rumble Options", &p_open, ImVec2(400, 300), 0.75f);
 
 			ImGui::Combo("Player Name", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 
@@ -135,7 +136,10 @@ void RumbleMods::DrawMenu() {
 				}
 			}
 			//End Example Settings
-			
+			if (!p_open) {
+				this->enabled = false;
+				p_open = true;
+			}
 
 			ImGui::End();
 		}

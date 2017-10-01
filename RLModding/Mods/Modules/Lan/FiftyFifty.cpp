@@ -13,7 +13,7 @@ void FiftyFifty::onDisable() {
 }
 
 void FiftyFifty::DrawMenu() {
-	ImGui::Begin("50/50 Settings", 0, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
 	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
@@ -36,10 +36,9 @@ void FiftyFifty::DrawMenu() {
 			bStarted = false;
 		}
 	}
-	ImGui::SameLine();
-	if (ImGui::Button("Close")) {
-		Interfaces::GUI().isGUIOpen = false;
-		this->setState(false);
+	if (!p_open) {
+		this->enabled = false;
+		p_open = true;
 	}
 	
 	ImGui::End();

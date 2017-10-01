@@ -1,14 +1,14 @@
 #include "CarPhysics.h"
 #include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
-
+#include "../Interfaces/Interfaces.h"
 
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
-		ImGui::Begin("Car Physics Mods", 0, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
 		ImGui::Combo("Player Car", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 		ImGui::SameLine();
@@ -37,6 +37,10 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			setCarScale = true;
+		}
+		if (!p_open) {
+			this->enabled = false;
+			p_open = true;
 		}
 		ImGui::End();
 	}

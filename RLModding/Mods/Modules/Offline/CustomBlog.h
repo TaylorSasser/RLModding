@@ -22,4 +22,5 @@ private:
 	char ImageUrl[512] = "https://media.discordapp.net/attachments/357638651192016901/357652929345486848/rl.jpg";
 	char URL[128] = "http://rocketleaguemods.com";
 	bool bSet = false;
+	bool p_open = true;
 };

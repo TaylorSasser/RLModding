@@ -33,6 +33,8 @@ private:
 	// Player selection menu
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
 	int playerSelectedIndex = 0;
+
+	bool p_open = true;
 };
 	
 

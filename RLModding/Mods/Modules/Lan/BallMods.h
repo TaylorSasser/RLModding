@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
 
@@ -13,14 +14,11 @@ public:
 	void onPlayerTick(Event* e);
 
 private:
-	float currBallScale[100];
-	bool freezeBall[100];
-	bool explodeBall[100];
 
+	float balls[100];
+	float currentScales[100];
 	int ballSelectedIndex = -1;
-	float ballScale[100];
 	int numGameBalls = 1;
-	bool testBallExplosion = false;
-	int attachBallIndex = -1;
+	bool p_open = true;
 };
 

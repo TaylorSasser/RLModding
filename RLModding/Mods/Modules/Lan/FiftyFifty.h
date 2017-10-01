@@ -19,6 +19,6 @@ private:
 	bool demoPlayer = true;
 	float interval = 20.0;
 	time_t start, end;
-	
+	bool p_open = true;
 };
 

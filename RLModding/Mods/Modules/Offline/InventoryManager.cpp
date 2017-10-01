@@ -21,7 +21,7 @@ void InventoryManager::DrawMenu() {
 		{
 			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
 
-			ImGui::Begin("Inventory Management");
+			ImGui::Begin("Inventory Management", &p_open);
 
 			ImGui::Text("Line Format: Chakram,EpicSaves,Sky Blue,");
 
@@ -53,6 +53,11 @@ void InventoryManager::DrawMenu() {
 				}
 					
 				f.close();
+			}
+
+			if (!p_open) {
+				this->enabled = false;
+				p_open = true;
 			}
 			ImGui::End();
 

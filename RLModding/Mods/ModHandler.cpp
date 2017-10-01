@@ -28,7 +28,7 @@ ModHandler::ModHandler() {
 	
 	CreateMod<CarPhysics>("Car Physics", VK_F3, Category::Car, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
-	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
+	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
 	CreateMod<ClassicMods>("Classic Mods", VK_NUMPAD7, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 

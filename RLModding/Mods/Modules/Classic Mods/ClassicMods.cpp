@@ -1,4 +1,5 @@
 #include "ClassicMods.h"
+#include "../Interfaces/Interfaces.h"
 
 ClassicMods::ClassicMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category,gamestate) {}
 ClassicMods::~ClassicMods() {}
@@ -21,7 +22,7 @@ void ClassicMods::onDisable() {
 }
 
 void ClassicMods::DrawMenu() {
-	ImGui::Begin("Classic Mods", 0, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Classic Mods", &p_open, ImVec2(400, 300), 0.75f);
 	ImGui::InputFloat("Jump Timeout", &jumpTimeout, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of time till you lose your second dodge");
@@ -37,9 +38,18 @@ void ClassicMods::DrawMenu() {
 	ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
+	if (ImGui::Button("Apply")) {
+		apply = true;
+	}
 	ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
+	ImGui::SameLine();
 	if (ImGui::Button("Reset")) {
 		reset();
+	}
+	ImGui::SameLine();
+	if (!p_open) {
+		this->enabled = false;
+		p_open = true;
 	}
 	ImGui::End();
 }
@@ -49,7 +59,7 @@ void ClassicMods::onPlayerTick(Event* event) {
 }
 
 void ClassicMods::onCarTick(Event* event) {
-	if (ClassicMods::isEnabled()) {
+	if (apply) {
 		if (InstanceStorage::CurrentCar()) {
 			if (ModBase::STATIC_getCurrentGameState() & GameState::TRAINING) {
 				ACar_Freeplay_TA* freeplayCar = reinterpret_cast<SDK::ACar_Freeplay_TA*>(InstanceStorage::CurrentCar());
@@ -66,8 +76,9 @@ void ClassicMods::onCarTick(Event* event) {
 				InstanceStorage::CurrentCar()->StickyForceGround = groundSticky;
 				InstanceStorage::CurrentCar()->StickyForceWall = wallSticky;
 			}
-			
+			apply = false;
 		}
+		
 	}
 	else {
 		ACar_TA* car = InstanceStorage::PlayerController()->Car;
@@ -88,6 +99,7 @@ void ClassicMods::onCarTick(Event* event) {
 				car->StickyForceGround = groundSticky;
 				car->StickyForceWall = wallSticky;
 			}
+			apply = false;
 		}
 	}
 }

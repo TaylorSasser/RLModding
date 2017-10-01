@@ -1,4 +1,5 @@
 #include "CustomBlog.h"
+#include "../Interfaces/Interfaces.h"
 
 CustomBlog::CustomBlog(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CustomBlog::~CustomBlog() {}
@@ -13,7 +14,7 @@ void CustomBlog::onDisable() {
 }
 
 void CustomBlog::DrawMenu() {
-	ImGui::Begin("Custom Blog Menu", 0, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Custom Blog Menu", &p_open, ImVec2(400, 300), 0.75f);
 	ImGui::InputText("Title", title, IM_ARRAYSIZE(title));
 	ImGui::InputTextMultiline("Body", body, IM_ARRAYSIZE(body));
 	ImGui::InputText("Link", URL, IM_ARRAYSIZE(URL));
@@ -22,7 +23,12 @@ void CustomBlog::DrawMenu() {
 	if (ImGui::Button("Hide Blog")) {
 		body[0] = '\0';
 	}
+	if (!p_open) {
+		this->enabled = false;
+		p_open = true;
+	}
 	ImGui::End();
+	
 		
 		
 }

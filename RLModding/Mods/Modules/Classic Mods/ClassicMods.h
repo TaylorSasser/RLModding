@@ -21,4 +21,6 @@ private:
 	float maxCarSpeed = 2300.0;
 	float torqueRate = 5.5;
 	bool bUnlimitedJumps = false;
+	bool apply = false;
+	bool p_open = true;
 };

@@ -13,15 +13,15 @@ void JoinServer::onDisable() {
 }
 
 void JoinServer::DrawMenu() {
-	ImGui::Begin("Join", 0, ImVec2(300, 200), 0.75f);
+	ImGui::Begin("Join", &p_open, ImVec2(300, 200), 0.75f);
 	ImGui::InputText("Ip Address", ip, IM_ARRAYSIZE(ip));
 	if (ImGui::Button("Join")) {
 		Interfaces::GUI().isGUIOpen = false;
 		bTravel = true;
 	}
-	ImGui::SameLine();
-	if (ImGui::Button("Close")) {
+	if (!p_open) {
 		this->enabled = false;
+		p_open = true;
 	}
 	ImGui::End();
 }

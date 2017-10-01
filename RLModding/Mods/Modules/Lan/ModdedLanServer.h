@@ -20,6 +20,7 @@ public:
 private:
 	void travel();
 	void create_mutator_string();
+	bool p_open = true;
 	UOnlineGameLanServer_X* LAN_Server = nullptr;
 	//Map Selection
 	bool bTravel;

@@ -2,6 +2,7 @@
 #include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
 #include <ctime>
+#include "../Interfaces/Interfaces.h"
 
 GameEventMods::GameEventMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 GameEventMods::GameEventMods(std::string name, int key) : ModBase(name, key) {}
@@ -10,7 +11,7 @@ void GameEventMods::DrawMenu() {
 	if (GameEventMods::isEnabled()) {
 
 		// Game Event Controls
-		ImGui::Begin("Game Event Mods", 0, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
 
 		if (ImGui::Button("Force Overtime")) {
 			startOverTime ^= 1;
@@ -39,6 +40,10 @@ void GameEventMods::DrawMenu() {
 			allowMorePlayers = true;
 		}
 		
+		if (!p_open) {
+			this->enabled = false;
+			p_open = true;
+		}
 
 		ImGui::End();
 	}
