@@ -43,7 +43,11 @@ void CarPhysics::DrawMenu() {
 			setCarScale = true;
 		}
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
-
+		if (!p_open) {
+			this->enabled = false;
+			p_open = true;
+		}
+		ImGui::End();
 		ImGui::End();
 	}
 }
