@@ -21,6 +21,7 @@ private:
 	bool randomExplosion = false;
 	bool spawnBot = false;
 	bool allowMorePlayers = false;
+	bool freezeBots = false;
 	bool p_open = true;
 	// Clock 
 	std::clock_t start;

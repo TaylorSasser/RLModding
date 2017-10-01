@@ -22,7 +22,7 @@ void GameEventMods::DrawMenu() {
 		}
 
 		if (ImGui::Button("Freeze Bots")) {
-			pauseServer = true;
+			freezeBots = true;
 		}
 		if (ImGui::Button("Random Explosion Test")) {
 			randomExplosion = true;
@@ -119,7 +119,17 @@ void GameEventMods::onPlayerTick(Event* e) {
 			}
 		}
 	}
+	if (freezeBots) {
 
+		if (localGameEvent) {
+			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
+			for (int i = 0; i < bots.Num(); i++) {
+				bots.GetByIndex(i)->DoNothing();
+			}
+		}
+		freezeBots = false;
+
+	}
 	if (randomSpawnPoints) {
 
 		if (localGameEvent) {

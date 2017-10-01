@@ -30,7 +30,7 @@ private:
 	float punchingGloveForce = 1.0;
 	float punchingGloveVerticalForce = 400000.0;
 	bool bStartGameMode = false;
-
+	bool enableCrazyItems = false;
 	bool p_open = true;
 };
 
