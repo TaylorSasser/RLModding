@@ -31,6 +31,8 @@ void BallMods::DrawMenu() {
 			ImGui::SliderFloat(ballScaleLabel.c_str(), &balls[i], 0.1f, 20.0f, "%.1f");
 		}
 
+		ImGui::Text("Please note, adding a ball will reset the scale for all balls.");
+
 		if (!p_open) {
 			this->enabled = false;
 			p_open = true;
@@ -57,14 +59,19 @@ void BallMods::onPlayerTick(Event* e) {
 	if (localGameEvent)
 	{
 		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
-		if (gameBalls.Num() != numGameBalls) {
-			localGameEvent->SetTotalGameBalls(numGameBalls);
-			localGameEvent->ResetBalls();
-			std::fill_n(currentScales, 100, 1.0);
-			for (int i = 0; i < numGameBalls; i++) {
+		if (numGameBalls < 1) numGameBalls = 1;
+
+		if (gameBalls.IsValidIndex(0)) {
+			if(gameBalls.Num() != numGameBalls) {
+				localGameEvent->SetTotalGameBalls(numGameBalls);
+				localGameEvent->ResetBalls();
+				std::fill_n(currentScales, 100, 1.0);
+				std::fill_n(balls, 100, 1.0);
+			}
+			for (int i = 0; i < gameBalls.Num(); i++) {
 				if (!Utils::FloatCompare(balls[i], currentScales[i])) {
 					currentScales[i] = balls[i];
-					if (gameBalls.IsValidIndex(i)) {
+					if (gameBalls.IsValidIndex(i) && !gameBalls[i]->bDeleteMe) {
 						gameBalls[i]->SetBallScale(balls[i]);
 					}
 				}
