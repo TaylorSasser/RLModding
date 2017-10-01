@@ -93,8 +93,11 @@ void ClassicMods::onCarTick(Event* event) {
 }
 
 void ClassicMods::onActorJump(Event*e) {
-	if (e->getCallingObject() != nullptr) {
-		((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;
-		((SDK::ACar_TA*)e->getCallingObject())->bJumped = 0;
+	if (bUnlimitedJumps) {
+		if (e->getCallingObject() != nullptr) {
+			((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;
+			((SDK::ACar_TA*)e->getCallingObject())->bJumped = 0;
+		}
 	}
+	
 }
