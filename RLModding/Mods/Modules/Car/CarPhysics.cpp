@@ -99,8 +99,19 @@ void CarPhysics::onPlayerTick(Event* e) {
 						FVector carOldLoc = currCar->Location;
 						FRotator carOldRot = currCar->Rotation;
 
-						if (respawnOnScale)
+						if (respawnOnScale) {
 							currCar->RespawnInPlace();
+
+							// Check if bot or person
+							if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+								currCar = ((AAIController_TA*)players.GetByIndex(i))->Car;
+							}
+							else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+								currCar = ((APlayerController_TA*)players.GetByIndex(i))->Car;
+
+							}
+
+						}
 						//InstanceStorage::PlayerController()->Car->Teleport(carOldLoc, carOldRot, false, false, false);
 						currCar->SetCarScale(carScale);
 					}
