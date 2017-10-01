@@ -22,5 +22,6 @@ private:
 	float torqueRate = 5.5;
 	bool bUnlimitedJumps = false;
 	bool apply = false;
+	bool reset_values = false;
 	bool p_open = true;
 };

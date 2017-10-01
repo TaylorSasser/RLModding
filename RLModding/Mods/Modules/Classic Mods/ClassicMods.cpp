@@ -42,9 +42,10 @@ void ClassicMods::DrawMenu() {
 		apply = true;
 	}
 	ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
-	ImGui::SameLine();
 	if (ImGui::Button("Reset")) {
 		reset();
+		reset_values = true;
+		apply = false;
 	}
 	ImGui::SameLine();
 	if (!p_open) {
@@ -76,11 +77,10 @@ void ClassicMods::onCarTick(Event* event) {
 				InstanceStorage::CurrentCar()->StickyForceGround = groundSticky;
 				InstanceStorage::CurrentCar()->StickyForceWall = wallSticky;
 			}
-			apply = false;
 		}
 		
 	}
-	else {
+	else if (reset_values) {
 		ACar_TA* car = InstanceStorage::PlayerController()->Car;
 		if (car) {
 			reset();
@@ -100,6 +100,7 @@ void ClassicMods::onCarTick(Event* event) {
 				car->StickyForceWall = wallSticky;
 			}
 			apply = false;
+			reset_values = false;
 		}
 	}
 }
