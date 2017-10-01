@@ -19,9 +19,9 @@ namespace Core {
 		_old_err = GetStdHandle(STD_ERROR_HANDLE);
 		_old_in = GetStdHandle(STD_INPUT_HANDLE);
 
-		//AllocConsole() && AttachConsole(GetCurrentProcessId());
-		//SetConsoleCtrlHandler(NULL, true);
-		//freopen("CON", "w", stdout);
+		AllocConsole() && AttachConsole(GetCurrentProcessId());
+		SetConsoleCtrlHandler(NULL, true);
+		freopen("RLModding.log", "w", stdout);
 		if (!Utils::InitializeNamesStore()) { printf("Name Store failed \n"); } else { printf("GNames Found \n"); }
 		if (!Utils::InitializeObjectsStore()) { printf("Object Store failed \n"); } else { printf("GObjects Found \n"); }
 		printf("Core::Initialize Finished \n");
@@ -29,6 +29,7 @@ namespace Core {
 
 	void Restore() {
 		printf("Core Restore Called");
+		fclose(stdout);
 		if (_out && _err && _in) {
 			if (_old_out)
 				SetStdHandle(STD_OUTPUT_HANDLE, _old_out);
@@ -37,7 +38,7 @@ namespace Core {
 			if (_old_in)
 				SetStdHandle(STD_INPUT_HANDLE, _old_in);
 		}
-		fclose(stdout);
+		
 		FreeConsole();
 	}
 }
