@@ -29,6 +29,7 @@ private:
 	time_t start, end;
 
 	bool refreshCars = true;
+	bool respawnOnScale = false;
 
 	// Player selection menu
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
