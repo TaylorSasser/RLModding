@@ -8,7 +8,7 @@ CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
-		ImGui::Begin("Car Physics Mods", 0, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
 		if (ImGui::Button("Clone Car")) cloneMe = true;
 		ImGui::SameLine();
@@ -47,7 +47,6 @@ void CarPhysics::DrawMenu() {
 			this->enabled = false;
 			p_open = true;
 		}
-		ImGui::End();
 		ImGui::End();
 	}
 }
