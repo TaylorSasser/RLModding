@@ -36,6 +36,7 @@ void ModdedLanServer::DrawMenu() {
 	ImGui::Combo("Respawn Time", &defaultRespawnTime, respawnTimeCombo, IM_ARRAYSIZE(respawnTimeCombo));
 	ImGui::Combo("Testing", &defaultTesting, testingCombo, IM_ARRAYSIZE(testingCombo));
 	if (ImGui::Button("Launch")) {
+		printf("Created LAN Server via GUI");
 		mapName = maps[selectedMap].filename;
 		create_mutator_string();
 		Interfaces::GUI().isGUIOpen = false;

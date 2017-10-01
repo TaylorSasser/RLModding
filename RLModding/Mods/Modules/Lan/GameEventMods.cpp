@@ -14,29 +14,36 @@ void GameEventMods::DrawMenu() {
 		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
 
 		if (ImGui::Button("Force Overtime")) {
+			printf("Forced overtime");
 			startOverTime ^= 1;
 		}
 
 		if (ImGui::Button("Pause Server")) {
+			printf("Paused server");
 			pauseServer = true;
 		}
 
 		if (ImGui::Button("Freeze Bots")) {
+			printf("Froze bots");
 			freezeBots = true;
 		}
 		if (ImGui::Button("Random Explosion Test")) {
+			printf("Random explosion test");
 			randomExplosion = true;
 			start = std::clock();
 
 		}
 		if (ImGui::Button("Randomize Spawn Points")) {
+			printf("Randomized spawn points");
 			randomSpawnPoints = true;
 
 		}
 		if (ImGui::Button("Spawn Bot")) {
+			printf("Spawned bot");
 			spawnBot = true;
 		}
 		if (ImGui::Button("Up Max Players")) {
+			printf("Changed max player count");
 			allowMorePlayers = true;
 		}
 		

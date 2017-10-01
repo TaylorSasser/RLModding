@@ -28,6 +28,7 @@ void InventoryManager::DrawMenu() {
 			ImGui::Checkbox("Group Items by quantity.", &groupItems);
 
 			if (ImGui::Button("Export Inventory")) {
+				printf("Exporting inventory");
 				runInvExport = true;
 				ImGui::OpenPopup("Exporting Inventory");
 

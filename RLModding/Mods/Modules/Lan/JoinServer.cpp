@@ -16,6 +16,7 @@ void JoinServer::DrawMenu() {
 	ImGui::Begin("Join", &p_open, ImVec2(300, 200), 0.75f);
 	ImGui::InputText("Ip Address", ip, IM_ARRAYSIZE(ip));
 	if (ImGui::Button("Join")) {
+		printf("Attempting to join server...");
 		Interfaces::GUI().isGUIOpen = false;
 		bTravel = true;
 	}

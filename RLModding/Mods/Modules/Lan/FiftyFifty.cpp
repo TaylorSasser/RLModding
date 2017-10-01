@@ -24,8 +24,11 @@ void FiftyFifty::DrawMenu() {
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
-			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION))
+			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
+				printf("Enabled 50/50");
+			}
+				
 			else {
 				printf("Invalid state for 50/50\n");
 			}
@@ -33,6 +36,7 @@ void FiftyFifty::DrawMenu() {
 	}
 	else {
 		if (ImGui::Button("Disable")) {
+			printf("Disabled 50/50");
 			bStarted = false;
 		}
 	}

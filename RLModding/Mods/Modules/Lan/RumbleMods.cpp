@@ -128,13 +128,16 @@ void RumbleMods::DrawMenu() {
 			//just brings up the settings anywhere
 			if (bStartGameMode) {
 				if (ImGui::Button("Disable")) {
+					printf("Disabled rumble mods");
 					RumbleMods::bStartGameMode = false;
 				}
 			}
 			else {
 				if (ImGui::Button("Enable")) {
-					if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING)))
+					if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING))) {
+						printf("Enabled rumble mods");
 						bStartGameMode = true;
+					}
 					else {
 						printf("Invalid state for rumble settings\n");
 					}

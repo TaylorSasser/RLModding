@@ -10,7 +10,10 @@ void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
-		if (ImGui::Button("Clone Car")) cloneMe = true;
+		if (ImGui::Button("Clone Car")) {
+			cloneMe = true;
+			printf("Cloning car");
+		}
 		ImGui::SameLine();
 		ImGui::InputInt("# Clones", &numClones);
 
@@ -21,11 +24,13 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		if (ImGui::Button("Refresh")) {
 			refreshCars = true;
+			printf("Refreshing cars");
 		}
 		ImGui::Separator();
 
 		if (ImGui::Button("Toggle Car Collision")) {
 			carCollisionOff = !carCollisionOff;
+			printf("Car collision toggled");
 		}
 		if (carCollisionOff) {
 			ImGui::SameLine();
@@ -41,6 +46,7 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			setCarScale = true;
+			printf("Applying car scale");
 		}
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		if (!p_open) {

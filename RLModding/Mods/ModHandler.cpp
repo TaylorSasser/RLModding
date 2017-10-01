@@ -20,7 +20,7 @@ ModHandler::ModHandler() {
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
-	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::Lan, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);	
 	

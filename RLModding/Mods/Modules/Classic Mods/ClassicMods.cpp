@@ -5,6 +5,7 @@ ClassicMods::ClassicMods(std::string name, int key, Category category, GameState
 ClassicMods::~ClassicMods() {}
 
 void ClassicMods::reset() {
+	printf("Reset classic mods");
 	jumpTimeout = 1.5;
 	torqueRate = 5.5;
 	maxCarSpeed = 2300.0;
@@ -39,6 +40,7 @@ void ClassicMods::DrawMenu() {
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
 	if (ImGui::Button("Apply")) {
+		printf("Applying classic mods");
 		apply = true;
 	}
 	ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
