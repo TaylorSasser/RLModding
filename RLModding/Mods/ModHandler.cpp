@@ -6,18 +6,20 @@
 #include "Modules/Lan/JoinServer.h"
 #include "Modules/Offline/CustomBlog.h"
 #include "Modules/Offline/InventoryManager.h"
-#include "Modules/Classic Mods/ClassicMods.h"
 #include "Modules/Lan/ModdedLanServer.h"
 #include "Modules/Lan/FiftyFifty.h"
 #include "Modules/Lan/BallMods.h"
 #include "Modules/Lan/GameEventMods.h"
 #include "Modules/Car/CarPhysics.h"
 #include "Modules/Lan/PlayerMods.h"
+#include "Modules/Lan/Drainage.h"
+
 
 ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
 	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
+	CreateMod<Drainage>("Drainage", VK_F6, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
@@ -32,7 +34,6 @@ ModHandler::ModHandler() {
 
 	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
-	CreateMod<ClassicMods>("Classic Mods", VK_NUMPAD7, Category::Other, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }

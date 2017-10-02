@@ -9,10 +9,10 @@ public:
 
 
 
-	void DrawMenu();
-	void onEnable();
-	void onDisable();
-	void onPlayerTick(Event* e);
+	void DrawMenu() override;
+	void onEnable() override;
+	void onDisable() override;
+	void onPlayerTick(Event* e) override;
 
 private:
 	// General Rumble Settings

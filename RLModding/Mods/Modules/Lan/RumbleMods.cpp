@@ -157,7 +157,7 @@ void RumbleMods::onEnable() {
 
 }
 void RumbleMods::onDisable() {
-	
+	delete[] players;
 }
 
 std::string to_string(wchar_t* text)

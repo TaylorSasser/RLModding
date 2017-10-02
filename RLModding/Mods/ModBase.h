@@ -142,6 +142,8 @@ public:
 	virtual void onWorkshopDownloaded(Event* e) {}
 	virtual void onBreakoutPlatformDamaged(Event* e) {}
 	virtual void onCarSpawned(Event* e) {}
+	virtual void onCarDemolished(Event* e) {}
+
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}
 	virtual void onPRIRemove(Event* e) {}

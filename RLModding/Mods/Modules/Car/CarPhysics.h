@@ -8,11 +8,15 @@ public:
 	CarPhysics(std::string name, int key, Category category, GameState gamestate);
 	CarPhysics(std::string, int key);
 
+	void onDisable();
+
 	void DrawMenu();
 	void onPlayerTick(Event* e);
 	void CarPhysics::onCarSpawned(Event* e);
 	void CarPhysics::onGameEventRemovePlayer(Event* e);
 	void CarPhysics::onGameEventAddPlayer(Event* e);
+	void CarPhysics::onCarTick(Event* event);
+	void CarPhysics::onActorJump(Event*e);
 
 
 private:
@@ -40,6 +44,19 @@ private:
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
 	int playerSelectedIndex = 0;
 	int oldPlayerSelectedIndex = 0;
+
+	bool demolishOnOpposingSide = false;
+	bool unlimitedBoost = false;
+
+	void reset();
+	float groundSticky = 1.0;
+	float wallSticky = 1.0;
+	float jumpTimeout = 1.5;
+	float maxCarSpeed = 2300.0;
+	float torqueRate = 5.5;
+	bool bUnlimitedJumps = false;
+	bool apply = false;
+	bool reset_values = false;
 
 	std::string statusText = "";
 

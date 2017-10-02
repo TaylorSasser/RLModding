@@ -6,6 +6,12 @@
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
+void CarPhysics::onDisable() {
+	delete[] players;
+	reset();
+	printf("Car Mods Disabled\n");
+}
+
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
@@ -44,10 +50,40 @@ void CarPhysics::DrawMenu() {
 		}
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		ImGui::Checkbox("Freeze car in place", &freezeInPlace);
+		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
+		//ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+
+		ImGui::Separator();
+
+		ImGui::InputFloat("Jump Timeout", &jumpTimeout, 0.5f, 1.0f, 1);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("The amount of time till you lose your second dodge");
+		ImGui::InputFloat("Torque Rate", &torqueRate, 0.5f, 1.0f, 1);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("How fast your car flips. For example doubling the default 5.5 will make your car flip ~2 times with one dodge");
+		ImGui::InputFloat("Max Car Velocity", &maxCarSpeed, 1000.0f, 10000.0f, 1);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("The max velocity of your car");
+		ImGui::InputFloat("Ground Sticky Force", &groundSticky, 0.5f, 1.0f, 1);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("The amount of sticky force applied when you're on the ground");
+		ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
+		if (ImGui::Button("Apply")) {
+			printf("Applying classic mods");
+			apply = true;
+		}
+		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
 		ImGui::Separator();
 
 		ImGui::Text(statusText.c_str());
+		if (ImGui::Button("Reset")) {
+			reset();
+			reset_values = true;
+			apply = false;
+		}
 
 		if (!p_open) {
 			this->enabled = false;
@@ -88,7 +124,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 					currCar = ((AAIController_TA*)gameEventPlayers.GetByIndex(i))->Car;
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-					currCar = ((APlayerController_TA*)gameEventPlayers.GetByIndex(i))->Car;
+					currCar = ((APlayerController_TA*)gameEventPlayers.GetByIndex(i))->PRI->Car;
 
 				}
 
@@ -98,6 +134,41 @@ void CarPhysics::onPlayerTick(Event* e) {
 					}
 					else if (InstanceStorage::PlayerController()->Car != NULL) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
+					}
+
+					if (demolishOnOpposingSide) {
+						currCar->bDemolishOnOpposingGround = true;
+					}
+
+					if (unlimitedBoost) {
+						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
+					}
+
+					// For some reason these properties need respawn
+					bool needRefresh = false;
+					if (!Utils::FloatCompare(currCar->MaxTimeForDodge, jumpTimeout)) {
+						currCar->MaxTimeForDodge = jumpTimeout;
+						needRefresh = true;
+					}
+					if (!Utils::FloatCompare(currCar->MaxAngularSpeed, torqueRate)) {
+						currCar->MaxAngularSpeed = torqueRate;
+						needRefresh = true;
+					}
+					if (!Utils::FloatCompare(currCar->MaxLinearSpeed, maxCarSpeed)) {
+						currCar->MaxLinearSpeed = maxCarSpeed;
+						needRefresh = true;
+					}
+					if (!Utils::FloatCompare(currCar->StickyForceGround, groundSticky)) {
+						currCar->StickyForceGround = groundSticky;
+						needRefresh = true;
+					}
+					if (!Utils::FloatCompare(currCar->StickyForceWall, wallSticky)) {
+						currCar->StickyForceWall = wallSticky;
+						needRefresh = true;
+					}
+
+					if (needRefresh) {
+						currCar->RespawnInPlace();
 					}
 
 					// Added check to make sure car is not null
@@ -148,13 +219,14 @@ void CarPhysics::onPlayerTick(Event* e) {
 				AController* tempController = gameEventPlayers.GetByIndex(playerSelectedIndex - 1);
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
+					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
 					freezeInPlace = currController->Car->bPodiumMode;
 					
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
+					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
 					freezeInPlace = currController->Car->bPodiumMode;
-
 				}
 			}
 		}
@@ -200,6 +272,15 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 	}
 }
 
+void CarPhysics::reset() {
+	printf("Reset classic mods");
+	jumpTimeout = 1.5;
+	torqueRate = 5.5;
+	maxCarSpeed = 2300.0;
+	groundSticky = 1.0;
+	wallSticky = 1.0;
+}
+
 void CarPhysics::onCarSpawned(Event* e) {
 	//std::cout << "Spawned a car!" << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
@@ -216,6 +297,65 @@ void CarPhysics::onGameEventAddPlayer(Event* e) {
 	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	populatePlayerList(localGameEvent);
+}
+
+
+void CarPhysics::onCarTick(Event* event) {
+	/*
+	if (apply) {
+		if (InstanceStorage::CurrentCar()) {
+			if (ModBase::STATIC_getCurrentGameState() & GameState::TRAINING) {
+				ACar_Freeplay_TA* freeplayCar = reinterpret_cast<SDK::ACar_Freeplay_TA*>(InstanceStorage::CurrentCar());
+				freeplayCar->MaxTimeForDodge = jumpTimeout;
+				freeplayCar->MaxAngularSpeed = torqueRate;
+				freeplayCar->MaxLinearSpeed = maxCarSpeed;
+				freeplayCar->StickyForceGround = groundSticky;
+				freeplayCar->StickyForceWall = wallSticky;
+			}
+			else {
+				InstanceStorage::CurrentCar()->MaxTimeForDodge = jumpTimeout;
+				InstanceStorage::CurrentCar()->MaxAngularSpeed = torqueRate;
+				InstanceStorage::CurrentCar()->MaxLinearSpeed = maxCarSpeed;
+				InstanceStorage::CurrentCar()->StickyForceGround = groundSticky;
+				InstanceStorage::CurrentCar()->StickyForceWall = wallSticky;
+			}
+		}
+
+	}
+	else if (reset_values) {
+		ACar_TA* car = InstanceStorage::PlayerController()->Car;
+		if (car) {
+			reset();
+			if (ModBase::STATIC_getCurrentGameState() & GameState::TRAINING) {
+				ACar_Freeplay_TA* freeplayCar = reinterpret_cast<SDK::ACar_Freeplay_TA*>(car);
+				freeplayCar->MaxTimeForDodge = jumpTimeout;
+				freeplayCar->MaxAngularSpeed = torqueRate;
+				freeplayCar->MaxLinearSpeed = maxCarSpeed;
+				freeplayCar->StickyForceGround = groundSticky;
+				freeplayCar->StickyForceWall = wallSticky;
+			}
+			else {
+				car->MaxTimeForDodge = jumpTimeout;
+				car->MaxAngularSpeed = torqueRate;
+				car->MaxLinearSpeed = maxCarSpeed;
+				car->StickyForceGround = groundSticky;
+				car->StickyForceWall = wallSticky;
+			}
+			apply = false;
+			reset_values = false;
+		}
+	}
+	*/
+}
+
+void CarPhysics::onActorJump(Event*e) {
+	if (bUnlimitedJumps) {
+		if (e->getCallingObject() != nullptr) {
+			((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;
+			((SDK::ACar_TA*)e->getCallingObject())->bJumped = 0;
+		}
+	}
+
 }
 
 /*

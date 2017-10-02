@@ -41,13 +41,13 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GameEvent_Breakout_TA.EventPlatformDamaged", &ModBase::onBreakoutPlatformDamaged);
 	SubscribeEvent("Function ProjectX.RPC_KeysBase_X.SetPrimaryPlayer", &ModBase::onSetPrimaryPlayer);
 	SubscribeEvent("Function ProjectX.OnlineGameJoinGame_X.EventServerReserved", &ModBase::onSendServerReservedEvent);
-	//SubscribeEvent("Function TAGame.GameEvent_TA.OnCarSpawned", &ModBase::onCarSpawned);
+	SubscribeEvent("Function TAGame.GameEvent_TA.OnCarSpawned", &ModBase::onCarSpawned);
 	SubscribeEvent("Function TAGame.GameEvent_TA.RemovePRI", &ModBase::onPRIRemove); // Gets player replication info when they leave
 	SubscribeEvent("Function TAGame.GameEvent_TA.AddPRI", &ModBase::onPRIAdd); // Gets player replication info when they join
 	SubscribeEvent("Function TAGame.GameEvent_TA.RemovePlayer", &ModBase::onGameEventRemovePlayer);
 	SubscribeEvent("Function TAGame.GameEvent_TA.AddPlayer", &ModBase::onGameEventAddPlayer);
 	SubscribeEvent("Function TAGame.GameEvent_TA.RemoveLocalPlayer", &ModBase::onLocalPlayerLeave);
-
+	SubscribeEvent("Function TAGame.Car_TA.OnDemolished", &ModBase::onCarDemolished);
 	
 	// "Function TAGame.GameEvent_TA.IsPlayingLan"
 	// "Function TAGame.GameEvent_TA.HandleCarDemolished"
