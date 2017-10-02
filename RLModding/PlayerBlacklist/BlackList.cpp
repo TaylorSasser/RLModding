@@ -5,7 +5,6 @@
 #include <Windows.h>
 
 
-
 BlackList::BlackList() {
 	//std::unique_ptr<Network::Socket> socket(std::make_unique<Network::TCPSocket>());
 	//socket->Connect("192.168.1.191",25543);
