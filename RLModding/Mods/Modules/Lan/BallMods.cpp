@@ -20,6 +20,10 @@ void BallMods::DrawMenu() {
 
 		// Game Event Controls
 		ImGui::Begin("Ball Mods", &p_open, ImVec2(400, 300), 0.75f);
+		if (ImGui::Button("Close")) {
+			Interfaces::GUI().isGUIOpen = false;
+			this->enabled = false;
+		}
 		ImGui::InputInt("# Balls", &numGameBalls);
 
 		for (int i = 0; i < numGameBalls; i++) {
@@ -41,13 +45,11 @@ void BallMods::DrawMenu() {
 void BallMods::onEnable() {
 	std::fill_n(balls, 100, 1.0);
 	std::fill_n(currentScales, 100, 1.0);
-	printf("Enabled Ball Mods");
 }
 void BallMods::onDisable() {
 	numGameBalls = 1;
 	std::fill_n(balls, 100, 1.0);
 	std::fill_n(currentScales, 100, 1.0);
-	printf("Disabled Ball Mods");
 }
 
 void BallMods::onPlayerTick(Event* e) {

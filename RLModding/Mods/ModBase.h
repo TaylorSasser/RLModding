@@ -43,6 +43,8 @@ public:
 	virtual void setState(bool state) { enabled = state; }
 	virtual bool isEnabled() { return enabled; }
 
+	// Add startup flags for mods
+
 	virtual const std::string& getName() { return name; }
 	virtual void setName(const std::string &newName) { name = newName; }
 
@@ -140,6 +142,11 @@ public:
 	virtual void onWorkshopDownloaded(Event* e) {}
 	virtual void onBreakoutPlatformDamaged(Event* e) {}
 	virtual void onCarSpawned(Event* e) {}
+	virtual void onLocalPlayerLeave(Event* e) {}
+	virtual void onPRIAdd(Event* e) {}
+	virtual void onPRIRemove(Event* e) {}
+	virtual void onGameEventAddPlayer(Event* e) {}
+	virtual void onGameEventRemovePlayer(Event* e) {}
 
 	bool enabled = false;
 protected:

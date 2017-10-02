@@ -10,10 +10,7 @@ void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
-		if (ImGui::Button("Clone Car")) {
-			cloneMe = true;
-			printf("Cloning car");
-		}
+		if (ImGui::Button("Clone Car")) cloneMe = true;
 		ImGui::SameLine();
 		ImGui::InputInt("# Clones", &numClones);
 
@@ -24,13 +21,11 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		if (ImGui::Button("Refresh")) {
 			refreshCars = true;
-			printf("Refreshing cars");
 		}
 		ImGui::Separator();
 
 		if (ImGui::Button("Toggle Car Collision")) {
 			carCollisionOff = !carCollisionOff;
-			printf("Car collision toggled");
 		}
 		if (carCollisionOff) {
 			ImGui::SameLine();
@@ -46,7 +41,6 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			setCarScale = true;
-			printf("Applying car scale");
 		}
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		if (!p_open) {
@@ -137,12 +131,18 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 	// Populate player list
+	std::fill_n(players, 11, "\0");
+
 	if (localGameEvent) {
 		TArray< class AController* > eventPlayers = localGameEvent->Players;
 		for (int i = 0; i < eventPlayers.Num(); i++) {
-
-			_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
-			players[i + 1] = b;
+			std::string playerName = eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString();
+			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
+			std::strncpy(cptr, playerName.c_str(), playerName.size());
+			cptr[playerName.length() + 1] = '\0';
+			std::cout << "Player: " << playerName << std::endl;
+			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
+			players[i + 1] = cptr;
 		}
 
 	}
@@ -150,6 +150,18 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 
 void CarPhysics::onCarSpawned(Event* e) {
 	//std::cout << "Spawned a car!" << std::endl;
+	//AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	//populatePlayerList(localGameEvent);
+}
+
+void CarPhysics::onGameEventRemovePlayer(Event* e) {
+	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	populatePlayerList(localGameEvent);
+}
+
+void CarPhysics::onGameEventAddPlayer(Event* e) {
+	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	populatePlayerList(localGameEvent);
 }

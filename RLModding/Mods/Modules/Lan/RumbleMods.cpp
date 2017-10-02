@@ -36,10 +36,11 @@ void RumbleMods::DrawMenu() {
 			// Rumble Controls
 			ImGui::Begin("Rumble Options", &p_open, ImVec2(400, 300), 0.75f);
 
+			/*
 			ImGui::Combo("Player Name", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 
 			ImGui::Separator();
-
+			*/
 			ImGui::InputFloat("Item Give Rate", &itemGiveRate, 0.5f, 1.0f);
 
 			ImGui::Checkbox("Crazy Items", &enableCrazyItems);
@@ -128,16 +129,13 @@ void RumbleMods::DrawMenu() {
 			//just brings up the settings anywhere
 			if (bStartGameMode) {
 				if (ImGui::Button("Disable")) {
-					printf("Disabled rumble mods");
 					RumbleMods::bStartGameMode = false;
 				}
 			}
 			else {
 				if (ImGui::Button("Enable")) {
-					if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING))) {
-						printf("Enabled rumble mods");
+					if (!(getCurrentGameState() & (GameState::MENU | GameState::TRAINING)))
 						bStartGameMode = true;
-					}
 					else {
 						printf("Invalid state for rumble settings\n");
 					}

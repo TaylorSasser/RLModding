@@ -11,6 +11,9 @@ public:
 	void DrawMenu();
 	void onPlayerTick(Event* e);
 	void CarPhysics::onCarSpawned(Event* e);
+	void CarPhysics::onGameEventRemovePlayer(Event* e);
+	void CarPhysics::onGameEventAddPlayer(Event* e);
+
 
 private:
 	void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);
