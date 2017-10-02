@@ -70,9 +70,8 @@ void CarPhysics::DrawMenu() {
 		ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
-		if (ImGui::Button("Apply")) {
-			printf("Applying classic mods");
-			apply = true;
+		if (ImGui::Button("Respawn Car")) {
+			respawn = true;
 		}
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
@@ -167,9 +166,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						needRefresh = true;
 					}
 
-					if (needRefresh) {
-						//currCar->RespawnInPlace();
-						needRefresh = false;
+					if (respawn) {
+						currCar->RespawnInPlace();
+						respawn = false;
 					}
 					
 

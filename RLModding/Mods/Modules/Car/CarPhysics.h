@@ -57,6 +57,7 @@ private:
 	bool bUnlimitedJumps = false;
 	bool apply = false;
 	bool reset_values = false;
+	bool respawn = false;
 
 	std::string statusText = "";
 

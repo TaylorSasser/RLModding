@@ -26,6 +26,7 @@ void FiftyFifty::DrawMenu() {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
+				reset_balls = false;
 				printf("Enabled 50/50");
 			}
 				
@@ -38,6 +39,7 @@ void FiftyFifty::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled 50/50");
 			bStarted = false;
+			reset_balls = true;
 		}
 	}
 	if (!p_open) {
@@ -110,5 +112,16 @@ void FiftyFifty::onPlayerTick(Event* event) {
 				}
 			}
 		}
+	}
+	else if (reset_balls){
+		APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(event->getCallingObject());
+		if (controller) {
+			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
+			if (localGameEvent) {
+				localGameEvent->SetTotalGameBalls(1);
+				localGameEvent->ResetBalls();
+			}
+		}
+		reset_balls = false;
 	}
 }

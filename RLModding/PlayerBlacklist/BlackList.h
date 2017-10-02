@@ -1,8 +1,9 @@
 #pragma once
-#include "../Socket/TCPSocket.h"
+#include <iostream>
 #include "../Interfaces/InstanceStorage.h"
 #include "../RL/SDK.hpp"
 #include "../Utils/Utils.h"
+#include <Windows.h>
 
 
 class BlackList {

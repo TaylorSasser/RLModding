@@ -87,6 +87,9 @@ void GameEventMods::DrawMenu() {
 		
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
+			if (ImGui::Button("Infinite Celebration.")) {
+				unlimCelebration = true;
+			}
 
 			if (ImGui::Button("Allow more than 8 players.")) {
 				allowMorePlayers = true;
@@ -162,6 +165,12 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (resetBalls) {
 			localGameEvent->ResetBalls();
 			resetBalls = false;
+		}
+
+		if (unlimCelebration) {
+			localGameEvent->PodiumTime = localGameEvent->PodiumTime * 2000;
+			localGameEvent->EndGame();
+			unlimCelebration = false;
 		}
 
 		if (pauseServer) {

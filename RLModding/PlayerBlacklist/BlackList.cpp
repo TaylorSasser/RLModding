@@ -1,6 +1,8 @@
+#include "../Socket/TCPSocket.h"
 #include "BlackList.h"
 #include <sstream>
 #include <memory>
+#include <Windows.h>
 
 
 
