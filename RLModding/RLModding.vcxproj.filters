@@ -43,7 +43,6 @@
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
-    <ClCompile Include="Mods\Modules\Classic Mods\ClassicMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
@@ -55,6 +54,8 @@
     <ClCompile Include="Socket\Network.cpp" />
     <ClCompile Include="Socket\Socket.cpp" />
     <ClCompile Include="Common\PacketBuffer.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1819,7 +1820,6 @@
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
-    <ClInclude Include="Mods\Modules\Classic Mods\ClassicMods.h" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
     <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
@@ -4673,6 +4673,8 @@
     <ClInclude Include="Socket\IPAddress.h" />
     <ClInclude Include="Socket\Network.h" />
     <ClInclude Include="Common\PacketBuffer.h" />
+    <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
+    <ClInclude Include="Mods\Modules\Lan\Drainage.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

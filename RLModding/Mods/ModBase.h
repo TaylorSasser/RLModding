@@ -18,10 +18,10 @@ enum GameState {
 inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
 inline GameState operator^(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) ^ static_cast<int>(b)); }
 
-enum Category {Menu = 0,GameModes,Ball,Lan,Car,Other,ALL,MAX};
+enum Category {Menu = 0,GameModes,Lan,InGame,Other,Ball,Car,ALL,MAX};
 
 static const std::string categoryNames[MAX-1] = {
-	"Menu Mods","Game Modes","Ball Mods","LAN Mods","Car Mods","Other Mods"
+	"Menu Mods","Game Modes","LAN Mods","In Game Mods","Other Mods"
 };
 
 class ModBase
@@ -42,6 +42,8 @@ public:
 	
 	virtual void setState(bool state) { enabled = state; }
 	virtual bool isEnabled() { return enabled; }
+
+	// Add startup flags for mods
 
 	virtual const std::string& getName() { return name; }
 	virtual void setName(const std::string &newName) { name = newName; }
@@ -139,6 +141,14 @@ public:
 	virtual void onSendServerReservedEvent(Event* e) {}
 	virtual void onWorkshopDownloaded(Event* e) {}
 	virtual void onBreakoutPlatformDamaged(Event* e) {}
+	virtual void onCarSpawned(Event* e) {}
+	virtual void onCarDemolished(Event* e) {}
+
+	virtual void onLocalPlayerLeave(Event* e) {}
+	virtual void onPRIAdd(Event* e) {}
+	virtual void onPRIRemove(Event* e) {}
+	virtual void onGameEventAddPlayer(Event* e) {}
+	virtual void onGameEventRemovePlayer(Event* e) {}
 
 	bool enabled = false;
 protected:

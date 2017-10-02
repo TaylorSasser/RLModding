@@ -21,13 +21,14 @@ void InventoryManager::DrawMenu() {
 		{
 			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
 
-			ImGui::Begin("Inventory Management");
+			ImGui::Begin("Inventory Management", &p_open);
 
 			ImGui::Text("Line Format: Chakram,EpicSaves,Sky Blue,");
 
 			ImGui::Checkbox("Group Items by quantity.", &groupItems);
 
 			if (ImGui::Button("Export Inventory")) {
+				printf("Exporting inventory");
 				runInvExport = true;
 				ImGui::OpenPopup("Exporting Inventory");
 
@@ -53,6 +54,11 @@ void InventoryManager::DrawMenu() {
 				}
 					
 				f.close();
+			}
+
+			if (!p_open) {
+				this->enabled = false;
+				p_open = true;
 			}
 			ImGui::End();
 

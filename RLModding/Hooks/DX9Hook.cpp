@@ -28,6 +28,17 @@ DWORD Device = NULL;
 static bool FirstRun = false;
 
 void DX9Hook::InitGUI() {
+	HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
+	WINDOWPLACEMENT p;
+	GetWindowPlacement(window, &p);
+	while (p.showCmd != 1) {
+		window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
+		GetWindowPlacement(window, &p);
+	}
+	printf("Window Placement: %d\n", p.showCmd);
+	Sleep(100);
+	
+
 	WNDCLASSEXA wc = { sizeof(WNDCLASSEX),CS_CLASSDC,D3D9MsgProc,0L,0L,GetModuleHandleA(NULL),NULL,NULL,NULL,NULL,"DX",NULL };
 	RegisterClassExA(&wc);
 	HWND hWnd = CreateWindowA("DX", NULL, WS_OVERLAPPEDWINDOW, 100, 100, 300, 300, GetDesktopWindow(), NULL, wc.hInstance, NULL);

@@ -5,36 +5,13 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 ModdedLanServer::~ModdedLanServer(){}
 
 void ModdedLanServer::onEnable() {
-	/*std::cout << "Getting Security Key Info...\n";
-	URPC_GenerateKeys_X* RPC;
-	RPC->Key = L"JhtbJ4M43lRIyQSA6xYuYelB0bEQl+n6hRsDcQmj0pk=";
-	RPC->IV = L"HKNBpu215LCUGiDTs1XwCA==";
-	RPC->HMACKey = L"J8mUXRphocYppAyEX/mKB07FgbBD6RaF+CwNBXA5JBI=";
-	RPC->SessionId = L"Hifv0CpmgG6QwFKRHovTLw==";
-
-	UOnlineGameJoinGame_X* join = reinterpret_cast<UOnlineGameJoinGame_X*>(Utils::GetInstanceOf(UOnlineGameJoinGame_X::StaticClass()));
-	join->STATIC_DynamicLoadObject(L"join", UOnlineGameJoinGame_X::StaticClass(), 0);
-	if (join) {
-		join->GenerateKeysRPCs.Add(RPC);
-		std::cout << "Added Keys to Array!\n";
-	}
-		
-	FNetworkEncryptionKey KeyInfo;
-	KeyInfo.EncryptionKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->Key);
-	KeyInfo.InitializationVector = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->IV);
-	KeyInfo.HMACKey = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->HMACKey);
-	KeyInfo.SessionIdentifier = reinterpret_cast<UOnlineSubsystem*>(UOnlineSubsystem::StaticClass())->STATIC_DecodeBase64(RPC->SessionId);
-	if (InstanceStorage::Engine()) {
-		InstanceStorage::Engine()->SetNetworkSecurityKey(KeyInfo);
-		std::cout << "Set Security Key Info!\n";
-	}*/
 }
 
 void ModdedLanServer::onDisable() {
 }
 
 void ModdedLanServer::DrawMenu() {
-	ImGui::Begin("LAN Options", 0, ImVec2(500, 800), 0.75f);
+	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
 	ImGui::Combo("Game Mode", &defaultGameMode, gameModesCombo, IM_ARRAYSIZE(gameModesCombo));
 	ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));
@@ -59,14 +36,15 @@ void ModdedLanServer::DrawMenu() {
 	ImGui::Combo("Respawn Time", &defaultRespawnTime, respawnTimeCombo, IM_ARRAYSIZE(respawnTimeCombo));
 	ImGui::Combo("Testing", &defaultTesting, testingCombo, IM_ARRAYSIZE(testingCombo));
 	if (ImGui::Button("Launch")) {
+		printf("Created LAN Server via GUI");
 		mapName = maps[selectedMap].filename;
 		create_mutator_string();
 		Interfaces::GUI().isGUIOpen = false;
 		bTravel = true;
 	}
-	ImGui::SameLine();
-	if (ImGui::Button("Close")) {
+	if (!p_open) {
 		this->enabled = false;
+		p_open = true;
 	}
 	ImGui::End();
 }

@@ -13,8 +13,8 @@ void FiftyFifty::onDisable() {
 }
 
 void FiftyFifty::DrawMenu() {
-	ImGui::Begin("50/50 Settings", 0, ImVec2(400, 300), 0.75f);
-	ImGui::SliderFloat("Interval", &interval, 5.0f, 60.0f, "%.1f");
+	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
 
@@ -24,8 +24,11 @@ void FiftyFifty::DrawMenu() {
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
-			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION))
+			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
+				printf("Enabled 50/50");
+			}
+				
 			else {
 				printf("Invalid state for 50/50\n");
 			}
@@ -33,13 +36,13 @@ void FiftyFifty::DrawMenu() {
 	}
 	else {
 		if (ImGui::Button("Disable")) {
+			printf("Disabled 50/50");
 			bStarted = false;
 		}
 	}
-	ImGui::SameLine();
-	if (ImGui::Button("Close")) {
-		Interfaces::GUI().isGUIOpen = false;
-		this->setState(false);
+	if (!p_open) {
+		this->enabled = false;
+		p_open = true;
 	}
 	
 	ImGui::End();
@@ -52,38 +55,59 @@ void FiftyFifty::onPlayerTick(Event* event) {
 		if (controller) {
 			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
 
-			// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
-			if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
-				localGameEvent->SetTotalGameBalls(2);
-				localGameEvent->ResetBalls();
-			}
-			else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
-				localGameEvent->SetTotalGameBalls(1);
-				localGameEvent->ResetBalls();
-			}
-
-
+			// Add check for game event
 			if (localGameEvent) {
-				if (checkTime) {
-					start = time(NULL);
-					checkTime = false;
+
+				// Spawn a second ball to trigger the explosion, if you use the default game ball it dissappears.  If it doesn't exist, spawn it
+				if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
+					localGameEvent->SetTotalGameBalls(2);
+					localGameEvent->ResetBalls();
 				}
-				end = time(NULL);
-				double elapsed = difftime(end, start);
-				if (elapsed >= interval) {
-					TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
-					int team_idx = rand() % gameTeams.Num();
-					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
-					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
-					if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
-						if(demoPlayer)
-							gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
-						else 
-							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);	
+				else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
+					localGameEvent->SetTotalGameBalls(1);
+					localGameEvent->ResetBalls();
+				}
+
+
+				if (localGameEvent) {
+					if (checkTime) {
+						start = time(NULL);
+						checkTime = false;
 					}
-							
-					checkTime = true;
-				}		
+					end = time(NULL);
+
+					double elapsed = difftime(end, start);
+					if (elapsed >= interval && localGameEvent->Players.Num() > 1) {
+						TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+						srand(time(NULL));
+						if (localGameEvent->Teams.IsValidIndex(0)) {
+							int team_idx = rand() % gameTeams.Num();
+							srand(time(NULL));
+							if (gameTeams.IsValidIndex(team_idx)) {
+								int player_idx = rand() % gameTeams[team_idx]->Members.Num();
+								TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
+								if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
+									if (demoPlayer)
+										gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+									else
+										localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+								}
+
+								checkTime = true;
+							}
+						}
+					}
+					// Account for a single user being alone in a game
+					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
+						if (demoPlayer)
+							controller->Car->Demolish(controller->Car);
+						else
+							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+
+						checkTime = true;
+
+					}
+				}
 			}
 		}
 	}

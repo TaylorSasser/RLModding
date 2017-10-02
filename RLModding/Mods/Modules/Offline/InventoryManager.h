@@ -13,6 +13,6 @@ public:
 	void onMainMenuTick(Event* e);
 
 private:
-
+	bool p_open = true;
 };
 

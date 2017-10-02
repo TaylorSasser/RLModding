@@ -9,6 +9,7 @@ void ZombieGameMode::onEnable() {
 		printf("Could not start Zombies Module \n");
 		return;
 	}
+	printf("Enabled zombie mode");
 
 	/*
 	if (InstanceStorage::GameEvent()->AIManager->Bots.Num() != 0) {
