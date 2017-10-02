@@ -9,7 +9,7 @@
 #include <iostream>
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
-
+	
 	style->WindowPadding = ImVec2(15, 15);
 	style->WindowRounding = 5.0f;
 	style->FramePadding = ImVec2(5, 5);
@@ -21,6 +21,7 @@ void SetStyle(ImGuiStyle * style) {
 	style->ScrollbarRounding = 9.0f;
 	style->GrabMinSize = 5.0f;
 	style->GrabRounding = 3.0f;
+	style->Alpha = 1.0f;
 
 	style->Colors[ImGuiCol_Text] = ImVec4(0.80f, 0.80f, 0.83f, 1.00f);
 	style->Colors[ImGuiCol_TextDisabled] = ImVec4(0.24f, 0.23f, 0.29f, 1.00f);
@@ -65,6 +66,7 @@ void SetStyle(ImGuiStyle * style) {
 	style->Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.25f, 1.00f, 0.00f, 1.00f);
 	style->Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.25f, 1.00f, 0.00f, 0.43f);
 	style->Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(1.00f, 0.98f, 0.95f, 0.73f);
+	
 }
 
 InGameGUI::InGameGUI() {
