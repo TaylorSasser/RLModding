@@ -55,6 +55,7 @@
     <ClCompile Include="Socket\Network.cpp" />
     <ClCompile Include="Socket\Socket.cpp" />
     <ClCompile Include="Common\PacketBuffer.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4673,6 +4674,7 @@
     <ClInclude Include="Socket\IPAddress.h" />
     <ClInclude Include="Socket\Network.h" />
     <ClInclude Include="Common\PacketBuffer.h" />
+    <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

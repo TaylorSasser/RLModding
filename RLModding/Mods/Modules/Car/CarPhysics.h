@@ -34,9 +34,16 @@ private:
 	bool refreshCars = true;
 	bool respawnOnScale = false;
 
+	bool freezeInPlace = false;
+
 	// Player selection menu
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
 	int playerSelectedIndex = 0;
+	int oldPlayerSelectedIndex = 0;
+
+	std::string statusText = "";
+
+	int currPlayerCount = 0;
 
 	bool p_open = true;
 };

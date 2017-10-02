@@ -294,6 +294,7 @@ void RumbleMods::onPlayerTick(Event* e) {
 						if (enableCrazyItems) {
 							//powerHitter->BallHitForce = powerHitter->BallHitForce * 1.1;
 							powerHitter->CarHitForce *= 1.1;
+							powerHitter->bDemolishCars = false;
 							//powerHitter->OrigBallHitForce = powerHitter->OrigBallHitForce * 1.1;
 						}
 						else {
@@ -380,7 +381,7 @@ void RumbleMods::onPlayerTick(Event* e) {
 						if (enableCrazyItems) {
 							//plunger->Force = plunger->Force * 5;
 							
-							plunger->Force = plunger->Force * 10;
+							//plunger->Force = plunger->Force * 10;
 							plunger->MaxSpringLength = plunger->MaxSpringLength * 10;
 							plunger->AfterSpringDuration = plunger->AfterSpringDuration * 10;
 						}
@@ -399,7 +400,8 @@ void RumbleMods::onPlayerTick(Event* e) {
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallCarSpring_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallCarSpring_TA* punchingGlove = (SDK::ASpecialPickup_BallCarSpring_TA*)items.GetByIndex(q);
 						if (enableCrazyItems) {
-
+							punchingGlove->bCanTargetBall = true;
+							punchingGlove->bCanTargetCars = true;
 						}
 						else {
 							if (!Utils::FloatCompare(punchingGlove->Force, punchingGlove->Force)) {

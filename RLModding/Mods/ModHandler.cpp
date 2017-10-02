@@ -12,6 +12,7 @@
 #include "Modules/Lan/BallMods.h"
 #include "Modules/Lan/GameEventMods.h"
 #include "Modules/Car/CarPhysics.h"
+#include "Modules/Lan/PlayerMods.h"
 
 ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
@@ -20,13 +21,14 @@ ModHandler::ModHandler() {
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
-	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::Lan, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);	
 	
-	CreateMod<BallMods>("Ball Mods", VK_NUMPAD9, Category::Ball, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	
-	CreateMod<CarPhysics>("Car Physics", VK_F3, Category::Car, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<BallMods>("Ball Mods", VK_NUMPAD9, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<CarPhysics>("Car Mods", VK_F3, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<PlayerMods>("Player Mods", VK_F5, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+
+	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
 	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
