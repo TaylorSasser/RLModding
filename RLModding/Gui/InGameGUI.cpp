@@ -103,14 +103,7 @@ void InGameGUI::Render() {
 				ImGui::EndMenu();
 			}
 			
-		}
-
-		//Sellout
-		if (ImGui::Button("Donate")) {
-			ShellExecute(NULL, "open", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XHLHQGAQK2XZG", NULL, NULL, SW_SHOWNORMAL);
-			isGUIOpen = false;
-		}
-		
+		}		
 		ImGui::EndMainMenuBar();
 	}
 	for (auto& mods : Interfaces::Mods()) {
