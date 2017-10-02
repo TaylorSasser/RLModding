@@ -126,7 +126,7 @@ bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
 }
 
 bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
-	if ((w == VK_HOME) && (e == KeyEvent::KeyUp)) {
+	if ((w == VK_HOME) && (e == KeyEvent::KeyUp) || (w == VK_OEM_3) && (e == KeyEvent::KeyUp)) {
 		isGUIOpen = !isGUIOpen;
 	}
 	/*if ((w == VK_END) && (e == KeyEvent::KeyUp)) {

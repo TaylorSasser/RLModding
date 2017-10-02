@@ -65,7 +65,6 @@ void DX9Hook::RemoveHook() {
 HRESULT __stdcall Hooked_Reset(IDirect3DDevice9* pDevice, D3DPRESENT_PARAMETERS* pPresentationParameters) {
 	ImGui_ImplDX9_InvalidateDeviceObjects();
 	Interfaces::RenderHandler().InvalidateObjects();
-
 	HRESULT restore = pD3D9HookedReset(pDevice, pPresentationParameters);
 
 	ImGui_ImplDX9_CreateDeviceObjects();

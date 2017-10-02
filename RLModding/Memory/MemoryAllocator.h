@@ -23,13 +23,14 @@ public:
 		HeapFree(MemoryPool, NULL, src);
 	}
 
-private:
 	template <class T>
 	T* MemoryAllocator::AllocNullObject() {
 		LPVOID UObject = HeapAlloc(MemoryPool, HEAP_ZERO_MEMORY, sizeof(T));
 		ZeroMemory(UObject, sizeof(T));
 		return reinterpret_cast<T*>(UObject);
 	}
+
+private:
 	void RegisterObject(SDK::UObject*, std::string objectName);
 	HANDLE MemoryPool;
 };

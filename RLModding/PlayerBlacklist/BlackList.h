@@ -10,14 +10,6 @@ class BlackList {
 public:
 	BlackList();
 	~BlackList();
-	bool Exists(std::string);
-	void Check();
 	__int64 GetPlayerId();
-	bool isBlacklisted();
-
-private:
-	std::vector<std::string> blacklist;
-	std::string steamId = "";
-	bool bBlacklisted;
 };
 
