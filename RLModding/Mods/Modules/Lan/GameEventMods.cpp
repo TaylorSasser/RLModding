@@ -164,6 +164,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 			resetBalls = false;
 		}
 
+		if (unlimCelebration) {
+
+			unlimCelebration = false;
+		}
+
 		if (pauseServer) {
 			localGameEvent->SetPaused(InstanceStorage::PlayerController(), !pausedGame);
 			pausedGame = !pausedGame;

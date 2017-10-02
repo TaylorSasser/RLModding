@@ -32,6 +32,8 @@ private:
 	bool disableGoalDelay = false;
 	bool unlimitedTime = false;
 
+	bool unlimCelebration = false;
+
 	char goalScoredMessage[32] = "{Player} scored!";
 	bool updatePlayerMessages = false;
 
