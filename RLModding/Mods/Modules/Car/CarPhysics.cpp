@@ -144,7 +144,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
 					}
 
+					
 					// For some reason these properties need respawn
+
 					bool needRefresh = false;
 					if (!Utils::FloatCompare(currCar->MaxTimeForDodge, jumpTimeout)) {
 						currCar->MaxTimeForDodge = jumpTimeout;
@@ -168,8 +170,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 					}
 
 					if (needRefresh) {
-						currCar->RespawnInPlace();
+						//currCar->RespawnInPlace();
+						needRefresh = false;
 					}
+					
 
 					// Added check to make sure car is not null
 					if (setCarScale) {
@@ -301,6 +305,11 @@ void CarPhysics::onGameEventAddPlayer(Event* e) {
 
 
 void CarPhysics::onCarTick(Event* event) {
+	//((ACar_TA*)event->getCallingObject())->MaxTimeForDodge = jumpTimeout;
+	//((ACar_TA*)event->getCallingObject())->MaxAngularSpeed = torqueRate;
+	//((ACar_TA*)event->getCallingObject())->MaxLinearSpeed = maxCarSpeed;
+	//((ACar_TA*)event->getCallingObject())->StickyForceGround = groundSticky;
+	//((ACar_TA*)event->getCallingObject())->StickyForceWall = wallSticky;
 	/*
 	if (apply) {
 		if (InstanceStorage::CurrentCar()) {
@@ -322,6 +331,7 @@ void CarPhysics::onCarTick(Event* event) {
 		}
 
 	}
+	
 	else if (reset_values) {
 		ACar_TA* car = InstanceStorage::PlayerController()->Car;
 		if (car) {
