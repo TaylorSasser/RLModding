@@ -25,7 +25,7 @@ void onAttach(HMODULE hModule) {
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().Load();
-	Interfaces::Blacklist().Check();
+	//Interfaces::Blacklist().Check();
 	CreateThread(NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(onDetach), hModule, 0, nullptr);
 }
 
