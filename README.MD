@@ -1,5 +1,24 @@
 # RLModding
 
+
+## TODO
+
+- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
+- Add in a way to build raw packets into high level objects (decrypting the packets too)
+- Give gamestate its own class with some operators and so we dont have to use the Globals.h inside of interfaces (IDK what i was thinking)
+- Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
+
+
+
+## Game Mode Ideas 
+ - If you're supersonic for too long apply random shit
+ - Give perks for having full boost, loose perks at 2/3s boost, 1/3, etc.
+ - Rumble item to blow up everyone on opposing team
+ - Rumble item to spawn bots to chase specific player for X seconds
+ - Inverse gravity 
+ - Johns silly idea 
+
+
 ## How To Hook A New Function
 Copy the name of the function and use the addFunction method to bind a function name to a function inside the ModBase class
 ```
@@ -40,14 +59,6 @@ You have a class ZombieGameMode binded to numpad 1. It is part of the category G
 - json_parser
 - lexical_cast
 
-## Game Mode Ideas 
- ~~Strike Through~~ = Done
- - ~~50/50 - Randomly demo someone every X seconds (20 seconds?)~~
- - If you're supersonic for too long apply random shit
- - Give perks for having full boost, loose perks at 2/3s boost, 1/3, etc.
- - Rumble item to blow up everyone on opposing team
- - Rumble item to spawn bots to chase specific player for X seconds
-
 ## Printing Keys
 EventFactory.cpp
 ```
@@ -82,9 +93,3 @@ virtual void onKeysBeginState(Event* e) {
 - Above method + adding the hardcoded keys to an RPC_GenerateKeys object and adding it to the GenereateKeysRPCs array in OnlineGameJoin_X
 - Found that SessionId is connected to your player id so we can't use the same one for everybody
 - Changing the developer environment
-
-
-## TODO
-
-- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
-- Add in a way to build raw packets into high level objects (decrypting the packets too)
