@@ -56,11 +56,19 @@ void DX9Hook::InitGUI() {
 	IDirect3DDevice9 *pd3dDevice;
 	if (pd3dDevice)
 	{
-		pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
+		HANDLE hHandle = GetModuleHandle(TEXT("d3d9.dll"));
+		printf("Address of d3d9.dll: 0x%x\n", hHandle);
+		HRESULT result = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
+		printf("Address of pd3dDevice: 0x%x\n", pd3dDevice);
+		printf("pd3dDevice - d3d9.dll address: 0x%x\n", pd3dDevice - hHandle);
+		std::cout << "CreatedDevice: " << result << std::endl;
 		DWORD* pVTable = (DWORD*)pd3dDevice;
+
 		if (pVTable) {
 			pVTable = (DWORD*)pVTable[0];
 			D3D9VTable = pVTable;
+
+			std::cout << "Found pVTable: " << pVTable << std::endl;
 
 			if (hWnd != NULL)
 				DestroyWindow(hWnd);
