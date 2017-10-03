@@ -85,14 +85,13 @@ void DX9Hook::InitGUI() {
 
 		printf("Address of pd3dDevice: 0x%x\n", pd3dDevice);
 		printf("pd3dDevice - d3d9.dll address: 0x%x\n", pd3dDevice - hHandle);
-		std::cout << "CreatedDevice: " << result << std::endl;
 		DWORD* pVTable = (DWORD*)pd3dDevice;
 
 		if (pVTable) {
 			pVTable = (DWORD*)pVTable[0];
 			D3D9VTable = pVTable;
 
-			std::cout << "Found pVTable: " << pVTable << std::endl;
+			printf("pVTable = 0x%x", pVTable);
 
 			if (hWnd != NULL)
 				DestroyWindow(hWnd);
