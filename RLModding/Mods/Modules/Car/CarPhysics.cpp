@@ -148,7 +148,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 					}
 
 					if (isHidden) {
-						currCar->SetHidden(true);
+						currCar->SetHidden(isHidden);
 					}
 					
 					// For some reason these properties need respawn

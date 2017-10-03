@@ -51,6 +51,7 @@
     <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\JoinServer.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\MutatorMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
@@ -2950,6 +2951,7 @@
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Lan\JoinServer.h" />
+    <ClInclude Include="Mods\Modules\Lan\MutatorMods.h" />
     <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
