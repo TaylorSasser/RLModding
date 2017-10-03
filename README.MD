@@ -11,6 +11,7 @@
 ## Bored? I know just the solution!
 
 - Add in controller support for PS4,XBOX,WII U
+    - [XInput.h Example](https://www.codeproject.com/Articles/26949/Xbox-Controller-Input-in-C-with-XInput)
 - FileSystem stuff and for mod "profiles" and configs
 
 
