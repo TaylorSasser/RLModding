@@ -263,7 +263,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 
 		if (testServerSay) {
-			((APlayerController_TA*)localGameEvent->GameOwner->GetALocalPlayerController())->ServerSayInternal_TA(FString(L"Test"),EChatChannel::EChatChannel_Match, false);
+			((APlayerController_TA*)InstanceStorage::PlayerController())->ServerSayInternal_TA(FString(L"Test"),EChatChannel::EChatChannel_Match, false);
 			testServerSay = false;
 		}
 

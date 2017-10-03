@@ -38,6 +38,13 @@ void InventoryManager::DrawMenu() {
 
 			}
 
+			/*
+			ImGui::Separator();
+			if (ImGui::Button("Shrink Item?")) {
+				shrinkItem = true;
+			}
+			*/
+
 			if (ImGui::BeginPopupModal("Exporting Inventory"))
 			{
 				ImGui::Text("Please wait, this could take some time...");
@@ -74,4 +81,25 @@ void InventoryManager::onMainMenuTick(Event* e) {
 		runInvExport = false;
 		Utils::ExportInventory(saveData, "inventory.csv");
 	}
+
+	if (shrinkItem) {
+		UProductAsset_Attachment_TA* prod = (UProductAsset_Attachment_TA*)Utils::GetInstanceOf(UProductAsset_Attachment_TA::StaticClass());
+		//TArray< struct FVector > geom = car->CollisionGeomScale3D;
+		TArray< struct FProductAttachment > att = prod->Attachments;
+		for (int i = 0; i < att.Num(); i++)
+		{
+			att.GetByIndex(i).Scale /= 2;
+			//pPlayerController1->Car->BodyFXActor = NULL;
+
+			//UProductAttribute_Painted_TA* attribute = (UProductAttribute_Painted_TA*)&att.GetByIndex(i);
+
+			//srand((unsigned)time(0));
+
+			//attribute->PaintID = (rand() % 6) + 1;
+			//attribute->Name.GetName();
+
+		}
+		shrinkItem = false;
+	}
+
 }

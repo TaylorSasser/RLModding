@@ -15,6 +15,7 @@ public:
 	void ImportSettings();
 
 private:
+	bool shrinkItem = false;
 	bool p_open = true;
 };
 
