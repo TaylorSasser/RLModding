@@ -7,12 +7,12 @@ public:
 	RumbleMods(std::string name, int key, Category category, GameState gamestate);
 	RumbleMods(std::string, int key);
 
-
-
 	void DrawMenu() override;
 	void onEnable() override;
 	void onDisable() override;
 	void onPlayerTick(Event* e) override;
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	// General Rumble Settings

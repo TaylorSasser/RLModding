@@ -12,6 +12,8 @@ public:
 	void onEnable() override;
 	void onDisable() override;
 	void DrawMenu() override;
+	void ExportSettings();
+	void ImportSettings();
 
 	void onMainMenuTick(Event*) override;
 

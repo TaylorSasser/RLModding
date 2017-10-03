@@ -38,7 +38,6 @@
     <ClCompile Include="CustomGarage\Garage.cpp" />
     <ClCompile Include="Memory\MemoryAllocator.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
-    <ClCompile Include="Mods\Modules\Offline\PauseGame.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
@@ -1814,7 +1813,6 @@
     <ClInclude Include="Libs\boost\scoped_array.hpp" />
     <ClInclude Include="Memory\MemoryAllocator.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
-    <ClInclude Include="Mods\Modules\Offline\PauseGame.h" />
     <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />

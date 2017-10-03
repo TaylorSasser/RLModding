@@ -10,6 +10,9 @@ void ModdedLanServer::onEnable() {
 void ModdedLanServer::onDisable() {
 }
 
+void ModdedLanServer::ExportSettings() {}
+void ModdedLanServer::ImportSettings() {}
+
 void ModdedLanServer::DrawMenu() {
 	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));

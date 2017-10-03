@@ -11,6 +11,8 @@ public:
 	void onEnable();
 	void onDisable();
 	void onPlayerTick(Event* e);
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	int NumZombies;

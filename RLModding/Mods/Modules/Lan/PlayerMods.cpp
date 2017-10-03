@@ -10,6 +10,9 @@ void PlayerMods::onDisable() {
 	delete[] players;
 }
 
+void PlayerMods::ExportSettings() {}
+void PlayerMods::ImportSettings() {}
+
 void PlayerMods::DrawMenu() {
 	if (PlayerMods::isEnabled()) {
 		ImGui::Begin("Player Mods", &p_open, ImVec2(400, 300), 0.75f);

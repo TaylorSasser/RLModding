@@ -11,6 +11,8 @@ public:
 	void onEnable();
 	void onDisable();
 	void onMainMenuTick(Event* e);
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	bool p_open = true;

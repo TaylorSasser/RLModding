@@ -13,8 +13,10 @@ public:
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
-
 	void onCarDemolished(Event * e);
+
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	bool bStarted = false;

@@ -12,6 +12,9 @@ void JoinServer::onEnable() {
 void JoinServer::onDisable() {
 }
 
+void JoinServer::ExportSettings() {}
+void JoinServer::ImportSettings() {}
+
 void JoinServer::DrawMenu() {
 	ImGui::Begin("Join", &p_open, ImVec2(300, 200), 0.75f);
 	ImGui::InputText("Ip Address", ip, IM_ARRAYSIZE(ip));
