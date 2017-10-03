@@ -19,7 +19,7 @@ private:
 	float itemGiveRate = 10.0;
 	float currItemGiveRate = 10.0;
 	bool punchingGloveRelativeForce = true;
-	bool punchingGloveFollowAfterHit = false;;
+	bool punchingGloveFollowAfterHit = false;
 
 	// Magnet Options
 	float magnetRange;

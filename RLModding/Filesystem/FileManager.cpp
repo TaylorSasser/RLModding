@@ -61,10 +61,19 @@ void FileManager::update() {
 }
 
 void FileManager::ExportModSettings() {
-
+	pt::ptree root;
+	for (auto& mods : Interfaces::Mods()) {
+		mods.second->ExportSettings(root);
+	}
+	pt::write_json("settings.json", root);
 }
 
 void FileManager::ImportModSettings() {
-
+	pt::ptree root;
+	pt::read_json("settings.json", root);
+	for (auto& mods : Interfaces::Mods()) {
+		mods.second->ImportSettings(root);
+	}
+	
 }
 

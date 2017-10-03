@@ -1,4 +1,5 @@
 #include "CustomBlog.h"
+#include <string>
 #include "../Interfaces/Interfaces.h"
 
 CustomBlog::CustomBlog(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
@@ -11,8 +12,53 @@ void CustomBlog::onEnable() {
 void CustomBlog::onDisable() {
 }
 
-void CustomBlog::ExportSettings(pt::ptree) {}
-void CustomBlog::ImportSettings(pt::ptree) {}
+void CustomBlog::ExportSettings(pt::ptree root) {
+	// Carousel Settings
+	root.put("Carousel_Title", std::string(carousel_title));
+	root.put("Carousel_Body", std::string(carousel_body));
+	root.put("Carousel_IMG", std::string(carousel_ImageUrl));
+	root.put("Carousel_URL", std::string(carousel_URL));
+
+	// RLCS Settings
+	root.put("RLCS_Title", std::string(RLCS_title));
+	root.put("RLCS_Body", std::string(RLCS_body));
+	root.put("RLCS_IMG", std::string(RLCS_ImageUrl));
+	root.put("RLCS_URL", std::string(RLCS_URL));
+
+	// Community Settings
+	root.put("Comm_Title", std::string(Comm_title));
+	root.put("Comm_Body", std::string(Comm_body));
+	root.put("Comm_IMG", std::string(Comm_ImageUrl));
+	root.put("Comm_URL", std::string(Comm_URL));
+
+	// Message of the day
+	root.put("MOTD", std::string(motd));
+
+}
+void CustomBlog::ImportSettings(pt::ptree root) {
+	// Carousel Settings
+	std::strcpy(carousel_title, root.get<std::string>("Carousel_Title", std::string(carousel_title)).c_str());
+	std::strcpy(carousel_body, root.get<std::string>("Carousel_Body", std::string(carousel_body)).c_str());
+	std::strcpy(carousel_ImageUrl, root.get<std::string>("Carousel_IMG", std::string(carousel_ImageUrl)).c_str());
+	std::strcpy(carousel_URL, root.get<std::string>("Carousel_URL", std::string(carousel_URL)).c_str());
+
+	// RLCS Settings
+	std::strcpy(RLCS_title, root.get<std::string>("RLCS_Title", std::string(RLCS_title)).c_str());
+	std::strcpy(RLCS_body, root.get<std::string>("RLCS_Body", std::string(RLCS_body)).c_str());
+	std::strcpy(RLCS_ImageUrl, root.get<std::string>("RLCS_IMG", std::string(RLCS_ImageUrl)).c_str());
+	std::strcpy(RLCS_URL, root.get<std::string>("RLCS_URL", std::string(RLCS_URL)).c_str());
+
+	// Community Settings
+	std::strcpy(Comm_title, root.get<std::string>("Comm_Title", std::string(Comm_title)).c_str());
+	std::strcpy(Comm_body, root.get<std::string>("Comm_Body", std::string(Comm_body)).c_str());
+	std::strcpy(Comm_ImageUrl, root.get<std::string>("Comm_IMG", std::string(Comm_ImageUrl)).c_str());
+	std::strcpy(Comm_URL, root.get<std::string>("Comm_URL", std::string(Comm_URL)).c_str());
+
+	// MOTD
+	std::strcpy(motd, root.get<std::string>("MOTD", std::string(motd)).c_str());
+
+
+}
 
 void CustomBlog::DrawMenu() {
 	ImGui::Begin("Custom Blog", &p_open, ImVec2(400, 300), 0.75f);

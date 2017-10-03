@@ -31,16 +31,18 @@ Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate)
 Drainage::~Drainage() {}
 
 void Drainage::onEnable() {
+
 }
 
 void Drainage::onDisable() {
+
 }
 
 void Drainage::ExportSettings(pt::ptree root) {
-	
+	root.put("Drain_Interval", interval);
 }
 void Drainage::ImportSettings(pt::ptree root) {
-
+	interval = root.get<float>("Drain_Interval", 0.6);
 }
 
 void Drainage::DrawMenu() {

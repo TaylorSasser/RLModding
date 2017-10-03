@@ -12,8 +12,14 @@ void FiftyFifty::onEnable() {
 void FiftyFifty::onDisable() {
 }
 
-void FiftyFifty::ExportSettings(pt::ptree) {}
-void FiftyFifty::ImportSettings(pt::ptree) {}
+void FiftyFifty::ExportSettings(pt::ptree root) {
+	root.put("FF_demoPlayer", demoPlayer);
+	root.put("FF_Interval", interval);
+}
+void FiftyFifty::ImportSettings(pt::ptree root) {
+	demoPlayer = root.get<bool>("FF_demoPlayer", true);
+	interval = root.get<float>("FF_Interval", interval);
+}
 
 void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
