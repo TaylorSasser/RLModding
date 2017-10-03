@@ -56,6 +56,7 @@
     <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
     <ClCompile Include="Mods\Modules\Lan\MutatorMods.cpp" />
+    <ClCompile Include="Controllers\XboxController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4675,6 +4676,7 @@
     <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
     <ClInclude Include="Mods\Modules\Lan\Drainage.h" />
     <ClInclude Include="Mods\Modules\Lan\MutatorMods.h" />
+    <ClInclude Include="Controllers\XboxController.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
