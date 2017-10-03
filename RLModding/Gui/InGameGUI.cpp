@@ -106,14 +106,13 @@ void InGameGUI::Render() {
 			}
 			
 		}		
-		ImGui::EndMainMenuBar();
 	}
+	ImGui::EndMainMenuBar();
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {
 			mods.second->DrawMenu();
 		}
 	}
-	//ImGui::End();
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
