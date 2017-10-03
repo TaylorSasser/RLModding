@@ -54,18 +54,27 @@ void DX9Hook::InitGUI() {
 	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
 
 	IDirect3DDevice9 *pd3dDevice;
-	pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
-	DWORD* pVTable = (DWORD*)pd3dDevice;
-	pVTable = (DWORD*)pVTable[0];
-	D3D9VTable = pVTable;
+	if (pd3dDevice)
+	{
+		pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
+		DWORD* pVTable = (DWORD*)pd3dDevice;
+		if (pVTable) {
+			pVTable = (DWORD*)pVTable[0];
+			D3D9VTable = pVTable;
 
-	DestroyWindow(hWnd);
+			if (hWnd != NULL)
+				DestroyWindow(hWnd);
 
-	EndScene = D3D9VTable[42];
-	HookedReset = D3D9VTable[16];
+			EndScene = D3D9VTable[42];
+			HookedReset = D3D9VTable[16];
 
-	pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene, (PBYTE)Hooked_EndScene);
-	pD3D9HookedReset = (D3D9HookedReset_t)DetourFunction((PBYTE)HookedReset, (PBYTE)Hooked_Reset);
+			pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene, (PBYTE)Hooked_EndScene);
+			pD3D9HookedReset = (D3D9HookedReset_t)DetourFunction((PBYTE)HookedReset, (PBYTE)Hooked_Reset);
+		}
+		
+	}
+		
+	
 
 }
 

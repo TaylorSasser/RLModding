@@ -45,17 +45,6 @@ void InventoryManager::DrawMenu() {
 				ImGui::EndPopup();
 			}
 
-			if (ImGui::Button("Load Inventory Info")) {
-				std::ifstream f("inventory.csv");
-				if (f.good()) {
-					std::cout << "Opening inventory.csv\n";
-					Interfaces::GUI().isGUIOpen = false;
-					ShellExecute(NULL, "open", "invetory.csv", NULL, NULL, SW_SHOWNORMAL);
-				}
-					
-				f.close();
-			}
-
 			if (!p_open) {
 				this->enabled = false;
 				p_open = true;
