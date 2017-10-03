@@ -59,6 +59,30 @@ void DX9Hook::InitGUI() {
 		HANDLE hHandle = GetModuleHandle(TEXT("d3d9.dll"));
 		printf("Address of d3d9.dll: 0x%x\n", hHandle);
 		HRESULT result = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
+		printf("result = ");
+		switch (result) {
+			case D3D_OK:
+				printf("D3D_OK\n");
+				break;
+			case D3DERR_DEVICELOST:
+				printf("D3DERR_DEVICELOST\n");
+				break;
+			case D3DERR_INVALIDCALL:
+				printf("D3DERR_INVALIDCALL\n");
+				break;
+			case D3DERR_NOTAVAILABLE:
+				printf("D3DERR_NOTAVAILABLE\n");
+				break;
+			case D3DERR_OUTOFVIDEOMEMORY:
+				printf("D3DERR_OUTOFVIDEOMEMORY\n");
+				break;
+
+			default:
+				printf("somethng else...");
+				break;
+
+		}
+
 		printf("Address of pd3dDevice: 0x%x\n", pd3dDevice);
 		printf("pd3dDevice - d3d9.dll address: 0x%x\n", pd3dDevice - hHandle);
 		std::cout << "CreatedDevice: " << result << std::endl;
