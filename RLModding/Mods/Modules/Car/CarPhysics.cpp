@@ -102,8 +102,6 @@ void CarPhysics::onPlayerTick(Event* e) {
 			populatePlayerList(localGameEvent);
 			refreshCars = false;
 		}
-
-		// Clone car
 		if (cloneMe && InstanceStorage::PlayerController() != NULL) {
 			for (int i = 0; i < numClones; i++) {
 				localGameEvent->SpawnCar(InstanceStorage::PlayerController(), InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->Car->Rotation);
