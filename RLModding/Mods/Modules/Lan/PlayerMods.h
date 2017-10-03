@@ -15,8 +15,8 @@ public:
 	void PlayerMods::onCarSpawned(Event* e);
 	void PlayerMods::onGameEventRemovePlayer(Event* e);
 	void PlayerMods::onGameEventAddPlayer(Event* e);
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 
 private:

@@ -11,8 +11,8 @@ void CustomBlog::onEnable() {
 void CustomBlog::onDisable() {
 }
 
-void CustomBlog::ExportSettings() {}
-void CustomBlog::ImportSettings() {}
+void CustomBlog::ExportSettings(pt::ptree) {}
+void CustomBlog::ImportSettings(pt::ptree) {}
 
 void CustomBlog::DrawMenu() {
 	ImGui::Begin("Custom Blog", &p_open, ImVec2(400, 300), 0.75f);

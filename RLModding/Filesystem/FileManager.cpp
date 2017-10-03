@@ -59,3 +59,12 @@ void FileManager::update() {
 	Save();
 	Load();
 }
+
+void FileManager::ExportModSettings() {
+
+}
+
+void FileManager::ImportModSettings() {
+
+}
+

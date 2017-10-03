@@ -12,8 +12,8 @@ public:
 	void onEnable();
 	void onDisable();
 	void onPlayerTick(Event* e);
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 private:
 

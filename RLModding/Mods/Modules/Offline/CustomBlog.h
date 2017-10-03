@@ -12,8 +12,8 @@ public:
 	void onEnable() override;
 	void onDisable() override;
 	void DrawMenu() override;
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 	void onMainMenuTick(Event*) override;
 

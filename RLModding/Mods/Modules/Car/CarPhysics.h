@@ -18,8 +18,8 @@ public:
 	void CarPhysics::onCarTick(Event* event);
 	void CarPhysics::onActorJump(Event*e);
 
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 
 private:

@@ -12,8 +12,8 @@
 RumbleMods::RumbleMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 RumbleMods::RumbleMods(std::string name, int key) : ModBase(name, key) {}
 
-void RumbleMods::ExportSettings() {}
-void RumbleMods::ImportSettings() {}
+void RumbleMods::ExportSettings(pt::ptree) {}
+void RumbleMods::ImportSettings(pt::ptree) {}
 
 const char* rumbleItems[] = { "Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook", "", "", "" };
 static int selectedRumbleIndex = -1;

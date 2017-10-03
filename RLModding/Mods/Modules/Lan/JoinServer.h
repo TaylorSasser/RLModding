@@ -12,8 +12,8 @@ public:
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 private:
 	void travel();

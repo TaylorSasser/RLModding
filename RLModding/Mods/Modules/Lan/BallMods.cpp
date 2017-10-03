@@ -15,8 +15,8 @@
 BallMods::BallMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 BallMods::BallMods(std::string name, int key) : ModBase(name, key) {}
 
-void BallMods::ExportSettings() {}
-void BallMods::ImportSettings() {}
+void BallMods::ExportSettings(pt::ptree) {}
+void BallMods::ImportSettings(pt::ptree) {}
 
 void BallMods::DrawMenu() {
 	if (BallMods::isEnabled()) {

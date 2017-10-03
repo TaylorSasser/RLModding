@@ -12,8 +12,8 @@ void FiftyFifty::onEnable() {
 void FiftyFifty::onDisable() {
 }
 
-void FiftyFifty::ExportSettings() {}
-void FiftyFifty::ImportSettings() {}
+void FiftyFifty::ExportSettings(pt::ptree) {}
+void FiftyFifty::ImportSettings(pt::ptree) {}
 
 void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);

@@ -15,13 +15,12 @@ public:
 	void onCarSpawned(Event* e) override;
 	void onCarDemolished(Event * e);
 
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 private:
 	bool bStarted = false;
 	bool checkTime = true;
-	bool demoPlayer = true;
 	float interval = .06;
 	time_t start, end;
 	bool p_open = true;
