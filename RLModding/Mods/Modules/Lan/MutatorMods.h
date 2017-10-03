@@ -21,6 +21,25 @@ public:
 private:
 	bool bStarted = false;
 	bool checkTime = true;
+
+	int mutatorCount = 0;
+
+	int GameSpeed = 0;
+
+	bool itemsMutatorsPresent = false;
+	bool respawnTimeMutatorsPresent = false;
+	bool matchMutatorsPresent = false;
+	bool handicapMutatorsPresent = false;
+	bool gravityMutatorsPresent = false;
+	bool gameSpeedMutatorsPresent = false;
+	bool ballMutatorsPresent = false;
+	bool demolishMutatorsPresent = false;
+	bool carMutatorsPresent = false;
+	bool boostMutatorsPresent = false;
+	bool presetMutatorsPresent = false;
+
+	bool applyChanges = false;
+
 	float interval = .06;
 	time_t start, end;
 	bool p_open = true;

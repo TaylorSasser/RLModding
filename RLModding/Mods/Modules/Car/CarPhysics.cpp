@@ -52,13 +52,35 @@ void CarPhysics::DrawMenu() {
 			setCarScale = true;
 		}
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
-		ImGui::Checkbox("Freeze car in place", &freezeInPlace);
+		ImGui::SameLine();
+
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
+
+
+		ImGui::Checkbox("Freeze car in place", &freezeInPlace);
+		ImGui::SameLine();
+
+		ImGui::Checkbox("Hide Car", &isHidden);
 		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		
+		ImGui::Checkbox("Disable Jumps", &disableJumps);
+		ImGui::SameLine();
+		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
+		
+
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("You may need to respawn for this to work.");
 
 		ImGui::Separator();
+
+		ImGui::PushItemWidth(100);
+
+		ImGui::InputFloat("Jump Force", &jumpForce, 0.5f, 1.0f, 1);
+		ImGui::SameLine();
+		ImGui::NextColumn();
+		ImGui::PushItemWidth(100);
+		ImGui::InputFloat("Jump Height", &maxJumpHeight, 0.5f, 1.0f, 1);
+
 
 		ImGui::InputFloat("Jump Timeout", &jumpTimeout, 0.5f, 1.0f, 1);
 		if (ImGui::IsItemHovered())
@@ -78,8 +100,6 @@ void CarPhysics::DrawMenu() {
 		if (ImGui::Button("Respawn Car")) {
 			respawn = true;
 		}
-		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
-		ImGui::Checkbox("Hide Car", &isHidden);
 
 		ImGui::Separator();
 
@@ -139,16 +159,18 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
 					}
 
-					if (demolishOnOpposingSide) {
-						currCar->bDemolishOnOpposingGround = true;
-					}
-
-					if (unlimitedBoost) {
+					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
+					
+					if (currCar->BoostComponent) {
 						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
 					}
 
-					if (isHidden) {
-						currCar->SetHidden(isHidden);
+					currCar->SetHidden(isHidden);
+
+					if (currCar->JumpComponent) {
+						currCar->JumpComponent->bDeactivate = disableJumps;
+						currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
+						currCar->JumpComponent->JumpForce = jumpForce;
 					}
 					
 					// For some reason these properties need respawn

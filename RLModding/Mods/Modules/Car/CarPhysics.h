@@ -63,6 +63,11 @@ private:
 	bool respawn = false;
 	bool isHidden = false;
 
+	float maxJumpHeight = 0;
+	float jumpForce = 0;
+
+	bool disableJumps = false;
+
 	std::string statusText = "";
 
 	int currPlayerCount = 0;

@@ -39,7 +39,7 @@ private:
 
 	char goalScoredMessage[32] = "{Player} scored!";
 	bool updatePlayerMessages = false;
-
+	bool testTrainingSpawn = false;
 	bool testServerSay = false;
 
 	int botsToSpawn = 1;

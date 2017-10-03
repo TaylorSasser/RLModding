@@ -124,7 +124,9 @@ void GameEventMods::DrawMenu() {
 				testServerSay = true;
 			}
 
-			
+			if (ImGui::Button("Test Training Spawns")) {
+				testTrainingSpawn = true;
+			}
 		}
 		
 		if (!p_open) {
@@ -265,6 +267,22 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (testServerSay) {
 			((APlayerController_TA*)InstanceStorage::PlayerController())->ServerSayInternal_TA(FString(L"Test"),EChatChannel::EChatChannel_Match, false);
 			testServerSay = false;
+		}
+
+		if (testTrainingSpawn) {
+
+			AGameEvent_TrainingEditor_TA* trainingEditor = (SDK::AGameEvent_TrainingEditor_TA*)InstanceStorage::GameEvent();
+			FVector ballLoc = { 0,0,0 };
+			FVector playerLoc = { 2000,2000,2000 };
+			FRotator ballRot = { 0,0,0 };
+			FRotator playerRot = { 0,0,0 };
+			//trainingEditor->SpawnBallAndStartPointAt(ballLoc, ballRot, playerLoc, playerRot);
+			TArray<class ADynamicSpawnPointMesh_TA*> spawnPoints = trainingEditor->CarSpawnPoints;
+			for (int k = 0; k < spawnPoints.Num(); k++)
+			{
+				spawnPoints.GetByIndex(k)->SetLocation(playerLoc);
+			}
+			testTrainingSpawn = false;
 		}
 
 	}
