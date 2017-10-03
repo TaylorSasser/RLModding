@@ -12,8 +12,8 @@ public:
 	void onEnable() override;
 	void onDisable() override;
 	void onPlayerTick(Event* e) override;
-	void ExportSettings();
-	void ImportSettings();
+	void ExportSettings(pt::ptree);
+	void ImportSettings(pt::ptree);
 
 private:
 	bool pauseServer = false;

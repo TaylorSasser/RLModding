@@ -12,8 +12,8 @@ void JoinServer::onEnable() {
 void JoinServer::onDisable() {
 }
 
-void JoinServer::ExportSettings() {}
-void JoinServer::ImportSettings() {}
+void JoinServer::ExportSettings(pt::ptree) {}
+void JoinServer::ImportSettings(pt::ptree) {}
 
 void JoinServer::DrawMenu() {
 	ImGui::Begin("Join", &p_open, ImVec2(300, 200), 0.75f);

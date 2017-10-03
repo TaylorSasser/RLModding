@@ -2,6 +2,7 @@
 #include "../RL/SDK.hpp"
 #include <Windows.h>
 #include <functional>
+#include <utility>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include "../Events/Event.h"
@@ -11,6 +12,7 @@
 #include "../Utils/Utils.h"
 #include <iostream>
 
+namespace pt = boost::property_tree;
 
 enum GameState {
 	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
@@ -152,8 +154,8 @@ public:
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
 
-	virtual void ExportSettings() {}
-	virtual void ImportSettings() {}
+	virtual void ExportSettings(pt::ptree) {}
+	virtual void ImportSettings(pt::ptree) {}
 
 	virtual void onGetNextImage(Event* e) {
 		/*

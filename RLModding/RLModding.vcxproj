@@ -98,6 +98,7 @@
     <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
+    <ClCompile Include="Controllers\XboxController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\PacketBuffer.h" />
@@ -4717,6 +4718,7 @@
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="Vector\VecUtils.h" />
     <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
+    <ClInclude Include="Controllers\XboxController.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

@@ -10,8 +10,8 @@ void ModdedLanServer::onEnable() {
 void ModdedLanServer::onDisable() {
 }
 
-void ModdedLanServer::ExportSettings() {}
-void ModdedLanServer::ImportSettings() {}
+void ModdedLanServer::ExportSettings(pt::ptree) {}
+void ModdedLanServer::ImportSettings(pt::ptree) {}
 
 void ModdedLanServer::DrawMenu() {
 	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);

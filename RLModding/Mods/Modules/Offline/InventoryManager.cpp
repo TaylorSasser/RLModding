@@ -11,8 +11,6 @@
 InventoryManager::InventoryManager(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 InventoryManager::InventoryManager(std::string name, int key) : ModBase(name, key) {}
 
-void InventoryManager::ExportSettings() {}
-void InventoryManager::ImportSettings() {}
 
 // Inventory Options
 static bool groupItems = true;

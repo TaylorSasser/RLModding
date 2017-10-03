@@ -12,8 +12,12 @@ void CarPhysics::onDisable() {
 	printf("Car Mods Disabled\n");
 }
 
-void CarPhysics::ExportSettings() {}
-void CarPhysics::ImportSettings() {}
+void CarPhysics::ExportSettings(pt::ptree) {
+
+}
+void CarPhysics::ImportSettings(pt::ptree) {
+
+}
 
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {

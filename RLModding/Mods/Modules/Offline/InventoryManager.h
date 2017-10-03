@@ -11,8 +11,6 @@ public:
 	void onEnable();
 	void onDisable();
 	void onMainMenuTick(Event* e);
-	void ExportSettings();
-	void ImportSettings();
 
 private:
 	bool shrinkItem = false;

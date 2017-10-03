@@ -11,6 +11,7 @@
 ## Bored? I know just the solution!
 
 - Add in controller support for PS4,XBOX,WII U
+    - [XInput.h Example](https://www.codeproject.com/Articles/26949/Xbox-Controller-Input-in-C-with-XInput)
 - FileSystem stuff and for mod "profiles" and configs
 
 
@@ -93,7 +94,10 @@ virtual void onKeysBeginState(Event* e) {
 
 ## LAN Attempts
 
-- Directly setting the engines network security keys to some hardcoded keys
-- Above method + adding the hardcoded keys to an RPC_GenerateKeys object and adding it to the GenereateKeysRPCs array in OnlineGameJoin_X
-- Found that SessionId is connected to your player id so we can't use the same one for everybody
-- Changing the developer environment
+### Whew. Thanks Psyonix!
+
+- ~~Directly setting the engines network security keys to some hardcoded keys~~
+- ~~Above method + adding the hardcoded keys to an RPC_GenerateKeys object and adding it to the GenereateKeysRPCs array in OnlineGameJoin_X~~
+- ~~Found that SessionId is connected to your player id so we can't use the same one for everybody~~
+- ~~Changing the developer environment~~
+

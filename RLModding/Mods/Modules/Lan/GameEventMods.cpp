@@ -7,8 +7,8 @@
 GameEventMods::GameEventMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 GameEventMods::GameEventMods(std::string name, int key) : ModBase(name, key) {}
 
-void GameEventMods::ExportSettings() {}
-void GameEventMods::ImportSettings() {}
+void GameEventMods::ExportSettings(pt::ptree) {}
+void GameEventMods::ImportSettings(pt::ptree) {}
 
 void GameEventMods::DrawMenu() {
 	if (GameEventMods::isEnabled()) {

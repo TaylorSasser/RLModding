@@ -17,6 +17,8 @@ public:
 	void Load();
 	int GetKeyBindFromModName(std::string);
 	int GetGUIKeyBind(std::string);
+	void ExportModSettings();
+	void ImportModSettings();
 private:
 	pt::ptree keybinds_jsontree;
 	bool exists();

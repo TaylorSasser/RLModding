@@ -3,9 +3,6 @@
 ZombieGameMode::ZombieGameMode(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}
 
-void ZombieGameMode::ExportSettings() {}
-void ZombieGameMode::ImportSettings() {}
-
 void ZombieGameMode::onEnable() {
 	
 	if (!InstanceStorage::GameEvent()) {

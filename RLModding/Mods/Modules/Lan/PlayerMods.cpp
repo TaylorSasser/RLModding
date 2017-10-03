@@ -10,8 +10,8 @@ void PlayerMods::onDisable() {
 	delete[] players;
 }
 
-void PlayerMods::ExportSettings() {}
-void PlayerMods::ImportSettings() {}
+void PlayerMods::ExportSettings(pt::ptree) {}
+void PlayerMods::ImportSettings(pt::ptree) {}
 
 void PlayerMods::DrawMenu() {
 	if (PlayerMods::isEnabled()) {
