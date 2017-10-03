@@ -12,6 +12,8 @@ public:
 	void onDisable() override;
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	bool bStarted = false;

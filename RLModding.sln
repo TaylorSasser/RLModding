@@ -9,6 +9,8 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release Win10|x64 = Release Win10|x64
+		Release Win10|x86 = Release Win10|x86
 		Release with Console Output|x64 = Release with Console Output|x64
 		Release with Console Output|x86 = Release with Console Output|x86
 		Release with File Output|x64 = Release with File Output|x64
@@ -21,6 +23,10 @@ Global
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Debug|x64.Build.0 = Debug|x64
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Debug|x86.ActiveCfg = Debug|Win32
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Debug|x86.Build.0 = Debug|Win32
+		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release Win10|x64.ActiveCfg = Release Win10|x64
+		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release Win10|x64.Build.0 = Release Win10|x64
+		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release Win10|x86.ActiveCfg = Release Win10|Win32
+		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release Win10|x86.Build.0 = Release Win10|Win32
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release with Console Output|x64.ActiveCfg = Release Console|x64
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release with Console Output|x64.Build.0 = Release Console|x64
 		{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}.Release with Console Output|x86.ActiveCfg = Release Console|Win32

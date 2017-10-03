@@ -18,6 +18,9 @@ public:
 	void CarPhysics::onCarTick(Event* event);
 	void CarPhysics::onActorJump(Event*e);
 
+	void ExportSettings();
+	void ImportSettings();
+
 
 private:
 	void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);

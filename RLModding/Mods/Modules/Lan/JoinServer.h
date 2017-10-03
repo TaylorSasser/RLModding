@@ -12,6 +12,8 @@ public:
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;
+	void ExportSettings();
+	void ImportSettings();
 
 private:
 	void travel();

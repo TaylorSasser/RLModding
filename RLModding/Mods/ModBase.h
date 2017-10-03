@@ -2,6 +2,8 @@
 #include "../RL/SDK.hpp"
 #include <Windows.h>
 #include <functional>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 #include "../Events/Event.h"
 #include "../Interfaces/GlobalVariables.h"
 #include "../Interfaces/InstanceStorage.h"
@@ -149,6 +151,9 @@ public:
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
+
+	virtual void ExportSettings() {}
+	virtual void ImportSettings() {}
 
 	bool enabled = false;
 protected:

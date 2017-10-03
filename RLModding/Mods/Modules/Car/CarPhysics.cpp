@@ -12,6 +12,9 @@ void CarPhysics::onDisable() {
 	printf("Car Mods Disabled\n");
 }
 
+void CarPhysics::ExportSettings() {}
+void CarPhysics::ImportSettings() {}
+
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
