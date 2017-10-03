@@ -33,11 +33,15 @@ private:
 	bool unlimitedTime = false;
 
 	bool unlimCelebration = false;
+	bool ballSpawnTest = false;
 
 	char goalScoredMessage[32] = "{Player} scored!";
 	bool updatePlayerMessages = false;
 
+	bool testServerSay = false;
+
 	int botsToSpawn = 1;
+	int teamIndex = 0;
 
 	int blueScore = 0;
 	int orangeScore = 0;

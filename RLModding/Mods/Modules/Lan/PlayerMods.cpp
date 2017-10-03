@@ -210,6 +210,11 @@ void PlayerMods::onCarSpawned(Event* e) {
 
 void PlayerMods::onGameEventRemovePlayer(Event* e) {
 	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
+	// If player is not null
+	APRI_TA* leavingPRI = (APRI_TA*)e->getCallingObject();
+	if (leavingPRI) {
+		leavingPRI->bAdmin = false;
+	}
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	populatePlayerList(localGameEvent);
 }

@@ -51,7 +51,9 @@ void CarPhysics::DrawMenu() {
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		ImGui::Checkbox("Freeze car in place", &freezeInPlace);
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
-		//ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("You may need to respawn for this to work.");
 
 		ImGui::Separator();
 
@@ -150,11 +152,11 @@ void CarPhysics::onPlayerTick(Event* e) {
 						needRefresh = true;
 					}
 					if (!Utils::FloatCompare(currCar->MaxAngularSpeed, torqueRate)) {
-						currCar->MaxAngularSpeed = torqueRate;
+						currCar->SetMaxAngularSpeed(torqueRate);
 						needRefresh = true;
 					}
 					if (!Utils::FloatCompare(currCar->MaxLinearSpeed, maxCarSpeed)) {
-						currCar->MaxLinearSpeed = maxCarSpeed;
+						currCar->SetMaxLinearSpeed(maxCarSpeed);
 						needRefresh = true;
 					}
 					if (!Utils::FloatCompare(currCar->StickyForceGround, groundSticky)) {

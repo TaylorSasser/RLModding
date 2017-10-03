@@ -45,7 +45,7 @@ void GameEventMods::DrawMenu() {
 			ImGui::InputInt("Blue Score", &blueScore); ImGui::SameLine();
 			ImGui::NextColumn();
 			ImGui::PushItemWidth(100);
-			ImGui::NextColumn();
+			ImGui::NextColumn(); 
 
 			ImGui::InputInt("Orange Score", &orangeScore); ImGui::SameLine();
 
@@ -87,6 +87,10 @@ void GameEventMods::DrawMenu() {
 		
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
+			ImGui::InputInt("Team Index", &teamIndex);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Usually either 0 or 1.  0 for blue, 1 for orange.");
+			ImGui::SameLine();
 			if (ImGui::Button("Infinite Celebration.")) {
 				unlimCelebration = true;
 			}
@@ -111,7 +115,13 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Hide Replays")) {
 				hideReplays = true;
 			}
+			ImGui::SameLine();
 
+			if (ImGui::Button("Test Server Say")) {
+				testServerSay = true;
+			}
+
+			
 		}
 		
 		if (!p_open) {
@@ -169,6 +179,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 		if (unlimCelebration) {
 			localGameEvent->PodiumTime = localGameEvent->PodiumTime * 2000;
+			localGameEvent->Teams[teamIndex]->SetScore(1);
 			localGameEvent->EndGame();
 			unlimCelebration = false;
 		}
@@ -241,6 +252,16 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (hideReplays) {
 			localGameEvent->bPlayReplays = false;
 			hideReplays = false;
+		}
+
+		if (ballSpawnTest) {
+			//ABall_TA* demoBall = localGameEvent->SpawnBall(localGameEvent->playercontr->Car->Location, true, false, localGameEvent->BallArchetype->GetHumanReadableName());
+			ballSpawnTest = false;
+		}
+
+		if (testServerSay) {
+			((APlayerController_TA*)localGameEvent->GameOwner->GetALocalPlayerController())->ServerSayInternal_TA(FString(L"Test"),EChatChannel::EChatChannel_Match, false);
+			testServerSay = false;
 		}
 
 	}

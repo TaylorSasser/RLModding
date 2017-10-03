@@ -150,6 +150,25 @@ public:
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
 
+	virtual void onGetNextImage(Event* e) {
+		/*
+		UAdManager_TA* callerObject = (UAdManager_TA*)e->getCallingObject();
+		if (callerObject) {
+			for (int i = 0; i < callerObject->CachedAdImages.Num(); i++) {
+				//std::string url = callerObject->CachedAdImages.GetByIndex(i).ImageURL.ToString();
+				if (i % 2 == 0) {
+					callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
+				}
+				else {
+					callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
+				}
+			}
+		}
+
+	*/
+	}
+	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
+
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;
