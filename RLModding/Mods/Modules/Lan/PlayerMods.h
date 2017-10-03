@@ -34,6 +34,7 @@ private:
 	bool isDeveloper = false;
 
 	bool doNothing = false;
+	bool triggerGoalExplosion = false;
 
 	std::string statusText = "";
 

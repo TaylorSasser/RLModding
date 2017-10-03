@@ -61,6 +61,7 @@ private:
 	bool apply = false;
 	bool reset_values = false;
 	bool respawn = false;
+	bool isHidden = false;
 
 	std::string statusText = "";
 

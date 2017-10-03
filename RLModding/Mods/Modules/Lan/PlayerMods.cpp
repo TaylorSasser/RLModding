@@ -52,7 +52,11 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Demolish")) {
 			demolishPlayer = true;
 		}
-
+		ImGui::SameLine();
+		if (ImGui::Button("Trigger Explosion")) {
+			triggerGoalExplosion = true;
+		}
+		
 		ImGui::Separator();
 
 		ImGui::Text(statusText.c_str());
@@ -87,7 +91,6 @@ void PlayerMods::onPlayerTick(Event* e) {
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
-
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 						APlayerController_TA* currController = (APlayerController_TA*)tempController;
@@ -97,7 +100,6 @@ void PlayerMods::onPlayerTick(Event* e) {
 
 						//currController->PRI->MatchGoals = -100;
 					}
-
 
 				}
 				else {
@@ -111,6 +113,10 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (doNothing) {
 							currController->DoNothing();
 						}
+						// For bots use host as demoer
+						if (triggerGoalExplosion && currController->Car != NULL) {
+							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, InstanceStorage::PlayerController()->PRI);
+						}
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 						APlayerController_TA* currController = (APlayerController_TA*)tempController;
@@ -118,6 +124,11 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (demolishPlayer && currController->Car != NULL) {
 							currController->Car->Demolish(currController->Car);
 						}
+						if (triggerGoalExplosion && currController->Car != NULL) {
+							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, currController->PRI);
+						}
+					
+						
 					}
 				}
 			}
@@ -140,6 +151,12 @@ void PlayerMods::onPlayerTick(Event* e) {
 			statusText.append(" Disabled.");
 			doNothing = false;
 		}
+		if (triggerGoalExplosion && playerSelectedIndex < gameEventPlayers.Num() + 1) {
+			statusText = players[playerSelectedIndex];
+			statusText.append(" got the boomed.");
+			triggerGoalExplosion = false;
+		}
+
 		// Populate checkboxes based on selected user
 		if (playerSelectedIndex != 0 && oldPlayerSelectedIndex != playerSelectedIndex) {
 			statusText = "";

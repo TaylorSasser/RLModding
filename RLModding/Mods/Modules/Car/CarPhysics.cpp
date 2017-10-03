@@ -79,6 +79,7 @@ void CarPhysics::DrawMenu() {
 			respawn = true;
 		}
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
+		ImGui::Checkbox("Hide Car", &isHidden);
 
 		ImGui::Separator();
 
@@ -146,6 +147,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
 					}
 
+					if (isHidden) {
+						currCar->SetHidden(true);
+					}
 					
 					// For some reason these properties need respawn
 
@@ -227,12 +231,15 @@ void CarPhysics::onPlayerTick(Event* e) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
 					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
 					freezeInPlace = currController->Car->bPodiumMode;
+					isHidden = currController->Car->bHidden;
 					
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
 					freezeInPlace = currController->Car->bPodiumMode;
+					isHidden = currController->Car->bHidden;
+
 				}
 			}
 		}
