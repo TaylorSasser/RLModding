@@ -65,10 +65,10 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 
 		ImGui::Checkbox("Hide Car", &isHidden);
-		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		//ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
 		
-		ImGui::Checkbox("Disable Jumps", &disableJumps);
-		ImGui::SameLine();
+		//ImGui::Checkbox("Disable Jumps", &disableJumps);
+		//ImGui::SameLine();
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 		
 
@@ -77,6 +77,7 @@ void CarPhysics::DrawMenu() {
 
 		ImGui::Separator();
 
+		/*
 		ImGui::PushItemWidth(100);
 
 		ImGui::InputFloat("Jump Force", &jumpForce, 0.5f, 1.0f, 1);
@@ -84,6 +85,7 @@ void CarPhysics::DrawMenu() {
 		ImGui::NextColumn();
 		ImGui::PushItemWidth(100);
 		ImGui::InputFloat("Jump Height", &maxJumpHeight, 0.5f, 1.0f, 1);
+		*/
 
 
 		ImGui::InputFloat("Jump Timeout", &jumpTimeout, 0.5f, 1.0f, 1);
@@ -165,18 +167,22 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
 					
+					/*
 					if (currCar->BoostComponent) {
 						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
 					}
+					*/
 
 					currCar->SetHidden(isHidden);
 
+					/*
 					if (currCar->JumpComponent) {
 						currCar->JumpComponent->bDeactivate = disableJumps;
 						currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
 						currCar->JumpComponent->JumpForce = jumpForce;
 					}
-					
+					*/
+
 					// For some reason these properties need respawn
 
 					bool needRefresh = false;
