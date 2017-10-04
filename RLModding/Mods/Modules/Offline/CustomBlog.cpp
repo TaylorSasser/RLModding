@@ -62,26 +62,20 @@ void CustomBlog::ImportSettings(pt::ptree root) {
 
 void CustomBlog::DrawMenu() {
 	ImGui::Begin("Custom Blog", &p_open, ImVec2(400, 300), 0.75f);
-	if (ImGui::CollapsingHeader("Carousel Tile Settings")) {
-		ImGui::InputText("Title", carousel_title, IM_ARRAYSIZE(carousel_title));
-		ImGui::InputText("Body", carousel_body, IM_ARRAYSIZE(carousel_body));
-		ImGui::InputText("Link", carousel_URL, IM_ARRAYSIZE(carousel_URL));
-		ImGui::InputText("Image Url", carousel_ImageUrl, IM_ARRAYSIZE(carousel_ImageUrl));
-	}
+		ImGui::InputText("Carousel Title", carousel_title, IM_ARRAYSIZE(carousel_title));
+		ImGui::InputText("Carousel Body", carousel_body, IM_ARRAYSIZE(carousel_body));
+		ImGui::InputText("Carousel Link", carousel_URL, IM_ARRAYSIZE(carousel_URL));
+		ImGui::InputText("Carousel Image Url", carousel_ImageUrl, IM_ARRAYSIZE(carousel_ImageUrl));
 	ImGui::Separator();
-	if (ImGui::CollapsingHeader("RLCS Tile Settings")) {
-		ImGui::InputText("Title", RLCS_title, IM_ARRAYSIZE(RLCS_title));
-		ImGui::InputText("Body", RLCS_body, IM_ARRAYSIZE(RLCS_body));
-		ImGui::InputText("Link", RLCS_URL, IM_ARRAYSIZE(RLCS_URL));
-		ImGui::InputText("Image Url", RLCS_ImageUrl, IM_ARRAYSIZE(RLCS_ImageUrl));
-	}
+		ImGui::InputText("RLCS Title", RLCS_title, IM_ARRAYSIZE(RLCS_title));
+		ImGui::InputText("RLCS Body", RLCS_body, IM_ARRAYSIZE(RLCS_body));
+		ImGui::InputText("RLCS Link", RLCS_URL, IM_ARRAYSIZE(RLCS_URL));
+		ImGui::InputText("RLCS Image Url", RLCS_ImageUrl, IM_ARRAYSIZE(RLCS_ImageUrl));
 	ImGui::Separator();
-	if (ImGui::CollapsingHeader("Community Tile Settings")) {
-		ImGui::InputText("Title", Comm_title, IM_ARRAYSIZE(Comm_title));
-		ImGui::InputText("Body", Comm_body, IM_ARRAYSIZE(Comm_body));
-		ImGui::InputText("Link", Comm_URL, IM_ARRAYSIZE(Comm_URL));
-		ImGui::InputText("Image Url", Comm_ImageUrl, IM_ARRAYSIZE(Comm_ImageUrl));
-	}
+		ImGui::InputText("Community Title", Comm_title, IM_ARRAYSIZE(Comm_title));
+		ImGui::InputText("Community Body", Comm_body, IM_ARRAYSIZE(Comm_body));
+		ImGui::InputText("Community Link", Comm_URL, IM_ARRAYSIZE(Comm_URL));
+		ImGui::InputText("Community Image Url", Comm_ImageUrl, IM_ARRAYSIZE(Comm_ImageUrl));
 	ImGui::Separator();
 	ImGui::InputText("MOTD", motd, IM_ARRAYSIZE(motd));
 	

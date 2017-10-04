@@ -57,7 +57,11 @@ void DX9Hook::InitGUI() {
 	if (pd3dDevice)
 	{
 		HANDLE hHandle = GetModuleHandle(TEXT("d3d9.dll"));
+		
 		printf("Address of d3d9.dll: 0x%x\n", hHandle);
+
+		
+
 		HRESULT result = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
 		printf("result = ");
 		switch (result) {
