@@ -30,7 +30,56 @@ static int selectedRumbleIndex = -1;
 
 
 
+void RumbleMods::setCrazyRumbleValues() {
+	if (setCrazyRumble) {
+		/*
+		Default Magnet Range: 1000
+		Default Magnet ball gravity: 55000
+		*/
+		magnetRange = 2000.0;
+		magnetBallGravity = 70000.0;
+		magnetDeactivateOnTouch = false;
 
+		/*
+		Grappling Hook Length: 3500
+		Grappling Hook AfterAttachDuration: 3
+		Grappling Hook Range: 2800
+		*/
+		grapplingHookMaxRopeLength = 10500.0;
+		grapplingHookAfterAttachDuration = 20;
+		grapplingHookRange = 56000;
+		grapplingHookCanTargetCars = true;
+		grapplingHookCanTargetBall = true;
+		grapplingHookCanTargetEnemyCars = true;
+		grapplingHookDeactivateOnTouch = false;
+
+		/*
+		Car hit force: 30
+		Ball hit force: 1.5
+		*/
+		powerHitterCarHitForce = 150.0;
+		powerHitterBallHitForce = 13.0;
+		powerHitterDemolishCars = false;
+
+		spikesAfterHitDuration = 22.5;
+
+
+		tornadoBallMultiplier = 30;
+		tornadoRadius = 4400;
+		tornadoRotForce = 70;
+		tornadoTorque = 150;
+		tornadoHeight = 4000;
+
+		/*
+		Plunger Hook Length: 3000
+		Plunger AfterAttachDuration: 1.3
+		*/
+		plungerMaxSpringLength = 30000;
+		plungerAfterSpringDuration = 13.0;
+
+		setCrazyRumble = false;
+	}
+}
 
 void RumbleMods::DrawMenu() {
 	if (RumbleMods::isEnabled()) {
@@ -46,8 +95,13 @@ void RumbleMods::DrawMenu() {
 			ImGui::InputFloat("Item Give Rate", &itemGiveRate, 0.5f, 1.0f);
 
 			ImGui::Checkbox("Crazy Items", &enableCrazyItems);
-
-			/*
+			if (enableCrazyItems) {
+				setCrazyRumbleValues();
+			}
+			else {
+				setCrazyRumble = true;
+			}
+			
 			ImGui::Combo("Select Item", &selectedRumbleIndex, rumbleItems, IM_ARRAYSIZE(rumbleItems));
 
 			if (ImGui::Button("Give Item")) {
@@ -100,7 +154,7 @@ void RumbleMods::DrawMenu() {
 			else if (selectedRumbleIndex == 7) {
 				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
 				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
-				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+				ImGui::Checkbox("Can Swap with Team", &magnetDeactivateOnTouch);
 
 			}
 			// Tornado
@@ -123,11 +177,15 @@ void RumbleMods::DrawMenu() {
 			} // Grappling Hook
 			else if (selectedRumbleIndex == 10) {
 				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
-				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
-				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+				ImGui::InputFloat("Range", &grapplingHookRange, 0.5f, 1.0f);
+				ImGui::InputFloat("After Attach Duration", &grapplingHookAfterAttachDuration, 0.5f, 1.0f);
+				ImGui::Checkbox("Can Target Ball", &grapplingHookCanTargetBall);
+				ImGui::Checkbox("Can Target Cars", &grapplingHookCanTargetCars);
+				ImGui::Checkbox("Can Target Enemy Cars", &grapplingHookCanTargetEnemyCars);
+				ImGui::Checkbox("Deactivate on Touch", &grapplingHookDeactivateOnTouch);
+				
 			}
-			*/
-
+			
 
 			//Example Settings
 			//For things that have settings to configure anywhere do something like this
@@ -255,129 +313,111 @@ void RumbleMods::onPlayerTick(Event* e) {
 					if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallGravity_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
 
-						if (enableCrazyItems) {
-							magnet->Range = 2000;
-							magnet->BallGravity = 70000.0;
+						//std::cout << "Magnet Range: " << magnet->Range << std::endl;
+						//std::cout << "Magnet BallGravity: " << magnet->BallGravity << std::endl;
 
-							/*
-							Magnet Range: 1000
-							 Magnet ball gravity: 55000
-							*/
+						//magnet->GravityScale = magnet->GravityScale * 3;
+						//magnet->Range = magnet->Range * 100;
+						//magnet->ActivationDuration = magnet->ActivationDuration * 2;
+						//magnet->bCanTargetCars = true;
+						//magnet->bCanTargetBall = false;
+						//magnet->bCanTargetEnemyCars = true;
 
-							//std::cout << "Magnet Range: " << magnet->Range << std::endl;
-							//std::cout << "Magnet BallGravity: " << magnet->BallGravity << std::endl;
-
-							//magnet->GravityScale = magnet->GravityScale * 3;
-							//magnet->Range = magnet->Range * 100;
-							//magnet->ActivationDuration = magnet->ActivationDuration * 2;
-							//magnet->bCanTargetCars = true;
-							//magnet->bCanTargetBall = false;
-							//magnet->bCanTargetEnemyCars = true;
-
+						// Check if magnet settings have changed
+						if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
+							magnet->Range = magnetRange;
 						}
-						else {
-
-							// Check if magnet settings have changed
-							if (!Utils::FloatCompare(magnet->Range, magnetRange)) {
-								//magnet->Range = magnetRange;
-							}
-							if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
-								magnet->BallGravity = magnetBallGravity;
-							}
-							if (magnet->bDeactivateOnTouch != magnetDeactivateOnTouch) {
-								magnet->bDeactivateOnTouch = magnetDeactivateOnTouch;
-							}
-							if (selectedRumbleIndex == 3 && giveItem) {
-								magnet->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
+						if (!Utils::FloatCompare(magnet->BallGravity, magnetBallGravity)) {
+							magnet->BallGravity = magnetBallGravity;
+						}
+						if (magnet->bDeactivateOnTouch != magnetDeactivateOnTouch) {
+							magnet->bDeactivateOnTouch = magnetDeactivateOnTouch;
+						}
+						if (selectedRumbleIndex == 3 && giveItem) {
+							magnet->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
+							
 						}
 					}
 					// Grappling Hook
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_GrapplingHook_TA::StaticClass())) {
 						SDK::ASpecialPickup_GrapplingHook_TA* grapplingHook = (SDK::ASpecialPickup_GrapplingHook_TA*)items.GetByIndex(q);
 
-						if (enableCrazyItems) {
-							//hook->Force = hook->Force * 3;
-							//hook->bCanTargetEnemyCars = true;
-							//hook->bCanTargetCars = true;
-							//hook->bCanTargetTeamCars = true;
-							//hook->bCanTargetBall = false;
-							//hook->ClientTarget->bDemoOwner = true;
+						//hook->Force = hook->Force * 3;
+						//hook->bCanTargetEnemyCars = true;
+						//hook->bCanTargetCars = true;
+						//hook->bCanTargetTeamCars = true;
+						//hook->bCanTargetBall = false;
+						//hook->ClientTarget->bDemoOwner = true;
 							
-							/*
-							Grappling Hook Length: 3500
-							Grappling Hook AfterAttachDuration: 3
-							Grappling Hook Range: 2800
-							*/
+						/*
+						Grappling Hook Length: 3500
+						Grappling Hook AfterAttachDuration: 3
+						Grappling Hook Range: 2800
+						*/
 
-							//std::cout << "Grappling Hook Length: " << grapplingHook->MaxRopeLength << std::endl;
-							//std::cout << "Grappling Hook AfterAttachDuration: " << grapplingHook->AfterAttachDuration << std::endl;
-							//std::cout << "Grappling Hook Range: " << grapplingHook->Range << std::endl;
+						//std::cout << "Grappling Hook Length: " << grapplingHook->MaxRopeLength << std::endl;
+						//std::cout << "Grappling Hook AfterAttachDuration: " << grapplingHook->AfterAttachDuration << std::endl;
+						//std::cout << "Grappling Hook Range: " << grapplingHook->Range << std::endl;
 
 
-							grapplingHook->MaxRopeLength = 10500.0;
-							//hook->Force = hook->Force * 3;
-							grapplingHook->AfterAttachDuration = 20;
-							grapplingHook->Range = 56000;
-							//hook->ActivationDuration = hook->ActivationDuration * 100;
-							grapplingHook->bCanTargetCars = true;
-							grapplingHook->bCanTargetBall = true;
-							grapplingHook->bCanTargetEnemyCars = true;
-							grapplingHook->bDeactivateOnTouch = false;
+						grapplingHook->MaxRopeLength = grapplingHookMaxRopeLength;
+						grapplingHook->AfterAttachDuration = grapplingHookAfterAttachDuration;
+						grapplingHook->Range = grapplingHookRange;
+						grapplingHook->bCanTargetCars = grapplingHookCanTargetCars;
+						grapplingHook->bCanTargetBall = grapplingHookCanTargetBall;
+						grapplingHook->bCanTargetEnemyCars = grapplingHookCanTargetEnemyCars;
+						grapplingHook->bDeactivateOnTouch = grapplingHookDeactivateOnTouch;
+						
+						//grapplingHook->MaxRopeLength *= 100;
+						//grapplingHook->bCanTargetCars = true;
+						//grapplingHook->bCanTargetEnemyCars = true;
+						//grapplingHook->bCanTargetTeamCars = true;
+						//grapplingHook->ActivationDuration *= 100;
+						//grapplingHook->bDeactivateOnTouch = false;
+						//grapplingHook->bCanTargetBall = false;
+						//grapplingHook->AfterAttachDuration *= 100;
+						//grapplingHook->AttachTime *= 100;
+						//plunger->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 10 && giveItem) {
+							grapplingHook->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
 						}
-						else {
-							//grapplingHook->MaxRopeLength *= 100;
-							//grapplingHook->bCanTargetCars = true;
-							//grapplingHook->bCanTargetEnemyCars = true;
-							//grapplingHook->bCanTargetTeamCars = true;
-							//grapplingHook->ActivationDuration *= 100;
-							//grapplingHook->bDeactivateOnTouch = false;
-							//grapplingHook->bCanTargetBall = false;
-							//grapplingHook->AfterAttachDuration *= 100;
-							//grapplingHook->AttachTime *= 100;
-							//plunger->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 10 && giveItem) {
-								grapplingHook->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
-						}
+						
 					}
 					// Power hitter
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_HitForce_TA::StaticClass())) {
 						SDK::ASpecialPickup_HitForce_TA* powerHitter = (SDK::ASpecialPickup_HitForce_TA*)items.GetByIndex(q);
 
-						if (enableCrazyItems) {
-							// Car hit force: 30
-							// Ball hit force: 1.5
+						// Car hit force: 30
+						// Ball hit force: 1.5
 
-							//powerHitter->BallHitForce = powerHitter->BallHitForce * 1.1;
-							powerHitter->CarHitForce = 150;
-							powerHitter->BallHitForce = 13.0;
-							powerHitter->bDemolishCars = false;
+						//powerHitter->BallHitForce = powerHitter->BallHitForce * 1.1;
+						powerHitter->CarHitForce = powerHitterCarHitForce;
+						powerHitter->BallHitForce = powerHitterBallHitForce;
+						powerHitter->bDemolishCars = powerHitterDemolishCars;
 
-							//std::cout << "Power hitter ball hit force: " << powerHitter->BallHitForce << std::endl;
+						//std::cout << "Power hitter ball hit force: " << powerHitter->BallHitForce << std::endl;
 
-							//powerHitter->OrigBallHitForce = powerHitter->OrigBallHitForce * 1.1;
+						//powerHitter->OrigBallHitForce = powerHitter->OrigBallHitForce * 1.1;
+		
+						//powerHitter->CarHitForce *= 20;
+						//powerHitter->bDemolishCars = false;
+						//powerHitter->ActivationDuration *= 100;
+						//plunger->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 4 && giveItem) {
+							powerHitter->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
 						}
-						else {
-							//powerHitter->CarHitForce *= 20;
-							//powerHitter->bDemolishCars = false;
-							//powerHitter->ActivationDuration *= 100;
-							//plunger->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 4 && giveItem) {
-								powerHitter->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
-						}
+						
 					}
 					// Swapper
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_Swapper_TA::StaticClass())) {
@@ -457,128 +497,120 @@ void RumbleMods::onPlayerTick(Event* e) {
 					// Plunger
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallLasso_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallLasso_TA* plunger = (SDK::ASpecialPickup_BallLasso_TA*)items.GetByIndex(q);
-						if (enableCrazyItems) {
-							/*
-							Plunger Hook Length: 3000
-							Plunger AfterAttachDuration: 1.3
-							*/
-							//plunger->Force = plunger->Force * 5;
+						/*
+						Plunger Hook Length: 3000
+						Plunger AfterAttachDuration: 1.3
+						*/
+						plunger->MaxSpringLength = 30000;
+						plunger->AfterSpringDuration = 13.0;
+						//plunger->Force = plunger->Force * 5;
 							
-							//plunger->Force = plunger->Force * 10;
-							plunger->MaxSpringLength = 30000;
-							plunger->AfterSpringDuration = 13.0;
-							//std::cout << "Plunger Length: " << plunger->MaxSpringLength << std::endl;
-							//std::cout << "Plunger AfterAttachDuration: " << plunger->AfterSpringDuration << std::endl;
+						//plunger->Force = plunger->Force * 10;
+						
+						//std::cout << "Plunger Length: " << plunger->MaxSpringLength << std::endl;
+						//std::cout << "Plunger AfterAttachDuration: " << plunger->AfterSpringDuration << std::endl;
+						
+						//plunger->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 9 && giveItem) {
+							plunger->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
 						}
-						else {
-							//plunger->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 9 && giveItem) {
-								plunger->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
-						}
+						
 					}
 					// Punching Glove
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallCarSpring_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallCarSpring_TA* punchingGlove = (SDK::ASpecialPickup_BallCarSpring_TA*)items.GetByIndex(q);
-						if (enableCrazyItems) {
-							punchingGlove->bCanTargetBall = true;
-							punchingGlove->bCanTargetCars = true;
-							punchingGlove->Force = 180000;
-							//std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
 
-						}
-						else {
-							if (!Utils::FloatCompare(punchingGlove->Force, punchingGlove->Force)) {
-								//tornado->Radius = tornadoRadius;
-								std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
-								punchingGlove->Force = punchingGloveForce;
-							}
-							if (!Utils::FloatCompare(punchingGlove->VerticalForce, punchingGloveVerticalForce)) {
-								//tornado->Radius = tornadoRadius;
-								std::cout << "Punching Glove Vertical Force " << punchingGlove->VerticalForce << std::endl;
-								punchingGlove->VerticalForce = punchingGloveVerticalForce;
-							}
+						punchingGlove->bCanTargetBall = true;
+						punchingGlove->bCanTargetCars = true;
+						punchingGlove->Force = 180000;
+						//std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
 
-							//tornado->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 5 && giveItem) {
-								punchingGlove->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
+						if (!Utils::FloatCompare(punchingGlove->Force, punchingGlove->Force)) {
+							std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
+							punchingGlove->Force = punchingGloveForce;
 						}
+						if (!Utils::FloatCompare(punchingGlove->VerticalForce, punchingGloveVerticalForce)) {
+							std::cout << "Punching Glove Vertical Force " << punchingGlove->VerticalForce << std::endl;
+							punchingGlove->VerticalForce = punchingGloveVerticalForce;
+						}
+
+						//tornado->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 5 && giveItem) {
+							punchingGlove->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
+						}
+						
 
 					}
 				
 					// Spikes
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallVelcro_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallVelcro_TA* spikes = (SDK::ASpecialPickup_BallVelcro_TA*)items.GetByIndex(q);
-						if (enableCrazyItems) {
-							spikes->AfterHitDuration = 22.5;
-							//std::cout << "Spikes AfterHitDuration: " << spikes->AfterHitDuration << std::endl;
+						spikes->AfterHitDuration = spikesAfterHitDuration;
+						//std::cout << "Spikes AfterHitDuration: " << spikes->AfterHitDuration << std::endl;
+					
+						//spikes->AfterHitDuration *= 1000;
+						//spikes->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 6 && giveItem) {
+							spikes->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
 						}
-						else {
-							//spikes->AfterHitDuration *= 1000;
-							//spikes->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 6 && giveItem) {
-								spikes->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
-						}
+						
 					}
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_Tornado_TA::StaticClass())) {
 						SDK::ASpecialPickup_Tornado_TA* tornado = (SDK::ASpecialPickup_Tornado_TA*)items.GetByIndex(q);
-						if (enableCrazyItems) {
-							//tornado->bDebugVis = true;
-							/*
-								Ball Multiplyer: 3
-								Radius: 400
-								Rotational Force: 7
-								Torgue: 5
-								Height: 800
+						//tornado->bDebugVis = true;
+						/*
+							Ball Multiplyer: 3
+							Radius: 400
+							Rotational Force: 7
+							Torgue: 5
+							Height: 800
 							
-							std::cout << "Ball Multiplyer: " << tornado->BallMultiplier << std::endl;
-							std::cout << "Radius: " << tornado->Radius << std::endl;
-							std::cout << "Rotational Force: " << tornado->RotationalForce << std::endl;
-							std::cout << "Torgue: " << tornado->Torque << std::endl;
-							std::cout << "Height: " << tornado->Height << std::endl;
-							*/
+						std::cout << "Ball Multiplyer: " << tornado->BallMultiplier << std::endl;
+						std::cout << "Radius: " << tornado->Radius << std::endl;
+						std::cout << "Rotational Force: " << tornado->RotationalForce << std::endl;
+						std::cout << "Torgue: " << tornado->Torque << std::endl;
+						std::cout << "Height: " << tornado->Height << std::endl;
+						*/
 
-							tornado->BallMultiplier = 30;
-							tornado->Radius = 4400;
-							tornado->RotationalForce = 70;
-							tornado->Torque = 150;
-							tornado->Height = 4000;
-							//tornado->ActivationDuration = 10000;
+
+						//tornado->ActivationDuration = 10000;
 							
+					
+						//tornado->Height = 20;
+						//tornado->FXScale.X /= 10;
+						//tornado->FXScale.Y /= 10;
+						//tornado->FXScale.Z /= 10;
+						// Standard radius 400
+
+						tornado->BallMultiplier = tornadoBallMultiplier;
+						tornado->RotationalForce = tornadoRotForce;
+						tornado->Torque = tornadoTorque;
+						tornado->Height = tornadoHeight;
+
+						if (!Utils::FloatCompare(tornado->Radius, tornadoRadius)) {
+							tornado->Radius = tornadoRadius;
 						}
-						else {
-							//tornado->Height = 20;
-							//tornado->FXScale.X /= 10;
-							//tornado->FXScale.Y /= 10;
-							//tornado->FXScale.Z /= 10;
-							// Standard radius 400
-							if (!Utils::FloatCompare(tornado->Radius, tornadoRadius)) {
-								tornado->Radius = tornadoRadius;
-								//std::cout << "Standard Radius? " << tornado->Radius << std::endl;
-							}
-							//tornado->ActivationDuration *= 100;
-							// If tornado is selected, set as current selection for item forcing
-							if (selectedRumbleIndex == 8 && giveItem) {
-								tornado->ApplyPickup(InstanceStorage::PlayerController()->Car);
-								forceItemIndex = -1;
-								giveItem = false;
-								//forceItemIndex = q;
-							}
+						//tornado->ActivationDuration *= 100;
+						// If tornado is selected, set as current selection for item forcing
+						if (selectedRumbleIndex == 8 && giveItem) {
+							tornado->ApplyPickup(InstanceStorage::PlayerController()->Car);
+							forceItemIndex = -1;
+							giveItem = false;
+							//forceItemIndex = q;
 						}
+						
 
 					}
 
