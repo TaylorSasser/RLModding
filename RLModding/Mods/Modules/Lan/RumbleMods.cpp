@@ -28,20 +28,9 @@ void RumbleMods::ImportSettings(pt::ptree root) {
 const char* rumbleItems[] = { "Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook", "", "", "" };
 static int selectedRumbleIndex = -1;
 
-// Player selection menu
-const char* players[] = { "All", "", "", "", "", "", "", "", "", "", "" };
-static int playerSelectedIndex = -1;
-
-// Boot Options
 
 
 
-// Tornado Options
-static float tornadoRadius = 1.0;
-
-
-static int forceItemIndex = -1;
-static bool giveItem = false;
 
 void RumbleMods::DrawMenu() {
 	if (RumbleMods::isEnabled()) {
@@ -117,8 +106,12 @@ void RumbleMods::DrawMenu() {
 			// Tornado
 			else if (selectedRumbleIndex == 8) {
 				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
-				ImGui::InputFloat("Tornado Radius", &tornadoRadius, 0.5f, 1.0f);
-				ImGui::Checkbox("Deactivate on Touch", &magnetDeactivateOnTouch);
+				ImGui::InputFloat("Ball Multiplayer", &tornadoBallMultiplayer, 0.5f, 1.0f);
+				ImGui::InputFloat("Radius", &tornadoRadius, 0.5f, 1.0f);
+				ImGui::InputFloat("Rotational Force", &tornadoRotForce, 0.5f, 1.0f);
+				ImGui::InputFloat("Torque", &tornadoTorque, 0.5f, 1.0f);
+				ImGui::InputFloat("Height", &tornadoHeight, 0.5f, 1.0f);
+
 
 			}
 			// Plunger
@@ -182,6 +175,54 @@ std::string to_string(wchar_t* text)
 	return retval;
 }
 
+void RumbleMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
+	// Populate player list
+	std::fill_n(players, 11, "\0");
+	players[0] = "All\0";
+
+	if (localGameEvent) {
+		TArray< class AController* > eventPlayers = localGameEvent->Players;
+		for (int i = 0; i < eventPlayers.Num(); i++) {
+			std::string playerName = eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString();
+
+			AController* tempController = eventPlayers.GetByIndex(i);
+			// Check if bot or person
+			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				playerName.append(" [BOT]");
+			}
+
+			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
+			std::strncpy(cptr, playerName.c_str(), playerName.size());
+			cptr[playerName.length()] = '\0';
+			std::cout << "Player: " << playerName << std::endl;
+			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
+			players[i + 1] = cptr;
+		}
+		currPlayerCount = eventPlayers.Num();
+	}
+}
+
+void RumbleMods::onCarSpawned(Event* e) {
+	//std::cout << "Spawned a car!" << std::endl;
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	populatePlayerList(localGameEvent);
+}
+
+void RumbleMods::onGameEventRemovePlayer(Event* e) {
+	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
+	// If player is not null
+	APRI_TA* leavingPRI = (APRI_TA*)e->getCallingObject();
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	populatePlayerList(localGameEvent);
+}
+
+void RumbleMods::onGameEventAddPlayer(Event* e) {
+	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	populatePlayerList(localGameEvent);
+}
+
+
 void RumbleMods::onPlayerTick(Event* e) {
 	//This boolean for starting the gamemode
 	if (bStartGameMode) {
@@ -207,18 +248,6 @@ void RumbleMods::onPlayerTick(Event* e) {
 
 			for (int l = 0; l < itemDispensers.Num(); l++) {
 
-				// Populate Player List
-				//std::cout << itemDispensers.GetByIndex(l)->PRI->SanitizedPlayerName.ToString() << std::endl;
-				//_bstr_t b(itemDispensers.GetByIndex(l)->PRI->SanitizedPlayerName.c_str());
-				//SDK::AController* playerController = itemDispensers.GetByIndex(l)->PRI->GetALocalPlayerController();
-				//_bstr_t b(playerController->GetHumanReadableName().c_str());
-				_bstr_t b(itemDispensers.GetByIndex(l)->PRI->SanitizedPlayerName.ToString().data());
-				//char * writable = new char[str.size() + 1];
-				//std::copy(str.begin(), str.end(), writable);
-				//writable[str.size()] = '\0';
-				//players[l + 1] = writable;
-				players[l + 1] = b;
-
 				SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
 				for (int q = 0; q < items.Num(); q++)
 				{
@@ -227,15 +256,23 @@ void RumbleMods::onPlayerTick(Event* e) {
 						SDK::ASpecialPickup_BallGravity_TA* magnet = (SDK::ASpecialPickup_BallGravity_TA*)items.GetByIndex(q);
 
 						if (enableCrazyItems) {
-							magnet->Range = magnet->Range * 2;
+							magnet->Range = 2000;
+							magnet->BallGravity = 70000.0;
+
+							/*
+							Magnet Range: 1000
+							 Magnet ball gravity: 55000
+							*/
+
+							//std::cout << "Magnet Range: " << magnet->Range << std::endl;
+							//std::cout << "Magnet BallGravity: " << magnet->BallGravity << std::endl;
+
 							//magnet->GravityScale = magnet->GravityScale * 3;
-							//magnet->BallGravity = magnet->BallGravity * 1.25;
 							//magnet->Range = magnet->Range * 100;
 							//magnet->ActivationDuration = magnet->ActivationDuration * 2;
 							//magnet->bCanTargetCars = true;
 							//magnet->bCanTargetBall = false;
 							//magnet->bCanTargetEnemyCars = true;
-							//ServerSay("Magnet!");
 
 						}
 						else {
@@ -270,10 +307,21 @@ void RumbleMods::onPlayerTick(Event* e) {
 							//hook->bCanTargetBall = false;
 							//hook->ClientTarget->bDemoOwner = true;
 							
-							grapplingHook->MaxRopeLength = grapplingHook->MaxRopeLength * 3;
+							/*
+							Grappling Hook Length: 3500
+							Grappling Hook AfterAttachDuration: 3
+							Grappling Hook Range: 2800
+							*/
+
+							//std::cout << "Grappling Hook Length: " << grapplingHook->MaxRopeLength << std::endl;
+							//std::cout << "Grappling Hook AfterAttachDuration: " << grapplingHook->AfterAttachDuration << std::endl;
+							//std::cout << "Grappling Hook Range: " << grapplingHook->Range << std::endl;
+
+
+							grapplingHook->MaxRopeLength = 10500.0;
 							//hook->Force = hook->Force * 3;
-							grapplingHook->AfterAttachDuration = grapplingHook->AfterAttachDuration * 10;
-							grapplingHook->Range = grapplingHook->Range * 100;
+							grapplingHook->AfterAttachDuration = 20;
+							grapplingHook->Range = 56000;
 							//hook->ActivationDuration = hook->ActivationDuration * 100;
 							grapplingHook->bCanTargetCars = true;
 							grapplingHook->bCanTargetBall = true;
@@ -305,9 +353,16 @@ void RumbleMods::onPlayerTick(Event* e) {
 						SDK::ASpecialPickup_HitForce_TA* powerHitter = (SDK::ASpecialPickup_HitForce_TA*)items.GetByIndex(q);
 
 						if (enableCrazyItems) {
+							// Car hit force: 30
+							// Ball hit force: 1.5
+
 							//powerHitter->BallHitForce = powerHitter->BallHitForce * 1.1;
-							powerHitter->CarHitForce *= 1.1;
+							powerHitter->CarHitForce = 150;
+							powerHitter->BallHitForce = 13.0;
 							powerHitter->bDemolishCars = false;
+
+							//std::cout << "Power hitter ball hit force: " << powerHitter->BallHitForce << std::endl;
+
 							//powerHitter->OrigBallHitForce = powerHitter->OrigBallHitForce * 1.1;
 						}
 						else {
@@ -329,9 +384,15 @@ void RumbleMods::onPlayerTick(Event* e) {
 						ASpecialPickup_Swapper_TA* swapper = (ASpecialPickup_Swapper_TA*)items.GetByIndex(q);
 
 						if (enableCrazyItems) {
+							/*
+							Swapper Range: 10000
+
+							*/
+
 							//swap->bCanTargetBall = true;
 							//swap->bCanTargetCars = false;
-							swapper->Range = swapper->Range * 2;
+							swapper->Range = 20000.0;
+							//std::cout << "Swapper Range: " << swapper->Range << std::endl;
 							swapper->bCanTargetTeamCars = true;
 							//swap->Force = swap->Force * 10;
 
@@ -355,7 +416,11 @@ void RumbleMods::onPlayerTick(Event* e) {
 						ASpecialPickup_BoostOverride_TA* booster = (ASpecialPickup_BoostOverride_TA*)items.GetByIndex(q);
 
 						if (enableCrazyItems) {
-							booster->Range = booster->Range * 2;
+							// Booster Range: 4000
+
+							booster->Range = 15000;
+							//std::cout << "Booster Range: " << booster->Range << std::endl;
+
 						}
 						else {
 							//plunger->ActivationDuration *= 100;
@@ -374,7 +439,8 @@ void RumbleMods::onPlayerTick(Event* e) {
 						SDK::ASpecialPickup_BallFreeze_TA* freeze = (SDK::ASpecialPickup_BallFreeze_TA*)items.GetByIndex(q);
 
 						if (enableCrazyItems) {
-							freeze->ActivationDuration = freeze->ActivationDuration * 0.5;
+							//freeze->ActivationDuration = freeze->ActivationDuration * 0.5;
+							freeze->ActivationDuration = 5;
 							//freeze->bMaintainMomentum = true;
 						}
 						else {
@@ -392,11 +458,17 @@ void RumbleMods::onPlayerTick(Event* e) {
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallLasso_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallLasso_TA* plunger = (SDK::ASpecialPickup_BallLasso_TA*)items.GetByIndex(q);
 						if (enableCrazyItems) {
+							/*
+							Plunger Hook Length: 3000
+							Plunger AfterAttachDuration: 1.3
+							*/
 							//plunger->Force = plunger->Force * 5;
 							
 							//plunger->Force = plunger->Force * 10;
-							plunger->MaxSpringLength = plunger->MaxSpringLength * 10;
-							plunger->AfterSpringDuration = plunger->AfterSpringDuration * 10;
+							plunger->MaxSpringLength = 30000;
+							plunger->AfterSpringDuration = 13.0;
+							//std::cout << "Plunger Length: " << plunger->MaxSpringLength << std::endl;
+							//std::cout << "Plunger AfterAttachDuration: " << plunger->AfterSpringDuration << std::endl;
 						}
 						else {
 							//plunger->ActivationDuration *= 100;
@@ -415,12 +487,15 @@ void RumbleMods::onPlayerTick(Event* e) {
 						if (enableCrazyItems) {
 							punchingGlove->bCanTargetBall = true;
 							punchingGlove->bCanTargetCars = true;
+							punchingGlove->Force = 180000;
+							//std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
+
 						}
 						else {
 							if (!Utils::FloatCompare(punchingGlove->Force, punchingGlove->Force)) {
 								//tornado->Radius = tornadoRadius;
 								std::cout << "Punching Glove Force " << punchingGlove->Force << std::endl;
-								punchingGlove->Force = punchingGlove->Force;
+								punchingGlove->Force = punchingGloveForce;
 							}
 							if (!Utils::FloatCompare(punchingGlove->VerticalForce, punchingGloveVerticalForce)) {
 								//tornado->Radius = tornadoRadius;
@@ -439,11 +514,13 @@ void RumbleMods::onPlayerTick(Event* e) {
 						}
 
 					}
+				
 					// Spikes
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_BallVelcro_TA::StaticClass())) {
 						SDK::ASpecialPickup_BallVelcro_TA* spikes = (SDK::ASpecialPickup_BallVelcro_TA*)items.GetByIndex(q);
 						if (enableCrazyItems) {
-							spikes->AfterHitDuration = spikes->AfterHitDuration * 5;
+							spikes->AfterHitDuration = 22.5;
+							//std::cout << "Spikes AfterHitDuration: " << spikes->AfterHitDuration << std::endl;
 						}
 						else {
 							//spikes->AfterHitDuration *= 1000;
@@ -460,12 +537,28 @@ void RumbleMods::onPlayerTick(Event* e) {
 					else if (items.GetByIndex(q)->IsA(SDK::ASpecialPickup_Tornado_TA::StaticClass())) {
 						SDK::ASpecialPickup_Tornado_TA* tornado = (SDK::ASpecialPickup_Tornado_TA*)items.GetByIndex(q);
 						if (enableCrazyItems) {
-							tornado->bDebugVis = true;
-							tornado->BallMultiplier = tornado->BallMultiplier * 2;
-							tornado->Radius = tornado->Radius * 3;
-							tornado->RotationalForce = tornado->RotationalForce * 5;
-							tornado->Torque = tornado->Torque * 5;
-							tornado->Height = tornado->Height * 2.5;
+							//tornado->bDebugVis = true;
+							/*
+								Ball Multiplyer: 3
+								Radius: 400
+								Rotational Force: 7
+								Torgue: 5
+								Height: 800
+							
+							std::cout << "Ball Multiplyer: " << tornado->BallMultiplier << std::endl;
+							std::cout << "Radius: " << tornado->Radius << std::endl;
+							std::cout << "Rotational Force: " << tornado->RotationalForce << std::endl;
+							std::cout << "Torgue: " << tornado->Torque << std::endl;
+							std::cout << "Height: " << tornado->Height << std::endl;
+							*/
+
+							tornado->BallMultiplier = 30;
+							tornado->Radius = 4400;
+							tornado->RotationalForce = 70;
+							tornado->Torque = 150;
+							tornado->Height = 4000;
+							//tornado->ActivationDuration = 10000;
+							
 						}
 						else {
 							//tornado->Height = 20;
@@ -474,7 +567,7 @@ void RumbleMods::onPlayerTick(Event* e) {
 							//tornado->FXScale.Z /= 10;
 							// Standard radius 400
 							if (!Utils::FloatCompare(tornado->Radius, tornadoRadius)) {
-								//tornado->Radius = tornadoRadius;
+								tornado->Radius = tornadoRadius;
 								//std::cout << "Standard Radius? " << tornado->Radius << std::endl;
 							}
 							//tornado->ActivationDuration *= 100;

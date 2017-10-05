@@ -182,7 +182,9 @@ static int defaultGameMode = 0;
 static const char* gameModesCombo[] = {
 	"Soccar",
 	"Hoops",
-	"Snow Day"
+	"Snow Day",
+	"Replay",
+	"Training Editor"
 };
 
 static int defaultTeamSize = 0;
@@ -442,6 +444,8 @@ static std::map<std::string, std::string> mutators = {
 	{ "Soccar", "TAGame.GameInfo_Soccar_TA?" },
 	{ "Hoops", "TAGame.GameInfo_Basketball_TA?" },
 	{ "Snow Day", "TAGame.GameInfo_Hockey_TA?" },
+	{ "Replay", "TAGame.GameInfo_Replay_TA?" },
+	{ "Training Editor", "TAGame.GameInfo_TrainingEditor_TA?" },
 	//Time
 	{ "5 Minutes", "" },
 	{ "10 Minutes", "10Minutes," },

@@ -7,7 +7,7 @@ CarPhysics::CarPhysics(std::string name, int key, Category category, GameState g
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
 void CarPhysics::onDisable() {
-	delete[] players;
+	//delete[] players;
 	reset();
 	printf("Car Mods Disabled\n");
 }
@@ -65,10 +65,10 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 
 		ImGui::Checkbox("Hide Car", &isHidden);
-		//ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
 		
-		//ImGui::Checkbox("Disable Jumps", &disableJumps);
-		//ImGui::SameLine();
+		ImGui::Checkbox("Disable Jumps", &disableJumps);
+		ImGui::SameLine();
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 		
 
@@ -167,21 +167,25 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
 					
-					/*
+					
 					if (currCar->BoostComponent) {
-						currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
+						//currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
+						//currCar->BoostComponent->Activate();
+
 					}
-					*/
+					
 
 					currCar->SetHidden(isHidden);
 
-					/*
+					
 					if (currCar->JumpComponent) {
-						currCar->JumpComponent->bDeactivate = disableJumps;
-						currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
-						currCar->JumpComponent->JumpForce = jumpForce;
+						//currCar->JumpComponent->bDeactivate = disableJumps;
+						//currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
+						//currCar->JumpComponent->JumpForce = jumpForce;
+						//currCar->JumpComponent->Activate();
+						//currCar->JumpComponent->RemoveFromCar();
 					}
-					*/
+					
 
 					// For some reason these properties need respawn
 

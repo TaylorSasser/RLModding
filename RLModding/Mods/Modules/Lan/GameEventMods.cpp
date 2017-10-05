@@ -86,6 +86,9 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Freeze Bots")) {
 				freezeBots = true;
 			}
+			if (ImGui::Button("Remove All Bots")) {
+				removeBots = true;
+			}
 		}
 		
 		if (ImGui::CollapsingHeader("Two's test stuff."))
@@ -311,6 +314,16 @@ void GameEventMods::onPlayerTick(Event* e) {
 		freezeBots = false;
 
 	}
+	if (removeBots) {
+		if (localGameEvent) {
+			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
+			while (bots.Num() > 0) {
+				localGameEvent->AIManager->RemoveBot(bots.GetByIndex(0));
+			}
+		}
+		removeBots = false;
+	}
+
 	if (randomSpawnPoints) {
 
 		if (localGameEvent) {
