@@ -36,6 +36,12 @@ void InventoryManager::DrawMenu() {
 
 			}
 
+			ImGui::Separator();
+			/*
+			if (ImGui::Button("April?")) {
+				aprilFools = true;
+			}
+			*/
 			/*
 			ImGui::Separator();
 			if (ImGui::Button("Shrink Item?")) {
@@ -78,6 +84,33 @@ void InventoryManager::onMainMenuTick(Event* e) {
 
 		runInvExport = false;
 		Utils::ExportInventory(saveData, "inventory.csv");
+	}
+
+	if (aprilFools) {
+		UGFxShell_TA* gfx = reinterpret_cast<SDK::UGFxShell_TA*>(Utils::GetInstanceOf(UGFxShell_TA::StaticClass()));
+		//gfx->UpdateAprilConfig();
+		//gfx->bAprilFoolsRankedIcons = true;
+		//gfx->AprilConfig->bChangeRankedIcons = true;
+		
+		//gfx->UpdateAprilConfig();
+
+		UOnlineGameParty_X* party = reinterpret_cast<SDK::UOnlineGameParty_X*>(Utils::GetInstanceOf(UOnlineGameParty_X::StaticClass()));
+		party->Config->bAllowPsyNetParty = true;
+		//party->HandlePartyConfigChanged();
+		//party->PartyConfig->bAllowPsyNetParty = true;
+		party->SetLobbyInterfacePsyNet();
+
+
+		//if (party->ShouldCreatePsyNetParty()) std::cout << " PSYNET HADJHSDFGFG" << std::endl;
+		//party->ShowInviteUI(0);
+		UGFxData_LocalPlayer_TA* localPlayer = reinterpret_cast<SDK::UGFxData_LocalPlayer_TA*>(Utils::GetInstanceOf(UGFxData_LocalPlayer_TA::StaticClass()));
+		localPlayer->ChangeName(FString(L"THIS ISS MY NEW NAME"));
+
+		InstanceStorage::MenuController()->ServerChangeName(FString(L"THIS ISS MY NEW NAME"));
+
+		//gfx->OpenFriendsList();
+		//gfx->ShowLoginUI(0);
+		aprilFools = false;
 	}
 
 	if (shrinkItem) {

@@ -25,7 +25,6 @@ private:
 	bool refreshPlayers = false;
 	bool updatePlayer = false;
 
-	int currPlayerCount = 0;
 
 	bool isBotSelected = false;
 
@@ -42,6 +41,7 @@ private:
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
 	int playerSelectedIndex = 0;
 	int oldPlayerSelectedIndex = 0;
+	int currPlayerCount = 0;
 
 	bool p_open = true;
 };

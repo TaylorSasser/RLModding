@@ -30,6 +30,7 @@ private:
 	bool resetBalls = false;
 	bool setScoreAndTime = false;
 	bool hideReplays = false;
+	bool removeBots = false;
 
 	bool disableGoalDelay = false;
 	bool unlimitedTime = false;
@@ -37,7 +38,7 @@ private:
 	bool unlimCelebration = false;
 	bool ballSpawnTest = false;
 
-	char goalScoredMessage[32] = "{Player} scored!";
+	char goalScoredMessage[36] = "{Player} scored!";
 	bool updatePlayerMessages = false;
 	bool testTrainingSpawn = false;
 	bool testServerSay = false;

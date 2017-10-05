@@ -17,27 +17,34 @@ void ModdedLanServer::DrawMenu() {
 	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
 	ImGui::Combo("Game Mode", &defaultGameMode, gameModesCombo, IM_ARRAYSIZE(gameModesCombo));
-	ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));
-	if (defaultBotDifficulty != 0) 
-		ImGui::Combo("Team Size", &defaultTeamSize, teamSizeCombo, IM_ARRAYSIZE(teamSizeCombo));
-	else
-		defaultTeamSize = 0;
-	ImGui::Combo("Match Length", &defaultTime, timeCombo, IM_ARRAYSIZE(timeCombo));
-	ImGui::Combo("Max Score", &defaultScore, scoreCombo, IM_ARRAYSIZE(scoreCombo));
-	ImGui::Combo("Game Speed", &defaultGameSpeed, gameSpeedCombo, IM_ARRAYSIZE(gameSpeedCombo));
-	ImGui::Combo("Number of Balls", &defaultBallCount, ballCountCombo, IM_ARRAYSIZE(ballCountCombo));
-	ImGui::Combo("Ball Max Speed", &defaultBallSpeed, ballSpeedCombo, IM_ARRAYSIZE(ballSpeedCombo));
-	ImGui::Combo("Ball Type", &defaultBallType, ballTypeCombo, IM_ARRAYSIZE(ballTypeCombo));
-	ImGui::Combo("Ball Weight", &defaultBallWeight, ballWeightCombo, IM_ARRAYSIZE(ballWeightCombo));
-	ImGui::Combo("Ball Size", &defaultBallSize, ballSizeCombo, IM_ARRAYSIZE(ballSizeCombo));
-	ImGui::Combo("Ball Bounciness", &defaultBallBounce, ballBouncinessCombo, IM_ARRAYSIZE(ballBouncinessCombo));
-	ImGui::Combo("Boost Amount", &defaultBoostAmount, boostAmountCombo, IM_ARRAYSIZE(boostAmountCombo));
-	ImGui::Combo("Rumble", &defaultRumble, rumbleCombo, IM_ARRAYSIZE(rumbleCombo));
-	ImGui::Combo("Boost Strength", &defaultBoostStrength, boostStrengthCombo, IM_ARRAYSIZE(boostStrengthCombo));
-	ImGui::Combo("Gravity", &defaultGravity, gravityCombo, IM_ARRAYSIZE(gravityCombo));
-	ImGui::Combo("Demolish", &defaultDemoSettings, demoSettingsCombo, IM_ARRAYSIZE(demoSettingsCombo));
-	ImGui::Combo("Respawn Time", &defaultRespawnTime, respawnTimeCombo, IM_ARRAYSIZE(respawnTimeCombo));
-	ImGui::Combo("Testing", &defaultTesting, testingCombo, IM_ARRAYSIZE(testingCombo));
+
+	// If replay display replay options
+	if (defaultGameMode == 3) {
+		ImGui::InputText("Replay Save Name", replaySaveName, IM_ARRAYSIZE(replaySaveName));
+	}
+	else {
+		ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));
+		if (defaultBotDifficulty != 0)
+			ImGui::Combo("Team Size", &defaultTeamSize, teamSizeCombo, IM_ARRAYSIZE(teamSizeCombo));
+		else
+			defaultTeamSize = 0;
+		ImGui::Combo("Match Length", &defaultTime, timeCombo, IM_ARRAYSIZE(timeCombo));
+		ImGui::Combo("Max Score", &defaultScore, scoreCombo, IM_ARRAYSIZE(scoreCombo));
+		ImGui::Combo("Game Speed", &defaultGameSpeed, gameSpeedCombo, IM_ARRAYSIZE(gameSpeedCombo));
+		ImGui::Combo("Number of Balls", &defaultBallCount, ballCountCombo, IM_ARRAYSIZE(ballCountCombo));
+		ImGui::Combo("Ball Max Speed", &defaultBallSpeed, ballSpeedCombo, IM_ARRAYSIZE(ballSpeedCombo));
+		ImGui::Combo("Ball Type", &defaultBallType, ballTypeCombo, IM_ARRAYSIZE(ballTypeCombo));
+		ImGui::Combo("Ball Weight", &defaultBallWeight, ballWeightCombo, IM_ARRAYSIZE(ballWeightCombo));
+		ImGui::Combo("Ball Size", &defaultBallSize, ballSizeCombo, IM_ARRAYSIZE(ballSizeCombo));
+		ImGui::Combo("Ball Bounciness", &defaultBallBounce, ballBouncinessCombo, IM_ARRAYSIZE(ballBouncinessCombo));
+		ImGui::Combo("Boost Amount", &defaultBoostAmount, boostAmountCombo, IM_ARRAYSIZE(boostAmountCombo));
+		ImGui::Combo("Rumble", &defaultRumble, rumbleCombo, IM_ARRAYSIZE(rumbleCombo));
+		ImGui::Combo("Boost Strength", &defaultBoostStrength, boostStrengthCombo, IM_ARRAYSIZE(boostStrengthCombo));
+		ImGui::Combo("Gravity", &defaultGravity, gravityCombo, IM_ARRAYSIZE(gravityCombo));
+		ImGui::Combo("Demolish", &defaultDemoSettings, demoSettingsCombo, IM_ARRAYSIZE(demoSettingsCombo));
+		ImGui::Combo("Respawn Time", &defaultRespawnTime, respawnTimeCombo, IM_ARRAYSIZE(respawnTimeCombo));
+		ImGui::Combo("Testing", &defaultTesting, testingCombo, IM_ARRAYSIZE(testingCombo));
+	}
 	if (ImGui::Button("Launch")) {
 		printf("Created LAN Server via GUI");
 		mapName = maps[selectedMap].filename;
@@ -70,6 +77,7 @@ void ModdedLanServer::travel() {
 	if (!Interfaces::GUI().isGUIOpen) {
 		LAN_Server = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
+
 			std::string command = mapName + "?game=" + str_gameMode + "playtest?listen?lan?" + str_mutators;
 			printf("Command: %s\n", command);
 			LAN_Server->TravelToMap(Utils::to_fstring(command));
@@ -83,6 +91,11 @@ void ModdedLanServer::create_mutator_string() {
 
 	if (gameModesCombo[defaultGameMode] == "Freeplay") {
 		str_mutators = "";
+		return;
+	}
+
+	if (gameModesCombo[defaultGameMode] == "Replay") {
+		str_mutators = "Replay=" + (std::string)replaySaveName;
 		return;
 	}
 
