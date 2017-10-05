@@ -1,0 +1,9 @@
+diff a/RLModding/RLModding.vcxproj.filters b/RLModding/RLModding.vcxproj.filters	(rejected hunks)
+@@ -55,6 +55,7 @@
+      <ClCompile Include="Common\PacketBuffer.cpp" />
+      <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
+      <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
+++<<<<<<< HEAD
+ +    <ClCompile Include="Mods\Modules\Lan\MutatorMods.cpp" />
+ +    <ClCompile Include="Controllers\XboxController.cpp" />
+ +=======

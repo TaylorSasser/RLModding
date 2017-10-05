@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\PacketBuffer.cpp" />
+    <ClCompile Include="Connection\Connection.cpp" />
+    <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
@@ -102,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\PacketBuffer.h" />
+    <ClInclude Include="Connection\Connection.h" />
+    <ClInclude Include="Mods\GameState.h" />
     <ClInclude Include="Libs\boost\algorithm\cxx11\all_of.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\case_conv.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\classification.hpp" />
@@ -4790,7 +4794,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>

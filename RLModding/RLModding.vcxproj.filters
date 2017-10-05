@@ -55,8 +55,13 @@
     <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Mods\Modules\Lan\MutatorMods.cpp" />
     <ClCompile Include="Controllers\XboxController.cpp" />
+=======
+    <ClCompile Include="Connection\Connection.cpp" />
+    <ClCompile Include="Mods\GameState.cpp" />
+>>>>>>> Preparing for next update
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4675,8 +4680,13 @@
     <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
     <ClInclude Include="Mods\Modules\Lan\Drainage.h" />
+<<<<<<< HEAD
     <ClInclude Include="Mods\Modules\Lan\MutatorMods.h" />
     <ClInclude Include="Controllers\XboxController.h" />
+=======
+    <ClInclude Include="Connection\Connection.h" />
+    <ClInclude Include="Mods\GameState.h" />
+>>>>>>> Preparing for next update
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

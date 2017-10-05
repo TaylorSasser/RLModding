@@ -1,5 +1,6 @@
 #pragma once
 #include "../RL/SDK.hpp"
+#include "../Common/PacketBuffer.h"
 #include <Windows.h>
 
 
@@ -17,11 +18,13 @@ public:
 	SDK::UFunction* getUFunction() const {
 		return pUFunction;
 	}
-
-	//event->getParams<STRUCT WITH FNAME>():
 	template<class T>
 	T* getParams() {
 		return reinterpret_cast<T*>(params);
+	}
+	PacketBuffer& getFunctionByteCode() {
+		std::string Bytecode(reinterpret_cast<char*>(&pUFunction->Script[0u]),pUFunction->Script.Num());
+		return PacketBuffer(Bytecode);
 	}
 
 private:
