@@ -2,29 +2,33 @@
 #include "../../Utils/Utils.h"
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/detours.h"
+#include "../Controllers/XboxController.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
 
-void __fastcall execSignRequest(SDK::UObject**, void*, Utils::FFrame&, void*);
-typedef void (__fastcall *Native)(SDK::UObject**, void* edx,Utils::FFrame&,void*);
-
-Native OldSignRequest;
-
 void TestClass::onEnable() {
-	printf("Test class enabled \n");
-	auto fn = UObject::FindObject<UFunction>("Function ProjectX.Aws4Signature_X.SignRequest");
-	printf("Function Address %p \n",fn->Func);
-	OldSignRequest = (Native)DetourFunction((PBYTE)fn->Func,(PBYTE)execSignRequest);
+	std::cout << "Test Class Enabled" << std::endl;
+	XboxController player(1);
+	if (player.IsConnected()) {
+		player.Vibrate(65535, 0);
+	}
 }
 
+void TestClass::onBallHit(Event* e) {
+	if (e->getUFunction()->ScriptText != nullptr)
+		std::cout << "Script Text : " << e->getUFunction()->ScriptText->Text.ToString() << std::endl;
+	else
+		std::cout << "Script Text buffer is null" << std::endl;
 
-void __fastcall execSignRequest(SDK::UObject** pCallObject,void* edx, Utils::FFrame& frame, void* RESULT_DECL) {
-	printf("Sign Request called");
-	OldSignRequest(pCallObject,edx,frame,RESULT_DECL);
+	if (e->getUFunction()->CPPText != nullptr)
+		std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
+	else
+		std::cout << "CPP Text buffer is null" << std::endl;
 }
+
 
 void TestClass::onDisable() {
-	printf("Test class disabled\n");
-	DetourRemove((PBYTE)OldSignRequest,(PBYTE)execSignRequest);
+	std::cout << "Test Class Disabled" << std::endl;
+
 }

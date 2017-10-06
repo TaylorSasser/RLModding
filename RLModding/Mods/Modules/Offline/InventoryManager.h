@@ -13,6 +13,7 @@ public:
 	void onMainMenuTick(Event* e);
 
 private:
+	void replace_items(); // For Nitro
 	bool shrinkItem = false;
 	bool aprilFools = false;
 	bool testInventory = false;

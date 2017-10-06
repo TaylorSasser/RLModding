@@ -84,6 +84,7 @@ public:
 	virtual void onOnlineGameStart(Event* event) {
 		inMainMenu = false; inOnline = true; inCustom = false; inExhibition = false; inTraining = false;
 	}
+	virtual void onBallHit(Event* event) {}
 
 	virtual void onSetFriendJoinLocation(Event*) {}
 

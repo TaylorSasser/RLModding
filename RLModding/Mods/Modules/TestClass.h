@@ -7,5 +7,6 @@ public:
 	~TestClass();
 
 	void onEnable();
+	void onBallHit(Event* e) override;
 	void onDisable();
 };
