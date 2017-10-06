@@ -37,7 +37,22 @@ void InventoryManager::DrawMenu() {
 			}
 
 			ImGui::Separator();
-			/*
+			/* For Nitro
+			if (ImGui::Button("Replace Items (Test)")) {
+				UOnlineProductStoreSet_TA* ops = (UOnlineProductStoreSet_TA*) UOnlineProductStoreSet_TA::FindObject<UOnlineProductStoreSet_TA>("OnlineProductStoreSet_TA Transient.OnlineProductStoreSet_TA_1");
+				std::ifstream file("items.txt");
+				std::vector<int> it;
+				int temp;
+				while (file >> temp) {
+					it.push_back(temp);
+				}
+				file.close();
+				for (unsigned i = 0; i < ops->Products.Num(); i++) {
+					UOnlineProduct_TA* prod = (UOnlineProduct_TA*)  ops->Products[i];
+					prod->ProductID = it[i % it.size()];
+				}
+			}*/
+			/* wtf is this LOL
 			if (ImGui::Button("April?")) {
 				aprilFools = true;
 			}
