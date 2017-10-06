@@ -60,12 +60,22 @@ void CarPhysics::DrawMenu() {
 
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
 
+		/*
+		ImGui::Checkbox("Freeze in place.", &freezeInPlace);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("Unfreeze doesn't work at the moment...can be glitchy lol");
+		*/
 
-		ImGui::Checkbox("Freeze car in place", &freezeInPlace);
+		ImGui::Checkbox("Podium Mode", &podiumMode);
 		ImGui::SameLine();
 
 		ImGui::Checkbox("Hide Car", &isHidden);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("Makes car invisible");
+
 		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
 		
 		ImGui::Checkbox("Disable Jumps", &disableJumps);
 		ImGui::SameLine();
@@ -169,14 +179,17 @@ void CarPhysics::onPlayerTick(Event* e) {
 					
 					
 					if (currCar->BoostComponent) {
-						//currCar->BoostComponent->bUnlimitedBoost = unlimitedBoost;
+						currCar->BoostComponent->SetUnlimitedBoost(unlimitedBoost);
 						//currCar->BoostComponent->Activate();
-
+						//currCar->BoostComponent->MaxBoostAmount = 1000;
+						//currCar->BoostComponent->SetBoostAmount(1000);
+						
 					}
 					
 
 					currCar->SetHidden(isHidden);
-
+					currCar->bPodiumMode = podiumMode;
+					//currCar->SetFrozen(freezeInPlace);
 					
 					if (currCar->JumpComponent) {
 						//currCar->JumpComponent->bDeactivate = disableJumps;
@@ -239,10 +252,8 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCarScale(carScale);
 					}
 
-					if (freezeInPlace) {
-						currCar->bPodiumMode = freezeInPlace;
-
-					}
+	
+				
 
 				}
 			}
@@ -252,7 +263,6 @@ void CarPhysics::onPlayerTick(Event* e) {
 		// Reset options markers
 		if (cloneMe) cloneMe = false;
 		if (setCarScale) setCarScale = false;
-		if (freezeInPlace) freezeInPlace = false;
 
 		// Populate checkboxes based on selected user
 		if (playerSelectedIndex != 0 && oldPlayerSelectedIndex != playerSelectedIndex) {
@@ -266,15 +276,17 @@ void CarPhysics::onPlayerTick(Event* e) {
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
 					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					freezeInPlace = currController->Car->bPodiumMode;
+					podiumMode = currController->Car->bPodiumMode;
+					freezeInPlace = currController->Car->bFrozen;
 					isHidden = currController->Car->bHidden;
 					
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					freezeInPlace = currController->Car->bPodiumMode;
+					freezeInPlace = currController->Car->bFrozen;
 					isHidden = currController->Car->bHidden;
+					podiumMode = currController->Car->bPodiumMode;
 
 				}
 			}

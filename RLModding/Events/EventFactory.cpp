@@ -49,6 +49,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GameEvent_TA.RemoveLocalPlayer", &ModBase::onLocalPlayerLeave);
 	SubscribeEvent("Function TAGame.Car_TA.OnDemolished", &ModBase::onCarDemolished);
 	SubscribeEvent("Function TAGame.Car_TA.OnHitBall",&ModBase::onBallHit);
+	SubscribeEvent("Function TAGame.Ball_TA.OnCarTouch", &ModBase::onBallCarTouch);
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnGameTimeUpdated", &ModBase::onGameTimeUpdated);
+	
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);
 	//SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Exit", &ModBase::onSteamNetCloser);

@@ -13,7 +13,9 @@
 #include "Modules/Car/CarPhysics.h"
 #include "Modules/Lan/PlayerMods.h"
 #include "Modules/GameModes/Drainage.h"
+#include "Modules/GameModes/KeepAway.h"
 #include "Modules/Lan/MutatorMods.h"
+#include "Modules/Offline/TrainingMods.h"
 
 
 ModHandler::ModHandler() {
@@ -21,6 +23,7 @@ ModHandler::ModHandler() {
 	CreateMod<Zombies>("Zombie Game Mode",VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
 	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<Drainage>("Drainage", VK_F6, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
+	CreateMod<KeepAway>("Keep Away", VK_F10, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server",VK_NUMPAD2, Category::Lan, GameState::ANY);
@@ -30,11 +33,13 @@ ModHandler::ModHandler() {
 	CreateMod<BallMods>("Ball Mods", VK_NUMPAD9, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<CarPhysics>("Car Mods", VK_F3, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<PlayerMods>("Player Mods", VK_F5, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<TrainingMods>("Training Mods", VK_F9, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	//CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::ANY ^ GameState::ONLINE);
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 
-	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
+	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
 
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this

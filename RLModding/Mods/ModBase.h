@@ -148,6 +148,8 @@ public:
 	virtual void onBreakoutPlatformDamaged(Event* e) {}
 	virtual void onCarSpawned(Event* e) {}
 	virtual void onCarDemolished(Event* e) {}
+	virtual void onBallCarTouch(Event* e) {}
+	virtual void onGameTimeUpdated(Event* e) {}
 
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}

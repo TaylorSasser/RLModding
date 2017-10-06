@@ -86,7 +86,6 @@ void MutatorMods::onPlayerTick(Event* event) {
 
 	if (localGameEvent) {
 		srand(time(NULL));
-		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
 		if (localGameEvent) {
 			TArray< class UMutator_TA* > mutators = localGameEvent->Mutators;
@@ -96,6 +95,7 @@ void MutatorMods::onPlayerTick(Event* event) {
 					if (tempMutator) {
 						if (tempMutator->IsA(SDK::UMutator_ItemsMode_TA::StaticClass())) {
 							std::cout << "Items Mutator | " << mutators.Num() << std::endl;
+							itemsMutatorsPresent = true;
 						}
 						else if (tempMutator->IsA(SDK::UMutator_RespawnTime_TA::StaticClass())) {
 							std::cout << "Respawn Time Mutator | " << mutators.Num() << std::endl;

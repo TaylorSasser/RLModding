@@ -21,7 +21,7 @@ void ModdedLanServer::DrawMenu() {
 	// If replay display replay options
 	if (defaultGameMode == 3) {
 	} else if (defaultGameMode == 4) {
-		ImGui::InputText("Replay Save Name", replaySaveName, IM_ARRAYSIZE(replaySaveName));
+		ImGui::InputText("Replay Save Name (w/o .replay)", replaySaveName, IM_ARRAYSIZE(replaySaveName));
 	}
 	else {
 		ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));

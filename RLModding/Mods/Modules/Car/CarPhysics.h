@@ -42,6 +42,7 @@ private:
 	bool respawnOnScale = false;
 
 	bool freezeInPlace = false;
+	bool podiumMode = false;
 
 	// Player selection menu
 	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };

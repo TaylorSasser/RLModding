@@ -16798,7 +16798,7 @@ public:
 	unsigned long                                      bOnPodium : 1;                                            // 0x009C(0x0004) (CPF_DataBinding)
 	struct FString                                     ConnectionStatus;                                         // 0x00A0(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
 	struct FString                                     PartyID;                                                  // 0x00AC(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
-	struct FString                                     XPTitle;                                                  // 0x00B8(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)
+	struct FString                                     XPTitle;                                                  // 0x00B8(0x000C) (CPF_NeedCtorLink, CPF_DataBinding)`
 	TEnumAsByte<EPlayerTitleType>                      TitleType;                                                // 0x00C4(0x0001) (CPF_DataBinding)
 	int                                                SkillTier;                                                // 0x00C8(0x0004) (CPF_DataBinding)
 	int                                                Boost;                                                    // 0x00CC(0x0004) (CPF_DataBinding)

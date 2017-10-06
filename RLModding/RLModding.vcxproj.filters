@@ -59,6 +59,8 @@
     <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\FiftyFifty.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Zombies.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4681,6 +4683,8 @@
     <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />
     <ClInclude Include="Mods\Modules\GameModes\FiftyFifty.h" />
     <ClInclude Include="Mods\Modules\GameModes\Zombies.h" />
+    <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
+    <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
