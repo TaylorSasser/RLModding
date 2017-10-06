@@ -17,6 +17,7 @@ private:
 	bool shrinkItem = false;
 	bool aprilFools = false;
 	bool testInventory = false;
+	bool testReplaceItems = false;
 	bool p_open = true;
 };
 

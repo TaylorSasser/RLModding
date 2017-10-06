@@ -20,24 +20,21 @@ public:
 private:
 	void RumbleMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);
 	void RumbleMods::setCrazyRumbleValues();
+	void RumbleMods::resetRumbleValues();
 
 	// General Rumble Settings
 	float itemGiveRate = 10.0;
 	float currItemGiveRate = 10.0;
-	bool punchingGloveRelativeForce = true;
-	bool punchingGloveFollowAfterHit = false;
+
 
 	// Magnet Options
-	float magnetRange;
-	float magnetBallGravity = 1.0;
+	float magnetRange = 1000.0;
+	float magnetBallGravity = 55000;
 	bool magnetDeactivateOnTouch = false;
 
 
 	bool bStartGameMode = false;
 	bool enableCrazyItems = false;
-
-	// Boot Options
-
 
 	/*
 	Tornado
@@ -67,10 +64,24 @@ private:
 	bool grapplingHookDeactivateOnTouch = true;
 
 	// Punching Glove Settings
-	float punchingGloveForce = 180000;
-	float punchingGloveVerticalForce = 400000.0;
+	float punchingGloveForce = 80000.0;
+	float punchingGloveVerticalForce = 0.0;
 	bool punchingGloveCanTargetBall = true;
-	bool punchingGloveCanTargetCars = true;
+	bool punchingGloveCanTargetCars = false;
+	bool punchingGloveRelativeForce = true;
+	bool punchingGloveFollowAfterHit = false;
+
+	// Boot settings
+	/*
+	boot Force 550000
+	boot Vertical Force 400000
+	*/
+	float bootForce = 550000.0;
+	float bootVerticalForce = 400000.0;
+	bool bootCanTargetBall = false;
+	bool bootCanTargetCars = true;
+	bool bootRelativeForce = true;
+	bool bootFollowAfterHit = false;
 
 	/*
 	Car hit force: 30
@@ -80,14 +91,24 @@ private:
 	float powerHitterCarHitForce = 1.5;
 	bool powerHitterDemolishCars = true;
 
-	float spikesAfterHitDuration = 6.0;
-
 	/*
 	Plunger Hook Length: 3000
 	Plunger AfterAttachDuration: 1.3
 	*/
 	float plungerMaxSpringLength = 3000.0;
 	float plungerAfterSpringDuration = 1.3;
+
+	float boosterRange = 4000.0;
+
+	/*
+	Swapper Range: 10000
+	*/
+	float swapperRange = 10000.0;
+	bool swapperCanTargetTeamCars = false;
+
+	float freezeActivationDuration = 4.0;
+
+	float spikesAfterHitDuration = 4.5;
 
 	int forceItemIndex = -1;
 	bool giveItem = false;

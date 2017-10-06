@@ -150,6 +150,9 @@ void GameEventMods::onEnable() {
 
 }
 void GameEventMods::onDisable() {
+
+
+
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
 
