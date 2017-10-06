@@ -1,9 +1,9 @@
-#include "ZombieGameMode.h"
+#include "Zombies.h"
 
-ZombieGameMode::ZombieGameMode(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
-ZombieGameMode::ZombieGameMode(std::string name, int key) : ModBase(name, key) {}
+Zombies::Zombies(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
+Zombies::Zombies(std::string name, int key) : ModBase(name, key) {}
 
-void ZombieGameMode::onEnable() {
+void Zombies::onEnable() {
 	
 	if (!InstanceStorage::GameEvent()) {
 		printf("Could not start Zombies Module \n");
@@ -22,7 +22,7 @@ void ZombieGameMode::onEnable() {
 
 	
 }
-void ZombieGameMode::onDisable() {
+void Zombies::onDisable() {
 	/*
 	if (InstanceStorage::GameEvent()->AIManager == nullptr || InstanceStorage::GameEvent() == nullptr || InstanceStorage::CurrentCar() == nullptr) {
 		printf("Could not Cleanup Zombies Module \n");
@@ -35,7 +35,7 @@ void ZombieGameMode::onDisable() {
 	*/
 }
 
-void ZombieGameMode::onPlayerTick(Event* e) {
+void Zombies::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent());
 	if (!isInit) {
 		localGameEvent->SetUnfairTeams(true);
@@ -52,7 +52,7 @@ void ZombieGameMode::onPlayerTick(Event* e) {
 
 			printf("Spawned Zombie %d \n", i + 1);
 			localGameEvent->AIManager->AddBot(zombie);
-			Zombies[i] = zombie;
+			zombies[i] = zombie;
 		}
 		isInit = true;
 	}

@@ -2,23 +2,23 @@
 #include "Modules/TestClass.h"
 #include "../Utils/Utils.h"
 #include "Modules/Lan/RumbleMods.h"
-#include "Modules/Lan/ZombieGameMode.h"
+#include "Modules/GameModes/Zombies.h"
 #include "Modules/Lan/JoinServer.h"
 #include "Modules/Offline/CustomBlog.h"
 #include "Modules/Offline/InventoryManager.h"
 #include "Modules/Lan/ModdedLanServer.h"
-#include "Modules/Lan/FiftyFifty.h"
+#include "Modules/GameModes/FiftyFifty.h"
 #include "Modules/Lan/BallMods.h"
 #include "Modules/Lan/GameEventMods.h"
 #include "Modules/Car/CarPhysics.h"
 #include "Modules/Lan/PlayerMods.h"
-#include "Modules/Lan/Drainage.h"
+#include "Modules/GameModes/Drainage.h"
 #include "Modules/Lan/MutatorMods.h"
 
 
 ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
-	CreateMod<ZombieGameMode>("Zombie Game Mode",VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
+	CreateMod<Zombies>("Zombie Game Mode",VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
 	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<Drainage>("Drainage", VK_F6, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
 

@@ -20,6 +20,7 @@ void ModdedLanServer::DrawMenu() {
 
 	// If replay display replay options
 	if (defaultGameMode == 3) {
+	} else if (defaultGameMode == 4) {
 		ImGui::InputText("Replay Save Name", replaySaveName, IM_ARRAYSIZE(replaySaveName));
 	}
 	else {
@@ -89,8 +90,8 @@ void ModdedLanServer::travel() {
 void ModdedLanServer::create_mutator_string() {
 	str_gameMode = mutators[gameModesCombo[defaultGameMode]];
 
-	if (gameModesCombo[defaultGameMode] == "Freeplay") {
-		str_mutators = "";
+	if (gameModesCombo[defaultGameMode] == "FreePlay") {
+		str_mutators = "?FreePlay";
 		return;
 	}
 

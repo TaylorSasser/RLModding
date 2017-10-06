@@ -183,6 +183,7 @@ static const char* gameModesCombo[] = {
 	"Soccar",
 	"Hoops",
 	"Snow Day",
+	"FreePlay",
 	"Replay",
 	"Training Editor"
 };
@@ -444,6 +445,7 @@ static std::map<std::string, std::string> mutators = {
 	{ "Soccar", "TAGame.GameInfo_Soccar_TA?" },
 	{ "Hoops", "TAGame.GameInfo_Basketball_TA?" },
 	{ "Snow Day", "TAGame.GameInfo_Hockey_TA?" },
+	{ "FreePlay", "TAGame.GameInfo_Tutorial_TA?" },
 	{ "Replay", "TAGame.GameInfo_Replay_TA?" },
 	{ "Training Editor", "TAGame.GameInfo_TrainingEditor_TA?" },
 	//Time

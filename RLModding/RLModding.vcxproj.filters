@@ -38,12 +38,10 @@
     <ClCompile Include="CustomGarage\Garage.cpp" />
     <ClCompile Include="Memory\MemoryAllocator.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
@@ -54,11 +52,13 @@
     <ClCompile Include="Socket\Socket.cpp" />
     <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
     <ClCompile Include="Mods\Modules\Lan\MutatorMods.cpp" />
     <ClCompile Include="Controllers\XboxController.cpp" />
     <ClCompile Include="Connection\Connection.cpp" />
     <ClCompile Include="Mods\GameState.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\FiftyFifty.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Zombies.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -1817,14 +1817,12 @@
     <ClInclude Include="Libs\boost\scoped_array.hpp" />
     <ClInclude Include="Memory\MemoryAllocator.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
-    <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Lan\ModdedLanServer.h" />
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
-    <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\Lan\GameEventMods.h" />
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
@@ -4676,11 +4674,13 @@
     <ClInclude Include="Socket\Network.h" />
     <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
-    <ClInclude Include="Mods\Modules\Lan\Drainage.h" />
     <ClInclude Include="Mods\Modules\Lan\MutatorMods.h" />
     <ClInclude Include="Controllers\XboxController.h" />
     <ClInclude Include="Connection\Connection.h" />
     <ClInclude Include="Mods\GameState.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />
+    <ClInclude Include="Mods\Modules\GameModes\FiftyFifty.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Zombies.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

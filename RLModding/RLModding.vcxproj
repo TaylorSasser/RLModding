@@ -48,8 +48,8 @@
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\Drainage.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\FiftyFifty.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\FiftyFifty.cpp" />
     <ClCompile Include="Mods\Modules\Lan\GameEventMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ModdedLanServer.cpp" />
     <ClCompile Include="Mods\Modules\Lan\JoinServer.cpp" />
@@ -99,7 +99,7 @@
     <ClCompile Include="Utils\Utils.cpp" />
     <ClCompile Include="Vector\Vector.cpp" />
     <ClCompile Include="Vector\VecUtils.cpp" />
-    <ClCompile Include="Mods\Modules\Lan\ZombieGameMode.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Zombies.cpp" />
     <ClCompile Include="Controllers\XboxController.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -2949,8 +2949,8 @@
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
     <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
-    <ClInclude Include="Mods\Modules\Lan\Drainage.h" />
-    <ClInclude Include="Mods\Modules\Lan\FiftyFifty.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />
+    <ClInclude Include="Mods\Modules\GameModes\FiftyFifty.h" />
     <ClInclude Include="Interfaces\GlobalVariables.h" />
     <ClInclude Include="Mods\Modules\Lan\GameEventMods.h" />
     <ClInclude Include="Mods\Modules\Lan\GameOptions.hpp" />
@@ -4721,7 +4721,7 @@
     <ClInclude Include="Utils\Utils.h" />
     <ClInclude Include="Vector\Vector.hpp" />
     <ClInclude Include="Vector\VecUtils.h" />
-    <ClInclude Include="Mods\Modules\Lan\ZombieGameMode.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Zombies.h" />
     <ClInclude Include="Controllers\XboxController.h" />
   </ItemGroup>
   <ItemGroup>
