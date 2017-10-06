@@ -1,5 +1,3 @@
-#ifndef _XBOX_CONTROLLER
-#define _XBOX_CONTROLLER
 #define WIN32_LEAN_AND_MEAN
 
 #include <Windows.h>
@@ -15,5 +13,3 @@ private:
 	XINPUT_STATE _controllerState;
 	int _controllerNum;
 };
-
-#endif
