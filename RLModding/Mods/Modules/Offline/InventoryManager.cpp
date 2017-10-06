@@ -38,11 +38,10 @@ void InventoryManager::DrawMenu() {
 
 			ImGui::Separator();
 			/* For Nitro */
-			/*
+
 			if (ImGui::Button("Replace Items (Test)")) {
 				testReplaceItems = true;
 			}
-			*/
 			/* wtf is this LOL
 			if (ImGui::Button("April?")) {
 				aprilFools = true;

@@ -7,7 +7,7 @@ PlayerMods::PlayerMods(std::string name, int key, Category category, GameState g
 PlayerMods::PlayerMods(std::string name, int key) : ModBase(name, key) {}
 
 void PlayerMods::onDisable() {
-	delete[] players;
+	//delete[] players;
 }
 
 void PlayerMods::ExportSettings(pt::ptree) {}
