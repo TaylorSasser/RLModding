@@ -160,7 +160,7 @@ void RumbleMods::DrawMenu() {
 			// Tornado
 			else if (selectedRumbleIndex == 8) {
 				//ImGui::InputFloat("Ball Gravity", &magnetBallGravity, 0.5f, 1.0f);
-				ImGui::InputFloat("Ball Multiplayer", &tornadoBallMultiplayer, 0.5f, 1.0f);
+				ImGui::InputFloat("Ball Multiplayer", &tornadoBallMultiplier, 0.5f, 1.0f);
 				ImGui::InputFloat("Radius", &tornadoRadius, 0.5f, 1.0f);
 				ImGui::InputFloat("Rotational Force", &tornadoRotForce, 0.5f, 1.0f);
 				ImGui::InputFloat("Torque", &tornadoTorque, 0.5f, 1.0f);

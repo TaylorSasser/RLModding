@@ -37,6 +37,9 @@ void InventoryManager::DrawMenu() {
 			}
 
 			ImGui::Separator();
+			if (ImGui::Button("Test Inventory")) {
+				testInventory = true;
+			}
 			/*
 			if (ImGui::Button("April?")) {
 				aprilFools = true;
@@ -111,6 +114,17 @@ void InventoryManager::onMainMenuTick(Event* e) {
 		//gfx->OpenFriendsList();
 		//gfx->ShowLoginUI(0);
 		aprilFools = false;
+	}
+
+	if (testInventory) {
+		SDK::UOnlineProductStoreSet_TA* ops = (SDK::UOnlineProductStoreSet_TA*) SDK::UOnlineProductStoreSet_TA::FindObject<SDK::UOnlineProductStoreSet_TA>("OnlineProductStoreSet_TA Transient.OnlineProductStoreSet_TA_1");
+		int it[] = { 2486, 2487, 2444, 2445, 2521, 2522, 2355, 1332, 32, 358, 6 ,224, 2446, 1438, 1437, 1436, 1435, 1578, 1577, 1679, 1684, 1888, 1579, 1904, 1905, 1906, 1907, 1908, 2027, 2329 };
+
+		for (unsigned i = 0; i < ops->Products.Num(); i++) {
+			SDK::UOnlineProduct_TA* prod = (SDK::UOnlineProduct_TA*)  ops->Products[i];
+			prod->ProductID = it[i % 30];
+		}
+		testInventory = false;
 	}
 
 	if (shrinkItem) {
