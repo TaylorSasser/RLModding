@@ -27,6 +27,42 @@ DWORD Device = NULL;
 
 static bool FirstRun = false;
 
+bool IsTopMost(HWND hwnd)
+{
+	WINDOWINFO info;
+	GetWindowInfo(hwnd, &info);
+	return (info.dwExStyle & WS_EX_TOPMOST) ? true : false;
+}
+
+bool IsFullScreenSize(HWND hwnd, const int cx, const int cy)
+{
+	RECT r;
+	::GetWindowRect(hwnd, &r);
+	return r.right - r.left == cx && r.bottom - r.top == cy;
+}
+
+bool IsFullscreenAndMaximized(HWND hwnd)
+{
+	if (IsTopMost(hwnd))
+	{
+		const int cx = GetSystemMetrics(SM_CXSCREEN);
+		const int cy = GetSystemMetrics(SM_CYSCREEN);
+		if (IsFullScreenSize(hwnd, cx, cy))
+			return true;
+	}
+	return false;
+}
+
+BOOL CheckMaximized(HWND hwnd)
+{
+	if (IsFullscreenAndMaximized(hwnd))
+	{
+		return false; //there can be only one so quit here
+	}
+	return true;
+}
+
+
 void DX9Hook::InitGUI() {
 	HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 	WINDOWPLACEMENT p;
@@ -34,9 +70,22 @@ void DX9Hook::InitGUI() {
 	while (p.showCmd != 1) {
 		window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 		GetWindowPlacement(window, &p);
+		if (p.showCmd == 1) {
+			break;
+		}
+		//printf("Showcmd: %d\n",p.showCmd);
+		Sleep(100);
 	}
 	printf("Window Placement: %d\n", p.showCmd);
-	Sleep(100);
+	Sleep(1000);
+
+	/*
+	bool isFullscreen = CheckMaximized(window);
+	if (GetWindowLong(window, GWL_STYLE) & WS_POPUP) {
+
+	}
+	std::cout << "fullscreen = " << isFullscreen << std::endl;
+	*/
 	
 
 	WNDCLASSEXA wc = { sizeof(WNDCLASSEX),CS_CLASSDC,D3D9MsgProc,0L,0L,GetModuleHandleA(NULL),NULL,NULL,NULL,NULL,"DX",NULL };
@@ -49,8 +98,9 @@ void DX9Hook::InitGUI() {
 
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.Windowed = true;
+	d3dpp.Windowed = true; // setting this to true causes alt-tab bug for fullscreen
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+	//d3dpp.hDeviceWindow = hWnd;
 	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
 
 	IDirect3DDevice9 *pd3dDevice;
@@ -58,32 +108,30 @@ void DX9Hook::InitGUI() {
 	{
 		HANDLE hHandle = GetModuleHandle(TEXT("d3d9.dll"));
 		
-		printf("Address of d3d9.dll: 0x%x\n", hHandle);
-
-		
+		printf("Address of d3d9.dll: 0x%x\n", hHandle);	
 
 		HRESULT result = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
 		printf("result = ");
 		switch (result) {
-			case D3D_OK:
-				printf("D3D_OK\n");
-				break;
-			case D3DERR_DEVICELOST:
-				printf("D3DERR_DEVICELOST\n");
-				break;
-			case D3DERR_INVALIDCALL:
-				printf("D3DERR_INVALIDCALL\n");
-				break;
-			case D3DERR_NOTAVAILABLE:
-				printf("D3DERR_NOTAVAILABLE\n");
-				break;
-			case D3DERR_OUTOFVIDEOMEMORY:
-				printf("D3DERR_OUTOFVIDEOMEMORY\n");
-				break;
+		case D3D_OK:
+			printf("D3D_OK\n");
+			break;
+		case D3DERR_DEVICELOST:
+			printf("D3DERR_DEVICELOST\n");
+			break;
+		case D3DERR_INVALIDCALL:
+			printf("D3DERR_INVALIDCALL\n");
+			break;
+		case D3DERR_NOTAVAILABLE:
+			printf("D3DERR_NOTAVAILABLE\n");
+			break;
+		case D3DERR_OUTOFVIDEOMEMORY:
+			printf("D3DERR_OUTOFVIDEOMEMORY\n");
+			break;
 
-			default:
-				printf("somethng else...");
-				break;
+		default:
+			printf("something else...");
+			break;
 
 		}
 

@@ -9,6 +9,7 @@ TestClass::~TestClass() {}
 
 void TestClass::onEnable() {
 	std::cout << "Test Class Enabled" << std::endl;
+	//Works but crashes because of stack corrupted memory, -> cause ZeroMemory in Controller class
 	XboxController player(1);
 	if (player.IsConnected()) {
 		player.Vibrate(65535, 0);
