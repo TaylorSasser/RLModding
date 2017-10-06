@@ -9,7 +9,7 @@ public:
 	~MemoryAllocator();
 
 	template<class T>
-	T* MemoryAllocator::AllocUObject(T* src, std::string ObjectName) {
+	T* AllocUObject(T* src, std::string ObjectName) {
 		T* Object = AllocNullObject<T>();
 		if (src != nullptr || src != NULL) {
 			memcpy(Object, src, sizeof(T));
@@ -18,13 +18,13 @@ public:
 		return reinterpret_cast<T*>(Object);
 	}
 	
-	template<class T> void MemoryAllocator::DestroyUObject(T* src) {
+	template<class T> void DestroyUObject(T* src) {
 		ZeroMemory(src, sizeof(T));
 		HeapFree(MemoryPool, NULL, src);
 	}
 
 	template <class T>
-	T* MemoryAllocator::AllocNullObject() {
+	T* AllocNullObject() {
 		LPVOID UObject = HeapAlloc(MemoryPool, HEAP_ZERO_MEMORY, sizeof(T));
 		ZeroMemory(UObject, sizeof(T));
 		return reinterpret_cast<T*>(UObject);
