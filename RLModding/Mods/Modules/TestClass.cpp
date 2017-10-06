@@ -2,12 +2,17 @@
 #include "../../Utils/Utils.h"
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/detours.h"
+#include "../Controllers/XboxController.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
 
 void TestClass::onEnable() {
 	std::cout << "Test Class Enabled" << std::endl;
+	XboxController player(1);
+	if (player.IsConnected()) {
+		player.Vibrate(65535, 0);
+	}
 }
 
 void TestClass::onBallHit(Event* e) {
