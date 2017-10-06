@@ -1,5 +1,4 @@
 #include "../Interfaces/Interfaces.h"
-#include "../Utils/Pattern/PatternFinder.h"
 #include "DX9Hook.h"
 #include "../Libs/Detours.h"
 #include "../Mods/ModBase.h"
@@ -32,17 +31,17 @@ void DX9Hook::InitGUI() {
 	HWND window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 	WINDOWPLACEMENT p;
 	GetWindowPlacement(window, &p);
+
 	while (p.showCmd != 1) {
 		window = FindWindowA("LaunchUnrealUWindowsClient", "Rocket League (32-bit, DX9)");
 		GetWindowPlacement(window, &p);
 		Sleep(100);
 	}
 
-	DWORD* DX9VTable;
-	DWORD table = TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(TEXT("d3d9.dll")),0xbac000,reinterpret_cast<PBYTE>(DX9VTable_Pattern), DX9VTable_Mask);
-	memcpy(&DX9VTable,(void*)(table + DX9VTable_Offset),4);
+	DWORD table = TFLHACKT00LS::FindPattern((DWORD)GetModuleHandle(TEXT("d3d9.dll")),0x128000,reinterpret_cast<PBYTE>(DX9VTable_Pattern), DX9VTable_Mask);
+	memcpy(&D3D9VTable,(void*)(table + 2),4);
 
-	if (!D3D9VTable) {
+	if (D3D9VTable == nullptr) {
 		std::cout << "Pattern Scan failed, using CreateDevice Hook" << std::endl;
 		WNDCLASSEXA wc = { sizeof(WNDCLASSEX),CS_CLASSDC,D3D9MsgProc,0L,0L,GetModuleHandleA(NULL),NULL,NULL,NULL,NULL,"DX",NULL };
 		RegisterClassExA(&wc);
@@ -54,21 +53,15 @@ void DX9Hook::InitGUI() {
 
 		D3DPRESENT_PARAMETERS d3dpp;
 		ZeroMemory(&d3dpp, sizeof(d3dpp));
-		d3dpp.BackBufferCount = 1;
-		d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
-		d3dpp.MultiSampleQuality = 0;
-		d3dpp.hDeviceWindow = hWnd;
-		d3dpp.FullScreen_RefreshRateInHz = D3DPRESENT_RATE_DEFAULT;
-		d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
 		d3dpp.Windowed = false;
 		d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 		d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
-		d3dpp.EnableAutoDepthStencil = FALSE;
 
 		IDirect3DDevice9 *pd3dDevice;
 		HRESULT result = pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &pd3dDevice);
 		DWORD* pVTable = (DWORD*)pd3dDevice;
 		pVTable = (DWORD*)pd3dDevice;
+
 		if (pVTable) {
 			pVTable = (DWORD*)pVTable[0];
 			D3D9VTable = pVTable;
@@ -76,12 +69,15 @@ void DX9Hook::InitGUI() {
 		}
 	} 
 
-	EndScene = D3D9VTable[42];
-	HookedReset = D3D9VTable[16];
+	if (D3D9VTable) {
+		EndScene = D3D9VTable[42];
+		HookedReset = D3D9VTable[16];
 
-	pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene, (PBYTE)Hooked_EndScene);
-	pD3D9HookedReset = (D3D9HookedReset_t)DetourFunction((PBYTE)HookedReset, (PBYTE)Hooked_Reset);
-
+		pD3D9EndScene = (D3D9EndScene_t)DetourFunction((PBYTE)EndScene, (PBYTE)Hooked_EndScene);
+		pD3D9HookedReset = (D3D9HookedReset_t)DetourFunction((PBYTE)HookedReset, (PBYTE)Hooked_Reset);
+	} else {
+		std::cout << "Whoops, something whent wrong with the GUI" << std::endl;
+	}
 }
 
 
