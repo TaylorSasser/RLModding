@@ -27,11 +27,10 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Restart Match")) {
 				restartMatch = true;
 			}
-
+			ImGui::SameLine();
 			if (ImGui::Button("Reset Players")) {
 				resetPlayers = true;
 			}
-			ImGui::SameLine();
 
 			if (ImGui::Button("Reset Balls")) {
 				resetBalls = true;
@@ -64,7 +63,7 @@ void GameEventMods::DrawMenu() {
 
 		if (ImGui::CollapsingHeader("Message Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			ImGui::Text("WARNING.  Changing these values will cause your game to crash when leaving.");
+			ImGui::TextColored(ImVec4(0.9f,0.0f,0.0f,1.0f),"WARNING.  Changing these values will cause your game to crash when leaving.");
 			ImGui::Text("The Server should work fine until then.");
 
 			ImGui::PushItemWidth(200);
@@ -86,6 +85,7 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Freeze Bots")) {
 				freezeBots = true;
 			}
+			ImGui::SameLine();
 			if (ImGui::Button("Remove All Bots")) {
 				removeBots = true;
 			}

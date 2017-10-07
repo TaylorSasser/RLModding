@@ -23,18 +23,13 @@ void BallMods::DrawMenu() {
 
 		// Game Event Controls
 		ImGui::Begin("Ball Mods", &p_open, ImVec2(400, 300), 0.75f);
-		if (ImGui::Button("Close")) {
-			Interfaces::GUI().isGUIOpen = false;
-			this->enabled = false;
-		}
+		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
 		ImGui::InputInt("# Balls", &numGameBalls);
 
 		for (int i = 0; i < numGameBalls; i++) {
 			std::string ballScaleLabel = "Ball " + std::to_string(i + 1) + " Scale";
 			ImGui::SliderFloat(ballScaleLabel.c_str(), &balls[i], 0.1f, 20.0f, "%.1f");
 		}
-
-		ImGui::Text("Please note, adding a ball will reset the scale for all balls.");
 
 		if (!p_open) {
 			this->enabled = false;

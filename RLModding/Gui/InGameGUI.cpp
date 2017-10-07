@@ -7,6 +7,7 @@
 #include "../Mods/ModBase.h"
 #include "../Core/Core.h"
 #include "roboto.hpp"
+#include <Windows.h>
 #include <iostream>
 
 //Style from UnknownCheats by Exasty Hosting

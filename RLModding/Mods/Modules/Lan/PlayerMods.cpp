@@ -22,24 +22,19 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Refresh")) {
 			refreshPlayers = true;
 		}
-		ImGui::Separator();
+
 
 		// Hide options that bots don't support when selected.
 		if (!isBotSelected) {
 			ImGui::Checkbox("Match Admin", &isAdmin);
 			ImGui::SameLine();
 			ImGui::Checkbox("Developer", &isDeveloper);
-
-		}
-		else {
-			
 		}
 
 		if (ImGui::Button("Update Player")) {
 			updatePlayer = true;
 		}
 
-		ImGui::Separator();
 		if (isBotSelected) {
 
 			if (ImGui::Button("Disable Bot")) {
@@ -48,7 +43,7 @@ void PlayerMods::DrawMenu() {
 			ImGui::SameLine();
 
 		}
-
+		ImGui::SameLine();
 		if (ImGui::Button("Demolish")) {
 			demolishPlayer = true;
 		}
@@ -56,8 +51,6 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Trigger Explosion")) {
 			triggerGoalExplosion = true;
 		}
-		
-		ImGui::Separator();
 
 		ImGui::Text(statusText.c_str());
 

@@ -43,11 +43,6 @@ void TrainingMods::DrawMenu() {
 	else {
 
 	}
-	ImGui::Separator();
-
-	ImGui::Text(statusText.c_str());
-
-	ImGui::Separator();
 
 	if (!p_open) {
 		this->enabled = false;

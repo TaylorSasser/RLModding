@@ -204,14 +204,16 @@ void RumbleMods::DrawMenu() {
 			else {
 				setCrazyRumble = true;
 			}
-			
+			ImGui::Separator();
 			ImGui::Combo("Select Item", &selectedRumbleIndex, rumbleItems, IM_ARRAYSIZE(rumbleItems));
 
 			if (ImGui::Button("Give Item")) {
 				giveItem = true;
 			}
-
-			ImGui::Separator();
+			ImGui::SameLine();
+			if (ImGui::Button("Reset Settings")) {
+				resetRumbleValues();
+			}
 
 			//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook"
 			// Boot
@@ -288,14 +290,7 @@ void RumbleMods::DrawMenu() {
 				ImGui::Checkbox("Deactivate on Touch", &grapplingHookDeactivateOnTouch);
 				
 			}
-
-			if(selectedRumbleIndex > 0)
-				ImGui::Separator();
-
-			if (ImGui::Button("Reset Settings")) {
-				resetRumbleValues();
-			}
-
+			ImGui::Separator();
 			//Example Settings
 			//For things that have settings to configure anywhere do something like this
 			//Essentially have a boolean to detect the start and stop of the gamemode while the menu

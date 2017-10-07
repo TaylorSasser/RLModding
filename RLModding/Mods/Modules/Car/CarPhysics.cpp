@@ -23,52 +23,31 @@ void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
-		if (ImGui::Button("Clone Car")) cloneMe = true;
-		ImGui::SameLine();
-		ImGui::InputInt("# Clones", &numClones);
-
-		ImGui::Separator();
-
-
 		ImGui::Combo("Player Car", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 		ImGui::SameLine();
 		if (ImGui::Button("Refresh")) {
 			refreshCars = true;
 		}
+
 		ImGui::Separator();
 
-		if (ImGui::Button("Toggle Car Collision")) {
-			carCollisionOff = !carCollisionOff;
-		}
-		if (carCollisionOff) {
-			ImGui::SameLine();
-			ImGui::Text("Car Collision Off");
-		}
-		else {
-			ImGui::SameLine();
-			ImGui::Text("Car Collision On");
-		}
+		ImGui::InputInt("# Clones", &numClones);
+		if (ImGui::Button("Clone Car")) cloneMe = true;
+
+
+		ImGui::Separator();
 
 
 		ImGui::SliderFloat("Car Scale", &carScale, 0.1f, 10.0f, "%.1f");
+		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			setCarScale = true;
 		}
-		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
-		ImGui::SameLine();
 
+		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
-
-		/*
-		ImGui::Checkbox("Freeze in place.", &freezeInPlace);
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("Unfreeze doesn't work at the moment...can be glitchy lol");
-		*/
-
 		ImGui::Checkbox("Podium Mode", &podiumMode);
-		ImGui::SameLine();
-
 		ImGui::Checkbox("Hide Car", &isHidden);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Makes car invisible");
@@ -82,7 +61,6 @@ void CarPhysics::DrawMenu() {
 		ImGui::SameLine();
 		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
 		ImGui::Checkbox("Disable Jumps", &disableJumps);
-		ImGui::SameLine();
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
 
@@ -90,6 +68,12 @@ void CarPhysics::DrawMenu() {
 			ImGui::SetTooltip("You may need to respawn for this to work.");
 
 		ImGui::Separator();
+		/*
+		ImGui::Checkbox("Freeze in place.", &freezeInPlace);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("Unfreeze doesn't work at the moment...can be glitchy lol");
+		*/
+
 
 		/*
 		ImGui::PushItemWidth(100);
@@ -120,10 +104,7 @@ void CarPhysics::DrawMenu() {
 		if (ImGui::Button("Respawn Car")) {
 			respawn = true;
 		}
-
-		ImGui::Separator();
-
-		ImGui::Text(statusText.c_str());
+		ImGui::SameLine();
 		if (ImGui::Button("Reset")) {
 			reset();
 			reset_values = true;

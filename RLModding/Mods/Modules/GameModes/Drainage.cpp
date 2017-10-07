@@ -47,12 +47,11 @@ void Drainage::ImportSettings(pt::ptree root) {
 
 void Drainage::DrawMenu() {
 	ImGui::Begin("Drainage Settings", &p_open, ImVec2(400, 300), 0.75f);
-	
+	ImGui::TextWrapped("Players will be demoed when they run out of boost...good luck!");
 	ImGui::InputFloat("Decay Rate", &interval, 0.01f);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The rate at which the boost will decay");
-	ImGui::Separator();
-	ImGui::Text("Players will be demoed when they run out of boost...good luck!");
+	
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
