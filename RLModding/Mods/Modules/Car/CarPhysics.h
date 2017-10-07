@@ -52,6 +52,9 @@ private:
 	bool demolishOnOpposingSide = false;
 	bool unlimitedBoost = false;
 
+	bool noBoostBlue = false;
+	bool noBoostOrange = false;
+
 	void reset();
 	float groundSticky = 1.0;
 	float wallSticky = 1.0;
