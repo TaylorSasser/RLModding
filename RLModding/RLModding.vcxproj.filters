@@ -61,6 +61,7 @@
     <ClCompile Include="Mods\Modules\GameModes\Zombies.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
+    <ClCompile Include="Gui\roboto.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />

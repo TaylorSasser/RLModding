@@ -17,7 +17,7 @@ void FiftyFifty::ExportSettings(pt::ptree root) {
 	root.put("FF_Interval", interval);
 }
 void FiftyFifty::ImportSettings(pt::ptree root) {
-	demoPlayer = root.get<bool>("FF_demoPlayer", true);
+	demoPlayer = root.get<int>("FF_demoPlayer", 1);
 	interval = root.get<float>("FF_Interval", interval);
 }
 
@@ -27,9 +27,12 @@ void FiftyFifty::DrawMenu() {
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Someone will be demo'd every X seconds");
 
-	ImGui::Checkbox("Demo Player", &demoPlayer);
+	ImGui::RadioButton("Demolish Player", &demoPlayer, 1);
 	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("If unchecked a mine will go off under a random player every X seconds.");
+		ImGui::SetTooltip("If checked, the player will be demolished");
+	ImGui::RadioButton("Ball Explosion", &demoPlayer, 0);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, a ball explosion will go off under the player");
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {

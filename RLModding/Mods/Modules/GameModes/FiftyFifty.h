@@ -18,7 +18,7 @@ public:
 private:
 	bool bStarted = false;
 	bool checkTime = true;
-	bool demoPlayer = true;
+	int demoPlayer = 1;
 	bool reset_balls = false;
 	float interval = 20.0;
 	time_t start, end;

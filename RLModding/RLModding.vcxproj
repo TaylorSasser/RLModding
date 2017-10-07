@@ -45,6 +45,7 @@
   <ItemGroup>
     <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Connection\Connection.cpp" />
+    <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />

@@ -6,10 +6,12 @@
 #include "../Interfaces/Interfaces.h"
 #include "../Mods/ModBase.h"
 #include "../Core/Core.h"
+#include "roboto.hpp"
 #include <iostream>
+
 //Style from UnknownCheats by Exasty Hosting
 void SetStyle(ImGuiStyle * style) {
-	
+
 	style->WindowPadding = ImVec2(15, 15);
 	style->WindowRounding = 5.0f;
 	style->FramePadding = ImVec2(5, 5);
@@ -89,9 +91,6 @@ void InGameGUI::Render() {
 
 	// Draw mouse cursor in game (since it is disabled);
 	//ImGui::GetIO().MouseDrawCursor = true;
-
-	
-
 	if (ImGui::BeginMainMenuBar()) {
 		for (auto& name : categoryNames) {
 			if (ImGui::BeginMenu(name.c_str())) {
