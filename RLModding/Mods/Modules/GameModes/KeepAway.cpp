@@ -23,6 +23,8 @@ void KeepAway::ImportSettings(pt::ptree root) {
 
 void KeepAway::DrawMenu() {
 	ImGui::Begin("Keep Away Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Text("In this game mode the goal is to keep the other team from touching the ball as long as possible.\n  Each second your team has touched the ball last you will be awarded 1 point.\n  You can either choose to play to a set score or until the time runs out.\n  Replays are disabled and you can choose whether scoring awards an additional point.");
+	ImGui::Separator();
 	ImGui::InputInt("Points to Win", &pointsToWin);
 	ImGui::Checkbox("Scoring goals adds to score", &goalsAddScore);
 

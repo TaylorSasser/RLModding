@@ -93,6 +93,7 @@ void GameEventMods::DrawMenu() {
 		
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
+			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
 			ImGui::InputInt("Team Index", &teamIndex);
 			if (ImGui::IsItemHovered())
 				ImGui::SetTooltip("Usually either 0 or 1.  0 for blue, 1 for orange.");
@@ -219,7 +220,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 			}
 
 			//localGameEvent
-			std::cout << "New Maxd Players: " << localGameEvent->MaxPlayers << std::endl;
+			std::cout << "New Max Players: " << localGameEvent->MaxPlayers << std::endl;
 
 			allowMorePlayers = false;
 
@@ -231,7 +232,13 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 	
 		if (setScoreAndTime) {
-			localGameEvent->SetScoreAndTime(localGameEvent->GetLocalPrimaryPlayer(), blueScore, orangeScore, localGameEvent->GameTimeRemaining, localGameEvent->bOverTime, false);
+			if (localGameEvent->Teams.IsValidIndex(0)) {
+				localGameEvent->Teams.GetByIndex(0)->SetScore(blueScore);
+			}
+			if (localGameEvent->Teams.IsValidIndex(1)) {
+				localGameEvent->Teams.GetByIndex(1)->SetScore(orangeScore);
+			}
+			//localGameEvent->SetScoreAndTime(localGameEvent->GetLocalPrimaryPlayer(), blueScore, orangeScore, localGameEvent->GameTimeRemaining, localGameEvent->bOverTime, false);
 			setScoreAndTime = false;
 		}
 

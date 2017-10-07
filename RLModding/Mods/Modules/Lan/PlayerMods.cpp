@@ -51,6 +51,8 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Trigger Explosion")) {
 			triggerGoalExplosion = true;
 		}
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("Sets off a goal explosion underneath the player.");
 
 		ImGui::Text(statusText.c_str());
 
@@ -65,7 +67,7 @@ void PlayerMods::DrawMenu() {
 void PlayerMods::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-	if (localGameEvent) {
+	if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
 		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
 
 

@@ -21,6 +21,7 @@ void TrainingMods::DrawMenu() {
 	if (InstanceStorage::GameEvent()) {
 		if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Tutorial_TA::StaticClass())) {
 			ImGui::Text("Freeplay and tutorial mode settings.");
+			ImGui::Text("To see custom training settings open this menu in Custom Training.");
 		}
 		else if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_TrainingEditor_TA::StaticClass())) {
 			ImGui::Text("Custom Training settings.");

@@ -152,7 +152,8 @@ public:
 	virtual void onGameTimeUpdated(Event* e) {}
 	virtual void onEventGoalScored(Event* e) {}
 	virtual void onReplayGoalScored(Event* e) {}
-
+	virtual void onReplayCameraFinished(Event* e) {}
+	virtual void onReplayCameraStarted(Event* e) {}
 
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}

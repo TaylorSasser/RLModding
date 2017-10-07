@@ -48,6 +48,7 @@
     <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
@@ -2951,6 +2952,7 @@
     <ClInclude Include="Libs\boost\xpressive\xpressive_fwd.hpp" />
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
     <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
+    <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />

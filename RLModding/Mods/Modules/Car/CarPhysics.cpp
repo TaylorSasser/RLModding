@@ -111,9 +111,12 @@ void CarPhysics::DrawMenu() {
 }
 
 void CarPhysics::onPlayerTick(Event* e) {
+
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-	if (localGameEvent) {
+	//std::cout << "State note: " << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+
+	if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
 		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
 
 		if (refreshCars || currPlayerCount != gameEventPlayers.Num()) {
@@ -144,6 +147,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 				}
 
 				if (currCar) {
+
 					if (carCollisionOff && InstanceStorage::PlayerController()->Car != NULL) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_TouchAllButWeapons);
 					}
@@ -432,7 +436,7 @@ void CarPhysics::onCarTick(Event* event) {
 	*/
 }
 
-void CarPhysics::onActorJump(Event*e) {
+void CarPhysics::onActorJump(Event* e) {
 	if (bUnlimitedJumps) {
 		if (e->getCallingObject() != nullptr) {
 			((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;
