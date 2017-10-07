@@ -2,7 +2,7 @@
 #include "../../Utils/Utils.h"
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/detours.h"
-#include "../Controllers/XboxController.h"
+#include "../Interfaces/Interfaces.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
@@ -36,13 +36,7 @@ void TestClass::DrawMenu() {
 
 void TestClass::onEnable() {
 	std::cout << "Test Class Enabled" << std::endl;
-	//Works but crashes because of stack corrupted memory, -> cause ZeroMemory in Controller class
-	/*
-	XboxController player(1);
-	if (player.IsConnected()) {
-		player.Vibrate(65535, 0);
-	}
-	*/
+	
 }
 
 void TestClass::onMainMenuTick(Event* e) {
@@ -89,6 +83,17 @@ void TestClass::onMainMenuTick(Event* e) {
 		//gfx->OpenFriendsList();
 		//gfx->ShowLoginUI(0);
 		testNewPartySystem = false;
+	}
+	if (!created) {
+		player = XboxController(1);
+		created = true;
+	}
+	if (player.IsConnected()) {
+		if (player.GetState().Gamepad.wButtons & XINPUT_GAMEPAD_START) {
+			Interfaces::GUI().isGUIOpen = !Interfaces::GUI().isGUIOpen;
+			Sleep(200);
+		}
+		
 	}
 }
 

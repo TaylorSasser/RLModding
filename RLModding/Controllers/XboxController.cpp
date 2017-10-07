@@ -1,5 +1,7 @@
 #include "XboxController.h"
 
+XboxController::XboxController() {}
+
 XboxController::XboxController(int playerNum) {
 	_controllerNum = playerNum;
 }
