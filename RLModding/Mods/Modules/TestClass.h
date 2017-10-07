@@ -1,5 +1,6 @@
 #pragma once
 #include "../ModBase.h"
+#include "../Controllers/XboxController.h"
 
 class TestClass : public ModBase {
 public:
@@ -16,4 +17,6 @@ private:
 	bool p_open = true;
 	bool testNewPartySystem = false;
 	bool runEngineTests = false;
+	bool created = false;
+	XboxController player;
 };
