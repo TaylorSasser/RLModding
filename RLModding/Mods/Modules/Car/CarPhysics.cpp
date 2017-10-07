@@ -74,13 +74,17 @@ void CarPhysics::DrawMenu() {
 			ImGui::SetTooltip("Makes car invisible");
 
 		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
-		
+
+		//if (ImGui::IsItemHovered())
+		//	ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
+
+		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
+		ImGui::SameLine();
+		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
 		ImGui::Checkbox("Disable Jumps", &disableJumps);
 		ImGui::SameLine();
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
-		
+
 
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("You may need to respawn for this to work.");
@@ -176,21 +180,44 @@ void CarPhysics::onPlayerTick(Event* e) {
 					}
 
 					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
-					
-					
+
+
 					if (currCar->BoostComponent) {
-						currCar->BoostComponent->SetUnlimitedBoost(unlimitedBoost);
-						//currCar->BoostComponent->Activate();
-						//currCar->BoostComponent->MaxBoostAmount = 1000;
-						//currCar->BoostComponent->SetBoostAmount(1000);
 						
+						//Using 1.0f instead of 1000 should work and it's reversible to normal state.
+						//currCar->BoostComponent->SetUnlimitedBoost(unlimitedBoost);
+						//currCar->BoostComponent->Activate();
+						
+						if (unlimitedBoost) {						
+							currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							currCar->BoostComponent->SetBoostAmount(1.0f);
+						}
+
+						if (currCar->GetTeamIndex() == 0) {
+							if (noBoostBlue) {
+								currCar->BoostComponent->SetBoostAmount(0.0f);
+								currCar->BoostComponent->MaxBoostAmount = 0.0f;
+							}
+							else {
+								currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							}
+						}
+						else if (currCar->GetTeamIndex() == 1) {
+							if (noBoostOrange) {
+								currCar->BoostComponent->SetBoostAmount(0.0f);
+								currCar->BoostComponent->MaxBoostAmount = 0.0f;
+							}
+							else {
+								currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							}
+						}	
 					}
-					
+
 
 					currCar->SetHidden(isHidden);
 					currCar->bPodiumMode = podiumMode;
 					//currCar->SetFrozen(freezeInPlace);
-					
+
 					if (currCar->JumpComponent) {
 						//currCar->JumpComponent->bDeactivate = disableJumps;
 						//currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
@@ -198,7 +225,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 						//currCar->JumpComponent->Activate();
 						//currCar->JumpComponent->RemoveFromCar();
 					}
-					
+
 
 					// For some reason these properties need respawn
 
@@ -228,7 +255,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->RespawnInPlace();
 						respawn = false;
 					}
-					
+
 
 					// Added check to make sure car is not null
 					if (setCarScale) {
@@ -252,8 +279,8 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCarScale(carScale);
 					}
 
-	
-				
+
+
 
 				}
 			}
@@ -279,7 +306,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 					podiumMode = currController->Car->bPodiumMode;
 					freezeInPlace = currController->Car->bFrozen;
 					isHidden = currController->Car->bHidden;
-					
+
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
@@ -388,7 +415,7 @@ void CarPhysics::onCarTick(Event* event) {
 		}
 
 	}
-	
+
 	else if (reset_values) {
 		ACar_TA* car = InstanceStorage::PlayerController()->Car;
 		if (car) {
