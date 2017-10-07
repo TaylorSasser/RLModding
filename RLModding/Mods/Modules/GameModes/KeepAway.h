@@ -15,8 +15,9 @@ public:
 	void onCarSpawned(Event* e) override;
 	void onCarDemolished(Event * e);
 	void onBallHit(Event* e);
-	void KeepAway::onBallCarTouch(Event* e);
-	void KeepAway::onGameTimeUpdated(Event* e);
+	void onBallCarTouch(Event* e);
+	void onGameTimeUpdated(Event* e);
+	void onEventGoalScored(Event* e);
 
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
@@ -28,9 +29,10 @@ private:
 	time_t start, end;
 	bool p_open = true;
 
+	bool goalsAddScore = false;
 	int currentTeamHasPossesion = -1;
 
-	int pointsToWin = 30;
+	int pointsToWin = 100;
 };
 
 

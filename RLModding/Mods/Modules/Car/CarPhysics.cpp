@@ -52,6 +52,7 @@ void CarPhysics::DrawMenu() {
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Makes car invisible");
 
+		//ImGui::Checkbox("Freeze in place.", &freezeInPlace);
 		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
 
 		//if (ImGui::IsItemHovered())
@@ -60,20 +61,10 @@ void CarPhysics::DrawMenu() {
 		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
 		ImGui::SameLine();
 		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
-		ImGui::Checkbox("Disable Jumps", &disableJumps);
+		//ImGui::Checkbox("Disable Jumps", &disableJumps);
 		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
-
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("You may need to respawn for this to work.");
-
 		ImGui::Separator();
-		/*
-		ImGui::Checkbox("Freeze in place.", &freezeInPlace);
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("Unfreeze doesn't work at the moment...can be glitchy lol");
-		*/
-
 
 		/*
 		ImGui::PushItemWidth(100);
@@ -160,8 +151,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
 					}
 
-					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
-
+					if(demolishOnOpposingSide)
+						currCar->bDemolishOnOpposingGround = 1.0f;
+					else 
+						currCar->bDemolishOnOpposingGround = 0.0f;
 
 					if (currCar->BoostComponent) {
 						
@@ -194,19 +187,35 @@ void CarPhysics::onPlayerTick(Event* e) {
 						}	
 					}
 
+					
+					if(isHidden)
+						currCar->SetHidden(1.0f);
+					else 
+						currCar->SetHidden(0.0f);
 
-					currCar->SetHidden(isHidden);
-					currCar->bPodiumMode = podiumMode;
-					//currCar->SetFrozen(freezeInPlace);
-
+					
+					if(podiumMode)
+						currCar->bPodiumMode = 1.0f;
+					else 
+						currCar->bPodiumMode = 0.0f;
+					/*
+					if(freezeInPlace)
+						currCar->SetFrozen(1.0f);
+					else 
+						currCar->SetFrozen(0.0f);
+					*/
+					/*
 					if (currCar->JumpComponent) {
-						//currCar->JumpComponent->bDeactivate = disableJumps;
+						if(disableJumps)
+							currCar->JumpComponent->bDeactivate = 1.0f;
+						else 
+							currCar->JumpComponent->bDeactivate = 0.0f;
 						//currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
 						//currCar->JumpComponent->JumpForce = jumpForce;
 						//currCar->JumpComponent->Activate();
 						//currCar->JumpComponent->RemoveFromCar();
 					}
-
+					*/
 
 					// For some reason these properties need respawn
 
@@ -332,7 +341,7 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
 			std::strncpy(cptr, playerName.c_str(), playerName.size());
 			cptr[playerName.length()] = '\0';
-			std::cout << "Player: " << playerName << std::endl;
+			//std::cout << "Player: " << playerName << std::endl;
 			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
 			players[i + 1] = cptr;
 		}
