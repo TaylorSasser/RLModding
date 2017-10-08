@@ -142,7 +142,7 @@ void GameEventMods::DrawMenu() {
 	}
 }
 
-void GameEventMods::onEnable() {
+void GameEventMods::onMenuOpen() {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
 		respawnTime = localGameEvent->RespawnTime;
@@ -150,7 +150,7 @@ void GameEventMods::onEnable() {
 	}
 
 }
-void GameEventMods::onDisable() {
+void GameEventMods::onMenuClose() {
 
 
 

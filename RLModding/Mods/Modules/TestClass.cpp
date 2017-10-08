@@ -34,7 +34,7 @@ void TestClass::DrawMenu() {
 	}
 }
 
-void TestClass::onEnable() {
+void TestClass::onMenuOpen() {
 	std::cout << "Test Class Enabled" << std::endl;
 	
 }
@@ -110,7 +110,7 @@ void TestClass::onBallHit(Event* e) {
 }
 
 
-void TestClass::onDisable() {
+void TestClass::onMenuClose() {
 	std::cout << "Test Class Disabled" << std::endl;
 
 }

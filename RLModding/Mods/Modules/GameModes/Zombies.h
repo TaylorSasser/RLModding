@@ -8,8 +8,8 @@ class Zombies : public ModBase {
 public:
 	Zombies(std::string name, int key, Category category, GameState gamestate);
 	Zombies(std::string, int key);
-	void onEnable();
-	void onDisable();
+	void onMenuOpen();
+	void onMenuClose();
 	void onPlayerTick(Event* e);
 
 private:

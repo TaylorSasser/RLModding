@@ -9,8 +9,8 @@ public:
 	BallMods(std::string, int key);
 
 	void DrawMenu();
-	void onEnable();
-	void onDisable();
+	void onMenuOpen();
+	void onMenuClose();
 	void onPlayerTick(Event* e);
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);

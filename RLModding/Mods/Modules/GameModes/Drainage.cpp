@@ -30,11 +30,11 @@ Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate)
 
 Drainage::~Drainage() {}
 
-void Drainage::onEnable() {
+void Drainage::onMenuOpen() {
 
 }
 
-void Drainage::onDisable() {
+void Drainage::onMenuClose() {
 
 }
 

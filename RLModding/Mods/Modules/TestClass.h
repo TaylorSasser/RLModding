@@ -7,9 +7,9 @@ public:
 	TestClass(std::string name, int key,Category category,GameState gamestate);
 	~TestClass();
 
-	void onEnable();
+	void onMenuOpen();
 	void onBallHit(Event* e) override;
-	void onDisable();
+	void onMenuClose();
 	void TestClass::DrawMenu();
 	void onMainMenuTick(Event* e);
 

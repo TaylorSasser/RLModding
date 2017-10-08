@@ -4,10 +4,10 @@ ModdedLanServer::ModdedLanServer(std::string name, int key, Category cat, GameSt
 
 ModdedLanServer::~ModdedLanServer(){}
 
-void ModdedLanServer::onEnable() {
+void ModdedLanServer::onMenuOpen() {
 }
 
-void ModdedLanServer::onDisable() {
+void ModdedLanServer::onMenuClose() {
 }
 
 void ModdedLanServer::ExportSettings(pt::ptree) {}

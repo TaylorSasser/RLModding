@@ -11,8 +11,8 @@ class ModdedLanServer : public ModBase {
 public:
 	ModdedLanServer(std::string name,int key,Category cat,GameState gamestate);
 	~ModdedLanServer();
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;

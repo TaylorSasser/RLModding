@@ -6,7 +6,7 @@
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
-void CarPhysics::onDisable() {
+void CarPhysics::onMenuClose() {
 	//delete[] players;
 	reset();
 	printf("Car Mods Disabled\n");

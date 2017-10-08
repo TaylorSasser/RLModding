@@ -8,7 +8,7 @@ public:
 	PlayerMods(std::string name, int key, Category category, GameState gamestate);
 	PlayerMods(std::string, int key);
 
-	void onDisable();
+	void onMenuClose();
 
 	void DrawMenu();
 	void onPlayerTick(Event* e);

@@ -6,17 +6,17 @@ TrainingMods::TrainingMods(std::string name, int key, Category cat, GameState ga
 
 TrainingMods::~TrainingMods() {}
 
-void TrainingMods::onEnable() {
+void TrainingMods::onMenuOpen() {
 }
 
-void TrainingMods::onDisable() {
+void TrainingMods::onMenuClose() {
 }
 
 void TrainingMods::ExportSettings() {}
 void TrainingMods::ImportSettings() {}
 
 void TrainingMods::DrawMenu() {
-	ImGui::Begin("Training Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Custom Training Settings", &p_open, ImVec2(400, 300), 0.75f);
 
 	if (InstanceStorage::GameEvent()) {
 		if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Tutorial_TA::StaticClass())) {

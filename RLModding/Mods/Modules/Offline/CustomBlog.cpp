@@ -5,11 +5,11 @@
 CustomBlog::CustomBlog(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CustomBlog::~CustomBlog() {}
 
-void CustomBlog::onEnable() {
+void CustomBlog::onMenuOpen() {
 
 }
 
-void CustomBlog::onDisable() {
+void CustomBlog::onMenuClose() {
 }
 
 void CustomBlog::ExportSettings(pt::ptree root) {

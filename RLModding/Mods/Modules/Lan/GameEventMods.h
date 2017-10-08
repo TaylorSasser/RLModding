@@ -9,8 +9,8 @@ public:
 	GameEventMods(std::string, int key);
 
 	void DrawMenu() override;
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);

@@ -6,7 +6,7 @@
 PlayerMods::PlayerMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 PlayerMods::PlayerMods(std::string name, int key) : ModBase(name, key) {}
 
-void PlayerMods::onDisable() {
+void PlayerMods::onMenuClose() {
 	//delete[] players;
 }
 

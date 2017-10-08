@@ -77,10 +77,10 @@ void InventoryManager::DrawMenu() {
 	}
 }
 
-void InventoryManager::onEnable() {
+void InventoryManager::onMenuOpen() {
 
 }
-void InventoryManager::onDisable() {
+void InventoryManager::onMenuClose() {
 
 }
 

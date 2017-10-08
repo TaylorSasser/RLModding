@@ -321,10 +321,10 @@ void RumbleMods::DrawMenu() {
 	}
 }
 
-void RumbleMods::onEnable() {
+void RumbleMods::onMenuOpen() {
 
 }
-void RumbleMods::onDisable() {
+void RumbleMods::onMenuClose() {
 	resetRumbleValues();
 	//delete[] players;
 }

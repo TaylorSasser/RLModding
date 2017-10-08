@@ -40,8 +40,8 @@ public:
 	virtual void Toggle() {
 		enabled = !enabled;		
 		onToggle();
-		if (enabled) onEnable(); 
-		else onDisable();
+		if (enabled) onMenuOpen();
+		else onMenuClose();
 	}
 	
 	virtual void setState(bool state) { enabled = state; }
@@ -70,8 +70,8 @@ public:
 	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
 
 	virtual void DrawMenu() {}
-	virtual void onEnable() {}
-	virtual void onDisable() {}
+	virtual void onMenuOpen() {}
+	virtual void onMenuClose() {}
 	
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();

@@ -6,10 +6,10 @@ MutatorMods::MutatorMods(std::string name, int key, Category cat, GameState game
 
 MutatorMods::~MutatorMods() {}
 
-void MutatorMods::onEnable() {
+void MutatorMods::onMenuOpen() {
 }
 
-void MutatorMods::onDisable() {
+void MutatorMods::onMenuClose() {
 }
 
 void MutatorMods::ExportSettings() {}

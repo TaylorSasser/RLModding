@@ -6,12 +6,12 @@ KeepAway::KeepAway(std::string name, int key, Category cat, GameState gamestate)
 
 KeepAway::~KeepAway() {}
 
-void KeepAway::onEnable() {
+void KeepAway::onMenuOpen() {
 	
 
 }
 
-void KeepAway::onDisable() {
+void KeepAway::onMenuClose() {
 	currentTeamHasPossesion = -1;
 
 }

@@ -8,8 +8,8 @@ public:
 	Drainage(std::string name, int key, Category cat, GameState gamestate);
 	~Drainage();
 
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;

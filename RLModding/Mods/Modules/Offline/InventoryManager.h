@@ -8,8 +8,8 @@ public:
 	InventoryManager(std::string, int key);
 
 	void DrawMenu();
-	void onEnable();
-	void onDisable();
+	void onMenuOpen();
+	void onMenuClose();
 	void onMainMenuTick(Event* e);
 
 private:

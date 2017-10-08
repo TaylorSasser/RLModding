@@ -6,10 +6,10 @@ FiftyFifty::FiftyFifty(std::string name, int key, Category cat, GameState gamest
 
 FiftyFifty::~FiftyFifty() {}
 
-void FiftyFifty::onEnable() {
+void FiftyFifty::onMenuOpen() {
 }
 
-void FiftyFifty::onDisable() {
+void FiftyFifty::onMenuClose() {
 }
 
 void FiftyFifty::ExportSettings(pt::ptree root) {

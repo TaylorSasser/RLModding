@@ -40,11 +40,11 @@ void BallMods::DrawMenu() {
 	}
 }
 
-void BallMods::onEnable() {
+void BallMods::onMenuOpen() {
 	std::fill_n(balls, 100, 1.0);
 	std::fill_n(currentScales, 100, 1.0);
 }
-void BallMods::onDisable() {
+void BallMods::onMenuClose() {
 	numGameBalls = 1;
 	std::fill_n(balls, 100, 1.0);
 	std::fill_n(currentScales, 100, 1.0);
