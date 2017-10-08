@@ -55,7 +55,10 @@ void TrainingMods::DrawMenu() {
 
 void TrainingMods::onPlayerTick(Event* event) {
 	if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Tutorial_TA::StaticClass())) {
+		AGameEvent_Tutorial_TA* localGameEvent = (SDK::AGameEvent_Tutorial_TA*)InstanceStorage::GameEvent();
 		
+
+
 	}
 	else if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_TrainingEditor_TA::StaticClass())) {
 		AGameEvent_TrainingEditor_TA* localGameEvent = (SDK::AGameEvent_TrainingEditor_TA*)InstanceStorage::GameEvent();

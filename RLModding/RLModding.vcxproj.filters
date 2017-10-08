@@ -63,6 +63,7 @@
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
+    <ClCompile Include="Mods\Modules\RocketLauncherConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4688,6 +4689,7 @@
     <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
+    <ClInclude Include="Mods\Modules\RocketLauncherConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
