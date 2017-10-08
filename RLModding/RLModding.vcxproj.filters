@@ -4708,4 +4708,8 @@
     <Text Include="RL\FunctionDump.log" />
     <Text Include="RL\FunctionDumpSorted.log" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Gui\Roboto-Regular.ttf" />
+    <Font Include="Gui\Roboto-Medium.ttf" />
+  </ItemGroup>
 </Project>

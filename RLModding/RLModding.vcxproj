@@ -4750,6 +4750,10 @@
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Gui\Roboto-Medium.ttf" />
+    <Font Include="Gui\Roboto-Regular.ttf" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}</ProjectGuid>
