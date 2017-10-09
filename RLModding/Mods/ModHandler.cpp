@@ -34,7 +34,7 @@ ModHandler::ModHandler() {
 	CreateMod<CarPhysics>("Car Mods", VK_F3, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<PlayerMods>("Player Mods", VK_F5, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<TrainingMods>("Training Mods", VK_F9, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	//CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::ANY ^ GameState::ONLINE);
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
