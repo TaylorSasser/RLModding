@@ -16,7 +16,7 @@
 #include "Modules/GameModes/KeepAway.h"
 #include "Modules/Lan/MutatorMods.h"
 #include "Modules/Offline/TrainingMods.h"
-
+#include "Modules/Offline/TextureMods.h"
 
 ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
@@ -42,7 +42,7 @@ ModHandler::ModHandler() {
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	#endif
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);
-
+	CreateMod<TextureMods>("Texture Mods", VK_NUMPAD7, Category::Other, GameState::MENU);
 	//CreateMod<ZombieGameMode>("Zombie Game Mode",FileManager.GetKeyBindFromModName("Zombie Game Mode"); <- Should be something like this
 }
 
