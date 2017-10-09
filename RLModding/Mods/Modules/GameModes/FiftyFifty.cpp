@@ -25,11 +25,11 @@ void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
 	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("Someone will be demo'd every X seconds");
+		ImGui::SetTooltip("Interval for below settings (in seconds)");
 
 	ImGui::RadioButton("Demolish Player", &demoPlayer, 1);
 	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("If checked, the player will be demolished");
+		ImGui::SetTooltip("If checked, a player will be demolished");
 	ImGui::RadioButton("Ball Explosion", &demoPlayer, 0);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("If checked, a ball explosion will go off under the player");
