@@ -15,7 +15,8 @@ void TextureMods::DrawMenu() {
 	ImGui::InputText("Image URL", url, IM_ARRAYSIZE(url));
 	
 	if (ImGui::Button("Replace Loopers")) {
-		ReplaceLoopers(url);
+		replaceLoopers = true;
+		
 	}
 
 	if (!p_open) {
@@ -26,11 +27,19 @@ void TextureMods::DrawMenu() {
 	ImGui::End();
 }
 
+void TextureMods::onMainMenuTick(Event *) {
+	if (replaceLoopers) {
+		ReplaceLoopers(url);
+		replaceLoopers = false;
+	}
+	
+}
+
 void TextureMods::ReplaceLoopers(char* url) {
-	SDK::UTexture2D* protoT = SDK::UTexture2D::FindObject<SDK::UTexture2D>("Texture2D WHEEL_Proto.Textures.Tech_01");
+	SDK::UTexture2D* protoT = SDK::UTexture2D::FindObject<SDK::UTexture2D>("Texture2D WHEEL_Proto.Textures.Tech_01");	
 	if (protoT != nullptr) {
 		auto texture = DownloadTexture(Utils::to_fstring(url));
-		*protoT = *texture;
+		protoT->Resource = texture->Resource;
 	}
 }
 
