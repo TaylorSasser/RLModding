@@ -39,7 +39,9 @@ void TextureMods::ReplaceLoopers(char* url) {
 	SDK::UTexture2D* protoT = SDK::UTexture2D::FindObject<SDK::UTexture2D>("Texture2D WHEEL_Proto.Textures.Tech_01");	
 	if (protoT != nullptr) {
 		auto texture = DownloadTexture(Utils::to_fstring(url));
-		protoT->Resource = texture->Resource;
+		if (texture != nullptr) {
+			protoT->Resource = texture->Resource;
+		}
 	}
 }
 
