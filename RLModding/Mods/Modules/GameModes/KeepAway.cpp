@@ -36,7 +36,7 @@ void KeepAway::DrawMenu() {
 				printf("Enabled Keep Away");
 				AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 				if (localGameEvent) {
-					localGameEvent->SetRestartingMatch(true);
+					localGameEvent->StartNewGame();
 					localGameEvent->bDisableGoalDelay = true;
 					for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
 						if(goalsAddScore)
