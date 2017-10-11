@@ -101,10 +101,16 @@ void FiftyFifty::onPlayerTick(Event* event) {
 								int player_idx = rand() % gameTeams[team_idx]->Members.Num();
 								TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
 								if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
-									if (demoPlayer)
-										gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
-									else
-										localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+									if (demoPlayer) {
+										if (controller && controller->Car && gameTeams[team_idx]->Members[player_idx]->Car)
+											gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+									}
+									else {
+										if (localGameEvent->GameBalls.GetByIndex(1) && gameTeams[team_idx]->Members[player_idx]->Car) {
+											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+										}
+									}
+										
 								}
 
 								checkTime = true;
@@ -113,11 +119,16 @@ void FiftyFifty::onPlayerTick(Event* event) {
 					}
 					// Account for a single user being alone in a game
 					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
-						if (demoPlayer)
-							controller->Car->Demolish(controller->Car);
-						else
-							localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
-
+						if (demoPlayer) {
+							if (controller->Car) {
+								controller->Car->Demolish(controller->Car);
+							}
+						}
+						else {
+							if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
+								localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+							}
+						}
 						checkTime = true;
 
 					}

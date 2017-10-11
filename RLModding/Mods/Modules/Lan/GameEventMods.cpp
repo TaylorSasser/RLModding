@@ -78,6 +78,8 @@ void GameEventMods::DrawMenu() {
 
 		if (ImGui::CollapsingHeader("Bots",ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: removing bots only works for bots you spawned manually.");
 			ImGui::InputInt("# Bots", &botsToSpawn); ImGui::SameLine();
 			if (ImGui::Button("Spawn Bot(s)")) {
 				spawnBot = true;
@@ -169,7 +171,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 		if (spawnBot) {
 			for(int i = 0; i < botsToSpawn; i++) {
-				localGameEvent->SpawnBot();
+				localGameEvent->AIManager->AddBot(localGameEvent->SpawnBot());
 			}
 			spawnBot = false;
 		}
@@ -327,8 +329,12 @@ void GameEventMods::onPlayerTick(Event* e) {
 	if (removeBots) {
 		if (localGameEvent) {
 			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
-			while (bots.Num() > 0) {
-				localGameEvent->AIManager->RemoveBot(bots.GetByIndex(0));
+			int botsToDelete = bots.Num();
+			std::cout << "Total Bots: " << botsToDelete << std::endl;
+			for (int i = 0; i < botsToDelete; i++) {
+				localGameEvent->RemovePlayer(bots[i]);
+				std::cout << "Total Bots: " << bots.Num() << std::endl;
+				//spawnedBotsCount--;
 			}
 		}
 		removeBots = false;
