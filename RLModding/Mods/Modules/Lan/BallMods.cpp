@@ -69,7 +69,7 @@ void BallMods::onPlayerTick(Event* e) {
 			for (int i = 0; i < gameBalls.Num(); i++) {
 				if (!Utils::FloatCompare(balls[i], currentScales[i])) {
 					currentScales[i] = balls[i];
-					if (gameBalls.IsValidIndex(i) && !gameBalls[i]->bDeleteMe) {
+					if (gameBalls.IsValidIndex(i) && gameBalls[i] && !gameBalls[i]->bDeleteMe) {
 						gameBalls[i]->SetBallScale(balls[i]);
 					}
 				}

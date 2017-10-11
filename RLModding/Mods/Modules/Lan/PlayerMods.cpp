@@ -31,6 +31,10 @@ void PlayerMods::DrawMenu() {
 			ImGui::Checkbox("Developer", &isDeveloper);
 		}
 
+		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: Not sure what some of these do...");
+
+		ImGui::Checkbox("GodMode", &godMode);
+
 		if (ImGui::Button("Update Player")) {
 			updatePlayer = true;
 		}
@@ -86,13 +90,15 @@ void PlayerMods::onPlayerTick(Event* e) {
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
+						currController->bGodMode = godMode;
+
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 						APlayerController_TA* currController = (APlayerController_TA*)tempController;
 
 						currController->PRI->SetMatchAdmin(isAdmin);
 						currController->PRI->bDeveloper = isDeveloper;
-
+						currController->bGodMode = godMode;
 						//currController->PRI->MatchGoals = -100;
 					}
 
@@ -166,12 +172,15 @@ void PlayerMods::onPlayerTick(Event* e) {
 					isBotSelected = true;
 					isAdmin = false;
 					isDeveloper = false;
+					godMode = currController->bGodMode;
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					isBotSelected = false;
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					isAdmin = currController->PRI->bMatchAdmin;
 					isDeveloper = currController->PRI->bDeveloper;
+					godMode = currController->bGodMode;
+
 				}
 			}
 		}

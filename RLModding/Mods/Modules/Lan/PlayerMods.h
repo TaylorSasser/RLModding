@@ -32,6 +32,8 @@ private:
 	bool demolishPlayer = false;
 	bool isDeveloper = false;
 
+	bool godMode = false;
+
 	bool doNothing = false;
 	bool triggerGoalExplosion = false;
 

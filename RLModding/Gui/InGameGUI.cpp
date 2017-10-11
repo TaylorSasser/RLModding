@@ -98,7 +98,7 @@ void InGameGUI::Render() {
 				for (auto& mods : Interfaces::Mods()) {
 					if (categoryNames[mods.second->getCategory()].compare(name) != 0)
 						continue;
-					if (ImGui::MenuItem(mods.second->getName().c_str(), NULL, mods.second->enabled)) {
+					if (ImGui::MenuItem(mods.second->getName().c_str(), NULL, mods.second->enabled, ModBase::STATIC_getCurrentGameState() & mods.second->getAllowedGameStates())) {
 						mods.second->Toggle();
 					}
 				}
