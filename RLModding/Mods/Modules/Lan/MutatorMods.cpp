@@ -23,6 +23,7 @@ void MutatorMods::DrawMenu() {
 	if (localGameEvent && localGameEvent->Mutators.Num() > 0) {
 
 		ImGui::TextWrapped("Unlike the car and ball mods, these mods always apply for everyone in game.");
+
 		ImGui::Combo("Mutator", &selectedMutatorIndex, mutatorList, IM_ARRAYSIZE(mutatorList));
 		ImGui::Separator();
 		if (selectedMutatorIndex >= 0) {
@@ -246,6 +247,8 @@ void MutatorMods::DrawMenu() {
 		else {
 			ImGui::TextWrapped("Select a mutator to edit it.");
 		}
+		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "*Most changes to the mutators will require a respawn or match restart.");
+
 	}
 	else {
 		ImGui::TextWrapped("No mutators set, to mod them please enable them in the game settings.");
