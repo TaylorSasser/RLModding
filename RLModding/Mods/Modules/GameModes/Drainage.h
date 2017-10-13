@@ -5,7 +5,7 @@
 class Drainage : public ModBase
 {
 public:
-	Drainage(std::string name, int key, Category cat, GameState gamestate);
+	Drainage(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
 	~Drainage();
 
 	void onMenuOpen() override;

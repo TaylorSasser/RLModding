@@ -48,7 +48,9 @@
     <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
@@ -110,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Connection\Connection.h" />
+    <ClInclude Include="Libs\ImGUI\imgui_memory_editor.h" />
     <ClInclude Include="Mods\GameState.h" />
     <ClInclude Include="Libs\boost\algorithm\cxx11\all_of.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\case_conv.hpp" />
@@ -2953,7 +2956,9 @@
     <ClInclude Include="Libs\boost\xpressive\xpressive_fwd.hpp" />
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
     <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
+    <ClInclude Include="Mods\Modules\GameModes\CrazyItems.h" />
     <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
+    <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />

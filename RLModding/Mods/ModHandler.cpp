@@ -17,13 +17,17 @@
 #include "Modules/Lan/MutatorMods.h"
 #include "Modules/Offline/TrainingMods.h"
 #include "Modules/Offline/TextureMods.h"
+#include "Modules/GameModes/InfiniteCelebration.h"
+#include "Modules/GameModes/CrazyItems.h"
+
 
 ModHandler::ModHandler() {
-	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
-	CreateMod<Zombies>("Zombie Game Mode", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN);
-	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
-	CreateMod<Drainage>("Drainage", VK_F6, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
-	CreateMod<KeepAway>("Keep Away", VK_F10, Category::GameModes, GameState::ANY ^ GameState::ONLINE);
+	CreateMod<Zombies>("Zombies", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN, "The bots have a new target...you!");
+	CreateMod<FiftyFifty>("50/50", VK_F1, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Every X seconds a random player gets destroyed.");
+	CreateMod<Drainage>("Drainage", VK_F6, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "If you reach 0 boost at any time you'll be demolished.");
+	CreateMod<KeepAway>("Keep Away", VK_F10, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Keep your opponent from touching the ball to get points.");
+	CreateMod<InfiniteCelebration>("Infinite Celebration", VK_F11, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Need to practice sweet celebrations? Now you can for as long as you need!");
+	CreateMod<CrazyItems>("Crazy Items", VK_F12, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Normal rumble not intense enough? Give this mode a try.");
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server", VK_NUMPAD2, Category::Lan, GameState::ANY);
@@ -35,9 +39,10 @@ ModHandler::ModHandler() {
 	CreateMod<PlayerMods>("Player Mods", VK_F5, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<TrainingMods>("Training Mods", VK_F9, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::ANY ^ GameState::ONLINE);
+	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+
 #ifdef _TEST_
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	CreateMod<TextureMods>("Texture Mods", VK_NUMPAD7, Category::Other, GameState::MENU);

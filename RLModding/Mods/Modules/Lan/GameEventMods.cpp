@@ -96,14 +96,7 @@ void GameEventMods::DrawMenu() {
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
 			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
-			ImGui::InputInt("Team Index", &teamIndex);
-			if (ImGui::IsItemHovered())
-				ImGui::SetTooltip("Usually either 0 or 1.  0 for blue, 1 for orange.");
-			ImGui::SameLine();
-			if (ImGui::Button("Infinite Celebration.")) {
-				unlimCelebration = true;
-			}
-
+			
 			if (ImGui::Button("Allow more than 8 players.")) {
 				allowMorePlayers = true;
 			}
@@ -189,13 +182,6 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (resetBalls) {
 			localGameEvent->ResetBalls();
 			resetBalls = false;
-		}
-
-		if (unlimCelebration) {
-			localGameEvent->PodiumTime = localGameEvent->PodiumTime * 2000;
-			localGameEvent->Teams[teamIndex]->SetScore(1);
-			localGameEvent->EndGame();
-			unlimCelebration = false;
 		}
 
 		if (pauseServer) {

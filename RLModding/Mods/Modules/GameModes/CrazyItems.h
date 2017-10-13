@@ -1,40 +1,32 @@
 #pragma once
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
+#include <ctime>
 
-class RumbleMods : public ModBase {
+class CrazyItems : public ModBase {
 public:
-	RumbleMods(std::string name, int key, Category category, GameState gamestate);
-	RumbleMods(std::string, int key);
+	CrazyItems(std::string name, int key, Category category, GameState gamestate, std::string toolTip);
+	CrazyItems(std::string, int key);
 
 	void DrawMenu() override;
 	void onMenuOpen() override;
 	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
-	void RumbleMods::onCarSpawned(Event* e);
-	void RumbleMods::onGameEventRemovePlayer(Event* e);
-	void RumbleMods::onGameEventAddPlayer(Event* e);
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
-	void RumbleMods::setCrazyRumbleValues();
-	void RumbleMods::resetRumbleValues();
-	void RumbleMods::setModEnabled(bool flag);
 
 private:
-	void RumbleMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);
 
+	bool bStarted = false;
+	bool p_open = true;
 
-	// General Rumble Settings
-	float itemGiveRate = 10.0;
-	float currItemGiveRate = 10.0;
+	float itemGiveRate = 0.0f;
 
 	// Magnet Options
 	float magnetRange = 1000.0;
 	float magnetBallGravity = 55000;
 	bool magnetDeactivateOnTouch = false;
 
-	bool bStartGameMode = false;
-	bool enableCrazyItems = false;
 
 	/*
 	Tornado
@@ -110,17 +102,5 @@ private:
 
 	float spikesAfterHitDuration = 4.5;
 
-	int forceItemIndex = -1;
-	bool giveItem = false;
-
-	// Player selection menu
-	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
-	int playerSelectedIndex = -1;
-	int oldPlayerSelectedIndex = 0;
-	int currPlayerCount = 0;
-
-	bool setCrazyRumble = false;
-
-	bool p_open = true;
 };
 

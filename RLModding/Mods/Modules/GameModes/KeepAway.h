@@ -5,7 +5,7 @@
 class KeepAway : public ModBase
 {
 public:
-	KeepAway(std::string name, int key, Category cat, GameState gamestate);
+	KeepAway(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
 	~KeepAway();
 
 	void onMenuOpen() override;

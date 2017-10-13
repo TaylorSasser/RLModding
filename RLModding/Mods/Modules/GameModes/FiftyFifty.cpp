@@ -2,7 +2,7 @@
 #include <comdef.h>
 #include <iostream>
 
-FiftyFifty::FiftyFifty(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
+FiftyFifty::FiftyFifty(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 
 FiftyFifty::~FiftyFifty() {}
 

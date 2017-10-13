@@ -1,6 +1,6 @@
 #include "Zombies.h"
 
-Zombies::Zombies(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
+Zombies::Zombies(std::string name, int key, Category category, GameState gamestate, std::string toolTip) : ModBase(name, key, category, gamestate, toolTip) {}
 Zombies::Zombies(std::string name, int key) : ModBase(name, key) {}
 
 void Zombies::onMenuOpen() {

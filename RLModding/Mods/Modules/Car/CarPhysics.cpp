@@ -296,18 +296,24 @@ void CarPhysics::onPlayerTick(Event* e) {
 				AController* tempController = gameEventPlayers.GetByIndex(playerSelectedIndex - 1);
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
-					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					podiumMode = currController->Car->bPodiumMode;
-					freezeInPlace = currController->Car->bFrozen;
-					isHidden = currController->Car->bHidden;
+					if (currController->Car) {
+						if (currController->Car->BoostComponent)
+							unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
+						freezeInPlace = currController->Car->bFrozen;
+						isHidden = currController->Car->bHidden;
+						podiumMode = currController->Car->bPodiumMode;
+					}
 
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
-					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					freezeInPlace = currController->Car->bFrozen;
-					isHidden = currController->Car->bHidden;
-					podiumMode = currController->Car->bPodiumMode;
+					if (currController->Car) {
+						if(currController->Car->BoostComponent)
+							unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
+						freezeInPlace = currController->Car->bFrozen;
+						isHidden = currController->Car->bHidden;
+						podiumMode = currController->Car->bPodiumMode;
+					}
 
 				}
 			}

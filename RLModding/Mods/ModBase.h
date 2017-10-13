@@ -31,9 +31,10 @@ static const std::string categoryNames[MAX-1] = {
 class ModBase
 {
 public:
-	ModBase() {}
-	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate) {}
-	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY) {}
+	ModBase() {}	
+	ModBase(const std::string& modName, int keyBind, Category category, GameState gamestate, const std::string& modToolTip) : name(modName), key(keyBind), cat(category), allowedGameStates(gamestate), toolTip(modToolTip) {}
+	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate), toolTip("") {}
+	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY), toolTip("") {}
 	
 	virtual ~ModBase() = default;
 
@@ -54,6 +55,9 @@ public:
 
 	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
+
+	virtual std::string getToolTip() { return toolTip; }
+	virtual void setToolTip(const std::string &newToolTip) { toolTip = newToolTip; }
 
 	virtual Category getCategory() {return cat;}
 	virtual GameState getAllowedGameStates() {return allowedGameStates;}
@@ -187,6 +191,7 @@ public:
 protected:
 	GameState allowedGameStates;
 	Category cat;
+	std::string toolTip;
 	std::string name;
 	int key = -1;
 };

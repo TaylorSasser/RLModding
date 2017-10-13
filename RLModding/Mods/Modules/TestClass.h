@@ -1,6 +1,7 @@
 #pragma once
 #include "../ModBase.h"
 #include "../Controllers/XboxController.h"
+#include "../../Libs/ImGUI/imgui_memory_editor.h"
 
 class TestClass : public ModBase {
 public:
@@ -19,4 +20,6 @@ private:
 	bool runEngineTests = false;
 	bool created = false;
 	XboxController player;
+	MemoryEditor mem_edit;
+
 };

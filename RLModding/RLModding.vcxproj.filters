@@ -64,6 +64,8 @@
     <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4690,6 +4692,9 @@
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
     <ClInclude Include="Mods\Modules\Offline\TextureMods.h" />
+    <ClInclude Include="Libs\ImGUI\imgui_memory_editor.h" />
+    <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
+    <ClInclude Include="Mods\Modules\GameModes\CrazyItems.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

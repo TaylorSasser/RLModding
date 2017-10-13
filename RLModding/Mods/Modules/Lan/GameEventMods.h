@@ -44,7 +44,6 @@ private:
 	bool testServerSay = false;
 
 	int botsToSpawn = 1;
-	int teamIndex = 0;
 
 	int blueScore = 0;
 	int orangeScore = 0;

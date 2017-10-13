@@ -100,6 +100,11 @@ void InGameGUI::Render() {
 						continue;
 					if (ImGui::MenuItem(mods.second->getName().c_str(), NULL, mods.second->enabled, ModBase::STATIC_getCurrentGameState() & mods.second->getAllowedGameStates())) {
 						mods.second->Toggle();
+					}						
+					if (ImGui::IsItemHovered()) {
+						if (mods.second->getToolTip().length() > 0) {
+							ImGui::SetTooltip(mods.second->getToolTip().c_str());
+						}
 					}
 				}
 				ImGui::EndMenu();

@@ -37,6 +37,13 @@ private:
 	bool doNothing = false;
 	bool triggerGoalExplosion = false;
 
+	int playerScore = 0;
+	int playerGoals = 0;
+	int playerAssists = 0;
+	int playerSaves = 0;
+	int playerShots = 0;
+	int playerPing = 0;
+
 	std::string statusText = "";
 
 	// Player selection menu

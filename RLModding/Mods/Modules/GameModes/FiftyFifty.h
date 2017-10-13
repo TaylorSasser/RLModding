@@ -5,7 +5,7 @@
 class FiftyFifty : public ModBase
 {
 public:
-	FiftyFifty(std::string name, int key, Category cat, GameState gamestate);
+	FiftyFifty(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
 	~FiftyFifty();
 
 	void onMenuOpen() override;

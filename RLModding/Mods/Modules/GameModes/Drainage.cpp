@@ -26,7 +26,7 @@ void FileManager::Load() {
 }
 */
 
-Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
+Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 
 Drainage::~Drainage() {}
 

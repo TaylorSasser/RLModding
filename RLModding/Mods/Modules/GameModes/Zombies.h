@@ -6,7 +6,7 @@
 
 class Zombies : public ModBase {
 public:
-	Zombies(std::string name, int key, Category category, GameState gamestate);
+	Zombies(std::string name, int key, Category category, GameState gamestate, std::string toolTip);
 	Zombies(std::string, int key);
 	void onMenuOpen();
 	void onMenuClose();

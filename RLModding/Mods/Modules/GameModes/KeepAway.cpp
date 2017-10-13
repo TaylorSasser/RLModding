@@ -2,8 +2,7 @@
 #include <comdef.h>
 #include <iostream>
 
-KeepAway::KeepAway(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
-
+KeepAway::KeepAway(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 KeepAway::~KeepAway() {}
 
 void KeepAway::onMenuOpen() {

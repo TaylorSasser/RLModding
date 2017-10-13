@@ -31,6 +31,8 @@ static int selectedRumbleIndex = -1;
 void RumbleMods::resetRumbleValues() {
 	enableCrazyItems = false;
 
+	itemGiveRate = 10.0f;
+
 	// Magnet Options
 	magnetRange = 1000.0;
 	magnetBallGravity = 55000;
@@ -113,75 +115,75 @@ void RumbleMods::resetRumbleValues() {
 
 
 void RumbleMods::setCrazyRumbleValues() {
-	if (setCrazyRumble) {
-		/*
-		Default Magnet Range: 1000
-		Default Magnet ball gravity: 55000
-		*/
-		magnetRange = 2500.0;
-		magnetBallGravity = 100000.0;
-		magnetDeactivateOnTouch = false;
 
-		/*
-		Grappling Hook Length: 3500
-		Grappling Hook AfterAttachDuration: 3
-		Grappling Hook Range: 2800
-		*/
-		grapplingHookMaxRopeLength = 10500.0;
-		grapplingHookAfterAttachDuration = 20;
-		grapplingHookRange = 56000;
-		grapplingHookCanTargetCars = true;
-		grapplingHookCanTargetBall = true;
-		grapplingHookCanTargetEnemyCars = true;
-		grapplingHookDeactivateOnTouch = false;
+	itemGiveRate = 0.0f;
 
-		/*
-		Car hit force: 30
-		Ball hit force: 1.5
-		*/
-		powerHitterCarHitForce = 150.0;
-		powerHitterBallHitForce = 13.0;
-		powerHitterDemolishCars = false;
+	/*
+	Default Magnet Range: 1000
+	Default Magnet ball gravity: 55000
+	*/
+	magnetRange = 2500.0;
+	magnetBallGravity = 100000.0;
+	magnetDeactivateOnTouch = false;
 
-		spikesAfterHitDuration = 22.5;
+	/*
+	Grappling Hook Length: 3500
+	Grappling Hook AfterAttachDuration: 3
+	Grappling Hook Range: 2800
+	*/
+	grapplingHookMaxRopeLength = 10500.0;
+	grapplingHookAfterAttachDuration = 20;
+	grapplingHookRange = 56000;
+	grapplingHookCanTargetCars = true;
+	grapplingHookCanTargetBall = true;
+	grapplingHookCanTargetEnemyCars = true;
+	grapplingHookDeactivateOnTouch = false;
+
+	/*
+	Car hit force: 30
+	Ball hit force: 1.5
+	*/
+	powerHitterCarHitForce = 150.0;
+	powerHitterBallHitForce = 13.0;
+	powerHitterDemolishCars = false;
+
+	spikesAfterHitDuration = 22.5;
 
 
-		tornadoBallMultiplier = 30;
-		tornadoRadius = 4400;
-		tornadoRotForce = 70;
-		tornadoTorque = 150;
-		tornadoHeight = 4000;
+	tornadoBallMultiplier = 30;
+	tornadoRadius = 4400;
+	tornadoRotForce = 70;
+	tornadoTorque = 150;
+	tornadoHeight = 4000;
 
-		/*
-		Plunger Hook Length: 3000
-		Plunger AfterAttachDuration: 1.3
-		*/
-		plungerMaxSpringLength = 30000;
-		plungerAfterSpringDuration = 13.0;
+	/*
+	Plunger Hook Length: 3000
+	Plunger AfterAttachDuration: 1.3
+	*/
+	plungerMaxSpringLength = 30000;
+	plungerAfterSpringDuration = 13.0;
 
-		punchingGloveCanTargetBall = true;
-		punchingGloveCanTargetCars = true;
-		punchingGloveForce = 180000;
-		punchingGloveVerticalForce = 400000.0;
-		punchingGloveRelativeForce = true;
-		punchingGloveFollowAfterHit = true;
+	punchingGloveCanTargetBall = true;
+	punchingGloveCanTargetCars = true;
+	punchingGloveForce = 180000;
+	punchingGloveVerticalForce = 400000.0;
+	punchingGloveRelativeForce = true;
+	punchingGloveFollowAfterHit = true;
 
-		bootCanTargetBall = true;
-		bootCanTargetCars = true;
-		bootForce = 1800000;
-		bootVerticalForce = 800000.0;
-		bootRelativeForce = true;
-		bootFollowAfterHit = true;
+	bootCanTargetBall = true;
+	bootCanTargetCars = true;
+	bootForce = 1800000;
+	bootVerticalForce = 800000.0;
+	bootRelativeForce = true;
+	bootFollowAfterHit = true;
 
-		boosterRange = 15000.0;
+	boosterRange = 15000.0;
 
-		freezeActivationDuration = 20;
+	freezeActivationDuration = 20;
 
-		swapperRange = 20000.0;
-		swapperCanTargetTeamCars = true;
-
-		setCrazyRumble = false;
-	}
+	swapperRange = 20000.0;
+	swapperCanTargetTeamCars = true;
+	
 }
 
 void RumbleMods::DrawMenu() {
@@ -197,13 +199,6 @@ void RumbleMods::DrawMenu() {
 			*/
 			ImGui::InputFloat("Item Give Rate", &itemGiveRate, 0.5f, 1.0f);
 
-			ImGui::Checkbox("Crazy Items", &enableCrazyItems);
-			if (enableCrazyItems) {
-				setCrazyRumbleValues();
-			}
-			else {
-				setCrazyRumble = true;
-			}
 			ImGui::Separator();
 			ImGui::Combo("Select Item", &selectedRumbleIndex, rumbleItems, IM_ARRAYSIZE(rumbleItems));
 
@@ -213,6 +208,10 @@ void RumbleMods::DrawMenu() {
 			ImGui::SameLine();
 			if (ImGui::Button("Reset Settings")) {
 				resetRumbleValues();
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Set Crazy Items Settings")) {
+				setCrazyRumbleValues();
 			}
 
 			//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook"
@@ -329,6 +328,10 @@ void RumbleMods::onMenuClose() {
 	//delete[] players;
 }
 
+void RumbleMods::setModEnabled(bool flag) {
+	bStartGameMode = flag;
+}
+
 std::string to_string(wchar_t* text)
 {
 	if (text == NULL)
@@ -391,26 +394,19 @@ void RumbleMods::onPlayerTick(Event* e) {
 	if (bStartGameMode) {
 
 		if (enableCrazyItems) {
-			itemGiveRate = 0;
+			itemGiveRate = 0.0f;
 		}
 
 		// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SubRules;
-		if (itemRules && !Utils::FloatCompare(currItemGiveRate,itemGiveRate)) {
-			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-			for (int l = 0; l < itemDispensers.Num(); l++) {
-				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
-			}
-		}
-		else {
-		}
 
 		if (itemRules) {
 			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
 
-
 			for (int l = 0; l < itemDispensers.Num(); l++) {
 
+				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
+				
 				SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
 				for (int q = 0; q < items.Num(); q++)
 				{

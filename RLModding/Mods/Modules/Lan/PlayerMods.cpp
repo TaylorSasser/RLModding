@@ -58,6 +58,21 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Sets off a goal explosion underneath the player.");
 
+		ImGui::Separator();
+		if (!isBotSelected) {
+
+			ImGui::Columns(6, "mycolumns"); // 4-ways, with border
+			ImGui::InputInt("Score", &playerScore, 1, 5); ImGui::NextColumn();
+			ImGui::InputInt("Goals", &playerGoals, 1, 5); ImGui::NextColumn();
+			ImGui::InputInt("Assists", &playerAssists, 1, 5); ImGui::NextColumn();
+			ImGui::InputInt("Saves", &playerSaves, 1, 5); ImGui::NextColumn();
+			ImGui::InputInt("Shots", &playerShots, 1, 5); ImGui::NextColumn();
+			ImGui::InputInt("Ping", &playerPing, 1, 5); ImGui::NextColumn();
+			ImGui::Columns(1);
+
+
+			ImGui::Separator();
+		}
 		ImGui::Text(statusText.c_str());
 
 		if (!p_open) {
@@ -99,6 +114,12 @@ void PlayerMods::onPlayerTick(Event* e) {
 						currController->PRI->SetMatchAdmin(isAdmin);
 						currController->PRI->bDeveloper = isDeveloper;
 						currController->bGodMode = godMode;
+						currController->PRI->MatchScore = playerScore;
+						currController->PRI->MatchShots = playerShots;
+						currController->PRI->MatchAssists = playerAssists;
+						currController->PRI->MatchGoals = playerGoals;
+						currController->PRI->MatchSaves = playerSaves;
+						currController->PRI->Ping = playerPing;
 						//currController->PRI->MatchGoals = -100;
 					}
 
@@ -180,6 +201,16 @@ void PlayerMods::onPlayerTick(Event* e) {
 					isAdmin = currController->PRI->bMatchAdmin;
 					isDeveloper = currController->PRI->bDeveloper;
 					godMode = currController->bGodMode;
+
+					playerScore = currController->PRI->MatchScore;
+					playerShots = currController->PRI->MatchShots;
+					playerAssists = currController->PRI->MatchAssists;
+					playerGoals = currController->PRI->MatchGoals;
+					playerSaves = currController->PRI->MatchSaves;
+					playerPing = currController->PRI->Ping;
+
+
+
 
 				}
 			}
