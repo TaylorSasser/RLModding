@@ -21,6 +21,7 @@ public:
 	void TextureMods::ReplaceTexture(char* TextureName, char* NewTextureURL);
 	void TextureMods::UpdateDecalTextures();
 	void TextureMods::ResetTextures();
+	void TextureMods::ResetTexture(char* TextureName);
 
 private:
 	bool bReplaceLoopers = false;

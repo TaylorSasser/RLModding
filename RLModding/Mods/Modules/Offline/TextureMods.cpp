@@ -11,7 +11,7 @@ void TextureMods::onMenuClose() {
 }
 
 void TextureMods::DrawMenu() {
-	ImGui::Begin("Texture Mods", &p_open, ImVec2(500, 550), 0.75f);
+	ImGui::Begin("Texture Mods", &p_open, ImVec2(520, 550), 0.75f);
 
 	//Testing
 	ImGui::InputText("Image URL", ACWheelsURL, IM_ARRAYSIZE(ACWheelsURL));
@@ -23,7 +23,7 @@ void TextureMods::DrawMenu() {
 
 	//Decal Mods - WIP
 	ImGui::Text("Car Decal Texture Mods");
-	ImGui::InputText("Curvature Pack Texture", curvaturePackURL, IM_ARRAYSIZE(curvaturePackURL));
+	//ImGui::InputText("Curvature Pack Texture", curvaturePackURL, IM_ARRAYSIZE(curvaturePackURL));
 	ImGui::InputText("Diffuse Texture", diffuseURL, IM_ARRAYSIZE(diffuseURL));
 	ImGui::InputText("Skin Texture", skinURL, IM_ARRAYSIZE(skinURL));
 	if (ImGui::Button("Update Textures")) {
@@ -42,7 +42,7 @@ void TextureMods::DrawMenu() {
 	}
 	ImGui::Separator();
 
-	//Reset - WIP
+	//Reset - WIP (Not working at all right now)
 	if (ImGui::Button("Reset")) {
 		bResetTextures = true;
 	}
@@ -78,51 +78,43 @@ void TextureMods::onMainMenuTick(Event *) {
 }
 
 void TextureMods::ResetTextures() {
-
+	ResetTexture(textureToReplace);
 }
 
 void TextureMods::UpdateDecalTextures() {
+	//TODO: Fix CurvaturePack Textures
 	SDK::UObject* loadSkinMAT = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring("Skin_MuscleCar_Wings.MIC_Body_MuscleCar_Wings"), SDK::UMaterialInstanceConstant::StaticClass(), true);
 	SDK::UMaterialInstanceConstant* skinMAT = (SDK::UMaterialInstanceConstant*)loadSkinMAT;
 
-	SDK::UTexture2D* curvaturePackTexture;
-	SDK::UTexture2D* diffuseTexture;
-	SDK::UTexture2D* skinTexture;
+	SDK::UTexture2D* curvaturePackTexture = NULL;
+	SDK::UTexture2D* diffuseTexture = NULL;
+	SDK::UTexture2D* skinTexture = NULL;
 
-	if (skinMAT != nullptr) {
-		for (int i = 0; i < skinMAT->TextureParameterValues.Num(); i++) {
-			std::cout << i << std::endl;
-			if (strstr(skinMAT->TextureParameterValues[i].ParameterName.GetName().c_str(), "CurvaturePack")) {
-				curvaturePackTexture = static_cast<SDK::UTexture2D*>(skinMAT->TextureParameterValues[i].ParameterValue);
-				std::cout << curvaturePackTexture->GetFullName().c_str() << std::endl;
-			}
-			if (strstr(skinMAT->TextureParameterValues[i].ParameterName.GetName().c_str(), "Diffuse")) {
-				diffuseTexture = static_cast<SDK::UTexture2D*>(skinMAT->TextureParameterValues[i].ParameterValue);
-				std::cout << diffuseTexture->GetFullName().c_str() << std::endl;
-			}
-			if (strstr(skinMAT->TextureParameterValues[i].ParameterName.GetName().c_str(), "Skin")) {
-				skinTexture = static_cast<SDK::UTexture2D*>(skinMAT->TextureParameterValues[i].ParameterValue);
-				std::cout << skinTexture->GetFullName().c_str() << std::endl;
-			}
-		}
+	SDK::UTexture2D* newCurvaturePackTexture = NULL;
+	SDK::UTexture2D* newDiffuseTexture = NULL;
+	SDK::UTexture2D* newSkinTexture = NULL;
+
+	if (curvaturePackURL != "") {
+		newCurvaturePackTexture = DownloadTexture(Utils::to_fstring(curvaturePackURL));
 	}
-	
-	//This all causes crashes
-	auto newCurvaturePackTexture = DownloadTexture(Utils::to_fstring(curvaturePackURL));
-	if (newCurvaturePackTexture != nullptr) {
-		curvaturePackTexture->Resource = newCurvaturePackTexture->Resource;
+	if (diffuseURL != "") {
+		newDiffuseTexture = DownloadTexture(Utils::to_fstring(diffuseURL));
+	}
+	if (skinURL != "") {
+		newSkinTexture = DownloadTexture(Utils::to_fstring(skinURL));
 	}
 
-	auto newDiffuseTexture = DownloadTexture(Utils::to_fstring(diffuseURL));
-	if (newDiffuseTexture != nullptr) {
-		diffuseTexture->Resource = newDiffuseTexture->Resource;
-	}
-	
-	auto newSkinTexture = DownloadTexture(Utils::to_fstring(skinURL));
-	if (newSkinTexture != nullptr) {
-		skinTexture->Resource = newSkinTexture->Resource;
-	}
-	//////////////////////////
+	//CurvaturePack crashes instantly so need a new method for this (Skin works perfectly)
+	//skinMAT->SetTextureParameterValue(SDK::FName("CurvaturePack"), newCurvaturePackTexture);
+	skinMAT->SetTextureParameterValue(SDK::FName("Diffuse"), newDiffuseTexture);
+	skinMAT->SetTextureParameterValue(SDK::FName("Skin"), newSkinTexture);
+}
+
+void TextureMods::ResetTexture(char* TextureName) {
+	SDK::UObject* loadTexture = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring(std::string(TextureName)), SDK::UTexture2D::StaticClass(), true);
+	SDK::UTexture2D* getTexture = (SDK::UTexture2D*)loadTexture;
+
+	std::cout << "Resetting Texture: " << getTexture->GetFullName().c_str() << std::endl;
 }
 
 void TextureMods::ReplaceTexture(char* TextureName, char* NewTextureURL) {
