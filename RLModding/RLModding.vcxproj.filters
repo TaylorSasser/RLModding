@@ -66,6 +66,7 @@
     <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\DribbleDrabble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4695,6 +4696,7 @@
     <ClInclude Include="Libs\ImGUI\imgui_memory_editor.h" />
     <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\CrazyItems.h" />
+    <ClInclude Include="Mods\Modules\GameModes\DribbleDrabble.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

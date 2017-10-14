@@ -164,6 +164,9 @@ public:
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
+	virtual void onBallTick(Event* e) {}
+
+	virtual void eventBallHitGround(Event* e) {}
 
 	virtual void ExportSettings(pt::ptree) {}
 	virtual void ImportSettings(pt::ptree) {}

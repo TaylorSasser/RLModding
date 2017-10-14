@@ -59,20 +59,19 @@ void PlayerMods::DrawMenu() {
 			ImGui::SetTooltip("Sets off a goal explosion underneath the player.");
 
 		ImGui::Separator();
-		if (!isBotSelected) {
 
-			ImGui::Columns(6, "mycolumns"); // 4-ways, with border
-			ImGui::InputInt("Score", &playerScore, 1, 5); ImGui::NextColumn();
-			ImGui::InputInt("Goals", &playerGoals, 1, 5); ImGui::NextColumn();
-			ImGui::InputInt("Assists", &playerAssists, 1, 5); ImGui::NextColumn();
-			ImGui::InputInt("Saves", &playerSaves, 1, 5); ImGui::NextColumn();
-			ImGui::InputInt("Shots", &playerShots, 1, 5); ImGui::NextColumn();
-			ImGui::InputInt("Ping", &playerPing, 1, 5); ImGui::NextColumn();
-			ImGui::Columns(1);
+		ImGui::Columns(6, "mycolumns"); // 4-ways, with border
+		ImGui::InputInt("Score", &playerScore, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Goals", &playerGoals, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Assists", &playerAssists, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Saves", &playerSaves, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Shots", &playerShots, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Ping", &playerPing, 1, 5); ImGui::NextColumn();
+		ImGui::Columns(1);
 
 
-			ImGui::Separator();
-		}
+		ImGui::Separator();
+		
 		ImGui::Text(statusText.c_str());
 
 		if (!p_open) {
@@ -106,6 +105,18 @@ void PlayerMods::onPlayerTick(Event* e) {
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
 						currController->bGodMode = godMode;
+						if (currController->Car) {
+							currController->Car->PRI->SetMatchAdmin(isAdmin);
+							currController->Car->PRI->bDeveloper = isDeveloper;
+							currController->bGodMode = godMode;
+							currController->Car->PRI->MatchScore = playerScore;
+							currController->Car->PRI->MatchShots = playerShots;
+							currController->Car->PRI->MatchAssists = playerAssists;
+							currController->Car->PRI->MatchGoals = playerGoals;
+							currController->Car->PRI->MatchSaves = playerSaves;
+							currController->Car->PRI->Ping = playerPing;
+						}
+
 
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
@@ -190,10 +201,20 @@ void PlayerMods::onPlayerTick(Event* e) {
 				AController* tempController = gameEventPlayers.GetByIndex(playerSelectedIndex-1);
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
-					isBotSelected = true;
-					isAdmin = false;
-					isDeveloper = false;
-					godMode = currController->bGodMode;
+					if (currController->Car) {
+						isBotSelected = true;
+						isAdmin = currController->Car->PRI->bMatchAdmin;
+						isDeveloper = currController->Car->PRI->bDeveloper;
+						godMode = currController->bGodMode;
+						playerScore = currController->Car->PRI->MatchScore;
+						playerShots = currController->Car->PRI->MatchShots;
+						playerAssists = currController->Car->PRI->MatchAssists;
+						playerGoals = currController->Car->PRI->MatchGoals;
+						playerSaves = currController->Car->PRI->MatchSaves;
+						playerPing = currController->Car->PRI->Ping;
+					}
+
+
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					isBotSelected = false;

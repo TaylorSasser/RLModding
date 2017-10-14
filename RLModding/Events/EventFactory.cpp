@@ -55,6 +55,10 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.ReplayDirector_TA.GoalScored", &ModBase::onReplayGoalScored);
 	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.BeginCameraState", &ModBase::onReplayCameraStarted);
 	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.EndCameraState", &ModBase::onReplayCameraFinished);	
+	SubscribeEvent("Function TAGame.Ball_TA.EventHitGround", &ModBase::eventBallHitGround);
+	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
+
+	
 	
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);

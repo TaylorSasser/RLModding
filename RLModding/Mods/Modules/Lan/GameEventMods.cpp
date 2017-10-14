@@ -2,6 +2,7 @@
 #include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
 #include <ctime>
+#include <chrono>
 #include "../Interfaces/Interfaces.h"
 
 GameEventMods::GameEventMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
@@ -96,7 +97,10 @@ void GameEventMods::DrawMenu() {
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
 			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
-			
+
+			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
+			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
+
 			if (ImGui::Button("Allow more than 8 players.")) {
 				allowMorePlayers = true;
 			}
@@ -270,6 +274,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 			testServerSay = false;
 		}
 
+		if (bounceBasedTime) {
+			//localGameEvent->bUnlimitedTime = true;
+			//lastBallUpdateTime = std::chrono::high_resolution_clock::now();
+		}
+
 		if (testTrainingSpawn) {
 
 			AGameEvent_TrainingEditor_TA* trainingEditor = (SDK::AGameEvent_TrainingEditor_TA*)InstanceStorage::GameEvent();
@@ -345,5 +354,49 @@ void GameEventMods::onPlayerTick(Event* e) {
 		randomSpawnPoints = false;
 
 	}
+
 }
 
+void GameEventMods::onGameTimeUpdated(Event* e) {
+	
+}
+
+void GameEventMods::eventBallHitGround(Event* e) {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+
+	if (bounceBasedTime) {
+		ABall_TA* hitBall = (SDK::ABall_TA*)e->getCallingObject();
+
+		if (hitBall && abs(hitBall->Location.Z - lastBallPos.Z) > 3 && (abs(hitBall->Location.X - lastBallPos.X) > 3 || abs(hitBall->Location.Y - lastBallPos.Y) > 3)) {
+			bouncesRemaining--;
+			localGameEvent->GameTimeRemaining = bouncesRemaining;
+			if (localGameEvent->GameTimeRemaining == 0 && localGameEvent->GetTotalScore() > 0 && localGameEvent->GetTotalScore() % 2 != 0) {
+				localGameEvent->EndGame();
+			}
+		}
+		else {
+			// Not high enough to count as bounce
+		}
+		
+
+	}
+}
+void GameEventMods::onBallTick(Event* e) {
+	ABall_TA* currBall = (SDK::ABall_TA*)e->getCallingObject();
+	if (bounceBasedTime) {
+		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		if (localGameEvent && bounceBasedTime) {
+			localGameEvent->GameTimeRemaining = bouncesRemaining;
+		}
+		//float newTime = (float)(e->getParams<SDK::ABall_TA_Tick_Params>()->DeltaTime);
+		std::chrono::high_resolution_clock::time_point currTime = std::chrono::high_resolution_clock::now();
+
+		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(currTime - lastBallUpdateTime);
+
+		if (time_span.count() > 0.1) {
+			lastBallPos = currBall->Location;
+			lastBallUpdateTime = currTime;
+		}
+		//std::cout << "Updated ball tick: " << time_span.count() << std::endl;
+	}
+}

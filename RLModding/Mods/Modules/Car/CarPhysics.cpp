@@ -139,10 +139,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 				// Check if bot or person
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-					currCar = ((AAIController_TA*)gameEventPlayers.GetByIndex(i))->Car;
+					currCar = ((AAIController_TA*)tempController)->Car;
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-					currCar = ((APlayerController_TA*)gameEventPlayers.GetByIndex(i))->PRI->Car;
+					currCar = ((APlayerController_TA*)tempController)->Car;
 
 				}
 

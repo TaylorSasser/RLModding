@@ -2,6 +2,8 @@
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
 #include <ctime>
+#include <chrono>
+
 
 class GameEventMods : public ModBase {
 public:
@@ -12,6 +14,9 @@ public:
 	void onMenuOpen() override;
 	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
+	void onGameTimeUpdated(Event* e) override;
+	void eventBallHitGround(Event* e) override;
+	void onBallTick(Event* e) override;
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
 
@@ -48,6 +53,11 @@ private:
 	int blueScore = 0;
 	int orangeScore = 0;
 	int respawnTime = 0;
+
+	bool bounceBasedTime = false;
+	int bouncesRemaining = 300;
+	FVector lastBallPos = { 0,0,0 };
+	std::chrono::high_resolution_clock::time_point lastBallUpdateTime = std::chrono::high_resolution_clock::now();
 
 	bool p_open = true;
 	// Clock 

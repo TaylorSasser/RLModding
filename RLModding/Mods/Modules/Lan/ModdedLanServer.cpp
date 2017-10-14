@@ -15,6 +15,9 @@ void ModdedLanServer::ImportSettings(pt::ptree) {}
 
 void ModdedLanServer::DrawMenu() {
 	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
+	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Sadly Psyonix has disabled some of the custom mutator settings.");
+
+
 	ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
 	ImGui::Combo("Game Mode", &defaultGameMode, gameModesCombo, IM_ARRAYSIZE(gameModesCombo));
 
@@ -52,7 +55,15 @@ void ModdedLanServer::DrawMenu() {
 		create_mutator_string();
 		Interfaces::GUI().isGUIOpen = false;
 		bTravel = true;
+	} ImGui::SameLine();
+
+	ImGui::Checkbox("Preview Launch String", &previewLaunchCommand);
+	if (previewLaunchCommand) {
+		create_mutator_string();
+		std::string command = maps[selectedMap].filename + "?game=" + str_gameMode + "playtest?listen?lan?" + str_mutators;
+		ImGui::Text(command.c_str());
 	}
+
 	if (!p_open) {
 		this->enabled = false;
 		p_open = true;

@@ -20,8 +20,12 @@ void TrainingMods::DrawMenu() {
 
 	if (InstanceStorage::GameEvent()) {
 		if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Tutorial_TA::StaticClass())) {
-			ImGui::Text("Freeplay and tutorial mode settings.");
-			ImGui::Text("To see custom training settings open this menu in Custom Training.");
+			ImGui::TextWrapped("Freeplay and tutorial mode settings.");
+			ImGui::TextWrapped("To see custom training settings open this menu in Custom Training.");
+
+			ImGui::Checkbox("Hide Boost Meter", &hideBoostMeter);
+
+
 		}
 		else if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_TrainingEditor_TA::StaticClass())) {
 			ImGui::Text("Custom Training settings.");
@@ -32,9 +36,15 @@ void TrainingMods::DrawMenu() {
 				goToNextRound = true;
 			}
 
+			/*
+			if (ImGui::Button("Spawn Blocker Bot")) {
+				blockerBot = true;
+			}
+
 			if (ImGui::Button("Randomize Shot order")) {
 				randomizeShotOrder = true;
 			}
+			*/
 		}
 		else {
 			ImGui::Text("Settings only show in one of the training modes.");
@@ -53,17 +63,79 @@ void TrainingMods::DrawMenu() {
 	ImGui::End();
 }
 
+int tickCount = 0;
+
 void TrainingMods::onPlayerTick(Event* event) {
 	if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Tutorial_TA::StaticClass())) {
 		AGameEvent_Tutorial_TA* localGameEvent = (SDK::AGameEvent_Tutorial_TA*)InstanceStorage::GameEvent();
+		//localGameEvent->bAllowSuperBoost = 1.0f;
+
+		localGameEvent->SetShowBoostMeter(!hideBoostMeter);
+
 		
 
+		if (setFreePlayColors) {
+			setFreePlayColors = false;
+
+		}
+		
 
 	}
 	else if (InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_TrainingEditor_TA::StaticClass())) {
 		AGameEvent_TrainingEditor_TA* localGameEvent = (SDK::AGameEvent_TrainingEditor_TA*)InstanceStorage::GameEvent();
 
 		if (localGameEvent) {
+			ACar_TA* oldCar = NULL;
+			if (blockerBot) {
+				FVector ballLoc = { 0,0,0 };
+				FVector playerLoc = { 2000,2000,2000 };
+				FRotator ballRot = { 0,0,0 };
+				FRotator playerRot = { 0,0,0 };
+			    //localGameEvent->SpawnBallAndStartPointAt(ballLoc, ballRot, playerLoc, playerRot);
+
+				localGameEvent->SetMaxPlayers(20);
+				localGameEvent->SetMaxTeamSize(20);
+				localGameEvent->UpdateMaxTeamSize();
+				//localGameEvent->ChooseTeam(0, InstanceStorage::PlayerController());
+
+				for (int i = 0; i < localGameEvent->Teams.Num(); i++) {
+					std::cout << "Players per team: " << localGameEvent->Teams.GetByIndex(i)->Size << std::endl;
+					localGameEvent->Teams.GetByIndex(i)->Size = 10;
+				}
+
+				AAIController_TA* myBot = localGameEvent->SpawnBot();
+				myBot->DoNothing();
+				//localGameEvent->SpawnEditorPawn(myBot, playerLoc, playerRot);
+				FVector spawnLoc = InstanceStorage::PlayerController()->Car->Location;
+				//spawnLoc.X += 50;
+				FRotator spawnRot = InstanceStorage::PlayerController()->Car->Rotation;
+				oldCar = InstanceStorage::PlayerController()->Car;
+				ACar_TA* blocker = localGameEvent->SpawnCar(InstanceStorage::PlayerController(), spawnLoc, spawnRot);
+				spawnLoc = { 81.6708f, 5118.29f, 16.5428f };
+				//spawnRot = { -120 , 0 ,-21948 };
+				oldCar->Teleport(spawnLoc, blocker->Rotation, true, true, false);
+				blockerBot = false;
+			}
+
+			tickCount++;
+			//std::cout << "Pitch: " << InstanceStorage::PlayerController()->Car->Rotation.Pitch << "Roll: " << InstanceStorage::PlayerController()->Car->Rotation.Roll << "Yaw: " << InstanceStorage::PlayerController()->Car->Rotation.Yaw << std::endl;
+			/*
+			if (oldCar && oldCar->Input.bJumped && tickCount > 10) {
+				
+				FVehicleInputs inputs = oldCar->Input;
+				inputs.bJumped = 0.0f;
+				oldCar->SetVehicleInput(inputs);
+				tickCount = 0;
+			}
+			else if (oldCar && !oldCar->Input.bJumped && tickCount > 10) {
+				FVehicleInputs inputs = oldCar->Input;
+				inputs.bJump = 1.0f;
+				oldCar->SetVehicleInput(inputs);
+				tickCount = 0;
+
+			}
+
+			*/
 			if (goToNextRound) {
 				//localGameEvent->NextRound();
 				//localGameEvent->IncrementRound(true);

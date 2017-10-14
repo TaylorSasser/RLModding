@@ -25,6 +25,12 @@ private:
 	bool randomizeShotOrder = false;
 	bool goToNextRound = false;
 
+	bool blockerBot = false;
+
+	bool setFreePlayColors = false;
+
+	bool hideBoostMeter = false;
+
 	time_t start, end;
 	bool p_open = true;
 };

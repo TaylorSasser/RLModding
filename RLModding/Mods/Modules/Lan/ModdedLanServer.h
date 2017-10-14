@@ -30,5 +30,6 @@ private:
 	std::string str_mutators = "";
 	std::string str_gameMode = "Game=TAGame.GameInfo_Soccar_TA";
 	char replaySaveName[36] = "\0";
+	bool previewLaunchCommand = false;
 };
 
