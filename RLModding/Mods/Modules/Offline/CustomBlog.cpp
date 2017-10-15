@@ -12,7 +12,7 @@ void CustomBlog::onMenuOpen() {
 void CustomBlog::onMenuClose() {
 }
 
-void CustomBlog::ExportSettings(pt::ptree root) {
+void CustomBlog::ExportSettings(pt::ptree & root) {
 	// Carousel Settings
 	root.put("Carousel_Title", std::string(carousel_title));
 	root.put("Carousel_Body", std::string(carousel_body));
@@ -35,7 +35,7 @@ void CustomBlog::ExportSettings(pt::ptree root) {
 	root.put("MOTD", std::string(motd));
 
 }
-void CustomBlog::ImportSettings(pt::ptree root) {
+void CustomBlog::ImportSettings(pt::ptree & root) {
 	// Carousel Settings
 	std::strcpy(carousel_title, root.get<std::string>("Carousel_Title", std::string(carousel_title)).c_str());
 	std::strcpy(carousel_body, root.get<std::string>("Carousel_Body", std::string(carousel_body)).c_str());

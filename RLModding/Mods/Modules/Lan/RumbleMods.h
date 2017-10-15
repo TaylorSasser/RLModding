@@ -14,8 +14,8 @@ public:
 	void RumbleMods::onCarSpawned(Event* e);
 	void RumbleMods::onGameEventRemovePlayer(Event* e);
 	void RumbleMods::onGameEventAddPlayer(Event* e);
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 	void RumbleMods::setCrazyRumbleValues();
 	void RumbleMods::resetRumbleValues();
 	void RumbleMods::setModEnabled(bool flag);

@@ -12,11 +12,11 @@ void FiftyFifty::onMenuOpen() {
 void FiftyFifty::onMenuClose() {
 }
 
-void FiftyFifty::ExportSettings(pt::ptree root) {
+void FiftyFifty::ExportSettings(pt::ptree & root) {
 	root.put("FF_demoPlayer", demoPlayer);
 	root.put("FF_Interval", interval);
 }
-void FiftyFifty::ImportSettings(pt::ptree root) {
+void FiftyFifty::ImportSettings(pt::ptree & root) {
 	demoPlayer = root.get<int>("FF_demoPlayer", 1);
 	interval = root.get<float>("FF_Interval", interval);
 }

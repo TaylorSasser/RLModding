@@ -38,10 +38,10 @@ void Drainage::onMenuClose() {
 
 }
 
-void Drainage::ExportSettings(pt::ptree root) {
+void Drainage::ExportSettings(pt::ptree & root) {
 	root.put("Drain_Interval", interval);
 }
-void Drainage::ImportSettings(pt::ptree root) {
+void Drainage::ImportSettings(pt::ptree & root) {
 	interval = root.get<float>("Drain_Interval", 0.6);
 }
 

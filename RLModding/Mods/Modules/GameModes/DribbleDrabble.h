@@ -17,8 +17,8 @@ public:
 	void eventBallHitGround(Event* e) override;
 	void onBallCarTouch(Event* e) override;
 	void onBallTick(Event* e) override;
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;

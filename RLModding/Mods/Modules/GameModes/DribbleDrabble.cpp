@@ -14,11 +14,14 @@ void DribbleDrabble::onMenuClose() {
 
 }
 
-void DribbleDrabble::ExportSettings(pt::ptree root) {
-	//root.put("Drain_Interval", interval);
+void DribbleDrabble::ExportSettings(pt::ptree & root) {
+	root.put("Dribble_RespawnOnly", respawnOnlyOnGround);
+	root.put("Dribble_AirOnly", airDribbleOnly);
 }
-void DribbleDrabble::ImportSettings(pt::ptree root) {
-	//interval = root.get<float>("Drain_Interval", 0.6);
+void DribbleDrabble::ImportSettings(pt::ptree & root) {
+	respawnOnlyOnGround = root.get<bool>("Dribble_RespawnOnly", true);
+	airDribbleOnly = root.get<bool>("Dribble_AirOnly", false);
+
 }
 
 void DribbleDrabble::DrawMenu() {

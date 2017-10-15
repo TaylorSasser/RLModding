@@ -12,13 +12,13 @@
 RumbleMods::RumbleMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 RumbleMods::RumbleMods(std::string name, int key) : ModBase(name, key) {}
 
-void RumbleMods::ExportSettings(pt::ptree root) {
+void RumbleMods::ExportSettings(pt::ptree & root) {
 	root.put("R_GiveRate", itemGiveRate);
 	root.put("R_Magnet_Range", magnetRange);
 	root.put("R_Magnet_Gravity", magnetBallGravity);
 	root.put("R_Crazy_Items_Mode", enableCrazyItems);
 }
-void RumbleMods::ImportSettings(pt::ptree root) {
+void RumbleMods::ImportSettings(pt::ptree & root) {
 	itemGiveRate = root.get<float>("R_GiveRate", 10.0);
 	magnetRange = root.get<float>("R_Magnet_Range", 1.0);
 	magnetBallGravity = root.get<float>("R_Magnet_Gravity", 1.0);

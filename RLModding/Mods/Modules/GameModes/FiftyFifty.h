@@ -12,8 +12,8 @@ public:
 	void onMenuClose() override;
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;

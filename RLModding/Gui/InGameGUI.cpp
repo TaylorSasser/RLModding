@@ -107,11 +107,24 @@ void InGameGUI::Render() {
 						}
 					}
 				}
+
 				ImGui::EndMenu();
 			}
 			
-		}		
+		}
+
+		if (ImGui::Button("Save Configuration")) {
+			Interfaces::FileHandler().ExportModSettings();
+			Sleep(100);
+		}
+		
+		if (ImGui::Button("Load Configuration")) {
+			Interfaces::FileHandler().ImportModSettings();
+			Sleep(100);
+		}
+		
 	}
+
 	ImGui::EndMainMenuBar();
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {

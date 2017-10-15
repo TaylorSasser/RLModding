@@ -19,8 +19,8 @@ public:
 	void onGameTimeUpdated(Event* e);
 	void onEventGoalScored(Event* e);
 
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;

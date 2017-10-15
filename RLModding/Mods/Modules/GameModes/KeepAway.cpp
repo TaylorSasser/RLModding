@@ -15,9 +15,15 @@ void KeepAway::onMenuClose() {
 
 }
 
-void KeepAway::ExportSettings(pt::ptree root) {
+void KeepAway::ExportSettings(pt::ptree & root) {
+	root.put("KeepAway_Interval", interval);
+	root.put("KeepAway_GoalsAddToScore", goalsAddScore);
+	root.put("KeepAway_Points", pointsToWin);
 }
-void KeepAway::ImportSettings(pt::ptree root) {
+void KeepAway::ImportSettings(pt::ptree & root) {
+	interval = root.get<float>("KeepAway_Interval", 0.6);
+	goalsAddScore = root.get<bool>("KeepAway_GoalsAddToScore", false);
+	pointsToWin = root.get<int>("KeepAway_Points", 100);
 }
 
 void KeepAway::DrawMenu() {
