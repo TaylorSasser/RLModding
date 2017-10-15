@@ -29,6 +29,8 @@ private:
 	ACar_TA* lastHitCar = NULL;
 	bool respawnOnlyOnGround = false;
 	bool airDribbleOnly = false;
+	int ballOnHalf = -1;
+	int lastTeamTouchedBall = -1;
 
 	bool isBreakoutType = false;
 

@@ -66,6 +66,7 @@
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\WorkShopMods.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
@@ -2977,6 +2978,7 @@
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Offline\TextureMods.h" />
     <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
+    <ClInclude Include="Mods\Modules\Offline\WorkShopMods.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />

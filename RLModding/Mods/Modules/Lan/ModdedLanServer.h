@@ -16,8 +16,14 @@ public:
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;
+	void eventReplayHeadersLoaded(Event* e) override;
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
+
+	struct ReplayData {
+		char* fileName;
+		char* mapName;
+	};
 
 private:
 	void travel();
@@ -29,7 +35,14 @@ private:
 	std::string mapName;
 	std::string str_mutators = "";
 	std::string str_gameMode = "Game=TAGame.GameInfo_Soccar_TA";
-	char replaySaveName[36] = "\0";
+	const char* replaySaveName[100] = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "" };
+	ReplayData replayData[100];
+	int replayCount = 0;
+	char manualReplaySaveName[36] = "\0";
+
+	int selectedReplayIndex = -1;
+	const char* trainingName[100] = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "" };
+	int selectedTrainingIndex = -1;
 	bool previewLaunchCommand = false;
 };
 

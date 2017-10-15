@@ -20,6 +20,8 @@
 #include "Modules/GameModes/InfiniteCelebration.h"
 #include "Modules/GameModes/CrazyItems.h"
 #include "Modules/GameModes/DribbleDrabble.h"
+#include "Modules/Offline/WorkShopMods.h"
+
 
 
 ModHandler::ModHandler() {
@@ -45,6 +47,8 @@ ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
+	CreateMod<WorkShopMods>("WorkShop Mods", VK_F14, Category::Other, GameState::ANY);
+
 
 #ifdef _TEST_
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);

@@ -57,7 +57,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.EndCameraState", &ModBase::onReplayCameraFinished);	
 	SubscribeEvent("Function TAGame.Ball_TA.EventHitGround", &ModBase::eventBallHitGround);
 	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
+	SubscribeEvent("Function TAGame.ReplayManager_TA.EventHeadersLoaded", &ModBase::eventReplayHeadersLoaded);
 
+	
 	
 	
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
