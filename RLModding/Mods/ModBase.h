@@ -166,6 +166,8 @@ public:
 	virtual void onGameEventRemovePlayer(Event* e) {}
 	virtual void onBallTick(Event* e) {}
 
+	virtual void eventReplayHeadersLoaded(Event* e) {}
+
 	virtual void eventBallHitGround(Event* e) {}
 
 	virtual void ExportSettings(pt::ptree&root) {}

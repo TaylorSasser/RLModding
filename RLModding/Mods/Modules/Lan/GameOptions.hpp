@@ -106,7 +106,7 @@ struct MapInfo {
 };
 
 /* Start Maps */
-static int selectedMap = 5;
+static int selectedMap = 8;
 //For ComboBox
 static const char* friendlyMapNames[] = {
 	"Advanced Tutorial",
