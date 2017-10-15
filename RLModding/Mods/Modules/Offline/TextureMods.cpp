@@ -11,12 +11,40 @@ void TextureMods::onMenuClose() {
 }
 
 void TextureMods::DrawMenu() {
-	ImGui::Begin("Texture Mods", &p_open, ImVec2(400, 300), 0.75f);
-	ImGui::InputText("Image URL", url, IM_ARRAYSIZE(url));
-	
+	ImGui::Begin("Texture Mods", &p_open, ImVec2(520, 550), 0.75f);
+
+	//Testing
+	ImGui::InputText("Image URL", ACWheelsURL, IM_ARRAYSIZE(ACWheelsURL));
 	if (ImGui::Button("Replace Loopers")) {
-		replaceLoopers = true;
+		bReplaceLoopers = true;
 		
+	}
+	ImGui::Separator();
+
+	//Decal Mods - WIP
+	ImGui::Text("Car Decal Texture Mods");
+	//ImGui::InputText("Curvature Pack Texture", curvaturePackURL, IM_ARRAYSIZE(curvaturePackURL));
+	ImGui::InputText("Diffuse Texture", diffuseURL, IM_ARRAYSIZE(diffuseURL));
+	ImGui::InputText("Skin Texture", skinURL, IM_ARRAYSIZE(skinURL));
+	if (ImGui::Button("Update Textures")) {
+		bUpdateDecalTextures = true;
+	}
+	ImGui::Separator();
+
+	//Texture Replacement - WIP
+	ImGui::Text("Replace Specific Texture (uMod semi-replacement)");
+	ImGui::InputText("Texture To Replace", textureToReplace, IM_ARRAYSIZE(textureToReplace));
+	ImGui::Text("Example: 'Skin_Octane_Flames.Pepe_Flames'", NULL);
+	ImGui::NewLine();
+	ImGui::InputText("New Replacement Texture URL", newReplacementTexture, IM_ARRAYSIZE(newReplacementTexture));
+	if (ImGui::Button("Replace Texture")) {
+		bReplaceTextures = true;
+	}
+	ImGui::Separator();
+
+	//Reset - WIP (Not working at all right now)
+	if (ImGui::Button("Reset")) {
+		bResetTextures = true;
 	}
 
 	if (!p_open) {
@@ -28,19 +56,85 @@ void TextureMods::DrawMenu() {
 }
 
 void TextureMods::onMainMenuTick(Event *) {
-	if (replaceLoopers) {
-		ReplaceLoopers(url);
-		replaceLoopers = false;
+	if (bReplaceLoopers) {
+		ReplaceLoopers(ACWheelsURL);
+		bReplaceLoopers = false;
 	}
-	
+
+	if (bUpdateDecalTextures) {
+		UpdateDecalTextures();
+		bUpdateDecalTextures = false;
+	}
+
+	if (bReplaceTextures) {
+		ReplaceTexture(textureToReplace, newReplacementTexture);
+		bReplaceTextures = false;
+	}
+
+	if (bResetTextures) {
+		ResetTextures();
+		bResetTextures = false;
+	}
+}
+
+void TextureMods::ResetTextures() {
+	ResetTexture(textureToReplace);
+}
+
+void TextureMods::UpdateDecalTextures() {
+	//TODO: Fix CurvaturePack Textures
+	SDK::UObject* loadSkinMAT = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring("Skin_MuscleCar_Wings.MIC_Body_MuscleCar_Wings"), SDK::UMaterialInstanceConstant::StaticClass(), true);
+	SDK::UMaterialInstanceConstant* skinMAT = (SDK::UMaterialInstanceConstant*)loadSkinMAT;
+
+	SDK::UTexture2D* curvaturePackTexture = NULL;
+	SDK::UTexture2D* diffuseTexture = NULL;
+	SDK::UTexture2D* skinTexture = NULL;
+
+	SDK::UTexture2D* newCurvaturePackTexture = NULL;
+	SDK::UTexture2D* newDiffuseTexture = NULL;
+	SDK::UTexture2D* newSkinTexture = NULL;
+
+	if (curvaturePackURL != "") {
+		newCurvaturePackTexture = DownloadTexture(Utils::to_fstring(curvaturePackURL));
+	}
+	if (diffuseURL != "") {
+		newDiffuseTexture = DownloadTexture(Utils::to_fstring(diffuseURL));
+	}
+	if (skinURL != "") {
+		newSkinTexture = DownloadTexture(Utils::to_fstring(skinURL));
+	}
+
+	//CurvaturePack crashes instantly so need a new method for this (Skin works perfectly)
+	//skinMAT->SetTextureParameterValue(SDK::FName("CurvaturePack"), newCurvaturePackTexture);
+	skinMAT->SetTextureParameterValue(SDK::FName("Diffuse"), newDiffuseTexture);
+	skinMAT->SetTextureParameterValue(SDK::FName("Skin"), newSkinTexture);
+}
+
+void TextureMods::ResetTexture(char* TextureName) {
+	SDK::UObject* loadTexture = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring(std::string(TextureName)), SDK::UTexture2D::StaticClass(), true);
+	SDK::UTexture2D* getTexture = (SDK::UTexture2D*)loadTexture;
+
+	std::cout << "Resetting Texture: " << getTexture->GetFullName().c_str() << std::endl;
+}
+
+void TextureMods::ReplaceTexture(char* TextureName, char* NewTextureURL) {
+	SDK::UObject* loadTexture = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring(std::string(TextureName)), SDK::UTexture2D::StaticClass(), true);
+	SDK::UTexture2D* getTexture = (SDK::UTexture2D*)loadTexture;
+	if (getTexture != nullptr) {
+		auto newTexture = DownloadTexture(Utils::to_fstring(newReplacementTexture));
+		if (newTexture != nullptr) {
+			getTexture->Resource = newTexture->Resource;
+		}
+	}
 }
 
 void TextureMods::ReplaceLoopers(char* url) {
-	SDK::UTexture2D* protoT = SDK::UTexture2D::FindObject<SDK::UTexture2D>("Texture2D WHEEL_Proto.Textures.Tech_01");	
-	if (protoT != nullptr) {
-		auto texture = DownloadTexture(Utils::to_fstring(url));
-		if (texture != nullptr) {
-			protoT->Resource = texture->Resource;
+	SDK::UObject* loadLooperTexture = SDK::UObject::StaticClass()->STATIC_DynamicLoadObject(Utils::to_fstring("WHEEL_Proto.Textures.Tech_01"), SDK::UTexture2D::StaticClass(), true);
+	SDK::UTexture2D* getLooperTexture = (SDK::UTexture2D*)loadLooperTexture;
+	if (getLooperTexture != nullptr) {
+		auto alphaTexture = DownloadTexture(Utils::to_fstring(url));
+		if (alphaTexture != nullptr) {
+			getLooperTexture->Resource = alphaTexture->Resource;
 		}
 	}
 }
