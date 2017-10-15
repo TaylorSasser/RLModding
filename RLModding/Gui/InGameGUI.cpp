@@ -121,6 +121,7 @@ void InGameGUI::Render() {
 			if (ImGui::IsItemHovered()) {
 				ImGui::SetTooltip("Save all current configurations");
 			}
+
 			if (ImGui::MenuItem("Load")) {
 				Interfaces::FileHandler().ImportModSettings();
 				Sleep(100);
@@ -128,6 +129,7 @@ void InGameGUI::Render() {
 			if (ImGui::IsItemHovered()) {
 				ImGui::SetTooltip("Load previously saved configurations");
 			}
+
 			ImGui::EndMenu();
 		}
 		
