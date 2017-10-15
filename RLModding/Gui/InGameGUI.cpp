@@ -113,15 +113,25 @@ void InGameGUI::Render() {
 			
 		}
 
-		if (ImGui::Button("Save Configuration")) {
-			Interfaces::FileHandler().ExportModSettings();
-			Sleep(100);
+		if (ImGui::BeginMenu("Config")) {
+			if (ImGui::MenuItem("Save")) {
+				Interfaces::FileHandler().ExportModSettings();
+				Sleep(100);
+			}
+			if (ImGui::IsItemHovered()) {
+				ImGui::SetTooltip("Save all current configurations");
+			}
+			if (ImGui::MenuItem("Load")) {
+				Interfaces::FileHandler().ImportModSettings();
+				Sleep(100);
+			}
+			if (ImGui::IsItemHovered()) {
+				ImGui::SetTooltip("Load previously saved configurations");
+			}
+			ImGui::EndMenu();
 		}
 		
-		if (ImGui::Button("Load Configuration")) {
-			Interfaces::FileHandler().ImportModSettings();
-			Sleep(100);
-		}
+		
 		
 	}
 
