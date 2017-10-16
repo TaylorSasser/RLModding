@@ -167,6 +167,7 @@ public:
 	virtual void onBallTick(Event* e) {}
 
 	virtual void eventReplayHeadersLoaded(Event* e) {}
+	virtual void eventAllTrainingFilesLoaded(Event* e) {}
 
 	virtual void eventBallHitGround(Event* e) {}
 

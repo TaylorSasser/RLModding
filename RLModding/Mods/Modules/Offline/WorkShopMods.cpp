@@ -24,6 +24,37 @@ void WorkShopMods::DrawMenu() {
 		getWorkShopMaps = true;
 	}
 
+	if (ImGui::Button("Find pathnode.")) {
+		//getWorkShopMaps = true;
+		USeqAct_Teleport* sequence = SDK::UObject::FindObject<SDK::USeqAct_Teleport>("SeqAct_Teleport dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.LoadLevel.SpawnLevel_21.SeqAct_Teleport_30");
+		//USeqEvent_LevelLoaded* sequence = SDK::UObject::FindObject<SDK::USeqEvent_LevelLoaded>("SeqEvent_LevelLoaded dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.LoadLevel");
+		if (sequence) {
+			std::cout << "found sequence!" << std::endl;
+		}
+		else {
+			std::cout << "NO FOUND GFNDOFJG sequence!" << std::endl;
+		}
+		ATriggerVolume* triggerVolume = SDK::UObject::FindObject<SDK::ATriggerVolume>("TriggerVolume dribblingchallenge2.TheWorld.PersistentLevel.TriggerVolume_22");
+		if (triggerVolume) {
+			std::cout << "found volume!" << std::endl;
+			//triggerVolume->ProcessActorSetVolume(InstanceStorage::PlayerController()->Car);
+			triggerVolume->Touch(InstanceStorage::PlayerController()->Car, InstanceStorage::PlayerController()->Car->CollisionComponent, triggerVolume->Location, triggerVolume->Location);
+			//std::cout << InstanceStorage::PlayerController()->Car->Teleport(triggerVolume->Location, triggerVolume->Rotation, true, true, false) << std::endl;
+			//std::cout << (InstanceStorage::PlayerController()->Car->SetLocation(triggerVolume->Location)) << std::endl;
+		}
+		else {
+			std::cout << "NO FOUND GFNDOFJG volume!" << std::endl;
+		}
+		
+		APathNode* pathNode = SDK::UObject::FindObject<SDK::APathNode>("PathNode dribblingchallenge2.TheWorld.PersistentLevel.PathNode_10");
+		if (pathNode) {
+			std::cout << "found pathnode!" << std::endl;
+		} else {
+			std::cout << "NO FOUND GFNDOFJG pathnode!" << std::endl;
+		}
+		
+	}
+
 	if (!p_open) {
 		this->enabled = false;
 		p_open = true;
@@ -33,6 +64,7 @@ void WorkShopMods::DrawMenu() {
 }
 
 void WorkShopMods::onPlayerTick(Event* event) {
+
 }
 
 void WorkShopMods::onMainMenuTick(Event* e) {

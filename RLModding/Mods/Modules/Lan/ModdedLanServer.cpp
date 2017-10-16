@@ -242,3 +242,10 @@ void ModdedLanServer::eventReplayHeadersLoaded(Event* e) {
 		}
 	}
 }
+
+void ModdedLanServer::eventAllTrainingFilesLoaded(Event* e) {
+	std::cout << "Browser loaded." << std::endl;
+	UGFxData_TrainingModeBrowser_TA* trainingBrowser = reinterpret_cast<UGFxData_TrainingModeBrowser_TA*>(e->getCallingObject());
+	
+ }
+

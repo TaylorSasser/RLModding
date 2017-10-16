@@ -17,6 +17,8 @@ public:
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;
 	void eventReplayHeadersLoaded(Event* e) override;
+	void eventAllTrainingFilesLoaded(Event* e) override;
+
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
 
