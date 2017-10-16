@@ -213,32 +213,22 @@ void ModdedLanServer::eventReplayHeadersLoaded(Event* e) {
 
 	for (int i = 0; i < replayHeaders.Num() && i < 100; i++) {
 		std::string replayFileName = replayHeaders.GetByIndex(i).Header->Filename.ToString();
-		char *fileNameCptr = new char[replayFileName.length() + 1]; // +1 to account for \0 byte
-		std::strncpy(fileNameCptr, replayFileName.c_str(), replayFileName.size());
-		fileNameCptr[replayFileName.length()] = '\0';
-
 		std::string replayMapName = replayHeaders.GetByIndex(i).Header->MapName.GetName();
-		char *mapNameCptr = new char[replayMapName.length() + 1]; // +1 to account for \0 byte
-		std::strncpy(mapNameCptr, replayMapName.c_str(), replayMapName.size());
-		mapNameCptr[replayMapName.length()] = '\0';
 
 		ReplayData newReplay;
-		newReplay.fileName = fileNameCptr;
-		newReplay.mapName = mapNameCptr;
+		newReplay.fileName = Utils::stringToCharArray(replayFileName);
+		newReplay.mapName = Utils::stringToCharArray(replayMapName);
 		replayData[i] = newReplay; 
 
 		if (replayHeaders.GetByIndex(i).Header->ReplayName.IsValid()) {
 			std::cout << replayHeaders.GetByIndex(i).Header->ReplayName.ToString() << std::endl;
 			std::string replayName = replayHeaders.GetByIndex(i).Header->ReplayName.ToString() + " | " + replayFileName;
 
-			char *cptr = new char[replayName.length() + 1]; // +1 to account for \0 byte
-			std::strncpy(cptr, replayName.c_str(), replayName.size());
-			cptr[replayName.length()] = '\0';
-			replaySaveName[i] = cptr;
+			replaySaveName[i] = Utils::stringToCharArray(replayName);
 		}
 		else {
 			std::cout << replayHeaders.GetByIndex(i).Header->Filename.ToString() << std::endl;
-			replaySaveName[i] = fileNameCptr;
+			replaySaveName[i] = replayData[i].fileName;
 		}
 	}
 }

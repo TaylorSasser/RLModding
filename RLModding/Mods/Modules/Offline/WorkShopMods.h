@@ -17,12 +17,24 @@ public:
 	void ExportSettings();
 	void ImportSettings();
 
+	struct WorkShopData {
+		char* fileName;
+		char* filePath;
+	};
+
 private:
 	bool getWorkShopMaps = false;
 	bool p_open = true;
-
+	ACar_Freeplay_TA* testCar = NULL;
+	bool testTravel = false;
+	AGameEvent_Tutorial_FreePlay_TA* currGameEvent = NULL;
+	int skipToLevel = 1;
+	char objectName[50] = "Teleport\0";
 	const char* workShopMapNames[40] = { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 	int selectedWorkShopName = -1;
+	bool testPlayOnLan = false;
+	WorkShopData workShopData[100];
+
 };
 
 
