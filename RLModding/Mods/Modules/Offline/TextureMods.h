@@ -12,18 +12,28 @@ public:
 	void onMenuOpen() override;
 	void onMenuClose() override;
 	void DrawMenu() override;
-	
 	void onMainMenuTick(Event*) override;
-
-	void ReplaceLoopers(char* url);
-	SDK::UTexture2D* DownloadTexture(SDK::FString URL);
-
-	void TextureMods::ReplaceTexture(char* TextureName, char* NewTextureURL);
+	
+	//Decal Mods
+	SDK::UMaterialInstanceConstant* TextureMods::GetCurrentSkinName();
 	void TextureMods::UpdateDecalTextures();
+
+	//Alpha Console Wheels
+	void ReplaceLoopersTexture(char* url);
+	SDK::UProduct_TA* TextureMods::GetCurrentWheelProduct();
+	void TextureMods::EquipLoopers();
+
+	//Reset
 	void TextureMods::ResetTextures();
 	void TextureMods::ResetTexture(char* TextureName);
 
+	//Tools
+	SDK::UTexture2D* DownloadTexture(char* stringURL);
+	void TextureMods::ReplaceTexture(char* TextureName, char* NewTextureURL);
+	void TextureMods::RefreshCar();
+
 private:
+	int tickCounter = 0;
 	bool bReplaceLoopers = false;
 	char ACWheelsURL[2056] = "https://i.imgur.com/SvEZpGf.png";
 	bool p_open = true;
