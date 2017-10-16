@@ -15,8 +15,8 @@ public:
 	void onCarSpawned(Event* e) override;
 	void onCarDemolished(Event * e);
 
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;

@@ -107,11 +107,36 @@ void InGameGUI::Render() {
 						}
 					}
 				}
+
 				ImGui::EndMenu();
 			}
 			
-		}		
+		}
+
+		if (ImGui::BeginMenu("Config")) {
+			if (ImGui::MenuItem("Save")) {
+				Interfaces::FileHandler().ExportModSettings();
+				Sleep(100);
+			}
+			if (ImGui::IsItemHovered()) {
+				ImGui::SetTooltip("Save all current configurations");
+			}
+
+			if (ImGui::MenuItem("Load")) {
+				Interfaces::FileHandler().ImportModSettings();
+				Sleep(100);
+			}
+			if (ImGui::IsItemHovered()) {
+				ImGui::SetTooltip("Load previously saved configurations");
+			}
+
+			ImGui::EndMenu();
+		}
+		
+		
+		
 	}
+
 	ImGui::EndMainMenuBar();
 	for (auto& mods : Interfaces::Mods()) {
 		if (mods.second->isEnabled()) {

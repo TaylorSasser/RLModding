@@ -171,8 +171,8 @@ public:
 
 	virtual void eventBallHitGround(Event* e) {}
 
-	virtual void ExportSettings(pt::ptree) {}
-	virtual void ImportSettings(pt::ptree) {}
+	virtual void ExportSettings(pt::ptree&root) {}
+	virtual void ImportSettings(pt::ptree&root) {}
 
 	virtual void onGetNextImage(Event* e) {
 		/*
