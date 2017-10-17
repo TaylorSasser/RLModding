@@ -6,6 +6,7 @@ APlayerController_Menu_TA*	InstanceStorage::m_APlayerController_Menu_TA = nullpt
 APlayerController_TA*		InstanceStorage::m_PlayerController_TA = nullptr;
 ACar_TA*					InstanceStorage::m_ACar_TA = nullptr;
 AGameEvent_TA*				InstanceStorage::m_GameEvent_TA = nullptr;
+AGameInfo_TA*				InstanceStorage::m_GameInfo_TA = nullptr;
 UOnlineGameLanServer_TA*	InstanceStorage::m_OnlineGameLanServer_TA = nullptr;
 TArray<ACar_TA*>			InstanceStorage::m_GameCars;
 UEngine*					InstanceStorage::m_Engine = nullptr;
@@ -31,6 +32,9 @@ ACar_TA* InstanceStorage::CurrentCar() {
 }
 AGameEvent_TA* InstanceStorage::GameEvent() {
 	return (AGameEvent_TA*)m_GameEvent_TA;
+}
+AGameInfo_TA* InstanceStorage::GameInfo() {
+	return (AGameInfo_TA*)m_GameInfo_TA;
 }
 UOnlineGameLanServer_TA* InstanceStorage::LanServer() {
 	return (UOnlineGameLanServer_TA*)m_OnlineGameLanServer_TA;
@@ -63,6 +67,9 @@ void InstanceStorage::SetCurrentCar(ACar_TA* car) {
 }
 void InstanceStorage::SetGameEvent(AGameEvent_TA* gameevent) {
 	m_GameEvent_TA = gameevent;
+}
+void InstanceStorage::SetGameInfo(AGameInfo_TA* gameinfo) {
+	m_GameInfo_TA = gameinfo;
 }
 void InstanceStorage::SetEngine(UEngine* engine) {
 	m_Engine = engine;

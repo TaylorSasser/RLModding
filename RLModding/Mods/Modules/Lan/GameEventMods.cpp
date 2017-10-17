@@ -130,6 +130,11 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Test Training Spawns")) {
 				testTrainingSpawn = true;
 			}
+			/*
+			if (ImGui::Button("Test Change Name")) {
+				testChangeName = true;
+			}
+			*/
 		}
 		
 		if (!p_open) {
@@ -354,7 +359,36 @@ void GameEventMods::onPlayerTick(Event* e) {
 		randomSpawnPoints = false;
 
 	}
+	if (testChangeName) {
+		std::cout << "I FOUDN HIM! " << InstanceStorage::PlayerController()->PRI->PlayerName.ToString() << std::endl;
+		//InstanceStorage::PlayerController()->PRI->SetPlayerName(FString(L"THis is meNo dfdf"));
+		//InstanceStorage::PlayerController()->PRI->SetPlayerNameSanitized(InstanceStorage::PlayerController()->PRI->PlayerName, FString(L"THis is meNo dfdf"));
+		//InstanceStorage::PlayerController()->PRI->SetPawnType(EPawnType::PT_Editor); //WORKS
+		//localPlayer->HandlePlayerNameChanged(InstanceStorage::PlayerController()->PRI);
+		
+		if (InstanceStorage::GameInfo()) {
+			APlayerStart_TA* playerStart = (APlayerStart_TA*)InstanceStorage::GameInfo()->ChoosePlayerStart(InstanceStorage::PlayerController(), 0);
+			if (playerStart) std::cout << "FOUND AGOALDSLKFJDKF" << std::endl;
+			else std::cout << "no goal" << std::endl;
+			//InstanceStorage::GameInfo()->ChangeName(InstanceStorage::PlayerController(), FString(L"Butter"), true);
+			//TArray<struct FName> disabled = InstanceStorage::GameInfo()->GetGameMode()->DisallowedMutatorCategories;
+			//for (int i = 0; i < disabled.Num(); i++) {
+			//	std::cout << disabled[i].GetName() << std::endl;
+			//}
+			//InstanceStorage::GameInfo()->InitGame(FString(L"InverseGravity"), &error);
+			//InstanceStorage::GameInfo()->ForceKickPlayer(InstanceStorage::PlayerController(), FString(L"I don't like you"));
 
+		}
+		
+		//APlayerStart_TA* playerStart = reinterpret_cast<SDK::APlayerStart_TA*>(Utils::GetInstanceOf(APlayerStart_TA::StaticClass()));
+		//if (playerStart) std::cout << "FOUND AGOALDSLKFJDKF" << std::endl;
+		//else std::cout << "no goal" << std::endl;
+		//AAIController_TA* newBot = localGameEvent->SpawnBot();
+		//InstanceStorage::PlayerController()->PRI->SetCar(newBot->Car);
+
+		testChangeName = false;
+		
+	}
 }
 
 void GameEventMods::onGameTimeUpdated(Event* e) {
@@ -399,4 +433,9 @@ void GameEventMods::onBallTick(Event* e) {
 		}
 		//std::cout << "Updated ball tick: " << time_span.count() << std::endl;
 	}
+}
+
+void GameEventMods::gameInfoInitGame(Event* e) {
+
+
 }

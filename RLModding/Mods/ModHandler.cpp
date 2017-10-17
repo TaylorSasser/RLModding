@@ -47,7 +47,7 @@ ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
-	CreateMod<WorkShopMods>("WorkShop Mods", VK_F14, Category::Other, GameState::ANY);
+	//CreateMod<WorkShopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);
 
 
 #ifdef _TEST_

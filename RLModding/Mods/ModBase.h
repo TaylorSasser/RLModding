@@ -107,6 +107,11 @@ public:
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
 		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;}
 	}
+	virtual void gameInfoInitGame(Event* event) {
+		InstanceStorage::SetGameInfo(reinterpret_cast<SDK::AGameInfo_TA*>(event->getCallingObject()));
+
+	};
+
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
 	}
@@ -173,6 +178,8 @@ public:
 
 	virtual void ExportSettings(pt::ptree&root) {}
 	virtual void ImportSettings(pt::ptree&root) {}
+
+
 
 	virtual void onGetNextImage(Event* e) {
 		/*

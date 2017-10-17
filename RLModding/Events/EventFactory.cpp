@@ -59,6 +59,7 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
 	SubscribeEvent("Function TAGame.ReplayManager_TA.EventHeadersLoaded", &ModBase::eventReplayHeadersLoaded);
 	SubscribeEvent("Function TAGame.GFxData_TrainingModeBrowser_TA.EventAllTrainingFilesLoaded", &ModBase::eventAllTrainingFilesLoaded); // only triggered for favorite and created
+	SubscribeEvent("Function TAGame.GameInfo_TA.EventGameInitialized", &ModBase::gameInfoInitGame);
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);

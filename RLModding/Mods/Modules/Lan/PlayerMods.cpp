@@ -55,6 +55,10 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Trigger Explosion")) {
 			triggerGoalExplosion = true;
 		}
+		ImGui::SameLine();
+		if (ImGui::Button("Kick")) {
+			kickPlayer = true;
+		}
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Sets off a goal explosion underneath the player.");
 
@@ -146,6 +150,9 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (doNothing) {
 							currController->DoNothing();
 						}
+
+						
+
 						// For bots use host as demoer
 						if (triggerGoalExplosion && currController->Car != NULL) {
 							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, InstanceStorage::PlayerController()->PRI);
@@ -160,7 +167,14 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (triggerGoalExplosion && currController->Car != NULL) {
 							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, currController->PRI);
 						}
-					
+						if (kickPlayer) {
+							if (InstanceStorage::GameInfo()) {
+
+								//InstanceStorage::GameInfo()->InitGame(FString(L"InverseGravity"), &error);
+								InstanceStorage::GameInfo()->ForceKickPlayer(currController, FString(L"I don't like you"));
+
+							}
+						}
 						
 					}
 				}
@@ -189,7 +203,12 @@ void PlayerMods::onPlayerTick(Event* e) {
 			statusText.append(" got the boomed.");
 			triggerGoalExplosion = false;
 		}
-
+		if (kickPlayer && playerSelectedIndex < gameEventPlayers.Num() + 1) {
+			statusText = players[playerSelectedIndex];
+			statusText.append(" was kicked.");
+			kickPlayer = false;
+		}
+		
 		// Populate checkboxes based on selected user
 		if (playerSelectedIndex != 0 && oldPlayerSelectedIndex != playerSelectedIndex) {
 			statusText = "";

@@ -17,6 +17,8 @@ public:
 	void onGameTimeUpdated(Event* e) override;
 	void eventBallHitGround(Event* e) override;
 	void onBallTick(Event* e) override;
+	void gameInfoInitGame(Event* e) override;
+
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
 
@@ -58,6 +60,10 @@ private:
 	int bouncesRemaining = 300;
 	FVector lastBallPos = { 0,0,0 };
 	std::chrono::high_resolution_clock::time_point lastBallUpdateTime = std::chrono::high_resolution_clock::now();
+
+	AGameInfo_TA* testGameInfo = NULL;
+
+	bool testChangeName = false;
 
 	bool p_open = true;
 	// Clock 

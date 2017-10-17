@@ -32,6 +32,10 @@ private:
 	int ballOnHalf = -1;
 	int lastTeamTouchedBall = -1;
 
+	ACar_TA* blueCarsToRespawn[10];
+	ACar_TA* orangeCarsToRespawn[10];
+
+
 	bool isBreakoutType = false;
 
 };

@@ -107,6 +107,8 @@ void WorkShopMods::DrawMenu() {
 
 		}
 	}
+
+
 	if (!p_open) {
 		this->enabled = false;
 		p_open = true;
@@ -119,14 +121,19 @@ void WorkShopMods::onPlayerTick(Event* event) {
 	if (testCar) {
 		//std::cout << "X: " << testCar->Location.X << " Y: " << testCar->Location.Y << " Z: " << testCar->Location.Z << std::endl;
 	}
-
+	
 	if (testTravel) {
 		
 		//InstanceStorage::PlayerController()->Car->Demolish(InstanceStorage::PlayerController()->Car);
-		currGameEvent = SDK::UObject::FindObject<SDK::AGameEvent_Tutorial_FreePlay_TA>("GameEvent_Tutorial_FreePlay_TA dribblingchallenge2.TheWorld.PersistentLevel.GameEvent_Tutorial_FreePlay_TA_1"); // Casual
+		//currGameEvent = SDK::UObject::FindObject<SDK::AGameEvent_Tutorial_FreePlay_TA>("GameEvent_Tutorial_FreePlay_TA dribblingchallenge2.TheWorld.PersistentLevel.GameEvent_Tutorial_FreePlay_TA_1"); // Casual
 		//AGameEvent_Tutorial_FreePlay_TA* gameEvent = SDK::UObject::FindObject<SDK::AGameEvent_Tutorial_FreePlay_TA>("GameEvent_Tutorial_FreePlay_TA dribblingchallenge2.TheWorld.PersistentLevel.GameEvent_Tutorial_FreePlay_TA_2"); // Timed
 
-		if (currGameEvent) {
+		
+		
+		USeqVar_Bool* timerVar = SDK::UObject::FindObject<SDK::USeqVar_Bool>("SeqVar_Bool dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.SeqVar_Bool_3");
+
+		currGameEvent = (AGameEvent_Tutorial_FreePlay_TA*)InstanceStorage::GameEvent();
+		if (currGameEvent && timerVar && timerVar->bValue == 0) {
 			std::cout << "Switching Levels..." << std::endl;
 			USeqVar_Int* varInt = SDK::UObject::FindObject<SDK::USeqVar_Int>("SeqVar_Int dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.SeqVar_Int_1");
 			if (varInt) {
@@ -246,6 +253,8 @@ void WorkShopMods::onPlayerTick(Event* event) {
 			//gameEvent->ResetGameEvent();
 			//gameEvent->SetRestartingMatch(true);
 
+		} else if (timerVar && timerVar->bValue == 1){
+			std::cout << "NICE TRY DINGUS!" << std::endl;
 		}
 		else {
 			std::cout << "NO training GAMEEVENT found!" << std::endl;
@@ -269,6 +278,8 @@ void WorkShopMods::onPlayerTick(Event* event) {
 }
 
 void WorkShopMods::onMainMenuTick(Event* e) {
+
+
 	if (testPlayOnLan) {
 		if (selectedWorkShopName != -1) {
 			std::string map = (std::string)workShopData[selectedWorkShopName].filePath + (std::string)workShopData[selectedWorkShopName].fileName;

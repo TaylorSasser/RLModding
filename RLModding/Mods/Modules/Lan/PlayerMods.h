@@ -52,6 +52,8 @@ private:
 	int oldPlayerSelectedIndex = 0;
 	int currPlayerCount = 0;
 
+	bool kickPlayer = false;
+
 	bool p_open = true;
 };
 

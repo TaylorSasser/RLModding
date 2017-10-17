@@ -16,6 +16,7 @@ public:
 	static APlayerController_Menu_TA* MenuController();
 	static ACar_TA*	CurrentCar();
 	static AGameEvent_TA* GameEvent();
+	static AGameInfo_TA* GameInfo();
 	static UOnlineGameLanServer_TA*	LanServer();
 	static TArray<ACar_TA*> GameCars();
 	static UEngine* Engine();
@@ -26,6 +27,8 @@ public:
 	static void SetMenuController(APlayerController_Menu_TA*);
 	static void SetCurrentCar(ACar_TA*);
 	static void SetGameEvent(AGameEvent_TA*);
+	static void SetGameInfo(AGameInfo_TA* gameinfo);
+
 	static void SetLanServer(UOnlineGameLanServer_TA*);
 	static void SetEngine(UEngine*);
 
@@ -37,6 +40,7 @@ private:
 	static APlayerController_TA*		m_PlayerController_TA;
 	static ACar_TA*						m_ACar_TA;
 	static AGameEvent_TA*				m_GameEvent_TA;
+	static AGameInfo_TA*				m_GameInfo_TA;
 	static UOnlineGameLanServer_TA*		m_OnlineGameLanServer_TA;
 	static UEngine*						m_Engine;
 };
