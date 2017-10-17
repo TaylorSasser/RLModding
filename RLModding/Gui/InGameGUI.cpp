@@ -119,7 +119,7 @@ void InGameGUI::Render() {
 				Sleep(100);
 			}
 			if (ImGui::IsItemHovered()) {
-				ImGui::SetTooltip("Save all current configurations");
+				ImGui::SetTooltip("Save all current game mode configurations");
 			}
 
 			if (ImGui::MenuItem("Load")) {
@@ -127,7 +127,7 @@ void InGameGUI::Render() {
 				Sleep(100);
 			}
 			if (ImGui::IsItemHovered()) {
-				ImGui::SetTooltip("Load previously saved configurations");
+				ImGui::SetTooltip("Load previously saved game mode configurations");
 			}
 
 			ImGui::EndMenu();
