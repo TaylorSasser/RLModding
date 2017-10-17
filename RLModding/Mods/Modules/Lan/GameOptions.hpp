@@ -197,8 +197,7 @@ static const char* gameModesCombo[] = {
 	"Hoops",
 	"Snow Day",
 	"FreePlay",
-	"Replay",
-	"Training Editor"
+	"Replay"
 };
 
 static int defaultTeamSize = 0;

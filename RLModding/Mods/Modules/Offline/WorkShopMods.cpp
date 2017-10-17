@@ -2,20 +2,20 @@
 #include <comdef.h>
 #include <iostream>
 
-WorkShopMods::WorkShopMods(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
+WorkshopMods::WorkshopMods(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
 
-WorkShopMods::~WorkShopMods() {}
+WorkshopMods::~WorkshopMods() {}
 
-void WorkShopMods::onMenuOpen() {
+void WorkshopMods::onMenuOpen() {
 }
 
-void WorkShopMods::onMenuClose() {
+void WorkshopMods::onMenuClose() {
 }
 
-void WorkShopMods::ExportSettings() {}
-void WorkShopMods::ImportSettings() {}
+void WorkshopMods::ExportSettings() {}
+void WorkshopMods::ImportSettings() {}
 
-void WorkShopMods::DrawMenu() {
+void WorkshopMods::DrawMenu() {
 	ImGui::Begin("WorkShop Settings", &p_open, ImVec2(400, 300), 0.75f);
 
 	ImGui::Combo("Current Maps", &selectedWorkShopName, workShopMapNames, IM_ARRAYSIZE(workShopMapNames));   
@@ -117,7 +117,7 @@ void WorkShopMods::DrawMenu() {
 	ImGui::End();
 }
 
-void WorkShopMods::onPlayerTick(Event* event) {
+void WorkshopMods::onPlayerTick(Event* event) {
 	if (testCar) {
 		//std::cout << "X: " << testCar->Location.X << " Y: " << testCar->Location.Y << " Z: " << testCar->Location.Z << std::endl;
 	}
@@ -277,7 +277,7 @@ void WorkShopMods::onPlayerTick(Event* event) {
 	}
 }
 
-void WorkShopMods::onMainMenuTick(Event* e) {
+void WorkshopMods::onMainMenuTick(Event* e) {
 
 
 	if (testPlayOnLan) {
@@ -309,7 +309,7 @@ void WorkShopMods::onMainMenuTick(Event* e) {
 	}
 }
 
-void WorkShopMods::onWorkshopDownloaded(Event* e) {
+void WorkshopMods::onWorkshopDownloaded(Event* e) {
 	std::fill_n(workShopMapNames, 40, "\0");
 
 	TArray<struct FDownloadedWorkshopData> items = e->getParams<SDK::UOnlineCommunityContentInterfaceSteamworks_OnDownloadedWorkshopData_Params>()->Items;

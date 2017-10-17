@@ -169,7 +169,8 @@ void ModdedLanServer::create_mutator_string() {
 		return;
 	}
 	if (gameModesCombo[defaultGameMode] == "Training Editor") {
-		str_mutators = "Training=" + (std::string)trainingName[selectedTrainingIndex];
+		//str_mutators = "Training=" + (std::string)trainingName[selectedTrainingIndex];
+		str_mutators = "Training=";
 		return;
 	}
 	str_mutators = "GameTags=";

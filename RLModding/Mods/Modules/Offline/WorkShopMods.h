@@ -2,11 +2,11 @@
 #include "../Mods/ModBase.h"
 #include "../Interfaces/Interfaces.h"
 #include <time.h>
-class WorkShopMods : public ModBase
+class WorkshopMods : public ModBase
 {
 public:
-	WorkShopMods(std::string name, int key, Category cat, GameState gamestate);
-	~WorkShopMods();
+	WorkshopMods(std::string name, int key, Category cat, GameState gamestate);
+	~WorkshopMods();
 
 	void onMenuOpen() override;
 	void onMenuClose() override;
