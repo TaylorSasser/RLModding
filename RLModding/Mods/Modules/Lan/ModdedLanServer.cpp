@@ -123,6 +123,8 @@ void ModdedLanServer::onMainMenuTick(Event* event) {
 	if (bTravel) {
 		travel();
 		bTravel = false;
+		p_open = false; // Hide window on travel
+
 	}
 }
 
@@ -169,8 +171,13 @@ void ModdedLanServer::create_mutator_string() {
 		return;
 	}
 	if (gameModesCombo[defaultGameMode] == "Training Editor") {
-		//str_mutators = "Training=" + (std::string)trainingName[selectedTrainingIndex];
-		str_mutators = "Training=";
+		if (selectedTrainingIndex != -1) {
+			str_mutators = "Training=" + (std::string)trainingName[selectedTrainingIndex];
+		}
+		else {
+			str_mutators = "Training=";
+
+		}
 		return;
 	}
 	str_mutators = "GameTags=";

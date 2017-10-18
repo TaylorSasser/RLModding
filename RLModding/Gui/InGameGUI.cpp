@@ -133,7 +133,11 @@ void InGameGUI::Render() {
 			ImGui::EndMenu();
 		}
 		
-		
+		if (ImGui::BeginMenu("Help")) {
+
+			ImGui::EndMenu();
+
+		}
 		
 	}
 

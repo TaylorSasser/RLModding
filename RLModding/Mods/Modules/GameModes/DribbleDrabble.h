@@ -35,7 +35,7 @@ private:
 	ACar_TA* blueCarsToRespawn[10];
 	ACar_TA* orangeCarsToRespawn[10];
 
-
+	bool isBasic = true;
 	bool isBreakoutType = false;
 
 };

@@ -14,6 +14,7 @@ public:
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
 	void onCarDemolished(Event * e);
+	void Drainage::initMod();
 
 	void ExportSettings(pt::ptree&);
 	void ImportSettings(pt::ptree&);

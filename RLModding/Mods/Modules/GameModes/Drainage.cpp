@@ -58,6 +58,7 @@ void Drainage::DrawMenu() {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled Drainage");
+				initMod();
 			}
 
 			else {
@@ -79,6 +80,40 @@ void Drainage::DrawMenu() {
 	ImGui::End();
 }
 
+void Drainage::initMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	
+	if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			AController* tempController = gameEventPlayers.GetByIndex(i);
+
+			// Check if bot or person
+			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->RechargeRate = -1 * interval;
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+					currController->Car->BoostComponent->SetUnlimitedBoost(false);
+				}
+
+			}
+			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->RechargeRate = -1 * interval;
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+					currController->Car->BoostComponent->SetUnlimitedBoost(false);
+
+				}
+			}
+		}
+	}
+}
+
 void Drainage::onPlayerTick(Event* event) {
 	if (bStarted) {
 		srand(time(NULL));
@@ -86,29 +121,27 @@ void Drainage::onPlayerTick(Event* event) {
 
 		if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
 			TArray< class AController* > gameEventPlayers = localGameEvent->Players;
-
 			for (int i = 0; i < gameEventPlayers.Num(); i++) {
 
 				AController* tempController = gameEventPlayers.GetByIndex(i);
-
 
 				// Check if bot or person
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->RechargeRate = -1 * interval;
+						currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 					}
-
 
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->RechargeRate = -1 * interval;
+						currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+
 					}
 				}
 

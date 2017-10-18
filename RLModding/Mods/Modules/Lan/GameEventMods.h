@@ -64,6 +64,8 @@ private:
 	AGameInfo_TA* testGameInfo = NULL;
 
 	bool testChangeName = false;
+	bool testArenaColor = false;
+	float arenaCol[4] = { 0.0f,0.0f,0.0f,1.0f };
 
 	bool p_open = true;
 	// Clock 

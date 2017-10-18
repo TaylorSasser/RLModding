@@ -103,7 +103,7 @@ void PlayerMods::onPlayerTick(Event* e) {
 
 				AController* tempController = gameEventPlayers.GetByIndex(i);
 
-				if (updatePlayer) {
+				if (updatePlayer && tempController) {
 
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
@@ -139,7 +139,7 @@ void PlayerMods::onPlayerTick(Event* e) {
 					}
 
 				}
-				else {
+				else if (tempController) {
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
@@ -151,7 +151,6 @@ void PlayerMods::onPlayerTick(Event* e) {
 							currController->DoNothing();
 						}
 
-						
 
 						// For bots use host as demoer
 						if (triggerGoalExplosion && currController->Car != NULL) {

@@ -27,9 +27,22 @@ void FiftyFifty::DrawMenu() {
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Interval for below settings (in seconds)");
 
+	ImGui::RadioButton("All Players", &teamToDemo, -1);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, all players can be chosen.");
+	ImGui::SameLine();
+	ImGui::RadioButton("Blue Team", &teamToDemo, 0);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, only blue payers will be selected.");
+	ImGui::SameLine();
+	ImGui::RadioButton("Orange Team", &teamToDemo, 1);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, only orange players will be selected");
+
 	ImGui::RadioButton("Demolish Player", &demoPlayer, 1);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("If checked, a player will be demolished");
+	ImGui::SameLine();
 	ImGui::RadioButton("Ball Explosion", &demoPlayer, 0);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("If checked, a ball explosion will go off under the player");
@@ -65,9 +78,9 @@ void FiftyFifty::DrawMenu() {
 void FiftyFifty::onPlayerTick(Event* event) {
 	if (bStarted) {
 		srand(time(NULL));
-		APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(event->getCallingObject());
+		APlayerController_TA* controller = InstanceStorage::PlayerController();
 		if (controller) {
-			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(controller->GetGameEvent());
+			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(InstanceStorage::GameEvent());
 
 			// Add check for game event
 			if (localGameEvent) {
@@ -92,44 +105,60 @@ void FiftyFifty::onPlayerTick(Event* event) {
 
 					double elapsed = difftime(end, start);
 					if (elapsed >= interval && localGameEvent->Players.Num() > 1) {
-						TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
 						srand(time(NULL));
-						if (localGameEvent->Teams.IsValidIndex(0)) {
-							int team_idx = rand() % gameTeams.Num();
-							srand(time(NULL));
-							if (gameTeams.IsValidIndex(team_idx)) {
-								int player_idx = rand() % gameTeams[team_idx]->Members.Num();
-								TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
-								if (gameTeams.IsValidIndex(team_idx) && players.IsValidIndex(player_idx)) {
+						int player_idx = rand() % localGameEvent->Players.Num();
+						if (localGameEvent->Players.IsValidIndex(player_idx)) {
+							TArray<class AController*> players = localGameEvent->Players;
+							if (players.IsValidIndex(player_idx)) {
+
+
+								AController* tempController = players.GetByIndex(player_idx);
+								if (teamToDemo == -1 || teamToDemo == tempController->GetTeamNum()) {
+
+									ACar_TA* carToImpact = NULL;
+									// Check if bot or person
+									if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+										AAIController_TA* currController = (AAIController_TA*)tempController;
+										carToImpact = currController->Car;
+									}
+									else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+										APlayerController_TA* currController = (APlayerController_TA*)tempController;
+										carToImpact = currController->Car;
+									}
+
 									if (demoPlayer) {
-										if (controller && controller->Car && gameTeams[team_idx]->Members[player_idx]->Car)
-											gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+										if (controller && controller->Car && carToImpact)
+											carToImpact->Demolish(controller->Car);
 									}
 									else {
-										if (localGameEvent->GameBalls.GetByIndex(1) && gameTeams[team_idx]->Members[player_idx]->Car) {
-											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+										if (localGameEvent->GameBalls.GetByIndex(1) && carToImpact) {
+											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), carToImpact->Location, carToImpact->PRI);
 										}
 									}
-										
+									checkTime = true;
 								}
 
-								checkTime = true;
 							}
+
 						}
+						
 					}
 					// Account for a single user being alone in a game
 					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
-						if (demoPlayer) {
-							if (controller->Car) {
-								controller->Car->Demolish(controller->Car);
+						if (teamToDemo == -1 || teamToDemo == controller->GetTeamNum()) {
+
+							if (demoPlayer) {
+								if (controller->Car) {
+									controller->Car->Demolish(controller->Car);
+								}
 							}
-						}
-						else {
-							if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
-								localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+							else {
+								if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
+									localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+								}
 							}
+							checkTime = true;
 						}
-						checkTime = true;
 
 					}
 				}

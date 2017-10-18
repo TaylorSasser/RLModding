@@ -135,6 +135,13 @@ void GameEventMods::DrawMenu() {
 				testChangeName = true;
 			}
 			*/
+			ImGui::ColorEdit4("Arena Color Test", (float*)&arenaCol);
+
+			if (ImGui::Button("Change Arena Color")) {
+				testArenaColor = true;
+			}
+				
+
 		}
 		
 		if (!p_open) {
@@ -358,6 +365,26 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 		randomSpawnPoints = false;
 
+	}
+	if (testArenaColor) {
+		ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
+		TArray< struct ATeam_TA* > gameTeams = localGameEvent->Teams;
+		for (int j = 0; j < gameTeams.Num(); j++)
+		{
+			SDK::TArray< struct SDK::FLinearColor > colors = gameTeams.GetByIndex(j)->CarColorSet->Colors;
+			for (int k = 0; k < colors.Num(); k++)
+			{
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).R = arenaCol[0];
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).G = arenaCol[1];
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).B = arenaCol[2];
+			}
+			gameTeams.GetByIndex(j)->TeamColor.R = arenaCol[0];
+			gameTeams.GetByIndex(j)->TeamColor.G = arenaCol[1];
+			gameTeams.GetByIndex(j)->TeamColor.B = arenaCol[2];
+			gameTeams.GetByIndex(j)->SetColorList(colors, true);
+
+		}
+		testArenaColor = false;
 	}
 	if (testChangeName) {
 		std::cout << "I FOUDN HIM! " << InstanceStorage::PlayerController()->PRI->PlayerName.ToString() << std::endl;

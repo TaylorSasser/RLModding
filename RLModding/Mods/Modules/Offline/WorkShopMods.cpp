@@ -121,15 +121,14 @@ void WorkshopMods::onPlayerTick(Event* event) {
 	if (testCar) {
 		//std::cout << "X: " << testCar->Location.X << " Y: " << testCar->Location.Y << " Z: " << testCar->Location.Z << std::endl;
 	}
-	
+			USeqVar_Bool* timerVar = SDK::UObject::FindObject<SDK::USeqVar_Bool>("SeqVar_Bool dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.SeqVar_Bool_3");
+
 	if (testTravel) {
 		
 		//InstanceStorage::PlayerController()->Car->Demolish(InstanceStorage::PlayerController()->Car);
 		//currGameEvent = SDK::UObject::FindObject<SDK::AGameEvent_Tutorial_FreePlay_TA>("GameEvent_Tutorial_FreePlay_TA dribblingchallenge2.TheWorld.PersistentLevel.GameEvent_Tutorial_FreePlay_TA_1"); // Casual
 		//AGameEvent_Tutorial_FreePlay_TA* gameEvent = SDK::UObject::FindObject<SDK::AGameEvent_Tutorial_FreePlay_TA>("GameEvent_Tutorial_FreePlay_TA dribblingchallenge2.TheWorld.PersistentLevel.GameEvent_Tutorial_FreePlay_TA_2"); // Timed
 
-		
-		
 		USeqVar_Bool* timerVar = SDK::UObject::FindObject<SDK::USeqVar_Bool>("SeqVar_Bool dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.SeqVar_Bool_3");
 
 		currGameEvent = (AGameEvent_Tutorial_FreePlay_TA*)InstanceStorage::GameEvent();

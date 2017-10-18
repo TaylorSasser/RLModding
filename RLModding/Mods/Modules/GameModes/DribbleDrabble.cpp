@@ -32,6 +32,12 @@ void DribbleDrabble::DrawMenu() {
 
 	ImGui::TextWrapped("Don't let the ball touch the ground when you enter the opponents half or you will be respawned.");
 
+	if (isBasic) {
+
+	}
+	else {
+
+	}
 
 	ImGui::Checkbox("Don't respawn players till they touch the ground.", &respawnOnlyOnGround);
 	ImGui::Checkbox("Air dribbles only.", &airDribbleOnly);
@@ -84,37 +90,41 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 
 		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 		
-		if (localGameEvent && currentTeamHasPossesion != -1) {
-			//ABall_TA* hitBall = reinterpret_cast<SDK::ABall_TA*>(e->getCallingObject());
-			FVector hitLoc = (SDK::FVector)(e->getParams<SDK::ABall_TA_EventHitGround_Params>()->HitLoc);
-			// if hitLoc.X > 0 it is orange side
-			if (currentTeamHasPossesion == 0 && hitLoc.X > 0 && lastHitCar) {
-				std::cout << "Blue Player should respawn." << std::endl;
-				if (!respawnOnlyOnGround) {
-					lastHitCar->RespawnInPlace();
-				}
-				else {
-					lastHitCar->SetDemolishOnOpposingGround(true, NULL);
-				}
-				currentTeamHasPossesion = -1;
 
-			} else if (currentTeamHasPossesion == 1 && hitLoc.X < 0 && lastHitCar) {
-				std::cout << "Orange Player should respawn." << std::endl;
-				if (!respawnOnlyOnGround) {
-					lastHitCar->RespawnInPlace();
-				}
-				else {
-					lastHitCar->SetDemolishOnOpposingGround(true, NULL);
-				}
-				currentTeamHasPossesion = -1;
+		if (isBasic) {
+			if (localGameEvent && currentTeamHasPossesion != -1) {
+				//ABall_TA* hitBall = reinterpret_cast<SDK::ABall_TA*>(e->getCallingObject());
+				FVector hitLoc = (SDK::FVector)(e->getParams<SDK::ABall_TA_EventHitGround_Params>()->HitLoc);
+				// if hitLoc.X > 0 it is orange side
+				if (currentTeamHasPossesion == 0 && hitLoc.X > 0 && lastHitCar) {
+					std::cout << "Blue Player should respawn." << std::endl;
+					if (!respawnOnlyOnGround) {
+						lastHitCar->RespawnInPlace();
+					}
+					else {
+						lastHitCar->SetDemolishOnOpposingGround(true, NULL);
+					}
+					currentTeamHasPossesion = -1;
 
+				}
+				else if (currentTeamHasPossesion == 1 && hitLoc.X < 0 && lastHitCar) {
+					std::cout << "Orange Player should respawn." << std::endl;
+					if (!respawnOnlyOnGround) {
+						lastHitCar->RespawnInPlace();
+					}
+					else {
+						lastHitCar->SetDemolishOnOpposingGround(true, NULL);
+					}
+					currentTeamHasPossesion = -1;
+
+				}
+				// if hitLoc.X < 0 it blue side
+				//std::cout << "Hit X: " << hitLoc.X << "Hit X: " << hitLoc.Y << std::endl;
+				//bool shouldRespawn = localGameEvent->OnMyHalf(hitLoc, currentTeamHasPossesion);
+				//if (shouldRespawn) {
+				//	std::cout << "Is onb same sude as kast hit" << std::endl;
+				//}
 			}
-			// if hitLoc.X < 0 it blue side
-			//std::cout << "Hit X: " << hitLoc.X << "Hit X: " << hitLoc.Y << std::endl;
-			//bool shouldRespawn = localGameEvent->OnMyHalf(hitLoc, currentTeamHasPossesion);
-			//if (shouldRespawn) {
-			//	std::cout << "Is onb same sude as kast hit" << std::endl;
-			//}
 		}
 	}
 }
@@ -123,16 +133,20 @@ void DribbleDrabble::onBallCarTouch(Event* e) {
 	if (bStarted) {
 
 		lastHitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::ABall_TA_OnCarTouch_Params>()->HitCar);
-		if (lastHitCar) {
-			if (lastHitCar->GetTeamIndex() == 0) {
-				//std::cout << "BLUE TOUCHED LAST" << std::endl;
-				currentTeamHasPossesion = 0;
 
-			}
-			if (lastHitCar->GetTeamIndex() == 1) {
-				//std::cout << "ORANGE TOUCHED LAST" << std::endl;
-				currentTeamHasPossesion = 1;
+		if (isBasic) {
 
+			if (lastHitCar) {
+				if (lastHitCar->GetTeamIndex() == 0) {
+					//std::cout << "BLUE TOUCHED LAST" << std::endl;
+					currentTeamHasPossesion = 0;
+
+				}
+				if (lastHitCar->GetTeamIndex() == 1) {
+					//std::cout << "ORANGE TOUCHED LAST" << std::endl;
+					currentTeamHasPossesion = 1;
+
+				}
 			}
 		}
 	}
@@ -141,21 +155,23 @@ void DribbleDrabble::onBallCarTouch(Event* e) {
 void DribbleDrabble::onPlayerTick(Event* event) {
 	if (bStarted) {
 		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		if (isBasic) {
 
-		if (localGameEvent && airDribbleOnly) {
-			ACar_TA* currCar = NULL;
-			for (int i = 0; i < localGameEvent->Players.Num(); i++) {
-				AController* tempController = localGameEvent->Players.GetByIndex(i);
-				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-					currCar = ((AAIController_TA*)tempController)->Car;
-					if(currCar)
-						currCar->SetDemolishOnOpposingGround(true, NULL);
+			if (localGameEvent && airDribbleOnly) {
+				ACar_TA* currCar = NULL;
+				for (int i = 0; i < localGameEvent->Players.Num(); i++) {
+					AController* tempController = localGameEvent->Players.GetByIndex(i);
+					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+						currCar = ((AAIController_TA*)tempController)->Car;
+						if (currCar)
+							currCar->SetDemolishOnOpposingGround(true, NULL);
 
-				}
-				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-					currCar = ((APlayerController_TA*)tempController)->Car;
-					if(currCar)
-						currCar->SetDemolishOnOpposingGround(true, NULL);
+					}
+					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+						currCar = ((APlayerController_TA*)tempController)->Car;
+						if (currCar)
+							currCar->SetDemolishOnOpposingGround(true, NULL);
+					}
 				}
 			}
 		}
@@ -172,11 +188,14 @@ void DribbleDrabble::onPlayerTick(Event* event) {
 
 void DribbleDrabble::onCarSpawned(Event* e) {
 	if (bStarted) {
-		if (airDribbleOnly) {
-			ACar_TA* currCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::AGameEvent_TA_OnCarSpawned_Params>()->NewCar);
-			if(currCar)
-				currCar->SetDemolishOnOpposingGround(true, NULL);
+		if (isBasic) {
 
+			if (airDribbleOnly) {
+				ACar_TA* currCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::AGameEvent_TA_OnCarSpawned_Params>()->NewCar);
+				if (currCar)
+					currCar->SetDemolishOnOpposingGround(true, NULL);
+
+			}
 		}
 	}
 }

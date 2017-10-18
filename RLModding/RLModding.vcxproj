@@ -51,6 +51,7 @@
     <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\DribbleDrabble.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Infected.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
@@ -2961,6 +2962,7 @@
     <ClInclude Include="Mods\Modules\GameModes\CrazyItems.h" />
     <ClInclude Include="Mods\Modules\GameModes\DribbleDrabble.h" />
     <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Infected.h" />
     <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
