@@ -58,7 +58,7 @@ void Drainage::DrawMenu() {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled Drainage");
-				initMod();
+				loadMod();
 			}
 
 			else {
@@ -70,6 +70,7 @@ void Drainage::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled Drainage");
 			bStarted = false;
+			unloadMod();
 		}
 	}
 	if (!p_open) {
@@ -80,7 +81,40 @@ void Drainage::DrawMenu() {
 	ImGui::End();
 }
 
-void Drainage::initMod() {
+void Drainage::unloadMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+
+	if (localGameEvent) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			AController* tempController = gameEventPlayers.GetByIndex(i);
+
+			// Check if bot or person
+			if (tempController && tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(0);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = false;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = false;
+				}
+
+			}
+			else if (tempController && tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(0);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = false;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = false;
+
+				}
+			}
+		}
+	}
+}
+
+
+void Drainage::loadMod() {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	
 	if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
@@ -93,7 +127,7 @@ void Drainage::initMod() {
 			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 				AAIController_TA* currController = (AAIController_TA*)tempController;
 				if (currController->Car && currController->Car->BoostComponent) {
-					currController->Car->BoostComponent->RechargeRate = -1 * interval;
+					currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
 					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 					currController->Car->BoostComponent->SetUnlimitedBoost(false);
@@ -103,7 +137,7 @@ void Drainage::initMod() {
 			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 				APlayerController_TA* currController = (APlayerController_TA*)tempController;
 				if (currController->Car && currController->Car->BoostComponent) {
-					currController->Car->BoostComponent->RechargeRate = -1 * interval;
+					currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
 					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 					currController->Car->BoostComponent->SetUnlimitedBoost(false);
@@ -129,7 +163,12 @@ void Drainage::onPlayerTick(Event* event) {
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						if (localGameEvent->ReplicatedStateName.GetName().compare("Countdown") == 0) {
+							currController->Car->BoostComponent->SetRechargeRate(0);
+						}
+						else {
+							currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						}
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 					}
@@ -138,7 +177,12 @@ void Drainage::onPlayerTick(Event* event) {
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						if (localGameEvent->ReplicatedStateName.GetName().compare("Countdown") == 0) {
+							currController->Car->BoostComponent->SetRechargeRate(0);
+						}
+						else {
+							currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						}
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 

@@ -488,7 +488,10 @@ public:
 class UTextBuffer : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x24];                                      // 0x003C(0x0024) MISSED OFFSET
+	unsigned char                                      FOutputDevice[0x10];
+	int												   Pos;
+	int												   Top;
+	FString											   Text;
 
 	static UClass* StaticClass()
 	{
@@ -799,11 +802,21 @@ public:
 class UStruct : public UField
 {
 public:
-	char                                               UnknownData00[0x08];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	UTextBuffer*									   ScriptText;
+	UTextBuffer*									   CPPText;
 	class UField*                                      SuperField;                                               // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	class UField*                                      Children;                                                 // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	unsigned long                                      PropertySize;                                             // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	char                                               UnknownData01[0x30];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
+	TArray<unsigned char>							   Script;
+	int												   TextPos;
+	int												   Line;
+	int												   MinAlignment;
+	class UProperty*								   RefLink;
+	class UProperty*								   PropertyLink;
+	class UProperty*								   ConfigLink;
+	class UProperty*								   ConstructorLink;
+	class UProperty*								   ComponentPropertyLink;
+	class UProperty*								   TransientPropertyLink;
 
 	static UClass* StaticClass()
 	{
@@ -819,7 +832,9 @@ public:
 class UScriptStruct : public UStruct
 {
 public:
-	unsigned char                                      UnknownData00[0x1C];                                      // 0x008C(0x001C) MISSED OFFSET
+	FString											   DefaultStructPropText;
+	int												   StructFlags;
+	TArray<unsigned char>							   StructDefaults;
 
 	static UClass* StaticClass()
 	{
