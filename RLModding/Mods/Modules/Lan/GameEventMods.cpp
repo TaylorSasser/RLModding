@@ -126,6 +126,7 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Test Server Say")) {
 				testServerSay = true;
 			}
+			ImGui::SameLine();
 
 			if (ImGui::Button("Test Training Spawns")) {
 				testTrainingSpawn = true;
@@ -135,6 +136,9 @@ void GameEventMods::DrawMenu() {
 				testChangeName = true;
 			}
 			*/
+			if (ImGui::Button("Hide Game Ball")) {
+				hideGameBall = true;
+			}
 			ImGui::ColorEdit4("Arena Color Test", (float*)&arenaCol);
 
 			if (ImGui::Button("Change Arena Color")) {
@@ -366,6 +370,17 @@ void GameEventMods::onPlayerTick(Event* e) {
 		randomSpawnPoints = false;
 
 	}
+	if (hideGameBall) {
+		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
+
+		for (int i = 0; i < gameBalls.Num(); i++) {
+			if (gameBalls.IsValidIndex(i) && gameBalls[i] && !gameBalls[i]->bDeleteMe) {
+				gameBalls[i]->SetHidden(true);
+			}
+			
+		}
+	}
+
 	if (testArenaColor) {
 		ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
 		TArray< struct ATeam_TA* > gameTeams = localGameEvent->Teams;

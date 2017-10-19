@@ -67,6 +67,8 @@ private:
 	bool testArenaColor = false;
 	float arenaCol[4] = { 0.0f,0.0f,0.0f,1.0f };
 
+	bool hideGameBall = false;
+
 	bool p_open = true;
 	// Clock 
 	std::clock_t start;
