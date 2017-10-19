@@ -32,15 +32,25 @@ void DribbleDrabble::DrawMenu() {
 
 	ImGui::TextWrapped("Don't let the ball touch the ground when you enter the opponents half or you will be respawned.");
 
-	if (isBasic) {
+	ImGui::RadioButton("Basic", &settingsOption, 0);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, basic game mode will be used.");
+	ImGui::SameLine();
+	ImGui::RadioButton("Advanced", &settingsOption, 1);
+	if (ImGui::IsItemHovered())
+		ImGui::SetTooltip("If checked, advanced game mode will be used.");
 
+	isBasic = settingsOption == 0;
+
+	if (isBasic) {
+		ImGui::Checkbox("Don't respawn players till they touch the ground.", &respawnOnlyOnGround);
+		ImGui::Checkbox("Air dribbles only.", &airDribbleOnly);
 	}
 	else {
 
 	}
 
-	ImGui::Checkbox("Don't respawn players till they touch the ground.", &respawnOnlyOnGround);
-	ImGui::Checkbox("Air dribbles only.", &airDribbleOnly);
+	
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
@@ -89,12 +99,12 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 	if (bStarted) {
 
 		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-		
+		FVector hitLoc = (SDK::FVector)(e->getParams<SDK::ABall_TA_EventHitGround_Params>()->HitLoc);
+
 
 		if (isBasic) {
 			if (localGameEvent && currentTeamHasPossesion != -1) {
 				//ABall_TA* hitBall = reinterpret_cast<SDK::ABall_TA*>(e->getCallingObject());
-				FVector hitLoc = (SDK::FVector)(e->getParams<SDK::ABall_TA_EventHitGround_Params>()->HitLoc);
 				// if hitLoc.X > 0 it is orange side
 				if (currentTeamHasPossesion == 0 && hitLoc.X > 0 && lastHitCar) {
 					std::cout << "Blue Player should respawn." << std::endl;
@@ -126,6 +136,16 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 				//}
 			}
 		}
+		else if (!isBasic) { // Advanced mode
+			// if hitLoc.X > 0 it is orange side
+			if (hitLoc.X > 0) {
+
+			}
+			else if (hitLoc.X < 0) {
+
+			}
+		}
+
 	}
 }
 
@@ -148,6 +168,9 @@ void DribbleDrabble::onBallCarTouch(Event* e) {
 
 				}
 			}
+		}
+		else if (!isBasic) { // Advanced mode
+
 		}
 	}
 }
@@ -175,6 +198,9 @@ void DribbleDrabble::onPlayerTick(Event* event) {
 				}
 			}
 		}
+		else if (!isBasic) { // Advanced mode
+
+		}
 	}
 	else {
 		if (InstanceStorage::GameEvent() && InstanceStorage::GameEvent()->IsA(SDK::AGameEvent_Breakout_TA::StaticClass())) {
@@ -197,6 +223,9 @@ void DribbleDrabble::onCarSpawned(Event* e) {
 
 			}
 		}
+		else if (!isBasic) { // Advanced mode
+
+		}
 	}
 }
 
@@ -216,5 +245,15 @@ void DribbleDrabble::onBallTick(Event* e) {
 			currBall->SetDamageIndex(1);
 			//std::cout << "Damage index: " << currBall->LastTeamTouch << " | Y LOC: " << currBall->Location.Y << std::endl;
 		}
+	}
+}
+
+// On each car tick update demolish list based on side they are on
+void DribbleDrabble::onCarTick(Event* event) {
+	if (isBasic) {
+
+	}
+	else if (!isBasic) { // Advanced mode
+
 	}
 }

@@ -5432,223 +5432,6 @@ void ADebugCameraController::PrimarySelect(const struct FVector& HitLoc, const s
 }
 
 
-// Function GameFramework.MobileInputZone.AddKismetEventHandler
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class USeqEvent_MobileZoneBase* NewHandler                     (CPF_Parm)
-
-void UMobileInputZone::AddKismetEventHandler(class USeqEvent_MobileZoneBase* NewHandler)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.AddKismetEventHandler");
-
-	UMobileInputZone_AddKismetEventHandler_Params params;
-	params.NewHandler = NewHandler;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.MobileInputZone.OnPostDrawZone
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// class UCanvas*                 Canvas                         (CPF_Parm)
-
-void UMobileInputZone::OnPostDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPostDrawZone");
-
-	UMobileInputZone_OnPostDrawZone_Params params;
-	params.Zone = Zone;
-	params.Canvas = Canvas;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.MobileInputZone.OnPreDrawZone
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// class UCanvas*                 Canvas                         (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMobileInputZone::OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPreDrawZone");
-
-	UMobileInputZone_OnPreDrawZone_Params params;
-	params.Zone = Zone;
-	params.Canvas = Canvas;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.MobileInputZone.OnProcessSlide
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
-// int                            SlideValue                     (CPF_Parm)
-// struct FVector2D               ViewportSize                   (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessSlide");
-
-	UMobileInputZone_OnProcessSlide_Params params;
-	params.Zone = Zone;
-	params.EventType = EventType;
-	params.SlideValue = SlideValue;
-	params.ViewportSize = ViewportSize;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.MobileInputZone.OnDoubleTapDelegate
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
-// struct FVector2D               TouchLocation                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnDoubleTapDelegate");
-
-	UMobileInputZone_OnDoubleTapDelegate_Params params;
-	params.Zone = Zone;
-	params.EventType = EventType;
-	params.TouchLocation = TouchLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.MobileInputZone.OnTapDelegate
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
-// struct FVector2D               TouchLocation                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnTapDelegate");
-
-	UMobileInputZone_OnTapDelegate_Params params;
-	params.Zone = Zone;
-	params.EventType = EventType;
-	params.TouchLocation = TouchLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.MobileInputZone.OnProcessInputDelegate
-// (FUNC_Public, FUNC_Delegate)
-// Parameters:
-// class UMobileInputZone*        Zone                           (CPF_Parm)
-// float                          DeltaTime                      (CPF_Parm)
-// int                            Handle                         (CPF_Parm)
-// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
-// struct FVector2D               TouchLocation                  (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool UMobileInputZone::OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessInputDelegate");
-
-	UMobileInputZone_OnProcessInputDelegate_Params params;
-	params.Zone = Zone;
-	params.DeltaTime = DeltaTime;
-	params.Handle = Handle;
-	params.EventType = EventType;
-	params.TouchLocation = TouchLocation;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.MobileInputZone.DeactivateZone
-// (FUNC_Native, FUNC_Public)
-
-void UMobileInputZone::DeactivateZone()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.DeactivateZone");
-
-	UMobileInputZone_DeactivateZone_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.MobileInputZone.ActivateZone
-// (FUNC_Native, FUNC_Public)
-
-void UMobileInputZone::ActivateZone()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.ActivateZone");
-
-	UMobileInputZone_ActivateZone_Params params;
-
-	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function GameFramework.MobileHUD.RenderKismetHud
 // (FUNC_Defined, FUNC_Public)
 
@@ -5909,6 +5692,223 @@ void AMobileHUD::PostBeginPlay()
 	AMobileHUD_PostBeginPlay_Params params;
 
 	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GameFramework.MobileInputZone.AddKismetEventHandler
+// (FUNC_Defined, FUNC_Public)
+// Parameters:
+// class USeqEvent_MobileZoneBase* NewHandler                     (CPF_Parm)
+
+void UMobileInputZone::AddKismetEventHandler(class USeqEvent_MobileZoneBase* NewHandler)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.AddKismetEventHandler");
+
+	UMobileInputZone_AddKismetEventHandler_Params params;
+	params.NewHandler = NewHandler;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GameFramework.MobileInputZone.OnPostDrawZone
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// class UCanvas*                 Canvas                         (CPF_Parm)
+
+void UMobileInputZone::OnPostDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPostDrawZone");
+
+	UMobileInputZone_OnPostDrawZone_Params params;
+	params.Zone = Zone;
+	params.Canvas = Canvas;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GameFramework.MobileInputZone.OnPreDrawZone
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// class UCanvas*                 Canvas                         (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMobileInputZone::OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnPreDrawZone");
+
+	UMobileInputZone_OnPreDrawZone_Params params;
+	params.Zone = Zone;
+	params.Canvas = Canvas;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GameFramework.MobileInputZone.OnProcessSlide
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
+// int                            SlideValue                     (CPF_Parm)
+// struct FVector2D               ViewportSize                   (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMobileInputZone::OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessSlide");
+
+	UMobileInputZone_OnProcessSlide_Params params;
+	params.Zone = Zone;
+	params.EventType = EventType;
+	params.SlideValue = SlideValue;
+	params.ViewportSize = ViewportSize;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GameFramework.MobileInputZone.OnDoubleTapDelegate
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
+// struct FVector2D               TouchLocation                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMobileInputZone::OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnDoubleTapDelegate");
+
+	UMobileInputZone_OnDoubleTapDelegate_Params params;
+	params.Zone = Zone;
+	params.EventType = EventType;
+	params.TouchLocation = TouchLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GameFramework.MobileInputZone.OnTapDelegate
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
+// struct FVector2D               TouchLocation                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMobileInputZone::OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnTapDelegate");
+
+	UMobileInputZone_OnTapDelegate_Params params;
+	params.Zone = Zone;
+	params.EventType = EventType;
+	params.TouchLocation = TouchLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GameFramework.MobileInputZone.OnProcessInputDelegate
+// (FUNC_Public, FUNC_Delegate)
+// Parameters:
+// class UMobileInputZone*        Zone                           (CPF_Parm)
+// float                          DeltaTime                      (CPF_Parm)
+// int                            Handle                         (CPF_Parm)
+// TEnumAsByte<ETouchType>        EventType                      (CPF_Parm)
+// struct FVector2D               TouchLocation                  (CPF_Parm)
+// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+
+bool UMobileInputZone::OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.OnProcessInputDelegate");
+
+	UMobileInputZone_OnProcessInputDelegate_Params params;
+	params.Zone = Zone;
+	params.DeltaTime = DeltaTime;
+	params.Handle = Handle;
+	params.EventType = EventType;
+	params.TouchLocation = TouchLocation;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function GameFramework.MobileInputZone.DeactivateZone
+// (FUNC_Native, FUNC_Public)
+
+void UMobileInputZone::DeactivateZone()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.DeactivateZone");
+
+	UMobileInputZone_DeactivateZone_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function GameFramework.MobileInputZone.ActivateZone
+// (FUNC_Native, FUNC_Public)
+
+void UMobileInputZone::ActivateZone()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.MobileInputZone.ActivateZone");
+
+	UMobileInputZone_ActivateZone_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9514,26 +9514,6 @@ void ADebugCameraHUD::PostBeginPlay()
 }
 
 
-// Function GameFramework.DebugCameraController.PlayerWaiting.PlayerMove
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void SDebugCameraController_PlayerWaiting::PlayerMove(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.DebugCameraController.PlayerWaiting.PlayerMove");
-
-	SDebugCameraController_PlayerWaiting_PlayerMove_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function GameFramework.DebugCameraInput.InputKey
 // (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public)
 // Parameters:
@@ -9633,114 +9613,6 @@ void UGameCrowdSpawnInterface::GetSpawnPosition(class USeqAct_GameCrowdSpawner* 
 }
 
 
-// Function GameFramework.GameAICommand.DebugState.PausedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAICommand_DebugState::PausedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.PausedState");
-
-	SGameAICommand_DebugState_PausedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAICommand.DebugState.ContinuedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAICommand_DebugState::ContinuedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.ContinuedState");
-
-	SGameAICommand_DebugState_ContinuedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAICommand.DebugState.PoppedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAICommand_DebugState::PoppedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.PoppedState");
-
-	SGameAICommand_DebugState_PoppedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAICommand.DebugState.PushedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAICommand_DebugState::PushedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.PushedState");
-
-	SGameAICommand_DebugState_PushedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAICommand.DebugState.EndState
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   NextStateName                  (CPF_Parm)
-
-void SGameAICommand_DebugState::EndState(const struct FName& NextStateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.EndState");
-
-	SGameAICommand_DebugState_EndState_Params params;
-	params.NextStateName = NextStateName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAICommand.DebugState.BeginState
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   PreviousStateName              (CPF_Parm)
-
-void SGameAICommand_DebugState::BeginState(const struct FName& PreviousStateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICommand.DebugState.BeginState");
-
-	SGameAICommand_DebugState_BeginState_Params params;
-	params.PreviousStateName = PreviousStateName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function GameFramework.GameAICmd_Hover_MoveToGoal.IsEnemyBasedOnInterpActor
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -9822,75 +9694,6 @@ bool UGameAICmd_Hover_MoveToGoal::STATIC_MoveToGoal(class AGameAIController* AI,
 	params.InGoal = InGoal;
 	params.InGoalDistance = InGoalDistance;
 	params.InHoverHeight = InHoverHeight;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown.GetMoveDest
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector SGameAICmd_Hover_MoveToGoal_MoveDown::GetMoveDest()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.MoveDown.GetMoveDest");
-
-	SGameAICmd_Hover_MoveToGoal_MoveDown_GetMoveDest_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.PopNextNode
-// (FUNC_Final, FUNC_Defined, FUNC_Protected, FUNC_HasOutParms)
-// Parameters:
-// struct FVector                 Dest                           (CPF_Parm, CPF_OutParm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Moving::PopNextNode(struct FVector* Dest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.PopNextNode");
-
-	SGameAICmd_Hover_MoveToGoal_Moving_PopNextNode_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (Dest != nullptr)
-		*Dest = params.Dest;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.ReachedDest
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  Dest                           (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Moving::ReachedDest(class AActor* Dest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal.Moving.ReachedDest");
-
-	SGameAICmd_Hover_MoveToGoal_Moving_ReachedDest_Params params;
-	params.Dest = Dest;
 
 	auto flags = fn->FunctionFlags;
 
@@ -10164,301 +9967,6 @@ bool UGameAICmd_Hover_MoveToGoal_Mesh::STATIC_HoverToGoal(class AGameAIControlle
 }
 
 
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DelayFailure.HandlePathObstruction
-// (FUNC_Public)
-// Parameters:
-// class AActor*                  BlockedBy                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Mesh_DelayFailure::HandlePathObstruction(class AActor* BlockedBy)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.DelayFailure.HandlePathObstruction");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_DelayFailure_HandlePathObstruction_Params params;
-	params.BlockedBy = BlockedBy;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown.GetMoveDest
-// (FUNC_Defined, FUNC_Public, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-struct FVector SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown::GetMoveDest()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.MoveDown.GetMoveDest");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_MoveDown_GetMoveDest_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving.GetMoveDestinationOffset
-// (FUNC_Final, FUNC_Defined, FUNC_Public)
-// Parameters:
-// float                          ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-float SGameAICmd_Hover_MoveToGoal_Mesh_Moving::GetMoveDestinationOffset()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Moving.GetMoveDestinationOffset");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_Moving_GetMoveDestinationOffset_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.HandlePathObstruction
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// class AActor*                  BlockedBy                      (CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs::HandlePathObstruction(class AActor* BlockedBy)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.HandlePathObstruction");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs_HandlePathObstruction_Params params;
-	params.BlockedBy = BlockedBy;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.ShouldUpdateBreadCrumbs
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs::ShouldUpdateBreadCrumbs()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_Breadcrumbs.ShouldUpdateBreadCrumbs");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_Breadcrumbs_ShouldUpdateBreadCrumbs_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.ShouldUpdateBreadCrumbs
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint::ShouldUpdateBreadCrumbs()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.ShouldUpdateBreadCrumbs");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint_ShouldUpdateBreadCrumbs_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.FindAPointWhereICanHoverTo
-// (FUNC_Defined, FUNC_HasOptionalParms, FUNC_Public, FUNC_HasOutParms, FUNC_HasDefaults)
-// Parameters:
-// struct FVector                 out_FallbackDest               (CPF_Parm, CPF_OutParm)
-// float                          Inradius                       (CPF_Parm)
-// float                          MinRadius                      (CPF_OptionalParm, CPF_Parm)
-// float                          entityRadius                   (CPF_OptionalParm, CPF_Parm)
-// bool                           bDirectOnly                    (CPF_OptionalParm, CPF_Parm)
-// int                            MaxPoints                      (CPF_OptionalParm, CPF_Parm)
-// float                          ValidHitBoxSize                (CPF_OptionalParm, CPF_Parm)
-// bool                           ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-bool SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint::FindAPointWhereICanHoverTo(float Inradius, float MinRadius, float entityRadius, bool bDirectOnly, int MaxPoints, float ValidHitBoxSize, struct FVector* out_FallbackDest)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAICmd_Hover_MoveToGoal_Mesh.Fallback_FindNearbyMeshPoint.FindAPointWhereICanHoverTo");
-
-	SGameAICmd_Hover_MoveToGoal_Mesh_Fallback_FindNearbyMeshPoint_FindAPointWhereICanHoverTo_Params params;
-	params.Inradius = Inradius;
-	params.MinRadius = MinRadius;
-	params.entityRadius = entityRadius;
-	params.bDirectOnly = bDirectOnly;
-	params.MaxPoints = MaxPoints;
-	params.ValidHitBoxSize = ValidHitBoxSize;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (out_FallbackDest != nullptr)
-		*out_FallbackDest = params.out_FallbackDest;
-
-	return params.ReturnValue;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.PausedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAIController_DebugState::PausedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.PausedState");
-
-	SGameAIController_DebugState_PausedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.ContinuedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAIController_DebugState::ContinuedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.ContinuedState");
-
-	SGameAIController_DebugState_ContinuedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.PoppedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAIController_DebugState::PoppedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.PoppedState");
-
-	SGameAIController_DebugState_PoppedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.PushedState
-// (FUNC_Defined, FUNC_Public)
-
-void SGameAIController_DebugState::PushedState()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.PushedState");
-
-	SGameAIController_DebugState_PushedState_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.EndState
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   NextStateName                  (CPF_Parm)
-
-void SGameAIController_DebugState::EndState(const struct FName& NextStateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.EndState");
-
-	SGameAIController_DebugState_EndState_Params params;
-	params.NextStateName = NextStateName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameAIController.DebugState.BeginState
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// struct FName                   PreviousStateName              (CPF_Parm)
-
-void SGameAIController_DebugState::BeginState(const struct FName& PreviousStateName)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameAIController.DebugState.BeginState");
-
-	SGameAIController_DebugState_BeginState_Params params;
-	params.PreviousStateName = PreviousStateName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameCrowdReplicationActor.ReceivingReplication.Tick
-// (FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void SGameCrowdReplicationActor_ReceivingReplication::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameCrowdReplicationActor.ReceivingReplication.Tick");
-
-	SGameCrowdReplicationActor_ReceivingReplication_Tick_Params params;
-	params.DeltaTime = DeltaTime;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function GameFramework.GameFixedCamera.OnBecomeActive
 // (FUNC_Defined, FUNC_Public)
 // Parameters:
@@ -10552,26 +10060,6 @@ void AGameKActorSpawnableEffect::PostBeginPlay()
 	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameKActorSpawnableEffect.PostBeginPlay");
 
 	AGameKActorSpawnableEffect_PostBeginPlay_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function GameFramework.GameKActorSpawnableEffect.ScalingDown.Tick
-// (FUNC_Defined, FUNC_Simulated, FUNC_Event, FUNC_Public)
-// Parameters:
-// float                          DeltaTime                      (CPF_Parm)
-
-void SGameKActorSpawnableEffect_ScalingDown::Tick(float DeltaTime)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function GameFramework.GameKActorSpawnableEffect.ScalingDown.Tick");
-
-	SGameKActorSpawnableEffect_ScalingDown_Tick_Params params;
-	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
 

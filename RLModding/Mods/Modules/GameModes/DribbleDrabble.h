@@ -17,8 +17,14 @@ public:
 	void eventBallHitGround(Event* e) override;
 	void onBallCarTouch(Event* e) override;
 	void onBallTick(Event* e) override;
+	void onCarTick(Event* event) override;
 	void ExportSettings(pt::ptree&);
 	void ImportSettings(pt::ptree&);
+
+	struct CarsToRespawn {
+		ACar_TA* cars[10];
+		int carCount = 0;
+	};
 
 private:
 	bool bStarted = false;
@@ -32,12 +38,12 @@ private:
 	int ballOnHalf = -1;
 	int lastTeamTouchedBall = -1;
 
-	ACar_TA* blueCarsToRespawn[10];
-	ACar_TA* orangeCarsToRespawn[10];
+	CarsToRespawn blueCarsToRespawn;
+	CarsToRespawn orangeCarsToRespawn;
 
 	bool isBasic = true;
 	bool isBreakoutType = false;
-
+	int settingsOption = false;
 };
 
 

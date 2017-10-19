@@ -16,7 +16,7 @@ void ModdedLanServer::ImportSettings(pt::ptree) {}
 void ModdedLanServer::DrawMenu() {
 	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
 
-	if (gameModesCombo[defaultGameMode] != "Replay") {
+	if (gameModesCombo[defaultGameMode] != "Replay" && gameModesCombo[defaultGameMode] != "FreePlay") {
 		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Sadly Psyonix has disabled some of the custom mutator settings.");
 	}
 	if (gameModesCombo[defaultGameMode] == "Replay" && replayCount == 0) {
@@ -72,6 +72,9 @@ void ModdedLanServer::DrawMenu() {
 			std::cout << "no found" << std::endl;
 
 		}
+	}
+	else if (gameModesCombo[defaultGameMode] == "FreePlay") {
+
 	}
 	else {
 		ImGui::Combo("Bot Diffculty", &defaultBotDifficulty, botDifficultyCombo, IM_ARRAYSIZE(botDifficultyCombo));

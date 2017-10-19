@@ -2077,7 +2077,8 @@ struct FAssetLoadRequest
 {
 	struct FAssetLoadResult                            Result;                                                   // 0x0000(0x0010)
 	unsigned long                                      bLoaded : 1;                                              // 0x0010(0x0004)
-	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             OnLoadedCallback;                                         // 0x0014(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.ProductDatabase_TA.TemporaryProduct
@@ -2124,7 +2125,8 @@ struct FProductThumbnailResult
 struct FRenderThumbnailRequest
 {
 	struct FProductThumbnailResult                     Result;                                                   // 0x0000(0x000C) (CPF_Const)
-	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x000C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.Ball_Breakout_TA.BreakoutDamage
@@ -2252,7 +2254,8 @@ struct FTimelineKeyframe
 struct FReplayExportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.ReplayManager_TA.ReplayImportCallbackData
@@ -2260,7 +2263,8 @@ struct FReplayExportCallbackData
 struct FReplayImportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Const, CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct TAGame.SkelControlSingleBoneCopy_TA.AxisConversion
@@ -2910,15 +2914,6 @@ struct FOptionsValue
 	struct FString                                     Value;                                                    // 0x0008(0x000C) (CPF_NeedCtorLink)
 };
 
-// ScriptStruct TAGame.Camera_TA.SwivelExtent
-// 0x000C
-struct FSwivelExtent
-{
-	int                                                PitchMin;                                                 // 0x0000(0x0004)
-	int                                                PitchMax;                                                 // 0x0004(0x0004)
-	int                                                YawMax;                                                   // 0x0008(0x0004)
-};
-
 // ScriptStruct TAGame.Camera_TA.ProfileSliderLimits
 // 0x000C
 struct FProfileSliderLimits
@@ -3105,6 +3100,15 @@ struct FReplayScoreData
 	class APRI_TA*                                     AssistedBy;                                               // 0x0004(0x0004)
 	float                                              Speed;                                                    // 0x0008(0x0004)
 	float                                              Time;                                                     // 0x000C(0x0004)
+};
+
+// ScriptStruct TAGame.Camera_TA.SwivelExtent
+// 0x000C
+struct FSwivelExtent
+{
+	int                                                PitchMin;                                                 // 0x0000(0x0004)
+	int                                                PitchMax;                                                 // 0x0004(0x0004)
+	int                                                YawMax;                                                   // 0x0008(0x0004)
 };
 
 // ScriptStruct TAGame.CameraState_Car_TA.InterpVector
@@ -3425,7 +3429,8 @@ struct FBallData
 struct FButtonInfo
 {
 	struct FString                                     Text;                                                     // 0x0000(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             ClickDelegate;                                            // 0x000C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	unsigned long                                      bCorrectAnswer : 1;                                       // 0x001C(0x0004)
 };
 

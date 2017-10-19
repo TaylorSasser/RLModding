@@ -217,7 +217,8 @@ struct FPointer
 struct FObjectProviderSubscription
 {
 	class UClass*                                      ObjClass;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct Core.ObjectProvider.ObjectPropertyInjection
@@ -232,7 +233,8 @@ struct FObjectPropertyInjection
 // 0x0014
 struct FObjectProviderPendingCallback
 {
-	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	class UObject*                                     Value;                                                    // 0x0010(0x0004)
 };
 

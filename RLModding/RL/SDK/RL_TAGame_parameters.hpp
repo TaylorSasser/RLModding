@@ -14753,119 +14753,6 @@ struct ULoadoutSet_TA_EventChanged_Params
 	class ULoadout_TA*                                 Loadout;                                                  // (CPF_Parm)
 };
 
-// Function TAGame.Camera_TA.OnViewTargetChanged
-struct ACamera_TA_OnViewTargetChanged_Params
-{
-};
-
-// Function TAGame.Camera_TA.ClipToField
-struct ACamera_TA_ClipToField_Params
-{
-	float                                              CameraLocationZ;                                          // (CPF_Parm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.Camera_TA.ApplyCameraModifiers
-struct ACamera_TA_ApplyCameraModifiers_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FTPOV                                       OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.Camera_TA.Demolished
-struct ACamera_TA_Demolished_Params
-{
-	class ARBActor_TA*                                 InDemolisher;                                             // (CPF_Parm)
-};
-
-// Function TAGame.Camera_TA.ApplySwivel
-struct ACamera_TA_ApplySwivel_Params
-{
-	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.Camera_TA.GetDesiredSwivel
-struct ACamera_TA_GetDesiredSwivel_Params
-{
-	float                                              LookUp;                                                   // (CPF_Parm)
-	float                                              LookRight;                                                // (CPF_Parm)
-	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.Camera_TA.UpdateSwivel
-struct ACamera_TA_UpdateSwivel_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.Camera_TA.GetDefaultFOVOffset
-struct ACamera_TA_GetDefaultFOVOffset_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.Camera_TA.GetDefaultViewHeightOffset
-struct ACamera_TA_GetDefaultViewHeightOffset_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.Camera_TA.UpdateAspectRatio
-struct ACamera_TA_UpdateAspectRatio_Params
-{
-	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.Camera_TA.PostProcessCameraState
-struct ACamera_TA_PostProcessCameraState_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.Camera_TA.UpdateFOV
-struct ACamera_TA_UpdateFOV_Params
-{
-};
-
-// Function TAGame.Camera_TA.GetCameraSettings
-struct ACamera_TA_GetCameraSettings_Params
-{
-	class ACameraSettingsActor_TA*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.Camera_TA.ProcessCameraState
-struct ACamera_TA_ProcessCameraState_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.Camera_TA.HandleRemoveLocalFX
-struct ACamera_TA_HandleRemoveLocalFX_Params
-{
-	class UObject*                                     SeqObj;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.Camera_TA.HandleAddLocalFX
-struct ACamera_TA_HandleAddLocalFX_Params
-{
-	class UObject*                                     SeqObj;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.Camera_TA.InitializeFor
-struct ACamera_TA_InitializeFor_Params
-{
-	class APlayerController*                           PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.Camera_TA.EventCameraTargetChanged
-struct ACamera_TA_EventCameraTargetChanged_Params
-{
-	class ACamera_TA*                                  Camera;                                                   // (CPF_Parm)
-	class AActor*                                      Target;                                                   // (CPF_Parm)
-};
-
 // Function TAGame.SaveData_TA.__SaveData_TA__HandleDataLoaded_1
 struct USaveData_TA___SaveData_TA__HandleDataLoaded_1_Params
 {
@@ -17649,18 +17536,6 @@ struct URPC_AdsGet_TA_SetLanguage_Params
 	class URPC_AdsGet_TA*                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.AIController_TA.DoingNothing.EndState
-struct SAIController_TA_DoingNothing_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.AIController_TA.DoingNothing.BeginState
-struct SAIController_TA_DoingNothing_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.AIController_Soccar_TA.GetProxyDataInternal
 struct AAIController_Soccar_TA_GetProxyDataInternal_Params
 {
@@ -18101,18 +17976,6 @@ struct ACarPreviewActor_TA_EventInitializeComponents_Params
 	class ACarPreviewActor_TA*                         PreviewActor;                                             // (CPF_Parm)
 };
 
-// Function TAGame.AssetProfiler_TA.Recording.Tick
-struct SAssetProfiler_TA_Recording_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.AssetProfiler_TA.RecordingNoneAsset.Tick
-struct SAssetProfiler_TA_RecordingNoneAsset_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
 // Function TAGame.AttachmentAnim_TA.OnInit
 struct UAttachmentAnim_TA_OnInit_Params
 {
@@ -18460,18 +18323,6 @@ struct ACarComponent_Jump_TA_OnCreated_Params
 {
 };
 
-// Function TAGame.BTAction_Jump.StartJump.OnTargetExecute
-struct SBTAction_Jump_StartJump_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_Jump.Jumping.OnTargetExecute
-struct SBTAction_Jump_Jumping_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function TAGame.BTAction_DodgeHit.GetDodgeVelocity
 struct UBTAction_DodgeHit_GetDodgeVelocity_Params
 {
@@ -18489,47 +18340,6 @@ struct UBTAction_DodgeHit_OnStart_Params
 struct UBTAction_DodgeHit_GetImpactTime_Params
 {
 	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_DodgeHit.Jumping.OnTargetExecute
-struct SBTAction_DodgeHit_Jumping_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_DodgeHit.StopJump.OnTargetExecute
-struct SBTAction_DodgeHit_StopJump_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_DodgeHit.StartDodge.OnTargetExecute
-struct SBTAction_DodgeHit_StartDodge_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_DodgeHit.StartDodge.SetInputs
-struct SBTAction_DodgeHit_StartDodge_SetInputs_Params
-{
-};
-
-// Function TAGame.BTAction_DodgeHit.StartDodge.CalculateDodgeDirection
-struct SBTAction_DodgeHit_StartDodge_CalculateDodgeDirection_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.BTAction_DodgeHit.StartDodge.BeginState
-struct SBTAction_DodgeHit_StartDodge_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.BTAction_DodgeHit.StopDodge.OnTargetExecute
-struct SBTAction_DodgeHit_StopDodge_OnTargetExecute_Params
-{
-	TEnumAsByte<EBTStatus>                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.BTAction_Face.OnTargetExecute
@@ -19156,6 +18966,119 @@ struct UCameraState_CarPreview_TA_GetSingleActorOrientation_Params
 	class ACarPreviewActor_TA*                         ViewTarget;                                               // (CPF_Parm)
 	struct FVector                                     OutLoc;                                                   // (CPF_Parm, CPF_OutParm)
 	struct FRotator                                    OutRot;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.OnViewTargetChanged
+struct ACamera_TA_OnViewTargetChanged_Params
+{
+};
+
+// Function TAGame.Camera_TA.ClipToField
+struct ACamera_TA_ClipToField_Params
+{
+	float                                              CameraLocationZ;                                          // (CPF_Parm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.Camera_TA.ApplyCameraModifiers
+struct ACamera_TA_ApplyCameraModifiers_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FTPOV                                       OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.Demolished
+struct ACamera_TA_Demolished_Params
+{
+	class ARBActor_TA*                                 InDemolisher;                                             // (CPF_Parm)
+};
+
+// Function TAGame.Camera_TA.ApplySwivel
+struct ACamera_TA_ApplySwivel_Params
+{
+	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.GetDesiredSwivel
+struct ACamera_TA_GetDesiredSwivel_Params
+{
+	float                                              LookUp;                                                   // (CPF_Parm)
+	float                                              LookRight;                                                // (CPF_Parm)
+	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.Camera_TA.UpdateSwivel
+struct ACamera_TA_UpdateSwivel_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function TAGame.Camera_TA.GetDefaultFOVOffset
+struct ACamera_TA_GetDefaultFOVOffset_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.Camera_TA.GetDefaultViewHeightOffset
+struct ACamera_TA_GetDefaultViewHeightOffset_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.Camera_TA.UpdateAspectRatio
+struct ACamera_TA_UpdateAspectRatio_Params
+{
+	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.PostProcessCameraState
+struct ACamera_TA_PostProcessCameraState_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.UpdateFOV
+struct ACamera_TA_UpdateFOV_Params
+{
+};
+
+// Function TAGame.Camera_TA.GetCameraSettings
+struct ACamera_TA_GetCameraSettings_Params
+{
+	class ACameraSettingsActor_TA*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.Camera_TA.ProcessCameraState
+struct ACamera_TA_ProcessCameraState_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FCameraOrientation                          OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function TAGame.Camera_TA.HandleRemoveLocalFX
+struct ACamera_TA_HandleRemoveLocalFX_Params
+{
+	class UObject*                                     SeqObj;                                                   // (CPF_Parm)
+};
+
+// Function TAGame.Camera_TA.HandleAddLocalFX
+struct ACamera_TA_HandleAddLocalFX_Params
+{
+	class UObject*                                     SeqObj;                                                   // (CPF_Parm)
+};
+
+// Function TAGame.Camera_TA.InitializeFor
+struct ACamera_TA_InitializeFor_Params
+{
+	class APlayerController*                           PC;                                                       // (CPF_Parm)
+};
+
+// Function TAGame.Camera_TA.EventCameraTargetChanged
+struct ACamera_TA_EventCameraTargetChanged_Params
+{
+	class ACamera_TA*                                  Camera;                                                   // (CPF_Parm)
+	class AActor*                                      Target;                                                   // (CPF_Parm)
 };
 
 // Function TAGame.CameraSettingsActor_TA.TargetSelect
@@ -21656,121 +21579,10 @@ struct ACar_Season_TA_OnTeamPaintChanged_Params
 {
 };
 
-// Function TAGame.CarComponent_TA.Disabled.SetActive
-struct SCarComponent_TA_Disabled_SetActive_Params
-{
-	bool                                               bNewActive;                                               // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_TA.Disabled.EndState
-struct SCarComponent_TA_Disabled_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_TA.Active.InitFX
-struct SCarComponent_TA_Active_InitFX_Params
-{
-};
-
-// Function TAGame.CarComponent_TA.Active.EndState
-struct SCarComponent_TA_Active_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_TA.Active.BeginState
-struct SCarComponent_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.ProductAsset_Boost_TA.CheckCanSave
 struct UProductAsset_Boost_TA_CheckCanSave_Params
 {
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.CarComponent_Boost_TA.Active.ShouldPredictBoostConsumption
-struct SCarComponent_Boost_TA_Active_ShouldPredictBoostConsumption_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.CarComponent_Boost_TA.Active.Tick
-struct SCarComponent_Boost_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Boost_TA.Active.EndState
-struct SCarComponent_Boost_TA_Active_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Boost_TA.Active.BeginState
-struct SCarComponent_Boost_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Dodge_TA.Active.PrePhysicsStep
-struct SCarComponent_Dodge_TA_Active_PrePhysicsStep_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Dodge_TA.Active.SetDodgeSettings
-struct SCarComponent_Dodge_TA_Active_SetDodgeSettings_Params
-{
-};
-
-// Function TAGame.CarComponent_Dodge_TA.Active.BeginState
-struct SCarComponent_Dodge_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_DoubleJump_TA.Active.BeginState
-struct SCarComponent_DoubleJump_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_DoubleJump_TA.Active.PrePhysicsStep
-struct SCarComponent_DoubleJump_TA_Active_PrePhysicsStep_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_FlipCar_TA.Active.PrePhysicsStep
-struct SCarComponent_FlipCar_TA_Active_PrePhysicsStep_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_FlipCar_TA.Active.InitFlip
-struct SCarComponent_FlipCar_TA_Active_InitFlip_Params
-{
-};
-
-// Function TAGame.CarComponent_FlipCar_TA.Active.BeginState
-struct SCarComponent_FlipCar_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Jump_TA.Active.PrePhysicsStep
-struct SCarComponent_Jump_TA_Active_PrePhysicsStep_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.CarComponent_Jump_TA.Active.BeginState
-struct SCarComponent_Jump_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.CarPreviewAnim_TA.SetRotation
@@ -24149,140 +23961,6 @@ struct UOnlineGameDedicatedServer_TA_EventGameEventInitialized_Params
 	class AGameEvent_TA*                               GameEvent;                                                // (CPF_Parm)
 };
 
-// Function TAGame.GameEvent_TA.NoSpawnState.AddControllerToRespawnList
-struct SGameEvent_TA_NoSpawnState_AddControllerToRespawnList_Params
-{
-	class AController*                                 InController;                                             // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.NoSpawnState.RestartPlayer
-struct SGameEvent_TA_NoSpawnState_RestartPlayer_Params
-{
-	class AController*                                 NewPlayer;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.ActiveBase.SuppressModalDialogs
-struct SGameEvent_TA_ActiveBase_SuppressModalDialogs_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.Countdown.OnGameStateTimeLapsed
-struct SGameEvent_TA_Countdown_OnGameStateTimeLapsed_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Countdown.OnGameStateTimeUpdated
-struct SGameEvent_TA_Countdown_OnGameStateTimeUpdated_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Countdown.OnPlayerRestarted
-struct SGameEvent_TA_Countdown_OnPlayerRestarted_Params
-{
-	class ACar_TA*                                     PlayerCar;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Countdown.StartCountdownTimer
-struct SGameEvent_TA_Countdown_StartCountdownTimer_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Countdown.InitCountDown
-struct SGameEvent_TA_Countdown_InitCountDown_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Countdown.EndState
-struct SGameEvent_TA_Countdown_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Countdown.BeginState
-struct SGameEvent_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Countdown.FindBotReplacement
-struct SGameEvent_TA_Countdown_FindBotReplacement_Params
-{
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.FinishedBase.ShouldHaveLeaveMatchPenalty
-struct SGameEvent_TA_FinishedBase_ShouldHaveLeaveMatchPenalty_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.FinishedBase.ShouldBeFullScreen
-struct SGameEvent_TA_FinishedBase_ShouldBeFullScreen_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.FinishedBase.IsFinished
-struct SGameEvent_TA_FinishedBase_IsFinished_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.Finished.SetGameOwner
-struct SGameEvent_TA_Finished_SetGameOwner_Params
-{
-	class APRI_TA*                                     NewOwner;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Finished.UpdateGameOwner
-struct SGameEvent_TA_Finished_UpdateGameOwner_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Finished.HandlePlayerRemoved
-struct SGameEvent_TA_Finished_HandlePlayerRemoved_Params
-{
-	class AGameEvent_TA*                               GameEvent;                                                // (CPF_Parm)
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Finished.FindPlayerPRI
-struct SGameEvent_TA_Finished_FindPlayerPRI_Params
-{
-	struct FUniqueNetId                                UniqueId;                                                 // (CPF_Parm)
-	class APRI_TA*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TA.Finished.OnAllPlayersReady
-struct SGameEvent_TA_Finished_OnAllPlayersReady_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Finished.OnGameStateTimeLapsed
-struct SGameEvent_TA_Finished_OnGameStateTimeLapsed_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Finished.AllowReadyUp
-struct SGameEvent_TA_Finished_AllowReadyUp_Params
-{
-};
-
-// Function TAGame.GameEvent_TA.Finished.EndState
-struct SGameEvent_TA_Finished_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TA.Finished.BeginState
-struct SGameEvent_TA_Finished_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.RPC_GetBanStatus_TA.SetPlayers
 struct URPC_GetBanStatus_TA_SetPlayers_Params
 {
@@ -24532,17 +24210,6 @@ struct AGameEvent_Lobby_TA_OnInit_Params
 {
 };
 
-// Function TAGame.GameEvent_Lobby_TA.PlayWithBall.SpawnBall
-struct SGameEvent_Lobby_TA_PlayWithBall_SpawnBall_Params
-{
-};
-
-// Function TAGame.GameEvent_Lobby_TA.PlayWithBall.BeginState
-struct SGameEvent_Lobby_TA_PlayWithBall_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.GameEvent_PostGameLobby_TA.ShouldShowBallIndicator
 struct AGameEvent_PostGameLobby_TA_ShouldShowBallIndicator_Params
 {
@@ -24552,45 +24219,6 @@ struct AGameEvent_PostGameLobby_TA_ShouldShowBallIndicator_Params
 // Function TAGame.GameEvent_PostGameLobby_TA.StartFirstState
 struct AGameEvent_PostGameLobby_TA_StartFirstState_Params
 {
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.CheckRematchVote
-struct SGameEvent_Team_TA_Finished_CheckRematchVote_Params
-{
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.OnFinished
-struct SGameEvent_Team_TA_Finished_OnFinished_Params
-{
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.StartRematchVote
-struct SGameEvent_Team_TA_Finished_StartRematchVote_Params
-{
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.BeginState
-struct SGameEvent_Team_TA_Finished_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.HandleTeamForfeit
-struct SGameEvent_Team_TA_Finished_HandleTeamForfeit_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Team_TA.Finished.UpdateBotCount
-struct SGameEvent_Team_TA_Finished_UpdateBotCount_Params
-{
-};
-
-// Function TAGame.GameEvent_Team_TA.Countdown.AddTemporarySpawnSpot
-struct SGameEvent_Team_TA_Countdown_AddTemporarySpawnSpot_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_TA.OnGetBallModifiedScore
@@ -24735,498 +24363,6 @@ struct UCountdownObject_TA_EventCountChange_Params
 	int                                                CountValue;                                               // (CPF_Parm)
 };
 
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.OnBallSpawned
-struct SGameEvent_Soccar_TA_WaitingForPlayers_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.ReplicateSkillTiers
-struct SGameEvent_Soccar_TA_WaitingForPlayers_ReplicateSkillTiers_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.ForceNoContest
-struct SGameEvent_Soccar_TA_WaitingForPlayers_ForceNoContest_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.ForceMatchStart
-struct SGameEvent_Soccar_TA_WaitingForPlayers_ForceMatchStart_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.OnGameStateTimeLapsed
-struct SGameEvent_Soccar_TA_WaitingForPlayers_OnGameStateTimeLapsed_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.OnPlayerRestarted
-struct SGameEvent_Soccar_TA_WaitingForPlayers_OnPlayerRestarted_Params
-{
-	class ACar_TA*                                     PlayerCar;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.GetPlayerCarCount
-struct SGameEvent_Soccar_TA_WaitingForPlayers_GetPlayerCarCount_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.HandleCarSet
-struct SGameEvent_Soccar_TA_WaitingForPlayers_HandleCarSet_Params
-{
-	class APRI_TA*                                     InPRI;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.GetDesiredSoundState
-struct SGameEvent_Soccar_TA_WaitingForPlayers_GetDesiredSoundState_Params
-{
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.AddPlayerToTeam
-struct SGameEvent_Soccar_TA_WaitingForPlayers_AddPlayerToTeam_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-	class AController*                                 NewPlayer;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.CheckStart
-struct SGameEvent_Soccar_TA_WaitingForPlayers_CheckStart_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.BeginState
-struct SGameEvent_Soccar_TA_WaitingForPlayers_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.AddTemporarySpawnSpot
-struct SGameEvent_Soccar_TA_WaitingForPlayers_AddTemporarySpawnSpot_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.WaitingForPlayers.UpdateBotCount
-struct SGameEvent_Soccar_TA_WaitingForPlayers_UpdateBotCount_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ActiveBase.ShouldRecordReplay
-struct SGameEvent_Soccar_TA_ActiveBase_ShouldRecordReplay_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ActiveBase.ShouldShowBallIndicator
-struct SGameEvent_Soccar_TA_ActiveBase_ShouldShowBallIndicator_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.OnBallSpawned
-struct SGameEvent_Soccar_TA_PreMatchLobby_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.CleanupPlayerCar
-struct SGameEvent_Soccar_TA_PreMatchLobby_CleanupPlayerCar_Params
-{
-	class AController*                                 Player;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.RemovePlayerFromTeam
-struct SGameEvent_Soccar_TA_PreMatchLobby_RemovePlayerFromTeam_Params
-{
-	class AController*                                 Player;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.AddPlayerToTeam
-struct SGameEvent_Soccar_TA_PreMatchLobby_AddPlayerToTeam_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-	class AController*                                 NewPlayer;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.OnMatchLobbySelect
-struct SGameEvent_Soccar_TA_PreMatchLobby_OnMatchLobbySelect_Params
-{
-	TEnumAsByte<EInputEvent>                           InEventType;                                              // (CPF_Parm)
-	class ULocalPlayer_TA*                             LocalPlayer;                                              // (CPF_Parm)
-	class AActor*                                      SelectedActor;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.GetSpawnOrientation
-struct SGameEvent_Soccar_TA_PreMatchLobby_GetSpawnOrientation_Params
-{
-	class AController*                                 ForPlayer;                                                // (CPF_Parm)
-	struct FVector                                     out_Location;                                             // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    out_Rotation;                                             // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.CanSpawnBots
-struct SGameEvent_Soccar_TA_PreMatchLobby_CanSpawnBots_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.UpdateBotCount
-struct SGameEvent_Soccar_TA_PreMatchLobby_UpdateBotCount_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.GetRespawnTime
-struct SGameEvent_Soccar_TA_PreMatchLobby_GetRespawnTime_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.SpawnLobbyCar
-struct SGameEvent_Soccar_TA_PreMatchLobby_SpawnLobbyCar_Params
-{
-	class AController*                                 NewPlayer;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.LobbyCountdownTick
-struct SGameEvent_Soccar_TA_PreMatchLobby_LobbyCountdownTick_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.CheckForCountdownAction
-struct SGameEvent_Soccar_TA_PreMatchLobby_CheckForCountdownAction_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.HandleCountdownTick
-struct SGameEvent_Soccar_TA_PreMatchLobby_HandleCountdownTick_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.StartLobbyTimer
-struct SGameEvent_Soccar_TA_PreMatchLobby_StartLobbyTimer_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.ForceMatchStart
-struct SGameEvent_Soccar_TA_PreMatchLobby_ForceMatchStart_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.CheckStart
-struct SGameEvent_Soccar_TA_PreMatchLobby_CheckStart_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.RemoveTeamSelection
-struct SGameEvent_Soccar_TA_PreMatchLobby_RemoveTeamSelection_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.AddLocalPlayer
-struct SGameEvent_Soccar_TA_PreMatchLobby_AddLocalPlayer_Params
-{
-	class APlayerController_TA*                        CurrentPlayer;                                            // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.EndState
-struct SGameEvent_Soccar_TA_PreMatchLobby_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PreMatchLobby.BeginState
-struct SGameEvent_Soccar_TA_PreMatchLobby_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Countdown.OnBallSpawned
-struct SGameEvent_Soccar_TA_Countdown_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Countdown.EndState
-struct SGameEvent_Soccar_TA_Countdown_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Countdown.BeginState
-struct SGameEvent_Soccar_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.ShouldCountdownResumeFromPause
-struct SGameEvent_Soccar_TA_Active_ShouldCountdownResumeFromPause_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.HandleBallHitGround
-struct SGameEvent_Soccar_TA_Active_HandleBallHitGround_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	struct FVector                                     HitLoc;                                                   // (CPF_Parm)
-	struct FVector                                     HitNorm;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.BallHitGround
-struct SGameEvent_Soccar_TA_Active_BallHitGround_Params
-{
-	struct FVector                                     HitNorm;                                                  // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.WaitForBallOnGround
-struct SGameEvent_Soccar_TA_Active_WaitForBallOnGround_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.CanUpdateGameTime
-struct SGameEvent_Soccar_TA_Active_CanUpdateGameTime_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.UpdateGameTime
-struct SGameEvent_Soccar_TA_Active_UpdateGameTime_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.Tick
-struct SGameEvent_Soccar_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.UpdateTotalGameTimePlayed
-struct SGameEvent_Soccar_TA_Active_UpdateTotalGameTimePlayed_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.DetermineAssistTouchIndex
-struct SGameEvent_Soccar_TA_Active_DetermineAssistTouchIndex_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	int                                                ScoreIdx;                                                 // (CPF_Parm)
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.DetermineScoreTouchIndex
-struct SGameEvent_Soccar_TA_Active_DetermineScoreTouchIndex_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.SetBallHasBeenHit
-struct SGameEvent_Soccar_TA_Active_SetBallHasBeenHit_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.HandleCarTouch
-struct SGameEvent_Soccar_TA_Active_HandleCarTouch_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.CanAwardPoints
-struct SGameEvent_Soccar_TA_Active_CanAwardPoints_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.HandleHitGoal
-struct SGameEvent_Soccar_TA_Active_HandleHitGoal_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.OnCarSpawned
-struct SGameEvent_Soccar_TA_Active_OnCarSpawned_Params
-{
-	class ACar_TA*                                     NewCar;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.SetBallEventListeners
-struct SGameEvent_Soccar_TA_Active_SetBallEventListeners_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	bool                                               bListen;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.OnBallSpawned
-struct SGameEvent_Soccar_TA_Active_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.EndRound
-struct SGameEvent_Soccar_TA_Active_EndRound_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.StartRound
-struct SGameEvent_Soccar_TA_Active_StartRound_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.EndState
-struct SGameEvent_Soccar_TA_Active_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Active.BeginState
-struct SGameEvent_Soccar_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.OnTeamForfeited
-struct SGameEvent_Soccar_TA_PostGoalScored_OnTeamForfeited_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.Tick
-struct SGameEvent_Soccar_TA_PostGoalScored_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.StartReplay
-struct SGameEvent_Soccar_TA_PostGoalScored_StartReplay_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.EndState
-struct SGameEvent_Soccar_TA_PostGoalScored_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.BeginState
-struct SGameEvent_Soccar_TA_PostGoalScored_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.AddControllerToRespawnList
-struct SGameEvent_Soccar_TA_PostGoalScored_AddControllerToRespawnList_Params
-{
-	class AController*                                 InController;                                             // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PostGoalScored.RestartPlayer
-struct SGameEvent_Soccar_TA_PostGoalScored_RestartPlayer_Params
-{
-	class AController*                                 NewPlayer;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.OnTeamForfeited
-struct SGameEvent_Soccar_TA_ReplayPlayback_OnTeamForfeited_Params
-{
-	class ATeam_TA*                                    Team;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.HandleReplayFinished
-struct SGameEvent_Soccar_TA_ReplayPlayback_HandleReplayFinished_Params
-{
-	class AReplayDirector_TA*                          InReplay;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.OnAllPlayersReady
-struct SGameEvent_Soccar_TA_ReplayPlayback_OnAllPlayersReady_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.ShouldBeFullScreen
-struct SGameEvent_Soccar_TA_ReplayPlayback_ShouldBeFullScreen_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.ShouldPlayReplay
-struct SGameEvent_Soccar_TA_ReplayPlayback_ShouldPlayReplay_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.EndState
-struct SGameEvent_Soccar_TA_ReplayPlayback_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.ReplayPlayback.BeginState
-struct SGameEvent_Soccar_TA_ReplayPlayback_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Finished.OnFinished
-struct SGameEvent_Soccar_TA_Finished_OnFinished_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.Finished.BeginState
-struct SGameEvent_Soccar_TA_Finished_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.FinishEvent
-struct SGameEvent_Soccar_TA_PodiumSpotlight_FinishEvent_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.CanEnableCarPodiumMovement
-struct SGameEvent_Soccar_TA_PodiumSpotlight_CanEnableCarPodiumMovement_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.GetSpawnOrientation
-struct SGameEvent_Soccar_TA_PodiumSpotlight_GetSpawnOrientation_Params
-{
-	class AController*                                 ForPlayer;                                                // (CPF_Parm)
-	struct FVector                                     out_Location;                                             // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    out_Rotation;                                             // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.SpawnPodiumCars
-struct SGameEvent_Soccar_TA_PodiumSpotlight_SpawnPodiumCars_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.EndState
-struct SGameEvent_Soccar_TA_PodiumSpotlight_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PodiumSpotlight.BeginState
-struct SGameEvent_Soccar_TA_PodiumSpotlight_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.RPC_MatchComplete_TA.GetCurrencyDrops
 struct URPC_MatchComplete_TA_GetCurrencyDrops_Params
 {
@@ -25311,42 +24447,6 @@ struct UReplay_Soccar_TA_RecordGoal_Params
 struct UReplay_Soccar_TA_AddPlayer_Params
 {
 	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.UpdateSpotlight
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_UpdateSpotlight_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.MemberTitleSort
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_MemberTitleSort_Params
-{
-	struct FMemberTitleStat                            A;                                                        // (CPF_Parm)
-	struct FMemberTitleStat                            B;                                                        // (CPF_Parm)
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.ShouldBeFullScreen
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_ShouldBeFullScreen_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.IsFinished
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_IsFinished_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.GotoPodiumSpotlight
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_GotoPodiumSpotlight_Params
-{
-};
-
-// Function TAGame.GameEvent_Soccar_TA.PrePodiumSpotlight.BeginState
-struct SGameEvent_Soccar_TA_PrePodiumSpotlight_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.SpawnPointCluster_TA.GetGroup
@@ -25752,29 +24852,6 @@ struct AScreenDisplayActor_TA_Tick_Params
 // Function TAGame.ScreenDisplayActor_TA.Init
 struct AScreenDisplayActor_TA_Init_Params
 {
-};
-
-// Function TAGame.GameEvent_Season_TA.SeasonIntro.GetDesiredSoundState
-struct SGameEvent_Season_TA_SeasonIntro_GetDesiredSoundState_Params
-{
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Season_TA.SeasonIntro.StartGame
-struct SGameEvent_Season_TA_SeasonIntro_StartGame_Params
-{
-};
-
-// Function TAGame.GameEvent_Season_TA.SeasonIntro.ShouldBeFullScreen
-struct SGameEvent_Season_TA_SeasonIntro_ShouldBeFullScreen_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Season_TA.SeasonIntro.BeginState
-struct SGameEvent_Season_TA_SeasonIntro_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.GameEvent_Soccar_SubRules_Basketball_TA.OnGetBallModifiedScore
@@ -26246,11 +25323,6 @@ struct AGameEvent_Training_Goalie_TA_GetScore_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.GameEvent_Tutorial_TA.Intro.InitIntro
-struct SGameEvent_Tutorial_TA_Intro_InitIntro_Params
-{
-};
-
 // Function TAGame.TutorialSave_TA.AddToTutorialPlayedList
 struct UTutorialSave_TA_AddToTutorialPlayedList_Params
 {
@@ -26262,146 +25334,6 @@ struct UTutorialSave_TA_AddToTutorialPlayedList_Params
 struct UTutorialSave_TA_HasPlayedTraining_Params
 {
 	struct FString                                     EventName;                                                // (CPF_Parm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.StartGame.OnPlayerRestarted
-struct SGameEvent_Tutorial_TA_StartGame_OnPlayerRestarted_Params
-{
-	class ACar_TA*                                     PlayerCar;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.StartGame.BeginState
-struct SGameEvent_Tutorial_TA_StartGame_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Countdown.ShouldRecordReplay
-struct SGameEvent_Tutorial_TA_Countdown_ShouldRecordReplay_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Countdown.OnGameStateTimeLapsed
-struct SGameEvent_Tutorial_TA_Countdown_OnGameStateTimeLapsed_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Countdown.OnVehicleSetup
-struct SGameEvent_Tutorial_TA_Countdown_OnVehicleSetup_Params
-{
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Countdown.BeginState
-struct SGameEvent_Tutorial_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.CanRedoRound
-struct SGameEvent_Tutorial_TA_Active_CanRedoRound_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.HandleBallHitGround
-struct SGameEvent_Tutorial_TA_Active_HandleBallHitGround_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	struct FVector                                     HitLoc;                                                   // (CPF_Parm)
-	struct FVector                                     HitNorm;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.OnGameTimeUpdated
-struct SGameEvent_Tutorial_TA_Active_OnGameTimeUpdated_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.Tick
-struct SGameEvent_Tutorial_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.HandleHitGoal
-struct SGameEvent_Tutorial_TA_Active_HandleHitGoal_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.CanAwardPoints
-struct SGameEvent_Tutorial_TA_Active_CanAwardPoints_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.HandleCarTouch
-struct SGameEvent_Tutorial_TA_Active_HandleCarTouch_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.StartTimers
-struct SGameEvent_Tutorial_TA_Active_StartTimers_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.InitGameSetup
-struct SGameEvent_Tutorial_TA_Active_InitGameSetup_Params
-{
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Active.BeginState
-struct SGameEvent_Tutorial_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.PostGoalScored.StartReplay
-struct SGameEvent_Tutorial_TA_PostGoalScored_StartReplay_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.PostGoalScored.CanRedoRound
-struct SGameEvent_Tutorial_TA_PostGoalScored_CanRedoRound_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Finished.StartRematchVote
-struct SGameEvent_Tutorial_TA_Finished_StartRematchVote_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Finished.UpdateMVP
-struct SGameEvent_Tutorial_TA_Finished_UpdateMVP_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.Finished.GetDesiredSoundState
-struct SGameEvent_Tutorial_TA_Finished_GetDesiredSoundState_Params
-{
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.PodiumSpotlight.CanEnableCarPodiumMovement
-struct SGameEvent_Tutorial_TA_PodiumSpotlight_CanEnableCarPodiumMovement_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.PodiumSpotlight.GetSpawnOrientation
-struct SGameEvent_Tutorial_TA_PodiumSpotlight_GetSpawnOrientation_Params
-{
-	class AController*                                 ForPlayer;                                                // (CPF_Parm)
-	struct FVector                                     out_Location;                                             // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    out_Rotation;                                             // (CPF_Parm, CPF_OutParm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
@@ -26963,17 +25895,6 @@ struct UGFxShell_TA_GetOnlineGame_Params
 	class UOnlineGame_X*                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.GameEvent_Tutorial_TA.ReplayPlayback.CleanupRoundActors
-struct SGameEvent_Tutorial_TA_ReplayPlayback_CleanupRoundActors_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_TA.ReplayPlayback.CanRedoRound
-struct SGameEvent_Tutorial_TA_ReplayPlayback_CanRedoRound_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function TAGame.GameEvent_Training_Aerial_TA.CheckForReset
 struct AGameEvent_Training_Aerial_TA_CheckForReset_Params
 {
@@ -27068,35 +25989,6 @@ struct AGameEvent_Tutorial_Basic_TA_GetSpawnOrientation_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.GameEvent_Tutorial_Basic_TA.Active.OnGameStateTimeLapsed
-struct SGameEvent_Tutorial_Basic_TA_Active_OnGameStateTimeLapsed_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_Basic_TA.Active.OnGameStateTimeUpdated
-struct SGameEvent_Tutorial_Basic_TA_Active_OnGameStateTimeUpdated_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_Basic_TA.Active.HandleHitGoal
-struct SGameEvent_Tutorial_Basic_TA_Active_HandleHitGoal_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-};
-
-// Function TAGame.GameEvent_Tutorial_Basic_TA.Active.Tick
-struct SGameEvent_Tutorial_Basic_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_Basic_TA.Countdown.OnVehicleSetup
-struct SGameEvent_Tutorial_Basic_TA_Countdown_OnVehicleSetup_Params
-{
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
 // Function TAGame.GameEvent_Tutorial_FreePlay_TA.DestroyGoalIndicators
 struct AGameEvent_Tutorial_FreePlay_TA_DestroyGoalIndicators_Params
 {
@@ -27164,29 +26056,6 @@ struct AGameEvent_Tutorial_FreePlay_TA_GetSpawnLocation_Params
 struct AGameEvent_Tutorial_FreePlay_TA_GetRandomBallSpawnInfo_Params
 {
 	struct FFieldSpawnInfo                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_Tutorial_FreePlay_TA.Countdown.OnVehicleSetup
-struct SGameEvent_Tutorial_FreePlay_TA_Countdown_OnVehicleSetup_Params
-{
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_FreePlay_TA.Countdown.BeginState
-struct SGameEvent_Tutorial_FreePlay_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.RedoRound
-struct SGameEvent_Tutorial_FreePlay_TA_Active_RedoRound_Params
-{
-};
-
-// Function TAGame.GameEvent_Tutorial_FreePlay_TA.Active.Tick
-struct SGameEvent_Tutorial_FreePlay_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
 };
 
 // Function TAGame.GameInfo_BotPerfTest_TA.HandleMainEventDestroyed
@@ -32049,54 +30918,6 @@ struct UGFxData_ServerBrowser_TA_GetOnlineGame_Params
 	class UOnlineGame_X*                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.GFxData_ServerBrowser_TA.Searching.EndState
-struct SGFxData_ServerBrowser_TA_Searching_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Searching.HandleCancelSearch
-struct SGFxData_ServerBrowser_TA_Searching_HandleCancelSearch_Params
-{
-	class UGFxModal_X*                                 Modal;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Searching.BeginState
-struct SGFxData_ServerBrowser_TA_Searching_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Joining.HandleJoinGameComplete
-struct SGFxData_ServerBrowser_TA_Joining_HandleJoinGameComplete_Params
-{
-	bool                                               bSuccess;                                                 // (CPF_Parm)
-	struct FString                                     FailReason;                                               // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Joining.HandleCancelJoin
-struct SGFxData_ServerBrowser_TA_Joining_HandleCancelJoin_Params
-{
-	class UGFxModal_X*                                 Modal;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Joining.EndState
-struct SGFxData_ServerBrowser_TA_Joining_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Joining.BeginState
-struct SGFxData_ServerBrowser_TA_Joining_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GFxData_ServerBrowser_TA.Joining.StartSearch
-struct SGFxData_ServerBrowser_TA_Joining_StartSearch_Params
-{
-};
-
 // Function TAGame.GFxData_UserSetting_TA.Clear
 struct UGFxData_UserSetting_TA_Clear_Params
 {
@@ -35976,63 +34797,6 @@ struct UOnlineGamePlayTogether_TA_OnInit_Params
 {
 };
 
-// Function TAGame.OnlineGameDedicatedServer_TA.Inactive.HandleReservationsUpdated
-struct SOnlineGameDedicatedServer_TA_Inactive_HandleReservationsUpdated_Params
-{
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.Inactive.HandleMigrationJoin
-struct SOnlineGameDedicatedServer_TA_Inactive_HandleMigrationJoin_Params
-{
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.Inactive.BeginState
-struct SOnlineGameDedicatedServer_TA_Inactive_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.Active.OnNewGameInfoCreated
-struct SOnlineGameDedicatedServer_TA_Active_OnNewGameInfoCreated_Params
-{
-	class AGameInfo_X*                                 Game;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.Active.BeginState
-struct SOnlineGameDedicatedServer_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.EndGame.GoToMap
-struct SOnlineGameDedicatedServer_TA_EndGame_GoToMap_Params
-{
-	struct FString                                     MapName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.EndGame.BeginState
-struct SOnlineGameDedicatedServer_TA_EndGame_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.PostGameLobby.IsInPostGameLobby
-struct SOnlineGameDedicatedServer_TA_PostGameLobby_IsInPostGameLobby_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.PostGameLobby.HandleReservationsUpdated
-struct SOnlineGameDedicatedServer_TA_PostGameLobby_HandleReservationsUpdated_Params
-{
-};
-
-// Function TAGame.OnlineGameDedicatedServer_TA.PostGameLobby.BeginState
-struct SOnlineGameDedicatedServer_TA_PostGameLobby_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.ProductAssetCache_TA.GetDebugName
 struct UProductAssetCache_TA_GetDebugName_Params
 {
@@ -36091,34 +34855,6 @@ struct UOnlineGameJoinGame_TA_OnInit_Params
 {
 };
 
-// Function TAGame.OnlineGameJoinGame_TA.ReservingServer.JoinServer
-struct SOnlineGameJoinGame_TA_ReservingServer_JoinServer_Params
-{
-	class UReservationsReadyMessage_X*                 Message;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameJoinGame_TA.ReservingServerForPrivateMatch.CreateReservationMessage
-struct SOnlineGameJoinGame_TA_ReservingServerForPrivateMatch_CreateReservationMessage_Params
-{
-	class UAddReservationMessage_X*                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.OnlineGameJoinGame_TA.ReservingServerForMatchmaking.CreateReservationMessage
-struct SOnlineGameJoinGame_TA_ReservingServerForMatchmaking_CreateReservationMessage_Params
-{
-	class UAddReservationMessage_X*                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.OnlineGameJoinGame_TA.OpeningLoadingScreen.ClearAssetCache
-struct SOnlineGameJoinGame_TA_OpeningLoadingScreen_ClearAssetCache_Params
-{
-};
-
-// Function TAGame.OnlineGameJoinGame_TA.JoiningNewServer.ClearAssetCache
-struct SOnlineGameJoinGame_TA_JoiningNewServer_ClearAssetCache_Params
-{
-};
-
 // Function TAGame.OnlineGameLanServer_TA.HandleGameEventEnded
 struct UOnlineGameLanServer_TA_HandleGameEventEnded_Params
 {
@@ -36155,17 +34891,6 @@ struct UOnlineGameLanServer_TA_LoadAllRelevantProducts_Params
 
 // Function TAGame.OnlineGameLanServer_TA.OnInit
 struct UOnlineGameLanServer_TA_OnInit_Params
-{
-};
-
-// Function TAGame.OnlineGameLanServer_TA.Active.OnNewGameInfoCreated
-struct SOnlineGameLanServer_TA_Active_OnNewGameInfoCreated_Params
-{
-	class AGameInfo_X*                                 Game;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.OnlineGameLanServer_TA.EndGame.GoToNextMap
-struct SOnlineGameLanServer_TA_EndGame_GoToNextMap_Params
 {
 };
 
@@ -36720,68 +35445,6 @@ struct USaveDataMetrics_TA_RecordReconcileXP_Params
 	int                                                LocalXP;                                                  // (CPF_Parm)
 };
 
-// Function TAGame.PlayerControllerBase_TA.Spectating_TA.ResetView
-struct SPlayerControllerBase_TA_Spectating_TA_ResetView_Params
-{
-};
-
-// Function TAGame.PlayerControllerBase_TA.Spectating_TA.UpdateSpectatorViewRotation
-struct SPlayerControllerBase_TA_Spectating_TA_UpdateSpectatorViewRotation_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.Spectating_TA.PlayerMove
-struct SPlayerControllerBase_TA_Spectating_TA_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.Spectating_TA.IsSpectating
-struct SPlayerControllerBase_TA_Spectating_TA_IsSpectating_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.Pause
-struct SPlayerControllerBase_TA_DebugMode_Pause_Params
-{
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.ContextualDebugAction
-struct SPlayerControllerBase_TA_DebugMode_ContextualDebugAction_Params
-{
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.GetAimLocation
-struct SPlayerControllerBase_TA_DebugMode_GetAimLocation_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.GetLockedDebugAI
-struct SPlayerControllerBase_TA_DebugMode_GetLockedDebugAI_Params
-{
-	class AAIController_TA*                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.QueryCrosshair
-struct SPlayerControllerBase_TA_DebugMode_QueryCrosshair_Params
-{
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.EndState
-struct SPlayerControllerBase_TA_DebugMode_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerControllerBase_TA.DebugMode.BeginState
-struct SPlayerControllerBase_TA_DebugMode_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.PlayerBanner_TA.ClearBanner
 struct UPlayerBanner_TA_ClearBanner_Params
 {
@@ -36945,12 +35608,6 @@ struct UPlayerInput_Menu_TA_HandleActiveBindingsChanged_Params
 // Function TAGame.PlayerController_Replay_TA.ReceivedPlayer
 struct APlayerController_Replay_TA_ReceivedPlayer_Params
 {
-};
-
-// Function TAGame.PlayerController_Replay_TA.PlayerWaiting.BeginState
-struct SPlayerController_Replay_TA_PlayerWaiting_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.PlatformMetrics_TA.DriveWithKBM
@@ -37421,149 +36078,6 @@ struct UAimAssistComponent_TA_EventAimAssistChanged_Params
 	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
 };
 
-// Function TAGame.PlayerController_TA.PlayerWaiting.BeginState
-struct SPlayerController_TA_PlayerWaiting_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Driving.PlayerMove
-struct SPlayerController_TA_Driving_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Driving.ProcessMove_TA
-struct SPlayerController_TA_Driving_ProcessMove_TA_Params
-{
-	struct FVehicleInputs                              NewInput;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.DebugDriving.ProcessMove_TA
-struct SPlayerController_TA_DebugDriving_ProcessMove_TA_Params
-{
-	struct FVehicleInputs                              NewInput;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.DebugDriving.EndState
-struct SPlayerController_TA_DebugDriving_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.DebugDriving.BeginState
-struct SPlayerController_TA_DebugDriving_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.FollowPlayer_TA.HandleCarSet
-struct SPlayerController_TA_FollowPlayer_TA_HandleCarSet_Params
-{
-	class APRI_TA*                                     InPRI;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.FollowPlayer_TA.SetFollowTarget
-struct SPlayerController_TA_FollowPlayer_TA_SetFollowTarget_Params
-{
-	class APRI_TA*                                     InTarget;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.FollowPlayer_TA.EndState
-struct SPlayerController_TA_FollowPlayer_TA_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.FollowPlayer_TA.BeginState
-struct SPlayerController_TA_FollowPlayer_TA_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.FollowPlayer_TA.IsSpectating
-struct SPlayerController_TA_FollowPlayer_TA_IsSpectating_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerController_TA.RoundEnded.BeginState
-struct SPlayerController_TA_RoundEnded_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Dead.PlayerMove
-struct SPlayerController_TA_Dead_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Dead.FindGoodView
-struct SPlayerController_TA_Dead_FindGoodView_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Dead.StartFire
-struct SPlayerController_TA_Dead_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Dead.PrevWeapon
-struct SPlayerController_TA_Dead_PrevWeapon_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Dead.NextWeapon
-struct SPlayerController_TA_Dead_NextWeapon_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Dead.KilledBy
-struct SPlayerController_TA_Dead_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Dead.HearNoise
-struct SPlayerController_TA_Dead_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Dead.SeePlayer
-struct SPlayerController_TA_Dead_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Spectating_TA.IsSpectating
-struct SPlayerController_TA_Spectating_TA_IsSpectating_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerController_TA.Spectating_TA.SetGameHUDArchetype
-struct SPlayerController_TA_Spectating_TA_SetGameHUDArchetype_Params
-{
-	class AHUD*                                        InArchetype;                                              // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Spectating_TA.EndState
-struct SPlayerController_TA_Spectating_TA_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Spectating_TA.BeginState
-struct SPlayerController_TA_Spectating_TA_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.Interface_GameEditor_TA.EditingEnd
 struct UInterface_GameEditor_TA_EditingEnd_Params
 {
@@ -37949,201 +36463,6 @@ struct ABall_GameEditor_TA_EventVelocityStartSpeedChanged_Params
 struct ABall_GameEditor_TA_EventBallWentThruRing_Params
 {
 	class ABall_GameEditor_TA*                         Ball;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.RestoreEditorPawnOrientation
-struct SPlayerController_TA_Editing_RestoreEditorPawnOrientation_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.BackupEditorPawnOrientation
-struct SPlayerController_TA_Editing_BackupEditorPawnOrientation_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorPawnDeSerialize
-struct SPlayerController_TA_Editing_EditorPawnDeSerialize_Params
-{
-	class UJsonObject*                                 Data;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorPawnSerialize
-struct SPlayerController_TA_Editing_EditorPawnSerialize_Params
-{
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.PlayerController_TA.Editing.PlayerTick
-struct SPlayerController_TA_Editing_PlayerTick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.UpdateCrosshair
-struct SPlayerController_TA_Editing_UpdateCrosshair_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorPrevRound
-struct SPlayerController_TA_Editing_EditorPrevRound_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorNextRound
-struct SPlayerController_TA_Editing_EditorNextRound_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorDecreaseRoundTime
-struct SPlayerController_TA_Editing_EditorDecreaseRoundTime_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorIncreaseRoundTime
-struct SPlayerController_TA_Editing_EditorIncreaseRoundTime_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorRedo
-struct SPlayerController_TA_Editing_EditorRedo_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorUndo
-struct SPlayerController_TA_Editing_EditorUndo_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.ToggleCameraPosition
-struct SPlayerController_TA_Editing_ToggleCameraPosition_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.ModifyEditorPower
-struct SPlayerController_TA_Editing_ModifyEditorPower_Params
-{
-	int                                                Direction;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorDecreasePowerToggle
-struct SPlayerController_TA_Editing_EditorDecreasePowerToggle_Params
-{
-	bool                                               bToggle;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorIncreasePowerToggle
-struct SPlayerController_TA_Editing_EditorIncreasePowerToggle_Params
-{
-	bool                                               bToggle;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorDecreasePowerToggleInterim
-struct SPlayerController_TA_Editing_EditorDecreasePowerToggleInterim_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorIncreasePowerToggleInterim
-struct SPlayerController_TA_Editing_EditorIncreasePowerToggleInterim_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorDecreasePower
-struct SPlayerController_TA_Editing_EditorDecreasePower_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorIncreasePower
-struct SPlayerController_TA_Editing_EditorIncreasePower_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.ClampMoveActorGrabOffset
-struct SPlayerController_TA_Editing_ClampMoveActorGrabOffset_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.StopEditing
-struct SPlayerController_TA_Editing_StopEditing_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.DuplicateShot
-struct SPlayerController_TA_Editing_DuplicateShot_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorCycleActor
-struct SPlayerController_TA_Editing_EditorCycleActor_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.EditorReleaseActor
-struct SPlayerController_TA_Editing_EditorReleaseActor_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.ToggleRotateActor
-struct SPlayerController_TA_Editing_ToggleRotateActor_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.ToggleGrabActor
-struct SPlayerController_TA_Editing_ToggleGrabActor_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.RemoveActor
-struct SPlayerController_TA_Editing_RemoveActor_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.SpawnSelectedArchetype
-struct SPlayerController_TA_Editing_SpawnSelectedArchetype_Params
-{
-};
-
-// Function TAGame.PlayerController_TA.Editing.UpdateSpectatorViewRotation
-struct SPlayerController_TA_Editing_UpdateSpectatorViewRotation_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.PlayerMove
-struct SPlayerController_TA_Editing_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.UpdateRotatedActorOrientation
-struct SPlayerController_TA_Editing_UpdateRotatedActorOrientation_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.SetGameHUDArchetype
-struct SPlayerController_TA_Editing_SetGameHUDArchetype_Params
-{
-	class AHUD*                                        InArchetype;                                              // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.EndState
-struct SPlayerController_TA_Editing_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.BeginState
-struct SPlayerController_TA_Editing_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PlayerController_TA.Editing.PawnDied
-struct SPlayerController_TA_Editing_PawnDied_Params
-{
-	class APawn*                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.GameEditor_Actor_TA.EditingEnd
@@ -38722,101 +37041,6 @@ struct UMapPrefsMetrics_TA_RecordMapPrefs_Params
 	TArray<struct FPlaylistMapPrefs>                   InMapPrefs;                                               // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 };
 
-// Function TAGame.ReplayDirector_TA.Recording.HandleStatEvent
-struct SReplayDirector_TA_Recording_HandleStatEvent_Params
-{
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-	class UStatEvent_TA*                               StatEvent;                                                // (CPF_Parm)
-	int                                                Count;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Recording.EndState
-struct SReplayDirector_TA_Recording_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Recording.BeginState
-struct SReplayDirector_TA_Recording_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.UpdateFocusActors
-struct SReplayDirector_TA_Playing_UpdateFocusActors_Params
-{
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.UpdateSlomo
-struct SReplayDirector_TA_Playing_UpdateSlomo_Params
-{
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.ShouldSlomo
-struct SReplayDirector_TA_Playing_ShouldSlomo_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.Tick
-struct SReplayDirector_TA_Playing_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.HandleReplayFinished
-struct SReplayDirector_TA_Playing_HandleReplayFinished_Params
-{
-	class UReplay_TA*                                  InReplay;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.EndState
-struct SReplayDirector_TA_Playing_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.Playing.BeginState
-struct SReplayDirector_TA_Playing_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.GetNextHighlightFrame
-struct SReplayDirector_TA_PlayingHighlights_GetNextHighlightFrame_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.PlayRandomHighlight
-struct SReplayDirector_TA_PlayingHighlights_PlayRandomHighlight_Params
-{
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.Tick
-struct SReplayDirector_TA_PlayingHighlights_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.SetFocusActors
-struct SReplayDirector_TA_PlayingHighlights_SetFocusActors_Params
-{
-	class AActor*                                      NewCar;                                                   // (CPF_Parm)
-	class AActor*                                      NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.Destroyed
-struct SReplayDirector_TA_PlayingHighlights_Destroyed_Params
-{
-};
-
-// Function TAGame.ReplayDirector_TA.PlayingHighlights.BeginState
-struct SReplayDirector_TA_PlayingHighlights_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.RPC_ProductsPlayerClear_TA.SetPlayerID
 struct URPC_ProductsPlayerClear_TA_SetPlayerID_Params
 {
@@ -39265,35 +37489,6 @@ struct ASkyLightVolume_TA_PostBeginPlay_Params
 {
 };
 
-// Function TAGame.StatFactory_TA.Active.RegisterCars
-struct SStatFactory_TA_Active_RegisterCars_Params
-{
-};
-
-// Function TAGame.StatFactory_TA.Active.RegisterBalls
-struct SStatFactory_TA_Active_RegisterBalls_Params
-{
-};
-
-// Function TAGame.StatFactory_TA.Active.HandlePlayerRestarted
-struct SStatFactory_TA_Active_HandlePlayerRestarted_Params
-{
-	class AGameEvent_TA*                               GameEvent;                                                // (CPF_Parm)
-	class ACar_TA*                                     PlayerCar;                                                // (CPF_Parm)
-};
-
-// Function TAGame.StatFactory_TA.Active.EndState
-struct SStatFactory_TA_Active_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.StatFactory_TA.Active.BeginState
-struct SStatFactory_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.Tutorial_Boost_TA.OnActionNameToDetectReleased
 struct UTutorial_Boost_TA_OnActionNameToDetectReleased_Params
 {
@@ -39370,47 +37565,6 @@ struct UTutorial_HandBrake_TA_NotifyEventOnTutorial_Params
 	struct FString                                     EventName;                                                // (CPF_Parm, CPF_NeedCtorLink)
 };
 
-// Function TAGame.VehiclePickup_TA.Idle.OnTouch
-struct SVehiclePickup_TA_Idle_OnTouch_Params
-{
-	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.VehiclePickup_TA.Idle.EndState
-struct SVehiclePickup_TA_Idle_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.VehiclePickup_TA.Idle.BeginState
-struct SVehiclePickup_TA_Idle_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.VehiclePickup_TA.PickedUp.BeginState
-struct SVehiclePickup_TA_PickedUp_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.VehiclePickup_Boost_TA.Idle.EndState
-struct SVehiclePickup_Boost_TA_Idle_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.VehiclePickup_Boost_TA.Idle.SetNoPickup
-struct SVehiclePickup_Boost_TA_Idle_SetNoPickup_Params
-{
-};
-
-// Function TAGame.VehiclePickup_Boost_TA.Idle.BeginState
-struct SVehiclePickup_Boost_TA_Idle_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.VehiclePickup_BoostModifier_LaunchPad_TA.PickupEffect
 struct UVehiclePickup_BoostModifier_LaunchPad_TA_PickupEffect_Params
 {
@@ -39461,36 +37615,6 @@ struct UVehiclePickup_BoostModifier_Teleporter_TA_CanPickup_Params
 {
 	class ACar_TA*                                     Car;                                                      // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.VoteActor_TA.Finished.BeginState
-struct SVoteActor_TA_Finished_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.VoteActor_TA.Finished.SetVoteStatus
-struct SVoteActor_TA_Finished_SetVoteStatus_Params
-{
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-	TEnumAsByte<EVoteStatus>                           Status;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.VoteActor_TA.Finished.FinishVote
-struct SVoteActor_TA_Finished_FinishVote_Params
-{
-};
-
-// Function TAGame.VoteActor_TA.Finished.RemoveVoter
-struct SVoteActor_TA_Finished_RemoveVoter_Params
-{
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-};
-
-// Function TAGame.VoteActor_TA.Finished.AddVoter
-struct SVoteActor_TA_Finished_AddVoter_Params
-{
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
 };
 
 // Function TAGame.FXActor_BreakoutPlatform_TA.SetTeamColor
@@ -39546,47 +37670,6 @@ struct AFXActor_BreakoutPlatform_TA_SetAttachmentActor_Params
 	class AActor*                                      AttachToActor;                                            // (CPF_Parm)
 };
 
-// Function TAGame.EngineAudioPreviewBase_TA.Previewing.EndState
-struct SEngineAudioPreviewBase_TA_Previewing_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.EngineAudioPreviewBase_TA.Previewing.BeginState
-struct SEngineAudioPreviewBase_TA_Previewing_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.EngineAudioPreviewBase_TA.Warmup.GotoPreviewState
-struct SEngineAudioPreviewBase_TA_Warmup_GotoPreviewState_Params
-{
-};
-
-// Function TAGame.EngineAudioPreviewBase_TA.Warmup.EndState
-struct SEngineAudioPreviewBase_TA_Warmup_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.EngineAudioPreviewBase_TA.Warmup.BeginState
-struct SEngineAudioPreviewBase_TA_Warmup_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.EngineAudioPreview_TA.Previewing.Update
-struct SEngineAudioPreview_TA_Previewing_Update_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.EngineAudioPreview_TA.Previewing.EndState
-struct SEngineAudioPreview_TA_Previewing_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.__ProductAttribute_Painted_TA__ApplyToSetParameter_2.LambdaCallback
 struct U__ProductAttribute_Painted_TA__ApplyToSetParameter_2_LambdaCallback_Params
 {
@@ -39630,23 +37713,6 @@ struct U__EngineAudioUnlocker_TA__UnlockEnginesForBody_1_LambdaCallback_Params
 struct U__EngineAudioUnlocker_TA__UnlockEnginesForBody_3_LambdaCallback_Params
 {
 	class UProduct_TA*                                 Product;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.CountdownObject_TA.Countdown.UpdateCountdown
-struct SCountdownObject_TA_Countdown_UpdateCountdown_Params
-{
-};
-
-// Function TAGame.CountdownObject_TA.Countdown.EndState
-struct SCountdownObject_TA_Countdown_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.CountdownObject_TA.Countdown.BeginState
-struct SCountdownObject_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.__GameObserver_TA__GetOffensiveGoal_1.LambdaCallback
@@ -39856,55 +37922,6 @@ struct UCameraState_DirectorProxy_TA_BeginCameraState_Params
 {
 };
 
-// Function TAGame.GameEvent_Breakout_TA.ReplayPlayback.HandleDamageStateChanged
-struct SGameEvent_Breakout_TA_ReplayPlayback_HandleDamageStateChanged_Params
-{
-	class ABreakOutActor_Platform_TA*                  Platform;                                                 // (CPF_Parm)
-	struct FBreakoutDamageState                        InState;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Breakout_TA.ReplayPlayback.HandlePlatformDamaged
-struct SGameEvent_Breakout_TA_ReplayPlayback_HandlePlatformDamaged_Params
-{
-	class ABreakOutActor_Platform_TA*                  Platform;                                                 // (CPF_Parm)
-	class APRI_TA*                                     PRI;                                                      // (CPF_Parm)
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Breakout_TA.PostGoalScored.RestorePreReplayState
-struct SGameEvent_Breakout_TA_PostGoalScored_RestorePreReplayState_Params
-{
-};
-
-// Function TAGame.GameEvent_Breakout_TA.PostGoalScored.EndState
-struct SGameEvent_Breakout_TA_PostGoalScored_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Breakout_TA.PostGoalScored.SavePreReplayState
-struct SGameEvent_Breakout_TA_PostGoalScored_SavePreReplayState_Params
-{
-};
-
-// Function TAGame.GameEvent_Breakout_TA.PostGoalScored.BeginState
-struct SGameEvent_Breakout_TA_PostGoalScored_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Breakout_TA.Countdown.BeginState
-struct SGameEvent_Breakout_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_Breakout_TA.WaitingForPlayers.OnPlayerRestarted
-struct SGameEvent_Breakout_TA_WaitingForPlayers_OnPlayerRestarted_Params
-{
-	class ACar_TA*                                     PlayerCar;                                                // (CPF_Parm)
-};
-
 // Function TAGame.RPC_ProductsTradeIn_TA.OnComplete
 struct URPC_ProductsTradeIn_TA_OnComplete_Params
 {
@@ -39930,30 +37947,6 @@ struct URPC_ProductsTradeIn_TA_SetPlayerID_Params
 	class URPC_ProductsTradeIn_TA*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function TAGame.SpecialPickup_TA.Active.Tick
-struct SSpecialPickup_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.SpecialPickup_TA.Active.EndState
-struct SSpecialPickup_TA_Active_EndState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.SpecialPickup_TA.Active.BeginState
-struct SSpecialPickup_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.SpecialPickup_TA.Inactive.Tick
-struct SSpecialPickup_TA_Inactive_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
 // Function TAGame.ProductStat_Baskets_TA.OnStatEvent
 struct UProductStat_Baskets_TA_OnStatEvent_Params
 {
@@ -39971,119 +37964,6 @@ struct U__AudioPriorityComponent_TA__Tick_1_LambdaCallback_Params
 {
 	class ACar_TA*                                     C;                                                        // (CPF_Parm)
 	struct FPriorityCandidate                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.ReleaseGrabbedActor
-struct SGameEvent_GameEditor_TA_EditorMode_ReleaseGrabbedActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.GrabActor
-struct SGameEvent_GameEditor_TA_EditorMode_GrabActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.ToggleGrabActor
-struct SGameEvent_GameEditor_TA_EditorMode_ToggleGrabActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.ReleaseRotateActor
-struct SGameEvent_GameEditor_TA_EditorMode_ReleaseRotateActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.RotateActor
-struct SGameEvent_GameEditor_TA_EditorMode_RotateActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-	bool                                               bSnapOrientation;                                         // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.ToggleRotateActor
-struct SGameEvent_GameEditor_TA_EditorMode_ToggleRotateActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.ShouldUpdateCrosshair
-struct SGameEvent_GameEditor_TA_EditorMode_ShouldUpdateCrosshair_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.HandleHitGoal
-struct SGameEvent_GameEditor_TA_EditorMode_HandleHitGoal_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.OnCarSpawned
-struct SGameEvent_GameEditor_TA_EditorMode_OnCarSpawned_Params
-{
-	class ACar_TA*                                     NewCar;                                                   // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.SetBallEventListeners
-struct SGameEvent_GameEditor_TA_EditorMode_SetBallEventListeners_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	bool                                               bListen;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.OnBallSpawned
-struct SGameEvent_GameEditor_TA_EditorMode_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.GetSpawnLocationAndRotation
-struct SGameEvent_GameEditor_TA_EditorMode_GetSpawnLocationAndRotation_Params
-{
-	class AController*                                 Player;                                                   // (CPF_Parm)
-	struct FVector                                     SpawnLocation;                                            // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    SpawnRotation;                                            // (CPF_Parm, CPF_OutParm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.SetSaveData
-struct SGameEvent_GameEditor_TA_EditorMode_SetSaveData_Params
-{
-	class USaveData_GameEditor_TA*                     Data;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.Redo
-struct SGameEvent_GameEditor_TA_EditorMode_Redo_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.Undo
-struct SGameEvent_GameEditor_TA_EditorMode_Undo_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.CanAddHistory
-struct SGameEvent_GameEditor_TA_EditorMode_CanAddHistory_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.EndState
-struct SGameEvent_GameEditor_TA_EditorMode_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_GameEditor_TA.EditorMode.BeginState
-struct SGameEvent_GameEditor_TA_EditorMode_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.Save_TA.CancelGetHeaders
@@ -40214,42 +38094,6 @@ struct UTrainingEditorData_TA_Init_Params
 {
 };
 
-// Function TAGame.GameEvent_TrainingEditor_TA.ReplayPlayback.CommitRedoRound
-struct SGameEvent_TrainingEditor_TA_ReplayPlayback_CommitRedoRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ReplayPlayback.ResetRound
-struct SGameEvent_TrainingEditor_TA_ReplayPlayback_ResetRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ReplayPlayback.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_ReplayPlayback_ToggleEditorRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ReplayPlayback.EndState
-struct SGameEvent_TrainingEditor_TA_ReplayPlayback_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.PostGoalScored.CommitRedoRound
-struct SGameEvent_TrainingEditor_TA_PostGoalScored_CommitRedoRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.PostGoalScored.ResetRound
-struct SGameEvent_TrainingEditor_TA_PostGoalScored_ResetRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.PostGoalScored.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_PostGoalScored_ToggleEditorRound_Params
-{
-};
-
 // Function TAGame.TrainingEditorMetrics_TA.TrainingShotComplete
 struct UTrainingEditorMetrics_TA_TrainingShotComplete_Params
 {
@@ -40326,371 +38170,6 @@ struct UTrainingEditorMetrics_TA_TrainingSetCreate_Params
 	struct FString                                     TrainingType;                                             // (CPF_Parm, CPF_NeedCtorLink)
 	int                                                Difficulty;                                               // (CPF_Parm)
 	struct FString                                     UserTags;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.FireBalls
-struct SGameEvent_TrainingEditor_TA_Active_FireBalls_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.SetBallEventListeners
-struct SGameEvent_TrainingEditor_TA_Active_SetBallEventListeners_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	bool                                               bListen;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.HandleBallWentThruRing
-struct SGameEvent_TrainingEditor_TA_Active_HandleBallWentThruRing_Params
-{
-	class ABall_GameEditor_TA*                         Ball;                                                     // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.HandleTriggerTouched
-struct SGameEvent_TrainingEditor_TA_Active_HandleTriggerTouched_Params
-{
-	class AGameEditor_Trigger_TA*                      Trigger;                                                  // (CPF_Parm)
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.DestroyBall
-struct SGameEvent_TrainingEditor_TA_Active_DestroyBall_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.HandleBallHitGround
-struct SGameEvent_TrainingEditor_TA_Active_HandleBallHitGround_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	struct FVector                                     HitLoc;                                                   // (CPF_Parm)
-	struct FVector                                     HitNorm;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.WaitForBallOnGround
-struct SGameEvent_TrainingEditor_TA_Active_WaitForBallOnGround_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.HandleHitGoal
-struct SGameEvent_TrainingEditor_TA_Active_HandleHitGoal_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class UGoal_TA*                                    Goal;                                                     // (CPF_Parm, CPF_EditInline)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.HandleCarTouch
-struct SGameEvent_TrainingEditor_TA_Active_HandleCarTouch_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.CanAwardPoints
-struct SGameEvent_TrainingEditor_TA_Active_CanAwardPoints_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.Tick
-struct SGameEvent_TrainingEditor_TA_Active_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.CanUpdateGameTime
-struct SGameEvent_TrainingEditor_TA_Active_CanUpdateGameTime_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.CommitRedoRound
-struct SGameEvent_TrainingEditor_TA_Active_CommitRedoRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.ResetRound
-struct SGameEvent_TrainingEditor_TA_Active_ResetRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_Active_ToggleEditorRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.EndState
-struct SGameEvent_TrainingEditor_TA_Active_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Active.BeginState
-struct SGameEvent_TrainingEditor_TA_Active_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.HandleCarTouch
-struct SGameEvent_TrainingEditor_TA_Countdown_HandleCarTouch_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	class ACar_TA*                                     HitCar;                                                   // (CPF_Parm)
-	TEnumAsByte<EBallHitType>                          HitType;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.SetBallEventListeners
-struct SGameEvent_TrainingEditor_TA_Countdown_SetBallEventListeners_Params
-{
-	class ABall_TA*                                    Ball;                                                     // (CPF_Parm)
-	bool                                               bListen;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.OnBallSpawned
-struct SGameEvent_TrainingEditor_TA_Countdown_OnBallSpawned_Params
-{
-	class ABall_TA*                                    NewBall;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.Tick
-struct SGameEvent_TrainingEditor_TA_Countdown_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_Countdown_ToggleEditorRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.InitCountDown
-struct SGameEvent_TrainingEditor_TA_Countdown_InitCountDown_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.EndState
-struct SGameEvent_TrainingEditor_TA_Countdown_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.Countdown.BeginState
-struct SGameEvent_TrainingEditor_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.GetDesiredSoundGameMode
-struct SGameEvent_TrainingEditor_TA_EditorMode_GetDesiredSoundGameMode_Params
-{
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.StopEditing
-struct SGameEvent_TrainingEditor_TA_EditorMode_StopEditing_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ReleaseRotateActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_ReleaseRotateActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.CycleActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_CycleActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.SetTracedCrosshairActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_SetTracedCrosshairActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-	class AActor*                                      NewActor;                                                 // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ToggleReleaseActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_ToggleReleaseActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ReleaseActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_ReleaseActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.RotateActor
-struct SGameEvent_TrainingEditor_TA_EditorMode_RotateActor_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-	bool                                               bSnapOrientation;                                         // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.PrevRound
-struct SGameEvent_TrainingEditor_TA_EditorMode_PrevRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.NextRound
-struct SGameEvent_TrainingEditor_TA_EditorMode_NextRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_EditorMode_ToggleEditorRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.SetRoundTimeLimit
-struct SGameEvent_TrainingEditor_TA_EditorMode_SetRoundTimeLimit_Params
-{
-	float                                              NewRoundTime;                                             // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.DecreaseTime
-struct SGameEvent_TrainingEditor_TA_EditorMode_DecreaseTime_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.IncreaseTime
-struct SGameEvent_TrainingEditor_TA_EditorMode_IncreaseTime_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.Redo
-struct SGameEvent_TrainingEditor_TA_EditorMode_Redo_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.Undo
-struct SGameEvent_TrainingEditor_TA_EditorMode_Undo_Params
-{
-	class APlayerController_TA*                        PC;                                                       // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ForceTagHistoryChanges
-struct SGameEvent_TrainingEditor_TA_EditorMode_ForceTagHistoryChanges_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.MarkAsDirty
-struct SGameEvent_TrainingEditor_TA_EditorMode_MarkAsDirty_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.TagHistoryChanges
-struct SGameEvent_TrainingEditor_TA_EditorMode_TagHistoryChanges_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.Save
-struct SGameEvent_TrainingEditor_TA_EditorMode_Save_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.UpdateActiveRoundData
-struct SGameEvent_TrainingEditor_TA_EditorMode_UpdateActiveRoundData_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.HandlePrimaryPlayerChange
-struct SGameEvent_TrainingEditor_TA_EditorMode_HandlePrimaryPlayerChange_Params
-{
-	class ULocalPlayer*                                OldPrimary;                                               // (CPF_Parm)
-	class ULocalPlayer*                                NewPrimary;                                               // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.EndState
-struct SGameEvent_TrainingEditor_TA_EditorMode_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.BeginState
-struct SGameEvent_TrainingEditor_TA_EditorMode_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.EditorMode.ShouldUpdateCrosshair
-struct SGameEvent_TrainingEditor_TA_EditorMode_ShouldUpdateCrosshair_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.DuplicateRound
-struct SGameEvent_TrainingEditor_TA_ShotSelection_DuplicateRound_Params
-{
-	int                                                Index;                                                    // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.SetMetaData
-struct SGameEvent_TrainingEditor_TA_ShotSelection_SetMetaData_Params
-{
-	struct FString                                     NewName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<ETrainingType>                         NewType;                                                  // (CPF_Parm)
-	TEnumAsByte<EDifficulty>                           NewDifficulty;                                            // (CPF_Parm)
-	TArray<int>                                        NewTags;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.ReorderRound
-struct SGameEvent_TrainingEditor_TA_ShotSelection_ReorderRound_Params
-{
-	int                                                FromIndex;                                                // (CPF_Parm)
-	int                                                ToIndex;                                                  // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.StartEditing
-struct SGameEvent_TrainingEditor_TA_ShotSelection_StartEditing_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.ToggleEditorRound
-struct SGameEvent_TrainingEditor_TA_ShotSelection_ToggleEditorRound_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.UpdateActiveRoundData
-struct SGameEvent_TrainingEditor_TA_ShotSelection_UpdateActiveRoundData_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.EndState
-struct SGameEvent_TrainingEditor_TA_ShotSelection_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.ShotSelection.BeginState
-struct SGameEvent_TrainingEditor_TA_ShotSelection_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.WaitingToPlayTest.OnLoadingMovieClosed
-struct SGameEvent_TrainingEditor_TA_WaitingToPlayTest_OnLoadingMovieClosed_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.WaitingToPlayTest.OnTrainingModeLoaded
-struct SGameEvent_TrainingEditor_TA_WaitingToPlayTest_OnTrainingModeLoaded_Params
-{
-};
-
-// Function TAGame.GameEvent_TrainingEditor_TA.WaitingToPlayTest.BeginState
-struct SGameEvent_TrainingEditor_TA_WaitingToPlayTest_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
 };
 
 // Function TAGame.__GFxData_TradeLobby_TA__VerifyRemoteOffering_1.LambdaCallback
@@ -40771,17 +38250,6 @@ struct U__MapGroups_TA__BuildGroups_1_LambdaCallback_Params
 {
 	class UMapData_TA*                                 M;                                                        // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.SpecialPickup_Targeted_TA.Active.TargetChanged
-struct SSpecialPickup_Targeted_TA_Active_TargetChanged_Params
-{
-};
-
-// Function TAGame.EngineAudioPreviewRev_TA.Previewing.Update
-struct SEngineAudioPreviewRev_TA_Previewing_Update_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
 };
 
 // Function TAGame.MenuSequence_TA.GetCamera
@@ -41046,27 +38514,6 @@ struct URPC_MicroTransactions_ClaimEntitlements_TA_SetPlayerID_Params
 {
 	struct FUniqueNetId                                InPlayerId;                                               // (CPF_Parm)
 	class URPC_MicroTransactions_ClaimEntitlements_TA* ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.CategoryToName
-struct URPC_MicroTransactions_GetCatalog_TA_CategoryToName_Params
-{
-	TEnumAsByte<EMTXCatalogCategory>                   InCategory;                                               // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.SetCategory
-struct URPC_MicroTransactions_GetCatalog_TA_SetCategory_Params
-{
-	TEnumAsByte<EMTXCatalogCategory>                   InCategory;                                               // (CPF_Parm)
-	class URPC_MicroTransactions_GetCatalog_TA*        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.SetPlayerID
-struct URPC_MicroTransactions_GetCatalog_TA_SetPlayerID_Params
-{
-	struct FUniqueNetId                                InPlayerId;                                               // (CPF_Parm)
-	class URPC_MicroTransactions_GetCatalog_TA*        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_MTXGarage_TA.HandleMTXError
@@ -41424,6 +38871,27 @@ struct URPC_MicroTransactions_StartPurchase_TA_SetCartItems_Params
 {
 	TArray<struct FMTCartItem>                         InCartItems;                                              // (CPF_Parm, CPF_NeedCtorLink)
 	class URPC_MicroTransactions_StartPurchase_TA*     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.CategoryToName
+struct URPC_MicroTransactions_GetCatalog_TA_CategoryToName_Params
+{
+	TEnumAsByte<EMTXCatalogCategory>                   InCategory;                                               // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.SetCategory
+struct URPC_MicroTransactions_GetCatalog_TA_SetCategory_Params
+{
+	TEnumAsByte<EMTXCatalogCategory>                   InCategory;                                               // (CPF_Parm)
+	class URPC_MicroTransactions_GetCatalog_TA*        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function TAGame.RPC_MicroTransactions_GetCatalog_TA.SetPlayerID
+struct URPC_MicroTransactions_GetCatalog_TA_SetPlayerID_Params
+{
+	struct FUniqueNetId                                InPlayerId;                                               // (CPF_Parm)
+	class URPC_MicroTransactions_GetCatalog_TA*        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.RPC_MicroTransactions_UnlockContainer_TA.SetPlayerID
@@ -43362,13 +40830,6 @@ struct UGFxData_CarColors_TA_OnShellSet_Params
 {
 };
 
-// Function TAGame.RPC_MicroTransactions_GetContainerDropTable_TA.SetGameVersion
-struct URPC_MicroTransactions_GetContainerDropTable_TA_SetGameVersion_Params
-{
-	int                                                InGameVersion;                                            // (CPF_Parm)
-	class URPC_MicroTransactions_GetContainerDropTable_TA* ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function TAGame.GFxData_ContainerDrops_TA.GetPossibleContainerDrops
 struct UGFxData_ContainerDrops_TA_GetPossibleContainerDrops_Params
 {
@@ -43413,6 +40874,13 @@ struct UGFxData_ContainerDrops_TA_OnRemoved_Params
 // Function TAGame.GFxData_ContainerDrops_TA.OnShellSet
 struct UGFxData_ContainerDrops_TA_OnShellSet_Params
 {
+};
+
+// Function TAGame.RPC_MicroTransactions_GetContainerDropTable_TA.SetGameVersion
+struct URPC_MicroTransactions_GetContainerDropTable_TA_SetGameVersion_Params
+{
+	int                                                InGameVersion;                                            // (CPF_Parm)
+	class URPC_MicroTransactions_GetContainerDropTable_TA* ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function TAGame.GFxData_CustomTeams_TA.InMainMenu
@@ -45979,73 +43447,6 @@ struct AInMapScoreboard_TA_PostBeginPlay_Params
 {
 };
 
-// Function TAGame.InMapScoreboard_TA.Score.BeginState
-struct SInMapScoreboard_TA_Score_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.RoundActive.EndState
-struct SInMapScoreboard_TA_RoundActive_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.RoundActive.BeginState
-struct SInMapScoreboard_TA_RoundActive_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.GoalScored.EndState
-struct SInMapScoreboard_TA_GoalScored_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.GoalScored.Tick
-struct SInMapScoreboard_TA_GoalScored_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.GoalScored.BeginState
-struct SInMapScoreboard_TA_GoalScored_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.Countdown.Tick
-struct SInMapScoreboard_TA_Countdown_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.Countdown.BeginState
-struct SInMapScoreboard_TA_Countdown_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.Replay.HandleReplayGoalScored
-struct SInMapScoreboard_TA_Replay_HandleReplayGoalScored_Params
-{
-	class AGameEvent_Soccar_TA*                        InEvent;                                                  // (CPF_Parm)
-	unsigned char                                      ScoredOnTeam;                                             // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.Replay.EndState
-struct SInMapScoreboard_TA_Replay_EndState_Params
-{
-	struct FName                                       N;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.InMapScoreboard_TA.Replay.BeginState
-struct SInMapScoreboard_TA_Replay_BeginState_Params
-{
-	struct FName                                       P;                                                        // (CPF_Parm)
-};
-
 // Function TAGame.LoadoutSave_TA.SetEquipper
 struct ULoadoutSave_TA_SetEquipper_Params
 {
@@ -46149,12 +43550,6 @@ struct UMenuSequence_PremiumGarageSnap_TA_EnterSequence_Params
 struct UMutator_ItemsMode_TA_MutateObject_Params
 {
 	class UObject*                                     O;                                                        // (CPF_Parm)
-};
-
-// Function TAGame.PickupTimer_TA.Inactive.Tick
-struct SPickupTimer_TA_Inactive_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
 };
 
 // Function TAGame.PlayerInput_Edit_TA.InitFromProfile

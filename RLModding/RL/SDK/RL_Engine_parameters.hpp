@@ -2006,56 +2006,6 @@ struct AActor_OnTimer_Params
 {
 };
 
-// Function Engine.Volume.ProcessActorSetVolume
-struct AVolume_ProcessActorSetVolume_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Volume.CollisionChanged
-struct AVolume_CollisionChanged_Params
-{
-};
-
-// Function Engine.Volume.OnToggle
-struct AVolume_OnToggle_Params
-{
-	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Volume.DisplayDebug
-struct AVolume_DisplayDebug_Params
-{
-	class AHUD*                                        HUD;                                                      // (CPF_Parm)
-	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
-	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Volume.PostBeginPlay
-struct AVolume_PostBeginPlay_Params
-{
-};
-
-// Function Engine.Volume.EncompassesPoint
-struct AVolume_EncompassesPoint_Params
-{
-	struct FVector                                     Loc;                                                      // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Volume.Encompasses
-struct AVolume_Encompasses_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PostProcessVolume.OnToggle
-struct APostProcessVolume_OnToggle_Params
-{
-	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
-};
-
 // Function Engine.WorldInfo.PrintDebugInfo
 struct AWorldInfo_PrintDebugInfo_Params
 {
@@ -2491,513 +2441,6 @@ struct AWorldInfo_SetPauser_Params
 // Function Engine.WorldInfo.EventPauseChanged
 struct AWorldInfo_EventPauseChanged_Params
 {
-};
-
-// Function Engine.OnlineSubsystem.UniqueNetIDIsValid
-struct UOnlineSubsystem_UniqueNetIDIsValid_Params
-{
-	struct FUniqueNetId                                InID;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.GetEnvironmentZone
-struct UOnlineSubsystem_GetEnvironmentZone_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.AllowPsyNetParty
-struct UOnlineSubsystem_AllowPsyNetParty_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.GetPlayerIP
-struct UOnlineSubsystem_GetPlayerIP_Params
-{
-	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.ShowRestrictionMessage
-struct UOnlineSubsystem_ShowRestrictionMessage_Params
-{
-	int                                                ControllerId;                                             // (CPF_Parm)
-	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.IsOriginalAppOwner
-struct UOnlineSubsystem_IsOriginalAppOwner_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.CanPlayersTextChat
-struct UOnlineSubsystem_CanPlayersTextChat_Params
-{
-	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
-	struct FUniqueNetId                                TargetId;                                                 // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.ShowHelpUI
-struct UOnlineSubsystem_ShowHelpUI_Params
-{
-	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.ResetStats
-struct UOnlineSubsystem_ResetStats_Params
-{
-	bool                                               bResetAchievements;                                       // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.FinishOnlineGameSession
-struct UOnlineSubsystem_FinishOnlineGameSession_Params
-{
-	struct FString                                     ServerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.StartOnlineGameSession
-struct UOnlineSubsystem_StartOnlineGameSession_Params
-{
-	struct FString                                     ServerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate
-struct UOnlineSubsystem_ClearSystemUserControllerPairingChangedDelegate_Params
-{
-	struct FScriptDelegate                             PairingChangeDelegate;                                    // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate
-struct UOnlineSubsystem_AddSystemUserControllerPairingChangedDelegate_Params
-{
-	struct FScriptDelegate                             PairingChangeDelegate;                                    // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged
-struct UOnlineSubsystem_OnSystemUserControllerPairingChanged_Params
-{
-	int                                                NewLocalUserNum;                                          // (CPF_Parm)
-	int                                                PreviousLocalUserNum;                                     // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.IsAchievementUnlocked
-struct UOnlineSubsystem_IsAchievementUnlocked_Params
-{
-	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	int                                                AchievementId;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.IsRichPresenceLocalized
-struct UOnlineSubsystem_IsRichPresenceLocalized_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.UpdateGameProgress
-struct UOnlineSubsystem_UpdateGameProgress_Params
-{
-	unsigned char                                      LocalPlayerNum;                                           // (CPF_Parm)
-	float                                              Progress;                                                 // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.ClearAccountPickerInput
-struct UOnlineSubsystem_ClearAccountPickerInput_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.LookForAccountPickerInput
-struct UOnlineSubsystem_LookForAccountPickerInput_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.AddPlayerToSession
-struct UOnlineSubsystem_AddPlayerToSession_Params
-{
-	unsigned char                                      ControllerId;                                             // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.ClearPrimaryPlayer
-struct UOnlineSubsystem_ClearPrimaryPlayer_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.RemoveUserAssociation
-struct UOnlineSubsystem_RemoveUserAssociation_Params
-{
-	unsigned char                                      ControllerId;                                             // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.MapEnd
-struct UOnlineSubsystem_MapEnd_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.MapStart
-struct UOnlineSubsystem_MapStart_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.OnlineMatchEnd
-struct UOnlineSubsystem_OnlineMatchEnd_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.OnlineMatchStart
-struct UOnlineSubsystem_OnlineMatchStart_Params
-{
-	struct FString                                     MapName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.SetSessionDifficultyLevel
-struct UOnlineSubsystem_SetSessionDifficultyLevel_Params
-{
-	int                                                DifficultyLevel;                                          // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.SetSessionGameplayModeName
-struct UOnlineSubsystem_SetSessionGameplayModeName_Params
-{
-	struct FName                                       GameplayModeName;                                         // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.SetSessionGameplayMode
-struct UOnlineSubsystem_SetSessionGameplayMode_Params
-{
-	int                                                GameplayMode;                                             // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.PrintDebugInfo
-struct UOnlineSubsystem_PrintDebugInfo_Params
-{
-	class UDebugDrawer*                                Drawer;                                                   // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.GetOnlinePlatformFromName
-struct UOnlineSubsystem_GetOnlinePlatformFromName_Params
-{
-	struct FString                                     PlatformName;                                             // (CPF_Parm, CPF_NeedCtorLink)
-	TEnumAsByte<EOnlinePlatform>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.GetPlatformName
-struct UOnlineSubsystem_GetPlatformName_Params
-{
-	TEnumAsByte<EOnlinePlatform>                       PlatformType;                                             // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.IsEnabled
-struct UOnlineSubsystem_IsEnabled_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetPlayedWith
-struct UOnlineSubsystem_SetPlayedWith_Params
-{
-	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.ReadOnlineAvatar
-struct UOnlineSubsystem_ReadOnlineAvatar_Params
-{
-	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
-	TEnumAsByte<EAvatarSize>                           Size;                                                     // (CPF_Parm)
-	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete
-struct UOnlineSubsystem_OnReadOnlineAvatarComplete_Params
-{
-	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
-	class UTexture*                                    Avatar;                                                   // (CPF_Parm)
-	struct FString                                     OnlinePlayerName;                                         // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.SetDebugSpewLevel
-struct UOnlineSubsystem_SetDebugSpewLevel_Params
-{
-	int                                                DebugSpewLevel;                                           // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.DumpVoiceRegistration
-struct UOnlineSubsystem_DumpVoiceRegistration_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.DumpSessionState
-struct UOnlineSubsystem_DumpSessionState_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.DumpGameSettings
-struct UOnlineSubsystem_DumpGameSettings_Params
-{
-	class UOnlineGameSettings*                         GameSettings;                                             // (CPF_Const, CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.GetNumSupportedLogins
-struct UOnlineSubsystem_GetNumSupportedLogins_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.GetBuildUniqueId
-struct UOnlineSubsystem_GetBuildUniqueId_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex
-struct UOnlineSubsystem_GetPlayerUniqueNetIdFromIndex_Params
-{
-	int                                                UserIndex;                                                // (CPF_Parm)
-	struct FUniqueNetId                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.StringToUniqueLobbyId
-struct UOnlineSubsystem_StringToUniqueLobbyId_Params
-{
-	struct FString                                     UniqueNetIdString;                                        // (CPF_Parm, CPF_NeedCtorLink)
-	struct FUniqueLobbyId                              out_UniqueId;                                             // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.UniqueLobbyIdToString
-struct UOnlineSubsystem_UniqueLobbyIdToString_Params
-{
-	struct FUniqueLobbyId                              IdToConvert;                                              // (CPF_Const, CPF_Parm, CPF_OutParm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.StringToUniqueNetId
-struct UOnlineSubsystem_StringToUniqueNetId_Params
-{
-	struct FString                                     UniqueNetIdString;                                        // (CPF_Parm, CPF_NeedCtorLink)
-	struct FUniqueNetId                                out_UniqueId;                                             // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.UniqueNetIdToString
-struct UOnlineSubsystem_UniqueNetIdToString_Params
-{
-	struct FUniqueNetId                                IdToConvert;                                              // (CPF_Const, CPF_Parm, CPF_OutParm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.GetNamedInterface
-struct UOnlineSubsystem_GetNamedInterface_Params
-{
-	struct FName                                       InterfaceName;                                            // (CPF_Parm)
-	class UObject*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetNamedInterface
-struct UOnlineSubsystem_SetNamedInterface_Params
-{
-	struct FName                                       InterfaceName;                                            // (CPF_Parm)
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-};
-
-// Function Engine.OnlineSubsystem.SetCommunityContentInterface
-struct UOnlineSubsystem_SetCommunityContentInterface_Params
-{
-	class UObject*                                     InCommunityContentInterface;                              // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetGameDVRInterface
-struct UOnlineSubsystem_SetGameDVRInterface_Params
-{
-	class UObject*                                     InGameDVRInterface;                                       // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetSharedCloudInterface
-struct UOnlineSubsystem_SetSharedCloudInterface_Params
-{
-	class UObject*                                     InCloudInterface;                                         // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetUserCloudInterface
-struct UOnlineSubsystem_SetUserCloudInterface_Params
-{
-	class UObject*                                     InCloudInterface;                                         // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetAuthInterface
-struct UOnlineSubsystem_SetAuthInterface_Params
-{
-	class UObject*                                     InAuthInterface;                                          // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetSocialInterface
-struct UOnlineSubsystem_SetSocialInterface_Params
-{
-	class UObject*                                     InSocialInterface;                                        // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetTitleFileCacheInterface
-struct UOnlineSubsystem_SetTitleFileCacheInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetTitleFileInterface
-struct UOnlineSubsystem_SetTitleFileInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetPartyChatInterface
-struct UOnlineSubsystem_SetPartyChatInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetNewsInterface
-struct UOnlineSubsystem_SetNewsInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetStatsInterface
-struct UOnlineSubsystem_SetStatsInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetVoiceInterface
-struct UOnlineSubsystem_SetVoiceInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetContentInterface
-struct UOnlineSubsystem_SetContentInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetLobbyInterface
-struct UOnlineSubsystem_SetLobbyInterface_Params
-{
-	class UObject*                                     InInterface;                                              // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetPurchaseInterface
-struct UOnlineSubsystem_SetPurchaseInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetGameInterface
-struct UOnlineSubsystem_SetGameInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetSystemInterface
-struct UOnlineSubsystem_SetSystemInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetMarketplaceInterface
-struct UOnlineSubsystem_SetMarketplaceInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetPlayerInterfaceEx
-struct UOnlineSubsystem_SetPlayerInterfaceEx_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetPlayerInterface
-struct UOnlineSubsystem_SetPlayerInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.SetAccountInterface
-struct UOnlineSubsystem_SetAccountInterface_Params
-{
-	class UObject*                                     NewInterface;                                             // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.Exit
-struct UOnlineSubsystem_Exit_Params
-{
-};
-
-// Function Engine.OnlineSubsystem.PostInit
-struct UOnlineSubsystem_PostInit_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.Init
-struct UOnlineSubsystem_Init_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.OnlineSubsystem.EncodeBase64
-struct UOnlineSubsystem_EncodeBase64_Params
-{
-	struct FString                                     Text;                                                     // (CPF_Parm, CPF_NeedCtorLink)
-	TArray<unsigned char>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.DecodeBase64
-struct UOnlineSubsystem_DecodeBase64_Params
-{
-	struct FString                                     Text;                                                     // (CPF_Parm, CPF_NeedCtorLink)
-	TArray<unsigned char>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel
-struct UOnlineSubsystem_GetFeaturePrivilegeLevel_Params
-{
-	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
-	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated
-struct UOnlineSubsystem_FeaturePrivilegeLevelUpdated_Params
-{
-	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
-	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
-	TEnumAsByte<EFeaturePrivilegeLevel>                Level;                                                    // (CPF_Parm)
 };
 
 // Function Engine.DownloadableContentEnumerator.TriggerFindDLCDelegates
@@ -3502,6 +2945,50 @@ struct UISetParameter_SetNameParameter_Params
 	struct FName                                       Value;                                                    // (CPF_Parm)
 };
 
+// Function Engine.Volume.ProcessActorSetVolume
+struct AVolume_ProcessActorSetVolume_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Volume.CollisionChanged
+struct AVolume_CollisionChanged_Params
+{
+};
+
+// Function Engine.Volume.OnToggle
+struct AVolume_OnToggle_Params
+{
+	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Volume.DisplayDebug
+struct AVolume_DisplayDebug_Params
+{
+	class AHUD*                                        HUD;                                                      // (CPF_Parm)
+	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
+	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Volume.PostBeginPlay
+struct AVolume_PostBeginPlay_Params
+{
+};
+
+// Function Engine.Volume.EncompassesPoint
+struct AVolume_EncompassesPoint_Params
+{
+	struct FVector                                     Loc;                                                      // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Volume.Encompasses
+struct AVolume_Encompasses_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function Engine.BlockingVolume.OnToggle
 struct ABlockingVolume_OnToggle_Params
 {
@@ -3698,6 +3185,12 @@ struct ALadderVolume_InUse_Params
 // Function Engine.LadderVolume.PostBeginPlay
 struct ALadderVolume_PostBeginPlay_Params
 {
+};
+
+// Function Engine.PostProcessVolume.OnToggle
+struct APostProcessVolume_OnToggle_Params
+{
+	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
 };
 
 // Function Engine.TriggerVolume.StopsProjectile
@@ -6884,68 +6377,6 @@ struct ANavigationPoint_GetBoundingCylinder_Params
 	float                                              CollisionHeight;                                          // (CPF_Parm, CPF_OutParm)
 };
 
-// Function Engine.Pylon.CanReachPylon
-struct APylon_CanReachPylon_Params
-{
-	class APylon*                                      DestPylon;                                                // (CPF_Parm)
-	class AController*                                 C;                                                        // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pylon.OnToggle
-struct APylon_OnToggle_Params
-{
-	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pylon.IsEnabled
-struct APylon_IsEnabled_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pylon.SetEnabled
-struct APylon_SetEnabled_Params
-{
-	bool                                               bEnabled;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pylon.PostBeginPlay
-struct APylon_PostBeginPlay_Params
-{
-};
-
-// Function Engine.Pylon.NotifyPathChanged
-struct APylon_NotifyPathChanged_Params
-{
-};
-
-// Function Engine.Pylon.VerifyTopLevelConnections
-struct APylon_VerifyTopLevelConnections_Params
-{
-};
-
-// Function Engine.Pylon.GetTestPathExtent
-struct APylon_GetTestPathExtent_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pylon.FlushDynamicEdges
-struct APylon_FlushDynamicEdges_Params
-{
-};
-
-// Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles
-struct APylon_UpdateMeshForPreExistingNavMeshObstacles_Params
-{
-};
-
-// Function Engine.Pylon.OnPylonStatusChange
-struct APylon_OnPylonStatusChange_Params
-{
-};
-
 // Function Engine.CoverLink.GetDebugAbbrev
 struct ACoverLink_GetDebugAbbrev_Params
 {
@@ -7512,6 +6943,68 @@ struct APortalMarker_CanTeleport_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Engine.Pylon.CanReachPylon
+struct APylon_CanReachPylon_Params
+{
+	class APylon*                                      DestPylon;                                                // (CPF_Parm)
+	class AController*                                 C;                                                        // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pylon.OnToggle
+struct APylon_OnToggle_Params
+{
+	class USeqAct_Toggle*                              Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pylon.IsEnabled
+struct APylon_IsEnabled_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pylon.SetEnabled
+struct APylon_SetEnabled_Params
+{
+	bool                                               bEnabled;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pylon.PostBeginPlay
+struct APylon_PostBeginPlay_Params
+{
+};
+
+// Function Engine.Pylon.NotifyPathChanged
+struct APylon_NotifyPathChanged_Params
+{
+};
+
+// Function Engine.Pylon.VerifyTopLevelConnections
+struct APylon_VerifyTopLevelConnections_Params
+{
+};
+
+// Function Engine.Pylon.GetTestPathExtent
+struct APylon_GetTestPathExtent_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pylon.FlushDynamicEdges
+struct APylon_FlushDynamicEdges_Params
+{
+};
+
+// Function Engine.Pylon.UpdateMeshForPreExistingNavMeshObstacles
+struct APylon_UpdateMeshForPreExistingNavMeshObstacles_Params
+{
+};
+
+// Function Engine.Pylon.OnPylonStatusChange
+struct APylon_OnPylonStatusChange_Params
+{
+};
+
 // Function Engine.AISwitchablePylon.IsEnabled
 struct AAISwitchablePylon_IsEnabled_Params
 {
@@ -7988,67 +7481,6 @@ struct UAudioComponent_Play_Params
 
 // Function Engine.HeightFogComponent.SetEnabled
 struct UHeightFogComponent_SetEnabled_Params
-{
-	bool                                               bSetEnabled;                                              // (CPF_Parm)
-};
-
-// Function Engine.LightComponent.OnUpdatePropertyLightColor
-struct ULightComponent_OnUpdatePropertyLightColor_Params
-{
-};
-
-// Function Engine.LightComponent.OnUpdatePropertyBrightness
-struct ULightComponent_OnUpdatePropertyBrightness_Params
-{
-};
-
-// Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness
-struct ULightComponent_OnUpdatePropertyOcclusionMaskDarkness_Params
-{
-};
-
-// Function Engine.LightComponent.OnUpdatePropertyBloomTint
-struct ULightComponent_OnUpdatePropertyBloomTint_Params
-{
-};
-
-// Function Engine.LightComponent.OnUpdatePropertyBloomScale
-struct ULightComponent_OnUpdatePropertyBloomScale_Params
-{
-};
-
-// Function Engine.LightComponent.UpdateLightShaftParameters
-struct ULightComponent_UpdateLightShaftParameters_Params
-{
-};
-
-// Function Engine.LightComponent.UpdateColorAndBrightness
-struct ULightComponent_UpdateColorAndBrightness_Params
-{
-};
-
-// Function Engine.LightComponent.GetDirection
-struct ULightComponent_GetDirection_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.LightComponent.GetOrigin
-struct ULightComponent_GetOrigin_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.LightComponent.SetLightProperties
-struct ULightComponent_SetLightProperties_Params
-{
-	float                                              NewBrightness;                                            // (CPF_OptionalParm, CPF_Parm)
-	struct FColor                                      NewLightColor;                                            // (CPF_OptionalParm, CPF_Parm)
-	class ULightFunction*                              NewLightFunction;                                         // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.LightComponent.SetEnabled
-struct ULightComponent_SetEnabled_Params
 {
 	bool                                               bSetEnabled;                                              // (CPF_Parm)
 };
@@ -14825,396 +14257,6 @@ struct UOnlineMatchmakingStats_StartTimer_Params
 	struct FMMStats_Timer                              Timer;                                                    // (CPF_Parm, CPF_OutParm)
 };
 
-// Function Engine.Settings.UpdateFromURL
-struct USettings_UpdateFromURL_Params
-{
-	struct FString                                     URL;                                                      // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	class AGameInfo*                                   Game;                                                     // (CPF_Parm)
-};
-
-// Function Engine.Settings.BuildURL
-struct USettings_BuildURL_Params
-{
-	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.AppendContextsToURL
-struct USettings_AppendContextsToURL_Params
-{
-	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.AppendPropertiesToURL
-struct USettings_AppendPropertiesToURL_Params
-{
-	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.AppendDataBindingsToURL
-struct USettings_AppendDataBindingsToURL_Params
-{
-	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetQoSAdvertisedStringSettings
-struct USettings_GetQoSAdvertisedStringSettings_Params
-{
-	TArray<struct FLocalizedStringSetting>             QoSSettings;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetQoSAdvertisedProperties
-struct USettings_GetQoSAdvertisedProperties_Params
-{
-	TArray<struct FSettingsProperty>                   QoSProps;                                                 // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetRangedPropertyValue
-struct USettings_GetRangedPropertyValue_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	float                                              OutValue;                                                 // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetRangedPropertyValue
-struct USettings_SetRangedPropertyValue_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	float                                              NewValue;                                                 // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetPropertyRange
-struct USettings_GetPropertyRange_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	float                                              OutMinValue;                                              // (CPF_Parm, CPF_OutParm)
-	float                                              OutMaxValue;                                              // (CPF_Parm, CPF_OutParm)
-	float                                              RangeIncrement;                                           // (CPF_Parm, CPF_OutParm)
-	unsigned char                                      bFormatAsInt;                                             // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetPropertyMappingType
-struct USettings_GetPropertyMappingType_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	TEnumAsByte<EPropertyValueMappingType>             OutType;                                                  // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.HasStringSetting
-struct USettings_HasStringSetting_Params
-{
-	int                                                SettingId;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.HasProperty
-struct USettings_HasProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.UpdateProperties
-struct USettings_UpdateProperties_Params
-{
-	TArray<struct FSettingsProperty>                   Props;                                                    // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               bShouldAddIfMissing;                                      // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Settings.UpdateStringSettings
-struct USettings_UpdateStringSettings_Params
-{
-	TArray<struct FLocalizedStringSetting>             Settings;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               bShouldAddIfMissing;                                      // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Settings.GetPropertyType
-struct USettings_GetPropertyType_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	TEnumAsByte<ESettingsDataType>                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetPropertyValueId
-struct USettings_GetPropertyValueId_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	int                                                ValueId;                                                  // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetPropertyValueId
-struct USettings_SetPropertyValueId_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	int                                                ValueId;                                                  // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringProperty
-struct USettings_GetStringProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	struct FString                                     Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetStringProperty
-struct USettings_SetStringProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	struct FString                                     Value;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetIntProperty
-struct USettings_GetIntProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	int                                                Value;                                                    // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetIntProperty
-struct USettings_SetIntProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	int                                                Value;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Settings.GetFloatProperty
-struct USettings_GetFloatProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	float                                              Value;                                                    // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetFloatProperty
-struct USettings_SetFloatProperty_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	float                                              Value;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Settings.SetPropertyFromStringByName
-struct USettings_SetPropertyFromStringByName_Params
-{
-	struct FName                                       PropertyName;                                             // (CPF_Parm)
-	struct FString                                     NewValue;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetPropertyAsStringByName
-struct USettings_GetPropertyAsStringByName_Params
-{
-	struct FName                                       PropertyName;                                             // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetPropertyAsString
-struct USettings_GetPropertyAsString_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetPropertyColumnHeader
-struct USettings_GetPropertyColumnHeader_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetPropertyName
-struct USettings_GetPropertyName_Params
-{
-	int                                                PropertyId;                                               // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetPropertyId
-struct USettings_GetPropertyId_Params
-{
-	struct FName                                       PropertyName;                                             // (CPF_Parm)
-	int                                                PropertyId;                                               // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetStringSettingValueFromStringByName
-struct USettings_SetStringSettingValueFromStringByName_Params
-{
-	struct FName                                       StringSettingName;                                        // (CPF_Parm)
-	struct FString                                     NewValue;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingValueNameByName
-struct USettings_GetStringSettingValueNameByName_Params
-{
-	struct FName                                       StringSettingName;                                        // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingValueName
-struct USettings_GetStringSettingValueName_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	int                                                ValueIndex;                                               // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.IsWildcardStringSetting
-struct USettings_IsWildcardStringSetting_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingColumnHeader
-struct USettings_GetStringSettingColumnHeader_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetStringSettingName
-struct USettings_GetStringSettingName_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingId
-struct USettings_GetStringSettingId_Params
-{
-	struct FName                                       StringSettingName;                                        // (CPF_Parm)
-	int                                                StringSettingId;                                          // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingValueByName
-struct USettings_GetStringSettingValueByName_Params
-{
-	struct FName                                       StringSettingName;                                        // (CPF_Parm)
-	int                                                ValueIndex;                                               // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetStringSettingValueByName
-struct USettings_SetStringSettingValueByName_Params
-{
-	struct FName                                       StringSettingName;                                        // (CPF_Parm)
-	int                                                ValueIndex;                                               // (CPF_Parm)
-	bool                                               bShouldAutoAdd;                                           // (CPF_Parm)
-};
-
-// Function Engine.Settings.GetStringSettingValueNames
-struct USettings_GetStringSettingValueNames_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	TArray<struct FIdToStringMapping>                  Values;                                                   // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.IncrementStringSettingValue
-struct USettings_IncrementStringSettingValue_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	int                                                Direction;                                                // (CPF_Parm)
-	bool                                               bShouldWrap;                                              // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetStringSettingValue
-struct USettings_GetStringSettingValue_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	int                                                ValueIndex;                                               // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.SetStringSettingValue
-struct USettings_SetStringSettingValue_Params
-{
-	int                                                StringSettingId;                                          // (CPF_Parm)
-	int                                                ValueIndex;                                               // (CPF_Parm)
-	bool                                               bShouldAutoAdd;                                           // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Settings.GetSettingsDataDateTime
-struct USettings_GetSettingsDataDateTime_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                OutInt1;                                                  // (CPF_Parm, CPF_OutParm)
-	int                                                OutInt2;                                                  // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Settings.GetSettingsDataBlob
-struct USettings_GetSettingsDataBlob_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	TArray<unsigned char>                              OutBlob;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.GetSettingsDataInt
-struct USettings_GetSettingsDataInt_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.GetSettingsDataFloat
-struct USettings_GetSettingsDataFloat_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Settings.EmptySettingsData
-struct USettings_EmptySettingsData_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Settings.SetSettingsData
-struct USettings_SetSettingsData_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	struct FSettingsData                               Data2Copy;                                                // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Settings.SetSettingsDataBlob
-struct USettings_SetSettingsDataBlob_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	TArray<unsigned char>                              InBlob;                                                   // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Settings.SetSettingsDataDateTime
-struct USettings_SetSettingsDataDateTime_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                InInt1;                                                   // (CPF_Parm)
-	int                                                InInt2;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Settings.SetSettingsDataInt
-struct USettings_SetSettingsDataInt_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	int                                                InInt;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Settings.SetSettingsDataFloat
-struct USettings_SetSettingsDataFloat_Params
-{
-	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
-	float                                              InFloat;                                                  // (CPF_Parm)
-};
-
 // Function Engine.OnlinePlayerStorage.SetDefaultVersionNumber
 struct UOnlinePlayerStorage_SetDefaultVersionNumber_Params
 {
@@ -15641,6 +14683,513 @@ struct UOnlineStatsWrite_GetStatId_Params
 // Function Engine.OnlineStatsWrite.OnStatsWriteComplete
 struct UOnlineStatsWrite_OnStatsWriteComplete_Params
 {
+};
+
+// Function Engine.OnlineSubsystem.UniqueNetIDIsValid
+struct UOnlineSubsystem_UniqueNetIDIsValid_Params
+{
+	struct FUniqueNetId                                InID;                                                     // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.GetEnvironmentZone
+struct UOnlineSubsystem_GetEnvironmentZone_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.AllowPsyNetParty
+struct UOnlineSubsystem_AllowPsyNetParty_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.GetPlayerIP
+struct UOnlineSubsystem_GetPlayerIP_Params
+{
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.ShowRestrictionMessage
+struct UOnlineSubsystem_ShowRestrictionMessage_Params
+{
+	int                                                ControllerId;                                             // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.IsOriginalAppOwner
+struct UOnlineSubsystem_IsOriginalAppOwner_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.CanPlayersTextChat
+struct UOnlineSubsystem_CanPlayersTextChat_Params
+{
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
+	struct FUniqueNetId                                TargetId;                                                 // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.ShowHelpUI
+struct UOnlineSubsystem_ShowHelpUI_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.ResetStats
+struct UOnlineSubsystem_ResetStats_Params
+{
+	bool                                               bResetAchievements;                                       // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.FinishOnlineGameSession
+struct UOnlineSubsystem_FinishOnlineGameSession_Params
+{
+	struct FString                                     ServerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.StartOnlineGameSession
+struct UOnlineSubsystem_StartOnlineGameSession_Params
+{
+	struct FString                                     ServerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.ClearSystemUserControllerPairingChangedDelegate
+struct UOnlineSubsystem_ClearSystemUserControllerPairingChangedDelegate_Params
+{
+	struct FScriptDelegate                             PairingChangeDelegate;                                    // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.AddSystemUserControllerPairingChangedDelegate
+struct UOnlineSubsystem_AddSystemUserControllerPairingChangedDelegate_Params
+{
+	struct FScriptDelegate                             PairingChangeDelegate;                                    // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.OnSystemUserControllerPairingChanged
+struct UOnlineSubsystem_OnSystemUserControllerPairingChanged_Params
+{
+	int                                                NewLocalUserNum;                                          // (CPF_Parm)
+	int                                                PreviousLocalUserNum;                                     // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.IsAchievementUnlocked
+struct UOnlineSubsystem_IsAchievementUnlocked_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	int                                                AchievementId;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.IsRichPresenceLocalized
+struct UOnlineSubsystem_IsRichPresenceLocalized_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.UpdateGameProgress
+struct UOnlineSubsystem_UpdateGameProgress_Params
+{
+	unsigned char                                      LocalPlayerNum;                                           // (CPF_Parm)
+	float                                              Progress;                                                 // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.ClearAccountPickerInput
+struct UOnlineSubsystem_ClearAccountPickerInput_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.LookForAccountPickerInput
+struct UOnlineSubsystem_LookForAccountPickerInput_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.AddPlayerToSession
+struct UOnlineSubsystem_AddPlayerToSession_Params
+{
+	unsigned char                                      ControllerId;                                             // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.ClearPrimaryPlayer
+struct UOnlineSubsystem_ClearPrimaryPlayer_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.RemoveUserAssociation
+struct UOnlineSubsystem_RemoveUserAssociation_Params
+{
+	unsigned char                                      ControllerId;                                             // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.MapEnd
+struct UOnlineSubsystem_MapEnd_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.MapStart
+struct UOnlineSubsystem_MapStart_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.OnlineMatchEnd
+struct UOnlineSubsystem_OnlineMatchEnd_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.OnlineMatchStart
+struct UOnlineSubsystem_OnlineMatchStart_Params
+{
+	struct FString                                     MapName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.SetSessionDifficultyLevel
+struct UOnlineSubsystem_SetSessionDifficultyLevel_Params
+{
+	int                                                DifficultyLevel;                                          // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.SetSessionGameplayModeName
+struct UOnlineSubsystem_SetSessionGameplayModeName_Params
+{
+	struct FName                                       GameplayModeName;                                         // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.SetSessionGameplayMode
+struct UOnlineSubsystem_SetSessionGameplayMode_Params
+{
+	int                                                GameplayMode;                                             // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.PrintDebugInfo
+struct UOnlineSubsystem_PrintDebugInfo_Params
+{
+	class UDebugDrawer*                                Drawer;                                                   // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.GetOnlinePlatformFromName
+struct UOnlineSubsystem_GetOnlinePlatformFromName_Params
+{
+	struct FString                                     PlatformName;                                             // (CPF_Parm, CPF_NeedCtorLink)
+	TEnumAsByte<EOnlinePlatform>                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.GetPlatformName
+struct UOnlineSubsystem_GetPlatformName_Params
+{
+	TEnumAsByte<EOnlinePlatform>                       PlatformType;                                             // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.IsEnabled
+struct UOnlineSubsystem_IsEnabled_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetPlayedWith
+struct UOnlineSubsystem_SetPlayedWith_Params
+{
+	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.ReadOnlineAvatar
+struct UOnlineSubsystem_ReadOnlineAvatar_Params
+{
+	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
+	TEnumAsByte<EAvatarSize>                           Size;                                                     // (CPF_Parm)
+	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.OnReadOnlineAvatarComplete
+struct UOnlineSubsystem_OnReadOnlineAvatarComplete_Params
+{
+	struct FUniqueNetId                                PlayerNetId;                                              // (CPF_Const, CPF_Parm)
+	class UTexture*                                    Avatar;                                                   // (CPF_Parm)
+	struct FString                                     OnlinePlayerName;                                         // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.SetDebugSpewLevel
+struct UOnlineSubsystem_SetDebugSpewLevel_Params
+{
+	int                                                DebugSpewLevel;                                           // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.DumpVoiceRegistration
+struct UOnlineSubsystem_DumpVoiceRegistration_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.DumpSessionState
+struct UOnlineSubsystem_DumpSessionState_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.DumpGameSettings
+struct UOnlineSubsystem_DumpGameSettings_Params
+{
+	class UOnlineGameSettings*                         GameSettings;                                             // (CPF_Const, CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.GetNumSupportedLogins
+struct UOnlineSubsystem_GetNumSupportedLogins_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.GetBuildUniqueId
+struct UOnlineSubsystem_GetBuildUniqueId_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.GetPlayerUniqueNetIdFromIndex
+struct UOnlineSubsystem_GetPlayerUniqueNetIdFromIndex_Params
+{
+	int                                                UserIndex;                                                // (CPF_Parm)
+	struct FUniqueNetId                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.StringToUniqueLobbyId
+struct UOnlineSubsystem_StringToUniqueLobbyId_Params
+{
+	struct FString                                     UniqueNetIdString;                                        // (CPF_Parm, CPF_NeedCtorLink)
+	struct FUniqueLobbyId                              out_UniqueId;                                             // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.UniqueLobbyIdToString
+struct UOnlineSubsystem_UniqueLobbyIdToString_Params
+{
+	struct FUniqueLobbyId                              IdToConvert;                                              // (CPF_Const, CPF_Parm, CPF_OutParm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.StringToUniqueNetId
+struct UOnlineSubsystem_StringToUniqueNetId_Params
+{
+	struct FString                                     UniqueNetIdString;                                        // (CPF_Parm, CPF_NeedCtorLink)
+	struct FUniqueNetId                                out_UniqueId;                                             // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.UniqueNetIdToString
+struct UOnlineSubsystem_UniqueNetIdToString_Params
+{
+	struct FUniqueNetId                                IdToConvert;                                              // (CPF_Const, CPF_Parm, CPF_OutParm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.GetNamedInterface
+struct UOnlineSubsystem_GetNamedInterface_Params
+{
+	struct FName                                       InterfaceName;                                            // (CPF_Parm)
+	class UObject*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetNamedInterface
+struct UOnlineSubsystem_SetNamedInterface_Params
+{
+	struct FName                                       InterfaceName;                                            // (CPF_Parm)
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+};
+
+// Function Engine.OnlineSubsystem.SetCommunityContentInterface
+struct UOnlineSubsystem_SetCommunityContentInterface_Params
+{
+	class UObject*                                     InCommunityContentInterface;                              // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetGameDVRInterface
+struct UOnlineSubsystem_SetGameDVRInterface_Params
+{
+	class UObject*                                     InGameDVRInterface;                                       // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetSharedCloudInterface
+struct UOnlineSubsystem_SetSharedCloudInterface_Params
+{
+	class UObject*                                     InCloudInterface;                                         // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetUserCloudInterface
+struct UOnlineSubsystem_SetUserCloudInterface_Params
+{
+	class UObject*                                     InCloudInterface;                                         // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetAuthInterface
+struct UOnlineSubsystem_SetAuthInterface_Params
+{
+	class UObject*                                     InAuthInterface;                                          // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetSocialInterface
+struct UOnlineSubsystem_SetSocialInterface_Params
+{
+	class UObject*                                     InSocialInterface;                                        // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetTitleFileCacheInterface
+struct UOnlineSubsystem_SetTitleFileCacheInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetTitleFileInterface
+struct UOnlineSubsystem_SetTitleFileInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetPartyChatInterface
+struct UOnlineSubsystem_SetPartyChatInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetNewsInterface
+struct UOnlineSubsystem_SetNewsInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetStatsInterface
+struct UOnlineSubsystem_SetStatsInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetVoiceInterface
+struct UOnlineSubsystem_SetVoiceInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetContentInterface
+struct UOnlineSubsystem_SetContentInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetLobbyInterface
+struct UOnlineSubsystem_SetLobbyInterface_Params
+{
+	class UObject*                                     InInterface;                                              // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetPurchaseInterface
+struct UOnlineSubsystem_SetPurchaseInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetGameInterface
+struct UOnlineSubsystem_SetGameInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetSystemInterface
+struct UOnlineSubsystem_SetSystemInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetMarketplaceInterface
+struct UOnlineSubsystem_SetMarketplaceInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetPlayerInterfaceEx
+struct UOnlineSubsystem_SetPlayerInterfaceEx_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetPlayerInterface
+struct UOnlineSubsystem_SetPlayerInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.SetAccountInterface
+struct UOnlineSubsystem_SetAccountInterface_Params
+{
+	class UObject*                                     NewInterface;                                             // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.Exit
+struct UOnlineSubsystem_Exit_Params
+{
+};
+
+// Function Engine.OnlineSubsystem.PostInit
+struct UOnlineSubsystem_PostInit_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.Init
+struct UOnlineSubsystem_Init_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.OnlineSubsystem.EncodeBase64
+struct UOnlineSubsystem_EncodeBase64_Params
+{
+	struct FString                                     Text;                                                     // (CPF_Parm, CPF_NeedCtorLink)
+	TArray<unsigned char>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.DecodeBase64
+struct UOnlineSubsystem_DecodeBase64_Params
+{
+	struct FString                                     Text;                                                     // (CPF_Parm, CPF_NeedCtorLink)
+	TArray<unsigned char>                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.GetFeaturePrivilegeLevel
+struct UOnlineSubsystem_GetFeaturePrivilegeLevel_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
+	struct FScriptDelegate                             Callback;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.OnlineSubsystem.FeaturePrivilegeLevelUpdated
+struct UOnlineSubsystem_FeaturePrivilegeLevelUpdated_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilege>                     Privilege;                                                // (CPF_Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                Level;                                                    // (CPF_Parm)
 };
 
 // Function Engine.PlatformInterfaceBase.ClearDelegate
@@ -16497,6 +16046,396 @@ struct UGameViewportClient_HandleInputKey_Params
 	float                                              AmountDepressed;                                          // (CPF_Parm)
 	bool                                               bGamepad;                                                 // (CPF_OptionalParm, CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.UpdateFromURL
+struct USettings_UpdateFromURL_Params
+{
+	struct FString                                     URL;                                                      // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	class AGameInfo*                                   Game;                                                     // (CPF_Parm)
+};
+
+// Function Engine.Settings.BuildURL
+struct USettings_BuildURL_Params
+{
+	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.AppendContextsToURL
+struct USettings_AppendContextsToURL_Params
+{
+	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.AppendPropertiesToURL
+struct USettings_AppendPropertiesToURL_Params
+{
+	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.AppendDataBindingsToURL
+struct USettings_AppendDataBindingsToURL_Params
+{
+	struct FString                                     URL;                                                      // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetQoSAdvertisedStringSettings
+struct USettings_GetQoSAdvertisedStringSettings_Params
+{
+	TArray<struct FLocalizedStringSetting>             QoSSettings;                                              // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetQoSAdvertisedProperties
+struct USettings_GetQoSAdvertisedProperties_Params
+{
+	TArray<struct FSettingsProperty>                   QoSProps;                                                 // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetRangedPropertyValue
+struct USettings_GetRangedPropertyValue_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	float                                              OutValue;                                                 // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetRangedPropertyValue
+struct USettings_SetRangedPropertyValue_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	float                                              NewValue;                                                 // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetPropertyRange
+struct USettings_GetPropertyRange_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	float                                              OutMinValue;                                              // (CPF_Parm, CPF_OutParm)
+	float                                              OutMaxValue;                                              // (CPF_Parm, CPF_OutParm)
+	float                                              RangeIncrement;                                           // (CPF_Parm, CPF_OutParm)
+	unsigned char                                      bFormatAsInt;                                             // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetPropertyMappingType
+struct USettings_GetPropertyMappingType_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	TEnumAsByte<EPropertyValueMappingType>             OutType;                                                  // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.HasStringSetting
+struct USettings_HasStringSetting_Params
+{
+	int                                                SettingId;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.HasProperty
+struct USettings_HasProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.UpdateProperties
+struct USettings_UpdateProperties_Params
+{
+	TArray<struct FSettingsProperty>                   Props;                                                    // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               bShouldAddIfMissing;                                      // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Settings.UpdateStringSettings
+struct USettings_UpdateStringSettings_Params
+{
+	TArray<struct FLocalizedStringSetting>             Settings;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               bShouldAddIfMissing;                                      // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Settings.GetPropertyType
+struct USettings_GetPropertyType_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	TEnumAsByte<ESettingsDataType>                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetPropertyValueId
+struct USettings_GetPropertyValueId_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	int                                                ValueId;                                                  // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetPropertyValueId
+struct USettings_SetPropertyValueId_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	int                                                ValueId;                                                  // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringProperty
+struct USettings_GetStringProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	struct FString                                     Value;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetStringProperty
+struct USettings_SetStringProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	struct FString                                     Value;                                                    // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetIntProperty
+struct USettings_GetIntProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	int                                                Value;                                                    // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetIntProperty
+struct USettings_SetIntProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	int                                                Value;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Settings.GetFloatProperty
+struct USettings_GetFloatProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	float                                              Value;                                                    // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetFloatProperty
+struct USettings_SetFloatProperty_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	float                                              Value;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Settings.SetPropertyFromStringByName
+struct USettings_SetPropertyFromStringByName_Params
+{
+	struct FName                                       PropertyName;                                             // (CPF_Parm)
+	struct FString                                     NewValue;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetPropertyAsStringByName
+struct USettings_GetPropertyAsStringByName_Params
+{
+	struct FName                                       PropertyName;                                             // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetPropertyAsString
+struct USettings_GetPropertyAsString_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetPropertyColumnHeader
+struct USettings_GetPropertyColumnHeader_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetPropertyName
+struct USettings_GetPropertyName_Params
+{
+	int                                                PropertyId;                                               // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetPropertyId
+struct USettings_GetPropertyId_Params
+{
+	struct FName                                       PropertyName;                                             // (CPF_Parm)
+	int                                                PropertyId;                                               // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetStringSettingValueFromStringByName
+struct USettings_SetStringSettingValueFromStringByName_Params
+{
+	struct FName                                       StringSettingName;                                        // (CPF_Parm)
+	struct FString                                     NewValue;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingValueNameByName
+struct USettings_GetStringSettingValueNameByName_Params
+{
+	struct FName                                       StringSettingName;                                        // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingValueName
+struct USettings_GetStringSettingValueName_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	int                                                ValueIndex;                                               // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.IsWildcardStringSetting
+struct USettings_IsWildcardStringSetting_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingColumnHeader
+struct USettings_GetStringSettingColumnHeader_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetStringSettingName
+struct USettings_GetStringSettingName_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingId
+struct USettings_GetStringSettingId_Params
+{
+	struct FName                                       StringSettingName;                                        // (CPF_Parm)
+	int                                                StringSettingId;                                          // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingValueByName
+struct USettings_GetStringSettingValueByName_Params
+{
+	struct FName                                       StringSettingName;                                        // (CPF_Parm)
+	int                                                ValueIndex;                                               // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetStringSettingValueByName
+struct USettings_SetStringSettingValueByName_Params
+{
+	struct FName                                       StringSettingName;                                        // (CPF_Parm)
+	int                                                ValueIndex;                                               // (CPF_Parm)
+	bool                                               bShouldAutoAdd;                                           // (CPF_Parm)
+};
+
+// Function Engine.Settings.GetStringSettingValueNames
+struct USettings_GetStringSettingValueNames_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	TArray<struct FIdToStringMapping>                  Values;                                                   // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.IncrementStringSettingValue
+struct USettings_IncrementStringSettingValue_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	int                                                Direction;                                                // (CPF_Parm)
+	bool                                               bShouldWrap;                                              // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetStringSettingValue
+struct USettings_GetStringSettingValue_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	int                                                ValueIndex;                                               // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.SetStringSettingValue
+struct USettings_SetStringSettingValue_Params
+{
+	int                                                StringSettingId;                                          // (CPF_Parm)
+	int                                                ValueIndex;                                               // (CPF_Parm)
+	bool                                               bShouldAutoAdd;                                           // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Settings.GetSettingsDataDateTime
+struct USettings_GetSettingsDataDateTime_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	int                                                OutInt1;                                                  // (CPF_Parm, CPF_OutParm)
+	int                                                OutInt2;                                                  // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Settings.GetSettingsDataBlob
+struct USettings_GetSettingsDataBlob_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	TArray<unsigned char>                              OutBlob;                                                  // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.GetSettingsDataInt
+struct USettings_GetSettingsDataInt_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.GetSettingsDataFloat
+struct USettings_GetSettingsDataFloat_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Settings.EmptySettingsData
+struct USettings_EmptySettingsData_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Settings.SetSettingsData
+struct USettings_SetSettingsData_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	struct FSettingsData                               Data2Copy;                                                // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Settings.SetSettingsDataBlob
+struct USettings_SetSettingsDataBlob_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	TArray<unsigned char>                              InBlob;                                                   // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Settings.SetSettingsDataDateTime
+struct USettings_SetSettingsDataDateTime_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	int                                                InInt1;                                                   // (CPF_Parm)
+	int                                                InInt2;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Settings.SetSettingsDataInt
+struct USettings_SetSettingsDataInt_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	int                                                InInt;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Settings.SetSettingsDataFloat
+struct USettings_SetSettingsDataFloat_Params
+{
+	struct FSettingsData                               Data;                                                     // (CPF_Parm, CPF_OutParm)
+	float                                              InFloat;                                                  // (CPF_Parm)
 };
 
 // Function Engine.OnlineGameSearch.CreateOnlineGameSettings
@@ -18375,17 +18314,6 @@ struct ASkeletalMeshActorMAT_MAT_SetAnimWeights_Params
 	TArray<struct FAnimSlotInfo>                       SlotInfos;                                                // (CPF_Parm, CPF_NeedCtorLink)
 };
 
-// Function Engine.AnimSequence.GetNotifyTimeByClass
-struct UAnimSequence_GetNotifyTimeByClass_Params
-{
-	class UClass*                                      NotifyClass;                                              // (CPF_Parm)
-	float                                              PlayRate;                                                 // (CPF_OptionalParm, CPF_Parm)
-	float                                              StartPosition;                                            // (CPF_OptionalParm, CPF_Parm)
-	class UAnimNotify*                                 out_Notify;                                               // (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
-	float                                              out_Duration;                                             // (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function Engine.AnimNotify.FindNextNotifyOfClass
 struct UAnimNotify_FindNextNotifyOfClass_Params
 {
@@ -18407,1491 +18335,6 @@ struct UAnimNotify_Scripted_Notify_Params
 {
 	class AActor*                                      Owner;                                                    // (CPF_Parm)
 	class UAnimNodeSequence*                           AnimSeqInstigator;                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.OnSetVelocity
-struct APawn_OnSetVelocity_Params
-{
-	class USeqAct_SetVelocity*                         Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Speak
-struct APawn_Speak_Params
-{
-	class USoundCue*                                   Cue;                                                      // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetScalarParameterInterp
-struct APawn_SetScalarParameterInterp_Params
-{
-	struct FScalarParameterInterpStruct                ScalarParameterInterp;                                    // (CPF_Const, CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Pawn.SetRootMotionInterpCurrentTime
-struct APawn_SetRootMotionInterpCurrentTime_Params
-{
-	float                                              inTime;                                                   // (CPF_Parm)
-	float                                              DeltaTime;                                                // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bUpdateSkelPose;                                          // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.SetCinematicMode
-struct APawn_SetCinematicMode_Params
-{
-	bool                                               bInCinematicMode;                                         // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ZeroMovementVariables
-struct APawn_ZeroMovementVariables_Params
-{
-};
-
-// Function Engine.Pawn.ClearPathStep
-struct APawn_ClearPathStep_Params
-{
-};
-
-// Function Engine.Pawn.DrawPathStep
-struct APawn_DrawPathStep_Params
-{
-	class UCanvas*                                     C;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.IncrementPathChild
-struct APawn_IncrementPathChild_Params
-{
-	int                                                Cnt;                                                      // (CPF_Parm)
-	class UCanvas*                                     C;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.IncrementPathStep
-struct APawn_IncrementPathStep_Params
-{
-	int                                                Cnt;                                                      // (CPF_Parm)
-	class UCanvas*                                     C;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CreatePathGoalEvaluator
-struct APawn_CreatePathGoalEvaluator_Params
-{
-	class UClass*                                      GoalEvalClass;                                            // (CPF_Parm)
-	class UPathGoalEvaluator*                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CreatePathConstraint
-struct APawn_CreatePathConstraint_Params
-{
-	class UClass*                                      ConstraintClass;                                          // (CPF_Parm)
-	class UPathConstraint*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.AddGoalEvaluator
-struct APawn_AddGoalEvaluator_Params
-{
-	class UPathGoalEvaluator*                          Evaluator;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.AddPathConstraint
-struct APawn_AddPathConstraint_Params
-{
-	class UPathConstraint*                             Constraint;                                               // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClearConstraints
-struct APawn_ClearConstraints_Params
-{
-};
-
-// Function Engine.Pawn.SoakPause
-struct APawn_SoakPause_Params
-{
-};
-
-// Function Engine.Pawn.BecomeViewTarget
-struct APawn_BecomeViewTarget_Params
-{
-	class APlayerController*                           PC;                                                       // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MessagePlayer
-struct APawn_MessagePlayer_Params
-{
-	struct FString                                     msg;                                                      // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Pawn.HandleTeleport
-struct APawn_HandleTeleport_Params
-{
-	TArray<class UObject*>                             DestList;                                                 // (CPF_Parm, CPF_NeedCtorLink)
-	bool                                               bUpdateRotation;                                          // (CPF_Parm)
-	bool                                               bCheckOverlap;                                            // (CPF_Parm)
-	float                                              TeleportDistance;                                         // (CPF_OptionalParm, CPF_Parm)
-	TArray<class AVolume*>                             TeleportVolumes;                                          // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
-	int                                                PreferredDestIndex;                                       // (CPF_OptionalParm, CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.OnTeleport
-struct APawn_OnTeleport_Params
-{
-	class USeqAct_Teleport*                            Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.OnSetMaterial
-struct APawn_OnSetMaterial_Params
-{
-	class USeqAct_SetMaterial*                         Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.GetDamageScaling
-struct APawn_GetDamageScaling_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.DoKismetAttachment
-struct APawn_DoKismetAttachment_Params
-{
-	class AActor*                                      Attachment;                                               // (CPF_Parm)
-	class USeqAct_AttachToActor*                       Action;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SpawnedByKismet
-struct APawn_SpawnedByKismet_Params
-{
-};
-
-// Function Engine.Pawn.IsStationary
-struct APawn_IsStationary_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetCollisionExtent
-struct APawn_GetCollisionExtent_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetCollisionHeight
-struct APawn_GetCollisionHeight_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetCollisionRadius
-struct APawn_GetCollisionRadius_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CheatFly
-struct APawn_CheatFly_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CheatGhost
-struct APawn_CheatGhost_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CheatWalk
-struct APawn_CheatWalk_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.PlayWeaponSwitch
-struct APawn_PlayWeaponSwitch_Params
-{
-	class AWeapon*                                     OldWeapon;                                                // (CPF_Parm)
-	class AWeapon*                                     NewWeapon;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetActiveWeapon
-struct APawn_SetActiveWeapon_Params
-{
-	class AWeapon*                                     NewWeapon;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.TossInventory
-struct APawn_TossInventory_Params
-{
-	class AInventory*                                  Inv;                                                      // (CPF_Parm)
-	struct FVector                                     ForceVelocity;                                            // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.ThrowActiveWeapon
-struct APawn_ThrowActiveWeapon_Params
-{
-	bool                                               bDestroyWeap;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.DrawHUD
-struct APawn_DrawHUD_Params
-{
-	class AHUD*                                        H;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.FindInventoryType
-struct APawn_FindInventoryType_Params
-{
-	class UClass*                                      DesiredClass;                                             // (CPF_Parm)
-	bool                                               bAllowSubclass;                                           // (CPF_OptionalParm, CPF_Parm)
-	class AInventory*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CreateInventory
-struct APawn_CreateInventory_Params
-{
-	class UClass*                                      NewInvClass;                                              // (CPF_Parm)
-	bool                                               bDoNotActivate;                                           // (CPF_OptionalParm, CPF_Parm)
-	class AInventory*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.AddDefaultInventory
-struct APawn_AddDefaultInventory_Params
-{
-};
-
-// Function Engine.Pawn.StopDriving
-struct APawn_StopDriving_Params
-{
-	class AVehicle*                                    V;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.StartDriving
-struct APawn_StartDriving_Params
-{
-	class AVehicle*                                    V;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CanThrowWeapon
-struct APawn_CanThrowWeapon_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.Suicide
-struct APawn_Suicide_Params
-{
-};
-
-// Function Engine.Pawn.GetVehicleBase
-struct APawn_GetVehicleBase_Params
-{
-	class AVehicle*                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.PlayLanded
-struct APawn_PlayLanded_Params
-{
-	float                                              ImpactVel;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CannotJumpNow
-struct APawn_CannotJumpNow_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.PlayFootStepSound
-struct APawn_PlayFootStepSound_Params
-{
-	int                                                FootDown;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.TornOff
-struct APawn_TornOff_Params
-{
-};
-
-// Function Engine.Pawn.PlayDying
-struct APawn_PlayDying_Params
-{
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FVector                                     HitLoc;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetDyingPhysics
-struct APawn_SetDyingPhysics_Params
-{
-};
-
-// Function Engine.Pawn.TurnOff
-struct APawn_TurnOff_Params
-{
-};
-
-// Function Engine.Pawn.PlayHit
-struct APawn_PlayHit_Params
-{
-	float                                              Damage;                                                   // (CPF_Parm)
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.PlayDyingSound
-struct APawn_PlayDyingSound_Params
-{
-};
-
-// Function Engine.Pawn.DoJump
-struct APawn_DoJump_Params
-{
-	bool                                               bUpdating;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CheckWaterJump
-struct APawn_CheckWaterJump_Params
-{
-	struct FVector                                     WallNormal;                                               // (CPF_Parm, CPF_OutParm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.TakeDrowningDamage
-struct APawn_TakeDrowningDamage_Params
-{
-};
-
-// Function Engine.Pawn.BreathTimer
-struct APawn_BreathTimer_Params
-{
-};
-
-// Function Engine.Pawn.TouchingWaterVolume
-struct APawn_TouchingWaterVolume_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.HeadVolumeChange
-struct APawn_HeadVolumeChange_Params
-{
-	class APhysicsVolume*                              newHeadVolume;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.TickSpecial
-struct APawn_TickSpecial_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Landed
-struct APawn_Landed_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      FloorActor;                                               // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Falling
-struct APawn_Falling_Params
-{
-};
-
-// Function Engine.Pawn.DelayTriggerDeath
-struct APawn_DelayTriggerDeath_Params
-{
-};
-
-// Function Engine.Pawn.Died
-struct APawn_Died_Params
-{
-	class AController*                                 Killer;                                                   // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.ThrowWeaponOnDeath
-struct APawn_ThrowWeaponOnDeath_Params
-{
-};
-
-// Function Engine.Pawn.IsSameTeam
-struct APawn_IsSameTeam_Params
-{
-	class APawn*                                       Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetTeam
-struct APawn_GetTeam_Params
-{
-	class ATeamInfo*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetTeamNum
-struct APawn_GetTeamNum_Params
-{
-	unsigned char                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.TakeDamage
-struct APawn_TakeDamage_Params
-{
-	int                                                Damage;                                                   // (CPF_Parm)
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.SetKillInstigator
-struct APawn_SetKillInstigator_Params
-{
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	class AController*                                 ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.NotifyTakeHit
-struct APawn_NotifyTakeHit_Params
-{
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	int                                                Damage;                                                   // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.TakeRadiusDamageOnBones
-struct APawn_TakeRadiusDamageOnBones_Params
-{
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	float                                              BaseDamage;                                               // (CPF_Parm)
-	float                                              DamageRadius;                                             // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	float                                              Momentum;                                                 // (CPF_Parm)
-	struct FVector                                     HurtOrigin;                                               // (CPF_Parm)
-	bool                                               bFullDamage;                                              // (CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
-	TArray<struct FName>                               Bones;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.PruneDamagedBoneList
-struct APawn_PruneDamagedBoneList_Params
-{
-	TArray<struct FName>                               Bones;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Pawn.HealDamage
-struct APawn_HealDamage_Params
-{
-	int                                                Amount;                                                   // (CPF_Parm)
-	class AController*                                 Healer;                                                   // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.AdjustDamage
-struct APawn_AdjustDamage_Params
-{
-	int                                                InDamage;                                                 // (CPF_Parm, CPF_OutParm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm, CPF_OutParm)
-	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetMovementPhysics
-struct APawn_SetMovementPhysics_Params
-{
-};
-
-// Function Engine.Pawn.Gasp
-struct APawn_Gasp_Params
-{
-};
-
-// Function Engine.Pawn.OnGiveInventory
-struct APawn_OnGiveInventory_Params
-{
-	class USeqAct_GiveInventory*                       inAction;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.OnAssignController
-struct APawn_OnAssignController_Params
-{
-	class USeqAct_AssignController*                    inAction;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ReceivedNewEvent
-struct APawn_ReceivedNewEvent_Params
-{
-	class USequenceEvent*                              Evt;                                                      // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SpawnDefaultController
-struct APawn_SpawnDefaultController_Params
-{
-};
-
-// Function Engine.Pawn.PostBeginPlay
-struct APawn_PostBeginPlay_Params
-{
-};
-
-// Function Engine.Pawn.PreBeginPlay
-struct APawn_PreBeginPlay_Params
-{
-};
-
-// Function Engine.Pawn.Destroyed
-struct APawn_Destroyed_Params
-{
-};
-
-// Function Engine.Pawn.DetachFromController
-struct APawn_DetachFromController_Params
-{
-	bool                                               bDestroyController;                                       // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.CrushedBy
-struct APawn_CrushedBy_Params
-{
-	class APawn*                                       OtherPawn;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CanBeBaseForPawn
-struct APawn_CanBeBaseForPawn_Params
-{
-	class APawn*                                       aPawn;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.BaseChange
-struct APawn_BaseChange_Params
-{
-};
-
-// Function Engine.Pawn.StuckOnPawn
-struct APawn_StuckOnPawn_Params
-{
-	class APawn*                                       OtherPawn;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.JumpOffPawn
-struct APawn_JumpOffPawn_Params
-{
-};
-
-// Function Engine.Pawn.gibbedBy
-struct APawn_gibbedBy_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Pawn.EncroachedBy
-struct APawn_EncroachedBy_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Pawn.EncroachingOn
-struct APawn_EncroachingOn_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.FaceRotation
-struct APawn_FaceRotation_Params
-{
-	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
-	float                                              DeltaTime;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.UpdatePawnRotation
-struct APawn_UpdatePawnRotation_Params
-{
-	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClientSetRotation
-struct APawn_ClientSetRotation_Params
-{
-	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClientRestart
-struct APawn_ClientRestart_Params
-{
-};
-
-// Function Engine.Pawn.Restart
-struct APawn_Restart_Params
-{
-};
-
-// Function Engine.Pawn.TakeFallingDamage
-struct APawn_TakeFallingDamage_Params
-{
-};
-
-// Function Engine.Pawn.KilledBy
-struct APawn_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.AddVelocity
-struct APawn_AddVelocity_Params
-{
-	struct FVector                                     NewVelocity;                                              // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.HandleMomentum
-struct APawn_HandleMomentum_Params
-{
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.StartCrouch
-struct APawn_StartCrouch_Params
-{
-	float                                              HeightAdjust;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.EndCrouch
-struct APawn_EndCrouch_Params
-{
-	float                                              HeightAdjust;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ShouldCrouch
-struct APawn_ShouldCrouch_Params
-{
-	bool                                               bCrouch;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.UnCrouch
-struct APawn_UnCrouch_Params
-{
-};
-
-// Function Engine.Pawn.OutsideWorldBounds
-struct APawn_OutsideWorldBounds_Params
-{
-};
-
-// Function Engine.Pawn.FellOutOfWorld
-struct APawn_FellOutOfWorld_Params
-{
-	class UClass*                                      dmgType;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClientMessage
-struct APawn_ClientMessage_Params
-{
-	struct FString                                     S;                                                        // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-	struct FName                                       Type;                                                     // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.HandlePickup
-struct APawn_HandlePickup_Params
-{
-	class AInventory*                                  Inv;                                                      // (CPF_Parm)
-};
-
-// Function Engine.Pawn.LineOfSightTo
-struct APawn_LineOfSightTo_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SetMoveTarget
-struct APawn_SetMoveTarget_Params
-{
-	class AActor*                                      NewTarget;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.InGodMode
-struct APawn_InGodMode_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SetViewRotation
-struct APawn_SetViewRotation_Params
-{
-	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.GetAdjustedAimFor
-struct APawn_GetAdjustedAimFor_Params
-{
-	class AWeapon*                                     W;                                                        // (CPF_Parm)
-	struct FVector                                     StartFireLoc;                                             // (CPF_Parm)
-	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.InFreeCam
-struct APawn_InFreeCam_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetBaseAimRotation
-struct APawn_GetBaseAimRotation_Params
-{
-	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetWeaponStartTraceLocation
-struct APawn_GetWeaponStartTraceLocation_Params
-{
-	class AWeapon*                                     CurrentWeapon;                                            // (CPF_OptionalParm, CPF_Parm)
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetPawnViewLocation
-struct APawn_GetPawnViewLocation_Params
-{
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetViewRotation
-struct APawn_GetViewRotation_Params
-{
-	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetActorEyesViewPoint
-struct APawn_GetActorEyesViewPoint_Params
-{
-	struct FVector                                     out_Location;                                             // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    out_Rotation;                                             // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Pawn.ProcessViewRotation
-struct APawn_ProcessViewRotation_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FRotator                                    out_ViewRotation;                                         // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    out_DeltaRot;                                             // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Pawn.IsFirstPerson
-struct APawn_IsFirstPerson_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsLocalHuman
-struct APawn_IsLocalHuman_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsPlayerPawn
-struct APawn_IsPlayerPawn_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsLocallyControlled
-struct APawn_IsLocallyControlled_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsHumanControlled
-struct APawn_IsHumanControlled_Params
-{
-	class AController*                                 PawnController;                                           // (CPF_OptionalParm, CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.DisplayDebug
-struct APawn_DisplayDebug_Params
-{
-	class AHUD*                                        HUD;                                                      // (CPF_Parm)
-	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
-	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Pawn.ClimbLadder
-struct APawn_ClimbLadder_Params
-{
-	class ALadderVolume*                               L;                                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.EndClimbLadder
-struct APawn_EndClimbLadder_Params
-{
-	class ALadderVolume*                               OldLadder;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CanSplash
-struct APawn_CanSplash_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SetWalking
-struct APawn_SetWalking_Params
-{
-	bool                                               bNewIsWalking;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.RangedAttackTime
-struct APawn_RangedAttackTime_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.RecommendLongRangedAttack
-struct APawn_RecommendLongRangedAttack_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CanGrabLadder
-struct APawn_CanGrabLadder_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.DropToGround
-struct APawn_DropToGround_Params
-{
-};
-
-// Function Engine.Pawn.GetDefaultCameraMode
-struct APawn_GetDefaultCameraMode_Params
-{
-	class APlayerController*                           RequestedBy;                                              // (CPF_Parm)
-	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.UnPossessed
-struct APawn_UnPossessed_Params
-{
-};
-
-// Function Engine.Pawn.UpdateControllerOnPossess
-struct APawn_UpdateControllerOnPossess_Params
-{
-	bool                                               bVehicleTransition;                                       // (CPF_Parm)
-};
-
-// Function Engine.Pawn.PossessedBy
-struct APawn_PossessedBy_Params
-{
-	class AController*                                 C;                                                        // (CPF_Parm)
-	bool                                               bVehicleTransition;                                       // (CPF_Parm)
-};
-
-// Function Engine.Pawn.PlayTeleportEffect
-struct APawn_PlayTeleportEffect_Params
-{
-	bool                                               bOut;                                                     // (CPF_Parm)
-	bool                                               bSound;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.GetHumanReadableName
-struct APawn_GetHumanReadableName_Params
-{
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Pawn.NeedToTurn
-struct APawn_NeedToTurn_Params
-{
-	struct FVector                                     targ;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsFiring
-struct APawn_IsFiring_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.HasRangedAttack
-struct APawn_HasRangedAttack_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.FireOnRelease
-struct APawn_FireOnRelease_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.TooCloseToAttack
-struct APawn_TooCloseToAttack_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CanAttack
-struct APawn_CanAttack_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.BotFire
-struct APawn_BotFire_Params
-{
-	bool                                               bFinished;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.WeaponStoppedFiring
-struct APawn_WeaponStoppedFiring_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	bool                                               bViaReplication;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.WeaponFired
-struct APawn_WeaponFired_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	bool                                               bViaReplication;                                          // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.FlashLocationUpdated
-struct APawn_FlashLocationUpdated_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	struct FVector                                     InFlashLocation;                                          // (CPF_Parm)
-	bool                                               bViaReplication;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClearFlashLocation
-struct APawn_ClearFlashLocation_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetFlashLocation
-struct APawn_SetFlashLocation_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
-	struct FVector                                     NewLoc;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ClearFlashCount
-struct APawn_ClearFlashCount_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.FlashCountUpdated
-struct APawn_FlashCountUpdated_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      InFlashCount;                                             // (CPF_Parm)
-	bool                                               bViaReplication;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.IncrementFlashCount
-struct APawn_IncrementFlashCount_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.FiringModeUpdated
-struct APawn_FiringModeUpdated_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
-	bool                                               bViaReplication;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetFiringMode
-struct APawn_SetFiringMode_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.GetWeaponFiringMode
-struct APawn_GetWeaponFiringMode_Params
-{
-	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
-	unsigned char                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.StopFire
-struct APawn_StopFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.StartFire
-struct APawn_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.StopFiring
-struct APawn_StopFiring_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.Reset
-struct APawn_Reset_Params
-{
-};
-
-// Function Engine.Pawn.PlayerChangedTeam
-struct APawn_PlayerChangedTeam_Params
-{
-};
-
-// Function Engine.Pawn.SetBaseEyeheight
-struct APawn_SetBaseEyeheight_Params
-{
-};
-
-// Function Engine.Pawn.SpecialMoveThruEdge
-struct APawn_SpecialMoveThruEdge_Params
-{
-	TEnumAsByte<ENavMeshEdgeType>                      EdgeType;                                                 // (CPF_Parm)
-	int                                                Dir;                                                      // (CPF_Parm)
-	struct FVector                                     MoveStart;                                                // (CPF_Parm)
-	struct FVector                                     MoveDest;                                                 // (CPF_Parm)
-	class AActor*                                      RelActor;                                                 // (CPF_OptionalParm, CPF_Parm)
-	int                                                RelItem;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class UNavigationHandle*                           NavHandle;                                                // (CPF_OptionalParm, CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SpecialMoveTo
-struct APawn_SpecialMoveTo_Params
-{
-	class ANavigationPoint*                            Start;                                                    // (CPF_Parm)
-	class ANavigationPoint*                            End;                                                      // (CPF_Parm)
-	class AActor*                                      Next;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.TermRagdoll
-struct APawn_TermRagdoll_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.InitRagdoll
-struct APawn_InitRagdoll_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetBoundingCylinder
-struct APawn_GetBoundingCylinder_Params
-{
-	float                                              CollisionRadius;                                          // (CPF_Parm, CPF_OutParm)
-	float                                              CollisionHeight;                                          // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Pawn.ReachedDesiredRotation
-struct APawn_ReachedDesiredRotation_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SetPushesRigidBodies
-struct APawn_SetPushesRigidBodies_Params
-{
-	bool                                               NewPush;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.ForceCrouch
-struct APawn_ForceCrouch_Params
-{
-};
-
-// Function Engine.Pawn.ReachedPoint
-struct APawn_ReachedPoint_Params
-{
-	struct FVector                                     Point;                                                    // (CPF_Parm)
-	class AActor*                                      NewAnchor;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.ReachedDestination
-struct APawn_ReachedDestination_Params
-{
-	class AActor*                                      Goal;                                                     // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetBestAnchor
-struct APawn_GetBestAnchor_Params
-{
-	class AActor*                                      TestActor;                                                // (CPF_Parm)
-	struct FVector                                     TestLocation;                                             // (CPF_Parm)
-	bool                                               bStartPoint;                                              // (CPF_Parm)
-	bool                                               bOnlyCheckVisible;                                        // (CPF_Parm)
-	float                                              out_Dist;                                                 // (CPF_Parm, CPF_OutParm)
-	class ANavigationPoint*                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SetAnchor
-struct APawn_SetAnchor_Params
-{
-	class ANavigationPoint*                            NewAnchor;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetRemoteViewPitch
-struct APawn_SetRemoteViewPitch_Params
-{
-	int                                                NewRemoteViewPitch;                                       // (CPF_Parm)
-};
-
-// Function Engine.Pawn.IsInvisible
-struct APawn_IsInvisible_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsValidEnemyTargetFor
-struct APawn_IsValidEnemyTargetFor_Params
-{
-	class APlayerReplicationInfo*                      PRI;                                                      // (CPF_Const, CPF_Parm)
-	bool                                               bNoPRIisEnemy;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetFallDuration
-struct APawn_GetFallDuration_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.SuggestJumpVelocity
-struct APawn_SuggestJumpVelocity_Params
-{
-	struct FVector                                     JumpVelocity;                                             // (CPF_Parm, CPF_OutParm)
-	struct FVector                                     Destination;                                              // (CPF_Parm)
-	struct FVector                                     Start;                                                    // (CPF_Parm)
-	bool                                               bRequireFallLanding;                                      // (CPF_OptionalParm, CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.ValidAnchor
-struct APawn_ValidAnchor_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.AdjustDestination
-struct APawn_AdjustDestination_Params
-{
-	class AActor*                                      GoalActor;                                                // (CPF_Parm)
-	struct FVector                                     Dest;                                                     // (CPF_OptionalParm, CPF_Parm)
-	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsAliveAndWell
-struct APawn_IsAliveAndWell_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.ReplicatedEvent
-struct APawn_ReplicatedEvent_Params
-{
-	struct FName                                       VarName;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetSkelControlScale
-struct APawn_SetSkelControlScale_Params
-{
-	struct FName                                       SkelControlName;                                          // (CPF_Parm)
-	float                                              Scale;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetMorphWeight
-struct APawn_SetMorphWeight_Params
-{
-	struct FName                                       MorphNodeName;                                            // (CPF_Parm)
-	float                                              MorphWeight;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.GetActorFaceFXAsset
-struct APawn_GetActorFaceFXAsset_Params
-{
-	class UFaceFXAsset*                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.FaceFXAudioFinished
-struct APawn_FaceFXAudioFinished_Params
-{
-	class UAudioComponent*                             AC;                                                       // (CPF_Parm, CPF_EditInline)
-};
-
-// Function Engine.Pawn.OnPlayFaceFXAnim
-struct APawn_OnPlayFaceFXAnim_Params
-{
-	class USeqAct_PlayFaceFXAnim*                      inAction;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.CanActorPlayFaceFXAnim
-struct APawn_CanActorPlayFaceFXAnim_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsActorPlayingFaceFXAnim
-struct APawn_IsActorPlayingFaceFXAnim_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.GetFaceFXAudioComponent
-struct APawn_GetFaceFXAudioComponent_Params
-{
-	class UAudioComponent*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
-};
-
-// Function Engine.Pawn.StopActorFaceFXAnim
-struct APawn_StopActorFaceFXAnim_Params
-{
-};
-
-// Function Engine.Pawn.PlayActorFaceFXAnim
-struct APawn_PlayActorFaceFXAnim_Params
-{
-	class UFaceFXAnimSet*                              AnimSet;                                                  // (CPF_Parm)
-	struct FString                                     GroupName;                                                // (CPF_Parm, CPF_NeedCtorLink)
-	struct FString                                     SeqName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-	class USoundCue*                                   SoundCueToPlay;                                           // (CPF_Parm)
-	class UAkEvent*                                    AkEventToPlay;                                            // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.MAT_FinishAIGroup
-struct APawn_MAT_FinishAIGroup_Params
-{
-};
-
-// Function Engine.Pawn.MAT_BeginAIGroup
-struct APawn_MAT_BeginAIGroup_Params
-{
-	struct FVector                                     StartLoc;                                                 // (CPF_Parm)
-	struct FRotator                                    StartRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.Pawn.FinishAIGroup
-struct APawn_FinishAIGroup_Params
-{
-};
-
-// Function Engine.Pawn.BeginAIGroup
-struct APawn_BeginAIGroup_Params
-{
-};
-
-// Function Engine.Pawn.InterpolationFinished
-struct APawn_InterpolationFinished_Params
-{
-	class USeqAct_Interp*                              InterpAction;                                             // (CPF_Parm)
-};
-
-// Function Engine.Pawn.InterpolationStarted
-struct APawn_InterpolationStarted_Params
-{
-	class USeqAct_Interp*                              InterpAction;                                             // (CPF_Parm)
-	class UInterpGroupInst*                            GroupInst;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_SetSkelControlStrength
-struct APawn_MAT_SetSkelControlStrength_Params
-{
-	struct FName                                       SkelControlName;                                          // (CPF_Parm)
-	float                                              ControlStrength;                                          // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_SetSkelControlScale
-struct APawn_MAT_SetSkelControlScale_Params
-{
-	struct FName                                       SkelControlName;                                          // (CPF_Parm)
-	float                                              Scale;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_SetMorphWeight
-struct APawn_MAT_SetMorphWeight_Params
-{
-	struct FName                                       MorphNodeName;                                            // (CPF_Parm)
-	float                                              MorphWeight;                                              // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_SetAnimWeights
-struct APawn_MAT_SetAnimWeights_Params
-{
-	TArray<struct FAnimSlotInfo>                       SlotInfos;                                                // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Pawn.MAT_SetAnimPosition
-struct APawn_MAT_SetAnimPosition_Params
-{
-	struct FName                                       SlotName;                                                 // (CPF_Parm)
-	int                                                ChannelIndex;                                             // (CPF_Parm)
-	struct FName                                       InAnimSeqName;                                            // (CPF_Parm)
-	float                                              InPosition;                                               // (CPF_Parm)
-	bool                                               bFireNotifies;                                            // (CPF_Parm)
-	bool                                               bLooping;                                                 // (CPF_Parm)
-	bool                                               bEnableRootMotion;                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.SetAnimPosition
-struct APawn_SetAnimPosition_Params
-{
-	struct FName                                       SlotName;                                                 // (CPF_Parm)
-	int                                                ChannelIndex;                                             // (CPF_Parm)
-	struct FName                                       InAnimSeqName;                                            // (CPF_Parm)
-	float                                              InPosition;                                               // (CPF_Parm)
-	bool                                               bFireNotifies;                                            // (CPF_Parm)
-	bool                                               bLooping;                                                 // (CPF_Parm)
-	bool                                               bEnableRootMotion;                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_FinishAnimControl
-struct APawn_MAT_FinishAnimControl_Params
-{
-	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.FinishAnimControl
-struct APawn_FinishAnimControl_Params
-{
-	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.MAT_BeginAnimControl
-struct APawn_MAT_BeginAnimControl_Params
-{
-	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.BeginAnimControl
-struct APawn_BeginAnimControl_Params
-{
-	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.RestoreAnimSetsToDefault
-struct APawn_RestoreAnimSetsToDefault_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.AnimSetListUpdated
-struct APawn_AnimSetListUpdated_Params
-{
-};
-
-// Function Engine.Pawn.AddAnimSets
-struct APawn_AddAnimSets_Params
-{
-	TArray<class UAnimSet*>                            CustomAnimSets;                                           // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-};
-
-// Function Engine.Pawn.BuildScriptAnimSetList
-struct APawn_BuildScriptAnimSetList_Params
-{
-};
-
-// Function Engine.Pawn.UpdateAnimSetList
-struct APawn_UpdateAnimSetList_Params
-{
-};
-
-// Function Engine.Pawn.ClearAnimNodes
-struct APawn_ClearAnimNodes_Params
-{
-};
-
-// Function Engine.Pawn.CacheAnimNodes
-struct APawn_CacheAnimNodes_Params
-{
-};
-
-// Function Engine.Pawn.PostInitAnimTree
-struct APawn_PostInitAnimTree_Params
-{
-	class USkeletalMeshComponent*                      SkelComp;                                                 // (CPF_Parm, CPF_EditInline)
-};
-
-// Function Engine.Pawn.IsDesiredRotationLocked
-struct APawn_IsDesiredRotationLocked_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.IsDesiredRotationInUse
-struct APawn_IsDesiredRotationInUse_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.CheckDesiredRotation
-struct APawn_CheckDesiredRotation_Params
-{
-};
-
-// Function Engine.Pawn.ResetDesiredRotation
-struct APawn_ResetDesiredRotation_Params
-{
-};
-
-// Function Engine.Pawn.LockDesiredRotation
-struct APawn_LockDesiredRotation_Params
-{
-	bool                                               Lock;                                                     // (CPF_Parm)
-	bool                                               InUnlockWhenReached;                                      // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.SetDesiredRotation
-struct APawn_SetDesiredRotation_Params
-{
-	struct FRotator                                    TargetDesiredRotation;                                    // (CPF_Parm)
-	bool                                               InLockDesiredRotation;                                    // (CPF_OptionalParm, CPF_Parm)
-	bool                                               InUnlockWhenReached;                                      // (CPF_OptionalParm, CPF_Parm)
-	float                                              InterpolationTime;                                        // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bResetRotationRate;                                       // (CPF_OptionalParm, CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.PickWallAdjust
-struct APawn_PickWallAdjust_Params
-{
-	struct FVector                                     WallHitNormal;                                            // (CPF_Parm)
-	class AActor*                                      HitActor;                                                 // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.AnimNotify_PawnMaterialParam.Notify
@@ -20509,6 +18952,17 @@ struct USkelControlLookAt_InterpolateTargetLocation_Params
 struct USkelControlLookAt_SetTargetLocation_Params
 {
 	struct FVector                                     NewTargetLocation;                                        // (CPF_Parm)
+};
+
+// Function Engine.AnimSequence.GetNotifyTimeByClass
+struct UAnimSequence_GetNotifyTimeByClass_Params
+{
+	class UClass*                                      NotifyClass;                                              // (CPF_Parm)
+	float                                              PlayRate;                                                 // (CPF_OptionalParm, CPF_Parm)
+	float                                              StartPosition;                                            // (CPF_OptionalParm, CPF_Parm)
+	class UAnimNotify*                                 out_Notify;                                               // (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+	float                                              out_Duration;                                             // (CPF_OptionalParm, CPF_Parm, CPF_OutParm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.MorphTargetSet.FindMorphTarget
@@ -22134,6 +20588,1491 @@ struct AKAsset_SetMeshAndPhysAsset_Params
 // Function Engine.KAsset.PostBeginPlay
 struct AKAsset_PostBeginPlay_Params
 {
+};
+
+// Function Engine.Pawn.OnSetVelocity
+struct APawn_OnSetVelocity_Params
+{
+	class USeqAct_SetVelocity*                         Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.Speak
+struct APawn_Speak_Params
+{
+	class USoundCue*                                   Cue;                                                      // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetScalarParameterInterp
+struct APawn_SetScalarParameterInterp_Params
+{
+	struct FScalarParameterInterpStruct                ScalarParameterInterp;                                    // (CPF_Const, CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Pawn.SetRootMotionInterpCurrentTime
+struct APawn_SetRootMotionInterpCurrentTime_Params
+{
+	float                                              inTime;                                                   // (CPF_Parm)
+	float                                              DeltaTime;                                                // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bUpdateSkelPose;                                          // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.SetCinematicMode
+struct APawn_SetCinematicMode_Params
+{
+	bool                                               bInCinematicMode;                                         // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ZeroMovementVariables
+struct APawn_ZeroMovementVariables_Params
+{
+};
+
+// Function Engine.Pawn.ClearPathStep
+struct APawn_ClearPathStep_Params
+{
+};
+
+// Function Engine.Pawn.DrawPathStep
+struct APawn_DrawPathStep_Params
+{
+	class UCanvas*                                     C;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.IncrementPathChild
+struct APawn_IncrementPathChild_Params
+{
+	int                                                Cnt;                                                      // (CPF_Parm)
+	class UCanvas*                                     C;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.IncrementPathStep
+struct APawn_IncrementPathStep_Params
+{
+	int                                                Cnt;                                                      // (CPF_Parm)
+	class UCanvas*                                     C;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CreatePathGoalEvaluator
+struct APawn_CreatePathGoalEvaluator_Params
+{
+	class UClass*                                      GoalEvalClass;                                            // (CPF_Parm)
+	class UPathGoalEvaluator*                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CreatePathConstraint
+struct APawn_CreatePathConstraint_Params
+{
+	class UClass*                                      ConstraintClass;                                          // (CPF_Parm)
+	class UPathConstraint*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.AddGoalEvaluator
+struct APawn_AddGoalEvaluator_Params
+{
+	class UPathGoalEvaluator*                          Evaluator;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.AddPathConstraint
+struct APawn_AddPathConstraint_Params
+{
+	class UPathConstraint*                             Constraint;                                               // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClearConstraints
+struct APawn_ClearConstraints_Params
+{
+};
+
+// Function Engine.Pawn.SoakPause
+struct APawn_SoakPause_Params
+{
+};
+
+// Function Engine.Pawn.BecomeViewTarget
+struct APawn_BecomeViewTarget_Params
+{
+	class APlayerController*                           PC;                                                       // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MessagePlayer
+struct APawn_MessagePlayer_Params
+{
+	struct FString                                     msg;                                                      // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Pawn.HandleTeleport
+struct APawn_HandleTeleport_Params
+{
+	TArray<class UObject*>                             DestList;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	bool                                               bUpdateRotation;                                          // (CPF_Parm)
+	bool                                               bCheckOverlap;                                            // (CPF_Parm)
+	float                                              TeleportDistance;                                         // (CPF_OptionalParm, CPF_Parm)
+	TArray<class AVolume*>                             TeleportVolumes;                                          // (CPF_OptionalParm, CPF_Parm, CPF_NeedCtorLink)
+	int                                                PreferredDestIndex;                                       // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.OnTeleport
+struct APawn_OnTeleport_Params
+{
+	class USeqAct_Teleport*                            Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.OnSetMaterial
+struct APawn_OnSetMaterial_Params
+{
+	class USeqAct_SetMaterial*                         Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.GetDamageScaling
+struct APawn_GetDamageScaling_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.DoKismetAttachment
+struct APawn_DoKismetAttachment_Params
+{
+	class AActor*                                      Attachment;                                               // (CPF_Parm)
+	class USeqAct_AttachToActor*                       Action;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SpawnedByKismet
+struct APawn_SpawnedByKismet_Params
+{
+};
+
+// Function Engine.Pawn.IsStationary
+struct APawn_IsStationary_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetCollisionExtent
+struct APawn_GetCollisionExtent_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetCollisionHeight
+struct APawn_GetCollisionHeight_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetCollisionRadius
+struct APawn_GetCollisionRadius_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CheatFly
+struct APawn_CheatFly_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CheatGhost
+struct APawn_CheatGhost_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CheatWalk
+struct APawn_CheatWalk_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.PlayWeaponSwitch
+struct APawn_PlayWeaponSwitch_Params
+{
+	class AWeapon*                                     OldWeapon;                                                // (CPF_Parm)
+	class AWeapon*                                     NewWeapon;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetActiveWeapon
+struct APawn_SetActiveWeapon_Params
+{
+	class AWeapon*                                     NewWeapon;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.TossInventory
+struct APawn_TossInventory_Params
+{
+	class AInventory*                                  Inv;                                                      // (CPF_Parm)
+	struct FVector                                     ForceVelocity;                                            // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.ThrowActiveWeapon
+struct APawn_ThrowActiveWeapon_Params
+{
+	bool                                               bDestroyWeap;                                             // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.DrawHUD
+struct APawn_DrawHUD_Params
+{
+	class AHUD*                                        H;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.FindInventoryType
+struct APawn_FindInventoryType_Params
+{
+	class UClass*                                      DesiredClass;                                             // (CPF_Parm)
+	bool                                               bAllowSubclass;                                           // (CPF_OptionalParm, CPF_Parm)
+	class AInventory*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CreateInventory
+struct APawn_CreateInventory_Params
+{
+	class UClass*                                      NewInvClass;                                              // (CPF_Parm)
+	bool                                               bDoNotActivate;                                           // (CPF_OptionalParm, CPF_Parm)
+	class AInventory*                                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.AddDefaultInventory
+struct APawn_AddDefaultInventory_Params
+{
+};
+
+// Function Engine.Pawn.StopDriving
+struct APawn_StopDriving_Params
+{
+	class AVehicle*                                    V;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.StartDriving
+struct APawn_StartDriving_Params
+{
+	class AVehicle*                                    V;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CanThrowWeapon
+struct APawn_CanThrowWeapon_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.Suicide
+struct APawn_Suicide_Params
+{
+};
+
+// Function Engine.Pawn.GetVehicleBase
+struct APawn_GetVehicleBase_Params
+{
+	class AVehicle*                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.PlayLanded
+struct APawn_PlayLanded_Params
+{
+	float                                              ImpactVel;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CannotJumpNow
+struct APawn_CannotJumpNow_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.PlayFootStepSound
+struct APawn_PlayFootStepSound_Params
+{
+	int                                                FootDown;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.TornOff
+struct APawn_TornOff_Params
+{
+};
+
+// Function Engine.Pawn.PlayDying
+struct APawn_PlayDying_Params
+{
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FVector                                     HitLoc;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetDyingPhysics
+struct APawn_SetDyingPhysics_Params
+{
+};
+
+// Function Engine.Pawn.TurnOff
+struct APawn_TurnOff_Params
+{
+};
+
+// Function Engine.Pawn.PlayHit
+struct APawn_PlayHit_Params
+{
+	float                                              Damage;                                                   // (CPF_Parm)
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FVector                                     Momentum;                                                 // (CPF_Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Pawn.PlayDyingSound
+struct APawn_PlayDyingSound_Params
+{
+};
+
+// Function Engine.Pawn.DoJump
+struct APawn_DoJump_Params
+{
+	bool                                               bUpdating;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CheckWaterJump
+struct APawn_CheckWaterJump_Params
+{
+	struct FVector                                     WallNormal;                                               // (CPF_Parm, CPF_OutParm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.TakeDrowningDamage
+struct APawn_TakeDrowningDamage_Params
+{
+};
+
+// Function Engine.Pawn.BreathTimer
+struct APawn_BreathTimer_Params
+{
+};
+
+// Function Engine.Pawn.TouchingWaterVolume
+struct APawn_TouchingWaterVolume_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.HeadVolumeChange
+struct APawn_HeadVolumeChange_Params
+{
+	class APhysicsVolume*                              newHeadVolume;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.TickSpecial
+struct APawn_TickSpecial_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.Landed
+struct APawn_Landed_Params
+{
+	struct FVector                                     HitNormal;                                                // (CPF_Parm)
+	class AActor*                                      FloorActor;                                               // (CPF_Parm)
+};
+
+// Function Engine.Pawn.Falling
+struct APawn_Falling_Params
+{
+};
+
+// Function Engine.Pawn.DelayTriggerDeath
+struct APawn_DelayTriggerDeath_Params
+{
+};
+
+// Function Engine.Pawn.Died
+struct APawn_Died_Params
+{
+	class AController*                                 Killer;                                                   // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.ThrowWeaponOnDeath
+struct APawn_ThrowWeaponOnDeath_Params
+{
+};
+
+// Function Engine.Pawn.IsSameTeam
+struct APawn_IsSameTeam_Params
+{
+	class APawn*                                       Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetTeam
+struct APawn_GetTeam_Params
+{
+	class ATeamInfo*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetTeamNum
+struct APawn_GetTeamNum_Params
+{
+	unsigned char                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.TakeDamage
+struct APawn_TakeDamage_Params
+{
+	int                                                Damage;                                                   // (CPF_Parm)
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	struct FVector                                     Momentum;                                                 // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
+	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.SetKillInstigator
+struct APawn_SetKillInstigator_Params
+{
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	class AController*                                 ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.NotifyTakeHit
+struct APawn_NotifyTakeHit_Params
+{
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	int                                                Damage;                                                   // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FVector                                     Momentum;                                                 // (CPF_Parm)
+	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.TakeRadiusDamageOnBones
+struct APawn_TakeRadiusDamageOnBones_Params
+{
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	float                                              BaseDamage;                                               // (CPF_Parm)
+	float                                              DamageRadius;                                             // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	float                                              Momentum;                                                 // (CPF_Parm)
+	struct FVector                                     HurtOrigin;                                               // (CPF_Parm)
+	bool                                               bFullDamage;                                              // (CPF_Parm)
+	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
+	TArray<struct FName>                               Bones;                                                    // (CPF_Parm, CPF_NeedCtorLink)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.PruneDamagedBoneList
+struct APawn_PruneDamagedBoneList_Params
+{
+	TArray<struct FName>                               Bones;                                                    // (CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Pawn.HealDamage
+struct APawn_HealDamage_Params
+{
+	int                                                Amount;                                                   // (CPF_Parm)
+	class AController*                                 Healer;                                                   // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.AdjustDamage
+struct APawn_AdjustDamage_Params
+{
+	int                                                InDamage;                                                 // (CPF_Parm, CPF_OutParm)
+	struct FVector                                     Momentum;                                                 // (CPF_Parm, CPF_OutParm)
+	class AController*                                 InstigatedBy;                                             // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_Parm)
+	class AActor*                                      DamageCauser;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetMovementPhysics
+struct APawn_SetMovementPhysics_Params
+{
+};
+
+// Function Engine.Pawn.Gasp
+struct APawn_Gasp_Params
+{
+};
+
+// Function Engine.Pawn.OnGiveInventory
+struct APawn_OnGiveInventory_Params
+{
+	class USeqAct_GiveInventory*                       inAction;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.OnAssignController
+struct APawn_OnAssignController_Params
+{
+	class USeqAct_AssignController*                    inAction;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ReceivedNewEvent
+struct APawn_ReceivedNewEvent_Params
+{
+	class USequenceEvent*                              Evt;                                                      // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SpawnDefaultController
+struct APawn_SpawnDefaultController_Params
+{
+};
+
+// Function Engine.Pawn.PostBeginPlay
+struct APawn_PostBeginPlay_Params
+{
+};
+
+// Function Engine.Pawn.PreBeginPlay
+struct APawn_PreBeginPlay_Params
+{
+};
+
+// Function Engine.Pawn.Destroyed
+struct APawn_Destroyed_Params
+{
+};
+
+// Function Engine.Pawn.DetachFromController
+struct APawn_DetachFromController_Params
+{
+	bool                                               bDestroyController;                                       // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.CrushedBy
+struct APawn_CrushedBy_Params
+{
+	class APawn*                                       OtherPawn;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CanBeBaseForPawn
+struct APawn_CanBeBaseForPawn_Params
+{
+	class APawn*                                       aPawn;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.BaseChange
+struct APawn_BaseChange_Params
+{
+};
+
+// Function Engine.Pawn.StuckOnPawn
+struct APawn_StuckOnPawn_Params
+{
+	class APawn*                                       OtherPawn;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.JumpOffPawn
+struct APawn_JumpOffPawn_Params
+{
+};
+
+// Function Engine.Pawn.gibbedBy
+struct APawn_gibbedBy_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Pawn.EncroachedBy
+struct APawn_EncroachedBy_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Pawn.EncroachingOn
+struct APawn_EncroachingOn_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.FaceRotation
+struct APawn_FaceRotation_Params
+{
+	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
+	float                                              DeltaTime;                                                // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.UpdatePawnRotation
+struct APawn_UpdatePawnRotation_Params
+{
+	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClientSetRotation
+struct APawn_ClientSetRotation_Params
+{
+	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClientRestart
+struct APawn_ClientRestart_Params
+{
+};
+
+// Function Engine.Pawn.Restart
+struct APawn_Restart_Params
+{
+};
+
+// Function Engine.Pawn.TakeFallingDamage
+struct APawn_TakeFallingDamage_Params
+{
+};
+
+// Function Engine.Pawn.KilledBy
+struct APawn_KilledBy_Params
+{
+	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.AddVelocity
+struct APawn_AddVelocity_Params
+{
+	struct FVector                                     NewVelocity;                                              // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.HandleMomentum
+struct APawn_HandleMomentum_Params
+{
+	struct FVector                                     Momentum;                                                 // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_Parm)
+	class UClass*                                      DamageType;                                               // (CPF_Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.StartCrouch
+struct APawn_StartCrouch_Params
+{
+	float                                              HeightAdjust;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.EndCrouch
+struct APawn_EndCrouch_Params
+{
+	float                                              HeightAdjust;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ShouldCrouch
+struct APawn_ShouldCrouch_Params
+{
+	bool                                               bCrouch;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Pawn.UnCrouch
+struct APawn_UnCrouch_Params
+{
+};
+
+// Function Engine.Pawn.OutsideWorldBounds
+struct APawn_OutsideWorldBounds_Params
+{
+};
+
+// Function Engine.Pawn.FellOutOfWorld
+struct APawn_FellOutOfWorld_Params
+{
+	class UClass*                                      dmgType;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClientMessage
+struct APawn_ClientMessage_Params
+{
+	struct FString                                     S;                                                        // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+	struct FName                                       Type;                                                     // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.HandlePickup
+struct APawn_HandlePickup_Params
+{
+	class AInventory*                                  Inv;                                                      // (CPF_Parm)
+};
+
+// Function Engine.Pawn.LineOfSightTo
+struct APawn_LineOfSightTo_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SetMoveTarget
+struct APawn_SetMoveTarget_Params
+{
+	class AActor*                                      NewTarget;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.InGodMode
+struct APawn_InGodMode_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SetViewRotation
+struct APawn_SetViewRotation_Params
+{
+	struct FRotator                                    NewRotation;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.GetAdjustedAimFor
+struct APawn_GetAdjustedAimFor_Params
+{
+	class AWeapon*                                     W;                                                        // (CPF_Parm)
+	struct FVector                                     StartFireLoc;                                             // (CPF_Parm)
+	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.InFreeCam
+struct APawn_InFreeCam_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetBaseAimRotation
+struct APawn_GetBaseAimRotation_Params
+{
+	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetWeaponStartTraceLocation
+struct APawn_GetWeaponStartTraceLocation_Params
+{
+	class AWeapon*                                     CurrentWeapon;                                            // (CPF_OptionalParm, CPF_Parm)
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetPawnViewLocation
+struct APawn_GetPawnViewLocation_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetViewRotation
+struct APawn_GetViewRotation_Params
+{
+	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetActorEyesViewPoint
+struct APawn_GetActorEyesViewPoint_Params
+{
+	struct FVector                                     out_Location;                                             // (CPF_Parm, CPF_OutParm)
+	struct FRotator                                    out_Rotation;                                             // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Pawn.ProcessViewRotation
+struct APawn_ProcessViewRotation_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FRotator                                    out_ViewRotation;                                         // (CPF_Parm, CPF_OutParm)
+	struct FRotator                                    out_DeltaRot;                                             // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Pawn.IsFirstPerson
+struct APawn_IsFirstPerson_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsLocalHuman
+struct APawn_IsLocalHuman_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsPlayerPawn
+struct APawn_IsPlayerPawn_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsLocallyControlled
+struct APawn_IsLocallyControlled_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsHumanControlled
+struct APawn_IsHumanControlled_Params
+{
+	class AController*                                 PawnController;                                           // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.DisplayDebug
+struct APawn_DisplayDebug_Params
+{
+	class AHUD*                                        HUD;                                                      // (CPF_Parm)
+	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
+	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Pawn.ClimbLadder
+struct APawn_ClimbLadder_Params
+{
+	class ALadderVolume*                               L;                                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.EndClimbLadder
+struct APawn_EndClimbLadder_Params
+{
+	class ALadderVolume*                               OldLadder;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CanSplash
+struct APawn_CanSplash_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SetWalking
+struct APawn_SetWalking_Params
+{
+	bool                                               bNewIsWalking;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.RangedAttackTime
+struct APawn_RangedAttackTime_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.RecommendLongRangedAttack
+struct APawn_RecommendLongRangedAttack_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CanGrabLadder
+struct APawn_CanGrabLadder_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.DropToGround
+struct APawn_DropToGround_Params
+{
+};
+
+// Function Engine.Pawn.GetDefaultCameraMode
+struct APawn_GetDefaultCameraMode_Params
+{
+	class APlayerController*                           RequestedBy;                                              // (CPF_Parm)
+	struct FName                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.UnPossessed
+struct APawn_UnPossessed_Params
+{
+};
+
+// Function Engine.Pawn.UpdateControllerOnPossess
+struct APawn_UpdateControllerOnPossess_Params
+{
+	bool                                               bVehicleTransition;                                       // (CPF_Parm)
+};
+
+// Function Engine.Pawn.PossessedBy
+struct APawn_PossessedBy_Params
+{
+	class AController*                                 C;                                                        // (CPF_Parm)
+	bool                                               bVehicleTransition;                                       // (CPF_Parm)
+};
+
+// Function Engine.Pawn.PlayTeleportEffect
+struct APawn_PlayTeleportEffect_Params
+{
+	bool                                               bOut;                                                     // (CPF_Parm)
+	bool                                               bSound;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.GetHumanReadableName
+struct APawn_GetHumanReadableName_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Pawn.NeedToTurn
+struct APawn_NeedToTurn_Params
+{
+	struct FVector                                     targ;                                                     // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsFiring
+struct APawn_IsFiring_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.HasRangedAttack
+struct APawn_HasRangedAttack_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.FireOnRelease
+struct APawn_FireOnRelease_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.TooCloseToAttack
+struct APawn_TooCloseToAttack_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CanAttack
+struct APawn_CanAttack_Params
+{
+	class AActor*                                      Other;                                                    // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.BotFire
+struct APawn_BotFire_Params
+{
+	bool                                               bFinished;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.WeaponStoppedFiring
+struct APawn_WeaponStoppedFiring_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	bool                                               bViaReplication;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.WeaponFired
+struct APawn_WeaponFired_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	bool                                               bViaReplication;                                          // (CPF_Parm)
+	struct FVector                                     HitLocation;                                              // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.FlashLocationUpdated
+struct APawn_FlashLocationUpdated_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	struct FVector                                     InFlashLocation;                                          // (CPF_Parm)
+	bool                                               bViaReplication;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClearFlashLocation
+struct APawn_ClearFlashLocation_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetFlashLocation
+struct APawn_SetFlashLocation_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
+	struct FVector                                     NewLoc;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ClearFlashCount
+struct APawn_ClearFlashCount_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.FlashCountUpdated
+struct APawn_FlashCountUpdated_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      InFlashCount;                                             // (CPF_Parm)
+	bool                                               bViaReplication;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.IncrementFlashCount
+struct APawn_IncrementFlashCount_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.FiringModeUpdated
+struct APawn_FiringModeUpdated_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
+	bool                                               bViaReplication;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetFiringMode
+struct APawn_SetFiringMode_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      InFiringMode;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.GetWeaponFiringMode
+struct APawn_GetWeaponFiringMode_Params
+{
+	class AWeapon*                                     InWeapon;                                                 // (CPF_Parm)
+	unsigned char                                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.StopFire
+struct APawn_StopFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.StartFire
+struct APawn_StartFire_Params
+{
+	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.StopFiring
+struct APawn_StopFiring_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.Reset
+struct APawn_Reset_Params
+{
+};
+
+// Function Engine.Pawn.PlayerChangedTeam
+struct APawn_PlayerChangedTeam_Params
+{
+};
+
+// Function Engine.Pawn.SetBaseEyeheight
+struct APawn_SetBaseEyeheight_Params
+{
+};
+
+// Function Engine.Pawn.SpecialMoveThruEdge
+struct APawn_SpecialMoveThruEdge_Params
+{
+	TEnumAsByte<ENavMeshEdgeType>                      EdgeType;                                                 // (CPF_Parm)
+	int                                                Dir;                                                      // (CPF_Parm)
+	struct FVector                                     MoveStart;                                                // (CPF_Parm)
+	struct FVector                                     MoveDest;                                                 // (CPF_Parm)
+	class AActor*                                      RelActor;                                                 // (CPF_OptionalParm, CPF_Parm)
+	int                                                RelItem;                                                  // (CPF_OptionalParm, CPF_Parm)
+	class UNavigationHandle*                           NavHandle;                                                // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SpecialMoveTo
+struct APawn_SpecialMoveTo_Params
+{
+	class ANavigationPoint*                            Start;                                                    // (CPF_Parm)
+	class ANavigationPoint*                            End;                                                      // (CPF_Parm)
+	class AActor*                                      Next;                                                     // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.TermRagdoll
+struct APawn_TermRagdoll_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.InitRagdoll
+struct APawn_InitRagdoll_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetBoundingCylinder
+struct APawn_GetBoundingCylinder_Params
+{
+	float                                              CollisionRadius;                                          // (CPF_Parm, CPF_OutParm)
+	float                                              CollisionHeight;                                          // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Pawn.ReachedDesiredRotation
+struct APawn_ReachedDesiredRotation_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SetPushesRigidBodies
+struct APawn_SetPushesRigidBodies_Params
+{
+	bool                                               NewPush;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Pawn.ForceCrouch
+struct APawn_ForceCrouch_Params
+{
+};
+
+// Function Engine.Pawn.ReachedPoint
+struct APawn_ReachedPoint_Params
+{
+	struct FVector                                     Point;                                                    // (CPF_Parm)
+	class AActor*                                      NewAnchor;                                                // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.ReachedDestination
+struct APawn_ReachedDestination_Params
+{
+	class AActor*                                      Goal;                                                     // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetBestAnchor
+struct APawn_GetBestAnchor_Params
+{
+	class AActor*                                      TestActor;                                                // (CPF_Parm)
+	struct FVector                                     TestLocation;                                             // (CPF_Parm)
+	bool                                               bStartPoint;                                              // (CPF_Parm)
+	bool                                               bOnlyCheckVisible;                                        // (CPF_Parm)
+	float                                              out_Dist;                                                 // (CPF_Parm, CPF_OutParm)
+	class ANavigationPoint*                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SetAnchor
+struct APawn_SetAnchor_Params
+{
+	class ANavigationPoint*                            NewAnchor;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetRemoteViewPitch
+struct APawn_SetRemoteViewPitch_Params
+{
+	int                                                NewRemoteViewPitch;                                       // (CPF_Parm)
+};
+
+// Function Engine.Pawn.IsInvisible
+struct APawn_IsInvisible_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsValidEnemyTargetFor
+struct APawn_IsValidEnemyTargetFor_Params
+{
+	class APlayerReplicationInfo*                      PRI;                                                      // (CPF_Const, CPF_Parm)
+	bool                                               bNoPRIisEnemy;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetFallDuration
+struct APawn_GetFallDuration_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.SuggestJumpVelocity
+struct APawn_SuggestJumpVelocity_Params
+{
+	struct FVector                                     JumpVelocity;                                             // (CPF_Parm, CPF_OutParm)
+	struct FVector                                     Destination;                                              // (CPF_Parm)
+	struct FVector                                     Start;                                                    // (CPF_Parm)
+	bool                                               bRequireFallLanding;                                      // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.ValidAnchor
+struct APawn_ValidAnchor_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.AdjustDestination
+struct APawn_AdjustDestination_Params
+{
+	class AActor*                                      GoalActor;                                                // (CPF_Parm)
+	struct FVector                                     Dest;                                                     // (CPF_OptionalParm, CPF_Parm)
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsAliveAndWell
+struct APawn_IsAliveAndWell_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.ReplicatedEvent
+struct APawn_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetSkelControlScale
+struct APawn_SetSkelControlScale_Params
+{
+	struct FName                                       SkelControlName;                                          // (CPF_Parm)
+	float                                              Scale;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetMorphWeight
+struct APawn_SetMorphWeight_Params
+{
+	struct FName                                       MorphNodeName;                                            // (CPF_Parm)
+	float                                              MorphWeight;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.GetActorFaceFXAsset
+struct APawn_GetActorFaceFXAsset_Params
+{
+	class UFaceFXAsset*                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.FaceFXAudioFinished
+struct APawn_FaceFXAudioFinished_Params
+{
+	class UAudioComponent*                             AC;                                                       // (CPF_Parm, CPF_EditInline)
+};
+
+// Function Engine.Pawn.OnPlayFaceFXAnim
+struct APawn_OnPlayFaceFXAnim_Params
+{
+	class USeqAct_PlayFaceFXAnim*                      inAction;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.CanActorPlayFaceFXAnim
+struct APawn_CanActorPlayFaceFXAnim_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsActorPlayingFaceFXAnim
+struct APawn_IsActorPlayingFaceFXAnim_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.GetFaceFXAudioComponent
+struct APawn_GetFaceFXAudioComponent_Params
+{
+	class UAudioComponent*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_EditInline)
+};
+
+// Function Engine.Pawn.StopActorFaceFXAnim
+struct APawn_StopActorFaceFXAnim_Params
+{
+};
+
+// Function Engine.Pawn.PlayActorFaceFXAnim
+struct APawn_PlayActorFaceFXAnim_Params
+{
+	class UFaceFXAnimSet*                              AnimSet;                                                  // (CPF_Parm)
+	struct FString                                     GroupName;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	struct FString                                     SeqName;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+	class USoundCue*                                   SoundCueToPlay;                                           // (CPF_Parm)
+	class UAkEvent*                                    AkEventToPlay;                                            // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.MAT_FinishAIGroup
+struct APawn_MAT_FinishAIGroup_Params
+{
+};
+
+// Function Engine.Pawn.MAT_BeginAIGroup
+struct APawn_MAT_BeginAIGroup_Params
+{
+	struct FVector                                     StartLoc;                                                 // (CPF_Parm)
+	struct FRotator                                    StartRot;                                                 // (CPF_Parm)
+};
+
+// Function Engine.Pawn.FinishAIGroup
+struct APawn_FinishAIGroup_Params
+{
+};
+
+// Function Engine.Pawn.BeginAIGroup
+struct APawn_BeginAIGroup_Params
+{
+};
+
+// Function Engine.Pawn.InterpolationFinished
+struct APawn_InterpolationFinished_Params
+{
+	class USeqAct_Interp*                              InterpAction;                                             // (CPF_Parm)
+};
+
+// Function Engine.Pawn.InterpolationStarted
+struct APawn_InterpolationStarted_Params
+{
+	class USeqAct_Interp*                              InterpAction;                                             // (CPF_Parm)
+	class UInterpGroupInst*                            GroupInst;                                                // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_SetSkelControlStrength
+struct APawn_MAT_SetSkelControlStrength_Params
+{
+	struct FName                                       SkelControlName;                                          // (CPF_Parm)
+	float                                              ControlStrength;                                          // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_SetSkelControlScale
+struct APawn_MAT_SetSkelControlScale_Params
+{
+	struct FName                                       SkelControlName;                                          // (CPF_Parm)
+	float                                              Scale;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_SetMorphWeight
+struct APawn_MAT_SetMorphWeight_Params
+{
+	struct FName                                       MorphNodeName;                                            // (CPF_Parm)
+	float                                              MorphWeight;                                              // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_SetAnimWeights
+struct APawn_MAT_SetAnimWeights_Params
+{
+	TArray<struct FAnimSlotInfo>                       SlotInfos;                                                // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Pawn.MAT_SetAnimPosition
+struct APawn_MAT_SetAnimPosition_Params
+{
+	struct FName                                       SlotName;                                                 // (CPF_Parm)
+	int                                                ChannelIndex;                                             // (CPF_Parm)
+	struct FName                                       InAnimSeqName;                                            // (CPF_Parm)
+	float                                              InPosition;                                               // (CPF_Parm)
+	bool                                               bFireNotifies;                                            // (CPF_Parm)
+	bool                                               bLooping;                                                 // (CPF_Parm)
+	bool                                               bEnableRootMotion;                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.SetAnimPosition
+struct APawn_SetAnimPosition_Params
+{
+	struct FName                                       SlotName;                                                 // (CPF_Parm)
+	int                                                ChannelIndex;                                             // (CPF_Parm)
+	struct FName                                       InAnimSeqName;                                            // (CPF_Parm)
+	float                                              InPosition;                                               // (CPF_Parm)
+	bool                                               bFireNotifies;                                            // (CPF_Parm)
+	bool                                               bLooping;                                                 // (CPF_Parm)
+	bool                                               bEnableRootMotion;                                        // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_FinishAnimControl
+struct APawn_MAT_FinishAnimControl_Params
+{
+	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.FinishAnimControl
+struct APawn_FinishAnimControl_Params
+{
+	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.MAT_BeginAnimControl
+struct APawn_MAT_BeginAnimControl_Params
+{
+	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.BeginAnimControl
+struct APawn_BeginAnimControl_Params
+{
+	class UInterpGroup*                                InInterpGroup;                                            // (CPF_Parm)
+};
+
+// Function Engine.Pawn.RestoreAnimSetsToDefault
+struct APawn_RestoreAnimSetsToDefault_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.AnimSetListUpdated
+struct APawn_AnimSetListUpdated_Params
+{
+};
+
+// Function Engine.Pawn.AddAnimSets
+struct APawn_AddAnimSets_Params
+{
+	TArray<class UAnimSet*>                            CustomAnimSets;                                           // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+};
+
+// Function Engine.Pawn.BuildScriptAnimSetList
+struct APawn_BuildScriptAnimSetList_Params
+{
+};
+
+// Function Engine.Pawn.UpdateAnimSetList
+struct APawn_UpdateAnimSetList_Params
+{
+};
+
+// Function Engine.Pawn.ClearAnimNodes
+struct APawn_ClearAnimNodes_Params
+{
+};
+
+// Function Engine.Pawn.CacheAnimNodes
+struct APawn_CacheAnimNodes_Params
+{
+};
+
+// Function Engine.Pawn.PostInitAnimTree
+struct APawn_PostInitAnimTree_Params
+{
+	class USkeletalMeshComponent*                      SkelComp;                                                 // (CPF_Parm, CPF_EditInline)
+};
+
+// Function Engine.Pawn.IsDesiredRotationLocked
+struct APawn_IsDesiredRotationLocked_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.IsDesiredRotationInUse
+struct APawn_IsDesiredRotationInUse_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.CheckDesiredRotation
+struct APawn_CheckDesiredRotation_Params
+{
+};
+
+// Function Engine.Pawn.ResetDesiredRotation
+struct APawn_ResetDesiredRotation_Params
+{
+};
+
+// Function Engine.Pawn.LockDesiredRotation
+struct APawn_LockDesiredRotation_Params
+{
+	bool                                               Lock;                                                     // (CPF_Parm)
+	bool                                               InUnlockWhenReached;                                      // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Pawn.SetDesiredRotation
+struct APawn_SetDesiredRotation_Params
+{
+	struct FRotator                                    TargetDesiredRotation;                                    // (CPF_Parm)
+	bool                                               InLockDesiredRotation;                                    // (CPF_OptionalParm, CPF_Parm)
+	bool                                               InUnlockWhenReached;                                      // (CPF_OptionalParm, CPF_Parm)
+	float                                              InterpolationTime;                                        // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bResetRotationRate;                                       // (CPF_OptionalParm, CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Pawn.PickWallAdjust
+struct APawn_PickWallAdjust_Params
+{
+	struct FVector                                     WallHitNormal;                                            // (CPF_Parm)
+	class AActor*                                      HitActor;                                                 // (CPF_Parm)
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.Vehicle.ZeroMovementVariables
@@ -23866,255 +23805,6 @@ struct USeqAct_ParticleEventGenerator_GetObjClassVersion_Params
 struct USeqAct_PlayCameraAnim_GetObjClassVersion_Params
 {
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.SetCameraFade
-struct ACamera_SetCameraFade_Params
-{
-	bool                                               bNewEnableFading;                                         // (CPF_Parm)
-	struct FColor                                      NewFadeColor;                                             // (CPF_OptionalParm, CPF_Parm)
-	struct FVector2D                                   NewFadeAlpha;                                             // (CPF_OptionalParm, CPF_Parm)
-	float                                              NewFadeTime;                                              // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bNewFadeAudio;                                            // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.StopCameraAnim
-struct ACamera_StopCameraAnim_Params
-{
-	class UCameraAnimInst*                             AnimInst;                                                 // (CPF_Parm)
-	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.StopAllCameraAnimsByType
-struct ACamera_StopAllCameraAnimsByType_Params
-{
-	class UCameraAnim*                                 Anim;                                                     // (CPF_Parm)
-	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.StopAllCameraAnims
-struct ACamera_StopAllCameraAnims_Params
-{
-	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.PlayCameraAnim
-struct ACamera_PlayCameraAnim_Params
-{
-	class UCameraAnim*                                 Anim;                                                     // (CPF_Parm)
-	float                                              Rate;                                                     // (CPF_OptionalParm, CPF_Parm)
-	float                                              Scale;                                                    // (CPF_OptionalParm, CPF_Parm)
-	float                                              BlendInTime;                                              // (CPF_OptionalParm, CPF_Parm)
-	float                                              BlendOutTime;                                             // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bLoop;                                                    // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bRandomStartTime;                                         // (CPF_OptionalParm, CPF_Parm)
-	float                                              Duration;                                                 // (CPF_OptionalParm, CPF_Parm)
-	bool                                               bSingleInstance;                                          // (CPF_OptionalParm, CPF_Parm)
-	class UCameraAnimInst*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.ClearAllCameraShakes
-struct ACamera_ClearAllCameraShakes_Params
-{
-};
-
-// Function Engine.Camera.PlayWorldCameraShake
-struct ACamera_PlayWorldCameraShake_Params
-{
-	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
-	class AActor*                                      ShakeInstigator;                                          // (CPF_Parm)
-	struct FVector                                     Epicenter;                                                // (CPF_Parm)
-	float                                              InnerRadius;                                              // (CPF_Parm)
-	float                                              OuterRadius;                                              // (CPF_Parm)
-	float                                              Falloff;                                                  // (CPF_Parm)
-	bool                                               bTryForceFeedback;                                        // (CPF_Parm)
-	bool                                               bOrientShakeTowardsEpicenter;                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.CalcRadialShakeScale
-struct ACamera_CalcRadialShakeScale_Params
-{
-	class ACamera*                                     Cam;                                                      // (CPF_Parm)
-	struct FVector                                     Epicenter;                                                // (CPF_Parm)
-	float                                              InnerRadius;                                              // (CPF_Parm)
-	float                                              OuterRadius;                                              // (CPF_Parm)
-	float                                              Falloff;                                                  // (CPF_Parm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.StopCameraShake
-struct ACamera_StopCameraShake_Params
-{
-	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Camera.PlayCameraShake
-struct ACamera_PlayCameraShake_Params
-{
-	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
-	float                                              Scale;                                                    // (CPF_Parm)
-	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
-	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.ClearCameraLensEffects
-struct ACamera_ClearCameraLensEffects_Params
-{
-};
-
-// Function Engine.Camera.RemoveCameraLensEffect
-struct ACamera_RemoveCameraLensEffect_Params
-{
-	class AEmitterCameraLensEffectBase*                Emitter;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Camera.AddCameraLensEffect
-struct ACamera_AddCameraLensEffect_Params
-{
-	class UClass*                                      LensEffectEmitterClass;                                   // (CPF_Parm)
-};
-
-// Function Engine.Camera.FindCameraLensEffect
-struct ACamera_FindCameraLensEffect_Params
-{
-	class UClass*                                      LensEffectEmitterClass;                                   // (CPF_Parm)
-	class AEmitterCameraLensEffectBase*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.DisplayDebug
-struct ACamera_DisplayDebug_Params
-{
-	class AHUD*                                        HUD;                                                      // (CPF_Parm)
-	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
-	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.ProcessViewRotation
-struct ACamera_ProcessViewRotation_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FRotator                                    OutViewRotation;                                          // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    OutDeltaRot;                                              // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.SetViewTarget
-struct ACamera_SetViewTarget_Params
-{
-	class AActor*                                      NewViewTarget;                                            // (CPF_Parm)
-	struct FViewTargetTransitionParams                 TransitionParams;                                         // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Camera.UpdateViewTarget
-struct ACamera_UpdateViewTarget_Params
-{
-	struct FTViewTarget                                OutVT;                                                    // (CPF_Parm, CPF_OutParm)
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Camera.CheckViewTarget
-struct ACamera_CheckViewTarget_Params
-{
-	struct FTViewTarget                                VT;                                                       // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.FillCameraCache
-struct ACamera_FillCameraCache_Params
-{
-	struct FTPOV                                       NewPOV;                                                   // (CPF_Const, CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.BlendViewTargets
-struct ACamera_BlendViewTargets_Params
-{
-	struct FTViewTarget                                A;                                                        // (CPF_Const, CPF_Parm, CPF_OutParm)
-	struct FTViewTarget                                B;                                                        // (CPF_Const, CPF_Parm, CPF_OutParm)
-	float                                              Alpha;                                                    // (CPF_Parm)
-	struct FTPOV                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.ApplyAudioFade
-struct ACamera_ApplyAudioFade_Params
-{
-};
-
-// Function Engine.Camera.UpdateFade
-struct ACamera_UpdateFade_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Camera.DoUpdateCamera
-struct ACamera_DoUpdateCamera_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Camera.UpdateCamera
-struct ACamera_UpdateCamera_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Camera.SetDesiredColorScale
-struct ACamera_SetDesiredColorScale_Params
-{
-	struct FVector                                     NewColorScale;                                            // (CPF_Parm)
-	float                                              InterpTime;                                               // (CPF_Parm)
-};
-
-// Function Engine.Camera.GetCameraRotation
-struct ACamera_GetCameraRotation_Params
-{
-	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.GetCameraViewPoint
-struct ACamera_GetCameraViewPoint_Params
-{
-	struct FVector                                     OutCamLoc;                                                // (CPF_Parm, CPF_OutParm)
-	struct FRotator                                    OutCamRot;                                                // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.SetFOV
-struct ACamera_SetFOV_Params
-{
-	float                                              NewFOV;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Camera.GetFOVAngle
-struct ACamera_GetFOVAngle_Params
-{
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Camera.InitializeFor
-struct ACamera_InitializeFor_Params
-{
-	class APlayerController*                           PC;                                                       // (CPF_Parm)
-};
-
-// Function Engine.Camera.ApplyCameraModifiers
-struct ACamera_ApplyCameraModifiers_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FTPOV                                       OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
-};
-
-// Function Engine.Camera.Destroyed
-struct ACamera_Destroyed_Params
-{
-};
-
-// Function Engine.Camera.PostBeginPlay
-struct ACamera_PostBeginPlay_Params
-{
-};
-
-// Function Engine.Camera.CreateCameraModifier
-struct ACamera_CreateCameraModifier_Params
-{
-	class UClass*                                      ModifierClass;                                            // (CPF_Parm)
-	class UCameraModifier*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.SeqAct_SetCameraTarget.GetObjClassVersion
@@ -26073,6 +25763,67 @@ struct ASpotLightToggleable_ShouldSaveForCheckpoint_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function Engine.LightComponent.OnUpdatePropertyLightColor
+struct ULightComponent_OnUpdatePropertyLightColor_Params
+{
+};
+
+// Function Engine.LightComponent.OnUpdatePropertyBrightness
+struct ULightComponent_OnUpdatePropertyBrightness_Params
+{
+};
+
+// Function Engine.LightComponent.OnUpdatePropertyOcclusionMaskDarkness
+struct ULightComponent_OnUpdatePropertyOcclusionMaskDarkness_Params
+{
+};
+
+// Function Engine.LightComponent.OnUpdatePropertyBloomTint
+struct ULightComponent_OnUpdatePropertyBloomTint_Params
+{
+};
+
+// Function Engine.LightComponent.OnUpdatePropertyBloomScale
+struct ULightComponent_OnUpdatePropertyBloomScale_Params
+{
+};
+
+// Function Engine.LightComponent.UpdateLightShaftParameters
+struct ULightComponent_UpdateLightShaftParameters_Params
+{
+};
+
+// Function Engine.LightComponent.UpdateColorAndBrightness
+struct ULightComponent_UpdateColorAndBrightness_Params
+{
+};
+
+// Function Engine.LightComponent.GetDirection
+struct ULightComponent_GetDirection_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.LightComponent.GetOrigin
+struct ULightComponent_GetOrigin_Params
+{
+	struct FVector                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.LightComponent.SetLightProperties
+struct ULightComponent_SetLightProperties_Params
+{
+	float                                              NewBrightness;                                            // (CPF_OptionalParm, CPF_Parm)
+	struct FColor                                      NewLightColor;                                            // (CPF_OptionalParm, CPF_Parm)
+	class ULightFunction*                              NewLightFunction;                                         // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.LightComponent.SetEnabled
+struct ULightComponent_SetEnabled_Params
+{
+	bool                                               bSetEnabled;                                              // (CPF_Parm)
+};
+
 // Function Engine.DirectionalLightComponent.OnUpdatePropertyBrightness
 struct UDirectionalLightComponent_OnUpdatePropertyBrightness_Params
 {
@@ -27443,6 +27194,255 @@ struct ATeamInfo_Destroyed_Params
 struct ATeamInfo_ReplicatedEvent_Params
 {
 	struct FName                                       VarName;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Camera.SetCameraFade
+struct ACamera_SetCameraFade_Params
+{
+	bool                                               bNewEnableFading;                                         // (CPF_Parm)
+	struct FColor                                      NewFadeColor;                                             // (CPF_OptionalParm, CPF_Parm)
+	struct FVector2D                                   NewFadeAlpha;                                             // (CPF_OptionalParm, CPF_Parm)
+	float                                              NewFadeTime;                                              // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bNewFadeAudio;                                            // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.StopCameraAnim
+struct ACamera_StopCameraAnim_Params
+{
+	class UCameraAnimInst*                             AnimInst;                                                 // (CPF_Parm)
+	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.StopAllCameraAnimsByType
+struct ACamera_StopAllCameraAnimsByType_Params
+{
+	class UCameraAnim*                                 Anim;                                                     // (CPF_Parm)
+	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.StopAllCameraAnims
+struct ACamera_StopAllCameraAnims_Params
+{
+	bool                                               bImmediate;                                               // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.PlayCameraAnim
+struct ACamera_PlayCameraAnim_Params
+{
+	class UCameraAnim*                                 Anim;                                                     // (CPF_Parm)
+	float                                              Rate;                                                     // (CPF_OptionalParm, CPF_Parm)
+	float                                              Scale;                                                    // (CPF_OptionalParm, CPF_Parm)
+	float                                              BlendInTime;                                              // (CPF_OptionalParm, CPF_Parm)
+	float                                              BlendOutTime;                                             // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bLoop;                                                    // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bRandomStartTime;                                         // (CPF_OptionalParm, CPF_Parm)
+	float                                              Duration;                                                 // (CPF_OptionalParm, CPF_Parm)
+	bool                                               bSingleInstance;                                          // (CPF_OptionalParm, CPF_Parm)
+	class UCameraAnimInst*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.ClearAllCameraShakes
+struct ACamera_ClearAllCameraShakes_Params
+{
+};
+
+// Function Engine.Camera.PlayWorldCameraShake
+struct ACamera_PlayWorldCameraShake_Params
+{
+	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
+	class AActor*                                      ShakeInstigator;                                          // (CPF_Parm)
+	struct FVector                                     Epicenter;                                                // (CPF_Parm)
+	float                                              InnerRadius;                                              // (CPF_Parm)
+	float                                              OuterRadius;                                              // (CPF_Parm)
+	float                                              Falloff;                                                  // (CPF_Parm)
+	bool                                               bTryForceFeedback;                                        // (CPF_Parm)
+	bool                                               bOrientShakeTowardsEpicenter;                             // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.CalcRadialShakeScale
+struct ACamera_CalcRadialShakeScale_Params
+{
+	class ACamera*                                     Cam;                                                      // (CPF_Parm)
+	struct FVector                                     Epicenter;                                                // (CPF_Parm)
+	float                                              InnerRadius;                                              // (CPF_Parm)
+	float                                              OuterRadius;                                              // (CPF_Parm)
+	float                                              Falloff;                                                  // (CPF_Parm)
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.StopCameraShake
+struct ACamera_StopCameraShake_Params
+{
+	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
+};
+
+// Function Engine.Camera.PlayCameraShake
+struct ACamera_PlayCameraShake_Params
+{
+	class UCameraShake*                                Shake;                                                    // (CPF_Parm)
+	float                                              Scale;                                                    // (CPF_Parm)
+	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // (CPF_OptionalParm, CPF_Parm)
+	struct FRotator                                    UserPlaySpaceRot;                                         // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.ClearCameraLensEffects
+struct ACamera_ClearCameraLensEffects_Params
+{
+};
+
+// Function Engine.Camera.RemoveCameraLensEffect
+struct ACamera_RemoveCameraLensEffect_Params
+{
+	class AEmitterCameraLensEffectBase*                Emitter;                                                  // (CPF_Parm)
+};
+
+// Function Engine.Camera.AddCameraLensEffect
+struct ACamera_AddCameraLensEffect_Params
+{
+	class UClass*                                      LensEffectEmitterClass;                                   // (CPF_Parm)
+};
+
+// Function Engine.Camera.FindCameraLensEffect
+struct ACamera_FindCameraLensEffect_Params
+{
+	class UClass*                                      LensEffectEmitterClass;                                   // (CPF_Parm)
+	class AEmitterCameraLensEffectBase*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.DisplayDebug
+struct ACamera_DisplayDebug_Params
+{
+	class AHUD*                                        HUD;                                                      // (CPF_Parm)
+	float                                              out_YL;                                                   // (CPF_Parm, CPF_OutParm)
+	float                                              out_YPos;                                                 // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.ProcessViewRotation
+struct ACamera_ProcessViewRotation_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FRotator                                    OutViewRotation;                                          // (CPF_Parm, CPF_OutParm)
+	struct FRotator                                    OutDeltaRot;                                              // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.SetViewTarget
+struct ACamera_SetViewTarget_Params
+{
+	class AActor*                                      NewViewTarget;                                            // (CPF_Parm)
+	struct FViewTargetTransitionParams                 TransitionParams;                                         // (CPF_OptionalParm, CPF_Parm)
+};
+
+// Function Engine.Camera.UpdateViewTarget
+struct ACamera_UpdateViewTarget_Params
+{
+	struct FTViewTarget                                OutVT;                                                    // (CPF_Parm, CPF_OutParm)
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function Engine.Camera.CheckViewTarget
+struct ACamera_CheckViewTarget_Params
+{
+	struct FTViewTarget                                VT;                                                       // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.FillCameraCache
+struct ACamera_FillCameraCache_Params
+{
+	struct FTPOV                                       NewPOV;                                                   // (CPF_Const, CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.BlendViewTargets
+struct ACamera_BlendViewTargets_Params
+{
+	struct FTViewTarget                                A;                                                        // (CPF_Const, CPF_Parm, CPF_OutParm)
+	struct FTViewTarget                                B;                                                        // (CPF_Const, CPF_Parm, CPF_OutParm)
+	float                                              Alpha;                                                    // (CPF_Parm)
+	struct FTPOV                                       ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.ApplyAudioFade
+struct ACamera_ApplyAudioFade_Params
+{
+};
+
+// Function Engine.Camera.UpdateFade
+struct ACamera_UpdateFade_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function Engine.Camera.DoUpdateCamera
+struct ACamera_DoUpdateCamera_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function Engine.Camera.UpdateCamera
+struct ACamera_UpdateCamera_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+};
+
+// Function Engine.Camera.SetDesiredColorScale
+struct ACamera_SetDesiredColorScale_Params
+{
+	struct FVector                                     NewColorScale;                                            // (CPF_Parm)
+	float                                              InterpTime;                                               // (CPF_Parm)
+};
+
+// Function Engine.Camera.GetCameraRotation
+struct ACamera_GetCameraRotation_Params
+{
+	struct FRotator                                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.GetCameraViewPoint
+struct ACamera_GetCameraViewPoint_Params
+{
+	struct FVector                                     OutCamLoc;                                                // (CPF_Parm, CPF_OutParm)
+	struct FRotator                                    OutCamRot;                                                // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.SetFOV
+struct ACamera_SetFOV_Params
+{
+	float                                              NewFOV;                                                   // (CPF_Parm)
+};
+
+// Function Engine.Camera.GetFOVAngle
+struct ACamera_GetFOVAngle_Params
+{
+	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function Engine.Camera.InitializeFor
+struct ACamera_InitializeFor_Params
+{
+	class APlayerController*                           PC;                                                       // (CPF_Parm)
+};
+
+// Function Engine.Camera.ApplyCameraModifiers
+struct ACamera_ApplyCameraModifiers_Params
+{
+	float                                              DeltaTime;                                                // (CPF_Parm)
+	struct FTPOV                                       OutPOV;                                                   // (CPF_Parm, CPF_OutParm)
+};
+
+// Function Engine.Camera.Destroyed
+struct ACamera_Destroyed_Params
+{
+};
+
+// Function Engine.Camera.PostBeginPlay
+struct ACamera_PostBeginPlay_Params
+{
+};
+
+// Function Engine.Camera.CreateCameraModifier
+struct ACamera_CreateCameraModifier_Params
+{
+	class UClass*                                      ModifierClass;                                            // (CPF_Parm)
+	class UCameraModifier*                             ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
 // Function Engine.CameraActor.DisplayDebug
@@ -33411,129 +33411,6 @@ struct AEmitterSpawnable_SetTemplate_Params
 	bool                                               bDestroyOnFinish;                                         // (CPF_OptionalParm, CPF_Parm)
 };
 
-// Function Engine.Controller.Dead.ServerRestartPlayer
-struct SController_Dead_ServerRestartPlayer_Params
-{
-};
-
-// Function Engine.Controller.Dead.IsDead
-struct SController_Dead_IsDead_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Controller.Dead.PawnDied
-struct SController_Dead_PawnDied_Params
-{
-	class APawn*                                       inPawn;                                                   // (CPF_Parm)
-};
-
-// Function Engine.Controller.Dead.KilledBy
-struct SController_Dead_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.Controller.Dead.HearNoise
-struct SController_Dead_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Controller.Dead.SeePlayer
-struct SController_Dead_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.BeginState
-struct SController_RoundEnded_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.GamePlayEndedState
-struct SController_RoundEnded_GamePlayEndedState_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Controller.RoundEnded.ReceiveWarning
-struct SController_RoundEnded_ReceiveWarning_Params
-{
-	class APawn*                                       shooter;                                                  // (CPF_Parm)
-	float                                              projSpeed;                                                // (CPF_Parm)
-	struct FVector                                     FireDir;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.TakeDamage
-struct SController_RoundEnded_TakeDamage_Params
-{
-	int                                                DamageAmount;                                             // (CPF_Parm)
-	class AController*                                 EventInstigator;                                          // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.Falling
-struct SController_RoundEnded_Falling_Params
-{
-};
-
-// Function Engine.Controller.RoundEnded.NotifyHeadVolumeChange
-struct SController_RoundEnded_NotifyHeadVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Controller.RoundEnded.NotifyPhysicsVolumeChange
-struct SController_RoundEnded_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.HitWall
-struct SController_RoundEnded_HitWall_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      Wall;                                                     // (CPF_Parm)
-	class UPrimitiveComponent*                         WallComp;                                                 // (CPF_Parm, CPF_EditInline)
-};
-
-// Function Engine.Controller.RoundEnded.NotifyBump
-struct SController_RoundEnded_NotifyBump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Controller.RoundEnded.KilledBy
-struct SController_RoundEnded_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.HearNoise
-struct SController_RoundEnded_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Controller.RoundEnded.SeePlayer
-struct SController_RoundEnded_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
 // Function Engine.SeqAct_ControlMovieTexture.Activated
 struct USeqAct_ControlMovieTexture_Activated_Params
 {
@@ -33702,756 +33579,6 @@ struct UGameMessage_GetString_Params
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
-// Function Engine.PlayerController.PlayerWalking.EndState
-struct SPlayerController_PlayerWalking_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.BeginState
-struct SPlayerController_PlayerWalking_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.PlayerMove
-struct SPlayerController_PlayerWalking_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.ProcessMove
-struct SPlayerController_PlayerWalking_ProcessMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.NotifyPhysicsVolumeChange
-struct SPlayerController_PlayerWalking_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.Bump
-struct SPlayerController_PlayerWalking_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.HearNoise
-struct SPlayerController_PlayerWalking_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWalking.SeePlayer
-struct SPlayerController_PlayerWalking_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.EndState
-struct SPlayerController_PlayerClimbing_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.BeginState
-struct SPlayerController_PlayerClimbing_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.PlayerMove
-struct SPlayerController_PlayerClimbing_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.ProcessMove
-struct SPlayerController_PlayerClimbing_ProcessMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.NotifyPhysicsVolumeChange
-struct SPlayerController_PlayerClimbing_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.Bump
-struct SPlayerController_PlayerClimbing_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.HearNoise
-struct SPlayerController_PlayerClimbing_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerClimbing.SeePlayer
-struct SPlayerController_PlayerClimbing_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.EndState
-struct SPlayerController_PlayerDriving_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.BeginState
-struct SPlayerController_PlayerDriving_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.ProcessDrive
-struct SPlayerController_PlayerDriving_ProcessDrive_Params
-{
-	float                                              InForward;                                                // (CPF_Parm)
-	float                                              InStrafe;                                                 // (CPF_Parm)
-	float                                              InUp;                                                     // (CPF_Parm)
-	bool                                               InJump;                                                   // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.ProcessMove
-struct SPlayerController_PlayerDriving_ProcessMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.Bump
-struct SPlayerController_PlayerDriving_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.HearNoise
-struct SPlayerController_PlayerDriving_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerDriving.SeePlayer
-struct SPlayerController_PlayerDriving_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.BeginState
-struct SPlayerController_PlayerSwimming_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.Timer
-struct SPlayerController_PlayerSwimming_Timer_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerSwimming.PlayerMove
-struct SPlayerController_PlayerSwimming_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.ProcessMove
-struct SPlayerController_PlayerSwimming_ProcessMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.NotifyPhysicsVolumeChange
-struct SPlayerController_PlayerSwimming_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.NotifyLanded
-struct SPlayerController_PlayerSwimming_NotifyLanded_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      FloorActor;                                               // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.Bump
-struct SPlayerController_PlayerSwimming_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.HearNoise
-struct SPlayerController_PlayerSwimming_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerSwimming.SeePlayer
-struct SPlayerController_PlayerSwimming_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerFlying.BeginState
-struct SPlayerController_PlayerFlying_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerFlying.PlayerMove
-struct SPlayerController_PlayerFlying_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerFlying.Bump
-struct SPlayerController_PlayerFlying_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerFlying.HearNoise
-struct SPlayerController_PlayerFlying_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerFlying.SeePlayer
-struct SPlayerController_PlayerFlying_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.EndState
-struct SPlayerController_BaseSpectating_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.BeginState
-struct SPlayerController_BaseSpectating_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.PlayerMove
-struct SPlayerController_BaseSpectating_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.ProcessMove
-struct SPlayerController_BaseSpectating_ProcessMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.LimitSpectatorVelocity
-struct SPlayerController_BaseSpectating_LimitSpectatorVelocity_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.BaseSpectating.IsSpectating
-struct SPlayerController_BaseSpectating_IsSpectating_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.Spectating.EndState
-struct SPlayerController_Spectating_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Spectating.BeginState
-struct SPlayerController_Spectating_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Spectating.NotifyHeadVolumeChange
-struct SPlayerController_Spectating_NotifyHeadVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.Spectating.NotifyPhysicsVolumeChange
-struct SPlayerController_Spectating_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Spectating.ThrowWeapon
-struct SPlayerController_Spectating_ThrowWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.Spectating.Suicide
-struct SPlayerController_Spectating_Suicide_Params
-{
-};
-
-// Function Engine.PlayerController.Spectating.RestartLevel
-struct SPlayerController_Spectating_RestartLevel_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.BeginState
-struct SPlayerController_PlayerWaiting_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.EndState
-struct SPlayerController_PlayerWaiting_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.StartFire
-struct SPlayerController_PlayerWaiting_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.ServerRestartPlayer
-struct SPlayerController_PlayerWaiting_ServerRestartPlayer_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.Suicide
-struct SPlayerController_PlayerWaiting_Suicide_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.Jump
-struct SPlayerController_PlayerWaiting_Jump_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.SwitchToBestWeapon
-struct SPlayerController_PlayerWaiting_SwitchToBestWeapon_Params
-{
-	bool                                               bForceNewWeapon;                                          // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.PrevWeapon
-struct SPlayerController_PlayerWaiting_PrevWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.NextWeapon
-struct SPlayerController_PlayerWaiting_NextWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.PlayerWaiting.PhysicsVolumeChange
-struct SPlayerController_PlayerWaiting_PhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.TakeDamage
-struct SPlayerController_PlayerWaiting_TakeDamage_Params
-{
-	int                                                DamageAmount;                                             // (CPF_Parm)
-	class AController*                                 EventInstigator;                                          // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.NotifyBump
-struct SPlayerController_PlayerWaiting_NotifyBump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.HearNoise
-struct SPlayerController_PlayerWaiting_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.PlayerWaiting.SeePlayer
-struct SPlayerController_PlayerWaiting_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.EndState
-struct SPlayerController_WaitingForPawn_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.BeginState
-struct SPlayerController_WaitingForPawn_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.Timer
-struct SPlayerController_WaitingForPawn_Timer_Params
-{
-};
-
-// Function Engine.PlayerController.WaitingForPawn.ReplicateMove
-struct SPlayerController_WaitingForPawn_ReplicateMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-	struct FVector                                     newAccel;                                                 // (CPF_Parm)
-	TEnumAsByte<EDoubleClickDir>                       DoubleClickMove;                                          // (CPF_Parm)
-	struct FRotator                                    DeltaRot;                                                 // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.PlayerTick
-struct SPlayerController_WaitingForPawn_PlayerTick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.LongClientAdjustPosition
-struct SPlayerController_WaitingForPawn_LongClientAdjustPosition_Params
-{
-	float                                              TimeStamp;                                                // (CPF_Parm)
-	struct FName                                       NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
-	float                                              NewLocX;                                                  // (CPF_Parm)
-	float                                              NewLocY;                                                  // (CPF_Parm)
-	float                                              NewLocZ;                                                  // (CPF_Parm)
-	float                                              NewVelX;                                                  // (CPF_Parm)
-	float                                              NewVelY;                                                  // (CPF_Parm)
-	float                                              NewVelZ;                                                  // (CPF_Parm)
-	class AActor*                                      NewBase;                                                  // (CPF_Parm)
-	float                                              NewFloorX;                                                // (CPF_Parm)
-	float                                              NewFloorY;                                                // (CPF_Parm)
-	float                                              NewFloorZ;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.ClientGotoState
-struct SPlayerController_WaitingForPawn_ClientGotoState_Params
-{
-	struct FName                                       NewState;                                                 // (CPF_Parm)
-	struct FName                                       NewLabel;                                                 // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.StartFire
-struct SPlayerController_WaitingForPawn_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.KilledBy
-struct SPlayerController_WaitingForPawn_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.HearNoise
-struct SPlayerController_WaitingForPawn_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.WaitingForPawn.SeePlayer
-struct SPlayerController_WaitingForPawn_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.EndState
-struct SPlayerController_RoundEnded_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.BeginState
-struct SPlayerController_RoundEnded_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.LongClientAdjustPosition
-struct SPlayerController_RoundEnded_LongClientAdjustPosition_Params
-{
-	float                                              TimeStamp;                                                // (CPF_Parm)
-	struct FName                                       NewState;                                                 // (CPF_Parm)
-	TEnumAsByte<EPhysics>                              newPhysics;                                               // (CPF_Parm)
-	float                                              NewLocX;                                                  // (CPF_Parm)
-	float                                              NewLocY;                                                  // (CPF_Parm)
-	float                                              NewLocZ;                                                  // (CPF_Parm)
-	float                                              NewVelX;                                                  // (CPF_Parm)
-	float                                              NewVelY;                                                  // (CPF_Parm)
-	float                                              NewVelZ;                                                  // (CPF_Parm)
-	class AActor*                                      NewBase;                                                  // (CPF_Parm)
-	float                                              NewFloorX;                                                // (CPF_Parm)
-	float                                              NewFloorY;                                                // (CPF_Parm)
-	float                                              NewFloorZ;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.Timer
-struct SPlayerController_RoundEnded_Timer_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.FindGoodView
-struct SPlayerController_RoundEnded_FindGoodView_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.PlayerMove
-struct SPlayerController_RoundEnded_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.Possess
-struct SPlayerController_RoundEnded_Possess_Params
-{
-	class APawn*                                       aPawn;                                                    // (CPF_Parm)
-	bool                                               bVehicleTransition;                                       // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.Use
-struct SPlayerController_RoundEnded_Use_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.ThrowWeapon
-struct SPlayerController_RoundEnded_ThrowWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.IsSpectating
-struct SPlayerController_RoundEnded_IsSpectating_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.RoundEnded.ServerRestartPlayer
-struct SPlayerController_RoundEnded_ServerRestartPlayer_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.Suicide
-struct SPlayerController_RoundEnded_Suicide_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.TakeDamage
-struct SPlayerController_RoundEnded_TakeDamage_Params
-{
-	int                                                DamageAmount;                                             // (CPF_Parm)
-	class AController*                                 EventInstigator;                                          // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.Falling
-struct SPlayerController_RoundEnded_Falling_Params
-{
-};
-
-// Function Engine.PlayerController.RoundEnded.NotifyPhysicsVolumeChange
-struct SPlayerController_RoundEnded_NotifyPhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.NotifyHeadVolumeChange
-struct SPlayerController_RoundEnded_NotifyHeadVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.RoundEnded.HitWall
-struct SPlayerController_RoundEnded_HitWall_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      Wall;                                                     // (CPF_Parm)
-	class UPrimitiveComponent*                         WallComp;                                                 // (CPF_Parm, CPF_EditInline)
-};
-
-// Function Engine.PlayerController.RoundEnded.NotifyBump
-struct SPlayerController_RoundEnded_NotifyBump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.RoundEnded.KilledBy
-struct SPlayerController_RoundEnded_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.HearNoise
-struct SPlayerController_RoundEnded_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.RoundEnded.SeePlayer
-struct SPlayerController_RoundEnded_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.EndState
-struct SPlayerController_Dead_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.BeginState
-struct SPlayerController_Dead_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.Timer
-struct SPlayerController_Dead_Timer_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.FindGoodView
-struct SPlayerController_Dead_FindGoodView_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.PlayerMove
-struct SPlayerController_Dead_PlayerMove_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.Jump
-struct SPlayerController_Dead_Jump_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.Use
-struct SPlayerController_Dead_Use_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.StartFire
-struct SPlayerController_Dead_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.ServerRestartPlayer
-struct SPlayerController_Dead_ServerRestartPlayer_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.IsDead
-struct SPlayerController_Dead_IsDead_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PlayerController.Dead.ThrowWeapon
-struct SPlayerController_Dead_ThrowWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.ReplicatedEvent
-struct SPlayerController_Dead_ReplicatedEvent_Params
-{
-	struct FName                                       VarName;                                                  // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.PrevWeapon
-struct SPlayerController_Dead_PrevWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.NextWeapon
-struct SPlayerController_Dead_NextWeapon_Params
-{
-};
-
-// Function Engine.PlayerController.Dead.KilledBy
-struct SPlayerController_Dead_KilledBy_Params
-{
-	class APawn*                                       EventInstigator;                                          // (CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.HearNoise
-struct SPlayerController_Dead_HearNoise_Params
-{
-	float                                              Loudness;                                                 // (CPF_Parm)
-	class AActor*                                      NoiseMaker;                                               // (CPF_Parm)
-	struct FName                                       NoiseType;                                                // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.PlayerController.Dead.SeePlayer
-struct SPlayerController_Dead_SeePlayer_Params
-{
-	class APawn*                                       Seen;                                                     // (CPF_Parm)
-};
-
 // Function Engine.SeqAct_ToggleHUD.GetObjClassVersion
 struct USeqAct_ToggleHUD_GetObjClassVersion_Params
 {
@@ -34487,73 +33614,11 @@ struct USeqAct_SetSoundMode_Activated_Params
 {
 };
 
-// Function Engine.AIController.ScriptedMove.PushedState
-struct SAIController_ScriptedMove_PushedState_Params
-{
-};
-
-// Function Engine.AIController.ScriptedMove.PoppedState
-struct SAIController_ScriptedMove_PoppedState_Params
-{
-};
-
-// Function Engine.AIController.ScriptedRouteMove.PoppedState
-struct SAIController_ScriptedRouteMove_PoppedState_Params
-{
-};
-
-// Function Engine.Volume.AssociatedTouch.BeginState
-struct SVolume_AssociatedTouch_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Volume.AssociatedTouch.UnTouch
-struct SVolume_AssociatedTouch_UnTouch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-};
-
-// Function Engine.Volume.AssociatedTouch.Touch
-struct SVolume_AssociatedTouch_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
 // Function Engine.AnimNotify_PlayFaceFXAnim.Notify
 struct UAnimNotify_PlayFaceFXAnim_Notify_Params
 {
 	class AActor*                                      Owner;                                                    // (CPF_Parm)
 	class UAnimNodeSequence*                           AnimSeqInstigator;                                        // (CPF_Parm)
-};
-
-// Function Engine.AutoTestManager.TravelTheWorld.SetIncrementsForLoops
-struct SAutoTestManager_TravelTheWorld_SetIncrementsForLoops_Params
-{
-	float                                              NumTravelLocations;                                       // (CPF_Const, CPF_Parm)
-};
-
-// Function Engine.AutoTestManager.TravelTheWorld.PrintOutTravelWorldTimes
-struct SAutoTestManager_TravelTheWorld_PrintOutTravelWorldTimes_Params
-{
-	int                                                TotalTimeInSeconds;                                       // (CPF_Const, CPF_Parm)
-};
-
-// Function Engine.AutoTestManager.TravelTheWorld.CalcTravelTheWorldTime
-struct SAutoTestManager_TravelTheWorld_CalcTravelTheWorldTime_Params
-{
-	int                                                NumTravelLocations;                                       // (CPF_Const, CPF_Parm)
-	int                                                NumRotations;                                             // (CPF_Const, CPF_Parm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.AutoTestManager.TravelTheWorld.BeginState
-struct SAutoTestManager_TravelTheWorld_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
 };
 
 // Function Engine.BroadcastHandler.AllowBroadcastLocalizedTeam
@@ -34766,55 +33831,6 @@ struct AVolumeTimer_PostBeginPlay_Params
 {
 };
 
-// Function Engine.DroppedPickup.Pickup.EndState
-struct SDroppedPickup_Pickup_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.DroppedPickup.Pickup.BeginState
-struct SDroppedPickup_Pickup_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.DroppedPickup.Pickup.CheckTouching
-struct SDroppedPickup_Pickup_CheckTouching_Params
-{
-};
-
-// Function Engine.DroppedPickup.Pickup.Timer
-struct SDroppedPickup_Pickup_Timer_Params
-{
-};
-
-// Function Engine.DroppedPickup.Pickup.Touch
-struct SDroppedPickup_Pickup_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.DroppedPickup.Pickup.RecheckValidTouch
-struct SDroppedPickup_Pickup_RecheckValidTouch_Params
-{
-};
-
-// Function Engine.DroppedPickup.Pickup.ValidTouch
-struct SDroppedPickup_Pickup_ValidTouch_Params
-{
-	class APawn*                                       Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.DroppedPickup.FadeOut.BeginState
-struct SDroppedPickup_FadeOut_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
 // Function Engine.DynamicPhysicsVolume.PostBeginPlay
 struct ADynamicPhysicsVolume_PostBeginPlay_Params
 {
@@ -34860,57 +33876,6 @@ struct UFailedConnect_GetFailSwitch_Params
 	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function Engine.GameInfo.PendingMatch.EndState
-struct SGameInfo_PendingMatch_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.GameInfo.PendingMatch.ProcessClientRegistrationCompletion
-struct SGameInfo_PendingMatch_ProcessClientRegistrationCompletion_Params
-{
-	class APlayerController*                           PC;                                                       // (CPF_Parm)
-	bool                                               bWasSuccessful;                                           // (CPF_Parm)
-};
-
-// Function Engine.GameInfo.PendingMatch.StartArbitratedMatch
-struct SGameInfo_PendingMatch_StartArbitratedMatch_Params
-{
-};
-
-// Function Engine.GameInfo.PendingMatch.ArbitrationTimeout
-struct SGameInfo_PendingMatch_ArbitrationTimeout_Params
-{
-};
-
-// Function Engine.GameInfo.PendingMatch.ArbitrationRegistrationComplete
-struct SGameInfo_PendingMatch_ArbitrationRegistrationComplete_Params
-{
-	struct FName                                       SessionName;                                              // (CPF_Parm)
-	bool                                               bWasSuccessful;                                           // (CPF_Parm)
-};
-
-// Function Engine.GameInfo.PendingMatch.RegisterServerForArbitration
-struct SGameInfo_PendingMatch_RegisterServerForArbitration_Params
-{
-};
-
-// Function Engine.GameInfo.PendingMatch.StartArbitrationRegistration
-struct SGameInfo_PendingMatch_StartArbitrationRegistration_Params
-{
-};
-
-// Function Engine.GameInfo.PendingMatch.StartMatch
-struct SGameInfo_PendingMatch_StartMatch_Params
-{
-};
-
-// Function Engine.GameInfo.PendingMatch.MatchIsInProgress
-struct SGameInfo_PendingMatch_MatchIsInProgress_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function Engine.HeightFog.OnToggle
 struct AHeightFog_OnToggle_Params
 {
@@ -34931,117 +33896,6 @@ struct AHeightFog_PostBeginPlay_Params
 // Function Engine.IPoolable.OnPoolReset
 struct UIPoolable_OnPoolReset_Params
 {
-};
-
-// Function Engine.KActorFromStatic.Initializing.Tick
-struct SKActorFromStatic_Initializing_Tick_Params
-{
-	float                                              DeltaTime;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.BeginState
-struct SPawn_Dying_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.TakeDamage
-struct SPawn_Dying_TakeDamage_Params
-{
-	int                                                Damage;                                                   // (CPF_Parm)
-	class AController*                                 EventInstigator;                                          // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     Momentum;                                                 // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FTraceHitInfo                               HitInfo;                                                  // (CPF_OptionalParm, CPF_Parm)
-	class AActor*                                      DamageCauser;                                             // (CPF_OptionalParm, CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.Timer
-struct SPawn_Dying_Timer_Params
-{
-};
-
-// Function Engine.Pawn.Dying.OutsideWorldBounds
-struct SPawn_Dying_OutsideWorldBounds_Params
-{
-};
-
-// Function Engine.Pawn.Dying.Died
-struct SPawn_Dying_Died_Params
-{
-	class AController*                                 Killer;                                                   // (CPF_Parm)
-	class UClass*                                      DamageType;                                               // (CPF_Parm)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Pawn.Dying.Landed
-struct SPawn_Dying_Landed_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      FloorActor;                                               // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.BaseChange
-struct SPawn_Dying_BaseChange_Params
-{
-};
-
-// Function Engine.Pawn.Dying.PlayNextAnimation
-struct SPawn_Dying_PlayNextAnimation_Params
-{
-};
-
-// Function Engine.Pawn.Dying.PlayWeaponSwitch
-struct SPawn_Dying_PlayWeaponSwitch_Params
-{
-	class AWeapon*                                     OldWeapon;                                                // (CPF_Parm)
-	class AWeapon*                                     NewWeapon;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.FellOutOfWorld
-struct SPawn_Dying_FellOutOfWorld_Params
-{
-	class UClass*                                      dmgType;                                                  // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.BreathTimer
-struct SPawn_Dying_BreathTimer_Params
-{
-};
-
-// Function Engine.Pawn.Dying.Falling
-struct SPawn_Dying_Falling_Params
-{
-};
-
-// Function Engine.Pawn.Dying.PhysicsVolumeChange
-struct SPawn_Dying_PhysicsVolumeChange_Params
-{
-	class APhysicsVolume*                              NewVolume;                                                // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.HeadVolumeChange
-struct SPawn_Dying_HeadVolumeChange_Params
-{
-	class APhysicsVolume*                              newHeadVolume;                                            // (CPF_Parm)
-};
-
-// Function Engine.Pawn.Dying.HitWall
-struct SPawn_Dying_HitWall_Params
-{
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-	class AActor*                                      Wall;                                                     // (CPF_Parm)
-	class UPrimitiveComponent*                         WallComp;                                                 // (CPF_Parm, CPF_EditInline)
-};
-
-// Function Engine.Pawn.Dying.Bump
-struct SPawn_Dying_Bump_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
 };
 
 // Function Engine.OnlineEventsInterface.UpdatePlaylistPopulation
@@ -35230,140 +34084,6 @@ struct APathNode_Dynamic_GetDebugAbbrev_Params
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
-// Function Engine.PickupFactory.Pickup.BeginState
-struct SPickupFactory_Pickup_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Pickup.CheckTouching
-struct SPickupFactory_Pickup_CheckTouching_Params
-{
-};
-
-// Function Engine.PickupFactory.Pickup.Touch
-struct SPickupFactory_Pickup_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Pickup.RecheckValidTouch
-struct SPickupFactory_Pickup_RecheckValidTouch_Params
-{
-};
-
-// Function Engine.PickupFactory.Pickup.ValidTouch
-struct SPickupFactory_Pickup_ValidTouch_Params
-{
-	class APawn*                                       Other;                                                    // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PickupFactory.Pickup.ReadyToPickup
-struct SPickupFactory_Pickup_ReadyToPickup_Params
-{
-	float                                              MaxWait;                                                  // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PickupFactory.Pickup.DetourWeight
-struct SPickupFactory_Pickup_DetourWeight_Params
-{
-	class APawn*                                       Other;                                                    // (CPF_Parm)
-	float                                              PathWeight;                                               // (CPF_Parm)
-	float                                              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PickupFactory.WaitingForMatch.BeginState
-struct SPickupFactory_WaitingForMatch_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.WaitingForMatch.MatchStarting
-struct SPickupFactory_WaitingForMatch_MatchStarting_Params
-{
-};
-
-// Function Engine.PickupFactory.WaitingForMatch.Touch
-struct SPickupFactory_WaitingForMatch_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Sleeping.EndState
-struct SPickupFactory_Sleeping_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Sleeping.BeginState
-struct SPickupFactory_Sleeping_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Sleeping.StartSleeping
-struct SPickupFactory_Sleeping_StartSleeping_Params
-{
-};
-
-// Function Engine.PickupFactory.Sleeping.ReadyToPickup
-struct SPickupFactory_Sleeping_ReadyToPickup_Params
-{
-	float                                              MaxWait;                                                  // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.PickupFactory.Sleeping.Touch
-struct SPickupFactory_Sleeping_Touch_Params
-{
-	class AActor*                                      Other;                                                    // (CPF_Parm)
-	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
-	struct FVector                                     HitLocation;                                              // (CPF_Parm)
-	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Disabled.EndState
-struct SPickupFactory_Disabled_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Disabled.BeginState
-struct SPickupFactory_Disabled_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.PickupFactory.Disabled.SetInitialState
-struct SPickupFactory_Disabled_SetInitialState_Params
-{
-};
-
-// Function Engine.PickupFactory.Disabled.StartSleeping
-struct SPickupFactory_Disabled_StartSleeping_Params
-{
-};
-
-// Function Engine.PickupFactory.Disabled.Reset
-struct SPickupFactory_Disabled_Reset_Params
-{
-};
-
-// Function Engine.PickupFactory.Disabled.ReadyToPickup
-struct SPickupFactory_Disabled_ReadyToPickup_Params
-{
-	float                                              MaxWait;                                                  // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
 // Function Engine.ReverbVolumeToggleable.OnToggle
 struct AReverbVolumeToggleable_OnToggle_Params
 {
@@ -35548,156 +34268,6 @@ struct AWaterVolume_Touch_Params
 	class UPrimitiveComponent*                         OtherComp;                                                // (CPF_Parm, CPF_EditInline)
 	struct FVector                                     HitLocation;                                              // (CPF_Parm)
 	struct FVector                                     HitNormal;                                                // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Inactive.TryPutDown
-struct SWeapon_Inactive_TryPutDown_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Weapon.Inactive.StartFire
-struct SWeapon_Inactive_StartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Inactive.ServerStopFire
-struct SWeapon_Inactive_ServerStopFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Inactive.ServerStartFire
-struct SWeapon_Inactive_ServerStartFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Inactive.BeginState
-struct SWeapon_Inactive_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Active.TryPutDown
-struct SWeapon_Active_TryPutDown_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Weapon.Active.Activate
-struct SWeapon_Active_Activate_Params
-{
-};
-
-// Function Engine.Weapon.Active.ReadyToFire
-struct SWeapon_Active_ReadyToFire_Params
-{
-	bool                                               bFinished;                                                // (CPF_Parm)
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Weapon.Active.BeginFire
-struct SWeapon_Active_BeginFire_Params
-{
-	unsigned char                                      FireModeNum;                                              // (CPF_Parm)
-};
-
-// Function Engine.Weapon.Active.BeginState
-struct SWeapon_Active_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponFiring.EndState
-struct SWeapon_WeaponFiring_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponFiring.BeginState
-struct SWeapon_WeaponFiring_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponFiring.RefireCheckTimer
-struct SWeapon_WeaponFiring_RefireCheckTimer_Params
-{
-};
-
-// Function Engine.Weapon.WeaponFiring.IsFiring
-struct SWeapon_WeaponFiring_IsFiring_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Weapon.WeaponEquipping.WeaponEquipped
-struct SWeapon_WeaponEquipping_WeaponEquipped_Params
-{
-};
-
-// Function Engine.Weapon.WeaponEquipping.EndState
-struct SWeapon_WeaponEquipping_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponEquipping.Activate
-struct SWeapon_WeaponEquipping_Activate_Params
-{
-};
-
-// Function Engine.Weapon.WeaponEquipping.BeginState
-struct SWeapon_WeaponEquipping_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponPuttingDown.EndState
-struct SWeapon_WeaponPuttingDown_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.Weapon.WeaponPuttingDown.ClientWeaponThrown
-struct SWeapon_WeaponPuttingDown_ClientWeaponThrown_Params
-{
-};
-
-// Function Engine.Weapon.WeaponPuttingDown.TryPutDown
-struct SWeapon_WeaponPuttingDown_TryPutDown_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.Weapon.WeaponPuttingDown.WeaponIsDown
-struct SWeapon_WeaponPuttingDown_WeaponIsDown_Params
-{
-};
-
-// Function Engine.Weapon.WeaponPuttingDown.BeginState
-struct SWeapon_WeaponPuttingDown_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.PendingClientWeaponSet.EndState
-struct SWeapon_PendingClientWeaponSet_EndState_Params
-{
-	struct FName                                       NextStateName;                                            // (CPF_Parm)
-};
-
-// Function Engine.Weapon.PendingClientWeaponSet.BeginState
-struct SWeapon_PendingClientWeaponSet_BeginState_Params
-{
-	struct FName                                       PreviousStateName;                                        // (CPF_Parm)
-};
-
-// Function Engine.Weapon.PendingClientWeaponSet.PendingWeaponSetTimer
-struct SWeapon_PendingClientWeaponSet_PendingWeaponSetTimer_Params
-{
 };
 
 }

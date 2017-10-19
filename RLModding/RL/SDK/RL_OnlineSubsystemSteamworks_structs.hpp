@@ -188,7 +188,8 @@ struct FProfileSettingsCache
 struct FDeviceIdCache
 {
 	int                                                DeviceID;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             DeviceSelectionMulticast;                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	TArray<struct FScriptDelegate>                     DeviceSelectionDelegates;                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
 };
 
@@ -232,7 +233,8 @@ struct FQueuedAvatarRequest
 	int                                                NumberOfAttempts;                                         // 0x0004(0x0004) (CPF_Const)
 	struct FUniqueNetId                                PlayerNetId;                                              // 0x0008(0x0048) (CPF_Const)
 	int                                                Size;                                                     // 0x0050(0x0004) (CPF_Const)
-	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x0054(0x0010) (CPF_Const, CPF_NeedCtorLink)
+	struct FScriptDelegate                             ReadOnlineAvatarCompleteDelegate;                         // 0x0054(0x000C) (CPF_Const, CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.AchievementMappingInfo
@@ -312,7 +314,8 @@ struct FAppPriceInfoRequest
 {
 	class UHttpRequestInterface*                       HTTPRequest;                                              // 0x0000(0x0004)
 	TArray<struct FName>                               AppNames;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             Callback;                                                 // 0x0010(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0010(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 };
 
 // ScriptStruct OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.LeaderboardEntry

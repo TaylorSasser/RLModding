@@ -77,8 +77,9 @@ void TestClass::onMainMenuTick(Event* e) {
 		//gfx->AprilConfig->bChangeRankedIcons = true;
 
 		//gfx->UpdateAprilConfig();
-
+		
 		UOnlineGameParty_X* party = reinterpret_cast<SDK::UOnlineGameParty_X*>(Utils::GetInstanceOf(UOnlineGameParty_X::StaticClass()));
+		/*
 		if (party->RankedConfig) {
 			std::cout << "FPOUDBNT IT." << std::endl;
 			for (int i = 0; i < party->RankedConfig->SeasonRewardRequiredWinsPerLevel.Num(); i++) {
@@ -90,15 +91,16 @@ void TestClass::onMainMenuTick(Event* e) {
 		else {
 			std::cout << "no ranked found." << std::endl;
 		}
+		*/
 		//party->Config->bAllowPsyNetParty = true;
 		//party->HandlePartyConfigChanged();
 		//party->PartyConfig->bAllowPsyNetParty = true;
 		//party->InitLobbyInterfaces();
 		//party->SetLobbyInterface(party->PlatformLobbyInterface);
 
-
+		party->SetLobbyInterfacePsyNet();
 		//if (party->ShouldCreatePsyNetParty()) std::cout << " PSYNET HADJHSDFGFG" << std::endl;
-		//party->ShowInviteUI(0);
+		party->ShowInviteUI(0);
 		//UGFxData_LocalPlayer_TA* localPlayer = reinterpret_cast<SDK::UGFxData_LocalPlayer_TA*>(Utils::GetInstanceOf(UGFxData_LocalPlayer_TA::StaticClass()));
 		//localPlayer->ChangeName(FString(L"THIS ISS MY NEW NAME"));
 

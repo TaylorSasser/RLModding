@@ -128,7 +128,8 @@ public:
 	unsigned char                                      UnknownData02[0x3C];                                      // 0x0118(0x003C) UNKNOWN PROPERTY: MapProperty GFxUI.GFxMoviePlayer.WidgetPathBindings
 	class UGFxObject*                                  SplitscreenLayoutObject;                                  // 0x0154(0x0004) (CPF_Transient)
 	int                                                SplitscreenLayoutYAdjust;                                 // 0x0158(0x0004) (CPF_Config)
-	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __OnPostAdvance__Delegate;                                // 0x015C(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x015C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -538,7 +539,8 @@ public:
 class UGFxClikWidget : public UGFxObject
 {
 public:
-	struct FScriptDelegate                             __EventListener__Delegate;                                // 0x0078(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventListener__Delegate;                                // 0x0078(0x000C) (CPF_NeedCtorLink)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0078(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 
 	static UClass* StaticClass()
 	{
