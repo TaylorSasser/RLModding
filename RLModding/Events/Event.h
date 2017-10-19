@@ -22,10 +22,10 @@ public:
 	T* getParams() {
 		return reinterpret_cast<T*>(params);
 	}
-	PacketBuffer& getFunctionByteCode() {
-		std::string Bytecode(reinterpret_cast<char*>(&pUFunction->Script[0u]),pUFunction->Script.Num());
-		return PacketBuffer(Bytecode);
-	}
+	//PacketBuffer& getFunctionByteCode() {
+		//std::string Bytecode(reinterpret_cast<char*>(&pUFunction->Script[0u]),pUFunction->Script.Num());
+		//return PacketBuffer(Bytecode);
+	//}
 
 private:
 	SDK::UObject** pCallObject;

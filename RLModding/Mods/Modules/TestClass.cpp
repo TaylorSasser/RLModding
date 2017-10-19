@@ -122,7 +122,7 @@ void TestClass::onMainMenuTick(Event* e) {
 }
 
 void TestClass::onBallHit(Event* e) {
-	if (e->getUFunction()->ScriptText != nullptr)
+	/*if (e->getUFunction()->ScriptText != nullptr)
 		std::cout << "Script Text : " << e->getUFunction()->ScriptText->Text.ToString() << std::endl;
 	else
 		std::cout << "Script Text buffer is null" << std::endl;
@@ -130,7 +130,7 @@ void TestClass::onBallHit(Event* e) {
 	if (e->getUFunction()->CPPText != nullptr)
 		std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
 	else
-		std::cout << "CPP Text buffer is null" << std::endl;
+		std::cout << "CPP Text buffer is null" << std::endl;*/
 }
 
 

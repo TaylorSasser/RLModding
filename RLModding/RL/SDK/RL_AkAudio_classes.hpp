@@ -70,12 +70,9 @@ public:
 class UAkDevice : public UObject
 {
 public:
-	struct FScriptDelegate                             __EventInitialized__Delegate;                             // 0x003C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventMusicTrackStart__Delegate;                         // 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventMusicTrackEnd__Delegate;                           // 0x005C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x005C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventInitialized__Delegate;                             // 0x003C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventMusicTrackStart__Delegate;                         // 0x004C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventMusicTrackEnd__Delegate;                           // 0x005C(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -226,8 +223,7 @@ public:
 	float                                              FrictionResistance;                                       // 0x0064(0x0004) (CPF_Transient)
 	float                                              EngineResistance;                                         // 0x0068(0x0004) (CPF_Transient)
 	float                                              NetForce;                                                 // 0x006C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __EventGearChange__Delegate;                              // 0x0070(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventGearChange__Delegate;                              // 0x0070(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

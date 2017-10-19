@@ -488,10 +488,7 @@ public:
 class UTextBuffer : public UObject
 {
 public:
-	unsigned char                                      FOutputDevice[0x10];
-	int												   Pos;
-	int												   Top;
-	FString											   Text;
+	unsigned char                                      UnknownData00[0x24];                                      // 0x003C(0x0024) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -557,8 +554,7 @@ public:
 class USubscription : public UObject
 {
 public:
-	struct FScriptDelegate                             __SubscriberCallback__Delegate;                           // 0x003C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x003C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __SubscriberCallback__Delegate;                           // 0x003C(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -639,12 +635,9 @@ public:
 	TArray<struct FObjectPropertyInjection>            Injections;                                               // 0x0070(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	TArray<struct FObjectProviderPendingCallback>      PendingCallbacks;                                         // 0x007C(0x000C) (CPF_Const, CPF_Transient, CPF_NeedCtorLink)
 	unsigned long                                      bNeedsCleanup : 1;                                        // 0x0088(0x0004) (CPF_Const, CPF_Transient)
-	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;                   // 0x008C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x008C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __ObjectListSubscriptionCallback__Delegate;               // 0x009C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x009C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __ObjectChangeCallback__Delegate;                         // 0x00AC(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x00AC(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __ObjectSubscriptionCallback__Delegate;                   // 0x008C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __ObjectListSubscriptionCallback__Delegate;               // 0x009C(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __ObjectChangeCallback__Delegate;                         // 0x00AC(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -802,22 +795,11 @@ public:
 class UStruct : public UField
 {
 public:
-	UTextBuffer*									   ScriptText;
-	UTextBuffer*									   CPPText;
+	char                                               UnknownData00[0x08];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	class UField*                                      SuperField;                                               // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	class UField*                                      Children;                                                 // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 	unsigned long                                      PropertySize;                                             // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
-	TArray<unsigned char>							   Script;
-	int												   TextPos;
-	int												   Line;
-	int												   MinAlignment;
-	class UProperty*								   RefLink;
-	class UProperty*								   PropertyLink;
-	class UProperty*								   ConfigLink;
-	class UProperty*								   ConstructorLink;
-	class UProperty*								   ComponentPropertyLink;
-	class UProperty*								   TransientPropertyLink;
-
+	char                                               UnknownData01[0x30];                                      // 0x0000(0x0000) NOT AUTO-GENERATED PROPERTY
 
 	static UClass* StaticClass()
 	{
@@ -833,9 +815,7 @@ public:
 class UScriptStruct : public UStruct
 {
 public:
-	FString											   DefaultStructPropText;
-	int												   StructFlags;
-	TArray<unsigned char>							   StructDefaults;
+	unsigned char                                      UnknownData00[0x1C];                                      // 0x008C(0x001C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -1391,8 +1371,7 @@ public:
 	TArray<class UObject*>                             PrintedObjects;                                           // 0x0054(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	TArray<class UObject*>                             QueuedObjects;                                            // 0x0060(0x000C) (CPF_Transient, CPF_NeedCtorLink)
 	int                                                PrintObjectCount;                                         // 0x006C(0x0004) (CPF_Transient)
-	struct FScriptDelegate                             __LogFunc__Delegate;                                      // 0x0070(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0070(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __LogFunc__Delegate;                                      // 0x0070(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -1548,14 +1527,10 @@ public:
 	unsigned long                                      bComplete : 1;                                            // 0x003C(0x0004)
 	unsigned long                                      bDisposed : 1;                                            // 0x003C(0x0004)
 	class UError*                                      Error;                                                    // 0x0040(0x0004)
-	struct FScriptDelegate                             __EventAsyncTaskSuccess__Delegate;                        // 0x0044(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0044(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventAsyncTaskFail__Delegate;                           // 0x0054(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventAsyncTaskComplete__Delegate;                       // 0x0064(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0064(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             __EventDisposed__Delegate;                                // 0x0074(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0074(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             __EventAsyncTaskSuccess__Delegate;                        // 0x0044(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventAsyncTaskFail__Delegate;                           // 0x0054(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventAsyncTaskComplete__Delegate;                       // 0x0064(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             __EventDisposed__Delegate;                                // 0x0074(0x0010) (CPF_NeedCtorLink)
 
 	static UClass* StaticClass()
 	{

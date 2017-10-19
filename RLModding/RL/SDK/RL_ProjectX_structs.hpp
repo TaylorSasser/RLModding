@@ -714,8 +714,7 @@ struct FLensFlareFloatParamCurve
 struct FCacheImportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.LocalCache_X.CacheExportCallbackData
@@ -723,8 +722,7 @@ struct FCacheImportCallbackData
 struct FCacheExportCallbackData
 {
 	struct FPointer                                    Task;                                                     // 0x0000(0x0004) (CPF_Native)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX._Types_X.RenderProfile
@@ -747,10 +745,8 @@ struct FRenderProfile
 struct FObjectListListener
 {
 	class UClass*                                      ObjClass;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             OnAdd;                                                    // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             OnRemove;                                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0014(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             OnAdd;                                                    // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             OnRemove;                                                 // 0x0014(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineConfig_X.ModifierSubscription
@@ -758,10 +754,8 @@ struct FObjectListListener
 struct FModifierSubscription
 {
 	class UClass*                                      ObjClass;                                                 // 0x0000(0x0004)
-	struct FScriptDelegate                             OnAdd;                                                    // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
-	struct FScriptDelegate                             OnRemove;                                                 // 0x0014(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x0014(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             OnAdd;                                                    // 0x0004(0x0010) (CPF_NeedCtorLink)
+	struct FScriptDelegate                             OnRemove;                                                 // 0x0014(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX._Types_X.CrossplayGroup
@@ -769,6 +763,31 @@ struct FModifierSubscription
 struct FCrossplayGroup
 {
 	TArray<TEnumAsByte<EOnlinePlatform>>               Platforms;                                                // 0x0000(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct ProjectX._Types_X.CarInteractionConfig
+// 0x0020
+struct FCarInteractionConfig
+{
+	float                                              PushFactor;                                               // 0x0000(0x0004)
+	float                                              BumperPushFactor;                                         // 0x0004(0x0004)
+	float                                              ZPushFactor;                                              // 0x0008(0x0004)
+	float                                              BumpInterval;                                             // 0x000C(0x0004)
+	float                                              BumperHitNormalAngle;                                     // 0x0010(0x0004)
+	float                                              BumperCarLocationAngle;                                   // 0x0014(0x0004)
+	float                                              BumperHitDepth;                                           // 0x0018(0x0004)
+	unsigned long                                      bCheckHitNormal : 1;                                      // 0x001C(0x0004)
+	unsigned long                                      bCheckExtent : 1;                                         // 0x001C(0x0004)
+	unsigned long                                      bCheckCarAngle : 1;                                       // 0x001C(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.SuperSonicConfig
+// 0x000C
+struct FSuperSonicConfig
+{
+	float                                              Speed;                                                    // 0x0000(0x0004)
+	float                                              TurnoffSpeedBuffer;                                       // 0x0004(0x0004)
+	float                                              TurnoffTime;                                              // 0x0008(0x0004)
 };
 
 // ScriptStruct ProjectX.OnlineMessageComponent_X.OnlineMessageHandler
@@ -865,8 +884,7 @@ struct FQueuedPsyNetMessage
 struct FServiceSubscription
 {
 	class UClass*                                      Class;                                                    // 0x0000(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0004(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.RandomStream_X.RandomStream_Mirror
@@ -962,8 +980,7 @@ struct FPlayerDLCInfo
 {
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
 	TArray<struct FSteamPlayerDLCOwnershipState>       DLCs;                                                     // 0x0048(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             ValidationReadyDelegate;                                  // 0x0054(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             ValidationReadyDelegate;                                  // 0x0054(0x0010) (CPF_NeedCtorLink)
 	float                                              TimeLastOwnershipRequest;                                 // 0x0064(0x0004) (CPF_Transient)
 };
 
@@ -1328,8 +1345,7 @@ struct FRay
 struct FKeyHandler
 {
 	struct FName                                       Key;                                                      // 0x0000(0x0008)
-	struct FScriptDelegate                             Handler;                                                  // 0x0008(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0008(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Handler;                                                  // 0x0008(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX._Types_X.PlaylistTierSkillRating
@@ -1417,6 +1433,14 @@ struct FPlayerPermissionsList
 	TArray<TEnumAsByte<EOnlinePlayerPermission>>       Permissions;                                              // 0x0048(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct ProjectX.OnlineGameParty_X.PendingInviteData
+// 0x0014
+struct FPendingInviteData
+{
+	TScriptInterface<class UOnlineLobbyInterface>      LobbyInterface;                                           // 0x0000(0x0008)
+	struct FUniqueLobbyId                              LobbyId;                                                  // 0x0008(0x000C)
+};
+
 // ScriptStruct ProjectX.OnlineGameParty_X.PlaylistRestrictionPlayer
 // 0x004C
 struct FPlaylistRestrictionPlayer
@@ -1449,8 +1473,7 @@ struct FSkillSyncRequest
 {
 	class URPC_GetPlayerSkill_X*                       RPC;                                                      // 0x0000(0x0004)
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0004(0x0048)
-	struct FScriptDelegate                             Callback;                                                 // 0x004C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x004C(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.BugReport_X.BugReportUploadTask
@@ -1490,8 +1513,7 @@ struct FVectorInterpRate
 // 0x0010
 struct FTestStructEvent
 {
-	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0000(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineImageDownloaderWeb_X.DownloadedImageRequest
@@ -1540,8 +1562,7 @@ struct FCachedDataRequest
 	struct FString                                     URL;                                                      // 0x0000(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Path;                                                     // 0x000C(0x000C) (CPF_NeedCtorLink)
 	class UCachedWebData_X*                            CachedWebData;                                            // 0x0018(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x001C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x001C(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineGameWordFilter_X.FilterPair
@@ -1563,8 +1584,7 @@ struct FGroupSkillSyncRequest
 {
 	class URPC_GetGroupSkills_X*                       RPC;                                                      // 0x0000(0x0004)
 	int                                                GroupIndex;                                               // 0x0004(0x0004)
-	struct FScriptDelegate                             Callback;                                                 // 0x0008(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0008(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x0008(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineGameSkillGroups_X.PlayerGroup
@@ -1592,8 +1612,7 @@ struct FWordFilterRequest
 	class UWebRequest_X*                               Request;                                                  // 0x0000(0x0004)
 	struct FString                                     Comment;                                                  // 0x0004(0x000C) (CPF_NeedCtorLink)
 	struct FString                                     Sanitized;                                                // 0x0010(0x000C) (CPF_NeedCtorLink)
-	struct FScriptDelegate                             Callback;                                                 // 0x001C(0x000C) (CPF_NeedCtorLink)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
+	struct FScriptDelegate                             Callback;                                                 // 0x001C(0x0010) (CPF_NeedCtorLink)
 };
 
 // ScriptStruct ProjectX.OnlineGameRegions_X.RegionData
