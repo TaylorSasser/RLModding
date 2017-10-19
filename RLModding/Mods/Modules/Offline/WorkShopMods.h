@@ -35,6 +35,7 @@ private:
 	bool testPlayOnLan = false;
 	WorkShopData workShopData[100];
 	bool isDribbleChallenge = false;
+	bool testNew = false;
 };
 
 

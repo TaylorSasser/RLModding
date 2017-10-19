@@ -53,6 +53,8 @@ void FiftyFifty::DrawMenu() {
 				bStarted = true;
 				reset_balls = false;
 				printf("Enabled 50/50");
+				srand(time(NULL));
+
 			}
 				
 			else {
@@ -77,7 +79,6 @@ void FiftyFifty::DrawMenu() {
 
 void FiftyFifty::onPlayerTick(Event* event) {
 	if (bStarted) {
-		srand(time(NULL));
 		APlayerController_TA* controller = InstanceStorage::PlayerController();
 		if (controller) {
 			AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(InstanceStorage::GameEvent());
@@ -105,6 +106,52 @@ void FiftyFifty::onPlayerTick(Event* event) {
 
 					double elapsed = difftime(end, start);
 					if (elapsed >= interval && localGameEvent->Players.Num() > 1) {
+						TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+						if (localGameEvent->Teams.IsValidIndex(0)) {
+							int team_idx = 0;
+							if (teamToDemo == -1)
+								team_idx = rand() % gameTeams.Num();
+							else
+								team_idx = teamToDemo;
+							if (gameTeams.IsValidIndex(team_idx)) {
+								int player_idx = rand() % gameTeams[team_idx]->Members.Num();
+								TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
+								if (players.IsValidIndex(player_idx)) {
+									if (demoPlayer) {
+										if (controller && controller->Car && gameTeams[team_idx]->Members[player_idx]->Car)
+											gameTeams[team_idx]->Members[player_idx]->Car->Demolish(controller->Car);
+									}
+									else {
+										if (localGameEvent->GameBalls.GetByIndex(1) && gameTeams[team_idx]->Members[player_idx]->Car) {
+											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
+										}
+									}
+
+								}
+
+								checkTime = true;
+							}
+						}
+					}
+					// Account for a single user being alone in a game
+					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
+						if (demoPlayer) {
+							if (controller->Car) {
+								controller->Car->Demolish(controller->Car);
+							}
+						}
+						else {
+							if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
+								localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+							}
+						}
+						checkTime = true;
+
+					}
+
+					/*
+					double elapsed = difftime(end, start);
+					if (elapsed >= interval && localGameEvent->Players.Num() > 1) {
 						srand(time(NULL));
 						int player_idx = rand() % localGameEvent->Players.Num();
 						if (localGameEvent->Players.IsValidIndex(player_idx)) {
@@ -127,21 +174,24 @@ void FiftyFifty::onPlayerTick(Event* event) {
 									}
 
 									if (demoPlayer) {
-										if (controller && controller->Car && carToImpact)
+										if (controller && controller->Car && carToImpact) {
 											carToImpact->Demolish(controller->Car);
-									}
-									else {
-										if (localGameEvent->GameBalls.GetByIndex(1) && carToImpact) {
-											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), carToImpact->Location, carToImpact->PRI);
+											checkTime = true; // only restart time if demo actually occured
 										}
 									}
-									checkTime = true;
+									else {
+										if (localGameEvent->GameBalls.GetByIndex(1) && carToImpact && controller) {
+											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), carToImpact->Location, controller->PRI);
+											checkTime = true; // only restart time if demo actually occured
+
+										}
+									}
 								}
 
 							}
 
 						}
-						
+
 					}
 					// Account for a single user being alone in a game
 					else if (elapsed >= interval && localGameEvent->Players.Num() == 1) {
@@ -150,17 +200,24 @@ void FiftyFifty::onPlayerTick(Event* event) {
 							if (demoPlayer) {
 								if (controller->Car) {
 									controller->Car->Demolish(controller->Car);
+									checkTime = true; // only restart time if demo actually occured
+
 								}
 							}
 							else {
 								if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
 									localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
+									checkTime = true; // only restart time if demo actually occured
+
 								}
 							}
-							checkTime = true;
 						}
+					}
+					else if(elapsed >= interval) {
 
 					}
+					*/
+
 				}
 			}
 		}

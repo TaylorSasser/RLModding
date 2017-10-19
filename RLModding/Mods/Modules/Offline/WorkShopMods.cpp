@@ -28,13 +28,17 @@ void WorkshopMods::DrawMenu() {
 		testPlayOnLan = true;
 	}
 
+	if (ImGui::Button("Teleport Test.")) {
+		testNew = true;
+	}
+
 	ImGui::InputInt("Level", &skipToLevel);
 	ImGui::SameLine();
 	if (ImGui::Button("GO")) {
 		testTravel = true;
 	}
 	if (ImGui::CollapsingHeader("Workshop Tests")) {
-
+	
 		if (ImGui::Button("Teleport Test.")) {
 			if (InstanceStorage::PlayerController()) {
 				std::cout << "Trying to teleport car..." << std::endl;
@@ -121,8 +125,16 @@ void WorkshopMods::onPlayerTick(Event* event) {
 	if (testCar) {
 		//std::cout << "X: " << testCar->Location.X << " Y: " << testCar->Location.Y << " Z: " << testCar->Location.Z << std::endl;
 	}
-			USeqVar_Bool* timerVar = SDK::UObject::FindObject<SDK::USeqVar_Bool>("SeqVar_Bool dribblingchallenge2.TheWorld.PersistentLevel.Main_Sequence.SeqVar_Bool_3");
 
+	if (testNew) {
+		if (InstanceStorage::PlayerController()) {
+			FCurrencyDrop newDrop;
+			newDrop.Amount = 200;
+			newDrop.CurrencyID = 0;
+			InstanceStorage::PlayerController()->PRI->ClientGiveOnlineCurrencyDrop(newDrop);
+		}
+	}
+	return;
 	if (testTravel) {
 		
 		//InstanceStorage::PlayerController()->Car->Demolish(InstanceStorage::PlayerController()->Car);
@@ -277,8 +289,29 @@ void WorkshopMods::onPlayerTick(Event* event) {
 }
 
 void WorkshopMods::onMainMenuTick(Event* e) {
+	if (testNew) {
+		testNew = false;
 
-
+		UGFxData_SpecialEvents_TA* corn = reinterpret_cast<UGFxData_SpecialEvents_TA*>(Utils::GetInstanceOf(UGFxData_SpecialEvents_TA::StaticClass()));
+		if (corn) {
+			std::cout << "Found the corns! " << corn->Currency << std::endl;
+			corn->Currency = 1000;
+			URPC_GetSpecialEventCurrency_TA* getEvent = reinterpret_cast<URPC_GetSpecialEventCurrency_TA*>(Utils::GetInstanceOf(URPC_GetSpecialEventCurrency_TA::StaticClass()));
+			if (getEvent) {
+				std::cout << "Found the corns! " << getEvent->EventID << std::endl;
+				FEventCurrencyData newCurrency = getEvent->EventCurrency;
+				newCurrency.CurrencyID;
+				newCurrency.PsyonixID;
+				newCurrency.Total = 1000;
+				newCurrency.UnknownData00;
+				corn->SetCurrency(newCurrency);
+				
+			}
+			return;
+			
+		}
+	}
+		 
 	if (testPlayOnLan) {
 		if (selectedWorkShopName != -1) {
 			std::string map = (std::string)workShopData[selectedWorkShopName].filePath + (std::string)workShopData[selectedWorkShopName].fileName;

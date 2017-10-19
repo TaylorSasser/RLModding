@@ -23,6 +23,8 @@ void MutatorMods::DrawMenu() {
 	if (localGameEvent && localGameEvent->Mutators.Num() > 0) {
 
 		ImGui::TextWrapped("Unlike the car and ball mods, these mods always apply for everyone in game.");
+		ImGui::TextWrapped("If a mutators value is 0 that means it is currently disabled.");
+
 
 		ImGui::Combo("Mutator", &selectedMutatorIndex, mutatorList, IM_ARRAYSIZE(mutatorList));
 		ImGui::Separator();
@@ -45,7 +47,9 @@ void MutatorMods::DrawMenu() {
 				ImGui::Checkbox("Disable Goal Delay", &disableGoalDelay);
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("If enabled replays are skipped.");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -64,7 +68,9 @@ void MutatorMods::DrawMenu() {
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("Score to win.");
 				ImGui::Checkbox("Unlimited Time", &unlimitedTime);
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -73,7 +79,9 @@ void MutatorMods::DrawMenu() {
 			}
 			if (handicapMutatorsPresent && strcmp("Handicap Mutator", mutatorList[selectedMutatorIndex]) == 0) {
 				ImGui::TextWrapped("Handicap Mutator Settings");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -86,7 +94,9 @@ void MutatorMods::DrawMenu() {
 				ImGui::InputFloat("Gravity", &mainGravity, 0.1f, 0.2f);
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("Careful, setting this to the extremes breaks everything...");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -98,7 +108,9 @@ void MutatorMods::DrawMenu() {
 				ImGui::SliderFloat("Speed", &gameSpeed, 0.1f, 10.0f, "%.1f");
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("Sets the speed of the game, duh.");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -161,7 +173,9 @@ void MutatorMods::DrawMenu() {
 				ImGui::Combo("Demolish Targets", &demolishTarget, demolishTargets, IM_ARRAYSIZE(demolishTargets));
 				ImGui::Combo("Demolish Speeds", &demolishSpeed, demolishSpeeds, IM_ARRAYSIZE(demolishSpeeds));
 
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -183,7 +197,9 @@ void MutatorMods::DrawMenu() {
 
 				ImGui::Checkbox("Demolish on goal zone.", &carDemolishOnGoalZone);
 				ImGui::Checkbox("Demolish on opposing side.", &carDemolishOnGoalZone);
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -227,7 +243,9 @@ void MutatorMods::DrawMenu() {
 				ImGui::InputFloat("Start Amount", &boostStartAmount, 1.0f, 5.0f);
 				if (ImGui::IsItemHovered())
 					ImGui::SetTooltip("How much boost to start with.");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
@@ -236,17 +254,22 @@ void MutatorMods::DrawMenu() {
 			}
 			if (presetMutatorsPresent && strcmp("Preset Mutator", mutatorList[selectedMutatorIndex]) == 0) {
 				ImGui::TextWrapped("Preset Mutator Settings");
-
+				if (ImGui::Button("Apply Changes")) {
+					applyChanges = true;
+				}
 				ImGui::Separator();
 
 			}
 			else if (strcmp("Preset Mutator", mutatorList[selectedMutatorIndex]) == 0) {
 				ImGui::TextWrapped("Mutator was not found in game.");
 			}
+
+			
 		}
 		else {
 			ImGui::TextWrapped("Select a mutator to edit it.");
 		}
+
 		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "*Most changes to the mutators will require a respawn or match restart.");
 
 	}
@@ -452,13 +475,13 @@ void MutatorMods::onPlayerTick(Event* event) {
 				applyBallSettings = false;
 			}
 		
-			/*
-			}
+			
+			
 			if (applyChanges) {
-				localGameEvent->InitMutators();
+				localGameEvent->SetRestartingMatch(true);
 				applyChanges = false;
 			}
-			*/
+			
 		}
 		// Update Settings
 		else if (selectedMutatorIndex == -1 || selectedMutatorIndex != oldSelectedMutatorIndex) {
