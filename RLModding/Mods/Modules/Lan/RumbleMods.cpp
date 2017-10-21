@@ -211,8 +211,8 @@ void RumbleMods::setCrazyRumbleValues() {
 	Default Magnet Range: 1000
 	Default Magnet ball gravity: 55000
 	*/
-	magnetRange = 2500.0;
-	magnetBallGravity = 100000.0;
+	magnetRange = 3500.0;
+	magnetBallGravity = 300000.0;
 	magnetDeactivateOnTouch = false;
 
 	/*
@@ -222,7 +222,7 @@ void RumbleMods::setCrazyRumbleValues() {
 	*/
 	grapplingHookMaxRopeLength = 10500.0;
 	grapplingHookAfterAttachDuration = 20;
-	grapplingHookRange = 56000;
+	grapplingHookRange = 60000;
 	grapplingHookCanTargetCars = true;
 	grapplingHookCanTargetBall = true;
 	grapplingHookCanTargetEnemyCars = true;
@@ -233,17 +233,24 @@ void RumbleMods::setCrazyRumbleValues() {
 	Ball hit force: 1.5
 	*/
 	powerHitterCarHitForce = 150.0;
-	powerHitterBallHitForce = 13.0;
+	powerHitterBallHitForce = 15.0;
 	powerHitterDemolishCars = false;
 
 	spikesAfterHitDuration = 22.5;
 
-
-	tornadoBallMultiplier = 30;
-	tornadoRadius = 4400;
-	tornadoRotForce = 70;
-	tornadoTorque = 150;
-	tornadoHeight = 4000;
+	/*
+	Tornado
+	Ball Multiplyer: 3
+	Radius: 400
+	Rotational Force: 7
+	Torgue: 5
+	Height: 800
+	*/
+	tornadoBallMultiplier = 50;
+	tornadoRadius = 5500;
+	tornadoRotForce = 150;
+	tornadoTorque = 300;
+	tornadoHeight = 2000;
 
 	/*
 	Plunger Hook Length: 3000
@@ -255,14 +262,14 @@ void RumbleMods::setCrazyRumbleValues() {
 	punchingGloveCanTargetBall = true;
 	punchingGloveCanTargetCars = true;
 	punchingGloveForce = 180000;
-	punchingGloveVerticalForce = 400000.0;
+	punchingGloveVerticalForce = 500.0;
 	punchingGloveRelativeForce = true;
 	punchingGloveFollowAfterHit = true;
 
 	bootCanTargetBall = true;
 	bootCanTargetCars = true;
 	bootForce = 1800000;
-	bootVerticalForce = 800000.0;
+	bootVerticalForce = 500.0;
 	bootRelativeForce = true;
 	bootFollowAfterHit = true;
 

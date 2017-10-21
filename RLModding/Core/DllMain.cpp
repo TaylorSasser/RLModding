@@ -3,8 +3,6 @@
 #include "../Interfaces/Interfaces.h"
 #include "../PlayerBlacklist/BlackList.h"
 
-#define _CON_
-
 HANDLE MainThread;
 void onAttach(HMODULE hModule);
 void onDetach(HMODULE hModule);
