@@ -76,7 +76,7 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
 		Event event(object, func, params);
-		//ModFunction(&Event);
+		ModFunction(&event);
 		
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled()) {
