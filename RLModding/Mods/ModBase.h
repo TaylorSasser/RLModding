@@ -74,17 +74,13 @@ public:
 	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
 
 	virtual void DrawMenu() {}
-<<<<<<< HEAD
-	virtual void onEnable() {}
-	virtual void onDisable() {}
-=======
+
 	virtual void onMenuOpen() {}
 	virtual void onMenuClose() {}
 	
 	virtual void unloadMod() {}
 	virtual void loadMod() {}
 
->>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
@@ -159,24 +155,17 @@ public:
 	virtual void onCarDemolished(Event* e) {}
 	virtual void onBallCarTouch(Event* e) {}
 	virtual void onGameTimeUpdated(Event* e) {}
-<<<<<<< HEAD
-=======
+
 	virtual void onEventGoalScored(Event* e) {}
 	virtual void onReplayGoalScored(Event* e) {}
 	virtual void onReplayCameraFinished(Event* e) {}
 	virtual void onReplayCameraStarted(Event* e) {}
 
->>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
-<<<<<<< HEAD
-	virtual void ExportSettings(pt::ptree) {}
-	virtual void ImportSettings(pt::ptree) {}
-	virtual void onGetNextImage(Event* e) {}
-=======
 	virtual void onBallTick(Event* e) {}
 
 	virtual void eventReplayHeadersLoaded(Event* e) {}
@@ -207,7 +196,6 @@ public:
 
 		*/
 	}
->>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
 
 	bool enabled = false;
