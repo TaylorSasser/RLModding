@@ -95,8 +95,9 @@ void GameEventMods::DrawMenu() {
 		}
 		if (ImGui::CollapsingHeader("Ridiculous Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
-
-			ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
+			
+			ImGui::Checkbox("Disable Goals", &disableGoals);
+			//ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
 			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
 			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
 
