@@ -31,17 +31,17 @@ void Infected::DrawMenu() {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
-				printf("Enabled FreezeTag");
+				printf("Enabled Infected");
 			}
 
 			else {
-				printf("Invalid state for FreezeTag\n");
+				printf("Invalid state for Infected\n");
 			}
 		}
 	}
 	else {
 		if (ImGui::Button("Disable")) {
-			printf("Disabled FreezeTag");
+			printf("Disabled Infected");
 			bStarted = false;
 		}
 	}
