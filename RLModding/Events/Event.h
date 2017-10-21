@@ -15,7 +15,7 @@ public:
 		return reinterpret_cast<SDK::UObject*>(pCallObject);
 	}
 
-	SDK::UFunction* getUFunction() const {
+	SDK::UFunction* getUFunction() {
 		return pUFunction;
 	}
 	template<class T>

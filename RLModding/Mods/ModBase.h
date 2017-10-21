@@ -74,34 +74,34 @@ public:
 	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
 
 	virtual void DrawMenu() {}
+<<<<<<< HEAD
+	virtual void onEnable() {}
+	virtual void onDisable() {}
+=======
 	virtual void onMenuOpen() {}
 	virtual void onMenuClose() {}
 	
 	virtual void unloadMod() {}
 	virtual void loadMod() {}
 
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
 	}
-
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}
-
 	virtual void onOnlineGameStart(Event* event) {
 		inMainMenu = false; inOnline = true; inCustom = false; inExhibition = false; inTraining = false;
 	}
 	virtual void onBallHit(Event* event) {}
-
 	virtual void onSetFriendJoinLocation(Event*) {}
-
 	virtual void onPlayerTATick(Event* event) {
 		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
 	}
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 		inMainMenu = true; inOnline = false; inCustom = false; inExhibition = false; inTraining = false;
-		
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
@@ -132,17 +132,14 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	virtual void onKeysBeginState(Event* e) {}
-
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
 	}
-
 	virtual void onPostPRI(Event*) {}
 	virtual void onGotoState(Event*) {}
 	virtual void onEngineSecurityKeys(Event* e) {}
 	virtual void onHandleGenKeys(Event* e) {}
 	virtual void onBeaconAddress(Event* e) {}
-
 	virtual void onEngineTick(Event* e) {
 		InstanceStorage::SetEngine(reinterpret_cast<SDK::UEngine*>(e->getCallingObject()));
 	}
@@ -162,16 +159,24 @@ public:
 	virtual void onCarDemolished(Event* e) {}
 	virtual void onBallCarTouch(Event* e) {}
 	virtual void onGameTimeUpdated(Event* e) {}
+<<<<<<< HEAD
+=======
 	virtual void onEventGoalScored(Event* e) {}
 	virtual void onReplayGoalScored(Event* e) {}
 	virtual void onReplayCameraFinished(Event* e) {}
 	virtual void onReplayCameraStarted(Event* e) {}
 
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
+<<<<<<< HEAD
+	virtual void ExportSettings(pt::ptree) {}
+	virtual void ImportSettings(pt::ptree) {}
+	virtual void onGetNextImage(Event* e) {}
+=======
 	virtual void onBallTick(Event* e) {}
 
 	virtual void eventReplayHeadersLoaded(Event* e) {}
@@ -202,6 +207,7 @@ public:
 
 		*/
 	}
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
 
 	bool enabled = false;
