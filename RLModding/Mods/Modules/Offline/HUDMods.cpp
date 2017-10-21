@@ -26,6 +26,16 @@ void HUDMods::onMenuOpen() {
 
 }
 
+void HUDMods::onPlayerTick(Event* e) {
+	AGFxHUD_TA* hud = reinterpret_cast<SDK::AGFxHUD_TA*>(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));
+
+	if (hud) {
+		UGFxData_Chat_TA* chatData = hud->ChatData;
+		//std::cout << hud->PartyChatTitle.ToString() << std::endl;
+
+	}
+}
+
 void HUDMods::onMainMenuTick(Event* e) {
 
 	AGFxHUD_TA* hud = reinterpret_cast<SDK::AGFxHUD_TA*>(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));

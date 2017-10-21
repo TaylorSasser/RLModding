@@ -8,6 +8,7 @@ public:
 	~HUDMods();
 
 	void onMenuOpen();
+	void onPlayerTick(Event * e) override;
 	void onMenuClose();
 	void DrawMenu();
 	void onMainMenuTick(Event* e);
