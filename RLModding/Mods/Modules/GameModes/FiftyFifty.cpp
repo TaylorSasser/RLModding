@@ -21,6 +21,12 @@ void FiftyFifty::ImportSettings(pt::ptree & root) {
 	interval = root.get<float>("FF_Interval", interval);
 }
 
+void FiftyFifty::unloadMod() {
+	bStarted = false;
+	reset_balls = true;
+}
+void FiftyFifty::loadMod() {}
+
 void FiftyFifty::DrawMenu() {
 	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
 	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");

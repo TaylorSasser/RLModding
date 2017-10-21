@@ -44,8 +44,8 @@ void SetStyle(ImGuiStyle * style) {
 	style->Colors[ImGuiCol_ScrollbarGrab] = ImVec4(0.80f, 0.80f, 0.83f, 0.31f);
 	style->Colors[ImGuiCol_ScrollbarGrabHovered] = ImVec4(0.56f, 0.56f, 0.58f, 1.00f);
 	style->Colors[ImGuiCol_ScrollbarGrabActive] = ImVec4(0.16f, 0.15f, 0.17f, 1.00f);
-	style->Colors[ImGuiCol_ComboBg] = ImVec4(0.19f, 0.18f, 0.21f, 1.00f);
-	style->Colors[ImGuiCol_CheckMark] = ImVec4(0.80f, 0.80f, 0.83f, 0.31f);
+	style->Colors[ImGuiCol_ComboBg] = ImVec4(0.078f, 0.592f, 1.0f, 0.7f);
+	style->Colors[ImGuiCol_CheckMark] = ImVec4(0.078f, 0.592f, 1.0f, 0.7f);
 	style->Colors[ImGuiCol_SliderGrab] = ImVec4(0.80f, 0.80f, 0.83f, 0.31f);
 	style->Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.16f, 0.15f, 0.17f, 1.00f);
 	style->Colors[ImGuiCol_Button] = ImVec4(0.12f, 0.10f, 0.12f, 1.00f);
