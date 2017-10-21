@@ -64,6 +64,7 @@
     <ClCompile Include="Mods\Modules\Lan\PlayerMods.cpp" />
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\HUDMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
@@ -2977,6 +2978,7 @@
     <ClInclude Include="Mods\Modules\Lan\PlayerMods.h" />
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
+    <ClInclude Include="Mods\Modules\Offline\HUDMods.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
     <ClInclude Include="Mods\Modules\Offline\TextureMods.h" />
     <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
