@@ -93,13 +93,19 @@ void GameEventMods::DrawMenu() {
 				removeBots = true;
 			}
 		}
-		
+		if (ImGui::CollapsingHeader("Ridiculous Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
+		{
+
+			ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
+			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
+			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
+
+		}
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
 			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
 
-			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
-			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
+
 
 			if (ImGui::Button("Allow more than 8 players.")) {
 				allowMorePlayers = true;
@@ -130,6 +136,9 @@ void GameEventMods::DrawMenu() {
 
 			if (ImGui::Button("Test Training Spawns")) {
 				testTrainingSpawn = true;
+			}
+			if (ImGui::Button("Test Goal disabled")) {
+				testGoalDisable = true;
 			}
 			/*
 			if (ImGui::Button("Test Change Name")) {
@@ -328,7 +337,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 	}
 	if (freezeBots) {
 
-		if (localGameEvent) {
+		if (localGameEvent && localGameEvent->AIManager) {
 			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
 			for (int i = 0; i < bots.Num(); i++) {
 				bots.GetByIndex(i)->DoNothing();
@@ -338,7 +347,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 	}
 	if (removeBots) {
-		if (localGameEvent) {
+		if (localGameEvent && localGameEvent->AIManager) {
 			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
 			int botsToDelete = bots.Num();
 			std::cout << "Total Bots: " << botsToDelete << std::endl;
@@ -379,6 +388,78 @@ void GameEventMods::onPlayerTick(Event* e) {
 			}
 			
 		}
+	}
+
+	if (disableOwnGoal) {
+		if (!ownGoalDisabled) {
+			for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+				if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+					if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+						AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+						if (goalVolume) {
+							goalVolume->bPawnsOnly = true;
+							ownGoalDisabled = true;
+
+						}
+					}
+				}
+			}
+
+		}
+	}
+	else {
+		for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+			SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+			if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+					if (goalVolume) {
+						goalVolume->bPawnsOnly = true;
+						ownGoalDisabled = true;
+
+					}
+				}
+			}
+		}
+		ownGoalDisabled = false;
+
+	}
+
+	if (testGoalDisable) {
+		APylon_Soccar_TA* pylon = localGameEvent->Pylon;
+		TArray<class UGoal_TA*> goals = localGameEvent->Goals;
+		FVector newLoc = pylon->Location;
+		newLoc.Z *= -1000;
+		newLoc.Y *= -1000;
+		newLoc.X *= -1000;
+		for (int i = 0; i < goals.Num(); i++) {
+			//goals[i]->TeamNum = 10;
+			
+			//pylon->SetLocation(newLoc);
+			//goals[i]->GoalDirection = pylon;
+			//goals[i]->bOnlyGoalsFromDirection = true;
+			//goals[i]->Location = { 0,0, -2000.0 };
+			//goals[i] = NULL;
+		}
+		//localGameEvent->bNoContest = true;
+		
+
+		for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+			SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+			if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+					if (goalVolume) {
+						goalVolume->bPawnsOnly = true;
+					}
+				}
+			}
+		}
+
+		
+
+		testGoalDisable = false;
 	}
 
 	if (testArenaColor) {

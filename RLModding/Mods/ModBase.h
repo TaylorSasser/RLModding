@@ -77,6 +77,9 @@ public:
 	virtual void onMenuOpen() {}
 	virtual void onMenuClose() {}
 	
+	virtual void unloadMod() {}
+	virtual void loadMod() {}
+
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
@@ -175,6 +178,7 @@ public:
 	virtual void eventAllTrainingFilesLoaded(Event* e) {}
 
 	virtual void eventBallHitGround(Event* e) {}
+	virtual void onBallSpawned(Event* e) {}
 
 	virtual void ExportSettings(pt::ptree&root) {}
 	virtual void ImportSettings(pt::ptree&root) {}

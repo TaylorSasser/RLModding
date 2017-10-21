@@ -78,7 +78,9 @@ void DribbleDrabble::DrawMenu() {
 		
 	}
 	else {
-
+		ImGui::InputInt("# of seconds before ball respawn", &ballRespawnTime);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("This is the number of seconds a team can keep the ball on their side before it respawns.");
 	}
 
 	
@@ -339,12 +341,12 @@ void DribbleDrabble::onBallTick(Event* e) {
 		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(currTime - lastBallUpdateTime);
 
 		// If 15 seconds since ball has moved sides, respawn
-		if (time_span.count() > 15 && ((currBall->Location.Y < 0 && currentTeamHasPossesion == 0) || (currBall->Location.Y > 0 && currentTeamHasPossesion == 1))) {
+		if (time_span.count() > ballRespawnTime && ((currBall->Location.Y < 0 && currentTeamHasPossesion == 0) || (currBall->Location.Y > 0 && currentTeamHasPossesion == 1))) {
 			lastBallUpdateTime = currTime;
 			currentTeamHasPossesion = -1;
 			ballOnHalf = -1;
 			currBall->Reset();
-			std::cout << "Team has had possession for 15 seconds, respawning!" << std::endl;
+			//std::cout << "Team has had possession for 15 seconds, respawning!" << std::endl;
 
 		}
 		//std::cout << "Updated ball tick: " << time_span.count() << std::endl;

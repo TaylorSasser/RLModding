@@ -26,6 +26,7 @@ private:
 	bool goToNextRound = false;
 
 	bool blockerBot = false;
+	bool disableGoalScore = false;
 
 	bool setFreePlayColors = false;
 

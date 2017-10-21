@@ -24,6 +24,7 @@ void TrainingMods::DrawMenu() {
 			ImGui::TextWrapped("To see custom training settings open this menu in Custom Training.");
 
 			ImGui::Checkbox("Hide Boost Meter", &hideBoostMeter);
+			ImGui::Checkbox("Disable goal scoring", &disableGoalScore);
 
 
 		}
@@ -71,7 +72,10 @@ void TrainingMods::onPlayerTick(Event* event) {
 		//localGameEvent->bAllowSuperBoost = 1.0f;
 
 		localGameEvent->SetShowBoostMeter(!hideBoostMeter);
-
+		localGameEvent->bOnlyScoreInBallGoalNum = disableGoalScore;
+		if (disableGoalScore) {
+			localGameEvent->BallGoalNum = -1;
+		}
 		
 
 		if (setFreePlayColors) {

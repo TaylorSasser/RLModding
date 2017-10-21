@@ -128,11 +128,19 @@ void WorkshopMods::onPlayerTick(Event* event) {
 
 	if (testNew) {
 		if (InstanceStorage::PlayerController()) {
+			FVehicleInputs myInput = InstanceStorage::PlayerController()->VehicleInput;
+			std::cout << myInput.Throttle << std::endl;
+			myInput.Throttle = 1.0f;
+			InstanceStorage::PlayerController()->Car->SetVehicleInput(myInput);
+		}
+		/*
+		if (InstanceStorage::PlayerController()) {
 			FCurrencyDrop newDrop;
 			newDrop.Amount = 200;
 			newDrop.CurrencyID = 0;
 			InstanceStorage::PlayerController()->PRI->ClientGiveOnlineCurrencyDrop(newDrop);
 		}
+		*/
 	}
 	return;
 	if (testTravel) {

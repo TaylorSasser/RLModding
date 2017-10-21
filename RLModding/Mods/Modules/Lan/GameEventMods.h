@@ -60,8 +60,14 @@ private:
 	int bouncesRemaining = 300;
 	FVector lastBallPos = { 0,0,0 };
 	std::chrono::high_resolution_clock::time_point lastBallUpdateTime = std::chrono::high_resolution_clock::now();
-
+	bool testGoalDisable = false;
 	AGameInfo_TA* testGameInfo = NULL;
+
+	bool ownGoalDisabled = false;
+	bool disableOwnGoal = false;
+
+	bool ownGoalDisabled = false;
+	bool disableOwnGoal = false;
 
 	bool testChangeName = false;
 	bool testArenaColor = false;
