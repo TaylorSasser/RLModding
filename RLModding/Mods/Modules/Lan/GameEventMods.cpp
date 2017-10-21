@@ -390,8 +390,8 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 	}
 
-	if (disableOwnGoal) {
-		if (!ownGoalDisabled) {
+	if (disableGoals) {
+		if (!goalDisabled) {
 			for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
 				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
 				if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
@@ -399,7 +399,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 						AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
 						if (goalVolume) {
 							goalVolume->bPawnsOnly = true;
-							ownGoalDisabled = true;
+							goalDisabled = true;
 
 						}
 					}
@@ -415,14 +415,12 @@ void GameEventMods::onPlayerTick(Event* e) {
 				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
 					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
 					if (goalVolume) {
-						goalVolume->bPawnsOnly = true;
-						ownGoalDisabled = true;
-
+						goalVolume->bPawnsOnly = false;
 					}
 				}
 			}
 		}
-		ownGoalDisabled = false;
+		goalDisabled = false;
 
 	}
 

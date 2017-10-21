@@ -66,8 +66,8 @@ private:
 	bool ownGoalDisabled = false;
 	bool disableOwnGoal = false;
 
-	bool ownGoalDisabled = false;
-	bool disableOwnGoal = false;
+	bool goalDisabled = false;
+	bool disableGoals = false;
 
 	bool testChangeName = false;
 	bool testArenaColor = false;
