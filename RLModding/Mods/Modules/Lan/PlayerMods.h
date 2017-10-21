@@ -8,7 +8,7 @@ public:
 	PlayerMods(std::string name, int key, Category category, GameState gamestate);
 	PlayerMods(std::string, int key);
 
-	void onDisable();
+	void onMenuClose();
 
 	void DrawMenu();
 	void onPlayerTick(Event* e);
@@ -32,8 +32,17 @@ private:
 	bool demolishPlayer = false;
 	bool isDeveloper = false;
 
+	bool godMode = false;
+
 	bool doNothing = false;
 	bool triggerGoalExplosion = false;
+
+	int playerScore = 0;
+	int playerGoals = 0;
+	int playerAssists = 0;
+	int playerSaves = 0;
+	int playerShots = 0;
+	int playerPing = 0;
 
 	std::string statusText = "";
 
@@ -42,6 +51,8 @@ private:
 	int playerSelectedIndex = 0;
 	int oldPlayerSelectedIndex = 0;
 	int currPlayerCount = 0;
+
+	bool kickPlayer = false;
 
 	bool p_open = true;
 };

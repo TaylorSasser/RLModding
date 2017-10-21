@@ -44,6 +44,13 @@ namespace Utils {
 		return SDK::FString(p);
 	}
 
+	char* stringToCharArray(const std::string& s) {
+		char *cptr = new char[s.length() + 1];
+		std::strncpy(cptr, s.c_str(), s.size());
+		cptr[s.length()] = '\0';
+		return cptr;
+	}
+
 	// Returns true if export successful, false if not...
 	bool ExportInventory(SDK::USaveData_TA* saveData, std::string outFile) {
 

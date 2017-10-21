@@ -31,17 +31,18 @@ static const std::string categoryNames[MAX-1] = {
 class ModBase
 {
 public:
-	ModBase() {}
-	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate) {}
-	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY) {}
+	ModBase() {}	
+	ModBase(const std::string& modName, int keyBind, Category category, GameState gamestate, const std::string& modToolTip) : name(modName), key(keyBind), cat(category), allowedGameStates(gamestate), toolTip(modToolTip) {}
+	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate), toolTip("") {}
+	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY), toolTip("") {}
 	
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
 		enabled = !enabled;		
 		onToggle();
-		if (enabled) onEnable(); 
-		else onDisable();
+		if (enabled) onMenuOpen();
+		else onMenuClose();
 	}
 	
 	virtual void setState(bool state) { enabled = state; }
@@ -54,6 +55,9 @@ public:
 
 	virtual int getBind() { return key; }
 	virtual void setBind(int keycode) { key = keycode; }
+
+	virtual std::string getToolTip() { return toolTip; }
+	virtual void setToolTip(const std::string &newToolTip) { toolTip = newToolTip; }
 
 	virtual Category getCategory() {return cat;}
 	virtual GameState getAllowedGameStates() {return allowedGameStates;}
@@ -70,8 +74,17 @@ public:
 	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
 
 	virtual void DrawMenu() {}
+<<<<<<< HEAD
 	virtual void onEnable() {}
 	virtual void onDisable() {}
+=======
+	virtual void onMenuOpen() {}
+	virtual void onMenuClose() {}
+	
+	virtual void unloadMod() {}
+	virtual void loadMod() {}
+
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
@@ -97,6 +110,11 @@ public:
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
 		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;}
 	}
+	virtual void gameInfoInitGame(Event* event) {
+		InstanceStorage::SetGameInfo(reinterpret_cast<SDK::AGameInfo_TA*>(event->getCallingObject()));
+
+	};
+
 	virtual void onGameStart(Event* event) {
 		InstanceStorage::SetLanServer(reinterpret_cast<SDK::UOnlineGameLanServer_TA*>(event->getCallingObject()));
 	}
@@ -141,20 +159,62 @@ public:
 	virtual void onCarDemolished(Event* e) {}
 	virtual void onBallCarTouch(Event* e) {}
 	virtual void onGameTimeUpdated(Event* e) {}
+<<<<<<< HEAD
+=======
+	virtual void onEventGoalScored(Event* e) {}
+	virtual void onReplayGoalScored(Event* e) {}
+	virtual void onReplayCameraFinished(Event* e) {}
+	virtual void onReplayCameraStarted(Event* e) {}
+
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
+<<<<<<< HEAD
 	virtual void ExportSettings(pt::ptree) {}
 	virtual void ImportSettings(pt::ptree) {}
 	virtual void onGetNextImage(Event* e) {}
+=======
+	virtual void onBallTick(Event* e) {}
+
+	virtual void eventReplayHeadersLoaded(Event* e) {}
+	virtual void eventAllTrainingFilesLoaded(Event* e) {}
+
+	virtual void eventBallHitGround(Event* e) {}
+	virtual void onBallSpawned(Event* e) {}
+
+	virtual void ExportSettings(pt::ptree&root) {}
+	virtual void ImportSettings(pt::ptree&root) {}
+
+
+
+	virtual void onGetNextImage(Event* e) {
+		/*
+		UAdManager_TA* callerObject = (UAdManager_TA*)e->getCallingObject();
+		if (callerObject) {
+		for (int i = 0; i < callerObject->CachedAdImages.Num(); i++) {
+		//std::string url = callerObject->CachedAdImages.GetByIndex(i).ImageURL.ToString();
+		if (i % 2 == 0) {
+		callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
+		}
+		else {
+		callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
+		}
+		}
+		}
+
+		*/
+	}
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
 
 	bool enabled = false;
 protected:
 	GameState allowedGameStates;
 	Category cat;
+	std::string toolTip;
 	std::string name;
 	int key = -1;
 };

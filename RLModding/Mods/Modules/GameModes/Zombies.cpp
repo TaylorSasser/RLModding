@@ -1,9 +1,9 @@
 #include "Zombies.h"
 
-Zombies::Zombies(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
+Zombies::Zombies(std::string name, int key, Category category, GameState gamestate, std::string toolTip) : ModBase(name, key, category, gamestate, toolTip) {}
 Zombies::Zombies(std::string name, int key) : ModBase(name, key) {}
 
-void Zombies::onEnable() {
+void Zombies::onMenuOpen() {
 	
 	if (!InstanceStorage::GameEvent()) {
 		printf("Could not start Zombies Module \n");
@@ -22,7 +22,7 @@ void Zombies::onEnable() {
 
 	
 }
-void Zombies::onDisable() {
+void Zombies::onMenuClose() {
 	/*
 	if (InstanceStorage::GameEvent()->AIManager == nullptr || InstanceStorage::GameEvent() == nullptr || InstanceStorage::CurrentCar() == nullptr) {
 		printf("Could not Cleanup Zombies Module \n");

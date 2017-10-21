@@ -12,6 +12,7 @@
 class XboxController
 {
 public:
+	XboxController();
 	XboxController(int playerNum);
 	XINPUT_STATE GetState();
 	bool IsConnected();

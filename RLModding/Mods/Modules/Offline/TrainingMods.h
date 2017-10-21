@@ -8,8 +8,8 @@ public:
 	TrainingMods(std::string name, int key, Category cat, GameState gamestate);
 	~TrainingMods();
 
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
@@ -24,6 +24,13 @@ private:
 
 	bool randomizeShotOrder = false;
 	bool goToNextRound = false;
+
+	bool blockerBot = false;
+	bool disableGoalScore = false;
+
+	bool setFreePlayColors = false;
+
+	bool hideBoostMeter = false;
 
 	time_t start, end;
 	bool p_open = true;

@@ -1,6 +1,5 @@
 #pragma once
-#undef AF_MAX
-#undef PF_MAX
+
 // Rocket League (1.31) SDK
 
 #ifdef _MSC_VER
@@ -730,7 +729,7 @@ enum class EActivityFeedType
 	AF_WonChampionship             = 8,
 	AF_UnlockedItem                = 9,
 	AF_UnlockedSweetTooth          = 10,
-	AF_MAX                         = 11
+	#undef AF_MAX                         = 11
 };
 
 
@@ -2148,16 +2147,6 @@ struct FAppliedBreakoutDamage
 	int                                                TotalDamage;                                              // 0x0014(0x0004)
 };
 
-// ScriptStruct TAGame.Vehicle_TA.SuperSonicData
-// 0x0010
-struct FSuperSonicData
-{
-	float                                              Speed;                                                    // 0x0000(0x0004)
-	float                                              TurnoffSpeedBuffer;                                       // 0x0004(0x0004)
-	float                                              TurnoffTime;                                              // 0x0008(0x0004)
-	float                                              TimeBelowSpeed;                                           // 0x000C(0x0004) (CPF_Transient)
-};
-
 // ScriptStruct TAGame.Vehicle_TA.BallInteractionSettings
 // 0x002C
 struct FBallInteractionSettings
@@ -2172,17 +2161,12 @@ struct FBallInteractionSettings
 	float                                              Friction;                                                 // 0x0028(0x0004) (CPF_Edit)
 };
 
-// ScriptStruct TAGame.Vehicle_TA.CarInteractionSettings
-// 0x001C
-struct FCarInteractionSettings
+// ScriptStruct TAGame.Vehicle_TA.CarInteractionData
+// 0x0008
+struct FCarInteractionData
 {
-	float                                              PushFactor;                                               // 0x0000(0x0004) (CPF_Edit)
-	float                                              BumperPushFactor;                                         // 0x0004(0x0004) (CPF_Edit)
-	float                                              ZPushFactor;                                              // 0x0008(0x0004) (CPF_Edit)
-	float                                              BumpInterval;                                             // 0x000C(0x0004) (CPF_Edit)
-	float                                              BumperHitAngle;                                           // 0x0010(0x0004) (CPF_Edit)
-	class AVehicle_TA*                                 LastHitCar;                                               // 0x0014(0x0004) (CPF_Transient)
-	float                                              LastHitTime;                                              // 0x0018(0x0004) (CPF_Transient)
+	class AVehicle_TA*                                 LastHitCar;                                               // 0x0000(0x0004) (CPF_Transient)
+	float                                              LastHitTime;                                              // 0x0004(0x0004) (CPF_Transient)
 };
 
 // ScriptStruct TAGame.RBHistory_TA.RBPhysicsSnapshot
@@ -2195,7 +2179,7 @@ struct FRBPhysicsSnapshot
 };
 
 // ScriptStruct TAGame.RBVehicleHistory_TA.RBVehicleSnapshot
-// 0x0154
+// 0x0140
 struct FRBVehicleSnapshot
 {
 	struct FVehicleInputs                              Input;                                                    // 0x0000(0x0020)
@@ -2203,9 +2187,9 @@ struct FRBVehicleSnapshot
 	struct FWheelContactData                           WheelContact1;                                            // 0x0064(0x0044) (CPF_Component)
 	struct FWheelContactData                           WheelContact2;                                            // 0x00A8(0x0044) (CPF_Component)
 	struct FWheelContactData                           WheelContact3;                                            // 0x00EC(0x0044) (CPF_Component)
-	struct FCarInteractionSettings                     CarInteraction;                                           // 0x0130(0x001C)
-	float                                              OutputHandbrake;                                          // 0x014C(0x0004)
-	int                                                LastHitBallFrame;                                         // 0x0150(0x0004)
+	struct FCarInteractionData                         CarInteraction;                                           // 0x0130(0x0008)
+	float                                              OutputHandbrake;                                          // 0x0138(0x0004)
+	int                                                LastHitBallFrame;                                         // 0x013C(0x0004)
 };
 
 // ScriptStruct TAGame.RBVehicleHistory_TA.CarComponentSnapshot

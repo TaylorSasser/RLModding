@@ -15819,44 +15819,6 @@ void AGameInfo::PreExit()
 }
 
 
-// Function Engine.GameInfo.CalculatedNetSpeed
-// (FUNC_Defined, FUNC_Public)
-// Parameters:
-// int                            ReturnValue                    (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-
-int AGameInfo::CalculatedNetSpeed()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.CalculatedNetSpeed");
-
-	AGameInfo_CalculatedNetSpeed_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.GameInfo.UpdateNetSpeeds
-// (FUNC_Defined, FUNC_Public)
-
-void AGameInfo::UpdateNetSpeeds()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function Engine.GameInfo.UpdateNetSpeeds");
-
-	AGameInfo_UpdateNetSpeeds_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function Engine.GameInfo.PostLogin
 // (FUNC_Defined, FUNC_Event, FUNC_Public)
 // Parameters:

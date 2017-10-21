@@ -5,11 +5,11 @@
 JoinServer::JoinServer(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 JoinServer::~JoinServer(){}
 
-void JoinServer::onEnable() {
+void JoinServer::onMenuOpen() {
 
 }
 
-void JoinServer::onDisable() {
+void JoinServer::onMenuClose() {
 }
 
 void JoinServer::ExportSettings(pt::ptree) {}

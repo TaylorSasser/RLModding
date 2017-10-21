@@ -771,6 +771,31 @@ struct FCrossplayGroup
 	TArray<TEnumAsByte<EOnlinePlatform>>               Platforms;                                                // 0x0000(0x000C) (CPF_NeedCtorLink)
 };
 
+// ScriptStruct ProjectX._Types_X.CarInteractionConfig
+// 0x0020
+struct FCarInteractionConfig
+{
+	float                                              PushFactor;                                               // 0x0000(0x0004)
+	float                                              BumperPushFactor;                                         // 0x0004(0x0004)
+	float                                              ZPushFactor;                                              // 0x0008(0x0004)
+	float                                              BumpInterval;                                             // 0x000C(0x0004)
+	float                                              BumperHitNormalAngle;                                     // 0x0010(0x0004)
+	float                                              BumperCarLocationAngle;                                   // 0x0014(0x0004)
+	float                                              BumperHitDepth;                                           // 0x0018(0x0004)
+	unsigned long                                      bCheckHitNormal : 1;                                      // 0x001C(0x0004)
+	unsigned long                                      bCheckExtent : 1;                                         // 0x001C(0x0004)
+	unsigned long                                      bCheckCarAngle : 1;                                       // 0x001C(0x0004)
+};
+
+// ScriptStruct ProjectX._Types_X.SuperSonicConfig
+// 0x000C
+struct FSuperSonicConfig
+{
+	float                                              Speed;                                                    // 0x0000(0x0004)
+	float                                              TurnoffSpeedBuffer;                                       // 0x0004(0x0004)
+	float                                              TurnoffTime;                                              // 0x0008(0x0004)
+};
+
 // ScriptStruct ProjectX.OnlineMessageComponent_X.OnlineMessageHandler
 // 0x0010
 struct FOnlineMessageHandler
@@ -1415,6 +1440,14 @@ struct FPlayerPermissionsList
 {
 	struct FUniqueNetId                                PlayerID;                                                 // 0x0000(0x0048)
 	TArray<TEnumAsByte<EOnlinePlayerPermission>>       Permissions;                                              // 0x0048(0x000C) (CPF_NeedCtorLink)
+};
+
+// ScriptStruct ProjectX.OnlineGameParty_X.PendingInviteData
+// 0x0014
+struct FPendingInviteData
+{
+	TScriptInterface<class UOnlineLobbyInterface>      LobbyInterface;                                           // 0x0000(0x0008)
+	struct FUniqueLobbyId                              LobbyId;                                                  // 0x0008(0x000C)
 };
 
 // ScriptStruct ProjectX.OnlineGameParty_X.PlaylistRestrictionPlayer

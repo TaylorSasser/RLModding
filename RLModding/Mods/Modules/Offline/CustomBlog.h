@@ -9,11 +9,11 @@ public:
 	CustomBlog(std::string name, int key, Category category, GameState gamestate);
 	~CustomBlog();
 
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 	void onMainMenuTick(Event*) override;
 

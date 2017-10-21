@@ -1166,7 +1166,6 @@ public:
 	unsigned long                                      bClearAnimSetLinkupCachesOnLoadMap : 1;                   // 0x072C(0x0004) (CPF_Config)
 	unsigned long                                      bEnableSecondaryDisplay : 1;                              // 0x072C(0x0004) (CPF_Config)
 	unsigned long                                      bEnableSecondaryViewport : 1;                             // 0x072C(0x0004) (CPF_Config)
-	unsigned long                                      bLanGame : 1;                                             // 0x072C(0x0004) (CPF_Config)
 	class UOnlineSubsystem*                            OnlineSubsystem;                                          // 0x0730(0x0004) (CPF_Const, CPF_Transient)
 	class UDownloadableContentEnumerator*              DLCEnumerator;                                            // 0x0734(0x0004) (CPF_Const, CPF_Transient)
 	struct FString                                     DownloadableContentEnumeratorClassName;                   // 0x0738(0x000C) (CPF_Config, CPF_NeedCtorLink)
@@ -2381,8 +2380,6 @@ public:
 	void UnregisterPlayer(class APlayerController* PC);
 	void Logout(class AController* Exiting);
 	void PreExit();
-	int CalculatedNetSpeed();
-	void UpdateNetSpeeds();
 	void PostLogin(class APlayerController* NewPlayer);
 	void UpdateBestNextHosts();
 	int BestNextHostSort(class APlayerController* A, class APlayerController* B);

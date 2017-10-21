@@ -5,14 +5,14 @@
 CustomBlog::CustomBlog(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CustomBlog::~CustomBlog() {}
 
-void CustomBlog::onEnable() {
+void CustomBlog::onMenuOpen() {
 
 }
 
-void CustomBlog::onDisable() {
+void CustomBlog::onMenuClose() {
 }
 
-void CustomBlog::ExportSettings(pt::ptree root) {
+void CustomBlog::ExportSettings(pt::ptree & root) {
 	// Carousel Settings
 	root.put("Carousel_Title", std::string(carousel_title));
 	root.put("Carousel_Body", std::string(carousel_body));
@@ -35,7 +35,7 @@ void CustomBlog::ExportSettings(pt::ptree root) {
 	root.put("MOTD", std::string(motd));
 
 }
-void CustomBlog::ImportSettings(pt::ptree root) {
+void CustomBlog::ImportSettings(pt::ptree & root) {
 	// Carousel Settings
 	std::strcpy(carousel_title, root.get<std::string>("Carousel_Title", std::string(carousel_title)).c_str());
 	std::strcpy(carousel_body, root.get<std::string>("Carousel_Body", std::string(carousel_body)).c_str());
@@ -83,8 +83,7 @@ void CustomBlog::DrawMenu() {
 		bSet = true;
 		printf("Applying cutsom blog options");
 	}
-	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("Note: Blog may take a while to update");
+	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Note: Changes may take a while to show up");
 	
 	if (!p_open) {
 		this->enabled = false;

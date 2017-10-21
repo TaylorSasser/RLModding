@@ -2,6 +2,7 @@
 #include "../Utils/Utils.h"
 #include <comdef.h> // for wchar to char conversion
 #include <ctime>
+#include <chrono>
 #include "../Interfaces/Interfaces.h"
 
 GameEventMods::GameEventMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
@@ -27,11 +28,10 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Restart Match")) {
 				restartMatch = true;
 			}
-
+			ImGui::SameLine();
 			if (ImGui::Button("Reset Players")) {
 				resetPlayers = true;
 			}
-			ImGui::SameLine();
 
 			if (ImGui::Button("Reset Balls")) {
 				resetBalls = true;
@@ -64,7 +64,7 @@ void GameEventMods::DrawMenu() {
 
 		if (ImGui::CollapsingHeader("Message Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			ImGui::Text("WARNING.  Changing these values will cause your game to crash when leaving.");
+			ImGui::TextColored(ImVec4(0.9f,0.0f,0.0f,1.0f),"WARNING.  Changing these values will cause your game to crash when leaving.");
 			ImGui::Text("The Server should work fine until then.");
 
 			ImGui::PushItemWidth(200);
@@ -79,6 +79,8 @@ void GameEventMods::DrawMenu() {
 
 		if (ImGui::CollapsingHeader("Bots",ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: removing bots only works for bots you spawned manually.");
 			ImGui::InputInt("# Bots", &botsToSpawn); ImGui::SameLine();
 			if (ImGui::Button("Spawn Bot(s)")) {
 				spawnBot = true;
@@ -86,20 +88,25 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Freeze Bots")) {
 				freezeBots = true;
 			}
+			ImGui::SameLine();
 			if (ImGui::Button("Remove All Bots")) {
 				removeBots = true;
 			}
 		}
-		
+		if (ImGui::CollapsingHeader("Ridiculous Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
+		{
+			
+			ImGui::Checkbox("Disable Goals", &disableGoals);
+			//ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
+			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
+			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
+
+		}
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
-			ImGui::InputInt("Team Index", &teamIndex);
-			if (ImGui::IsItemHovered())
-				ImGui::SetTooltip("Usually either 0 or 1.  0 for blue, 1 for orange.");
-			ImGui::SameLine();
-			if (ImGui::Button("Infinite Celebration.")) {
-				unlimCelebration = true;
-			}
+			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
+
+
 
 			if (ImGui::Button("Allow more than 8 players.")) {
 				allowMorePlayers = true;
@@ -126,10 +133,29 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Test Server Say")) {
 				testServerSay = true;
 			}
+			ImGui::SameLine();
 
 			if (ImGui::Button("Test Training Spawns")) {
 				testTrainingSpawn = true;
 			}
+			if (ImGui::Button("Test Goal disabled")) {
+				testGoalDisable = true;
+			}
+			/*
+			if (ImGui::Button("Test Change Name")) {
+				testChangeName = true;
+			}
+			*/
+			if (ImGui::Button("Hide Game Ball")) {
+				hideGameBall = true;
+			}
+			ImGui::ColorEdit4("Arena Color Test", (float*)&arenaCol);
+
+			if (ImGui::Button("Change Arena Color")) {
+				testArenaColor = true;
+			}
+				
+
 		}
 		
 		if (!p_open) {
@@ -141,7 +167,7 @@ void GameEventMods::DrawMenu() {
 	}
 }
 
-void GameEventMods::onEnable() {
+void GameEventMods::onMenuOpen() {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
 		respawnTime = localGameEvent->RespawnTime;
@@ -149,7 +175,7 @@ void GameEventMods::onEnable() {
 	}
 
 }
-void GameEventMods::onDisable() {
+void GameEventMods::onMenuClose() {
 
 
 
@@ -168,7 +194,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 		if (spawnBot) {
 			for(int i = 0; i < botsToSpawn; i++) {
-				localGameEvent->SpawnBot();
+				localGameEvent->AIManager->AddBot(localGameEvent->SpawnBot());
 			}
 			spawnBot = false;
 		}
@@ -186,13 +212,6 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (resetBalls) {
 			localGameEvent->ResetBalls();
 			resetBalls = false;
-		}
-
-		if (unlimCelebration) {
-			localGameEvent->PodiumTime = localGameEvent->PodiumTime * 2000;
-			localGameEvent->Teams[teamIndex]->SetScore(1);
-			localGameEvent->EndGame();
-			unlimCelebration = false;
 		}
 
 		if (pauseServer) {
@@ -219,7 +238,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 			}
 
 			//localGameEvent
-			std::cout << "New Maxd Players: " << localGameEvent->MaxPlayers << std::endl;
+			std::cout << "New Max Players: " << localGameEvent->MaxPlayers << std::endl;
 
 			allowMorePlayers = false;
 
@@ -231,7 +250,13 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 	
 		if (setScoreAndTime) {
-			localGameEvent->SetScoreAndTime(localGameEvent->GetLocalPrimaryPlayer(), blueScore, orangeScore, localGameEvent->GameTimeRemaining, localGameEvent->bOverTime, false);
+			if (localGameEvent->Teams.IsValidIndex(0)) {
+				localGameEvent->Teams.GetByIndex(0)->SetScore(blueScore);
+			}
+			if (localGameEvent->Teams.IsValidIndex(1)) {
+				localGameEvent->Teams.GetByIndex(1)->SetScore(orangeScore);
+			}
+			//localGameEvent->SetScoreAndTime(localGameEvent->GetLocalPrimaryPlayer(), blueScore, orangeScore, localGameEvent->GameTimeRemaining, localGameEvent->bOverTime, false);
 			setScoreAndTime = false;
 		}
 
@@ -275,6 +300,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 			testServerSay = false;
 		}
 
+		if (bounceBasedTime) {
+			//localGameEvent->bUnlimitedTime = true;
+			//lastBallUpdateTime = std::chrono::high_resolution_clock::now();
+		}
+
 		if (testTrainingSpawn) {
 
 			AGameEvent_TrainingEditor_TA* trainingEditor = (SDK::AGameEvent_TrainingEditor_TA*)InstanceStorage::GameEvent();
@@ -308,7 +338,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 	}
 	if (freezeBots) {
 
-		if (localGameEvent) {
+		if (localGameEvent && localGameEvent->AIManager) {
 			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
 			for (int i = 0; i < bots.Num(); i++) {
 				bots.GetByIndex(i)->DoNothing();
@@ -318,10 +348,14 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 	}
 	if (removeBots) {
-		if (localGameEvent) {
+		if (localGameEvent && localGameEvent->AIManager) {
 			TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
-			while (bots.Num() > 0) {
-				localGameEvent->AIManager->RemoveBot(bots.GetByIndex(0));
+			int botsToDelete = bots.Num();
+			std::cout << "Total Bots: " << botsToDelete << std::endl;
+			for (int i = 0; i < botsToDelete; i++) {
+				localGameEvent->RemovePlayer(bots[i]);
+				std::cout << "Total Bots: " << bots.Num() << std::endl;
+				//spawnedBotsCount--;
 			}
 		}
 		removeBots = false;
@@ -346,5 +380,184 @@ void GameEventMods::onPlayerTick(Event* e) {
 		randomSpawnPoints = false;
 
 	}
+	if (hideGameBall) {
+		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
+
+		for (int i = 0; i < gameBalls.Num(); i++) {
+			if (gameBalls.IsValidIndex(i) && gameBalls[i] && !gameBalls[i]->bDeleteMe) {
+				gameBalls[i]->SetHidden(true);
+			}
+			
+		}
+	}
+
+	if (disableGoals) {
+		if (!goalDisabled) {
+			for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+				if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+					if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+						AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+						if (goalVolume) {
+							goalVolume->bPawnsOnly = true;
+							goalDisabled = true;
+
+						}
+					}
+				}
+			}
+
+		}
+	}
+	else {
+		for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+			SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+			if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+					if (goalVolume) {
+						goalVolume->bPawnsOnly = false;
+					}
+				}
+			}
+		}
+		goalDisabled = false;
+
+	}
+
+	if (testGoalDisable) {
+		APylon_Soccar_TA* pylon = localGameEvent->Pylon;
+		TArray<class UGoal_TA*> goals = localGameEvent->Goals;
+		FVector newLoc = pylon->Location;
+		newLoc.Z *= -1000;
+		newLoc.Y *= -1000;
+		newLoc.X *= -1000;
+		for (int i = 0; i < goals.Num(); i++) {
+			//goals[i]->TeamNum = 10;
+			
+			//pylon->SetLocation(newLoc);
+			//goals[i]->GoalDirection = pylon;
+			//goals[i]->bOnlyGoalsFromDirection = true;
+			//goals[i]->Location = { 0,0, -2000.0 };
+			//goals[i] = NULL;
+		}
+		//localGameEvent->bNoContest = true;
+		
+
+		for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+			SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+			if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+					if (goalVolume) {
+						goalVolume->bPawnsOnly = true;
+					}
+				}
+			}
+		}
+
+		
+
+		testGoalDisable = false;
+	}
+
+	if (testArenaColor) {
+		ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
+		TArray< struct ATeam_TA* > gameTeams = localGameEvent->Teams;
+		for (int j = 0; j < gameTeams.Num(); j++)
+		{
+			SDK::TArray< struct SDK::FLinearColor > colors = gameTeams.GetByIndex(j)->CarColorSet->Colors;
+			for (int k = 0; k < colors.Num(); k++)
+			{
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).R = arenaCol[0];
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).G = arenaCol[1];
+				gameTeams.GetByIndex(j)->CarColorSet->Colors.GetByIndex(k).B = arenaCol[2];
+			}
+			gameTeams.GetByIndex(j)->TeamColor.R = arenaCol[0];
+			gameTeams.GetByIndex(j)->TeamColor.G = arenaCol[1];
+			gameTeams.GetByIndex(j)->TeamColor.B = arenaCol[2];
+			gameTeams.GetByIndex(j)->SetColorList(colors, true);
+
+		}
+		testArenaColor = false;
+	}
+	if (testChangeName) {
+		std::cout << "I FOUDN HIM! " << InstanceStorage::PlayerController()->PRI->PlayerName.ToString() << std::endl;
+		//InstanceStorage::PlayerController()->PRI->SetPlayerName(FString(L"THis is meNo dfdf"));
+		//InstanceStorage::PlayerController()->PRI->SetPlayerNameSanitized(InstanceStorage::PlayerController()->PRI->PlayerName, FString(L"THis is meNo dfdf"));
+		//InstanceStorage::PlayerController()->PRI->SetPawnType(EPawnType::PT_Editor); //WORKS
+		//localPlayer->HandlePlayerNameChanged(InstanceStorage::PlayerController()->PRI);
+		
+		if (InstanceStorage::GameInfo()) {
+			APlayerStart_TA* playerStart = (APlayerStart_TA*)InstanceStorage::GameInfo()->ChoosePlayerStart(InstanceStorage::PlayerController(), 0);
+			if (playerStart) std::cout << "FOUND AGOALDSLKFJDKF" << std::endl;
+			else std::cout << "no goal" << std::endl;
+			//InstanceStorage::GameInfo()->ChangeName(InstanceStorage::PlayerController(), FString(L"Butter"), true);
+			//TArray<struct FName> disabled = InstanceStorage::GameInfo()->GetGameMode()->DisallowedMutatorCategories;
+			//for (int i = 0; i < disabled.Num(); i++) {
+			//	std::cout << disabled[i].GetName() << std::endl;
+			//}
+			//InstanceStorage::GameInfo()->InitGame(FString(L"InverseGravity"), &error);
+			//InstanceStorage::GameInfo()->ForceKickPlayer(InstanceStorage::PlayerController(), FString(L"I don't like you"));
+
+		}
+		
+		//APlayerStart_TA* playerStart = reinterpret_cast<SDK::APlayerStart_TA*>(Utils::GetInstanceOf(APlayerStart_TA::StaticClass()));
+		//if (playerStart) std::cout << "FOUND AGOALDSLKFJDKF" << std::endl;
+		//else std::cout << "no goal" << std::endl;
+		//AAIController_TA* newBot = localGameEvent->SpawnBot();
+		//InstanceStorage::PlayerController()->PRI->SetCar(newBot->Car);
+
+		testChangeName = false;
+		
+	}
 }
 
+void GameEventMods::onGameTimeUpdated(Event* e) {
+	
+}
+
+void GameEventMods::eventBallHitGround(Event* e) {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+
+	if (bounceBasedTime) {
+		ABall_TA* hitBall = (SDK::ABall_TA*)e->getCallingObject();
+
+		if (hitBall && abs(hitBall->Location.Z - lastBallPos.Z) > 3 && (abs(hitBall->Location.X - lastBallPos.X) > 3 || abs(hitBall->Location.Y - lastBallPos.Y) > 3)) {
+			bouncesRemaining--;
+			localGameEvent->GameTimeRemaining = bouncesRemaining;
+			if (localGameEvent->GameTimeRemaining == 0 && localGameEvent->GetTotalScore() > 0 && localGameEvent->GetTotalScore() % 2 != 0) {
+				localGameEvent->EndGame();
+			}
+		}
+		else {
+			// Not high enough to count as bounce
+		}
+		
+
+	}
+}
+void GameEventMods::onBallTick(Event* e) {
+	ABall_TA* currBall = (SDK::ABall_TA*)e->getCallingObject();
+	if (bounceBasedTime) {
+		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		if (localGameEvent && bounceBasedTime) {
+			localGameEvent->GameTimeRemaining = bouncesRemaining;
+		}
+		//float newTime = (float)(e->getParams<SDK::ABall_TA_Tick_Params>()->DeltaTime);
+		std::chrono::high_resolution_clock::time_point currTime = std::chrono::high_resolution_clock::now();
+
+		std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>>(currTime - lastBallUpdateTime);
+
+		if (time_span.count() > 0.1) {
+			lastBallPos = currBall->Location;
+			lastBallUpdateTime = currTime;
+		}
+		//std::cout << "Updated ball tick: " << time_span.count() << std::endl;
+	}
+}
+
+void GameEventMods::gameInfoInitGame(Event* e) {
+
+
+}

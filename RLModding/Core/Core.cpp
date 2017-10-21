@@ -23,7 +23,7 @@ namespace Core {
 			freopen("RLModding.log", "w", stdout);
 		#endif
 		#ifdef _CON_
-			AllocConsole() && AttachConsole(GetCurrentProcessId());
+			AllocConsole();
 			SetConsoleCtrlHandler(NULL, true);
 			freopen("CON", "w", stdout);
 		#endif

@@ -12,17 +12,106 @@
 RumbleMods::RumbleMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 RumbleMods::RumbleMods(std::string name, int key) : ModBase(name, key) {}
 
-void RumbleMods::ExportSettings(pt::ptree root) {
+void RumbleMods::ExportSettings(pt::ptree & root) {
 	root.put("R_GiveRate", itemGiveRate);
-	root.put("R_Magnet_Range", magnetRange);
-	root.put("R_Magnet_Gravity", magnetBallGravity);
-	root.put("R_Crazy_Items_Mode", enableCrazyItems);
+	// Magnet
+	root.put("Magnet_Range", magnetRange);
+	root.put("Magnet_Gravity", magnetBallGravity);
+	root.put("Magnet_DeactivateOnTouch", magnetDeactivateOnTouch);
+	// Boot
+	root.put("Boot_Force",			bootForce);
+	root.put("Boot_VerticalForce",	bootVerticalForce);
+	root.put("Boot_TargetBall",		bootCanTargetBall);
+	root.put("Boot_TargetCars",		bootCanTargetCars);
+	root.put("Boot_RelativeForce",	bootRelativeForce);
+	root.put("Boot_FollowAfterHit", bootFollowAfterHit);
+	//Disruptor
+	root.put("Disruptor_Range", boosterRange);
+	//Freeze
+	root.put("Freeze_Duration", freezeActivationDuration);
+	//Superman
+	root.put("Power_BallHitForce", powerHitterBallHitForce);
+	root.put("Power_CarHitForce", powerHitterCarHitForce);
+	root.put("Power_DemolishCars", powerHitterDemolishCars);
+	//Punching Glove
+	root.put("Glove_VForce", punchingGloveVerticalForce);
+	root.put("Glove_Force", punchingGloveForce);
+	root.put("Glove_TargetBall", punchingGloveCanTargetBall);
+	root.put("Glove_TargetCar", punchingGloveCanTargetCars);
+	root.put("Glove_RelativeForce", punchingGloveRelativeForce);
+	root.put("Glove_FollowAfterHit", punchingGloveFollowAfterHit);
+	//Spikes
+	root.put("Spikes_AfterHitDuration", spikesAfterHitDuration);
+	//Swapper
+	root.put("Swap_Range", swapperRange);
+	root.put("Swap_TargetTeam", swapperCanTargetTeamCars);
+	//Tornado
+	root.put("Tornado_BallMultiplier", tornadoBallMultiplier);
+	root.put("Tornado_Radius", tornadoRadius);
+	root.put("Tornado_RForce", tornadoRotForce);
+	root.put("Tornado_Torque", tornadoTorque);
+	root.put("Tornado_Height", tornadoHeight);
+	//Plunger
+	root.put("Plunger_Length", plungerMaxSpringLength);
+	root.put("Plunger_AfterHitDuration", plungerAfterSpringDuration);
+	//Grappling Hook
+	root.put("Hook_Range", grapplingHookRange);
+	root.put("Hook_AfterAttachDuration", grapplingHookAfterAttachDuration);
+	root.put("Hook_CanTargetBall", grapplingHookCanTargetBall);
+	root.put("Hook_CanTargetCars", grapplingHookCanTargetCars);
+	root.put("Hook_CanTargetEnemyCars", grapplingHookCanTargetEnemyCars);
+	root.put("Hook_DeactivateOnTouch", grapplingHookDeactivateOnTouch);
+
 }
-void RumbleMods::ImportSettings(pt::ptree root) {
+void RumbleMods::ImportSettings(pt::ptree & root) {
 	itemGiveRate = root.get<float>("R_GiveRate", 10.0);
-	magnetRange = root.get<float>("R_Magnet_Range", 1.0);
-	magnetBallGravity = root.get<float>("R_Magnet_Gravity", 1.0);
-	enableCrazyItems = root.get<bool>("R_Crazy_Items_Mode", false);
+	// Magnet
+	magnetRange = root.get<float>("Magnet_Range", 1000.0);
+	magnetBallGravity = root.get<float>("Magnet_Gravity", 55000);
+	magnetDeactivateOnTouch = root.get<bool>("Magnet_DeactivateOnTouch", false);
+	// Boot
+	bootForce = root.get<float>("Boot_Force", 550000.0);
+	bootVerticalForce = root.get<float>("Boot_VerticalForce", 400000.0);
+	bootCanTargetBall = root.get<bool>("Boot_TargetBall", false);
+	bootCanTargetCars = root.get<bool>("Boot_TargetCars", true);
+	bootRelativeForce = root.get<bool>("Boot_RelativeForce", true);
+	bootFollowAfterHit = root.get<bool>("Boot_FollowAfterHit", false);
+	//Disruptor
+	boosterRange = root.get<float>("Disruptor_Range", 4000);
+	//Freeze
+	freezeActivationDuration = root.get<float>("Freeze_Duration", 4.0);
+	//Superman
+	powerHitterBallHitForce = root.get<float>("Power_BallHitForce", 30);
+	powerHitterCarHitForce = root.get<float>("Power_CarHitForce", 1.5);
+	powerHitterDemolishCars = root.get<bool>("Power_DemolishCars", true);
+	//Punching Glove
+	punchingGloveVerticalForce = root.get<float>("Glove_VForce", 80000.0);
+	punchingGloveForce = root.get<float>("Glove_Force", 0);
+	punchingGloveCanTargetBall = root.get<bool>("Glove_TargetBall", false);
+	punchingGloveCanTargetCars = root.get<bool>("Glove_TargetCar", true);
+	punchingGloveRelativeForce = root.get<float>("Glove_RelativeForce", true);
+	punchingGloveFollowAfterHit = root.get<bool>("Glove_FollowAfterHit", false);
+	//Spikes
+	spikesAfterHitDuration = root.get<float>("Spikes_AfterHitDuration", 4.5);
+	//Swapper
+	swapperRange = root.get<float>("Swap_Range", 10000.0);
+	swapperCanTargetTeamCars = root.get<bool>("Swap_TargetTeam", false);
+	//Tornado
+	tornadoBallMultiplier = root.get<float>("Tornado_BallMultiplier", 3);
+	tornadoRadius = root.get<float>("Tornado_Radius", 400);
+	tornadoRotForce = root.get<float>("Tornado_RForce", 7);
+	tornadoTorque = root.get<float>("Tornado_Torque", 5);
+	tornadoHeight = root.get<float>("Tornado_Height", 800);
+	//Plunger
+	plungerMaxSpringLength = root.get<float>("Plunger_Length", 3000);
+	plungerAfterSpringDuration = root.get<float>("Plunger_AfterHitDuration", 1.3);
+	//Grappling Hook
+	grapplingHookRange = root.get<float>("Hook_Range", 2800);
+	grapplingHookAfterAttachDuration = root.get<float>("Hook_AfterAttachDuration", 3.0);
+	grapplingHookCanTargetBall = root.get<bool>("Hook_CanTargetBall", true);
+	grapplingHookCanTargetCars = root.get<bool>("Hook_CanTargetCars", false);
+	grapplingHookCanTargetEnemyCars = root.get<bool>("Hook_CanTargetEnemyCars", false);
+	grapplingHookDeactivateOnTouch = root.get<bool>("Hook_DeactivateOnTouch", true);
 }
 
 const char* rumbleItems[] = { "Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook", "", "", "" };
@@ -30,6 +119,8 @@ static int selectedRumbleIndex = -1;
 
 void RumbleMods::resetRumbleValues() {
 	enableCrazyItems = false;
+
+	itemGiveRate = 10.0f;
 
 	// Magnet Options
 	magnetRange = 1000.0;
@@ -113,80 +204,88 @@ void RumbleMods::resetRumbleValues() {
 
 
 void RumbleMods::setCrazyRumbleValues() {
-	if (setCrazyRumble) {
-		/*
-		Default Magnet Range: 1000
-		Default Magnet ball gravity: 55000
-		*/
-		magnetRange = 2500.0;
-		magnetBallGravity = 100000.0;
-		magnetDeactivateOnTouch = false;
 
-		/*
-		Grappling Hook Length: 3500
-		Grappling Hook AfterAttachDuration: 3
-		Grappling Hook Range: 2800
-		*/
-		grapplingHookMaxRopeLength = 10500.0;
-		grapplingHookAfterAttachDuration = 20;
-		grapplingHookRange = 56000;
-		grapplingHookCanTargetCars = true;
-		grapplingHookCanTargetBall = true;
-		grapplingHookCanTargetEnemyCars = true;
-		grapplingHookDeactivateOnTouch = false;
+	itemGiveRate = 0.0f;
 
-		/*
-		Car hit force: 30
-		Ball hit force: 1.5
-		*/
-		powerHitterCarHitForce = 150.0;
-		powerHitterBallHitForce = 13.0;
-		powerHitterDemolishCars = false;
+	/*
+	Default Magnet Range: 1000
+	Default Magnet ball gravity: 55000
+	*/
+	magnetRange = 3500.0;
+	magnetBallGravity = 300000.0;
+	magnetDeactivateOnTouch = false;
 
-		spikesAfterHitDuration = 22.5;
+	/*
+	Grappling Hook Length: 3500
+	Grappling Hook AfterAttachDuration: 3
+	Grappling Hook Range: 2800
+	*/
+	grapplingHookMaxRopeLength = 10500.0;
+	grapplingHookAfterAttachDuration = 20;
+	grapplingHookRange = 60000;
+	grapplingHookCanTargetCars = true;
+	grapplingHookCanTargetBall = true;
+	grapplingHookCanTargetEnemyCars = true;
+	grapplingHookDeactivateOnTouch = false;
 
+	/*
+	Car hit force: 30
+	Ball hit force: 1.5
+	*/
+	powerHitterCarHitForce = 150.0;
+	powerHitterBallHitForce = 15.0;
+	powerHitterDemolishCars = false;
 
-		tornadoBallMultiplier = 30;
-		tornadoRadius = 4400;
-		tornadoRotForce = 70;
-		tornadoTorque = 150;
-		tornadoHeight = 4000;
+	spikesAfterHitDuration = 22.5;
 
-		/*
-		Plunger Hook Length: 3000
-		Plunger AfterAttachDuration: 1.3
-		*/
-		plungerMaxSpringLength = 30000;
-		plungerAfterSpringDuration = 13.0;
+	/*
+	Tornado
+	Ball Multiplyer: 3
+	Radius: 400
+	Rotational Force: 7
+	Torgue: 5
+	Height: 800
+	*/
+	tornadoBallMultiplier = 50;
+	tornadoRadius = 5500;
+	tornadoRotForce = 150;
+	tornadoTorque = 300;
+	tornadoHeight = 2000;
 
-		punchingGloveCanTargetBall = true;
-		punchingGloveCanTargetCars = true;
-		punchingGloveForce = 180000;
-		punchingGloveVerticalForce = 400000.0;
-		punchingGloveRelativeForce = true;
-		punchingGloveFollowAfterHit = true;
+	/*
+	Plunger Hook Length: 3000
+	Plunger AfterAttachDuration: 1.3
+	*/
+	plungerMaxSpringLength = 30000;
+	plungerAfterSpringDuration = 13.0;
 
-		bootCanTargetBall = true;
-		bootCanTargetCars = true;
-		bootForce = 1800000;
-		bootVerticalForce = 800000.0;
-		bootRelativeForce = true;
-		bootFollowAfterHit = true;
+	punchingGloveCanTargetBall = true;
+	punchingGloveCanTargetCars = true;
+	punchingGloveForce = 180000;
+	punchingGloveVerticalForce = 500.0;
+	punchingGloveRelativeForce = true;
+	punchingGloveFollowAfterHit = true;
 
-		boosterRange = 15000.0;
+	bootCanTargetBall = true;
+	bootCanTargetCars = true;
+	bootForce = 1800000;
+	bootVerticalForce = 500.0;
+	bootRelativeForce = true;
+	bootFollowAfterHit = true;
 
-		freezeActivationDuration = 20;
+	boosterRange = 15000.0;
 
-		swapperRange = 20000.0;
-		swapperCanTargetTeamCars = true;
+	freezeActivationDuration = 20;
 
-		setCrazyRumble = false;
-	}
+	swapperRange = 20000.0;
+	swapperCanTargetTeamCars = true;
+	
 }
 
 void RumbleMods::DrawMenu() {
 	if (RumbleMods::isEnabled()) {
 		{
+			#pragma region BeginMenu
 			// Rumble Controls
 			ImGui::Begin("Rumble Options", &p_open, ImVec2(400, 300), 0.75f);
 
@@ -197,24 +296,24 @@ void RumbleMods::DrawMenu() {
 			*/
 			ImGui::InputFloat("Item Give Rate", &itemGiveRate, 0.5f, 1.0f);
 
-			ImGui::Checkbox("Crazy Items", &enableCrazyItems);
-			if (enableCrazyItems) {
-				setCrazyRumbleValues();
-			}
-			else {
-				setCrazyRumble = true;
-			}
-			
+			ImGui::Separator();
 			ImGui::Combo("Select Item", &selectedRumbleIndex, rumbleItems, IM_ARRAYSIZE(rumbleItems));
 
 			if (ImGui::Button("Give Item")) {
 				giveItem = true;
 			}
-
-			ImGui::Separator();
-
+			ImGui::SameLine();
+			if (ImGui::Button("Reset Settings")) {
+				resetRumbleValues();
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("Set Crazy Items Settings")) {
+				setCrazyRumbleValues();
+			}
+			#pragma endregion BeginMenu
 			//"Boot","Disrupter","Freeze","Magnet","Power Hitter","Punching Glove","Spikes","Swapper","Tornado", "Plunger", "Grappling Hook"
 			// Boot
+			#pragma region Boot
 			if (selectedRumbleIndex == 0) {
 				ImGui::InputFloat("Force", &bootForce, 0.5f, 5.0f);
 				ImGui::InputFloat("Vertical Force", &bootVerticalForce, 0.5f, 5.0f);
@@ -223,6 +322,7 @@ void RumbleMods::DrawMenu() {
 				ImGui::Checkbox("Apply Relative Force", &bootRelativeForce);
 				ImGui::Checkbox("Follow After Hit", &bootFollowAfterHit);
 			}
+			#pragma endregion Boot
 			// Disrupter
 			else if (selectedRumbleIndex == 1) {
 				ImGui::InputFloat("Range", &boosterRange, 0.5f, 5.0f);
@@ -288,14 +388,7 @@ void RumbleMods::DrawMenu() {
 				ImGui::Checkbox("Deactivate on Touch", &grapplingHookDeactivateOnTouch);
 				
 			}
-
-			if(selectedRumbleIndex > 0)
-				ImGui::Separator();
-
-			if (ImGui::Button("Reset Settings")) {
-				resetRumbleValues();
-			}
-
+			ImGui::Separator();
 			//Example Settings
 			//For things that have settings to configure anywhere do something like this
 			//Essentially have a boolean to detect the start and stop of the gamemode while the menu
@@ -326,12 +419,16 @@ void RumbleMods::DrawMenu() {
 	}
 }
 
-void RumbleMods::onEnable() {
+void RumbleMods::onMenuOpen() {
 
 }
-void RumbleMods::onDisable() {
+void RumbleMods::onMenuClose() {
 	resetRumbleValues();
 	//delete[] players;
+}
+
+void RumbleMods::setModEnabled(bool flag) {
+	bStartGameMode = flag;
 }
 
 std::string to_string(wchar_t* text)
@@ -396,26 +493,19 @@ void RumbleMods::onPlayerTick(Event* e) {
 	if (bStartGameMode) {
 
 		if (enableCrazyItems) {
-			itemGiveRate = 0;
+			itemGiveRate = 0.0f;
 		}
 
 		// Start Rumble Settings Yo ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		SDK::UGameEvent_Soccar_SubRules_Items_TA* itemRules = (SDK::UGameEvent_Soccar_SubRules_Items_TA*)((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SubRules;
-		if (itemRules && !Utils::FloatCompare(currItemGiveRate,itemGiveRate)) {
-			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
-			for (int l = 0; l < itemDispensers.Num(); l++) {
-				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
-			}
-		}
-		else {
-		}
 
 		if (itemRules) {
 			SDK::TArray< class SDK::UPlayerItemDispenser_TA* > itemDispensers = itemRules->ItemDispensers;
 
-
 			for (int l = 0; l < itemDispensers.Num(); l++) {
 
+				itemDispensers.GetByIndex(l)->ItemGiveRate = itemGiveRate;
+				
 				SDK::TArray< class SDK::ASpecialPickup_TA* > items = itemDispensers.GetByIndex(l)->ItemPool;
 				for (int q = 0; q < items.Num(); q++)
 				{

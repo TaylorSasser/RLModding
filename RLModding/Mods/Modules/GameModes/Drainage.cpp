@@ -26,39 +26,39 @@ void FileManager::Load() {
 }
 */
 
-Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate) : ModBase(name, key, cat, gamestate) {}
+Drainage::Drainage(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 
 Drainage::~Drainage() {}
 
-void Drainage::onEnable() {
+void Drainage::onMenuOpen() {
 
 }
 
-void Drainage::onDisable() {
+void Drainage::onMenuClose() {
 
 }
 
-void Drainage::ExportSettings(pt::ptree root) {
+void Drainage::ExportSettings(pt::ptree & root) {
 	root.put("Drain_Interval", interval);
 }
-void Drainage::ImportSettings(pt::ptree root) {
+void Drainage::ImportSettings(pt::ptree & root) {
 	interval = root.get<float>("Drain_Interval", 0.6);
 }
 
 void Drainage::DrawMenu() {
 	ImGui::Begin("Drainage Settings", &p_open, ImVec2(400, 300), 0.75f);
-	
+	ImGui::TextWrapped("Players will be demoed when they run out of boost...good luck!");
 	ImGui::InputFloat("Decay Rate", &interval, 0.01f);
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("The rate at which the boost will decay");
-	ImGui::Separator();
-	ImGui::Text("Players will be demoed when they run out of boost...good luck!");
+	
 
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled Drainage");
+				loadMod();
 			}
 
 			else {
@@ -70,6 +70,7 @@ void Drainage::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled Drainage");
 			bStarted = false;
+			unloadMod();
 		}
 	}
 	if (!p_open) {
@@ -80,6 +81,73 @@ void Drainage::DrawMenu() {
 	ImGui::End();
 }
 
+void Drainage::unloadMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+
+	if (localGameEvent) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			AController* tempController = gameEventPlayers.GetByIndex(i);
+
+			// Check if bot or person
+			if (tempController && tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(0);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = false;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = false;
+				}
+
+			}
+			else if (tempController && tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(0);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = false;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = false;
+
+				}
+			}
+		}
+	}
+}
+
+
+void Drainage::loadMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	
+	if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			AController* tempController = gameEventPlayers.GetByIndex(i);
+
+			// Check if bot or person
+			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+					currController->Car->BoostComponent->SetUnlimitedBoost(false);
+				}
+
+			}
+			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+				if (currController->Car && currController->Car->BoostComponent) {
+					currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+					currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
+					currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+					currController->Car->BoostComponent->SetUnlimitedBoost(false);
+
+				}
+			}
+		}
+	}
+}
+
 void Drainage::onPlayerTick(Event* event) {
 	if (bStarted) {
 		srand(time(NULL));
@@ -87,29 +155,37 @@ void Drainage::onPlayerTick(Event* event) {
 
 		if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
 			TArray< class AController* > gameEventPlayers = localGameEvent->Players;
-
 			for (int i = 0; i < gameEventPlayers.Num(); i++) {
 
 				AController* tempController = gameEventPlayers.GetByIndex(i);
-
 
 				// Check if bot or person
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->RechargeRate = -1 * interval;
+						if (localGameEvent->ReplicatedStateName.GetName().compare("Countdown") == 0) {
+							currController->Car->BoostComponent->SetRechargeRate(0);
+						}
+						else {
+							currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						}
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
 					}
-
 
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					if (currController->Car && currController->Car->BoostComponent) {
-						currController->Car->BoostComponent->RechargeRate = -1 * interval;
+						if (localGameEvent->ReplicatedStateName.GetName().compare("Countdown") == 0) {
+							currController->Car->BoostComponent->SetRechargeRate(0);
+						}
+						else {
+							currController->Car->BoostComponent->SetRechargeRate(-1 * interval);
+						}
 						currController->Car->BoostComponent->bDemolishOnEmptyMyHalf = true;
 						currController->Car->BoostComponent->bDemolishOnEmptyOpposingHalf = true;
+
 					}
 				}
 

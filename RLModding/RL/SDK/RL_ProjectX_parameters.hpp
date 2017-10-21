@@ -3125,6 +3125,28 @@ struct UCrossplayConfig_X_PlatformsShareGroup_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function ProjectX.PhysicsConfig_X.DisableFeature
+struct UPhysicsConfig_X_DisableFeature_Params
+{
+	struct FString                                     Feature;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PhysicsConfig_X.EnableFeature
+struct UPhysicsConfig_X_EnableFeature_Params
+{
+	struct FString                                     Feature;                                                  // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PhysicsConfig_X.Reset
+struct UPhysicsConfig_X_Reset_Params
+{
+};
+
+// Function ProjectX.PhysicsConfig_X.Apply
+struct UPhysicsConfig_X_Apply_Params
+{
+};
+
 // Function ProjectX.RPCConfig_X.IsRPCDisabled
 struct URPCConfig_X_IsRPCDisabled_Params
 {
@@ -3970,6 +3992,7 @@ struct UPsyNetConnection_X_ClearMaintenance_Params
 // Function ProjectX.PsyNetConnection_X.HandleErrorRPC
 struct UPsyNetConnection_X_HandleErrorRPC_Params
 {
+	class URPCQueue_X*                                 InQueue;                                                  // (CPF_Parm, CPF_EditInline)
 	class URPC_X*                                      InRPC;                                                    // (CPF_Parm)
 	class UError*                                      Error;                                                    // (CPF_Parm)
 };
@@ -4704,9 +4727,17 @@ struct URPCQueue_X_SendRequestDelegate_Params
 	class USendRequestTask*                            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function ProjectX.RPCQueue_X.EventError
-struct URPCQueue_X_EventError_Params
+// Function ProjectX.RPCQueue_X.EventBatchError
+struct URPCQueue_X_EventBatchError_Params
 {
+	class URPCQueue_X*                                 RPCQueue;                                                 // (CPF_Parm, CPF_EditInline)
+	class UError*                                      Error;                                                    // (CPF_Parm)
+};
+
+// Function ProjectX.RPCQueue_X.EventRPCError
+struct URPCQueue_X_EventRPCError_Params
+{
+	class URPCQueue_X*                                 RPCQueue;                                                 // (CPF_Parm, CPF_EditInline)
 	class URPC_X*                                      RPC;                                                      // (CPF_Parm)
 	class UError*                                      Error;                                                    // (CPF_Parm)
 };
@@ -6768,6 +6799,7 @@ struct UOnlinePlayer_X_IsPrimaryPlayer_Params
 // Function ProjectX.OnlinePlayer_X.HandleErrorRPC
 struct UOnlinePlayer_X_HandleErrorRPC_Params
 {
+	class URPCQueue_X*                                 InQueue;                                                  // (CPF_Parm, CPF_EditInline)
 	class URPC_X*                                      RPC;                                                      // (CPF_Parm)
 	class UError*                                      Error;                                                    // (CPF_Parm)
 };
@@ -7596,6 +7628,11 @@ struct UTcpConnection_EventDisconnected_Params
 struct UTcpConnection_EventConnected_Params
 {
 	class UTcpConnection*                              Connection;                                               // (CPF_Parm)
+};
+
+// Function ProjectX.WebSocketConnection_X.Close
+struct UWebSocketConnection_X_Close_Params
+{
 };
 
 // Function ProjectX.WebSocketConnection_X.BeginWebSocketConnect
@@ -8485,7 +8522,7 @@ struct UOnlineGameParty_X_HandleJoinGameComplete_Params
 struct UOnlineGameParty_X_GetPartyMemberServer_Params
 {
 	struct FPartyMemberServer                          ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-	struct FPartyMemberServer                          StructInitializer_AE91A0294BB84AE86418E6BED0782ACF;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	struct FPartyMemberServer                          StructInitializer_E2C69AE7445C90487B8FF48CEA25CB7E;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameParty_X.HandlePartyMemberJoinGame
@@ -8596,6 +8633,7 @@ struct UOnlineGameParty_X_JoinParty_Params
 {
 	int                                                LocalPlayerNum;                                           // (CPF_Parm)
 	struct FUniqueLobbyId                              InPartyId;                                                // (CPF_Const, CPF_Parm, CPF_OutParm)
+	struct FPendingInviteData                          StructInitializer_E2A8BF6547843AC2706C26B0898C3B09;       // (CPF_Const, CPF_OutParm)
 };
 
 // Function ProjectX.OnlineGameParty_X.CheckPartyTimeout
@@ -9069,7 +9107,7 @@ struct UOnlineGameSkill_X_ReplicateSeasonReward_Params
 struct UOnlineGameSkill_X_HandleSkillsUpdated_Params
 {
 	class URPC_X*                                      RPC;                                                      // (CPF_Parm)
-	struct FPlayerSeasonRewardProgress                 StructInitializer_3128EB3C462E6A23D4DFDFA61F2814F0;       // (CPF_Const, CPF_OutParm)
+	struct FPlayerSeasonRewardProgress                 StructInitializer_2871D16C44A8AB05E324FEB55F27F953;       // (CPF_Const, CPF_OutParm)
 };
 
 // Function ProjectX.OnlineGameSkill_X.SubmitMatch
@@ -10227,7 +10265,7 @@ struct AGRI_X_OnReservationsUpdated_Params
 struct AGRI_X_SetReservations_Params
 {
 	TArray<struct FReplicatedReservationData>          InReservations;                                           // (CPF_Parm, CPF_NeedCtorLink)
-	struct FReplicatedReservationData                  StructInitializer_A8B221F340E612EC5DAFABA7CF1A02F5;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	struct FReplicatedReservationData                  StructInitializer_AC6F987F460A2E82AF4F3A815A232E92;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.GRI_X.ConvertReservation
@@ -10235,13 +10273,13 @@ struct AGRI_X_ConvertReservation_Params
 {
 	struct FReservationData                            Data;                                                     // (CPF_Parm, CPF_NeedCtorLink)
 	struct FReplicatedReservationData                  ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-	struct FReplicatedReservationData                  StructInitializer_3AF948B04A86812831C8EB9B5D010D73;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	struct FReplicatedReservationData                  StructInitializer_E832BDE445F690E33548BA80F9421302;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.GRI_X.UpdateReservations
 struct AGRI_X_UpdateReservations_Params
 {
-	TArray<struct FReplicatedReservationData>          MapLocal_9538C78F47142F8621255A9B492F2898;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<struct FReplicatedReservationData>          MapLocal_3A34891E4464C86460BA8BA915064082;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.GRI_X.ReplicatedEvent
@@ -10540,13 +10578,6 @@ struct UOnlineConfigDispatcher_X_Construct_Params
 {
 };
 
-// Function ProjectX.WebCache_X.GetErrorDebugString
-struct UWebCache_X_GetErrorDebugString_Params
-{
-	class UError*                                      Error;                                                    // (CPF_Parm)
-	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-};
-
 // Function ProjectX.WebCache_X.GetRequestDebugString
 struct UWebCache_X_GetRequestDebugString_Params
 {
@@ -10719,7 +10750,7 @@ struct UOnlineGameSkillGroups_X_ReverseMapPlayerIDs_Params
 {
 	TArray<int>                                        PlayerIndexes;                                            // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FUniqueNetId>                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-	TArray<struct FUniqueNetId>                        MapLocal_A305344E403B1AFF01B8EC8090C32CCD;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<struct FUniqueNetId>                        MapLocal_61408BD84F8EF848E3B744BA973C4E7F;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameSkillGroups_X.HashPlayerIndexes
@@ -10741,8 +10772,8 @@ struct UOnlineGameSkillGroups_X_MapPlayerIDs_Params
 {
 	TArray<struct FUniqueNetId>                        PlayerIDs;                                                // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
 	TArray<int>                                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-	TArray<int>                                        MapLocal_75AD7BE446C0AA6F6A3AD99AAAB215C9;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
-	TArray<int>                                        SortLocal_84037D464416E987592B06876CC3042A;               // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<int>                                        MapLocal_49B813D34EC4A8E23EEE08BB914A4C49;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<int>                                        SortLocal_4E814D654CA845461202D9A545D40F15;               // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameSkillGroups_X.GetOrCreatePlayerGroup
@@ -11622,7 +11653,7 @@ struct UOnlineGameMatchmaking_X_StartSearch_Params
 	TArray<int>                                        InPreferredPlaylists;                                     // (CPF_Parm, CPF_NeedCtorLink)
 	TArray<struct FString>                             InPreferredRegions;                                       // (CPF_Parm, CPF_NeedCtorLink)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-	TArray<int>                                        SortLocal_BB48D62A4FCE9F99ADD6CC916BE6EBEA;               // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<int>                                        SortLocal_1F058A084CBF42B83682758A3F7D85EC;               // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.OnlineGameMatchmaking_X.OnInit
@@ -12928,6 +12959,13 @@ struct URPC_StartMatchmaking_X_SetIgnoreSkill_Params
 	class URPC_StartMatchmaking_X*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
+// Function ProjectX.RPC_StartMatchmaking_X.SetPartyId
+struct URPC_StartMatchmaking_X_SetPartyId_Params
+{
+	struct FString                                     InPartyId;                                                // (CPF_Parm, CPF_NeedCtorLink)
+	class URPC_StartMatchmaking_X*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
 // Function ProjectX.RPC_StartMatchmaking_X.SetPartyMembers
 struct URPC_StartMatchmaking_X_SetPartyMembers_Params
 {
@@ -12969,279 +13007,18 @@ struct URPC_StartMatchmaking_X_SetRegions_Params
 	class URPC_StartMatchmaking_X*                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function ProjectX.PartyMessage_X.Broadcast
-struct UPartyMessage_X_Broadcast_Params
+// Function ProjectX.Parties_X.GetPsyNetPartyID
+struct UParties_X_GetPsyNetPartyID_Params
 {
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
 };
 
-// Function ProjectX.PartyMessage_SearchStatus_X.SetIsSearching
-struct UPartyMessage_SearchStatus_X_SetIsSearching_Params
+// Function ProjectX.Parties_X.FindPartyLeaderID
+struct UParties_X_FindPartyLeaderID_Params
 {
-	bool                                               bValue;                                                   // (CPF_Parm)
-	class UPartyMessage_SearchStatus_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_SearchStatus_X.SetSearchState
-struct UPartyMessage_SearchStatus_X_SetSearchState_Params
-{
-	struct FName                                       InSearchState;                                            // (CPF_Parm)
-	class UPartyMessage_SearchStatus_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LobbySettings_X.SetBuildID
-struct UPartyMessage_LobbySettings_X_SetBuildID_Params
-{
-	int                                                InBuildID;                                                // (CPF_Parm)
-	class UPartyMessage_LobbySettings_X*               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_Kick_X.SetReason
-struct UPartyMessage_Kick_X_SetReason_Params
-{
-	TEnumAsByte<ELobbyKickReason>                      InKickReason;                                             // (CPF_Parm)
-	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_Kick_X.SetInstigator
-struct UPartyMessage_Kick_X_SetInstigator_Params
-{
-	struct FUniqueNetId                                InPlayer;                                                 // (CPF_Parm)
-	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_Kick_X.SetKicked
-struct UPartyMessage_Kick_X_SetKicked_Params
-{
-	struct FUniqueNetId                                InPlayer;                                                 // (CPF_Parm)
-	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.SetFromLeader
-struct UPartyMessage_LocalPlayers_X_SetFromLeader_Params
-{
-	bool                                               bIsLeader;                                                // (CPF_Parm)
-	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.AddMember
-struct UPartyMessage_LocalPlayers_X_AddMember_Params
-{
-	struct FPartyMember                                Member;                                                   // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.AddPlayer
-struct UPartyMessage_LocalPlayers_X_AddPlayer_Params
-{
-	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
-	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
-	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayer
-struct UPartyMessage_LocalPlayers_X_AddOnlinePlayer_Params
-{
-	class UOnlinePlayer_X*                             Player;                                                   // (CPF_Parm)
-	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.SetPrimaryMemberId
-struct UPartyMessage_LocalPlayers_X_SetPrimaryMemberId_Params
-{
-	struct FUniqueNetId                                InPrimaryMemberId;                                        // (CPF_Parm)
-	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayers
-struct UPartyMessage_LocalPlayers_X_AddOnlinePlayers_Params
-{
-	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMatchmakeRestrictions
-struct UPartyMessage_MatchmakingAvailability_X_SetMatchmakeRestrictions_Params
-{
-	int                                                InRestrictions;                                           // (CPF_Parm)
-	class UPartyMessage_MatchmakingAvailability_X*     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMemberId
-struct UPartyMessage_MatchmakingAvailability_X_SetMemberId_Params
-{
-	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
-	class UPartyMessage_MatchmakingAvailability_X*     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_JoinGame_X.SetSettings
-struct UPartyMessage_JoinGame_X_SetSettings_Params
-{
-	struct FPartyJoinMatchSettings                     InSettings;                                               // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	class UPartyMessage_JoinGame_X*                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberID
-struct UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberID_Params
-{
-	struct FUniqueNetId                                InPlayerId;                                               // (CPF_Parm)
-	class UPartyMessage_PartyMemberJoinGame_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberServer
-struct UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberServer_Params
-{
-	struct FPartyMemberServer                          InServer;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
-	class UPartyMessage_PartyMemberJoinGame_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_DisableCrossPlay_X.SetDisableCrossPlay
-struct UPartyMessage_DisableCrossPlay_X_SetDisableCrossPlay_Params
-{
-	bool                                               InDisableCrossPlay;                                       // (CPF_Parm)
-	class UPartyMessage_DisableCrossPlay_X*            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_DisableCrossPlay_X.SetMemberId
-struct UPartyMessage_DisableCrossPlay_X_SetMemberId_Params
-{
-	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
-	class UPartyMessage_DisableCrossPlay_X*            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_InviteToTrade_X.SetInviteMemberId
-struct UPartyMessage_InviteToTrade_X_SetInviteMemberId_Params
-{
-	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
-	class UPartyMessage_InviteToTrade_X*               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetTradeId
-struct UPartyMessage_AcceptInviteToTrade_X_SetTradeId_Params
-{
-	struct FGuid                                       InTradeId;                                                // (CPF_Parm)
-	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteAccepted
-struct UPartyMessage_AcceptInviteToTrade_X_SetInviteAccepted_Params
-{
-	bool                                               bInInviteAccepted;                                        // (CPF_Parm)
-	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteMemberId
-struct UPartyMessage_AcceptInviteToTrade_X_SetInviteMemberId_Params
-{
-	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
-	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetTradingMemberId
-struct UPartyMessage_PlayerTradeComplete_X_SetTradingMemberId_Params
-{
-	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
-	class UPartyMessage_PlayerTradeComplete_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyMessage
-struct UPartyMetrics_X_PartyMessage_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FName                                       MessageType;                                              // (CPF_Parm)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyChanged
-struct UPartyMetrics_X_PartyChanged_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	bool                                               bLeader;                                                  // (CPF_Parm)
-	int                                                PartySize;                                                // (CPF_Parm)
-	int                                                LocalPlayers;                                             // (CPF_Parm)
-	int                                                RemotePlayers;                                            // (CPF_Parm)
-};
-
-// Function ProjectX.PartyMetrics_X.CreatePartyMetricsData
-struct UPartyMetrics_X_CreatePartyMetricsData_Params
-{
-	class UOnlineGameParty_X*                          Party;                                                    // (CPF_Parm)
-	struct FPartyMetricsData                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMetrics_X.RecordPartyChanged
-struct UPartyMetrics_X_RecordPartyChanged_Params
-{
-	class UOnlineGameParty_X*                          Party;                                                    // (CPF_Parm)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyError
-struct UPartyMetrics_X_PartyError_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyKickRemotePlayer
-struct UPartyMetrics_X_PartyKickRemotePlayer_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyKickLocalPlayer
-struct UPartyMetrics_X_PartyKickLocalPlayer_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyLeave
-struct UPartyMetrics_X_PartyLeave_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyCreationFailed
-struct UPartyMetrics_X_PartyCreationFailed_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PartyMetrics_X.PartyCreated
-struct UPartyMetrics_X_PartyCreated_Params
-{
-	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
-};
-
-// Function ProjectX.PartyMessage_ReadyToTrade_X.SetReadyToTrade
-struct UPartyMessage_ReadyToTrade_X_SetReadyToTrade_Params
-{
-	bool                                               bInReadyToTrade;                                          // (CPF_Parm)
-	class UPartyMessage_ReadyToTrade_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.PartyMessage_ReadyToTrade_X.SetTradingMemberId
-struct UPartyMessage_ReadyToTrade_X_SetTradingMemberId_Params
-{
-	struct FUniqueNetId                                InTradingMemberId;                                        // (CPF_Parm)
-	class UPartyMessage_ReadyToTrade_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.RankedConfig_X.HasSeasonEnded
-struct URankedConfig_X_HasSeasonEnded_Params
-{
-	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.RankedConfig_X.GetSeasonTimeRemaining
-struct URankedConfig_X_GetSeasonTimeRemaining_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function ProjectX.RankedConfig_X.Apply
-struct URankedConfig_X_Apply_Params
-{
+	TArray<struct FPsyNetPartyMember>                  Members;                                                  // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	struct FUniqueNetId                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+	struct FUniqueNetId                                StructInitializer_879F34D54899B571F45B26B27CF4F25D;       // (CPF_Const, CPF_OutParm)
 };
 
 // Function ProjectX.Parties_X.HandleOwnerChanged
@@ -13336,7 +13113,7 @@ struct UParties_X_SetPsyNetConnection_Params
 // Function ProjectX.Parties_X.ClearLobbyData
 struct UParties_X_ClearLobbyData_Params
 {
-	struct FActiveLobbyInfo                            StructInitializer_F19C7D2A48C266DE40A93797526EABCC;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	struct FActiveLobbyInfo                            StructInitializer_2C4F09BD4E8B4FDC7327E9AEA88F71E2;       // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.Parties_X.DestroyLobby
@@ -13377,6 +13154,7 @@ struct UParties_X_GetPrimaryPlayer_Params
 // Function ProjectX.Parties_X.OnExit
 struct UParties_X_OnExit_Params
 {
+	struct FUniqueLobbyId                              StructInitializer_A165731F459576645BB0539C0845593C;       // (CPF_Const, CPF_OutParm)
 };
 
 // Function ProjectX.Parties_X.Construct
@@ -13694,23 +13472,12 @@ struct UParties_X_PlayTogether_Invite_Params
 	struct FString                                     InviteMessage;                                            // (CPF_Const, CPF_Parm, CPF_NeedCtorLink)
 };
 
-// Function ProjectX.Parties_X.ClearLobbyInvitePendingDelegate
-struct UParties_X_ClearLobbyInvitePendingDelegate_Params
-{
-	struct FScriptDelegate                             LobbyInvitePendingDelegate;                               // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.Parties_X.AddLobbyInvitePendingDelegate
-struct UParties_X_AddLobbyInvitePendingDelegate_Params
-{
-	struct FScriptDelegate                             LobbyInvitePendingDelegate;                               // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.Parties_X.OnLobbyInvitePending
-struct UParties_X_OnLobbyInvitePending_Params
+// Function ProjectX.Parties_X.EventLobbyInvitePending
+struct UParties_X_EventLobbyInvitePending_Params
 {
 	struct FUniqueLobbyId                              LobbyId;                                                  // (CPF_Const, CPF_Parm)
 	struct FUniqueNetId                                FromUserId;                                               // (CPF_Const, CPF_Parm)
+	struct FString                                     FromUserName;                                             // (CPF_Parm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.Parties_X.ClearLobbyInviteDelegate
@@ -13964,6 +13731,281 @@ struct UParties_X_OnCreateLobbyComplete_Params
 
 // Function ProjectX.Parties_X.EventShowInviteUI
 struct UParties_X_EventShowInviteUI_Params
+{
+};
+
+// Function ProjectX.PartyMessage_X.Broadcast
+struct UPartyMessage_X_Broadcast_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_SearchStatus_X.SetIsSearching
+struct UPartyMessage_SearchStatus_X_SetIsSearching_Params
+{
+	bool                                               bValue;                                                   // (CPF_Parm)
+	class UPartyMessage_SearchStatus_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_SearchStatus_X.SetSearchState
+struct UPartyMessage_SearchStatus_X_SetSearchState_Params
+{
+	struct FName                                       InSearchState;                                            // (CPF_Parm)
+	class UPartyMessage_SearchStatus_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LobbySettings_X.SetBuildID
+struct UPartyMessage_LobbySettings_X_SetBuildID_Params
+{
+	int                                                InBuildID;                                                // (CPF_Parm)
+	class UPartyMessage_LobbySettings_X*               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_Kick_X.SetReason
+struct UPartyMessage_Kick_X_SetReason_Params
+{
+	TEnumAsByte<ELobbyKickReason>                      InKickReason;                                             // (CPF_Parm)
+	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_Kick_X.SetInstigator
+struct UPartyMessage_Kick_X_SetInstigator_Params
+{
+	struct FUniqueNetId                                InPlayer;                                                 // (CPF_Parm)
+	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_Kick_X.SetKicked
+struct UPartyMessage_Kick_X_SetKicked_Params
+{
+	struct FUniqueNetId                                InPlayer;                                                 // (CPF_Parm)
+	class UPartyMessage_Kick_X*                        ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.SetFromLeader
+struct UPartyMessage_LocalPlayers_X_SetFromLeader_Params
+{
+	bool                                               bIsLeader;                                                // (CPF_Parm)
+	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.AddMember
+struct UPartyMessage_LocalPlayers_X_AddMember_Params
+{
+	struct FPartyMember                                Member;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.AddPlayer
+struct UPartyMessage_LocalPlayers_X_AddPlayer_Params
+{
+	struct FUniqueNetId                                PlayerID;                                                 // (CPF_Parm)
+	struct FString                                     PlayerName;                                               // (CPF_Parm, CPF_NeedCtorLink)
+	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayer
+struct UPartyMessage_LocalPlayers_X_AddOnlinePlayer_Params
+{
+	class UOnlinePlayer_X*                             Player;                                                   // (CPF_Parm)
+	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.SetPrimaryMemberId
+struct UPartyMessage_LocalPlayers_X_SetPrimaryMemberId_Params
+{
+	struct FUniqueNetId                                InPrimaryMemberId;                                        // (CPF_Parm)
+	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_LocalPlayers_X.AddOnlinePlayers
+struct UPartyMessage_LocalPlayers_X_AddOnlinePlayers_Params
+{
+	class UPartyMessage_LocalPlayers_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMatchmakeRestrictions
+struct UPartyMessage_MatchmakingAvailability_X_SetMatchmakeRestrictions_Params
+{
+	int                                                InRestrictions;                                           // (CPF_Parm)
+	class UPartyMessage_MatchmakingAvailability_X*     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_MatchmakingAvailability_X.SetMemberId
+struct UPartyMessage_MatchmakingAvailability_X_SetMemberId_Params
+{
+	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
+	class UPartyMessage_MatchmakingAvailability_X*     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_JoinGame_X.SetSettings
+struct UPartyMessage_JoinGame_X_SetSettings_Params
+{
+	struct FPartyJoinMatchSettings                     InSettings;                                               // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	class UPartyMessage_JoinGame_X*                    ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberID
+struct UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberID_Params
+{
+	struct FUniqueNetId                                InPlayerId;                                               // (CPF_Parm)
+	class UPartyMessage_PartyMemberJoinGame_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_PartyMemberJoinGame_X.SetPartyMemberServer
+struct UPartyMessage_PartyMemberJoinGame_X_SetPartyMemberServer_Params
+{
+	struct FPartyMemberServer                          InServer;                                                 // (CPF_Const, CPF_Parm, CPF_OutParm, CPF_NeedCtorLink)
+	class UPartyMessage_PartyMemberJoinGame_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_DisableCrossPlay_X.SetDisableCrossPlay
+struct UPartyMessage_DisableCrossPlay_X_SetDisableCrossPlay_Params
+{
+	bool                                               InDisableCrossPlay;                                       // (CPF_Parm)
+	class UPartyMessage_DisableCrossPlay_X*            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_DisableCrossPlay_X.SetMemberId
+struct UPartyMessage_DisableCrossPlay_X_SetMemberId_Params
+{
+	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
+	class UPartyMessage_DisableCrossPlay_X*            ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_InviteToTrade_X.SetInviteMemberId
+struct UPartyMessage_InviteToTrade_X_SetInviteMemberId_Params
+{
+	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
+	class UPartyMessage_InviteToTrade_X*               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetTradeId
+struct UPartyMessage_AcceptInviteToTrade_X_SetTradeId_Params
+{
+	struct FGuid                                       InTradeId;                                                // (CPF_Parm)
+	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteAccepted
+struct UPartyMessage_AcceptInviteToTrade_X_SetInviteAccepted_Params
+{
+	bool                                               bInInviteAccepted;                                        // (CPF_Parm)
+	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_AcceptInviteToTrade_X.SetInviteMemberId
+struct UPartyMessage_AcceptInviteToTrade_X_SetInviteMemberId_Params
+{
+	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
+	class UPartyMessage_AcceptInviteToTrade_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_PlayerTradeComplete_X.SetTradingMemberId
+struct UPartyMessage_PlayerTradeComplete_X_SetTradingMemberId_Params
+{
+	struct FUniqueNetId                                InMemberId;                                               // (CPF_Parm)
+	class UPartyMessage_PlayerTradeComplete_X*         ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyMessage
+struct UPartyMetrics_X_PartyMessage_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FName                                       MessageType;                                              // (CPF_Parm)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyChanged
+struct UPartyMetrics_X_PartyChanged_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	bool                                               bLeader;                                                  // (CPF_Parm)
+	int                                                PartySize;                                                // (CPF_Parm)
+	int                                                LocalPlayers;                                             // (CPF_Parm)
+	int                                                RemotePlayers;                                            // (CPF_Parm)
+};
+
+// Function ProjectX.PartyMetrics_X.CreatePartyMetricsData
+struct UPartyMetrics_X_CreatePartyMetricsData_Params
+{
+	class UOnlineGameParty_X*                          Party;                                                    // (CPF_Parm)
+	struct FPartyMetricsData                           ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMetrics_X.RecordPartyChanged
+struct UPartyMetrics_X_RecordPartyChanged_Params
+{
+	class UOnlineGameParty_X*                          Party;                                                    // (CPF_Parm)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyError
+struct UPartyMetrics_X_PartyError_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyKickRemotePlayer
+struct UPartyMetrics_X_PartyKickRemotePlayer_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyKickLocalPlayer
+struct UPartyMetrics_X_PartyKickLocalPlayer_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_CoerceParm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyLeave
+struct UPartyMetrics_X_PartyLeave_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyCreationFailed
+struct UPartyMetrics_X_PartyCreationFailed_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+	struct FString                                     Error;                                                    // (CPF_Parm, CPF_NeedCtorLink)
+};
+
+// Function ProjectX.PartyMetrics_X.PartyCreated
+struct UPartyMetrics_X_PartyCreated_Params
+{
+	struct FUniqueNetId                                PartyID;                                                  // (CPF_Parm)
+};
+
+// Function ProjectX.PartyMessage_ReadyToTrade_X.SetReadyToTrade
+struct UPartyMessage_ReadyToTrade_X_SetReadyToTrade_Params
+{
+	bool                                               bInReadyToTrade;                                          // (CPF_Parm)
+	class UPartyMessage_ReadyToTrade_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.PartyMessage_ReadyToTrade_X.SetTradingMemberId
+struct UPartyMessage_ReadyToTrade_X_SetTradingMemberId_Params
+{
+	struct FUniqueNetId                                InTradingMemberId;                                        // (CPF_Parm)
+	class UPartyMessage_ReadyToTrade_X*                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.RankedConfig_X.HasSeasonEnded
+struct URankedConfig_X_HasSeasonEnded_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.RankedConfig_X.GetSeasonTimeRemaining
+struct URankedConfig_X_GetSeasonTimeRemaining_Params
+{
+	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
+};
+
+// Function ProjectX.RankedConfig_X.Apply
+struct URankedConfig_X_Apply_Params
 {
 };
 
@@ -15142,28 +15184,6 @@ struct URPC_UpdateTrialData_X_SetMinutesToRemove_Params
 	class URPC_UpdateTrialData_X*                      ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function ProjectX.PhysicsConfig_X.DisableFeature
-struct UPhysicsConfig_X_DisableFeature_Params
-{
-	struct FString                                     Feature;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PhysicsConfig_X.EnableFeature
-struct UPhysicsConfig_X_EnableFeature_Params
-{
-	struct FString                                     Feature;                                                  // (CPF_Parm, CPF_NeedCtorLink)
-};
-
-// Function ProjectX.PhysicsConfig_X.Reset
-struct UPhysicsConfig_X_Reset_Params
-{
-};
-
-// Function ProjectX.PhysicsConfig_X.Apply
-struct UPhysicsConfig_X_Apply_Params
-{
-};
-
 // Function ProjectX.RPC_CheckKeys_X.KeysMatch
 struct URPC_CheckKeys_X_KeysMatch_Params
 {
@@ -15323,7 +15343,7 @@ struct URPC_GetPlayerPermissions_X_ConvertPlayerPermissions_Params
 struct URPC_GetPlayerPermissions_X_GetPlayerPermissions_Params
 {
 	TArray<struct FPlayerPermissionsList>              ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm, CPF_NeedCtorLink)
-	TArray<struct FPlayerPermissionsList>              MapLocal_C71E7F784B91EDA939AC1B9CCD3130FE;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<struct FPlayerPermissionsList>              MapLocal_CD0E57E6434BEC7B724A2E8F7BD8F5CF;                // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.RPC_GetPlayerPermissions_X.SetPlayers
@@ -16033,12 +16053,24 @@ struct UPerConMetrics_X_Disconnected_Params
 	int                                                Count;                                                    // (CPF_Parm)
 	int                                                Code;                                                     // (CPF_Parm)
 	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+	float                                              ElapsedSeconds;                                           // (CPF_Parm)
 };
 
 // Function ProjectX.PerConMetrics_X.Connected
 struct UPerConMetrics_X_Connected_Params
 {
 	struct FString                                     PlayerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	float                                              ElapsedSeconds;                                           // (CPF_Parm)
+};
+
+// Function ProjectX.PerConMetrics_X.ConnectFail
+struct UPerConMetrics_X_ConnectFail_Params
+{
+	struct FString                                     PlayerID;                                                 // (CPF_Parm, CPF_NeedCtorLink)
+	int                                                Count;                                                    // (CPF_Parm)
+	int                                                Code;                                                     // (CPF_Parm)
+	struct FString                                     Reason;                                                   // (CPF_Parm, CPF_NeedCtorLink)
+	float                                              ElapsedSeconds;                                           // (CPF_Parm)
 };
 
 // Function ProjectX.PerConMetrics_X.StartConnectFail
@@ -16076,6 +16108,7 @@ struct UPerConMetrics_X_Enabled_Params
 // Function ProjectX.PerConMetrics_X.HandleRPCError
 struct UPerConMetrics_X_HandleRPCError_Params
 {
+	class URPCQueue_X*                                 InQueue;                                                  // (CPF_Parm, CPF_EditInline)
 	class URPC_X*                                      RPC;                                                      // (CPF_Parm)
 	class UError*                                      Error;                                                    // (CPF_Parm)
 };
@@ -16136,8 +16169,8 @@ struct UPerConMetrics_X_Construct_Params
 {
 };
 
-// Function ProjectX.PerConMonitor_X.__PerConMonitor_X__HandleRPCError_1
-struct UPerConMonitor_X___PerConMonitor_X__HandleRPCError_1_Params
+// Function ProjectX.PerConMonitor_X.__PerConMonitor_X__HandleBatchError_1
+struct UPerConMonitor_X___PerConMonitor_X__HandleBatchError_1_Params
 {
 	float                                              RemoveTime;                                               // (CPF_Parm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
@@ -16150,12 +16183,12 @@ struct UPerConMonitor_X_IsPerConRelevantError_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
 };
 
-// Function ProjectX.PerConMonitor_X.HandleRPCError
-struct UPerConMonitor_X_HandleRPCError_Params
+// Function ProjectX.PerConMonitor_X.HandleBatchError
+struct UPerConMonitor_X_HandleBatchError_Params
 {
-	class URPC_X*                                      RPC;                                                      // (CPF_Parm)
+	class URPCQueue_X*                                 InQueue;                                                  // (CPF_Parm, CPF_EditInline)
 	class UError*                                      Error;                                                    // (CPF_Parm)
-	TArray<float>                                      FilterLocal_149C8FCA4AD7D366ECD5B18BB60B884D;             // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
+	TArray<float>                                      FilterLocal_2C98087B426214E6EB94EB99023374C7;             // (CPF_Const, CPF_OutParm, CPF_NeedCtorLink)
 };
 
 // Function ProjectX.PerConMonitor_X.HandleInvalidMessage

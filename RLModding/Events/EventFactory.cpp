@@ -51,7 +51,22 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Car_TA.OnHitBall",&ModBase::onBallHit);
 	SubscribeEvent("Function TAGame.Ball_TA.OnCarTouch", &ModBase::onBallCarTouch);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnGameTimeUpdated", &ModBase::onGameTimeUpdated);
+<<<<<<< HEAD
 	
+=======
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventGoalScored", &ModBase::onEventGoalScored);
+	SubscribeEvent("Function TAGame.ReplayDirector_TA.GoalScored", &ModBase::onReplayGoalScored);
+	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.BeginCameraState", &ModBase::onReplayCameraStarted);
+	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.EndCameraState", &ModBase::onReplayCameraFinished);	
+	SubscribeEvent("Function TAGame.Ball_TA.EventHitGround", &ModBase::eventBallHitGround);
+	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
+	SubscribeEvent("Function TAGame.ReplayManager_TA.EventHeadersLoaded", &ModBase::eventReplayHeadersLoaded);
+	SubscribeEvent("Function TAGame.GFxData_TrainingModeBrowser_TA.EventAllTrainingFilesLoaded", &ModBase::eventAllTrainingFilesLoaded); // only triggered for favorite and created
+	SubscribeEvent("Function TAGame.GameInfo_TA.EventGameInitialized", &ModBase::gameInfoInitGame);
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnBallSpawned", &ModBase::onBallSpawned);
+
+	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
+>>>>>>> 92b05802cda9b8299b8438cde66a08cb2fcb2439
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);
 	//SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Exit", &ModBase::onSteamNetCloser);
 	//SubscribeEvent("Function Engine.HUD.PostRender", &ModBase::onHUDPostRender);

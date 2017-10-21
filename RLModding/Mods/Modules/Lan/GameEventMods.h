@@ -2,6 +2,8 @@
 #include "../../ModBase.h"
 #include "../../../Interfaces/InstanceStorage.h"
 #include <ctime>
+#include <chrono>
+
 
 class GameEventMods : public ModBase {
 public:
@@ -9,9 +11,14 @@ public:
 	GameEventMods(std::string, int key);
 
 	void DrawMenu() override;
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
+	void onGameTimeUpdated(Event* e) override;
+	void eventBallHitGround(Event* e) override;
+	void onBallTick(Event* e) override;
+	void gameInfoInitGame(Event* e) override;
+
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
 
@@ -44,11 +51,29 @@ private:
 	bool testServerSay = false;
 
 	int botsToSpawn = 1;
-	int teamIndex = 0;
 
 	int blueScore = 0;
 	int orangeScore = 0;
 	int respawnTime = 0;
+
+	bool bounceBasedTime = false;
+	int bouncesRemaining = 300;
+	FVector lastBallPos = { 0,0,0 };
+	std::chrono::high_resolution_clock::time_point lastBallUpdateTime = std::chrono::high_resolution_clock::now();
+	bool testGoalDisable = false;
+	AGameInfo_TA* testGameInfo = NULL;
+
+	bool ownGoalDisabled = false;
+	bool disableOwnGoal = false;
+
+	bool goalDisabled = false;
+	bool disableGoals = false;
+
+	bool testChangeName = false;
+	bool testArenaColor = false;
+	float arenaCol[4] = { 0.0f,0.0f,0.0f,1.0f };
+
+	bool hideGameBall = false;
 
 	bool p_open = true;
 	// Clock 

@@ -1,15 +1,15 @@
 #include "BallMods.h"
 #include "../Utils/Utils.h"
 #include "../Interfaces/Interfaces.h"
-
+#include <map>
 //
 // Need to fix removing balls via the plus and minsus (crashes atm) 
 //
 
 /*
-	Adding balls
-	Adjusting each balls scale
-	Freezing / exploding each ball
+Adding balls
+Adjusting each balls scale
+Freezing / exploding each ball
 */
 
 BallMods::BallMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
@@ -18,23 +18,41 @@ BallMods::BallMods(std::string name, int key) : ModBase(name, key) {}
 void BallMods::ExportSettings(pt::ptree) {}
 void BallMods::ImportSettings(pt::ptree) {}
 
+void BallMods::resetBalls() {
+
+	for (int i = 0; i < numGameBalls && i < MAXBALLS; i++) {
+		BallSetting newBallSetting;
+		newBallSetting.Scale = 1.0f;
+		newBallSetting.isHidden = false;
+		newBallSetting.predictOnGround = true;
+		newBallSetting.touchCount = 0;
+		gameBallSettings[i] = newBallSetting;
+		prevGameBallSettings[i] = newBallSetting;
+	}
+}
+
 void BallMods::DrawMenu() {
 	if (BallMods::isEnabled()) {
 
 		// Game Event Controls
 		ImGui::Begin("Ball Mods", &p_open, ImVec2(400, 300), 0.75f);
-		if (ImGui::Button("Close")) {
-			Interfaces::GUI().isGUIOpen = false;
-			this->enabled = false;
-		}
+		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
 		ImGui::InputInt("# Balls", &numGameBalls);
 
-		for (int i = 0; i < numGameBalls; i++) {
-			std::string ballScaleLabel = "Ball " + std::to_string(i + 1) + " Scale";
-			ImGui::SliderFloat(ballScaleLabel.c_str(), &balls[i], 0.1f, 20.0f, "%.1f");
-		}
 
-		ImGui::Text("Please note, adding a ball will reset the scale for all balls.");
+		ImGui::Separator();
+
+		for (int i = 0; i < numGameBalls && i < MAXBALLS; i++) {
+			std::string ballScaleLabel = "Ball " + std::to_string(i + 1) + " Scale";
+			ImGui::SliderFloat(ballScaleLabel.c_str(), &gameBallSettings[i].Scale, 0.1f, 20.0f, "%.1f");
+			std::string ballHideLabel = "Hide Ball #" + std::to_string(i + 1);
+			ImGui::Checkbox(ballHideLabel.c_str(), &gameBallSettings[i].isHidden); ImGui::SameLine();
+			//std::string ballMarkerLabel = "Show Ground Marker for Ball #" + std::to_string(i + 1);
+			//ImGui::Checkbox(ballMarkerLabel.c_str(), &gameBallSettings[i].predictOnGround);
+			ImGui::SameLine();
+			std::string ballTouchCountLabel = " | " + std::to_string(gameBallSettings[i].touchCount) + " touches";
+			ImGui::Text(ballTouchCountLabel.c_str());
+		}
 
 		if (!p_open) {
 			this->enabled = false;
@@ -45,15 +63,14 @@ void BallMods::DrawMenu() {
 	}
 }
 
-void BallMods::onEnable() {
-	std::fill_n(balls, 100, 1.0);
-	std::fill_n(currentScales, 100, 1.0);
+void BallMods::onMenuOpen() {
+	resetBalls();
 }
-void BallMods::onDisable() {
+void BallMods::onMenuClose() {
 	numGameBalls = 1;
-	std::fill_n(balls, 100, 1.0);
-	std::fill_n(currentScales, 100, 1.0);
+	resetBalls();
 }
+bool ballReset = false;
 
 void BallMods::onPlayerTick(Event* e) {
 	// Game Event Ball modifiers
@@ -65,23 +82,82 @@ void BallMods::onPlayerTick(Event* e) {
 		if (numGameBalls < 1) numGameBalls = 1;
 
 		if (gameBalls.IsValidIndex(0)) {
-			if(gameBalls.Num() != numGameBalls) {
+			if (gameBalls.Num() != numGameBalls) {
 				localGameEvent->SetTotalGameBalls(numGameBalls);
 				localGameEvent->ResetBalls();
-				std::fill_n(currentScales, 100, 1.0);
-				std::fill_n(balls, 100, 1.0);
+				resetBalls();
 			}
-			for (int i = 0; i < gameBalls.Num(); i++) {
-				if (!Utils::FloatCompare(balls[i], currentScales[i])) {
-					currentScales[i] = balls[i];
-					if (gameBalls.IsValidIndex(i) && !gameBalls[i]->bDeleteMe) {
-						gameBalls[i]->SetBallScale(balls[i]);
+			else {
+				for (int i = 0; i < gameBalls.Num(); i++) {
+					if (gameBalls.IsValidIndex(i) && gameBalls[i] && !gameBalls[i]->bDeleteMe) {
+						if (!Utils::FloatCompare(gameBallSettings[i].Scale, prevGameBallSettings[i].Scale) || ballReset) {
+							prevGameBallSettings[i].Scale = gameBallSettings[i].Scale;
+							gameBalls[i]->SetBallScale(gameBallSettings[i].Scale);
+						}
+						if (prevGameBallSettings[i].isHidden != gameBallSettings[i].isHidden || ballReset) {
+							prevGameBallSettings[i].isHidden = gameBallSettings[i].isHidden;
+							gameBalls[i]->SetHidden(gameBallSettings[i].isHidden);
+
+						}
+						//if (gameBalls[i]->bPredictionOnGround != gameBallSettings[i].predictOnGround)
+						//	gameBalls[i]->bPredictionOnGround = gameBallSettings[i].predictOnGround;
+
+						// Update stats
+						gameBallSettings[i].touchCount = gameBalls[i]->Touches.Num();
 					}
 				}
 			}
+			ballReset = false;
 		}
 	}
-		
+
+
+
+}
+void BallMods::onBallSpawned(Event* e) {
+	std::cout << "Ball spawmed!" << std::endl;
+	ballReset = true;
+	/*
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	// Get game balls
+	if (localGameEvent)
+	{
+		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
+
+		if (gameBalls.IsValidIndex(0)) {
+			
+			for (int i = 0; i < gameBalls.Num(); i++) {
+				if (gameBalls.IsValidIndex(i) && gameBalls[i] && !gameBalls[i]->bDeleteMe) {
+					prevGameBallSettings[i].Scale = gameBallSettings[i].Scale;
+					gameBalls[i]->SetBallScale(gameBallSettings[i].Scale);
+					
+					prevGameBallSettings[i].isHidden = gameBallSettings[i].isHidden;
+					gameBalls[i]->SetHidden(gameBallSettings[i].isHidden);
+
+				}
+			}
+			
+		}
+	}
+	*/
+}
+
+void BallMods::onBallTick(Event* e) {
+	/*
+	ABall_TA* currBall = (SDK::ABall_TA*)e->getCallingObject();
+	if (ballSettingMap.find(currBall) != ballSettingMap.end()) {
+	BallSetting* currSetting = ballSettingMap[currBall];
+	std::cout << "Found ball in map" << ballSettingMap[currBall]->Scale << std::endl;
+	if (!Utils::FloatCompare(currSetting->Scale, currBall->ReplicatedBallScale)) {
+	currBall->SetBallScale(currSetting->Scale);
+	}
+	currBall->SetHidden(currSetting->isHidden);
+	}
+	*/
+
+}
+
+void BallMods::onEventGoalScored(Event* e) {
 
 
 }

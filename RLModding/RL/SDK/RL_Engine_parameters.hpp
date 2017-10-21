@@ -4806,17 +4806,6 @@ struct AGameInfo_PreExit_Params
 {
 };
 
-// Function Engine.GameInfo.CalculatedNetSpeed
-struct AGameInfo_CalculatedNetSpeed_Params
-{
-	int                                                ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ReturnParm)
-};
-
-// Function Engine.GameInfo.UpdateNetSpeeds
-struct AGameInfo_UpdateNetSpeeds_Params
-{
-};
-
 // Function Engine.GameInfo.PostLogin
 struct AGameInfo_PostLogin_Params
 {

@@ -5,18 +5,20 @@
 class Drainage : public ModBase
 {
 public:
-	Drainage(std::string name, int key, Category cat, GameState gamestate);
+	Drainage(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
 	~Drainage();
 
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
 	void onCarDemolished(Event * e);
+	void loadMod();
+	void unloadMod();
 
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;

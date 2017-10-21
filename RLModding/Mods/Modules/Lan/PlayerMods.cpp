@@ -6,7 +6,7 @@
 PlayerMods::PlayerMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 PlayerMods::PlayerMods(std::string name, int key) : ModBase(name, key) {}
 
-void PlayerMods::onDisable() {
+void PlayerMods::onMenuClose() {
 	//delete[] players;
 }
 
@@ -22,24 +22,23 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Refresh")) {
 			refreshPlayers = true;
 		}
-		ImGui::Separator();
+
 
 		// Hide options that bots don't support when selected.
 		if (!isBotSelected) {
 			ImGui::Checkbox("Match Admin", &isAdmin);
 			ImGui::SameLine();
 			ImGui::Checkbox("Developer", &isDeveloper);
+		}
 
-		}
-		else {
-			
-		}
+		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: Not sure what some of these do...");
+
+		ImGui::Checkbox("GodMode", &godMode);
 
 		if (ImGui::Button("Update Player")) {
 			updatePlayer = true;
 		}
 
-		ImGui::Separator();
 		if (isBotSelected) {
 
 			if (ImGui::Button("Disable Bot")) {
@@ -48,7 +47,7 @@ void PlayerMods::DrawMenu() {
 			ImGui::SameLine();
 
 		}
-
+		ImGui::SameLine();
 		if (ImGui::Button("Demolish")) {
 			demolishPlayer = true;
 		}
@@ -56,9 +55,27 @@ void PlayerMods::DrawMenu() {
 		if (ImGui::Button("Trigger Explosion")) {
 			triggerGoalExplosion = true;
 		}
-		
+		ImGui::SameLine();
+		if (ImGui::Button("Kick")) {
+			kickPlayer = true;
+		}
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("Sets off a goal explosion underneath the player.");
+
 		ImGui::Separator();
 
+		ImGui::Columns(6, "mycolumns"); // 4-ways, with border
+		ImGui::InputInt("Score", &playerScore, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Goals", &playerGoals, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Assists", &playerAssists, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Saves", &playerSaves, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Shots", &playerShots, 1, 5); ImGui::NextColumn();
+		ImGui::InputInt("Ping", &playerPing, 1, 5); ImGui::NextColumn();
+		ImGui::Columns(1);
+
+
+		ImGui::Separator();
+		
 		ImGui::Text(statusText.c_str());
 
 		if (!p_open) {
@@ -72,7 +89,7 @@ void PlayerMods::DrawMenu() {
 void PlayerMods::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-	if (localGameEvent) {
+	if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
 		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
 
 
@@ -86,23 +103,43 @@ void PlayerMods::onPlayerTick(Event* e) {
 
 				AController* tempController = gameEventPlayers.GetByIndex(i);
 
-				if (updatePlayer) {
+				if (updatePlayer && tempController) {
 
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
+						currController->bGodMode = godMode;
+						if (currController->Car) {
+							currController->Car->PRI->SetMatchAdmin(isAdmin);
+							currController->Car->PRI->bDeveloper = isDeveloper;
+							currController->bGodMode = godMode;
+							currController->Car->PRI->MatchScore = playerScore;
+							currController->Car->PRI->MatchShots = playerShots;
+							currController->Car->PRI->MatchAssists = playerAssists;
+							currController->Car->PRI->MatchGoals = playerGoals;
+							currController->Car->PRI->MatchSaves = playerSaves;
+							currController->Car->PRI->Ping = playerPing;
+						}
+
+
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 						APlayerController_TA* currController = (APlayerController_TA*)tempController;
 
 						currController->PRI->SetMatchAdmin(isAdmin);
 						currController->PRI->bDeveloper = isDeveloper;
-
+						currController->bGodMode = godMode;
+						currController->PRI->MatchScore = playerScore;
+						currController->PRI->MatchShots = playerShots;
+						currController->PRI->MatchAssists = playerAssists;
+						currController->PRI->MatchGoals = playerGoals;
+						currController->PRI->MatchSaves = playerSaves;
+						currController->PRI->Ping = playerPing;
 						//currController->PRI->MatchGoals = -100;
 					}
 
 				}
-				else {
+				else if (tempController) {
 					// Check if bot or person
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						AAIController_TA* currController = (AAIController_TA*)tempController;
@@ -113,6 +150,8 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (doNothing) {
 							currController->DoNothing();
 						}
+
+
 						// For bots use host as demoer
 						if (triggerGoalExplosion && currController->Car != NULL) {
 							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, InstanceStorage::PlayerController()->PRI);
@@ -127,7 +166,14 @@ void PlayerMods::onPlayerTick(Event* e) {
 						if (triggerGoalExplosion && currController->Car != NULL) {
 							localGameEvent->GameBalls.GetByIndex(0)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), currController->Car->Location, currController->PRI);
 						}
-					
+						if (kickPlayer) {
+							if (InstanceStorage::GameInfo()) {
+
+								//InstanceStorage::GameInfo()->InitGame(FString(L"InverseGravity"), &error);
+								InstanceStorage::GameInfo()->ForceKickPlayer(currController, FString(L"I don't like you"));
+
+							}
+						}
 						
 					}
 				}
@@ -156,7 +202,12 @@ void PlayerMods::onPlayerTick(Event* e) {
 			statusText.append(" got the boomed.");
 			triggerGoalExplosion = false;
 		}
-
+		if (kickPlayer && playerSelectedIndex < gameEventPlayers.Num() + 1) {
+			statusText = players[playerSelectedIndex];
+			statusText.append(" was kicked.");
+			kickPlayer = false;
+		}
+		
 		// Populate checkboxes based on selected user
 		if (playerSelectedIndex != 0 && oldPlayerSelectedIndex != playerSelectedIndex) {
 			statusText = "";
@@ -168,15 +219,38 @@ void PlayerMods::onPlayerTick(Event* e) {
 				AController* tempController = gameEventPlayers.GetByIndex(playerSelectedIndex-1);
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
-					isBotSelected = true;
-					isAdmin = false;
-					isDeveloper = false;
+					if (currController->Car) {
+						isBotSelected = true;
+						isAdmin = currController->Car->PRI->bMatchAdmin;
+						isDeveloper = currController->Car->PRI->bDeveloper;
+						godMode = currController->bGodMode;
+						playerScore = currController->Car->PRI->MatchScore;
+						playerShots = currController->Car->PRI->MatchShots;
+						playerAssists = currController->Car->PRI->MatchAssists;
+						playerGoals = currController->Car->PRI->MatchGoals;
+						playerSaves = currController->Car->PRI->MatchSaves;
+						playerPing = currController->Car->PRI->Ping;
+					}
+
+
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					isBotSelected = false;
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
 					isAdmin = currController->PRI->bMatchAdmin;
 					isDeveloper = currController->PRI->bDeveloper;
+					godMode = currController->bGodMode;
+
+					playerScore = currController->PRI->MatchScore;
+					playerShots = currController->PRI->MatchShots;
+					playerAssists = currController->PRI->MatchAssists;
+					playerGoals = currController->PRI->MatchGoals;
+					playerSaves = currController->PRI->MatchSaves;
+					playerPing = currController->PRI->Ping;
+
+
+
+
 				}
 			}
 		}

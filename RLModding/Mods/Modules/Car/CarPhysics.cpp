@@ -6,7 +6,7 @@
 CarPhysics::CarPhysics(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 CarPhysics::CarPhysics(std::string name, int key) : ModBase(name, key) {}
 
-void CarPhysics::onDisable() {
+void CarPhysics::onMenuClose() {
 	//delete[] players;
 	reset();
 	printf("Car Mods Disabled\n");
@@ -23,67 +23,46 @@ void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
 		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
 
-		if (ImGui::Button("Clone Car")) cloneMe = true;
-		ImGui::SameLine();
-		ImGui::InputInt("# Clones", &numClones);
-
-		ImGui::Separator();
-
-
 		ImGui::Combo("Player Car", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 		ImGui::SameLine();
 		if (ImGui::Button("Refresh")) {
 			refreshCars = true;
 		}
+
 		ImGui::Separator();
 
-		if (ImGui::Button("Toggle Car Collision")) {
-			carCollisionOff = !carCollisionOff;
-		}
-		if (carCollisionOff) {
-			ImGui::SameLine();
-			ImGui::Text("Car Collision Off");
-		}
-		else {
-			ImGui::SameLine();
-			ImGui::Text("Car Collision On");
-		}
+		ImGui::InputInt("# Clones", &numClones);
+		if (ImGui::Button("Clone Car")) cloneMe = true;
+
+
+		ImGui::Separator();
 
 
 		ImGui::SliderFloat("Car Scale", &carScale, 0.1f, 10.0f, "%.1f");
+		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		ImGui::SameLine();
 		if (ImGui::Button("Apply")) {
 			setCarScale = true;
 		}
-		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
-		ImGui::SameLine();
 
+		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
-
-		/*
-		ImGui::Checkbox("Freeze in place.", &freezeInPlace);
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("Unfreeze doesn't work at the moment...can be glitchy lol");
-		*/
-
 		ImGui::Checkbox("Podium Mode", &podiumMode);
-		ImGui::SameLine();
-
 		ImGui::Checkbox("Hide Car", &isHidden);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Makes car invisible");
 
+		//ImGui::Checkbox("Freeze in place.", &freezeInPlace);
 		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
-		
-		ImGui::Checkbox("Disable Jumps", &disableJumps);
-		ImGui::SameLine();
-		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
-		
 
-		if (ImGui::IsItemHovered())
-			ImGui::SetTooltip("You may need to respawn for this to work.");
+		//if (ImGui::IsItemHovered())
+		//	ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
+
+		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
+		ImGui::SameLine();
+		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
+		//ImGui::Checkbox("Disable Jumps", &disableJumps);
+		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
 		ImGui::Separator();
 
@@ -116,10 +95,7 @@ void CarPhysics::DrawMenu() {
 		if (ImGui::Button("Respawn Car")) {
 			respawn = true;
 		}
-
-		ImGui::Separator();
-
-		ImGui::Text(statusText.c_str());
+		ImGui::SameLine();
 		if (ImGui::Button("Reset")) {
 			reset();
 			reset_values = true;
@@ -135,9 +111,12 @@ void CarPhysics::DrawMenu() {
 }
 
 void CarPhysics::onPlayerTick(Event* e) {
+
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
-	if (localGameEvent) {
+	//std::cout << "State note: " << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+
+	if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
 		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
 
 		if (refreshCars || currPlayerCount != gameEventPlayers.Num()) {
@@ -160,14 +139,15 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 				// Check if bot or person
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-					currCar = ((AAIController_TA*)gameEventPlayers.GetByIndex(i))->Car;
+					currCar = ((AAIController_TA*)tempController)->Car;
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-					currCar = ((APlayerController_TA*)gameEventPlayers.GetByIndex(i))->PRI->Car;
+					currCar = ((APlayerController_TA*)tempController)->Car;
 
 				}
 
 				if (currCar) {
+
 					if (carCollisionOff && InstanceStorage::PlayerController()->Car != NULL) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_TouchAllButWeapons);
 					}
@@ -175,30 +155,71 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
 					}
 
-					currCar->bDemolishOnOpposingGround = demolishOnOpposingSide;
-					
-					
-					if (currCar->BoostComponent) {
-						currCar->BoostComponent->SetUnlimitedBoost(unlimitedBoost);
-						//currCar->BoostComponent->Activate();
-						//currCar->BoostComponent->MaxBoostAmount = 1000;
-						//currCar->BoostComponent->SetBoostAmount(1000);
-						
-					}
-					
+					if(demolishOnOpposingSide)
+						currCar->bDemolishOnOpposingGround = 1.0f;
+					else 
+						currCar->bDemolishOnOpposingGround = 0.0f;
 
-					currCar->SetHidden(isHidden);
-					currCar->bPodiumMode = podiumMode;
-					//currCar->SetFrozen(freezeInPlace);
+					if (currCar->BoostComponent) {
+						
+						//Using 1.0f instead of 1000 should work and it's reversible to normal state.
+						//currCar->BoostComponent->SetUnlimitedBoost(unlimitedBoost);
+						//currCar->BoostComponent->Activate();
+						
+						if (unlimitedBoost) {						
+							currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							currCar->BoostComponent->SetBoostAmount(1.0f);
+						}
+
+						if (currCar->GetTeamIndex() == 0) {
+							if (noBoostBlue) {
+								currCar->BoostComponent->SetBoostAmount(0.0f);
+								currCar->BoostComponent->MaxBoostAmount = 0.0f;
+							}
+							else {
+								currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							}
+						}
+						else if (currCar->GetTeamIndex() == 1) {
+							if (noBoostOrange) {
+								currCar->BoostComponent->SetBoostAmount(0.0f);
+								currCar->BoostComponent->MaxBoostAmount = 0.0f;
+							}
+							else {
+								currCar->BoostComponent->MaxBoostAmount = 1.0f;
+							}
+						}	
+					}
+
 					
+					if(isHidden)
+						currCar->SetHidden(1.0f);
+					else 
+						currCar->SetHidden(0.0f);
+
+					
+					if(podiumMode)
+						currCar->bPodiumMode = 1.0f;
+					else 
+						currCar->bPodiumMode = 0.0f;
+					/*
+					if(freezeInPlace)
+						currCar->SetFrozen(1.0f);
+					else 
+						currCar->SetFrozen(0.0f);
+					*/
+					/*
 					if (currCar->JumpComponent) {
-						//currCar->JumpComponent->bDeactivate = disableJumps;
+						if(disableJumps)
+							currCar->JumpComponent->bDeactivate = 1.0f;
+						else 
+							currCar->JumpComponent->bDeactivate = 0.0f;
 						//currCar->JumpComponent->MaxJumpHeight = maxJumpHeight;
 						//currCar->JumpComponent->JumpForce = jumpForce;
 						//currCar->JumpComponent->Activate();
 						//currCar->JumpComponent->RemoveFromCar();
 					}
-					
+					*/
 
 					// For some reason these properties need respawn
 
@@ -228,7 +249,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->RespawnInPlace();
 						respawn = false;
 					}
-					
+
 
 					// Added check to make sure car is not null
 					if (setCarScale) {
@@ -252,8 +273,8 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCarScale(carScale);
 					}
 
-	
-				
+
+
 
 				}
 			}
@@ -275,18 +296,24 @@ void CarPhysics::onPlayerTick(Event* e) {
 				AController* tempController = gameEventPlayers.GetByIndex(playerSelectedIndex - 1);
 				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					AAIController_TA* currController = (AAIController_TA*)tempController;
-					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					podiumMode = currController->Car->bPodiumMode;
-					freezeInPlace = currController->Car->bFrozen;
-					isHidden = currController->Car->bHidden;
-					
+					if (currController->Car) {
+						if (currController->Car->BoostComponent)
+							unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
+						freezeInPlace = currController->Car->bFrozen;
+						isHidden = currController->Car->bHidden;
+						podiumMode = currController->Car->bPodiumMode;
+					}
+
 				}
 				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					APlayerController_TA* currController = (APlayerController_TA*)tempController;
-					unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
-					freezeInPlace = currController->Car->bFrozen;
-					isHidden = currController->Car->bHidden;
-					podiumMode = currController->Car->bPodiumMode;
+					if (currController->Car) {
+						if(currController->Car->BoostComponent)
+							unlimitedBoost = currController->Car->BoostComponent->bUnlimitedBoost;
+						freezeInPlace = currController->Car->bFrozen;
+						isHidden = currController->Car->bHidden;
+						podiumMode = currController->Car->bPodiumMode;
+					}
 
 				}
 			}
@@ -324,7 +351,7 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
 			std::strncpy(cptr, playerName.c_str(), playerName.size());
 			cptr[playerName.length()] = '\0';
-			std::cout << "Player: " << playerName << std::endl;
+			//std::cout << "Player: " << playerName << std::endl;
 			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
 			players[i + 1] = cptr;
 		}
@@ -388,7 +415,7 @@ void CarPhysics::onCarTick(Event* event) {
 		}
 
 	}
-	
+
 	else if (reset_values) {
 		ACar_TA* car = InstanceStorage::PlayerController()->Car;
 		if (car) {
@@ -415,7 +442,7 @@ void CarPhysics::onCarTick(Event* event) {
 	*/
 }
 
-void CarPhysics::onActorJump(Event*e) {
+void CarPhysics::onActorJump(Event* e) {
 	if (bUnlimitedJumps) {
 		if (e->getCallingObject() != nullptr) {
 			((SDK::ACar_TA*)e->getCallingObject())->bDoubleJumped = 0;

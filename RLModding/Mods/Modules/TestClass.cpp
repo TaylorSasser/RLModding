@@ -2,7 +2,7 @@
 #include "../../Utils/Utils.h"
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/detours.h"
-#include "../Controllers/XboxController.h"
+#include "../Interfaces/Interfaces.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
@@ -16,12 +16,14 @@ void TestClass::DrawMenu() {
 
 			ImGui::Text("To enable new party system you must click 'Create Party' first.");
 
-			if (ImGui::Button("Enable new party system.")) {
+			if (ImGui::Button("Disable new party system.")) {
 				testNewPartySystem = true;
 			}
 			if (ImGui::Button("Engine Tests.")) {
 				runEngineTests = true;
 			}
+
+			
 
 			if (!p_open) {
 				this->enabled = false;
@@ -29,20 +31,24 @@ void TestClass::DrawMenu() {
 			}
 			ImGui::End();
 
+			/*
+			unsigned char ram[0x1000] = { 0 };
+			if ((ImGui::GetFrameCount() % 60) == 0)
+				for (int n = 0; n < 0x1000; n++)
+					ram[n] = ((n % 16) << 4) | ((ram[n] + 1) & 0x0F);
+
+			ImGui::Begin("Memory Editor");
+				mem_edit.DrawContents(ram, sizeof(ram));
+			ImGui::End();
+			*/
 		}
 
 	}
 }
 
-void TestClass::onEnable() {
+void TestClass::onMenuOpen() {
 	std::cout << "Test Class Enabled" << std::endl;
-	//Works but crashes because of stack corrupted memory, -> cause ZeroMemory in Controller class
-	/*
-	XboxController player(1);
-	if (player.IsConnected()) {
-		player.Vibrate(65535, 0);
-	}
-	*/
+	
 }
 
 void TestClass::onMainMenuTick(Event* e) {
@@ -59,8 +65,8 @@ void TestClass::onMainMenuTick(Event* e) {
 	if (testNewPartySystem) {
 
 		UFeatureSystem* features = reinterpret_cast<SDK::UFeatureSystem*>(Utils::GetInstanceOf(UFeatureSystem::StaticClass()));
-		features->Party = false;
-		features->PsyNetParty = true;
+		features->Party = true;
+		features->PsyNetParty = false;
 		features->CrossPlatformPrivateMatch = true;
 		features->SpecialEvents = true;
 		features->Spectator = true;
@@ -71,14 +77,28 @@ void TestClass::onMainMenuTick(Event* e) {
 		//gfx->AprilConfig->bChangeRankedIcons = true;
 
 		//gfx->UpdateAprilConfig();
-
+		
 		UOnlineGameParty_X* party = reinterpret_cast<SDK::UOnlineGameParty_X*>(Utils::GetInstanceOf(UOnlineGameParty_X::StaticClass()));
-		party->Config->bAllowPsyNetParty = true;
+		/*
+		if (party->RankedConfig) {
+			std::cout << "FPOUDBNT IT." << std::endl;
+			for (int i = 0; i < party->RankedConfig->SeasonRewardRequiredWinsPerLevel.Num(); i++) {
+				std::cout << party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] << std::endl;
+				party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] = 1;
+			}
+
+		}
+		else {
+			std::cout << "no ranked found." << std::endl;
+		}
+		*/
+		//party->Config->bAllowPsyNetParty = true;
 		//party->HandlePartyConfigChanged();
 		//party->PartyConfig->bAllowPsyNetParty = true;
+		//party->InitLobbyInterfaces();
+		//party->SetLobbyInterface(party->PlatformLobbyInterface);
+
 		party->SetLobbyInterfacePsyNet();
-
-
 		//if (party->ShouldCreatePsyNetParty()) std::cout << " PSYNET HADJHSDFGFG" << std::endl;
 		party->ShowInviteUI(0);
 		//UGFxData_LocalPlayer_TA* localPlayer = reinterpret_cast<SDK::UGFxData_LocalPlayer_TA*>(Utils::GetInstanceOf(UGFxData_LocalPlayer_TA::StaticClass()));
@@ -90,10 +110,21 @@ void TestClass::onMainMenuTick(Event* e) {
 		//gfx->ShowLoginUI(0);
 		testNewPartySystem = false;
 	}
+	if (!created) {
+		player = XboxController(1);
+		created = true;
+	}
+	if (player.IsConnected()) {
+		if (player.GetState().Gamepad.wButtons & XINPUT_GAMEPAD_START) {
+			Interfaces::GUI().isGUIOpen = !Interfaces::GUI().isGUIOpen;
+			Sleep(200);
+		}
+		
+	}
 }
 
 void TestClass::onBallHit(Event* e) {
-	if (e->getUFunction()->ScriptText != nullptr)
+	/*if (e->getUFunction()->ScriptText != nullptr)
 		std::cout << "Script Text : " << e->getUFunction()->ScriptText->Text.ToString() << std::endl;
 	else
 		std::cout << "Script Text buffer is null" << std::endl;
@@ -101,11 +132,11 @@ void TestClass::onBallHit(Event* e) {
 	if (e->getUFunction()->CPPText != nullptr)
 		std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
 	else
-		std::cout << "CPP Text buffer is null" << std::endl;
+		std::cout << "CPP Text buffer is null" << std::endl;*/
 }
 
 
-void TestClass::onDisable() {
+void TestClass::onMenuClose() {
 	std::cout << "Test Class Disabled" << std::endl;
 
 }

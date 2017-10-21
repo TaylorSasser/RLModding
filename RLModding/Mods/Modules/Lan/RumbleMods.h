@@ -8,30 +8,30 @@ public:
 	RumbleMods(std::string, int key);
 
 	void DrawMenu() override;
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
 	void RumbleMods::onCarSpawned(Event* e);
 	void RumbleMods::onGameEventRemovePlayer(Event* e);
 	void RumbleMods::onGameEventAddPlayer(Event* e);
-	void ExportSettings(pt::ptree);
-	void ImportSettings(pt::ptree);
+	void ExportSettings(pt::ptree&);
+	void ImportSettings(pt::ptree&);
+	void RumbleMods::setCrazyRumbleValues();
+	void RumbleMods::resetRumbleValues();
+	void RumbleMods::setModEnabled(bool flag);
 
 private:
 	void RumbleMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent);
-	void RumbleMods::setCrazyRumbleValues();
-	void RumbleMods::resetRumbleValues();
+
 
 	// General Rumble Settings
 	float itemGiveRate = 10.0;
 	float currItemGiveRate = 10.0;
 
-
 	// Magnet Options
 	float magnetRange = 1000.0;
 	float magnetBallGravity = 55000;
 	bool magnetDeactivateOnTouch = false;
-
 
 	bool bStartGameMode = false;
 	bool enableCrazyItems = false;

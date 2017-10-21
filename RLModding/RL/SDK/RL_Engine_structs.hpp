@@ -1,6 +1,4 @@
 #pragma once
-#undef AF_MAX
-#undef PF_MAX
 
 // Rocket League (1.31) SDK
 
@@ -1524,7 +1522,7 @@ enum class EPixelFormat
 	PF_ASTC_10x10                  = 36,
 	PF_ASTC_12x12                  = 37,
 	PF_COUNT                       = 38,
-	PF_MAX                         = 39
+	#undef PF_MAX                         = 39
 };
 
 
@@ -4123,7 +4121,7 @@ struct FNinUserId
 // 0x0046
 struct FUniqueNetId
 {
-	uint64_t										   SteamID;												     // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
+	__int64											   SteamID;                                      // 0x0000(0x0008) UNKNOWN PROPERTY: QWordProperty Engine.OnlineSubsystem.UniqueNetId.Uid
 	struct FSceNpId                                    NpId;                                                     // 0x0008(0x0024)
 	struct FNinUserId                                  NinUserHandle;                                            // 0x002C(0x0018)
 	TEnumAsByte<EOnlinePlatform>                       Platform;                                                 // 0x0044(0x0001)

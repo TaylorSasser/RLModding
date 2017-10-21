@@ -8,7 +8,7 @@ public:
 	CarPhysics(std::string name, int key, Category category, GameState gamestate);
 	CarPhysics(std::string, int key);
 
-	void onDisable();
+	void onMenuClose();
 
 	void DrawMenu();
 	void onPlayerTick(Event* e);
@@ -51,6 +51,9 @@ private:
 
 	bool demolishOnOpposingSide = false;
 	bool unlimitedBoost = false;
+
+	bool noBoostBlue = false;
+	bool noBoostOrange = false;
 
 	void reset();
 	float groundSticky = 1.0;

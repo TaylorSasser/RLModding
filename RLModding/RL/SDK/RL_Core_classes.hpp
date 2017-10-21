@@ -818,7 +818,6 @@ public:
 	class UProperty*								   ComponentPropertyLink;
 	class UProperty*								   TransientPropertyLink;
 
-
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindClass("Class Core.Struct");

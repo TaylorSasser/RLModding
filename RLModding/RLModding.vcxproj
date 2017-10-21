@@ -5,28 +5,28 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release Console|Win32">
-      <Configuration>Release Console</Configuration>
+    <ProjectConfiguration Include="Console Build|Win32">
+      <Configuration>Console Build</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release Console|x64">
-      <Configuration>Release Console</Configuration>
+    <ProjectConfiguration Include="Console Build|x64">
+      <Configuration>Console Build</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release File|Win32">
-      <Configuration>Release File</Configuration>
+    <ProjectConfiguration Include="File Output Build|Win32">
+      <Configuration>File Output Build</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release File|x64">
-      <Configuration>Release File</Configuration>
+    <ProjectConfiguration Include="File Output Build|x64">
+      <Configuration>File Output Build</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release Win10|Win32">
-      <Configuration>Release Win10</Configuration>
+    <ProjectConfiguration Include="Build With Test Class|Win32">
+      <Configuration>Build With Test Class</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release Win10|x64">
-      <Configuration>Release Win10</Configuration>
+    <ProjectConfiguration Include="Build With Test Class|x64">
+      <Configuration>Build With Test Class</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
@@ -45,8 +45,14 @@
   <ItemGroup>
     <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Connection\Connection.cpp" />
+    <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\DribbleDrabble.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Infected.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
@@ -59,7 +65,9 @@
     <ClCompile Include="Mods\Modules\Lan\RumbleMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
+    <ClCompile Include="Mods\Modules\Offline\WorkShopMods.cpp" />
     <ClCompile Include="PlayerBlacklist\BlackList.cpp" />
     <ClCompile Include="Core\Core.cpp" />
     <ClCompile Include="Core\DllMain.cpp" />
@@ -107,6 +115,7 @@
   <ItemGroup>
     <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Connection\Connection.h" />
+    <ClInclude Include="Libs\ImGUI\imgui_memory_editor.h" />
     <ClInclude Include="Mods\GameState.h" />
     <ClInclude Include="Libs\boost\algorithm\cxx11\all_of.hpp" />
     <ClInclude Include="Libs\boost\algorithm\string\case_conv.hpp" />
@@ -2950,6 +2959,11 @@
     <ClInclude Include="Libs\boost\xpressive\xpressive_fwd.hpp" />
     <ClInclude Include="Mods\Modules\Car\CarPhysics.h" />
     <ClInclude Include="Mods\Modules\Exploits\ExploitTesting.h" />
+    <ClInclude Include="Mods\Modules\GameModes\CrazyItems.h" />
+    <ClInclude Include="Mods\Modules\GameModes\DribbleDrabble.h" />
+    <ClInclude Include="Mods\Modules\GameModes\FreezeTag.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Infected.h" />
+    <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />
@@ -2964,7 +2978,9 @@
     <ClInclude Include="Mods\Modules\Lan\RumbleMods.h" />
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
+    <ClInclude Include="Mods\Modules\Offline\TextureMods.h" />
     <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
+    <ClInclude Include="Mods\Modules\Offline\WorkShopMods.h" />
     <ClInclude Include="PlayerBlacklist\BlackList.h" />
     <ClInclude Include="Core\Core.h" />
     <ClInclude Include="DrawManager\DrawManager.hpp" />
@@ -4745,6 +4761,10 @@
     <Text Include="RL\NamesDump.txt" />
     <Text Include="RL\ObjectsDump.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Gui\Roboto-Medium.ttf" />
+    <Font Include="Gui\Roboto-Regular.ttf" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9EA21FF4-4227-43B9-98B6-0F3F67F30B6A}</ProjectGuid>
@@ -4766,21 +4786,21 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release File|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -4800,21 +4820,21 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release File|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -4832,13 +4852,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release File|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -4847,13 +4867,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release File|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -4870,19 +4890,19 @@
     <OutDir>$(SolutionDir)Build\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)Build\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release File|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)Build\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)Build\</OutDir>
@@ -4891,13 +4911,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release File|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -4944,27 +4964,7 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|Win32'">
-    <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;RLMODDING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)/Libs%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release File|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|Win32'">
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -4985,7 +4985,29 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_TEST_;_FILE_;WIN32;NDEBUG;_WINDOWS;_USRDLL;RLMODDING_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)/Libs%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessToFile>false</PreprocessToFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|Win32'">
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -5021,7 +5043,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Win10|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='File Output Build|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
@@ -5037,7 +5059,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release File|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Build With Test Class|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
@@ -5053,7 +5075,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Console Build|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>

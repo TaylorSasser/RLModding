@@ -258,3 +258,4 @@ RLModding/RLModding.vcxproj.filters
 *.vcxproj
 *.filters
 StatesCheck.txt
+/RLModding/RL/SDK/script.py

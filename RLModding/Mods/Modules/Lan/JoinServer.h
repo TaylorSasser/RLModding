@@ -7,8 +7,8 @@ public:
 	JoinServer(std::string name, int key, Category category, GameState gamestate);
 	~JoinServer();
 
-	void onEnable() override;
-	void onDisable() override;
+	void onMenuOpen() override;
+	void onMenuClose() override;
 	void DrawMenu() override;
 	void onMainMenuTick(Event*) override;
 	void onGameEventTick(Event*) override;
