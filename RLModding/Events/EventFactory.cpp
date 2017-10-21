@@ -6,7 +6,7 @@
 
 EventFactory::EventFactory() {
 	modBase = new ModBase("ModBase InstanceUpdater", -1);
-	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
+	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::onMainMenuTick);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.Say_TA", &ModBase::onChatSend);
 	SubscribeEvent("Function TAGame.Car_TA.OnJumpReleased", &ModBase::onActorJump);
 	SubscribeEvent("Function TAGame.Car_TA.Tick", &ModBase::onCarTick);
@@ -52,7 +52,6 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Ball_TA.OnCarTouch", &ModBase::onBallCarTouch);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnGameTimeUpdated", &ModBase::onGameTimeUpdated);
 	
-	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);
 	//SubscribeEvent("Function OnlineSubsystemSteamworks.OnlineSubsystemSteamworks.Exit", &ModBase::onSteamNetCloser);
 	//SubscribeEvent("Function Engine.HUD.PostRender", &ModBase::onHUDPostRender);
@@ -66,7 +65,6 @@ bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, vo
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
 		Event event(object, func, params);
-		ModFunction(&event);
 
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled()) {

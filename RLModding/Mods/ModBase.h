@@ -72,29 +72,23 @@ public:
 	virtual void DrawMenu() {}
 	virtual void onEnable() {}
 	virtual void onDisable() {}
-	
 	virtual void onToggle() {  
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
 	}
-
 	virtual void onProfileJoinGame(Event*) {}
 	virtual void onPlayerTick(Event*) {}
-
 	virtual void onOnlineGameStart(Event* event) {
 		inMainMenu = false; inOnline = true; inCustom = false; inExhibition = false; inTraining = false;
 	}
 	virtual void onBallHit(Event* event) {}
-
 	virtual void onSetFriendJoinLocation(Event*) {}
-
 	virtual void onPlayerTATick(Event* event) {
 		InstanceStorage::SetController(reinterpret_cast<SDK::APlayerController_TA*>(event->getCallingObject()));
 	}
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 		inMainMenu = true; inOnline = false; inCustom = false; inExhibition = false; inTraining = false;
-		
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
@@ -120,17 +114,14 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	virtual void onKeysBeginState(Event* e) {}
-
 	virtual void onInitExhibition(Event*){
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
 	}
-
 	virtual void onPostPRI(Event*) {}
 	virtual void onGotoState(Event*) {}
 	virtual void onEngineSecurityKeys(Event* e) {}
 	virtual void onHandleGenKeys(Event* e) {}
 	virtual void onBeaconAddress(Event* e) {}
-
 	virtual void onEngineTick(Event* e) {
 		InstanceStorage::SetEngine(reinterpret_cast<SDK::UEngine*>(e->getCallingObject()));
 	}
@@ -150,33 +141,14 @@ public:
 	virtual void onCarDemolished(Event* e) {}
 	virtual void onBallCarTouch(Event* e) {}
 	virtual void onGameTimeUpdated(Event* e) {}
-
 	virtual void onLocalPlayerLeave(Event* e) {}
 	virtual void onPRIAdd(Event* e) {}
 	virtual void onPRIRemove(Event* e) {}
 	virtual void onGameEventAddPlayer(Event* e) {}
 	virtual void onGameEventRemovePlayer(Event* e) {}
-
 	virtual void ExportSettings(pt::ptree) {}
 	virtual void ImportSettings(pt::ptree) {}
-
-	virtual void onGetNextImage(Event* e) {
-		/*
-		UAdManager_TA* callerObject = (UAdManager_TA*)e->getCallingObject();
-		if (callerObject) {
-		for (int i = 0; i < callerObject->CachedAdImages.Num(); i++) {
-		//std::string url = callerObject->CachedAdImages.GetByIndex(i).ImageURL.ToString();
-		if (i % 2 == 0) {
-		callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
-		}
-		else {
-		callerObject->CachedAdImages.GetByIndex(i).ImageURL = FString(L"http://i.imgur.com/3WIwB6d.jpg");
-		}
-		}
-		}
-
-		*/
-	}
+	virtual void onGetNextImage(Event* e) {}
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
 
 	bool enabled = false;

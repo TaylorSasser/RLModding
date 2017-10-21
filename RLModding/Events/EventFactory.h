@@ -7,6 +7,8 @@
 
 
 typedef void (ModBase::*Function)(Event* e);
+
+
 class EventFactory {
 public:
 	EventFactory();
