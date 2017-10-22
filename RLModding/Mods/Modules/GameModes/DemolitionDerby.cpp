@@ -66,18 +66,18 @@ void DemolitionDerby::DrawMenu() {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
-				printf("Enabled Infected");
+				printf("Enabled Demo Derby");
 				loadMod();
 			}
 
 			else {
-				printf("Invalid state for Infected\n");
+				printf("Invalid state for Demo Derby\n");
 			}
 		}
 	}
 	else {
 		if (ImGui::Button("Disable")) {
-			printf("Disabled Infected");
+			printf("Disabled Demo Derby");
 			bStarted = false;
 			unloadMod();
 		}
@@ -101,13 +101,16 @@ void DemolitionDerby::onCarSpawned(Event* e) {
 }
 
 void DemolitionDerby::onCarDemolished(Event* e) {
-	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-	FDemolishData demoData = e->getParams<SDK::ACar_TA_OnDemolished_Params>()->Data;
-	if (demoData.Attacker->IsA(ACar_TA::StaticClass())) {
-		ACar_TA* carThatScored = (ACar_TA*)demoData.Attacker;
-		if (localGameEvent && localGameEvent->Teams.IsValidIndex(carThatScored->GetTeamNum()) && localGameEvent->Teams[carThatScored->GetTeamNum()]) {
-			localGameEvent->Teams[carThatScored->GetTeamNum()]->SetScore(localGameEvent->Teams[carThatScored->GetTeamNum()]->Score + 1);
+	if (bStarted) {
+		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		FDemolishData demoData = e->getParams<SDK::ACar_TA_OnDemolished_Params>()->Data;
+		if (demoData.Attacker->IsA(ACar_TA::StaticClass())) {
+			ACar_TA* carThatScored = (ACar_TA*)demoData.Attacker;
+			if (localGameEvent && localGameEvent->Teams.IsValidIndex(carThatScored->GetTeamNum()) && localGameEvent->Teams[carThatScored->GetTeamNum()]) {
+				localGameEvent->Teams[carThatScored->GetTeamNum()]->SetScore(localGameEvent->Teams[carThatScored->GetTeamNum()]->Score + 1);
+			}
 		}
 	}
+	
 }
 
