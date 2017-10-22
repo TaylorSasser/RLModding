@@ -94,8 +94,10 @@ void FreezeTag::onCarDemolished(Event* e) {
 
 void FreezeTag::OnCarBumped(Event* e) {
 	if (bStarted) {
+		ACar_TA *HitCar = (SDK::ACar_TA*)e->getCallingObject();
+
 		ACar_TA *Car = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->Car);
-		ACar_TA *HitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->HitCar);
+		//ACar_TA *HitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->HitCar);
 		// cant compare cars, _IT == HitCar doesnt work
 		if (Car != nullptr && HitCar != nullptr && _IT == HitCar) {
 			std::cout << "Hit!\n";
