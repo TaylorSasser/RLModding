@@ -3,6 +3,7 @@
 #include "../../DrawManager/DrawManager.hpp"
 #include "../../Libs/detours.h"
 #include "../Interfaces/Interfaces.h"
+#include "../Interfaces/InstanceStorage.h"
 
 TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
 TestClass::~TestClass() {}
@@ -153,6 +154,10 @@ void TestClass::onBallHit(Event* e) {
 		std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
 	else
 		std::cout << "CPP Text buffer is null" << std::endl;*/
+	APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(InstanceStorage::PlayerController());
+	if (controller) {
+		controller->PRI->GetTeamNum() == 0 ? controller->PRI->ServerChangeTeam(1) : controller->PRI->ServerChangeTeam(0);
+	}
 }
 
 

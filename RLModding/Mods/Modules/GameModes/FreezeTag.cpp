@@ -68,7 +68,6 @@ void FreezeTag::OnRoundStart(Event* e) {
 				}
 				std::cout << "Set _IT\n";
 				_IT_Name = _IT->PlayerReplicationInfo->PlayerName.ToString();
-				_IT->PlayerReplicationInfo->PlayerName = L"IT!";
 				_IT->SetMaxLinearSpeed(_IT->MaxLinearSpeed * 2); // Can go twice as fast
 				Utils::BroadcastMessage(localGameEvent, _IT_Name + " is IT!");
 				bSetWhosIt = true;
