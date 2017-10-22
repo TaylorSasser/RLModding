@@ -20,6 +20,7 @@ private:
 	bool runEngineTests = false;
 	bool created = false;
 	bool dumpStore = false;
+	bool alloc = false;
 	XboxController player;
 	MemoryEditor mem_edit;
 

@@ -26,6 +26,9 @@ void TestClass::DrawMenu() {
 			if (ImGui::Button("DataStore Dump")) {
 				dumpStore = true;
 			}
+			if (ImGui::Button("Alloc")) {
+				alloc = true;
+			}
 
 			
 
@@ -56,6 +59,20 @@ void TestClass::onMenuOpen() {
 }
 
 void TestClass::onMainMenuTick(Event* e) {
+
+	if (alloc) {
+		//TArray<ACar_TA*> type;
+		TArray<ACar_TA*>* cars; //= Interfaces::Memory().AllocUObject<TArray<ACar_TA*>>(&type, "debugger");
+		cars = new TArray<ACar_TA*>();
+		printf("Debug: 0x%x\n", cars);
+		ACar_TA* car = new ACar_TA();
+		printf("Debug: 0x%x\n", car);
+		printf("Size = %d\n", cars->Num());
+		cars->Add(car);
+		printf("Size = %d\n", cars->Num());
+		alloc = false;
+		
+	}
 
 	if (runEngineTests) {
 		UGameEngine_TA* engine = (UGameEngine_TA*)UGameEngine_TA::FindObject<UGameEngine_TA>("GameEngine_TA Transient.GameEngine_TA_1");
