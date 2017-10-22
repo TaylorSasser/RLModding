@@ -1,5 +1,5 @@
 #pragma once
-#include <unordered_map>
+#include <map>
 #include "ModBase.h"
 #include <memory>
 
@@ -28,6 +28,6 @@ public:
 	ModBase* getModInstance(const std::string &name);
 
 private:
-	std::unordered_map<std::string, std::unique_ptr<ModBase>> mods;
+	std::map<std::string, std::unique_ptr<ModBase>> mods;
 };
 
