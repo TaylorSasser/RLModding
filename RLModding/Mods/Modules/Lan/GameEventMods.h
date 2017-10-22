@@ -18,6 +18,8 @@ public:
 	void eventBallHitGround(Event* e) override;
 	void onBallTick(Event* e) override;
 	void gameInfoInitGame(Event* e) override;
+	void loadMod();
+	void unloadMod();
 
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
@@ -68,6 +70,17 @@ private:
 
 	bool goalDisabled = false;
 	bool disableGoals = false;
+
+	bool enableUnfairTeams = false;
+	bool fillWithAI = false;
+	float botSkill = 0.0f;
+
+	bool showReplays = true;
+
+	int maxBlueTeamSize = 4;
+	int maxOrangeTeamSize = 4;
+
+	int maxTeamSize = 4;
 
 	bool testChangeName = false;
 	bool testArenaColor = false;

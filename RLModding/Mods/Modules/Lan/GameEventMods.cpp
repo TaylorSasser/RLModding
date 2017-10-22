@@ -11,6 +11,31 @@ GameEventMods::GameEventMods(std::string name, int key) : ModBase(name, key) {}
 void GameEventMods::ExportSettings(pt::ptree) {}
 void GameEventMods::ImportSettings(pt::ptree) {}
 
+void GameEventMods::loadMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	if (localGameEvent) {
+		respawnTime = localGameEvent->RespawnTime;
+		disableGoalDelay = localGameEvent->bDisableGoalDelay;
+		enableUnfairTeams = localGameEvent->bUnfairTeams;
+		fillWithAI = localGameEvent->bFillWithAI;
+		botSkill = localGameEvent->BotSkill;
+		showReplays = localGameEvent->bPlayReplays;
+		maxTeamSize = localGameEvent->MaxTeamSize;
+
+		/*
+		if (localGameEvent->Teams[0])
+			maxBlueTeamSize = localGameEvent->Teams[0]->Size;
+		if (localGameEvent->Teams[1])
+			maxOrangeTeamSize = localGameEvent->Teams[1]->Size;
+		*/
+	}
+
+}
+
+void GameEventMods::unloadMod() {
+}
+
+
 void GameEventMods::DrawMenu() {
 	if (GameEventMods::isEnabled()) {
 
@@ -58,7 +83,22 @@ void GameEventMods::DrawMenu() {
 
 			ImGui::Checkbox("Disable Goal Delay", &disableGoalDelay);
 			ImGui::Checkbox("Unlimited Time", &unlimitedTime);
+			//ImGui::Checkbox("Show Replays", &showReplays);
 
+
+		}
+
+		if (ImGui::CollapsingHeader("Team Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
+		{
+			//ImGui::InputInt("# of Teams", &teamsNum);
+			//ImGui::InputInt("Blue Team Max Players", &maxBlueTeamSize); ImGui::SameLine();
+			//ImGui::InputInt("Orange Team Max Players", &maxOrangeTeamSize);
+			ImGui::InputInt("Max Players per Team", &maxTeamSize);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Currently doesn't allow more bots per team if unfair teams or fill with AI enabled.");
+			ImGui::Checkbox("Unfair Teams", &enableUnfairTeams);
+			ImGui::Checkbox("Fill with AI", &fillWithAI);
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "When changing \"fill with AI\" setting you will need to spawn a single bot.");
 
 		}
 
@@ -92,6 +132,9 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Remove All Bots")) {
 				removeBots = true;
 			}
+			ImGui::InputFloat("Bot Skill", &botSkill, 0.5f, 1.0f, 1);
+
+			
 		}
 		if (ImGui::CollapsingHeader("Ridiculous Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
@@ -168,12 +211,7 @@ void GameEventMods::DrawMenu() {
 }
 
 void GameEventMods::onMenuOpen() {
-	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-	if (localGameEvent) {
-		respawnTime = localGameEvent->RespawnTime;
-		disableGoalDelay = localGameEvent->bDisableGoalDelay;
-	}
-
+	loadMod();
 }
 void GameEventMods::onMenuClose() {
 
@@ -224,6 +262,32 @@ void GameEventMods::onPlayerTick(Event* e) {
 			localGameEvent->StartOvertime();
 			startOverTime = false;
 		}
+
+		// Team settings
+		localGameEvent->bUnfairTeams = enableUnfairTeams;
+		localGameEvent->bFillWithAI = fillWithAI;
+
+		// Set team size
+		if (localGameEvent->MaxTeamSize != maxTeamSize) {
+			localGameEvent->SetMaxTeamSize(maxTeamSize);
+			localGameEvent->SetMaxPlayers(maxTeamSize*2);
+
+			localGameEvent->UpdateMaxTeamSize();
+			if (localGameEvent->Teams[0] ) {//&& localGameEvent->Teams[0]->Size != maxBlueTeamSize) {
+				localGameEvent->Teams[0]->Size = maxTeamSize;
+
+
+			}
+			if (localGameEvent->Teams[1]) {// && localGameEvent->Teams[1]->Size != maxOrangeTeamSize) {
+				localGameEvent->Teams[1]->Size = maxTeamSize;
+
+			}
+		}
+		
+
+		
+
+		//localGameEvent->bPlayReplays = showReplays;
 
 		if (allowMorePlayers) {
 			std::cout << "Old Max Players: " << localGameEvent->MaxPlayers << std::endl;
@@ -336,6 +400,13 @@ void GameEventMods::onPlayerTick(Event* e) {
 			}
 		}
 	}
+
+	// Bot Mods
+
+	if (!Utils::FloatCompare(localGameEvent->BotSkill, botSkill)) {
+		localGameEvent->SetBotSkill(botSkill);
+	}
+
 	if (freezeBots) {
 
 		if (localGameEvent && localGameEvent->AIManager) {
