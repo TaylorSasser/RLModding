@@ -197,6 +197,8 @@ public:
 		*/
 	}
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
+	virtual void OnCarBumped(Event* e) {}
+	virtual void OnRoundStart(Event* e) {}
 
 	bool enabled = false;
 protected:

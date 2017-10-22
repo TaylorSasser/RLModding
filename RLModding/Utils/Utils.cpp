@@ -211,4 +211,15 @@ namespace Utils {
 		FlashWindowEx(&fi);
 	}
 
+	void BroadcastMessage(SDK::AGameEvent_TA* game, std::string s) {
+		SDK::UMessage_TA* message = game->GoMessage;
+		if (message != nullptr) {
+			SDK::FString temp = game->GoMessage->LocalizedMessage;
+			message->LocalizedMessage = to_fstring(s);
+			game->GoMessage = message;
+			game->BroadcastGoMessage();
+			game->GoMessage->LocalizedMessage = temp;
+
+		}
+	}
 };

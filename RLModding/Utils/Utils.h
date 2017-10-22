@@ -37,5 +37,6 @@ namespace Utils {
 	bool FloatCompare(float a, float b);
 	bool ExportInventory(SDK::USaveData_TA* saveData, std::string outFile);
 	void FlashWindow(int flashCount);
+	void BroadcastMessage(SDK::AGameEvent_TA* game, std::string s);
 
 }

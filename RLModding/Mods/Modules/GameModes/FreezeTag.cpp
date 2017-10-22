@@ -38,6 +38,7 @@ void FreezeTag::DrawMenu() {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled FreezeTag");
+				srand(time(NULL));
 			}
 
 			else {
@@ -59,6 +60,27 @@ void FreezeTag::DrawMenu() {
 	ImGui::End();
 }
 
+void FreezeTag::OnRoundStart(Event* e) {
+	if (bStarted && !bSetWhosIt) {
+		AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(InstanceStorage::GameEvent());
+		if (localGameEvent) {
+			TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
+			if (localGameEvent->Teams.IsValidIndex(0)) {
+				int team_idx = rand() % gameTeams.Num();
+				if (gameTeams.IsValidIndex(team_idx)) {
+					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
+					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
+					if (players.IsValidIndex(player_idx)) {
+						_IT = gameTeams[team_idx]->Members[player_idx]->Car;
+						Utils::BroadcastMessage(localGameEvent, _IT->PlayerReplicationInfo->PlayerName.ToString() + " is IT!");
+						bSetWhosIt = true;
+					}
+				}
+			}
+		}
+	}
+}
+
 void FreezeTag::onPlayerTick(Event* event) {
 	if (bStarted) {
 
@@ -66,13 +88,31 @@ void FreezeTag::onPlayerTick(Event* event) {
 }
 
 void FreezeTag::onCarSpawned(Event* e) {
-	if (bStarted) {
 
-	}
 }
 
 void FreezeTag::onCarDemolished(Event* e) {
 	if (bStarted) {
 
+	}
+}
+
+void FreezeTag::OnCarBumped(Event* e) {
+	if (bStarted) {
+		ACar_TA *Car = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->Car);
+		ACar_TA *HitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->HitCar);
+		// Not working, cant compare cars
+		if (Car != nullptr && HitCar != nullptr && HitCar == _IT) {
+			std::cout << "Hit!\n";
+			Car->EnablePodiumMode();	
+			numTagged++;
+		}
+		else {
+			std::cout << "Nope!\n";
+			if (Car->bPodiumMode)
+				numTagged--;
+			Car->bPodiumMode = false;
+		}
+		
 	}
 }

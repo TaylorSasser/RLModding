@@ -13,18 +13,21 @@ public:
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
-	void onCarDemolished(Event * e);
+	void onCarDemolished(Event * e) override;
+	void OnCarBumped(Event* e) override;
+	void OnRoundStart(Event* e) override;
 
 	void ExportSettings(pt::ptree&);
 	void ImportSettings(pt::ptree&);
 
 private:
 	bool bStarted = false;
-	bool checkTime = true;
-	float interval = .06;
-	time_t start, end;
 	bool p_open = true;
 	bool respawnWhenTagged = true;
+
+	bool bSetWhosIt = false;
+	ACar_TA* _IT = NULL;
+	int numTagged = 0;
 };
 
 
