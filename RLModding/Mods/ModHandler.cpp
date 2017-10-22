@@ -24,6 +24,8 @@
 #include "Modules/GameModes/FreezeTag.h"
 #include "Modules/GameModes/Infected.h"
 #include "Modules/Offline/HUDMods.h"
+#include "Modules/GameModes/DemolitionDerby.h"
+
 
 ModHandler::ModHandler() {
 	CreateMod<Zombies>("Classic Zombies", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN, "The bots have a new target...you!");
@@ -32,6 +34,7 @@ ModHandler::ModHandler() {
 	CreateMod<DribbleDrabble>("Dribble Drabble", VK_F13, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "A gamemode for improving your dribble skills.");
 	CreateMod<FreezeTag>("Freeze Tag", VK_F14, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Tag! Your it.");
 	CreateMod<Infected>("Infected", VK_F14, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Try to be the last man standing...");
+	CreateMod<DemolitionDerby>("Demoliton Derby", VK_F16, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Earn points by demolishing your opponents");
 
 	CreateMod<KeepAway>("Keep Away", VK_F10, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Keep your opponent from touching the ball to get points.");
 	CreateMod<InfiniteCelebration>("Infinite Celebration", VK_F11, Category::GameModes, GameState::ANY ^ GameState::ONLINE, "Need to practice sweet celebrations? Now you can for as long as you need!");

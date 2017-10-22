@@ -345,19 +345,29 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 
 			// Check if bot or person
 			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-				playerName += " [BOT]";
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+
+				playerName.append(" [BOT]");
+
+				if (currController->Car && currController->GetTeamNum() == 0) {
+					playerName.append(" (Blue Team)");
+				}
+				if (currController->Car && currController->GetTeamNum() == 1) {
+					playerName.append(" (Orange Team)");
+				}
+			}
+			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+
+				if (currController->Car && currController->GetTeamNum() == 0) {
+					playerName.append(" (Blue Team)");
+				}
+				if (currController->Car && currController->GetTeamNum() == 1) {
+					playerName.append(" (Orange Team)");
+				}
 			}
 
-			if (tempController->GetTeamNum() == 0) {
-				playerName.append(" | Blue Team");
-			}
-			else if (tempController->GetTeamNum() == 1) {
-				playerName.append(" | Orange Team");
-			}
-
-			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
-			std::strncpy(cptr, playerName.c_str(), playerName.size());
-			cptr[playerName.length()] = '\0';
+			char *cptr = Utils::stringToCharArray(playerName);
 			//std::cout << "Player: " << playerName << std::endl;
 			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
 			players[i + 1] = cptr;
