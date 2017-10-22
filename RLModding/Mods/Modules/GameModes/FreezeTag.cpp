@@ -23,16 +23,6 @@ void FreezeTag::ImportSettings(pt::ptree & root) {
 
 void FreezeTag::DrawMenu() {
 	ImGui::Begin("Freeze Tag Settings", &p_open, ImVec2(400, 300), 0.75f);
-
-	ImGui::Checkbox("Respawn once tagged.", &respawnWhenTagged);
-	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("If disabled the players will not respawn once tagged.");
-	ImGui::Checkbox("Freeze cars once tagged.", &respawnWhenTagged);
-	if (ImGui::IsItemHovered())
-		ImGui::SetTooltip("If enabled cars will be frozen instead of demolished when tagged.");
-
-
-
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
@@ -42,6 +32,7 @@ void FreezeTag::DrawMenu() {
 			}
 
 			else {
+				bStarted = false;
 				printf("Invalid state for FreezeTag\n");
 			}
 		}
@@ -64,20 +55,24 @@ void FreezeTag::OnRoundStart(Event* e) {
 	if (bStarted && !bSetWhosIt) {
 		AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(InstanceStorage::GameEvent());
 		if (localGameEvent) {
-			TArray< class ATeam_TA* > gameTeams = localGameEvent->Teams;
-			if (localGameEvent->Teams.IsValidIndex(0)) {
-				int team_idx = rand() % gameTeams.Num();
-				std::cout << gameTeams.Num() << std::endl;
-				if (gameTeams.IsValidIndex(team_idx)) {
-					int player_idx = rand() % gameTeams[team_idx]->Members.Num();
-					TArray<class APRI_TA*> players = gameTeams[team_idx]->Members;
-					if (players.IsValidIndex(player_idx)) {
-						_IT = gameTeams[team_idx]->Members[player_idx]->Car;
-						_IT->SetMaxLinearSpeed(_IT->MaxLinearSpeed * 2); // Can go twice as fast
-						Utils::BroadcastMessage(localGameEvent, _IT->PlayerReplicationInfo->PlayerName.ToString() + " is IT!");
-						bSetWhosIt = true;
-					}
+			int player_idx = rand() % localGameEvent->Players.Num();
+			if (localGameEvent->Players.IsValidIndex(player_idx)) {
+				AController* tempController = localGameEvent->Players.GetByIndex(player_idx);
+				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+					AAIController_TA* currController = (AAIController_TA*)tempController;
+					_IT = currController->Car;
 				}
+				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+					APlayerController_TA* currController = (APlayerController_TA*)tempController;
+					_IT = currController->Car;	
+				}
+				std::cout << "Set _IT\n";
+				_IT_Name = _IT->PlayerReplicationInfo->PlayerName.ToString();
+				_IT->PlayerReplicationInfo->PlayerName = L"IT!";
+				_IT->SetMaxLinearSpeed(_IT->MaxLinearSpeed * 2); // Can go twice as fast
+				Utils::BroadcastMessage(localGameEvent, _IT_Name + " is IT!");
+				bSetWhosIt = true;
+				
 			}
 		}
 	}
@@ -102,29 +97,22 @@ void FreezeTag::OnCarBumped(Event* e) {
 	if (bStarted) {
 		ACar_TA *Car = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->Car);
 		ACar_TA *HitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->HitCar);
-		printf("HitCar: 0x%x\n", HitCar);
-		printf("_IT: 0x%x\n", _IT);
-		printf("_IT - HitCar: 0x%x\n", _IT - HitCar);
 		// cant compare cars, _IT == HitCar doesnt work
-		if (Car != nullptr && HitCar != nullptr && HitCar == _IT) {
+		if (Car != nullptr && HitCar != nullptr && _IT == HitCar) {
 			std::cout << "Hit!\n";
-			Car->bPodiumMode = !Car->bPodiumMode;
-			Car->bPodiumMode ? numTagged++ : numTagged--;
+			Car->bPodiumMode = true;
+			if (Car->bPodiumMode) numTagged++;
 		}
 		AGameEvent_Soccar_TA* localGameEvent = reinterpret_cast<AGameEvent_Soccar_TA*>(InstanceStorage::GameEvent());
 		if (localGameEvent) {
-			int total = 0;
-			if (localGameEvent->Teams.IsValidIndex(0)) {
-				total += localGameEvent->Teams[0]->Members.Num() - 1;
-			}
-			if (localGameEvent->Teams.IsValidIndex(1)) {
-				total += localGameEvent->Teams[1]->Members.Num() - 1;
-			}
-			if (numTagged == total - 1) {
+			int total = localGameEvent->Players.Num();
+			
+			if (numTagged >= total - 1) {
 				//Win!
-				Utils::BroadcastMessage(localGameEvent, _IT->PlayerReplicationInfo->PlayerName.ToString() + " Wins!");
+				Utils::BroadcastMessage(localGameEvent, _IT_Name + " Wins!");
 				localGameEvent->StartNewRound();
 				bSetWhosIt = false;
+				numTagged = 0;
 
 			}
 		}

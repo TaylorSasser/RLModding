@@ -22,6 +22,9 @@ void TestClass::DrawMenu() {
 			if (ImGui::Button("Engine Tests.")) {
 				runEngineTests = true;
 			}
+			if (ImGui::Button("DataStore Dump")) {
+				dumpStore = true;
+			}
 
 			
 
@@ -121,6 +124,23 @@ void TestClass::onMainMenuTick(Event* e) {
 		}
 		
 	}
+	if (dumpStore) {
+		UGFxDataStore_X* store = (UGFxDataStore_X*)(Utils::GetInstanceOf(UGFxDataStore_X::StaticClass()));
+		if (store) {
+			TArray<struct FGFxDataStoreTable> t = store->Tables;
+			for (int i = 0; i < t.Num(); i++) {
+				std::cout << "\n" << t.GetByIndex(i).Name.GetName() << std::endl;
+				TArray<struct FGFxDataStoreColumn> columns = t.GetByIndex(i).Columns;
+				std::cout << "Columns:\n";
+				for (int j = 0; j < columns.Num(); j++) {
+					std::cout << columns.GetByIndex(j).Name.GetName() << std::endl;
+				}
+
+			}
+		}
+		dumpStore = false;
+	}
+
 }
 
 void TestClass::onBallHit(Event* e) {

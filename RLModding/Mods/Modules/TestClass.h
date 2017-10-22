@@ -19,6 +19,7 @@ private:
 	bool testNewPartySystem = false;
 	bool runEngineTests = false;
 	bool created = false;
+	bool dumpStore = false;
 	XboxController player;
 	MemoryEditor mem_edit;
 

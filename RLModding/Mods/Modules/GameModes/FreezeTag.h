@@ -28,6 +28,7 @@ private:
 	bool bSetWhosIt = false;
 	ACar_TA* _IT = NULL;
 	int numTagged = 0;
+	std::string _IT_Name;
 };
 
 
