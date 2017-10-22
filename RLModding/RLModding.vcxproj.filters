@@ -70,6 +70,7 @@
     <ClCompile Include="Mods\Modules\Offline\WorkShopMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Infected.cpp" />
     <ClCompile Include="Mods\Modules\Offline\HUDMods.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\DemolitionDerby.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4703,6 +4704,7 @@
     <ClInclude Include="Mods\Modules\Offline\WorkShopMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\Infected.h" />
     <ClInclude Include="Mods\Modules\Offline\HUDMods.h" />
+    <ClInclude Include="Mods\Modules\GameModes\DemolitionDerby.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

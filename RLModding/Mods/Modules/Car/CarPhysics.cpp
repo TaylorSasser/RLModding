@@ -348,6 +348,13 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 				playerName += " [BOT]";
 			}
 
+			if (tempController->GetTeamNum() == 0) {
+				playerName.append(" | Blue Team");
+			}
+			else if (tempController->GetTeamNum() == 1) {
+				playerName.append(" | Orange Team");
+			}
+
 			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
 			std::strncpy(cptr, playerName.c_str(), playerName.size());
 			cptr[playerName.length()] = '\0';

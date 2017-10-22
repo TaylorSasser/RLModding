@@ -283,6 +283,14 @@ void PlayerMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 			// Check if bot or person
 			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 				playerName.append(" [BOT]");
+				
+			}
+
+			if (tempController->GetTeamNum() == 0) {
+				playerName.append(" | Blue Team");
+			}
+			else if (tempController->GetTeamNum() == 1) {
+				playerName.append(" | Orange Team");
 			}
 
 			char *cptr = new char[playerName.length() + 1]; // +1 to account for \0 byte
