@@ -102,17 +102,12 @@ void FreezeTag::OnCarBumped(Event* e) {
 		ACar_TA *Car = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->Car);
 		ACar_TA *HitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<ACar_TA_EventBumpedCar_Params>()->HitCar);
 		// Not working, cant compare cars
-		if (Car != nullptr && HitCar != nullptr && HitCar == _IT) {
+		if (Car != nullptr && HitCar != nullptr) {
 			std::cout << "Hit!\n";
-			Car->EnablePodiumMode();	
-			numTagged++;
+			Car->bPodiumMode = !Car->bPodiumMode;
+			Car->bPodiumMode ? numTagged++ : numTagged--;
 		}
-		else {
-			std::cout << "Nope!\n";
-			if (Car->bPodiumMode)
-				numTagged--;
-			Car->bPodiumMode = false;
-		}
+		
 		
 	}
 }
