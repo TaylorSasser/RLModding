@@ -21,13 +21,29 @@ void GameEventMods::loadMod() {
 		botSkill = localGameEvent->BotSkill;
 		showReplays = localGameEvent->bPlayReplays;
 		maxTeamSize = localGameEvent->MaxTeamSize;
+		alwaysAutoTeam = localGameEvent->bAlwaysAutoSelectTeam;
+		maxScore = localGameEvent->MaxScore;
 
-		/*
-		if (localGameEvent->Teams[0])
-			maxBlueTeamSize = localGameEvent->Teams[0]->Size;
-		if (localGameEvent->Teams[1])
-			maxOrangeTeamSize = localGameEvent->Teams[1]->Size;
-		*/
+		if(localGameEvent->BallSpawnPoint)
+			ballSpawnPoint = localGameEvent->BallSpawnPoint;
+
+		if (localGameEvent->Teams[0] && localGameEvent->Teams[0]->CustomTeamName.IsValid()) {
+			//maxBlueTeamSize = localGameEvent->Teams[0]->Size;
+			strcpy(blueTeamName,Utils::stringToCharArray(localGameEvent->Teams[0]->CustomTeamName.ToString()));
+		}
+		else if (localGameEvent->Teams[0]) {
+			//strcpy(blueTeamName,Utils::stringToCharArray(localGameEvent->Teams[0]->SanitizedTeamName.ToString()));
+			strcpy(blueTeamName, "Blue");
+		}
+		if (localGameEvent->Teams[1] && localGameEvent->Teams[1]->CustomTeamName.IsValid()) {
+			//maxOrangeTeamSize = localGameEvent->Teams[1]->Size;
+			strcpy(orangeTeamName,Utils::stringToCharArray(localGameEvent->Teams[1]->CustomTeamName.ToString()));
+		}
+		else if (localGameEvent->Teams[1]) {
+			//strcpy(orangeTeamName,Utils::stringToCharArray(localGameEvent->Teams[1]->SanitizedTeamName.ToString()));
+			strcpy(orangeTeamName, "Orange");
+		}
+		
 	}
 
 }
@@ -43,20 +59,20 @@ void GameEventMods::DrawMenu() {
 		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
 		if (ImGui::CollapsingHeader("Game Controls", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			if (ImGui::Button("Pause Server")) {
+				pauseServer = true;
+			} ImGui::SameLine();
+			if (ImGui::Button("Restart Match")) {
+				restartMatch = true;
+			} ImGui::SameLine();
+
 			if (ImGui::Button("Force Overtime")) {
 				startOverTime ^= 1;
 			}
-			ImGui::SameLine();
-			if (ImGui::Button("Pause Server")) {
-				pauseServer = true;
-			}
-			if (ImGui::Button("Restart Match")) {
-				restartMatch = true;
-			}
-			ImGui::SameLine();
+			
 			if (ImGui::Button("Reset Players")) {
 				resetPlayers = true;
-			}
+			} ImGui::SameLine();
 
 			if (ImGui::Button("Reset Balls")) {
 				resetBalls = true;
@@ -81,6 +97,10 @@ void GameEventMods::DrawMenu() {
 				setScoreAndTime = true;
 			}
 
+			ImGui::PushItemWidth(100);
+			ImGui::InputInt("Max Score", &maxScore);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("A team needs to score this many goals to win. 0 if unlimited.");
 			ImGui::Checkbox("Disable Goal Delay", &disableGoalDelay);
 			ImGui::Checkbox("Unlimited Time", &unlimitedTime);
 			//ImGui::Checkbox("Show Replays", &showReplays);
@@ -90,16 +110,25 @@ void GameEventMods::DrawMenu() {
 
 		if (ImGui::CollapsingHeader("Team Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::InputText("Blue Team Name", blueTeamName, IM_ARRAYSIZE(blueTeamName));	ImGui::SameLine();
+			ImGui::InputText("Orange Team Name", orangeTeamName, IM_ARRAYSIZE(orangeTeamName)); ImGui::SameLine();
+			if (ImGui::Button("Apply Names")) {
+				applyNewTeamNames = true;
+			}
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("In order for players to see the change they will have to rejoin. Or set before they join.");
 			//ImGui::InputInt("# of Teams", &teamsNum);
 			//ImGui::InputInt("Blue Team Max Players", &maxBlueTeamSize); ImGui::SameLine();
 			//ImGui::InputInt("Orange Team Max Players", &maxOrangeTeamSize);
 			ImGui::InputInt("Max Players per Team", &maxTeamSize);
 			if (ImGui::IsItemHovered())
 				ImGui::SetTooltip("Currently doesn't allow more bots per team if unfair teams or fill with AI enabled.");
-			ImGui::Checkbox("Unfair Teams", &enableUnfairTeams);
+			ImGui::Checkbox("Unfair Teams", &enableUnfairTeams); ImGui::SameLine();
 			ImGui::Checkbox("Fill with AI", &fillWithAI);
 			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "When changing \"fill with AI\" setting you will need to spawn a single bot.");
-
+			ImGui::Checkbox("Always Auto Select Team", &alwaysAutoTeam);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Not sure what this does exactly...");
 		}
 
 		if (ImGui::CollapsingHeader("Message Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
@@ -184,6 +213,9 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Test Goal disabled")) {
 				testGoalDisable = true;
 			}
+			if (ImGui::Button("Test Ball Spawn Point")) {
+				testBallSpawnPoint = true;
+			}
 			/*
 			if (ImGui::Button("Test Change Name")) {
 				testChangeName = true;
@@ -263,15 +295,37 @@ void GameEventMods::onPlayerTick(Event* e) {
 			startOverTime = false;
 		}
 
+		// Match Settings
+		if (maxScore != localGameEvent->MaxScore) {
+			localGameEvent->MaxScore = maxScore;
+		}
+
+		if (applyNewTeamNames) {
+			if (localGameEvent->Teams[0]) {//&& localGameEvent->Teams[0]->Size != maxBlueTeamSize) {
+				localGameEvent->Teams[0]->SetCustomTeamName(Utils::to_fstring(blueTeamName));
+
+
+			}
+			if (localGameEvent->Teams[1]) {// && localGameEvent->Teams[1]->Size != maxOrangeTeamSize) {
+				localGameEvent->Teams[1]->SetCustomTeamName(Utils::to_fstring(orangeTeamName));
+
+			}
+			applyNewTeamNames = false;
+		}
+
 		// Team settings
-		localGameEvent->bUnfairTeams = enableUnfairTeams;
+		if (localGameEvent->bUnfairTeams != enableUnfairTeams) {
+			localGameEvent->SetUnfairTeams(enableUnfairTeams);
+		}
+		
 		localGameEvent->bFillWithAI = fillWithAI;
+		localGameEvent->bAlwaysAutoSelectTeam = alwaysAutoTeam;
 
 		// Set team size
 		if (localGameEvent->MaxTeamSize != maxTeamSize) {
 			localGameEvent->SetMaxTeamSize(maxTeamSize);
 			localGameEvent->SetMaxPlayers(maxTeamSize*2);
-
+			//localGameEvent->NumBots = 20;
 			localGameEvent->UpdateMaxTeamSize();
 			if (localGameEvent->Teams[0] ) {//&& localGameEvent->Teams[0]->Size != maxBlueTeamSize) {
 				localGameEvent->Teams[0]->Size = maxTeamSize;
@@ -354,6 +408,18 @@ void GameEventMods::onPlayerTick(Event* e) {
 			hideReplays = false;
 		}
 
+		if (testBallSpawnPoint) {
+			if (localGameEvent->Pylon) {
+				//FVector prevLoc = ballSpawnPoint->Location;
+				FVector prevLoc = localGameEvent->Pylon->FieldCenter;
+				localGameEvent->Pylon->FieldCenter.Z += 1000.0f;
+
+				//ballSpawnPoint->SetLocation(prevLoc);
+			}
+			testBallSpawnPoint = false;
+		}
+
+
 		if (ballSpawnTest) {
 			//ABall_TA* demoBall = localGameEvent->SpawnBall(localGameEvent->playercontr->Car->Location, true, false, localGameEvent->BallArchetype->GetHumanReadableName());
 			ballSpawnTest = false;
@@ -435,6 +501,17 @@ void GameEventMods::onPlayerTick(Event* e) {
 	if (randomSpawnPoints) {
 
 		if (localGameEvent) {
+			if (localGameEvent->Pylon) {
+				//FVector prevLoc = ballSpawnPoint->Location;
+				for (int i = 0; i < localGameEvent->Pylon->SpawnPoints.Num(); i++) {
+					if (localGameEvent->Pylon->SpawnPoints[i]) {
+						FVector oldSpawnLoc = localGameEvent->Pylon->SpawnPoints[i]->Location;
+						oldSpawnLoc.Z += 1000;
+						localGameEvent->Pylon->SpawnPoints[i]->SetLocation(oldSpawnLoc);
+					}
+				}
+			}
+			/*
 			USpawnPointCluster_TA* spawnCluster = localGameEvent->SpawnPointsLobby;
 			TArray<class USpawnPointGroup_TA*> spawnGroups = spawnCluster->SpawnTeams;
 			for (int i = 0; i < spawnGroups.Num(); i++) {
@@ -447,6 +524,7 @@ void GameEventMods::onPlayerTick(Event* e) {
 					spawn->SetLocation(newSpawn);
 				}
 			}
+			*/
 		}
 		randomSpawnPoints = false;
 

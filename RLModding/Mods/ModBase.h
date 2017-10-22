@@ -174,6 +174,8 @@ public:
 	virtual void eventBallHitGround(Event* e) {}
 	virtual void onBallSpawned(Event* e) {}
 
+	virtual void onServerBrowserSearchComplete(Event* e) {}
+	virtual void eventLanSearchResultComplete(Event* e) {}
 	virtual void ExportSettings(pt::ptree&root) {}
 	virtual void ImportSettings(pt::ptree&root) {}
 

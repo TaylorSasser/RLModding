@@ -52,6 +52,13 @@ public:
 		return Data[i];
 	}
 
+	inline void Add(T InputData)
+	{
+		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));
+		Data[Count++] = InputData;
+		Max = Count;
+	};
+
 	inline const T& GetByIndex(size_t i) const
 	{
 		return Data[i];

@@ -12,8 +12,10 @@ public:
 	void onMenuClose();
 	void DrawMenu();
 	void onMainMenuTick(Event* e);
+	void onServerBrowserSearchComplete(Event* e) override;
+	void eventLanSearchResultComplete(Event* e) override;
 
 private:
 	bool p_open = true;
-
+	bool searchTest = false;
 };
