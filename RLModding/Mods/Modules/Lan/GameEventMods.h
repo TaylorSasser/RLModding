@@ -58,6 +58,8 @@ private:
 	int orangeScore = 0;
 	int respawnTime = 0;
 
+	int maxScore = 0;
+
 	bool bounceBasedTime = false;
 	int bouncesRemaining = 300;
 	FVector lastBallPos = { 0,0,0 };
@@ -81,6 +83,15 @@ private:
 	int maxOrangeTeamSize = 4;
 
 	int maxTeamSize = 4;
+
+	char blueTeamName[36];
+	char orangeTeamName[36];
+	bool enableCustomTeamNames = false;
+	bool applyNewTeamNames = false;
+	bool alwaysAutoTeam = false;
+	AActor* ballSpawnPoint = NULL;
+	bool testBallSpawnPoint = false;
+
 
 	bool testChangeName = false;
 	bool testArenaColor = false;

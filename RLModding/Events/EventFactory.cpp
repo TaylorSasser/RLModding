@@ -63,6 +63,10 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnBallSpawned", &ModBase::onBallSpawned);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventActiveRoundChanged", &ModBase::OnRoundStart);
 	SubscribeEvent("Function TAGame.Car_TA.EventBumpedCar", &ModBase::OnCarBumped);
+	SubscribeEvent("Function TAGame.GFxData_ServerBrowser_TA.HandleSearchComplete", &ModBase::onServerBrowserSearchComplete);
+	SubscribeEvent("Function TAGame.GFxData_LanBrowser_TA.HandleServers", &ModBase::eventLanSearchResultComplete);
+	
+	
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);

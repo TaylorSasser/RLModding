@@ -24,14 +24,15 @@ void WorkshopMods::DrawMenu() {
 		getWorkShopMaps = true;
 	}
 
+	/*
 	if (ImGui::Button("Play map on LAN.")) {
 		testPlayOnLan = true;
 	}
 
-	if (ImGui::Button("Teleport Test.")) {
+	if (ImGui::Button("Spawn Point Test.")) {
 		testNew = true;
 	}
-
+	*/
 	ImGui::InputInt("Level", &skipToLevel);
 	ImGui::SameLine();
 	if (ImGui::Button("GO")) {
@@ -127,13 +128,24 @@ void WorkshopMods::onPlayerTick(Event* event) {
 	}
 
 	if (testNew) {
+		/*
+		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		APathNode* pathNode = SDK::UObject::FindObject<SDK::APathNode>("PathNode dribblingchallenge2.TheWorld.PersistentLevel.PathNode_10");
+		if (localGameEvent) {
+			if (localGameEvent->Teams[0] && pathNode) {
+				std::cout << "Found team." << std::endl;
+				localGameEvent->Teams[0]->AddTemporarySpawnSpot(pathNode);
+			}
+		}
+		testNew = false;
+		
 		if (InstanceStorage::PlayerController()) {
 			FVehicleInputs myInput = InstanceStorage::PlayerController()->VehicleInput;
 			std::cout << myInput.Throttle << std::endl;
 			myInput.Throttle = 1.0f;
 			InstanceStorage::PlayerController()->Car->SetVehicleInput(myInput);
 		}
-		/*
+		
 		if (InstanceStorage::PlayerController()) {
 			FCurrencyDrop newDrop;
 			newDrop.Amount = 200;
@@ -324,6 +336,23 @@ void WorkshopMods::onMainMenuTick(Event* e) {
 		if (selectedWorkShopName != -1) {
 			std::string map = (std::string)workShopData[selectedWorkShopName].filePath + (std::string)workShopData[selectedWorkShopName].fileName;
 			std::cout << map << std::endl;
+			
+			//mapName = "C:\\Program Files (x86)\\Steam\\steamapps\workshop\content\252950\964271505\DribblingChallenge2.udk";
+			//mapName = "E:\\STEAM\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole\\Park_P.upk";
+			//mapName = "C:\\DribblingChallenge2.udk";
+			//mapName = "192.185.67.238\\rlmaps\\rugby.upk";
+			//std::string mapName = "C:\\PROGRA~2\\Steam\\steamapps\\workshop\\content\\252950\\1121502881\\QuadGoal.udk";
+			std::string mapName = "C:\\PROGRA~2\\Steam\\steamapps\\workshop\\content\\252950\\964271505\\DribblingChallenge2.udk";
+			std::string command = "open " + mapName + "?game=" + "TAGame.GameInfo_Soccar_TA?playtest?listen?lan?";
+
+			//FString testCMD = FString(L"open 'C:\\Program Files(x86)\\Steam\\steamapps\\workshop\\content\\252950\\964271505\\DribblingChallenge2.udk?game=TAGame.GameInfo_Soccar_TA?playtest?listen?lan?GameTags=3Rounds'");
+
+			//std::string command = mapName + "?game=" + str_gameMode + "playtest?listen?lan?" + str_mutators;
+			printf("Command: %s\n", command);
+			//LAN_Server->TravelToMap(Utils::to_fstring(command));
+			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(command), true);
+			std::cout << "State: " << getCurrentGameState() << std::endl;
+
 		}
 		testPlayOnLan = false;
 	}
