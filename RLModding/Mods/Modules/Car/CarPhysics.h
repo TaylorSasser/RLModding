@@ -68,6 +68,9 @@ private:
 	bool respawn = false;
 	bool isHidden = false;
 
+	float mass = 180.0f;
+	float gravityScale = 1.0f;
+
 	float maxJumpHeight = 0;
 	float jumpForce = 0;
 

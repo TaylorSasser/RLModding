@@ -60,6 +60,8 @@ private:
 
 	int maxScore = 0;
 
+	bool testWeldPlayers = false;
+
 	bool bounceBasedTime = false;
 	int bouncesRemaining = 300;
 	FVector lastBallPos = { 0,0,0 };

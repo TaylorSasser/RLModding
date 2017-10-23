@@ -45,6 +45,9 @@ void CarPhysics::DrawMenu() {
 			setCarScale = true;
 		}
 
+		ImGui::InputFloat("Mass", &mass, 0.5f, 1.0f, 1); ImGui::SameLine();
+		ImGui::InputFloat("Gravity Scale", &gravityScale, 0.5f, 1.0f, 1);
+
 		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);
 		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide); ImGui::SameLine();
 		ImGui::Checkbox("Demolish On Goal Zone", &demolishOnGoalZone);
@@ -192,6 +195,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 						}	
 					}
 
+					if(!Utils::FloatCompare(mass,currCar->PreWeldMass))
+						currCar->SetMass(mass);
+					if (!Utils::FloatCompare(gravityScale, currCar->GravityScale))
+						currCar->GravityScale = gravityScale;
 					
 					if(isHidden)
 						currCar->SetHidden(1.0f);
@@ -318,6 +325,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						freezeInPlace = currController->Car->bFrozen;
 						isHidden = currController->Car->bHidden;
 						podiumMode = currController->Car->bPodiumMode;
+						mass = currController->Car->Mass;
+						gravityScale = currController->Car->GravityScale;
+
 					}
 
 				}
@@ -329,6 +339,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						freezeInPlace = currController->Car->bFrozen;
 						isHidden = currController->Car->bHidden;
 						podiumMode = currController->Car->bPodiumMode;
+						mass = currController->Car->Mass;
+						gravityScale = currController->Car->GravityScale;
+
 					}
 
 				}

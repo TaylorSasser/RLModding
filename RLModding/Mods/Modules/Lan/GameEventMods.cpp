@@ -246,10 +246,14 @@ void GameEventMods::DrawMenu() {
 			}
 			if (ImGui::Button("Test Goal disabled")) {
 				testGoalDisable = true;
-			}
+			} ImGui::SameLine();
 			if (ImGui::Button("Test Ball Spawn Point")) {
 				testBallSpawnPoint = true;
 			}
+			if (ImGui::Button("Test Player Weld")) {
+				testWeldPlayers = true;
+			}
+			
 			/*
 			if (ImGui::Button("Test Change Name")) {
 				testChangeName = true;
@@ -611,6 +615,24 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 		goalDisabled = false;
 
+	}
+
+	if (testWeldPlayers) {
+		if (InstanceStorage::PlayerController() && InstanceStorage::PlayerController()->Car) {
+			if (localGameEvent && localGameEvent->AIManager) {
+				TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
+				int botsToDelete = bots.Num();
+				for (int i = 0; i < botsToDelete; i++) {
+					FVector weldLoc = { 0.0f, 0.0f, 0.0f };
+					//weldLoc.Y += (float)i/10.0;
+					weldLoc.Z += 10;
+					bots[i]->Car->WeldRBActor(InstanceStorage::PlayerController()->Car, weldLoc, bots[i]->Rotation);
+					break;
+					//spawnedBotsCount--;
+				}
+			}
+		}
+		testWeldPlayers = false;
 	}
 
 	if (testGoalDisable) {
