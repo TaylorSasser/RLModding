@@ -78,9 +78,19 @@ void DribbleDrabble::DrawMenu() {
 		
 	}
 	else {
-		ImGui::InputInt("# of seconds before ball respawn", &ballRespawnTime);
+		if (respawnBallOnTimer) {
+			ImGui::InputInt("# of seconds before ball respawn", &ballRespawnTime);
 			if (ImGui::IsItemHovered())
 				ImGui::SetTooltip("This is the number of seconds a team can keep the ball on their side before it respawns.");
+		}
+		else {
+			ImGui::InputInt("# of seconds before side becomes safe", &ballRespawnTime);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("This is the number of seconds a team can keep the ball on their side without the other team being able to cross over.");
+		}
+		ImGui::Checkbox("Respawn ball when time reached", &respawnBallOnTimer);
+		if (ImGui::IsItemHovered())
+			ImGui::SetTooltip("When checked the ball will reset to the center of the field when the time limit is reached.");
 	}
 
 	
@@ -133,7 +143,7 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 						lastHitCar->RespawnInPlace();
 					}
 					else {
-						lastHitCar->SetDemolishOnOpposingGround(true, NULL);
+						lastHitCar->bDemolishOnOpposingGround = true;
 					}
 					currentTeamHasPossesion = -1;
 
@@ -144,7 +154,7 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 						lastHitCar->RespawnInPlace();
 					}
 					else {
-						lastHitCar->SetDemolishOnOpposingGround(true, NULL);
+						lastHitCar->bDemolishOnOpposingGround = true;
 					}
 					currentTeamHasPossesion = -1;
 
@@ -169,7 +179,7 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 					if (blueCarsToRespawn.cars[i]) {
 						ACar_TA* currCar = blueCarsToRespawn.cars[i];
 						if (currCar && respawnOnlyOnGround) {
-							currCar->SetDemolishOnOpposingGround(true, NULL);
+							currCar->bDemolishOnOpposingGround = true;
 						}
 						else if (currCar) {
 							currCar->RespawnInPlace();
@@ -188,7 +198,7 @@ void DribbleDrabble::eventBallHitGround(Event* e) {
 					if (orangeCarsToRespawn.cars[i]) {
 						ACar_TA* currCar = orangeCarsToRespawn.cars[i];
 						if (currCar && respawnOnlyOnGround) {
-							currCar->SetDemolishOnOpposingGround(true, NULL);
+							currCar->bDemolishOnOpposingGround = true;
 						}
 						else if (currCar) {
 							currCar->RespawnInPlace();
@@ -245,13 +255,13 @@ void DribbleDrabble::onPlayerTick(Event* event) {
 					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 						currCar = ((AAIController_TA*)tempController)->Car;
 						if (currCar)
-							currCar->SetDemolishOnOpposingGround(true, NULL);
+							currCar->bDemolishOnOpposingGround = true;
 
 					}
 					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 						currCar = ((APlayerController_TA*)tempController)->Car;
 						if (currCar)
-							currCar->SetDemolishOnOpposingGround(true, NULL);
+							currCar->bDemolishOnOpposingGround = true;
 					}
 				}
 			}
@@ -277,7 +287,7 @@ void DribbleDrabble::onCarSpawned(Event* e) {
 			if (airDribbleOnly) {
 				ACar_TA* currCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::AGameEvent_TA_OnCarSpawned_Params>()->NewCar);
 				if (currCar)
-					currCar->SetDemolishOnOpposingGround(true, NULL);
+					currCar->bDemolishOnOpposingGround = true;
 
 			}
 		}
@@ -306,7 +316,7 @@ void DribbleDrabble::onBallTick(Event* e) {
 		}
 	}
 
-	if (bStarted && !isBasic) {
+	if (bStarted && !isBasic && currBall) {
 		
 
 		//float newTime = (float)(e->getParams<SDK::ABall_TA_Tick_Params>()->DeltaTime);
@@ -343,9 +353,45 @@ void DribbleDrabble::onBallTick(Event* e) {
 		// If 15 seconds since ball has moved sides, respawn
 		if (time_span.count() > ballRespawnTime && ((currBall->Location.Y < 0 && currentTeamHasPossesion == 0) || (currBall->Location.Y > 0 && currentTeamHasPossesion == 1))) {
 			lastBallUpdateTime = currTime;
-			currentTeamHasPossesion = -1;
-			ballOnHalf = -1;
-			currBall->Reset();
+			
+			if (respawnBallOnTimer) {
+				currentTeamHasPossesion = -1;
+				ballOnHalf = -1;
+				currBall->Reset();
+			}
+			else {
+				// If ball not set to reset, mark side as safe for other team to attack.
+				// If blue team has possession, mark orange team as safe
+				if (currentTeamHasPossesion == 0) {
+					if (InstanceStorage::PlayerController())
+						InstanceStorage::PlayerController()->ServerSay_TA(FString(L"Blue Side is now safe."), EChatChannel::EChatChannel_Match, false);
+
+					for (int i = 0; i < 10; i++) {
+						if (orangeCarsToRespawn.cars[i]) {
+							ACar_TA* currCar = orangeCarsToRespawn.cars[i];
+							if (currCar && respawnOnlyOnGround) {
+								currCar->bDemolishOnOpposingGround = false;
+							}
+							orangeCarsToRespawn.cars[i] = NULL;
+							
+						}
+					}
+				
+				}
+				else if (currentTeamHasPossesion == 1) {
+					if (InstanceStorage::PlayerController())
+						InstanceStorage::PlayerController()->ServerSay_TA(FString(L"Orange Side is now safe."), EChatChannel::EChatChannel_Match, false);
+					for (int i = 0; i < 10; i++) {
+						if (blueCarsToRespawn.cars[i]) {
+							ACar_TA* currCar = blueCarsToRespawn.cars[i];
+							if (currCar && respawnOnlyOnGround) {
+								currCar->bDemolishOnOpposingGround = false;
+							}
+							blueCarsToRespawn.cars[i] = NULL;
+						}
+					}	
+				}
+			}
 			//std::cout << "Team has had possession for 15 seconds, respawning!" << std::endl;
 
 		}

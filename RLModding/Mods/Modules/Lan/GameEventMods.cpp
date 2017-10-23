@@ -57,6 +57,7 @@ void GameEventMods::DrawMenu() {
 
 		// Game Event Controls
 		ImGui::Begin("Game Event Mods", &p_open, ImVec2(552, 645), 0.75f);
+		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.172f, 0.572f, 0.929f, 1.0f));
 
 		ImGui::PushStyleVar(ImGuiStyleVar_ChildWindowRounding, 5.0f);
 
@@ -268,6 +269,7 @@ void GameEventMods::DrawMenu() {
 		}
 		
 		ImGui::PopStyleVar();
+		ImGui::PopStyleColor();
 
 
 		if (!p_open) {

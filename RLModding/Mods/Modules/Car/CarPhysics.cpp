@@ -46,23 +46,28 @@ void CarPhysics::DrawMenu() {
 		}
 
 		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);
-		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide);
+		ImGui::Checkbox("Demolish On Opposing Side", &demolishOnOpposingSide); ImGui::SameLine();
+		ImGui::Checkbox("Demolish On Goal Zone", &demolishOnGoalZone);
+
 		ImGui::Checkbox("Podium Mode", &podiumMode);
 		ImGui::Checkbox("Hide Car", &isHidden);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Makes car invisible");
 
 		//ImGui::Checkbox("Freeze in place.", &freezeInPlace);
-		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost);
+		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
+		ImGui::SameLine();
+		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
+
+		ImGui::Checkbox("Unlimited Boost", &unlimitedBoost); ImGui::SameLine();
+		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
+
 
 		//if (ImGui::IsItemHovered())
 		//	ImGui::SetTooltip("For some reason it won't turn back off once turned on...");
 
-		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
-		ImGui::SameLine();
-		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
+
 		//ImGui::Checkbox("Disable Jumps", &disableJumps);
-		ImGui::Checkbox("Unlimited Jumps", &bUnlimitedJumps);
 
 		ImGui::Separator();
 
@@ -123,7 +128,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 			populatePlayerList(localGameEvent);
 			refreshCars = false;
 		}
-		if (cloneMe && InstanceStorage::PlayerController() != NULL) {
+		if (cloneMe && InstanceStorage::PlayerController() != NULL &&  InstanceStorage::PlayerController()->Car) {
 			for (int i = 0; i < numClones; i++) {
 				localGameEvent->SpawnCar(InstanceStorage::PlayerController(), InstanceStorage::PlayerController()->Car->Location, InstanceStorage::PlayerController()->Car->Rotation);
 			}
@@ -138,10 +143,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 				ACar_TA* currCar = NULL;
 
 				// Check if bot or person
-				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				if (tempController && tempController->IsA(SDK::AAIController_TA::StaticClass())) {
 					currCar = ((AAIController_TA*)tempController)->Car;
 				}
-				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				else if (tempController && tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
 					currCar = ((APlayerController_TA*)tempController)->Car;
 
 				}
@@ -155,10 +160,6 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
 					}
 
-					if(demolishOnOpposingSide)
-						currCar->bDemolishOnOpposingGround = 1.0f;
-					else 
-						currCar->bDemolishOnOpposingGround = 0.0f;
 
 					if (currCar->BoostComponent) {
 						
@@ -270,12 +271,27 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 						}
 						//InstanceStorage::PlayerController()->Car->Teleport(carOldLoc, carOldRot, false, false, false);
-						currCar->SetCarScale(carScale);
+						if (currCar) {
+							// Fix to disable demolish when scaling?
+							if (demolishOnGoalZone)
+								currCar->bDemolishOnGoalZone = false;
+							currCar->SetCarScale(carScale);
+							if (demolishOnGoalZone)
+								currCar->bDemolishOnGoalZone = true;
+						}
 					}
 
+					if (currCar) {
+					if (demolishOnOpposingSide)
+						currCar->bDemolishOnOpposingGround = 1.0f;
+					else
+						currCar->bDemolishOnOpposingGround = 0.0f;
 
-
-
+					if (demolishOnGoalZone)
+						currCar->bDemolishOnGoalZone = 1.0f;
+					else
+						currCar->bDemolishOnGoalZone = 0.0f;
+					}
 				}
 			}
 

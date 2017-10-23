@@ -49,6 +49,12 @@ void JoinServer::travel() {
 		LAN_Server = reinterpret_cast<UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (LAN_Server) {
 			std::string command(ip);
+			// If no port, add :7777
+			std::size_t found = command.find(":");
+			if (found == std::string::npos) {
+				command.append(":7777");
+			}
+
 			std::string temp = "open " + command + "?Lan";
 			std::cout << "Traveling to: " << temp << std::endl;
 			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(temp), 1);

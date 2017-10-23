@@ -51,6 +51,8 @@ private:
 	CarsToRespawn blueCarsToRespawn;
 	CarsToRespawn orangeCarsToRespawn;
 
+	bool respawnBallOnTimer = true;
+
 	bool isBasic = true;
 	bool isBreakoutType = false;
 	int settingsOption = false;

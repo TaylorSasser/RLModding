@@ -49,6 +49,7 @@ private:
 	int playerSelectedIndex = 0;
 	int oldPlayerSelectedIndex = 0;
 
+	bool demolishOnGoalZone = false;
 	bool demolishOnOpposingSide = false;
 	bool unlimitedBoost = false;
 
