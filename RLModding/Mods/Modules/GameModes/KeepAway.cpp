@@ -44,10 +44,14 @@ void KeepAway::DrawMenu() {
 					localGameEvent->StartNewGame();
 					localGameEvent->bDisableGoalDelay = true;
 					for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-						if(goalsAddScore)
-							localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
-						else 
-							localGameEvent->Goals.GetByIndex(i)->PointsToAward = 0;
+						if (goalsAddScore) {
+							if (localGameEvent->Goals[i])
+								localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
+						}
+						else {
+							if(localGameEvent->Goals[i])
+								localGameEvent->Goals.GetByIndex(i)->PointsToAward = 0;
+						}
 
 					}
 				}
@@ -65,7 +69,8 @@ void KeepAway::DrawMenu() {
 			AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 			if (localGameEvent) {
 				for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-					localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
+					if(localGameEvent->Goals[i])
+						localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
 				}
 			}
 
@@ -105,15 +110,21 @@ void KeepAway::onGameTimeUpdated(Event* e) {
 		//std::cout << "Time updated" << std::endl;
 		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 		if (localGameEvent) {
-			if (currentTeamHasPossesion == 0) {
+			if (currentTeamHasPossesion == 0 && localGameEvent->Teams[0]) {
 				localGameEvent->Teams.GetByIndex(0)->SetScore(localGameEvent->Teams.GetByIndex(0)->Score + 1);
-
+				// Update player score who scored
+				if (carLastTouched && carLastTouched->GetTeamNum() == 0 && carLastTouched->PRI) {
+					carLastTouched->PRI->MatchGoals += 1;
+				}
 			}
-			else if (currentTeamHasPossesion == 1) {
+			else if (currentTeamHasPossesion == 1 && localGameEvent->Teams[1]) {
 				localGameEvent->Teams.GetByIndex(1)->SetScore(localGameEvent->Teams.GetByIndex(1)->Score + 1);
-
+				// Update player score who scored
+				if (carLastTouched && carLastTouched->GetTeamNum() == 1 && carLastTouched->PRI) {
+					carLastTouched->PRI->MatchGoals += 1;
+				}
 			}
-			if (localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin || localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin) {
+			if ((localGameEvent->Teams[0] && localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin) || (localGameEvent->Teams[1] && localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin)) {
 				localGameEvent->EndGame();
 			}
 		}
@@ -124,7 +135,7 @@ void KeepAway::onEventGoalScored(Event* e) {
 	if (bStarted) {
 		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 		if (localGameEvent) {
-			if (localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin || localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin) {
+			if ((localGameEvent->Teams[0] && localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin) || (localGameEvent->Teams[1] && localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin)) {
 				localGameEvent->EndGame();
 			}
 			//std::cout << "Blue score current: " << localGameEvent->Teams.GetByIndex(0)->Score << std::endl;
@@ -141,10 +152,13 @@ void KeepAway::onBallCarTouch(Event* e) {
 
 		ACar_TA* hitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::ABall_TA_OnCarTouch_Params>()->HitCar);
 		if (hitCar) {
+			
+			carLastTouched = hitCar;
+
 			if (hitCar->GetTeamIndex() == 0) {
 				//std::cout << "BLUE TOUCHED LAST" << std::endl;
 				currentTeamHasPossesion = 0;
-
+				
 			}
 			if (hitCar->GetTeamIndex() == 1) {
 				//std::cout << "ORANGE TOUCHED LAST" << std::endl;

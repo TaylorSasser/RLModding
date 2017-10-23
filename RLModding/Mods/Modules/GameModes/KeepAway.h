@@ -29,6 +29,7 @@ private:
 	time_t start, end;
 	bool p_open = true;
 
+	ACar_TA* carLastTouched = NULL;
 	bool goalsAddScore = false;
 	int currentTeamHasPossesion = -1;
 

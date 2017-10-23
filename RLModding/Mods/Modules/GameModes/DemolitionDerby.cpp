@@ -106,8 +106,14 @@ void DemolitionDerby::onCarDemolished(Event* e) {
 		FDemolishData demoData = e->getParams<SDK::ACar_TA_OnDemolished_Params>()->Data;
 		if (demoData.Attacker && demoData.Attacker->IsA(ACar_TA::StaticClass())) {
 			ACar_TA* carThatScored = (ACar_TA*)demoData.Attacker;
-			if (localGameEvent && localGameEvent->Teams.IsValidIndex(carThatScored->GetTeamNum()) && localGameEvent->Teams[carThatScored->GetTeamNum()]) {
-				localGameEvent->Teams[carThatScored->GetTeamNum()]->SetScore(localGameEvent->Teams[carThatScored->GetTeamNum()]->Score + 1);
+			if (carThatScored) {
+				if (localGameEvent && localGameEvent->Teams.IsValidIndex(carThatScored->GetTeamNum()) && localGameEvent->Teams[carThatScored->GetTeamNum()]) {
+					localGameEvent->Teams[carThatScored->GetTeamNum()]->SetScore(localGameEvent->Teams[carThatScored->GetTeamNum()]->Score + 1);
+					// Update player score who scored
+					if (carThatScored->PRI) {
+						carThatScored->PRI->MatchGoals += 1;
+					}
+				}
 			}
 		}
 	}
