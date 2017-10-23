@@ -64,7 +64,7 @@ void PlayerMods::DrawMenu() {
 
 		ImGui::Separator();
 
-		ImGui::Columns(6, "mycolumns"); // 4-ways, with border
+		ImGui::Columns(3, "mycolumns"); // 4-ways, with border
 		ImGui::InputInt("Score", &playerScore, 1, 5); ImGui::NextColumn();
 		ImGui::InputInt("Goals", &playerGoals, 1, 5); ImGui::NextColumn();
 		ImGui::InputInt("Assists", &playerAssists, 1, 5); ImGui::NextColumn();

@@ -365,50 +365,52 @@ void DribbleDrabble::onCarTick(Event* e) {
 			ACar_TA* currCar = (SDK::ACar_TA*)e->getCallingObject();
 
 			// Orange side
-			if (currCar->Location.Y > 0) {
-				//std::cout << "Car is on orange side?" << std::endl;
-				// If car is on orange team and is on orange side, remove from respawn
-				if (currCar->GetTeamNum() == 1) {
-					int carIndex = carIsOnList(currCar, orangeCarsToRespawn);
-					if (carIndex != -1) {
-						orangeCarsToRespawn.cars[carIndex] = NULL;
-						std::cout << "Orange car removed" << std::endl;
+			if (currCar) {
+				if (currCar->Location.Y > 0) {
+					//std::cout << "Car is on orange side?" << std::endl;
+					// If car is on orange team and is on orange side, remove from respawn
+					if (currCar->GetTeamNum() == 1) {
+						int carIndex = carIsOnList(currCar, orangeCarsToRespawn);
+						if (carIndex != -1) {
+							orangeCarsToRespawn.cars[carIndex] = NULL;
+							std::cout << "Orange car removed" << std::endl;
+						}
 					}
-				}
-				// If car is on blue team and on orange side, add car to respawn list (if not already there)
-				if (currCar->GetTeamNum() == 0) {
-					int carIndex = carIsOnList(currCar, blueCarsToRespawn);
-					if (carIndex == -1) {
-						for (carIndex = 0; carIndex < 10; carIndex++) {
-							if (!blueCarsToRespawn.cars[carIndex]) {
-								blueCarsToRespawn.cars[carIndex] = currCar;
-								std::cout << "blue car added" << std::endl;
-								break;
+					// If car is on blue team and on orange side, add car to respawn list (if not already there)
+					if (currCar->GetTeamNum() == 0) {
+						int carIndex = carIsOnList(currCar, blueCarsToRespawn);
+						if (carIndex == -1) {
+							for (carIndex = 0; carIndex < 10; carIndex++) {
+								if (!blueCarsToRespawn.cars[carIndex]) {
+									blueCarsToRespawn.cars[carIndex] = currCar;
+									std::cout << "blue car added" << std::endl;
+									break;
+								}
 							}
 						}
 					}
 				}
-			}
-			else if (currCar->Location.Y < 0) {
-				//std::cout << "Car is on blue side?" << std::endl;
-				// If car is on blue team and is on blue side, remove from respawn
-				if (currCar->GetTeamNum() == 0) {
-					int carIndex = carIsOnList(currCar, blueCarsToRespawn);
-					if (carIndex != -1) {
-						blueCarsToRespawn.cars[carIndex] = NULL;
-						std::cout << "blue car removed" << std::endl;
+				else if (currCar->Location.Y < 0) {
+					//std::cout << "Car is on blue side?" << std::endl;
+					// If car is on blue team and is on blue side, remove from respawn
+					if (currCar->GetTeamNum() == 0) {
+						int carIndex = carIsOnList(currCar, blueCarsToRespawn);
+						if (carIndex != -1) {
+							blueCarsToRespawn.cars[carIndex] = NULL;
+							std::cout << "blue car removed" << std::endl;
 
+						}
 					}
-				}
-				// If car is on orange team and on blue side, add car to respawn list (if not already there)
-				if (currCar->GetTeamNum() == 1) {
-					int carIndex = carIsOnList(currCar, orangeCarsToRespawn);
-					if (carIndex == -1) {
-						for (carIndex = 0; carIndex < 10; carIndex++) {
-							if (!orangeCarsToRespawn.cars[carIndex]) {
-								orangeCarsToRespawn.cars[carIndex] = currCar;
-								std::cout << "orange car added" << std::endl;
-								break;
+					// If car is on orange team and on blue side, add car to respawn list (if not already there)
+					if (currCar->GetTeamNum() == 1) {
+						int carIndex = carIsOnList(currCar, orangeCarsToRespawn);
+						if (carIndex == -1) {
+							for (carIndex = 0; carIndex < 10; carIndex++) {
+								if (!orangeCarsToRespawn.cars[carIndex]) {
+									orangeCarsToRespawn.cars[carIndex] = currCar;
+									std::cout << "orange car added" << std::endl;
+									break;
+								}
 							}
 						}
 					}

@@ -57,8 +57,15 @@ void GameEventMods::DrawMenu() {
 
 		// Game Event Controls
 		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
+
+		ImGui::PushStyleVar(ImGuiStyleVar_ChildWindowRounding, 5.0f);
+
+
 		if (ImGui::CollapsingHeader("Game Controls", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.933f, 0.925f, 0.925f, 0.2f));
+			ImGui::BeginChild("gameControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 3), true);
+
 			if (ImGui::Button("Pause Server")) {
 				pauseServer = true;
 			} ImGui::SameLine();
@@ -77,12 +84,16 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Reset Balls")) {
 				resetBalls = true;
 			}
-			
-		}
 
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
+		}
 
 		if (ImGui::CollapsingHeader("Match Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.682f, 0.803f, 0.937f, 0.2f));
+			ImGui::BeginChild("matchControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 6), true);
+
 			ImGui::InputInt("Respawn Time", &respawnTime);
 
 			ImGui::PushItemWidth(100);
@@ -105,12 +116,18 @@ void GameEventMods::DrawMenu() {
 			ImGui::Checkbox("Unlimited Time", &unlimitedTime);
 			//ImGui::Checkbox("Show Replays", &showReplays);
 
-
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 		}
 
 		if (ImGui::CollapsingHeader("Team Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.933f, 0.925f, 0.925f, 0.2f));
+			ImGui::BeginChild("teamControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing()*6), true);
+
+			ImGui::PushItemWidth(150);
 			ImGui::InputText("Blue Team Name", blueTeamName, IM_ARRAYSIZE(blueTeamName));	ImGui::SameLine();
+			ImGui::PushItemWidth(150);
 			ImGui::InputText("Orange Team Name", orangeTeamName, IM_ARRAYSIZE(orangeTeamName)); ImGui::SameLine();
 			if (ImGui::Button("Apply Names")) {
 				applyNewTeamNames = true;
@@ -129,10 +146,15 @@ void GameEventMods::DrawMenu() {
 			ImGui::Checkbox("Always Auto Select Team", &alwaysAutoTeam);
 			if (ImGui::IsItemHovered())
 				ImGui::SetTooltip("Not sure what this does exactly...");
+
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 		}
 
 		if (ImGui::CollapsingHeader("Message Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.682f, 0.803f, 0.937f, 0.2f));
+			ImGui::BeginChild("messageControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 4), true);
 			ImGui::TextColored(ImVec4(0.9f,0.0f,0.0f,1.0f),"WARNING.  Changing these values will cause your game to crash when leaving.");
 			ImGui::Text("The Server should work fine until then.");
 
@@ -142,14 +164,17 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Update Player Messages")) {
 				updatePlayerMessages = true;
 			}
-		
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 		}
 		
 
 		if (ImGui::CollapsingHeader("Bots",ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			
-			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: removing bots only works for bots you spawned manually.");
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.933f, 0.925f, 0.925f, 0.2f));
+			ImGui::BeginChild("botsControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 5), true);
+
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 0.2f), "NOTE: removing bots only works for bots you spawned manually.");
 			ImGui::InputInt("# Bots", &botsToSpawn); ImGui::SameLine();
 			if (ImGui::Button("Spawn Bot(s)")) {
 				spawnBot = true;
@@ -162,20 +187,28 @@ void GameEventMods::DrawMenu() {
 				removeBots = true;
 			}
 			ImGui::InputFloat("Bot Skill", &botSkill, 0.5f, 1.0f, 1);
-
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 			
 		}
 		if (ImGui::CollapsingHeader("Ridiculous Settings", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
-			
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.682f, 0.803f, 0.937f, 0.2f));
+			ImGui::BeginChild("ridicControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 3), true);
+
 			ImGui::Checkbox("Disable Goals", &disableGoals);
 			//ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
 			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
 			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
 
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 		}
 		if (ImGui::CollapsingHeader("Two's test stuff."))
 		{
+			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.933f, 0.925f, 0.925f, 0.2f));
+			ImGui::BeginChild("twosControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 10), true);
+
 			ImGui::Text("NOTE: None of this for sure works.  Use at your own risk.");
 
 
@@ -229,10 +262,14 @@ void GameEventMods::DrawMenu() {
 			if (ImGui::Button("Change Arena Color")) {
 				testArenaColor = true;
 			}
-				
+			ImGui::EndChild();
+			ImGui::PopStyleColor();
 
 		}
 		
+		ImGui::PopStyleVar();
+
+
 		if (!p_open) {
 			this->enabled = false;
 			p_open = true;
