@@ -16,7 +16,7 @@ void JoinServer::ExportSettings(pt::ptree) {}
 void JoinServer::ImportSettings(pt::ptree) {}
 
 void JoinServer::DrawMenu() {
-	ImGui::Begin("Join", &p_open, ImVec2(300, 200), 0.75f);
+	ImGui::Begin("Join", &p_open, ImVec2(291, 101), 0.75f);
 	ImGui::InputText("Ip Address", ip, IM_ARRAYSIZE(ip));
 	if (ImGui::Button("Join")) {
 		printf("Attempting to join server...");

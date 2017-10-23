@@ -22,7 +22,7 @@ void FreezeTag::ImportSettings(pt::ptree & root) {
 }
 
 void FreezeTag::DrawMenu() {
-	ImGui::Begin("Freeze Tag Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Freeze Tag Settings", &p_open, ImVec2(208, 111), 0.75f);
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {

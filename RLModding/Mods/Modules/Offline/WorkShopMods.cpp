@@ -16,7 +16,7 @@ void WorkshopMods::ExportSettings() {}
 void WorkshopMods::ImportSettings() {}
 
 void WorkshopMods::DrawMenu() {
-	ImGui::Begin("WorkShop Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("WorkShop Settings", &p_open, ImVec2(585, 260), 0.75f);
 
 	ImGui::Combo("Current Maps", &selectedWorkShopName, workShopMapNames, IM_ARRAYSIZE(workShopMapNames));   
 

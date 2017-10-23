@@ -11,7 +11,7 @@ void InfiniteCelebration::ExportSettings(pt::ptree) {}
 void InfiniteCelebration::ImportSettings(pt::ptree) {}
 
 void InfiniteCelebration::DrawMenu() {
-	ImGui::Begin("Infinite Celebration Mode", &p_open, ImVec2(400, 150), 0.75f);
+	ImGui::Begin("Infinite Celebration Mode", &p_open, ImVec2(321, 129), 0.75f);
 
 	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Either 0 or 1.  0 for blue, 1 for orange.");
 

@@ -28,7 +28,7 @@ void FiftyFifty::unloadMod() {
 void FiftyFifty::loadMod() {}
 
 void FiftyFifty::DrawMenu() {
-	ImGui::Begin("50/50 Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("50/50 Settings", &p_open, ImVec2(364, 165), 0.75f);
 	ImGui::SliderFloat("Interval", &interval, 0.1f, 60.0f, "%.1f");
 	if (ImGui::IsItemHovered())
 		ImGui::SetTooltip("Interval for below settings (in seconds)");

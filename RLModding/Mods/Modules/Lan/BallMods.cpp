@@ -35,7 +35,7 @@ void BallMods::DrawMenu() {
 	if (BallMods::isEnabled()) {
 
 		// Game Event Controls
-		ImGui::Begin("Ball Mods", &p_open, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Ball Mods", &p_open, ImVec2(439, 367), 0.75f);
 		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
 		ImGui::InputInt("# Balls", &numGameBalls);
 

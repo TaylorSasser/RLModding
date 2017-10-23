@@ -56,7 +56,7 @@ void GameEventMods::DrawMenu() {
 	if (GameEventMods::isEnabled()) {
 
 		// Game Event Controls
-		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Game Event Mods", &p_open, ImVec2(552, 645), 0.75f);
 		if (ImGui::CollapsingHeader("Game Controls", ImGuiTreeNodeFlags_::ImGuiTreeNodeFlags_DefaultOpen))
 		{
 			if (ImGui::Button("Pause Server")) {
