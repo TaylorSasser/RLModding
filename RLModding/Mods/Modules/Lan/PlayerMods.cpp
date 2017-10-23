@@ -15,7 +15,7 @@ void PlayerMods::ImportSettings(pt::ptree) {}
 
 void PlayerMods::DrawMenu() {
 	if (PlayerMods::isEnabled()) {
-		ImGui::Begin("Player Mods", &p_open, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Player Mods", &p_open, ImVec2(700, 242), 0.75f);
 
 		ImGui::Combo("Players", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 		ImGui::SameLine();

@@ -21,7 +21,7 @@ bool inventoryExportDone = false;
 void InventoryManager::DrawMenu() {
 	if (InventoryManager::isEnabled()) {
 		{
-			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
+			ImGui::SetNextWindowPos(ImVec2(311, 134), ImGuiSetCond_FirstUseEver);
 
 			ImGui::Begin("Inventory Management", &p_open);
 

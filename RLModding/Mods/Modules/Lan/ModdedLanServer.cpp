@@ -14,7 +14,7 @@ void ModdedLanServer::ExportSettings(pt::ptree) {}
 void ModdedLanServer::ImportSettings(pt::ptree) {}
 
 void ModdedLanServer::DrawMenu() {
-	ImGui::Begin("LAN Options", &p_open, ImVec2(500, 800), 0.75f);
+	ImGui::Begin("LAN Options", &p_open, ImVec2(504, 698), 0.75f);
 
 	if (gameModesCombo[defaultGameMode] != "Replay" && gameModesCombo[defaultGameMode] != "FreePlay") {
 		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Sadly Psyonix has disabled some of the custom mutator settings.");

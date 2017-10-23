@@ -287,7 +287,7 @@ void RumbleMods::DrawMenu() {
 		{
 			#pragma region BeginMenu
 			// Rumble Controls
-			ImGui::Begin("Rumble Options", &p_open, ImVec2(400, 300), 0.75f);
+			ImGui::Begin("Rumble Options", &p_open, ImVec2(370, 466), 0.75f);
 
 			/*
 			ImGui::Combo("Player Name", &playerSelectedIndex, players, IM_ARRAYSIZE(players));

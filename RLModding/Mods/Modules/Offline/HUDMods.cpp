@@ -6,7 +6,7 @@ HUDMods::~HUDMods() {}
 void HUDMods::DrawMenu() {
 	if (HUDMods::isEnabled()) {
 		{
-			ImGui::SetNextWindowPos(ImVec2(420, 420), ImGuiSetCond_FirstUseEver);
+			ImGui::SetNextWindowPos(ImVec2(136, 76), ImGuiSetCond_FirstUseEver);
 
 			ImGui::Begin("HUD Settings", &p_open);
 

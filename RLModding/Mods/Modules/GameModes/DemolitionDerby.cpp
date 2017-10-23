@@ -52,7 +52,7 @@ void DemolitionDerby::ImportSettings(pt::ptree & root) {
 }
 
 void DemolitionDerby::DrawMenu() {
-	ImGui::Begin("Demolition Derby Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Demolition Derby Settings", &p_open, ImVec2(291, 128), 0.75f);
 	ImGui::TextWrapped("Every demo gives your team a point.");
 
 	ImGui::Checkbox("Disable Goals", &disableGoals);

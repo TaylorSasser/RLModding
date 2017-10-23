@@ -21,7 +21,7 @@ void CarPhysics::ImportSettings(pt::ptree) {
 
 void CarPhysics::DrawMenu() {
 	if (CarPhysics::isEnabled()) {
-		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Car Physics Mods", &p_open, ImVec2(778, 688), 0.75f);
 
 		ImGui::Combo("Player Car", &playerSelectedIndex, players, IM_ARRAYSIZE(players));
 		ImGui::SameLine();

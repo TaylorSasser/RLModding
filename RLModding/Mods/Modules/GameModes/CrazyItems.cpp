@@ -12,7 +12,7 @@ void CrazyItems::ExportSettings(pt::ptree) {}
 void CrazyItems::ImportSettings(pt::ptree) {}
 
 void CrazyItems::DrawMenu() {
-	ImGui::Begin("Crazy Items Settings", &p_open, ImVec2(400, 100), 0.75f);
+	ImGui::Begin("Crazy Items Settings", &p_open, ImVec2(511, 92), 0.75f);
 	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Individual rumble item settings can be set in the rumble mods window.");
 
 	if (!bStarted) {

@@ -56,7 +56,7 @@ void GameEventMods::DrawMenu() {
 	if (GameEventMods::isEnabled()) {
 
 		// Game Event Controls
-		ImGui::Begin("Game Event Mods", &p_open, ImVec2(400, 300), 0.75f);
+		ImGui::Begin("Game Event Mods", &p_open, ImVec2(552, 645), 0.75f);
 
 		ImGui::PushStyleVar(ImGuiStyleVar_ChildWindowRounding, 5.0f);
 

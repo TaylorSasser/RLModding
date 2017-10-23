@@ -61,7 +61,7 @@ void CustomBlog::ImportSettings(pt::ptree & root) {
 }
 
 void CustomBlog::DrawMenu() {
-	ImGui::Begin("Custom Blog", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("Custom Blog", &p_open, ImVec2(501, 522), 0.75f);
 		ImGui::InputText("Carousel Title", carousel_title, IM_ARRAYSIZE(carousel_title));
 		ImGui::InputText("Carousel Body", carousel_body, IM_ARRAYSIZE(carousel_body));
 		ImGui::InputText("Carousel Link", carousel_URL, IM_ARRAYSIZE(carousel_URL));

@@ -54,7 +54,7 @@ void DribbleDrabble::loadMod() {
 
 
 void DribbleDrabble::DrawMenu() {
-	ImGui::Begin("DribbleDrabble Settings", &p_open, ImVec2(400, 300), 0.75f);
+	ImGui::Begin("DribbleDrabble Settings", &p_open, ImVec2(514, 260), 0.75f);
 	if (!isBreakoutType) {
 		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "For additional settings like ball color use the DropsShot gametype.");
 	}
