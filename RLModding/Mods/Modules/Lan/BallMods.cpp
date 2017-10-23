@@ -1,6 +1,7 @@
 #include "BallMods.h"
 #include "../Utils/Utils.h"
 #include "../Interfaces/Interfaces.h"
+#include "../GameModes/FiftyFifty.h"
 #include <map>
 //
 // Need to fix removing balls via the plus and minsus (crashes atm) 
@@ -37,6 +38,9 @@ void BallMods::DrawMenu() {
 		// Game Event Controls
 		ImGui::Begin("Ball Mods", &p_open, ImVec2(439, 367), 0.75f);
 		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
+		if (((FiftyFifty*)Interfaces::Mods().getModInstance("50/50"))->enabled) {
+			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Warning: Enabling both 50/50 and ball mods will cause issues.");
+		}
 		ImGui::InputInt("# Balls", &numGameBalls);
 
 
@@ -79,6 +83,7 @@ void BallMods::onPlayerTick(Event* e) {
 	if (localGameEvent)
 	{
 		SDK::TArray< class SDK::ABall_TA* > gameBalls = localGameEvent->GameBalls;
+
 		if (numGameBalls < 1) numGameBalls = 1;
 
 		if (gameBalls.IsValidIndex(0)) {
@@ -86,6 +91,7 @@ void BallMods::onPlayerTick(Event* e) {
 				localGameEvent->SetTotalGameBalls(numGameBalls);
 				localGameEvent->ResetBalls();
 				resetBalls();
+				std::cout << "Game balls != numGameBalls\n";
 			}
 			else {
 				for (int i = 0; i < gameBalls.Num(); i++) {
@@ -93,10 +99,12 @@ void BallMods::onPlayerTick(Event* e) {
 						if (!Utils::FloatCompare(gameBallSettings[i].Scale, prevGameBallSettings[i].Scale) || ballReset) {
 							prevGameBallSettings[i].Scale = gameBallSettings[i].Scale;
 							gameBalls[i]->SetBallScale(gameBallSettings[i].Scale);
+							std::cout << "Changing ball Scale!\n";
 						}
 						if (prevGameBallSettings[i].isHidden != gameBallSettings[i].isHidden || ballReset) {
 							prevGameBallSettings[i].isHidden = gameBallSettings[i].isHidden;
 							gameBalls[i]->SetHidden(gameBallSettings[i].isHidden);
+							std::cout << "Changing ball hidden!\n";
 
 						}
 						//if (gameBalls[i]->bPredictionOnGround != gameBallSettings[i].predictOnGround)
@@ -104,6 +112,7 @@ void BallMods::onPlayerTick(Event* e) {
 
 						// Update stats
 						gameBallSettings[i].touchCount = gameBalls[i]->Touches.Num();
+						std::cout << "Loops through balls i = " << i << std::endl;
 					}
 				}
 			}
