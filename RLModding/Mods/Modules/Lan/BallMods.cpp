@@ -39,7 +39,7 @@ void BallMods::DrawMenu() {
 		ImGui::Begin("Ball Mods", &p_open, ImVec2(439, 367), 0.75f);
 		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
 		if (((FiftyFifty*)Interfaces::Mods().getModInstance("50/50"))->enabled) {
-			ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "Warning: Enabling both 50/50 and ball mods will cause issues.");
+			ImGui::TextColored(ImVec4(0.90f, 0.27f, 0.06f, 1.0f), "Warning: Enabling both 50/50 and ball mods will cause issues.");
 		}
 		ImGui::InputInt("# Balls", &numGameBalls);
 
