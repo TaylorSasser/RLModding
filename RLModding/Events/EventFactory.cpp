@@ -65,6 +65,9 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Car_TA.EventBumpedCar", &ModBase::OnCarBumped);
 	SubscribeEvent("Function TAGame.GFxData_ServerBrowser_TA.HandleSearchComplete", &ModBase::onServerBrowserSearchComplete);
 	SubscribeEvent("Function TAGame.GFxData_LanBrowser_TA.HandleServers", &ModBase::eventLanSearchResultComplete);
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventGameEnded", &ModBase::eventGameEnded);
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnMatchEnded", &ModBase::onMatchEnded);
+	
 	
 	
 

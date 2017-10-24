@@ -168,6 +168,9 @@ public:
 	virtual void onGameEventRemovePlayer(Event* e) {}
 	virtual void onBallTick(Event* e) {}
 
+	virtual void eventGameEnded(Event* e) {}
+	virtual void onMatchEnded(Event* e) {}
+
 	virtual void eventReplayHeadersLoaded(Event* e) {}
 	virtual void eventAllTrainingFilesLoaded(Event* e) {}
 

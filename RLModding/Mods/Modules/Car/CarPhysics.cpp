@@ -45,7 +45,9 @@ void CarPhysics::DrawMenu() {
 			setCarScale = true;
 		}
 
+		ImGui::PushItemWidth(100);
 		ImGui::InputFloat("Mass", &mass, 0.5f, 1.0f, 1); ImGui::SameLine();
+		ImGui::PushItemWidth(100);
 		ImGui::InputFloat("Gravity Scale", &gravityScale, 0.5f, 1.0f, 1);
 
 		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);

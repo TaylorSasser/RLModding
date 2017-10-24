@@ -26,6 +26,38 @@ void KeepAway::ImportSettings(pt::ptree & root) {
 	pointsToWin = root.get<int>("KeepAway_Points", 100);
 }
 
+void KeepAway::loadMod() {
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	if (localGameEvent) {
+		localGameEvent->StartNewGame();
+		localGameEvent->bDisableGoalDelay = true;
+		for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
+			if (goalsAddScore) {
+				if (localGameEvent->Goals[i])
+					localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
+			}
+			else {
+				if (localGameEvent->Goals[i])
+					localGameEvent->Goals.GetByIndex(i)->PointsToAward = 0;
+			}
+
+		}
+	}
+}
+
+
+void KeepAway::unloadMod() {
+	bStarted = false;
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	if (localGameEvent) {
+		for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
+			if (localGameEvent->Goals[i])
+				localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
+		}
+	}
+}
+
+
 void KeepAway::DrawMenu() {
 	ImGui::Begin("Keep Away Settings", &p_open, ImVec2(495, 233), 0.75f);
 	ImGui::TextWrapped("In this game mode the goal is to keep the other team from touching the ball as long as possible. Each second your team has touched the ball last you will be awarded 1 point. You can either choose to play to a set score or until the time runs out. Replays are disabled and you can choose whether scoring awards an additional point.");
@@ -39,22 +71,7 @@ void KeepAway::DrawMenu() {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled Keep Away");
-				AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-				if (localGameEvent) {
-					localGameEvent->StartNewGame();
-					localGameEvent->bDisableGoalDelay = true;
-					for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-						if (goalsAddScore) {
-							if (localGameEvent->Goals[i])
-								localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
-						}
-						else {
-							if(localGameEvent->Goals[i])
-								localGameEvent->Goals.GetByIndex(i)->PointsToAward = 0;
-						}
-
-					}
-				}
+				loadMod();
 			}
 
 			else {
@@ -66,13 +83,7 @@ void KeepAway::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled Keep Away");
 			bStarted = false;
-			AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-			if (localGameEvent) {
-				for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-					if(localGameEvent->Goals[i])
-						localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
-				}
-			}
+			unloadMod();
 
 		}
 	}
@@ -172,4 +183,9 @@ void KeepAway::onBallCarTouch(Event* e) {
 void KeepAway::onBallHit(Event* e) {
 	
 
+}
+
+void KeepAway::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	unloadMod();
 }

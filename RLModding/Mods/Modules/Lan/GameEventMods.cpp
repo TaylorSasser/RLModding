@@ -619,6 +619,46 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 	if (testWeldPlayers) {
 		if (InstanceStorage::PlayerController() && InstanceStorage::PlayerController()->Car) {
+			InstanceStorage::PlayerController()->Car->Gasp();
+			std::cout << "Health: " << InstanceStorage::PlayerController()->Car->Health << std::endl;
+			//InstanceStorage::PlayerController()->Car->Dam
+			ABall_TA* newBall = NULL;
+			for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+				
+				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+				if (CheckObject && CheckObject->IsA(ABall_TA::StaticClass())) {
+					if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+						if (strstr(CheckObject->GetFullName().c_str(), "Ball_Puck")) {
+							//actor->SetHidden(!actor->bHidden);
+							newBall = reinterpret_cast<SDK::ABall_TA*>(CheckObject);
+
+							std::cout << " instance: " << CheckObject->GetFullName() << std::endl;
+
+						}
+					}
+				}
+
+				/*
+				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+				if (CheckObject && CheckObject->IsA(AActor::StaticClass())) {
+					if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+						AActor* actor = reinterpret_cast<SDK::AActor*>(CheckObject);
+						if (actor) {
+							actor->SetHidden(!actor->bHidden);
+							std::cout << " instance: " << CheckObject->GetFullName() << std::endl;
+
+						}
+					}
+				}
+				*/
+			}
+			FVector spawnLoc = InstanceStorage::PlayerController()->Car->Location;
+			spawnLoc.Z += 100;
+			if (newBall) {
+				std::cout << "Attempt to ball." << std::endl;
+				localGameEvent->SpawnBall(spawnLoc, true, false, newBall->GetHumanReadableName());
+			}
+			/*
 			if (localGameEvent && localGameEvent->AIManager) {
 				TArray<class AAIController_TA*> bots = localGameEvent->AIManager->Bots;
 				int botsToDelete = bots.Num();
@@ -626,11 +666,13 @@ void GameEventMods::onPlayerTick(Event* e) {
 					FVector weldLoc = { 0.0f, 0.0f, 0.0f };
 					//weldLoc.Y += (float)i/10.0;
 					weldLoc.Z += 10;
-					bots[i]->Car->WeldRBActor(InstanceStorage::PlayerController()->Car, weldLoc, bots[i]->Rotation);
+					//InstanceStorage::PlayerController()->Car->StartDriving();
+					//bots[i]->Car->WeldRBActor(, weldLoc, bots[i]->Rotation);
 					break;
 					//spawnedBotsCount--;
 				}
 			}
+			*/
 		}
 		testWeldPlayers = false;
 	}

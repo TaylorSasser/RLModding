@@ -13,6 +13,9 @@ public:
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
+	void eventGameEnded(Event* e) override;
+	void loadMod() override;
+	void unloadMod() override;
 	void onCarDemolished(Event * e);
 	void onBallHit(Event* e);
 	void onBallCarTouch(Event* e);
