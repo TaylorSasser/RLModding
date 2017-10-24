@@ -13,8 +13,8 @@ public:
 	void DrawMenu() override;
 	void onPlayerTick(Event*) override;
 	void onCarSpawned(Event* e) override;
+	void eventGameEnded(Event* e) override;
 	void onCarDemolished(Event * e);
-
 	void loadMod();
 	void unloadMod();
 

@@ -41,7 +41,20 @@ void DemolitionDerby::loadMod() {
 }
 
 void DemolitionDerby::unloadMod() {
-
+	bStarted = false;
+	if (disableGoals) {
+		for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+			SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+			if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+				if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+					AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+					if (goalVolume) {
+						goalVolume->bPawnsOnly = false;
+					}
+				}
+			}
+		}
+	}
 }
 
 void DemolitionDerby::ExportSettings(pt::ptree & root) {
@@ -120,3 +133,9 @@ void DemolitionDerby::onCarDemolished(Event* e) {
 	
 }
 
+void DemolitionDerby::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	if (bStarted) {
+		unloadMod();
+	}
+}

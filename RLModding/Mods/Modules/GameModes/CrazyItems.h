@@ -12,8 +12,11 @@ public:
 	void onMenuOpen() override;
 	void onMenuClose() override;
 	void onPlayerTick(Event* e) override;
+	void eventGameEnded(Event* e) override;
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
+	void loadMod();
+	void unloadMod();
 
 private:
 

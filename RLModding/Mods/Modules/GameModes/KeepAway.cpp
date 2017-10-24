@@ -187,5 +187,7 @@ void KeepAway::onBallHit(Event* e) {
 
 void KeepAway::eventGameEnded(Event* e) {
 	std::cout << "Game Ended. " << std::endl;
-	unloadMod();
+	if (bStarted) {
+		unloadMod();
+	}
 }

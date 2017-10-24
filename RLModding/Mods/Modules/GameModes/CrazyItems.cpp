@@ -11,6 +11,19 @@ CrazyItems::CrazyItems(std::string name, int key) : ModBase(name, key) {}
 void CrazyItems::ExportSettings(pt::ptree) {}
 void CrazyItems::ImportSettings(pt::ptree) {}
 
+void CrazyItems::loadMod() {
+	((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->enabled = true;
+	((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->setCrazyRumbleValues();
+	((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->setModEnabled(true);
+}
+
+
+void CrazyItems::unloadMod() {
+	((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->resetRumbleValues();
+	bStarted = false;
+
+}
+
 void CrazyItems::DrawMenu() {
 	ImGui::Begin("Crazy Items Settings", &p_open, ImVec2(511, 92), 0.75f);
 	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Individual rumble item settings can be set in the rumble mods window.");
@@ -20,9 +33,7 @@ void CrazyItems::DrawMenu() {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
 				printf("Enabled Crazy Items");
-				((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->enabled = true;
-				((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->setCrazyRumbleValues();
-				((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->setModEnabled(true);
+				loadMod();
 			}
 
 			else {
@@ -34,7 +45,7 @@ void CrazyItems::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled Crazy Items");
 			bStarted = false;
-			((RumbleMods*)Interfaces::Mods().getModInstance("Rumble Mods"))->resetRumbleValues();
+			unloadMod();
 		}
 	}
 	if (!p_open) {
@@ -64,4 +75,11 @@ void CrazyItems::onMenuClose() {
 
 void CrazyItems::onPlayerTick(Event* e) {
 
+}
+
+void CrazyItems::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	if (bStarted) {
+		unloadMod();
+	}
 }
