@@ -10,6 +10,14 @@ InfiniteCelebration::InfiniteCelebration(std::string name, int key) : ModBase(na
 void InfiniteCelebration::ExportSettings(pt::ptree) {}
 void InfiniteCelebration::ImportSettings(pt::ptree) {}
 
+void InfiniteCelebration::loadMod() {
+
+}
+
+void InfiniteCelebration::unloadMod() {
+	bStarted = false;
+}
+
 void InfiniteCelebration::DrawMenu() {
 	ImGui::Begin("Infinite Celebration Mode", &p_open, ImVec2(321, 129), 0.75f);
 
@@ -87,3 +95,9 @@ void InfiniteCelebration::onPlayerTick(Event* e) {
 	
 }
 
+void InfiniteCelebration::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	if (bStarted) {
+		unloadMod();
+	}
+}

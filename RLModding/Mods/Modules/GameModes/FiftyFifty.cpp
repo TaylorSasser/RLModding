@@ -240,3 +240,10 @@ void FiftyFifty::onPlayerTick(Event* event) {
 		reset_balls = false;
 	}
 }
+
+void FiftyFifty::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	if (bStarted) {
+		unloadMod();
+	}
+}
