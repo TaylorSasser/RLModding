@@ -61,7 +61,6 @@
     <ClCompile Include="Mods\Modules\GameModes\Zombies.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
-    <ClCompile Include="Gui\roboto.hpp" />
     <ClCompile Include="Mods\Modules\GameModes\FreezeTag.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />

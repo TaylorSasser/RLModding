@@ -89,6 +89,10 @@ public:
 	virtual void onPlayerTick(Event*) {}
 	virtual void onOnlineGameStart(Event* event) {
 		inMainMenu = false; inOnline = true; inCustom = false; inExhibition = false; inTraining = false;
+		if (enabled) {
+			GameState currentState = getCurrentGameState();
+			if (!(currentState & getAllowedGameStates())) setState(false);
+		}
 	}
 	virtual void onBallHit(Event* event) {}
 	virtual void onSetFriendJoinLocation(Event*) {}
@@ -98,6 +102,11 @@ public:
 	virtual void onMainMenuTick(Event* event) {
 		InstanceStorage::SetMenuController(reinterpret_cast<SDK::APlayerController_Menu_TA*>(event->getCallingObject()));
 		inMainMenu = true; inOnline = false; inCustom = false; inExhibition = false; inTraining = false;
+		if (enabled) {
+			GameState currentState = getCurrentGameState();
+			if (!(currentState & getAllowedGameStates())) setState(false);
+		}
+
 	}
 	virtual void onCarTick(Event* event) {
 		InstanceStorage::SetCurrentCar(reinterpret_cast<SDK::ACar_TA*>(event->getCallingObject()));
@@ -105,6 +114,10 @@ public:
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
 		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;}
+		if (enabled) {
+			GameState currentState = getCurrentGameState();
+			if (!(currentState & getAllowedGameStates())) setState(false);
+		}
 	}
 	virtual void gameInfoInitGame(Event* event) {
 		InstanceStorage::SetGameInfo(reinterpret_cast<SDK::AGameInfo_TA*>(event->getCallingObject()));
