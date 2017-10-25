@@ -33,7 +33,7 @@ private:
 	bool p_open = true;
 	UOnlineGameLanServer_X* LAN_Server = nullptr;
 	//Map Selection
-	bool bTravel;
+	bool bTravel = false;
 	std::string mapName;
 	std::string str_mutators = "";
 	std::string str_gameMode = "Game=TAGame.GameInfo_Soccar_TA";

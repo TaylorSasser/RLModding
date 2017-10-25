@@ -55,6 +55,7 @@
     <ClCompile Include="Mods\Modules\GameModes\Infected.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\MultiTeam.cpp" />
     <ClCompile Include="Mods\Modules\Lan\BallMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\Drainage.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\FiftyFifty.cpp" />
@@ -2968,6 +2969,7 @@
     <ClInclude Include="Mods\Modules\GameModes\Infected.h" />
     <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
+    <ClInclude Include="Mods\Modules\GameModes\MultiTeam.h" />
     <ClInclude Include="Mods\Modules\Lan\BallMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\Drainage.h" />
     <ClInclude Include="Mods\Modules\GameModes\FiftyFifty.h" />

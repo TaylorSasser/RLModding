@@ -175,7 +175,7 @@ void GameEventMods::DrawMenu() {
 			ImGui::PushStyleColor(ImGuiCol_ChildWindowBg, ImVec4(0.933f, 0.925f, 0.925f, 0.2f));
 			ImGui::BeginChild("botsControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 5), true);
 
-			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 0.2f), "NOTE: removing bots only works for bots you spawned manually.");
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "NOTE: removing bots only works for bots you spawned manually.");
 			ImGui::InputInt("# Bots", &botsToSpawn); ImGui::SameLine();
 			if (ImGui::Button("Spawn Bot(s)")) {
 				spawnBot = true;

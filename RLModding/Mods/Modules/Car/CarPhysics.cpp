@@ -37,7 +37,7 @@ void CarPhysics::DrawMenu() {
 
 		ImGui::Separator();
 
-
+		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Respawn the players cars for them to see the change in size.");
 		ImGui::SliderFloat("Car Scale", &carScale, 0.1f, 10.0f, "%.1f");
 		ImGui::Checkbox("Respawn before scale", &respawnOnScale);
 		ImGui::SameLine();
@@ -45,9 +45,9 @@ void CarPhysics::DrawMenu() {
 			setCarScale = true;
 		}
 
-		ImGui::PushItemWidth(100);
+		ImGui::PushItemWidth(200);
 		ImGui::InputFloat("Mass", &mass, 0.5f, 1.0f, 1); ImGui::SameLine();
-		ImGui::PushItemWidth(100);
+		ImGui::PushItemWidth(200);
 		ImGui::InputFloat("Gravity Scale", &gravityScale, 0.5f, 1.0f, 1);
 
 		ImGui::Checkbox("Turn Off Car Collision", &carCollisionOff);
@@ -371,37 +371,42 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 		TArray< class AController* > eventPlayers = localGameEvent->Players;
 		for (int i = 0; i < eventPlayers.Num(); i++) {
 
-			AController* tempController = eventPlayers.GetByIndex(i);
-			std::string playerName = eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString();
+			if (eventPlayers[i]) {
+				AController* tempController = eventPlayers.GetByIndex(i);
 
-			// Check if bot or person
-			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (tempController && tempController->PlayerReplicationInfo && tempController->PlayerReplicationInfo->PlayerName.IsValid()) {
+					std::string playerName = tempController->PlayerReplicationInfo->PlayerName.ToString();
 
-				playerName.append(" [BOT]");
+					// Check if bot or person
+					if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+						AAIController_TA* currController = (AAIController_TA*)tempController;
 
-				if (currController->Car && currController->GetTeamNum() == 0) {
-					playerName.append(" (Blue Team)");
-				}
-				if (currController->Car && currController->GetTeamNum() == 1) {
-					playerName.append(" (Orange Team)");
+						playerName.append(" [BOT]");
+
+						if (currController->Car && currController->GetTeamNum() == 0) {
+							playerName.append(" (Blue Team)");
+						}
+						if (currController->Car && currController->GetTeamNum() == 1) {
+							playerName.append(" (Orange Team)");
+						}
+					}
+					else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+						APlayerController_TA* currController = (APlayerController_TA*)tempController;
+
+						if (currController->Car && currController->GetTeamNum() == 0) {
+							playerName.append(" (Blue Team)");
+						}
+						if (currController->Car && currController->GetTeamNum() == 1) {
+							playerName.append(" (Orange Team)");
+						}
+					}
+
+					char *cptr = Utils::stringToCharArray(playerName);
+					//std::cout << "Player: " << playerName << std::endl;
+					//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
+					players[i + 1] = cptr;
 				}
 			}
-			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-				APlayerController_TA* currController = (APlayerController_TA*)tempController;
-
-				if (currController->Car && currController->GetTeamNum() == 0) {
-					playerName.append(" (Blue Team)");
-				}
-				if (currController->Car && currController->GetTeamNum() == 1) {
-					playerName.append(" (Orange Team)");
-				}
-			}
-
-			char *cptr = Utils::stringToCharArray(playerName);
-			//std::cout << "Player: " << playerName << std::endl;
-			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
-			players[i + 1] = cptr;
 		}
 		currPlayerCount = eventPlayers.Num();
 
@@ -420,19 +425,24 @@ void CarPhysics::reset() {
 void CarPhysics::onCarSpawned(Event* e) {
 	//std::cout << "Spawned a car!" << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-	populatePlayerList(localGameEvent);
+	if(localGameEvent && localGameEvent->ReplicatedStateName.Index && !localGameEvent->ReplicatedStateName.GetName().compare("None"))
+		populatePlayerList(localGameEvent);
 }
 
 void CarPhysics::onGameEventRemovePlayer(Event* e) {
 	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-	populatePlayerList(localGameEvent);
+	//std::cout << "State: " << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+	if (localGameEvent && localGameEvent->ReplicatedStateName.Index && !localGameEvent->ReplicatedStateName.GetName().compare("None"))
+		populatePlayerList(localGameEvent);
 }
 
 void CarPhysics::onGameEventAddPlayer(Event* e) {
 	//std::cout << "Removed Player: " << ((APRI_TA*)e->getCallingObject())->PlayerName.ToString() << std::endl;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-	populatePlayerList(localGameEvent);
+	//std::cout << "State: " << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+	if (localGameEvent && localGameEvent->ReplicatedStateName.Index && !localGameEvent->ReplicatedStateName.GetName().compare("None"))
+		populatePlayerList(localGameEvent);
 }
 
 

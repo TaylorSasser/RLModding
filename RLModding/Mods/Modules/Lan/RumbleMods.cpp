@@ -448,37 +448,40 @@ void RumbleMods::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 	if (localGameEvent) {
 		TArray< class AController* > eventPlayers = localGameEvent->Players;
 		for (int i = 0; i < eventPlayers.Num(); i++) {
-			std::string playerName = eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString();
 
 			AController* tempController = eventPlayers.GetByIndex(i);
-			// Check if bot or person
-			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-				AAIController_TA* currController = (AAIController_TA*)tempController;
 
-				playerName.append(" [BOT]");
+			if (tempController && tempController->PlayerReplicationInfo && tempController->PlayerReplicationInfo->PlayerName.IsValid()) {
+				std::string playerName = tempController->PlayerReplicationInfo->PlayerName.ToString();
+				// Check if bot or person
+				if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+					AAIController_TA* currController = (AAIController_TA*)tempController;
 
-				if (currController->Car && currController->GetTeamNum() == 0) {
-					playerName.append(" (Blue Team)");
+					playerName.append(" [BOT]");
+
+					if (currController->Car && currController->GetTeamNum() == 0) {
+						playerName.append(" (Blue Team)");
+					}
+					if (currController->Car && currController->GetTeamNum() == 1) {
+						playerName.append(" (Orange Team)");
+					}
 				}
-				if (currController->Car && currController->GetTeamNum() == 1) {
-					playerName.append(" (Orange Team)");
+				else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+					APlayerController_TA* currController = (APlayerController_TA*)tempController;
+
+					if (currController->Car && currController->GetTeamNum() == 0) {
+						playerName.append(" (Blue Team)");
+					}
+					if (currController->Car && currController->GetTeamNum() == 1) {
+						playerName.append(" (Orange Team)");
+					}
 				}
+
+				char *cptr = Utils::stringToCharArray(playerName);
+				std::cout << "Player: " << playerName << std::endl;
+				//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
+				players[i + 1] = cptr;
 			}
-			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-				APlayerController_TA* currController = (APlayerController_TA*)tempController;
-
-				if (currController->Car && currController->GetTeamNum() == 0) {
-					playerName.append(" (Blue Team)");
-				}
-				if (currController->Car && currController->GetTeamNum() == 1) {
-					playerName.append(" (Orange Team)");
-				}
-			}
-
-			char *cptr = Utils::stringToCharArray(playerName);
-			std::cout << "Player: " << playerName << std::endl;
-			//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
-			players[i + 1] = cptr;
 		}
 		currPlayerCount = eventPlayers.Num();
 	}

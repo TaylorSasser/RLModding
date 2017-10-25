@@ -26,6 +26,13 @@ void DribbleDrabble::ImportSettings(pt::ptree & root) {
 }
 
 void DribbleDrabble::unloadMod() {
+	bStarted = false;
+	isBreakoutType = false;
+
+	for (int i = 0; i < 10; i++) {
+		blueCarsToRespawn.cars[i] = NULL;
+		orangeCarsToRespawn.cars[i] = NULL;
+	}
 }
 
 void DribbleDrabble::loadMod() {
@@ -114,6 +121,7 @@ void DribbleDrabble::DrawMenu() {
 		if (ImGui::Button("Disable")) {
 			printf("Disabled DribbleDrabble");
 			bStarted = false;
+			unloadMod();
 		}
 	}
 	if (!p_open) {
@@ -488,5 +496,12 @@ void DribbleDrabble::onEventGoalScored(Event* e) {
 			blueCarsToRespawn.cars[i] = NULL;
 			orangeCarsToRespawn.cars[i] = NULL;
 		}
+	}
+}
+
+void DribbleDrabble::eventGameEnded(Event* e) {
+	std::cout << "Game Ended. " << std::endl;
+	if (bStarted) {
+		unloadMod();
 	}
 }

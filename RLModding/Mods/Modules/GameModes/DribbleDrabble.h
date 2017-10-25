@@ -26,6 +26,7 @@ public:
 	void onBallTick(Event* e) override;
 	void onCarTick(Event* e) override;
 	void onEventGoalScored(Event* e) override;
+	void eventGameEnded(Event* e) override;
 	void loadMod() override;
 	void unloadMod() override;
 	void ExportSettings(pt::ptree&);

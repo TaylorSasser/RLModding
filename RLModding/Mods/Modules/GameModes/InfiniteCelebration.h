@@ -22,5 +22,6 @@ private:
 	bool bStarted = false;
 	bool p_open = true;
 	int teamIndex = 0;
+	int initPodiumTime = -1;
 };
 

@@ -38,6 +38,7 @@ void WorkshopMods::DrawMenu() {
 	if (ImGui::Button("GO")) {
 		testTravel = true;
 	}
+	/*
 	if (ImGui::CollapsingHeader("Workshop Tests")) {
 	
 		if (ImGui::Button("Teleport Test.")) {
@@ -112,7 +113,7 @@ void WorkshopMods::DrawMenu() {
 
 		}
 	}
-
+	*/
 
 	if (!p_open) {
 		this->enabled = false;
