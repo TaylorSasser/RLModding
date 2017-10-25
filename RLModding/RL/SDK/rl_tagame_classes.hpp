@@ -2979,7 +2979,7 @@ class UGoal_TA : public UActorComponent_X
 public:
 	class AActor*                                      GoalOrientation;                                          // 0x006C(0x0004) (CPF_Edit, CPF_Const)
 	TArray<class AActor*>                              OverrideGoalIndicatorOrientations;                        // 0x0070(0x000C) (CPF_Edit, CPF_NeedCtorLink)
-	unsigned char                                      TeamNum;                                                  // 0x007C(0x0001) (CPF_Edit)
+	int												   TeamNum;                                                  // 0x007C(0x0001) (CPF_Edit)
 	class AFXActor_X*                                  ScoreFX;                                                  // 0x0080(0x0004) (CPF_Edit)
 	struct FString                                     GoalIndicatorArchetype;                                   // 0x0084(0x000C) (CPF_Edit, CPF_Const, CPF_NeedCtorLink)
 	unsigned long                                      bNoGoalIndicator : 1;                                     // 0x0090(0x0004) (CPF_Edit)

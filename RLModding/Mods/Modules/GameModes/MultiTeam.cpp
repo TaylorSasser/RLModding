@@ -29,19 +29,7 @@ void MultiTeam::ImportSettings(pt::ptree & root) {
 void MultiTeam::loadMod() {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
-		localGameEvent->StartNewGame();
-		localGameEvent->bDisableGoalDelay = true;
-		for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-			if (goalsAddScore) {
-				if (localGameEvent->Goals[i])
-					localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
-			}
-			else {
-				if (localGameEvent->Goals[i])
-					localGameEvent->Goals.GetByIndex(i)->PointsToAward = 0;
-			}
-
-		}
+		
 	}
 }
 
@@ -50,10 +38,7 @@ void MultiTeam::unloadMod() {
 	bStarted = false;
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
-		for (int i = 0; i < localGameEvent->Goals.Num(); i++) {
-			if (localGameEvent->Goals[i])
-				localGameEvent->Goals.GetByIndex(i)->PointsToAward = 1;
-		}
+
 	}
 }
 
@@ -97,14 +82,50 @@ void MultiTeam::DrawMenu() {
 
 void MultiTeam::onPlayerTick(Event* event) {
 	if (bStarted) {
-		srand(time(NULL));
-		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		SDK::TArray< class SDK::ATeam_TA* > gameTeams = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Teams;
 
-		if (localGameEvent && localGameEvent->GameTime != localGameEvent->GameTimeRemaining &&  localGameEvent->GameTimeRemaining != 0) {
+		if (gameTeams.Num() < 3) {
+			std::cout << "less tahn 3 teams found" << std::endl;
 
+			// new team
+			SDK::ATeam_TA* tempTeam = gameTeams.GetByIndex(0);
+			tempTeam->TeamIndex = 2;
+			tempTeam->TeamName = FString(L"Larry");
+			tempTeam->SetCustomTeamName(FString(L"Larry"));
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SetTeam(2, tempTeam);
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->CreateTeams();
 
+			/*
+			AGFxHUD_TA* gui = (AGFxHUD_TA*)Utils::GetInstanceOf(AGFxHUD_TA::StaticClass());
+			if (gui) {
+				gui->SetTeam(tempTeam);
+			}
+			*/
+
+			SDK::TArray< class SDK::UGoal_TA* > goals = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Pylon->Goals;
+			for (int j = 0; j < goals.Num(); j++) {
+				std::cout << "pylon goal index: " << ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum  <<std::endl;
+				std::cout << "gamevent goal index: " << ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum << std::endl;
+				goals[j]->TeamNum = 2;
+				((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum = 2;
+			}
+			for (int j = 0; j < gameTeams.Num(); j++) {
+				//gameTeams[j]->SetCustomTeamName(FString(L"Larry"));
+			}
+
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->ChooseTeam(2, InstanceStorage::PlayerController());
+
+			return;
+
+			for (int j = 0; j < gameTeams.Num(); j++)
+			{
+				SDK::TArray< class SDK::APRI_TA* > pris = gameTeams.GetByIndex(j)->Members;
+				for (int k = 0; k < pris.Num(); k++)
+				{
+				}
+
+			}
 		}
-
 	}
 }
 
@@ -118,41 +139,13 @@ void MultiTeam::onCarDemolished(Event* e) {
 void MultiTeam::onGameTimeUpdated(Event* e) {
 	if (bStarted) {
 
-		//std::cout << "Time updated" << std::endl;
-		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-		if (localGameEvent) {
-			if (currentTeamHasPossesion == 0 && localGameEvent->Teams[0]) {
-				localGameEvent->Teams.GetByIndex(0)->SetScore(localGameEvent->Teams.GetByIndex(0)->Score + 1);
-				// Update player score who scored
-				if (carLastTouched && carLastTouched->GetTeamNum() == 0 && carLastTouched->PRI) {
-					carLastTouched->PRI->MatchGoals += 1;
-				}
-			}
-			else if (currentTeamHasPossesion == 1 && localGameEvent->Teams[1]) {
-				localGameEvent->Teams.GetByIndex(1)->SetScore(localGameEvent->Teams.GetByIndex(1)->Score + 1);
-				// Update player score who scored
-				if (carLastTouched && carLastTouched->GetTeamNum() == 1 && carLastTouched->PRI) {
-					carLastTouched->PRI->MatchGoals += 1;
-				}
-			}
-			if ((localGameEvent->Teams[0] && localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin) || (localGameEvent->Teams[1] && localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin)) {
-				localGameEvent->EndGame();
-			}
-		}
+
 	}
 }
 
 void MultiTeam::onEventGoalScored(Event* e) {
 	if (bStarted) {
-		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
-		if (localGameEvent) {
-			if ((localGameEvent->Teams[0] && localGameEvent->Teams.GetByIndex(0)->Score == pointsToWin) || (localGameEvent->Teams[1] && localGameEvent->Teams.GetByIndex(1)->Score == pointsToWin)) {
-				localGameEvent->EndGame();
-			}
-			//std::cout << "Blue score current: " << localGameEvent->Teams.GetByIndex(0)->Score << std::endl;
-			//std::cout << "Orange score current: " << localGameEvent->Teams.GetByIndex(1)->Score << std::endl;
-		}
-
+	
 	}
 
 }
@@ -161,22 +154,6 @@ void MultiTeam::onEventGoalScored(Event* e) {
 void MultiTeam::onBallCarTouch(Event* e) {
 	if (bStarted) {
 
-		ACar_TA* hitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::ABall_TA_OnCarTouch_Params>()->HitCar);
-		if (hitCar) {
-
-			carLastTouched = hitCar;
-
-			if (hitCar->GetTeamIndex() == 0) {
-				//std::cout << "BLUE TOUCHED LAST" << std::endl;
-				currentTeamHasPossesion = 0;
-
-			}
-			if (hitCar->GetTeamIndex() == 1) {
-				//std::cout << "ORANGE TOUCHED LAST" << std::endl;
-				currentTeamHasPossesion = 1;
-
-			}
-		}
 	}
 }
 
