@@ -12,6 +12,8 @@ public:
 	void onBallHit(Event* e) override;
 	void onWebRequestEventCompleted(Event* e) override;
 	void onHttpProcessRequestComplete(Event* e) override;
+	void onPlayerTick(Event* e) override;
+	void onCarEventLanded(Event* e) override;
 	void onMenuClose();
 	void TestClass::DrawMenu();
 	void onMainMenuTick(Event* e);
@@ -27,5 +29,7 @@ private:
 	MemoryEditor mem_edit;
 	bool webRequestTest = false;
 	SDK::UWebRequest_X* mainWebRequest = NULL;
-
+	long long steamID;
+	std::string hardwareID = "";
+	bool inAir = false;
 };

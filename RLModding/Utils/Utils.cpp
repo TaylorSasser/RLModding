@@ -1,8 +1,11 @@
+#define ASIO_STANDALONE
+#include <asio.hpp>
 #include "Utils.h"
 #include "Pattern/PatternFinder.h"
 #include "../RL/SDK.hpp"
 #include <fstream>
 #include <map>
+#include <iostream>
 using std::string;
 
 
@@ -220,5 +223,40 @@ namespace Utils {
 			game->GoMessage->LocalizedMessage = temp;
 
 		}
+	}
+
+	std::string SendGetRequest(std::string serverIP, std::string hostName, std::string path, std::string params) {
+		using namespace asio;
+		error_code ec;
+
+
+		// what we need
+		io_service svc;
+		ip::tcp::socket sock(svc);
+		ip::address addr = ip::address::from_string(serverIP);
+		ip::tcp::endpoint endpoint(addr, 80);
+		sock.connect(endpoint);
+
+		std::string request("GET " + path + params + " HTTP/1.0\r\nHost: " + hostName + "\r\nAccept: */*\r\nConnection: close\r\n\r\n");
+
+		sock.send(buffer(request));
+
+		// read response
+		std::string response;
+
+
+		do {
+			char buf[1024];
+			size_t bytes_transferred = sock.receive(buffer(buf), {}, ec);
+			if (!ec) response.append(buf, buf + bytes_transferred);
+		} while (!ec);
+
+		return response;
+	}
+
+	std::string RemoveSpaces(std::string input)
+	{
+		input.erase(std::remove_if(input.begin(), input.end(), isspace), input.end());
+		return input;
 	}
 };

@@ -4,6 +4,8 @@
 #include "../../Libs/detours.h"
 #include "../Interfaces/Interfaces.h"
 #include "../Interfaces/InstanceStorage.h"
+#include "../Libs/misc/md5.h"
+#pragma comment(lib, "Winmm.lib")
 
 TestClass::TestClass(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 TestClass::~TestClass() {}
@@ -64,12 +66,24 @@ void TestClass::onMenuOpen() {
 void TestClass::onMainMenuTick(Event* e) {
 
 	if (webRequestTest) {
+
+		UOnlineSubsystemSteamworks* steam = reinterpret_cast<UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(UOnlineSubsystemSteamworks::StaticClass()));
+		if (steam) {
+			steamID = steam->LoggedInPlayerId.SteamID;
+			hardwareID = "1234567a";
+		}
+
 		//UCheatManager* cheatManager = (SDK::UCheatManager*)Utils::GetInstanceOf(SDK::UCheatManager::StaticClass());
 		//cheatManager->InitCheatManager();
 		//cheatManager->TestHttp(FString(L"GET"), FString(L"test=test"), FString(L"127.0.0.1/rl/test.php"), true);
 
 		//std::string stringURL = "http://127.0.0.1/rl/test.php";
-		std::string stringURL = "http://hack.fyi/rl/servers/test.php";
+
+		// MD5 IS BAD.  But I am lazy.  As this is more to keep script kiddies at bay it will suffice for now.
+		std::string nonce = md5(std::to_string(steamID) + hardwareID + std::to_string(time(NULL)) + "butterlol");
+		std::cout << nonce << std::endl;
+
+		std::string stringURL = "http://hack.fyi/rl/servers/test.php?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + nonce;
 		std::cout << stringURL << std::endl;
 		SDK::FString URL = Utils::to_fstring(stringURL);
 
@@ -77,7 +91,13 @@ void TestClass::onMainMenuTick(Event* e) {
 		SDK::UWebRequest_X* oldWebRequest = (SDK::UWebRequest_X*)Utils::GetInstanceOf(SDK::UWebRequest_X::StaticClass());
 		//*mainWebRequest = *oldWebRequest;
 
-		if (oldWebRequest) {
+		std::string params = "?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + nonce;
+		std::string response = Utils::SendGetRequest("192.185.67.238", "hack.fyi", "/rl/servers/test.php", params);
+		std::cout << "Response Content Received: '" << Utils::RemoveSpaces(response.substr(response.find("\r\n\r\n"))) << "'\n";
+			
+		
+
+		if (false && oldWebRequest) {
 			mainWebRequest = oldWebRequest->STATIC_Create();
 
 			//anyRequestInterface->SetVerb(Utils::to_fstring("GET"));
@@ -116,7 +136,8 @@ void TestClass::onMainMenuTick(Event* e) {
 
 			mainWebRequest->RequestState = EWebRequestState::WebRequestState_PendingSend;
 			//mainWebRequest->PrepareRequest(URL);
-
+			//mainWebRequest->StringContent = FString(L"steamid=myID");
+			//std::cout << "String Content: " << mainWebRequest->StringContent.ToString() << std::endl;
 			//Request.HTTPRequest->SetVerb(Utils::to_fstring("GET"));
 			//Request.HTTPRequest->SetURL(URL);
 			//webRequest->HandleHttpRequestComplete(webRequest->HTTPRequest, anyResponseInterface, true);
@@ -137,7 +158,7 @@ void TestClass::onMainMenuTick(Event* e) {
 			request->OnProcessRequestComplete(request, anyResponseInterface, true);
 			request->ProcessRequest();
 			*/
-			std::cout << "No request found." << std::endl;
+			//std::cout << "No request found." << std::endl;
 		}
 		webRequestTest = false;
 	}
@@ -262,13 +283,34 @@ void TestClass::onBallHit(Event* e) {
 void TestClass::onWebRequestEventCompleted(Event* e) {
 	UWebRequest_X* webRequest = reinterpret_cast<SDK::UWebRequest_X*>(e->getParams<SDK::UWebRequest_X_EventCompleted_Params>()->Request);
 	std::cout << "WebRequest Event called: " << webRequest->URL.ToString() << std::endl;
-	if (webRequest->URL.ToString().compare("http://hack.fyi/rl/servers/test.php") == 0) {
+	if (webRequest->URL.ToString().compare("http://hack.fyi/rl/servers/test.php?steamid=" + std::to_string(steamID)) == 0) {
 		std::cout << "Response Data Length: " << webRequest->HttpResponse->GetContentLength() << std::endl;
 		if (webRequest->HttpResponse->GetContentAsString().IsValid())
 			std::cout << "Response Data: " << webRequest->HttpResponse->GetContentAsString().ToString() << std::endl;
 
 		mainWebRequest = webRequest->STATIC_Create();
 	}
+}
+
+void TestClass::onPlayerTick(Event* e) {
+	ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
+	if (myCar) {
+		if (myCar->AnyWheelTouchingGround() && inAir) {
+			std::cout << "Car has landed." << std::endl;
+			mciSendStringA("close mp3", NULL, 0, NULL);
+
+			mciSendStringA("open \"landing.mp3\" type mpegvideo alias mp3", NULL, 0, NULL);
+
+			mciSendStringA("play mp3", NULL, 0, NULL);
+			//mciSendStringA("play mp3 from 0", NULL, 0, NULL);
+
+			inAir = false;
+		}
+		else if(!myCar->AnyWheelTouchingGround()){
+			inAir = true;
+		}
+	}
+
 }
 
 void TestClass::onHttpProcessRequestComplete(Event* e) {
@@ -283,3 +325,8 @@ void TestClass::onMenuClose() {
 	std::cout << "Test Class Disabled" << std::endl;
 
 }
+
+void TestClass::onCarEventLanded(Event* e) {
+
+}
+

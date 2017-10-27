@@ -203,6 +203,8 @@ public:
 	virtual void priEventScorePoint(Event* e) {}
 	virtual void onTeamScoreUpdate(Event* e) {}
 
+	virtual void onCarEventLanded(Event* e) {}
+
 	virtual void onWebRequestEventCompleted(Event* e) {};
 	virtual void onHttpProcessRequestComplete(Event* e) {}
 
