@@ -4,7 +4,7 @@
 #include "../../Libs/detours.h"
 #include "../Interfaces/Interfaces.h"
 #include "../Interfaces/InstanceStorage.h"
-#include "../Libs/misc/md5.h"
+#include <PicoSHA256/picosha2.h>
 #pragma comment(lib, "Winmm.lib")
 
 TestClass::TestClass(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
@@ -79,11 +79,12 @@ void TestClass::onMainMenuTick(Event* e) {
 
 		//std::string stringURL = "http://127.0.0.1/rl/test.php";
 
-		// MD5 IS BAD.  But I am lazy.  As this is more to keep script kiddies at bay it will suffice for now.
-		std::string nonce = md5(std::to_string(steamID) + hardwareID + std::to_string(time(NULL)) + "butterlol");
-		std::cout << nonce << std::endl;
+		std::string nonce = std::to_string(steamID) + hardwareID + std::to_string(time(NULL)) + "butterlol";
+		std::string hashed_string;
+		picosha2::hash256_hex_string(nonce, hashed_string);
+		std::cout << hashed_string << std::endl;
 
-		std::string stringURL = "http://hack.fyi/rl/servers/test.php?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + nonce;
+		std::string stringURL = "http://hack.fyi/rl/servers/test.php?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
 		std::cout << stringURL << std::endl;
 		SDK::FString URL = Utils::to_fstring(stringURL);
 
@@ -91,7 +92,7 @@ void TestClass::onMainMenuTick(Event* e) {
 		SDK::UWebRequest_X* oldWebRequest = (SDK::UWebRequest_X*)Utils::GetInstanceOf(SDK::UWebRequest_X::StaticClass());
 		//*mainWebRequest = *oldWebRequest;
 
-		std::string params = "?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + nonce;
+		std::string params = "?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
 		std::string response = Utils::SendGetRequest("192.185.67.238", "hack.fyi", "/rl/servers/test.php", params);
 		std::cout << "Response Content Received: '" << Utils::RemoveSpaces(response.substr(response.find("\r\n\r\n"))) << "'\n";
 			

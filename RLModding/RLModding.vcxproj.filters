@@ -71,7 +71,6 @@
     <ClCompile Include="Mods\Modules\Offline\HUDMods.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\DemolitionDerby.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\MultiTeam.cpp" />
-    <ClCompile Include="Libs\misc\md5.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4707,7 +4706,7 @@
     <ClInclude Include="Mods\Modules\Offline\HUDMods.h" />
     <ClInclude Include="Mods\Modules\GameModes\DemolitionDerby.h" />
     <ClInclude Include="Mods\Modules\GameModes\MultiTeam.h" />
-    <ClInclude Include="Libs\misc\md5.h" />
+    <ClInclude Include="Libs\PicoSHA256\picosha2.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
