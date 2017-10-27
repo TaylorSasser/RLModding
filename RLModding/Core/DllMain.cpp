@@ -1,3 +1,7 @@
+//This is it
+#define ASIO_STANDALONE
+#include <asio.hpp>
+//End
 #include <Windows.h>
 #include "Core.h"
 #include "../Interfaces/Interfaces.h"
