@@ -129,6 +129,8 @@ void CustomBlog::onMainMenuTick(Event* event) {
 			}
 			blog->MotD = Utils::to_fstring(motd);
 		}
+		if (gfx)
+			gfx->UpdateBlog();
 		bSet = false;
 	}
 	
