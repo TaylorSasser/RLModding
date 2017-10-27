@@ -22,7 +22,10 @@ void Database::SendMetrics()
 	std::string nonce = std::to_string(steamID) + hardwareID + std::to_string(time(NULL)) + butter;
 	std::string hashed_string;
 	picosha2::hash256_hex_string(nonce, hashed_string);
+	std::cout << nonce << std::endl;
+	std::cout << hashed_string << std::endl;
 	std::string params = "?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
+	std::cout << params << std::endl;
 
 	// what we need
 	io_service svc;

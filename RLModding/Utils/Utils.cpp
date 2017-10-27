@@ -268,7 +268,7 @@ namespace Utils {
 	}
 
 	std::string GetHardwareID() {
-		return "123456a";
+		return "lul testing tim";
 	}
 };
 

@@ -1,7 +1,4 @@
-//This is it
-#define ASIO_STANDALONE
-#include <asio.hpp>
-//End
+#include "../Database/Database.h"
 #include <Windows.h>
 #include "Core.h"
 #include "../Interfaces/Interfaces.h"
@@ -29,6 +26,7 @@ void onAttach(HMODULE hModule) {
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().Load();
+	Database().SendMetrics();
 }
 
 void onDetach(HMODULE hModule) {

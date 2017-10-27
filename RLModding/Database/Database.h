@@ -4,6 +4,7 @@
 #include <string>
 #include <PicoSHA256/picosha2.h>
 #include <time.h>
+#include <iostream>
 #include "../RL/SDK.hpp"
 #include "../Utils/Utils.h"
 
