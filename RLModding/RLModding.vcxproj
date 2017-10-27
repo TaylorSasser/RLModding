@@ -45,6 +45,7 @@
   <ItemGroup>
     <ClCompile Include="Common\PacketBuffer.cpp" />
     <ClCompile Include="Connection\Connection.cpp" />
+    <ClCompile Include="Database\Database.cpp" />
     <ClCompile Include="Mods\GameState.cpp" />
     <ClCompile Include="Mods\Modules\Car\CarPhysics.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\CrazyItems.cpp" />
@@ -117,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="Common\PacketBuffer.h" />
     <ClInclude Include="Connection\Connection.h" />
+    <ClInclude Include="Database\Database.h" />
     <ClInclude Include="Libs\asio.hpp" />
     <ClInclude Include="Libs\ImGUI\imgui_memory_editor.h" />
     <ClInclude Include="Libs\PicoSHA256\picosha2.h" />

@@ -259,4 +259,16 @@ namespace Utils {
 		input.erase(std::remove_if(input.begin(), input.end(), isspace), input.end());
 		return input;
 	}
+
+	long long GetSteamID() {
+		SDK::UOnlineSubsystemSteamworks* steam = reinterpret_cast<SDK::UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(SDK::UOnlineSubsystemSteamworks::StaticClass()));
+		if (steam)
+			return steam->LoggedInPlayerId.SteamID;
+		return 0;
+	}
+
+	std::string GetHardwareID() {
+		return "123456a";
+	}
 };
+

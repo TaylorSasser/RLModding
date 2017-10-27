@@ -83,7 +83,6 @@ void CustomBlog::DrawMenu() {
 		bSet = true;
 		printf("Applying cutsom blog options");
 	}
-	ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Note: Changes may take a while to show up");
 	
 	if (!p_open) {
 		this->enabled = false;
