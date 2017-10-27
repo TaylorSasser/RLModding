@@ -75,9 +75,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Team_TA.OnScoreUpdated", &ModBase::onTeamScoreUpdate);
 	SubscribeEvent("Function ProjectX.WebRequest_X.EventCompleted", &ModBase::onWebRequestEventCompleted);
 	SubscribeEvent("Function Engine.HttpRequestInterface.OnProcessRequestComplete", &ModBase::onHttpProcessRequestComplete);
-	//SubscribeEvent("Function TAGame.Car_TA.EventLanded", &ModBase::onCarEventLanded);
-		SubscribeEvent("Function TAGame.Ball_TA.EventHitWorld", &ModBase::onCarEventLanded);
-	
+	SubscribeEvent("Function TAGame.Car_TA.EventLanded", &ModBase::onCarEventLanded);
+
 
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
