@@ -15,36 +15,36 @@
 namespace pt = boost::property_tree;
 
 enum GameState {
-	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1,ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
+	NONE = 0, TRAINING = 1 << 0, EXHIBITION = 1 << 1, ONLINE = 1 << 2, LAN = 1 << 3, MENU = 1 << 4, ANY = (1 << 5) - 1
 };
 
 
-inline GameState operator|(GameState a,GameState b) {return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b));}
+inline GameState operator|(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b)); }
 inline GameState operator^(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) ^ static_cast<int>(b)); }
 
-enum Category {Menu = 0,GameModes,Lan,InGame,Other,ALL,MAX};
+enum Category { Menu = 0, GameModes, Lan, InGame, Other, ALL, MAX };
 
-static const std::string categoryNames[MAX-1] = {
+static const std::string categoryNames[MAX - 1] = {
 	"Menu Mods","Game Modes","LAN Mods","In Game Mods","Other Mods"
 };
 
 class ModBase
 {
 public:
-	ModBase() {}	
+	ModBase() {}
 	ModBase(const std::string& modName, int keyBind, Category category, GameState gamestate, const std::string& modToolTip) : name(modName), key(keyBind), cat(category), allowedGameStates(gamestate), toolTip(modToolTip) {}
-	ModBase(const std::string& modName, int keyBind,Category category,GameState gamestate) : name(modName), key(keyBind), cat(category),allowedGameStates(gamestate), toolTip("") {}
-	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL),allowedGameStates(ANY), toolTip("") {}
-	
+	ModBase(const std::string& modName, int keyBind, Category category, GameState gamestate) : name(modName), key(keyBind), cat(category), allowedGameStates(gamestate), toolTip("") {}
+	ModBase(const std::string& modName, int keyBind) : name(modName), key(keyBind), cat(Category::ALL), allowedGameStates(ANY), toolTip("") {}
+
 	virtual ~ModBase() = default;
 
 	virtual void Toggle() {
-		enabled = !enabled;		
+		enabled = !enabled;
 		onToggle();
 		if (enabled) onMenuOpen();
 		else onMenuClose();
 	}
-	
+
 	virtual void setState(bool state) { enabled = state; }
 	virtual bool isEnabled() { return enabled; }
 
@@ -59,9 +59,9 @@ public:
 	virtual std::string getToolTip() { return toolTip; }
 	virtual void setToolTip(const std::string &newToolTip) { toolTip = newToolTip; }
 
-	virtual Category getCategory() {return cat;}
-	virtual GameState getAllowedGameStates() {return allowedGameStates;}
-	
+	virtual Category getCategory() { return cat; }
+	virtual GameState getAllowedGameStates() { return allowedGameStates; }
+
 	virtual GameState getCurrentGameState() {
 		if (inCustom) return LAN;
 		else if (inExhibition) return EXHIBITION;
@@ -71,17 +71,17 @@ public:
 		else return NONE;
 	};
 
-	static GameState STATIC_getCurrentGameState() {return ModBase().getCurrentGameState();};
+	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 
 	virtual void DrawMenu() {}
 
 	virtual void onMenuOpen() {}
 	virtual void onMenuClose() {}
-	
+
 	virtual void unloadMod() {}
 	virtual void loadMod() {}
 
-	virtual void onToggle() {  
+	virtual void onToggle() {
 		GameState currentState = getCurrentGameState();
 		if (!(currentState & getAllowedGameStates())) setState(false);
 	}
@@ -113,7 +113,7 @@ public:
 	}
 	virtual void onGameEventTick(Event* event) {
 		InstanceStorage::SetGameEvent(reinterpret_cast<SDK::AGameEvent_TA*>(event->getCallingObject()));
-		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false;}
+		if (!inOnline) { inMainMenu = false; inOnline = false; inCustom = true; inExhibition = false; inTraining = false; }
 		if (enabled) {
 			GameState currentState = getCurrentGameState();
 			if (!(currentState & getAllowedGameStates())) setState(false);
@@ -141,7 +141,7 @@ public:
 	virtual void onTCPConnectionBegin(Event*) {}
 	virtual void onTCPConnectionEnd(Event*) {}
 	virtual void onKeysBeginState(Event* e) {}
-	virtual void onInitExhibition(Event*){
+	virtual void onInitExhibition(Event*) {
 		inMainMenu = false; inOnline = false; inCustom = false; inExhibition = true; inTraining = false;
 	}
 	virtual void onPostPRI(Event*) {}
@@ -195,7 +195,16 @@ public:
 	virtual void ExportSettings(pt::ptree&root) {}
 	virtual void ImportSettings(pt::ptree&root) {}
 
+	virtual void statOnGoalScored(Event* e) {}
+	virtual void eventPlayerScored(Event* e) {}
+	virtual void eventReplicatedGoalScored(Event* e) {}
 
+	virtual void priEventScoredGoal(Event* e) {}
+	virtual void priEventScorePoint(Event* e) {}
+	virtual void onTeamScoreUpdate(Event* e) {}
+
+	virtual void onWebRequestEventCompleted(Event* e) {};
+	virtual void onHttpProcessRequestComplete(Event* e) {}
 
 	virtual void onGetNextImage(Event* e) {
 		/*

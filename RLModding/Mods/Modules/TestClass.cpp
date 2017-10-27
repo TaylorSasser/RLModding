@@ -5,7 +5,7 @@
 #include "../Interfaces/Interfaces.h"
 #include "../Interfaces/InstanceStorage.h"
 
-TestClass::TestClass(std::string name, int key,Category category,GameState gamestate) : ModBase(name, key,category,gamestate) {}
+TestClass::TestClass(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 TestClass::~TestClass() {}
 
 void TestClass::DrawMenu() {
@@ -30,7 +30,10 @@ void TestClass::DrawMenu() {
 				alloc = true;
 			}
 
-			
+			if (ImGui::Button("Test Web Request")) {
+				webRequestTest = true;
+			}
+
 
 			if (!p_open) {
 				this->enabled = false;
@@ -41,11 +44,11 @@ void TestClass::DrawMenu() {
 			/*
 			unsigned char ram[0x1000] = { 0 };
 			if ((ImGui::GetFrameCount() % 60) == 0)
-				for (int n = 0; n < 0x1000; n++)
-					ram[n] = ((n % 16) << 4) | ((ram[n] + 1) & 0x0F);
+			for (int n = 0; n < 0x1000; n++)
+			ram[n] = ((n % 16) << 4) | ((ram[n] + 1) & 0x0F);
 
 			ImGui::Begin("Memory Editor");
-				mem_edit.DrawContents(ram, sizeof(ram));
+			mem_edit.DrawContents(ram, sizeof(ram));
 			ImGui::End();
 			*/
 		}
@@ -55,10 +58,89 @@ void TestClass::DrawMenu() {
 
 void TestClass::onMenuOpen() {
 	std::cout << "Test Class Enabled" << std::endl;
-	
+
 }
 
 void TestClass::onMainMenuTick(Event* e) {
+
+	if (webRequestTest) {
+		//UCheatManager* cheatManager = (SDK::UCheatManager*)Utils::GetInstanceOf(SDK::UCheatManager::StaticClass());
+		//cheatManager->InitCheatManager();
+		//cheatManager->TestHttp(FString(L"GET"), FString(L"test=test"), FString(L"127.0.0.1/rl/test.php"), true);
+
+		//std::string stringURL = "http://127.0.0.1/rl/test.php";
+		std::string stringURL = "http://hack.fyi/rl/servers/test.php";
+		std::cout << stringURL << std::endl;
+		SDK::FString URL = Utils::to_fstring(stringURL);
+
+		SDK::UHttpResponseInterface* anyResponseInterface = (SDK::UHttpResponseInterface*)Utils::GetInstanceOf(SDK::UHttpResponseInterface::StaticClass());
+		SDK::UWebRequest_X* oldWebRequest = (SDK::UWebRequest_X*)Utils::GetInstanceOf(SDK::UWebRequest_X::StaticClass());
+		//*mainWebRequest = *oldWebRequest;
+
+		if (oldWebRequest) {
+			mainWebRequest = oldWebRequest->STATIC_Create();
+
+			//anyRequestInterface->SetVerb(Utils::to_fstring("GET"));
+			//anyRequestInterface->SetURL(URL);
+			//anyRequestInterface->SetContentAsString(Utils::to_fstring("test=test"));
+
+			//anyRequestInterface->SetProcessRequestCompleteDelegate(anyRequestInterface->__OnProcessRequestComplete__Delegate);
+			//anyRequestInterface->OnProcessRequestComplete(anyRequestInterface, anyResponseInterface, true);
+			//anyRequestInterface->ProcessRequest();
+			//Create a request
+			//webRequest->URL = URL;
+			//webRequest->HTTPRequest = anyRequestInterface;
+			//webRequest->HttpResponse = anyResponseInterface;
+
+			//webRequest->ConstructHttpRequest();
+
+			/*
+			TArray<struct FString> headers = anyRequestInterface->GetHeaders();
+			for (int i = 0; i < headers.Num(); i++) {
+			std::cout << "Header: " << headers[i].ToString() << std::endl;
+			}
+			*/
+
+			//std::cout << "etag: " << webRequest->GetETag().ToString() << std::endl;
+			//webRequest->HTTPRequest = anyRequestInterface;
+			//webRequest->HttpResponse = anyResponseInterface;
+
+			//webRequest->bZipRequest = false;
+			//webRequest->bZipResponse = false;
+			//webRequest->RequestState = EWebRequestState::WebRequestState_PendingSend;
+			//mainWebRequest->STATIC_Create();
+			UOnlineGameLanServer_X* LAN_Server = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
+			std::cout << "Port: " << LAN_Server->GetPort() << std::endl;
+			std::cout << "External Address: " << LAN_Server->GetExternalHostAddress(true).ToString() << std::endl;
+			std::cout << "Local Address: " << LAN_Server->GetLocalHostAddress(true).ToString() << std::endl;
+
+			mainWebRequest->RequestState = EWebRequestState::WebRequestState_PendingSend;
+			//mainWebRequest->PrepareRequest(URL);
+
+			//Request.HTTPRequest->SetVerb(Utils::to_fstring("GET"));
+			//Request.HTTPRequest->SetURL(URL);
+			//webRequest->HandleHttpRequestComplete(webRequest->HTTPRequest, anyResponseInterface, true);
+			mainWebRequest->Send(URL, mainWebRequest->__EventCompleted__Delegate);
+			//Request.HTTPRequest->SetVerb(Utils::to_fstring("GET"));
+			//Request.HTTPRequest->SetURL(URL);
+
+
+
+			//std::cout << "Response Data: " << webRequest->HttpResponse->GetContentLength() << std::endl;
+
+		}
+		else {
+			/*
+			SDK::UHttpRequestInterface* request = (SDK::UHttpRequestInterface*)Utils::GetInstanceOf(SDK::UHttpRequestInterface::StaticClass());
+			request->SetURL(URL);
+			request->SetProcessRequestCompleteDelegate(request->__OnProcessRequestComplete__Delegate);
+			request->OnProcessRequestComplete(request, anyResponseInterface, true);
+			request->ProcessRequest();
+			*/
+			std::cout << "No request found." << std::endl;
+		}
+		webRequestTest = false;
+	}
 
 	if (alloc) {
 		//TArray<ACar_TA*> type;
@@ -71,7 +153,7 @@ void TestClass::onMainMenuTick(Event* e) {
 		cars->Add(car);
 		printf("Size = %d\n", cars->Num());
 		alloc = false;
-		
+
 	}
 
 	if (runEngineTests) {
@@ -79,7 +161,7 @@ void TestClass::onMainMenuTick(Event* e) {
 		engine->bEnableKismetLogging = true;
 		engine->bEnableOnScreenDebugMessages = true;
 		engine->bEnableOnScreenDebugMessagesDisplay = true;
-		
+
 		runEngineTests = false;
 	}
 
@@ -98,19 +180,19 @@ void TestClass::onMainMenuTick(Event* e) {
 		//gfx->AprilConfig->bChangeRankedIcons = true;
 
 		//gfx->UpdateAprilConfig();
-		
+
 		UOnlineGameParty_X* party = reinterpret_cast<SDK::UOnlineGameParty_X*>(Utils::GetInstanceOf(UOnlineGameParty_X::StaticClass()));
 		/*
 		if (party->RankedConfig) {
-			std::cout << "FPOUDBNT IT." << std::endl;
-			for (int i = 0; i < party->RankedConfig->SeasonRewardRequiredWinsPerLevel.Num(); i++) {
-				std::cout << party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] << std::endl;
-				party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] = 1;
-			}
+		std::cout << "FPOUDBNT IT." << std::endl;
+		for (int i = 0; i < party->RankedConfig->SeasonRewardRequiredWinsPerLevel.Num(); i++) {
+		std::cout << party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] << std::endl;
+		party->RankedConfig->SeasonRewardRequiredWinsPerLevel[i] = 1;
+		}
 
 		}
 		else {
-			std::cout << "no ranked found." << std::endl;
+		std::cout << "no ranked found." << std::endl;
 		}
 		*/
 		//party->Config->bAllowPsyNetParty = true;
@@ -140,7 +222,7 @@ void TestClass::onMainMenuTick(Event* e) {
 			Interfaces::GUI().isGUIOpen = !Interfaces::GUI().isGUIOpen;
 			Sleep(200);
 		}
-		
+
 	}
 	if (dumpStore) {
 		UGFxDataStore_X* store = (UGFxDataStore_X*)(Utils::GetInstanceOf(UGFxDataStore_X::StaticClass()));
@@ -163,20 +245,39 @@ void TestClass::onMainMenuTick(Event* e) {
 
 void TestClass::onBallHit(Event* e) {
 	/*if (e->getUFunction()->ScriptText != nullptr)
-		std::cout << "Script Text : " << e->getUFunction()->ScriptText->Text.ToString() << std::endl;
+	std::cout << "Script Text : " << e->getUFunction()->ScriptText->Text.ToString() << std::endl;
 	else
-		std::cout << "Script Text buffer is null" << std::endl;
+	std::cout << "Script Text buffer is null" << std::endl;
 
 	if (e->getUFunction()->CPPText != nullptr)
-		std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
+	std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
 	else
-		std::cout << "CPP Text buffer is null" << std::endl;*/
+	std::cout << "CPP Text buffer is null" << std::endl;*/
 	APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(InstanceStorage::PlayerController());
 	if (controller) {
 		controller->PRI->GetTeamNum() == 0 ? controller->PRI->ServerChangeTeam(1) : controller->PRI->ServerChangeTeam(0);
 	}
 }
 
+void TestClass::onWebRequestEventCompleted(Event* e) {
+	UWebRequest_X* webRequest = reinterpret_cast<SDK::UWebRequest_X*>(e->getParams<SDK::UWebRequest_X_EventCompleted_Params>()->Request);
+	std::cout << "WebRequest Event called: " << webRequest->URL.ToString() << std::endl;
+	if (webRequest->URL.ToString().compare("http://hack.fyi/rl/servers/test.php") == 0) {
+		std::cout << "Response Data Length: " << webRequest->HttpResponse->GetContentLength() << std::endl;
+		if (webRequest->HttpResponse->GetContentAsString().IsValid())
+			std::cout << "Response Data: " << webRequest->HttpResponse->GetContentAsString().ToString() << std::endl;
+
+		mainWebRequest = webRequest->STATIC_Create();
+	}
+}
+
+void TestClass::onHttpProcessRequestComplete(Event* e) {
+	UHttpResponseInterface* response = reinterpret_cast<SDK::UHttpResponseInterface*>(e->getParams<SDK::UHttpRequestInterface_OnProcessRequestComplete_Params>()->InHttpResponse);
+	if (response) {
+		std::cout << "response from dfsdf " << response->GetContentAsString().ToString() << std::endl;
+	}
+
+}
 
 void TestClass::onMenuClose() {
 	std::cout << "Test Class Disabled" << std::endl;

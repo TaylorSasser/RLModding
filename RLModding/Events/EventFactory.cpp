@@ -6,7 +6,7 @@
 
 EventFactory::EventFactory() {
 	modBase = new ModBase("ModBase InstanceUpdater", -1);
-	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick",&ModBase::onMainMenuTick);
+	SubscribeEvent("Function TAGame.PlayerController_Menu_TA.PlayerTick", &ModBase::onMainMenuTick);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.Say_TA", &ModBase::onChatSend);
 	SubscribeEvent("Function TAGame.Car_TA.OnJumpReleased", &ModBase::onActorJump);
 	SubscribeEvent("Function TAGame.Car_TA.Tick", &ModBase::onCarTick);
@@ -48,13 +48,13 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GameEvent_TA.AddPlayer", &ModBase::onGameEventAddPlayer);
 	SubscribeEvent("Function TAGame.GameEvent_TA.RemoveLocalPlayer", &ModBase::onLocalPlayerLeave);
 	SubscribeEvent("Function TAGame.Car_TA.OnDemolished", &ModBase::onCarDemolished);
-	SubscribeEvent("Function TAGame.Car_TA.OnHitBall",&ModBase::onBallHit);
+	SubscribeEvent("Function TAGame.Car_TA.OnHitBall", &ModBase::onBallHit);
 	SubscribeEvent("Function TAGame.Ball_TA.OnCarTouch", &ModBase::onBallCarTouch);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnGameTimeUpdated", &ModBase::onGameTimeUpdated);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventGoalScored", &ModBase::onEventGoalScored);
 	SubscribeEvent("Function TAGame.ReplayDirector_TA.GoalScored", &ModBase::onReplayGoalScored);
 	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.BeginCameraState", &ModBase::onReplayCameraStarted);
-	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.EndCameraState", &ModBase::onReplayCameraFinished);	
+	SubscribeEvent("Function TAGame.CameraState_LiveReplay_TA.EndCameraState", &ModBase::onReplayCameraFinished);
 	SubscribeEvent("Function TAGame.Ball_TA.EventHitGround", &ModBase::eventBallHitGround);
 	SubscribeEvent("Function TAGame.Ball_TA.Tick", &ModBase::onBallTick);
 	SubscribeEvent("Function TAGame.ReplayManager_TA.EventHeadersLoaded", &ModBase::eventReplayHeadersLoaded);
@@ -67,9 +67,14 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GFxData_LanBrowser_TA.HandleServers", &ModBase::eventLanSearchResultComplete);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventGameEnded", &ModBase::eventGameEnded);
 	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.OnMatchEnded", &ModBase::onMatchEnded);
-	
-	
-	
+	SubscribeEvent("Function TAGame.StatFactory_TA.OnGoalScored", &ModBase::statOnGoalScored); // Doesn't work...
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventPlayerScored", &ModBase::eventPlayerScored); // Doesn't work...
+	SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.EventReplicatedGoalScored", &ModBase::eventReplicatedGoalScored); // Doesn't work...
+	SubscribeEvent("Function TAGame.PRI_TA.EventScorePoint", &ModBase::priEventScorePoint); // Doesn't work...
+	SubscribeEvent("Function TAGame.PRI_TA.EventScoredGoal", &ModBase::priEventScoredGoal); // Doesn't work...
+	SubscribeEvent("Function TAGame.Team_TA.OnScoreUpdated", &ModBase::onTeamScoreUpdate);
+	SubscribeEvent("Function ProjectX.WebRequest_X.EventCompleted", &ModBase::onWebRequestEventCompleted);
+	SubscribeEvent("Function Engine.HttpRequestInterface.OnProcessRequestComplete", &ModBase::onHttpProcessRequestComplete);
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);
@@ -83,15 +88,15 @@ EventFactory::EventFactory() {
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
 	if (it != hashmap.end()) {
-		std::function<void(Event*)> ModFunction = std::bind(it->second,modBase,std::placeholders::_1);
+		std::function<void(Event*)> ModFunction = std::bind(it->second, modBase, std::placeholders::_1);
 		Event event(object, func, params);
 		ModFunction(&event);
-		
+
 		for (auto& mod : Interfaces::Mods()) {
 			if (mod.second->isEnabled()) {
 				std::function<void(Event*)> ModFunction = std::bind(it->second, mod.second.get(), std::placeholders::_1);
 				if (object == nullptr || func == nullptr || params == nullptr) continue;
-				Event event(object, func,params);
+				Event event(object, func, params);
 				ModFunction(&event);
 			}
 		}

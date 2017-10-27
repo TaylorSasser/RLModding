@@ -20,6 +20,12 @@ public:
 	void onBallCarTouch(Event* e) override;
 	void onGameTimeUpdated(Event* e) override;
 	void onEventGoalScored(Event* e) override;
+	void statOnGoalScored(Event* e) override;
+	void eventPlayerScored(Event* e) override;
+	void eventReplicatedGoalScored(Event* e) override;
+	void onTeamScoreUpdate(Event* e) override;
+	void priEventScorePoint(Event* e) override;
+	void priEventScoredGoal(Event* e) override;
 
 	void loadMod() override;
 	void unloadMod() override;
@@ -36,9 +42,8 @@ private:
 
 	ACar_TA* carLastTouched = NULL;
 	bool goalsAddScore = false;
-	int currentTeamHasPossesion = -1;
+
+	bool placeOnTeam = false;
 
 	int pointsToWin = 100;
 };
-
-

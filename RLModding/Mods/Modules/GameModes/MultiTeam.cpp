@@ -11,25 +11,20 @@ void MultiTeam::onMenuOpen() {
 }
 
 void MultiTeam::onMenuClose() {
-	currentTeamHasPossesion = -1;
 
 }
 
 void MultiTeam::ExportSettings(pt::ptree & root) {
-	root.put("KeepAway_Interval", interval);
-	root.put("KeepAway_GoalsAddToScore", goalsAddScore);
-	root.put("KeepAway_Points", pointsToWin);
+
 }
 void MultiTeam::ImportSettings(pt::ptree & root) {
-	interval = root.get<float>("KeepAway_Interval", 0.6);
-	goalsAddScore = root.get<bool>("KeepAway_GoalsAddToScore", false);
-	pointsToWin = root.get<int>("KeepAway_Points", 100);
+
 }
 
 void MultiTeam::loadMod() {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if (localGameEvent) {
-		
+
 	}
 }
 
@@ -44,29 +39,28 @@ void MultiTeam::unloadMod() {
 
 
 void MultiTeam::DrawMenu() {
-	ImGui::Begin("Keep Away Settings", &p_open, ImVec2(495, 233), 0.75f);
-	ImGui::TextWrapped("In this game mode the goal is to keep the other team from touching the ball as long as possible. Each second your team has touched the ball last you will be awarded 1 point. You can either choose to play to a set score or until the time runs out. Replays are disabled and you can choose whether scoring awards an additional point.");
+	ImGui::Begin("Multi-Team Settings", &p_open, ImVec2(495, 233), 0.75f);
 	ImGui::Separator();
-	ImGui::InputInt("Points to Win", &pointsToWin);
-	ImGui::Checkbox("Scoring goals adds to score", &goalsAddScore);
 
-
+	if (ImGui::Button("Change to new team.")) {
+		placeOnTeam = true;
+	}
 	if (!bStarted) {
 		if (ImGui::Button("Enable")) {
 			if (getCurrentGameState() & (GameState::LAN | GameState::EXHIBITION)) {
 				bStarted = true;
-				printf("Enabled Keep Away");
+				printf("Enabled Multi-Team");
 				loadMod();
 			}
 
 			else {
-				printf("Invalid state for Keep Away\n");
+				printf("Invalid state for Multi-Team\n");
 			}
 		}
 	}
 	else {
 		if (ImGui::Button("Disable")) {
-			printf("Disabled Keep Away");
+			printf("Disabled Multi-Team");
 			bStarted = false;
 			unloadMod();
 
@@ -88,43 +82,81 @@ void MultiTeam::onPlayerTick(Event* event) {
 			std::cout << "less tahn 3 teams found" << std::endl;
 
 			// new team
-			SDK::ATeam_TA* tempTeam = gameTeams.GetByIndex(0);
+			//ATeam_TA* tempTeam = new ATeam_TA();
+			//ATeam_TA* blueTeam = gameTeams.GetByIndex(0);
+			//*tempTeam = *blueTeam;
+			ATeam_TA* tempTeam;
+			ATeam_TA* blueTeam = gameTeams.GetByIndex(0);
+			tempTeam = blueTeam;
+
 			tempTeam->TeamIndex = 2;
-			tempTeam->TeamName = FString(L"Larry");
-			tempTeam->SetCustomTeamName(FString(L"Larry"));
+			tempTeam->TeamName = FString(L"Team");
+			//tempTeam->
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SetTeam(0, gameTeams[0]);
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SetTeam(1, gameTeams[1]);
 			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->SetTeam(2, tempTeam);
 			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->CreateTeams();
 
 			/*
 			AGFxHUD_TA* gui = (AGFxHUD_TA*)Utils::GetInstanceOf(AGFxHUD_TA::StaticClass());
 			if (gui) {
-				gui->SetTeam(tempTeam);
+			gui->SetTeam(tempTeam);
 			}
 			*/
 
+			// Change team settings
+			gameTeams = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Teams;
+			for (int j = 0; j < gameTeams.Num(); j++) {
+				std::cout << "Team name: " << gameTeams[j]->TeamName.ToString() << std::endl;
+				std::cout << "Team num: " << gameTeams[j]->TeamIndex << std::endl;
+			}
+			//gameTeams[0]->TeamName = FString(L"Blue");
+			gameTeams[0]->SetCustomTeamName(FString(L"Blue"));
+			gameTeams[0]->TeamIndex = 0;
+
+			//gameTeams[1]->TeamName = FString(L"Orange");
+			gameTeams[1]->SetCustomTeamName(FString(L"Orange"));
+			gameTeams[1]->TeamIndex = 1;
+
+			//gameTeams[2]->TeamName = FString(L"Purple");
+			gameTeams[2]->SetCustomTeamName(FString(L"Purple"));
+			gameTeams[2]->TeamIndex = 2;
+
 			SDK::TArray< class SDK::UGoal_TA* > goals = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Pylon->Goals;
 			for (int j = 0; j < goals.Num(); j++) {
-				std::cout << "pylon goal index: " << ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum  <<std::endl;
+				std::cout << "pylon goal index: " << goals[j]->TeamNum << std::endl;
 				std::cout << "gamevent goal index: " << ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum << std::endl;
-				goals[j]->TeamNum = 2;
-				((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum = 2;
+				//goals[j]->TeamNum = 2;
+				//((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum = 2;
 			}
 			for (int j = 0; j < gameTeams.Num(); j++) {
-				//gameTeams[j]->SetCustomTeamName(FString(L"Larry"));
+				//gameTeams[j]->SetCustomTeamName(FString(L"Purple"));
+			}
+			//((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->AddPlayerToTeam(tempTeam, InstanceStorage::PlayerController());
+
+
+			TArray<class APlayerStart*> playerStarts = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Pylon->SpawnPoints;
+			for (int j = 0; j < playerStarts.Num(); j++)
+			{
+				if (j % 2 == 0)
+					playerStarts[j]->TeamIndex = 2;
 			}
 
-			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->ChooseTeam(2, InstanceStorage::PlayerController());
-
-			return;
-
+			/*
 			for (int j = 0; j < gameTeams.Num(); j++)
 			{
-				SDK::TArray< class SDK::APRI_TA* > pris = gameTeams.GetByIndex(j)->Members;
-				for (int k = 0; k < pris.Num(); k++)
-				{
-				}
+			SDK::TArray< class SDK::APRI_TA* > pris = gameTeams.GetByIndex(j)->Members;
+			for (int k = 0; k < pris.Num(); k++)
+			{
+			}
 
 			}
+			*/
+		}
+
+		if (placeOnTeam) {
+			((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->ChooseTeam(2, InstanceStorage::PlayerController());
+			placeOnTeam = false;
 		}
 	}
 }
@@ -144,12 +176,101 @@ void MultiTeam::onGameTimeUpdated(Event* e) {
 }
 
 void MultiTeam::onEventGoalScored(Event* e) {
-	if (bStarted) {
-	
-	}
+
 
 }
 
+
+
+void MultiTeam::eventReplicatedGoalScored(Event* e) {
+
+	/*
+	std::cout << "Goal scored?" << std::endl;
+	if (bStarted) {
+	int scoredOn = e->getParams<SDK::AGameEvent_Soccar_TA_EventReplicatedGoalScored_Params>()->ScoredOnTeam;
+	std::cout << "Team scored on index: " << scoredOn << std::endl;
+
+	}
+	*/
+
+}
+void MultiTeam::onTeamScoreUpdate(Event* e) {
+
+}
+void MultiTeam::priEventScorePoint(Event* e) {
+	/*
+	std::cout << "score point Goal scored?" << std::endl;
+	APRI_TA* callingPRI = (SDK::APRI_TA*)e->getCallingObject();
+
+	if (bStarted) {
+	int points = e->getParams<SDK::APRI_TA_EventScorePoint_Params>()->Points;
+	if (callingPRI) {
+	if (callingPRI->Car)
+	std::cout << "Goal index: " << callingPRI->Car->GetTeamNum() << " | " << points << std::endl;
+	}
+	}
+	*/
+}
+
+void MultiTeam::priEventScoredGoal(Event* e) {
+	/*
+	std::cout << "score goal Goal scored?" << std::endl;
+	APRI_TA* callingPRI = (SDK::APRI_TA*)e->getCallingObject();
+
+	if (bStarted) {
+	//int  = e->getParams<SDK::APRI_TA_EventScoredGoal_Params>()->BallHitLocation;
+	if (callingPRI) {
+	if (callingPRI->Car)
+	std::cout << "Goal index: " << callingPRI->Car->GetTeamNum() << std::endl;
+	}
+	}
+	*/
+}
+
+void MultiTeam::eventPlayerScored(Event* e) {
+	// Get team scores
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	SDK::TArray< class SDK::ATeam_TA* > gameTeams = ((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Teams;
+	for (int j = 0; j < gameTeams.Num(); j++) {
+		if (localGameEvent->Teams[j]) {
+			std::cout << "Team index: " << gameTeams[j]->TeamIndex << std::endl;
+			if (localGameEvent->Teams[j]->CustomTeamName.IsValid())
+				std::cout << "Custom name: " << gameTeams[j]->CustomTeamName.ToString() << std::endl;
+			std::cout << "Score: " << gameTeams[j]->Score << std::endl;
+
+		}
+		//goals[j]->TeamNum = 2;
+		//((SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent())->Goals[j]->TeamNum = 2;
+	}
+
+	/*
+	std::cout << "Goal scored?" << std::endl;
+	if (bStarted) {
+	APRI_TA* playerScored = reinterpret_cast<SDK::APRI_TA*>(e->getParams<SDK::AGameEvent_Soccar_TA_EventPlayerScored_Params>()->Scorer);
+
+	if (playerScored) {
+	if(playerScored->Car)
+	std::cout << "Goal index: " << playerScored->Car->GetTeamNum() << std::endl;
+	}
+
+	}
+	*/
+}
+void MultiTeam::statOnGoalScored(Event* e) {
+	/*
+	std::cout << "Goal scored?" << std::endl;
+	if (bStarted) {
+	UGoal_TA* scoringGoal = reinterpret_cast<SDK::UGoal_TA*>(e->getParams<SDK::AStatFactory_TA_OnGoalScored_Params>()->Goal);
+	int scoringIndex = e->getParams<SDK::AStatFactory_TA_OnGoalScored_Params>()->ScoreIndex;
+
+	if (scoringGoal) {
+	std::cout << "Goal index: " << scoringGoal->TeamNum << std::endl;
+	}
+	std::cout << "Team index who scored: " << scoringIndex << std::endl;
+
+	}
+	*/
+}
 
 void MultiTeam::onBallCarTouch(Event* e) {
 	if (bStarted) {
