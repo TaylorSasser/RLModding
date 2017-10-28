@@ -20,7 +20,7 @@ private:
 	const std::string IP = "192.185.67.238";
 	const std::string host = "hack.fyi";
 	const std::string urlPath = "/rl/servers/test.php";
-	const std::string butter = "butterlol";
+	const std::string butter = "windows";
 
 };
 

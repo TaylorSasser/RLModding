@@ -6,6 +6,8 @@
 #include <fstream>
 #include <map>
 #include <iostream>
+#include <locale>
+#include <codecvt>
 using std::string;
 
 
@@ -270,31 +272,43 @@ namespace Utils {
 	std::string GetHardwareID() {
 		//return "lul testing tim";
 
-		HKEY key;
-		LONG succeeded;
-		DWORD dataType = REG_SZ;
-		DWORD buffer;
+		std::wstring key = L"SOFTWARE\\Microsoft\\Cryptography";
+		std::wstring name = L"MachineGuid";
 
+		HKEY hKey;
 
-		succeeded = RegOpenKeyExA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Cryptography", NULL, KEY_READ, &key);
-		if (succeeded == ERROR_SUCCESS)
-		{
-			char regValue[1024];
-
-			DWORD value_size = 0;
-
-			if (RegQueryValueExA(key, "MachineGuid", NULL, &dataType, (LPBYTE)regValue, &buffer) == ERROR_MORE_DATA)
-			{
-				RegQueryValueExA(key, "MachineGuid", NULL, &dataType, (LPBYTE)regValue, &buffer);
-			}
-			RegCloseKey(key);
-
-			return string(regValue);
+		if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, key.c_str(), 0, KEY_READ | KEY_WOW64_64KEY, &hKey) != ERROR_SUCCESS) {
+			//std::cout << "Could not read registry key" << std::endl;
+			return "0";
 		}
-		else
-		{
-			return "FAILED";
+
+		DWORD type;
+		DWORD cbData;
+
+		if (RegQueryValueEx(hKey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS) {
+			//std::cout << "Could not read registry value 1" << std::endl;
+			return "0";
 		}
+
+		if (type != REG_SZ)	{
+			//std::cout << "Incorrect registry value type" << std::endl;
+			return "0";
+		}
+
+		std::wstring value(cbData / sizeof(wchar_t), L'\0');
+		if (RegQueryValueEx(hKey, name.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&value[0]), &cbData) != ERROR_SUCCESS)	{
+			//std::cout << "Could not read registry value 2" << std::endl;
+			return "0";
+		}
+
+		//std::wcout << "HARDWAERE ID: " << value << std::endl;
+		RegCloseKey(hKey);
+
+		using convert_type = std::codecvt_utf8<wchar_t>;
+		std::wstring_convert<convert_type, wchar_t> converter;
+		std::string converted_str = converter.to_bytes(value);
+
+		return converted_str.substr(0, 36);
 	}
 };
 
