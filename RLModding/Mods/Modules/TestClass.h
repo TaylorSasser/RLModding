@@ -32,4 +32,5 @@ private:
 	long long steamID;
 	std::string hardwareID = "";
 	bool inAir = false;
+	bool tileTest = false;
 };

@@ -268,7 +268,33 @@ namespace Utils {
 	}
 
 	std::string GetHardwareID() {
-		return "lul testing tim";
+		//return "lul testing tim";
+
+		HKEY key;
+		LONG succeeded;
+		DWORD dataType = REG_SZ;
+		DWORD buffer;
+
+
+		succeeded = RegOpenKeyExA(HKEY_LOCAL_MACHINE, "Software\\Microsoft\\Cryptography", NULL, KEY_READ, &key);
+		if (succeeded == ERROR_SUCCESS)
+		{
+			char regValue[1024];
+
+			DWORD value_size = 0;
+
+			if (RegQueryValueExA(key, "MachineGuid", NULL, &dataType, (LPBYTE)regValue, &buffer) == ERROR_MORE_DATA)
+			{
+				RegQueryValueExA(key, "MachineGuid", NULL, &dataType, (LPBYTE)regValue, &buffer);
+			}
+			RegCloseKey(key);
+
+			return string(regValue);
+		}
+		else
+		{
+			return "FAILED";
+		}
 	}
 };
 

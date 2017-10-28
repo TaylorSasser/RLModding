@@ -37,6 +37,11 @@ void TestClass::DrawMenu() {
 			}
 
 
+			if (ImGui::Button("Blog Test")) {
+				tileTest = true;
+			}
+
+
 			if (!p_open) {
 				this->enabled = false;
 				p_open = true;
@@ -65,6 +70,23 @@ void TestClass::onMenuOpen() {
 
 void TestClass::onMainMenuTick(Event* e) {
 
+	if (tileTest) {
+		UGFxData_Community_TA* gfx = (UGFxData_Community_TA*)Utils::GetInstanceOf(UGFxData_Community_TA::StaticClass());
+		UBlogTiles_X* blog = (UBlogTiles_X*)Utils::GetInstanceOf(UBlogTiles_X::StaticClass());
+		if (blog) {
+			TArray<class UBlogTile_X*> CarouselTiles = blog->CarouselTiles;
+			for (int i = 0; i < CarouselTiles.Num(); i++) {
+				if (CarouselTiles.IsValidIndex(i)) {
+					std::cout << CarouselTiles[i]->Title.ToString() << std::endl;
+					std::cout << CarouselTiles[i]->Description.ToString() << std::endl;
+					if (std::cout << CarouselTiles[i]->WebURL.IsValid()) std::cout << CarouselTiles[i]->WebURL.ToString() << std::endl;
+					if (std::cout << CarouselTiles[i]->ImageURL.IsValid()) std::cout << CarouselTiles[i]->ImageURL.ToString() << std::endl;
+					if (std::cout << CarouselTiles[i]->CarName.IsValid()) std::cout << CarouselTiles[i]->CarName.ToString() << std::endl;
+				}
+			}
+		}
+		gfx->ShowHelp();
+	}
 	if (webRequestTest) {
 
 		UOnlineSubsystemSteamworks* steam = reinterpret_cast<UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(UOnlineSubsystemSteamworks::StaticClass()));
@@ -248,6 +270,8 @@ void TestClass::onMainMenuTick(Event* e) {
 	}
 	if (dumpStore) {
 		UGFxDataStore_X* store = (UGFxDataStore_X*)(Utils::GetInstanceOf(UGFxDataStore_X::StaticClass()));
+
+
 		if (store) {
 			TArray<struct FGFxDataStoreTable> t = store->Tables;
 			for (int i = 0; i < t.Num(); i++) {
@@ -259,7 +283,38 @@ void TestClass::onMainMenuTick(Event* e) {
 				}
 
 			}
+			std::cout << "TRYING NEW THINGS" << std::endl;
+			//store->PrintData(FName("Shell"));
+			/*
+			for (int i = 0; i < t.Num(); i++) {
+				std::cout << "\n" << t.GetByIndex(i).Name.GetName() << std::endl;
+				if (t.GetByIndex(i).Name.GetName().compare("Shell") == 0) {
+					TArray<struct FGFxDataStoreRow> row = t.GetByIndex(i).Rows;
+					std::cout << "Columns:\n";
+					for (int j = 0; j < row.Num(); j++) {
+						TArray<struct FASValue> values = row.GetByIndex(j).Values;
+						for (int k = 0; k < values.Num(); k++) {
+							if(values.GetByIndex(k).Type == EASType::AS_Boolean)
+								std::cout << values.GetByIndex(k).S.ToString() << std::endl;
+
+						}
+						//if (columns.GetByIndex(j).Name.GetName().compare("")) {}
+					}
+				}
+				
+
+			}
+			*/
+			//AGFxHUD_TA* currentHUD = (AGFxHUD_TA*)(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));
+
+			/*
+			int row = store->GetObjectRow(currentHUD->PRIData[i]);
+
+			store->SetStringValue(FName("PlayerInfo"), row, FName("PlayerName"), FString(L"AC > Rocket Launcher"));
+			*/
 		}
+
+
 		dumpStore = false;
 	}
 
