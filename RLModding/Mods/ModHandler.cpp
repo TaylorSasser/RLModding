@@ -61,7 +61,7 @@ ModHandler::ModHandler() {
 	CreateMod<WorkshopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);
 
 
-	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
+	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	//CreateMod<TextureMods>("Texture Mods", VK_NUMPAD7, Category::Other, GameState::MENU);
 
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);

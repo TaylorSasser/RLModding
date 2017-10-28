@@ -349,7 +349,7 @@ void TestClass::onWebRequestEventCompleted(Event* e) {
 }
 
 void TestClass::onPlayerTick(Event* e) {
-	ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
+	/*ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
 	if (myCar) {
 		if (myCar->AnyWheelTouchingGround() && inAir) {
 			// https://stackoverflow.com/questions/22253074/how-to-play-or-open-mp3-or-wav-sound-file-in-c-program
@@ -366,7 +366,7 @@ void TestClass::onPlayerTick(Event* e) {
 		else if(!myCar->AnyWheelTouchingGround()){
 			inAir = true;
 		}
-	}
+	}*/
 
 }
 
@@ -385,5 +385,13 @@ void TestClass::onMenuClose() {
 
 void TestClass::onCarEventLanded(Event* e) {
 
+}
+
+void TestClass::OnLANMatchCreate(Event* e) {
+	std::cout << "Lan match has been created!\n";
+}
+
+void TestClass::OnLANMatchDestroy(Event* e) {
+	std::cout << "Lan match has been destroyed!\n";
 }
 

@@ -228,6 +228,8 @@ public:
 	virtual void onGameEventSoccarPostBeginPlay(Event* e) {}
 	virtual void OnCarBumped(Event* e) {}
 	virtual void OnRoundStart(Event* e) {}
+	virtual void OnLANMatchCreate(Event* e) {}
+	virtual void OnLANMatchDestroy(Event* e) {}
 
 	bool enabled = false;
 protected:

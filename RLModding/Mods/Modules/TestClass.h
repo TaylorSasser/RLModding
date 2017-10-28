@@ -17,6 +17,8 @@ public:
 	void onMenuClose();
 	void TestClass::DrawMenu();
 	void onMainMenuTick(Event* e);
+	void OnLANMatchCreate(Event* e);
+	void OnLANMatchDestroy(Event* e);
 
 private:
 	bool p_open = true;

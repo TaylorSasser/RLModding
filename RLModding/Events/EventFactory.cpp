@@ -76,6 +76,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function ProjectX.WebRequest_X.EventCompleted", &ModBase::onWebRequestEventCompleted);
 	SubscribeEvent("Function Engine.HttpRequestInterface.OnProcessRequestComplete", &ModBase::onHttpProcessRequestComplete);
 	SubscribeEvent("Function TAGame.Car_TA.EventLanded", &ModBase::onCarEventLanded);
+	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.StartLanMatch", &ModBase::OnLANMatchCreate);
+	SubscribeEvent("Function ProjectX.UdpLanBrowser_X.DestroyServer", &ModBase::OnLANMatchDestroy);
 
 
 
@@ -90,6 +92,7 @@ EventFactory::EventFactory() {
 
 bool EventFactory::FunctionProxy(SDK::UObject** object, SDK::UFunction* func, void* params, bool isCallFunc) {
 	auto it = hashmap.find(func->GetFullName());
+	//std::cout << func->GetFullName() << std::endl;
 	if (it != hashmap.end()) {
 		std::function<void(Event*)> ModFunction = std::bind(it->second, modBase, std::placeholders::_1);
 		Event event(object, func, params);
