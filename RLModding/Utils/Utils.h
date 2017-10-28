@@ -39,6 +39,7 @@ namespace Utils {
 	void FlashWindow(int flashCount);
 	void BroadcastMessage(SDK::AGameEvent_Soccar_TA* game, std::string s);
 	std::string SendGetRequest(std::string serverIP, std::string hostName, std::string path, std::string params);
+	std::string SendPostRequest(std::string serverIP, std::string hostName, std::string path, std::string params);
 	std::string RemoveSpaces(std::string input);
 	long long GetSteamID();
 	std::string GetHardwareID();

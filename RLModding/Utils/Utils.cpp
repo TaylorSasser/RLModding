@@ -227,10 +227,42 @@ namespace Utils {
 		}
 	}
 
-	std::string SendGetRequest(std::string serverIP, std::string hostName, std::string path, std::string params) {
+	std::string SendPostRequest(std::string serverIP, std::string hostName, std::string path, std::string params) {
 		using namespace asio;
 		error_code ec;
 
+
+		// what we need
+		io_service svc;
+		ip::tcp::socket sock(svc);
+		ip::address addr = ip::address::from_string(serverIP);
+		ip::tcp::endpoint endpoint(addr, 80);
+		sock.connect(endpoint);
+
+		std::string request("POST " + path + " HTTP/1.0\r\nHost: " + hostName + 
+							"\r\nAccept: */*\r\nConnection: close\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + 
+							std::to_string(params.length()) + "\r\n\r\n" + params);
+
+		std::cout << "request: " << std::endl << request << std::endl;
+
+		sock.send(buffer(request));
+
+		// read response
+		std::string response;
+
+
+		do {
+			char buf[1024];
+			size_t bytes_transferred = sock.receive(buffer(buf), {}, ec);
+			if (!ec) response.append(buf, buf + bytes_transferred);
+		} while (!ec);
+
+		return response;
+	}
+
+	std::string SendGetRequest(std::string serverIP, std::string hostName, std::string path, std::string params) {
+		using namespace asio;
+		error_code ec;
 
 		// what we need
 		io_service svc;

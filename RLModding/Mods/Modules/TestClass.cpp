@@ -106,18 +106,19 @@ void TestClass::onMainMenuTick(Event* e) {
 		picosha2::hash256_hex_string(nonce, hashed_string);
 		std::cout << hashed_string << std::endl;
 
-		std::string stringURL = "http://hack.fyi/rl/servers/test.php?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
+		std::string stringURL = "http://hack.fyi/rl/servers/test_post.php?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
 		std::cout << stringURL << std::endl;
 		SDK::FString URL = Utils::to_fstring(stringURL);
 
+		
 		SDK::UHttpResponseInterface* anyResponseInterface = (SDK::UHttpResponseInterface*)Utils::GetInstanceOf(SDK::UHttpResponseInterface::StaticClass());
 		SDK::UWebRequest_X* oldWebRequest = (SDK::UWebRequest_X*)Utils::GetInstanceOf(SDK::UWebRequest_X::StaticClass());
 		//*mainWebRequest = *oldWebRequest;
-
-		std::string params = "?steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
-		std::string response = Utils::SendGetRequest("192.185.67.238", "hack.fyi", "/rl/servers/test.php", params);
+		
+		std::string params = "steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
+		std::string response = Utils::SendPostRequest("192.185.67.238", "hack.fyi", "/rl/servers/post_test.php", params);
 		std::cout << "Response Content Received: '" << Utils::RemoveSpaces(response.substr(response.find("\r\n\r\n"))) << "'\n";
-			
+	
 		
 
 		if (false && oldWebRequest) {
