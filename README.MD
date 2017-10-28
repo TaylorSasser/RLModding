@@ -3,14 +3,14 @@
 
 ## TODO
 
-General
+- General
 	- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
 	- Add in a way to build raw packets into high level objects (decrypting the packets too)
 	- Give gamestate its own class with some operators and so we dont have to use the Globals.h inside of interfaces (IDK what i was thinking)
 	- Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
 
-Mods
-	- When car or bal is invisible add option to show them in replay
+- Mods
+	- When car or ball is invisible add option to show them in replay
 	- Add interface for updating server name
 	- Add setting for car acceleration
 	- Add setting to toggle unlimited boost in freeplay
@@ -20,7 +20,7 @@ Mods
 	- Modify goal explosion properties
 	- Add options for specific balls being worth more points
 
-GUI
+- GUI
 	- Add ability to save IPs to list and load them for joining.
 	- Add optional status bar class to modbase for setting status text
 	- For player selection pull down add options for "blue team", "orange team", and "all bots"
