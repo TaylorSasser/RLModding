@@ -231,8 +231,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 					}
 					*/
 
-					// For some reason these properties need respawn
-
+					// For some reason these properties need respawn					
 					bool needRefresh = false;
 					if (!Utils::FloatCompare(currCar->MaxTimeForDodge, jumpTimeout)) {
 						currCar->MaxTimeForDodge = jumpTimeout;

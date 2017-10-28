@@ -30,7 +30,7 @@
 
 - Enabling custom blog and then closing the game will result in a crash almost always.  Scaleform error?
 - Ballcam glitches out when in 50/50 or any mod where there is more than 1 ball
-- When enabling car mods sticky walls or ceilings are not correct default values
+- ~~When enabling car mods sticky walls or ceilings are not correct default values~~
 - If player is set as match admin and leaves game, their game crashes
 - 50/50 continues countdown during replays
 - Workshop mod level skip doesn't work if multiplayer
@@ -41,6 +41,7 @@
 	- Added a End Game Button to Game Event Mods
 	- Added additional on screen prompts to help user
 	- Menus background is no longer blue for combobox drop downs
+	- Fixed wall and car stickiness default values in car mods
 
 ## Bored? I know just the solution!
 

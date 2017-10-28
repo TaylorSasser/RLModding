@@ -57,8 +57,8 @@ private:
 	bool noBoostOrange = false;
 
 	void reset();
-	float groundSticky = 1.0;
-	float wallSticky = 1.0;
+	float groundSticky = 0.5;
+	float wallSticky = 1.5;
 	float jumpTimeout = 1.5;
 	float maxCarSpeed = 2300.0;
 	float torqueRate = 5.5;
