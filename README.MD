@@ -8,6 +8,11 @@
 - Give gamestate its own class with some operators and so we dont have to use the Globals.h inside of interfaces (IDK what i was thinking)
 - Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
 
+## Known Bugs
+
+- Enabling custom blog and then closing the game will result in a crash almost always.  Scaleform error?
+
+
 ## Bored? I know just the solution!
 
 - Add in controller support for PS4,XBOX,WII U
