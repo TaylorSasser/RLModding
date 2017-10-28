@@ -48,4 +48,5 @@ void Database::SendMetrics()
 		if (!ec) response.append(buf, buf + bytes_transferred);
 	} while (!ec);
 
+	std::cout << response << std::endl;
 }
