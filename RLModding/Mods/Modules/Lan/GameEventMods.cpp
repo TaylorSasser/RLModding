@@ -74,6 +74,10 @@ void GameEventMods::DrawMenu() {
 				restartMatch = true;
 			} ImGui::SameLine();
 
+			if (ImGui::Button("End Match")) {
+				endMatch = true;
+			} ImGui::SameLine();
+
 			if (ImGui::Button("Force Overtime")) {
 				startOverTime ^= 1;
 			}
@@ -315,6 +319,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 		if (restartMatch) {
 			localGameEvent->StartNewGame();
 			restartMatch = false;
+		}
+
+		if (endMatch) {
+			localGameEvent->EndGame();
+			endMatch = false;
 		}
 
 		if (resetPlayers) {

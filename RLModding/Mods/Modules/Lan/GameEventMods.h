@@ -35,6 +35,7 @@ private:
 	bool freezeBots = false;
 	bool setWarmupTime = false;
 	bool restartMatch = false;
+	bool endMatch = false;
 	bool resetPlayers = false;
 	bool resetBalls = false;
 	bool setScoreAndTime = false;

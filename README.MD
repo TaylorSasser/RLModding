@@ -3,15 +3,44 @@
 
 ## TODO
 
-- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
-- Add in a way to build raw packets into high level objects (decrypting the packets too)
-- Give gamestate its own class with some operators and so we dont have to use the Globals.h inside of interfaces (IDK what i was thinking)
-- Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
+General
+	- Possible Lan implementation: Use UFunction->Script To give us access to the generate keys by hooking a GNatives
+	- Add in a way to build raw packets into high level objects (decrypting the packets too)
+	- Give gamestate its own class with some operators and so we dont have to use the Globals.h inside of interfaces (IDK what i was thinking)
+	- Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
+
+Mods
+	- When car or bal is invisible add option to show them in replay
+	- Add interface for updating server name
+	- Add setting for car acceleration
+	- Add setting to toggle unlimited boost in freeplay
+	- Add Ball mod options for resetting all balls
+	- Add HP setting for cars health in game modes
+	- Add setting for tornado to vary in height
+	- Modify goal explosion properties
+	- Add options for specific balls being worth more points
+
+GUI
+	- Add ability to save IPs to list and load them for joining.
+	- Add optional status bar class to modbase for setting status text
+	- For player selection pull down add options for "blue team", "orange team", and "all bots"
+	- Improve Mutator Mods warning messages
 
 ## Known Bugs
 
 - Enabling custom blog and then closing the game will result in a crash almost always.  Scaleform error?
+- Ballcam glitches out when in 50/50 or any mod where there is more than 1 ball
+- When enabling car mods sticky walls or ceilings are not correct default values
+- If player is set as match admin and leaves game, their game crashes
+- 50/50 continues countdown during replays
+- Workshop mod level skip doesn't work if multiplayer
 
+## Changelog
+
+3.4 Beta
+	- Added a End Game Button to Game Event Mods
+	- Added additional on screen prompts to help user
+	- Menus background is no longer blue for combobox drop downs
 
 ## Bored? I know just the solution!
 
@@ -26,7 +55,11 @@
  - Rumble item to blow up everyone on opposing team
  - Rumble item to spawn bots to chase specific player for X seconds
  - Inverse gravity 
- - Johns silly idea 
+ - Invisible game mode (for cars and balls)
+ - Trampoline mode (cars constantly bounce.  This can be achieved by setting the floor stickiness to negative)
+ - Freeze Tag
+ - Dodgeball - ball demolishes
+ - Capture the ball. Each team has a ball in their goal box and must keep the other team from getting it to their goal.
 
 
 ## How To Hook A New Function
