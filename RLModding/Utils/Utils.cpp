@@ -231,7 +231,6 @@ namespace Utils {
 		using namespace asio;
 		error_code ec;
 
-
 		// what we need
 		io_service svc;
 		ip::tcp::socket sock(svc);
@@ -243,13 +242,12 @@ namespace Utils {
 							"\r\nAccept: */*\r\nConnection: close\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + 
 							std::to_string(params.length()) + "\r\n\r\n" + params);
 
-		std::cout << "request: " << std::endl << request << std::endl;
+		//std::cout << "request: " << std::endl << request << std::endl;
 
 		sock.send(buffer(request));
 
 		// read response
 		std::string response;
-
 
 		do {
 			char buf[1024];
