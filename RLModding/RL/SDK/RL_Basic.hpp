@@ -52,6 +52,11 @@ public:
 		return Data[i];
 	}
 
+	inline void Clear() {
+		Data = nullptr;
+		Count = Max = 0;
+	}
+
 	inline void Add(T InputData)
 	{
 		Data = (T*)realloc(Data, sizeof(T) * (Count + 1));

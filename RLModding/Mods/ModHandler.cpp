@@ -26,7 +26,7 @@
 #include "Modules/Unfinished/HUDMods.h"
 #include "Modules/GameModes/DemolitionDerby.h"
 #include "Modules/Unfinished/MultiTeam.h"
-
+#include "Modules/Lan/ServerBrowser.h"
 
 ModHandler::ModHandler() {
 	CreateMod<Zombies>("Classic Zombies", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN, "The bots have a new target...you!");
@@ -55,7 +55,8 @@ ModHandler::ModHandler() {
 	CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
-	//CreateMod<HUDMods>("HUD Mods", VK_F15, Category::Other, GameState::ANY, "HUD Modifications.");
+	CreateMod<HUDMods>("HUD Mods", VK_F15, Category::Other, GameState::ANY, "HUD Modifications.");
+	CreateMod<ServerBrowser>("Server Browser", VK_F17, Category::Other, GameState::ANY, "Settings for global server list.");
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<WorkshopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);

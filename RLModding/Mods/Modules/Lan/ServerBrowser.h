@@ -2,10 +2,10 @@
 #include "../../ModBase.h"
 #include "../Interfaces/Interfaces.h"
 
-class HUDMods : public ModBase {
+class ServerBrowser : public ModBase {
 public:
-	HUDMods(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
-	~HUDMods();
+	ServerBrowser(std::string name, int key, Category cat, GameState gamestate, std::string toolTip);
+	~ServerBrowser();
 
 	void onMenuOpen();
 	void onPlayerTick(Event * e) override;
@@ -18,5 +18,4 @@ public:
 private:
 	bool p_open = true;
 	bool searchTest = false;
-	char objectName[100] = "Teleport\0";
 };

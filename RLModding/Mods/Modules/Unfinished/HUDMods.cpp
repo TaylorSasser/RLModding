@@ -1,4 +1,5 @@
 #include "HUDMods.h"
+#include "../Memory/MemoryAllocator.h"
 
 HUDMods::HUDMods(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 HUDMods::~HUDMods() {}
@@ -12,6 +13,25 @@ void HUDMods::DrawMenu() {
 
 			if (ImGui::Button("Test Search.")) {
 				searchTest = true;
+			}
+
+			ImGui::InputText("Object Name", objectName, IM_ARRAYSIZE(objectName));
+			if (ImGui::Button("Find Object")) {
+
+				static SDK::UObject* ObjectInstance;
+				ObjectInstance = NULL;
+
+				for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+					SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+					if (CheckObject) {
+						if (strstr(CheckObject->GetFullName().c_str(), objectName)) {
+							ObjectInstance = CheckObject;
+							std::cout << objectName << " instance: " << CheckObject->GetFullName() << std::endl;
+						}
+					}
+				}
+
+
 			}
 
 			if (!p_open) {
@@ -66,19 +86,25 @@ void HUDMods::onMainMenuTick(Event* e) {
 				//ULanServerRecord_X* testRecord;
 				//testRecord->ServerID = FString(L"76.21.103.72:7777");
 				//testRecord->MetaData = browser->SearchResults[i]->MetaData;
-				//serverBrowser->CreateServerGFxData(testRecord);
+				//serverBrowser->CreateServerGFxData(browser->SearchResults[i]);
 			}
 
 			//serverBrowser->Refresh();
-			//TArray<struct ULanServerRecord_X*> results;
-			//ULanServerRecord_X testRecord;
-			//testRecord.ServerID = FString(L"76.21.103.72:7777");
-			//testRecord.MetaData = FString(L"{\"OwnerID\":\"Steam | 76561198399522935 | 0\",\"OwnerName\":\"Butter\",\"ServerName\":\"Butter's Server\",\"ServerMap\":\"EuroStadium_Rainy_P\",\"ServerGameMode\":0,\"bPassword\":false,\"NumPlayers\":1,\"MaxPlayers\":5000}");
-			//results.Add(&testRecord);
-			//serverBrowser->HandleServers(results);
+			TArray<struct ULanServerRecord_X*> results = browser->SearchResults;
+			//ULanServerRecord_X* testRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
 
 			
+
+			//ULanServerRecord_X* testRecord = 
+			//ULanServerRecord_X testRecord;
+			//testRecord->ServerID = FString(L"76.21.103.72:7777");
+			//testRecord->MetaData = FString(L"{\"OwnerID\":\"Steam | 76561198399522935 | 0\",\"OwnerName\":\"Butter\",\"ServerName\":\"Test Server\",\"ServerMap\":\"EuroStadium_Rainy_P\",\"ServerGameMode\":0,\"bPassword\":false,\"NumPlayers\":1,\"MaxPlayers\":5000}");
+			//results.Add(testRecord);
+
+			//serverBrowser->HandleServers(results);
+
 			//browser->JoinServer(FString(L"76.21.103.72:7777"), FString(L"")); // works
+			
 			/*
 			ULanSearchTask* testSearch = browser->GetServerList();
 			TArray<class ULanServerRecord_X*> results = testSearch->Result;
@@ -87,8 +113,11 @@ void HUDMods::onMainMenuTick(Event* e) {
 				ULanServerRecord_X* testRecord;
 				testRecord->ServerID = FString(L"76.21.103.72:7777");
 				testRecord->MetaData = results[i]->MetaData;
+				
 			}
+			serverBrowser->HandleServers(results);
 			*/
+			
 		}
 		//ULanSearchTask* testSearch = serverBrowser->LanBrowser->GetServerList();
 		

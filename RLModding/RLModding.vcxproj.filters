@@ -72,6 +72,7 @@
     <ClCompile Include="Mods\Modules\Unfinished\HUDMods.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\FreezeTag.cpp" />
+    <ClCompile Include="Mods\Modules\Lan\ServerBrowser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4710,6 +4711,7 @@
     <ClInclude Include="Mods\Modules\Unfinished\HUDMods.h" />
     <ClInclude Include="Mods\Modules\Unfinished\TextureMods.h" />
     <ClInclude Include="Mods\Modules\Unfinished\FreezeTag.h" />
+    <ClInclude Include="Mods\Modules\Lan\ServerBrowser.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />
