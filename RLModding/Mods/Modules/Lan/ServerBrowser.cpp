@@ -67,7 +67,9 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 			ULanServerRecord_X* newRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
 			if (newRecord) {
 
-				ULanServerRecord_X tempRecords[10];
+				ULanServerRecord_X* tempRecords;
+				tempRecords = new ULanServerRecord_X[numServersToAdd];
+
 				// Create as many entries as we need
 				for (int i = 0; i < numServersToAdd; i++) {
 					tempRecords[i] = *newRecord;
