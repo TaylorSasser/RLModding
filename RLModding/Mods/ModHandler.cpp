@@ -16,16 +16,16 @@
 #include "Modules/GameModes/KeepAway.h"
 #include "Modules/Lan/MutatorMods.h"
 #include "Modules/Offline/TrainingMods.h"
-#include "Modules/Offline/TextureMods.h"
+#include "Modules/Unfinished/TextureMods.h"
 #include "Modules/GameModes/InfiniteCelebration.h"
 #include "Modules/GameModes/CrazyItems.h"
 #include "Modules/GameModes/DribbleDrabble.h"
 #include "Modules/Offline/WorkshopMods.h"
-#include "Modules/GameModes/FreezeTag.h"
-#include "Modules/GameModes/Infected.h"
-#include "Modules/Offline/HUDMods.h"
+#include "Modules/Unfinished/FreezeTag.h"
+#include "Modules/Unfinished/Infected.h"
+#include "Modules/Unfinished/HUDMods.h"
 #include "Modules/GameModes/DemolitionDerby.h"
-#include "Modules/GameModes/MultiTeam.h"
+#include "Modules/Unfinished/MultiTeam.h"
 
 
 ModHandler::ModHandler() {
