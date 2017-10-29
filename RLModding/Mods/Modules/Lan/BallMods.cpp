@@ -112,7 +112,7 @@ void BallMods::onPlayerTick(Event* e) {
 
 						// Update stats
 						gameBallSettings[i].touchCount = gameBalls[i]->Touches.Num();
-						std::cout << "Loops through balls i = " << i << std::endl;
+						//std::cout << "Loops through balls i = " << i << std::endl;
 					}
 				}
 			}

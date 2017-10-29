@@ -38,7 +38,7 @@
 ## Changelog
 
 - 3.4 Beta
-	- Added a End Game Button to Game Event Mods
+	- Added an End Game Button to Game Event Mods
 	- Added additional on screen prompts to help user
 	- Menus background is no longer blue for combobox drop downs
 	- Fixed wall and car stickiness default values in car mods
