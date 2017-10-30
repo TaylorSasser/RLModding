@@ -46,7 +46,7 @@ ModHandler::ModHandler() {
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server", VK_NUMPAD2, Category::Lan, GameState::ANY);
-	CreateMod<PublicServerList>("Add Server to Public List", VK_NUMPAD0, Category::Lan, GameState::ANY, "Publicize your server so anyone can join.");
+	CreateMod<PublicServerList>("Add Server to Public List", VK_NUMPAD0, Category::Lan, GameState::ANY, "Publicize your LAN server so anyone can join.");
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 
