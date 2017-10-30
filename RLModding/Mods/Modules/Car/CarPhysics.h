@@ -17,6 +17,7 @@ public:
 	void CarPhysics::onGameEventAddPlayer(Event* e);
 	void CarPhysics::onCarTick(Event* event);
 	void CarPhysics::onActorJump(Event*e);
+	void OnRoundStart(Event*e);
 
 	void ExportSettings(pt::ptree);
 	void ImportSettings(pt::ptree);
