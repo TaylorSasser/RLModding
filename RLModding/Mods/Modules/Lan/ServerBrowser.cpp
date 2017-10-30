@@ -54,22 +54,74 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 	}
 
 	UGFxData_LanBrowser_TA* serverBrowser = reinterpret_cast<SDK::UGFxData_LanBrowser_TA*>(Utils::GetInstanceOf(UGFxData_LanBrowser_TA::StaticClass()));
+	TArray<struct ULanServerRecord_X*> results;
 
 	if (serverBrowser && searchTest) {
+
+		long long steamID = Utils::GetSteamID();
+		std::string hardwareID = Utils::GetHardwareID();
+		time_t currTime = time(NULL);
+		// SHA256 hashing
+		std::string nonce = std::to_string(steamID) + std::to_string(currTime) + butter;
+		std::string hashed_string;
+		picosha2::hash256_hex_string(nonce, hashed_string);
+		//std::cout << nonce << std::endl;
+		//std::cout << hashed_string << std::endl;
+		std::string params = "steamid=" + std::to_string(steamID) + "&time=" + std::to_string(currTime) + "&n=" + hashed_string;
+		//std::cout << params << std::endl;
+
+		std::string response = Utils::SendPostRequest(IP, host, urlPath, params);
+		std::string responseContent = response.substr(response.find("\r\n\r\n"));
+		std::cout << "Response Content Received: '" << responseContent << "'\n";
+		
+		std::stringstream ss;
+		ss << responseContent;
+
+		boost::property_tree::ptree pt;
+		boost::property_tree::read_json(ss, pt);
+		int numServersToAdd = stoi(pt.get<std::string>("rows"));
+
 		std::cout << "Found server browser!" << std::endl;
 
 		if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass())) {
 			std::cout << "Browser is UDP!" << std::endl;
 			UUdpLanBrowser_X* browser = (UUdpLanBrowser_X*)serverBrowser->LanBrowser;
-			int numServersToAdd = 10;
-			TArray<struct ULanServerRecord_X*> results;
-
+			results.Clear();
+			serverBrowser->Refresh();
 			ULanServerRecord_X* newRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
 			if (newRecord) {
 
 				ULanServerRecord_X* tempRecords;
 				tempRecords = new ULanServerRecord_X[numServersToAdd];
 
+				int currIndex = 0;
+				for (auto& e : pt.get_child("data")) {
+					std::string serverIpAddress = e.second.get<std::string>("IP_Address");
+					std::string serverPort = e.second.get<std::string>("Port");
+					std::string serverName = e.second.get<std::string>("Server_Name");
+					std::string serverOwnerName = e.second.get<std::string>("Owner_Name");
+					std::string serverOwnerId = e.second.get<std::string>("Owner_ID");
+					std::string serverMap = e.second.get<std::string>("Server_Map");
+					std::string serverGameVar = e.second.get<std::string>("Server_Game_Variable");
+					std::string serverHasPass = "true";
+					std::string serverNumPlayers = e.second.get<std::string>("Num_Players");
+					std::string serverMaxPlayers = e.second.get<std::string>("Max_Players");
+					//std::cout << "server pass: " << serverHasPass << "\n";
+					if (stoi(e.second.get<std::string>("Password_Required")) == 0) {
+						serverHasPass = "false";
+					}
+
+
+					tempRecords[currIndex] = *newRecord;
+					std::string ipAddress = serverIpAddress + ":" + serverPort;
+					tempRecords[currIndex].ServerID = FString(Utils::to_fstring(ipAddress));
+					std::string metaData = "{\"OwnerID\":\"Steam | " + serverOwnerId + " | 0\",\"OwnerName\":\"" + serverOwnerName + "\",\"ServerName\":\"" + serverName + "\",\"ServerMap\":\"" + serverMap + "\",\"ServerGameMode\":" + serverGameVar + ",\"bPassword\":" + serverHasPass + ",\"NumPlayers\":" + serverNumPlayers + ",\"MaxPlayers\":" + serverMaxPlayers + "}";
+					tempRecords[currIndex].MetaData = FString(Utils::to_fstring(metaData));
+
+					results.Add(&tempRecords[currIndex]);
+					currIndex++;
+				}
+				/*
 				// Create as many entries as we need
 				for (int i = 0; i < numServersToAdd; i++) {
 					tempRecords[i] = *newRecord;
@@ -80,6 +132,7 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 
 					results.Add(&tempRecords[i]);
 				}
+				*/
 				serverBrowser->HandleServers(results);
 			}
 		}

@@ -18,13 +18,14 @@ void Database::SendMetrics()
 
 	long long steamID = Utils::GetSteamID();
 	std::string hardwareID = Utils::GetHardwareID();
+	time_t currTime = time(NULL);
 	// SHA256 hashing
-	std::string nonce = std::to_string(steamID) + hardwareID + std::to_string(time(NULL)) + butter;
+	std::string nonce = std::to_string(steamID) + hardwareID + std::to_string(currTime) + butter;
 	std::string hashed_string;
 	picosha2::hash256_hex_string(nonce, hashed_string);
 	//std::cout << nonce << std::endl;
 	//std::cout << hashed_string << std::endl;
-	std::string params = "steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(time(NULL)) + "&n=" + hashed_string;
+	std::string params = "steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(currTime) + "&n=" + hashed_string;
 	//std::cout << params << std::endl;
 
 	std::string response = Utils::SendPostRequest(IP, host, urlPath, params);
