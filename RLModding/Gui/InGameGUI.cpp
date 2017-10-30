@@ -150,7 +150,8 @@ void InGameGUI::Render() {
 }
 
 bool InGameGUI::MouseClickEvent(ClickEvent e, short x, short y) {
-	return isGUIOpen;
+	// Used to return isGUIOpen
+	return ImGui::IsMouseHoveringAnyWindow();
 }
 
 bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
@@ -164,6 +165,8 @@ bool InGameGUI::KeyPressEvent(KeyEvent e, WPARAM w) {
 		Interfaces::KeyboardHandler().RestoreKeyboard();
 		FreeLibraryAndExitThread(LoadLibraryA("RLModding"), 0);
 	}*/
-	return isGUIOpen;
+	// Used to return isGUIOpen
+
+	return ImGui::GetIO().WantCaptureKeyboard;
 }
 

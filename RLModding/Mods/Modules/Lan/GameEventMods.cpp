@@ -263,6 +263,11 @@ void GameEventMods::DrawMenu() {
 				testChangeName = true;
 			}
 			*/
+			if (ImGui::Button("Test askfhjsdfhgfjk")) {
+
+				ballSpawnTest = true;
+			}
+
 			if (ImGui::Button("Hide Game Ball")) {
 				hideGameBall = true;
 			}
@@ -474,6 +479,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 		if (ballSpawnTest) {
 			//ABall_TA* demoBall = localGameEvent->SpawnBall(localGameEvent->playercontr->Car->Location, true, false, localGameEvent->BallArchetype->GetHumanReadableName());
+			UForceFeedbackWaveform* wf = reinterpret_cast<SDK::UForceFeedbackWaveform*>(Utils::GetInstanceOf(UForceFeedbackWaveform::StaticClass()));
+			UAnimNotify_Rumble* r = reinterpret_cast<SDK::UAnimNotify_Rumble*>(Utils::GetInstanceOf(UAnimNotify_Rumble::StaticClass()));
+			InstanceStorage::PlayerController()->PlayRumble(r);
+
+			InstanceStorage::PlayerController()->ClientPlayForceFeedbackWaveform(wf, InstanceStorage::PlayerController()->Car);
 			ballSpawnTest = false;
 		}
 
