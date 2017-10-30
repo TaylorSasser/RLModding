@@ -85,6 +85,14 @@ void InGameGUI::Render() {
 		ImGui::GetIO().MouseDrawCursor = false;
 	}
 
+	// Draw elements that can exist regardless if menu is showing or not.
+	// These items are meant to be additions to the rocket league menus
+	for (auto& mods : Interfaces::Mods()) {
+		if (mods.second->isEnabled()) {
+			mods.second->DrawRLMenuAddon();
+		}
+	}
+
 	if (!isGUIOpen) {
 		return;
 	}

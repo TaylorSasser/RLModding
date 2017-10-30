@@ -43,4 +43,6 @@ namespace Utils {
 	std::string RemoveSpaces(std::string input);
 	long long GetSteamID();
 	std::string GetHardwareID();
+	char* stristr(const char* str1, const char* str2);
+
 }

@@ -5,6 +5,52 @@
 ServerBrowser::ServerBrowser(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 ServerBrowser::~ServerBrowser() {}
 
+void::ServerBrowser::DrawRLMenuAddon() {
+	if (ServerBrowser::isEnabled() && isRLMenuShowing) {
+		ImGui::SetNextWindowPos(ImVec2(500, 179), ImGuiSetCond_FirstUseEver);
+
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 11.0f);
+
+		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.172f, 0.572f, 0.929f, 1.0f));
+
+		ImGui::Begin("Server Filter", &p_open, ImVec2(1569, 116), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders);
+		ImGui::SetWindowFontScale(1.6f);
+
+		ImGui::InputText("Name", queryServerName, IM_ARRAYSIZE(queryServerName));
+
+		ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
+
+		if (buttonHovered) ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		else  ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.831, 0.894, 0.968, 0.75f));
+
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.831, 0.894, 0.968, 0.75f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.831, 0.894, 0.968, 1.0f));
+		if (ImGui::Button("Find Public Servers")) {
+			searchTest = true;
+		}
+		if (ImGui::IsItemHovered()) buttonHovered = true;
+		else buttonHovered = false;
+
+		ImGui::PopStyleColor(4);
+
+
+		ImGui::End();
+
+		ImGui::PopStyleColor();
+		ImGui::PopStyleVar();
+
+		if (ImGui::BeginPopupContextItem("item context menu"))
+		{
+			ImGui::Text("Test context menu");
+			ImGui::PushItemWidth(-1);
+			ImGui::PopItemWidth();
+			ImGui::EndPopup();
+		}
+
+	}
+}
+
 void ServerBrowser::DrawMenu() {
 	if (ServerBrowser::isEnabled()) {
 		{
@@ -53,10 +99,13 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 		UGFxData_Chat_TA* chatData = hud->ChatData;
 		std::cout << hud->PartyChatTitle.ToString() << std::endl;
 	}
-
-	UGFxData_LanBrowser_TA* serverBrowser = reinterpret_cast<SDK::UGFxData_LanBrowser_TA*>(Utils::GetInstanceOf(UGFxData_LanBrowser_TA::StaticClass()));
+	if(!serverBrowser)
+		serverBrowser = reinterpret_cast<SDK::UGFxData_LanBrowser_TA*>(Utils::GetInstanceOf(UGFxData_LanBrowser_TA::StaticClass()));
 	TArray<struct ULanServerRecord_X*> results;
 
+	isRLMenuShowing = serverBrowser;
+	//if (serverBrowser && serverBrowser->IsPendingKill()) isRLMenuShowing = false;
+	//if (serverBrowser) std::cout << serverBrowser->GetStateName().GetName() << std::endl;
 	if (serverBrowser && searchTest) {
 
 		long long steamID = Utils::GetSteamID();
@@ -116,15 +165,23 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 							serverHasPass = "false";
 						}
 
+						//std::cout << "Search map name: " << maps[selectedMap].filename << std::endl;
+						//std::cout << "Result map name: " << serverMap << std::endl;
 
-						tempRecords[currIndex] = *newRecord;
-						std::string ipAddress = serverIpAddress + ":" + serverPort;
-						tempRecords[currIndex].ServerID = FString(Utils::to_fstring(ipAddress));
-						std::string metaData = "{\"OwnerID\":\"Steam | " + serverOwnerId + " | 0\",\"OwnerName\":\"" + serverOwnerName + "\",\"ServerName\":\"" + serverName + "\",\"ServerMap\":\"" + serverMap + "\",\"ServerGameMode\":" + serverGameVar + ",\"bPassword\":" + serverHasPass + ",\"NumPlayers\":" + serverNumPlayers + ",\"MaxPlayers\":" + serverMaxPlayers + "}";
-						tempRecords[currIndex].MetaData = FString(Utils::to_fstring(metaData));
+						if (strcmp(queryServerName, "") == 0 || Utils::stristr(queryServerName, serverName.c_str()) == 0) {
 
-						results.Add(&tempRecords[currIndex]);
-						currIndex++;
+							if (selectedMap == 0 || stricmp(maps[selectedMap].filename.c_str(), serverMap.c_str()) == 0) {
+								tempRecords[currIndex] = *newRecord;
+								std::string ipAddress = serverIpAddress + ":" + serverPort;
+								tempRecords[currIndex].ServerID = FString(Utils::to_fstring(ipAddress));
+								std::string metaData = "{\"OwnerID\":\"Steam | " + serverOwnerId + " | 0\",\"OwnerName\":\"" + serverOwnerName + "\",\"ServerName\":\"" + serverName + "\",\"ServerMap\":\"" + serverMap + "\",\"ServerGameMode\":" + serverGameVar + ",\"bPassword\":" + serverHasPass + ",\"NumPlayers\":" + serverNumPlayers + ",\"MaxPlayers\":" + serverMaxPlayers + "}";
+								tempRecords[currIndex].MetaData = FString(Utils::to_fstring(metaData));
+
+								results.Add(&tempRecords[currIndex]);
+								currIndex++;
+							}
+
+						}
 					}
 					/*
 					// Create as many entries as we need

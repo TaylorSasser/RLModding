@@ -74,6 +74,7 @@ public:
 	static GameState STATIC_getCurrentGameState() { return ModBase().getCurrentGameState(); };
 
 	virtual void DrawMenu() {}
+	virtual void DrawRLMenuAddon() {}
 
 	virtual void onMenuOpen() {}
 	virtual void onMenuClose() {}
