@@ -19,6 +19,7 @@
 	- Add setting for tornado to vary in height
 	- Modify goal explosion properties
 	- Add options for specific balls being worth more points
+	- ~~Apply car scale every new round~~
 
 - GUI
 	- Add ability to save IPs to list and load them for joining.
