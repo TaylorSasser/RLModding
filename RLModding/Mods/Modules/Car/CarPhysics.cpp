@@ -280,12 +280,16 @@ void CarPhysics::onPlayerTick(Event* e) {
 						}
 						//InstanceStorage::PlayerController()->Car->Teleport(carOldLoc, carOldRot, false, false, false);
 						if (currCar) {
+							std::cout << "Found car!\n";
 							// Fix to disable demolish when scaling?
 							if (demolishOnGoalZone)
 								currCar->bDemolishOnGoalZone = false;
 							currCar->SetCarScale(carScale);
 							if (demolishOnGoalZone)
 								currCar->bDemolishOnGoalZone = true;
+						}
+						else {
+							std::cout << "No car! :(\n";
 						}
 					}
 
@@ -401,7 +405,7 @@ void CarPhysics::populatePlayerList(AGameEvent_Soccar_TA* localGameEvent) {
 					}
 
 					char *cptr = Utils::stringToCharArray(playerName);
-					//std::cout << "Player: " << playerName << std::endl;
+					std::cout << "Player: " << playerName << std::endl;
 					//_bstr_t b(eventPlayers.GetByIndex(i)->PlayerReplicationInfo->PlayerName.ToString().data());
 					players[i + 1] = cptr;
 				}
@@ -426,6 +430,14 @@ void CarPhysics::onCarSpawned(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 	if(localGameEvent && localGameEvent->ReplicatedStateName.Index && !localGameEvent->ReplicatedStateName.GetName().compare("None"))
 		populatePlayerList(localGameEvent);
+	
+}
+
+void CarPhysics::OnRoundStart(Event* e) {
+	if (!Utils::FloatCompare(carScale, 1.0)) {
+		setCarScale = true;
+		respawnOnScale = true;
+	}
 }
 
 void CarPhysics::onGameEventRemovePlayer(Event* e) {
