@@ -27,6 +27,7 @@
 #include "Modules/GameModes/DemolitionDerby.h"
 #include "Modules/Unfinished/MultiTeam.h"
 #include "Modules/Lan/ServerBrowser.h"
+#include "Modules/Lan/PublicServerList.h"
 
 ModHandler::ModHandler() {
 	CreateMod<Zombies>("Classic Zombies", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN, "The bots have a new target...you!");
@@ -45,6 +46,7 @@ ModHandler::ModHandler() {
 
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server", VK_NUMPAD2, Category::Lan, GameState::ANY);
+	CreateMod<PublicServerList>("Add Server to Public List", VK_NUMPAD0, Category::Lan, GameState::ANY, "Publicize your server so anyone can join.");
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 
