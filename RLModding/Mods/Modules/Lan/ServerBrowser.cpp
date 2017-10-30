@@ -1,5 +1,6 @@
 #include "ServerBrowser.h"
 #include "../Memory/MemoryAllocator.h"
+#include <exception>
 
 ServerBrowser::ServerBrowser(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 ServerBrowser::~ServerBrowser() {}
@@ -78,65 +79,73 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 		ss << responseContent;
 
 		boost::property_tree::ptree pt;
-		boost::property_tree::read_json(ss, pt);
-		int numServersToAdd = stoi(pt.get<std::string>("rows"));
-
-		std::cout << "Found server browser!" << std::endl;
-
-		if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass())) {
-			std::cout << "Browser is UDP!" << std::endl;
-			UUdpLanBrowser_X* browser = (UUdpLanBrowser_X*)serverBrowser->LanBrowser;
+		try
+		{
 			results.Clear();
 			serverBrowser->Refresh();
-			ULanServerRecord_X* newRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
-			if (newRecord) {
+		
+			boost::property_tree::read_json(ss, pt);
+			int numServersToAdd = stoi(pt.get<std::string>("rows"));
 
-				ULanServerRecord_X* tempRecords;
-				tempRecords = new ULanServerRecord_X[numServersToAdd];
+			std::cout << "Found server browser!" << std::endl;
 
-				int currIndex = 0;
-				for (auto& e : pt.get_child("data")) {
-					std::string serverIpAddress = e.second.get<std::string>("IP_Address");
-					std::string serverPort = e.second.get<std::string>("Port");
-					std::string serverName = e.second.get<std::string>("Server_Name");
-					std::string serverOwnerName = e.second.get<std::string>("Owner_Name");
-					std::string serverOwnerId = e.second.get<std::string>("Owner_ID");
-					std::string serverMap = e.second.get<std::string>("Server_Map");
-					std::string serverGameVar = e.second.get<std::string>("Server_Game_Variable");
-					std::string serverHasPass = "true";
-					std::string serverNumPlayers = e.second.get<std::string>("Num_Players");
-					std::string serverMaxPlayers = e.second.get<std::string>("Max_Players");
-					//std::cout << "server pass: " << serverHasPass << "\n";
-					if (stoi(e.second.get<std::string>("Password_Required")) == 0) {
-						serverHasPass = "false";
+			if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass())) {
+				std::cout << "Browser is UDP!" << std::endl;
+				UUdpLanBrowser_X* browser = (UUdpLanBrowser_X*)serverBrowser->LanBrowser;
+
+				ULanServerRecord_X* newRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
+				if (newRecord) {
+
+					ULanServerRecord_X* tempRecords;
+					tempRecords = new ULanServerRecord_X[numServersToAdd];
+
+					int currIndex = 0;
+					for (auto& e : pt.get_child("data")) {
+						std::string serverIpAddress = e.second.get<std::string>("IP_Address");
+						std::string serverPort = e.second.get<std::string>("Port");
+						std::string serverName = e.second.get<std::string>("Server_Name");
+						std::string serverOwnerName = e.second.get<std::string>("Owner_Name");
+						std::string serverOwnerId = e.second.get<std::string>("Owner_ID");
+						std::string serverMap = e.second.get<std::string>("Server_Map");
+						std::string serverGameVar = e.second.get<std::string>("Server_Game_Variable");
+						std::string serverHasPass = "true";
+						std::string serverNumPlayers = e.second.get<std::string>("Num_Players");
+						std::string serverMaxPlayers = e.second.get<std::string>("Max_Players");
+						//std::cout << "server pass: " << serverHasPass << "\n";
+						if (stoi(e.second.get<std::string>("Password_Required")) == 0) {
+							serverHasPass = "false";
+						}
+
+
+						tempRecords[currIndex] = *newRecord;
+						std::string ipAddress = serverIpAddress + ":" + serverPort;
+						tempRecords[currIndex].ServerID = FString(Utils::to_fstring(ipAddress));
+						std::string metaData = "{\"OwnerID\":\"Steam | " + serverOwnerId + " | 0\",\"OwnerName\":\"" + serverOwnerName + "\",\"ServerName\":\"" + serverName + "\",\"ServerMap\":\"" + serverMap + "\",\"ServerGameMode\":" + serverGameVar + ",\"bPassword\":" + serverHasPass + ",\"NumPlayers\":" + serverNumPlayers + ",\"MaxPlayers\":" + serverMaxPlayers + "}";
+						tempRecords[currIndex].MetaData = FString(Utils::to_fstring(metaData));
+
+						results.Add(&tempRecords[currIndex]);
+						currIndex++;
 					}
+					/*
+					// Create as many entries as we need
+					for (int i = 0; i < numServersToAdd; i++) {
+						tempRecords[i] = *newRecord;
+						std::string ipAddress = "76.21.103." + std::to_string(i) + ":7777";
+						tempRecords[i].ServerID = FString(Utils::to_fstring(ipAddress));
+						std::string metaData = "{\"OwnerID\":\"Steam | 76561198399522935 | 0\",\"OwnerName\":\"Butter\",\"ServerName\":\"Test Server #" + std::to_string(i) + "\",\"ServerMap\":\"EuroStadium_Rainy_P\",\"ServerGameMode\":0,\"bPassword\":false,\"NumPlayers\":1,\"MaxPlayers\":5000}";
+						tempRecords[i].MetaData = FString(Utils::to_fstring(metaData));
 
-
-					tempRecords[currIndex] = *newRecord;
-					std::string ipAddress = serverIpAddress + ":" + serverPort;
-					tempRecords[currIndex].ServerID = FString(Utils::to_fstring(ipAddress));
-					std::string metaData = "{\"OwnerID\":\"Steam | " + serverOwnerId + " | 0\",\"OwnerName\":\"" + serverOwnerName + "\",\"ServerName\":\"" + serverName + "\",\"ServerMap\":\"" + serverMap + "\",\"ServerGameMode\":" + serverGameVar + ",\"bPassword\":" + serverHasPass + ",\"NumPlayers\":" + serverNumPlayers + ",\"MaxPlayers\":" + serverMaxPlayers + "}";
-					tempRecords[currIndex].MetaData = FString(Utils::to_fstring(metaData));
-
-					results.Add(&tempRecords[currIndex]);
-					currIndex++;
+						results.Add(&tempRecords[i]);
+					}
+					*/
+					serverBrowser->HandleServers(results);
 				}
-				/*
-				// Create as many entries as we need
-				for (int i = 0; i < numServersToAdd; i++) {
-					tempRecords[i] = *newRecord;
-					std::string ipAddress = "76.21.103." + std::to_string(i) + ":7777";
-					tempRecords[i].ServerID = FString(Utils::to_fstring(ipAddress));
-					std::string metaData = "{\"OwnerID\":\"Steam | 76561198399522935 | 0\",\"OwnerName\":\"Butter\",\"ServerName\":\"Test Server #" + std::to_string(i) + "\",\"ServerMap\":\"EuroStadium_Rainy_P\",\"ServerGameMode\":0,\"bPassword\":false,\"NumPlayers\":1,\"MaxPlayers\":5000}";
-					tempRecords[i].MetaData = FString(Utils::to_fstring(metaData));
-
-					results.Add(&tempRecords[i]);
-				}
-				*/
-				serverBrowser->HandleServers(results);
 			}
 		}
-
+		catch (std::exception &e)
+		{
+			std::cout << "Error: " << e.what() << std::endl;
+		}
 		searchTest = false;
 	}
 }
