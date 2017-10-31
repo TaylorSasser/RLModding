@@ -21,6 +21,16 @@ void PublicServerList::ImportSettings(pt::ptree & root) {
 
 void PublicServerList::OnLANMatchCreate(Event *e) {
 	//Update database
+	auto params = e->getParams<APlayerControllerBase_TA_StartLanMatch_Params>();
+	std::cout << params->Settings.MapName.GetName() << std::endl;
+	std::cout << params->Settings.ServerName.ToString() << std::endl;
+	if (params->Settings.Password.IsValid())
+		std::cout << params->Settings.Password.ToString() << std::endl;
+	std::cout << params->Settings.MaxPlayerCount << std::endl;
+	APlayerControllerBase_TA* c = reinterpret_cast<APlayerControllerBase_TA*>(e->getCallingObject());
+	if (c) {
+		std::cout << c->PlayerReplicationInfo->PlayerName.ToString() << std::endl;
+	}
 	std::cout << "Created LAN Match!\n";
 }
 
