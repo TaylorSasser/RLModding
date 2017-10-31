@@ -7,32 +7,54 @@ ServerBrowser::~ServerBrowser() {}
 
 void::ServerBrowser::DrawRLMenuAddon() {
 	if (ServerBrowser::isEnabled() && isRLMenuShowing) {
-		ImGui::SetNextWindowPos(ImVec2(500, 179), ImGuiSetCond_FirstUseEver);
+		ImGui::SetNextWindowPos(ImVec2(807, 1070), ImGuiSetCond_FirstUseEver);
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 11.0f);
 
 		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.172f, 0.572f, 0.929f, 1.0f));
 
-		ImGui::Begin("Server Filter", &p_open, ImVec2(1569, 116), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders);
+		ImGui::Begin("Server Filter", &p_open, ImVec2(1251, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+		
+		//ImGui::PushItemWidth(-5.0f);
+		ImGui::BeginGroup();
 		ImGui::SetWindowFontScale(1.6f);
 
+		ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * .4);
+
 		ImGui::InputText("Name", queryServerName, IM_ARRAYSIZE(queryServerName));
+		ImGui::SameLine();
+		ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * .4);
 
 		ImGui::Combo("Map", &selectedMap, friendlyMapNames, IM_ARRAYSIZE(friendlyMapNames));
+		ImGui::SameLine(ImGui::GetWindowWidth() - 340);
 
-		if (buttonHovered) ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.156, 0.317, 0.505, 1.0f));
-		else  ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.831, 0.894, 0.968, 0.75f));
-
+		ImGui::BeginGroup();
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.156, 0.317, 0.505, 1.0f));
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.831, 0.894, 0.968, 0.75f));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.831, 0.894, 0.968, 1.0f));
+
+		if (searchButtonHovered) ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		else  ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.831, 0.894, 0.968, 0.75f));
+
 		if (ImGui::Button("Find Public Servers")) {
 			searchTest = true;
 		}
-		if (ImGui::IsItemHovered()) buttonHovered = true;
-		else buttonHovered = false;
+		searchButtonHovered = ImGui::IsItemHovered();
+		ImGui::PopStyleColor();
 
+		if (resetButtonHovered) ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		else  ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.831, 0.894, 0.968, 0.75f));
+
+		ImGui::SameLine();
+
+		if (ImGui::Button("Reset")) {
+			resetFilters = true;
+		}
+		resetButtonHovered = ImGui::IsItemHovered();
 		ImGui::PopStyleColor(4);
+
+		ImGui::EndGroup();
+		ImGui::EndGroup();
 
 
 		ImGui::End();
@@ -168,7 +190,11 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 						//std::cout << "Search map name: " << maps[selectedMap].filename << std::endl;
 						//std::cout << "Result map name: " << serverMap << std::endl;
 
-						if (strcmp(queryServerName, "") == 0 || Utils::stristr(queryServerName, serverName.c_str()) == 0) {
+						std::cout << "Search string: '" << queryServerName << "'" << std::endl;
+						std::cout << "Search string: '" << serverName.c_str() << "'" << std::endl;
+
+
+						if (strcmp(queryServerName, "") == 0 || Utils::stristr(serverName.c_str(), queryServerName) != NULL) {
 
 							if (selectedMap == 0 || stricmp(maps[selectedMap].filename.c_str(), serverMap.c_str()) == 0) {
 								tempRecords[currIndex] = *newRecord;

@@ -20,7 +20,7 @@ public:
 
 private:
 
-	char* queryServerName = "\0";
+	char queryServerName[100] = "\0";
 
 	const std::string IP = "192.185.67.238";
 	const std::string host = "hack.fyi";
@@ -32,7 +32,10 @@ private:
 
 	bool p_open = true;
 	bool searchTest = false;
-	bool buttonHovered = false;
+	bool resetFilters = false;
+
+	bool searchButtonHovered = false;
+	bool resetButtonHovered = false;
 
 	struct MapInfo {
 		std::string filename, hash;
@@ -43,7 +46,7 @@ private:
 	};
 
 	/* Start Maps */
-	int selectedMap = 8;
+	int selectedMap = 0;
 	//For ComboBox
 	char* friendlyMapNames[38] = {
 		"All",
