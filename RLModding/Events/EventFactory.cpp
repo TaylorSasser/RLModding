@@ -78,8 +78,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.Car_TA.EventLanded", &ModBase::onCarEventLanded);
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.StartLanMatch", &ModBase::OnLANMatchCreate);
 	SubscribeEvent("Function ProjectX.UdpLanBrowser_X.DestroyServer", &ModBase::OnLANMatchDestroy);
-
-
+	SubscribeEvent("Function TAGame.GameEvent_TA.OnPlayerAdded", &ModBase::onGameEventPlayerAdded);
+	
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);
 	//SubscribeEvent("Function TAGame.GameEvent_Soccar_TA.PostBeginPlay", &ModBase::onGameEventSoccarPostBeginPlay);
