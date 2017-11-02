@@ -47,6 +47,7 @@ ModHandler::ModHandler() {
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server", VK_NUMPAD2, Category::Lan, GameState::ANY);
 	CreateMod<PublicServerList>("Add Server to Public List", VK_NUMPAD0, Category::Lan, GameState::ANY, "Publicize your LAN server so anyone can join.");
+	CreateMod<ServerBrowser>("Get Global Server List", VK_F17, Category::Lan, GameState::MENU, "Get the list of public servers in the LAN list.");
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 
@@ -58,7 +59,6 @@ ModHandler::ModHandler() {
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
 	CreateMod<HUDMods>("HUD Mods", VK_F15, Category::Other, GameState::ANY, "HUD Modifications.");
-	CreateMod<ServerBrowser>("Server Browser", VK_F17, Category::Other, GameState::ANY, "Settings for global server list.");
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<WorkshopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);

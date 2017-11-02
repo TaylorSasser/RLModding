@@ -74,6 +74,7 @@ void::ServerBrowser::DrawRLMenuAddon() {
 }
 
 void ServerBrowser::DrawMenu() {
+	/*
 	if (ServerBrowser::isEnabled()) {
 		{
 			ImGui::SetNextWindowPos(ImVec2(136, 76), ImGuiSetCond_FirstUseEver);
@@ -93,6 +94,7 @@ void ServerBrowser::DrawMenu() {
 		}
 
 	}
+	*/
 }
 
 void ServerBrowser::onMenuOpen() {

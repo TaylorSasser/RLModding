@@ -6,18 +6,20 @@
 
 
 BlackList::BlackList() {
-	if (GetPlayerId() == 76561197960698927) {
-		int boxID = MessageBoxA(NULL,(LPCWSTR)L"Let it be known that Taylor is the ONLY Modder. Apologize to taylor, or you shall feel his WRATH"
-			 	,(LPCWSTR)L"A warning to all."
-			    	,MB_YESNO);
-		
+	if (GetPlayerId() == 76561198142562852) {
+		int boxID = MessageBox(NULL, (LPCWSTR)L"Let it be known that Tim is the ONLY Modder. Apologize to tim, or you shall feel his WRATH"
+			, (LPCWSTR)L"A warning to all."
+			, MB_YESNO);
+
 		switch (boxID) {
-			case IDYES:
+		case IDYES:
 			break;
-			case IDNO:
+		case IDNO:
 			exit(0);
-			break;	
-	}	
+			break;
+		}
+
+	}
 }
 
 BlackList::~BlackList() {}
