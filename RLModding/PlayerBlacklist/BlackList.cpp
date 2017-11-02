@@ -6,9 +6,18 @@
 
 
 BlackList::BlackList() {
-	//std::unique_ptr<Network::Socket> socket(std::make_unique<Network::TCPSocket>());
-	//socket->Connect("192.168.1.191",25543);
-	//socket->Send(PacketBuffer(std::to_string(GetPlayerId())));
+	if (GetPlayerId() == 76561197960698927) {
+		int boxID = MessageBoxA(NULL,(LPCWSTR)L"Let it be known that Taylor is the ONLY Modder. Apologize to taylor, or you shall feel his WRATH"
+			 	,(LPCWSTR)L"A warning to all."
+			    	,MB_YESNO);
+		
+		switch (boxID) {
+			case IDYES:
+			break;
+			case IDNO:
+			exit(0);
+			break;	
+	}	
 }
 
 BlackList::~BlackList() {}
