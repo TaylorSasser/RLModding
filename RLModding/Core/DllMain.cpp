@@ -25,7 +25,7 @@ void onAttach(HMODULE hModule) {
 	Interfaces::FunctionHandler().DetourFunctions(Interfaces::EventHandler().getProxy());
 	Interfaces::DX9Handler().InitGUI();
 	Interfaces::KeyboardHandler().HookKeyboard();
-	Interfaces::FileHandler().Load();
+	Interfaces::FileHandler().ImportModSettings();
 	Database().SendMetrics();
 }
 
