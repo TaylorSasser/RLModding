@@ -70,10 +70,19 @@ void FileManager::ExportModSettings() {
 
 void FileManager::ImportModSettings() {
 	pt::ptree root;
-	pt::read_json("settings.json", root);
-	for (auto& mods : Interfaces::Mods()) {
-		mods.second->ImportSettings(root);
+	try
+	{
+		pt::read_json("settings.json", root);
+		for (auto& mods : Interfaces::Mods()) {
+			mods.second->ImportSettings(root);
+		}
+		std::cout << "Loading Saved Settings: All Settings Loaded" << std::endl;
 	}
+	catch (const boost::property_tree::json_parser_error& e1)
+	{
+		std::cout << "Loading Saved Settings: No settings file found" << std::endl;
+	}
+
 	
 }
 
