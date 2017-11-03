@@ -28,6 +28,7 @@
 #include "Modules/Unfinished/MultiTeam.h"
 #include "Modules/Lan/ServerBrowser.h"
 #include "Modules/Lan/PublicServerList.h"
+#include "Modules/Help/ShowDebug.h"
 
 ModHandler::ModHandler() {
 	CreateMod<Zombies>("Classic Zombies", VK_NUMPAD1, Category::GameModes, GameState::EXHIBITION | GameState::LAN, "The bots have a new target...you!");
@@ -47,7 +48,7 @@ ModHandler::ModHandler() {
 	CreateMod<ModdedLanServer>("Host Server", VK_NUMPAD8, Category::Lan, GameState::ANY ^ GameState::ONLINE);
 	CreateMod<JoinServer>("Join Server", VK_NUMPAD2, Category::Lan, GameState::ANY);
 	CreateMod<PublicServerList>("Add Server to Public List", VK_NUMPAD0, Category::Lan, GameState::ANY, "Publicize your LAN server so anyone can join.");
-	CreateMod<ServerBrowser>("Get Global Server List", VK_F17, Category::Lan, GameState::MENU, "Get the list of public servers in the LAN list.");
+	CreateMod<ServerBrowser>("Get Global Server List", VK_F17, Category::Lan, GameState::ANY, "Get the list of public servers in the LAN list.");
 
 	CreateMod<CustomBlog>("Custom Blog", VK_NUMPAD4, Category::Menu, GameState::MENU);
 
@@ -62,6 +63,8 @@ ModHandler::ModHandler() {
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<WorkshopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);
+
+	CreateMod<ShowDebug>("Toggle Game Debug Info", VK_F18, Category::Help, GameState::ANY, "Show psyonix's internal debug info.");
 
 
 	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);

@@ -45,6 +45,11 @@ private:
 	bool disableGoalDelay = false;
 	bool unlimitedTime = false;
 
+	bool hasLeaveMatchPenalty = false;
+	bool canVoteToForfeit = false;
+
+	bool testAddChat = false;
+
 	bool unlimCelebration = false;
 	bool ballSpawnTest = false;
 

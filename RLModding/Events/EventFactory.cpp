@@ -79,6 +79,8 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.PlayerControllerBase_TA.StartLanMatch", &ModBase::OnLANMatchCreate);
 	SubscribeEvent("Function ProjectX.UdpLanBrowser_X.DestroyServer", &ModBase::OnLANMatchDestroy);
 	SubscribeEvent("Function TAGame.GameEvent_TA.OnPlayerAdded", &ModBase::onGameEventPlayerAdded);
+	SubscribeEvent("Function ProjectX.GFxShell_X.Tick", &ModBase::onGfxShellTick);
+
 	
 
 	//SubscribeEvent("Function TAGame.AdManager_TA.GetNextImage", &ModBase::onGetNextImage);

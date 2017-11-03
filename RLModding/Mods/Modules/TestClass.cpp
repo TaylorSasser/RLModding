@@ -41,6 +41,13 @@ void TestClass::DrawMenu() {
 				tileTest = true;
 			}
 
+			if (ImGui::Button("PRI Test")) {
+				priTest = true;
+			} ImGui::SameLine();
+
+			if (ImGui::Button("GUI Test")) {
+				guiTest = true;
+			}
 
 			if (!p_open) {
 				this->enabled = false;
@@ -87,6 +94,101 @@ void TestClass::onMainMenuTick(Event* e) {
 		}
 		gfx->ShowHelp();
 	}
+	
+
+
+
+	if (guiTest) {
+		UGFxData_Settings_TA* settings = reinterpret_cast<SDK::UGFxData_Settings_TA*>(Utils::GetInstanceOf(UGFxData_Settings_TA::StaticClass()));
+	
+		if (settings) {
+			std::cout << "Assist enabled: " << settings->Profile->GetAimAssistEnabled() << std::endl;
+			std::cout << "traj enabled: " << settings->Profile->GetAimAssistTrajectoryEnabled() << std::endl;
+			settings->Profile->SetAimAssistTrajectoryLocked(false);
+			settings->Profile->SetAimAssistLevelOverride(settings->Profile->CurrentLevel);
+
+			settings->Profile->SetAimAssistEnabled(true);
+			settings->Profile->SetAimAssistTrajectoryEnabled(true);
+			
+			settings->Profile->bAimAssistEnabled = 1.0f;
+			settings->Profile->bAimAssistTrajectoryEnabled = 1.0f;
+			settings->Profile->bAimAssistTrajectoryLocked = 0.0f;
+			settings->Profile->MaxAimAssistLevelOverride = 2000;
+			//settings->Profile->Save();
+
+
+			/*
+			TArray<class UGFxData_UserSetting_TA*> userSettings = settings->UserSettings;
+			for (int i = 0; i < userSettings.Num(); i++) {
+				std::cout << "Group: " << userSettings[i]->Group.GetName() << ",";
+				std::cout << "ID: " << userSettings[i]->Id.GetName() << ",";
+				if(userSettings[i]->Label.IsValid()) 
+					std::cout << "Label: " << userSettings[i]->Label.ToString() << ",";
+				if (userSettings[i]->Description.IsValid())
+					std::cout << "Description: " << userSettings[i]->Description.ToString() << ",";
+				if (userSettings[i]->Values.IsValid())
+					std::cout << "Values: " << userSettings[i]->Values.ToString() << ",";
+				if (userSettings[i]->Value.IsValid())
+					std::cout << "Value: " << userSettings[i]->Value.ToString() << ",";
+				std::cout << std::endl;
+
+			}
+
+			//settings->GetAimAssistTrajectoryEnabled(currTrajSetting);
+			
+			FScriptDelegate tempSet;
+			FScriptDelegate tempGet;
+			UGFxData_UserSetting_TA* tempSetting = settings->CreateBooleanUserSetting(FName("GeneralGameplay"), FName("AimAssistTrajectoryEnabled"), true, currTrajSetting->__OnBooleanValueGet__Delegate, currTrajSetting->__OnBooleanValueSet__Delegate, true, true);
+			//tempSetting.Group = FName("GeneralGameplay");
+			//tempSetting.Id = FName("AimAssistTrajectoryEnabled");
+			//tempSetting.Label = FString(L"Enable Trajectory");
+
+			settings->GetAimAssistTrajectoryEnabled(tempSetting);
+			if (tempSetting->Label.IsValid())
+				std::cout << "Traj label: " << tempSetting->Label.ToString() << std::endl;
+			else
+				std::cout << "no trajectory label found." << std::endl;
+			std::cout << "Traj id: " << tempSetting->Id.GetName() << std::endl;
+
+			settings->SetAimAssistTrajectoryEnabled(tempSetting, true);
+			*/
+		}
+
+		/*
+		UGFxData_GameEvent_TA* gameEventGfx = reinterpret_cast<SDK::UGFxData_GameEvent_TA*>(Utils::GetInstanceOf(UGFxData_GameEvent_TA::StaticClass()));
+
+		if (gameEventGfx) {
+		//std::cout << "Found shell: " << shell->Movies.Num() << "," << shell->Movies[0]->CaptureScenes.Num() << std::endl;
+		std::cout << "game state: " << gameEventGfx->GameState.GetName() << std::endl;
+		}
+		
+		//UGFxData_Settings_TA
+		UGFxShell_TA* shell = reinterpret_cast<SDK::UGFxShell_TA*>(Utils::GetInstanceOf(UGFxShell_TA::StaticClass()));
+
+		if (shell) {
+			std::cout << "Found shell: " << shell->Movies.Num() << "," << shell->Movies[0]->InputScenes[0].ToString() << std::endl;
+			//std::cout << "shell state: " << shell->SystemData->UIState.ToString() << ", active models: " << shell->ActiveModals.Num() << std::endl;
+
+			//shell->ShowKeyboard(FString(L"Title This"), FString(L"Desc is noadsjgksjglkdjfg"), false, FString(L"words"), 20);
+		}
+
+		AGameInfo_GFxMenu_TA* menu = reinterpret_cast<SDK::AGameInfo_GFxMenu_TA*>(Utils::GetInstanceOf(AGameInfo_GFxMenu_TA::StaticClass()));
+
+		if (menu) {
+			//std::cout << "Found shell: " << shell->Movies.Num() << "," << shell->Movies[0]->CaptureScenes.Num() << std::endl;
+			std::cout << "menu state: " << menu->MenuSequencer->Sequences.Num() << ", active models: " << menu->MenuSequencer->CurrentSequence->CameraState.GetName() << std::endl;
+		}
+
+		AGFxHUD_TA* hud = reinterpret_cast<SDK::AGFxHUD_TA*>(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));
+		
+		if (hud) {
+			UGFxData_Chat_TA* chatData = hud->ChatData;
+			std::cout << hud->PartyChatTitle.ToString() << std::endl;
+		}
+		*/
+		guiTest = false;
+	}
+
 	if (webRequestTest) {
 
 		UOnlineSubsystemSteamworks* steam = reinterpret_cast<UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(UOnlineSubsystemSteamworks::StaticClass()));
@@ -330,11 +432,14 @@ void TestClass::onBallHit(Event* e) {
 	if (e->getUFunction()->CPPText != nullptr)
 	std::cout << "CPP Text : " << e->getUFunction()->CPPText->Text.ToString() << std::endl;
 	else
-	std::cout << "CPP Text buffer is null" << std::endl;*/
+	std::cout << "CPP Text buffer is null" << std::endl;
+
+
 	APlayerController_TA* controller = reinterpret_cast<APlayerController_TA*>(InstanceStorage::PlayerController());
 	if (controller) {
 		controller->PRI->GetTeamNum() == 0 ? controller->PRI->ServerChangeTeam(1) : controller->PRI->ServerChangeTeam(0);
 	}
+	*/
 }
 
 void TestClass::onWebRequestEventCompleted(Event* e) {
@@ -350,6 +455,48 @@ void TestClass::onWebRequestEventCompleted(Event* e) {
 }
 
 void TestClass::onPlayerTick(Event* e) {
+	
+
+	if (guiTest) {
+		//InstanceStorage::PlayerController()->Car->ThrottleShake->PlayShake();
+
+		InstanceStorage::GameEvent()->bDisableAimAssist = 0.0f;
+		UAimAssistComponent_TA* assist = SDK::UObject::FindObject<SDK::UAimAssistComponent_TA>("AimAssistComponent_TA TAGame.Default__AimAssistComponent_TA");
+		if (assist) {
+			InstanceStorage::PlayerController()->AimAssist = assist;
+			InstanceStorage::PlayerController()->AimAssist->SetEnableAll(true);
+			InstanceStorage::PlayerController()->AimAssist->SetEnabled(true);
+			InstanceStorage::PlayerController()->AimAssist->bForceDisabled = 0.0f;
+
+			UProfile_TA* tempProfile;
+			InstanceStorage::PlayerController()->AimAssist->HandleAimAssistEnabledChanged(tempProfile);
+			tempProfile->bAimAssistEnabled = 1.0f;
+			tempProfile->bAimAssistTrajectoryEnabled = 1.0f;
+			tempProfile->bAimAssistTrajectoryLocked = 0.0f;
+			tempProfile->MaxAimAssistLevelOverride = 2000;
+
+			std::cout << "Found aim assit" << std::endl;
+		}
+		if (InstanceStorage::PlayerController()->AimAssist) {
+			std::cout << "Ball distance to ground: " << InstanceStorage::PlayerController()->AimAssist->BallDistanceToGround << std::endl;
+		}
+
+
+		guiTest = false;
+	}
+
+	AGFxHUD_TA* hud = reinterpret_cast<SDK::AGFxHUD_TA*>(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));
+	if (hud && priTest) {
+		FUniqueNetId newId;
+		newId.SteamID = 76561198337775218;
+		UGFxData_PRI_TA* gfxData = hud->GetPRIDataFromID(newId);
+		if (gfxData->PlayerName.IsValid())
+			std::cout << gfxData->PlayerName.ToString() << std::endl;
+		else
+			std::cout << "Name not found." << std::endl;
+		priTest = false;
+	}
+
 	/*ACar_TA* myCar = InstanceStorage::PlayerController()->Car;
 	if (myCar) {
 		if (myCar->AnyWheelTouchingGround() && inAir) {

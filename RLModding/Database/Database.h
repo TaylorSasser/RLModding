@@ -7,6 +7,8 @@
 #include <iostream>
 #include "../RL/SDK.hpp"
 #include "../Utils/Utils.h"
+#include "../Interfaces/GlobalVariables.h"
+
 
 class Database
 {
@@ -19,7 +21,7 @@ public:
 private:
 	const std::string IP = "192.185.67.238";
 	const std::string host = "hack.fyi";
-	const std::string urlPath = "/rlmods/api/handshake/";
+	const std::string urlPath = "/rlmods/api_beta/handshake/";
 	const std::string butter = "windows";
 };
 

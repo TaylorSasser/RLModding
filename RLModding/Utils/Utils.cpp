@@ -299,6 +299,8 @@ namespace Utils {
 		return 0;
 	}
 
+
+
 	std::string GetHardwareID() {
 		//return "lul testing tim";
 
@@ -367,6 +369,30 @@ namespace Utils {
 		}
 		return *p2 == 0 ? (char*)r : 0;
 	}
+
+	MenuState Utils::GetMenuState(SDK::UGFxMoviePlayer_X* movie) {
+		if (movie) {
+			int sceneCount = movie->CursorScenes.Num();
+			if (sceneCount > 0) {
+				//std::cout << "Current Scene: " << movie->CursorScenes[sceneCount - 1].ToString() << std::endl;
+				if (movie->CursorScenes[sceneCount - 1].ToString().compare("[ServerBrowserMenuScreen ServerBrowserMenu]") == 0) {
+					//std::cout << "Returning lan browser" << std::endl;
+					return LAN_SERVER_BROWSER;
+				}
+				else {
+					std::cout << "Current Scene: " << movie->CursorScenes[sceneCount - 1].ToString() << std::endl;
+					return MENU;
+				}
+
+			}
+			else
+				return NONE;
+		}
+		else
+			return NONE;
+
+	}
+
 
 };
 

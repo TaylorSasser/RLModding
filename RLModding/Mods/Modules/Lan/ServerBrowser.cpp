@@ -7,14 +7,15 @@ ServerBrowser::~ServerBrowser() {}
 
 void::ServerBrowser::DrawRLMenuAddon() {
 	if (ServerBrowser::isEnabled() && isRLMenuShowing) {
-		ImGui::SetNextWindowPos(ImVec2(807, 1070), ImGuiSetCond_FirstUseEver);
+		ImGui::SetNextWindowPos(ImVec2(50, 50), ImGuiSetCond_FirstUseEver);
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 11.0f);
 
 		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.172f, 0.572f, 0.929f, 1.0f));
 
-		ImGui::Begin("Server Filter", &p_open, ImVec2(1251, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
-		
+		//ImGui::Begin("Server Filter", &p_open, ImVec2(1251, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+		ImGui::Begin("Server Filter", &p_open, ImVec2(1251, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders);
+
 		//ImGui::PushItemWidth(-5.0f);
 		ImGui::BeginGroup();
 		ImGui::SetWindowFontScale(1.6f);
@@ -56,12 +57,45 @@ void::ServerBrowser::DrawRLMenuAddon() {
 		ImGui::EndGroup();
 		ImGui::EndGroup();
 
+		ImGui::End();
+
+		// IP Join Box
+		ImGui::SetNextWindowPos(ImVec2(50, 109), ImGuiSetCond_FirstUseEver);
+		//ImGui::Begin("Server Filter", &p_open, ImVec2(1251, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+		ImGui::Begin("Join By IP", &p_open, ImVec2(750, 59), 0.75f, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders);
+
+		//ImGui::PushItemWidth(-5.0f);
+		ImGui::BeginGroup();
+		ImGui::SetWindowFontScale(1.6f);
+
+		//ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * .4);
+
+		ImGui::InputText("IP Address", joinIpAddress, IM_ARRAYSIZE(joinIpAddress));
+		ImGui::SameLine();
+
+		ImGui::BeginGroup();
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.831, 0.894, 0.968, 0.75f));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.831, 0.894, 0.968, 1.0f));
+
+		if (joinButtonHovered) ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.156, 0.317, 0.505, 1.0f));
+		else  ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.831, 0.894, 0.968, 0.75f));
+
+		if (ImGui::Button("Join")) {
+			joinIp = true;
+		}
+		joinButtonHovered = ImGui::IsItemHovered();
+		ImGui::PopStyleColor(4);
+
+		ImGui::EndGroup();
+		ImGui::EndGroup();
 
 		ImGui::End();
 
 		ImGui::PopStyleColor();
 		ImGui::PopStyleVar();
 
+		/*
 		if (ImGui::BeginPopupContextItem("item context menu"))
 		{
 			ImGui::Text("Test context menu");
@@ -69,7 +103,7 @@ void::ServerBrowser::DrawRLMenuAddon() {
 			ImGui::PopItemWidth();
 			ImGui::EndPopup();
 		}
-
+		*/
 	}
 }
 
@@ -117,17 +151,11 @@ void ServerBrowser::onPlayerTick(Event* e) {
 
 void ServerBrowser::onMainMenuTick(Event* e) {
 
-	AGFxHUD_TA* hud = reinterpret_cast<SDK::AGFxHUD_TA*>(Utils::GetInstanceOf(AGFxHUD_TA::StaticClass()));
-
-	if (hud) {
-		UGFxData_Chat_TA* chatData = hud->ChatData;
-		std::cout << hud->PartyChatTitle.ToString() << std::endl;
-	}
-	if(!serverBrowser)
-		serverBrowser = reinterpret_cast<SDK::UGFxData_LanBrowser_TA*>(Utils::GetInstanceOf(UGFxData_LanBrowser_TA::StaticClass()));
+	serverBrowser = reinterpret_cast<SDK::UGFxData_LanBrowser_TA*>(Utils::GetInstanceOf(UGFxData_LanBrowser_TA::StaticClass()));
 	TArray<struct ULanServerRecord_X*> results;
 
-	isRLMenuShowing = serverBrowser;
+	//UGFxShell_TA* shell = reinterpret_cast<SDK::UGFxShell_TA*>(Utils::GetInstanceOf(UGFxShell_TA::StaticClass()));
+	//isRLMenuShowing = Utils::GetMenuState(shell->Movies[0]) == Utils::MenuState::LAN_SERVER_BROWSER;
 	//if (serverBrowser && serverBrowser->IsPendingKill()) isRLMenuShowing = false;
 	//if (serverBrowser) std::cout << serverBrowser->GetStateName().GetName() << std::endl;
 	if (serverBrowser && searchTest) {
@@ -155,15 +183,16 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 		try
 		{
 			results.Clear();
-			serverBrowser->Refresh();
 		
 			boost::property_tree::read_json(ss, pt);
 			int numServersToAdd = stoi(pt.get<std::string>("rows"));
 
 			std::cout << "Found server browser!" << std::endl;
 
-			if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass())) {
-				std::cout << "Browser is UDP!" << std::endl;
+			if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass()) && numServersToAdd > 0) {
+				serverBrowser->Refresh();
+
+				//std::cout << "Browser is UDP!" << std::endl;
 				UUdpLanBrowser_X* browser = (UUdpLanBrowser_X*)serverBrowser->LanBrowser;
 
 				ULanServerRecord_X* newRecord = SDK::UObject::FindObject<SDK::ULanServerRecord_X>("LanServerRecord_X ProjectX.Default__LanServerRecord_X");
@@ -233,6 +262,19 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 		}
 		searchTest = false;
 	}
+	if (serverBrowser && joinIp) {
+		if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass())) {
+			std::string command(joinIpAddress);
+			// If no port, add :7777
+			std::size_t found = command.find(":");
+			if (found == std::string::npos) {
+				command.append(":7777");
+			}
+			serverBrowser->LanBrowser->JoinServer(Utils::to_fstring(command), FString(L""));
+			std::cout << "Ran join command: " << command << std::endl;
+		}
+		joinIp = false;
+	}
 }
 
 void ServerBrowser::onMenuClose() {
@@ -250,6 +292,13 @@ void ServerBrowser::eventLanSearchResultComplete(Event* e) {
 	TArray<struct ULanServerRecord_X*> results = e->getParams<SDK::ULanSearchTask_EventLanSearchTaskResultComplete_Params>()->OutResult;
 	std::cout << "Hande LAN search! Results: " << results.Num() << std::endl;
 
+}
+void ServerBrowser::onGfxShellTick(Event* e) {
+	UGFxShell_X* callingShell = reinterpret_cast<SDK::UGFxShell_X*>(e->getCallingObject());
+	if (callingShell->IsA(UGFxShell_TA::StaticClass())) {
+		UGFxShell_TA* shell = reinterpret_cast<SDK::UGFxShell_TA*>(callingShell);
+		isRLMenuShowing = Utils::GetMenuState(shell->Movies[0]) == Utils::MenuState::LAN_SERVER_BROWSER;
+	}
 }
 
 // may be worth trying to

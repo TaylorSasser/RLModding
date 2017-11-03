@@ -25,7 +25,7 @@ void Database::SendMetrics()
 	picosha2::hash256_hex_string(nonce, hashed_string);
 	//std::cout << nonce << std::endl;
 	//std::cout << hashed_string << std::endl;
-	std::string params = "steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(currTime) + "&n=" + hashed_string;
+	std::string params = "steamid=" + std::to_string(steamID) + "&hardwareid=" + hardwareID + "&time=" + std::to_string(currTime) + "&v=" + version + "&n=" + hashed_string;
 	//std::cout << params << std::endl;
 
 	std::string response = Utils::SendPostRequest(IP, host, urlPath, params);
