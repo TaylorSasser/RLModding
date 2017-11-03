@@ -99,9 +99,22 @@ void TestClass::onMainMenuTick(Event* e) {
 
 
 	if (guiTest) {
-		UGFxData_Settings_TA* settings = reinterpret_cast<SDK::UGFxData_Settings_TA*>(Utils::GetInstanceOf(UGFxData_Settings_TA::StaticClass()));
-	
-		if (settings) {
+		//UGFxData_Settings_TA* settings = reinterpret_cast<SDK::UGFxData_Settings_TA*>(Utils::GetInstanceOf(UGFxData_Settings_TA::StaticClass()));
+		USaveData_TA* saveData = reinterpret_cast<SDK::USaveData_TA*>(Utils::GetInstanceOf(USaveData_TA::StaticClass()));
+
+		if (saveData) {
+			SDK::UOnlineSubsystemSteamworks* steam = reinterpret_cast<SDK::UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(SDK::UOnlineSubsystemSteamworks::StaticClass()));
+			if (steam) {
+				std::cout << "Found steam data" << std::endl;
+				FUniqueNetId newId = steam->LoggedInPlayerId;
+				UProfile_TA* profile = saveData->GetProfileForPlayer(newId);
+				if (profile) {
+					std::cout << profile->ProfileName.ToString() <<std::endl;
+				}
+			}
+
+
+			/*
 			std::cout << "Assist enabled: " << settings->Profile->GetAimAssistEnabled() << std::endl;
 			std::cout << "traj enabled: " << settings->Profile->GetAimAssistTrajectoryEnabled() << std::endl;
 			settings->Profile->SetAimAssistTrajectoryLocked(false);
@@ -116,8 +129,6 @@ void TestClass::onMainMenuTick(Event* e) {
 			settings->Profile->MaxAimAssistLevelOverride = 2000;
 			//settings->Profile->Save();
 
-
-			/*
 			TArray<class UGFxData_UserSetting_TA*> userSettings = settings->UserSettings;
 			for (int i = 0; i < userSettings.Num(); i++) {
 				std::cout << "Group: " << userSettings[i]->Group.GetName() << ",";

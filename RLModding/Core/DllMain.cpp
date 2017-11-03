@@ -27,6 +27,8 @@ void onAttach(HMODULE hModule) {
 	Interfaces::KeyboardHandler().HookKeyboard();
 	Interfaces::FileHandler().ImportModSettings();
 	Database().SendMetrics();
+	Interfaces::Blacklist();
+
 }
 
 void onDetach(HMODULE hModule) {

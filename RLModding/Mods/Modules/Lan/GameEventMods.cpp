@@ -733,9 +733,6 @@ void GameEventMods::onPlayerTick(Event* e) {
 				}
 			}
 		}
-
-		
-
 		testGoalDisable = false;
 	}
 

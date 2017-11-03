@@ -87,7 +87,15 @@ void PublicServerList::OnLANMatchDestroy(Event *e) {
 		serverActive = false;
 	}
 }
-void PublicServerList::onGameEventPlayerAdded(Event *e) {
+void PublicServerList::onGameEventTeamPlayerAdded(Event *e) {
+	UpdatePlayerCount();
+}
+
+void PublicServerList::onGameEventTeamPlayerRemoved(Event *e) {
+	UpdatePlayerCount();
+}
+
+void PublicServerList::UpdatePlayerCount() {
 	if (serverActive) {
 		long long steamID = Utils::GetSteamID();
 		time_t currTime = time(NULL);
@@ -118,4 +126,5 @@ void PublicServerList::onGameEventPlayerAdded(Event *e) {
 		std::cout << "Updated LAN Match!\n";
 	}
 }
+
 

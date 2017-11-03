@@ -206,7 +206,8 @@ public:
 
 	virtual void onCarEventLanded(Event* e) {}
 
-	virtual void onGameEventPlayerAdded(Event* e) {}
+	virtual void onGameEventTeamPlayerAdded(Event* e) {}
+	virtual void onGameEventTeamPlayerRemoved(Event* e) {}
 
 	virtual void onWebRequestEventCompleted(Event* e) {};
 	virtual void onHttpProcessRequestComplete(Event* e) {}

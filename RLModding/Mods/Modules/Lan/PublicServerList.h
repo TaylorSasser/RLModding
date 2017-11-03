@@ -13,11 +13,13 @@ public:
 	void onMenuClose();
 	void OnLANMatchCreate(Event* e) override;
 	void OnLANMatchDestroy(Event* e) override;
-	void onGameEventPlayerAdded(Event* e) override;
+	void onGameEventTeamPlayerAdded(Event* e) override;
+	void onGameEventTeamPlayerRemoved(Event* e) override;
 	void ExportSettings(pt::ptree&root) override;
 	void ImportSettings(pt::ptree&root) override;
 
 private:
+	void UpdatePlayerCount();
 	const std::string IP = "192.185.67.238";
 	const std::string host = "hack.fyi";
 	const std::string urlJoinPath = "/rlmods/api/serveractive/";
