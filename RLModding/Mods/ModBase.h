@@ -22,10 +22,10 @@ enum GameState {
 inline GameState operator|(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) | static_cast<int>(b)); }
 inline GameState operator^(GameState a, GameState b) { return static_cast<GameState>(static_cast<int>(a) ^ static_cast<int>(b)); }
 
-enum Category { Menu = 0, GameModes, Lan, InGame, Other, ALL, MAX };
+enum Category { Menu = 0, GameModes, Lan, InGame, Other, Help, ALL, MAX };
 
 static const std::string categoryNames[MAX - 1] = {
-	"Menu Mods","Game Modes","LAN Mods","In Game Mods","Other Mods"
+	"Menu Mods","Game Modes","LAN Mods","In Game Mods","Other Mods", "Help"
 };
 
 class ModBase
@@ -210,6 +210,8 @@ public:
 
 	virtual void onWebRequestEventCompleted(Event* e) {};
 	virtual void onHttpProcessRequestComplete(Event* e) {}
+
+	virtual void onGfxShellTick(Event* e) {}
 
 	virtual void onGetNextImage(Event* e) {
 		/*
