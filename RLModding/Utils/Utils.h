@@ -27,6 +27,10 @@ namespace Utils {
 		FOutParamRec*		OutParams;
 	};
 
+	enum MenuState {
+		NONE = 0, MENU = 1 << 0, LAN_SERVER_BROWSER = 1 << 1, EXHIBITION = 1 << 2, TRAINING = 1 << 3, LAN = 1 << 4, CUSTOM_LAN = 1 << 5, ONLINE_PRIVATE = 1 << 6, ONLINE_PUBLIC = 1 << 7, ANY = (1 << 8) - 1
+	};
+
 	bool InitializeObjectsStore();
 	bool InitializeNamesStore();
 
@@ -44,5 +48,5 @@ namespace Utils {
 	long long GetSteamID();
 	std::string GetHardwareID();
 	char* stristr(const char* str1, const char* str2);
-
+	MenuState GetMenuState(SDK::UGFxMoviePlayer_X* movie);
 }

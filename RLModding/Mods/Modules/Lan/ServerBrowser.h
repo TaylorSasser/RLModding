@@ -16,11 +16,13 @@ public:
 	void onMainMenuTick(Event* e);
 	void onServerBrowserSearchComplete(Event* e) override;
 	void eventLanSearchResultComplete(Event* e) override;
+	void onGfxShellTick(Event* e) override;
 	void DrawRLMenuAddon() override;
 
 private:
 
 	char queryServerName[100] = "\0";
+	char joinIpAddress[100] = "\0";
 
 	const std::string IP = "192.185.67.238";
 	const std::string host = "hack.fyi";
@@ -33,10 +35,11 @@ private:
 	bool p_open = true;
 	bool searchTest = false;
 	bool resetFilters = false;
+	bool joinIp = false;
 
 	bool searchButtonHovered = false;
 	bool resetButtonHovered = false;
-
+	bool joinButtonHovered = false;
 	struct MapInfo {
 		std::string filename, hash;
 		MapInfo(std::string filename, std::string hash) {

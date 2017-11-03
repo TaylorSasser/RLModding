@@ -35,4 +35,6 @@ private:
 	std::string hardwareID = "";
 	bool inAir = false;
 	bool tileTest = false;
+	bool priTest = false;
+	bool guiTest = false;
 };

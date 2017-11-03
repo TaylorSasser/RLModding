@@ -74,6 +74,7 @@
     <ClCompile Include="Mods\Modules\Unfinished\FreezeTag.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ServerBrowser.cpp" />
     <ClCompile Include="Mods\Modules\Lan\PublicServerList.cpp" />
+    <ClCompile Include="Mods\Modules\Help\SHowDebug.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Core.h" />
@@ -4714,6 +4715,7 @@
     <ClInclude Include="Mods\Modules\Unfinished\FreezeTag.h" />
     <ClInclude Include="Mods\Modules\Lan\ServerBrowser.h" />
     <ClInclude Include="Mods\Modules\Lan\PublicServerList.h" />
+    <ClInclude Include="Mods\Modules\Help\ShowDebug.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Libs\detours.lib" />

@@ -9,4 +9,6 @@ namespace {
 
 	static bool windowModeFound = false;
 	static bool windowed = false;
+
+	static std::string version = "17110300";
 }

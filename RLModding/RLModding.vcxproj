@@ -52,6 +52,7 @@
     <ClCompile Include="Mods\Modules\GameModes\DemolitionDerby.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\DribbleDrabble.cpp" />
     <ClCompile Include="Mods\Modules\Lan\ServerBrowser.cpp" />
+    <ClCompile Include="Mods\Modules\Help\ShowDebug.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\FreezeTag.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\Infected.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
@@ -2971,6 +2972,7 @@
     <ClInclude Include="Mods\Modules\GameModes\DemolitionDerby.h" />
     <ClInclude Include="Mods\Modules\GameModes\DribbleDrabble.h" />
     <ClInclude Include="Mods\Modules\Lan\ServerBrowser.h" />
+    <ClInclude Include="Mods\Modules\Help\ShowDebug.h" />
     <ClInclude Include="Mods\Modules\Unfinished\FreezeTag.h" />
     <ClInclude Include="Mods\Modules\Unfinished\Infected.h" />
     <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />

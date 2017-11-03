@@ -263,6 +263,13 @@ void GameEventMods::DrawMenu() {
 				testChangeName = true;
 			}
 			*/
+			ImGui::Checkbox("Test Leave Penelty", &hasLeaveMatchPenalty);
+			ImGui::Checkbox("Can vote to FF", &canVoteToForfeit);
+
+			if (ImGui::Button("Test Add Chat")) {
+				testAddChat = true;
+			}
+
 			if (ImGui::Button("Test askfhjsdfhgfjk")) {
 
 				ballSpawnTest = true;
@@ -730,6 +737,22 @@ void GameEventMods::onPlayerTick(Event* e) {
 		
 
 		testGoalDisable = false;
+	}
+
+	// Test leave penalty
+	localGameEvent->SetHasLeaveMatchPenalty(hasLeaveMatchPenalty);
+	localGameEvent->SetCanVoteToForfeit(canVoteToForfeit);
+
+	if (testAddChat) {
+		SDK::UOnlineSubsystemSteamworks* steam = reinterpret_cast<SDK::UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(SDK::UOnlineSubsystemSteamworks::StaticClass()));
+		if (steam) {
+			std::cout << "Found steam data" << std::endl;
+			FUniqueNetId newId = steam->LoggedInPlayerId;
+			localGameEvent->AddPlayerChatMessage(newId, EChatChannel::EChatChannel_Match, localGameEvent->Teams[0], FString(L"Test message"));
+			std::cout << "Chat history size: " << localGameEvent->ChatHistory.Num() << std::endl;
+			localGameEvent->BanPlayerID(newId);
+		}
+		testAddChat = false;
 	}
 
 	if (testArenaColor) {
