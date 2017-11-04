@@ -18,7 +18,7 @@ void::ServerBrowser::DrawRLMenuAddon() {
 
 		//ImGui::PushItemWidth(-5.0f);
 		ImGui::BeginGroup();
-		ImGui::SetWindowFontScale(1.6f);
+		//ImGui::SetWindowFontScale(1.6f);
 
 		ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * .4);
 
@@ -66,7 +66,7 @@ void::ServerBrowser::DrawRLMenuAddon() {
 
 		//ImGui::PushItemWidth(-5.0f);
 		ImGui::BeginGroup();
-		ImGui::SetWindowFontScale(1.6f);
+		//ImGui::SetWindowFontScale(1.6f);
 
 		//ImGui::PushItemWidth(ImGui::GetContentRegionAvailWidth() * .4);
 
