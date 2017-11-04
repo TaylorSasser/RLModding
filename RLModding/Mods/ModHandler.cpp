@@ -59,15 +59,15 @@ ModHandler::ModHandler() {
 	CreateMod<MutatorMods>("Mutator Mods", VK_F7, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<RumbleMods>("Rumble Mods", VK_NUMPAD5, Category::InGame, GameState::EXHIBITION | GameState::LAN);
 
-	CreateMod<HUDMods>("HUD Mods", VK_F15, Category::Other, GameState::ANY, "HUD Modifications.");
+	//CreateMod<HUDMods>("HUD Mods", VK_F15, Category::Other, GameState::ANY, "HUD Modifications.");
 
 	CreateMod<GameEventMods>("Game Event Mods", VK_F2, Category::InGame, GameState::EXHIBITION | GameState::LAN | GameState::TRAINING);
 	CreateMod<WorkshopMods>("Workshop Mods", VK_F14, Category::Other, GameState::ANY);
 
-	CreateMod<ShowDebug>("Toggle Game Debug Info", VK_F18, Category::Help, GameState::ANY, "Show psyonix's internal debug info.");
+	//CreateMod<ShowDebug>("Toggle Game Debug Info", VK_F18, Category::Help, GameState::ANY, "Show psyonix's internal debug info.");
 
 
-	CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
+	//CreateMod<TestClass>("Test Class", VK_NUMPAD0, Category::Other, GameState::ANY);
 	//CreateMod<TextureMods>("Texture Mods", VK_NUMPAD7, Category::Other, GameState::MENU);
 
 	CreateMod<InventoryManager>("Manage Inventory", VK_NUMPAD6, Category::Other, GameState::MENU);

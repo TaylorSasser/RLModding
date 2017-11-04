@@ -270,8 +270,12 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 			if (found == std::string::npos) {
 				command.append(":7777");
 			}
-			serverBrowser->LanBrowser->JoinServer(Utils::to_fstring(command), FString(L""));
-			std::cout << "Ran join command: " << command << std::endl;
+			//serverBrowser->LanBrowser->JoinServer(Utils::to_fstring(command), FString(L""));
+			//std::cout << "Ran join command: " << command << std::endl;
+
+			std::string temp = "open " + command + "?Lan";
+			std::cout << "Traveling to: " << temp << std::endl;
+			InstanceStorage::MenuController()->ConsoleCommand(Utils::to_fstring(temp), 1);
 		}
 		joinIp = false;
 	}

@@ -103,8 +103,8 @@ void PublicServerList::UpdatePlayerCount() {
 		std::string nonce = std::to_string(steamID) + std::to_string(currTime) + butter;
 		std::string hashed_string;
 		picosha2::hash256_hex_string(nonce, hashed_string);
-
-		std::string numPlayers = std::to_string(InstanceStorage::GameEvent()->Players.Num());
+		int currPlayerCount = InstanceStorage::GameEvent()->Players.Num();
+		std::string numPlayers = std::to_string(currPlayerCount);
 		std::string mapName = "";
 		UOnlineGameLanServer_X* lanServer = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (lanServer) {
