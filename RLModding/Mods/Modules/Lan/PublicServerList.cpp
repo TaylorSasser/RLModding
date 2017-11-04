@@ -96,7 +96,7 @@ void PublicServerList::onGameEventTeamPlayerRemoved(Event *e) {
 }
 
 void PublicServerList::UpdatePlayerCount() {
-	if (serverActive) {
+	if (serverActive && InstanceStorage::GameEvent()) {
 		long long steamID = Utils::GetSteamID();
 		time_t currTime = time(NULL);
 		// SHA256 hashing

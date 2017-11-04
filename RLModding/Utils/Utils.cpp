@@ -380,7 +380,7 @@ namespace Utils {
 					return LAN_SERVER_BROWSER;
 				}
 				else {
-					std::cout << "Current Scene: " << movie->CursorScenes[sceneCount - 1].ToString() << std::endl;
+					//std::cout << "Current Scene: " << movie->CursorScenes[sceneCount - 1].ToString() << std::endl;
 					return MENU;
 				}
 
