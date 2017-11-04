@@ -103,8 +103,7 @@ void PublicServerList::UpdatePlayerCount() {
 		std::string nonce = std::to_string(steamID) + std::to_string(currTime) + butter;
 		std::string hashed_string;
 		picosha2::hash256_hex_string(nonce, hashed_string);
-		int currPlayerCount = InstanceStorage::GameEvent()->Players.Num();
-		std::string numPlayers = std::to_string(currPlayerCount);
+		int maxPlayerCount = 10;
 		std::string mapName = "";
 		UOnlineGameLanServer_X* lanServer = reinterpret_cast<SDK::UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
 		if (lanServer) {
@@ -112,6 +111,12 @@ void PublicServerList::UpdatePlayerCount() {
 			mapName = matchSettings.MapName.GetName();
 			std::cout << "Map name: " << mapName << std::endl;
 		}
+
+		int currPlayerCount = InstanceStorage::GameEvent()->Players.Num();
+		// Account for game being dumb
+		if (currPlayerCount < 0 || currPlayerCount > maxPlayerCount)
+			currPlayerCount = 1;
+		std::string numPlayers = std::to_string(currPlayerCount);
 		//std::cout << nonce << std::endl;
 		//std::cout << hashed_string << std::endl;
 
