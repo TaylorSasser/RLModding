@@ -5,6 +5,14 @@
 ServerBrowser::ServerBrowser(std::string name, int key, Category cat, GameState gamestate, std::string toolTip) : ModBase(name, key, cat, gamestate, toolTip) {}
 ServerBrowser::~ServerBrowser() {}
 
+void ServerBrowser::ExportSettings(pt::ptree & root) {
+	root.put("ServerBrowser", this->enabled);
+}
+
+void ServerBrowser::ImportSettings(pt::ptree & root) {
+	this->enabled = root.get<bool>("ServerBrowser", false);
+}
+
 void::ServerBrowser::DrawRLMenuAddon() {
 	if (ServerBrowser::isEnabled() && isRLMenuShowing) {
 		ImGui::SetNextWindowPos(ImVec2(50, 50), ImGuiSetCond_FirstUseEver);
@@ -183,14 +191,14 @@ void ServerBrowser::onMainMenuTick(Event* e) {
 		try
 		{
 			results.Clear();
-		
+			serverBrowser->Refresh();
+
 			boost::property_tree::read_json(ss, pt);
 			int numServersToAdd = stoi(pt.get<std::string>("rows"));
 
 			std::cout << "Found server browser!" << std::endl;
 
 			if (serverBrowser->LanBrowser->IsA(UUdpLanBrowser_X::StaticClass()) && numServersToAdd > 0) {
-				serverBrowser->Refresh();
 
 				//std::cout << "Browser is UDP!" << std::endl;
 				UUdpLanBrowser_X* browser = (UUdpLanBrowser_X*)serverBrowser->LanBrowser;

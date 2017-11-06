@@ -16,6 +16,8 @@ public:
 	void onMainMenuTick(Event* e);
 	void onServerBrowserSearchComplete(Event* e) override;
 	void eventLanSearchResultComplete(Event* e) override;
+	void ExportSettings(pt::ptree&root) override;
+	void ImportSettings(pt::ptree&root) override;
 	void onGfxShellTick(Event* e) override;
 	void DrawRLMenuAddon() override;
 
