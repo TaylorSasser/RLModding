@@ -500,7 +500,18 @@ void TestClass::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
 	if (possessTest) {
-		InstanceStorage::PlayerController()->Possess(localGameEvent->GameBalls[0], false);
+		//InstanceStorage::PlayerController()->Possess(localGameEvent->GameBalls[0], false);
+		//localGameEvent->GameBalls[0]->Suicide();
+		//InstanceStorage::PlayerController()->Car->MessagePlayer(FString(L"Test Message"));
+		//InstanceStorage::PlayerController()->Car->BallInteraction.Friction *= 100;
+		//FVector weldLoc = { 0.0f, 0.0f, 200.0f };
+		//weldLoc.Y += (float)i/10.0;
+		//weldLoc.Z += 10;
+		//InstanceStorage::PlayerController()->Car->StartDriving();
+		//localGameEvent->GameBalls[0]->WeldRBActor(InstanceStorage::PlayerController()->Car, weldLoc, localGameEvent->GameBalls[0]->Rotation);
+		//InstanceStorage::PlayerController()->Car->WeldRBActor(localGameEvent->GameBalls[0], weldLoc, localGameEvent->GameBalls[0]->Rotation);
+		//InstanceStorage::PlayerController()->Car->bPushesRigidBodies = false;
+		//bPushesRigidBodies
 		possessTest = false;
 	}
 

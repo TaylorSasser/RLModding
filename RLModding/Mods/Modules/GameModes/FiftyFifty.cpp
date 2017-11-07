@@ -96,6 +96,8 @@ void FiftyFifty::onPlayerTick(Event* event) {
 				if (localGameEvent->GameBalls.Num() < 2 && !demoPlayer) {
 					localGameEvent->SetTotalGameBalls(2);
 					localGameEvent->ResetBalls();
+					localGameEvent->GameBalls[1]->SetHidden(true);
+
 				}
 				else if (localGameEvent->GameBalls.Num() > 1 && demoPlayer) {
 					localGameEvent->SetTotalGameBalls(1);
@@ -129,6 +131,7 @@ void FiftyFifty::onPlayerTick(Event* event) {
 									}
 									else {
 										if (localGameEvent->GameBalls.GetByIndex(1) && gameTeams[team_idx]->Members[player_idx]->Car) {
+											localGameEvent->GameBalls[1]->SetHidden(true);
 											localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), gameTeams[team_idx]->Members[player_idx]->Car->Location, gameTeams[team_idx]->Members[player_idx]);
 										}
 									}
@@ -148,6 +151,7 @@ void FiftyFifty::onPlayerTick(Event* event) {
 						}
 						else {
 							if (localGameEvent->GameBalls.GetByIndex(1) && controller->Car) {
+								localGameEvent->GameBalls[1]->SetHidden(true);
 								localGameEvent->GameBalls.GetByIndex(1)->Explode(localGameEvent->Pylon->Goals.GetByIndex(0), controller->Car->Location, controller->PRI);
 							}
 						}

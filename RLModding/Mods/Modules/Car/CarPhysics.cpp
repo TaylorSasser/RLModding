@@ -288,7 +288,7 @@ void CarPhysics::onPlayerTick(Event* e) {
 							currCar->SetCarScale(carScale);
 							if (demolishOnGoalZone)
 								currCar->bDemolishOnGoalZone = true;
-
+							currCar->ReplicatedCarScale = carScale;
 							currCar->PRI->ServerUpdateRemoteUserData(currCar->PRI->RemoteUserData);
 							currCar->PRI->UpdateRemoteUserData(currCar->PRI->RemoteUserData);
 

@@ -120,7 +120,8 @@ void Infected::onPlayerTick(Event* event) {
 							//localGameEvent->ChooseTeam(0, currController);
 							tempController->PRI->ServerChangeTeam(0);
 							tempController->Car->DemolishTarget = TEnumAsByte<EDemolishTarget>(EDemolishTarget::DemolishTarget_None);
-							std::cout << "NOT Infected car compare!" << std::endl;
+							std::cout << "NOT Infected car compare! " << tempController->PRI->NumLives << std::endl;
+							
 						}
 					}
 					else if (localGameEvent->Players[i]->IsA(SDK::AAIController_TA::StaticClass())) {
