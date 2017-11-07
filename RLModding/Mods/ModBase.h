@@ -236,6 +236,7 @@ public:
 	virtual void OnRoundStart(Event* e) {}
 	virtual void OnLANMatchCreate(Event* e) {}
 	virtual void OnLANMatchDestroy(Event* e) {}
+	virtual void onRumbleItemActivated(Event *e) {}
 
 	bool enabled = false;
 protected:

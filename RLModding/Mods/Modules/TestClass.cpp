@@ -717,3 +717,11 @@ void TestClass::onBallTick(Event* e) {
 	}
 }
 
+void TestClass::onRumbleItemActivated(Event*e) {
+	auto params = e->getParams<ASpecialPickup_TA_EventActivated_Params>();
+	if (params->InCar) {
+		std::cout << params->InCar << std::endl;
+	}
+	std::cout << "Activated Item!" << std::endl;
+}
+

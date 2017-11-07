@@ -81,6 +81,7 @@ EventFactory::EventFactory() {
 	SubscribeEvent("Function TAGame.GameEvent_Team_TA.OnPlayerAdded", &ModBase::onGameEventTeamPlayerAdded);
 	SubscribeEvent("Function TAGame.GameEvent_Team_TA.OnPlayerRemoved", &ModBase::onGameEventTeamPlayerRemoved);
 	SubscribeEvent("Function ProjectX.GFxShell_X.Tick", &ModBase::onGfxShellTick);
+	SubscribeEvent("Function TAGame.SpecialPickup_TA.EventActivated", &ModBase::onRumbleItemActivated);
 
 	
 

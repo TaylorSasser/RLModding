@@ -20,6 +20,7 @@ public:
 	void onMainMenuTick(Event* e);
 	void OnLANMatchCreate(Event* e);
 	void OnLANMatchDestroy(Event* e);
+	void onRumbleItemActivated(Event*e);
 
 private:
 	bool p_open = true;
