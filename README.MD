@@ -12,7 +12,7 @@
 - Mods
 	- When car or ball is invisible add option to show them in replay
 	- Add interface for updating server name
-	- Add setting for car acceleration
+	- ~~Add setting for car acceleration~~ (Could have another method)
 	- Add setting to toggle unlimited boost in freeplay
 	- Add Ball mod options for resetting all balls
 	- Add HP setting for cars health in game modes
