@@ -54,7 +54,7 @@
     <ClCompile Include="Mods\Modules\Lan\ServerBrowser.cpp" />
     <ClCompile Include="Mods\Modules\Help\ShowDebug.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\FreezeTag.cpp" />
-    <ClCompile Include="Mods\Modules\Unfinished\Infected.cpp" />
+    <ClCompile Include="Mods\Modules\GameModes\Infected.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\InfiniteCelebration.cpp" />
     <ClCompile Include="Mods\Modules\GameModes\KeepAway.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\MultiTeam.cpp" />
@@ -70,6 +70,7 @@
     <ClCompile Include="Mods\Modules\Offline\CustomBlog.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\HUDMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\InventoryManager.cpp" />
+    <ClCompile Include="Mods\Modules\Unfinished\Penalty.cpp" />
     <ClCompile Include="Mods\Modules\Unfinished\TextureMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\TrainingMods.cpp" />
     <ClCompile Include="Mods\Modules\Offline\WorkShopMods.cpp" />
@@ -2974,7 +2975,7 @@
     <ClInclude Include="Mods\Modules\Lan\ServerBrowser.h" />
     <ClInclude Include="Mods\Modules\Help\ShowDebug.h" />
     <ClInclude Include="Mods\Modules\Unfinished\FreezeTag.h" />
-    <ClInclude Include="Mods\Modules\Unfinished\Infected.h" />
+    <ClInclude Include="Mods\Modules\GameModes\Infected.h" />
     <ClInclude Include="Mods\Modules\GameModes\InfiniteCelebration.h" />
     <ClInclude Include="Mods\Modules\GameModes\KeepAway.h" />
     <ClInclude Include="Mods\Modules\Unfinished\MultiTeam.h" />
@@ -2992,6 +2993,7 @@
     <ClInclude Include="Mods\Modules\Offline\CustomBlog.h" />
     <ClInclude Include="Mods\Modules\Unfinished\HUDMods.h" />
     <ClInclude Include="Mods\Modules\Offline\InventoryManager.h" />
+    <ClInclude Include="Mods\Modules\Unfinished\Penalty.h" />
     <ClInclude Include="Mods\Modules\Unfinished\TextureMods.h" />
     <ClInclude Include="Mods\Modules\Offline\TrainingMods.h" />
     <ClInclude Include="Mods\Modules\Offline\WorkShopMods.h" />

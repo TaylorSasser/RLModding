@@ -48,6 +48,36 @@ void TestClass::DrawMenu() {
 			if (ImGui::Button("GUI Test")) {
 				guiTest = true;
 			}
+			ImGui::SameLine();
+
+			if (ImGui::Button("Word Filter Test")) {
+				filterTest = true;
+			}
+			if (ImGui::Button("Test shot")) {
+				testShoot = true;
+			}			ImGui::SameLine();
+
+			if (ImGui::Button("Possess Test")) {
+				possessTest = true;
+			}
+
+			ImGui::InputText("Object Name", objectName, IM_ARRAYSIZE(objectName));
+			if (ImGui::Button("Find Object")) {
+
+				static SDK::UObject* ObjectInstance;
+				ObjectInstance = NULL;
+
+				for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+					SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+					if (CheckObject) {
+						if (strstr(CheckObject->GetFullName().c_str(), objectName)) {
+							ObjectInstance = CheckObject;
+							std::cout << objectName << " instance: " << CheckObject->GetFullName() << std::endl;
+						}
+					}
+				}
+
+			}
 
 			if (!p_open) {
 				this->enabled = false;
@@ -110,6 +140,7 @@ void TestClass::onMainMenuTick(Event* e) {
 				UProfile_TA* profile = saveData->GetProfileForPlayer(newId);
 				if (profile) {
 					std::cout << profile->ProfileName.ToString() <<std::endl;
+
 				}
 			}
 
@@ -466,11 +497,62 @@ void TestClass::onWebRequestEventCompleted(Event* e) {
 }
 
 void TestClass::onPlayerTick(Event* e) {
-	
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+
+	if (possessTest) {
+		InstanceStorage::PlayerController()->Possess(localGameEvent->GameBalls[0], false);
+		possessTest = false;
+	}
+
+	if (filterTest) {
+		if (localGameEvent) {
+			UOnlineGameLanServer_X* lanServer = reinterpret_cast<UOnlineGameLanServer_X*>(Utils::GetInstanceOf(UOnlineGameLanServer_X::StaticClass()));
+			//lanServer->CustomMatch.ServerName = FString(L"CHEESE IS AWESOME");
+			//localGameEvent->SetCustomMatchSettings(lanServer->CustomMatch);
+			//AGRI_X* gri = lanServer->GetGRI();
+			//gri->ServerName = FString(L"CHEESE IS AWESOME");
+			//std::cout << gri->MatchGUID.ToString() << std::endl;
+			//lanServer->ServerName = FString(L"CHEESE IS AWESOME");
+			UOnlineGameWordFilter_X* wordFilter = lanServer->WordFilter;
+			if (wordFilter) {
+				std::cout << "Found Word Filter" << std::endl;
+				FFilterPair newFilter;
+				newFilter.bPending = false;
+				//newFilter.Callbacks = wordFilter->__EventCommentSanitized__Delegate;
+				//newFilter.ErrorCallbacks = wordFilter->__EventCommentError__Delegate;
+				newFilter.Key = FString(L"test");
+				newFilter.Usage = EWordFilterUsage::WordFilterUsage_Chat;
+				newFilter.Value =FString(L"DO NOT SAY THAT WORD HERE.");
+				wordFilter->Filtered.Add(newFilter);
+			}
+		}
+		filterTest = false;
+	}
 
 	if (guiTest) {
-		//InstanceStorage::PlayerController()->Car->ThrottleShake->PlayShake();
+		AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+		if (localGameEvent) {
+			//AExplosion_X* explosion = localGameEvent->GameBalls[0]->Explosion;
+			//explosion->ExplosionComponent->StartRadius *= 2;
+			//explosion->ExplosionComponent->EndRadius *= 2;
+			FVector force = { 0.0f ,0.0f,1000.0f }; // x, y, z? y shoots ball towards goal
+			force.Z = force.Z - localGameEvent->GameBalls[0]->Velocity.Z;
+			localGameEvent->GameBalls[0]->AddForce(force, EForceMode::ForceMode_Velocity);
+			//localGameEvent->GameBalls[0]->AddForce(force, EForceMode::ForceMode_SmoothVelocity);
 
+			//InstanceStorage::PlayerController()->Car->AddForce(force, EForceMode::ForceMode_Velocity);
+			//std::cout << "Applying forces..." << std::endl;
+		}
+
+		UCameraState_TA* camera = (UCameraState_TA*)(Utils::GetInstanceOf(UCameraState_TA::StaticClass()));
+		if (camera) {
+			//std::cout << "Found camera." << std::endl;
+			//camera->CameraSettings->CameraPitch = 0;
+			//camera->CameraSettings->SetCameraRotation(0, 0);
+		}
+
+		//InstanceStorage::PlayerController()->Car->ThrottleShake->PlayShake();
+		/*
 		InstanceStorage::GameEvent()->bDisableAimAssist = 0.0f;
 		UAimAssistComponent_TA* assist = SDK::UObject::FindObject<SDK::UAimAssistComponent_TA>("AimAssistComponent_TA TAGame.Default__AimAssistComponent_TA");
 		if (assist) {
@@ -492,7 +574,7 @@ void TestClass::onPlayerTick(Event* e) {
 			std::cout << "Ball distance to ground: " << InstanceStorage::PlayerController()->AimAssist->BallDistanceToGround << std::endl;
 		}
 
-
+		*/
 		guiTest = false;
 	}
 
@@ -552,5 +634,75 @@ void TestClass::OnLANMatchCreate(Event* e) {
 
 void TestClass::OnLANMatchDestroy(Event* e) {
 	std::cout << "Lan match has been destroyed!\n";
+}
+
+void TestClass::onBallTick(Event* e) {
+	bool testDistance = true;
+
+	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
+	ACar_TA* car = InstanceStorage::PlayerController()->Car;
+
+	if (localGameEvent && car) {
+		FVector carLoc = InstanceStorage::PlayerController()->Car->Location;
+		FVector ballLoc = localGameEvent->GameBalls[0]->Location;
+		//std::cout << "CAR: " << carLoc.X << "," << carLoc.Y << "," << carLoc.Z << std::endl;
+		//std::cout << "BAL: " << ballLoc.X << "," << ballLoc.Y << "," << ballLoc.Z << std::endl;
+
+		float distance = sqrt(std::pow(ballLoc.X - carLoc.X, 2) + std::pow(ballLoc.Y - carLoc.Y, 2) + std::pow(ballLoc.Z - carLoc.Z, 2));
+		//std::cout << "Distance: " << distance << std::endl;
+		if (testShoot && testDistance) {
+			FVector force = { 0.0f , 0.0f, 300.0f }; // { 0.0f ,0.0f,750.0f };  x, y, z? y shoots ball towards goal
+
+			for (int i = 0; SDK::UObject::GObjects->IsValidIndex(i); ++i) {
+				SDK::UObject* CheckObject = (SDK::UObject::GObjects->GetByIndex(i));
+				if (CheckObject && CheckObject->IsA(AGoalVolume_TA::StaticClass())) {
+					if (!strstr(CheckObject->GetFullName().c_str(), "Default")) {
+						AGoalVolume_TA* goalVolume = reinterpret_cast<SDK::AGoalVolume_TA*>(CheckObject);
+						force = goalVolume->Location;
+						force.X = 0;
+					}
+				}
+			}
+			std::cout << "GOL: " << force.X << "," << force.Y << "," << force.Z << std::endl;
+
+
+			force.X = ((force.X - ballLoc.X)/distance)*5500;
+			force.Y = ((force.Y - ballLoc.Y)/distance)*5500;
+			force.Z = ((force.Z - ballLoc.Z)/distance)*5500;
+			
+			// Check car location relative to ball
+			localGameEvent->GameBalls[0]->AddForce(force, EForceMode::ForceMode_Velocity);
+			testShoot = false;
+		}
+		return;
+		// Dribble Mode lol
+		if (testDistance && (int)distance < 650) {
+
+			FVector force = { 0.0f , 0.0f, 300.0f }; // { 0.0f ,0.0f,750.0f };  x, y, z? y shoots ball towards goal
+													 // Check car location relative to ball
+			if (carLoc.Z < ballLoc.Z - 60) force.Z *= -1;
+			force.Z = force.Z - localGameEvent->GameBalls[0]->Velocity.Z;
+			localGameEvent->GameBalls[0]->AddForce(force, EForceMode::ForceMode_Velocity);
+		}
+		if (testDistance && (int)distance < 350) {
+
+			FVector force = { 0.0f , 0.0f, 400.0f }; // { 0.0f ,0.0f,750.0f };  x, y, z? y shoots ball towards goal
+			// Check car location relative to ball
+			if (carLoc.Z < ballLoc.Z - 60) force.Z *= -1;
+			force.Z = force.Z - localGameEvent->GameBalls[0]->Velocity.Z;
+			localGameEvent->GameBalls[0]->AddForce(force, EForceMode::ForceMode_Velocity);
+		}
+		else if(!testDistance) {
+			if (localGameEvent->GameBalls[0]) {
+				FVector force = { 3.5f ,0.5f,0.0f };
+				car->AddForce(force, EForceMode::ForceMode_Velocity);
+				FVector ballForce = { 3.0f ,0.5f,0.0f };
+
+				localGameEvent->GameBalls[0]->AddForce(ballForce, EForceMode::ForceMode_Velocity);
+
+			}
+			
+		}
+	}
 }
 

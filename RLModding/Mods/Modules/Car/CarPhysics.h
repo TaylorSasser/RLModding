@@ -34,28 +34,28 @@ private:
 	float carScale = 1.0;
 	float currCarScale = 1.0;
 	int numClones = 1;
-
-	bool checkTime = true;
-	float interval = 0.2;
-	time_t start, end;
-
-	bool refreshCars = true;
-	bool respawnOnScale = false;
+	bool respawnOnScale = true;
 
 	bool freezeInPlace = false;
 	bool podiumMode = false;
-
-	// Player selection menu
-	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
-	int playerSelectedIndex = 0;
-	int oldPlayerSelectedIndex = 0;
-
 	bool demolishOnGoalZone = false;
 	bool demolishOnOpposingSide = false;
 	bool unlimitedBoost = false;
 
 	bool noBoostBlue = false;
 	bool noBoostOrange = false;
+	bool checkTime = true;
+	float interval = 0.2;
+	time_t start, end;
+
+	bool refreshCars = true;
+
+	// Player selection menu
+	const char* players[11] = { "All", "", "", "", "", "", "", "", "", "", "" };
+	int playerSelectedIndex = 0;
+	int oldPlayerSelectedIndex = 0;
+
+
 
 	void reset();
 	float groundSticky = 0.5;

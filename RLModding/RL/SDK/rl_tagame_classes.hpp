@@ -11038,8 +11038,8 @@ public:
 	unsigned long                                      bUsingSecondaryCamera : 1;                                // 0x0220(0x0004) (CPF_Net, CPF_Transient)
 	unsigned long                                      bUsingBehindView : 1;                                     // 0x0220(0x0004) (CPF_Net, CPF_Transient)
 	unsigned long                                      bUsingFreecam : 1;                                        // 0x0220(0x0004) (CPF_Net, CPF_Transient)
-	unsigned char                                      CameraPitch;                                              // 0x0224(0x0001) (CPF_Net, CPF_Transient)
-	unsigned char                                      CameraYaw;                                                // 0x0225(0x0001) (CPF_Net, CPF_Transient)
+	unsigned char									   CameraPitch;                                              // 0x0224(0x0001) (CPF_Net, CPF_Transient)
+	unsigned char									   CameraYaw;                                                // 0x0225(0x0001) (CPF_Net, CPF_Transient)
 	struct FScriptDelegate                             __EventCameraChanged__Delegate;                           // 0x0228(0x000C) (CPF_NeedCtorLink)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0226(0x0004) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FScriptDelegate                             __EventTargetSelect__Delegate;                            // 0x0238(0x000C) (CPF_NeedCtorLink)

@@ -59,7 +59,9 @@ void CarPhysics::DrawMenu() {
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("Makes car invisible");
 
-		//ImGui::Checkbox("Freeze in place.", &freezeInPlace);
+		ImGui::Checkbox("Freeze in place.", &freezeInPlace); ImGui::SameLine();
+		ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Players sometimes remain frozen until respawn.");
+
 		ImGui::Checkbox("No Boost Blue", &noBoostBlue);
 		ImGui::SameLine();
 		ImGui::Checkbox("No Boost Orange", &noBoostOrange);
@@ -212,12 +214,11 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->bPodiumMode = 1.0f;
 					else 
 						currCar->bPodiumMode = 0.0f;
-					/*
-					if(freezeInPlace)
-						currCar->SetFrozen(1.0f);
-					else 
-						currCar->SetFrozen(0.0f);
-					*/
+					
+					if(freezeInPlace != currCar->bFrozen)
+						currCar->SetFrozen(freezeInPlace);
+
+					
 					/*
 					if (currCar->JumpComponent) {
 						if(disableJumps)
@@ -287,6 +288,10 @@ void CarPhysics::onPlayerTick(Event* e) {
 							currCar->SetCarScale(carScale);
 							if (demolishOnGoalZone)
 								currCar->bDemolishOnGoalZone = true;
+
+							currCar->PRI->ServerUpdateRemoteUserData(currCar->PRI->RemoteUserData);
+							currCar->PRI->UpdateRemoteUserData(currCar->PRI->RemoteUserData);
+
 						}
 						else {
 							std::cout << "No car! :(\n";
@@ -423,6 +428,26 @@ void CarPhysics::reset() {
 	maxCarSpeed = 2300.0;
 	groundSticky = 1.0;
 	wallSticky = 1.0;
+
+	carCollisionOff = false;
+	cloneMe = false;
+
+	setCarScale = false;
+
+	carScale = 1.0;
+	currCarScale = 1.0;
+	numClones = 1;
+	respawnOnScale = true;
+
+	freezeInPlace = false;
+	podiumMode = false;
+	demolishOnGoalZone = false;
+	demolishOnOpposingSide = false;
+	unlimitedBoost = false;
+
+	noBoostBlue = false;
+	noBoostOrange = false;
+
 }
 
 void CarPhysics::onCarSpawned(Event* e) {

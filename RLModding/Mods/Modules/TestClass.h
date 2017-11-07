@@ -14,6 +14,7 @@ public:
 	void onHttpProcessRequestComplete(Event* e) override;
 	void onPlayerTick(Event* e) override;
 	void onCarEventLanded(Event* e) override;
+	void onBallTick(Event* e) override;
 	void onMenuClose();
 	void TestClass::DrawMenu();
 	void onMainMenuTick(Event* e);
@@ -37,4 +38,8 @@ private:
 	bool tileTest = false;
 	bool priTest = false;
 	bool guiTest = false;
+	bool filterTest = false;
+	char objectName[100] = "Object\0";
+	bool testShoot = false;
+	bool possessTest = false;
 };

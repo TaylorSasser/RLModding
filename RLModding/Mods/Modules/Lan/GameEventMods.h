@@ -18,6 +18,7 @@ public:
 	void eventBallHitGround(Event* e) override;
 	void onBallTick(Event* e) override;
 	void gameInfoInitGame(Event* e) override;
+	void onBallCarTouch(Event* e) override;
 	void loadMod();
 	void unloadMod();
 
@@ -49,9 +50,13 @@ private:
 	bool canVoteToForfeit = false;
 
 	bool testAddChat = false;
+	bool testBan = false;
+	bool spectatorEditMode = false;
 
 	bool unlimCelebration = false;
 	bool ballSpawnTest = false;
+
+	float ballHasBeenHitStartDelay = 5.0f;
 
 	char goalScoredMessage[36] = "{Player} scored!";
 	bool updatePlayerMessages = false;
@@ -64,7 +69,13 @@ private:
 	int orangeScore = 0;
 	int respawnTime = 0;
 
+	int gameTimeLength = 300;
+	bool setGameTime = false;
+
 	int maxScore = 0;
+
+	int warmupTime = 0;
+	float postGoalTime = 3.0f;
 
 	bool testWeldPlayers = false;
 
@@ -100,6 +111,8 @@ private:
 	AActor* ballSpawnPoint = NULL;
 	bool testBallSpawnPoint = false;
 
+	int ballDamagePerHit = 10;
+	bool damageMode = false;
 
 	bool testChangeName = false;
 	bool testArenaColor = false;

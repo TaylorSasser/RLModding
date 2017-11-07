@@ -90,6 +90,15 @@ void GameEventMods::DrawMenu() {
 				resetBalls = true;
 			}
 
+			ImGui::TextColored(ImVec4(1.0f, 0.647f, 0.074f, 1.0f), "Warmup time must be set before the first player has spawned.");
+
+			ImGui::InputInt("Warmup", &warmupTime); ImGui::SameLine();
+
+			if (ImGui::Button("Set Warmup Time")) {
+				setWarmupTime = true;
+
+			}
+
 			ImGui::EndChild();
 			ImGui::PopStyleColor();
 		}
@@ -119,7 +128,21 @@ void GameEventMods::DrawMenu() {
 				ImGui::SetTooltip("A team needs to score this many goals to win. 0 if unlimited.");
 			ImGui::Checkbox("Disable Goal Delay", &disableGoalDelay);
 			ImGui::Checkbox("Unlimited Time", &unlimitedTime);
+			ImGui::InputInt("Time", &gameTimeLength); ImGui::SameLine();
+			if (ImGui::Button("Set Game Time")) {
+				setGameTime = true;
+			}
 			//ImGui::Checkbox("Show Replays", &showReplays);
+
+			ImGui::Checkbox("Leave Penelty", &hasLeaveMatchPenalty); 
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Doesn't actually add penalty.");
+			ImGui::SameLine();
+			ImGui::Checkbox("Vote to Forfeit Enabled", &canVoteToForfeit);
+			ImGui::PushItemWidth(150);
+			ImGui::InputFloat("Post Goal Time", &postGoalTime, 0.5f, 1.0f, 1);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Amount of time to let players drive around after a goal.");
 
 			ImGui::EndChild();
 			ImGui::PopStyleColor();
@@ -151,6 +174,10 @@ void GameEventMods::DrawMenu() {
 			ImGui::Checkbox("Always Auto Select Team", &alwaysAutoTeam);
 			if (ImGui::IsItemHovered())
 				ImGui::SetTooltip("Not sure what this does exactly...");
+
+			ImGui::InputFloat("Auto start time if ball not hit.", &ballHasBeenHitStartDelay, 0.5f, 1.0f, 1);
+			if (ImGui::IsItemHovered())
+				ImGui::SetTooltip("Amount of seconds to wait before starting the game timer if the ball hasn't been hit after kickoff.");
 
 			ImGui::EndChild();
 			ImGui::PopStyleColor();
@@ -229,10 +256,7 @@ void GameEventMods::DrawMenu() {
 				start = std::clock();
 
 			}
-			if (ImGui::Button("Set Warmup Time")) {
-				setWarmupTime = true;
 
-			}
 			ImGui::SameLine();
 
 			if (ImGui::Button("Hide Replays")) {
@@ -258,14 +282,21 @@ void GameEventMods::DrawMenu() {
 				testWeldPlayers = true;
 			}
 			
+			ImGui::InputInt("Damage Amount", &ballDamagePerHit); ImGui::SameLine();
+			ImGui::Checkbox("Test Damage Mode.", &damageMode);
+
 			/*
 			if (ImGui::Button("Test Change Name")) {
 				testChangeName = true;
 			}
 			*/
-			ImGui::Checkbox("Test Leave Penelty", &hasLeaveMatchPenalty);
-			ImGui::Checkbox("Can vote to FF", &canVoteToForfeit);
-
+			if (ImGui::Button("Test Spectator actions")) {
+				spectatorEditMode = true;
+			}
+			
+			if (ImGui::Button("Test Ban")) {
+				testBan = true;
+			} ImGui::SameLine();
 			if (ImGui::Button("Test Add Chat")) {
 				testAddChat = true;
 			}
@@ -427,9 +458,16 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 
 		if (setWarmupTime) {
-			localGameEvent->WarmupTime = 0;
+			localGameEvent->WarmupTime = warmupTime;
+			//localGameEvent->GotoGameState(FName("Warmup"));
+			//InstanceStorage::PlayerController()->Car->SetFrozen(false);
 			setWarmupTime = false;
 		}
+		if (!Utils::FloatCompare(postGoalTime, localGameEvent->PostGoalTime)) {
+			//std::cout << localGameEvent->PostGoalTime << std::endl;
+			localGameEvent->PostGoalTime = postGoalTime;
+		}
+
 	
 		if (setScoreAndTime) {
 			if (localGameEvent->Teams.IsValidIndex(0)) {
@@ -534,6 +572,12 @@ void GameEventMods::onPlayerTick(Event* e) {
 
 			}
 		}
+	}
+
+	if (setGameTime) {
+		localGameEvent->GameTime = gameTimeLength;
+		localGameEvent->GameTimeRemaining = gameTimeLength;
+		setGameTime = false;
 	}
 
 	// Bot Mods
@@ -642,7 +686,11 @@ void GameEventMods::onPlayerTick(Event* e) {
 		goalDisabled = false;
 
 	}
-
+	if (!Utils::FloatCompare(localGameEvent->BallHasBeenHitStartDelay, ballHasBeenHitStartDelay)) {
+		localGameEvent->BallHasBeenHitStartDelay = ballHasBeenHitStartDelay;
+	}
+	
+	
 	if (testWeldPlayers) {
 		if (InstanceStorage::PlayerController() && InstanceStorage::PlayerController()->Car) {
 			InstanceStorage::PlayerController()->Car->Gasp();
@@ -739,6 +787,74 @@ void GameEventMods::onPlayerTick(Event* e) {
 	// Test leave penalty
 	localGameEvent->SetHasLeaveMatchPenalty(hasLeaveMatchPenalty);
 	localGameEvent->SetCanVoteToForfeit(canVoteToForfeit);
+
+	if (spectatorEditMode) {
+		
+		
+		//InstanceStorage::PlayerController()->ToggleEditorRound();
+		//InstanceStorage::PlayerController()->SwitchToEditPawn();
+
+		//InstanceStorage::PlayerController()->ToggleBetweenCarAndEditPawn();
+		
+		AGFxHUD_Spectator_TA* spectatorHUD = reinterpret_cast<SDK::AGFxHUD_Spectator_TA*>(Utils::GetInstanceOf(AGFxHUD_Spectator_TA::StaticClass()));
+
+		if (spectatorHUD) {
+			ACar_TA* focusCar = spectatorHUD->GetFocusCar();
+			focusCar->Demolish(focusCar);
+			std::cout << "Demolished viewed car." << std::endl;
+		}
+		
+		spectatorEditMode = false;
+	}
+
+	if (testBan) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			APRI_TA* currPRI = NULL;
+			bool isBot = false;
+
+			AController* tempController = gameEventPlayers[i];
+
+			if (tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				AAIController_TA* currController = (AAIController_TA*)tempController;
+				if (currController->Car) {
+					currPRI = currController->Car->PRI;
+				}
+				isBot = true;
+			}
+
+			else if (tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				APlayerController_TA* currController = (APlayerController_TA*)tempController;
+				currPRI = currController->PRI;
+			}
+
+			if (currPRI) {
+				//std::cout << "Owner id: " << localGameEvent->GameOwner->UniqueId.SteamID << std::endl;
+				if (currPRI->UniqueId.SteamID != 76561198046347971) {
+					if (!isBot) {
+						localGameEvent->BanPlayerID(currPRI->UniqueId);
+						std::cout << "Banning " << currPRI->PlayerName.ToString() << " | " << currPRI->UniqueId.SteamID << std::endl;
+						localGameEvent->FindPCForUniqueID(currPRI->UniqueId)->BannedKick();
+					}
+					//InstanceStorage::PlayerController()->SetFollowTarget(currPRI);
+					//InstanceStorage::PlayerController()->FollowPlayer(currPRI);
+
+					//localGameEvent->FindPCForUniqueID(currPRI->UniqueId)->KickPlayerForReason(FString(L"Test Title"), FString(L"Test Reason"));
+				}
+					//currPRI->BannedKick();
+					//currPRI->SetUniqueId(currPRI->UniqueId);
+			}
+				
+		}
+
+		std::cout << "+++++++ Ban list +++++++ " << std::endl;
+		for (int i = 0; i < localGameEvent->BannedPlayers.Num(); i++) {
+			std::cout << "Banned " << std::to_string(localGameEvent->BannedPlayers[i].SteamID) << std::endl;
+
+		}
+
+		testBan = false;
+	}
 
 	if (testAddChat) {
 		SDK::UOnlineSubsystemSteamworks* steam = reinterpret_cast<SDK::UOnlineSubsystemSteamworks*>(Utils::GetInstanceOf(SDK::UOnlineSubsystemSteamworks::StaticClass()));
@@ -851,4 +967,15 @@ void GameEventMods::onBallTick(Event* e) {
 void GameEventMods::gameInfoInitGame(Event* e) {
 
 
+}
+
+void GameEventMods::onBallCarTouch(Event* e) {
+	if (damageMode) {
+		ACar_TA* lastHitCar = reinterpret_cast<SDK::ACar_TA*>(e->getParams<SDK::ABall_TA_OnCarTouch_Params>()->HitCar);
+		lastHitCar->Health = lastHitCar->Health - ballDamagePerHit;
+		std::cout << "Car health: " << lastHitCar->Health << std::endl;
+		if (lastHitCar->Health <= 0) {
+			lastHitCar->Demolish(lastHitCar);
+		}
+	}
 }
