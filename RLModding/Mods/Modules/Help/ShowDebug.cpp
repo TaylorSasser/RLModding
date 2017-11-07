@@ -1,7 +1,7 @@
 #include "ShowDebug.h"
-#include "../../Utils/Utils.h"
-#include "../../DrawManager/DrawManager.hpp"
-#include "../../Libs/detours.h"
+#include "../Utils/Utils.h"
+#include "../DrawManager/DrawManager.hpp"
+#include "../Libs/detours.h"
 #include "../Interfaces/Interfaces.h"
 #include "../Interfaces/InstanceStorage.h"
 

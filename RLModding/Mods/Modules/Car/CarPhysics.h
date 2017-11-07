@@ -63,6 +63,7 @@ private:
 	float jumpTimeout = 1.5;
 	float maxCarSpeed = 2300.0;
 	float torqueRate = 5.5;
+	float maxCarAccel = 288000.0;
 	bool bUnlimitedJumps = false;
 	bool apply = false;
 	bool reset_values = false;
