@@ -13,6 +13,8 @@ Adjusting each balls scale
 Freezing / exploding each ball
 */
 
+bool ballReset = false;
+
 BallMods::BallMods(std::string name, int key, Category category, GameState gamestate) : ModBase(name, key, category, gamestate) {}
 BallMods::BallMods(std::string name, int key) : ModBase(name, key) {}
 
@@ -40,6 +42,11 @@ void BallMods::DrawMenu() {
 		ImGui::TextColored(ImVec4(0.0f, 1.0f, 0.0f, 1.0f), "*Adding a ball will reset the scale for all balls.");
 		if (((FiftyFifty*)Interfaces::Mods().getModInstance("50/50"))->enabled) {
 			ImGui::TextColored(ImVec4(0.90f, 0.27f, 0.06f, 1.0f), "Warning: Enabling both 50/50 and ball mods will cause issues.");
+		}
+		if (ImGui::Button("Reset")) {
+			numGameBalls = 1;
+			resetBalls();
+			ballReset = true;
 		}
 		ImGui::InputInt("# Balls", &numGameBalls);
 
@@ -74,7 +81,6 @@ void BallMods::onMenuClose() {
 	numGameBalls = 1;
 	resetBalls();
 }
-bool ballReset = false;
 
 void BallMods::onPlayerTick(Event* e) {
 	// Game Event Ball modifiers

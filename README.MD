@@ -14,7 +14,7 @@
 	- Add interface for updating server name
 	- ~~Add setting for car acceleration~~ (Could have another method)
 	- Add setting to toggle unlimited boost in freeplay
-	- Add Ball mod options for resetting all balls
+	- ~~Add Ball mod options for resetting all balls~~
 	- Add HP setting for cars health in game modes
 	- Add setting for tornado to vary in height
 	- Modify goal explosion properties
@@ -55,7 +55,7 @@
  - Rumble item to blow up everyone on opposing team
  - Rumble item to spawn bots to chase specific player for X seconds
  - Inverse gravity 
- - Invisible game mode (for cars and balls)
+ - ~~Invisible game mode (for cars and balls)~~
  - Trampoline mode (cars constantly bounce.  This can be achieved by setting the floor stickiness to negative)
  - Freeze Tag
  - Dodgeball - ball demolishes
