@@ -229,8 +229,12 @@ void GameEventMods::DrawMenu() {
 			ImGui::BeginChild("ridicControls", ImVec2(0, ImGui::GetItemsLineHeightWithSpacing() * 3), true);
 
 			ImGui::Checkbox("Disable Goals", &disableGoals);
+			ImGui::InputInt("Goal Points (Orange)", &goalPointsOrange);
+			ImGui::SameLine();
+			ImGui::InputInt("Goal Points (Blue)", &goalPointsBlue);
 			//ImGui::Checkbox("Disable Own Goals", &disableOwnGoal);
-			ImGui::InputInt("# Bounces", &bouncesRemaining); ImGui::SameLine();
+			ImGui::InputInt("# Bounces", &bouncesRemaining); 
+			ImGui::SameLine();
 			ImGui::Checkbox("Use Bounce based time.", &bounceBasedTime);
 
 			ImGui::EndChild();
@@ -391,6 +395,35 @@ void GameEventMods::onPlayerTick(Event* e) {
 		}
 
 		// Match Settings
+		if (goalPointsBlue > 1 || goalPointsOrange > 1) {
+			APylon_Soccar_TA* pylon = localGameEvent->Pylon;
+			TArray<class UGoal_TA*> goals = pylon->Goals;
+			if (goals.IsValidIndex(0)) {
+				goals.GetByIndex(0)->PointsToAward = goalPointsBlue;
+			}
+			if (goals.IsValidIndex(1)) {
+				goals.GetByIndex(1)->PointsToAward = goalPointsOrange;
+			}
+			defaultGoals = false;
+		}
+		else if (!defaultGoals) {
+			if (goalPointsBlue <= 1) {
+				APylon_Soccar_TA* pylon = localGameEvent->Pylon;
+				TArray<class UGoal_TA*> goals = pylon->Goals;
+				if (goals.IsValidIndex(0)) {
+					goals.GetByIndex(0)->PointsToAward = 1;
+				}
+			}
+			if (goalPointsOrange <= 1) {
+				APylon_Soccar_TA* pylon = localGameEvent->Pylon;
+				TArray<class UGoal_TA*> goals = pylon->Goals;
+				if (goals.IsValidIndex(1)) {
+					goals.GetByIndex(1)->PointsToAward = 1;
+				}
+			}
+			defaultGoals = true;
+		}
+
 		if (maxScore != localGameEvent->MaxScore) {
 			localGameEvent->MaxScore = maxScore;
 		}

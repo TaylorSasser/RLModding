@@ -10,7 +10,7 @@
 	- Make LanMods.h and ClientMods.h Each one will have its own unique stuff. LanMods will have player indexing and what not, mod conflictions and is focused on gamemodes and needs ways of getting a single car 
 
 - Mods
-	- When car or ball is invisible add option to show them in replay
+	- When car or ball is invisible add option to show them in replay (Might not be able to get working at all)
 	- Add interface for updating server name
 	- ~~Add setting for car acceleration~~ (Could have another method)
 	- Add setting to toggle unlimited boost in freeplay
@@ -18,7 +18,7 @@
 	- Add HP setting for cars health in game modes
 	- Add setting for tornado to vary in height
 	- Modify goal explosion properties
-	- Add options for specific balls being worth more points
+	- ~~Add options for specific balls being worth more points~~ (Added option to modify goal points)
 	- ~~Apply car scale every new round~~
 
 - GUI

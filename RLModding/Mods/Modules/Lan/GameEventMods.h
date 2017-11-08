@@ -120,6 +120,10 @@ private:
 
 	bool hideGameBall = false;
 
+	int goalPointsOrange = 1;
+	int goalPointsBlue = 1;
+	bool defaultGoals = false;
+
 	bool p_open = true;
 	// Clock 
 	std::clock_t start;
