@@ -130,8 +130,35 @@ void CarPhysics::onPlayerTick(Event* e) {
 	AGameEvent_Soccar_TA* localGameEvent = (SDK::AGameEvent_Soccar_TA*)InstanceStorage::GameEvent();
 
 	//std::cout << "State note: " << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+	if (isHidden && localGameEvent->ReplicatedStateName.GetName().compare("PostGoalScored") == 0 || localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") == 0) {
+		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
+		for (int i = 0; i < gameEventPlayers.Num(); i++) {
+			
+			AController* tempController = gameEventPlayers.GetByIndex(i);
+			ACar_TA* currCar = NULL;
 
-	if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
+			// Check if bot or person
+			if (tempController && tempController->IsA(SDK::AAIController_TA::StaticClass())) {
+				std::cout << "Bot!\n";
+				currCar = ((AAIController_TA*)tempController)->Car;
+			}
+			else if (tempController && tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
+				std::cout << "Person!\n";
+				currCar = ((APlayerController_TA*)tempController)->Car;
+
+			}
+			if (currCar) {
+				std::cout << "CArs!!\n";
+				currCar->SetHidden(0.0f);
+			}
+			else {
+				std::cout << "NO  CAR!\n";
+			}
+
+		}
+	}
+
+	else if (localGameEvent && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0 && localGameEvent->ReplicatedStateName.GetName().compare("Finished") != 0) {
 		TArray< class AController* > gameEventPlayers = localGameEvent->Players;
 
 		if (refreshCars || currPlayerCount != gameEventPlayers.Num()) {
@@ -207,7 +234,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 					if (!Utils::FloatCompare(gravityScale, currCar->GravityScale))
 						currCar->GravityScale = gravityScale;
 					
-					if(isHidden && localGameEvent->ReplicatedStateName.GetName().compare("ReplayPlayback") != 0)
+					
+					//std::cout << localGameEvent->ReplicatedStateName.GetName() << std::endl;
+					if(isHidden)
 						currCar->SetHidden(1.0f);
 					else 
 						currCar->SetHidden(0.0f);
