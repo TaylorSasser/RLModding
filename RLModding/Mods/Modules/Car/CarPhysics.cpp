@@ -107,9 +107,11 @@ void CarPhysics::DrawMenu() {
 		ImGui::InputFloat("Wall Sticky Force", &wallSticky, 0.5f, 1.0f, 1);
 		if (ImGui::IsItemHovered())
 			ImGui::SetTooltip("The amount of sticky force applied when you're on the wall");
+		ImGui::InputInt("Health", &health);
 		if (ImGui::Button("Respawn Car")) {
 			respawn = true;
 		}
+
 		ImGui::SameLine();
 		if (ImGui::Button("Reset")) {
 			reset();
@@ -139,16 +141,16 @@ void CarPhysics::onPlayerTick(Event* e) {
 
 			// Check if bot or person
 			if (tempController && tempController->IsA(SDK::AAIController_TA::StaticClass())) {
-				std::cout << "Bot!\n";
+				//std::cout << "Bot!\n";
 				currCar = ((AAIController_TA*)tempController)->Car;
 			}
 			else if (tempController && tempController->IsA(SDK::APlayerController_TA::StaticClass())) {
-				std::cout << "Person!\n";
+				//std::cout << "Person!\n";
 				currCar = ((APlayerController_TA*)tempController)->Car;
 
 			}
 			if (currCar) {
-				std::cout << "CArs!!\n";
+				//std::cout << "CArs!!\n";
 				currCar->SetHidden(0.0f);
 			}
 			else {
@@ -197,6 +199,9 @@ void CarPhysics::onPlayerTick(Event* e) {
 						currCar->SetCollisionType(SDK::ECollisionType::COLLIDE_BlockAll);
 					}
 
+					if (currCar->Health != health) {
+						currCar->Health = health >= 0 ? health : 0;
+					}
 
 					if (currCar->BoostComponent) {
 						

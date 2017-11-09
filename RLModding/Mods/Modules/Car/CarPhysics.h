@@ -69,6 +69,7 @@ private:
 	bool reset_values = false;
 	bool respawn = false;
 	bool isHidden = false;
+	int health = 1000;
 
 	float mass = 180.0f;
 	float gravityScale = 1.0f;

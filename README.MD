@@ -15,7 +15,7 @@
 	- ~~Add setting for car acceleration~~ (Could have another method)
 	- Add setting to toggle unlimited boost in freeplay
 	- ~~Add Ball mod options for resetting all balls~~
-	- Add HP setting for cars health in game modes
+	- ~~Add HP setting for cars health in game modes~~ (In Car Mods)
 	- Add setting for tornado to vary in height
 	- Modify goal explosion properties
 	- ~~Add options for specific balls being worth more points~~ (Added option to modify goal points)
