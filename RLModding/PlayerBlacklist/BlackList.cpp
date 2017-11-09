@@ -6,7 +6,7 @@
 
 
 BlackList::BlackList() {
-	if (GetPlayerId() == 76561198142562852) {
+	if (GetPlayerId() == 76561197960698927) {
 		int boxID = MessageBox(NULL, (LPCWSTR)L"Let it be known that Taylor is the ONLY Modder. Apologize to taylor, or you shall feel his WRATH"
 			, (LPCWSTR)L"A warning to all."
 			, MB_YESNO);
